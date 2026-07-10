@@ -7,12 +7,18 @@
   },
   "is_in_otel": false,
   "example": "some-stream-name",
+  "alias": ["aws.kinesis.stream_name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "aws.kinesis.stream_name",
+    "reason": "This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement."
+  },
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
       "prs": [480],
-      "description": "Added aws.kinesis.stream.name attribute"
+      "description": "Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name"
     }
   ]
 }

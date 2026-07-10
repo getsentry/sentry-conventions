@@ -152,10 +152,13 @@ class _AttributeNamesMeta(type):
         "APP_START_COLD",
         "APP_START_TYPE",
         "APP_START_WARM",
+        "_AWS_KINESIS_STREAM_NAME",
         "AWS_LAMBDA_AWS_REQUEST_ID",
         "AWS_LAMBDA_FUNCTION_NAME",
         "AWS_LAMBDA_FUNCTION_VERSION",
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
+        "AWS_REQUEST_EXTENDED_ID",
+        "_AWS_REQUEST_ID",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -1491,8 +1494,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 100
     """
 
+    # Path: model/attributes/aws/aws__extended_request_id.json
+    AWS_EXTENDED_REQUEST_ID: Literal["aws.extended_request_id"] = (
+        "aws.extended_request_id"
+    )
+    """The AWS extended request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.request.extended_id
+    Example: "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+    """
+
     # Path: model/attributes/aws/aws__kinesis__stream__name.json
-    AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream.name"] = (
+    _AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream.name"] = (
         "aws.kinesis.stream.name"
     )
     """The name of the AWS Kinesis stream the request refers to.
@@ -1501,6 +1518,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: aws.kinesis.stream_name
+    DEPRECATED: Use aws.kinesis.stream_name instead - This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.
+    Example: "some-stream-name"
+    """
+
+    # Path: model/attributes/aws/aws__kinesis__stream_name.json
+    AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream_name"] = (
+        "aws.kinesis.stream_name"
+    )
+    """The name of the AWS Kinesis stream the request refers to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.kinesis.stream.name
     Example: "some-stream-name"
     """
 
@@ -1634,17 +1667,33 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: aws.extended_request_id
+    DEPRECATED: Use aws.extended_request_id instead - This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.
     Example: "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
     """
 
     # Path: model/attributes/aws/aws__request__id.json
-    AWS_REQUEST_ID: Literal["aws.request.id"] = "aws.request.id"
+    _AWS_REQUEST_ID: Literal["aws.request.id"] = "aws.request.id"
     """The AWS request ID as returned in the response headers.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: aws.request_id
+    DEPRECATED: Use aws.request_id instead - This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.
+    Example: "79b9da39-b7ae-508a-a6bc-864b2829c622"
+    """
+
+    # Path: model/attributes/aws/aws__request_id.json
+    AWS_REQUEST_ID: Literal["aws.request_id"] = "aws.request_id"
+    """The AWS request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.request.id
     Example: "79b9da39-b7ae-508a-a6bc-864b2829c622"
     """
 
@@ -10550,6 +10599,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.extended_request_id": AttributeMetadata(
+        brief="The AWS extended request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=",
+        aliases=["aws.request.extended_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.extended_request_id attribute",
+            ),
+        ],
+    ),
     "aws.kinesis.stream.name": AttributeMetadata(
         brief="The name of the AWS Kinesis stream the request refers to.",
         type=AttributeType.STRING,
@@ -10557,11 +10622,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="some-stream-name",
+        deprecation=DeprecationInfo(
+            replacement="aws.kinesis.stream_name",
+            reason="This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.kinesis.stream_name"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[480],
-                description="Added aws.kinesis.stream.name attribute",
+                description="Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name",
+            ),
+        ],
+    ),
+    "aws.kinesis.stream_name": AttributeMetadata(
+        brief="The name of the AWS Kinesis stream the request refers to.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="some-stream-name",
+        aliases=["aws.kinesis.stream.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.kinesis.stream_name attribute",
             ),
         ],
     ),
@@ -10745,11 +10832,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=",
+        deprecation=DeprecationInfo(
+            replacement="aws.extended_request_id",
+            reason="This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.extended_request_id"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[480],
-                description="Added aws.request.extended_id attribute",
+                description="Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id",
             ),
         ],
     ),
@@ -10760,9 +10853,31 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="79b9da39-b7ae-508a-a6bc-864b2829c622",
+        deprecation=DeprecationInfo(
+            replacement="aws.request_id",
+            reason="This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.request_id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[480], description="Added aws.request.id attribute"
+                version="next",
+                prs=[480],
+                description="Added aws.request.id attribute, deprecated in favor of aws.request_id",
+            ),
+        ],
+    ),
+    "aws.request_id": AttributeMetadata(
+        brief="The AWS request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="79b9da39-b7ae-508a-a6bc-864b2829c622",
+        aliases=["aws.request.id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[480], description="Added aws.request_id attribute"
             ),
         ],
     ),
@@ -19350,7 +19465,9 @@ Attributes = TypedDict(
         "aws.dynamodb.table_count": int,
         "aws.dynamodb.table_names": List[str],
         "aws.dynamodb.total_segments": int,
+        "aws.extended_request_id": str,
         "aws.kinesis.stream.name": str,
+        "aws.kinesis.stream_name": str,
         "aws.lambda.aws_request_id": str,
         "aws.lambda.execution_duration_in_millis": float,
         "aws.lambda.function_name": str,
@@ -19362,6 +19479,7 @@ Attributes = TypedDict(
         "aws.log.stream.names": List[str],
         "aws.request.extended_id": str,
         "aws.request.id": str,
+        "aws.request_id": str,
         "aws.s3.bucket": str,
         "aws.secretsmanager.secret.arn": str,
         "aws.sns.topic.arn": str,

@@ -2120,26 +2120,75 @@ export const AWS_DYNAMODB_TOTAL_SEGMENTS = 'aws.dynamodb.total_segments';
  */
 export type AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE = number;
 
+// Path: model/attributes/aws/aws__extended_request_id.json
+
+/**
+ * The AWS extended request ID as returned in the response headers. `aws.extended_request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_EXTENDED_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_REQUEST_EXTENDED_ID} `aws.request.extended_id`
+ *
+ * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+ */
+export const AWS_EXTENDED_REQUEST_ID = 'aws.extended_request_id';
+
+/**
+ * Type for {@link AWS_EXTENDED_REQUEST_ID} aws.extended_request_id
+ */
+export type AWS_EXTENDED_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__kinesis__stream_name.json
+
+/**
+ * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_KINESIS_STREAM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link _AWS_KINESIS_STREAM_NAME} `aws.kinesis.stream.name`
+ *
+ * @example "some-stream-name"
+ */
+export const AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream_name';
+
+/**
+ * Type for {@link AWS_KINESIS_STREAM_NAME} aws.kinesis.stream_name
+ */
+export type AWS_KINESIS_STREAM_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__kinesis__stream__name.json
 
 /**
  * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream.name`
  *
- * Attribute Value Type: `string` {@link AWS_KINESIS_STREAM_NAME_TYPE}
+ * Attribute Value Type: `string` {@link _AWS_KINESIS_STREAM_NAME_TYPE}
  *
  * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link AWS_KINESIS_STREAM_NAME} `aws.kinesis.stream_name`
+ *
+ * @deprecated Use {@link AWS_KINESIS_STREAM_NAME} (aws.kinesis.stream_name) instead - This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.
  * @example "some-stream-name"
  */
-export const AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream.name';
+export const _AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream.name';
 
 /**
- * Type for {@link AWS_KINESIS_STREAM_NAME} aws.kinesis.stream.name
+ * Type for {@link _AWS_KINESIS_STREAM_NAME} aws.kinesis.stream.name
  */
-export type AWS_KINESIS_STREAM_NAME_TYPE = string;
+export type _AWS_KINESIS_STREAM_NAME_TYPE = string;
 
 // Path: model/attributes/aws/aws__lambda__aws_request_id.json
 
@@ -2356,6 +2405,9 @@ export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link AWS_EXTENDED_REQUEST_ID} `aws.extended_request_id`
+ *
+ * @deprecated Use {@link AWS_EXTENDED_REQUEST_ID} (aws.extended_request_id) instead - This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.
  * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
  */
 export const AWS_REQUEST_EXTENDED_ID = 'aws.request.extended_id';
@@ -2365,26 +2417,52 @@ export const AWS_REQUEST_EXTENDED_ID = 'aws.request.extended_id';
  */
 export type AWS_REQUEST_EXTENDED_ID_TYPE = string;
 
+// Path: model/attributes/aws/aws__request_id.json
+
+/**
+ * The AWS request ID as returned in the response headers. `aws.request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link _AWS_REQUEST_ID} `aws.request.id`
+ *
+ * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
+ */
+export const AWS_REQUEST_ID = 'aws.request_id';
+
+/**
+ * Type for {@link AWS_REQUEST_ID} aws.request_id
+ */
+export type AWS_REQUEST_ID_TYPE = string;
+
 // Path: model/attributes/aws/aws__request__id.json
 
 /**
  * The AWS request ID as returned in the response headers. `aws.request.id`
  *
- * Attribute Value Type: `string` {@link AWS_REQUEST_ID_TYPE}
+ * Attribute Value Type: `string` {@link _AWS_REQUEST_ID_TYPE}
  *
  * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link AWS_REQUEST_ID} `aws.request_id`
+ *
+ * @deprecated Use {@link AWS_REQUEST_ID} (aws.request_id) instead - This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.
  * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
  */
-export const AWS_REQUEST_ID = 'aws.request.id';
+export const _AWS_REQUEST_ID = 'aws.request.id';
 
 /**
- * Type for {@link AWS_REQUEST_ID} aws.request.id
+ * Type for {@link _AWS_REQUEST_ID} aws.request.id
  */
-export type AWS_REQUEST_ID_TYPE = string;
+export type _AWS_REQUEST_ID_TYPE = string;
 
 // Path: model/attributes/aws/aws__s3__bucket.json
 
@@ -15949,6 +16027,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.dynamodb.table_count': 'integer',
   'aws.dynamodb.table_names': 'string[]',
   'aws.dynamodb.total_segments': 'integer',
+  'aws.extended_request_id': 'string',
+  'aws.kinesis.stream_name': 'string',
   'aws.kinesis.stream.name': 'string',
   'aws.lambda.aws_request_id': 'string',
   'aws.lambda.execution_duration_in_millis': 'double',
@@ -15960,6 +16040,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
   'aws.request.extended_id': 'string',
+  'aws.request_id': 'string',
   'aws.request.id': 'string',
   'aws.s3.bucket': 'string',
   'aws.secretsmanager.secret.arn': 'string',
@@ -16667,7 +16748,9 @@ export type AttributeName =
   | typeof AWS_DYNAMODB_TABLE_COUNT
   | typeof AWS_DYNAMODB_TABLE_NAMES
   | typeof AWS_DYNAMODB_TOTAL_SEGMENTS
+  | typeof AWS_EXTENDED_REQUEST_ID
   | typeof AWS_KINESIS_STREAM_NAME
+  | typeof _AWS_KINESIS_STREAM_NAME
   | typeof AWS_LAMBDA_AWS_REQUEST_ID
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
@@ -16679,6 +16762,7 @@ export type AttributeName =
   | typeof AWS_LOG_STREAM_NAMES
   | typeof AWS_REQUEST_EXTENDED_ID
   | typeof AWS_REQUEST_ID
+  | typeof _AWS_REQUEST_ID
   | typeof AWS_S3_BUCKET
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
@@ -18606,6 +18690,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
     changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.total_segments attribute' }],
   },
+  'aws.extended_request_id': {
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
+    aliases: ['aws.request.extended_id'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.extended_request_id attribute' }],
+  },
+  'aws.kinesis.stream_name': {
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'some-stream-name',
+    aliases: ['aws.kinesis.stream.name'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.kinesis.stream_name attribute' }],
+  },
   'aws.kinesis.stream.name': {
     brief: 'The name of the AWS Kinesis stream the request refers to.',
     type: 'string',
@@ -18615,7 +18723,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'some-stream-name',
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.kinesis.stream.name attribute' }],
+    deprecation: {
+      replacement: 'aws.kinesis.stream_name',
+      reason:
+        'This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.kinesis.stream_name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name',
+      },
+    ],
   },
   'aws.lambda.aws_request_id': {
     brief: 'The AWS request ID as received by the Lambda function runtime',
@@ -18773,7 +18893,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.request.extended_id attribute' }],
+    deprecation: {
+      replacement: 'aws.extended_request_id',
+      reason:
+        'This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.extended_request_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id',
+      },
+    ],
+  },
+  'aws.request_id': {
+    brief: 'The AWS request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
+    aliases: ['aws.request.id'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.request_id attribute' }],
   },
   'aws.request.id': {
     brief: 'The AWS request ID as returned in the response headers.',
@@ -18784,7 +18928,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.request.id attribute' }],
+    deprecation: {
+      replacement: 'aws.request_id',
+      reason: 'This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.request_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.request.id attribute, deprecated in favor of aws.request_id',
+      },
+    ],
   },
   'aws.s3.bucket': {
     brief: 'The S3 bucket name the request refers to.',
@@ -26852,7 +27007,9 @@ export type Attributes = {
   [AWS_DYNAMODB_TABLE_COUNT]?: AWS_DYNAMODB_TABLE_COUNT_TYPE;
   [AWS_DYNAMODB_TABLE_NAMES]?: AWS_DYNAMODB_TABLE_NAMES_TYPE;
   [AWS_DYNAMODB_TOTAL_SEGMENTS]?: AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE;
+  [AWS_EXTENDED_REQUEST_ID]?: AWS_EXTENDED_REQUEST_ID_TYPE;
   [AWS_KINESIS_STREAM_NAME]?: AWS_KINESIS_STREAM_NAME_TYPE;
+  [_AWS_KINESIS_STREAM_NAME]?: _AWS_KINESIS_STREAM_NAME_TYPE;
   [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
@@ -26864,6 +27021,7 @@ export type Attributes = {
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
   [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
+  [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
   [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
