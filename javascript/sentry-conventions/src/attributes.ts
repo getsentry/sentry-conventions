@@ -10497,6 +10497,29 @@ export const MIDDLEWARE_NAME = 'middleware.name';
  */
 export type MIDDLEWARE_NAME_TYPE = string;
 
+// Path: model/attributes/navigation/navigation__origin.json
+
+/**
+ * The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
+ *
+ * Attribute Value Type: `string` {@link NAVIGATION_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
+ *
+ * @example "/users/:id"
+ */
+export const NAVIGATION_ORIGIN = 'navigation.origin';
+
+/**
+ * Type for {@link NAVIGATION_ORIGIN} navigation.origin
+ */
+export type NAVIGATION_ORIGIN_TYPE = string;
+
 // Path: model/attributes/navigation/navigation__type.json
 
 /**
@@ -10508,6 +10531,8 @@ export type MIDDLEWARE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
  *
  * @example "router.push"
  */
@@ -13607,6 +13632,76 @@ export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
  */
 export type SENTRY_STATUS_MESSAGE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__from.json
+
+/**
+ * the navigation origin (sveltekit router) `sentry.sveltekit.navigation.from`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`
+ *
+ * @deprecated Use {@link NAVIGATION_ORIGIN} (navigation.origin) instead - Use the more generic attribute instead
+ * @example "/home"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} sentry.sveltekit.navigation.from
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__to.json
+
+/**
+ * the navigation destination `sentry.sveltekit.navigation.to`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - the navigation destination is already covered by url.* attributes
+ * @example "/users/:id"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_TO = 'sentry.sveltekit.navigation.to';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TO} sentry.sveltekit.navigation.to
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__type.json
+
+/**
+ * The type of navigation event emitted from the sveltekit client router `sentry.sveltekit.navigation.type`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_TYPE} `navigation.type`
+ *
+ * @deprecated Use {@link NAVIGATION_TYPE} (navigation.type) instead - Use the more generic attribute instead
+ * @example "link"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} sentry.sveltekit.navigation.type
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__thread__id.json
 
 /**
@@ -16406,6 +16501,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.system': 'string',
   method: 'string',
   'middleware.name': 'string',
+  'navigation.origin': 'string',
   'navigation.type': 'string',
   'nel.elapsed_time': 'integer',
   'nel.phase': 'string',
@@ -16546,6 +16642,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.status': 'string',
   'sentry.status_code': 'integer',
   'sentry.status.message': 'string',
+  'sentry.sveltekit.navigation.from': 'string',
+  'sentry.sveltekit.navigation.to': 'string',
+  'sentry.sveltekit.navigation.type': 'string',
   'sentry.thread.id': 'integer',
   'sentry.timestamp.sequence': 'integer',
   'sentry.trace_lifecycle': 'string',
@@ -17127,6 +17226,7 @@ export type AttributeName =
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
+  | typeof NAVIGATION_ORIGIN
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -17267,6 +17367,9 @@ export type AttributeName =
   | typeof SENTRY_STATUS
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_FROM
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_TO
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_TYPE
   | typeof SENTRY_THREAD_ID
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
@@ -23831,6 +23934,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'AuthenticationMiddleware',
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
+  'navigation.origin': {
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    aliases: ['sentry.sveltekit.navigation.from'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added navigation.origin attribute' }],
+  },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
@@ -23840,7 +23956,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'router.push',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.sveltekit.navigation.type'],
+    changelog: [
+      { version: 'next', prs: [467], description: 'Added new deprecated alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'nel.elapsed_time': {
     brief:
@@ -25630,6 +25751,52 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
+  'sentry.sveltekit.navigation.from': {
+    brief: 'the navigation origin (sveltekit router)',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/home',
+    deprecation: {
+      replacement: 'navigation.origin',
+      reason: 'Use the more generic attribute instead',
+    },
+    aliases: ['navigation.origin'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
+  },
+  'sentry.sveltekit.navigation.to': {
+    brief: 'the navigation destination',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    deprecation: {
+      reason: 'the navigation destination is already covered by url.* attributes',
+    },
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.to attribute' }],
+  },
+  'sentry.sveltekit.navigation.type': {
+    brief: 'The type of navigation event emitted from the sveltekit client router',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'link',
+    deprecation: {
+      replacement: 'navigation.type',
+      reason: 'Use the more generic attribute instead',
+    },
+    aliases: ['navigation.type'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
+  },
   'sentry.thread.id': {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
@@ -27386,6 +27553,7 @@ export type Attributes = {
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
+  [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
@@ -27526,6 +27694,9 @@ export type Attributes = {
   [SENTRY_STATUS]?: SENTRY_STATUS_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_FROM]?: SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_TO]?: SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_TYPE]?: SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
