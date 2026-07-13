@@ -8259,6 +8259,28 @@ export const JVM_THREAD_STATE = 'jvm.thread.state';
  */
 export type JVM_THREAD_STATE_TYPE = string;
 
+// Path: model/attributes/koa/koa__name.json
+
+/**
+ * The name of the Koa middleware or matched route that handled the request. `koa.name`
+ *
+ * Attribute Value Type: `string` {@link KOA_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - No single replacement. SDKs should use `http.route` for router layers and `code.function.name` for middleware layers instead.
+ * @example "/users/:id"
+ */
+export const KOA_NAME = 'koa.name';
+
+/**
+ * Type for {@link KOA_NAME} koa.name
+ */
+export type KOA_NAME_TYPE = string;
+
 // Path: model/attributes/koa/koa__type.json
 
 /**
@@ -15285,6 +15307,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'jvm.memory.type': 'string',
   'jvm.thread.daemon': 'boolean',
   'jvm.thread.state': 'string',
+  'koa.name': 'string',
   'koa.type': 'string',
   lcp: 'double',
   'lcp.element': 'string',
@@ -15963,6 +15986,7 @@ export type AttributeName =
   | typeof JVM_MEMORY_TYPE
   | typeof JVM_THREAD_DAEMON
   | typeof JVM_THREAD_STATE
+  | typeof KOA_NAME
   | typeof KOA_TYPE
   | typeof LCP
   | typeof LCP_ELEMENT
@@ -21366,6 +21390,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'blocked',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'koa.name': {
+    brief: 'The name of the Koa middleware or matched route that handled the request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    deprecation: {
+      reason:
+        'No single replacement. SDKs should use `http.route` for router layers and `code.function.name` for middleware layers instead.',
+    },
+    changelog: [{ version: 'next', prs: [490], description: 'Added koa.name attribute as deprecated' }],
+  },
   'koa.type': {
     brief: 'The type of the Koa layer that handled the request.',
     type: 'string',
@@ -25593,6 +25632,7 @@ export type Attributes = {
   [JVM_MEMORY_TYPE]?: JVM_MEMORY_TYPE_TYPE;
   [JVM_THREAD_DAEMON]?: JVM_THREAD_DAEMON_TYPE;
   [JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
+  [KOA_NAME]?: KOA_NAME_TYPE;
   [KOA_TYPE]?: KOA_TYPE_TYPE;
   [LCP]?: LCP_TYPE;
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;

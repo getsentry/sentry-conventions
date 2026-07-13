@@ -211,6 +211,7 @@ class _AttributeNamesMeta(type):
         "HTTP_URL",
         "HTTP_USER_AGENT",
         "INP",
+        "KOA_NAME",
         "LCP_ELEMENT",
         "LCP_ID",
         "LCP_LOADTIME",
@@ -4945,6 +4946,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "blocked"
+    """
+
+    # Path: model/attributes/koa/koa__name.json
+    KOA_NAME: Literal["koa.name"] = "koa.name"
+    """The name of the Koa middleware or matched route that handled the request.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.
+    Example: "/users/:id"
     """
 
     # Path: model/attributes/koa/koa__type.json
@@ -14085,6 +14098,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "koa.name": AttributeMetadata(
+        brief="The name of the Koa middleware or matched route that handled the request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/users/:id",
+        deprecation=DeprecationInfo(
+            reason="No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[490],
+                description="Added koa.name attribute as deprecated",
+            ),
+        ],
+    ),
     "koa.type": AttributeMetadata(
         brief="The type of the Koa layer that handled the request.",
         type=AttributeType.STRING,
@@ -18476,6 +18507,7 @@ Attributes = TypedDict(
         "jvm.memory.type": str,
         "jvm.thread.daemon": bool,
         "jvm.thread.state": str,
+        "koa.name": str,
         "koa.type": str,
         "lcp.element": str,
         "lcp.id": str,
