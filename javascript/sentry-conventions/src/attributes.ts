@@ -8097,7 +8097,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -8794,7 +8794,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -11000,7 +11000,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -14098,7 +14098,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @example "example.com"
  */
@@ -14108,6 +14108,30 @@ export const SERVER_ADDRESS = 'server.address';
  * Type for {@link SERVER_ADDRESS} server.address
  */
 export type SERVER_ADDRESS_TYPE = string;
+
+// Path: model/attributes/server_name.json
+
+/**
+ * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server_name`
+ *
+ * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ *
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+ * @example "example.com"
+ */
+export const SERVER_NAME = 'server_name';
+
+/**
+ * Type for {@link SERVER_NAME} server_name
+ */
+export type SERVER_NAME_TYPE = string;
 
 // Path: model/attributes/server/server__port.json
 
@@ -16732,6 +16756,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.user.ip': 'string',
   'sentry.user.username': 'string',
   'server.address': 'string',
+  server_name: 'string',
   'server.port': 'integer',
   'service.name': 'string',
   'service.version': 'string',
@@ -17460,6 +17485,7 @@ export type AttributeName =
   | typeof SENTRY_USER_IP
   | typeof SENTRY_USER_USERNAME
   | typeof SERVER_ADDRESS
+  | typeof SERVER_NAME
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
@@ -22561,7 +22587,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name'],
+    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.method': {
@@ -22966,7 +22992,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host'],
+    aliases: ['server.address', 'net.host.name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.server.request.time_in_queue': {
@@ -24318,7 +24344,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host'],
+    aliases: ['server.address', 'http.server_name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.host.port': {
@@ -26122,8 +26148,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['http.server_name', 'net.host.name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
+  },
+  server_name: {
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.com',
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
+    },
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    changelog: [{ version: 'next', description: 'Added server_name attribute, deprecated in favor of server.address' }],
   },
   'server.port': {
     brief: 'Server port number.',
@@ -27833,6 +27876,7 @@ export type Attributes = {
   [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
   [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
+  [SERVER_NAME]?: SERVER_NAME_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
