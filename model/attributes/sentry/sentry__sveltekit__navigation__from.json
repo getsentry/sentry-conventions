@@ -1,0 +1,24 @@
+{
+  "key": "sentry.sveltekit.navigation.from",
+  "brief": "the navigation origin (sveltekit router)",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "/home",
+  "deprecation": {
+    "replacement": "navigation.origin",
+    "_status": "backfill",
+    "reason": "Use the more generic attribute instead"
+  },
+  "alias": ["navigation.origin"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [467],
+      "description": "Added sentry.sveltekit.navigation.from attribute"
+    }
+  ]
+}

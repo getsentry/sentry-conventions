@@ -1,0 +1,20 @@
+{
+  "key": "aws.dynamodb.consumed_capacity",
+  "brief": "The JSON-serialized value of each item in the `ConsumedCapacity` response field.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": [
+    "{ \"CapacityUnits\": number, \"GlobalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"LocalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"ReadCapacityUnits\": number, \"Table\": { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number }, \"TableName\": \"string\", \"WriteCapacityUnits\": number }"
+  ],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [479],
+      "description": "Added aws.dynamodb.consumed_capacity attribute"
+    }
+  ]
+}
