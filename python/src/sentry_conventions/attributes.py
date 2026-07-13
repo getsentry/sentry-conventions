@@ -184,6 +184,8 @@ class _AttributeNamesMeta(type):
         "FRAMES_FROZEN",
         "FRAMES_SLOW",
         "FRAMES_TOTAL",
+        "FRAMES_FROZEN_RATE",
+        "FRAMES_SLOW_RATE",
         "FS_ERROR",
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
@@ -284,6 +286,8 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
         "SERVER_NAME",
+        "STALL_PERCENTAGE",
+        "STALL_TOTAL_TIME",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -901,6 +905,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 3
     """
 
+    # Path: model/attributes/app/app__vitals__frames__frozen__rate.json
+    APP_VITALS_FRAMES_FROZEN_RATE: Literal["app.vitals.frames.frozen.rate"] = (
+        "app.vitals.frames.frozen.rate"
+    )
+    """The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: frames_frozen_rate
+    Example: 0.5
+    """
+
     # Path: model/attributes/app/app__vitals__frames__slow__count.json
     APP_VITALS_FRAMES_SLOW_COUNT: Literal["app.vitals.frames.slow.count"] = (
         "app.vitals.frames.slow.count"
@@ -915,6 +933,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1
     """
 
+    # Path: model/attributes/app/app__vitals__frames__slow__rate.json
+    APP_VITALS_FRAMES_SLOW_RATE: Literal["app.vitals.frames.slow.rate"] = (
+        "app.vitals.frames.slow.rate"
+    )
+    """The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: frames_slow_rate
+    Example: 0.25
+    """
+
     # Path: model/attributes/app/app__vitals__frames__total__count.json
     APP_VITALS_FRAMES_TOTAL_COUNT: Literal["app.vitals.frames.total.count"] = (
         "app.vitals.frames.total.count"
@@ -927,6 +959,34 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: frames.total
     Example: 60
+    """
+
+    # Path: model/attributes/app/app__vitals__stall__duration.json
+    APP_VITALS_STALL_DURATION: Literal["app.vitals.stall.duration"] = (
+        "app.vitals.stall.duration"
+    )
+    """The combined duration of all stalls in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: stall_total_time
+    Example: 4000
+    """
+
+    # Path: model/attributes/app/app__vitals__stall__percentage.json
+    APP_VITALS_STALL_PERCENTAGE: Literal["app.vitals.stall.percentage"] = (
+        "app.vitals.stall.percentage"
+    )
+    """The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: stall_percentage
+    Example: 0.8
     """
 
     # Path: model/attributes/app/app__vitals__start__cold__value.json
@@ -3767,22 +3827,26 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/frames_frozen_rate.json
     FRAMES_FROZEN_RATE: Literal["frames_frozen_rate"] = "frames_frozen_rate"
-    """The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.
+    """The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: app.vitals.frames.frozen.rate
+    DEPRECATED: Use app.vitals.frames.frozen.rate instead - Replaced by app.vitals.frames.frozen.rate to align with the app.vitals.* namespace for mobile performance attributes
     """
 
     # Path: model/attributes/frames_slow_rate.json
     FRAMES_SLOW_RATE: Literal["frames_slow_rate"] = "frames_slow_rate"
-    """The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.
+    """The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.
 
     Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: app.vitals.frames.slow.rate
+    DEPRECATED: Use app.vitals.frames.slow.rate instead - Replaced by app.vitals.frames.slow.rate to align with the app.vitals.* namespace for mobile performance attributes
     """
 
     # Path: model/attributes/fs_error.json
@@ -8259,16 +8323,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: app.vitals.stall.percentage
+    DEPRECATED: Use app.vitals.stall.percentage instead - Replaced by app.vitals.stall.percentage to align with the app.vitals.* namespace for mobile performance attributes
     """
 
     # Path: model/attributes/stall_total_time.json
     STALL_TOTAL_TIME: Literal["stall_total_time"] = "stall_total_time"
-    """The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.
+    """The combined duration of all stalls in milliseconds. Only applies to React Native.
 
     Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: app.vitals.stall.duration
+    DEPRECATED: Use app.vitals.stall.duration instead - Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes
     """
 
     # Path: model/attributes/state/state__type.json
@@ -9968,6 +10036,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "app.vitals.frames.frozen.rate": AttributeMetadata(
+        brief="The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0.5,
+        aliases=["frames_frozen_rate"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[493],
+                description="Added app.vitals.frames.frozen.rate attribute",
+            ),
+        ],
+    ),
     "app.vitals.frames.slow.count": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
@@ -9984,6 +10068,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "app.vitals.frames.slow.rate": AttributeMetadata(
+        brief="The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0.25,
+        aliases=["frames_slow_rate"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[493],
+                description="Added app.vitals.frames.slow.rate attribute",
+            ),
+        ],
+    ),
     "app.vitals.frames.total.count": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
@@ -9997,6 +10097,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0",
                 prs=[313],
                 description="Added app.vitals.frames.total.count to replace frames.total",
+            ),
+        ],
+    ),
+    "app.vitals.stall.duration": AttributeMetadata(
+        brief="The combined duration of all stalls in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=4000,
+        aliases=["stall_total_time"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[493],
+                description="Added app.vitals.stall.duration attribute",
+            ),
+        ],
+    ),
+    "app.vitals.stall.percentage": AttributeMetadata(
+        brief="The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0.8,
+        aliases=["stall_percentage"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[493],
+                description="Added app.vitals.stall.percentage attribute",
             ),
         ],
     ),
@@ -13419,12 +13551,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "frames_frozen_rate": AttributeMetadata(
-        brief="The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
+        brief="The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.frozen.rate",
+            reason="Replaced by app.vitals.frames.frozen.rate to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.frozen.rate"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[493],
+                description="Deprecated in favor of app.vitals.frames.frozen.rate",
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[362],
@@ -13433,12 +13576,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "frames_slow_rate": AttributeMetadata(
-        brief="The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
+        brief="The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.slow.rate",
+            reason="Replaced by app.vitals.frames.slow.rate to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.slow.rate"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[493],
+                description="Deprecated in favor of app.vitals.frames.slow.rate",
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[362],
@@ -18598,7 +18752,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.stall.percentage",
+            reason="Replaced by app.vitals.stall.percentage to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.stall.percentage"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[493],
+                description="Deprecated in favor of app.vitals.stall.percentage",
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[362],
@@ -18607,12 +18772,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "stall_total_time": AttributeMetadata(
-        brief="The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.",
+        brief="The combined duration of all stalls in milliseconds. Only applies to React Native.",
         type=AttributeType.DOUBLE,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.stall.duration",
+            reason="Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.stall.duration"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[493],
+                description="Deprecated in favor of app.vitals.stall.duration",
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[362],
@@ -19718,8 +19894,12 @@ Attributes = TypedDict(
         "app.version": str,
         "app.vitals.frames.delay.value": int,
         "app.vitals.frames.frozen.count": int,
+        "app.vitals.frames.frozen.rate": float,
         "app.vitals.frames.slow.count": int,
+        "app.vitals.frames.slow.rate": float,
         "app.vitals.frames.total.count": int,
+        "app.vitals.stall.duration": float,
+        "app.vitals.stall.percentage": float,
         "app.vitals.start.cold.value": float,
         "app.vitals.start.prewarmed": bool,
         "app.vitals.start.reason": str,

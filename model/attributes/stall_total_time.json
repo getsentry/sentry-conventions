@@ -1,13 +1,24 @@
 {
   "key": "stall_total_time",
-  "brief": "The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.",
+  "brief": "The combined duration of all stalls in milliseconds. Only applies to React Native.",
   "type": "double",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
+  "alias": ["app.vitals.stall.duration"],
+  "deprecation": {
+    "replacement": "app.vitals.stall.duration",
+    "reason": "Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes",
+    "_status": "backfill"
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [493],
+      "description": "Deprecated in favor of app.vitals.stall.duration"
+    },
     {
       "version": "0.7.0",
       "prs": [362],
