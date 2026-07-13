@@ -10587,6 +10587,27 @@ export const NAVIGATION_ORIGIN = 'navigation.origin';
  */
 export type NAVIGATION_ORIGIN_TYPE = string;
 
+// Path: model/attributes/navigation/navigation__route__id.json
+
+/**
+ * The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id). `navigation.route.id`
+ *
+ * Attribute Value Type: `string` {@link NAVIGATION_ROUTE_ID_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "AboutView"
+ */
+export const NAVIGATION_ROUTE_ID = 'navigation.route.id';
+
+/**
+ * Type for {@link NAVIGATION_ROUTE_ID} navigation.route.id
+ */
+export type NAVIGATION_ROUTE_ID_TYPE = string;
+
 // Path: model/attributes/navigation/navigation__type.json
 
 /**
@@ -16598,6 +16619,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   method: 'string',
   'middleware.name': 'string',
   'navigation.origin': 'string',
+  'navigation.route.id': 'string',
   'navigation.type': 'string',
   'nel.elapsed_time': 'integer',
   'nel.phase': 'string',
@@ -17327,6 +17349,7 @@ export type AttributeName =
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_ORIGIN
+  | typeof NAVIGATION_ROUTE_ID
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -24090,6 +24113,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.sveltekit.navigation.from'],
     changelog: [{ version: 'next', prs: [467], description: 'Added navigation.origin attribute' }],
   },
+  'navigation.route.id': {
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AboutView',
+    changelog: [{ version: 'next', description: 'Added navigation.route.id attribute' }],
+  },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
@@ -27718,6 +27753,7 @@ export type Attributes = {
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
+  [NAVIGATION_ROUTE_ID]?: NAVIGATION_ROUTE_ID_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
