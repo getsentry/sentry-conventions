@@ -173,6 +173,7 @@ class _AttributeNamesMeta(type):
         "DB_SYSTEM",
         "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
+        "DIST",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
         "FAAS_EXECUTION",
@@ -216,6 +217,7 @@ class _AttributeNamesMeta(type):
         "HTTP_URL",
         "HTTP_USER_AGENT",
         "INP",
+        "KOA_NAME",
         "LCP_ELEMENT",
         "LCP_ID",
         "LCP_LOADTIME",
@@ -281,6 +283,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
+        "SERVER_NAME",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -3382,6 +3385,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "8 GB"
     """
 
+    # Path: model/attributes/dist.json
+    DIST: Literal["dist"] = "dist"
+    """The sentry dist.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.dist
+    DEPRECATED: Use sentry.dist instead - This attribute is being deprecated in favor of sentry.dist.
+    Example: "1.0"
+    """
+
     # Path: model/attributes/effectiveConnectionType.json
     EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
         "effectiveConnectionType"
@@ -4849,7 +4865,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, client.address, http.server_name, net.host.name
+    Aliases: server.address, client.address, http.server_name, net.host.name, server_name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -5268,7 +5284,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, net.host.name, http.host
+    Aliases: server.address, net.host.name, http.host, server_name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -5437,6 +5453,29 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "blocked"
+    """
+
+    # Path: model/attributes/koa/koa__name.json
+    KOA_NAME: Literal["koa.name"] = "koa.name"
+    """The name of the Koa middleware or matched route that handled the request.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.
+    Example: "/users/:id"
+    """
+
+    # Path: model/attributes/koa/koa__type.json
+    KOA_TYPE: Literal["koa.type"] = "koa.type"
+    """The type of the Koa layer that handled the request.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "router"
     """
 
     # Path: model/attributes/lcp/lcp__element.json
@@ -6224,6 +6263,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "/users/:id"
     """
 
+    # Path: model/attributes/navigation/navigation__route__id.json
+    NAVIGATION_ROUTE_ID: Literal["navigation.route.id"] = "navigation.route.id"
+    """The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "AboutView"
+    """
+
     # Path: model/attributes/navigation/navigation__type.json
     NAVIGATION_TYPE: Literal["navigation.type"] = "navigation.type"
     """The type of navigation done by a client-side router.
@@ -6312,7 +6362,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, http.server_name, http.host
+    Aliases: server.address, http.server_name, http.host, server_name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7323,6 +7373,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Aliases: dist
     Example: "1.0"
     """
 
@@ -8137,7 +8188,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.server_name, net.host.name, http.host
+    Aliases: http.server_name, net.host.name, http.host, server_name
     Example: "example.com"
     """
 
@@ -8151,6 +8202,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: net.host.port
     Example: 1337
+    """
+
+    # Path: model/attributes/server_name.json
+    SERVER_NAME: Literal["server_name"] = "server_name"
+    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.address, http.server_name, net.host.name, http.host
+    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+    Example: "example.com"
     """
 
     # Path: model/attributes/service/service__name.json
@@ -12871,6 +12935,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "dist": AttributeMetadata(
+        brief="The sentry dist.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="1.0",
+        deprecation=DeprecationInfo(
+            replacement="sentry.dist",
+            reason="This attribute is being deprecated in favor of sentry.dist.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry.dist"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[489], description="Added dist attribute"
+            ),
+        ],
+    ),
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
@@ -14685,6 +14768,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "client.address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -15121,7 +15205,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
-        aliases=["server.address", "net.host.name", "http.host"],
+        aliases=["server.address", "net.host.name", "http.host", "server_name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -15318,6 +15402,37 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "koa.name": AttributeMetadata(
+        brief="The name of the Koa middleware or matched route that handled the request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/users/:id",
+        deprecation=DeprecationInfo(
+            reason="No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[490],
+                description="Added koa.name attribute as deprecated",
+            ),
+        ],
+    ),
+    "koa.type": AttributeMetadata(
+        brief="The type of the Koa layer that handled the request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="router",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[471], description="Added koa.type attribute"
+            ),
         ],
     ),
     "lcp.element": AttributeMetadata(
@@ -16269,6 +16384,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "navigation.route.id": AttributeMetadata(
+        brief="The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AboutView",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added navigation.route.id attribute"
+            ),
+        ],
+    ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
@@ -16364,7 +16492,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
-        aliases=["server.address", "http.server_name", "http.host"],
+        aliases=["server.address", "http.server_name", "http.host", "server_name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -17519,7 +17647,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0",
+        aliases=["dist"],
         changelog=[
+            ChangelogEntry(version="next", description="Added dist as an alias"),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -18374,7 +18504,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
-        aliases=["http.server_name", "net.host.name", "http.host"],
+        aliases=["http.server_name", "net.host.name", "http.host", "server_name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -18391,6 +18521,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "server_name": AttributeMetadata(
+        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="example.com",
+        deprecation=DeprecationInfo(
+            replacement="server.address",
+            reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["server.address", "http.server_name", "net.host.name", "http.host"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added server_name attribute, deprecated in favor of server.address",
+            ),
         ],
     ),
     "service.name": AttributeMetadata(
@@ -19758,6 +19908,7 @@ Attributes = TypedDict(
         "device.timezone": str,
         "device.usable_memory": int,
         "deviceMemory": str,
+        "dist": str,
         "effectiveConnectionType": str,
         "environment": str,
         "error.type": str,
@@ -19921,6 +20072,8 @@ Attributes = TypedDict(
         "jvm.memory.type": str,
         "jvm.thread.daemon": bool,
         "jvm.thread.state": str,
+        "koa.name": str,
+        "koa.type": str,
         "lcp.element": str,
         "lcp.id": str,
         "lcp.loadTime": int,
@@ -19985,6 +20138,7 @@ Attributes = TypedDict(
         "method": str,
         "middleware.name": str,
         "navigation.origin": str,
+        "navigation.route.id": str,
         "navigation.type": str,
         "nel.elapsed_time": int,
         "nel.phase": str,
@@ -20144,6 +20298,7 @@ Attributes = TypedDict(
         "sentry.user.username": str,
         "server.address": str,
         "server.port": int,
+        "server_name": str,
         "service.name": str,
         "service.version": str,
         "session.id": str,

@@ -5485,6 +5485,30 @@ export const DEVICE_USABLE_MEMORY = 'device.usable_memory';
  */
 export type DEVICE_USABLE_MEMORY_TYPE = number;
 
+// Path: model/attributes/dist.json
+
+/**
+ * The sentry dist. `dist`
+ *
+ * Attribute Value Type: `string` {@link DIST_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DIST} `sentry.dist`
+ *
+ * @deprecated Use {@link SENTRY_DIST} (sentry.dist) instead - This attribute is being deprecated in favor of sentry.dist.
+ * @example "1.0"
+ */
+export const DIST = 'dist';
+
+/**
+ * Type for {@link DIST} dist
+ */
+export type DIST_TYPE = string;
+
 // Path: model/attributes/effectiveConnectionType.json
 
 /**
@@ -8073,7 +8097,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -8770,7 +8794,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -9111,6 +9135,49 @@ export const JVM_THREAD_STATE = 'jvm.thread.state';
  * Type for {@link JVM_THREAD_STATE} jvm.thread.state
  */
 export type JVM_THREAD_STATE_TYPE = string;
+
+// Path: model/attributes/koa/koa__name.json
+
+/**
+ * The name of the Koa middleware or matched route that handled the request. `koa.name`
+ *
+ * Attribute Value Type: `string` {@link KOA_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.
+ * @example "/users/:id"
+ */
+export const KOA_NAME = 'koa.name';
+
+/**
+ * Type for {@link KOA_NAME} koa.name
+ */
+export type KOA_NAME_TYPE = string;
+
+// Path: model/attributes/koa/koa__type.json
+
+/**
+ * The type of the Koa layer that handled the request. `koa.type`
+ *
+ * Attribute Value Type: `string` {@link KOA_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "router"
+ */
+export const KOA_TYPE = 'koa.type';
+
+/**
+ * Type for {@link KOA_TYPE} koa.type
+ */
+export type KOA_TYPE_TYPE = string;
 
 // Path: model/attributes/lcp.json
 
@@ -10520,6 +10587,27 @@ export const NAVIGATION_ORIGIN = 'navigation.origin';
  */
 export type NAVIGATION_ORIGIN_TYPE = string;
 
+// Path: model/attributes/navigation/navigation__route__id.json
+
+/**
+ * The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id). `navigation.route.id`
+ *
+ * Attribute Value Type: `string` {@link NAVIGATION_ROUTE_ID_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "AboutView"
+ */
+export const NAVIGATION_ROUTE_ID = 'navigation.route.id';
+
+/**
+ * Type for {@link NAVIGATION_ROUTE_ID} navigation.route.id
+ */
+export type NAVIGATION_ROUTE_ID_TYPE = string;
+
 // Path: model/attributes/navigation/navigation__type.json
 
 /**
@@ -10933,7 +11021,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12553,6 +12641,8 @@ export type SENTRY_DESCRIPTION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link DIST} `dist`
+ *
  * @example "1.0"
  */
 export const SENTRY_DIST = 'sentry.dist';
@@ -14029,7 +14119,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @example "example.com"
  */
@@ -14039,6 +14129,30 @@ export const SERVER_ADDRESS = 'server.address';
  * Type for {@link SERVER_ADDRESS} server.address
  */
 export type SERVER_ADDRESS_TYPE = string;
+
+// Path: model/attributes/server_name.json
+
+/**
+ * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server_name`
+ *
+ * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ *
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+ * @example "example.com"
+ */
+export const SERVER_NAME = 'server_name';
+
+/**
+ * Type for {@link SERVER_NAME} server_name
+ */
+export type SERVER_NAME_TYPE = string;
 
 // Path: model/attributes/server/server__port.json
 
@@ -16275,6 +16389,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'device.thermal_state': 'string',
   'device.timezone': 'string',
   'device.usable_memory': 'integer',
+  dist: 'string',
   effectiveConnectionType: 'string',
   environment: 'string',
   'error.type': 'string',
@@ -16438,6 +16553,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'jvm.memory.type': 'string',
   'jvm.thread.daemon': 'boolean',
   'jvm.thread.state': 'string',
+  'koa.name': 'string',
+  'koa.type': 'string',
   lcp: 'double',
   'lcp.element': 'string',
   'lcp.id': 'string',
@@ -16502,6 +16619,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   method: 'string',
   'middleware.name': 'string',
   'navigation.origin': 'string',
+  'navigation.route.id': 'string',
   'navigation.type': 'string',
   'nel.elapsed_time': 'integer',
   'nel.phase': 'string',
@@ -16660,6 +16778,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.user.ip': 'string',
   'sentry.user.username': 'string',
   'server.address': 'string',
+  server_name: 'string',
   'server.port': 'integer',
   'service.name': 'string',
   'service.version': 'string',
@@ -17000,6 +17119,7 @@ export type AttributeName =
   | typeof DEVICE_THERMAL_STATE
   | typeof DEVICE_TIMEZONE
   | typeof DEVICE_USABLE_MEMORY
+  | typeof DIST
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -17163,6 +17283,8 @@ export type AttributeName =
   | typeof JVM_MEMORY_TYPE
   | typeof JVM_THREAD_DAEMON
   | typeof JVM_THREAD_STATE
+  | typeof KOA_NAME
+  | typeof KOA_TYPE
   | typeof LCP
   | typeof LCP_ELEMENT
   | typeof LCP_ID
@@ -17227,6 +17349,7 @@ export type AttributeName =
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_ORIGIN
+  | typeof NAVIGATION_ROUTE_ID
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -17385,6 +17508,7 @@ export type AttributeName =
   | typeof SENTRY_USER_IP
   | typeof SENTRY_USER_USERNAME
   | typeof SERVER_ADDRESS
+  | typeof SERVER_NAME
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
@@ -20737,6 +20861,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2147483648,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
+  dist: {
+    brief: 'The sentry dist.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1.0',
+    deprecation: {
+      replacement: 'sentry.dist',
+      reason: 'This attribute is being deprecated in favor of sentry.dist.',
+    },
+    aliases: ['sentry.dist'],
+    changelog: [{ version: 'next', prs: [489], description: 'Added dist attribute' }],
+  },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
@@ -22470,7 +22610,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name'],
+    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.method': {
@@ -22875,7 +23015,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host'],
+    aliases: ['server.address', 'net.host.name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.server.request.time_in_queue': {
@@ -23072,6 +23212,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'blocked',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'koa.name': {
+    brief: 'The name of the Koa middleware or matched route that handled the request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    deprecation: {
+      reason:
+        'No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.',
+    },
+    changelog: [{ version: 'next', prs: [490], description: 'Added koa.name attribute as deprecated' }],
+  },
+  'koa.type': {
+    brief: 'The type of the Koa layer that handled the request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'router',
+    changelog: [{ version: 'next', prs: [471], description: 'Added koa.type attribute' }],
   },
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -23947,6 +24113,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.sveltekit.navigation.from'],
     changelog: [{ version: 'next', prs: [467], description: 'Added navigation.origin attribute' }],
   },
+  'navigation.route.id': {
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AboutView',
+    changelog: [{ version: 'next', description: 'Added navigation.route.id attribute' }],
+  },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
@@ -24201,7 +24379,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host'],
+    aliases: ['server.address', 'http.server_name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.host.port': {
@@ -25160,7 +25338,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1.0',
-    changelog: [{ version: '0.0.0' }],
+    aliases: ['dist'],
+    changelog: [{ version: 'next', description: 'Added dist as an alias' }, { version: '0.0.0' }],
   },
   'sentry.domain': {
     brief:
@@ -26004,8 +26183,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['http.server_name', 'net.host.name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
+  },
+  server_name: {
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.com',
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
+    },
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    changelog: [{ version: 'next', description: 'Added server_name attribute, deprecated in favor of server.address' }],
   },
   'server.port': {
     brief: 'Server port number.',
@@ -27327,6 +27523,7 @@ export type Attributes = {
   [DEVICE_THERMAL_STATE]?: DEVICE_THERMAL_STATE_TYPE;
   [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
+  [DIST]?: DIST_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
@@ -27490,6 +27687,8 @@ export type Attributes = {
   [JVM_MEMORY_TYPE]?: JVM_MEMORY_TYPE_TYPE;
   [JVM_THREAD_DAEMON]?: JVM_THREAD_DAEMON_TYPE;
   [JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
+  [KOA_NAME]?: KOA_NAME_TYPE;
+  [KOA_TYPE]?: KOA_TYPE_TYPE;
   [LCP]?: LCP_TYPE;
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
   [LCP_ID]?: LCP_ID_TYPE;
@@ -27554,6 +27753,7 @@ export type Attributes = {
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
+  [NAVIGATION_ROUTE_ID]?: NAVIGATION_ROUTE_ID_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
@@ -27712,6 +27912,7 @@ export type Attributes = {
   [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
   [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
+  [SERVER_NAME]?: SERVER_NAME_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
