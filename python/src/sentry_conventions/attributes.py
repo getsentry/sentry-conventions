@@ -152,10 +152,13 @@ class _AttributeNamesMeta(type):
         "APP_START_COLD",
         "APP_START_TYPE",
         "APP_START_WARM",
+        "_AWS_KINESIS_STREAM_NAME",
         "AWS_LAMBDA_AWS_REQUEST_ID",
         "AWS_LAMBDA_FUNCTION_NAME",
         "AWS_LAMBDA_FUNCTION_VERSION",
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
+        "AWS_REQUEST_EXTENDED_ID",
+        "_AWS_REQUEST_ID",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -170,6 +173,7 @@ class _AttributeNamesMeta(type):
         "DB_SYSTEM",
         "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
+        "DIST",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
         "FAAS_EXECUTION",
@@ -213,6 +217,7 @@ class _AttributeNamesMeta(type):
         "HTTP_URL",
         "HTTP_USER_AGENT",
         "INP",
+        "KOA_NAME",
         "LCP_ELEMENT",
         "LCP_ID",
         "LCP_LOADTIME",
@@ -227,6 +232,7 @@ class _AttributeNamesMeta(type):
         "MCP_TOOL_RESULT_CONTENT",
         "MCP_TOOL_RESULT_IS_ERROR",
         "MCP_TRANSPORT",
+        "MESSAGING_DESTINATION",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -253,6 +259,7 @@ class _AttributeNamesMeta(type):
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
+        "RPC_SYSTEM",
         "RUNTIME_BUILD",
         "RUNTIME_NAME",
         "RUNTIME_RAW_DESCRIPTION",
@@ -262,6 +269,9 @@ class _AttributeNamesMeta(type):
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
+        "SENTRY_SVELTEKIT_NAVIGATION_FROM",
+        "SENTRY_SVELTEKIT_NAVIGATION_TO",
+        "SENTRY_SVELTEKIT_NAVIGATION_TYPE",
         "SENTRY_THREAD_ID",
         "SENTRY_TRACE_PARENT_SPAN_ID",
         "SENTRY_TRANSACTION",
@@ -273,6 +283,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
+        "SERVER_NAME",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -1224,6 +1235,314 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group"
     """
 
+    # Path: model/attributes/aws/aws__dynamodb__attribute_definitions.json
+    AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS: Literal[
+        "aws.dynamodb.attribute_definitions"
+    ] = "aws.dynamodb.attribute_definitions"
+    """The JSON-serialized value of each item in the `AttributeDefinitions` request field.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["{ \"AttributeName\": \"string\", \"AttributeType\": \"string\" }"]
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__consistent_read.json
+    AWS_DYNAMODB_CONSISTENT_READ: Literal["aws.dynamodb.consistent_read"] = (
+        "aws.dynamodb.consistent_read"
+    )
+    """The value of the `ConsistentRead` request parameter.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: true
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__consumed_capacity.json
+    AWS_DYNAMODB_CONSUMED_CAPACITY: Literal["aws.dynamodb.consumed_capacity"] = (
+        "aws.dynamodb.consumed_capacity"
+    )
+    """The JSON-serialized value of each item in the `ConsumedCapacity` response field.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["{ \"CapacityUnits\": number, \"GlobalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"LocalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"ReadCapacityUnits\": number, \"Table\": { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number }, \"TableName\": \"string\", \"WriteCapacityUnits\": number }"]
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__count.json
+    AWS_DYNAMODB_COUNT: Literal["aws.dynamodb.count"] = "aws.dynamodb.count"
+    """The value of the `Count` response parameter.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 10
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__exclusive_start_table.json
+    AWS_DYNAMODB_EXCLUSIVE_START_TABLE: Literal[
+        "aws.dynamodb.exclusive_start_table"
+    ] = "aws.dynamodb.exclusive_start_table"
+    """The value of the `ExclusiveStartTableName` request parameter.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "Users"
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__global_secondary_index_updates.json
+    AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES: Literal[
+        "aws.dynamodb.global_secondary_index_updates"
+    ] = "aws.dynamodb.global_secondary_index_updates"
+    """The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["{ \"Create\": { \"IndexName\": \"string\", \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" }, \"ProvisionedThroughput\": { \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }"]
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__global_secondary_indexes.json
+    AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES: Literal[
+        "aws.dynamodb.global_secondary_indexes"
+    ] = "aws.dynamodb.global_secondary_indexes"
+    """The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["{ \"IndexName\": \"string\", \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" }, \"ProvisionedThroughput\": { \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }"]
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__index_name.json
+    AWS_DYNAMODB_INDEX_NAME: Literal["aws.dynamodb.index_name"] = (
+        "aws.dynamodb.index_name"
+    )
+    """The value of the `IndexName` request parameter.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "name_to_group"
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__item_collection_metrics.json
+    AWS_DYNAMODB_ITEM_COLLECTION_METRICS: Literal[
+        "aws.dynamodb.item_collection_metrics"
+    ] = "aws.dynamodb.item_collection_metrics"
+    """The JSON-serialized value of the `ItemCollectionMetrics` response field.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "{ \"string\" : [ { \"ItemCollectionKey\": { \"string\" : { \"B\": blob, \"BOOL\": boolean, \"BS\": [ blob ], \"L\": [ \"AttributeValue\" ], \"M\": { \"string\" : \"AttributeValue\" }, \"N\": \"string\", \"NS\": [ \"string\" ], \"NULL\": boolean, \"S\": \"string\", \"SS\": [ \"string\" ] } }, \"SizeEstimateRangeGB\": [ number ] } ] }"
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__limit.json
+    AWS_DYNAMODB_LIMIT: Literal["aws.dynamodb.limit"] = "aws.dynamodb.limit"
+    """The value of the `Limit` request parameter.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 10
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__local_secondary_indexes.json
+    AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES: Literal[
+        "aws.dynamodb.local_secondary_indexes"
+    ] = "aws.dynamodb.local_secondary_indexes"
+    """The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["{ \"IndexArn\": \"string\", \"IndexName\": \"string\", \"IndexSizeBytes\": number, \"ItemCount\": number, \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" } }"]
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__projection.json
+    AWS_DYNAMODB_PROJECTION: Literal["aws.dynamodb.projection"] = (
+        "aws.dynamodb.projection"
+    )
+    """The value of the `ProjectionExpression` request parameter.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "Title, Price, Color"
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__provisioned_read_capacity.json
+    AWS_DYNAMODB_PROVISIONED_READ_CAPACITY: Literal[
+        "aws.dynamodb.provisioned_read_capacity"
+    ] = "aws.dynamodb.provisioned_read_capacity"
+    """The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 1
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__provisioned_write_capacity.json
+    AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY: Literal[
+        "aws.dynamodb.provisioned_write_capacity"
+    ] = "aws.dynamodb.provisioned_write_capacity"
+    """The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 2
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__scan_forward.json
+    AWS_DYNAMODB_SCAN_FORWARD: Literal["aws.dynamodb.scan_forward"] = (
+        "aws.dynamodb.scan_forward"
+    )
+    """The value of the `ScanIndexForward` request parameter.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: true
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__scanned_count.json
+    AWS_DYNAMODB_SCANNED_COUNT: Literal["aws.dynamodb.scanned_count"] = (
+        "aws.dynamodb.scanned_count"
+    )
+    """The value of the `ScannedCount` response parameter.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 50
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__segment.json
+    AWS_DYNAMODB_SEGMENT: Literal["aws.dynamodb.segment"] = "aws.dynamodb.segment"
+    """The value of the `Segment` request parameter.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 10
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__select.json
+    AWS_DYNAMODB_SELECT: Literal["aws.dynamodb.select"] = "aws.dynamodb.select"
+    """The value of the `Select` request parameter.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "ALL_ATTRIBUTES"
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__table_count.json
+    AWS_DYNAMODB_TABLE_COUNT: Literal["aws.dynamodb.table_count"] = (
+        "aws.dynamodb.table_count"
+    )
+    """The number of items in the `TableNames` response parameter.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 20
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__table_names.json
+    AWS_DYNAMODB_TABLE_NAMES: Literal["aws.dynamodb.table_names"] = (
+        "aws.dynamodb.table_names"
+    )
+    """The keys in the `RequestItems` object field.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["Users","Cats"]
+    """
+
+    # Path: model/attributes/aws/aws__dynamodb__total_segments.json
+    AWS_DYNAMODB_TOTAL_SEGMENTS: Literal["aws.dynamodb.total_segments"] = (
+        "aws.dynamodb.total_segments"
+    )
+    """The value of the `TotalSegments` request parameter.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 100
+    """
+
+    # Path: model/attributes/aws/aws__extended_request_id.json
+    AWS_EXTENDED_REQUEST_ID: Literal["aws.extended_request_id"] = (
+        "aws.extended_request_id"
+    )
+    """The AWS extended request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.request.extended_id
+    Example: "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+    """
+
+    # Path: model/attributes/aws/aws__kinesis__stream__name.json
+    _AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream.name"] = (
+        "aws.kinesis.stream.name"
+    )
+    """The name of the AWS Kinesis stream the request refers to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: aws.kinesis.stream_name
+    DEPRECATED: Use aws.kinesis.stream_name instead - This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.
+    Example: "some-stream-name"
+    """
+
+    # Path: model/attributes/aws/aws__kinesis__stream_name.json
+    AWS_KINESIS_STREAM_NAME: Literal["aws.kinesis.stream_name"] = (
+        "aws.kinesis.stream_name"
+    )
+    """The name of the AWS Kinesis stream the request refers to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.kinesis.stream.name
+    Example: "some-stream-name"
+    """
+
     # Path: model/attributes/aws/aws__lambda__aws_request_id.json
     AWS_LAMBDA_AWS_REQUEST_ID: Literal["aws.lambda.aws_request_id"] = (
         "aws.lambda.aws_request_id"
@@ -1342,6 +1661,107 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
+    """
+
+    # Path: model/attributes/aws/aws__request__extended_id.json
+    AWS_REQUEST_EXTENDED_ID: Literal["aws.request.extended_id"] = (
+        "aws.request.extended_id"
+    )
+    """The AWS extended request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: aws.extended_request_id
+    DEPRECATED: Use aws.extended_request_id instead - This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.
+    Example: "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+    """
+
+    # Path: model/attributes/aws/aws__request__id.json
+    _AWS_REQUEST_ID: Literal["aws.request.id"] = "aws.request.id"
+    """The AWS request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: aws.request_id
+    DEPRECATED: Use aws.request_id instead - This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.
+    Example: "79b9da39-b7ae-508a-a6bc-864b2829c622"
+    """
+
+    # Path: model/attributes/aws/aws__request_id.json
+    AWS_REQUEST_ID: Literal["aws.request_id"] = "aws.request_id"
+    """The AWS request ID as returned in the response headers.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: aws.request.id
+    Example: "79b9da39-b7ae-508a-a6bc-864b2829c622"
+    """
+
+    # Path: model/attributes/aws/aws__s3__bucket.json
+    AWS_S3_BUCKET: Literal["aws.s3.bucket"] = "aws.s3.bucket"
+    """The S3 bucket name the request refers to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "ot-demo-test"
+    """
+
+    # Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
+    AWS_SECRETSMANAGER_SECRET_ARN: Literal["aws.secretsmanager.secret.arn"] = (
+        "aws.secretsmanager.secret.arn"
+    )
+    """The ARN of the Secret stored in Secrets Manager.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
+    """
+
+    # Path: model/attributes/aws/aws__sns__topic__arn.json
+    AWS_SNS_TOPIC_ARN: Literal["aws.sns.topic.arn"] = "aws.sns.topic.arn"
+    """The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
+    """
+
+    # Path: model/attributes/aws/aws__step_functions__activity__arn.json
+    AWS_STEP_FUNCTIONS_ACTIVITY_ARN: Literal["aws.step_functions.activity.arn"] = (
+        "aws.step_functions.activity.arn"
+    )
+    """The ARN of the AWS Step Functions Activity.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
+    """
+
+    # Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
+    AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN: Literal[
+        "aws.step_functions.state_machine.arn"
+    ] = "aws.step_functions.state_machine.arn"
+    """The ARN of the AWS Step Functions State Machine.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
     """
 
     # Path: model/attributes/blocked_main_thread.json
@@ -2965,6 +3385,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "8 GB"
     """
 
+    # Path: model/attributes/dist.json
+    DIST: Literal["dist"] = "dist"
+    """The sentry dist.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.dist
+    DEPRECATED: Use sentry.dist instead - This attribute is being deprecated in favor of sentry.dist.
+    Example: "1.0"
+    """
+
     # Path: model/attributes/effectiveConnectionType.json
     EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
         "effectiveConnectionType"
@@ -3161,6 +3594,39 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: aws.lambda.aws_request_id, faas.execution
     Example: "af9d5aa4-a685-4c5f-a22b-444f80b3cc28"
+    """
+
+    # Path: model/attributes/faas/faas__invoked_name.json
+    FAAS_INVOKED_NAME: Literal["faas.invoked_name"] = "faas.invoked_name"
+    """The name of the invoked function.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "my-function"
+    """
+
+    # Path: model/attributes/faas/faas__invoked_provider.json
+    FAAS_INVOKED_PROVIDER: Literal["faas.invoked_provider"] = "faas.invoked_provider"
+    """The cloud provider of the invoked function.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "aws"
+    """
+
+    # Path: model/attributes/faas/faas__invoked_region.json
+    FAAS_INVOKED_REGION: Literal["faas.invoked_region"] = "faas.invoked_region"
+    """The cloud region of the invoked function.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "eu-central-1"
     """
 
     # Path: model/attributes/faas/faas__name.json
@@ -3807,6 +4273,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: ai.seed
     Example: "1234567890"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__request__stop_sequences.json
+    GEN_AI_REQUEST_STOP_SEQUENCES: Literal["gen_ai.request.stop_sequences"] = (
+        "gen_ai.request.stop_sequences"
+    )
+    """List of sequences that the model will use to stop generating further tokens.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["forest","lived"]
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__temperature.json
@@ -4556,7 +5035,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, client.address, http.server_name, net.host.name
+    Aliases: server.address, client.address, http.server_name, net.host.name, server_name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -4975,7 +5454,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, net.host.name, http.host
+    Aliases: server.address, net.host.name, http.host, server_name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -5144,6 +5623,29 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "blocked"
+    """
+
+    # Path: model/attributes/koa/koa__name.json
+    KOA_NAME: Literal["koa.name"] = "koa.name"
+    """The name of the Koa middleware or matched route that handled the request.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.
+    Example: "/users/:id"
+    """
+
+    # Path: model/attributes/koa/koa__type.json
+    KOA_TYPE: Literal["koa.type"] = "koa.type"
+    """The type of the Koa layer that handled the request.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "router"
     """
 
     # Path: model/attributes/lcp/lcp__element.json
@@ -5729,6 +6231,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 10
     """
 
+    # Path: model/attributes/messaging/messaging__destination.json
+    MESSAGING_DESTINATION: Literal["messaging.destination"] = "messaging.destination"
+    """The message destination name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.destination.name
+    DEPRECATED: Use messaging.destination.name instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
+    Example: "BestTopic"
+    """
+
     # Path: model/attributes/messaging/messaging__destination__connection.json
     MESSAGING_DESTINATION_CONNECTION: Literal["messaging.destination.connection"] = (
         "messaging.destination.connection"
@@ -5752,6 +6267,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.destination
     Example: "BestTopic"
     """
 
@@ -5905,6 +6421,29 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "AuthenticationMiddleware"
     """
 
+    # Path: model/attributes/navigation/navigation__origin.json
+    NAVIGATION_ORIGIN: Literal["navigation.origin"] = "navigation.origin"
+    """The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.sveltekit.navigation.from
+    Example: "/users/:id"
+    """
+
+    # Path: model/attributes/navigation/navigation__route__id.json
+    NAVIGATION_ROUTE_ID: Literal["navigation.route.id"] = "navigation.route.id"
+    """The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "AboutView"
+    """
+
     # Path: model/attributes/navigation/navigation__type.json
     NAVIGATION_TYPE: Literal["navigation.type"] = "navigation.type"
     """The type of navigation done by a client-side router.
@@ -5913,6 +6452,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.sveltekit.navigation.type
     Example: "router.push"
     """
 
@@ -5992,7 +6532,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, http.server_name, http.host
+    Aliases: server.address, http.server_name, http.host, server_name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -6786,6 +7326,31 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myService.BestService"
     """
 
+    # Path: model/attributes/rpc/rpc__system.json
+    RPC_SYSTEM: Literal["rpc.system"] = "rpc.system"
+    """A string identifying the remoting system.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: rpc.system.name
+    DEPRECATED: Use rpc.system.name instead - This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.
+    Example: "aws-api"
+    """
+
+    # Path: model/attributes/rpc/rpc__system__name.json
+    RPC_SYSTEM_NAME: Literal["rpc.system.name"] = "rpc.system.name"
+    """A string identifying the remoting system.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: rpc.system
+    Example: "aws-api"
+    """
+
     # Path: model/attributes/runtime/runtime__build.json
     RUNTIME_BUILD: Literal["runtime.build"] = "runtime.build"
     """The application build string, when it is separate from the version.
@@ -6978,6 +7543,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Aliases: dist
     Example: "1.0"
     """
 
@@ -7566,6 +8132,50 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 200
     """
 
+    # Path: model/attributes/sentry/sentry__sveltekit__navigation__from.json
+    SENTRY_SVELTEKIT_NAVIGATION_FROM: Literal["sentry.sveltekit.navigation.from"] = (
+        "sentry.sveltekit.navigation.from"
+    )
+    """the navigation origin (sveltekit router)
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: navigation.origin
+    DEPRECATED: Use navigation.origin instead - Use the more generic attribute instead
+    Example: "/home"
+    """
+
+    # Path: model/attributes/sentry/sentry__sveltekit__navigation__to.json
+    SENTRY_SVELTEKIT_NAVIGATION_TO: Literal["sentry.sveltekit.navigation.to"] = (
+        "sentry.sveltekit.navigation.to"
+    )
+    """the navigation destination
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - the navigation destination is already covered by url.* attributes
+    Example: "/users/:id"
+    """
+
+    # Path: model/attributes/sentry/sentry__sveltekit__navigation__type.json
+    SENTRY_SVELTEKIT_NAVIGATION_TYPE: Literal["sentry.sveltekit.navigation.type"] = (
+        "sentry.sveltekit.navigation.type"
+    )
+    """The type of navigation event emitted from the sveltekit client router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: navigation.type
+    DEPRECATED: Use navigation.type instead - Use the more generic attribute instead
+    Example: "link"
+    """
+
     # Path: model/attributes/sentry/sentry__thread__id.json
     SENTRY_THREAD_ID: Literal["sentry.thread.id"] = "sentry.thread.id"
     """Current “managed” thread ID.
@@ -7748,7 +8358,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.server_name, net.host.name, http.host
+    Aliases: http.server_name, net.host.name, http.host, server_name
     Example: "example.com"
     """
 
@@ -7762,6 +8372,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: net.host.port
     Example: 1337
+    """
+
+    # Path: model/attributes/server_name.json
+    SERVER_NAME: Literal["server_name"] = "server_name"
+    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.address, http.server_name, net.host.name, http.host
+    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+    Example: "example.com"
     """
 
     # Path: model/attributes/service/service__name.json
@@ -9947,6 +10570,382 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.dynamodb.attribute_definitions": AttributeMetadata(
+        brief="The JSON-serialized value of each item in the `AttributeDefinitions` request field.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=['{ "AttributeName": "string", "AttributeType": "string" }'],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.attribute_definitions attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.consistent_read": AttributeMetadata(
+        brief="The value of the `ConsistentRead` request parameter.",
+        type=AttributeType.BOOLEAN,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.consistent_read attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.consumed_capacity": AttributeMetadata(
+        brief="The JSON-serialized value of each item in the `ConsumedCapacity` response field.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=[
+            '{ "CapacityUnits": number, "GlobalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "LocalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "ReadCapacityUnits": number, "Table": { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number }, "TableName": "string", "WriteCapacityUnits": number }'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.consumed_capacity attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.count": AttributeMetadata(
+        brief="The value of the `Count` response parameter.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=10,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.count attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.exclusive_start_table": AttributeMetadata(
+        brief="The value of the `ExclusiveStartTableName` request parameter.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="Users",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.exclusive_start_table attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.global_secondary_index_updates": AttributeMetadata(
+        brief="The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=[
+            '{ "Create": { "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.global_secondary_index_updates attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.global_secondary_indexes": AttributeMetadata(
+        brief="The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=[
+            '{ "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.global_secondary_indexes attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.index_name": AttributeMetadata(
+        brief="The value of the `IndexName` request parameter.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="name_to_group",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.index_name attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.item_collection_metrics": AttributeMetadata(
+        brief="The JSON-serialized value of the `ItemCollectionMetrics` response field.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example='{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.item_collection_metrics attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.limit": AttributeMetadata(
+        brief="The value of the `Limit` request parameter.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=10,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.limit attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.local_secondary_indexes": AttributeMetadata(
+        brief="The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=[
+            '{ "IndexArn": "string", "IndexName": "string", "IndexSizeBytes": number, "ItemCount": number, "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" } }'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.local_secondary_indexes attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.projection": AttributeMetadata(
+        brief="The value of the `ProjectionExpression` request parameter.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="Title, Price, Color",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.projection attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.provisioned_read_capacity": AttributeMetadata(
+        brief="The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=1,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.provisioned_read_capacity attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.provisioned_write_capacity": AttributeMetadata(
+        brief="The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.provisioned_write_capacity attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.scan_forward": AttributeMetadata(
+        brief="The value of the `ScanIndexForward` request parameter.",
+        type=AttributeType.BOOLEAN,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.scan_forward attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.scanned_count": AttributeMetadata(
+        brief="The value of the `ScannedCount` response parameter.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=50,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.scanned_count attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.segment": AttributeMetadata(
+        brief="The value of the `Segment` request parameter.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=10,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.segment attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.select": AttributeMetadata(
+        brief="The value of the `Select` request parameter.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="ALL_ATTRIBUTES",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.select attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.table_count": AttributeMetadata(
+        brief="The number of items in the `TableNames` response parameter.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=20,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.table_count attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.table_names": AttributeMetadata(
+        brief="The keys in the `RequestItems` object field.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=["Users", "Cats"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.table_names attribute",
+            ),
+        ],
+    ),
+    "aws.dynamodb.total_segments": AttributeMetadata(
+        brief="The value of the `TotalSegments` request parameter.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[479],
+                description="Added aws.dynamodb.total_segments attribute",
+            ),
+        ],
+    ),
+    "aws.extended_request_id": AttributeMetadata(
+        brief="The AWS extended request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=",
+        aliases=["aws.request.extended_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.extended_request_id attribute",
+            ),
+        ],
+    ),
+    "aws.kinesis.stream.name": AttributeMetadata(
+        brief="The name of the AWS Kinesis stream the request refers to.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="some-stream-name",
+        deprecation=DeprecationInfo(
+            replacement="aws.kinesis.stream_name",
+            reason="This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.kinesis.stream_name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name",
+            ),
+        ],
+    ),
+    "aws.kinesis.stream_name": AttributeMetadata(
+        brief="The name of the AWS Kinesis stream the request refers to.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="some-stream-name",
+        aliases=["aws.kinesis.stream.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.kinesis.stream_name attribute",
+            ),
+        ],
+    ),
     "aws.lambda.aws_request_id": AttributeMetadata(
         brief="The AWS request ID as received by the Lambda function runtime",
         type=AttributeType.STRING,
@@ -10118,6 +11117,135 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"],
         changelog=[
             ChangelogEntry(version="0.11.1", prs=[414]),
+        ],
+    ),
+    "aws.request.extended_id": AttributeMetadata(
+        brief="The AWS extended request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=",
+        deprecation=DeprecationInfo(
+            replacement="aws.extended_request_id",
+            reason="This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.extended_request_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id",
+            ),
+        ],
+    ),
+    "aws.request.id": AttributeMetadata(
+        brief="The AWS request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="79b9da39-b7ae-508a-a6bc-864b2829c622",
+        deprecation=DeprecationInfo(
+            replacement="aws.request_id",
+            reason="This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["aws.request_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.request.id attribute, deprecated in favor of aws.request_id",
+            ),
+        ],
+    ),
+    "aws.request_id": AttributeMetadata(
+        brief="The AWS request ID as returned in the response headers.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="79b9da39-b7ae-508a-a6bc-864b2829c622",
+        aliases=["aws.request.id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[480], description="Added aws.request_id attribute"
+            ),
+        ],
+    ),
+    "aws.s3.bucket": AttributeMetadata(
+        brief="The S3 bucket name the request refers to.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="ot-demo-test",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[480], description="Added aws.s3.bucket attribute"
+            ),
+        ],
+    ),
+    "aws.secretsmanager.secret.arn": AttributeMetadata(
+        brief="The ARN of the Secret stored in Secrets Manager.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.secretsmanager.secret.arn attribute",
+            ),
+        ],
+    ),
+    "aws.sns.topic.arn": AttributeMetadata(
+        brief="The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.sns.topic.arn attribute",
+            ),
+        ],
+    ),
+    "aws.step_functions.activity.arn": AttributeMetadata(
+        brief="The ARN of the AWS Step Functions Activity.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:states:us-east-1:123456789012:activity:get-greeting",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.step_functions.activity.arn attribute",
+            ),
+        ],
+    ),
+    "aws.step_functions.state_machine.arn": AttributeMetadata(
+        brief="The ARN of the AWS Step Functions State Machine.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[480],
+                description="Added aws.step_functions.state_machine.arn attribute",
+            ),
         ],
     ),
     "blocked_main_thread": AttributeMetadata(
@@ -11977,6 +13105,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "dist": AttributeMetadata(
+        brief="The sentry dist.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="1.0",
+        deprecation=DeprecationInfo(
+            replacement="sentry.dist",
+            reason="This attribute is being deprecated in favor of sentry.dist.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["sentry.dist"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[489], description="Added dist attribute"
+            ),
+        ],
+    ),
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
@@ -12206,6 +13353,51 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added faas.execution as an alias",
             ),
             ChangelogEntry(version="0.11.1", prs=[414, 424]),
+        ],
+    ),
+    "faas.invoked_name": AttributeMetadata(
+        brief="The name of the invoked function.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="my-function",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[481],
+                description="Added faas.invoked_name attribute",
+            ),
+        ],
+    ),
+    "faas.invoked_provider": AttributeMetadata(
+        brief="The cloud provider of the invoked function.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="aws",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[481],
+                description="Added faas.invoked_provider attribute",
+            ),
+        ],
+    ),
+    "faas.invoked_region": AttributeMetadata(
+        brief="The cloud region of the invoked function.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="eu-central-1",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[481],
+                description="Added faas.invoked_region attribute",
+            ),
         ],
     ),
     "faas.name": AttributeMetadata(
@@ -12991,6 +14183,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.seed"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
+        ],
+    ),
+    "gen_ai.request.stop_sequences": AttributeMetadata(
+        brief="List of sequences that the model will use to stop generating further tokens.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=["forest", "lived"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added gen_ai.request.stop_sequences attribute",
+            ),
         ],
     ),
     "gen_ai.request.temperature": AttributeMetadata(
@@ -13936,6 +15143,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "client.address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -14372,7 +15580,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
-        aliases=["server.address", "net.host.name", "http.host"],
+        aliases=["server.address", "net.host.name", "http.host", "server_name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -14569,6 +15777,37 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "koa.name": AttributeMetadata(
+        brief="The name of the Koa middleware or matched route that handled the request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/users/:id",
+        deprecation=DeprecationInfo(
+            reason="No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[490],
+                description="Added koa.name attribute as deprecated",
+            ),
+        ],
+    ),
+    "koa.type": AttributeMetadata(
+        brief="The type of the Koa layer that handled the request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="router",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[471], description="Added koa.type attribute"
+            ),
         ],
     ),
     "lcp.element": AttributeMetadata(
@@ -15296,6 +16535,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "messaging.destination": AttributeMetadata(
+        brief="The message destination name.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="BestTopic",
+        deprecation=DeprecationInfo(
+            replacement="messaging.destination.name",
+            reason="This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.destination.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added messaging.destination attribute, deprecated in favor of messaging.destination.name",
+            ),
+        ],
+    ),
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
@@ -15315,7 +16575,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="BestTopic",
+        aliases=["messaging.destination"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added messaging.destination as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -15477,6 +16743,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "navigation.origin": AttributeMetadata(
+        brief="The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/users/:id",
+        aliases=["sentry.sveltekit.navigation.from"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[467],
+                description="Added navigation.origin attribute",
+            ),
+        ],
+    ),
+    "navigation.route.id": AttributeMetadata(
+        brief="The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AboutView",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added navigation.route.id attribute"
+            ),
+        ],
+    ),
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
@@ -15484,7 +16779,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="router.push",
+        aliases=["sentry.sveltekit.navigation.type"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[467], description="Added new deprecated alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -15568,7 +16867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
-        aliases=["server.address", "http.server_name", "http.host"],
+        aliases=["server.address", "http.server_name", "http.host", "server_name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -16464,6 +17763,41 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "rpc.system": AttributeMetadata(
+        brief="A string identifying the remoting system.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="aws-api",
+        deprecation=DeprecationInfo(
+            replacement="rpc.system.name",
+            reason="This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["rpc.system.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[482],
+                description="Added rpc.system attribute, deprecated in favor of rpc.system.name",
+            ),
+        ],
+    ),
+    "rpc.system.name": AttributeMetadata(
+        brief="A string identifying the remoting system.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="aws-api",
+        aliases=["rpc.system"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[482], description="Added rpc.system.name attribute"
+            ),
+        ],
+    ),
     "runtime.build": AttributeMetadata(
         brief="The application build string, when it is separate from the version.",
         type=AttributeType.STRING,
@@ -16688,7 +18022,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0",
+        aliases=["dist"],
         changelog=[
+            ChangelogEntry(version="next", description="Added dist as an alias"),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -17288,6 +18624,66 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
         ],
     ),
+    "sentry.sveltekit.navigation.from": AttributeMetadata(
+        brief="the navigation origin (sveltekit router)",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/home",
+        deprecation=DeprecationInfo(
+            replacement="navigation.origin",
+            reason="Use the more generic attribute instead",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["navigation.origin"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[467],
+                description="Added sentry.sveltekit.navigation.from attribute",
+            ),
+        ],
+    ),
+    "sentry.sveltekit.navigation.to": AttributeMetadata(
+        brief="the navigation destination",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/users/:id",
+        deprecation=DeprecationInfo(
+            reason="the navigation destination is already covered by url.* attributes"
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[467],
+                description="Added sentry.sveltekit.navigation.to attribute",
+            ),
+        ],
+    ),
+    "sentry.sveltekit.navigation.type": AttributeMetadata(
+        brief="The type of navigation event emitted from the sveltekit client router",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="link",
+        deprecation=DeprecationInfo(
+            replacement="navigation.type",
+            reason="Use the more generic attribute instead",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["navigation.type"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[467],
+                description="Added sentry.sveltekit.navigation.type attribute",
+            ),
+        ],
+    ),
     "sentry.thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -17483,7 +18879,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
-        aliases=["http.server_name", "net.host.name", "http.host"],
+        aliases=["http.server_name", "net.host.name", "http.host", "server_name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[108, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -17500,6 +18896,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "server_name": AttributeMetadata(
+        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="example.com",
+        deprecation=DeprecationInfo(
+            replacement="server.address",
+            reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["server.address", "http.server_name", "net.host.name", "http.host"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added server_name attribute, deprecated in favor of server.address",
+            ),
         ],
     ),
     "service.name": AttributeMetadata(
@@ -18693,6 +20109,30 @@ Attributes = TypedDict(
         "aws.cloudwatch.logs.log_group": str,
         "aws.cloudwatch.logs.log_stream": str,
         "aws.cloudwatch.logs.url": str,
+        "aws.dynamodb.attribute_definitions": List[str],
+        "aws.dynamodb.consistent_read": bool,
+        "aws.dynamodb.consumed_capacity": List[str],
+        "aws.dynamodb.count": int,
+        "aws.dynamodb.exclusive_start_table": str,
+        "aws.dynamodb.global_secondary_index_updates": List[str],
+        "aws.dynamodb.global_secondary_indexes": List[str],
+        "aws.dynamodb.index_name": str,
+        "aws.dynamodb.item_collection_metrics": str,
+        "aws.dynamodb.limit": int,
+        "aws.dynamodb.local_secondary_indexes": List[str],
+        "aws.dynamodb.projection": str,
+        "aws.dynamodb.provisioned_read_capacity": float,
+        "aws.dynamodb.provisioned_write_capacity": float,
+        "aws.dynamodb.scan_forward": bool,
+        "aws.dynamodb.scanned_count": int,
+        "aws.dynamodb.segment": int,
+        "aws.dynamodb.select": str,
+        "aws.dynamodb.table_count": int,
+        "aws.dynamodb.table_names": List[str],
+        "aws.dynamodb.total_segments": int,
+        "aws.extended_request_id": str,
+        "aws.kinesis.stream.name": str,
+        "aws.kinesis.stream_name": str,
         "aws.lambda.aws_request_id": str,
         "aws.lambda.execution_duration_in_millis": float,
         "aws.lambda.function_name": str,
@@ -18702,6 +20142,14 @@ Attributes = TypedDict(
         "aws.lambda.remaining_time_in_millis": float,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
+        "aws.request.extended_id": str,
+        "aws.request.id": str,
+        "aws.request_id": str,
+        "aws.s3.bucket": str,
+        "aws.secretsmanager.secret.arn": str,
+        "aws.sns.topic.arn": str,
+        "aws.step_functions.activity.arn": str,
+        "aws.step_functions.state_machine.arn": str,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,
@@ -18835,6 +20283,7 @@ Attributes = TypedDict(
         "device.timezone": str,
         "device.usable_memory": int,
         "deviceMemory": str,
+        "dist": str,
         "effectiveConnectionType": str,
         "environment": str,
         "error.type": str,
@@ -18852,6 +20301,9 @@ Attributes = TypedDict(
         "faas.id": str,
         "faas.identity": str,
         "faas.invocation_id": str,
+        "faas.invoked_name": str,
+        "faas.invoked_provider": str,
+        "faas.invoked_region": str,
         "faas.name": str,
         "faas.time": str,
         "faas.trigger": str,
@@ -18904,6 +20356,7 @@ Attributes = TypedDict(
         "gen_ai.request.presence_penalty": float,
         "gen_ai.request.reasoning_effort": str,
         "gen_ai.request.seed": str,
+        "gen_ai.request.stop_sequences": List[str],
         "gen_ai.request.temperature": float,
         "gen_ai.request.top_k": int,
         "gen_ai.request.top_p": float,
@@ -19007,6 +20460,8 @@ Attributes = TypedDict(
         "jvm.memory.type": str,
         "jvm.thread.daemon": bool,
         "jvm.thread.state": str,
+        "koa.name": str,
+        "koa.type": str,
         "lcp.element": str,
         "lcp.id": str,
         "lcp.loadTime": int,
@@ -19055,6 +20510,7 @@ Attributes = TypedDict(
         "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.batch.message_count": int,
+        "messaging.destination": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
         "messaging.message.body.size": int,
@@ -19069,6 +20525,8 @@ Attributes = TypedDict(
         "messaging.system": str,
         "method": str,
         "middleware.name": str,
+        "navigation.origin": str,
+        "navigation.route.id": str,
         "navigation.type": str,
         "nel.elapsed_time": int,
         "nel.phase": str,
@@ -19141,6 +20599,8 @@ Attributes = TypedDict(
         "rpc.method": str,
         "rpc.response.status_code": str,
         "rpc.service": str,
+        "rpc.system": str,
+        "rpc.system.name": str,
         "runtime.build": str,
         "runtime.name": str,
         "runtime.raw_description": str,
@@ -19207,6 +20667,9 @@ Attributes = TypedDict(
         "sentry.status": str,
         "sentry.status.message": str,
         "sentry.status_code": int,
+        "sentry.sveltekit.navigation.from": str,
+        "sentry.sveltekit.navigation.to": str,
+        "sentry.sveltekit.navigation.type": str,
         "sentry.thread.id": int,
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
@@ -19223,6 +20686,7 @@ Attributes = TypedDict(
         "sentry.user.username": str,
         "server.address": str,
         "server.port": int,
+        "server_name": str,
         "service.name": str,
         "service.version": str,
         "session.id": str,

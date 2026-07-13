@@ -1,0 +1,19 @@
+{
+  "key": "navigation.origin",
+  "brief": "The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "/users/:id",
+  "alias": ["sentry.sveltekit.navigation.from"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [467],
+      "description": "Added navigation.origin attribute"
+    }
+  ]
+}
