@@ -8,6 +8,17 @@
   "is_in_otel": false,
   "example": "http.client",
   "visibility": "public",
+  "search_aliases": [
+    {
+      "public_alias": "span.op",
+      "internal_name": "sentry.op",
+      "search_type": "string",
+      "dataset_mappings": {
+        "spans": "op",
+        "eap": "attr_str[sentry.op]"
+      }
+    }
+  ],
   "changelog": [
     {
       "version": "0.0.0"
