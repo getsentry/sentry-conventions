@@ -10,7 +10,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [479],
       "description": "Added aws.dynamodb.attribute_definitions attribute"
     }

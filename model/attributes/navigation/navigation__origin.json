@@ -11,7 +11,7 @@
   "alias": ["sentry.sveltekit.navigation.from"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [467],
       "description": "Added navigation.origin attribute"
     }

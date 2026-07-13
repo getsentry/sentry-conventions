@@ -14,7 +14,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [490],
       "description": "Added koa.name attribute as deprecated"
     }

@@ -10,7 +10,7 @@
   "example": "myKey",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [468],
       "description": "Added messaging.rabbitmq.destination.routing_key attribute"
     }

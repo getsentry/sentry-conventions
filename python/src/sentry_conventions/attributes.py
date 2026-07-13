@@ -10409,7 +10409,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=['{ "AttributeName": "string", "AttributeType": "string" }'],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.attribute_definitions attribute",
             ),
@@ -10424,7 +10424,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.consistent_read attribute",
             ),
@@ -10441,7 +10441,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.consumed_capacity attribute",
             ),
@@ -10456,7 +10456,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.count attribute",
             ),
@@ -10471,7 +10471,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Users",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.exclusive_start_table attribute",
             ),
@@ -10488,7 +10488,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.global_secondary_index_updates attribute",
             ),
@@ -10505,7 +10505,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.global_secondary_indexes attribute",
             ),
@@ -10520,7 +10520,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="name_to_group",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.index_name attribute",
             ),
@@ -10535,7 +10535,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.item_collection_metrics attribute",
             ),
@@ -10550,7 +10550,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.limit attribute",
             ),
@@ -10567,7 +10567,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.local_secondary_indexes attribute",
             ),
@@ -10582,7 +10582,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Title, Price, Color",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.projection attribute",
             ),
@@ -10597,7 +10597,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.provisioned_read_capacity attribute",
             ),
@@ -10612,7 +10612,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.provisioned_write_capacity attribute",
             ),
@@ -10627,7 +10627,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.scan_forward attribute",
             ),
@@ -10642,7 +10642,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=50,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.scanned_count attribute",
             ),
@@ -10657,7 +10657,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.segment attribute",
             ),
@@ -10672,7 +10672,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ALL_ATTRIBUTES",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.select attribute",
             ),
@@ -10687,7 +10687,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=20,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.table_count attribute",
             ),
@@ -10702,7 +10702,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Users", "Cats"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.table_names attribute",
             ),
@@ -10717,7 +10717,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=100,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.total_segments attribute",
             ),
@@ -10733,7 +10733,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.request.extended_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.extended_request_id attribute",
             ),
@@ -10754,7 +10754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.kinesis.stream_name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name",
             ),
@@ -10770,7 +10770,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.kinesis.stream.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.kinesis.stream_name attribute",
             ),
@@ -10791,7 +10791,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.invocation_id", "faas.execution"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[473],
                 description="Added faas.execution as an alias",
             ),
@@ -10964,7 +10964,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.extended_request_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id",
             ),
@@ -10985,7 +10985,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.request_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.request.id attribute, deprecated in favor of aws.request_id",
             ),
@@ -11001,7 +11001,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.request.id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[480], description="Added aws.request_id attribute"
+                version="0.16.0",
+                prs=[480],
+                description="Added aws.request_id attribute",
             ),
         ],
     ),
@@ -11014,7 +11016,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ot-demo-test",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[480], description="Added aws.s3.bucket attribute"
+                version="0.16.0", prs=[480], description="Added aws.s3.bucket attribute"
             ),
         ],
     ),
@@ -11027,7 +11029,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.secretsmanager.secret.arn attribute",
             ),
@@ -11042,7 +11044,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.sns.topic.arn attribute",
             ),
@@ -11057,7 +11059,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:states:us-east-1:123456789012:activity:get-greeting",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.step_functions.activity.arn attribute",
             ),
@@ -11072,7 +11074,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.step_functions.state_machine.arn attribute",
             ),
@@ -11589,7 +11591,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[475], description="Added faas.id as an alias"
+                version="0.16.0", prs=[475], description="Added faas.id as an alias"
             ),
             ChangelogEntry(version="0.11.1", prs=[414]),
         ],
@@ -12271,7 +12273,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ORA-17002",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[462],
                 description="Added db.response.status_code attribute",
             ),
@@ -12950,7 +12952,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.dist"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[489], description="Added dist attribute"
+                version="0.16.0", prs=[489], description="Added dist attribute"
             ),
         ],
     ),
@@ -13130,7 +13132,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.invocation_id", "aws.lambda.aws_request_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[473],
                 description="Added faas.execution attribute, deprecated in favor of faas.invocation_id",
             ),
@@ -13151,7 +13153,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["cloud.resource_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[475],
                 description="Added faas.id attribute, deprecated in favor of cloud.resource_id",
             ),
@@ -13178,7 +13180,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.lambda.aws_request_id", "faas.execution"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[473],
                 description="Added faas.execution as an alias",
             ),
@@ -13194,7 +13196,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="my-function",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[481],
                 description="Added faas.invoked_name attribute",
             ),
@@ -13209,7 +13211,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="aws",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[481],
                 description="Added faas.invoked_provider attribute",
             ),
@@ -13224,7 +13226,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="eu-central-1",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[481],
                 description="Added faas.invoked_region attribute",
             ),
@@ -14024,7 +14026,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["forest", "lived"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[482],
                 description="Added gen_ai.request.stop_sequences attribute",
             ),
@@ -14997,7 +14999,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.same_origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[456],
                 description="Added http.request.same_origin attribute",
             ),
@@ -15416,7 +15418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[490],
                 description="Added koa.name attribute as deprecated",
             ),
@@ -15431,7 +15433,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="router",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[471], description="Added koa.type attribute"
+                version="0.16.0", prs=[471], description="Added koa.type attribute"
             ),
         ],
     ),
@@ -16175,7 +16177,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[482],
                 description="Added messaging.destination attribute, deprecated in favor of messaging.destination.name",
             ),
@@ -16203,7 +16205,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[482],
                 description="Added messaging.destination as an alias",
             ),
@@ -16232,7 +16234,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="MyConversationId",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[468],
                 description="Added messaging.message.conversation_id attribute",
             ),
@@ -16321,7 +16323,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="myKey",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[468],
                 description="Added messaging.rabbitmq.destination.routing_key attribute",
             ),
@@ -16378,7 +16380,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.sveltekit.navigation.from"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[467],
                 description="Added navigation.origin attribute",
             ),
@@ -16393,7 +16395,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="AboutView",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added navigation.route.id attribute"
+                version="0.16.0",
+                prs=[468],
+                description="Added navigation.route.id attribute",
             ),
         ],
     ),
@@ -16407,7 +16411,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.sveltekit.navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[467], description="Added new deprecated alias"
+                version="0.16.0", prs=[467], description="Added new deprecated alias"
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -17403,7 +17407,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["rpc.system.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[482],
                 description="Added rpc.system attribute, deprecated in favor of rpc.system.name",
             ),
@@ -17419,7 +17423,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["rpc.system"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[482], description="Added rpc.system.name attribute"
+                version="0.16.0",
+                prs=[482],
+                description="Added rpc.system.name attribute",
             ),
         ],
     ),
@@ -17649,7 +17655,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1.0",
         aliases=["dist"],
         changelog=[
-            ChangelogEntry(version="next", description="Added dist as an alias"),
+            ChangelogEntry(
+                version="0.16.0", prs=[489], description="Added dist as an alias"
+            ),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -17889,7 +17897,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="span",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added sentry.metric.source attribute"
+                version="0.16.0",
+                prs=[476],
+                description="Added sentry.metric.source attribute",
             ),
         ],
     ),
@@ -18264,7 +18274,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[467],
                 description="Added sentry.sveltekit.navigation.from attribute",
             ),
@@ -18282,7 +18292,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[467],
                 description="Added sentry.sveltekit.navigation.to attribute",
             ),
@@ -18303,7 +18313,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[467],
                 description="Added sentry.sveltekit.navigation.type attribute",
             ),
@@ -18538,7 +18548,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["server.address", "http.server_name", "net.host.name", "http.host"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
+                prs=[477],
                 description="Added server_name attribute, deprecated in favor of server.address",
             ),
         ],
@@ -19060,7 +19071,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request.same_origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[456],
                 description="Added url.same_origin attribute, deprecated in favor of http.request.same_origin",
             ),

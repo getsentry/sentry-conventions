@@ -16,8 +16,8 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
-      "prs": [],
+      "version": "0.16.0",
+      "prs": [477],
       "description": "Added server_name attribute, deprecated in favor of server.address"
     }
   ]

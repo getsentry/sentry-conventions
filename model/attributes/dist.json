@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [489],
       "description": "Added dist attribute"
     }
