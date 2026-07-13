@@ -10,7 +10,7 @@
   "example": "MyConversationId",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [468],
       "description": "Added messaging.message.conversation_id attribute"
     }

@@ -10,7 +10,8 @@
   "example": "span",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
+      "prs": [476],
       "description": "Added sentry.metric.source attribute"
     }
   ]
