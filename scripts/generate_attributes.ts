@@ -110,7 +110,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let individualConstants = '';
 
   // Generate individual attribute constants with documentation AND build the explicit type map
-  for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
+  for (const { file, key, constantName, attributeJson, _isDeprecated } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
@@ -156,12 +156,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     // Deprecation
     if (deprecation) {
-      individualConstants += ' *\n';
-      let replacement = '';
-      if (deprecation.replacement) {
-        replacement = `Use {@link ${getConstantName(deprecation.replacement, false)}} (${deprecation.replacement}) instead`;
-      }
-      individualConstants += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+      individualConstants += formatDeprecationJsdoc(deprecation, allAttributes, false);
     }
 
     // Example
@@ -174,6 +169,18 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     individualConstants += ' */\n';
     individualConstants += `export const ${constantName} = '${key}';\n\n`;
+
+    if (has_dynamic_suffix) {
+      const keyBase = getDynamicSuffixBase(key);
+      const constantNameBase = `${constantName}_BASE`;
+      individualConstants += '/**\n';
+      individualConstants += ` * Base key for {@link ${constantName}}. Use with a dynamic suffix, e.g. \`\${${constantNameBase}}.\${key}\`.\n`;
+      if (deprecation) {
+        individualConstants += formatDeprecationJsdoc(deprecation, allAttributes, true);
+      }
+      individualConstants += ' */\n';
+      individualConstants += `export const ${constantNameBase} = '${keyBase}';\n\n`;
+    }
 
     // Generate type constant
     individualConstants += '/**\n';
@@ -207,6 +214,33 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 const constantNameMemo = new Map<string, string>();
 const constantNameInnerMemo = new Map<string, string>();
 const usedConstantNames = new Set<string>();
+
+function getDynamicSuffixBase(key: string): string {
+  const suffix = '.<key>';
+  if (!key.endsWith(suffix)) {
+    throw new Error(`Expected dynamic suffix attribute key to end with "${suffix}", got "${key}"`);
+  }
+  return key.slice(0, -suffix.length);
+}
+
+function formatDeprecationJsdoc(
+  deprecation: NonNullable<AttributeJson['deprecation']>,
+  allAttributes: Array<{ key: string; attributeJson: AttributeJson }>,
+  isBase: boolean,
+): string {
+  let replacement = '';
+  if (deprecation.replacement) {
+    const replacementAttr = allAttributes.find((attr) => attr.key === deprecation.replacement);
+    const replacementConstantName = getConstantName(deprecation.replacement, false);
+    const replacementHasDynamicSuffix = !!replacementAttr?.attributeJson.has_dynamic_suffix;
+    const replacementLink =
+      isBase && replacementHasDynamicSuffix ? `${replacementConstantName}_BASE` : replacementConstantName;
+    const replacementDisplay =
+      isBase && replacementHasDynamicSuffix ? getDynamicSuffixBase(deprecation.replacement) : deprecation.replacement;
+    replacement = `Use {@link ${replacementLink}} (${replacementDisplay}) instead`;
+  }
+  return ` *\n * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+}
 
 // Computes a constant name for an attribute without regard for deprecation status.
 function getConstantNameInner(key: string): string {

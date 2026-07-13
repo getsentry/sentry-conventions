@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.select",
+  "brief": "The value of the `Select` request parameter.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "ALL_ATTRIBUTES",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [479],
+      "description": "Added aws.dynamodb.select attribute"
+    }
+  ]
+}

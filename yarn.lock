@@ -136,261 +136,30 @@
   resolved "https://registry.npmjs.org/@colordx/core/-/core-5.4.3.tgz"
   integrity sha512-kIxYSfA5T8HXjav55UaaH/o/cKivF6jCCGIb8eqtcsfI46wsvlSiT8jMDyrl779qLec3c2c2oHBZo4oAhvbjrQ==
 
-"@emnapi/core@^1.10.0":
-  version "1.11.1"
-  resolved "https://sfw.security.sentry.io/npm/@emnapi/core/-/core-1.11.1.tgz#b9e1064f3a6b1631e241e638eb48d736bfd372a6"
-  integrity sha512-RSvbQmHzdKzNsLYa/wHrbc3KN4sYLKAdPZxqiM2HATqv/SBk2/ENSHpvXGaLOMcsAyz0poEGqkmmKYG3OWiJEQ==
-  dependencies:
-    "@emnapi/wasi-threads" "1.2.2"
-    tslib "^2.4.0"
-
-"@emnapi/runtime@^1.10.0", "@emnapi/runtime@^1.7.0":
-  version "1.11.1"
-  resolved "https://sfw.security.sentry.io/npm/@emnapi/runtime/-/runtime-1.11.1.tgz#58f1f3d5d81a9b12f793ab688c96371901027c24"
-  integrity sha512-vgj7R3y3Wgx24IQaGPA/R6YFXLHVMOZ0uVEyIQPaWs+rd1AzfEMXlAC22FYwO1XkKR6NPsq7mUandH8oIRdZFw==
-  dependencies:
-    tslib "^2.4.0"
-
-"@emnapi/wasi-threads@1.2.2", "@emnapi/wasi-threads@^1.2.1":
-  version "1.2.2"
-  resolved "https://sfw.security.sentry.io/npm/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz#4c93becf5bfa3b13d1bbdcc06aee38321ad8139a"
-  integrity sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==
-  dependencies:
-    tslib "^2.4.0"
-
-"@esbuild/aix-ppc64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/aix-ppc64/-/aix-ppc64-0.28.1.tgz#7a01a8d2ec2fbb2dac78adad09b0fa781e4082be"
-  integrity sha512-Svl7tq8k/08+p6CXPpRjQ1fKX+1odH/BQbb48fV6fj3CWHhsoIOoY87w1oHXm0qEpkIK3ZfVgp0hed3XBXzXMQ==
-
-"@esbuild/android-arm64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/android-arm64/-/android-arm64-0.28.1.tgz#b540a27d14e4afd058496a4dbec4d3f414db110a"
-  integrity sha512-34EGEbCIAgosYz6goLcopX6Mo7NyGv9tfwEM2/7Ce2VcVRk568iSvniGWcUXIy7wEDR1wzolcxcriFVrWYcwBg==
-
-"@esbuild/android-arm@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/android-arm/-/android-arm-0.28.1.tgz#704bd297de6d762de54eabbeafbf55f6756abe2f"
-  integrity sha512-0k2F129Xdio1TdJfzJ8sy1Q47vUD2NnwdhiAf7drUN1EBTfPf4hsFCtmMgu/6m8JSzsBrlmVjudMBQqOfG8usQ==
-
-"@esbuild/android-x64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/android-x64/-/android-x64-0.28.1.tgz#d1cb166d34b0fbf0fe8ab460a5594f24a378701e"
-  integrity sha512-dbwY7ltSMDWsRatcRpCnES4F+im88OCUgGZjy52shC7GqHRE/cYlxNbB4Z4UpJswpcc4Qxd2oE/ufM0p61IKng==
-
-"@esbuild/darwin-arm64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/darwin-arm64/-/darwin-arm64-0.28.1.tgz#1034b26457fc886368fe61bbd09f653f6afa8e54"
-  integrity sha512-TZbWkQY7kvTAXbXUT7uVACR5cMHsDiSz9z7ZKAX/RTq/WJEk3QyRr0wZpNhBDX+/0CtdqUIJlOiodQcta6tY3Q==
-
-"@esbuild/darwin-x64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/darwin-x64/-/darwin-x64-0.28.1.tgz#65556a432a1e4d72032d8218c1932fcca1a49772"
-  integrity sha512-zfdzgK9ACBNZLI/CyHTOx81SyNbM6YXn7rxSgX97VjyiPl9W1i4Ka4fgKECEoFCKGpvBj5qArWIGgQjOwkgskQ==
-
-"@esbuild/freebsd-arm64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/freebsd-arm64/-/freebsd-arm64-0.28.1.tgz#2e61e0592f9030d7e3dae18ee25ebc535918aef6"
-  integrity sha512-wG2EA8ENdEI0qhkSZMjfqrdY+ziCYCPMmtZjjIwOmXFjmyzEHn+UUxk5of+SYsjtfs3VpnlC7QLzSI5hY/rOAw==
-
-"@esbuild/freebsd-x64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/freebsd-x64/-/freebsd-x64-0.28.1.tgz#c95ec289959ef8079c4dca817a1e2c4be66b9bd3"
-  integrity sha512-i7dZ9vQgnvSCzi/rYCXNgtF/U+eKZNJBzu3eTQbRgHnM7tNSizLOkRFAl3qzVc/Op/u5YkHHa4pf/3DOYHthLQ==
-
-"@esbuild/linux-arm64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/linux-arm64/-/linux-arm64-0.28.1.tgz#40b22175dda06182f3ee8141186c5ff304c4a717"
-  integrity sha512-yHs+0uc8+nvEAfAfxrWQKK5peSNzBc4PegcMO0EJ2hT71uA7vB8Ihg2e77R2P7SG5uYjPbHlLLmve4LLLRCf0g==
-
-"@esbuild/linux-arm@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/linux-arm/-/linux-arm-0.28.1.tgz#c09a0f67917592ac0de892a9be4d3814debd2a6c"
-  integrity sha512-qVXBOHQS+d5Y722GwJzJUtOLlX7km3CraOaGormF1pDtPd2C/l1SHRPgjLunLGe51Sh5YYWKMFDyV4SxgMQYTQ==
-
-"@esbuild/linux-ia32@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/linux-ia32/-/linux-ia32-0.28.1.tgz#a580f9c676797833891e519fc7a1337c8afd8db3"
-  integrity sha512-d1z4ZuP0ajrfz/FhGT4vv278rX8KnPPJx8i5+AtK7TYbx9Le9F1hyzurZpkEyjkGa9dUGhQow4C1NmeGvqxN2w==
-
-"@esbuild/linux-loong64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/linux-loong64/-/linux-loong64-0.28.1.tgz#46452cf321dc7f9e91c2fa780a56bb56e79cd68b"
-  integrity sha512-M5sRjUVZrkm1OAPR3dlOYzNmN+loZKGVi1VUQGrwuqLcbR6qeAz+famMhjASeH3YVKvZz+zT1jlh/keC3Rj/lg==
-
-"@esbuild/linux-mips64el@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/linux-mips64el/-/linux-mips64el-0.28.1.tgz#4211b3184dd6608f53dcb22e39f5d34ee08852c8"
-  integrity sha512-mRObBZeHh2OxcBFPWE/FjylkRgZdYuiTR3vaTozquCGOH14iP9oN4x4Ge81CoIDYQrXmIxpFumJBu5MtZpnQJQ==
-
-"@esbuild/linux-ppc64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/linux-ppc64/-/linux-ppc64-0.28.1.tgz#697857c2a61cb9b0b6bb6652e40c1dc5e1ca8e5d"
-  integrity sha512-slScBsMAb3GFDcdrCgLwZtPYRoH2H/youv10QiZyRjmsP48fznoveWytSgCI/R0ZcUgpc0ZhIUEx6LHts8yrfQ==
-
-"@esbuild/linux-riscv64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/linux-riscv64/-/linux-riscv64-0.28.1.tgz#d192943eb146a40ac4c6497d0cf7be35b986bf08"
-  integrity sha512-kw0owk1o0GFETUJyW0jc0G4Yzs0BHZn0JDZ8JRT088vjJYX777BAs1fDGxAC+q831qOs2DTC96mNsG2opdfyyQ==
-
-"@esbuild/linux-s390x@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/linux-s390x/-/linux-s390x-0.28.1.tgz#acea0356da0e0ebc08f97cf7b9c2e401e1e648dc"
-  integrity sha512-/lAIjX8aYFRByhh6L5rYtPEDRqa9de/4V/juOXcta5frjvzXO4/sqEtyytse0g3zZFuWu5cDN0MkLz2qRDD2Ag==
+"@esbuild/linux-x64@0.27.7":
+  version "0.27.7"
+  resolved "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.27.7.tgz"
+  integrity sha512-hzznmADPt+OmsYzw1EE33ccA+HPdIqiCRq7cQeL1Jlq2gb1+OyWBkMCrYGBJ+sxVzve2ZJEVeePbLM2iEIZSxA==
 
 "@esbuild/linux-x64@0.28.1":
   version "0.28.1"
   resolved "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.28.1.tgz"
   integrity sha512-u/anNYF2mmVOEDwLtnQ1wOr3EZ9sTNGLWrsYGYwHWzGA3Si84IOkHXlbWTD1NB+9/1lcnweYKO54uhxZydNzfA==
 
-"@esbuild/netbsd-arm64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/netbsd-arm64/-/netbsd-arm64-0.28.1.tgz#8bcd77077a0dce3378b574fedb26d2a253b73d36"
-  integrity sha512-oks0DYbLwWMmaakTsCb+zL4E+aHRVLom9IJZOAthMQEPiQmydXHkziYEsGYRx0uNV/IjEKGAV941JzH02pflqw==
-
-"@esbuild/netbsd-x64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/netbsd-x64/-/netbsd-x64-0.28.1.tgz#e7fb2a01e99c830c94e6623cd9fefb4c8fb58347"
-  integrity sha512-aeL6lAnN89Hz43Mlh1G8ARasbuoYvSITDEx0tHh5b7jJnHcssqgjy9Yx430GDpmCa6OyrKoS0aNRjKundRizGg==
-
-"@esbuild/openbsd-arm64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/openbsd-arm64/-/openbsd-arm64-0.28.1.tgz#c52909372db8b86e2c55e05a8940033b5660a3b2"
-  integrity sha512-MEFJe5C3R8pwXdZ5Y21oo6m7ePiS0d9pWucn99O/wvyJZChoIQKrQDxKrGeW8F5+T0okTHesAmDeiHDTIq0V/Q==
-
-"@esbuild/openbsd-x64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/openbsd-x64/-/openbsd-x64-0.28.1.tgz#c427b9be5a64c262ff9a7eb70b5fbbaadf446c6c"
-  integrity sha512-i/ZLIOafE0Z8cI/XANJAixoJL/uRAoS2xOA3rb0xN+KK0K177cMAsQYkzHtBrtMXAKuAc7HGgcWiZ/sRC1Nxgw==
-
-"@esbuild/openharmony-arm64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/openharmony-arm64/-/openharmony-arm64-0.28.1.tgz#dc9b147baca2e6c4b3c85571741ef4860a489097"
-  integrity sha512-ge+Z7EXFNt2BO1oAMsVpiQ8EwndV9i1xXerAeTIK7AtPs3bKFXQM7nlRxDSIUIMeueR1CNXxqztLzdNeReKBJg==
-
-"@esbuild/sunos-x64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/sunos-x64/-/sunos-x64-0.28.1.tgz#ce866d12df13c15e4c99f073a3d466f6e0649b3a"
-  integrity sha512-BEjgtECkL3vY+SaSQ6nzVfiALUeFxpawyp8Jmf5PtYhf1Ug40N1h/hxlhts+f1FvSvarEigdxS3BlSMI2PJLcQ==
-
-"@esbuild/win32-arm64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/win32-arm64/-/win32-arm64-0.28.1.tgz#7468e3692d01d629d5941e5d83817bb80f9e39b4"
-  integrity sha512-lCv9eK/H6ZJWbE7bh2nw54CZ9M2nupBxJcTsdk/QQnWkdSjKGuxmmH8/GWrlT1eMmZfn4dGcCjRte397WqfQXA==
-
-"@esbuild/win32-ia32@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/win32-ia32/-/win32-ia32-0.28.1.tgz#a5bc0063fb2bcab6d0ed63f2a1537958bc269ec6"
-  integrity sha512-zvb/mB2bSCoJOpoCBgYKKpX6YM6mJBlBUVUtVj41DlZJVEB6/0CKlRYxP5wWl1C1ILiCoAU5wZZ4q1P3qeS6Eg==
-
-"@esbuild/win32-x64@0.28.1":
-  version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/@esbuild/win32-x64/-/win32-x64-0.28.1.tgz#10064ee44f4347b90c9a02b446bbf80a91632b12"
-  integrity sha512-bm4Mowrv+GXMlpWX++EcXw/iLyd1o3+bJkC2DkWXYVvgZCqD/bSj9ctZeAMC3cIxgjRVR2Dufaiu4YPxr5gW1A==
-
 "@img/colour@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@img/colour/-/colour-1.1.0.tgz"
   integrity sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==
-
-"@img/sharp-darwin-arm64@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.34.5.tgz#6e0732dcade126b6670af7aa17060b926835ea86"
-  integrity sha512-imtQ3WMJXbMY4fxb/Ndp6HBTNVtWCUI0WdobyheGf5+ad6xX8VIDO8u2xE4qc/fr08CKG/7dDseFtn6M6g/r3w==
-  optionalDependencies:
-    "@img/sharp-libvips-darwin-arm64" "1.2.4"
-
-"@img/sharp-darwin-x64@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-darwin-x64/-/sharp-darwin-x64-0.34.5.tgz#19bc1dd6eba6d5a96283498b9c9f401180ee9c7b"
-  integrity sha512-YNEFAF/4KQ/PeW0N+r+aVVsoIY0/qxxikF2SWdp+NRkmMB7y9LBZAVqQ4yhGCm/H3H270OSykqmQMKLBhBJDEw==
-  optionalDependencies:
-    "@img/sharp-libvips-darwin-x64" "1.2.4"
-
-"@img/sharp-libvips-darwin-arm64@1.2.4":
-  version "1.2.4"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.2.4.tgz#2894c0cb87d42276c3889942e8e2db517a492c43"
-  integrity sha512-zqjjo7RatFfFoP0MkQ51jfuFZBnVE2pRiaydKJ1G/rHZvnsrHAOcQALIi9sA5co5xenQdTugCvtb1cuf78Vf4g==
-
-"@img/sharp-libvips-darwin-x64@1.2.4":
-  version "1.2.4"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-libvips-darwin-x64/-/sharp-libvips-darwin-x64-1.2.4.tgz#e63681f4539a94af9cd17246ed8881734386f8cc"
-  integrity sha512-1IOd5xfVhlGwX+zXv2N93k0yMONvUlANylbJw1eTah8K/Jtpi15KC+WSiaX/nBmbm2HxRM1gZ0nSdjSsrZbGKg==
-
-"@img/sharp-libvips-linux-arm64@1.2.4":
-  version "1.2.4"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-libvips-linux-arm64/-/sharp-libvips-linux-arm64-1.2.4.tgz#b1b288b36864b3bce545ad91fa6dadcf1a4ad318"
-  integrity sha512-excjX8DfsIcJ10x1Kzr4RcWe1edC9PquDRRPx3YVCvQv+U5p7Yin2s32ftzikXojb1PIFc/9Mt28/y+iRklkrw==
-
-"@img/sharp-libvips-linux-arm@1.2.4":
-  version "1.2.4"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-libvips-linux-arm/-/sharp-libvips-linux-arm-1.2.4.tgz#b9260dd1ebe6f9e3bdbcbdcac9d2ac125f35852d"
-  integrity sha512-bFI7xcKFELdiNCVov8e44Ia4u2byA+l3XtsAj+Q8tfCwO6BQ8iDojYdvoPMqsKDkuoOo+X6HZA0s0q11ANMQ8A==
-
-"@img/sharp-libvips-linux-ppc64@1.2.4":
-  version "1.2.4"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-libvips-linux-ppc64/-/sharp-libvips-linux-ppc64-1.2.4.tgz#4b83ecf2a829057222b38848c7b022e7b4d07aa7"
-  integrity sha512-FMuvGijLDYG6lW+b/UvyilUWu5Ayu+3r2d1S8notiGCIyYU/76eig1UfMmkZ7vwgOrzKzlQbFSuQfgm7GYUPpA==
-
-"@img/sharp-libvips-linux-riscv64@1.2.4":
-  version "1.2.4"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-libvips-linux-riscv64/-/sharp-libvips-linux-riscv64-1.2.4.tgz#880b4678009e5a2080af192332b00b0aaf8a48de"
-  integrity sha512-oVDbcR4zUC0ce82teubSm+x6ETixtKZBh/qbREIOcI3cULzDyb18Sr/Wcyx7NRQeQzOiHTNbZFF1UwPS2scyGA==
-
-"@img/sharp-libvips-linux-s390x@1.2.4":
-  version "1.2.4"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-libvips-linux-s390x/-/sharp-libvips-linux-s390x-1.2.4.tgz#74f343c8e10fad821b38f75ced30488939dc59ec"
-  integrity sha512-qmp9VrzgPgMoGZyPvrQHqk02uyjA0/QrTO26Tqk6l4ZV0MPWIW6LTkqOIov+J1yEu7MbFQaDpwdwJKhbJvuRxQ==
 
 "@img/sharp-libvips-linux-x64@1.2.4":
   version "1.2.4"
   resolved "https://registry.npmjs.org/@img/sharp-libvips-linux-x64/-/sharp-libvips-linux-x64-1.2.4.tgz"
   integrity sha512-tJxiiLsmHc9Ax1bz3oaOYBURTXGIRDODBqhveVHonrHJ9/+k89qbLl0bcJns+e4t4rvaNBxaEZsFtSfAdquPrw==
 
-"@img/sharp-libvips-linuxmusl-arm64@1.2.4":
-  version "1.2.4"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-libvips-linuxmusl-arm64/-/sharp-libvips-linuxmusl-arm64-1.2.4.tgz#c8d6b48211df67137541007ee8d1b7b1f8ca8e06"
-  integrity sha512-FVQHuwx1IIuNow9QAbYUzJ+En8KcVm9Lk5+uGUQJHaZmMECZmOlix9HnH7n1TRkXMS0pGxIJokIVB9SuqZGGXw==
-
 "@img/sharp-libvips-linuxmusl-x64@1.2.4":
   version "1.2.4"
   resolved "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-x64/-/sharp-libvips-linuxmusl-x64-1.2.4.tgz"
   integrity sha512-+LpyBk7L44ZIXwz/VYfglaX/okxezESc6UxDSoyo2Ks6Jxc4Y7sGjpgU9s4PMgqgjj1gZCylTieNamqA1MF7Dg==
-
-"@img/sharp-linux-arm64@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-linux-arm64/-/sharp-linux-arm64-0.34.5.tgz#7aa7764ef9c001f15e610546d42fce56911790cc"
-  integrity sha512-bKQzaJRY/bkPOXyKx5EVup7qkaojECG6NLYswgktOZjaXecSAeCWiZwwiFf3/Y+O1HrauiE3FVsGxFg8c24rZg==
-  optionalDependencies:
-    "@img/sharp-libvips-linux-arm64" "1.2.4"
-
-"@img/sharp-linux-arm@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-linux-arm/-/sharp-linux-arm-0.34.5.tgz#5fb0c3695dd12522d39c3ff7a6bc816461780a0d"
-  integrity sha512-9dLqsvwtg1uuXBGZKsxem9595+ujv0sJ6Vi8wcTANSFpwV/GONat5eCkzQo/1O6zRIkh0m/8+5BjrRr7jDUSZw==
-  optionalDependencies:
-    "@img/sharp-libvips-linux-arm" "1.2.4"
-
-"@img/sharp-linux-ppc64@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-linux-ppc64/-/sharp-linux-ppc64-0.34.5.tgz#9c213a81520a20caf66978f3d4c07456ff2e0813"
-  integrity sha512-7zznwNaqW6YtsfrGGDA6BRkISKAAE1Jo0QdpNYXNMHu2+0dTrPflTLNkpc8l7MUP5M16ZJcUvysVWWrMefZquA==
-  optionalDependencies:
-    "@img/sharp-libvips-linux-ppc64" "1.2.4"
-
-"@img/sharp-linux-riscv64@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-linux-riscv64/-/sharp-linux-riscv64-0.34.5.tgz#cdd28182774eadbe04f62675a16aabbccb833f60"
-  integrity sha512-51gJuLPTKa7piYPaVs8GmByo7/U7/7TZOq+cnXJIHZKavIRHAP77e3N2HEl3dgiqdD/w0yUfiJnII77PuDDFdw==
-  optionalDependencies:
-    "@img/sharp-libvips-linux-riscv64" "1.2.4"
-
-"@img/sharp-linux-s390x@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-linux-s390x/-/sharp-linux-s390x-0.34.5.tgz#93eac601b9f329bb27917e0e19098c722d630df7"
-  integrity sha512-nQtCk0PdKfho3eC5MrbQoigJ2gd1CgddUMkabUj+rBevs8tZ2cULOx46E7oyX+04WGfABgIwmMC0VqieTiR4jg==
-  optionalDependencies:
-    "@img/sharp-libvips-linux-s390x" "1.2.4"
 
 "@img/sharp-linux-x64@0.34.5":
   version "0.34.5"
@@ -399,41 +168,12 @@
   optionalDependencies:
     "@img/sharp-libvips-linux-x64" "1.2.4"
 
-"@img/sharp-linuxmusl-arm64@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-linuxmusl-arm64/-/sharp-linuxmusl-arm64-0.34.5.tgz#d6515ee971bb62f73001a4829b9d865a11b77086"
-  integrity sha512-fprJR6GtRsMt6Kyfq44IsChVZeGN97gTD331weR1ex1c1rypDEABN6Tm2xa1wE6lYb5DdEnk03NZPqA7Id21yg==
-  optionalDependencies:
-    "@img/sharp-libvips-linuxmusl-arm64" "1.2.4"
-
 "@img/sharp-linuxmusl-x64@0.34.5":
   version "0.34.5"
   resolved "https://registry.npmjs.org/@img/sharp-linuxmusl-x64/-/sharp-linuxmusl-x64-0.34.5.tgz"
   integrity sha512-Jg8wNT1MUzIvhBFxViqrEhWDGzqymo3sV7z7ZsaWbZNDLXRJZoRGrjulp60YYtV4wfY8VIKcWidjojlLcWrd8Q==
   optionalDependencies:
     "@img/sharp-libvips-linuxmusl-x64" "1.2.4"
-
-"@img/sharp-wasm32@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-wasm32/-/sharp-wasm32-0.34.5.tgz#2f15803aa626f8c59dd7c9d0bbc766f1ab52cfa0"
-  integrity sha512-OdWTEiVkY2PHwqkbBI8frFxQQFekHaSSkUIJkwzclWZe64O1X4UlUjqqqLaPbUpMOQk6FBu/HtlGXNblIs0huw==
-  dependencies:
-    "@emnapi/runtime" "^1.7.0"
-
-"@img/sharp-win32-arm64@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-win32-arm64/-/sharp-win32-arm64-0.34.5.tgz#3706e9e3ac35fddfc1c87f94e849f1b75307ce0a"
-  integrity sha512-WQ3AgWCWYSb2yt+IG8mnC6Jdk9Whs7O0gxphblsLvdhSpSTtmu69ZG1Gkb6NuvxsNACwiPV6cNSZNzt0KPsw7g==
-
-"@img/sharp-win32-ia32@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-win32-ia32/-/sharp-win32-ia32-0.34.5.tgz#0b71166599b049e032f085fb9263e02f4e4788de"
-  integrity sha512-FV9m/7NmeCmSHDD5j4+4pNI8Cp3aW+JvLoXcTUo0IqyjSfAZJ8dIUmijx1qaJsIiU+Hosw6xM5KijAWRJCSgNg==
-
-"@img/sharp-win32-x64@0.34.5":
-  version "0.34.5"
-  resolved "https://sfw.security.sentry.io/npm/@img/sharp-win32-x64/-/sharp-win32-x64-0.34.5.tgz#a81ffb00e69267cd0a1d626eaedb8a8430b2b2f8"
-  integrity sha512-+29YMsqY2/9eFEiW93eqWnuLcWcufowXewwSNIT6UwZdUUCrM3oFjMWH/Z6/TMmb4hlFenmfAVbpWeup2jryCw==
 
 "@isaacs/fs-minipass@^4.0.0":
   version "4.0.1"
@@ -476,82 +216,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@napi-rs/wasm-runtime@^1.1.4":
-  version "1.1.6"
-  resolved "https://sfw.security.sentry.io/npm/@napi-rs/wasm-runtime/-/wasm-runtime-1.1.6.tgz#ed33806d0f9be98dc76d0c3d4fd872fda701b5d5"
-  integrity sha512-ZLv/JdUfkvOy9eCnnBaGfiO+XimbjebAeO+MRQqD/B+FR1tnRN0tpKSJHRbE8sFfS6aqsXZ67TQjfwfsxULVbg==
-  dependencies:
-    "@tybys/wasm-util" "^0.10.3"
-
 "@oslojs/encoding@^1.1.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@oslojs/encoding/-/encoding-1.1.0.tgz"
   integrity sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==
-
-"@oxfmt/binding-android-arm-eabi@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-android-arm-eabi/-/binding-android-arm-eabi-0.56.0.tgz#beb31cb658cc73b560b69b82beda80c6f673968b"
-  integrity sha512-CSCxi7ovYojgfdPOdUb9T508HKeAdDIKeRGg7x8IZwVJrWz9gVgX7MbUnFqtQAE4QvoNo07mj2JlwnOzJw4qqA==
-
-"@oxfmt/binding-android-arm64@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-android-arm64/-/binding-android-arm64-0.56.0.tgz#61d1043c4e818457b079fab2e4b3a4a906f1ed8d"
-  integrity sha512-HYJFnd+PkDwf6S9ZPGzXXtjNqvRWFnnhdbWaouh4mi/SxU8wmDuzlMn3xo/wDTGnr4Q1VA7ZzOaE/D4biW0W6A==
-
-"@oxfmt/binding-darwin-arm64@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-darwin-arm64/-/binding-darwin-arm64-0.56.0.tgz#d5af60434c52e2f742b31f7b85feb9543aff8501"
-  integrity sha512-sftR/bEOr+t1gs+evwsHi/Xbq2FAPA2uU3VMr8n6ZU9PoK/IMSfnfu7+OEe/uy1+knhrFl4Wvy7Vkm3uo9mJ7g==
-
-"@oxfmt/binding-darwin-x64@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-darwin-x64/-/binding-darwin-x64-0.56.0.tgz#1ccbfd8a11bacd771e32de616837f43eec04bcee"
-  integrity sha512-z66SdjLqa3MUPKvTp3Mbb5nSjKSbnYxJGeB+Wx987s8T5hPcIRiBMfnJ6zcPgYtQn3x5xjvdzNVkXrSeYH6ZFg==
-
-"@oxfmt/binding-freebsd-x64@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-freebsd-x64/-/binding-freebsd-x64-0.56.0.tgz#79a87da2b83711460402672c8079010191e7e940"
-  integrity sha512-t2tkrV1vtZyaItSQ71dTi2ZVKZEI39b/LqLT12V5KMfIeXK6N32TUC1jhOXKVQmhECq9j2ZXMQV3JeT1kh9Vmg==
-
-"@oxfmt/binding-linux-arm-gnueabihf@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-0.56.0.tgz#c7a505a6267d015cd21fa3340f0d763bcba4c2ee"
-  integrity sha512-+gCy+Tp3RHeXQ9y/QrS76lXIpZkbziTyp6hIgjB2MssCwfMph3vG/GEfkhO34Rai1vhYIaUkvv8UT1BcDorJPw==
-
-"@oxfmt/binding-linux-arm-musleabihf@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-linux-arm-musleabihf/-/binding-linux-arm-musleabihf-0.56.0.tgz#b92464412a4e69105094e651364a3a7f9dcc0588"
-  integrity sha512-0kKkVvQ2I+FJ2sxQyUu1zJ0yWP5kcWse/yVFnGQSFCXMwSSkfEaUGu0dW774O7nyy3jrcBGap7OSc8dZmU/CdA==
-
-"@oxfmt/binding-linux-arm64-gnu@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-0.56.0.tgz#b95377af041ace991f261dfe16e2f3bbf47b070a"
-  integrity sha512-npkA2siMbyWRh+wEhi1aTAx4RirukGcGNt8V4Ch86pG+xU9aurqS1MZOnKYMu03ISwat3rB6zkQx51SsB9obNw==
-
-"@oxfmt/binding-linux-arm64-musl@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-linux-arm64-musl/-/binding-linux-arm64-musl-0.56.0.tgz#2f3f643f3f47384e9394057a4e5e4e88df9d17e2"
-  integrity sha512-UekqOjGkV4/MkqreCV9SPIB2jlR3/HbXrmhV1rVXJZ9wfDXMyCMriLtq3tHqLY4PkbVWNtfcm1kMojJ26KLSJw==
-
-"@oxfmt/binding-linux-ppc64-gnu@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-linux-ppc64-gnu/-/binding-linux-ppc64-gnu-0.56.0.tgz#4ac2db360a2dd44e79a11280c7b0ed2b424f9259"
-  integrity sha512-XSzveSpeZMD5XJpew5lRFVtNnT04xd3rJxENXmk7wkZzN9oWzv2aFJyoNDhOtoz69BYaS/fg4SYl+CfEZRpB0Q==
-
-"@oxfmt/binding-linux-riscv64-gnu@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-linux-riscv64-gnu/-/binding-linux-riscv64-gnu-0.56.0.tgz#4d30a2e63631b1743667c88817ffddd56fa45205"
-  integrity sha512-EkQ0nJa7k7HDDIVuPF7WY+k4k+bzdclLYtyIXNt7/OqVghfNiMym6YGppFBgx1XRIHW6QylxBz5OogumPjPJbQ==
-
-"@oxfmt/binding-linux-riscv64-musl@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-linux-riscv64-musl/-/binding-linux-riscv64-musl-0.56.0.tgz#9aa3ba74a8268a25c7e69844aeb9baa3b1d9c05a"
-  integrity sha512-dyjAGW8jKRge0ik6U/dgvQG0nVpA3iBlRskQTz5qJLvQWIrySxX5jpqzPetLBNIIZ231KA82fDdi1nLTk8ENCw==
-
-"@oxfmt/binding-linux-s390x-gnu@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-linux-s390x-gnu/-/binding-linux-s390x-gnu-0.56.0.tgz#f568fed2a60d0aaf4178e44c93d8156f57d15d95"
-  integrity sha512-60ZGH3LtfqlW8X6vcLdSFY4lvCQYINurttYBKaALnHCDVAUCYJ1LsUgS6p1XOzVlzEDx3yNUZvDF1Lvt59zoZw==
 
 "@oxfmt/binding-linux-x64-gnu@0.56.0":
   version "0.56.0"
@@ -563,91 +231,6 @@
   resolved "https://registry.npmjs.org/@oxfmt/binding-linux-x64-musl/-/binding-linux-x64-musl-0.56.0.tgz"
   integrity sha512-aYGLvlQHt80y+qKEtfJY/Nm27G0125Lv+qyh9SJ4Cjc6lXnXjD+ndfhqQnbV24POpMi7rNRi0jvx/0d70FRpCQ==
 
-"@oxfmt/binding-openharmony-arm64@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-openharmony-arm64/-/binding-openharmony-arm64-0.56.0.tgz#bfc7a984bc8c2838de1fc0615b5297bb7b809697"
-  integrity sha512-H/re/gO+7ysVc+kywHNuzY3C33EN9sQcZhg0kp1ZwOZl7y998ZE5mhnBiuGR/nYI0pqLL5xQfrHVUOJ/cIJsCA==
-
-"@oxfmt/binding-win32-arm64-msvc@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-0.56.0.tgz#b9e2bbce68ef363742313baf9da5fbff8a416e18"
-  integrity sha512-6qLNXfXmtAs8jXDvYMkxk6Wec5SUJoew+ZX1uOZmqaR7ks0EJFbAohuOCELDyJMWyVlxotVG8Xf8m74Bfq0O2w==
-
-"@oxfmt/binding-win32-ia32-msvc@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-win32-ia32-msvc/-/binding-win32-ia32-msvc-0.56.0.tgz#1d96284cb5e6df6d219bd5bdbf9e0a8c5a8daf8c"
-  integrity sha512-UXEXuKphAe15bsob4AswNMArCw38XSmUIs3wk1s6e6MX9OWGW/IRWU95s1hZDiVg09STy1jHgyN2qkqbu1FT0w==
-
-"@oxfmt/binding-win32-x64-msvc@0.56.0":
-  version "0.56.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxfmt/binding-win32-x64-msvc/-/binding-win32-x64-msvc-0.56.0.tgz#6c43da44642523b45fa8c0d152375fe96880f779"
-  integrity sha512-HPyNDjky+NIOuaMvHZflR+kst3YWdUOH2JUQYkf99grqZ5mEBTQM6h9iGy501Z8Xt5xMScrwHOuVCOlqDrktRw==
-
-"@oxlint/binding-android-arm-eabi@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-android-arm-eabi/-/binding-android-arm-eabi-1.71.0.tgz#86007e293b7a9cc868f6ef4416de66adff7d5204"
-  integrity sha512-ImGmd1njEg4FEJH03jhRnveEegtO3czCtfptvaHivKAZQIYATbVFBrrzbaYMYv0oJioTnxZAZVSyV+oL7W8S2g==
-
-"@oxlint/binding-android-arm64@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-android-arm64/-/binding-android-arm64-1.71.0.tgz#9dbd02586fc7224a101e3cbf3f484eac07f9d26a"
-  integrity sha512-4A5BEexBrwY1YFF8Kiq/lp/wQPRG79G3BWIE1FuWaM5MvmpYSd+7ZySVcKkHdwo0UDzdQGddp6pD9mpctMqLnw==
-
-"@oxlint/binding-darwin-arm64@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-darwin-arm64/-/binding-darwin-arm64-1.71.0.tgz#780f52421241da180f2641d3a23ea720520790b5"
-  integrity sha512-9wJA9GJulLwS2usU3CEisI/ESDO1n1z9eyTCvApMDrAkbJ1ve0mORgTMjcWWsKxkzkeZ2N/Gpra5IQE7x8tYgQ==
-
-"@oxlint/binding-darwin-x64@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-darwin-x64/-/binding-darwin-x64-1.71.0.tgz#0a12d7fb46e5e5b026646aa899845ec37af84df1"
-  integrity sha512-PlLCjS06V0PeJMAJwzjrExw1sYNW9Gch3JtNlcwwZDXGlTYDuwHNN89zYH8LTXFfgkVtsYvs2nv0FqrzyuFDzg==
-
-"@oxlint/binding-freebsd-x64@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-freebsd-x64/-/binding-freebsd-x64-1.71.0.tgz#533b01a120075fffbeb3548c0753cefd395ddabd"
-  integrity sha512-Lhil7bWre0ncxbUoDoxfS0JzpTz17BRQKW7iwoAUY8GJ66+WwJEfYPCFJ1P0WgVZR5/O/b3Q2pENlHOjeXLOGQ==
-
-"@oxlint/binding-linux-arm-gnueabihf@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-1.71.0.tgz#1054118131c3d49a8a132821aac9d0f15de841d9"
-  integrity sha512-Oo9/L58PYD3RC0x05d2upAPLllHytTjHQGsnC06P6Ynn7jKkp5mdImQxXdJ3+FnBaKspNpGogzgVsi6g872LiA==
-
-"@oxlint/binding-linux-arm-musleabihf@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-linux-arm-musleabihf/-/binding-linux-arm-musleabihf-1.71.0.tgz#d18db6ddacfbc0698d9660eda92ffbfdc45101b6"
-  integrity sha512-mSHfyfgJrEbyIR29ejaeS50BdPk+GoNPlC1dckpDiUZbJAIel68sjSMdOt4WY0/gva+ECC7FNITQkxMJU+vSBw==
-
-"@oxlint/binding-linux-arm64-gnu@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-1.71.0.tgz#4bb8b0240ad790d199748e4ba86cac871146d1c6"
-  integrity sha512-n9yY4M2tiy3aij4AqtlnspzpfdpeT5JQfK2/w2d8oyp5W0FRwOb1dIeX99nORNcxGr08iD9bH8N5XFz3I2iy8w==
-
-"@oxlint/binding-linux-arm64-musl@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-linux-arm64-musl/-/binding-linux-arm64-musl-1.71.0.tgz#8cbb1a6603d9eaa05f9b25469d04f71dfaa3ae05"
-  integrity sha512-fJZrs5sDZtTaPIOiemRQQmo82Ezy+vOGXemPc4Ok7iVVsYsFa7SlW6Z5XN819VfsqBHRm3NJ3rTdnR8+bJYJdQ==
-
-"@oxlint/binding-linux-ppc64-gnu@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-linux-ppc64-gnu/-/binding-linux-ppc64-gnu-1.71.0.tgz#bf480120e8c1bbbfbf3884a6faec07cf2ed3d8f2"
-  integrity sha512-cwl7VKGERIy9p+G+AvZdfy/06q0aHXaTt/mMRReC751iuNYJgqKjB7NydXSS30nBT9vtr2tunciOtrR4fD6FUA==
-
-"@oxlint/binding-linux-riscv64-gnu@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-linux-riscv64-gnu/-/binding-linux-riscv64-gnu-1.71.0.tgz#922fb8074df535de346d7b1ff433c394f52a600d"
-  integrity sha512-eZ8ieVXvzGi8jr7+ybQGPK2STw3mldfxZlgA2738iflfB/rzA69sE6m5rDRpQaxC7dpm745Enlh1Tod0QAk9Gg==
-
-"@oxlint/binding-linux-riscv64-musl@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-linux-riscv64-musl/-/binding-linux-riscv64-musl-1.71.0.tgz#55a437693a63b0e1026c16756c541661ee7c9c74"
-  integrity sha512-puMDbQYe6+NXwfMusojoA7CXGn2b3utukmd23PQqc1E3XhVCwyZ+FueSMzDYeNgDV2dUfIVXAAKZBcFDeCL6sA==
-
-"@oxlint/binding-linux-s390x-gnu@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-linux-s390x-gnu/-/binding-linux-s390x-gnu-1.71.0.tgz#293e4136de820b7176dea0e3ea7e4a0aae516c6b"
-  integrity sha512-4NJLxBs1ujISCt3L/1FcywLs73PWtJuw+piD6feK2V6h6OS6P7xu9/sWt1DTRLibe6QCzmfZzmM/2HPORoV/Lg==
-
 "@oxlint/binding-linux-x64-gnu@1.71.0":
   version "1.71.0"
   resolved "https://registry.npmjs.org/@oxlint/binding-linux-x64-gnu/-/binding-linux-x64-gnu-1.71.0.tgz"
@@ -658,60 +241,10 @@
   resolved "https://registry.npmjs.org/@oxlint/binding-linux-x64-musl/-/binding-linux-x64-musl-1.71.0.tgz"
   integrity sha512-orfixdt76KlpNly9z0PkWBBNfwjKz+JFVLP/7wnVchlKNU9Dpt9InU/ZggeSej6fC7qwHmHNOGlhLnQXcYoGuA==
 
-"@oxlint/binding-openharmony-arm64@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-openharmony-arm64/-/binding-openharmony-arm64-1.71.0.tgz#56ec95e2bc0c75be1de70346e0d8759a1d31eef2"
-  integrity sha512-9emQu2lAp6yhPB3XuI+++vR+l/o6JR1X+EpxwcumPdQXBWXEPAsquPGL7l158EqU8SebQMXTUa/S5zN98juyHw==
-
-"@oxlint/binding-win32-arm64-msvc@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-1.71.0.tgz#e187c884194b8822ff13472d5b12e7f61d54e67b"
-  integrity sha512-bd5kI8spYwTm3BILDtGhi73zoup5dw8MlPQNT8YB3BD5UIsjNe3K9/4ctrzQMX4SZMoK5HgzVLkLJzacEXB7fA==
-
-"@oxlint/binding-win32-ia32-msvc@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-win32-ia32-msvc/-/binding-win32-ia32-msvc-1.71.0.tgz#a24b8eac187a4256b68935b3fdb6b11b04eee0c7"
-  integrity sha512-W4HvOHGzVLHcrmFu+bMrJlho+/yrlX5ZNdJZqGe8MEldkQG+RHYhxxad9P4jvWAYFmIqUA5i9DQ8QsJqSU9GIw==
-
-"@oxlint/binding-win32-x64-msvc@1.71.0":
-  version "1.71.0"
-  resolved "https://sfw.security.sentry.io/npm/@oxlint/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.71.0.tgz#b08cca862813f8b8bddaee72744da2e2624a8431"
-  integrity sha512-D2kyEIPHk/G/wiZLnwTVC/sVst+T/lKldVOjAFpgTIBUAOlry72e5OiapDbDBF4LfJLkN5ypJb/8Eu6yJzkveQ==
-
-"@pagefind/darwin-arm64@1.5.2":
-  version "1.5.2"
-  resolved "https://sfw.security.sentry.io/npm/@pagefind/darwin-arm64/-/darwin-arm64-1.5.2.tgz#965152ffc22bccd8299e065f7cfbc6869a1bffe0"
-  integrity sha512-MXpI+7HsAdPkvJ0gk9xj9g541BCqBZOBbdwj9g6lB5LCj6kSV6nqDSjzcAJwvOsfu0fjwvC8hQU+ecfhp+MpiQ==
-
-"@pagefind/darwin-x64@1.5.2":
-  version "1.5.2"
-  resolved "https://sfw.security.sentry.io/npm/@pagefind/darwin-x64/-/darwin-x64-1.5.2.tgz#b5b9b47673caf7b280891154e2a475abc499fadd"
-  integrity sha512-IojxFWMEJe0RQ7PQ3KXQsPIImNsbpPYpoZ+QUDrL8fAl/O27IX+LVLs74/UzEZy5uA2LD8Nz1AiwKr72vrkZQw==
-
-"@pagefind/freebsd-x64@1.5.2":
-  version "1.5.2"
-  resolved "https://sfw.security.sentry.io/npm/@pagefind/freebsd-x64/-/freebsd-x64-1.5.2.tgz#cf6e279d938c2368731bb6558bf8f66a0c80a269"
-  integrity sha512-7EVzo9+0w+2cbe671BtMj10UlNo83I+HrLVLfRxO731svHRJKUfJ/mo05gU14pe9PCfpKNQT8FS3Xc/oDN6pOA==
-
-"@pagefind/linux-arm64@1.5.2":
-  version "1.5.2"
-  resolved "https://sfw.security.sentry.io/npm/@pagefind/linux-arm64/-/linux-arm64-1.5.2.tgz#8b22cfc1a34c59033c5bd66676b7a86efba0f5f4"
-  integrity sha512-Ovt9+K35sqzn8H3ZMXGwls4TD/wMJuvRtShHIsmUQREmaxjrDEX7gHckRCrwYJ4XE1H1p6HkLz3wukrAnsfXQw==
-
 "@pagefind/linux-x64@1.5.2":
   version "1.5.2"
   resolved "https://registry.npmjs.org/@pagefind/linux-x64/-/linux-x64-1.5.2.tgz"
   integrity sha512-V+tFqHKXhQKq/WqPBD67AFy7scn1/aZID00ws4fSDd+1daSi5UHR9VVlRrOUYKxn3VuFQYRD7lYXdZK1WED1YA==
-
-"@pagefind/windows-arm64@1.5.2":
-  version "1.5.2"
-  resolved "https://sfw.security.sentry.io/npm/@pagefind/windows-arm64/-/windows-arm64-1.5.2.tgz#6d6cb395a56136a92b91c0bd866f7fec3b0bbe7c"
-  integrity sha512-hN9Nh90fNW61nNRCW9ZyQrAj/mD0eRvmJ8NlTUzkbuW8kIzGJUi3cxjFkEcMZ5h/8FsKWD/VcouZl4yo1F7B6g==
-
-"@pagefind/windows-x64@1.5.2":
-  version "1.5.2"
-  resolved "https://sfw.security.sentry.io/npm/@pagefind/windows-x64/-/windows-x64-1.5.2.tgz#931fdbc9f00f72057950cd260ef965d4fd02a92e"
-  integrity sha512-Fa2Iyw7kaDRzGMfNYNUXNW2zbL5FQVDgSOcbDHdzBrDEdpqOqg8TcZ68F22ol6NJ9IGzvUdmeyZypLW5dyhqsg==
 
 "@rollup/plugin-alias@^5.1.1":
   version "5.1.1"
@@ -766,91 +299,6 @@
     estree-walker "^2.0.2"
     picomatch "^4.0.2"
 
-"@rollup/rollup-android-arm-eabi@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.62.0.tgz#634b0258cc501bef2353cee09a887b434826e81f"
-  integrity sha512-IPIQ55ythEHkfEd9jMEi32OQ7SxURsGA43JI22lj01OLZNt2NUbJX8YUHxkVWyQ6daHPNn0truF5nSj3DQp6YQ==
-
-"@rollup/rollup-android-arm64@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.62.0.tgz#d7804ff9c31c2b8e7c51d966fedac65a4c828578"
-  integrity sha512-M6s9cr10MibETyo8JsOkq+Lo1+lU6hcvb1MApnUql5qte/5hMEgzlN8/ReIKNfRV8rrqX50W1BX9zoUhC192RA==
-
-"@rollup/rollup-darwin-arm64@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.62.0.tgz#f26d03228e48c8bd55ff6be847242308dbfdb50d"
-  integrity sha512-BqCoMoIbn0keKys+dEAdBa70EtOwV1bEsQCUgU9FdiZmmMge/Zk7LlkYGqbrdHR+Frnt0E1FOanly+rlwvvQzw==
-
-"@rollup/rollup-darwin-x64@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.62.0.tgz#6e9037ccfc806a749aa044b063256a26ad32339d"
-  integrity sha512-SIMzST3VFNXDAbeIWDWiFCNM5qncUBDWaEV7NfE7oZbDt2mgfW4MvbKdbYiGOLoM32gbTv608UMd0XktEYSD7w==
-
-"@rollup/rollup-freebsd-arm64@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.62.0.tgz#ff448605b36cc4736a6fea89bd0eb74653f09cbc"
-  integrity sha512-ezjfSQMP7ArdUsbBwbQIfwAlhE84I2iVnzQNCFSveqV42q+BmKlzVpf7mxv5EchLcoWU4y6/heFzVg1F+hodUQ==
-
-"@rollup/rollup-freebsd-x64@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.62.0.tgz#a30fe00a8651b577966022d1db1fb1bd6776105e"
-  integrity sha512-9+qTWGW9AZRhnUgwtTwzNwcPlL87ngkeN0LA+q1bADvmY9aNvWaF2TFW8BZgnQPYxpDI7+rMVLivcd4V737TAQ==
-
-"@rollup/rollup-linux-arm-gnueabihf@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.62.0.tgz#0ba85b63893eb17e11052bd21fe2809afc475a82"
-  integrity sha512-T1dMEQhXA/jkJ/jyMIw9IovK8bSUq7A8kLIlvZTb/6YIVsp2zLavr4F3oyllHWo7eIVJRyE5n3tUjQJEbE1IuQ==
-
-"@rollup/rollup-linux-arm-musleabihf@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.62.0.tgz#982bf23fcfe4e8e13002912d4073f56a2eea2a39"
-  integrity sha512-2as0LgT7qQpyceQq6VUJYnumUMUrgGQCWIiDIN9DE0/tglsk6o66uCB4f3djRawAltvfCNLyZZrsqbPA6inCsA==
-
-"@rollup/rollup-linux-arm64-gnu@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.62.0.tgz#c94d1e8bd116ea2b569aab37dd04a6ccab74f1ab"
-  integrity sha512-bVURMg+6eNN9C/yc0aVjooZcwTTtYF4YW3xta5pP0//r3o1V8gXEHXWCndj47w/HhwsFroZrFhR+6uQP5T0n0g==
-
-"@rollup/rollup-linux-arm64-musl@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.62.0.tgz#a7d79014ba3c5dd2d140309730365d413976db24"
-  integrity sha512-Ful8pM/2yYI83PViWdFdpZhdI8HJ5qsXANe5atypbHDf+KIBBDsZsbyy8hbXnULVvW9NsTh5DHwbcBftyLTfiw==
-
-"@rollup/rollup-linux-loong64-gnu@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-loong64-gnu/-/rollup-linux-loong64-gnu-4.62.0.tgz#5dd943c58bda55d8b269426bd60a47dd9c27776e"
-  integrity sha512-9Gp/DgrkzfUBmNPVTyPTvay+4xEP7M/clXpj3efXBcm6uTIVIgDg4rqUpqKXvLEuFRVuEpSAOkhgNeecvaZ4Cg==
-
-"@rollup/rollup-linux-loong64-musl@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-loong64-musl/-/rollup-linux-loong64-musl-4.62.0.tgz#08b1b9d362c64847306fea979b935e93a2590c4e"
-  integrity sha512-m9tsJz54LUXkSYM8+8PG81B9IKK5r+2T0clMq4QrS16xFosufU7firBDAZEsDheDs7wTlP7h3++S7lMsU955HA==
-
-"@rollup/rollup-linux-ppc64-gnu@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-ppc64-gnu/-/rollup-linux-ppc64-gnu-4.62.0.tgz#1c5de568966d11091281b22bc764ee7adf92667b"
-  integrity sha512-3UvJ5PNVU16aJf6M3tFI24pWzAl2/ynfbyRN3ICyQajK1lSkrnVYNnLz3v04J32qKa0FczJc22zeToc0lr2A3w==
-
-"@rollup/rollup-linux-ppc64-musl@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-ppc64-musl/-/rollup-linux-ppc64-musl-4.62.0.tgz#4dde1c9b941748ea49e07cfc96c64b18236225cd"
-  integrity sha512-vRWUAbYLGHBZS6Q8Msb2sfnf1fvJf+47t8l/TwOerM2qArzy+IeNMTHrYLHXh95h8MoatPHI5hhSZNs+mGXKPg==
-
-"@rollup/rollup-linux-riscv64-gnu@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.62.0.tgz#21dd1014033b970dd23189d1d4d3cdab45de7f9a"
-  integrity sha512-c00T5SYENHAt86cfW47URaP3Us5vLC/4QO7GYud1G5VNRffCwwCuBspwqYrriuJB+5m0WFzClCn9wed0FBjKvg==
-
-"@rollup/rollup-linux-riscv64-musl@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.62.0.tgz#4664e0bae205a3a18eb6407c10054c4b8dd7f381"
-  integrity sha512-krrCDilhXOwFkSkO3Wm9I/f9H0L92XHHwy2fwxjukxIbh0dem8gZqOW5Y8BsHrpJv5qwlRBV+Wl4ZFyRWhUpwg==
-
-"@rollup/rollup-linux-s390x-gnu@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.62.0.tgz#b05a6b3af6a0d3c9b9f7be9c253eb4f101a67848"
-  integrity sha512-7pfYFSTc4/rUC/FtAI0Qp6QthDBCIi6/AuP1xYqFk5vanI6KnL5dWKP60OM/05LOsbwTmIcvr6eXC4CJuJ75IA==
-
 "@rollup/rollup-linux-x64-gnu@4.62.0":
   version "4.62.0"
   resolved "https://registry.npmjs.org/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.62.0.tgz"
@@ -861,35 +309,9 @@
   resolved "https://registry.npmjs.org/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.62.0.tgz"
   integrity sha512-eRZevouTH2i1HeAVLqJuLnt256krQkGY0TN6WsTmsIhuzbh457HuWDMakKwmi0Cjadux983CoSr8Lim2QhUIFw==
 
-"@rollup/rollup-openbsd-x64@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-openbsd-x64/-/rollup-openbsd-x64-4.62.0.tgz#8ebafe0d66cde1c8ab0a867cd9dcea89e22ee7b1"
-  integrity sha512-3oVS7FLGa4U1qcvao9ylGxrjXZyUQqR8UwxEcnUEyPX53O/C/mKDZegNXTdHCP+h3e6ta/f1EN38Yif1mmZHYg==
-
-"@rollup/rollup-openharmony-arm64@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-openharmony-arm64/-/rollup-openharmony-arm64-4.62.0.tgz#105537bcfcb2fd82796518184e995ae4396bb792"
-  integrity sha512-yTB9TgfWj5wHe5QgktAgXTLLot1gvEjl1NiPPAUiCs4oPrIWFl5V4nC3GrkNdj9LaAU4s94nVrGbGOCqUpyWsg==
-
-"@rollup/rollup-win32-arm64-msvc@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.62.0.tgz#08ebcfc01b5b3b106ae074bae3692e94a63b5125"
-  integrity sha512-5LOhoaesY3doG1c+ac/2JtgREpKoJr5bUHH8tKY0V8di7+uSV6BwLs2PlR0/yzefGOkR+wE7ZolZphHCsyG5Rw==
-
-"@rollup/rollup-win32-ia32-msvc@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.62.0.tgz#493005cb0fcab009e866ccdbad3c97c512c2bf4b"
-  integrity sha512-yYkWHhmbhRTWTnWos5HC4GcPQfjlzzCNbM9e/+GXrLuaBXYA3qSDR9f0Vgufd5S8yX81U8jPKp7ZnAjZFMtRnw==
-
-"@rollup/rollup-win32-x64-gnu@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-win32-x64-gnu/-/rollup-win32-x64-gnu-4.62.0.tgz#47b40294def035268329d5ffd5364347bf726e5f"
-  integrity sha512-SoTb6lPg25xZlA2ibwQ++ahCCnH+FP0qmEuafMJ4gznZKOlXioKEAeJLgCrqjM98ACziXM9V1amFjICVL4IFoA==
-
-"@rollup/rollup-win32-x64-msvc@4.62.0":
-  version "4.62.0"
-  resolved "https://sfw.security.sentry.io/npm/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.62.0.tgz#6850434fdb691e9b2408ded9b65ea357bf83636d"
-  integrity sha512-5L+T1fMX4RIEBoZzT0+sQ0PhTS36NULFmMXtl1TZo44TMAROIMHbZufSOjVWt/Y622BtxgxtaNOokbTDvfsrZA==
+"@sentry/conventions@file:/home/runner/work/sentry-conventions/sentry-conventions/javascript/sentry-conventions":
+  version "0.16.0"
+  resolved "file:javascript/sentry-conventions"
 
 "@shikijs/core@4.2.0":
   version "4.2.0"
@@ -972,7 +394,7 @@
   dependencies:
     obug "^2.1.0"
 
-"@sveltejs/vite-plugin-svelte@^6.2.4":
+"@sveltejs/vite-plugin-svelte@^6.0.0-next.0", "@sveltejs/vite-plugin-svelte@^6.2.4":
   version "6.2.4"
   resolved "https://registry.npmjs.org/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-6.2.4.tgz"
   integrity sha512-ou/d51QSdTyN26D7h6dSpusAKaZkAiGM55/AKYi+9AGZw7q85hElbjK3kEyzXHhLSnRISHOYzVge6x0jRZ7DXA==
@@ -996,41 +418,6 @@
     source-map-js "^1.2.1"
     tailwindcss "4.3.1"
 
-"@tailwindcss/oxide-android-arm64@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-android-arm64/-/oxide-android-arm64-4.3.1.tgz#83c6762cd383a2ebc6e01897b0f35f19225e6653"
-  integrity sha512-SVlyf61g374l5cHyg8x9kf5xmLcOaxvOTsbsqDnSsDJaKOEFZ7GCvi84VAVGpxojYOs1+3K6M0UjXfqPU8vmOQ==
-
-"@tailwindcss/oxide-darwin-arm64@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-darwin-arm64/-/oxide-darwin-arm64-4.3.1.tgz#2558b7e835889ad721823e4dcb50dd5071d747d8"
-  integrity sha512-hVnWLwv+e/l7c4WKyVtHVrIPvYdqWHjRB3MDIqARynzFtnQg85kmQEFCbV9Ja0VVx4xXTIiDWY60Y7iz/iNoDA==
-
-"@tailwindcss/oxide-darwin-x64@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-darwin-x64/-/oxide-darwin-x64-4.3.1.tgz#d987957b87a26668b6d0117ccd4a8a4d1a318a2b"
-  integrity sha512-Cf7abu0WVgbhU7ANgPUnSAvm7nCvMweusHb8FnaHlLfv/Caq4GYaEZg7ZImzzmjx4lIAfuS8q+eLIS7A7IzxIg==
-
-"@tailwindcss/oxide-freebsd-x64@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-freebsd-x64/-/oxide-freebsd-x64-4.3.1.tgz#75b342c81a07b1afa437976ec82f86d372431da7"
-  integrity sha512-ZZqzX2Y+GXtXXfqSfpJhDm60OoZfvLHLCgm+J7NVqgHHJjG/m9ugZI77RwTsVd4fnBJuCFP6Ae6kTJb71UdS8g==
-
-"@tailwindcss/oxide-linux-arm-gnueabihf@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-linux-arm-gnueabihf/-/oxide-linux-arm-gnueabihf-4.3.1.tgz#6730adc6d17187eeeff2f14f6a914d009749cb97"
-  integrity sha512-/Ah/xik0LaMYfv9DZ0S/t4pBlBNYOcqtRwusjgovHkvT8ixueWCLyJjsaF5kQIckjb4IT8Q6K6p/iPmZMixYgg==
-
-"@tailwindcss/oxide-linux-arm64-gnu@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-linux-arm64-gnu/-/oxide-linux-arm64-gnu-4.3.1.tgz#869d16b3d9bd8097b797a3dd876db0368c07eae3"
-  integrity sha512-gqdFoVJlw444GvpnheZLHmvTzSxI/cOUUh2KSNejQjTcYkW062SVD+En0rUgD+QV91bz1XGIGtt1HJd48xUGbQ==
-
-"@tailwindcss/oxide-linux-arm64-musl@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-linux-arm64-musl/-/oxide-linux-arm64-musl-4.3.1.tgz#ab110680ce3c7a2a135656db4402dffc1fb9c1d7"
-  integrity sha512-Bwv9KwOvE0VKa86xPFif9b9c3Y1NxOV1P0gLti/IYaWEsQYZXDlxfGEtA8mdDZ7SG3wyNXAWYT5SIn3giL57oA==
-
 "@tailwindcss/oxide-linux-x64-gnu@4.3.1":
   version "4.3.1"
   resolved "https://registry.npmjs.org/@tailwindcss/oxide-linux-x64-gnu/-/oxide-linux-x64-gnu-4.3.1.tgz"
@@ -1040,28 +427,6 @@
   version "4.3.1"
   resolved "https://registry.npmjs.org/@tailwindcss/oxide-linux-x64-musl/-/oxide-linux-x64-musl-4.3.1.tgz"
   integrity sha512-M+P/91qJ6uILLw4k2G93GMDRAXj61SMvFQYt39AqvUqYgExXpLL5aepfns7sj4HiAQeolirQF9E0lzRvdf4zPQ==
-
-"@tailwindcss/oxide-wasm32-wasi@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.3.1.tgz#32172ca8b2427b9c2bb09c97756960185b7d4fc0"
-  integrity sha512-zsM8uOeqvVGHsAXsJxsT28ttosFahLJKCLOTUBqRAtKnVgGSRitds9T432QiT8b77Yga7JIBkulIRRlJPtYhRA==
-  dependencies:
-    "@emnapi/core" "^1.10.0"
-    "@emnapi/runtime" "^1.10.0"
-    "@emnapi/wasi-threads" "^1.2.1"
-    "@napi-rs/wasm-runtime" "^1.1.4"
-    "@tybys/wasm-util" "^0.10.2"
-    tslib "^2.8.1"
-
-"@tailwindcss/oxide-win32-arm64-msvc@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-win32-arm64-msvc/-/oxide-win32-arm64-msvc-4.3.1.tgz#07a11b6eb1f578d012460e6ad6f2352a28d32514"
-  integrity sha512-aiNvSq9BsVk8V513lDKlrCFAgf8qBMPZTpgEhInL+NwQqs97mYmupVMrPrgBBSL8Pv/0zXu9MrMF9rMun1ZeNg==
-
-"@tailwindcss/oxide-win32-x64-msvc@4.3.1":
-  version "4.3.1"
-  resolved "https://sfw.security.sentry.io/npm/@tailwindcss/oxide-win32-x64-msvc/-/oxide-win32-x64-msvc-4.3.1.tgz#60c6095d97b141c02de36bb52a16c358d9bdaa98"
-  integrity sha512-xDEyu1rg290472FEGaKHnzyDyh5QH+AlWvsU5hMoMtPpzmKlRI0jaYKCgSHDYtaQWZOYbMaduSyCwFwY4n1HmA==
 
 "@tailwindcss/oxide@4.3.1":
   version "4.3.1"
@@ -1090,13 +455,6 @@
     "@tailwindcss/oxide" "4.3.1"
     tailwindcss "4.3.1"
 
-"@tybys/wasm-util@^0.10.2", "@tybys/wasm-util@^0.10.3":
-  version "0.10.3"
-  resolved "https://sfw.security.sentry.io/npm/@tybys/wasm-util/-/wasm-util-0.10.3.tgz#015cba9e9dd47ce14d03d2a8c5d547bfb169665d"
-  integrity sha512-F3fo1MYrRJYL3zER0OUOmkutjr1Vp23m7OsSgp7nq4SP6OqX6C/56XFIPAl5bt3zaBRjmW7SGz3u/6LwFpYcOg==
-  dependencies:
-    tslib "^2.4.0"
-
 "@types/chai@^5.2.2":
   version "5.2.3"
   resolved "https://registry.npmjs.org/@types/chai/-/chai-5.2.3.tgz"
@@ -1124,7 +482,7 @@
   dependencies:
     dompurify "*"
 
-"@types/estree@*", "@types/estree@1.0.9", "@types/estree@^1.0.0", "@types/estree@^1.0.5", "@types/estree@^1.0.6":
+"@types/estree@*", "@types/estree@^1.0.0", "@types/estree@^1.0.5", "@types/estree@^1.0.6", "@types/estree@1.0.9":
   version "1.0.9"
   resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz"
   integrity sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==
@@ -1155,7 +513,7 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@^25.9.3":
+"@types/node@^20.0.0 || ^22.0.0 || >=24.0.0", "@types/node@^20.19.0 || >=22.12.0", "@types/node@^25.9.3":
   version "25.9.3"
   resolved "https://registry.npmjs.org/@types/node/-/node-25.9.3.tgz"
   integrity sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr/34wII2B6bJy6g+8WD6yUb11jszNs0gdi4PesVWl7ABt8nYMVpnLUcg==
@@ -1242,7 +600,7 @@
     convert-source-map "^2.0.0"
     tinyrainbow "^3.1.0"
 
-acorn@^8.12.1, acorn@^8.16.0:
+acorn@^8.12.1, acorn@^8.16.0, acorn@^8.9.0:
   version "8.17.0"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.17.0.tgz"
   integrity sha512-xRQbDb9BnwDafYNn6Vwl839DYVjqXYb1XVGtWAZ1kcDc6iwAL4hg3B1dZlRiuENFeO2H53gFG3in621AdERVAg==
@@ -1270,15 +628,15 @@ argparse@^2.0.1:
   resolved "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz"
   integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
 
-aria-query@5.3.1:
-  version "5.3.1"
-  resolved "https://registry.npmjs.org/aria-query/-/aria-query-5.3.1.tgz"
-  integrity sha512-Z/ZeOgVl7bcSYZ/u/rh0fOpvEpq//LZmdbkXyc7syVzjPAhfOa9ebsdTSjEBDU4vs5nC98Kfduj1uFo0qyET3g==
-
 aria-query@^5.3.2:
   version "5.3.2"
   resolved "https://registry.npmjs.org/aria-query/-/aria-query-5.3.2.tgz"
   integrity sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==
+
+aria-query@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/aria-query/-/aria-query-5.3.1.tgz"
+  integrity sha512-Z/ZeOgVl7bcSYZ/u/rh0fOpvEpq//LZmdbkXyc7syVzjPAhfOa9ebsdTSjEBDU4vs5nC98Kfduj1uFo0qyET3g==
 
 array-iterate@^2.0.0:
   version "2.0.1"
@@ -1290,7 +648,7 @@ assertion-error@^2.0.1:
   resolved "https://registry.npmjs.org/assertion-error/-/assertion-error-2.0.1.tgz"
   integrity sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==
 
-astro@6.4.7:
+astro@^6.0.0, astro@6.4.7:
   version "6.4.7"
   resolved "https://registry.npmjs.org/astro/-/astro-6.4.7.tgz"
   integrity sha512-5vsXx0H52u23Jpshs9tM81D03Tb3Oh2Vt2Zo0bpqjXN+njkAWjFyGjTfmWJLAcrCQd9Q+iWB1eqfhR1sZJEaUA==
@@ -1384,7 +742,7 @@ boolbase@^1.0.0:
   resolved "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
 
-browserslist@^4.0.0, browserslist@^4.28.1, browserslist@^4.28.2:
+browserslist@^4.0.0, browserslist@^4.28.1, browserslist@^4.28.2, "browserslist@>= 4.21.0":
   version "4.28.2"
   resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.28.2.tgz"
   integrity sha512-48xSriZYYg+8qXna9kwqjIVzuQxi+KYWp2+5nCYnYKPTr0LvD89Jqk2Or5ogxz0NUMfIjhh2lIUX/LyX9B4oIg==
@@ -1680,6 +1038,17 @@ diff@^8.0.3:
   resolved "https://registry.npmjs.org/diff/-/diff-8.0.4.tgz"
   integrity sha512-DPi0FmjiSU5EvQV0++GFDOJ9ASQUVFh5kD+OzOnYdi7n3Wpm9hWWGfB/O2blfHcMVTL5WkQXSnRiK9makhrcnw==
 
+"docs@file:/home/runner/work/sentry-conventions/sentry-conventions/docs":
+  version "0.0.1"
+  resolved "file:docs"
+  dependencies:
+    "@astrojs/svelte" "8.1.2"
+    "@tailwindcss/vite" "^4.3.1"
+    astro "6.4.7"
+    dompurify "^3.4.11"
+    svelte "^5.56.3"
+    tailwindcss "^4.3.1"
+
 dom-serializer@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/dom-serializer/-/dom-serializer-2.0.0.tgz"
@@ -1755,9 +1124,9 @@ es-module-lexer@^2.0.0:
   resolved "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-2.1.0.tgz"
   integrity sha512-n27zTYMjYu1aj4MjCWzSP7G9r75utsaoc8m61weK+W8JMBGGQybd43GstCXZ3WNmSFtGT9wi59qQTW6mhTR5LQ==
 
-esbuild@^0.25.9, esbuild@^0.27.0, esbuild@^0.27.3, esbuild@~0.28.0, esbuild@~0.28.1:
+esbuild@^0.25.9, esbuild@^0.27.3, esbuild@~0.28.0:
   version "0.28.1"
-  resolved "https://sfw.security.sentry.io/npm/esbuild/-/esbuild-0.28.1.tgz#ef45b4634c9c9d97a296aea4114a5f9840f95578"
+  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.28.1.tgz"
   integrity sha512-HrJrvZv5ayxBzPfwphOoNzkzOIIlifzk0KJrGK2c8R4+LKpMtpYLQeUdjnwjWv/LZlkH2laZk+4w78pi99D4Vw==
   optionalDependencies:
     "@esbuild/aix-ppc64" "0.28.1"
@@ -1786,6 +1155,38 @@ esbuild@^0.25.9, esbuild@^0.27.0, esbuild@^0.27.3, esbuild@~0.28.0, esbuild@~0.2
     "@esbuild/win32-arm64" "0.28.1"
     "@esbuild/win32-ia32" "0.28.1"
     "@esbuild/win32-x64" "0.28.1"
+
+esbuild@^0.27.0:
+  version "0.27.7"
+  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.27.7.tgz"
+  integrity sha512-IxpibTjyVnmrIQo5aqNpCgoACA/dTKLTlhMHihVHhdkxKyPO1uBBthumT0rdHmcsk9uMonIWS0m4FljWzILh3w==
+  optionalDependencies:
+    "@esbuild/aix-ppc64" "0.27.7"
+    "@esbuild/android-arm" "0.27.7"
+    "@esbuild/android-arm64" "0.27.7"
+    "@esbuild/android-x64" "0.27.7"
+    "@esbuild/darwin-arm64" "0.27.7"
+    "@esbuild/darwin-x64" "0.27.7"
+    "@esbuild/freebsd-arm64" "0.27.7"
+    "@esbuild/freebsd-x64" "0.27.7"
+    "@esbuild/linux-arm" "0.27.7"
+    "@esbuild/linux-arm64" "0.27.7"
+    "@esbuild/linux-ia32" "0.27.7"
+    "@esbuild/linux-loong64" "0.27.7"
+    "@esbuild/linux-mips64el" "0.27.7"
+    "@esbuild/linux-ppc64" "0.27.7"
+    "@esbuild/linux-riscv64" "0.27.7"
+    "@esbuild/linux-s390x" "0.27.7"
+    "@esbuild/linux-x64" "0.27.7"
+    "@esbuild/netbsd-arm64" "0.27.7"
+    "@esbuild/netbsd-x64" "0.27.7"
+    "@esbuild/openbsd-arm64" "0.27.7"
+    "@esbuild/openbsd-x64" "0.27.7"
+    "@esbuild/openharmony-arm64" "0.27.7"
+    "@esbuild/sunos-x64" "0.27.7"
+    "@esbuild/win32-arm64" "0.27.7"
+    "@esbuild/win32-ia32" "0.27.7"
+    "@esbuild/win32-x64" "0.27.7"
 
 escalade@^3.2.0:
   version "3.2.0"
@@ -1907,11 +1308,6 @@ fraction.js@^5.3.4:
   version "5.3.4"
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-5.3.4.tgz"
   integrity sha512-1X1NTtiJphryn/uLQz3whtY6jK3fTqoE3ohKs0tT+Ujr1W59oopxmoEh7Lu5p6vBaPbgoM0bzveAW4Qi5RyWDQ==
-
-fsevents@~2.3.2, fsevents@~2.3.3:
-  version "2.3.3"
-  resolved "https://sfw.security.sentry.io/npm/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
-  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.2:
   version "1.1.2"
@@ -2133,19 +1529,19 @@ is-plain-obj@^4.0.0:
   resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-4.1.0.tgz"
   integrity sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==
 
-is-reference@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/is-reference/-/is-reference-1.2.1.tgz"
-  integrity sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==
-  dependencies:
-    "@types/estree" "*"
-
 is-reference@^3.0.3:
   version "3.0.3"
   resolved "https://registry.npmjs.org/is-reference/-/is-reference-3.0.3.tgz"
   integrity sha512-ixkJoqQvAP88E6wLydLGGqCJsrFUnqoH6HnaczB8XmDH1oaWU+xxdptvikTgaEhtZ53Ky6YXiBuUI2WXLMCwjw==
   dependencies:
     "@types/estree" "^1.0.6"
+
+is-reference@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/is-reference/-/is-reference-1.2.1.tgz"
+  integrity sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==
+  dependencies:
+    "@types/estree" "*"
 
 is-wsl@^3.1.1:
   version "3.1.1"
@@ -2159,7 +1555,7 @@ jiti@^1.21.7:
   resolved "https://registry.npmjs.org/jiti/-/jiti-1.21.7.tgz"
   integrity sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==
 
-jiti@^2.4.2, jiti@^2.5.1, jiti@^2.7.0:
+jiti@^2.4.2, jiti@^2.5.1, jiti@^2.7.0, jiti@>=1.21.0:
   version "2.7.0"
   resolved "https://registry.npmjs.org/jiti/-/jiti-2.7.0.tgz"
   integrity sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==
@@ -2191,41 +1587,6 @@ knitwork@^1.2.0:
   resolved "https://registry.npmjs.org/knitwork/-/knitwork-1.3.0.tgz"
   integrity sha512-4LqMNoONzR43B1W0ek0fhXMsDNW/zxa1NdFAVMY+k28pgZLovR4G3PB5MrpTxCy1QaZCqNoiaKPr5w5qZHfSNw==
 
-lightningcss-android-arm64@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-android-arm64/-/lightningcss-android-arm64-1.32.0.tgz#f033885116dfefd9c6f54787523e3514b61e1968"
-  integrity sha512-YK7/ClTt4kAK0vo6w3X+Pnm0D2cf2vPHbhOXdoNti1Ga0al1P4TBZhwjATvjNwLEBCnKvjJc2jQgHXH0NEwlAg==
-
-lightningcss-darwin-arm64@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.32.0.tgz#50b71871b01c8199584b649e292547faea7af9b5"
-  integrity sha512-RzeG9Ju5bag2Bv1/lwlVJvBE3q6TtXskdZLLCyfg5pt+HLz9BqlICO7LZM7VHNTTn/5PRhHFBSjk5lc4cmscPQ==
-
-lightningcss-darwin-x64@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-darwin-x64/-/lightningcss-darwin-x64-1.32.0.tgz#35f3e97332d130b9ca181e11b568ded6aebc6d5e"
-  integrity sha512-U+QsBp2m/s2wqpUYT/6wnlagdZbtZdndSmut/NJqlCcMLTWp5muCrID+K5UJ6jqD2BFshejCYXniPDbNh73V8w==
-
-lightningcss-freebsd-x64@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-freebsd-x64/-/lightningcss-freebsd-x64-1.32.0.tgz#9777a76472b64ed6ff94342ad64c7bafd794a575"
-  integrity sha512-JCTigedEksZk3tHTTthnMdVfGf61Fky8Ji2E4YjUTEQX14xiy/lTzXnu1vwiZe3bYe0q+SpsSH/CTeDXK6WHig==
-
-lightningcss-linux-arm-gnueabihf@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-linux-arm-gnueabihf/-/lightningcss-linux-arm-gnueabihf-1.32.0.tgz#13ae652e1ab73b9135d7b7da172f666c410ad53d"
-  integrity sha512-x6rnnpRa2GL0zQOkt6rts3YDPzduLpWvwAF6EMhXFVZXD4tPrBkEFqzGowzCsIWsPjqSK+tyNEODUBXeeVHSkw==
-
-lightningcss-linux-arm64-gnu@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-linux-arm64-gnu/-/lightningcss-linux-arm64-gnu-1.32.0.tgz#417858795a94592f680123a1b1f9da8a0e1ef335"
-  integrity sha512-0nnMyoyOLRJXfbMOilaSRcLH3Jw5z9HDNGfT/gwCPgaDjnx0i8w7vBzFLFR1f6CMLKF8gVbebmkUN3fa/kQJpQ==
-
-lightningcss-linux-arm64-musl@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-linux-arm64-musl/-/lightningcss-linux-arm64-musl-1.32.0.tgz#6be36692e810b718040802fd809623cffe732133"
-  integrity sha512-UpQkoenr4UJEzgVIYpI80lDFvRmPVg6oqboNHfoH4CQIfNA+HOrZ7Mo7KZP02dC6LjghPQJeBsvXhJod/wnIBg==
-
 lightningcss-linux-x64-gnu@1.32.0:
   version "1.32.0"
   resolved "https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.32.0.tgz"
@@ -2236,17 +1597,7 @@ lightningcss-linux-x64-musl@1.32.0:
   resolved "https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.32.0.tgz"
   integrity sha512-bYcLp+Vb0awsiXg/80uCRezCYHNg1/l3mt0gzHnWV9XP1W5sKa5/TCdGWaR/zBM2PeF/HbsQv/j2URNOiVuxWg==
 
-lightningcss-win32-arm64-msvc@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-win32-arm64-msvc/-/lightningcss-win32-arm64-msvc-1.32.0.tgz#4f30ba3fa5e925f5b79f945e8cc0d176c3b1ab38"
-  integrity sha512-8SbC8BR40pS6baCM8sbtYDSwEVQd4JlFTOlaD3gWGHfThTcABnNDBda6eTZeqbofalIJhFx0qKzgHJmcPTnGdw==
-
-lightningcss-win32-x64-msvc@1.32.0:
-  version "1.32.0"
-  resolved "https://sfw.security.sentry.io/npm/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.32.0.tgz#141aa5605645064928902bb4af045fa7d9f4220a"
-  integrity sha512-Amq9B/SoZYdDi1kFrojnoqPLxYhQ4Wo5XiL8EVJrVsB8ARoC1PWW6VGtT0WKCemjy8aC+louJnjS7U18x3b06Q==
-
-lightningcss@1.32.0:
+lightningcss@^1.21.0, lightningcss@1.32.0:
   version "1.32.0"
   resolved "https://registry.npmjs.org/lightningcss/-/lightningcss-1.32.0.tgz"
   integrity sha512-NXYBzinNrblfraPGyrbPoD19C1h9lfI/1mzgWYvXUTe414Gz/X1FD2XBZSZM7rRTrMA8JL3OtAaGifrIKhQ5yQ==
@@ -3008,7 +2359,7 @@ picomatch@^2.0.4:
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz"
   integrity sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==
 
-picomatch@^4.0.2, picomatch@^4.0.3, picomatch@^4.0.4:
+"picomatch@^3 || ^4", picomatch@^4.0.2, picomatch@^4.0.3, picomatch@^4.0.4:
   version "4.0.4"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-4.0.4.tgz"
   integrity sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==
@@ -3252,7 +2603,7 @@ postcss-value-parser@^4.2.0:
   resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.5.6:
+postcss@^8.0.9, postcss@^8.1.0, postcss@^8.2.14, postcss@^8.4.38, postcss@^8.5.13, postcss@^8.5.6:
   version "8.5.15"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.5.15.tgz"
   integrity sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==
@@ -3463,7 +2814,7 @@ rollup-plugin-dts@^6.2.1:
   optionalDependencies:
     "@babel/code-frame" "^7.29.0"
 
-rollup@^4.34.8, rollup@^4.43.0, rollup@^4.46.2:
+rollup@^1.20.0||^2.0.0||^3.0.0||^4.0.0, rollup@^2.68.0||^3.0.0||^4.0.0, rollup@^2.78.0||^3.0.0||^4.0.0, "rollup@^3.29.4 || ^4", rollup@^4.34.8, rollup@^4.43.0, rollup@^4.46.2:
   version "4.62.0"
   resolved "https://registry.npmjs.org/rollup/-/rollup-4.62.0.tgz"
   integrity sha512-nc72Wgq62I7rtDV4izT5/aaS0zxy3kttkinf9586ApknY3jZO9NYsmtc24fUckA0X7Q2v+ML4a15pdUlV5V/jA==
@@ -3616,15 +2967,7 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-svelte2tsx@^0.7.55:
-  version "0.7.56"
-  resolved "https://registry.npmjs.org/svelte2tsx/-/svelte2tsx-0.7.56.tgz"
-  integrity sha512-NTvqqL+goYlW8gWNajk81L07+uu7jw5V2m1Az5MZbYm3GEydcHXh+uTrLHM9SuGuaqCtF90vlMXkOVBotfH94g==
-  dependencies:
-    dedent-js "^1.0.1"
-    scule "^1.3.0"
-
-svelte@^5.56.3:
+"svelte@^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0", svelte@^5.0.0, svelte@^5.43.6, svelte@^5.56.3:
   version "5.56.3"
   resolved "https://registry.npmjs.org/svelte/-/svelte-5.56.3.tgz"
   integrity sha512-w7JvrM5IFl5cmfbY0TLik9o7mjRUJmRMhOR51tBPu708Gr/MjbGs7VnJnr/B0CaXeI4vtnOh7RKxDr0cwhMdDA==
@@ -3646,6 +2989,14 @@ svelte@^5.56.3:
     magic-string "^0.30.11"
     zimmerframe "^1.1.2"
 
+svelte2tsx@^0.7.55:
+  version "0.7.56"
+  resolved "https://registry.npmjs.org/svelte2tsx/-/svelte2tsx-0.7.56.tgz"
+  integrity sha512-NTvqqL+goYlW8gWNajk81L07+uu7jw5V2m1Az5MZbYm3GEydcHXh+uTrLHM9SuGuaqCtF90vlMXkOVBotfH94g==
+  dependencies:
+    dedent-js "^1.0.1"
+    scule "^1.3.0"
+
 svgo@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/svgo/-/svgo-4.0.1.tgz"
@@ -3659,7 +3010,7 @@ svgo@^4.0.1:
     picocolors "^1.1.1"
     sax "^1.5.0"
 
-tailwindcss@4.3.1, tailwindcss@^4.3.1:
+tailwindcss@^4.3.1, tailwindcss@4.3.1:
   version "4.3.1"
   resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.3.1.tgz"
   integrity sha512-hk+TB1m+K8CYNrP6rjQaq/Y+4Zylwpa87mLYBKCunwnnQ9p+fHb7kmSfGqyEJoxF/O6CDyABWVFEafNSYKll+Q==
@@ -3728,12 +3079,7 @@ trough@^2.0.0:
   resolved "https://registry.npmjs.org/trough/-/trough-2.2.0.tgz"
   integrity sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==
 
-tslib@^2.4.0, tslib@^2.8.1:
-  version "2.8.1"
-  resolved "https://sfw.security.sentry.io/npm/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
-  integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
-
-tsx@^4.22.4:
+tsx@^4.22.4, tsx@^4.8.1:
   version "4.22.4"
   resolved "https://registry.npmjs.org/tsx/-/tsx-4.22.4.tgz"
   integrity sha512-X8EX+XV4QR5xCsrgxaED954zTDfY8KqlDtskKEL0cHhyS/P8b4IFOvGDQpsC9Q1XnLq915wEfwwY/zzskCtmhg==
@@ -3742,7 +3088,7 @@ tsx@^4.22.4:
   optionalDependencies:
     fsevents "~2.3.3"
 
-typescript@^6.0.3:
+"typescript@^4.5 || ^5.0 || ^6.0", "typescript@^4.9.4 || ^5.0.0 || ^6.0.0", "typescript@^5.3.3 || ^6.0.0", typescript@^5.9.2, typescript@^6.0.3, typescript@>=5.9.2:
   version "6.0.3"
   resolved "https://registry.npmjs.org/typescript/-/typescript-6.0.3.tgz"
   integrity sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==
@@ -3950,7 +3296,7 @@ vfile@^6.0.0, vfile@^6.0.3:
     "@types/unist" "^3.0.0"
     vfile-message "^4.0.0"
 
-"vite@^6.0.0 || ^7.0.0 || ^8.0.0", vite@^7.3.2:
+"vite@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0", "vite@^5.2.0 || ^6 || ^7 || ^8", "vite@^6.0.0 || ^7.0.0 || ^8.0.0", "vite@^6.3.0 || ^7.0.0", vite@^7.3.2:
   version "7.3.5"
   resolved "https://registry.npmjs.org/vite/-/vite-7.3.5.tgz"
   integrity sha512-KuOaNhcnGFN2zIPGA7wRmzF+lJA1sea7rHq17aiJ++9lzY1WWG6Jpwqwe1KNbRVPIqHmr8GLYx7jbrQcN/7/ww==

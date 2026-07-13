@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": "8476a536-e9f4-11e8-9739-2dfe598c3fcd",
-  "alias": ["faas.invocation_id"],
+  "alias": ["faas.invocation_id", "faas.execution"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "faas.invocation_id",
@@ -15,6 +15,11 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [473],
+      "description": "Added faas.execution as an alias"
+    },
     {
       "version": "0.11.1",
       "prs": [414, 424],
