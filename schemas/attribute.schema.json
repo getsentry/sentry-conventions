@@ -99,6 +99,63 @@
         "type": "string"
       }
     },
+    "search_aliases": {
+      "description": "Public search aliases and their mappings to Sentry span datasets",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "public_alias": {
+            "description": "The public name exposed in Sentry search",
+            "type": "string"
+          },
+          "internal_name": {
+            "description": "The internal attribute name used by the EAP search resolver",
+            "type": "string"
+          },
+          "search_type": {
+            "description": "The type exposed by Sentry search, including unit-aware types",
+            "enum": [
+              "string",
+              "boolean",
+              "integer",
+              "number",
+              "byte",
+              "currency",
+              "millisecond",
+              "percentage",
+              "second"
+            ]
+          },
+          "secondary_alias": {
+            "description": "Whether the alias is accepted for queries but omitted from autocomplete suggestions",
+            "type": "boolean"
+          },
+          "private": {
+            "description": "Whether the internal attribute should be hidden from public search results",
+            "type": "boolean"
+          },
+          "dataset_mappings": {
+            "description": "Exact query column mappings for Sentry's span datasets",
+            "type": "object",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "properties": {
+              "spans": {
+                "description": "The column expression in the indexed spans dataset",
+                "type": "string"
+              },
+              "eap": {
+                "description": "The column expression in the Events Analytics Platform dataset",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": ["public_alias", "internal_name", "search_type", "dataset_mappings"]
+      }
+    },
     "additional_context": {
       "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances",
       "type": "array",

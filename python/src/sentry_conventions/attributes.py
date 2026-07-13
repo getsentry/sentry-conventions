@@ -35,6 +35,19 @@ class Visibility(Enum):
     INTERNAL = "internal"
 
 
+AttributeSearchType = Literal[
+    "string",
+    "boolean",
+    "integer",
+    "number",
+    "byte",
+    "currency",
+    "millisecond",
+    "percentage",
+    "second",
+]
+
+
 @dataclass
 class ApplyScrubbingInfo:
     """Holds information about how PII scrubbing should be applied to an attribute's values."""
@@ -69,6 +82,40 @@ class ChangelogEntry:
 
     description: Optional[str] = None
     """Optional description of what changed"""
+
+
+@dataclass
+class AttributeSearchDatasetMappings:
+    """Query column mappings for Sentry span datasets."""
+
+    spans: Optional[str] = None
+    """The column expression in the indexed spans dataset"""
+
+    eap: Optional[str] = None
+    """The column expression in the Events Analytics Platform dataset"""
+
+
+@dataclass
+class AttributeSearchAlias:
+    """A public search alias for an attribute."""
+
+    public_alias: str
+    """The public name exposed in Sentry search"""
+
+    internal_name: str
+    """The internal attribute name used by the EAP search resolver"""
+
+    search_type: AttributeSearchType
+    """The type exposed by Sentry search, including unit-aware types"""
+
+    dataset_mappings: AttributeSearchDatasetMappings
+    """Exact query column mappings for Sentry span datasets"""
+
+    secondary_alias: bool = False
+    """Whether the alias is omitted from autocomplete suggestions"""
+
+    private: bool = False
+    """Whether the internal attribute is hidden from public search results"""
 
 
 @dataclass
@@ -107,6 +154,9 @@ class AttributeMetadata:
 
     additional_context: Optional[List[str]] = None
     """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""
+
+    search_aliases: Optional[List[AttributeSearchAlias]] = None
+    """Public search aliases and their mappings to Sentry span datasets"""
 
 
 class _AttributeNamesMeta(type):
@@ -18001,6 +18051,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="http.client",
         changelog=[
             ChangelogEntry(version="0.0.0"),
+        ],
+        search_aliases=[
+            AttributeSearchAlias(
+                public_alias="span.op",
+                internal_name="sentry.op",
+                search_type="string",
+                dataset_mappings=AttributeSearchDatasetMappings(
+                    spans="op",
+                    eap="attr_str[sentry.op]",
+                ),
+            ),
         ],
     ),
     "sentry.origin": AttributeMetadata(

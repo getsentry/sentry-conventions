@@ -3,6 +3,7 @@
 import pytest
 
 from sentry_conventions.attributes import (
+    ATTRIBUTE_METADATA,
     ATTRIBUTE_NAMES,
     Attributes,
 )
@@ -40,3 +41,17 @@ def test_full_attributes_typeddict() -> None:
 
         tokens_used = attributes.get(ATTRIBUTE_NAMES.AI_COMPLETION_TOKENS_USED)
         assert tokens_used == 10
+
+
+def test_attribute_search_alias_metadata() -> None:
+    aliases = ATTRIBUTE_METADATA[ATTRIBUTE_NAMES.SENTRY_OP].search_aliases
+
+    assert aliases is not None
+    assert len(aliases) == 1
+
+    alias = aliases[0]
+    assert alias.public_alias == "span.op"
+    assert alias.internal_name == "sentry.op"
+    assert alias.search_type == "string"
+    assert alias.dataset_mappings.spans == "op"
+    assert alias.dataset_mappings.eap == "attr_str[sentry.op]"
