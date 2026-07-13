@@ -9124,7 +9124,7 @@ export type JVM_THREAD_STATE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated  - No single replacement. SDKs should use `http.route` for router layers and `code.function.name` for middleware layers instead.
+ * @deprecated  - No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.
  * @example "/users/:id"
  */
 export const KOA_NAME = 'koa.name';
@@ -23131,7 +23131,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/users/:id',
     deprecation: {
       reason:
-        'No single replacement. SDKs should use `http.route` for router layers and `code.function.name` for middleware layers instead.',
+        'No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.',
     },
     changelog: [{ version: 'next', prs: [490], description: 'Added koa.name attribute as deprecated' }],
   },

@@ -110,7 +110,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let individualConstants = '';
 
   // Generate individual attribute constants with documentation AND build the explicit type map
-  for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
+  for (const { file, key, constantName, attributeJson, _isDeprecated } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
