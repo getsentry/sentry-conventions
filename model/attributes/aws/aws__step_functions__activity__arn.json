@@ -1,0 +1,18 @@
+{
+  "key": "aws.step_functions.activity.arn",
+  "brief": "The ARN of the AWS Step Functions Activity.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "arn:aws:states:us-east-1:123456789012:activity:get-greeting",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [480],
+      "description": "Added aws.step_functions.activity.arn attribute"
+    }
+  ]
+}

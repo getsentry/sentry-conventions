@@ -1,0 +1,18 @@
+{
+  "key": "messaging.rabbitmq.destination.routing_key",
+  "brief": "RabbitMQ message routing key.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "myKey",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [468],
+      "description": "Added messaging.rabbitmq.destination.routing_key attribute"
+    }
+  ]
+}

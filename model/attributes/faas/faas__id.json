@@ -1,0 +1,24 @@
+{
+  "key": "faas.id",
+  "brief": "The unique ID of the single function that this runtime instance executes.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function",
+  "alias": ["cloud.resource_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "cloud.resource_id",
+    "reason": "This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0)."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [475],
+      "description": "Added faas.id attribute, deprecated in favor of cloud.resource_id"
+    }
+  ]
+}
