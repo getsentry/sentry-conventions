@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [467],
       "description": "Added sentry.sveltekit.navigation.type attribute"
     }

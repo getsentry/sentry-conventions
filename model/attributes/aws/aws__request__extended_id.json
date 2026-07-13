@@ -16,7 +16,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [480],
       "description": "Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id"
     }
