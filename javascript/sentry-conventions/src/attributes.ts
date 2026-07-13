@@ -2120,6 +2120,76 @@ export const AWS_DYNAMODB_TOTAL_SEGMENTS = 'aws.dynamodb.total_segments';
  */
 export type AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE = number;
 
+// Path: model/attributes/aws/aws__extended_request_id.json
+
+/**
+ * The AWS extended request ID as returned in the response headers. `aws.extended_request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_EXTENDED_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_REQUEST_EXTENDED_ID} `aws.request.extended_id`
+ *
+ * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+ */
+export const AWS_EXTENDED_REQUEST_ID = 'aws.extended_request_id';
+
+/**
+ * Type for {@link AWS_EXTENDED_REQUEST_ID} aws.extended_request_id
+ */
+export type AWS_EXTENDED_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__kinesis__stream_name.json
+
+/**
+ * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_KINESIS_STREAM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link _AWS_KINESIS_STREAM_NAME} `aws.kinesis.stream.name`
+ *
+ * @example "some-stream-name"
+ */
+export const AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream_name';
+
+/**
+ * Type for {@link AWS_KINESIS_STREAM_NAME} aws.kinesis.stream_name
+ */
+export type AWS_KINESIS_STREAM_NAME_TYPE = string;
+
+// Path: model/attributes/aws/aws__kinesis__stream__name.json
+
+/**
+ * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream.name`
+ *
+ * Attribute Value Type: `string` {@link _AWS_KINESIS_STREAM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_KINESIS_STREAM_NAME} `aws.kinesis.stream_name`
+ *
+ * @deprecated Use {@link AWS_KINESIS_STREAM_NAME} (aws.kinesis.stream_name) instead - This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.
+ * @example "some-stream-name"
+ */
+export const _AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream.name';
+
+/**
+ * Type for {@link _AWS_KINESIS_STREAM_NAME} aws.kinesis.stream.name
+ */
+export type _AWS_KINESIS_STREAM_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__lambda__aws_request_id.json
 
 /**
@@ -2322,6 +2392,182 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  * Type for {@link AWS_LOG_STREAM_NAMES} aws.log.stream.names
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__request__extended_id.json
+
+/**
+ * The AWS extended request ID as returned in the response headers. `aws.request.extended_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_EXTENDED_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_EXTENDED_REQUEST_ID} `aws.extended_request_id`
+ *
+ * @deprecated Use {@link AWS_EXTENDED_REQUEST_ID} (aws.extended_request_id) instead - This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.
+ * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+ */
+export const AWS_REQUEST_EXTENDED_ID = 'aws.request.extended_id';
+
+/**
+ * Type for {@link AWS_REQUEST_EXTENDED_ID} aws.request.extended_id
+ */
+export type AWS_REQUEST_EXTENDED_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__request_id.json
+
+/**
+ * The AWS request ID as returned in the response headers. `aws.request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link _AWS_REQUEST_ID} `aws.request.id`
+ *
+ * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
+ */
+export const AWS_REQUEST_ID = 'aws.request_id';
+
+/**
+ * Type for {@link AWS_REQUEST_ID} aws.request_id
+ */
+export type AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__request__id.json
+
+/**
+ * The AWS request ID as returned in the response headers. `aws.request.id`
+ *
+ * Attribute Value Type: `string` {@link _AWS_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_REQUEST_ID} `aws.request_id`
+ *
+ * @deprecated Use {@link AWS_REQUEST_ID} (aws.request_id) instead - This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.
+ * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
+ */
+export const _AWS_REQUEST_ID = 'aws.request.id';
+
+/**
+ * Type for {@link _AWS_REQUEST_ID} aws.request.id
+ */
+export type _AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__bucket.json
+
+/**
+ * The S3 bucket name the request refers to. `aws.s3.bucket`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_BUCKET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ot-demo-test"
+ */
+export const AWS_S3_BUCKET = 'aws.s3.bucket';
+
+/**
+ * Type for {@link AWS_S3_BUCKET} aws.s3.bucket
+ */
+export type AWS_S3_BUCKET_TYPE = string;
+
+// Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
+
+/**
+ * The ARN of the Secret stored in Secrets Manager. `aws.secretsmanager.secret.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_SECRETSMANAGER_SECRET_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
+ */
+export const AWS_SECRETSMANAGER_SECRET_ARN = 'aws.secretsmanager.secret.arn';
+
+/**
+ * Type for {@link AWS_SECRETSMANAGER_SECRET_ARN} aws.secretsmanager.secret.arn
+ */
+export type AWS_SECRETSMANAGER_SECRET_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__sns__topic__arn.json
+
+/**
+ * The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel. `aws.sns.topic.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_SNS_TOPIC_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
+ */
+export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
+
+/**
+ * Type for {@link AWS_SNS_TOPIC_ARN} aws.sns.topic.arn
+ */
+export type AWS_SNS_TOPIC_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__activity__arn.json
+
+/**
+ * The ARN of the AWS Step Functions Activity. `aws.step_functions.activity.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
+ */
+export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN} aws.step_functions.activity.arn
+ */
+export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
+
+/**
+ * The ARN of the AWS Step Functions State Machine. `aws.step_functions.state_machine.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
+ */
+export const AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN = 'aws.step_functions.state_machine.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN} aws.step_functions.state_machine.arn
+ */
+export type AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE = string;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -10275,6 +10521,29 @@ export const MIDDLEWARE_NAME = 'middleware.name';
  */
 export type MIDDLEWARE_NAME_TYPE = string;
 
+// Path: model/attributes/navigation/navigation__origin.json
+
+/**
+ * The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
+ *
+ * Attribute Value Type: `string` {@link NAVIGATION_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
+ *
+ * @example "/users/:id"
+ */
+export const NAVIGATION_ORIGIN = 'navigation.origin';
+
+/**
+ * Type for {@link NAVIGATION_ORIGIN} navigation.origin
+ */
+export type NAVIGATION_ORIGIN_TYPE = string;
+
 // Path: model/attributes/navigation/navigation__type.json
 
 /**
@@ -10286,6 +10555,8 @@ export type MIDDLEWARE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
  *
  * @example "router.push"
  */
@@ -13387,6 +13658,76 @@ export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
  */
 export type SENTRY_STATUS_MESSAGE_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__from.json
+
+/**
+ * the navigation origin (sveltekit router) `sentry.sveltekit.navigation.from`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`
+ *
+ * @deprecated Use {@link NAVIGATION_ORIGIN} (navigation.origin) instead - Use the more generic attribute instead
+ * @example "/home"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} sentry.sveltekit.navigation.from
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__to.json
+
+/**
+ * the navigation destination `sentry.sveltekit.navigation.to`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - the navigation destination is already covered by url.* attributes
+ * @example "/users/:id"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_TO = 'sentry.sveltekit.navigation.to';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TO} sentry.sveltekit.navigation.to
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__type.json
+
+/**
+ * The type of navigation event emitted from the sveltekit client router `sentry.sveltekit.navigation.type`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_TYPE} `navigation.type`
+ *
+ * @deprecated Use {@link NAVIGATION_TYPE} (navigation.type) instead - Use the more generic attribute instead
+ * @example "link"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} sentry.sveltekit.navigation.type
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__thread__id.json
 
 /**
@@ -15807,6 +16148,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.dynamodb.table_count': 'integer',
   'aws.dynamodb.table_names': 'string[]',
   'aws.dynamodb.total_segments': 'integer',
+  'aws.extended_request_id': 'string',
+  'aws.kinesis.stream_name': 'string',
+  'aws.kinesis.stream.name': 'string',
   'aws.lambda.aws_request_id': 'string',
   'aws.lambda.execution_duration_in_millis': 'double',
   'aws.lambda.function_name': 'string',
@@ -15816,6 +16160,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  'aws.request.extended_id': 'string',
+  'aws.request_id': 'string',
+  'aws.request.id': 'string',
+  'aws.s3.bucket': 'string',
+  'aws.secretsmanager.secret.arn': 'string',
+  'aws.sns.topic.arn': 'string',
+  'aws.step_functions.activity.arn': 'string',
+  'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
   'browser.name': 'string',
   'browser.performance.navigation.activation_start': 'double',
@@ -16176,6 +16528,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.system': 'string',
   method: 'string',
   'middleware.name': 'string',
+  'navigation.origin': 'string',
   'navigation.type': 'string',
   'nel.elapsed_time': 'integer',
   'nel.phase': 'string',
@@ -16316,6 +16669,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.status': 'string',
   'sentry.status_code': 'integer',
   'sentry.status.message': 'string',
+  'sentry.sveltekit.navigation.from': 'string',
+  'sentry.sveltekit.navigation.to': 'string',
+  'sentry.sveltekit.navigation.type': 'string',
   'sentry.thread.id': 'integer',
   'sentry.timestamp.sequence': 'integer',
   'sentry.trace_lifecycle': 'string',
@@ -16518,6 +16874,9 @@ export type AttributeName =
   | typeof AWS_DYNAMODB_TABLE_COUNT
   | typeof AWS_DYNAMODB_TABLE_NAMES
   | typeof AWS_DYNAMODB_TOTAL_SEGMENTS
+  | typeof AWS_EXTENDED_REQUEST_ID
+  | typeof AWS_KINESIS_STREAM_NAME
+  | typeof _AWS_KINESIS_STREAM_NAME
   | typeof AWS_LAMBDA_AWS_REQUEST_ID
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
@@ -16527,6 +16886,14 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_REQUEST_EXTENDED_ID
+  | typeof AWS_REQUEST_ID
+  | typeof _AWS_REQUEST_ID
+  | typeof AWS_S3_BUCKET
+  | typeof AWS_SECRETSMANAGER_SECRET_ARN
+  | typeof AWS_SNS_TOPIC_ARN
+  | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -16887,6 +17254,7 @@ export type AttributeName =
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
+  | typeof NAVIGATION_ORIGIN
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -17027,6 +17395,9 @@ export type AttributeName =
   | typeof SENTRY_STATUS
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_FROM
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_TO
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_TYPE
   | typeof SENTRY_THREAD_ID
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
@@ -18450,6 +18821,53 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
     changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.total_segments attribute' }],
   },
+  'aws.extended_request_id': {
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
+    aliases: ['aws.request.extended_id'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.extended_request_id attribute' }],
+  },
+  'aws.kinesis.stream_name': {
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'some-stream-name',
+    aliases: ['aws.kinesis.stream.name'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.kinesis.stream_name attribute' }],
+  },
+  'aws.kinesis.stream.name': {
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'some-stream-name',
+    deprecation: {
+      replacement: 'aws.kinesis.stream_name',
+      reason:
+        'This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.kinesis.stream_name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name',
+      },
+    ],
+  },
   'aws.lambda.aws_request_id': {
     brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
@@ -18596,6 +19014,119 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
+  },
+  'aws.request.extended_id': {
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
+    deprecation: {
+      replacement: 'aws.extended_request_id',
+      reason:
+        'This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.extended_request_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id',
+      },
+    ],
+  },
+  'aws.request_id': {
+    brief: 'The AWS request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
+    aliases: ['aws.request.id'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.request_id attribute' }],
+  },
+  'aws.request.id': {
+    brief: 'The AWS request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
+    deprecation: {
+      replacement: 'aws.request_id',
+      reason: 'This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.request_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.request.id attribute, deprecated in favor of aws.request_id',
+      },
+    ],
+  },
+  'aws.s3.bucket': {
+    brief: 'The S3 bucket name the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ot-demo-test',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.s3.bucket attribute' }],
+  },
+  'aws.secretsmanager.secret.arn': {
+    brief: 'The ARN of the Secret stored in Secrets Manager.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
+  },
+  'aws.sns.topic.arn': {
+    brief:
+      'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
+  },
+  'aws.step_functions.activity.arn': {
+    brief: 'The ARN of the AWS Step Functions Activity.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
+  },
+  'aws.step_functions.state_machine.arn': {
+    brief: 'The ARN of the AWS Step Functions State Machine.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.step_functions.state_machine.arn attribute' }],
   },
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -23447,6 +23978,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'AuthenticationMiddleware',
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
+  'navigation.origin': {
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    aliases: ['sentry.sveltekit.navigation.from'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added navigation.origin attribute' }],
+  },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
@@ -23456,7 +24000,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'router.push',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.sveltekit.navigation.type'],
+    changelog: [
+      { version: 'next', prs: [467], description: 'Added new deprecated alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'nel.elapsed_time': {
     brief:
@@ -25247,6 +25796,52 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
+  'sentry.sveltekit.navigation.from': {
+    brief: 'the navigation origin (sveltekit router)',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/home',
+    deprecation: {
+      replacement: 'navigation.origin',
+      reason: 'Use the more generic attribute instead',
+    },
+    aliases: ['navigation.origin'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
+  },
+  'sentry.sveltekit.navigation.to': {
+    brief: 'the navigation destination',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    deprecation: {
+      reason: 'the navigation destination is already covered by url.* attributes',
+    },
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.to attribute' }],
+  },
+  'sentry.sveltekit.navigation.type': {
+    brief: 'The type of navigation event emitted from the sveltekit client router',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'link',
+    deprecation: {
+      replacement: 'navigation.type',
+      reason: 'Use the more generic attribute instead',
+    },
+    aliases: ['navigation.type'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
+  },
   'sentry.thread.id': {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
@@ -26624,6 +27219,9 @@ export type Attributes = {
   [AWS_DYNAMODB_TABLE_COUNT]?: AWS_DYNAMODB_TABLE_COUNT_TYPE;
   [AWS_DYNAMODB_TABLE_NAMES]?: AWS_DYNAMODB_TABLE_NAMES_TYPE;
   [AWS_DYNAMODB_TOTAL_SEGMENTS]?: AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE;
+  [AWS_EXTENDED_REQUEST_ID]?: AWS_EXTENDED_REQUEST_ID_TYPE;
+  [AWS_KINESIS_STREAM_NAME]?: AWS_KINESIS_STREAM_NAME_TYPE;
+  [_AWS_KINESIS_STREAM_NAME]?: _AWS_KINESIS_STREAM_NAME_TYPE;
   [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
@@ -26633,6 +27231,14 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
+  [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
+  [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
+  [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
+  [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
+  [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
@@ -26993,6 +27599,7 @@ export type Attributes = {
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
+  [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
@@ -27133,6 +27740,9 @@ export type Attributes = {
   [SENTRY_STATUS]?: SENTRY_STATUS_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_FROM]?: SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_TO]?: SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_TYPE]?: SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
