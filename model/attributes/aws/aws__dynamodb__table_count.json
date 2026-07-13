@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.table_count",
+  "brief": "The number of items in the `TableNames` response parameter.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": 20,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [479],
+      "description": "Added aws.dynamodb.table_count attribute"
+    }
+  ]
+}

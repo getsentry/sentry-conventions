@@ -1679,6 +1679,517 @@ export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
  */
 export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
 
+// Path: model/attributes/aws/aws__dynamodb__attribute_definitions.json
+
+/**
+ * The JSON-serialized value of each item in the `AttributeDefinitions` request field. `aws.dynamodb.attribute_definitions`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"AttributeName\": \"string\", \"AttributeType\": \"string\" }"]
+ */
+export const AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS = 'aws.dynamodb.attribute_definitions';
+
+/**
+ * Type for {@link AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS} aws.dynamodb.attribute_definitions
+ */
+export type AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__consistent_read.json
+
+/**
+ * The value of the `ConsistentRead` request parameter. `aws.dynamodb.consistent_read`
+ *
+ * Attribute Value Type: `boolean` {@link AWS_DYNAMODB_CONSISTENT_READ_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example true
+ */
+export const AWS_DYNAMODB_CONSISTENT_READ = 'aws.dynamodb.consistent_read';
+
+/**
+ * Type for {@link AWS_DYNAMODB_CONSISTENT_READ} aws.dynamodb.consistent_read
+ */
+export type AWS_DYNAMODB_CONSISTENT_READ_TYPE = boolean;
+
+// Path: model/attributes/aws/aws__dynamodb__consumed_capacity.json
+
+/**
+ * The JSON-serialized value of each item in the `ConsumedCapacity` response field. `aws.dynamodb.consumed_capacity`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"CapacityUnits\": number, \"GlobalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"LocalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"ReadCapacityUnits\": number, \"Table\": { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number }, \"TableName\": \"string\", \"WriteCapacityUnits\": number }"]
+ */
+export const AWS_DYNAMODB_CONSUMED_CAPACITY = 'aws.dynamodb.consumed_capacity';
+
+/**
+ * Type for {@link AWS_DYNAMODB_CONSUMED_CAPACITY} aws.dynamodb.consumed_capacity
+ */
+export type AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__count.json
+
+/**
+ * The value of the `Count` response parameter. `aws.dynamodb.count`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const AWS_DYNAMODB_COUNT = 'aws.dynamodb.count';
+
+/**
+ * Type for {@link AWS_DYNAMODB_COUNT} aws.dynamodb.count
+ */
+export type AWS_DYNAMODB_COUNT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__exclusive_start_table.json
+
+/**
+ * The value of the `ExclusiveStartTableName` request parameter. `aws.dynamodb.exclusive_start_table`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_EXCLUSIVE_START_TABLE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Users"
+ */
+export const AWS_DYNAMODB_EXCLUSIVE_START_TABLE = 'aws.dynamodb.exclusive_start_table';
+
+/**
+ * Type for {@link AWS_DYNAMODB_EXCLUSIVE_START_TABLE} aws.dynamodb.exclusive_start_table
+ */
+export type AWS_DYNAMODB_EXCLUSIVE_START_TABLE_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__global_secondary_indexes.json
+
+/**
+ * The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field. `aws.dynamodb.global_secondary_indexes`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"IndexName\": \"string\", \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" }, \"ProvisionedThroughput\": { \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }"]
+ */
+export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES = 'aws.dynamodb.global_secondary_indexes';
+
+/**
+ * Type for {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES} aws.dynamodb.global_secondary_indexes
+ */
+export type AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__global_secondary_index_updates.json
+
+/**
+ * The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field. `aws.dynamodb.global_secondary_index_updates`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"Create\": { \"IndexName\": \"string\", \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" }, \"ProvisionedThroughput\": { \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }"]
+ */
+export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES = 'aws.dynamodb.global_secondary_index_updates';
+
+/**
+ * Type for {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES} aws.dynamodb.global_secondary_index_updates
+ */
+export type AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__index_name.json
+
+/**
+ * The value of the `IndexName` request parameter. `aws.dynamodb.index_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_INDEX_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "name_to_group"
+ */
+export const AWS_DYNAMODB_INDEX_NAME = 'aws.dynamodb.index_name';
+
+/**
+ * Type for {@link AWS_DYNAMODB_INDEX_NAME} aws.dynamodb.index_name
+ */
+export type AWS_DYNAMODB_INDEX_NAME_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__item_collection_metrics.json
+
+/**
+ * The JSON-serialized value of the `ItemCollectionMetrics` response field. `aws.dynamodb.item_collection_metrics`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_ITEM_COLLECTION_METRICS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "{ \"string\" : [ { \"ItemCollectionKey\": { \"string\" : { \"B\": blob, \"BOOL\": boolean, \"BS\": [ blob ], \"L\": [ \"AttributeValue\" ], \"M\": { \"string\" : \"AttributeValue\" }, \"N\": \"string\", \"NS\": [ \"string\" ], \"NULL\": boolean, \"S\": \"string\", \"SS\": [ \"string\" ] } }, \"SizeEstimateRangeGB\": [ number ] } ] }"
+ */
+export const AWS_DYNAMODB_ITEM_COLLECTION_METRICS = 'aws.dynamodb.item_collection_metrics';
+
+/**
+ * Type for {@link AWS_DYNAMODB_ITEM_COLLECTION_METRICS} aws.dynamodb.item_collection_metrics
+ */
+export type AWS_DYNAMODB_ITEM_COLLECTION_METRICS_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__limit.json
+
+/**
+ * The value of the `Limit` request parameter. `aws.dynamodb.limit`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_LIMIT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const AWS_DYNAMODB_LIMIT = 'aws.dynamodb.limit';
+
+/**
+ * Type for {@link AWS_DYNAMODB_LIMIT} aws.dynamodb.limit
+ */
+export type AWS_DYNAMODB_LIMIT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__local_secondary_indexes.json
+
+/**
+ * The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field. `aws.dynamodb.local_secondary_indexes`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"IndexArn\": \"string\", \"IndexName\": \"string\", \"IndexSizeBytes\": number, \"ItemCount\": number, \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" } }"]
+ */
+export const AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES = 'aws.dynamodb.local_secondary_indexes';
+
+/**
+ * Type for {@link AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES} aws.dynamodb.local_secondary_indexes
+ */
+export type AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__projection.json
+
+/**
+ * The value of the `ProjectionExpression` request parameter. `aws.dynamodb.projection`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_PROJECTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Title, Price, Color"
+ */
+export const AWS_DYNAMODB_PROJECTION = 'aws.dynamodb.projection';
+
+/**
+ * Type for {@link AWS_DYNAMODB_PROJECTION} aws.dynamodb.projection
+ */
+export type AWS_DYNAMODB_PROJECTION_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__provisioned_read_capacity.json
+
+/**
+ * The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter. `aws.dynamodb.provisioned_read_capacity`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const AWS_DYNAMODB_PROVISIONED_READ_CAPACITY = 'aws.dynamodb.provisioned_read_capacity';
+
+/**
+ * Type for {@link AWS_DYNAMODB_PROVISIONED_READ_CAPACITY} aws.dynamodb.provisioned_read_capacity
+ */
+export type AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__provisioned_write_capacity.json
+
+/**
+ * The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter. `aws.dynamodb.provisioned_write_capacity`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 2
+ */
+export const AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY = 'aws.dynamodb.provisioned_write_capacity';
+
+/**
+ * Type for {@link AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY} aws.dynamodb.provisioned_write_capacity
+ */
+export type AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__scanned_count.json
+
+/**
+ * The value of the `ScannedCount` response parameter. `aws.dynamodb.scanned_count`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_SCANNED_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 50
+ */
+export const AWS_DYNAMODB_SCANNED_COUNT = 'aws.dynamodb.scanned_count';
+
+/**
+ * Type for {@link AWS_DYNAMODB_SCANNED_COUNT} aws.dynamodb.scanned_count
+ */
+export type AWS_DYNAMODB_SCANNED_COUNT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__scan_forward.json
+
+/**
+ * The value of the `ScanIndexForward` request parameter. `aws.dynamodb.scan_forward`
+ *
+ * Attribute Value Type: `boolean` {@link AWS_DYNAMODB_SCAN_FORWARD_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example true
+ */
+export const AWS_DYNAMODB_SCAN_FORWARD = 'aws.dynamodb.scan_forward';
+
+/**
+ * Type for {@link AWS_DYNAMODB_SCAN_FORWARD} aws.dynamodb.scan_forward
+ */
+export type AWS_DYNAMODB_SCAN_FORWARD_TYPE = boolean;
+
+// Path: model/attributes/aws/aws__dynamodb__segment.json
+
+/**
+ * The value of the `Segment` request parameter. `aws.dynamodb.segment`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_SEGMENT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const AWS_DYNAMODB_SEGMENT = 'aws.dynamodb.segment';
+
+/**
+ * Type for {@link AWS_DYNAMODB_SEGMENT} aws.dynamodb.segment
+ */
+export type AWS_DYNAMODB_SEGMENT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__select.json
+
+/**
+ * The value of the `Select` request parameter. `aws.dynamodb.select`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_SELECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ALL_ATTRIBUTES"
+ */
+export const AWS_DYNAMODB_SELECT = 'aws.dynamodb.select';
+
+/**
+ * Type for {@link AWS_DYNAMODB_SELECT} aws.dynamodb.select
+ */
+export type AWS_DYNAMODB_SELECT_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__table_count.json
+
+/**
+ * The number of items in the `TableNames` response parameter. `aws.dynamodb.table_count`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_TABLE_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 20
+ */
+export const AWS_DYNAMODB_TABLE_COUNT = 'aws.dynamodb.table_count';
+
+/**
+ * Type for {@link AWS_DYNAMODB_TABLE_COUNT} aws.dynamodb.table_count
+ */
+export type AWS_DYNAMODB_TABLE_COUNT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__table_names.json
+
+/**
+ * The keys in the `RequestItems` object field. `aws.dynamodb.table_names`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_TABLE_NAMES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["Users","Cats"]
+ */
+export const AWS_DYNAMODB_TABLE_NAMES = 'aws.dynamodb.table_names';
+
+/**
+ * Type for {@link AWS_DYNAMODB_TABLE_NAMES} aws.dynamodb.table_names
+ */
+export type AWS_DYNAMODB_TABLE_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__total_segments.json
+
+/**
+ * The value of the `TotalSegments` request parameter. `aws.dynamodb.total_segments`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 100
+ */
+export const AWS_DYNAMODB_TOTAL_SEGMENTS = 'aws.dynamodb.total_segments';
+
+/**
+ * Type for {@link AWS_DYNAMODB_TOTAL_SEGMENTS} aws.dynamodb.total_segments
+ */
+export type AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE = number;
+
+// Path: model/attributes/aws/aws__extended_request_id.json
+
+/**
+ * The AWS extended request ID as returned in the response headers. `aws.extended_request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_EXTENDED_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_REQUEST_EXTENDED_ID} `aws.request.extended_id`
+ *
+ * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+ */
+export const AWS_EXTENDED_REQUEST_ID = 'aws.extended_request_id';
+
+/**
+ * Type for {@link AWS_EXTENDED_REQUEST_ID} aws.extended_request_id
+ */
+export type AWS_EXTENDED_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__kinesis__stream_name.json
+
+/**
+ * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_KINESIS_STREAM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link _AWS_KINESIS_STREAM_NAME} `aws.kinesis.stream.name`
+ *
+ * @example "some-stream-name"
+ */
+export const AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream_name';
+
+/**
+ * Type for {@link AWS_KINESIS_STREAM_NAME} aws.kinesis.stream_name
+ */
+export type AWS_KINESIS_STREAM_NAME_TYPE = string;
+
+// Path: model/attributes/aws/aws__kinesis__stream__name.json
+
+/**
+ * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream.name`
+ *
+ * Attribute Value Type: `string` {@link _AWS_KINESIS_STREAM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_KINESIS_STREAM_NAME} `aws.kinesis.stream_name`
+ *
+ * @deprecated Use {@link AWS_KINESIS_STREAM_NAME} (aws.kinesis.stream_name) instead - This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.
+ * @example "some-stream-name"
+ */
+export const _AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream.name';
+
+/**
+ * Type for {@link _AWS_KINESIS_STREAM_NAME} aws.kinesis.stream.name
+ */
+export type _AWS_KINESIS_STREAM_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__lambda__aws_request_id.json
 
 /**
@@ -1881,6 +2392,182 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  * Type for {@link AWS_LOG_STREAM_NAMES} aws.log.stream.names
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__request__extended_id.json
+
+/**
+ * The AWS extended request ID as returned in the response headers. `aws.request.extended_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_EXTENDED_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_EXTENDED_REQUEST_ID} `aws.extended_request_id`
+ *
+ * @deprecated Use {@link AWS_EXTENDED_REQUEST_ID} (aws.extended_request_id) instead - This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.
+ * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+ */
+export const AWS_REQUEST_EXTENDED_ID = 'aws.request.extended_id';
+
+/**
+ * Type for {@link AWS_REQUEST_EXTENDED_ID} aws.request.extended_id
+ */
+export type AWS_REQUEST_EXTENDED_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__request_id.json
+
+/**
+ * The AWS request ID as returned in the response headers. `aws.request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link _AWS_REQUEST_ID} `aws.request.id`
+ *
+ * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
+ */
+export const AWS_REQUEST_ID = 'aws.request_id';
+
+/**
+ * Type for {@link AWS_REQUEST_ID} aws.request_id
+ */
+export type AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__request__id.json
+
+/**
+ * The AWS request ID as returned in the response headers. `aws.request.id`
+ *
+ * Attribute Value Type: `string` {@link _AWS_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_REQUEST_ID} `aws.request_id`
+ *
+ * @deprecated Use {@link AWS_REQUEST_ID} (aws.request_id) instead - This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.
+ * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
+ */
+export const _AWS_REQUEST_ID = 'aws.request.id';
+
+/**
+ * Type for {@link _AWS_REQUEST_ID} aws.request.id
+ */
+export type _AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__bucket.json
+
+/**
+ * The S3 bucket name the request refers to. `aws.s3.bucket`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_BUCKET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ot-demo-test"
+ */
+export const AWS_S3_BUCKET = 'aws.s3.bucket';
+
+/**
+ * Type for {@link AWS_S3_BUCKET} aws.s3.bucket
+ */
+export type AWS_S3_BUCKET_TYPE = string;
+
+// Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
+
+/**
+ * The ARN of the Secret stored in Secrets Manager. `aws.secretsmanager.secret.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_SECRETSMANAGER_SECRET_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
+ */
+export const AWS_SECRETSMANAGER_SECRET_ARN = 'aws.secretsmanager.secret.arn';
+
+/**
+ * Type for {@link AWS_SECRETSMANAGER_SECRET_ARN} aws.secretsmanager.secret.arn
+ */
+export type AWS_SECRETSMANAGER_SECRET_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__sns__topic__arn.json
+
+/**
+ * The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel. `aws.sns.topic.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_SNS_TOPIC_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
+ */
+export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
+
+/**
+ * Type for {@link AWS_SNS_TOPIC_ARN} aws.sns.topic.arn
+ */
+export type AWS_SNS_TOPIC_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__activity__arn.json
+
+/**
+ * The ARN of the AWS Step Functions Activity. `aws.step_functions.activity.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
+ */
+export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN} aws.step_functions.activity.arn
+ */
+export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
+
+/**
+ * The ARN of the AWS Step Functions State Machine. `aws.step_functions.state_machine.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
+ */
+export const AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN = 'aws.step_functions.state_machine.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN} aws.step_functions.state_machine.arn
+ */
+export type AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE = string;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -2119,6 +2806,11 @@ export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
  * @example "body > div#app"
  */
 export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
+
+/**
+ * Base key for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE}.${key}`.
+ */
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE = 'browser.web_vital.cls.source';
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} browser.web_vital.cls.source.<key>
@@ -3191,6 +3883,13 @@ export type CLS_TYPE = number;
 export const CLS_SOURCE_KEY = 'cls.source.<key>';
 
 /**
+ * Base key for {@link CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${CLS_SOURCE_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE} (browser.web_vital.cls.source) instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
+ */
+export const CLS_SOURCE_KEY_BASE = 'cls.source';
+
+/**
  * Type for {@link CLS_SOURCE_KEY} cls.source.<key>
  */
 export type CLS_SOURCE_KEY_TYPE = string;
@@ -3683,6 +4382,11 @@ export type DB_OPERATION_NAME_TYPE = string;
  * @example "db.query.parameter.foo='123'"
  */
 export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
+
+/**
+ * Base key for {@link DB_QUERY_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${DB_QUERY_PARAMETER_KEY_BASE}.${key}`.
+ */
+export const DB_QUERY_PARAMETER_KEY_BASE = 'db.query.parameter';
 
 /**
  * Type for {@link DB_QUERY_PARAMETER_KEY} db.query.parameter.<key>
@@ -5152,6 +5856,69 @@ export const FAAS_INVOCATION_ID = 'faas.invocation_id';
  */
 export type FAAS_INVOCATION_ID_TYPE = string;
 
+// Path: model/attributes/faas/faas__invoked_name.json
+
+/**
+ * The name of the invoked function. `faas.invoked_name`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "my-function"
+ */
+export const FAAS_INVOKED_NAME = 'faas.invoked_name';
+
+/**
+ * Type for {@link FAAS_INVOKED_NAME} faas.invoked_name
+ */
+export type FAAS_INVOKED_NAME_TYPE = string;
+
+// Path: model/attributes/faas/faas__invoked_provider.json
+
+/**
+ * The cloud provider of the invoked function. `faas.invoked_provider`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_PROVIDER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "aws"
+ */
+export const FAAS_INVOKED_PROVIDER = 'faas.invoked_provider';
+
+/**
+ * Type for {@link FAAS_INVOKED_PROVIDER} faas.invoked_provider
+ */
+export type FAAS_INVOKED_PROVIDER_TYPE = string;
+
+// Path: model/attributes/faas/faas__invoked_region.json
+
+/**
+ * The cloud region of the invoked function. `faas.invoked_region`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "eu-central-1"
+ */
+export const FAAS_INVOKED_REGION = 'faas.invoked_region';
+
+/**
+ * Type for {@link FAAS_INVOKED_REGION} faas.invoked_region
+ */
+export type FAAS_INVOKED_REGION_TYPE = string;
+
 // Path: model/attributes/faas/faas__name.json
 
 /**
@@ -5281,6 +6048,11 @@ export type FCP_TYPE = number;
  * @example "flag.evaluation.is_new_ui=true"
  */
 export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
+
+/**
+ * Base key for {@link FLAG_EVALUATION_KEY}. Use with a dynamic suffix, e.g. `${FLAG_EVALUATION_KEY_BASE}.${key}`.
+ */
+export const FLAG_EVALUATION_KEY_BASE = 'flag.evaluation';
 
 /**
  * Type for {@link FLAG_EVALUATION_KEY} flag.evaluation.<key>
@@ -6285,6 +7057,27 @@ export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
  * Type for {@link GEN_AI_REQUEST_SEED} gen_ai.request.seed
  */
 export type GEN_AI_REQUEST_SEED_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__request__stop_sequences.json
+
+/**
+ * List of sequences that the model will use to stop generating further tokens. `gen_ai.request.stop_sequences`
+ *
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_REQUEST_STOP_SEQUENCES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["forest","lived"]
+ */
+export const GEN_AI_REQUEST_STOP_SEQUENCES = 'gen_ai.request.stop_sequences';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_STOP_SEQUENCES} gen_ai.request.stop_sequences
+ */
+export type GEN_AI_REQUEST_STOP_SEQUENCES_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__request__temperature.json
 
@@ -7482,6 +8275,11 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
 export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
 
 /**
+ * Base key for {@link HTTP_REQUEST_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_REQUEST_HEADER_KEY_BASE}.${key}`.
+ */
+export const HTTP_REQUEST_HEADER_KEY_BASE = 'http.request.header';
+
+/**
  * Type for {@link HTTP_REQUEST_HEADER_KEY} http.request.header.<key>
  */
 export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
@@ -7832,6 +8630,11 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
 export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
+
+/**
+ * Base key for {@link HTTP_RESPONSE_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_RESPONSE_HEADER_KEY_BASE}.${key}`.
+ */
+export const HTTP_RESPONSE_HEADER_KEY_BASE = 'http.response.header';
 
 /**
  * Type for {@link HTTP_RESPONSE_HEADER_KEY} http.response.header.<key>
@@ -9003,6 +9806,11 @@ export type MCP_PROTOCOL_VERSION_TYPE = string;
 export const MCP_REQUEST_ARGUMENT_KEY = 'mcp.request.argument.<key>';
 
 /**
+ * Base key for {@link MCP_REQUEST_ARGUMENT_KEY}. Use with a dynamic suffix, e.g. `${MCP_REQUEST_ARGUMENT_KEY_BASE}.${key}`.
+ */
+export const MCP_REQUEST_ARGUMENT_KEY_BASE = 'mcp.request.argument';
+
+/**
  * Type for {@link MCP_REQUEST_ARGUMENT_KEY} mcp.request.argument.<key>
  */
 export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
@@ -9336,6 +10144,11 @@ export type MCP_TRANSPORT_TYPE = string;
 export const MDC_KEY = 'mdc.<key>';
 
 /**
+ * Base key for {@link MDC_KEY}. Use with a dynamic suffix, e.g. `${MDC_KEY_BASE}.${key}`.
+ */
+export const MDC_KEY_BASE = 'mdc';
+
+/**
  * Type for {@link MDC_KEY} mdc.<key>
  */
 export type MDC_KEY_TYPE = string;
@@ -9360,6 +10173,30 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  * Type for {@link MESSAGING_BATCH_MESSAGE_COUNT} messaging.batch.message_count
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__destination.json
+
+/**
+ * The message destination name. `messaging.destination`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`
+ *
+ * @deprecated Use {@link MESSAGING_DESTINATION_NAME} (messaging.destination.name) instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
+ * @example "BestTopic"
+ */
+export const MESSAGING_DESTINATION = 'messaging.destination';
+
+/**
+ * Type for {@link MESSAGING_DESTINATION} messaging.destination
+ */
+export type MESSAGING_DESTINATION_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
@@ -9393,6 +10230,8 @@ export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_DESTINATION} `messaging.destination`
  *
  * @example "BestTopic"
  */
@@ -9658,6 +10497,29 @@ export const MIDDLEWARE_NAME = 'middleware.name';
  */
 export type MIDDLEWARE_NAME_TYPE = string;
 
+// Path: model/attributes/navigation/navigation__origin.json
+
+/**
+ * The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
+ *
+ * Attribute Value Type: `string` {@link NAVIGATION_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
+ *
+ * @example "/users/:id"
+ */
+export const NAVIGATION_ORIGIN = 'navigation.origin';
+
+/**
+ * Type for {@link NAVIGATION_ORIGIN} navigation.origin
+ */
+export type NAVIGATION_ORIGIN_TYPE = string;
+
 // Path: model/attributes/navigation/navigation__type.json
 
 /**
@@ -9669,6 +10531,8 @@ export type MIDDLEWARE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
  *
  * @example "router.push"
  */
@@ -10727,6 +11591,11 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 export const PARAMS_KEY = 'params.<key>';
 
 /**
+ * Base key for {@link PARAMS_KEY}. Use with a dynamic suffix, e.g. `${PARAMS_KEY_BASE}.${key}`.
+ */
+export const PARAMS_KEY_BASE = 'params';
+
+/**
  * Type for {@link PARAMS_KEY} params.<key>
  */
 export type PARAMS_KEY_TYPE = string;
@@ -10994,6 +11863,13 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
 export const QUERY_KEY = 'query.<key>';
 
 /**
+ * Base key for {@link QUERY_KEY}. Use with a dynamic suffix, e.g. `${QUERY_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_QUERY} (url.query) instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
+ */
+export const QUERY_KEY_BASE = 'query';
+
+/**
  * Type for {@link QUERY_KEY} query.<key>
  */
 export type QUERY_KEY_TYPE = string;
@@ -11060,6 +11936,11 @@ export type RELEASE_TYPE = string;
  * @example "http.response.header.text='test'"
  */
 export const REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
+
+/**
+ * Base key for {@link REMIX_ACTION_FORM_DATA_KEY}. Use with a dynamic suffix, e.g. `${REMIX_ACTION_FORM_DATA_KEY_BASE}.${key}`.
+ */
+export const REMIX_ACTION_FORM_DATA_KEY_BASE = 'remix.action_form_data';
 
 /**
  * Type for {@link REMIX_ACTION_FORM_DATA_KEY} remix.action_form_data.<key>
@@ -11263,6 +12144,53 @@ export const RPC_SERVICE = 'rpc.service';
  */
 export type RPC_SERVICE_TYPE = string;
 
+// Path: model/attributes/rpc/rpc__system.json
+
+/**
+ * A string identifying the remoting system. `rpc.system`
+ *
+ * Attribute Value Type: `string` {@link RPC_SYSTEM_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_SYSTEM_NAME} `rpc.system.name`
+ *
+ * @deprecated Use {@link RPC_SYSTEM_NAME} (rpc.system.name) instead - This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.
+ * @example "aws-api"
+ */
+export const RPC_SYSTEM = 'rpc.system';
+
+/**
+ * Type for {@link RPC_SYSTEM} rpc.system
+ */
+export type RPC_SYSTEM_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__system__name.json
+
+/**
+ * A string identifying the remoting system. `rpc.system.name`
+ *
+ * Attribute Value Type: `string` {@link RPC_SYSTEM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_SYSTEM} `rpc.system`
+ *
+ * @example "aws-api"
+ */
+export const RPC_SYSTEM_NAME = 'rpc.system.name';
+
+/**
+ * Type for {@link RPC_SYSTEM_NAME} rpc.system.name
+ */
+export type RPC_SYSTEM_NAME_TYPE = string;
+
 // Path: model/attributes/runtime/runtime__build.json
 
 /**
@@ -11376,6 +12304,11 @@ export type RUNTIME_VERSION_TYPE = string;
 export const SCORE_KEY = 'score.<key>';
 
 /**
+ * Base key for {@link SCORE_KEY}. Use with a dynamic suffix, e.g. `${SCORE_KEY_BASE}.${key}`.
+ */
+export const SCORE_KEY_BASE = 'score';
+
+/**
  * Type for {@link SCORE_KEY} score.<key>
  */
 export type SCORE_KEY_TYPE = number;
@@ -11397,6 +12330,11 @@ export type SCORE_KEY_TYPE = number;
  * @example "score.ratio.inp=0.7748"
  */
 export const SCORE_RATIO_KEY = 'score.ratio.<key>';
+
+/**
+ * Base key for {@link SCORE_RATIO_KEY}. Use with a dynamic suffix, e.g. `${SCORE_RATIO_KEY_BASE}.${key}`.
+ */
+export const SCORE_RATIO_KEY_BASE = 'score.ratio';
 
 /**
  * Type for {@link SCORE_RATIO_KEY} score.ratio.<key>
@@ -11439,6 +12377,11 @@ export type SCORE_TOTAL_TYPE = number;
  * @example "score.weight.fcp=0.25"
  */
 export const SCORE_WEIGHT_KEY = 'score.weight.<key>';
+
+/**
+ * Base key for {@link SCORE_WEIGHT_KEY}. Use with a dynamic suffix, e.g. `${SCORE_WEIGHT_KEY_BASE}.${key}`.
+ */
+export const SCORE_WEIGHT_KEY_BASE = 'score.weight';
 
 /**
  * Type for {@link SCORE_WEIGHT_KEY} score.weight.<key>
@@ -12102,6 +13045,11 @@ export type SENTRY_MOBILE_TYPE = boolean;
 export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
 
 /**
+ * Base key for {@link SENTRY_MODULE_KEY}. Use with a dynamic suffix, e.g. `${SENTRY_MODULE_KEY_BASE}.${key}`.
+ */
+export const SENTRY_MODULE_KEY_BASE = 'sentry.module';
+
+/**
  * Type for {@link SENTRY_MODULE_KEY} sentry.module.<key>
  */
 export type SENTRY_MODULE_KEY_TYPE = string;
@@ -12683,6 +13631,76 @@ export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
  * Type for {@link SENTRY_STATUS_MESSAGE} sentry.status.message
  */
 export type SENTRY_STATUS_MESSAGE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__from.json
+
+/**
+ * the navigation origin (sveltekit router) `sentry.sveltekit.navigation.from`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`
+ *
+ * @deprecated Use {@link NAVIGATION_ORIGIN} (navigation.origin) instead - Use the more generic attribute instead
+ * @example "/home"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} sentry.sveltekit.navigation.from
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__to.json
+
+/**
+ * the navigation destination `sentry.sveltekit.navigation.to`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - the navigation destination is already covered by url.* attributes
+ * @example "/users/:id"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_TO = 'sentry.sveltekit.navigation.to';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TO} sentry.sveltekit.navigation.to
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__type.json
+
+/**
+ * The type of navigation event emitted from the sveltekit client router `sentry.sveltekit.navigation.type`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_TYPE} `navigation.type`
+ *
+ * @deprecated Use {@link NAVIGATION_TYPE} (navigation.type) instead - Use the more generic attribute instead
+ * @example "link"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} sentry.sveltekit.navigation.type
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__thread__id.json
 
@@ -13820,6 +14838,11 @@ export type URL_PATH_TYPE = string;
  * @example "url.path.parameter.id='123'"
  */
 export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
+
+/**
+ * Base key for {@link URL_PATH_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMETER_KEY_BASE}.${key}`.
+ */
+export const URL_PATH_PARAMETER_KEY_BASE = 'url.path.parameter';
 
 /**
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
@@ -15102,6 +16125,30 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.cloudwatch.logs.log_group': 'string',
   'aws.cloudwatch.logs.log_stream': 'string',
   'aws.cloudwatch.logs.url': 'string',
+  'aws.dynamodb.attribute_definitions': 'string[]',
+  'aws.dynamodb.consistent_read': 'boolean',
+  'aws.dynamodb.consumed_capacity': 'string[]',
+  'aws.dynamodb.count': 'integer',
+  'aws.dynamodb.exclusive_start_table': 'string',
+  'aws.dynamodb.global_secondary_indexes': 'string[]',
+  'aws.dynamodb.global_secondary_index_updates': 'string[]',
+  'aws.dynamodb.index_name': 'string',
+  'aws.dynamodb.item_collection_metrics': 'string',
+  'aws.dynamodb.limit': 'integer',
+  'aws.dynamodb.local_secondary_indexes': 'string[]',
+  'aws.dynamodb.projection': 'string',
+  'aws.dynamodb.provisioned_read_capacity': 'double',
+  'aws.dynamodb.provisioned_write_capacity': 'double',
+  'aws.dynamodb.scanned_count': 'integer',
+  'aws.dynamodb.scan_forward': 'boolean',
+  'aws.dynamodb.segment': 'integer',
+  'aws.dynamodb.select': 'string',
+  'aws.dynamodb.table_count': 'integer',
+  'aws.dynamodb.table_names': 'string[]',
+  'aws.dynamodb.total_segments': 'integer',
+  'aws.extended_request_id': 'string',
+  'aws.kinesis.stream_name': 'string',
+  'aws.kinesis.stream.name': 'string',
   'aws.lambda.aws_request_id': 'string',
   'aws.lambda.execution_duration_in_millis': 'double',
   'aws.lambda.function_name': 'string',
@@ -15111,6 +16158,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  'aws.request.extended_id': 'string',
+  'aws.request_id': 'string',
+  'aws.request.id': 'string',
+  'aws.s3.bucket': 'string',
+  'aws.secretsmanager.secret.arn': 'string',
+  'aws.sns.topic.arn': 'string',
+  'aws.step_functions.activity.arn': 'string',
+  'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
   'browser.name': 'string',
   'browser.performance.navigation.activation_start': 'double',
@@ -15261,6 +16316,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.id': 'string',
   'faas.identity': 'string',
   'faas.invocation_id': 'string',
+  'faas.invoked_name': 'string',
+  'faas.invoked_provider': 'string',
+  'faas.invoked_region': 'string',
   'faas.name': 'string',
   'faas.time': 'string',
   'faas.trigger': 'string',
@@ -15313,6 +16371,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.presence_penalty': 'double',
   'gen_ai.request.reasoning_effort': 'string',
   'gen_ai.request.seed': 'string',
+  'gen_ai.request.stop_sequences': 'string[]',
   'gen_ai.request.temperature': 'double',
   'gen_ai.request.top_k': 'integer',
   'gen_ai.request.top_p': 'double',
@@ -15451,6 +16510,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
   'messaging.destination.name': 'string',
   'messaging.message.body.size': 'integer',
@@ -15465,6 +16525,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.system': 'string',
   method: 'string',
   'middleware.name': 'string',
+  'navigation.origin': 'string',
   'navigation.type': 'string',
   'nel.elapsed_time': 'integer',
   'nel.phase': 'string',
@@ -15537,6 +16598,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'rpc.method': 'string',
   'rpc.response.status_code': 'string',
   'rpc.service': 'string',
+  'rpc.system': 'string',
+  'rpc.system.name': 'string',
   'runtime.build': 'string',
   'runtime.name': 'string',
   'runtime.raw_description': 'string',
@@ -15603,6 +16666,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.status': 'string',
   'sentry.status_code': 'integer',
   'sentry.status.message': 'string',
+  'sentry.sveltekit.navigation.from': 'string',
+  'sentry.sveltekit.navigation.to': 'string',
+  'sentry.sveltekit.navigation.type': 'string',
   'sentry.thread.id': 'integer',
   'sentry.timestamp.sequence': 'integer',
   'sentry.trace_lifecycle': 'string',
@@ -15785,6 +16851,30 @@ export type AttributeName =
   | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
   | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
   | typeof AWS_CLOUDWATCH_LOGS_URL
+  | typeof AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS
+  | typeof AWS_DYNAMODB_CONSISTENT_READ
+  | typeof AWS_DYNAMODB_CONSUMED_CAPACITY
+  | typeof AWS_DYNAMODB_COUNT
+  | typeof AWS_DYNAMODB_EXCLUSIVE_START_TABLE
+  | typeof AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES
+  | typeof AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES
+  | typeof AWS_DYNAMODB_INDEX_NAME
+  | typeof AWS_DYNAMODB_ITEM_COLLECTION_METRICS
+  | typeof AWS_DYNAMODB_LIMIT
+  | typeof AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES
+  | typeof AWS_DYNAMODB_PROJECTION
+  | typeof AWS_DYNAMODB_PROVISIONED_READ_CAPACITY
+  | typeof AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY
+  | typeof AWS_DYNAMODB_SCANNED_COUNT
+  | typeof AWS_DYNAMODB_SCAN_FORWARD
+  | typeof AWS_DYNAMODB_SEGMENT
+  | typeof AWS_DYNAMODB_SELECT
+  | typeof AWS_DYNAMODB_TABLE_COUNT
+  | typeof AWS_DYNAMODB_TABLE_NAMES
+  | typeof AWS_DYNAMODB_TOTAL_SEGMENTS
+  | typeof AWS_EXTENDED_REQUEST_ID
+  | typeof AWS_KINESIS_STREAM_NAME
+  | typeof _AWS_KINESIS_STREAM_NAME
   | typeof AWS_LAMBDA_AWS_REQUEST_ID
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
@@ -15794,6 +16884,14 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_REQUEST_EXTENDED_ID
+  | typeof AWS_REQUEST_ID
+  | typeof _AWS_REQUEST_ID
+  | typeof AWS_S3_BUCKET
+  | typeof AWS_SECRETSMANAGER_SECRET_ARN
+  | typeof AWS_SNS_TOPIC_ARN
+  | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -15944,6 +17042,9 @@ export type AttributeName =
   | typeof FAAS_ID
   | typeof FAAS_IDENTITY
   | typeof FAAS_INVOCATION_ID
+  | typeof FAAS_INVOKED_NAME
+  | typeof FAAS_INVOKED_PROVIDER
+  | typeof FAAS_INVOKED_REGION
   | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
@@ -15996,6 +17097,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
   | typeof GEN_AI_REQUEST_REASONING_EFFORT
   | typeof GEN_AI_REQUEST_SEED
+  | typeof GEN_AI_REQUEST_STOP_SEQUENCES
   | typeof GEN_AI_REQUEST_TEMPERATURE
   | typeof GEN_AI_REQUEST_TOP_K
   | typeof GEN_AI_REQUEST_TOP_P
@@ -16134,6 +17236,7 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_NAME
   | typeof MESSAGING_MESSAGE_BODY_SIZE
@@ -16148,6 +17251,7 @@ export type AttributeName =
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
+  | typeof NAVIGATION_ORIGIN
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -16220,6 +17324,8 @@ export type AttributeName =
   | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
   | typeof RPC_SERVICE
+  | typeof RPC_SYSTEM
+  | typeof RPC_SYSTEM_NAME
   | typeof RUNTIME_BUILD
   | typeof RUNTIME_NAME
   | typeof RUNTIME_RAW_DESCRIPTION
@@ -16286,6 +17392,9 @@ export type AttributeName =
   | typeof SENTRY_STATUS
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_FROM
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_TO
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_TYPE
   | typeof SENTRY_THREAD_ID
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
@@ -17466,6 +18575,297 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
   },
+  'aws.dynamodb.attribute_definitions': {
+    brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['{ "AttributeName": "string", "AttributeType": "string" }'],
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.attribute_definitions attribute' }],
+  },
+  'aws.dynamodb.consistent_read': {
+    brief: 'The value of the `ConsistentRead` request parameter.',
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: true,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.consistent_read attribute' }],
+  },
+  'aws.dynamodb.consumed_capacity': {
+    brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: [
+      '{ "CapacityUnits": number, "GlobalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "LocalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "ReadCapacityUnits": number, "Table": { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number }, "TableName": "string", "WriteCapacityUnits": number }',
+    ],
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.consumed_capacity attribute' }],
+  },
+  'aws.dynamodb.count': {
+    brief: 'The value of the `Count` response parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.count attribute' }],
+  },
+  'aws.dynamodb.exclusive_start_table': {
+    brief: 'The value of the `ExclusiveStartTableName` request parameter.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Users',
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.exclusive_start_table attribute' }],
+  },
+  'aws.dynamodb.global_secondary_indexes': {
+    brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: [
+      '{ "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
+    ],
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.global_secondary_indexes attribute' }],
+  },
+  'aws.dynamodb.global_secondary_index_updates': {
+    brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: [
+      '{ "Create": { "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
+    ],
+    changelog: [
+      { version: 'next', prs: [479], description: 'Added aws.dynamodb.global_secondary_index_updates attribute' },
+    ],
+  },
+  'aws.dynamodb.index_name': {
+    brief: 'The value of the `IndexName` request parameter.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'name_to_group',
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.index_name attribute' }],
+  },
+  'aws.dynamodb.item_collection_metrics': {
+    brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example:
+      '{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.item_collection_metrics attribute' }],
+  },
+  'aws.dynamodb.limit': {
+    brief: 'The value of the `Limit` request parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.limit attribute' }],
+  },
+  'aws.dynamodb.local_secondary_indexes': {
+    brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: [
+      '{ "IndexArn": "string", "IndexName": "string", "IndexSizeBytes": number, "ItemCount": number, "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" } }',
+    ],
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.local_secondary_indexes attribute' }],
+  },
+  'aws.dynamodb.projection': {
+    brief: 'The value of the `ProjectionExpression` request parameter.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Title, Price, Color',
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.projection attribute' }],
+  },
+  'aws.dynamodb.provisioned_read_capacity': {
+    brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 1,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.provisioned_read_capacity attribute' }],
+  },
+  'aws.dynamodb.provisioned_write_capacity': {
+    brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 2,
+    changelog: [
+      { version: 'next', prs: [479], description: 'Added aws.dynamodb.provisioned_write_capacity attribute' },
+    ],
+  },
+  'aws.dynamodb.scanned_count': {
+    brief: 'The value of the `ScannedCount` response parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 50,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.scanned_count attribute' }],
+  },
+  'aws.dynamodb.scan_forward': {
+    brief: 'The value of the `ScanIndexForward` request parameter.',
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: true,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.scan_forward attribute' }],
+  },
+  'aws.dynamodb.segment': {
+    brief: 'The value of the `Segment` request parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.segment attribute' }],
+  },
+  'aws.dynamodb.select': {
+    brief: 'The value of the `Select` request parameter.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ALL_ATTRIBUTES',
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.select attribute' }],
+  },
+  'aws.dynamodb.table_count': {
+    brief: 'The number of items in the `TableNames` response parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 20,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.table_count attribute' }],
+  },
+  'aws.dynamodb.table_names': {
+    brief: 'The keys in the `RequestItems` object field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['Users', 'Cats'],
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.table_names attribute' }],
+  },
+  'aws.dynamodb.total_segments': {
+    brief: 'The value of the `TotalSegments` request parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 100,
+    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.total_segments attribute' }],
+  },
+  'aws.extended_request_id': {
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
+    aliases: ['aws.request.extended_id'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.extended_request_id attribute' }],
+  },
+  'aws.kinesis.stream_name': {
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'some-stream-name',
+    aliases: ['aws.kinesis.stream.name'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.kinesis.stream_name attribute' }],
+  },
+  'aws.kinesis.stream.name': {
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'some-stream-name',
+    deprecation: {
+      replacement: 'aws.kinesis.stream_name',
+      reason:
+        'This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.kinesis.stream_name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name',
+      },
+    ],
+  },
   'aws.lambda.aws_request_id': {
     brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
@@ -17612,6 +19012,119 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
+  },
+  'aws.request.extended_id': {
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
+    deprecation: {
+      replacement: 'aws.extended_request_id',
+      reason:
+        'This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.extended_request_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id',
+      },
+    ],
+  },
+  'aws.request_id': {
+    brief: 'The AWS request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
+    aliases: ['aws.request.id'],
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.request_id attribute' }],
+  },
+  'aws.request.id': {
+    brief: 'The AWS request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
+    deprecation: {
+      replacement: 'aws.request_id',
+      reason: 'This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.',
+    },
+    aliases: ['aws.request_id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [480],
+        description: 'Added aws.request.id attribute, deprecated in favor of aws.request_id',
+      },
+    ],
+  },
+  'aws.s3.bucket': {
+    brief: 'The S3 bucket name the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ot-demo-test',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.s3.bucket attribute' }],
+  },
+  'aws.secretsmanager.secret.arn': {
+    brief: 'The ARN of the Secret stored in Secrets Manager.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
+  },
+  'aws.sns.topic.arn': {
+    brief:
+      'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
+  },
+  'aws.step_functions.activity.arn': {
+    brief: 'The ARN of the AWS Step Functions Activity.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
+  },
+  'aws.step_functions.state_machine.arn': {
+    brief: 'The ARN of the AWS Step Functions State Machine.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1',
+    changelog: [{ version: 'next', prs: [480], description: 'Added aws.step_functions.state_machine.arn attribute' }],
   },
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -19483,6 +20996,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.11.1', prs: [414, 424] },
     ],
   },
+  'faas.invoked_name': {
+    brief: 'The name of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'my-function',
+    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_name attribute' }],
+  },
+  'faas.invoked_provider': {
+    brief: 'The cloud provider of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws',
+    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_provider attribute' }],
+  },
+  'faas.invoked_region': {
+    brief: 'The cloud region of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'eu-central-1',
+    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_region attribute' }],
+  },
   'faas.name': {
     brief: 'The name of the serverless function',
     type: 'string',
@@ -20211,6 +21757,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1234567890',
     aliases: ['ai.seed'],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
+  },
+  'gen_ai.request.stop_sequences': {
+    brief: 'List of sequences that the model will use to stop generating further tokens.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['forest', 'lived'],
+    changelog: [{ version: 'next', prs: [482], description: 'Added gen_ai.request.stop_sequences attribute' }],
   },
   'gen_ai.request.temperature': {
     brief:
@@ -22214,6 +23771,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
+  'messaging.destination': {
+    brief: 'The message destination name.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'BestTopic',
+    deprecation: {
+      replacement: 'messaging.destination.name',
+      reason:
+        'This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.',
+    },
+    aliases: ['messaging.destination.name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [482],
+        description: 'Added messaging.destination attribute, deprecated in favor of messaging.destination.name',
+      },
+    ],
+  },
   'messaging.destination.connection': {
     brief: 'The message destination connection.',
     type: 'string',
@@ -22234,7 +23814,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'BestTopic',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['messaging.destination'],
+    changelog: [
+      { version: 'next', prs: [482], description: 'Added messaging.destination as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'messaging.message.body.size': {
     brief: 'The size of the message body in bytes.',
@@ -22375,6 +23960,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'AuthenticationMiddleware',
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
   },
+  'navigation.origin': {
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    aliases: ['sentry.sveltekit.navigation.from'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added navigation.origin attribute' }],
+  },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
@@ -22384,7 +23982,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'router.push',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.sveltekit.navigation.type'],
+    changelog: [
+      { version: 'next', prs: [467], description: 'Added new deprecated alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'nel.elapsed_time': {
     brief:
@@ -23323,6 +24926,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myService.BestService',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'rpc.system': {
+    brief: 'A string identifying the remoting system.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws-api',
+    deprecation: {
+      replacement: 'rpc.system.name',
+      reason: 'This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.',
+    },
+    aliases: ['rpc.system.name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [482],
+        description: 'Added rpc.system attribute, deprecated in favor of rpc.system.name',
+      },
+    ],
+  },
+  'rpc.system.name': {
+    brief: 'A string identifying the remoting system.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws-api',
+    aliases: ['rpc.system'],
+    changelog: [{ version: 'next', prs: [482], description: 'Added rpc.system.name attribute' }],
+  },
   'runtime.build': {
     brief: 'The application build string, when it is separate from the version.',
     type: 'string',
@@ -24139,6 +25776,52 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
+  },
+  'sentry.sveltekit.navigation.from': {
+    brief: 'the navigation origin (sveltekit router)',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/home',
+    deprecation: {
+      replacement: 'navigation.origin',
+      reason: 'Use the more generic attribute instead',
+    },
+    aliases: ['navigation.origin'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
+  },
+  'sentry.sveltekit.navigation.to': {
+    brief: 'the navigation destination',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    deprecation: {
+      reason: 'the navigation destination is already covered by url.* attributes',
+    },
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.to attribute' }],
+  },
+  'sentry.sveltekit.navigation.type': {
+    brief: 'The type of navigation event emitted from the sveltekit client router',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'link',
+    deprecation: {
+      replacement: 'navigation.type',
+      reason: 'Use the more generic attribute instead',
+    },
+    aliases: ['navigation.type'],
+    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
   },
   'sentry.thread.id': {
     brief: 'Current “managed” thread ID.',
@@ -25513,6 +27196,30 @@ export type Attributes = {
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
   [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
   [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
+  [AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS]?: AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE;
+  [AWS_DYNAMODB_CONSISTENT_READ]?: AWS_DYNAMODB_CONSISTENT_READ_TYPE;
+  [AWS_DYNAMODB_CONSUMED_CAPACITY]?: AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE;
+  [AWS_DYNAMODB_COUNT]?: AWS_DYNAMODB_COUNT_TYPE;
+  [AWS_DYNAMODB_EXCLUSIVE_START_TABLE]?: AWS_DYNAMODB_EXCLUSIVE_START_TABLE_TYPE;
+  [AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES]?: AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_TYPE;
+  [AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES]?: AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_TYPE;
+  [AWS_DYNAMODB_INDEX_NAME]?: AWS_DYNAMODB_INDEX_NAME_TYPE;
+  [AWS_DYNAMODB_ITEM_COLLECTION_METRICS]?: AWS_DYNAMODB_ITEM_COLLECTION_METRICS_TYPE;
+  [AWS_DYNAMODB_LIMIT]?: AWS_DYNAMODB_LIMIT_TYPE;
+  [AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES]?: AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_TYPE;
+  [AWS_DYNAMODB_PROJECTION]?: AWS_DYNAMODB_PROJECTION_TYPE;
+  [AWS_DYNAMODB_PROVISIONED_READ_CAPACITY]?: AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_TYPE;
+  [AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY]?: AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_TYPE;
+  [AWS_DYNAMODB_SCANNED_COUNT]?: AWS_DYNAMODB_SCANNED_COUNT_TYPE;
+  [AWS_DYNAMODB_SCAN_FORWARD]?: AWS_DYNAMODB_SCAN_FORWARD_TYPE;
+  [AWS_DYNAMODB_SEGMENT]?: AWS_DYNAMODB_SEGMENT_TYPE;
+  [AWS_DYNAMODB_SELECT]?: AWS_DYNAMODB_SELECT_TYPE;
+  [AWS_DYNAMODB_TABLE_COUNT]?: AWS_DYNAMODB_TABLE_COUNT_TYPE;
+  [AWS_DYNAMODB_TABLE_NAMES]?: AWS_DYNAMODB_TABLE_NAMES_TYPE;
+  [AWS_DYNAMODB_TOTAL_SEGMENTS]?: AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE;
+  [AWS_EXTENDED_REQUEST_ID]?: AWS_EXTENDED_REQUEST_ID_TYPE;
+  [AWS_KINESIS_STREAM_NAME]?: AWS_KINESIS_STREAM_NAME_TYPE;
+  [_AWS_KINESIS_STREAM_NAME]?: _AWS_KINESIS_STREAM_NAME_TYPE;
   [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
@@ -25522,6 +27229,14 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
+  [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
+  [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
+  [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
+  [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
+  [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
@@ -25672,6 +27387,9 @@ export type Attributes = {
   [FAAS_ID]?: FAAS_ID_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
   [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
+  [FAAS_INVOKED_NAME]?: FAAS_INVOKED_NAME_TYPE;
+  [FAAS_INVOKED_PROVIDER]?: FAAS_INVOKED_PROVIDER_TYPE;
+  [FAAS_INVOKED_REGION]?: FAAS_INVOKED_REGION_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
@@ -25724,6 +27442,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_REASONING_EFFORT]?: GEN_AI_REQUEST_REASONING_EFFORT_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
+  [GEN_AI_REQUEST_STOP_SEQUENCES]?: GEN_AI_REQUEST_STOP_SEQUENCES_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
   [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
@@ -25862,6 +27581,7 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
@@ -25876,6 +27596,7 @@ export type Attributes = {
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
+  [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
@@ -25948,6 +27669,8 @@ export type Attributes = {
   [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [RPC_SYSTEM]?: RPC_SYSTEM_TYPE;
+  [RPC_SYSTEM_NAME]?: RPC_SYSTEM_NAME_TYPE;
   [RUNTIME_BUILD]?: RUNTIME_BUILD_TYPE;
   [RUNTIME_NAME]?: RUNTIME_NAME_TYPE;
   [RUNTIME_RAW_DESCRIPTION]?: RUNTIME_RAW_DESCRIPTION_TYPE;
@@ -26014,6 +27737,9 @@ export type Attributes = {
   [SENTRY_STATUS]?: SENTRY_STATUS_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_FROM]?: SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_TO]?: SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_TYPE]?: SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
