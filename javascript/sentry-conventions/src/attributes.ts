@@ -1256,7 +1256,7 @@ export type APP_VITALS_FRAMES_TOTAL_COUNT_TYPE = number;
 // Path: model/attributes/app/app__vitals__stall__duration.json
 
 /**
- * The combined duration of all stalls in milliseconds. Only applies to React Native. `app.vitals.stall.duration`
+ * The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay. `app.vitals.stall.duration`
  *
  * Attribute Value Type: `number` {@link APP_VITALS_STALL_DURATION_TYPE}
  *
@@ -14368,7 +14368,7 @@ export type STALL_PERCENTAGE_TYPE = number;
 // Path: model/attributes/stall_total_time.json
 
 /**
- * The combined duration of all stalls in milliseconds. Only applies to React Native. `stall_total_time`
+ * The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay. `stall_total_time`
  *
  * Attribute Value Type: `number` {@link STALL_TOTAL_TIME_TYPE}
  *
@@ -18566,7 +18566,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'app.vitals.stall.duration': {
-    brief: 'The combined duration of all stalls in milliseconds. Only applies to React Native.',
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -26468,7 +26469,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   stall_total_time: {
-    brief: 'The combined duration of all stalls in milliseconds. Only applies to React Native.',
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',

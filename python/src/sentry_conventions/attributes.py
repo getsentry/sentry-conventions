@@ -965,7 +965,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_VITALS_STALL_DURATION: Literal["app.vitals.stall.duration"] = (
         "app.vitals.stall.duration"
     )
-    """The combined duration of all stalls in milliseconds. Only applies to React Native.
+    """The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.
 
     Type: float
     Apply Scrubbing: manual
@@ -8329,7 +8329,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/stall_total_time.json
     STALL_TOTAL_TIME: Literal["stall_total_time"] = "stall_total_time"
-    """The combined duration of all stalls in milliseconds. Only applies to React Native.
+    """The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.
 
     Type: float
     Apply Scrubbing: manual
@@ -10101,7 +10101,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "app.vitals.stall.duration": AttributeMetadata(
-        brief="The combined duration of all stalls in milliseconds. Only applies to React Native.",
+        brief="The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -18772,7 +18772,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "stall_total_time": AttributeMetadata(
-        brief="The combined duration of all stalls in milliseconds. Only applies to React Native.",
+        brief="The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
