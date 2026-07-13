@@ -3688,6 +3688,28 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 547.6951
     """
 
+    # Path: model/attributes/file/file__path.json
+    FILE_PATH: Literal["file.path"] = "file.path"
+    """Path to the file.
+
+    Type: str
+    Apply Scrubbing: auto - File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "/home/user/example.txt"
+    """
+
+    # Path: model/attributes/file/file__size.json
+    FILE_SIZE: Literal["file.size"] = "file.size"
+    """File size in bytes.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 1024
+    """
+
     # Path: model/attributes/flag/flag__evaluation__[key].json
     FLAG_EVALUATION_KEY: Literal["flag.evaluation.<key>"] = "flag.evaluation.<key>"
     """An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.
@@ -13467,6 +13489,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
+    "file.path": AttributeMetadata(
+        brief="Path to the file.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.",
+        ),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="/home/user/example.txt",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[458], description="Added file.path attribute"
+            ),
+        ],
+    ),
+    "file.size": AttributeMetadata(
+        brief="File size in bytes.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=1024,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[458], description="Added file.size attribute"
+            ),
+        ],
+    ),
     "flag.evaluation.<key>": AttributeMetadata(
         brief="An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.",
         type=AttributeType.BOOLEAN,
@@ -20320,6 +20371,8 @@ Attributes = TypedDict(
         "faas.trigger": str,
         "faas.version": str,
         "fcp": float,
+        "file.path": str,
+        "file.size": int,
         "flag.evaluation.<key>": bool,
         "fp": float,
         "frames.delay": int,
