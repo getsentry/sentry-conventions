@@ -8074,6 +8074,11 @@ export type GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE = string;
 export const GRPC_ERROR_ERROR_INFO_METADATA_KEY = 'grpc.error.error_info.metadata.<key>';
 
 /**
+ * Base key for {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY}. Use with a dynamic suffix, e.g. `${GRPC_ERROR_ERROR_INFO_METADATA_KEY_BASE}.${key}`.
+ */
+export const GRPC_ERROR_ERROR_INFO_METADATA_KEY_BASE = 'grpc.error.error_info.metadata';
+
+/**
  * Type for {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY} grpc.error.error_info.metadata.<key>
  */
 export type GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE = string;
