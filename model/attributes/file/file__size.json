@@ -1,0 +1,18 @@
+{
+  "key": "file.size",
+  "brief": "File size in bytes.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": 1024,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [458],
+      "description": "Added file.size attribute"
+    }
+  ]
+}
