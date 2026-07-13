@@ -1,0 +1,24 @@
+{
+  "key": "aws.request.extended_id",
+  "brief": "The AWS extended request ID as returned in the response headers.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=",
+  "alias": ["aws.extended_request_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "aws.extended_request_id",
+    "reason": "This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [480],
+      "description": "Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id"
+    }
+  ]
+}
