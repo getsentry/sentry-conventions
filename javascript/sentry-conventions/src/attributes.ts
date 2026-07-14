@@ -12413,7 +12413,7 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  *
  * Aliases: {@link SENTRY_PROFILE_ID} `sentry.profile_id`
  *
- * @deprecated Use {@link SENTRY_PROFILE_ID} (sentry.profile_id) instead - This attribute is being deprecated in favor of sentry.profile_id.
+ * @deprecated Use {@link SENTRY_PROFILE_ID} (sentry.profile_id) instead
  * @example "123e4567e89b12d3a456426614174000"
  */
 export const PROFILE_ID = 'profile_id';
@@ -21681,7 +21681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.environment'],
     changelog: [
-      { version: 'next', description: 'Configured backfilling to sentry.environment' },
+      { version: 'next', prs: [427], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -25067,7 +25067,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
     },
     aliases: ['http.request.method', 'http.request_method', 'http.method'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'middleware.name': {
     brief: 'The name of the middleware.',
@@ -25902,16 +25906,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     deprecation: {
       replacement: 'sentry.profile_id',
-      reason: 'This attribute is being deprecated in favor of sentry.profile_id.',
     },
     aliases: ['sentry.profile_id'],
-    changelog: [
-      {
-        version: 'next',
-        prs: [497],
-        description: 'Added profile_id attribute, deprecated in favor of sentry.profile_id',
-      },
-    ],
+    changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
   },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
@@ -25954,7 +25951,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.release'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalizatin to sentry.release' },
+      { version: 'next', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -25985,7 +25982,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.replay_id'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization to sentry.replay_id' },
+      { version: 'next', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
     ],

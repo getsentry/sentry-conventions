@@ -10,7 +10,7 @@
   "alias": ["sentry.profile_id"],
   "deprecation": {
     "_status": "normalize",
-    "replacement": "sentry.profile_id",
+    "replacement": "sentry.profile_id"
   },
   "visibility": "public",
   "changelog": [

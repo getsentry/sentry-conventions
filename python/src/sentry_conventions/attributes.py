@@ -7284,7 +7284,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.profile_id
-    DEPRECATED: Use sentry.profile_id instead - This attribute is being deprecated in favor of sentry.profile_id.
+    DEPRECATED: Use sentry.profile_id instead
     Example: "123e4567e89b12d3a456426614174000"
     """
 
@@ -13465,13 +13465,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="production",
         deprecation=DeprecationInfo(
-            replacement="sentry.environment", status=DeprecationStatus.BACKFILL
+            replacement="sentry.environment", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["sentry.environment"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                description="Configured backfilling to sentry.environment",
+                version="next", prs=[427], description="Configured normalization"
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -17102,9 +17101,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET",
-        deprecation=DeprecationInfo(replacement="http.request.method"),
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["http.request.method", "http.request_method", "http.method"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17979,16 +17983,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
         deprecation=DeprecationInfo(
-            replacement="sentry.profile_id",
-            reason="This attribute is being deprecated in favor of sentry.profile_id.",
-            status=DeprecationStatus.NORMALIZE,
+            replacement="sentry.profile_id", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["sentry.profile_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[497],
-                description="Added profile_id attribute, deprecated in favor of sentry.profile_id",
+                version="next", prs=[497], description="Added profile_id attribute"
             ),
         ],
     ),
@@ -18034,9 +18034,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.release"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[497],
-                description="Configured normalizatin to sentry.release",
+                version="next", prs=[497], description="Configured normalization"
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -18067,9 +18065,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.replay_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[497],
-                description="Configured normalization to sentry.replay_id",
+                version="next", prs=[497], description="Configured normalization"
             ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
