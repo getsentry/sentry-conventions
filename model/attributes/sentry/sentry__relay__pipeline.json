@@ -1,6 +1,6 @@
 {
   "key": "sentry.relay.pipeline",
-  "brief": "The pipeline an item went through in Relay.",
+  "brief": "An internal descriptor of which processing pipeline an item went through in Relay.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
