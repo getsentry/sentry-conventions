@@ -9,9 +9,9 @@
   "example": 2,
   "alias": ["rpc.response.status_code"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": null,
     "replacement": "rpc.response.status_code",
-    "reason": "This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement."
+    "reason": "Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name."
   },
   "visibility": "public",
   "changelog": [

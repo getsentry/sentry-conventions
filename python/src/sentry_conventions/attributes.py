@@ -7120,7 +7120,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: rpc.response.status_code
-    DEPRECATED: Use rpc.response.status_code instead - This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement.
+    DEPRECATED: Use rpc.response.status_code instead - Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.
     Example: 2
     """
 
@@ -17353,8 +17353,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2,
         deprecation=DeprecationInfo(
             replacement="rpc.response.status_code",
-            reason="This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement.",
-            status=DeprecationStatus.BACKFILL,
+            reason="Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.",
         ),
         aliases=["rpc.response.status_code"],
         changelog=[

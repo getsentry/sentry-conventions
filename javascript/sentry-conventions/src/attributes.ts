@@ -12162,7 +12162,7 @@ export type ROUTE_TYPE = string;
  *
  * Aliases: {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
  *
- * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead - This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement.
+ * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead - Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.
  * @example 2
  */
 export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
@@ -25059,7 +25059,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'rpc.response.status_code',
       reason:
-        'This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement.',
+        'Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.',
     },
     aliases: ['rpc.response.status_code'],
     changelog: [
