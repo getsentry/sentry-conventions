@@ -259,6 +259,7 @@ class _AttributeNamesMeta(type):
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
+        "RPC_GRPC_STATUS_CODE",
         "RPC_SYSTEM",
         "RUNTIME_BUILD",
         "RUNTIME_NAME",
@@ -7118,6 +7119,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: rpc.response.status_code
+    DEPRECATED: Use rpc.response.status_code instead - This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement.
     Example: 2
     """
 
@@ -7142,6 +7145,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: rpc.grpc.status_code
     Example: "DEADLINE_EXCEEDED"
     """
 
@@ -17347,7 +17351,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=2,
+        deprecation=DeprecationInfo(
+            replacement="rpc.response.status_code",
+            reason="This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["rpc.response.status_code"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated rpc.grpc.status_code in favor of rpc.response.status_code",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17372,7 +17386,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="DEADLINE_EXCEEDED",
+        aliases=["rpc.grpc.status_code"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added rpc.grpc.status_code as an alias"
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[352],

@@ -12160,6 +12160,9 @@ export type ROUTE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
+ *
+ * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead - This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement.
  * @example 2
  */
 export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
@@ -12201,6 +12204,8 @@ export type RPC_METHOD_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`
  *
  * @example "DEADLINE_EXCEEDED"
  */
@@ -25051,7 +25056,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 2,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'rpc.response.status_code',
+      reason:
+        'This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement.',
+    },
+    aliases: ['rpc.response.status_code'],
+    changelog: [
+      { version: 'next', description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'rpc.method': {
     brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
@@ -25073,7 +25088,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'DEADLINE_EXCEEDED',
-    changelog: [{ version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' }],
+    aliases: ['rpc.grpc.status_code'],
+    changelog: [
+      { version: 'next', description: 'Added rpc.grpc.status_code as an alias' },
+      { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
+    ],
   },
   'rpc.service': {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',

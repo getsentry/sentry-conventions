@@ -7,8 +7,18 @@
   },
   "is_in_otel": true,
   "example": 2,
+  "alias": ["rpc.response.status_code"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "rpc.response.status_code",
+    "reason": "This attribute is being deprecated in favor of rpc.response.status_code, which is the OTel-aligned replacement."
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated rpc.grpc.status_code in favor of rpc.response.status_code"
+    },
     {
       "version": "0.4.0",
       "prs": [228]
