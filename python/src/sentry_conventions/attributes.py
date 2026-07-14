@@ -253,6 +253,7 @@ class _AttributeNamesMeta(type):
         "OTEL_KIND",
         "PERFORMANCE_ACTIVATIONSTART",
         "PERFORMANCE_TIMEORIGIN",
+        "PROFILE_ID",
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -7184,6 +7185,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.04.2"
     """
 
+    # Path: model/attributes/profile_id.json
+    PROFILE_ID: Literal["profile_id"] = "profile_id"
+    """The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.profile_id
+    DEPRECATED: Use sentry.profile_id instead - This attribute is being deprecated in favor of sentry.profile_id.
+    Example: "123e4567e89b12d3a456426614174000"
+    """
+
     # Path: model/attributes/query/query__[key].json
     QUERY_KEY: Literal["query.<key>"] = "query.<key>"
     """An item in a query string. Usually added by client-side routing frameworks like vue-router.
@@ -7213,7 +7227,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry release.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.release
@@ -7963,6 +7977,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Aliases: profile_id
     Example: "123e4567e89b12d3a456426614174000"
     """
 
@@ -13211,9 +13226,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
-        deprecation=DeprecationInfo(replacement="sentry.environment"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.environment", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["sentry.environment"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Configured backfilling to sentry.environment",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17678,6 +17699,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "profile_id": AttributeMetadata(
+        brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="123e4567e89b12d3a456426614174000",
+        deprecation=DeprecationInfo(
+            replacement="sentry.profile_id",
+            reason="This attribute is being deprecated in favor of sentry.profile_id.",
+            status=DeprecationStatus.NORMALIZE,
+        ),
+        aliases=["sentry.profile_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[497],
+                description="Added profile_id attribute, deprecated in favor of sentry.profile_id",
+            ),
+        ],
+    ),
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
@@ -17710,13 +17752,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
-        deprecation=DeprecationInfo(replacement="sentry.release"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.release", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["sentry.release"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[497],
+                description="Configured normalizatin to sentry.release",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17740,9 +17789,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
-        deprecation=DeprecationInfo(replacement="sentry.replay_id"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.replay_id", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["sentry.replay_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[497],
+                description="Configured normalization to sentry.replay_id",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -18509,7 +18565,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
+        aliases=["profile_id"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Added profile_id as an alias"
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[344],
@@ -20730,6 +20790,7 @@ Attributes = TypedDict(
         "process.runtime.engine.version": str,
         "process.runtime.name": str,
         "process.runtime.version": str,
+        "profile_id": str,
         "query.<key>": str,
         "react.version": str,
         "release": str,
