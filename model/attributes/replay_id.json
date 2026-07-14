@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "description": "Configured normalization to sentry.replay_id",
+      "description": "Configured normalization",
       "prs": [497]
     },
     {
