@@ -1,0 +1,23 @@
+{
+  "key": "ai.response.text",
+  "brief": "The text response from the AI model.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "The weather in Paris is currently rainy.",
+  "alias": ["gen_ai.output.messages", "ai.response.toolCalls"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.output.messages"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [497],
+      "description": "Added ai.response.text attribute"
+    }
+  ]
+}

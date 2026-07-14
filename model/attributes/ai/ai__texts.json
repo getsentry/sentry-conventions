@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": ["Hello, how are you?", "What is the capital of France?"],
-  "alias": ["gen_ai.input.messages"],
+  "alias": ["gen_ai.input.messages", "ai.prompt.messages"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.input.messages"
