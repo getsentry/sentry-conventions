@@ -8,7 +8,17 @@
   "is_in_otel": false,
   "visibility": "public",
   "example": "high",
+  "alias": ["gen_ai.request.reasoning.level"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.request.reasoning.level"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "prs": [502],
+      "description": "Deprecated in favor of gen_ai.request.reasoning.level"
+    },
     {
       "version": "0.13.0",
       "prs": [334],
