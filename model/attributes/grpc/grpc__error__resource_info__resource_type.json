@@ -1,0 +1,18 @@
+{
+  "key": "grpc.error.resource_info.resource_type",
+  "brief": "The type of resource being accessed, from a google.rpc.ResourceInfo error detail.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "database",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [460],
+      "description": "Added grpc.error.resource_info.resource_type attribute"
+    }
+  ]
+}

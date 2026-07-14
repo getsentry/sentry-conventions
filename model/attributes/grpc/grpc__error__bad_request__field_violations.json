@@ -1,0 +1,20 @@
+{
+  "key": "grpc.error.bad_request.field_violations",
+  "brief": "The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": [
+    "{\"field\":\"email\",\"description\":\"must be a valid email address\",\"reason\":\"FIELD_INVALID\",\"localized_message\":{\"locale\":\"en-US\",\"message\":\"Must be a valid email address\"}}"
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [460],
+      "description": "Added grpc.error.bad_request.field_violations attribute"
+    }
+  ]
+}

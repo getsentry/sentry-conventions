@@ -1,0 +1,18 @@
+{
+  "key": "grpc.error.resource_info.resource_name",
+  "brief": "The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "projects/example/instances/example-instance",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [460],
+      "description": "Added grpc.error.resource_info.resource_name attribute"
+    }
+  ]
+}
