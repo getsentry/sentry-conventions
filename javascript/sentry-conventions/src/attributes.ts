@@ -352,6 +352,30 @@ export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
  */
 export type AI_PRESENCE_PENALTY_TYPE = number;
 
+// Path: model/attributes/ai/ai__prompt__messages.json
+
+/**
+ * The input messages sent to the AI model. `ai.prompt.messages`
+ *
+ * Attribute Value Type: `string` {@link AI_PROMPT_MESSAGES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`
+ *
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
+ * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
+ */
+export const AI_PROMPT_MESSAGES = 'ai.prompt.messages';
+
+/**
+ * Type for {@link AI_PROMPT_MESSAGES} ai.prompt.messages
+ */
+export type AI_PROMPT_MESSAGES_TYPE = string;
+
 // Path: model/attributes/ai/ai__prompt_tokens__used.json
 
 /**
@@ -441,6 +465,54 @@ export const AI_RESPONSE_FORMAT = 'ai.response_format';
  * Type for {@link AI_RESPONSE_FORMAT} ai.response_format
  */
 export type AI_RESPONSE_FORMAT_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__text.json
+
+/**
+ * The text response from the AI model. `ai.response.text`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_OUTPUT_MESSAGES} `gen_ai.output.messages`, {@link AI_RESPONSE_TOOLCALLS} `ai.response.toolCalls`
+ *
+ * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
+ * @example "The weather in Paris is currently rainy."
+ */
+export const AI_RESPONSE_TEXT = 'ai.response.text';
+
+/**
+ * Type for {@link AI_RESPONSE_TEXT} ai.response.text
+ */
+export type AI_RESPONSE_TEXT_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__toolCalls.json
+
+/**
+ * The tool calls in the AI model response. `ai.response.toolCalls`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_TOOLCALLS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_OUTPUT_MESSAGES} `gen_ai.output.messages`, {@link AI_RESPONSE_TEXT} `ai.response.text`
+ *
+ * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
+ * @example "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
+ */
+export const AI_RESPONSE_TOOLCALLS = 'ai.response.toolCalls';
+
+/**
+ * Type for {@link AI_RESPONSE_TOOLCALLS} ai.response.toolCalls
+ */
+export type AI_RESPONSE_TOOLCALLS_TYPE = string;
 
 // Path: model/attributes/ai/ai__search_queries.json
 
@@ -592,7 +664,7 @@ export type AI_TEMPERATURE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example ["Hello, how are you?","What is the capital of France?"]
@@ -603,6 +675,54 @@ export const AI_TEXTS = 'ai.texts';
  * Type for {@link AI_TEXTS} ai.texts
  */
 export type AI_TEXTS_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__toolCall__args.json
+
+/**
+ * The arguments of the tool call. `ai.toolCall.args`
+ *
+ * Attribute Value Type: `string` {@link AI_TOOLCALL_ARGS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_TOOL_CALL_ARGUMENTS} `gen_ai.tool.call.arguments`, {@link GEN_AI_TOOL_INPUT} `gen_ai.tool.input`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_ARGUMENTS} (gen_ai.tool.call.arguments) instead
+ * @example "{\"location\": \"Paris\"}"
+ */
+export const AI_TOOLCALL_ARGS = 'ai.toolCall.args';
+
+/**
+ * Type for {@link AI_TOOLCALL_ARGS} ai.toolCall.args
+ */
+export type AI_TOOLCALL_ARGS_TYPE = string;
+
+// Path: model/attributes/ai/ai__toolCall__result.json
+
+/**
+ * The result of the tool call. `ai.toolCall.result`
+ *
+ * Attribute Value Type: `string` {@link AI_TOOLCALL_RESULT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
+ * @example "rainy, 57°F"
+ */
+export const AI_TOOLCALL_RESULT = 'ai.toolCall.result';
+
+/**
+ * Type for {@link AI_TOOLCALL_RESULT} ai.toolCall.result
+ */
+export type AI_TOOLCALL_RESULT_TYPE = string;
 
 // Path: model/attributes/ai/ai__tools.json
 
@@ -6781,7 +6901,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_TEXTS} `ai.texts`
+ * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  */
@@ -6845,6 +6965,8 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link AI_RESPONSE_TOOLCALLS} `ai.response.toolCalls`, {@link AI_RESPONSE_TEXT} `ai.response.text`
  *
  * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
  */
@@ -7214,6 +7336,30 @@ export const GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
  */
 export type GEN_AI_REQUEST_TOP_P_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__response__finish_reason.json
+
+/**
+ * The reason why the model stopped generating (singular form). `gen_ai.response.finish_reason`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_FINISH_REASON_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_FINISH_REASONS} `gen_ai.response.finish_reasons`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASONS} (gen_ai.response.finish_reasons) instead
+ * @example "COMPLETE"
+ */
+export const GEN_AI_RESPONSE_FINISH_REASON = 'gen_ai.response.finish_reason';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_FINISH_REASON} gen_ai.response.finish_reason
+ */
+export type GEN_AI_RESPONSE_FINISH_REASON_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
 
 /**
@@ -7226,7 +7372,7 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`
+ * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`, {@link GEN_AI_RESPONSE_FINISH_REASON} `gen_ai.response.finish_reason`
  *
  * @example "COMPLETE"
  */
@@ -7499,7 +7645,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_INPUT} `gen_ai.tool.input`
+ * Aliases: {@link GEN_AI_TOOL_INPUT} `gen_ai.tool.input`, {@link AI_TOOLCALL_ARGS} `ai.toolCall.args`
  *
  * @example "{\"location\": \"Paris\"}"
  */
@@ -7522,7 +7668,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
  *
  * @example "rainy, 57°F"
  */
@@ -7587,7 +7733,7 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_ARGUMENTS} `gen_ai.tool.call.arguments`
+ * Aliases: {@link GEN_AI_TOOL_CALL_ARGUMENTS} `gen_ai.tool.call.arguments`, {@link AI_TOOLCALL_ARGS} `ai.toolCall.args`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_ARGUMENTS} (gen_ai.tool.call.arguments) instead
  * @example "{\"location\": \"Paris\"}"
@@ -7611,7 +7757,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -7658,7 +7804,7 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -10435,7 +10581,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead - OTel uses gen_ai.tool.call.result for MCP tool results
  * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
@@ -16541,10 +16687,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.pipeline.name': 'string',
   'ai.preamble': 'string',
   'ai.presence_penalty': 'double',
+  'ai.prompt.messages': 'string',
   'ai.prompt_tokens.used': 'integer',
   'ai.raw_prompting': 'boolean',
   'ai.responses': 'string[]',
   'ai.response_format': 'string',
+  'ai.response.text': 'string',
+  'ai.response.toolCalls': 'string',
   'ai.search_queries': 'string[]',
   'ai.search_results': 'string[]',
   'ai.seed': 'string',
@@ -16552,6 +16701,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.tags': 'string',
   'ai.temperature': 'double',
   'ai.texts': 'string[]',
+  'ai.toolCall.args': 'string',
+  'ai.toolCall.result': 'string',
   'ai.tools': 'string[]',
   'ai.tool_calls': 'string[]',
   'ai.top_k': 'integer',
@@ -16853,6 +17004,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.temperature': 'double',
   'gen_ai.request.top_k': 'integer',
   'gen_ai.request.top_p': 'double',
+  'gen_ai.response.finish_reason': 'string',
   'gen_ai.response.finish_reasons': 'string',
   'gen_ai.response.id': 'string',
   'gen_ai.response.model': 'string',
@@ -17289,10 +17441,13 @@ export type AttributeName =
   | typeof AI_PIPELINE_NAME
   | typeof AI_PREAMBLE
   | typeof AI_PRESENCE_PENALTY
+  | typeof AI_PROMPT_MESSAGES
   | typeof AI_PROMPT_TOKENS_USED
   | typeof AI_RAW_PROMPTING
   | typeof AI_RESPONSES
   | typeof AI_RESPONSE_FORMAT
+  | typeof AI_RESPONSE_TEXT
+  | typeof AI_RESPONSE_TOOLCALLS
   | typeof AI_SEARCH_QUERIES
   | typeof AI_SEARCH_RESULTS
   | typeof AI_SEED
@@ -17300,6 +17455,8 @@ export type AttributeName =
   | typeof AI_TAGS
   | typeof AI_TEMPERATURE
   | typeof AI_TEXTS
+  | typeof AI_TOOLCALL_ARGS
+  | typeof AI_TOOLCALL_RESULT
   | typeof AI_TOOLS
   | typeof AI_TOOL_CALLS
   | typeof AI_TOP_K
@@ -17601,6 +17758,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_TEMPERATURE
   | typeof GEN_AI_REQUEST_TOP_K
   | typeof GEN_AI_REQUEST_TOP_P
+  | typeof GEN_AI_RESPONSE_FINISH_REASON
   | typeof GEN_AI_RESPONSE_FINISH_REASONS
   | typeof GEN_AI_RESPONSE_ID
   | typeof GEN_AI_RESPONSE_MODEL
@@ -18262,6 +18420,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 57, 61, 108] },
     ],
   },
+  'ai.prompt.messages': {
+    brief: 'The input messages sent to the AI model.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"role": "user", "message": "hello"}]',
+    deprecation: {
+      replacement: 'gen_ai.input.messages',
+    },
+    aliases: ['gen_ai.input.messages', 'ai.texts'],
+    changelog: [{ version: 'next', prs: [497], description: 'Added ai.prompt.messages attribute' }],
+  },
   'ai.prompt_tokens.used': {
     brief: 'The number of tokens used to process just the prompt.',
     type: 'integer',
@@ -18320,6 +18493,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55, 127] },
     ],
+  },
+  'ai.response.text': {
+    brief: 'The text response from the AI model.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'The weather in Paris is currently rainy.',
+    deprecation: {
+      replacement: 'gen_ai.output.messages',
+    },
+    aliases: ['gen_ai.output.messages', 'ai.response.toolCalls'],
+    changelog: [{ version: 'next', prs: [497], description: 'Added ai.response.text attribute' }],
+  },
+  'ai.response.toolCalls': {
+    brief: 'The tool calls in the AI model response.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
+    deprecation: {
+      replacement: 'gen_ai.output.messages',
+    },
+    aliases: ['gen_ai.output.messages', 'ai.response.text'],
+    changelog: [{ version: 'next', prs: [497], description: 'Added ai.response.toolCalls attribute' }],
   },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
@@ -18427,11 +18630,41 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.input.messages',
     },
-    aliases: ['gen_ai.input.messages'],
+    aliases: ['gen_ai.input.messages', 'ai.prompt.messages'],
     changelog: [
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
+  },
+  'ai.toolCall.args': {
+    brief: 'The arguments of the tool call.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"location": "Paris"}',
+    deprecation: {
+      replacement: 'gen_ai.tool.call.arguments',
+    },
+    aliases: ['gen_ai.tool.call.arguments', 'gen_ai.tool.input'],
+    changelog: [{ version: 'next', prs: [497], description: 'Added ai.toolCall.args attribute' }],
+  },
+  'ai.toolCall.result': {
+    brief: 'The result of the tool call.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'rainy, 57°F',
+    deprecation: {
+      replacement: 'gen_ai.tool.call.result',
+    },
+    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
+    changelog: [{ version: 'next', prs: [497], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
     brief: 'For an AI model call, the functions that are available',
@@ -22106,7 +22339,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-    aliases: ['ai.texts'],
+    aliases: ['ai.texts', 'ai.prompt.messages'],
     changelog: [
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
@@ -22153,6 +22386,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+    aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [{ version: '0.4.0', prs: [221] }],
   },
   'gen_ai.pipeline.name': {
@@ -22383,6 +22617,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [57] },
     ],
   },
+  'gen_ai.response.finish_reason': {
+    brief: 'The reason why the model stopped generating (singular form).',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'COMPLETE',
+    deprecation: {
+      replacement: 'gen_ai.response.finish_reasons',
+    },
+    aliases: ['gen_ai.response.finish_reasons'],
+    changelog: [{ version: 'next', prs: [497], description: 'Added gen_ai.response.finish_reason attribute' }],
+  },
   'gen_ai.response.finish_reasons': {
     brief: 'The reason why the model stopped generating.',
     type: 'string',
@@ -22392,7 +22641,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'COMPLETE',
-    aliases: ['ai.finish_reason'],
+    aliases: ['ai.finish_reason', 'gen_ai.response.finish_reason'],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   'gen_ai.response.id': {
@@ -22570,7 +22819,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '{"location": "Paris"}',
-    aliases: ['gen_ai.tool.input'],
+    aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
@@ -22585,7 +22834,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'rainy, 57°F',
-    aliases: ['gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
+    aliases: ['gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
@@ -22626,7 +22875,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.call.arguments',
     },
-    aliases: ['gen_ai.tool.call.arguments'],
+    aliases: ['gen_ai.tool.call.arguments', 'ai.toolCall.args'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
@@ -22644,7 +22893,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'mcp.tool.result.content'],
+    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'mcp.tool.result.content', 'ai.toolCall.result'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [62] },
@@ -22674,7 +22923,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'mcp.tool.result.content'],
+    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
@@ -24443,7 +24692,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
       reason: 'OTel uses gen_ai.tool.call.result for MCP tool results',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'gen_ai.tool.output'],
+    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'gen_ai.tool.output', 'ai.toolCall.result'],
     changelog: [
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.tool.call.result' },
       { version: '0.3.0', prs: [171] },
@@ -27944,10 +28193,13 @@ export type Attributes = {
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
+  [AI_PROMPT_MESSAGES]?: AI_PROMPT_MESSAGES_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
+  [AI_RESPONSE_TEXT]?: AI_RESPONSE_TEXT_TYPE;
+  [AI_RESPONSE_TOOLCALLS]?: AI_RESPONSE_TOOLCALLS_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
   [AI_SEED]?: AI_SEED_TYPE;
@@ -27955,6 +28207,8 @@ export type Attributes = {
   [AI_TAGS]?: AI_TAGS_TYPE;
   [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
   [AI_TEXTS]?: AI_TEXTS_TYPE;
+  [AI_TOOLCALL_ARGS]?: AI_TOOLCALL_ARGS_TYPE;
+  [AI_TOOLCALL_RESULT]?: AI_TOOLCALL_RESULT_TYPE;
   [AI_TOOLS]?: AI_TOOLS_TYPE;
   [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOP_K]?: AI_TOP_K_TYPE;
@@ -28256,6 +28510,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
   [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
+  [GEN_AI_RESPONSE_FINISH_REASON]?: GEN_AI_RESPONSE_FINISH_REASON_TYPE;
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;

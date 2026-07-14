@@ -1,0 +1,23 @@
+{
+  "key": "ai.response.toolCalls",
+  "brief": "The tool calls in the AI model response.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]",
+  "alias": ["gen_ai.output.messages", "ai.response.text"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.output.messages"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [497],
+      "description": "Added ai.response.toolCalls attribute"
+    }
+  ]
+}
