@@ -12960,6 +12960,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[501],
                 description="Improved example and added deprecation reason",
             ),
             ChangelogEntry(version="0.4.0", prs=[199]),
