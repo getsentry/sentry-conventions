@@ -9,11 +9,16 @@
   "example": "123e4567e89b12d3a456426614174000",
   "alias": ["sentry.replay_id"],
   "deprecation": {
-    "_status": null,
+    "_status": "normalize",
     "replacement": "sentry.replay_id"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Configured normalization to sentry.replay_id",
+      "prs": [497]
+    },
     {
       "version": "0.1.0",
       "prs": [61]

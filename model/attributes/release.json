@@ -3,17 +3,22 @@
   "brief": "The sentry release.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "production",
   "alias": ["sentry.release"],
   "deprecation": {
-    "_status": null,
+    "_status": "normalize",
     "replacement": "sentry.release"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Configured normalizatin to sentry.release",
+      "prs": [497]
+    },
     {
       "version": "0.1.0",
       "prs": [61, 127]
