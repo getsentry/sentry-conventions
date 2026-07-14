@@ -188,6 +188,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
+        "GEN_AI_REQUEST_REASONING_EFFORT",
         "GEN_AI_RESPONSE_TEXT",
         "GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN",
         "GEN_AI_RESPONSE_TOOL_CALLS",
@@ -4272,6 +4273,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
+    GEN_AI_REQUEST_REASONING_LEVEL: Literal["gen_ai.request.reasoning.level"] = (
+        "gen_ai.request.reasoning.level"
+    )
+    """The reasoning or thinking effort level requested for a GenAI model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: gen_ai.request.reasoning_effort
+    Example: "high"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
     GEN_AI_REQUEST_REASONING_EFFORT: Literal["gen_ai.request.reasoning_effort"] = (
         "gen_ai.request.reasoning_effort"
@@ -4282,6 +4297,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.request.reasoning.level
+    DEPRECATED: Use gen_ai.request.reasoning.level instead
     Example: "high"
     """
 
@@ -14246,6 +14263,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
     ),
+    "gen_ai.request.reasoning.level": AttributeMetadata(
+        brief="The reasoning or thinking effort level requested for a GenAI model.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="high",
+        aliases=["gen_ai.request.reasoning_effort"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[502],
+                description="Added gen_ai.request.reasoning.level attribute",
+            ),
+        ],
+    ),
     "gen_ai.request.reasoning_effort": AttributeMetadata(
         brief="Constrains the effort on reasoning for reasoning models. Supported values vary by provider.",
         type=AttributeType.STRING,
@@ -14253,7 +14286,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="high",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.reasoning.level",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.request.reasoning.level"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[502],
+                description="Deprecated in favor of gen_ai.request.reasoning.level",
+            ),
             ChangelogEntry(
                 version="0.13.0",
                 prs=[334],
@@ -20498,6 +20541,7 @@ Attributes = TypedDict(
         "gen_ai.request.messages": str,
         "gen_ai.request.model": str,
         "gen_ai.request.presence_penalty": float,
+        "gen_ai.request.reasoning.level": str,
         "gen_ai.request.reasoning_effort": str,
         "gen_ai.request.seed": str,
         "gen_ai.request.stop_sequences": List[str],
