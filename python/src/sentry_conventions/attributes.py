@@ -7931,6 +7931,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "auto.http.otel.fastify"
     """
 
+    # Path: model/attributes/sentry/sentry__pageload__span_id.json
+    SENTRY_PAGELOAD_SPAN_ID: Literal["sentry.pageload.span_id"] = (
+        "sentry.pageload.span_id"
+    )
+    """The id of the pageload span, set by web vital spans and metrics
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "bf2c8d3df84524de"
+    """
+
     # Path: model/attributes/sentry/sentry__platform.json
     SENTRY_PLATFORM: Literal["sentry.platform"] = "sentry.platform"
     """The sdk platform that generated the event.
@@ -18441,6 +18454,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.pageload.span_id": AttributeMetadata(
+        brief="The id of the pageload span, set by web vital spans and metrics",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="bf2c8d3df84524de",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[495],
+                description="Added sentry.pageload.span_id attribute",
+            ),
+        ],
+    ),
     "sentry.platform": AttributeMetadata(
         brief="The sdk platform that generated the event.",
         type=AttributeType.STRING,
@@ -20712,6 +20740,7 @@ Attributes = TypedDict(
         "sentry.observed_timestamp_nanos": str,
         "sentry.op": str,
         "sentry.origin": str,
+        "sentry.pageload.span_id": str,
         "sentry.platform": str,
         "sentry.profile_id": str,
         "sentry.profiler_id": str,
