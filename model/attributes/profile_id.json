@@ -11,13 +11,12 @@
   "deprecation": {
     "_status": "normalize",
     "replacement": "sentry.profile_id",
-    "reason": "This attribute is being deprecated in favor of sentry.profile_id."
   },
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
-      "description": "Added profile_id attribute, deprecated in favor of sentry.profile_id",
+      "description": "Added profile_id attribute",
       "prs": [497]
     }
   ]
