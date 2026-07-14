@@ -7785,7 +7785,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__relay__pipeline.json
     SENTRY_RELAY_PIPELINE: Literal["sentry.relay.pipeline"] = "sentry.relay.pipeline"
-    """The pipeline an item went through in Relay.
+    """An internal descriptor of which processing pipeline an item went through in Relay.
 
     Type: str
     Apply Scrubbing: manual
@@ -18080,7 +18080,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.relay.pipeline": AttributeMetadata(
-        brief="The pipeline an item went through in Relay.",
+        brief="An internal descriptor of which processing pipeline an item went through in Relay.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,

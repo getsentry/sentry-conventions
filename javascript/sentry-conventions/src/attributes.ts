@@ -13397,7 +13397,7 @@ export type SENTRY_RELAY_INGRESS_TYPE = string;
 // Path: model/attributes/sentry/sentry__relay__pipeline.json
 
 /**
- * The pipeline an item went through in Relay. `sentry.relay.pipeline`
+ * An internal descriptor of which processing pipeline an item went through in Relay. `sentry.relay.pipeline`
  *
  * Attribute Value Type: `string` {@link SENTRY_RELAY_PIPELINE_TYPE}
  *
@@ -25787,7 +25787,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [491], description: 'Added sentry.relay.ingress attribute' }],
   },
   'sentry.relay.pipeline': {
-    brief: 'The pipeline an item went through in Relay.',
+    brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
