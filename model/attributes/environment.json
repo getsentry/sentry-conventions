@@ -9,14 +9,15 @@
   "example": "production",
   "alias": ["sentry.environment"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "sentry.environment"
   },
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
-      "description": "Configured backfilling to sentry.environment"
+      "description": "Configured normalize to sentry.environment",
+      "prs": [427]
     },
     {
       "version": "0.1.0",
