@@ -8,7 +8,6 @@
   "is_in_otel": true,
   "visibility": "public",
   "example": "high",
-  "alias": ["gen_ai.request.reasoning_effort"],
   "changelog": [
     {
       "version": "next",
