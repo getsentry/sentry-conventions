@@ -10,7 +10,7 @@
   "example": 5000,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [460],
       "description": "Added grpc.error.retry_info.retry_delay_ms attribute"
     }

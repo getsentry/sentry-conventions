@@ -10,7 +10,7 @@
   "example": 1024,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [458],
       "description": "Added file.size attribute"
     }

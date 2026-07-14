@@ -21644,7 +21644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '/home/user/example.txt',
-    changelog: [{ version: 'next', prs: [458], description: 'Added file.path attribute' }],
+    changelog: [{ version: '0.17.0', prs: [458], description: 'Added file.path attribute' }],
   },
   'file.size': {
     brief: 'File size in bytes.',
@@ -21655,7 +21655,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 1024,
-    changelog: [{ version: 'next', prs: [458], description: 'Added file.size attribute' }],
+    changelog: [{ version: '0.17.0', prs: [458], description: 'Added file.size attribute' }],
   },
   'flag.evaluation.<key>': {
     brief:
@@ -22310,7 +22310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'high',
-    changelog: [{ version: 'next', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
+    changelog: [{ version: '0.17.0', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
   },
   'gen_ai.request.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -22986,7 +22986,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '{"field":"email","description":"must be a valid email address","reason":"FIELD_INVALID","localized_message":{"locale":"en-US","message":"Must be a valid email address"}}',
     ],
     changelog: [
-      { version: 'next', prs: [460], description: 'Added grpc.error.bad_request.field_violations attribute' },
+      { version: '0.17.0', prs: [460], description: 'Added grpc.error.bad_request.field_violations attribute' },
     ],
   },
   'grpc.error.debug_info.detail': {
@@ -22999,7 +22999,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'at com.example.Service.method(Service.java:42)',
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.debug_info.detail attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.debug_info.detail attribute' }],
   },
   'grpc.error.debug_info.stack_entries': {
     brief:
@@ -23011,7 +23011,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: ['com.example.Service.method(Service.java:42)', 'com.example.Server.handle(Server.java:100)'],
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.debug_info.stack_entries attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.debug_info.stack_entries attribute' }],
   },
   'grpc.error.error_info.domain': {
     brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
@@ -23022,7 +23022,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'example.sentry.io',
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.error_info.domain attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.domain attribute' }],
   },
   'grpc.error.error_info.metadata.<key>': {
     brief:
@@ -23035,7 +23035,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "grpc.error.error_info.metadata.user_id='123'",
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.error_info.metadata.<key> attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.metadata.<key> attribute' }],
   },
   'grpc.error.error_info.reason': {
     brief:
@@ -23047,7 +23047,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'FIELD_INVALID',
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.error_info.reason attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.reason attribute' }],
   },
   'grpc.error.precondition_failure.violations': {
     brief:
@@ -23060,7 +23060,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['{"type":"TOS","subject":"example.com/user/123","description":"User must accept the terms of service"}'],
     changelog: [
-      { version: 'next', prs: [460], description: 'Added grpc.error.precondition_failure.violations attribute' },
+      { version: '0.17.0', prs: [460], description: 'Added grpc.error.precondition_failure.violations attribute' },
     ],
   },
   'grpc.error.quota_failure.violations': {
@@ -23075,7 +23075,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: [
       '{"subject":"clientip:127.0.0.1","description":"Limit checks failed.","api_service":"example.googleapis.com","quota_metric":"example.googleapis.com/read_requests","quota_id":"ReadRequestsPerMinutePerProject","quota_dimensions":{"region":"us-central1"},"quota_value":1000}',
     ],
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.quota_failure.violations attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.quota_failure.violations attribute' }],
   },
   'grpc.error.resource_info.description': {
     brief:
@@ -23087,7 +23087,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'Instance is not ready for the request.',
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.description attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.description attribute' }],
   },
   'grpc.error.resource_info.owner': {
     brief:
@@ -23099,7 +23099,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'user@example.com',
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.owner attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.owner attribute' }],
   },
   'grpc.error.resource_info.resource_name': {
     brief:
@@ -23111,7 +23111,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'projects/example/instances/example-instance',
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.resource_name attribute' }],
+    changelog: [
+      { version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.resource_name attribute' },
+    ],
   },
   'grpc.error.resource_info.resource_type': {
     brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
@@ -23122,7 +23124,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'database',
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.resource_type attribute' }],
+    changelog: [
+      { version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.resource_type attribute' },
+    ],
   },
   'grpc.error.retry_info.retry_delay_ms': {
     brief:
@@ -23134,7 +23138,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 5000,
-    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
   },
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
@@ -26319,7 +26323,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'bf2c8d3df84524de',
-    changelog: [{ version: 'next', prs: [495], description: 'Added sentry.pageload.span_id attribute' }],
+    changelog: [{ version: '0.17.0', prs: [495], description: 'Added sentry.pageload.span_id attribute' }],
   },
   'sentry.platform': {
     brief: 'The sdk platform that generated the event.',
@@ -26364,7 +26368,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'internal',
     example: 'OTEL',
-    changelog: [{ version: 'next', prs: [491], description: 'Added sentry.relay.ingress attribute' }],
+    changelog: [{ version: '0.17.0', prs: [491], description: 'Added sentry.relay.ingress attribute' }],
   },
   'sentry.relay.pipeline': {
     brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
@@ -26375,7 +26379,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'internal',
     example: 'span v2',
-    changelog: [{ version: 'next', prs: [491], description: 'Added sentry.relay.pipeline attribute' }],
+    changelog: [{ version: '0.17.0', prs: [491], description: 'Added sentry.relay.pipeline attribute' }],
   },
   'sentry.release': {
     brief: 'The sentry release.',

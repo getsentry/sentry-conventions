@@ -10,7 +10,7 @@
   "example": "at com.example.Service.method(Service.java:42)",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [460],
       "description": "Added grpc.error.debug_info.detail attribute"
     }

@@ -11,7 +11,7 @@
   "example": "grpc.error.error_info.metadata.user_id='123'",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [460],
       "description": "Added grpc.error.error_info.metadata.<key> attribute"
     }
