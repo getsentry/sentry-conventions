@@ -7964,6 +7964,28 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18779b64dd35d1a538e7ce2dd2d3fad3"
     """
 
+    # Path: model/attributes/sentry/sentry__relay__ingress.json
+    SENTRY_RELAY_INGRESS: Literal["sentry.relay.ingress"] = "sentry.relay.ingress"
+    """How an item (span, log, &c.) entered Relay.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: internal
+    Example: "OTEL"
+    """
+
+    # Path: model/attributes/sentry/sentry__relay__pipeline.json
+    SENTRY_RELAY_PIPELINE: Literal["sentry.relay.pipeline"] = "sentry.relay.pipeline"
+    """An internal descriptor of which processing pipeline an item went through in Relay.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: internal
+    Example: "span v2"
+    """
+
     # Path: model/attributes/sentry/sentry__release.json
     SENTRY_RELEASE: Literal["sentry.release"] = "sentry.release"
     """The sentry release.
@@ -18478,6 +18500,36 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[242]),
         ],
     ),
+    "sentry.relay.ingress": AttributeMetadata(
+        brief="How an item (span, log, &c.) entered Relay.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        example="OTEL",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[491],
+                description="Added sentry.relay.ingress attribute",
+            ),
+        ],
+    ),
+    "sentry.relay.pipeline": AttributeMetadata(
+        brief="An internal descriptor of which processing pipeline an item went through in Relay.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        example="span v2",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[491],
+                description="Added sentry.relay.pipeline attribute",
+            ),
+        ],
+    ),
     "sentry.release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
@@ -20715,6 +20767,8 @@ Attributes = TypedDict(
         "sentry.platform": str,
         "sentry.profile_id": str,
         "sentry.profiler_id": str,
+        "sentry.relay.ingress": str,
+        "sentry.relay.pipeline": str,
         "sentry.release": str,
         "sentry.replay_id": str,
         "sentry.replay_is_buffering": bool,

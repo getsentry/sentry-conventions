@@ -13695,6 +13695,48 @@ export const SENTRY_PROFILE_ID = 'sentry.profile_id';
  */
 export type SENTRY_PROFILE_ID_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__relay__ingress.json
+
+/**
+ * How an item (span, log, &c.) entered Relay. `sentry.relay.ingress`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_RELAY_INGRESS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example "OTEL"
+ */
+export const SENTRY_RELAY_INGRESS = 'sentry.relay.ingress';
+
+/**
+ * Type for {@link SENTRY_RELAY_INGRESS} sentry.relay.ingress
+ */
+export type SENTRY_RELAY_INGRESS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__relay__pipeline.json
+
+/**
+ * An internal descriptor of which processing pipeline an item went through in Relay. `sentry.relay.pipeline`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_RELAY_PIPELINE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example "span v2"
+ */
+export const SENTRY_RELAY_PIPELINE = 'sentry.relay.pipeline';
+
+/**
+ * Type for {@link SENTRY_RELAY_PIPELINE} sentry.relay.pipeline
+ */
+export type SENTRY_RELAY_PIPELINE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__release.json
 
 /**
@@ -17081,6 +17123,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.platform': 'string',
   'sentry.profiler_id': 'string',
   'sentry.profile_id': 'string',
+  'sentry.relay.ingress': 'string',
+  'sentry.relay.pipeline': 'string',
   'sentry.release': 'string',
   'sentry.replay_id': 'string',
   'sentry.replay_is_buffering': 'boolean',
@@ -17826,6 +17870,8 @@ export type AttributeName =
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
   | typeof SENTRY_PROFILE_ID
+  | typeof SENTRY_RELAY_INGRESS
+  | typeof SENTRY_RELAY_PIPELINE
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
@@ -26275,6 +26321,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     changelog: [{ version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' }],
   },
+  'sentry.relay.ingress': {
+    brief: 'How an item (span, log, &c.) entered Relay.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: 'OTEL',
+    changelog: [{ version: 'next', prs: [491], description: 'Added sentry.relay.ingress attribute' }],
+  },
+  'sentry.relay.pipeline': {
+    brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: 'span v2',
+    changelog: [{ version: 'next', prs: [491], description: 'Added sentry.relay.pipeline attribute' }],
+  },
   'sentry.release': {
     brief: 'The sentry release.',
     type: 'string',
@@ -28445,6 +28513,8 @@ export type Attributes = {
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
+  [SENTRY_RELAY_INGRESS]?: SENTRY_RELAY_INGRESS_TYPE;
+  [SENTRY_RELAY_PIPELINE]?: SENTRY_RELAY_PIPELINE_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
