@@ -266,6 +266,9 @@ class _AttributeNamesMeta(type):
         "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_FRAMES_FROZEN",
+        "SENTRY_FRAMES_SLOW",
+        "SENTRY_FRAMES_TOTAL",
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
@@ -897,7 +900,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: frames.frozen
+    Aliases: frames.frozen, sentry.frames.frozen
     Example: 3
     """
 
@@ -911,7 +914,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: frames.slow
+    Aliases: frames.slow, sentry.frames.slow
     Example: 1
     """
 
@@ -925,7 +928,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: frames.total
+    Aliases: frames.total, sentry.frames.total
     Example: 60
     """
 
@@ -3756,7 +3759,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: app.vitals.frames.frozen.count
+    Aliases: app.vitals.frames.frozen.count, sentry.frames.frozen
     DEPRECATED: Use app.vitals.frames.frozen.count instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 3
     """
@@ -3769,7 +3772,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: app.vitals.frames.slow.count
+    Aliases: app.vitals.frames.slow.count, sentry.frames.slow
     DEPRECATED: Use app.vitals.frames.slow.count instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1
     """
@@ -3782,7 +3785,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: app.vitals.frames.total.count
+    Aliases: app.vitals.frames.total.count, sentry.frames.total
     DEPRECATED: Use app.vitals.frames.total.count instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 60
     """
@@ -7691,6 +7694,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234
     """
 
+    # Path: model/attributes/sentry/sentry__frames__frozen.json
+    SENTRY_FRAMES_FROZEN: Literal["sentry.frames.frozen"] = "sentry.frames.frozen"
+    """The number of frozen frames rendered during the lifetime of the span.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: app.vitals.frames.frozen.count, frames.frozen
+    DEPRECATED: Use app.vitals.frames.frozen.count instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 3
+    """
+
+    # Path: model/attributes/sentry/sentry__frames__slow.json
+    SENTRY_FRAMES_SLOW: Literal["sentry.frames.slow"] = "sentry.frames.slow"
+    """The number of slow frames rendered during the lifetime of the span.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: app.vitals.frames.slow.count, frames.slow
+    DEPRECATED: Use app.vitals.frames.slow.count instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 1
+    """
+
+    # Path: model/attributes/sentry/sentry__frames__total.json
+    SENTRY_FRAMES_TOTAL: Literal["sentry.frames.total"] = "sentry.frames.total"
+    """The number of total frames rendered during the lifetime of the span.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: app.vitals.frames.total.count, frames.total
+    DEPRECATED: Use app.vitals.frames.total.count instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 60
+    """
+
     # Path: model/attributes/sentry/sentry__graphql__operation.json
     SENTRY_GRAPHQL_OPERATION: Literal["sentry.graphql.operation"] = (
         "sentry.graphql.operation"
@@ -10186,8 +10228,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
-        aliases=["frames.frozen"],
+        aliases=["frames.frozen", "sentry.frames.frozen"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.frozen as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -10202,8 +10247,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
-        aliases=["frames.slow"],
+        aliases=["frames.slow", "sentry.frames.slow"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.slow as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -10218,8 +10266,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=60,
-        aliases=["frames.total"],
+        aliases=["frames.total", "sentry.frames.total"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.total as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -13617,8 +13668,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.frozen.count"],
+        aliases=["app.vitals.frames.frozen.count", "sentry.frames.frozen"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.frozen as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -13640,8 +13694,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.slow.count"],
+        aliases=["app.vitals.frames.slow.count", "sentry.frames.slow"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.slow as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -13663,8 +13720,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.total.count"],
+        aliases=["app.vitals.frames.total.count", "sentry.frames.total"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.total as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -18250,6 +18310,63 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.frames.frozen": AttributeMetadata(
+        brief="The number of frozen frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=3,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.frozen.count",
+            reason="Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.frozen.count", "frames.frozen"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.frozen attribute"
+            ),
+        ],
+    ),
+    "sentry.frames.slow": AttributeMetadata(
+        brief="The number of slow frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.slow.count",
+            reason="Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.slow.count", "frames.slow"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.slow attribute"
+            ),
+        ],
+    ),
+    "sentry.frames.total": AttributeMetadata(
+        brief="The number of total frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=60,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.total.count",
+            reason="Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.total.count", "frames.total"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.total attribute"
+            ),
+        ],
+    ),
     "sentry.graphql.operation": AttributeMetadata(
         brief="Indicates the type of graphql operation, emitted by the Javascript SDK.",
         type=AttributeType.STRING,
@@ -20772,6 +20889,9 @@ Attributes = TypedDict(
         "sentry.dsc.transaction": str,
         "sentry.environment": str,
         "sentry.exclusive_time": float,
+        "sentry.frames.frozen": int,
+        "sentry.frames.slow": int,
+        "sentry.frames.total": int,
         "sentry.graphql.operation": str,
         "sentry.group": str,
         "sentry.http.prefetch": bool,
