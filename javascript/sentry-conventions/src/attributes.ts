@@ -13632,6 +13632,27 @@ export const SENTRY_ORIGIN = 'sentry.origin';
  */
 export type SENTRY_ORIGIN_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__pageload__span_id.json
+
+/**
+ * The id of the pageload span, set by web vital spans and metrics `sentry.pageload.span_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_PAGELOAD_SPAN_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "bf2c8d3df84524de"
+ */
+export const SENTRY_PAGELOAD_SPAN_ID = 'sentry.pageload.span_id';
+
+/**
+ * Type for {@link SENTRY_PAGELOAD_SPAN_ID} sentry.pageload.span_id
+ */
+export type SENTRY_PAGELOAD_SPAN_ID_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__platform.json
 
 /**
@@ -17120,6 +17141,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.observed_timestamp_nanos': 'string',
   'sentry.op': 'string',
   'sentry.origin': 'string',
+  'sentry.pageload.span_id': 'string',
   'sentry.platform': 'string',
   'sentry.profiler_id': 'string',
   'sentry.profile_id': 'string',
@@ -17867,6 +17889,7 @@ export type AttributeName =
   | typeof SENTRY_OBSERVED_TIMESTAMP_NANOS
   | typeof SENTRY_OP
   | typeof SENTRY_ORIGIN
+  | typeof SENTRY_PAGELOAD_SPAN_ID
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
   | typeof SENTRY_PROFILE_ID
@@ -26287,6 +26310,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'auto.http.otel.fastify',
     changelog: [{ version: '0.1.0', prs: [68] }, { version: '0.0.0' }],
   },
+  'sentry.pageload.span_id': {
+    brief: 'The id of the pageload span, set by web vital spans and metrics',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'bf2c8d3df84524de',
+    changelog: [{ version: 'next', prs: [495], description: 'Added sentry.pageload.span_id attribute' }],
+  },
   'sentry.platform': {
     brief: 'The sdk platform that generated the event.',
     type: 'string',
@@ -28510,6 +28544,7 @@ export type Attributes = {
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
+  [SENTRY_PAGELOAD_SPAN_ID]?: SENTRY_PAGELOAD_SPAN_ID_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
