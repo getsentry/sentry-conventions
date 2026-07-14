@@ -17,7 +17,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [],
+      "prs": [501],
       "description": "Improved example and added deprecation reason"
     },
     {
