@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [497],
+      "prs": [498],
       "description": "Added gen_ai.response.finish_reason attribute"
     }
   ]

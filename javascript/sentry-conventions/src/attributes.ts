@@ -244,9 +244,9 @@ export type AI_METADATA_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_RESPONSE_MODEL} `gen_ai.response.model`
+ * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead
+ * @deprecated Use {@link GEN_AI_REQUEST_MODEL} (gen_ai.request.model) instead
  * @example "gpt-4"
  */
 export const AI_MODEL_ID = 'ai.model_id';
@@ -364,7 +364,7 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -664,7 +664,7 @@ export type AI_TEMPERATURE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example ["Hello, how are you?","What is the capital of France?"]
@@ -6901,7 +6901,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
+ * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  */
@@ -7012,7 +7012,9 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @deprecated  - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
+ *
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
@@ -7169,6 +7171,8 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link AI_MODEL_ID} `ai.model_id`
  *
  * @example "gpt-4-turbo-preview"
  */
@@ -7417,8 +7421,6 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
- *
- * Aliases: {@link AI_MODEL_ID} `ai.model_id`
  *
  * @example "gpt-4"
  */
@@ -18344,9 +18346,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'gpt-4',
     deprecation: {
-      replacement: 'gen_ai.response.model',
+      replacement: 'gen_ai.request.model',
     },
-    aliases: ['gen_ai.response.model'],
+    aliases: ['gen_ai.request.model'],
     changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
   },
   'ai.model.provider': {
@@ -18432,8 +18434,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.input.messages',
     },
-    aliases: ['gen_ai.input.messages', 'ai.texts'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added ai.prompt.messages attribute' }],
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt'],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.prompt.messages attribute' }],
   },
   'ai.prompt_tokens.used': {
     brief: 'The number of tokens used to process just the prompt.',
@@ -18507,7 +18509,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.output.messages',
     },
     aliases: ['gen_ai.output.messages', 'ai.response.toolCalls'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added ai.response.text attribute' }],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.text attribute' }],
   },
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
@@ -18522,7 +18524,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.output.messages',
     },
     aliases: ['gen_ai.output.messages', 'ai.response.text'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added ai.response.toolCalls attribute' }],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
   },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
@@ -18630,7 +18632,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.input.messages',
     },
-    aliases: ['gen_ai.input.messages', 'ai.prompt.messages'],
+    aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt'],
     changelog: [
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
@@ -18649,7 +18651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.arguments',
     },
     aliases: ['gen_ai.tool.call.arguments', 'gen_ai.tool.input'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added ai.toolCall.args attribute' }],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.args attribute' }],
   },
   'ai.toolCall.result': {
     brief: 'The result of the tool call.',
@@ -18664,7 +18666,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
     },
     aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added ai.toolCall.result attribute' }],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
     brief: 'For an AI model call, the functions that are available',
@@ -22339,7 +22341,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-    aliases: ['ai.texts', 'ai.prompt.messages'],
+    aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
     changelog: [
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
@@ -22411,8 +22413,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
+      replacement: 'gen_ai.input.messages',
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
     },
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages'],
     changelog: [{ version: '0.1.0', prs: [74, 108, 119] }, { version: '0.0.0' }],
   },
   'gen_ai.prompt.name': {
@@ -22517,6 +22521,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4-turbo-preview',
+    aliases: ['ai.model_id'],
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   'gen_ai.request.presence_penalty': {
@@ -22630,7 +22635,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.finish_reasons',
     },
     aliases: ['gen_ai.response.finish_reasons'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added gen_ai.response.finish_reason attribute' }],
+    changelog: [{ version: 'next', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
   },
   'gen_ai.response.finish_reasons': {
     brief: 'The reason why the model stopped generating.',
@@ -22665,7 +22670,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4',
-    aliases: ['ai.model_id'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'gen_ai.response.streaming': {

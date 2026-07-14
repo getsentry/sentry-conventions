@@ -463,8 +463,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.response.model
-    DEPRECATED: Use gen_ai.response.model instead
+    Aliases: gen_ai.request.model
+    DEPRECATED: Use gen_ai.request.model instead
     Example: "gpt-4"
     """
 
@@ -515,7 +515,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.input.messages, ai.texts
+    Aliases: gen_ai.input.messages, ai.texts, gen_ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
@@ -678,7 +678,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.input.messages, ai.prompt.messages
+    Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead
     Example: ["Hello, how are you?","What is the capital of France?"]
     """
@@ -4177,7 +4177,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.texts, ai.prompt.messages
+    Aliases: ai.texts, ai.prompt.messages, gen_ai.prompt
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
@@ -4235,7 +4235,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    DEPRECATED: No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
+    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages
+    DEPRECATED: Use gen_ai.input.messages instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
@@ -4327,6 +4328,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: ai.model_id
     Example: "gpt-4-turbo-preview"
     """
 
@@ -4469,7 +4471,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.model_id
     Example: "gpt-4"
     """
 
@@ -9722,9 +9723,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="gpt-4",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.response.model", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.request.model", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.response.model"],
+        aliases=["gen_ai.request.model"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -9788,11 +9789,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.input.messages", "ai.texts"],
+        aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt"],
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[497],
+                prs=[498],
                 description="Added ai.prompt.messages attribute",
             ),
         ],
@@ -9841,7 +9842,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[497],
+                prs=[498],
                 description="Added ai.response.text attribute",
             ),
         ],
@@ -9860,7 +9861,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[497],
+                prs=[498],
                 description="Added ai.response.toolCalls attribute",
             ),
         ],
@@ -9989,7 +9990,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.input.messages", "ai.prompt.messages"],
+        aliases=["gen_ai.input.messages", "ai.prompt.messages", "gen_ai.prompt"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
@@ -10009,7 +10010,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[497],
+                prs=[498],
                 description="Added ai.toolCall.args attribute",
             ),
         ],
@@ -10033,7 +10034,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[497],
+                prs=[498],
                 description="Added ai.toolCall.result attribute",
             ),
         ],
@@ -14254,7 +14255,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-        aliases=["ai.texts", "ai.prompt.messages"],
+        aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -14316,8 +14317,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
         deprecation=DeprecationInfo(
-            reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
+            replacement="gen_ai.input.messages",
+            reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead.",
+            status=DeprecationStatus.BACKFILL,
         ),
+        aliases=["gen_ai.input.messages", "ai.texts", "ai.prompt.messages"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
             ChangelogEntry(version="0.0.0"),
@@ -14417,6 +14421,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4-turbo-preview",
+        aliases=["ai.model_id"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
@@ -14530,7 +14535,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[497],
+                prs=[498],
                 description="Added gen_ai.response.finish_reason attribute",
             ),
         ],
@@ -14566,7 +14571,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4",
-        aliases=["ai.model_id"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),

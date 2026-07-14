@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [497],
+      "prs": [498],
       "description": "Added ai.toolCall.result attribute"
     }
   ]

@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "visibility": "public",
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-  "alias": ["gen_ai.input.messages", "ai.texts"],
+  "alias": ["gen_ai.input.messages", "ai.texts", "gen_ai.prompt"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.input.messages"
@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [497],
+      "prs": [498],
       "description": "Added ai.prompt.messages attribute"
     }
   ]
