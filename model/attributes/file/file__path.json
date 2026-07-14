@@ -1,0 +1,19 @@
+{
+  "key": "file.path",
+  "brief": "Path to the file.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "File paths can contain end-user paths (e.g. from stack traces) that may be sensitive."
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "/home/user/example.txt",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [458],
+      "description": "Added file.path attribute"
+    }
+  ]
+}

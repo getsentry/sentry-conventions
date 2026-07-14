@@ -6055,6 +6055,48 @@ export const FCP = 'fcp';
  */
 export type FCP_TYPE = number;
 
+// Path: model/attributes/file/file__path.json
+
+/**
+ * Path to the file. `file.path`
+ *
+ * Attribute Value Type: `string` {@link FILE_PATH_TYPE}
+ *
+ * Apply Scrubbing: auto - File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "/home/user/example.txt"
+ */
+export const FILE_PATH = 'file.path';
+
+/**
+ * Type for {@link FILE_PATH} file.path
+ */
+export type FILE_PATH_TYPE = string;
+
+// Path: model/attributes/file/file__size.json
+
+/**
+ * File size in bytes. `file.size`
+ *
+ * Attribute Value Type: `number` {@link FILE_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 1024
+ */
+export const FILE_SIZE = 'file.size';
+
+/**
+ * Type for {@link FILE_SIZE} file.size
+ */
+export type FILE_SIZE_TYPE = number;
+
 // Path: model/attributes/flag/flag__evaluation__[key].json
 
 /**
@@ -7970,6 +8012,286 @@ export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
  * Type for {@link GRAPHQL_OPERATION_TYPE} graphql.operation.type
  */
 export type GRAPHQL_OPERATION_TYPE_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
+
+/**
+ * The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation. `grpc.error.bad_request.field_violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"field\":\"email\",\"description\":\"must be a valid email address\",\"reason\":\"FIELD_INVALID\",\"localized_message\":{\"locale\":\"en-US\",\"message\":\"Must be a valid email address\"}}"]
+ */
+export const GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS = 'grpc.error.bad_request.field_violations';
+
+/**
+ * Type for {@link GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS} grpc.error.bad_request.field_violations
+ */
+export type GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/grpc/grpc__error__debug_info__detail.json
+
+/**
+ * Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.debug_info.detail`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "at com.example.Service.method(Service.java:42)"
+ */
+export const GRPC_ERROR_DEBUG_INFO_DETAIL = 'grpc.error.debug_info.detail';
+
+/**
+ * Type for {@link GRPC_ERROR_DEBUG_INFO_DETAIL} grpc.error.debug_info.detail
+ */
+export type GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__debug_info__stack_entries.json
+
+/**
+ * The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.debug_info.stack_entries`
+ *
+ * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["com.example.Service.method(Service.java:42)","com.example.Server.handle(Server.java:100)"]
+ */
+export const GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES = 'grpc.error.debug_info.stack_entries';
+
+/**
+ * Type for {@link GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES} grpc.error.debug_info.stack_entries
+ */
+export type GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE = Array<string>;
+
+// Path: model/attributes/grpc/grpc__error__error_info__domain.json
+
+/**
+ * The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail. `grpc.error.error_info.domain`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "example.sentry.io"
+ */
+export const GRPC_ERROR_ERROR_INFO_DOMAIN = 'grpc.error.error_info.domain';
+
+/**
+ * Type for {@link GRPC_ERROR_ERROR_INFO_DOMAIN} grpc.error.error_info.domain
+ */
+export type GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__error_info__metadata__[key].json
+
+/**
+ * Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.error_info.metadata.<key>`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "grpc.error.error_info.metadata.user_id='123'"
+ */
+export const GRPC_ERROR_ERROR_INFO_METADATA_KEY = 'grpc.error.error_info.metadata.<key>';
+
+/**
+ * Base key for {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY}. Use with a dynamic suffix, e.g. `${GRPC_ERROR_ERROR_INFO_METADATA_KEY_BASE}.${key}`.
+ */
+export const GRPC_ERROR_ERROR_INFO_METADATA_KEY_BASE = 'grpc.error.error_info.metadata';
+
+/**
+ * Type for {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY} grpc.error.error_info.metadata.<key>
+ */
+export type GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__error_info__reason.json
+
+/**
+ * The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail. `grpc.error.error_info.reason`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_ERROR_INFO_REASON_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "FIELD_INVALID"
+ */
+export const GRPC_ERROR_ERROR_INFO_REASON = 'grpc.error.error_info.reason';
+
+/**
+ * Type for {@link GRPC_ERROR_ERROR_INFO_REASON} grpc.error.error_info.reason
+ */
+export type GRPC_ERROR_ERROR_INFO_REASON_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__precondition_failure__violations.json
+
+/**
+ * The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users. `grpc.error.precondition_failure.violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"type\":\"TOS\",\"subject\":\"example.com/user/123\",\"description\":\"User must accept the terms of service\"}"]
+ */
+export const GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS = 'grpc.error.precondition_failure.violations';
+
+/**
+ * Type for {@link GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS} grpc.error.precondition_failure.violations
+ */
+export type GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/grpc/grpc__error__quota_failure__violations.json
+
+/**
+ * The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users. `grpc.error.quota_failure.violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"subject\":\"clientip:127.0.0.1\",\"description\":\"Limit checks failed.\",\"api_service\":\"example.googleapis.com\",\"quota_metric\":\"example.googleapis.com/read_requests\",\"quota_id\":\"ReadRequestsPerMinutePerProject\",\"quota_dimensions\":{\"region\":\"us-central1\"},\"quota_value\":1000}"]
+ */
+export const GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS = 'grpc.error.quota_failure.violations';
+
+/**
+ * Type for {@link GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS} grpc.error.quota_failure.violations
+ */
+export type GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/grpc/grpc__error__resource_info__description.json
+
+/**
+ * A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail. `grpc.error.resource_info.description`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Instance is not ready for the request."
+ */
+export const GRPC_ERROR_RESOURCE_INFO_DESCRIPTION = 'grpc.error.resource_info.description';
+
+/**
+ * Type for {@link GRPC_ERROR_RESOURCE_INFO_DESCRIPTION} grpc.error.resource_info.description
+ */
+export type GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__resource_info__owner.json
+
+/**
+ * The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.resource_info.owner`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user@example.com"
+ */
+export const GRPC_ERROR_RESOURCE_INFO_OWNER = 'grpc.error.resource_info.owner';
+
+/**
+ * Type for {@link GRPC_ERROR_RESOURCE_INFO_OWNER} grpc.error.resource_info.owner
+ */
+export type GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__resource_info__resource_name.json
+
+/**
+ * The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.resource_info.resource_name`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "projects/example/instances/example-instance"
+ */
+export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME = 'grpc.error.resource_info.resource_name';
+
+/**
+ * Type for {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME} grpc.error.resource_info.resource_name
+ */
+export type GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__resource_info__resource_type.json
+
+/**
+ * The type of resource being accessed, from a google.rpc.ResourceInfo error detail. `grpc.error.resource_info.resource_type`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "database"
+ */
+export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE = 'grpc.error.resource_info.resource_type';
+
+/**
+ * Type for {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE} grpc.error.resource_info.resource_type
+ */
+export type GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__retry_info__retry_delay_ms.json
+
+/**
+ * How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail. `grpc.error.retry_info.retry_delay_ms`
+ *
+ * Attribute Value Type: `number` {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS = 'grpc.error.retry_info.retry_delay_ms';
+
+/**
+ * Type for {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS} grpc.error.retry_info.retry_delay_ms
+ */
+export type GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE = number;
 
 // Path: model/attributes/hardwareConcurrency.json
 
@@ -16457,6 +16779,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.trigger': 'string',
   'faas.version': 'string',
   fcp: 'double',
+  'file.path': 'string',
+  'file.size': 'integer',
   'flag.evaluation.<key>': 'boolean',
   fp: 'double',
   'frames.delay': 'integer',
@@ -16543,6 +16867,19 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'graphql.document': 'string',
   'graphql.operation.name': 'string',
   'graphql.operation.type': 'string',
+  'grpc.error.bad_request.field_violations': 'string[]',
+  'grpc.error.debug_info.detail': 'string',
+  'grpc.error.debug_info.stack_entries': 'string[]',
+  'grpc.error.error_info.domain': 'string',
+  'grpc.error.error_info.metadata.<key>': 'string',
+  'grpc.error.error_info.reason': 'string',
+  'grpc.error.precondition_failure.violations': 'string[]',
+  'grpc.error.quota_failure.violations': 'string[]',
+  'grpc.error.resource_info.description': 'string',
+  'grpc.error.resource_info.owner': 'string',
+  'grpc.error.resource_info.resource_name': 'string',
+  'grpc.error.resource_info.resource_type': 'string',
+  'grpc.error.retry_info.retry_delay_ms': 'integer',
   hardwareConcurrency: 'string',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
@@ -17189,6 +17526,8 @@ export type AttributeName =
   | typeof FAAS_TRIGGER
   | typeof FAAS_VERSION
   | typeof FCP
+  | typeof FILE_PATH
+  | typeof FILE_SIZE
   | typeof FLAG_EVALUATION_KEY
   | typeof FP
   | typeof FRAMES_DELAY
@@ -17275,6 +17614,19 @@ export type AttributeName =
   | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
+  | typeof GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
+  | typeof GRPC_ERROR_DEBUG_INFO_DETAIL
+  | typeof GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
+  | typeof GRPC_ERROR_ERROR_INFO_DOMAIN
+  | typeof GRPC_ERROR_ERROR_INFO_METADATA_KEY
+  | typeof GRPC_ERROR_ERROR_INFO_REASON
+  | typeof GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS
+  | typeof GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS
+  | typeof GRPC_ERROR_RESOURCE_INFO_DESCRIPTION
+  | typeof GRPC_ERROR_RESOURCE_INFO_OWNER
+  | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME
+  | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE
+  | typeof GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS
   | typeof HARDWARECONCURRENCY
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
@@ -18728,7 +19080,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['{ "AttributeName": "string", "AttributeType": "string" }'],
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.attribute_definitions attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.attribute_definitions attribute' }],
   },
   'aws.dynamodb.consistent_read': {
     brief: 'The value of the `ConsistentRead` request parameter.',
@@ -18739,7 +19091,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: true,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.consistent_read attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.consistent_read attribute' }],
   },
   'aws.dynamodb.consumed_capacity': {
     brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
@@ -18752,7 +19104,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: [
       '{ "CapacityUnits": number, "GlobalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "LocalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "ReadCapacityUnits": number, "Table": { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number }, "TableName": "string", "WriteCapacityUnits": number }',
     ],
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.consumed_capacity attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.consumed_capacity attribute' }],
   },
   'aws.dynamodb.count': {
     brief: 'The value of the `Count` response parameter.',
@@ -18763,7 +19115,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.count attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.count attribute' }],
   },
   'aws.dynamodb.exclusive_start_table': {
     brief: 'The value of the `ExclusiveStartTableName` request parameter.',
@@ -18774,7 +19126,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'Users',
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.exclusive_start_table attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.exclusive_start_table attribute' }],
   },
   'aws.dynamodb.global_secondary_indexes': {
     brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
@@ -18787,7 +19139,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: [
       '{ "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
     ],
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.global_secondary_indexes attribute' }],
+    changelog: [
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.global_secondary_indexes attribute' },
+    ],
   },
   'aws.dynamodb.global_secondary_index_updates': {
     brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
@@ -18801,7 +19155,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '{ "Create": { "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
     ],
     changelog: [
-      { version: 'next', prs: [479], description: 'Added aws.dynamodb.global_secondary_index_updates attribute' },
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.global_secondary_index_updates attribute' },
     ],
   },
   'aws.dynamodb.index_name': {
@@ -18813,7 +19167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'name_to_group',
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.index_name attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.index_name attribute' }],
   },
   'aws.dynamodb.item_collection_metrics': {
     brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
@@ -18825,7 +19179,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.item_collection_metrics attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.item_collection_metrics attribute' }],
   },
   'aws.dynamodb.limit': {
     brief: 'The value of the `Limit` request parameter.',
@@ -18836,7 +19190,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.limit attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.limit attribute' }],
   },
   'aws.dynamodb.local_secondary_indexes': {
     brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
@@ -18849,7 +19203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: [
       '{ "IndexArn": "string", "IndexName": "string", "IndexSizeBytes": number, "ItemCount": number, "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" } }',
     ],
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.local_secondary_indexes attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.local_secondary_indexes attribute' }],
   },
   'aws.dynamodb.projection': {
     brief: 'The value of the `ProjectionExpression` request parameter.',
@@ -18860,7 +19214,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'Title, Price, Color',
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.projection attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.projection attribute' }],
   },
   'aws.dynamodb.provisioned_read_capacity': {
     brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
@@ -18871,7 +19225,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 1,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.provisioned_read_capacity attribute' }],
+    changelog: [
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.provisioned_read_capacity attribute' },
+    ],
   },
   'aws.dynamodb.provisioned_write_capacity': {
     brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
@@ -18883,7 +19239,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 2,
     changelog: [
-      { version: 'next', prs: [479], description: 'Added aws.dynamodb.provisioned_write_capacity attribute' },
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.provisioned_write_capacity attribute' },
     ],
   },
   'aws.dynamodb.scanned_count': {
@@ -18895,7 +19251,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 50,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.scanned_count attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.scanned_count attribute' }],
   },
   'aws.dynamodb.scan_forward': {
     brief: 'The value of the `ScanIndexForward` request parameter.',
@@ -18906,7 +19262,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: true,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.scan_forward attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.scan_forward attribute' }],
   },
   'aws.dynamodb.segment': {
     brief: 'The value of the `Segment` request parameter.',
@@ -18917,7 +19273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 10,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.segment attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.segment attribute' }],
   },
   'aws.dynamodb.select': {
     brief: 'The value of the `Select` request parameter.',
@@ -18928,7 +19284,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'ALL_ATTRIBUTES',
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.select attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.select attribute' }],
   },
   'aws.dynamodb.table_count': {
     brief: 'The number of items in the `TableNames` response parameter.',
@@ -18939,7 +19295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 20,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.table_count attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_count attribute' }],
   },
   'aws.dynamodb.table_names': {
     brief: 'The keys in the `RequestItems` object field.',
@@ -18950,7 +19306,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['Users', 'Cats'],
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.table_names attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_names attribute' }],
   },
   'aws.dynamodb.total_segments': {
     brief: 'The value of the `TotalSegments` request parameter.',
@@ -18961,7 +19317,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 100,
-    changelog: [{ version: 'next', prs: [479], description: 'Added aws.dynamodb.total_segments attribute' }],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.total_segments attribute' }],
   },
   'aws.extended_request_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
@@ -18973,7 +19329,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
     aliases: ['aws.request.extended_id'],
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.extended_request_id attribute' }],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.extended_request_id attribute' }],
   },
   'aws.kinesis.stream_name': {
     brief: 'The name of the AWS Kinesis stream the request refers to.',
@@ -18985,7 +19341,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'some-stream-name',
     aliases: ['aws.kinesis.stream.name'],
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.kinesis.stream_name attribute' }],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.kinesis.stream_name attribute' }],
   },
   'aws.kinesis.stream.name': {
     brief: 'The name of the AWS Kinesis stream the request refers to.',
@@ -19004,7 +19360,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['aws.kinesis.stream_name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [480],
         description: 'Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name',
       },
@@ -19025,7 +19381,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['faas.invocation_id', 'faas.execution'],
     changelog: [
-      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
+      { version: '0.16.0', prs: [473], description: 'Added faas.execution as an alias' },
       {
         version: '0.11.1',
         prs: [414, 424],
@@ -19174,7 +19530,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['aws.extended_request_id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [480],
         description: 'Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id',
       },
@@ -19190,7 +19546,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
     aliases: ['aws.request.id'],
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.request_id attribute' }],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.request_id attribute' }],
   },
   'aws.request.id': {
     brief: 'The AWS request ID as returned in the response headers.',
@@ -19208,7 +19564,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['aws.request_id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [480],
         description: 'Added aws.request.id attribute, deprecated in favor of aws.request_id',
       },
@@ -19223,7 +19579,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'ot-demo-test',
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.s3.bucket attribute' }],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.s3.bucket attribute' }],
   },
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
@@ -19234,7 +19590,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
   },
   'aws.sns.topic.arn': {
     brief:
@@ -19246,7 +19602,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
   },
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
@@ -19257,7 +19613,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
   },
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',
@@ -19268,7 +19624,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1',
-    changelog: [{ version: 'next', prs: [480], description: 'Added aws.step_functions.state_machine.arn attribute' }],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.state_machine.arn attribute' }],
   },
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -19944,7 +20300,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
     aliases: ['faas.id'],
     changelog: [
-      { version: 'next', prs: [475], description: 'Added faas.id as an alias' },
+      { version: '0.16.0', prs: [475], description: 'Added faas.id as an alias' },
       { version: '0.11.1', prs: [414] },
     ],
     additionalContext: [
@@ -20353,7 +20709,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'ORA-17002',
-    changelog: [{ version: 'next', prs: [462], description: 'Added db.response.status_code attribute' }],
+    changelog: [{ version: '0.16.0', prs: [462], description: 'Added db.response.status_code attribute' }],
   },
   'db.sql.bindings': {
     brief: 'The array of query bindings.',
@@ -20921,7 +21277,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of sentry.dist.',
     },
     aliases: ['sentry.dist'],
-    changelog: [{ version: 'next', prs: [489], description: 'Added dist attribute' }],
+    changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist attribute' }],
   },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -21103,7 +21459,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['faas.invocation_id', 'aws.lambda.aws_request_id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [473],
         description: 'Added faas.execution attribute, deprecated in favor of faas.invocation_id',
       },
@@ -21125,7 +21481,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['cloud.resource_id'],
     changelog: [
-      { version: 'next', prs: [475], description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id' },
+      {
+        version: '0.16.0',
+        prs: [475],
+        description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id',
+      },
     ],
   },
   'faas.identity': {
@@ -21152,7 +21512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
     aliases: ['aws.lambda.aws_request_id', 'faas.execution'],
     changelog: [
-      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
+      { version: '0.16.0', prs: [473], description: 'Added faas.execution as an alias' },
       { version: '0.11.1', prs: [414, 424] },
     ],
   },
@@ -21165,7 +21525,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'my-function',
-    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_name attribute' }],
+    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_name attribute' }],
   },
   'faas.invoked_provider': {
     brief: 'The cloud provider of the invoked function.',
@@ -21176,7 +21536,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'aws',
-    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_provider attribute' }],
+    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_provider attribute' }],
   },
   'faas.invoked_region': {
     brief: 'The cloud region of the invoked function.',
@@ -21187,7 +21547,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'eu-central-1',
-    changelog: [{ version: 'next', prs: [481], description: 'Added faas.invoked_region attribute' }],
+    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_region attribute' }],
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -21250,6 +21610,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['browser.web_vital.fcp.value'],
     changelog: [{ version: '0.5.0', prs: [235] }],
+  },
+  'file.path': {
+    brief: 'Path to the file.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '/home/user/example.txt',
+    changelog: [{ version: 'next', prs: [458], description: 'Added file.path attribute' }],
+  },
+  'file.size': {
+    brief: 'File size in bytes.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 1024,
+    changelog: [{ version: 'next', prs: [458], description: 'Added file.size attribute' }],
   },
   'flag.evaluation.<key>': {
     brief:
@@ -21927,7 +22310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['forest', 'lived'],
-    changelog: [{ version: 'next', prs: [482], description: 'Added gen_ai.request.stop_sequences attribute' }],
+    changelog: [{ version: '0.16.0', prs: [482], description: 'Added gen_ai.request.stop_sequences attribute' }],
   },
   'gen_ai.request.temperature': {
     brief:
@@ -22567,6 +22950,169 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'query',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'grpc.error.bad_request.field_violations': {
+    brief:
+      'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: [
+      '{"field":"email","description":"must be a valid email address","reason":"FIELD_INVALID","localized_message":{"locale":"en-US","message":"Must be a valid email address"}}',
+    ],
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added grpc.error.bad_request.field_violations attribute' },
+    ],
+  },
+  'grpc.error.debug_info.detail': {
+    brief:
+      'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'at com.example.Service.method(Service.java:42)',
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.debug_info.detail attribute' }],
+  },
+  'grpc.error.debug_info.stack_entries': {
+    brief:
+      'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['com.example.Service.method(Service.java:42)', 'com.example.Server.handle(Server.java:100)'],
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.debug_info.stack_entries attribute' }],
+  },
+  'grpc.error.error_info.domain': {
+    brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.sentry.io',
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.error_info.domain attribute' }],
+  },
+  'grpc.error.error_info.metadata.<key>': {
+    brief:
+      'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "grpc.error.error_info.metadata.user_id='123'",
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.error_info.metadata.<key> attribute' }],
+  },
+  'grpc.error.error_info.reason': {
+    brief:
+      'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'FIELD_INVALID',
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.error_info.reason attribute' }],
+  },
+  'grpc.error.precondition_failure.violations': {
+    brief:
+      'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['{"type":"TOS","subject":"example.com/user/123","description":"User must accept the terms of service"}'],
+    changelog: [
+      { version: 'next', prs: [460], description: 'Added grpc.error.precondition_failure.violations attribute' },
+    ],
+  },
+  'grpc.error.quota_failure.violations': {
+    brief:
+      'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: [
+      '{"subject":"clientip:127.0.0.1","description":"Limit checks failed.","api_service":"example.googleapis.com","quota_metric":"example.googleapis.com/read_requests","quota_id":"ReadRequestsPerMinutePerProject","quota_dimensions":{"region":"us-central1"},"quota_value":1000}',
+    ],
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.quota_failure.violations attribute' }],
+  },
+  'grpc.error.resource_info.description': {
+    brief:
+      'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Instance is not ready for the request.',
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.description attribute' }],
+  },
+  'grpc.error.resource_info.owner': {
+    brief:
+      'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user@example.com',
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.owner attribute' }],
+  },
+  'grpc.error.resource_info.resource_name': {
+    brief:
+      'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'projects/example/instances/example-instance',
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.resource_name attribute' }],
+  },
+  'grpc.error.resource_info.resource_type': {
+    brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'database',
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.resource_info.resource_type attribute' }],
+  },
+  'grpc.error.retry_info.retry_delay_ms': {
+    brief:
+      'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    changelog: [{ version: 'next', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
+  },
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
     type: 'string',
@@ -22884,7 +23430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: true,
     aliases: ['url.same_origin'],
-    changelog: [{ version: 'next', prs: [456], description: 'Added http.request.same_origin attribute' }],
+    changelog: [{ version: '0.16.0', prs: [456], description: 'Added http.request.same_origin attribute' }],
   },
   'http.request.secure_connection_start': {
     brief:
@@ -23272,7 +23818,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.',
     },
-    changelog: [{ version: 'next', prs: [490], description: 'Added koa.name attribute as deprecated' }],
+    changelog: [{ version: '0.16.0', prs: [490], description: 'Added koa.name attribute as deprecated' }],
   },
   'koa.type': {
     brief: 'The type of the Koa layer that handled the request.',
@@ -23283,7 +23829,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'router',
-    changelog: [{ version: 'next', prs: [471], description: 'Added koa.type attribute' }],
+    changelog: [{ version: '0.16.0', prs: [471], description: 'Added koa.type attribute' }],
   },
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -23974,7 +24520,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['messaging.destination.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [482],
         description: 'Added messaging.destination attribute, deprecated in favor of messaging.destination.name',
       },
@@ -24002,7 +24548,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     aliases: ['messaging.destination'],
     changelog: [
-      { version: 'next', prs: [482], description: 'Added messaging.destination as an alias' },
+      { version: '0.16.0', prs: [482], description: 'Added messaging.destination as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -24028,7 +24574,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'MyConversationId',
-    changelog: [{ version: 'next', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
+    changelog: [{ version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
   },
   'messaging.message.envelope.size': {
     brief: 'The size of the message body and metadata in bytes.',
@@ -24106,7 +24652,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myKey',
     changelog: [
-      { version: 'next', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
+      { version: '0.16.0', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
     ],
   },
   'messaging.system': {
@@ -24157,7 +24703,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/:id',
     aliases: ['sentry.sveltekit.navigation.from'],
-    changelog: [{ version: 'next', prs: [467], description: 'Added navigation.origin attribute' }],
+    changelog: [{ version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' }],
   },
   'navigation.route.id': {
     brief:
@@ -24169,7 +24715,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'AboutView',
-    changelog: [{ version: 'next', description: 'Added navigation.route.id attribute' }],
+    changelog: [{ version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' }],
   },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
@@ -24182,7 +24728,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'router.push',
     aliases: ['sentry.sveltekit.navigation.type'],
     changelog: [
-      { version: 'next', prs: [467], description: 'Added new deprecated alias' },
+      { version: '0.16.0', prs: [467], description: 'Added new deprecated alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -25140,7 +25686,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['rpc.system.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [482],
         description: 'Added rpc.system attribute, deprecated in favor of rpc.system.name',
       },
@@ -25156,7 +25702,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'aws-api',
     aliases: ['rpc.system'],
-    changelog: [{ version: 'next', prs: [482], description: 'Added rpc.system.name attribute' }],
+    changelog: [{ version: '0.16.0', prs: [482], description: 'Added rpc.system.name attribute' }],
   },
   'runtime.build': {
     brief: 'The application build string, when it is separate from the version.',
@@ -25385,7 +25931,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '1.0',
     aliases: ['dist'],
-    changelog: [{ version: 'next', description: 'Added dist as an alias' }, { version: '0.0.0' }],
+    changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist as an alias' }, { version: '0.0.0' }],
   },
   'sentry.domain': {
     brief:
@@ -25623,7 +26169,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'span',
-    changelog: [{ version: 'next', description: 'Added sentry.metric.source attribute' }],
+    changelog: [{ version: '0.16.0', prs: [476], description: 'Added sentry.metric.source attribute' }],
   },
   'sentry.mobile': {
     brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
@@ -26012,7 +26558,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Use the more generic attribute instead',
     },
     aliases: ['navigation.origin'],
-    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
+    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
   },
   'sentry.sveltekit.navigation.to': {
     brief: 'the navigation destination',
@@ -26026,7 +26572,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       reason: 'the navigation destination is already covered by url.* attributes',
     },
-    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.to attribute' }],
+    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.to attribute' }],
   },
   'sentry.sveltekit.navigation.type': {
     brief: 'The type of navigation event emitted from the sveltekit client router',
@@ -26042,7 +26588,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Use the more generic attribute instead',
     },
     aliases: ['navigation.type'],
-    changelog: [{ version: 'next', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
+    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
   },
   'sentry.thread.id': {
     brief: 'Current “managed” thread ID.',
@@ -26269,7 +26815,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
     },
     aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
-    changelog: [{ version: 'next', description: 'Added server_name attribute, deprecated in favor of server.address' }],
+    changelog: [
+      {
+        version: '0.16.0',
+        prs: [477],
+        description: 'Added server_name attribute, deprecated in favor of server.address',
+      },
+    ],
   },
   'server.port': {
     brief: 'Server port number.',
@@ -26758,7 +27310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.request.same_origin'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [456],
         description: 'Added url.same_origin attribute, deprecated in favor of http.request.same_origin',
       },
@@ -27617,6 +28169,8 @@ export type Attributes = {
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
   [FAAS_VERSION]?: FAAS_VERSION_TYPE;
   [FCP]?: FCP_TYPE;
+  [FILE_PATH]?: FILE_PATH_TYPE;
+  [FILE_SIZE]?: FILE_SIZE_TYPE;
   [FLAG_EVALUATION_KEY]?: FLAG_EVALUATION_KEY_TYPE;
   [FP]?: FP_TYPE;
   [FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
@@ -27703,6 +28257,19 @@ export type Attributes = {
   [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
+  [GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS]?: GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE;
+  [GRPC_ERROR_DEBUG_INFO_DETAIL]?: GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE;
+  [GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES]?: GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE;
+  [GRPC_ERROR_ERROR_INFO_DOMAIN]?: GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE;
+  [GRPC_ERROR_ERROR_INFO_METADATA_KEY]?: GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE;
+  [GRPC_ERROR_ERROR_INFO_REASON]?: GRPC_ERROR_ERROR_INFO_REASON_TYPE;
+  [GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS]?: GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE;
+  [GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS]?: GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE;
+  [GRPC_ERROR_RESOURCE_INFO_DESCRIPTION]?: GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE;
+  [GRPC_ERROR_RESOURCE_INFO_OWNER]?: GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE;
+  [GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE;
+  [GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE;
+  [GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS]?: GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;

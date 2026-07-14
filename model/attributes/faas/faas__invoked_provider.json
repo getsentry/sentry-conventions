@@ -10,7 +10,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [481],
       "description": "Added faas.invoked_provider attribute"
     }

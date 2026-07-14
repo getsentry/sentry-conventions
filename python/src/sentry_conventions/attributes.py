@@ -3688,6 +3688,28 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 547.6951
     """
 
+    # Path: model/attributes/file/file__path.json
+    FILE_PATH: Literal["file.path"] = "file.path"
+    """Path to the file.
+
+    Type: str
+    Apply Scrubbing: auto - File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "/home/user/example.txt"
+    """
+
+    # Path: model/attributes/file/file__size.json
+    FILE_SIZE: Literal["file.size"] = "file.size"
+    """File size in bytes.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 1024
+    """
+
     # Path: model/attributes/flag/flag__evaluation__[key].json
     FLAG_EVALUATION_KEY: Literal["flag.evaluation.<key>"] = "flag.evaluation.<key>"
     """An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.
@@ -4792,6 +4814,176 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "query"
+    """
+
+    # Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
+    GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS: Literal[
+        "grpc.error.bad_request.field_violations"
+    ] = "grpc.error.bad_request.field_violations"
+    """The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["{\"field\":\"email\",\"description\":\"must be a valid email address\",\"reason\":\"FIELD_INVALID\",\"localized_message\":{\"locale\":\"en-US\",\"message\":\"Must be a valid email address\"}}"]
+    """
+
+    # Path: model/attributes/grpc/grpc__error__debug_info__detail.json
+    GRPC_ERROR_DEBUG_INFO_DETAIL: Literal["grpc.error.debug_info.detail"] = (
+        "grpc.error.debug_info.detail"
+    )
+    """Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "at com.example.Service.method(Service.java:42)"
+    """
+
+    # Path: model/attributes/grpc/grpc__error__debug_info__stack_entries.json
+    GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES: Literal[
+        "grpc.error.debug_info.stack_entries"
+    ] = "grpc.error.debug_info.stack_entries"
+    """The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
+
+    Type: List[str]
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["com.example.Service.method(Service.java:42)","com.example.Server.handle(Server.java:100)"]
+    """
+
+    # Path: model/attributes/grpc/grpc__error__error_info__domain.json
+    GRPC_ERROR_ERROR_INFO_DOMAIN: Literal["grpc.error.error_info.domain"] = (
+        "grpc.error.error_info.domain"
+    )
+    """The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "example.sentry.io"
+    """
+
+    # Path: model/attributes/grpc/grpc__error__error_info__metadata__[key].json
+    GRPC_ERROR_ERROR_INFO_METADATA_KEY: Literal[
+        "grpc.error.error_info.metadata.<key>"
+    ] = "grpc.error.error_info.metadata.<key>"
+    """Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Has Dynamic Suffix: true
+    Example: "grpc.error.error_info.metadata.user_id='123'"
+    """
+
+    # Path: model/attributes/grpc/grpc__error__error_info__reason.json
+    GRPC_ERROR_ERROR_INFO_REASON: Literal["grpc.error.error_info.reason"] = (
+        "grpc.error.error_info.reason"
+    )
+    """The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "FIELD_INVALID"
+    """
+
+    # Path: model/attributes/grpc/grpc__error__precondition_failure__violations.json
+    GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS: Literal[
+        "grpc.error.precondition_failure.violations"
+    ] = "grpc.error.precondition_failure.violations"
+    """The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.
+
+    Type: List[str]
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["{\"type\":\"TOS\",\"subject\":\"example.com/user/123\",\"description\":\"User must accept the terms of service\"}"]
+    """
+
+    # Path: model/attributes/grpc/grpc__error__quota_failure__violations.json
+    GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS: Literal[
+        "grpc.error.quota_failure.violations"
+    ] = "grpc.error.quota_failure.violations"
+    """The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.
+
+    Type: List[str]
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["{\"subject\":\"clientip:127.0.0.1\",\"description\":\"Limit checks failed.\",\"api_service\":\"example.googleapis.com\",\"quota_metric\":\"example.googleapis.com/read_requests\",\"quota_id\":\"ReadRequestsPerMinutePerProject\",\"quota_dimensions\":{\"region\":\"us-central1\"},\"quota_value\":1000}"]
+    """
+
+    # Path: model/attributes/grpc/grpc__error__resource_info__description.json
+    GRPC_ERROR_RESOURCE_INFO_DESCRIPTION: Literal[
+        "grpc.error.resource_info.description"
+    ] = "grpc.error.resource_info.description"
+    """A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "Instance is not ready for the request."
+    """
+
+    # Path: model/attributes/grpc/grpc__error__resource_info__owner.json
+    GRPC_ERROR_RESOURCE_INFO_OWNER: Literal["grpc.error.resource_info.owner"] = (
+        "grpc.error.resource_info.owner"
+    )
+    """The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "user@example.com"
+    """
+
+    # Path: model/attributes/grpc/grpc__error__resource_info__resource_name.json
+    GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME: Literal[
+        "grpc.error.resource_info.resource_name"
+    ] = "grpc.error.resource_info.resource_name"
+    """The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "projects/example/instances/example-instance"
+    """
+
+    # Path: model/attributes/grpc/grpc__error__resource_info__resource_type.json
+    GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE: Literal[
+        "grpc.error.resource_info.resource_type"
+    ] = "grpc.error.resource_info.resource_type"
+    """The type of resource being accessed, from a google.rpc.ResourceInfo error detail.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "database"
+    """
+
+    # Path: model/attributes/grpc/grpc__error__retry_info__retry_delay_ms.json
+    GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS: Literal[
+        "grpc.error.retry_info.retry_delay_ms"
+    ] = "grpc.error.retry_info.retry_delay_ms"
+    """How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
     """
 
     # Path: model/attributes/hardwareConcurrency.json
@@ -10431,7 +10623,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=['{ "AttributeName": "string", "AttributeType": "string" }'],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.attribute_definitions attribute",
             ),
@@ -10446,7 +10638,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.consistent_read attribute",
             ),
@@ -10463,7 +10655,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.consumed_capacity attribute",
             ),
@@ -10478,7 +10670,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.count attribute",
             ),
@@ -10493,7 +10685,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Users",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.exclusive_start_table attribute",
             ),
@@ -10510,7 +10702,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.global_secondary_index_updates attribute",
             ),
@@ -10527,7 +10719,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.global_secondary_indexes attribute",
             ),
@@ -10542,7 +10734,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="name_to_group",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.index_name attribute",
             ),
@@ -10557,7 +10749,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.item_collection_metrics attribute",
             ),
@@ -10572,7 +10764,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.limit attribute",
             ),
@@ -10589,7 +10781,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.local_secondary_indexes attribute",
             ),
@@ -10604,7 +10796,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Title, Price, Color",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.projection attribute",
             ),
@@ -10619,7 +10811,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.provisioned_read_capacity attribute",
             ),
@@ -10634,7 +10826,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=2,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.provisioned_write_capacity attribute",
             ),
@@ -10649,7 +10841,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=True,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.scan_forward attribute",
             ),
@@ -10664,7 +10856,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=50,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.scanned_count attribute",
             ),
@@ -10679,7 +10871,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=10,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.segment attribute",
             ),
@@ -10694,7 +10886,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ALL_ATTRIBUTES",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.select attribute",
             ),
@@ -10709,7 +10901,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=20,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.table_count attribute",
             ),
@@ -10724,7 +10916,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Users", "Cats"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.table_names attribute",
             ),
@@ -10739,7 +10931,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=100,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.total_segments attribute",
             ),
@@ -10755,7 +10947,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.request.extended_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.extended_request_id attribute",
             ),
@@ -10776,7 +10968,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.kinesis.stream_name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name",
             ),
@@ -10792,7 +10984,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.kinesis.stream.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.kinesis.stream_name attribute",
             ),
@@ -10813,7 +11005,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.invocation_id", "faas.execution"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[473],
                 description="Added faas.execution as an alias",
             ),
@@ -10986,7 +11178,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.extended_request_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id",
             ),
@@ -11007,7 +11199,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.request_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.request.id attribute, deprecated in favor of aws.request_id",
             ),
@@ -11023,7 +11215,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.request.id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[480], description="Added aws.request_id attribute"
+                version="0.16.0",
+                prs=[480],
+                description="Added aws.request_id attribute",
             ),
         ],
     ),
@@ -11036,7 +11230,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ot-demo-test",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[480], description="Added aws.s3.bucket attribute"
+                version="0.16.0", prs=[480], description="Added aws.s3.bucket attribute"
             ),
         ],
     ),
@@ -11049,7 +11243,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.secretsmanager.secret.arn attribute",
             ),
@@ -11064,7 +11258,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.sns.topic.arn attribute",
             ),
@@ -11079,7 +11273,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:states:us-east-1:123456789012:activity:get-greeting",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.step_functions.activity.arn attribute",
             ),
@@ -11094,7 +11288,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[480],
                 description="Added aws.step_functions.state_machine.arn attribute",
             ),
@@ -11611,7 +11805,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[475], description="Added faas.id as an alias"
+                version="0.16.0", prs=[475], description="Added faas.id as an alias"
             ),
             ChangelogEntry(version="0.11.1", prs=[414]),
         ],
@@ -12293,7 +12487,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ORA-17002",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[462],
                 description="Added db.response.status_code attribute",
             ),
@@ -12972,7 +13166,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.dist"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[489], description="Added dist attribute"
+                version="0.16.0", prs=[489], description="Added dist attribute"
             ),
         ],
     ),
@@ -13152,7 +13346,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["faas.invocation_id", "aws.lambda.aws_request_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[473],
                 description="Added faas.execution attribute, deprecated in favor of faas.invocation_id",
             ),
@@ -13173,7 +13367,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["cloud.resource_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[475],
                 description="Added faas.id attribute, deprecated in favor of cloud.resource_id",
             ),
@@ -13200,7 +13394,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.lambda.aws_request_id", "faas.execution"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[473],
                 description="Added faas.execution as an alias",
             ),
@@ -13216,7 +13410,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="my-function",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[481],
                 description="Added faas.invoked_name attribute",
             ),
@@ -13231,7 +13425,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="aws",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[481],
                 description="Added faas.invoked_provider attribute",
             ),
@@ -13246,7 +13440,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="eu-central-1",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[481],
                 description="Added faas.invoked_region attribute",
             ),
@@ -13315,6 +13509,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.fcp.value"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
+        ],
+    ),
+    "file.path": AttributeMetadata(
+        brief="Path to the file.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.",
+        ),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="/home/user/example.txt",
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[458], description="Added file.path attribute"
+            ),
+        ],
+    ),
+    "file.size": AttributeMetadata(
+        brief="File size in bytes.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=1024,
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[458], description="Added file.size attribute"
+            ),
         ],
     ),
     "flag.evaluation.<key>": AttributeMetadata(
@@ -14046,7 +14269,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["forest", "lived"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[482],
                 description="Added gen_ai.request.stop_sequences attribute",
             ),
@@ -14702,6 +14925,211 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "grpc.error.bad_request.field_violations": AttributeMetadata(
+        brief="The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=[
+            '{"field":"email","description":"must be a valid email address","reason":"FIELD_INVALID","localized_message":{"locale":"en-US","message":"Must be a valid email address"}}'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.bad_request.field_violations attribute",
+            ),
+        ],
+    ),
+    "grpc.error.debug_info.detail": AttributeMetadata(
+        brief="Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="at com.example.Service.method(Service.java:42)",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.debug_info.detail attribute",
+            ),
+        ],
+    ),
+    "grpc.error.debug_info.stack_entries": AttributeMetadata(
+        brief="The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=[
+            "com.example.Service.method(Service.java:42)",
+            "com.example.Server.handle(Server.java:100)",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.debug_info.stack_entries attribute",
+            ),
+        ],
+    ),
+    "grpc.error.error_info.domain": AttributeMetadata(
+        brief="The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="example.sentry.io",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.error_info.domain attribute",
+            ),
+        ],
+    ),
+    "grpc.error.error_info.metadata.<key>": AttributeMetadata(
+        brief="Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        has_dynamic_suffix=True,
+        example="grpc.error.error_info.metadata.user_id='123'",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.error_info.metadata.<key> attribute",
+            ),
+        ],
+    ),
+    "grpc.error.error_info.reason": AttributeMetadata(
+        brief="The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="FIELD_INVALID",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.error_info.reason attribute",
+            ),
+        ],
+    ),
+    "grpc.error.precondition_failure.violations": AttributeMetadata(
+        brief="The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=[
+            '{"type":"TOS","subject":"example.com/user/123","description":"User must accept the terms of service"}'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.precondition_failure.violations attribute",
+            ),
+        ],
+    ),
+    "grpc.error.quota_failure.violations": AttributeMetadata(
+        brief="The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.",
+        type=AttributeType.STRING_ARRAY,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=[
+            '{"subject":"clientip:127.0.0.1","description":"Limit checks failed.","api_service":"example.googleapis.com","quota_metric":"example.googleapis.com/read_requests","quota_id":"ReadRequestsPerMinutePerProject","quota_dimensions":{"region":"us-central1"},"quota_value":1000}'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.quota_failure.violations attribute",
+            ),
+        ],
+    ),
+    "grpc.error.resource_info.description": AttributeMetadata(
+        brief="A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Instance is not ready for the request.",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.resource_info.description attribute",
+            ),
+        ],
+    ),
+    "grpc.error.resource_info.owner": AttributeMetadata(
+        brief="The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user@example.com",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.resource_info.owner attribute",
+            ),
+        ],
+    ),
+    "grpc.error.resource_info.resource_name": AttributeMetadata(
+        brief="The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="projects/example/instances/example-instance",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.resource_info.resource_name attribute",
+            ),
+        ],
+    ),
+    "grpc.error.resource_info.resource_type": AttributeMetadata(
+        brief="The type of resource being accessed, from a google.rpc.ResourceInfo error detail.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="database",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.resource_info.resource_type attribute",
+            ),
+        ],
+    ),
+    "grpc.error.retry_info.retry_delay_ms": AttributeMetadata(
+        brief="How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[460],
+                description="Added grpc.error.retry_info.retry_delay_ms attribute",
+            ),
+        ],
+    ),
     "hardwareConcurrency": AttributeMetadata(
         brief="The number of logical CPU cores available.",
         type=AttributeType.STRING,
@@ -15019,7 +15447,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.same_origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[456],
                 description="Added http.request.same_origin attribute",
             ),
@@ -15438,7 +15866,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[490],
                 description="Added koa.name attribute as deprecated",
             ),
@@ -15453,7 +15881,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="router",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[471], description="Added koa.type attribute"
+                version="0.16.0", prs=[471], description="Added koa.type attribute"
             ),
         ],
     ),
@@ -16197,7 +16625,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[482],
                 description="Added messaging.destination attribute, deprecated in favor of messaging.destination.name",
             ),
@@ -16225,7 +16653,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.destination"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[482],
                 description="Added messaging.destination as an alias",
             ),
@@ -16254,7 +16682,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="MyConversationId",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[468],
                 description="Added messaging.message.conversation_id attribute",
             ),
@@ -16343,7 +16771,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="myKey",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[468],
                 description="Added messaging.rabbitmq.destination.routing_key attribute",
             ),
@@ -16400,7 +16828,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.sveltekit.navigation.from"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[467],
                 description="Added navigation.origin attribute",
             ),
@@ -16415,7 +16843,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="AboutView",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added navigation.route.id attribute"
+                version="0.16.0",
+                prs=[468],
+                description="Added navigation.route.id attribute",
             ),
         ],
     ),
@@ -16429,7 +16859,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.sveltekit.navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[467], description="Added new deprecated alias"
+                version="0.16.0", prs=[467], description="Added new deprecated alias"
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -17425,7 +17855,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["rpc.system.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[482],
                 description="Added rpc.system attribute, deprecated in favor of rpc.system.name",
             ),
@@ -17441,7 +17871,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["rpc.system"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[482], description="Added rpc.system.name attribute"
+                version="0.16.0",
+                prs=[482],
+                description="Added rpc.system.name attribute",
             ),
         ],
     ),
@@ -17671,7 +18103,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="1.0",
         aliases=["dist"],
         changelog=[
-            ChangelogEntry(version="next", description="Added dist as an alias"),
+            ChangelogEntry(
+                version="0.16.0", prs=[489], description="Added dist as an alias"
+            ),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -17911,7 +18345,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="span",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added sentry.metric.source attribute"
+                version="0.16.0",
+                prs=[476],
+                description="Added sentry.metric.source attribute",
             ),
         ],
     ),
@@ -18316,7 +18752,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[467],
                 description="Added sentry.sveltekit.navigation.from attribute",
             ),
@@ -18334,7 +18770,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[467],
                 description="Added sentry.sveltekit.navigation.to attribute",
             ),
@@ -18355,7 +18791,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[467],
                 description="Added sentry.sveltekit.navigation.type attribute",
             ),
@@ -18590,7 +19026,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["server.address", "http.server_name", "net.host.name", "http.host"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
+                prs=[477],
                 description="Added server_name attribute, deprecated in favor of server.address",
             ),
         ],
@@ -19112,7 +19549,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request.same_origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.16.0",
                 prs=[456],
                 description="Added url.same_origin attribute, deprecated in favor of http.request.same_origin",
             ),
@@ -19986,6 +20423,8 @@ Attributes = TypedDict(
         "faas.trigger": str,
         "faas.version": str,
         "fcp": float,
+        "file.path": str,
+        "file.size": int,
         "flag.evaluation.<key>": bool,
         "fp": float,
         "frames.delay": int,
@@ -20072,6 +20511,19 @@ Attributes = TypedDict(
         "graphql.document": str,
         "graphql.operation.name": str,
         "graphql.operation.type": str,
+        "grpc.error.bad_request.field_violations": List[str],
+        "grpc.error.debug_info.detail": str,
+        "grpc.error.debug_info.stack_entries": List[str],
+        "grpc.error.error_info.domain": str,
+        "grpc.error.error_info.metadata.<key>": str,
+        "grpc.error.error_info.reason": str,
+        "grpc.error.precondition_failure.violations": List[str],
+        "grpc.error.quota_failure.violations": List[str],
+        "grpc.error.resource_info.description": str,
+        "grpc.error.resource_info.owner": str,
+        "grpc.error.resource_info.resource_name": str,
+        "grpc.error.resource_info.resource_type": str,
+        "grpc.error.retry_info.retry_delay_ms": int,
         "hardwareConcurrency": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,

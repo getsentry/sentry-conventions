@@ -1,0 +1,18 @@
+{
+  "key": "grpc.error.resource_info.description",
+  "brief": "A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "Instance is not ready for the request.",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [460],
+      "description": "Added grpc.error.resource_info.description attribute"
+    }
+  ]
+}
