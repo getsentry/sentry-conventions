@@ -26179,7 +26179,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: ['app.vitals.frames.frozen.count', 'frames.frozen'],
-    changelog: [{ version: 'next', description: 'Added sentry.frames.frozen attribute' }],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
   },
   'sentry.frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -26196,7 +26196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: ['app.vitals.frames.slow.count', 'frames.slow'],
-    changelog: [{ version: 'next', description: 'Added sentry.frames.slow attribute' }],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.slow attribute' }],
   },
   'sentry.frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -26213,7 +26213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
     aliases: ['app.vitals.frames.total.count', 'frames.total'],
-    changelog: [{ version: 'next', description: 'Added sentry.frames.total attribute' }],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.total attribute' }],
   },
   'sentry.graphql.operation': {
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
