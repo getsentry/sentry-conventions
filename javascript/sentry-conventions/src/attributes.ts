@@ -7080,30 +7080,6 @@ export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty'
  */
 export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
-
-/**
- * Constrains the effort on reasoning for reasoning models. Supported values vary by provider. `gen_ai.request.reasoning_effort`
- *
- * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_EFFORT_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * Aliases: {@link GEN_AI_REQUEST_REASONING_LEVEL} `gen_ai.request.reasoning.level`
- *
- * @deprecated Use {@link GEN_AI_REQUEST_REASONING_LEVEL} (gen_ai.request.reasoning.level) instead
- * @example "high"
- */
-export const GEN_AI_REQUEST_REASONING_EFFORT = 'gen_ai.request.reasoning_effort';
-
-/**
- * Type for {@link GEN_AI_REQUEST_REASONING_EFFORT} gen_ai.request.reasoning_effort
- */
-export type GEN_AI_REQUEST_REASONING_EFFORT_TYPE = string;
-
 // Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
 
 /**
@@ -7115,8 +7091,6 @@ export type GEN_AI_REQUEST_REASONING_EFFORT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
- *
- * Aliases: {@link GEN_AI_REQUEST_REASONING_EFFORT} `gen_ai.request.reasoning_effort`
  *
  * @example "high"
  */
@@ -16873,7 +16847,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.messages': 'string',
   'gen_ai.request.model': 'string',
   'gen_ai.request.presence_penalty': 'double',
-  'gen_ai.request.reasoning_effort': 'string',
   'gen_ai.request.reasoning.level': 'string',
   'gen_ai.request.seed': 'string',
   'gen_ai.request.stop_sequences': 'string[]',
@@ -17622,7 +17595,6 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_MESSAGES
   | typeof GEN_AI_REQUEST_MODEL
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
-  | typeof GEN_AI_REQUEST_REASONING_EFFORT
   | typeof GEN_AI_REQUEST_REASONING_LEVEL
   | typeof GEN_AI_REQUEST_SEED
   | typeof GEN_AI_REQUEST_STOP_SEQUENCES
@@ -22329,24 +22301,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [57] },
     ],
   },
-  'gen_ai.request.reasoning_effort': {
-    brief: 'Constrains the effort on reasoning for reasoning models. Supported values vary by provider.',
-    type: 'string',
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: 'high',
-    deprecation: {
-      replacement: 'gen_ai.request.reasoning.level',
-    },
-    aliases: ['gen_ai.request.reasoning.level'],
-    changelog: [
-      { version: 'next', prs: [502], description: 'Deprecated in favor of gen_ai.request.reasoning.level' },
-      { version: '0.13.0', prs: [334], description: 'Added gen_ai.request.reasoning_effort attribute' },
-    ],
-  },
   'gen_ai.request.reasoning.level': {
     brief: 'The reasoning or thinking effort level requested for a GenAI model.',
     type: 'string',
@@ -22356,7 +22310,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'high',
-    aliases: ['gen_ai.request.reasoning_effort'],
     changelog: [{ version: 'next', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
   },
   'gen_ai.request.seed': {
@@ -28297,7 +28250,6 @@ export type Attributes = {
   [GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
-  [GEN_AI_REQUEST_REASONING_EFFORT]?: GEN_AI_REQUEST_REASONING_EFFORT_TYPE;
   [GEN_AI_REQUEST_REASONING_LEVEL]?: GEN_AI_REQUEST_REASONING_LEVEL_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_STOP_SEQUENCES]?: GEN_AI_REQUEST_STOP_SEQUENCES_TYPE;
