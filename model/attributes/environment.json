@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "description": "Configured normalize to sentry.environment",
+      "description": "Configured normalization",
       "prs": [427]
     },
     {
