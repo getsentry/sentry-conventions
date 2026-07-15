@@ -11,6 +11,10 @@
       "import": "./dist/attributes.mjs",
       "require": "./dist/attributes.cjs"
     },
+    "./attribute-utils": {
+      "import": "./dist/attribute-utils.mjs",
+      "require": "./dist/attribute-utils.cjs"
+    },
     "./op": {
       "import": "./dist/op.mjs",
       "require": "./dist/op.cjs"
@@ -34,6 +38,8 @@
     "dist",
     "attributes.js",
     "attributes.d.ts",
+    "attribute-utils.js",
+    "attribute-utils.d.ts",
     "op.js",
     "op.d.ts"
   ],
