@@ -126,8 +126,11 @@ class _AttributeNamesMeta(type):
         "AI_PIPELINE_NAME",
         "AI_PREAMBLE",
         "AI_PRESENCE_PENALTY",
+        "AI_PROMPT_MESSAGES",
         "AI_PROMPT_TOKENS_USED",
         "AI_RAW_PROMPTING",
+        "AI_RESPONSE_TEXT",
+        "AI_RESPONSE_TOOLCALLS",
         "AI_RESPONSE_FORMAT",
         "AI_RESPONSES",
         "AI_SEARCH_QUERIES",
@@ -137,6 +140,8 @@ class _AttributeNamesMeta(type):
         "AI_TAGS",
         "AI_TEMPERATURE",
         "AI_TEXTS",
+        "AI_TOOLCALL_ARGS",
+        "AI_TOOLCALL_RESULT",
         "AI_TOOL_CALLS",
         "AI_TOOLS",
         "AI_TOP_K",
@@ -188,6 +193,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
+        "GEN_AI_RESPONSE_FINISH_REASON",
         "GEN_AI_RESPONSE_TEXT",
         "GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN",
         "GEN_AI_RESPONSE_TOOL_CALLS",
@@ -458,8 +464,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.response.model
-    DEPRECATED: Use gen_ai.response.model instead
+    Aliases: gen_ai.request.model
+    DEPRECATED: Use gen_ai.request.model instead
     Example: "gpt-4"
     """
 
@@ -502,6 +508,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
+    # Path: model/attributes/ai/ai__prompt__messages.json
+    AI_PROMPT_MESSAGES: Literal["ai.prompt.messages"] = "ai.prompt.messages"
+    """The input messages sent to the AI model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.input.messages, ai.texts, gen_ai.prompt
+    DEPRECATED: Use gen_ai.input.messages instead
+    Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
+    """
+
     # Path: model/attributes/ai/ai__prompt_tokens__used.json
     AI_PROMPT_TOKENS_USED: Literal["ai.prompt_tokens.used"] = "ai.prompt_tokens.used"
     """The number of tokens used to process just the prompt.
@@ -525,6 +544,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time
     Example: true
+    """
+
+    # Path: model/attributes/ai/ai__response__text.json
+    AI_RESPONSE_TEXT: Literal["ai.response.text"] = "ai.response.text"
+    """The text response from the AI model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.output.messages, ai.response.toolCalls
+    DEPRECATED: Use gen_ai.output.messages instead
+    Example: "The weather in Paris is currently rainy."
+    """
+
+    # Path: model/attributes/ai/ai__response__toolCalls.json
+    AI_RESPONSE_TOOLCALLS: Literal["ai.response.toolCalls"] = "ai.response.toolCalls"
+    """The tool calls in the AI model response.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.output.messages, ai.response.text
+    DEPRECATED: Use gen_ai.output.messages instead
+    Example: "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
     """
 
     # Path: model/attributes/ai/ai__response_format.json
@@ -634,9 +679,35 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.input.messages
+    Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead
     Example: ["Hello, how are you?","What is the capital of France?"]
+    """
+
+    # Path: model/attributes/ai/ai__toolCall__args.json
+    AI_TOOLCALL_ARGS: Literal["ai.toolCall.args"] = "ai.toolCall.args"
+    """The arguments of the tool call.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.tool.call.arguments, gen_ai.tool.input
+    DEPRECATED: Use gen_ai.tool.call.arguments instead
+    Example: "{\"location\": \"Paris\"}"
+    """
+
+    # Path: model/attributes/ai/ai__toolCall__result.json
+    AI_TOOLCALL_RESULT: Literal["ai.toolCall.result"] = "ai.toolCall.result"
+    """The result of the tool call.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content
+    DEPRECATED: Use gen_ai.tool.call.result instead
+    Example: "rainy, 57°F"
     """
 
     # Path: model/attributes/ai/ai__tool_calls.json
@@ -4107,7 +4178,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.texts
+    Aliases: ai.texts, ai.prompt.messages, gen_ai.prompt
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
@@ -4141,6 +4212,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: ai.response.toolCalls, ai.response.text
     Example: "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
     """
 
@@ -4164,7 +4236,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    DEPRECATED: No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
+    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages
+    DEPRECATED: Use gen_ai.input.messages instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
@@ -4256,6 +4329,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: ai.model_id
     Example: "gpt-4-turbo-preview"
     """
 
@@ -4349,6 +4423,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.7
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__response__finish_reason.json
+    GEN_AI_RESPONSE_FINISH_REASON: Literal["gen_ai.response.finish_reason"] = (
+        "gen_ai.response.finish_reason"
+    )
+    """The reason why the model stopped generating (singular form).
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.response.finish_reasons
+    DEPRECATED: Use gen_ai.response.finish_reasons instead
+    Example: "COMPLETE"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
     GEN_AI_RESPONSE_FINISH_REASONS: Literal["gen_ai.response.finish_reasons"] = (
         "gen_ai.response.finish_reasons"
@@ -4359,7 +4448,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.finish_reason
+    Aliases: ai.finish_reason, gen_ai.response.finish_reason
     Example: "COMPLETE"
     """
 
@@ -4383,7 +4472,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.model_id
     Example: "gpt-4"
     """
 
@@ -4518,7 +4606,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.tool.input
+    Aliases: gen_ai.tool.input, ai.toolCall.args
     Example: "{\"location\": \"Paris\"}"
     """
 
@@ -4532,7 +4620,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content
+    Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result
     Example: "rainy, 57°F"
     """
 
@@ -4570,7 +4658,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.arguments
+    Aliases: gen_ai.tool.call.arguments, ai.toolCall.args
     DEPRECATED: Use gen_ai.tool.call.arguments instead
     Example: "{\"location\": \"Paris\"}"
     """
@@ -4583,7 +4671,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -4608,7 +4696,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, mcp.tool.result.content
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -6184,7 +6272,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result
     DEPRECATED: Use gen_ai.tool.call.result instead - OTel uses gen_ai.tool.call.result for MCP tool results
     Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
     """
@@ -9650,9 +9738,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="gpt-4",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.response.model", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.request.model", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.response.model"],
+        aliases=["gen_ai.request.model"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -9706,6 +9794,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
     ),
+    "ai.prompt.messages": AttributeMetadata(
+        brief="The input messages sent to the AI model.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='[{"role": "user", "message": "hello"}]',
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.prompt.messages attribute",
+            ),
+        ],
+    ),
     "ai.prompt_tokens.used": AttributeMetadata(
         brief="The number of tokens used to process just the prompt.",
         type=AttributeType.INTEGER,
@@ -9734,6 +9841,44 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
+    ),
+    "ai.response.text": AttributeMetadata(
+        brief="The text response from the AI model.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="The weather in Paris is currently rainy.",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["gen_ai.output.messages", "ai.response.toolCalls"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.response.text attribute",
+            ),
+        ],
+    ),
+    "ai.response.toolCalls": AttributeMetadata(
+        brief="The tool calls in the AI model response.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["gen_ai.output.messages", "ai.response.text"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.response.toolCalls attribute",
+            ),
         ],
     ),
     "ai.response_format": AttributeMetadata(
@@ -9860,10 +10005,53 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.input.messages"],
+        aliases=["gen_ai.input.messages", "ai.prompt.messages", "gen_ai.prompt"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
+    ),
+    "ai.toolCall.args": AttributeMetadata(
+        brief="The arguments of the tool call.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"location": "Paris"}',
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["gen_ai.tool.call.arguments", "gen_ai.tool.input"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.toolCall.args attribute",
+            ),
+        ],
+    ),
+    "ai.toolCall.result": AttributeMetadata(
+        brief="The result of the tool call.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="rainy, 57°F",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.result", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=[
+            "gen_ai.tool.call.result",
+            "gen_ai.tool.output",
+            "gen_ai.tool.message",
+            "mcp.tool.result.content",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.toolCall.result attribute",
+            ),
         ],
     ),
     "ai.tool_calls": AttributeMetadata(
@@ -14087,7 +14275,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-        aliases=["ai.texts"],
+        aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -14124,6 +14312,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+        aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -14148,8 +14337,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
         deprecation=DeprecationInfo(
-            reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
+            replacement="gen_ai.input.messages",
+            reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead.",
+            status=DeprecationStatus.BACKFILL,
         ),
+        aliases=["gen_ai.input.messages", "ai.texts", "ai.prompt.messages"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
             ChangelogEntry(version="0.0.0"),
@@ -14249,6 +14441,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4-turbo-preview",
+        aliases=["ai.model_id"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
@@ -14347,6 +14540,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
     ),
+    "gen_ai.response.finish_reason": AttributeMetadata(
+        brief="The reason why the model stopped generating (singular form).",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="COMPLETE",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.finish_reasons",
+            status=DeprecationStatus.NORMALIZE,
+        ),
+        aliases=["gen_ai.response.finish_reasons"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added gen_ai.response.finish_reason attribute",
+            ),
+        ],
+    ),
     "gen_ai.response.finish_reasons": AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
@@ -14354,7 +14567,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="COMPLETE",
-        aliases=["ai.finish_reason"],
+        aliases=["ai.finish_reason", "gen_ai.response.finish_reason"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
@@ -14378,7 +14591,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4",
-        aliases=["ai.model_id"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14526,7 +14738,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='{"location": "Paris"}',
-        aliases=["gen_ai.tool.input"],
+        aliases=["gen_ai.tool.input", "ai.toolCall.args"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -14543,6 +14755,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "gen_ai.tool.message",
             "mcp.tool.result.content",
+            "ai.toolCall.result",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -14581,7 +14794,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["gen_ai.tool.call.arguments"],
+        aliases=["gen_ai.tool.call.arguments", "ai.toolCall.args"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
@@ -14601,6 +14814,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.call.result",
             "gen_ai.tool.output",
             "mcp.tool.result.content",
+            "ai.toolCall.result",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -14633,6 +14847,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.call.result",
             "gen_ai.tool.message",
             "mcp.tool.result.content",
+            "ai.toolCall.result",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -16551,6 +16766,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.call.result",
             "gen_ai.tool.message",
             "gen_ai.tool.output",
+            "ai.toolCall.result",
         ],
         changelog=[
             ChangelogEntry(
@@ -20253,8 +20469,11 @@ Attributes = TypedDict(
         "ai.pipeline.name": str,
         "ai.preamble": str,
         "ai.presence_penalty": float,
+        "ai.prompt.messages": str,
         "ai.prompt_tokens.used": int,
         "ai.raw_prompting": bool,
+        "ai.response.text": str,
+        "ai.response.toolCalls": str,
         "ai.response_format": str,
         "ai.responses": List[str],
         "ai.search_queries": List[str],
@@ -20264,6 +20483,8 @@ Attributes = TypedDict(
         "ai.tags": str,
         "ai.temperature": float,
         "ai.texts": List[str],
+        "ai.toolCall.args": str,
+        "ai.toolCall.result": str,
         "ai.tool_calls": List[str],
         "ai.tools": List[str],
         "ai.top_k": int,
@@ -20565,6 +20786,7 @@ Attributes = TypedDict(
         "gen_ai.request.temperature": float,
         "gen_ai.request.top_k": int,
         "gen_ai.request.top_p": float,
+        "gen_ai.response.finish_reason": str,
         "gen_ai.response.finish_reasons": str,
         "gen_ai.response.id": str,
         "gen_ai.response.model": str,
