@@ -19,6 +19,16 @@
  */
 export const ADDRESS = 'address';
 
+export const ADDRESS_KEYS = [
+  'server.address',
+  'address',
+  'http.host',
+  'http.server_name',
+  'net.host.name',
+  'net.peer.name',
+  'server_name',
+] as const;
+
 /**
  * Type for {@link ADDRESS} address
  */
@@ -40,6 +50,8 @@ export type ADDRESS_TYPE = string;
  * @example ["Citation 1","Citation 2"]
  */
 export const AI_CITATIONS = 'ai.citations';
+
+export const AI_CITATIONS_KEYS = ['ai.citations'] as const;
 
 /**
  * Type for {@link AI_CITATIONS} ai.citations
@@ -65,6 +77,12 @@ export type AI_CITATIONS_TYPE = Array<string>;
  */
 export const AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
 
+export const AI_COMPLETION_TOKENS_USED_KEYS = [
+  'gen_ai.usage.output_tokens',
+  'ai.completion_tokens.used',
+  'gen_ai.usage.completion_tokens',
+] as const;
+
 /**
  * Type for {@link AI_COMPLETION_TOKENS_USED} ai.completion_tokens.used
  */
@@ -86,6 +104,8 @@ export type AI_COMPLETION_TOKENS_USED_TYPE = number;
  * @example ["document1.txt","document2.pdf"]
  */
 export const AI_DOCUMENTS = 'ai.documents';
+
+export const AI_DOCUMENTS_KEYS = ['ai.documents'] as const;
 
 /**
  * Type for {@link AI_DOCUMENTS} ai.documents
@@ -111,6 +131,12 @@ export type AI_DOCUMENTS_TYPE = Array<string>;
  */
 export const AI_FINISH_REASON = 'ai.finish_reason';
 
+export const AI_FINISH_REASON_KEYS = [
+  'gen_ai.response.finish_reasons',
+  'ai.finish_reason',
+  'gen_ai.response.finish_reason',
+] as const;
+
 /**
  * Type for {@link AI_FINISH_REASON} ai.finish_reason
  */
@@ -134,6 +160,8 @@ export type AI_FINISH_REASON_TYPE = string;
  * @example 0.5
  */
 export const AI_FREQUENCY_PENALTY = 'ai.frequency_penalty';
+
+export const AI_FREQUENCY_PENALTY_KEYS = ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'] as const;
 
 /**
  * Type for {@link AI_FREQUENCY_PENALTY} ai.frequency_penalty
@@ -159,6 +187,8 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  */
 export const AI_FUNCTION_CALL = 'ai.function_call';
 
+export const AI_FUNCTION_CALL_KEYS = ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'] as const;
+
 /**
  * Type for {@link AI_FUNCTION_CALL} ai.function_call
  */
@@ -182,6 +212,8 @@ export type AI_FUNCTION_CALL_TYPE = string;
  * @example "gen_123abc"
  */
 export const AI_GENERATION_ID = 'ai.generation_id';
+
+export const AI_GENERATION_ID_KEYS = ['gen_ai.response.id', 'ai.generation_id'] as const;
 
 /**
  * Type for {@link AI_GENERATION_ID} ai.generation_id
@@ -207,6 +239,15 @@ export type AI_GENERATION_ID_TYPE = string;
  */
 export const AI_INPUT_MESSAGES = 'ai.input_messages';
 
+export const AI_INPUT_MESSAGES_KEYS = [
+  'gen_ai.input.messages',
+  'ai.input_messages',
+  'ai.prompt.messages',
+  'ai.texts',
+  'gen_ai.prompt',
+  'gen_ai.request.messages',
+] as const;
+
 /**
  * Type for {@link AI_INPUT_MESSAGES} ai.input_messages
  */
@@ -229,6 +270,8 @@ export type AI_INPUT_MESSAGES_TYPE = string;
  */
 export const AI_IS_SEARCH_REQUIRED = 'ai.is_search_required';
 
+export const AI_IS_SEARCH_REQUIRED_KEYS = ['ai.is_search_required'] as const;
+
 /**
  * Type for {@link AI_IS_SEARCH_REQUIRED} ai.is_search_required
  */
@@ -250,6 +293,8 @@ export type AI_IS_SEARCH_REQUIRED_TYPE = boolean;
  * @example "{\"user_id\": 123, \"session_id\": \"abc123\"}"
  */
 export const AI_METADATA = 'ai.metadata';
+
+export const AI_METADATA_KEYS = ['ai.metadata'] as const;
 
 /**
  * Type for {@link AI_METADATA} ai.metadata
@@ -275,6 +320,8 @@ export type AI_METADATA_TYPE = string;
  */
 export const AI_MODEL_ID = 'ai.model_id';
 
+export const AI_MODEL_ID_KEYS = ['gen_ai.request.model', 'ai.model_id'] as const;
+
 /**
  * Type for {@link AI_MODEL_ID} ai.model_id
  */
@@ -298,6 +345,8 @@ export type AI_MODEL_ID_TYPE = string;
  * @example "openai"
  */
 export const AI_MODEL_PROVIDER = 'ai.model.provider';
+
+export const AI_MODEL_PROVIDER_KEYS = ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'] as const;
 
 /**
  * Type for {@link AI_MODEL_PROVIDER} ai.model.provider
@@ -323,6 +372,8 @@ export type AI_MODEL_PROVIDER_TYPE = string;
  */
 export const AI_PIPELINE_NAME = 'ai.pipeline.name';
 
+export const AI_PIPELINE_NAME_KEYS = ['gen_ai.pipeline.name', 'ai.pipeline.name'] as const;
+
 /**
  * Type for {@link AI_PIPELINE_NAME} ai.pipeline.name
  */
@@ -346,6 +397,8 @@ export type AI_PIPELINE_NAME_TYPE = string;
  * @example "You are now a clown."
  */
 export const AI_PREAMBLE = 'ai.preamble';
+
+export const AI_PREAMBLE_KEYS = ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'] as const;
 
 /**
  * Type for {@link AI_PREAMBLE} ai.preamble
@@ -371,6 +424,8 @@ export type AI_PREAMBLE_TYPE = string;
  */
 export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
 
+export const AI_PRESENCE_PENALTY_KEYS = ['gen_ai.request.presence_penalty', 'ai.presence_penalty'] as const;
+
 /**
  * Type for {@link AI_PRESENCE_PENALTY} ai.presence_penalty
  */
@@ -394,6 +449,15 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const AI_PROMPT_MESSAGES = 'ai.prompt.messages';
+
+export const AI_PROMPT_MESSAGES_KEYS = [
+  'gen_ai.input.messages',
+  'ai.input_messages',
+  'ai.prompt.messages',
+  'ai.texts',
+  'gen_ai.prompt',
+  'gen_ai.request.messages',
+] as const;
 
 /**
  * Type for {@link AI_PROMPT_MESSAGES} ai.prompt.messages
@@ -419,6 +483,12 @@ export type AI_PROMPT_MESSAGES_TYPE = string;
  */
 export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
 
+export const AI_PROMPT_TOKENS_USED_KEYS = [
+  'gen_ai.usage.input_tokens',
+  'ai.prompt_tokens.used',
+  'gen_ai.usage.prompt_tokens',
+] as const;
+
 /**
  * Type for {@link AI_PROMPT_TOKENS_USED} ai.prompt_tokens.used
  */
@@ -440,6 +510,8 @@ export type AI_PROMPT_TOKENS_USED_TYPE = number;
  * @example true
  */
 export const AI_RAW_PROMPTING = 'ai.raw_prompting';
+
+export const AI_RAW_PROMPTING_KEYS = ['ai.raw_prompting'] as const;
 
 /**
  * Type for {@link AI_RAW_PROMPTING} ai.raw_prompting
@@ -463,6 +535,16 @@ export type AI_RAW_PROMPTING_TYPE = boolean;
  */
 export const AI_RESPONSES = 'ai.responses';
 
+export const AI_RESPONSES_KEYS = [
+  'gen_ai.output.messages',
+  'ai.response.text',
+  'ai.response.toolCalls',
+  'ai.responses',
+  'ai.tool_calls',
+  'gen_ai.response.text',
+  'gen_ai.response.tool_calls',
+] as const;
+
 /**
  * Type for {@link AI_RESPONSES} ai.responses
  */
@@ -484,6 +566,8 @@ export type AI_RESPONSES_TYPE = Array<string>;
  * @example "json_object"
  */
 export const AI_RESPONSE_FORMAT = 'ai.response_format';
+
+export const AI_RESPONSE_FORMAT_KEYS = ['ai.response_format'] as const;
 
 /**
  * Type for {@link AI_RESPONSE_FORMAT} ai.response_format
@@ -509,6 +593,16 @@ export type AI_RESPONSE_FORMAT_TYPE = string;
  */
 export const AI_RESPONSE_TEXT = 'ai.response.text';
 
+export const AI_RESPONSE_TEXT_KEYS = [
+  'gen_ai.output.messages',
+  'ai.response.text',
+  'ai.response.toolCalls',
+  'ai.responses',
+  'ai.tool_calls',
+  'gen_ai.response.text',
+  'gen_ai.response.tool_calls',
+] as const;
+
 /**
  * Type for {@link AI_RESPONSE_TEXT} ai.response.text
  */
@@ -533,6 +627,16 @@ export type AI_RESPONSE_TEXT_TYPE = string;
  */
 export const AI_RESPONSE_TOOLCALLS = 'ai.response.toolCalls';
 
+export const AI_RESPONSE_TOOLCALLS_KEYS = [
+  'gen_ai.output.messages',
+  'ai.response.text',
+  'ai.response.toolCalls',
+  'ai.responses',
+  'ai.tool_calls',
+  'gen_ai.response.text',
+  'gen_ai.response.tool_calls',
+] as const;
+
 /**
  * Type for {@link AI_RESPONSE_TOOLCALLS} ai.response.toolCalls
  */
@@ -555,6 +659,8 @@ export type AI_RESPONSE_TOOLCALLS_TYPE = string;
  */
 export const AI_SEARCH_QUERIES = 'ai.search_queries';
 
+export const AI_SEARCH_QUERIES_KEYS = ['ai.search_queries'] as const;
+
 /**
  * Type for {@link AI_SEARCH_QUERIES} ai.search_queries
  */
@@ -576,6 +682,8 @@ export type AI_SEARCH_QUERIES_TYPE = Array<string>;
  * @example ["search_result_1, search_result_2"]
  */
 export const AI_SEARCH_RESULTS = 'ai.search_results';
+
+export const AI_SEARCH_RESULTS_KEYS = ['ai.search_results'] as const;
 
 /**
  * Type for {@link AI_SEARCH_RESULTS} ai.search_results
@@ -601,6 +709,8 @@ export type AI_SEARCH_RESULTS_TYPE = Array<string>;
  */
 export const AI_SEED = 'ai.seed';
 
+export const AI_SEED_KEYS = ['gen_ai.request.seed', 'ai.seed'] as const;
+
 /**
  * Type for {@link AI_SEED} ai.seed
  */
@@ -625,6 +735,8 @@ export type AI_SEED_TYPE = string;
  */
 export const AI_STREAMING = 'ai.streaming';
 
+export const AI_STREAMING_KEYS = ['gen_ai.response.streaming', 'ai.streaming'] as const;
+
 /**
  * Type for {@link AI_STREAMING} ai.streaming
  */
@@ -646,6 +758,8 @@ export type AI_STREAMING_TYPE = boolean;
  * @example "{\"executed_function\": \"add_integers\"}"
  */
 export const AI_TAGS = 'ai.tags';
+
+export const AI_TAGS_KEYS = ['ai.tags'] as const;
 
 /**
  * Type for {@link AI_TAGS} ai.tags
@@ -671,6 +785,8 @@ export type AI_TAGS_TYPE = string;
  */
 export const AI_TEMPERATURE = 'ai.temperature';
 
+export const AI_TEMPERATURE_KEYS = ['gen_ai.request.temperature', 'ai.temperature'] as const;
+
 /**
  * Type for {@link AI_TEMPERATURE} ai.temperature
  */
@@ -694,6 +810,15 @@ export type AI_TEMPERATURE_TYPE = number;
  * @example ["Hello, how are you?","What is the capital of France?"]
  */
 export const AI_TEXTS = 'ai.texts';
+
+export const AI_TEXTS_KEYS = [
+  'gen_ai.input.messages',
+  'ai.input_messages',
+  'ai.prompt.messages',
+  'ai.texts',
+  'gen_ai.prompt',
+  'gen_ai.request.messages',
+] as const;
 
 /**
  * Type for {@link AI_TEXTS} ai.texts
@@ -719,6 +844,8 @@ export type AI_TEXTS_TYPE = Array<string>;
  */
 export const AI_TOOLCALL_ARGS = 'ai.toolCall.args';
 
+export const AI_TOOLCALL_ARGS_KEYS = ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'] as const;
+
 /**
  * Type for {@link AI_TOOLCALL_ARGS} ai.toolCall.args
  */
@@ -743,6 +870,14 @@ export type AI_TOOLCALL_ARGS_TYPE = string;
  */
 export const AI_TOOLCALL_RESULT = 'ai.toolCall.result';
 
+export const AI_TOOLCALL_RESULT_KEYS = [
+  'gen_ai.tool.call.result',
+  'ai.toolCall.result',
+  'gen_ai.tool.message',
+  'gen_ai.tool.output',
+  'mcp.tool.result.content',
+] as const;
+
 /**
  * Type for {@link AI_TOOLCALL_RESULT} ai.toolCall.result
  */
@@ -765,6 +900,8 @@ export type AI_TOOLCALL_RESULT_TYPE = string;
  */
 export const AI_TOOLS = 'ai.tools';
 
+export const AI_TOOLS_KEYS = ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'] as const;
+
 /**
  * Type for {@link AI_TOOLS} ai.tools
  */
@@ -786,6 +923,16 @@ export type AI_TOOLS_TYPE = Array<string>;
  * @example ["tool_call_1","tool_call_2"]
  */
 export const AI_TOOL_CALLS = 'ai.tool_calls';
+
+export const AI_TOOL_CALLS_KEYS = [
+  'gen_ai.output.messages',
+  'ai.response.text',
+  'ai.response.toolCalls',
+  'ai.responses',
+  'ai.tool_calls',
+  'gen_ai.response.text',
+  'gen_ai.response.tool_calls',
+] as const;
 
 /**
  * Type for {@link AI_TOOL_CALLS} ai.tool_calls
@@ -811,6 +958,8 @@ export type AI_TOOL_CALLS_TYPE = Array<string>;
  */
 export const AI_TOP_K = 'ai.top_k';
 
+export const AI_TOP_K_KEYS = ['gen_ai.request.top_k', 'ai.top_k'] as const;
+
 /**
  * Type for {@link AI_TOP_K} ai.top_k
  */
@@ -834,6 +983,8 @@ export type AI_TOP_K_TYPE = number;
  * @example 0.7
  */
 export const AI_TOP_P = 'ai.top_p';
+
+export const AI_TOP_P_KEYS = ['gen_ai.request.top_p', 'ai.top_p'] as const;
 
 /**
  * Type for {@link AI_TOP_P} ai.top_p
@@ -859,6 +1010,8 @@ export type AI_TOP_P_TYPE = number;
  */
 export const AI_TOTAL_COST = 'ai.total_cost';
 
+export const AI_TOTAL_COST_KEYS = ['gen_ai.cost.total_tokens', 'ai.total_cost'] as const;
+
 /**
  * Type for {@link AI_TOTAL_COST} ai.total_cost
  */
@@ -883,6 +1036,8 @@ export type AI_TOTAL_COST_TYPE = number;
  */
 export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
 
+export const AI_TOTAL_TOKENS_USED_KEYS = ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'] as const;
+
 /**
  * Type for {@link AI_TOTAL_TOKENS_USED} ai.total_tokens.used
  */
@@ -905,6 +1060,8 @@ export type AI_TOTAL_TOKENS_USED_TYPE = number;
  */
 export const AI_WARNINGS = 'ai.warnings';
 
+export const AI_WARNINGS_KEYS = ['ai.warnings'] as const;
+
 /**
  * Type for {@link AI_WARNINGS} ai.warnings
  */
@@ -925,6 +1082,8 @@ export type AI_WARNINGS_TYPE = Array<string>;
  * @example "17.1.0"
  */
 export const ANGULAR_VERSION = 'angular.version';
+
+export const ANGULAR_VERSION_KEYS = ['angular.version'] as const;
 
 /**
  * Type for {@link ANGULAR_VERSION} angular.version
@@ -950,6 +1109,8 @@ export type ANGULAR_VERSION_TYPE = string;
  */
 export const APP_APP_BUILD = 'app.app_build';
 
+export const APP_APP_BUILD_KEYS = ['app.build', 'app.app_build'] as const;
+
 /**
  * Type for {@link APP_APP_BUILD} app.app_build
  */
@@ -973,6 +1134,8 @@ export type APP_APP_BUILD_TYPE = string;
  * @example "com.example.myapp"
  */
 export const APP_APP_IDENTIFIER = 'app.app_identifier';
+
+export const APP_APP_IDENTIFIER_KEYS = ['app.identifier', 'app.app_identifier'] as const;
 
 /**
  * Type for {@link APP_APP_IDENTIFIER} app.app_identifier
@@ -998,6 +1161,8 @@ export type APP_APP_IDENTIFIER_TYPE = string;
  */
 export const APP_APP_NAME = 'app.app_name';
 
+export const APP_APP_NAME_KEYS = ['app.name', 'app.app_name'] as const;
+
 /**
  * Type for {@link APP_APP_NAME} app.app_name
  */
@@ -1021,6 +1186,8 @@ export type APP_APP_NAME_TYPE = string;
  * @example "2025-01-01T00:00:00.000Z"
  */
 export const APP_APP_START_TIME = 'app.app_start_time';
+
+export const APP_APP_START_TIME_KEYS = ['app.start_time', 'app.app_start_time'] as const;
 
 /**
  * Type for {@link APP_APP_START_TIME} app.app_start_time
@@ -1046,6 +1213,8 @@ export type APP_APP_START_TIME_TYPE = string;
  */
 export const APP_APP_VERSION = 'app.app_version';
 
+export const APP_APP_VERSION_KEYS = ['app.version', 'app.app_version'] as const;
+
 /**
  * Type for {@link APP_APP_VERSION} app.app_version
  */
@@ -1068,6 +1237,8 @@ export type APP_APP_VERSION_TYPE = string;
  * @example "1"
  */
 export const APP_BUILD = 'app.build';
+
+export const APP_BUILD_KEYS = ['app.build', 'app.app_build'] as const;
 
 /**
  * Type for {@link APP_BUILD} app.build
@@ -1092,6 +1263,8 @@ export type APP_BUILD_TYPE = string;
  */
 export const APP_IDENTIFIER = 'app.identifier';
 
+export const APP_IDENTIFIER_KEYS = ['app.identifier', 'app.app_identifier'] as const;
+
 /**
  * Type for {@link APP_IDENTIFIER} app.identifier
  */
@@ -1112,6 +1285,8 @@ export type APP_IDENTIFIER_TYPE = string;
  * @example true
  */
 export const APP_IN_FOREGROUND = 'app.in_foreground';
+
+export const APP_IN_FOREGROUND_KEYS = ['app.in_foreground'] as const;
 
 /**
  * Type for {@link APP_IN_FOREGROUND} app.in_foreground
@@ -1135,6 +1310,8 @@ export type APP_IN_FOREGROUND_TYPE = boolean;
  * @example "My App"
  */
 export const APP_NAME = 'app.name';
+
+export const APP_NAME_KEYS = ['app.name', 'app.app_name'] as const;
 
 /**
  * Type for {@link APP_NAME} app.name
@@ -1160,6 +1337,8 @@ export type APP_NAME_TYPE = string;
  */
 export const APP_START_COLD = 'app_start_cold';
 
+export const APP_START_COLD_KEYS = ['app.vitals.start.cold.value', 'app_start_cold'] as const;
+
 /**
  * Type for {@link APP_START_COLD} app_start_cold
  */
@@ -1182,6 +1361,8 @@ export type APP_START_COLD_TYPE = number;
  * @example "2025-01-01T00:00:00.000Z"
  */
 export const APP_START_TIME = 'app.start_time';
+
+export const APP_START_TIME_KEYS = ['app.start_time', 'app.app_start_time'] as const;
 
 /**
  * Type for {@link APP_START_TIME} app.start_time
@@ -1207,6 +1388,8 @@ export type APP_START_TIME_TYPE = string;
  */
 export const APP_START_TYPE = 'app_start_type';
 
+export const APP_START_TYPE_KEYS = ['app.vitals.start.type', 'app_start_type'] as const;
+
 /**
  * Type for {@link APP_START_TYPE} app_start_type
  */
@@ -1231,6 +1414,8 @@ export type APP_START_TYPE_TYPE = string;
  */
 export const APP_START_WARM = 'app_start_warm';
 
+export const APP_START_WARM_KEYS = ['app.vitals.start.warm.value', 'app_start_warm'] as const;
+
 /**
  * Type for {@link APP_START_WARM} app_start_warm
  */
@@ -1253,6 +1438,8 @@ export type APP_START_WARM_TYPE = number;
  * @example "1.0.0"
  */
 export const APP_VERSION = 'app.version';
+
+export const APP_VERSION_KEYS = ['app.version', 'app.app_version'] as const;
 
 /**
  * Type for {@link APP_VERSION} app.version
@@ -1277,6 +1464,8 @@ export type APP_VERSION_TYPE = string;
  */
 export const APP_VITALS_FRAMES_DELAY_VALUE = 'app.vitals.frames.delay.value';
 
+export const APP_VITALS_FRAMES_DELAY_VALUE_KEYS = ['app.vitals.frames.delay.value', 'frames.delay'] as const;
+
 /**
  * Type for {@link APP_VITALS_FRAMES_DELAY_VALUE} app.vitals.frames.delay.value
  */
@@ -1299,6 +1488,12 @@ export type APP_VITALS_FRAMES_DELAY_VALUE_TYPE = number;
  * @example 3
  */
 export const APP_VITALS_FRAMES_FROZEN_COUNT = 'app.vitals.frames.frozen.count';
+
+export const APP_VITALS_FRAMES_FROZEN_COUNT_KEYS = [
+  'app.vitals.frames.frozen.count',
+  'frames.frozen',
+  'sentry.frames.frozen',
+] as const;
 
 /**
  * Type for {@link APP_VITALS_FRAMES_FROZEN_COUNT} app.vitals.frames.frozen.count
@@ -1323,6 +1518,8 @@ export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
  */
 export const APP_VITALS_FRAMES_FROZEN_RATE = 'app.vitals.frames.frozen.rate';
 
+export const APP_VITALS_FRAMES_FROZEN_RATE_KEYS = ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'] as const;
+
 /**
  * Type for {@link APP_VITALS_FRAMES_FROZEN_RATE} app.vitals.frames.frozen.rate
  */
@@ -1345,6 +1542,12 @@ export type APP_VITALS_FRAMES_FROZEN_RATE_TYPE = number;
  * @example 1
  */
 export const APP_VITALS_FRAMES_SLOW_COUNT = 'app.vitals.frames.slow.count';
+
+export const APP_VITALS_FRAMES_SLOW_COUNT_KEYS = [
+  'app.vitals.frames.slow.count',
+  'frames.slow',
+  'sentry.frames.slow',
+] as const;
 
 /**
  * Type for {@link APP_VITALS_FRAMES_SLOW_COUNT} app.vitals.frames.slow.count
@@ -1369,6 +1572,8 @@ export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
  */
 export const APP_VITALS_FRAMES_SLOW_RATE = 'app.vitals.frames.slow.rate';
 
+export const APP_VITALS_FRAMES_SLOW_RATE_KEYS = ['app.vitals.frames.slow.rate', 'frames_slow_rate'] as const;
+
 /**
  * Type for {@link APP_VITALS_FRAMES_SLOW_RATE} app.vitals.frames.slow.rate
  */
@@ -1391,6 +1596,12 @@ export type APP_VITALS_FRAMES_SLOW_RATE_TYPE = number;
  * @example 60
  */
 export const APP_VITALS_FRAMES_TOTAL_COUNT = 'app.vitals.frames.total.count';
+
+export const APP_VITALS_FRAMES_TOTAL_COUNT_KEYS = [
+  'app.vitals.frames.total.count',
+  'frames.total',
+  'sentry.frames.total',
+] as const;
 
 /**
  * Type for {@link APP_VITALS_FRAMES_TOTAL_COUNT} app.vitals.frames.total.count
@@ -1415,6 +1626,8 @@ export type APP_VITALS_FRAMES_TOTAL_COUNT_TYPE = number;
  */
 export const APP_VITALS_STALL_DURATION = 'app.vitals.stall.duration';
 
+export const APP_VITALS_STALL_DURATION_KEYS = ['app.vitals.stall.duration', 'stall_total_time'] as const;
+
 /**
  * Type for {@link APP_VITALS_STALL_DURATION} app.vitals.stall.duration
  */
@@ -1437,6 +1650,8 @@ export type APP_VITALS_STALL_DURATION_TYPE = number;
  * @example 0.8
  */
 export const APP_VITALS_STALL_PERCENTAGE = 'app.vitals.stall.percentage';
+
+export const APP_VITALS_STALL_PERCENTAGE_KEYS = ['app.vitals.stall.percentage', 'stall_percentage'] as const;
 
 /**
  * Type for {@link APP_VITALS_STALL_PERCENTAGE} app.vitals.stall.percentage
@@ -1461,6 +1676,8 @@ export type APP_VITALS_STALL_PERCENTAGE_TYPE = number;
  */
 export const APP_VITALS_START_COLD_VALUE = 'app.vitals.start.cold.value';
 
+export const APP_VITALS_START_COLD_VALUE_KEYS = ['app.vitals.start.cold.value', 'app_start_cold'] as const;
+
 /**
  * Type for {@link APP_VITALS_START_COLD_VALUE} app.vitals.start.cold.value
  */
@@ -1481,6 +1698,8 @@ export type APP_VITALS_START_COLD_VALUE_TYPE = number;
  * @example true
  */
 export const APP_VITALS_START_PREWARMED = 'app.vitals.start.prewarmed';
+
+export const APP_VITALS_START_PREWARMED_KEYS = ['app.vitals.start.prewarmed'] as const;
 
 /**
  * Type for {@link APP_VITALS_START_PREWARMED} app.vitals.start.prewarmed
@@ -1503,6 +1722,8 @@ export type APP_VITALS_START_PREWARMED_TYPE = boolean;
  */
 export const APP_VITALS_START_REASON = 'app.vitals.start.reason';
 
+export const APP_VITALS_START_REASON_KEYS = ['app.vitals.start.reason'] as const;
+
 /**
  * Type for {@link APP_VITALS_START_REASON} app.vitals.start.reason
  */
@@ -1523,6 +1744,8 @@ export type APP_VITALS_START_REASON_TYPE = string;
  * @example "MainActivity"
  */
 export const APP_VITALS_START_SCREEN = 'app.vitals.start.screen';
+
+export const APP_VITALS_START_SCREEN_KEYS = ['app.vitals.start.screen'] as const;
 
 /**
  * Type for {@link APP_VITALS_START_SCREEN} app.vitals.start.screen
@@ -1547,6 +1770,8 @@ export type APP_VITALS_START_SCREEN_TYPE = string;
  */
 export const APP_VITALS_START_TYPE = 'app.vitals.start.type';
 
+export const APP_VITALS_START_TYPE_KEYS = ['app.vitals.start.type', 'app_start_type'] as const;
+
 /**
  * Type for {@link APP_VITALS_START_TYPE} app.vitals.start.type
  */
@@ -1569,6 +1794,8 @@ export type APP_VITALS_START_TYPE_TYPE = string;
  * @example 1234.56
  */
 export const APP_VITALS_START_WARM_VALUE = 'app.vitals.start.warm.value';
+
+export const APP_VITALS_START_WARM_VALUE_KEYS = ['app.vitals.start.warm.value', 'app_start_warm'] as const;
 
 /**
  * Type for {@link APP_VITALS_START_WARM_VALUE} app.vitals.start.warm.value
@@ -1593,6 +1820,8 @@ export type APP_VITALS_START_WARM_VALUE_TYPE = number;
  */
 export const APP_VITALS_TTFD_VALUE = 'app.vitals.ttfd.value';
 
+export const APP_VITALS_TTFD_VALUE_KEYS = ['app.vitals.ttfd.value', 'time_to_full_display'] as const;
+
 /**
  * Type for {@link APP_VITALS_TTFD_VALUE} app.vitals.ttfd.value
  */
@@ -1616,6 +1845,8 @@ export type APP_VITALS_TTFD_VALUE_TYPE = number;
  */
 export const APP_VITALS_TTID_VALUE = 'app.vitals.ttid.value';
 
+export const APP_VITALS_TTID_VALUE_KEYS = ['app.vitals.ttid.value', 'time_to_initial_display'] as const;
+
 /**
  * Type for {@link APP_VITALS_TTID_VALUE} app.vitals.ttid.value
  */
@@ -1636,6 +1867,8 @@ export type APP_VITALS_TTID_VALUE_TYPE = number;
  * @example 1
  */
 export const ART_GC_BLOCKING_COUNT = 'art.gc.blocking_count';
+
+export const ART_GC_BLOCKING_COUNT_KEYS = ['art.gc.blocking_count'] as const;
 
 /**
  * Type for {@link ART_GC_BLOCKING_COUNT} art.gc.blocking_count
@@ -1658,6 +1891,8 @@ export type ART_GC_BLOCKING_COUNT_TYPE = number;
  */
 export const ART_GC_BLOCKING_TIME = 'art.gc.blocking_time';
 
+export const ART_GC_BLOCKING_TIME_KEYS = ['art.gc.blocking_time'] as const;
+
 /**
  * Type for {@link ART_GC_BLOCKING_TIME} art.gc.blocking_time
  */
@@ -1678,6 +1913,8 @@ export type ART_GC_BLOCKING_TIME_TYPE = number;
  * @example 0
  */
 export const ART_GC_PRE_OOME_COUNT = 'art.gc.pre_oome_count';
+
+export const ART_GC_PRE_OOME_COUNT_KEYS = ['art.gc.pre_oome_count'] as const;
 
 /**
  * Type for {@link ART_GC_PRE_OOME_COUNT} art.gc.pre_oome_count
@@ -1700,6 +1937,8 @@ export type ART_GC_PRE_OOME_COUNT_TYPE = number;
  */
 export const ART_GC_TOTAL_COUNT = 'art.gc.total_count';
 
+export const ART_GC_TOTAL_COUNT_KEYS = ['art.gc.total_count'] as const;
+
 /**
  * Type for {@link ART_GC_TOTAL_COUNT} art.gc.total_count
  */
@@ -1720,6 +1959,8 @@ export type ART_GC_TOTAL_COUNT_TYPE = number;
  * @example 11.807
  */
 export const ART_GC_TOTAL_TIME = 'art.gc.total_time';
+
+export const ART_GC_TOTAL_TIME_KEYS = ['art.gc.total_time'] as const;
 
 /**
  * Type for {@link ART_GC_TOTAL_TIME} art.gc.total_time
@@ -1742,6 +1983,8 @@ export type ART_GC_TOTAL_TIME_TYPE = number;
  */
 export const ART_GC_WAITING_TIME = 'art.gc.waiting_time';
 
+export const ART_GC_WAITING_TIME_KEYS = ['art.gc.waiting_time'] as const;
+
 /**
  * Type for {@link ART_GC_WAITING_TIME} art.gc.waiting_time
  */
@@ -1762,6 +2005,8 @@ export type ART_GC_WAITING_TIME_TYPE = number;
  * @example 3181568
  */
 export const ART_MEMORY_FREE = 'art.memory.free';
+
+export const ART_MEMORY_FREE_KEYS = ['art.memory.free'] as const;
 
 /**
  * Type for {@link ART_MEMORY_FREE} art.memory.free
@@ -1784,6 +2029,8 @@ export type ART_MEMORY_FREE_TYPE = number;
  */
 export const ART_MEMORY_FREE_UNTIL_GC = 'art.memory.free_until_gc';
 
+export const ART_MEMORY_FREE_UNTIL_GC_KEYS = ['art.memory.free_until_gc'] as const;
+
 /**
  * Type for {@link ART_MEMORY_FREE_UNTIL_GC} art.memory.free_until_gc
  */
@@ -1804,6 +2051,8 @@ export type ART_MEMORY_FREE_UNTIL_GC_TYPE = number;
  * @example 196083712
  */
 export const ART_MEMORY_FREE_UNTIL_OOME = 'art.memory.free_until_oome';
+
+export const ART_MEMORY_FREE_UNTIL_OOME_KEYS = ['art.memory.free_until_oome'] as const;
 
 /**
  * Type for {@link ART_MEMORY_FREE_UNTIL_OOME} art.memory.free_until_oome
@@ -1826,6 +2075,8 @@ export type ART_MEMORY_FREE_UNTIL_OOME_TYPE = number;
  */
 export const ART_MEMORY_MAX = 'art.memory.max';
 
+export const ART_MEMORY_MAX_KEYS = ['art.memory.max'] as const;
+
 /**
  * Type for {@link ART_MEMORY_MAX} art.memory.max
  */
@@ -1846,6 +2097,8 @@ export type ART_MEMORY_MAX_TYPE = number;
  * @example 7774208
  */
 export const ART_MEMORY_TOTAL = 'art.memory.total';
+
+export const ART_MEMORY_TOTAL_KEYS = ['art.memory.total'] as const;
 
 /**
  * Type for {@link ART_MEMORY_TOTAL} art.memory.total
@@ -1868,6 +2121,8 @@ export type ART_MEMORY_TOTAL_TYPE = number;
  */
 export const AWS_CLOUDWATCH_LOGS_LOG_GROUP = 'aws.cloudwatch.logs.log_group';
 
+export const AWS_CLOUDWATCH_LOGS_LOG_GROUP_KEYS = ['aws.cloudwatch.logs.log_group'] as const;
+
 /**
  * Type for {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP} aws.cloudwatch.logs.log_group
  */
@@ -1888,6 +2143,8 @@ export type AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE = string;
  * @example "2024/01/01/[$LATEST]abcdef1234567890"
  */
 export const AWS_CLOUDWATCH_LOGS_LOG_STREAM = 'aws.cloudwatch.logs.log_stream';
+
+export const AWS_CLOUDWATCH_LOGS_LOG_STREAM_KEYS = ['aws.cloudwatch.logs.log_stream'] as const;
 
 /**
  * Type for {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM} aws.cloudwatch.logs.log_stream
@@ -1910,6 +2167,8 @@ export type AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE = string;
  */
 export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
 
+export const AWS_CLOUDWATCH_LOGS_URL_KEYS = ['aws.cloudwatch.logs.url'] as const;
+
 /**
  * Type for {@link AWS_CLOUDWATCH_LOGS_URL} aws.cloudwatch.logs.url
  */
@@ -1930,6 +2189,8 @@ export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
  * @example ["{ \"AttributeName\": \"string\", \"AttributeType\": \"string\" }"]
  */
 export const AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS = 'aws.dynamodb.attribute_definitions';
+
+export const AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_KEYS = ['aws.dynamodb.attribute_definitions'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS} aws.dynamodb.attribute_definitions
@@ -1952,6 +2213,8 @@ export type AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE = Array<string>;
  */
 export const AWS_DYNAMODB_CONSISTENT_READ = 'aws.dynamodb.consistent_read';
 
+export const AWS_DYNAMODB_CONSISTENT_READ_KEYS = ['aws.dynamodb.consistent_read'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_CONSISTENT_READ} aws.dynamodb.consistent_read
  */
@@ -1972,6 +2235,8 @@ export type AWS_DYNAMODB_CONSISTENT_READ_TYPE = boolean;
  * @example ["{ \"CapacityUnits\": number, \"GlobalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"LocalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"ReadCapacityUnits\": number, \"Table\": { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number }, \"TableName\": \"string\", \"WriteCapacityUnits\": number }"]
  */
 export const AWS_DYNAMODB_CONSUMED_CAPACITY = 'aws.dynamodb.consumed_capacity';
+
+export const AWS_DYNAMODB_CONSUMED_CAPACITY_KEYS = ['aws.dynamodb.consumed_capacity'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_CONSUMED_CAPACITY} aws.dynamodb.consumed_capacity
@@ -1994,6 +2259,8 @@ export type AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE = Array<string>;
  */
 export const AWS_DYNAMODB_COUNT = 'aws.dynamodb.count';
 
+export const AWS_DYNAMODB_COUNT_KEYS = ['aws.dynamodb.count'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_COUNT} aws.dynamodb.count
  */
@@ -2014,6 +2281,8 @@ export type AWS_DYNAMODB_COUNT_TYPE = number;
  * @example "Users"
  */
 export const AWS_DYNAMODB_EXCLUSIVE_START_TABLE = 'aws.dynamodb.exclusive_start_table';
+
+export const AWS_DYNAMODB_EXCLUSIVE_START_TABLE_KEYS = ['aws.dynamodb.exclusive_start_table'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_EXCLUSIVE_START_TABLE} aws.dynamodb.exclusive_start_table
@@ -2036,6 +2305,8 @@ export type AWS_DYNAMODB_EXCLUSIVE_START_TABLE_TYPE = string;
  */
 export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES = 'aws.dynamodb.global_secondary_indexes';
 
+export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_KEYS = ['aws.dynamodb.global_secondary_indexes'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES} aws.dynamodb.global_secondary_indexes
  */
@@ -2056,6 +2327,10 @@ export type AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_TYPE = Array<string>;
  * @example ["{ \"Create\": { \"IndexName\": \"string\", \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" }, \"ProvisionedThroughput\": { \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }"]
  */
 export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES = 'aws.dynamodb.global_secondary_index_updates';
+
+export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_KEYS = [
+  'aws.dynamodb.global_secondary_index_updates',
+] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES} aws.dynamodb.global_secondary_index_updates
@@ -2078,6 +2353,8 @@ export type AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_TYPE = Array<string>;
  */
 export const AWS_DYNAMODB_INDEX_NAME = 'aws.dynamodb.index_name';
 
+export const AWS_DYNAMODB_INDEX_NAME_KEYS = ['aws.dynamodb.index_name'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_INDEX_NAME} aws.dynamodb.index_name
  */
@@ -2098,6 +2375,8 @@ export type AWS_DYNAMODB_INDEX_NAME_TYPE = string;
  * @example "{ \"string\" : [ { \"ItemCollectionKey\": { \"string\" : { \"B\": blob, \"BOOL\": boolean, \"BS\": [ blob ], \"L\": [ \"AttributeValue\" ], \"M\": { \"string\" : \"AttributeValue\" }, \"N\": \"string\", \"NS\": [ \"string\" ], \"NULL\": boolean, \"S\": \"string\", \"SS\": [ \"string\" ] } }, \"SizeEstimateRangeGB\": [ number ] } ] }"
  */
 export const AWS_DYNAMODB_ITEM_COLLECTION_METRICS = 'aws.dynamodb.item_collection_metrics';
+
+export const AWS_DYNAMODB_ITEM_COLLECTION_METRICS_KEYS = ['aws.dynamodb.item_collection_metrics'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_ITEM_COLLECTION_METRICS} aws.dynamodb.item_collection_metrics
@@ -2120,6 +2399,8 @@ export type AWS_DYNAMODB_ITEM_COLLECTION_METRICS_TYPE = string;
  */
 export const AWS_DYNAMODB_LIMIT = 'aws.dynamodb.limit';
 
+export const AWS_DYNAMODB_LIMIT_KEYS = ['aws.dynamodb.limit'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_LIMIT} aws.dynamodb.limit
  */
@@ -2140,6 +2421,8 @@ export type AWS_DYNAMODB_LIMIT_TYPE = number;
  * @example ["{ \"IndexArn\": \"string\", \"IndexName\": \"string\", \"IndexSizeBytes\": number, \"ItemCount\": number, \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" } }"]
  */
 export const AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES = 'aws.dynamodb.local_secondary_indexes';
+
+export const AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_KEYS = ['aws.dynamodb.local_secondary_indexes'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES} aws.dynamodb.local_secondary_indexes
@@ -2162,6 +2445,8 @@ export type AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_TYPE = Array<string>;
  */
 export const AWS_DYNAMODB_PROJECTION = 'aws.dynamodb.projection';
 
+export const AWS_DYNAMODB_PROJECTION_KEYS = ['aws.dynamodb.projection'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_PROJECTION} aws.dynamodb.projection
  */
@@ -2182,6 +2467,8 @@ export type AWS_DYNAMODB_PROJECTION_TYPE = string;
  * @example 1
  */
 export const AWS_DYNAMODB_PROVISIONED_READ_CAPACITY = 'aws.dynamodb.provisioned_read_capacity';
+
+export const AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_KEYS = ['aws.dynamodb.provisioned_read_capacity'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_PROVISIONED_READ_CAPACITY} aws.dynamodb.provisioned_read_capacity
@@ -2204,6 +2491,8 @@ export type AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_TYPE = number;
  */
 export const AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY = 'aws.dynamodb.provisioned_write_capacity';
 
+export const AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_KEYS = ['aws.dynamodb.provisioned_write_capacity'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY} aws.dynamodb.provisioned_write_capacity
  */
@@ -2224,6 +2513,8 @@ export type AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_TYPE = number;
  * @example 50
  */
 export const AWS_DYNAMODB_SCANNED_COUNT = 'aws.dynamodb.scanned_count';
+
+export const AWS_DYNAMODB_SCANNED_COUNT_KEYS = ['aws.dynamodb.scanned_count'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_SCANNED_COUNT} aws.dynamodb.scanned_count
@@ -2246,6 +2537,8 @@ export type AWS_DYNAMODB_SCANNED_COUNT_TYPE = number;
  */
 export const AWS_DYNAMODB_SCAN_FORWARD = 'aws.dynamodb.scan_forward';
 
+export const AWS_DYNAMODB_SCAN_FORWARD_KEYS = ['aws.dynamodb.scan_forward'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_SCAN_FORWARD} aws.dynamodb.scan_forward
  */
@@ -2266,6 +2559,8 @@ export type AWS_DYNAMODB_SCAN_FORWARD_TYPE = boolean;
  * @example 10
  */
 export const AWS_DYNAMODB_SEGMENT = 'aws.dynamodb.segment';
+
+export const AWS_DYNAMODB_SEGMENT_KEYS = ['aws.dynamodb.segment'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_SEGMENT} aws.dynamodb.segment
@@ -2288,6 +2583,8 @@ export type AWS_DYNAMODB_SEGMENT_TYPE = number;
  */
 export const AWS_DYNAMODB_SELECT = 'aws.dynamodb.select';
 
+export const AWS_DYNAMODB_SELECT_KEYS = ['aws.dynamodb.select'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_SELECT} aws.dynamodb.select
  */
@@ -2308,6 +2605,8 @@ export type AWS_DYNAMODB_SELECT_TYPE = string;
  * @example 20
  */
 export const AWS_DYNAMODB_TABLE_COUNT = 'aws.dynamodb.table_count';
+
+export const AWS_DYNAMODB_TABLE_COUNT_KEYS = ['aws.dynamodb.table_count'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_TABLE_COUNT} aws.dynamodb.table_count
@@ -2330,6 +2629,8 @@ export type AWS_DYNAMODB_TABLE_COUNT_TYPE = number;
  */
 export const AWS_DYNAMODB_TABLE_NAMES = 'aws.dynamodb.table_names';
 
+export const AWS_DYNAMODB_TABLE_NAMES_KEYS = ['aws.dynamodb.table_names'] as const;
+
 /**
  * Type for {@link AWS_DYNAMODB_TABLE_NAMES} aws.dynamodb.table_names
  */
@@ -2350,6 +2651,8 @@ export type AWS_DYNAMODB_TABLE_NAMES_TYPE = Array<string>;
  * @example 100
  */
 export const AWS_DYNAMODB_TOTAL_SEGMENTS = 'aws.dynamodb.total_segments';
+
+export const AWS_DYNAMODB_TOTAL_SEGMENTS_KEYS = ['aws.dynamodb.total_segments'] as const;
 
 /**
  * Type for {@link AWS_DYNAMODB_TOTAL_SEGMENTS} aws.dynamodb.total_segments
@@ -2374,6 +2677,8 @@ export type AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE = number;
  */
 export const AWS_EXTENDED_REQUEST_ID = 'aws.extended_request_id';
 
+export const AWS_EXTENDED_REQUEST_ID_KEYS = ['aws.extended_request_id', 'aws.request.extended_id'] as const;
+
 /**
  * Type for {@link AWS_EXTENDED_REQUEST_ID} aws.extended_request_id
  */
@@ -2396,6 +2701,8 @@ export type AWS_EXTENDED_REQUEST_ID_TYPE = string;
  * @example "some-stream-name"
  */
 export const AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream_name';
+
+export const AWS_KINESIS_STREAM_NAME_KEYS = ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'] as const;
 
 /**
  * Type for {@link AWS_KINESIS_STREAM_NAME} aws.kinesis.stream_name
@@ -2421,6 +2728,8 @@ export type AWS_KINESIS_STREAM_NAME_TYPE = string;
  */
 export const _AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream.name';
 
+export const _AWS_KINESIS_STREAM_NAME_KEYS = ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'] as const;
+
 /**
  * Type for {@link _AWS_KINESIS_STREAM_NAME} aws.kinesis.stream.name
  */
@@ -2445,6 +2754,12 @@ export type _AWS_KINESIS_STREAM_NAME_TYPE = string;
  */
 export const AWS_LAMBDA_AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
 
+export const AWS_LAMBDA_AWS_REQUEST_ID_KEYS = [
+  'faas.invocation_id',
+  'aws.lambda.aws_request_id',
+  'faas.execution',
+] as const;
+
 /**
  * Type for {@link AWS_LAMBDA_AWS_REQUEST_ID} aws.lambda.aws_request_id
  */
@@ -2465,6 +2780,8 @@ export type AWS_LAMBDA_AWS_REQUEST_ID_TYPE = string;
  * @example 1234.56
  */
 export const AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS = 'aws.lambda.execution_duration_in_millis';
+
+export const AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_KEYS = ['aws.lambda.execution_duration_in_millis'] as const;
 
 /**
  * Type for {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS} aws.lambda.execution_duration_in_millis
@@ -2490,6 +2807,8 @@ export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
  */
 export const AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
 
+export const AWS_LAMBDA_FUNCTION_NAME_KEYS = ['faas.name', 'aws.lambda.function_name'] as const;
+
 /**
  * Type for {@link AWS_LAMBDA_FUNCTION_NAME} aws.lambda.function_name
  */
@@ -2514,6 +2833,8 @@ export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
  */
 export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
 
+export const AWS_LAMBDA_FUNCTION_VERSION_KEYS = ['faas.version', 'aws.lambda.function_version'] as const;
+
 /**
  * Type for {@link AWS_LAMBDA_FUNCTION_VERSION} aws.lambda.function_version
  */
@@ -2536,6 +2857,8 @@ export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
  * @example "arn:aws:lambda:us-east-1:123456789012:function:my-function"
  */
 export const AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked_arn';
+
+export const AWS_LAMBDA_INVOKED_ARN_KEYS = ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'] as const;
 
 /**
  * Type for {@link AWS_LAMBDA_INVOKED_ARN} aws.lambda.invoked_arn
@@ -2561,6 +2884,11 @@ export type AWS_LAMBDA_INVOKED_ARN_TYPE = string;
  */
 export const AWS_LAMBDA_INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_function_arn';
 
+export const AWS_LAMBDA_INVOKED_FUNCTION_ARN_KEYS = [
+  'aws.lambda.invoked_arn',
+  'aws.lambda.invoked_function_arn',
+] as const;
+
 /**
  * Type for {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN} aws.lambda.invoked_function_arn
  */
@@ -2581,6 +2909,8 @@ export type AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE = string;
  * @example 5000
  */
 export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
+
+export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_KEYS = ['aws.lambda.remaining_time_in_millis'] as const;
 
 /**
  * Type for {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS} aws.lambda.remaining_time_in_millis
@@ -2603,6 +2933,8 @@ export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
  */
 export const AWS_LOG_GROUP_NAMES = 'aws.log.group.names';
 
+export const AWS_LOG_GROUP_NAMES_KEYS = ['aws.log.group.names'] as const;
+
 /**
  * Type for {@link AWS_LOG_GROUP_NAMES} aws.log.group.names
  */
@@ -2623,6 +2955,8 @@ export type AWS_LOG_GROUP_NAMES_TYPE = Array<string>;
  * @example ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
  */
 export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
+
+export const AWS_LOG_STREAM_NAMES_KEYS = ['aws.log.stream.names'] as const;
 
 /**
  * Type for {@link AWS_LOG_STREAM_NAMES} aws.log.stream.names
@@ -2648,6 +2982,8 @@ export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
  */
 export const AWS_OPERATION_NAME = 'aws.operation_name';
 
+export const AWS_OPERATION_NAME_KEYS = ['rpc.method', 'aws.operation_name'] as const;
+
 /**
  * Type for {@link AWS_OPERATION_NAME} aws.operation_name
  */
@@ -2671,6 +3007,8 @@ export type AWS_OPERATION_NAME_TYPE = string;
  * @example "us-east-1"
  */
 export const AWS_REGION = 'aws_region';
+
+export const AWS_REGION_KEYS = ['cloud.region', 'aws_region', 'gcp_region'] as const;
 
 /**
  * Type for {@link AWS_REGION} aws_region
@@ -2696,6 +3034,8 @@ export type AWS_REGION_TYPE = string;
  */
 export const AWS_REQUEST_EXTENDED_ID = 'aws.request.extended_id';
 
+export const AWS_REQUEST_EXTENDED_ID_KEYS = ['aws.extended_request_id', 'aws.request.extended_id'] as const;
+
 /**
  * Type for {@link AWS_REQUEST_EXTENDED_ID} aws.request.extended_id
  */
@@ -2718,6 +3058,8 @@ export type AWS_REQUEST_EXTENDED_ID_TYPE = string;
  * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
  */
 export const AWS_REQUEST_ID = 'aws.request_id';
+
+export const AWS_REQUEST_ID_KEYS = ['aws.request_id', 'aws.request.id'] as const;
 
 /**
  * Type for {@link AWS_REQUEST_ID} aws.request_id
@@ -2743,6 +3085,8 @@ export type AWS_REQUEST_ID_TYPE = string;
  */
 export const _AWS_REQUEST_ID = 'aws.request.id';
 
+export const _AWS_REQUEST_ID_KEYS = ['aws.request_id', 'aws.request.id'] as const;
+
 /**
  * Type for {@link _AWS_REQUEST_ID} aws.request.id
  */
@@ -2767,6 +3111,8 @@ export type _AWS_REQUEST_ID_TYPE = string;
  */
 export const AWS_REQUEST_URL = 'aws.request.url';
 
+export const AWS_REQUEST_URL_KEYS = ['url.full', 'aws.request.url', 'http.url', 'url'] as const;
+
 /**
  * Type for {@link AWS_REQUEST_URL} aws.request.url
  */
@@ -2787,6 +3133,8 @@ export type AWS_REQUEST_URL_TYPE = string;
  * @example "ot-demo-test"
  */
 export const AWS_S3_BUCKET = 'aws.s3.bucket';
+
+export const AWS_S3_BUCKET_KEYS = ['aws.s3.bucket'] as const;
 
 /**
  * Type for {@link AWS_S3_BUCKET} aws.s3.bucket
@@ -2809,6 +3157,8 @@ export type AWS_S3_BUCKET_TYPE = string;
  */
 export const AWS_SECRETSMANAGER_SECRET_ARN = 'aws.secretsmanager.secret.arn';
 
+export const AWS_SECRETSMANAGER_SECRET_ARN_KEYS = ['aws.secretsmanager.secret.arn'] as const;
+
 /**
  * Type for {@link AWS_SECRETSMANAGER_SECRET_ARN} aws.secretsmanager.secret.arn
  */
@@ -2829,6 +3179,8 @@ export type AWS_SECRETSMANAGER_SECRET_ARN_TYPE = string;
  * @example "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
  */
 export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
+
+export const AWS_SNS_TOPIC_ARN_KEYS = ['aws.sns.topic.arn'] as const;
 
 /**
  * Type for {@link AWS_SNS_TOPIC_ARN} aws.sns.topic.arn
@@ -2851,6 +3203,8 @@ export type AWS_SNS_TOPIC_ARN_TYPE = string;
  */
 export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn';
 
+export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN_KEYS = ['aws.step_functions.activity.arn'] as const;
+
 /**
  * Type for {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN} aws.step_functions.activity.arn
  */
@@ -2872,6 +3226,8 @@ export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
  */
 export const AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN = 'aws.step_functions.state_machine.arn';
 
+export const AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_KEYS = ['aws.step_functions.state_machine.arn'] as const;
+
 /**
  * Type for {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN} aws.step_functions.state_machine.arn
  */
@@ -2892,6 +3248,8 @@ export type AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE = string;
  * @example true
  */
 export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
+
+export const BLOCKED_MAIN_THREAD_KEYS = ['blocked_main_thread'] as const;
 
 /**
  * Type for {@link BLOCKED_MAIN_THREAD} blocked_main_thread
@@ -2915,6 +3273,8 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  */
 export const BROWSER_BFCACHE_FRAME = 'browser.bfcache.frame';
 
+export const BROWSER_BFCACHE_FRAME_KEYS = ['browser.bfcache.frame'] as const;
+
 /**
  * Type for {@link BROWSER_BFCACHE_FRAME} browser.bfcache.frame
  */
@@ -2935,6 +3295,8 @@ export type BROWSER_BFCACHE_FRAME_TYPE = string;
  * @example 2
  */
 export const BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT = 'browser.bfcache.not_restored_reason_count';
+
+export const BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_KEYS = ['browser.bfcache.not_restored_reason_count'] as const;
 
 /**
  * Type for {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT} browser.bfcache.not_restored_reason_count
@@ -2957,6 +3319,8 @@ export type BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE = number;
  * @example "miss"
  */
 export const BROWSER_BFCACHE_OUTCOME = 'browser.bfcache.outcome';
+
+export const BROWSER_BFCACHE_OUTCOME_KEYS = ['browser.bfcache.outcome'] as const;
 
 /**
  * Type for {@link BROWSER_BFCACHE_OUTCOME} browser.bfcache.outcome
@@ -2982,6 +3346,8 @@ export type BROWSER_BFCACHE_OUTCOME_TYPE = string;
  */
 export const BROWSER_BFCACHE_REASON = 'browser.bfcache.reason';
 
+export const BROWSER_BFCACHE_REASON_KEYS = ['browser.bfcache.reason'] as const;
+
 /**
  * Type for {@link BROWSER_BFCACHE_REASON} browser.bfcache.reason
  */
@@ -3004,6 +3370,8 @@ export type BROWSER_BFCACHE_REASON_TYPE = string;
  * @example "Chrome"
  */
 export const BROWSER_NAME = 'browser.name';
+
+export const BROWSER_NAME_KEYS = ['browser.name', 'sentry.browser.name'] as const;
 
 /**
  * Type for {@link BROWSER_NAME} browser.name
@@ -3028,6 +3396,11 @@ export type BROWSER_NAME_TYPE = string;
  */
 export const BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START = 'browser.performance.navigation.activation_start';
 
+export const BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_KEYS = [
+  'browser.performance.navigation.activation_start',
+  'performance.activationStart',
+] as const;
+
 /**
  * Type for {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START} browser.performance.navigation.activation_start
  */
@@ -3051,6 +3424,11 @@ export type BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE = number;
  */
 export const BROWSER_PERFORMANCE_TIME_ORIGIN = 'browser.performance.time_origin';
 
+export const BROWSER_PERFORMANCE_TIME_ORIGIN_KEYS = [
+  'browser.performance.time_origin',
+  'performance.timeOrigin',
+] as const;
+
 /**
  * Type for {@link BROWSER_PERFORMANCE_TIME_ORIGIN} browser.performance.time_origin
  */
@@ -3071,6 +3449,8 @@ export type BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE = number;
  * @example "network-error"
  */
 export const BROWSER_REPORT_TYPE = 'browser.report.type';
+
+export const BROWSER_REPORT_TYPE_KEYS = ['browser.report.type'] as const;
 
 /**
  * Type for {@link BROWSER_REPORT_TYPE} browser.report.type
@@ -3093,6 +3473,8 @@ export type BROWSER_REPORT_TYPE_TYPE = string;
  */
 export const BROWSER_SCRIPT_INVOKER = 'browser.script.invoker';
 
+export const BROWSER_SCRIPT_INVOKER_KEYS = ['browser.script.invoker'] as const;
+
 /**
  * Type for {@link BROWSER_SCRIPT_INVOKER} browser.script.invoker
  */
@@ -3114,6 +3496,8 @@ export type BROWSER_SCRIPT_INVOKER_TYPE = string;
  */
 export const BROWSER_SCRIPT_INVOKER_TYPE = 'browser.script.invoker_type';
 
+export const BROWSER_SCRIPT_INVOKER_TYPE_KEYS = ['browser.script.invoker_type'] as const;
+
 /**
  * Type for {@link BROWSER_SCRIPT_INVOKER_TYPE} browser.script.invoker_type
  */
@@ -3134,6 +3518,8 @@ export type BROWSER_SCRIPT_INVOKER_TYPE_TYPE = string;
  * @example 678
  */
 export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION = 'browser.script.source_char_position';
+
+export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION_KEYS = ['browser.script.source_char_position'] as const;
 
 /**
  * Type for {@link BROWSER_SCRIPT_SOURCE_CHAR_POSITION} browser.script.source_char_position
@@ -3158,6 +3544,8 @@ export type BROWSER_SCRIPT_SOURCE_CHAR_POSITION_TYPE = number;
  */
 export const BROWSER_VERSION = 'browser.version';
 
+export const BROWSER_VERSION_KEYS = ['browser.version', 'sentry.browser.version'] as const;
+
 /**
  * Type for {@link BROWSER_VERSION} browser.version
  */
@@ -3178,6 +3566,8 @@ export type BROWSER_VERSION_TYPE = string;
  * @example "navigation"
  */
 export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT = 'browser.web_vital.cls.report_event';
+
+export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT_KEYS = ['browser.web_vital.cls.report_event'] as const;
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT} browser.web_vital.cls.report_event
@@ -3203,6 +3593,11 @@ export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
  * @example "body > div#app"
  */
 export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
+
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY_KEYS = [
+  'browser.web_vital.cls.source.<key>',
+  'cls.source.<key>',
+] as const;
 
 /**
  * Base key for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE}.${key}`.
@@ -3232,6 +3627,8 @@ export type BROWSER_WEB_VITAL_CLS_SOURCE_KEY_TYPE = string;
  */
 export const BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
 
+export const BROWSER_WEB_VITAL_CLS_VALUE_KEYS = ['browser.web_vital.cls.value', 'cls'] as const;
+
 /**
  * Type for {@link BROWSER_WEB_VITAL_CLS_VALUE} browser.web_vital.cls.value
  */
@@ -3254,6 +3651,8 @@ export type BROWSER_WEB_VITAL_CLS_VALUE_TYPE = number;
  * @example 547.6951
  */
 export const BROWSER_WEB_VITAL_FCP_VALUE = 'browser.web_vital.fcp.value';
+
+export const BROWSER_WEB_VITAL_FCP_VALUE_KEYS = ['browser.web_vital.fcp.value', 'fcp'] as const;
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_FCP_VALUE} browser.web_vital.fcp.value
@@ -3278,6 +3677,8 @@ export type BROWSER_WEB_VITAL_FCP_VALUE_TYPE = number;
  */
 export const BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
 
+export const BROWSER_WEB_VITAL_FP_VALUE_KEYS = ['browser.web_vital.fp.value', 'fp'] as const;
+
 /**
  * Type for {@link BROWSER_WEB_VITAL_FP_VALUE} browser.web_vital.fp.value
  */
@@ -3300,6 +3701,8 @@ export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
  * @example 200
  */
 export const BROWSER_WEB_VITAL_INP_VALUE = 'browser.web_vital.inp.value';
+
+export const BROWSER_WEB_VITAL_INP_VALUE_KEYS = ['browser.web_vital.inp.value', 'inp'] as const;
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_INP_VALUE} browser.web_vital.inp.value
@@ -3324,6 +3727,8 @@ export type BROWSER_WEB_VITAL_INP_VALUE_TYPE = number;
  */
 export const BROWSER_WEB_VITAL_LCP_ELEMENT = 'browser.web_vital.lcp.element';
 
+export const BROWSER_WEB_VITAL_LCP_ELEMENT_KEYS = ['browser.web_vital.lcp.element', 'lcp.element'] as const;
+
 /**
  * Type for {@link BROWSER_WEB_VITAL_LCP_ELEMENT} browser.web_vital.lcp.element
  */
@@ -3346,6 +3751,8 @@ export type BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE = string;
  * @example "#gero"
  */
 export const BROWSER_WEB_VITAL_LCP_ID = 'browser.web_vital.lcp.id';
+
+export const BROWSER_WEB_VITAL_LCP_ID_KEYS = ['browser.web_vital.lcp.id', 'lcp.id'] as const;
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_LCP_ID} browser.web_vital.lcp.id
@@ -3370,6 +3777,8 @@ export type BROWSER_WEB_VITAL_LCP_ID_TYPE = string;
  */
 export const BROWSER_WEB_VITAL_LCP_LOAD_TIME = 'browser.web_vital.lcp.load_time';
 
+export const BROWSER_WEB_VITAL_LCP_LOAD_TIME_KEYS = ['browser.web_vital.lcp.load_time', 'lcp.loadTime'] as const;
+
 /**
  * Type for {@link BROWSER_WEB_VITAL_LCP_LOAD_TIME} browser.web_vital.lcp.load_time
  */
@@ -3393,6 +3802,8 @@ export type BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE = number;
  */
 export const BROWSER_WEB_VITAL_LCP_RENDER_TIME = 'browser.web_vital.lcp.render_time';
 
+export const BROWSER_WEB_VITAL_LCP_RENDER_TIME_KEYS = ['browser.web_vital.lcp.render_time', 'lcp.renderTime'] as const;
+
 /**
  * Type for {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME} browser.web_vital.lcp.render_time
  */
@@ -3413,6 +3824,8 @@ export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
  * @example "pagehide"
  */
 export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_event';
+
+export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT_KEYS = ['browser.web_vital.lcp.report_event'] as const;
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT} browser.web_vital.lcp.report_event
@@ -3437,6 +3850,8 @@ export type BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE = string;
  */
 export const BROWSER_WEB_VITAL_LCP_SIZE = 'browser.web_vital.lcp.size';
 
+export const BROWSER_WEB_VITAL_LCP_SIZE_KEYS = ['browser.web_vital.lcp.size', 'lcp.size'] as const;
+
 /**
  * Type for {@link BROWSER_WEB_VITAL_LCP_SIZE} browser.web_vital.lcp.size
  */
@@ -3459,6 +3874,8 @@ export type BROWSER_WEB_VITAL_LCP_SIZE_TYPE = number;
  * @example "https://example.com/static/img.png"
  */
 export const BROWSER_WEB_VITAL_LCP_URL = 'browser.web_vital.lcp.url';
+
+export const BROWSER_WEB_VITAL_LCP_URL_KEYS = ['browser.web_vital.lcp.url', 'lcp.url'] as const;
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_LCP_URL} browser.web_vital.lcp.url
@@ -3483,6 +3900,8 @@ export type BROWSER_WEB_VITAL_LCP_URL_TYPE = string;
  */
 export const BROWSER_WEB_VITAL_LCP_VALUE = 'browser.web_vital.lcp.value';
 
+export const BROWSER_WEB_VITAL_LCP_VALUE_KEYS = ['browser.web_vital.lcp.value', 'lcp'] as const;
+
 /**
  * Type for {@link BROWSER_WEB_VITAL_LCP_VALUE} browser.web_vital.lcp.value
  */
@@ -3505,6 +3924,11 @@ export type BROWSER_WEB_VITAL_LCP_VALUE_TYPE = number;
  * @example 1554.5814
  */
 export const BROWSER_WEB_VITAL_TTFB_REQUEST_TIME = 'browser.web_vital.ttfb.request_time';
+
+export const BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_KEYS = [
+  'browser.web_vital.ttfb.request_time',
+  'ttfb.requestTime',
+] as const;
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME} browser.web_vital.ttfb.request_time
@@ -3529,6 +3953,8 @@ export type BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE = number;
  */
 export const BROWSER_WEB_VITAL_TTFB_VALUE = 'browser.web_vital.ttfb.value';
 
+export const BROWSER_WEB_VITAL_TTFB_VALUE_KEYS = ['browser.web_vital.ttfb.value', 'ttfb'] as const;
+
 /**
  * Type for {@link BROWSER_WEB_VITAL_TTFB_VALUE} browser.web_vital.ttfb.value
  */
@@ -3549,6 +3975,8 @@ export type BROWSER_WEB_VITAL_TTFB_VALUE_TYPE = number;
  * @example true
  */
 export const CACHE_HIT = 'cache.hit';
+
+export const CACHE_HIT_KEYS = ['cache.hit'] as const;
 
 /**
  * Type for {@link CACHE_HIT} cache.hit
@@ -3571,6 +3999,8 @@ export type CACHE_HIT_TYPE = boolean;
  */
 export const CACHE_ITEM_SIZE = 'cache.item_size';
 
+export const CACHE_ITEM_SIZE_KEYS = ['cache.item_size'] as const;
+
 /**
  * Type for {@link CACHE_ITEM_SIZE} cache.item_size
  */
@@ -3591,6 +4021,8 @@ export type CACHE_ITEM_SIZE_TYPE = number;
  * @example ["my-cache-key","my-other-cache-key"]
  */
 export const CACHE_KEY = 'cache.key';
+
+export const CACHE_KEY_KEYS = ['cache.key'] as const;
 
 /**
  * Type for {@link CACHE_KEY} cache.key
@@ -3613,6 +4045,8 @@ export type CACHE_KEY_TYPE = Array<string>;
  */
 export const CACHE_OPERATION = 'cache.operation';
 
+export const CACHE_OPERATION_KEYS = ['cache.operation'] as const;
+
 /**
  * Type for {@link CACHE_OPERATION} cache.operation
  */
@@ -3633,6 +4067,8 @@ export type CACHE_OPERATION_TYPE = string;
  * @example 120
  */
 export const CACHE_TTL = 'cache.ttl';
+
+export const CACHE_TTL_KEYS = ['cache.ttl'] as const;
 
 /**
  * Type for {@link CACHE_TTL} cache.ttl
@@ -3655,6 +4091,8 @@ export type CACHE_TTL_TYPE = number;
  */
 export const CACHE_WRITE = 'cache.write';
 
+export const CACHE_WRITE_KEYS = ['cache.write'] as const;
+
 /**
  * Type for {@link CACHE_WRITE} cache.write
  */
@@ -3675,6 +4113,8 @@ export type CACHE_WRITE_TYPE = boolean;
  * @example "mail"
  */
 export const CHANNEL = 'channel';
+
+export const CHANNEL_KEYS = ['channel'] as const;
 
 /**
  * Type for {@link CHANNEL} channel
@@ -3699,6 +4139,8 @@ export type CHANNEL_TYPE = string;
  */
 export const CLIENT_ADDRESS = 'client.address';
 
+export const CLIENT_ADDRESS_KEYS = ['client.address', 'http.client_ip'] as const;
+
 /**
  * Type for {@link CLIENT_ADDRESS} client.address
  */
@@ -3720,6 +4162,8 @@ export type CLIENT_ADDRESS_TYPE = string;
  */
 export const CLIENT_PORT = 'client.port';
 
+export const CLIENT_PORT_KEYS = ['client.port'] as const;
+
 /**
  * Type for {@link CLIENT_PORT} client.port
  */
@@ -3740,6 +4184,8 @@ export type CLIENT_PORT_TYPE = number;
  * @example 543
  */
 export const CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
+
+export const CLOUDFLARE_D1_DURATION_KEYS = ['cloudflare.d1.duration'] as const;
 
 /**
  * Type for {@link CLOUDFLARE_D1_DURATION} cloudflare.d1.duration
@@ -3765,6 +4211,13 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  */
 export const CLOUDFLARE_D1_QUERY_TYPE = 'cloudflare.d1.query_type';
 
+export const CLOUDFLARE_D1_QUERY_TYPE_KEYS = [
+  'db.operation.name',
+  'cloudflare.d1.query_type',
+  'db.operation',
+  'redis.command',
+] as const;
+
 /**
  * Type for {@link CLOUDFLARE_D1_QUERY_TYPE} cloudflare.d1.query_type
  */
@@ -3785,6 +4238,8 @@ export type CLOUDFLARE_D1_QUERY_TYPE_TYPE = string;
  * @example 12
  */
 export const CLOUDFLARE_D1_ROWS_READ = 'cloudflare.d1.rows_read';
+
+export const CLOUDFLARE_D1_ROWS_READ_KEYS = ['cloudflare.d1.rows_read'] as const;
 
 /**
  * Type for {@link CLOUDFLARE_D1_ROWS_READ} cloudflare.d1.rows_read
@@ -3807,6 +4262,8 @@ export type CLOUDFLARE_D1_ROWS_READ_TYPE = number;
  */
 export const CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
 
+export const CLOUDFLARE_D1_ROWS_WRITTEN_KEYS = ['cloudflare.d1.rows_written'] as const;
+
 /**
  * Type for {@link CLOUDFLARE_D1_ROWS_WRITTEN} cloudflare.d1.rows_written
  */
@@ -3827,6 +4284,8 @@ export type CLOUDFLARE_D1_ROWS_WRITTEN_TYPE = number;
  * @example 2
  */
 export const CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS = 'cloudflare.durable_object.query.bindings';
+
+export const CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_KEYS = ['cloudflare.durable_object.query.bindings'] as const;
 
 /**
  * Type for {@link CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS} cloudflare.durable_object.query.bindings
@@ -3849,6 +4308,10 @@ export type CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_TYPE = number;
  */
 export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ = 'cloudflare.durable_object.response.rows_read';
 
+export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_KEYS = [
+  'cloudflare.durable_object.response.rows_read',
+] as const;
+
 /**
  * Type for {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ} cloudflare.durable_object.response.rows_read
  */
@@ -3869,6 +4332,10 @@ export type CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_TYPE = number;
  * @example 1
  */
 export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN = 'cloudflare.durable_object.response.rows_written';
+
+export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_KEYS = [
+  'cloudflare.durable_object.response.rows_written',
+] as const;
 
 /**
  * Type for {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN} cloudflare.durable_object.response.rows_written
@@ -3891,6 +4358,8 @@ export type CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_TYPE = number;
  */
 export const CLOUDFLARE_R2_BUCKET = 'cloudflare.r2.bucket';
 
+export const CLOUDFLARE_R2_BUCKET_KEYS = ['cloudflare.r2.bucket'] as const;
+
 /**
  * Type for {@link CLOUDFLARE_R2_BUCKET} cloudflare.r2.bucket
  */
@@ -3911,6 +4380,8 @@ export type CLOUDFLARE_R2_BUCKET_TYPE = string;
  * @example "GetObject"
  */
 export const CLOUDFLARE_R2_OPERATION = 'cloudflare.r2.operation';
+
+export const CLOUDFLARE_R2_OPERATION_KEYS = ['cloudflare.r2.operation'] as const;
 
 /**
  * Type for {@link CLOUDFLARE_R2_OPERATION} cloudflare.r2.operation
@@ -3933,6 +4404,8 @@ export type CLOUDFLARE_R2_OPERATION_TYPE = string;
  */
 export const CLOUDFLARE_R2_REQUEST_DELIMITER = 'cloudflare.r2.request.delimiter';
 
+export const CLOUDFLARE_R2_REQUEST_DELIMITER_KEYS = ['cloudflare.r2.request.delimiter'] as const;
+
 /**
  * Type for {@link CLOUDFLARE_R2_REQUEST_DELIMITER} cloudflare.r2.request.delimiter
  */
@@ -3953,6 +4426,8 @@ export type CLOUDFLARE_R2_REQUEST_DELIMITER_TYPE = string;
  * @example "my-file.txt"
  */
 export const CLOUDFLARE_R2_REQUEST_KEY = 'cloudflare.r2.request.key';
+
+export const CLOUDFLARE_R2_REQUEST_KEY_KEYS = ['cloudflare.r2.request.key'] as const;
 
 /**
  * Type for {@link CLOUDFLARE_R2_REQUEST_KEY} cloudflare.r2.request.key
@@ -3975,6 +4450,8 @@ export type CLOUDFLARE_R2_REQUEST_KEY_TYPE = string;
  */
 export const CLOUDFLARE_R2_REQUEST_PART_NUMBER = 'cloudflare.r2.request.part_number';
 
+export const CLOUDFLARE_R2_REQUEST_PART_NUMBER_KEYS = ['cloudflare.r2.request.part_number'] as const;
+
 /**
  * Type for {@link CLOUDFLARE_R2_REQUEST_PART_NUMBER} cloudflare.r2.request.part_number
  */
@@ -3995,6 +4472,8 @@ export type CLOUDFLARE_R2_REQUEST_PART_NUMBER_TYPE = number;
  * @example "images/"
  */
 export const CLOUDFLARE_R2_REQUEST_PREFIX = 'cloudflare.r2.request.prefix';
+
+export const CLOUDFLARE_R2_REQUEST_PREFIX_KEYS = ['cloudflare.r2.request.prefix'] as const;
 
 /**
  * Type for {@link CLOUDFLARE_R2_REQUEST_PREFIX} cloudflare.r2.request.prefix
@@ -4017,6 +4496,8 @@ export type CLOUDFLARE_R2_REQUEST_PREFIX_TYPE = string;
  */
 export const CLOUDFLARE_WORKFLOW_ATTEMPT = 'cloudflare.workflow.attempt';
 
+export const CLOUDFLARE_WORKFLOW_ATTEMPT_KEYS = ['cloudflare.workflow.attempt'] as const;
+
 /**
  * Type for {@link CLOUDFLARE_WORKFLOW_ATTEMPT} cloudflare.workflow.attempt
  */
@@ -4037,6 +4518,8 @@ export type CLOUDFLARE_WORKFLOW_ATTEMPT_TYPE = number;
  * @example "exponential"
  */
 export const CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF = 'cloudflare.workflow.retries.backoff';
+
+export const CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_KEYS = ['cloudflare.workflow.retries.backoff'] as const;
 
 /**
  * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF} cloudflare.workflow.retries.backoff
@@ -4059,6 +4542,8 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_TYPE = string;
  */
 export const CLOUDFLARE_WORKFLOW_RETRIES_DELAY = 'cloudflare.workflow.retries.delay';
 
+export const CLOUDFLARE_WORKFLOW_RETRIES_DELAY_KEYS = ['cloudflare.workflow.retries.delay'] as const;
+
 /**
  * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY} cloudflare.workflow.retries.delay
  */
@@ -4079,6 +4564,8 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_DELAY_TYPE = string;
  * @example 3
  */
 export const CLOUDFLARE_WORKFLOW_RETRIES_LIMIT = 'cloudflare.workflow.retries.limit';
+
+export const CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_KEYS = ['cloudflare.workflow.retries.limit'] as const;
 
 /**
  * Type for {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT} cloudflare.workflow.retries.limit
@@ -4101,6 +4588,8 @@ export type CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_TYPE = number;
  */
 export const CLOUDFLARE_WORKFLOW_TIMEOUT = 'cloudflare.workflow.timeout';
 
+export const CLOUDFLARE_WORKFLOW_TIMEOUT_KEYS = ['cloudflare.workflow.timeout'] as const;
+
 /**
  * Type for {@link CLOUDFLARE_WORKFLOW_TIMEOUT} cloudflare.workflow.timeout
  */
@@ -4121,6 +4610,8 @@ export type CLOUDFLARE_WORKFLOW_TIMEOUT_TYPE = string;
  * @example "123456789012"
  */
 export const CLOUD_ACCOUNT_ID = 'cloud.account.id';
+
+export const CLOUD_ACCOUNT_ID_KEYS = ['cloud.account.id'] as const;
 
 /**
  * Type for {@link CLOUD_ACCOUNT_ID} cloud.account.id
@@ -4143,6 +4634,8 @@ export type CLOUD_ACCOUNT_ID_TYPE = string;
  */
 export const CLOUD_AVAILABILITY_ZONE = 'cloud.availability_zone';
 
+export const CLOUD_AVAILABILITY_ZONE_KEYS = ['cloud.availability_zone'] as const;
+
 /**
  * Type for {@link CLOUD_AVAILABILITY_ZONE} cloud.availability_zone
  */
@@ -4164,6 +4657,8 @@ export type CLOUD_AVAILABILITY_ZONE_TYPE = string;
  */
 export const CLOUD_PLATFORM = 'cloud.platform';
 
+export const CLOUD_PLATFORM_KEYS = ['cloud.platform'] as const;
+
 /**
  * Type for {@link CLOUD_PLATFORM} cloud.platform
  */
@@ -4184,6 +4679,8 @@ export type CLOUD_PLATFORM_TYPE = string;
  * @example "aws"
  */
 export const CLOUD_PROVIDER = 'cloud.provider';
+
+export const CLOUD_PROVIDER_KEYS = ['cloud.provider'] as const;
 
 /**
  * Type for {@link CLOUD_PROVIDER} cloud.provider
@@ -4208,6 +4705,8 @@ export type CLOUD_PROVIDER_TYPE = string;
  */
 export const CLOUD_REGION = 'cloud.region';
 
+export const CLOUD_REGION_KEYS = ['cloud.region', 'aws_region', 'gcp_region'] as const;
+
 /**
  * Type for {@link CLOUD_REGION} cloud.region
  */
@@ -4230,6 +4729,8 @@ export type CLOUD_REGION_TYPE = string;
  * @example "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
  */
 export const CLOUD_RESOURCE_ID = 'cloud.resource_id';
+
+export const CLOUD_RESOURCE_ID_KEYS = ['cloud.resource_id', 'faas.id'] as const;
 
 /**
  * Type for {@link CLOUD_RESOURCE_ID} cloud.resource_id
@@ -4254,6 +4755,8 @@ export type CLOUD_RESOURCE_ID_TYPE = string;
  * @example 0.2361
  */
 export const CLS = 'cls';
+
+export const CLS_KEYS = ['browser.web_vital.cls.value', 'cls'] as const;
 
 /**
  * Type for {@link CLS} cls
@@ -4280,6 +4783,8 @@ export type CLS_TYPE = number;
  * @example "body > div#app"
  */
 export const CLS_SOURCE_KEY = 'cls.source.<key>';
+
+export const CLS_SOURCE_KEY_KEYS = ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'] as const;
 
 /**
  * Base key for {@link CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${CLS_SOURCE_KEY_BASE}.${key}`.
@@ -4312,6 +4817,8 @@ export type CLS_SOURCE_KEY_TYPE = string;
  */
 export const CODE = 'code';
 
+export const CODE_KEYS = ['rpc.response.status_code', 'code', 'rpc.grpc.status_code'] as const;
+
 /**
  * Type for {@link CODE} code
  */
@@ -4336,6 +4843,8 @@ export type CODE_TYPE = string;
  */
 export const CODE_FILEPATH = 'code.filepath';
 
+export const CODE_FILEPATH_KEYS = ['code.file.path', 'code.filepath'] as const;
+
 /**
  * Type for {@link CODE_FILEPATH} code.filepath
  */
@@ -4358,6 +4867,8 @@ export type CODE_FILEPATH_TYPE = string;
  * @example "/app/myapplication/http/handler/server.py"
  */
 export const CODE_FILE_PATH = 'code.file.path';
+
+export const CODE_FILE_PATH_KEYS = ['code.file.path', 'code.filepath'] as const;
 
 /**
  * Type for {@link CODE_FILE_PATH} code.file.path
@@ -4382,6 +4893,8 @@ export type CODE_FILE_PATH_TYPE = string;
  */
 export const CODE_FUNCTION = 'code.function';
 
+export const CODE_FUNCTION_KEYS = ['code.function'] as const;
+
 /**
  * Type for {@link CODE_FUNCTION} code.function
  */
@@ -4404,6 +4917,8 @@ export type CODE_FUNCTION_TYPE = string;
  * @example "server_request"
  */
 export const CODE_FUNCTION_NAME = 'code.function.name';
+
+export const CODE_FUNCTION_NAME_KEYS = ['code.function.name', 'django.function_name'] as const;
 
 /**
  * Type for {@link CODE_FUNCTION_NAME} code.function.name
@@ -4429,6 +4944,8 @@ export type CODE_FUNCTION_NAME_TYPE = string;
  */
 export const CODE_LINENO = 'code.lineno';
 
+export const CODE_LINENO_KEYS = ['code.line.number', 'code.lineno'] as const;
+
 /**
  * Type for {@link CODE_LINENO} code.lineno
  */
@@ -4452,6 +4969,8 @@ export type CODE_LINENO_TYPE = number;
  */
 export const CODE_LINE_NUMBER = 'code.line.number';
 
+export const CODE_LINE_NUMBER_KEYS = ['code.line.number', 'code.lineno'] as const;
+
 /**
  * Type for {@link CODE_LINE_NUMBER} code.line.number
  */
@@ -4472,6 +4991,8 @@ export type CODE_LINE_NUMBER_TYPE = number;
  * @example "http.handler"
  */
 export const CODE_NAMESPACE = 'code.namespace';
+
+export const CODE_NAMESPACE_KEYS = ['code.namespace'] as const;
 
 /**
  * Type for {@link CODE_NAMESPACE} code.namespace
@@ -4497,6 +5018,8 @@ export type CODE_NAMESPACE_TYPE = string;
  */
 export const CONNECTIONTYPE = 'connectionType';
 
+export const CONNECTIONTYPE_KEYS = ['network.connection.type', 'connectionType', 'device.connection_type'] as const;
+
 /**
  * Type for {@link CONNECTIONTYPE} connectionType
  */
@@ -4521,6 +5044,8 @@ export type CONNECTIONTYPE_TYPE = string;
  */
 export const CONNECTION_RTT = 'connection.rtt';
 
+export const CONNECTION_RTT_KEYS = ['network.connection.rtt', 'connection.rtt'] as const;
+
 /**
  * Type for {@link CONNECTION_RTT} connection.rtt
  */
@@ -4541,6 +5066,8 @@ export type CONNECTION_RTT_TYPE = number;
  * @example "GregorianCalendar"
  */
 export const CULTURE_CALENDAR = 'culture.calendar';
+
+export const CULTURE_CALENDAR_KEYS = ['culture.calendar'] as const;
 
 /**
  * Type for {@link CULTURE_CALENDAR} culture.calendar
@@ -4563,6 +5090,8 @@ export type CULTURE_CALENDAR_TYPE = string;
  */
 export const CULTURE_DISPLAY_NAME = 'culture.display_name';
 
+export const CULTURE_DISPLAY_NAME_KEYS = ['culture.display_name'] as const;
+
 /**
  * Type for {@link CULTURE_DISPLAY_NAME} culture.display_name
  */
@@ -4583,6 +5112,8 @@ export type CULTURE_DISPLAY_NAME_TYPE = string;
  * @example true
  */
 export const CULTURE_IS_24_HOUR_FORMAT = 'culture.is_24_hour_format';
+
+export const CULTURE_IS_24_HOUR_FORMAT_KEYS = ['culture.is_24_hour_format'] as const;
 
 /**
  * Type for {@link CULTURE_IS_24_HOUR_FORMAT} culture.is_24_hour_format
@@ -4605,6 +5136,8 @@ export type CULTURE_IS_24_HOUR_FORMAT_TYPE = boolean;
  */
 export const CULTURE_LOCALE = 'culture.locale';
 
+export const CULTURE_LOCALE_KEYS = ['culture.locale'] as const;
+
 /**
  * Type for {@link CULTURE_LOCALE} culture.locale
  */
@@ -4625,6 +5158,8 @@ export type CULTURE_LOCALE_TYPE = string;
  * @example "Europe/Vienna"
  */
 export const CULTURE_TIMEZONE = 'culture.timezone';
+
+export const CULTURE_TIMEZONE_KEYS = ['culture.timezone'] as const;
 
 /**
  * Type for {@link CULTURE_TIMEZONE} culture.timezone
@@ -4649,6 +5184,8 @@ export type CULTURE_TIMEZONE_TYPE = string;
  */
 export const DB_COLLECTION_NAME = 'db.collection.name';
 
+export const DB_COLLECTION_NAME_KEYS = ['db.collection.name', 'db.mongodb.collection'] as const;
+
 /**
  * Type for {@link DB_COLLECTION_NAME} db.collection.name
  */
@@ -4669,6 +5206,8 @@ export type DB_COLLECTION_NAME_TYPE = string;
  * @example "psycopg2"
  */
 export const DB_DRIVER_NAME = 'db.driver.name';
+
+export const DB_DRIVER_NAME_KEYS = ['db.driver.name'] as const;
 
 /**
  * Type for {@link DB_DRIVER_NAME} db.driver.name
@@ -4694,6 +5233,8 @@ export type DB_DRIVER_NAME_TYPE = string;
  */
 export const DB_MONGODB_COLLECTION = 'db.mongodb.collection';
 
+export const DB_MONGODB_COLLECTION_KEYS = ['db.collection.name', 'db.mongodb.collection'] as const;
+
 /**
  * Type for {@link DB_MONGODB_COLLECTION} db.mongodb.collection
  */
@@ -4718,6 +5259,8 @@ export type DB_MONGODB_COLLECTION_TYPE = string;
  */
 export const DB_NAME = 'db.name';
 
+export const DB_NAME_KEYS = ['db.namespace', 'db.name'] as const;
+
 /**
  * Type for {@link DB_NAME} db.name
  */
@@ -4740,6 +5283,8 @@ export type DB_NAME_TYPE = string;
  * @example "customers"
  */
 export const DB_NAMESPACE = 'db.namespace';
+
+export const DB_NAMESPACE_KEYS = ['db.namespace', 'db.name'] as const;
 
 /**
  * Type for {@link DB_NAMESPACE} db.namespace
@@ -4765,6 +5310,13 @@ export type DB_NAMESPACE_TYPE = string;
  */
 export const DB_OPERATION = 'db.operation';
 
+export const DB_OPERATION_KEYS = [
+  'db.operation.name',
+  'cloudflare.d1.query_type',
+  'db.operation',
+  'redis.command',
+] as const;
+
 /**
  * Type for {@link DB_OPERATION} db.operation
  */
@@ -4785,6 +5337,8 @@ export type DB_OPERATION_TYPE = string;
  * @example 3
  */
 export const DB_OPERATION_BATCH_SIZE = 'db.operation.batch.size';
+
+export const DB_OPERATION_BATCH_SIZE_KEYS = ['db.operation.batch.size'] as const;
 
 /**
  * Type for {@link DB_OPERATION_BATCH_SIZE} db.operation.batch.size
@@ -4809,6 +5363,13 @@ export type DB_OPERATION_BATCH_SIZE_TYPE = number;
  */
 export const DB_OPERATION_NAME = 'db.operation.name';
 
+export const DB_OPERATION_NAME_KEYS = [
+  'db.operation.name',
+  'cloudflare.d1.query_type',
+  'db.operation',
+  'redis.command',
+] as const;
+
 /**
  * Type for {@link DB_OPERATION_NAME} db.operation.name
  */
@@ -4830,6 +5391,8 @@ export type DB_OPERATION_NAME_TYPE = string;
  * @example "[{\"x\": 100}]"
  */
 export const DB_PARAMS = 'db.params';
+
+export const DB_PARAMS_KEYS = ['db.query.parameter.<key>', 'db.params', 'db.sql.bindings'] as const;
 
 /**
  * Type for {@link DB_PARAMS} db.params
@@ -4853,6 +5416,8 @@ export type DB_PARAMS_TYPE = string;
  * @example "db.query.parameter.foo='123'"
  */
 export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
+
+export const DB_QUERY_PARAMETER_KEY_KEYS = ['db.query.parameter.<key>', 'db.params', 'db.sql.bindings'] as const;
 
 /**
  * Base key for {@link DB_QUERY_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${DB_QUERY_PARAMETER_KEY_BASE}.${key}`.
@@ -4881,6 +5446,8 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  */
 export const DB_QUERY_SUMMARY = 'db.query.summary';
 
+export const DB_QUERY_SUMMARY_KEYS = ['db.query.summary'] as const;
+
 /**
  * Type for {@link DB_QUERY_SUMMARY} db.query.summary
  */
@@ -4904,6 +5471,8 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  */
 export const DB_QUERY_TEXT = 'db.query.text';
 
+export const DB_QUERY_TEXT_KEYS = ['db.query.text', 'db.statement', 'query'] as const;
+
 /**
  * Type for {@link DB_QUERY_TEXT} db.query.text
  */
@@ -4924,6 +5493,8 @@ export type DB_QUERY_TEXT_TYPE = string;
  * @example "my-redis-instance"
  */
 export const DB_REDIS_CONNECTION = 'db.redis.connection';
+
+export const DB_REDIS_CONNECTION_KEYS = ['db.redis.connection'] as const;
 
 /**
  * Type for {@link DB_REDIS_CONNECTION} db.redis.connection
@@ -4948,6 +5519,8 @@ export type DB_REDIS_CONNECTION_TYPE = string;
  */
 export const DB_REDIS_KEY = 'db.redis.key';
 
+export const DB_REDIS_KEY_KEYS = ['db.redis.key', 'redis.key'] as const;
+
 /**
  * Type for {@link DB_REDIS_KEY} db.redis.key
  */
@@ -4968,6 +5541,8 @@ export type DB_REDIS_KEY_TYPE = string;
  * @example ["test","*"]
  */
 export const DB_REDIS_PARAMETERS = 'db.redis.parameters';
+
+export const DB_REDIS_PARAMETERS_KEYS = ['db.redis.parameters'] as const;
 
 /**
  * Type for {@link DB_REDIS_PARAMETERS} db.redis.parameters
@@ -4990,6 +5565,8 @@ export type DB_REDIS_PARAMETERS_TYPE = Array<string>;
  */
 export const DB_RESPONSE_STATUS_CODE = 'db.response.status_code';
 
+export const DB_RESPONSE_STATUS_CODE_KEYS = ['db.response.status_code'] as const;
+
 /**
  * Type for {@link DB_RESPONSE_STATUS_CODE} db.response.status_code
  */
@@ -5011,6 +5588,8 @@ export type DB_RESPONSE_STATUS_CODE_TYPE = string;
  * @example ["1","foo"]
  */
 export const DB_SQL_BINDINGS = 'db.sql.bindings';
+
+export const DB_SQL_BINDINGS_KEYS = ['db.query.parameter.<key>', 'db.params', 'db.sql.bindings'] as const;
 
 /**
  * Type for {@link DB_SQL_BINDINGS} db.sql.bindings
@@ -5036,6 +5615,8 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  */
 export const DB_STATEMENT = 'db.statement';
 
+export const DB_STATEMENT_KEYS = ['db.query.text', 'db.statement', 'query'] as const;
+
 /**
  * Type for {@link DB_STATEMENT} db.statement
  */
@@ -5056,6 +5637,8 @@ export type DB_STATEMENT_TYPE = string;
  * @example "GetUserById"
  */
 export const DB_STORED_PROCEDURE_NAME = 'db.stored_procedure.name';
+
+export const DB_STORED_PROCEDURE_NAME_KEYS = ['db.stored_procedure.name'] as const;
 
 /**
  * Type for {@link DB_STORED_PROCEDURE_NAME} db.stored_procedure.name
@@ -5081,6 +5664,8 @@ export type DB_STORED_PROCEDURE_NAME_TYPE = string;
  */
 export const DB_SYSTEM = 'db.system';
 
+export const DB_SYSTEM_KEYS = ['db.system.name', 'db.system'] as const;
+
 /**
  * Type for {@link DB_SYSTEM} db.system
  */
@@ -5104,6 +5689,8 @@ export type DB_SYSTEM_TYPE = string;
  */
 export const DB_SYSTEM_NAME = 'db.system.name';
 
+export const DB_SYSTEM_NAME_KEYS = ['db.system.name', 'db.system'] as const;
+
 /**
  * Type for {@link DB_SYSTEM_NAME} db.system.name
  */
@@ -5124,6 +5711,8 @@ export type DB_SYSTEM_NAME_TYPE = string;
  * @example "fancy_user"
  */
 export const DB_USER = 'db.user';
+
+export const DB_USER_KEYS = ['db.user'] as const;
 
 /**
  * Type for {@link DB_USER} db.user
@@ -5149,6 +5738,8 @@ export type DB_USER_TYPE = string;
  */
 export const DEVICEMEMORY = 'deviceMemory';
 
+export const DEVICEMEMORY_KEYS = ['device.memory.estimated_capacity', 'deviceMemory'] as const;
+
 /**
  * Type for {@link DEVICEMEMORY} deviceMemory
  */
@@ -5169,6 +5760,8 @@ export type DEVICEMEMORY_TYPE = string;
  * @example ["arm64-v8a","armeabi-v7a","armeabi"]
  */
 export const DEVICE_ARCHS = 'device.archs';
+
+export const DEVICE_ARCHS_KEYS = ['device.archs'] as const;
 
 /**
  * Type for {@link DEVICE_ARCHS} device.archs
@@ -5191,6 +5784,8 @@ export type DEVICE_ARCHS_TYPE = Array<string>;
  */
 export const DEVICE_BATTERY_LEVEL = 'device.battery_level';
 
+export const DEVICE_BATTERY_LEVEL_KEYS = ['device.battery_level'] as const;
+
 /**
  * Type for {@link DEVICE_BATTERY_LEVEL} device.battery_level
  */
@@ -5211,6 +5806,8 @@ export type DEVICE_BATTERY_LEVEL_TYPE = number;
  * @example 25
  */
 export const DEVICE_BATTERY_TEMPERATURE = 'device.battery_temperature';
+
+export const DEVICE_BATTERY_TEMPERATURE_KEYS = ['device.battery_temperature'] as const;
 
 /**
  * Type for {@link DEVICE_BATTERY_TEMPERATURE} device.battery_temperature
@@ -5233,6 +5830,8 @@ export type DEVICE_BATTERY_TEMPERATURE_TYPE = number;
  */
 export const DEVICE_BOOT_TIME = 'device.boot_time';
 
+export const DEVICE_BOOT_TIME_KEYS = ['device.boot_time'] as const;
+
 /**
  * Type for {@link DEVICE_BOOT_TIME} device.boot_time
  */
@@ -5253,6 +5852,8 @@ export type DEVICE_BOOT_TIME_TYPE = string;
  * @example "Apple"
  */
 export const DEVICE_BRAND = 'device.brand';
+
+export const DEVICE_BRAND_KEYS = ['device.brand'] as const;
 
 /**
  * Type for {@link DEVICE_BRAND} device.brand
@@ -5275,6 +5876,8 @@ export type DEVICE_BRAND_TYPE = string;
  */
 export const DEVICE_CHARGING = 'device.charging';
 
+export const DEVICE_CHARGING_KEYS = ['device.charging'] as const;
+
 /**
  * Type for {@link DEVICE_CHARGING} device.charging
  */
@@ -5296,6 +5899,8 @@ export type DEVICE_CHARGING_TYPE = boolean;
  */
 export const DEVICE_CHIPSET = 'device.chipset';
 
+export const DEVICE_CHIPSET_KEYS = ['device.chipset'] as const;
+
 /**
  * Type for {@link DEVICE_CHIPSET} device.chipset
  */
@@ -5316,6 +5921,8 @@ export type DEVICE_CHIPSET_TYPE = string;
  * @example "medium"
  */
 export const DEVICE_CLASS = 'device.class';
+
+export const DEVICE_CLASS_KEYS = ['device.class'] as const;
 
 /**
  * Type for {@link DEVICE_CLASS} device.class
@@ -5341,6 +5948,12 @@ export type DEVICE_CLASS_TYPE = string;
  */
 export const DEVICE_CONNECTION_TYPE = 'device.connection_type';
 
+export const DEVICE_CONNECTION_TYPE_KEYS = [
+  'network.connection.type',
+  'connectionType',
+  'device.connection_type',
+] as const;
+
 /**
  * Type for {@link DEVICE_CONNECTION_TYPE} device.connection_type
  */
@@ -5361,6 +5974,8 @@ export type DEVICE_CONNECTION_TYPE_TYPE = string;
  * @example "Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz"
  */
 export const DEVICE_CPU_DESCRIPTION = 'device.cpu_description';
+
+export const DEVICE_CPU_DESCRIPTION_KEYS = ['device.cpu_description'] as const;
 
 /**
  * Type for {@link DEVICE_CPU_DESCRIPTION} device.cpu_description
@@ -5383,6 +5998,8 @@ export type DEVICE_CPU_DESCRIPTION_TYPE = string;
  */
 export const DEVICE_EXTERNAL_FREE_STORAGE = 'device.external_free_storage';
 
+export const DEVICE_EXTERNAL_FREE_STORAGE_KEYS = ['device.external_free_storage'] as const;
+
 /**
  * Type for {@link DEVICE_EXTERNAL_FREE_STORAGE} device.external_free_storage
  */
@@ -5403,6 +6020,8 @@ export type DEVICE_EXTERNAL_FREE_STORAGE_TYPE = number;
  * @example 134217728000
  */
 export const DEVICE_EXTERNAL_STORAGE_SIZE = 'device.external_storage_size';
+
+export const DEVICE_EXTERNAL_STORAGE_SIZE_KEYS = ['device.external_storage_size'] as const;
 
 /**
  * Type for {@link DEVICE_EXTERNAL_STORAGE_SIZE} device.external_storage_size
@@ -5425,6 +6044,8 @@ export type DEVICE_EXTERNAL_STORAGE_SIZE_TYPE = number;
  */
 export const DEVICE_FAMILY = 'device.family';
 
+export const DEVICE_FAMILY_KEYS = ['device.family'] as const;
+
 /**
  * Type for {@link DEVICE_FAMILY} device.family
  */
@@ -5445,6 +6066,8 @@ export type DEVICE_FAMILY_TYPE = string;
  * @example 2147483648
  */
 export const DEVICE_FREE_MEMORY = 'device.free_memory';
+
+export const DEVICE_FREE_MEMORY_KEYS = ['device.free_memory'] as const;
 
 /**
  * Type for {@link DEVICE_FREE_MEMORY} device.free_memory
@@ -5467,6 +6090,8 @@ export type DEVICE_FREE_MEMORY_TYPE = number;
  */
 export const DEVICE_FREE_STORAGE = 'device.free_storage';
 
+export const DEVICE_FREE_STORAGE_KEYS = ['device.free_storage'] as const;
+
 /**
  * Type for {@link DEVICE_FREE_STORAGE} device.free_storage
  */
@@ -5487,6 +6112,8 @@ export type DEVICE_FREE_STORAGE_TYPE = number;
  * @example "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
  */
 export const DEVICE_ID = 'device.id';
+
+export const DEVICE_ID_KEYS = ['device.id'] as const;
 
 /**
  * Type for {@link DEVICE_ID} device.id
@@ -5509,6 +6136,8 @@ export type DEVICE_ID_TYPE = string;
  */
 export const DEVICE_LOCALE = 'device.locale';
 
+export const DEVICE_LOCALE_KEYS = ['device.locale'] as const;
+
 /**
  * Type for {@link DEVICE_LOCALE} device.locale
  */
@@ -5529,6 +6158,8 @@ export type DEVICE_LOCALE_TYPE = string;
  * @example false
  */
 export const DEVICE_LOW_MEMORY = 'device.low_memory';
+
+export const DEVICE_LOW_MEMORY_KEYS = ['device.low_memory'] as const;
 
 /**
  * Type for {@link DEVICE_LOW_MEMORY} device.low_memory
@@ -5551,6 +6182,8 @@ export type DEVICE_LOW_MEMORY_TYPE = boolean;
  */
 export const DEVICE_LOW_POWER_MODE = 'device.low_power_mode';
 
+export const DEVICE_LOW_POWER_MODE_KEYS = ['device.low_power_mode'] as const;
+
 /**
  * Type for {@link DEVICE_LOW_POWER_MODE} device.low_power_mode
  */
@@ -5571,6 +6204,8 @@ export type DEVICE_LOW_POWER_MODE_TYPE = boolean;
  * @example "Google"
  */
 export const DEVICE_MANUFACTURER = 'device.manufacturer';
+
+export const DEVICE_MANUFACTURER_KEYS = ['device.manufacturer'] as const;
 
 /**
  * Type for {@link DEVICE_MANUFACTURER} device.manufacturer
@@ -5595,6 +6230,8 @@ export type DEVICE_MANUFACTURER_TYPE = string;
  */
 export const DEVICE_MEMORY_ESTIMATED_CAPACITY = 'device.memory.estimated_capacity';
 
+export const DEVICE_MEMORY_ESTIMATED_CAPACITY_KEYS = ['device.memory.estimated_capacity', 'deviceMemory'] as const;
+
 /**
  * Type for {@link DEVICE_MEMORY_ESTIMATED_CAPACITY} device.memory.estimated_capacity
  */
@@ -5615,6 +6252,8 @@ export type DEVICE_MEMORY_ESTIMATED_CAPACITY_TYPE = number;
  * @example 17179869184
  */
 export const DEVICE_MEMORY_SIZE = 'device.memory_size';
+
+export const DEVICE_MEMORY_SIZE_KEYS = ['device.memory_size'] as const;
 
 /**
  * Type for {@link DEVICE_MEMORY_SIZE} device.memory_size
@@ -5637,6 +6276,8 @@ export type DEVICE_MEMORY_SIZE_TYPE = number;
  */
 export const DEVICE_MODEL = 'device.model';
 
+export const DEVICE_MODEL_KEYS = ['device.model'] as const;
+
 /**
  * Type for {@link DEVICE_MODEL} device.model
  */
@@ -5657,6 +6298,8 @@ export type DEVICE_MODEL_TYPE = string;
  * @example "N861AP"
  */
 export const DEVICE_MODEL_ID = 'device.model_id';
+
+export const DEVICE_MODEL_ID_KEYS = ['device.model_id'] as const;
 
 /**
  * Type for {@link DEVICE_MODEL_ID} device.model_id
@@ -5679,6 +6322,8 @@ export type DEVICE_MODEL_ID_TYPE = string;
  */
 export const DEVICE_NAME = 'device.name';
 
+export const DEVICE_NAME_KEYS = ['device.name'] as const;
+
 /**
  * Type for {@link DEVICE_NAME} device.name
  */
@@ -5700,6 +6345,8 @@ export type DEVICE_NAME_TYPE = string;
  */
 export const DEVICE_ONLINE = 'device.online';
 
+export const DEVICE_ONLINE_KEYS = ['device.online'] as const;
+
 /**
  * Type for {@link DEVICE_ONLINE} device.online
  */
@@ -5720,6 +6367,8 @@ export type DEVICE_ONLINE_TYPE = boolean;
  * @example "portrait"
  */
 export const DEVICE_ORIENTATION = 'device.orientation';
+
+export const DEVICE_ORIENTATION_KEYS = ['device.orientation'] as const;
 
 /**
  * Type for {@link DEVICE_ORIENTATION} device.orientation
@@ -5744,6 +6393,8 @@ export type DEVICE_ORIENTATION_TYPE = string;
  */
 export const DEVICE_PROCESSOR_COUNT = 'device.processor_count';
 
+export const DEVICE_PROCESSOR_COUNT_KEYS = ['device.processor_count', 'hardwareConcurrency'] as const;
+
 /**
  * Type for {@link DEVICE_PROCESSOR_COUNT} device.processor_count
  */
@@ -5764,6 +6415,8 @@ export type DEVICE_PROCESSOR_COUNT_TYPE = number;
  * @example 2400
  */
 export const DEVICE_PROCESSOR_FREQUENCY = 'device.processor_frequency';
+
+export const DEVICE_PROCESSOR_FREQUENCY_KEYS = ['device.processor_frequency'] as const;
 
 /**
  * Type for {@link DEVICE_PROCESSOR_FREQUENCY} device.processor_frequency
@@ -5786,6 +6439,8 @@ export type DEVICE_PROCESSOR_FREQUENCY_TYPE = number;
  */
 export const DEVICE_SCREEN_DENSITY = 'device.screen_density';
 
+export const DEVICE_SCREEN_DENSITY_KEYS = ['device.screen_density'] as const;
+
 /**
  * Type for {@link DEVICE_SCREEN_DENSITY} device.screen_density
  */
@@ -5806,6 +6461,8 @@ export type DEVICE_SCREEN_DENSITY_TYPE = number;
  * @example 420
  */
 export const DEVICE_SCREEN_DPI = 'device.screen_dpi';
+
+export const DEVICE_SCREEN_DPI_KEYS = ['device.screen_dpi'] as const;
 
 /**
  * Type for {@link DEVICE_SCREEN_DPI} device.screen_dpi
@@ -5828,6 +6485,8 @@ export type DEVICE_SCREEN_DPI_TYPE = number;
  */
 export const DEVICE_SCREEN_HEIGHT_PIXELS = 'device.screen_height_pixels';
 
+export const DEVICE_SCREEN_HEIGHT_PIXELS_KEYS = ['device.screen_height_pixels'] as const;
+
 /**
  * Type for {@link DEVICE_SCREEN_HEIGHT_PIXELS} device.screen_height_pixels
  */
@@ -5848,6 +6507,8 @@ export type DEVICE_SCREEN_HEIGHT_PIXELS_TYPE = number;
  * @example 1080
  */
 export const DEVICE_SCREEN_WIDTH_PIXELS = 'device.screen_width_pixels';
+
+export const DEVICE_SCREEN_WIDTH_PIXELS_KEYS = ['device.screen_width_pixels'] as const;
 
 /**
  * Type for {@link DEVICE_SCREEN_WIDTH_PIXELS} device.screen_width_pixels
@@ -5870,6 +6531,8 @@ export type DEVICE_SCREEN_WIDTH_PIXELS_TYPE = number;
  */
 export const DEVICE_SIMULATOR = 'device.simulator';
 
+export const DEVICE_SIMULATOR_KEYS = ['device.simulator'] as const;
+
 /**
  * Type for {@link DEVICE_SIMULATOR} device.simulator
  */
@@ -5890,6 +6553,8 @@ export type DEVICE_SIMULATOR_TYPE = boolean;
  * @example 274877906944
  */
 export const DEVICE_STORAGE_SIZE = 'device.storage_size';
+
+export const DEVICE_STORAGE_SIZE_KEYS = ['device.storage_size'] as const;
 
 /**
  * Type for {@link DEVICE_STORAGE_SIZE} device.storage_size
@@ -5912,6 +6577,8 @@ export type DEVICE_STORAGE_SIZE_TYPE = number;
  */
 export const DEVICE_THERMAL_STATE = 'device.thermal_state';
 
+export const DEVICE_THERMAL_STATE_KEYS = ['device.thermal_state'] as const;
+
 /**
  * Type for {@link DEVICE_THERMAL_STATE} device.thermal_state
  */
@@ -5933,6 +6600,8 @@ export type DEVICE_THERMAL_STATE_TYPE = string;
  */
 export const DEVICE_TIMEZONE = 'device.timezone';
 
+export const DEVICE_TIMEZONE_KEYS = ['device.timezone'] as const;
+
 /**
  * Type for {@link DEVICE_TIMEZONE} device.timezone
  */
@@ -5953,6 +6622,8 @@ export type DEVICE_TIMEZONE_TYPE = string;
  * @example 2147483648
  */
 export const DEVICE_USABLE_MEMORY = 'device.usable_memory';
+
+export const DEVICE_USABLE_MEMORY_KEYS = ['device.usable_memory'] as const;
 
 /**
  * Type for {@link DEVICE_USABLE_MEMORY} device.usable_memory
@@ -5978,6 +6649,8 @@ export type DEVICE_USABLE_MEMORY_TYPE = number;
  */
 export const DIST = 'dist';
 
+export const DIST_KEYS = ['sentry.dist', 'dist'] as const;
+
 /**
  * Type for {@link DIST} dist
  */
@@ -6001,6 +6674,8 @@ export type DIST_TYPE = string;
  * @example "django.contrib.sessions.middleware.SessionMiddleware"
  */
 export const DJANGO_FUNCTION_NAME = 'django.function_name';
+
+export const DJANGO_FUNCTION_NAME_KEYS = ['code.function.name', 'django.function_name'] as const;
 
 /**
  * Type for {@link DJANGO_FUNCTION_NAME} django.function_name
@@ -6026,6 +6701,14 @@ export type DJANGO_FUNCTION_NAME_TYPE = string;
  */
 export const DJANGO_MIDDLEWARE_NAME = 'django.middleware_name';
 
+export const DJANGO_MIDDLEWARE_NAME_KEYS = [
+  'middleware.name',
+  'django.middleware_name',
+  'litestar.middleware_name',
+  'starlette.middleware_name',
+  'starlite.middleware_name',
+] as const;
+
 /**
  * Type for {@link DJANGO_MIDDLEWARE_NAME} django.middleware_name
  */
@@ -6049,6 +6732,8 @@ export type DJANGO_MIDDLEWARE_NAME_TYPE = string;
  * @example "4g"
  */
 export const EFFECTIVECONNECTIONTYPE = 'effectiveConnectionType';
+
+export const EFFECTIVECONNECTIONTYPE_KEYS = ['network.connection.effective_type', 'effectiveConnectionType'] as const;
 
 /**
  * Type for {@link EFFECTIVECONNECTIONTYPE} effectiveConnectionType
@@ -6074,6 +6759,13 @@ export type EFFECTIVECONNECTIONTYPE_TYPE = string;
  */
 export const ENVIRONMENT = 'environment';
 
+export const ENVIRONMENT_KEYS = [
+  'sentry.environment',
+  'environment',
+  'resource.deployment.environment',
+  'resource.deployment.environment.name',
+] as const;
+
 /**
  * Type for {@link ENVIRONMENT} environment
  */
@@ -6094,6 +6786,8 @@ export type ENVIRONMENT_TYPE = string;
  * @example "timeout"
  */
 export const ERROR_TYPE = 'error.type';
+
+export const ERROR_TYPE_KEYS = ['error.type', 'fs_error', 'mcp.tool.result.is_error'] as const;
 
 /**
  * Type for {@link ERROR_TYPE} error.type
@@ -6116,6 +6810,8 @@ export type ERROR_TYPE_TYPE = string;
  */
 export const EVENT_ID = 'event.id';
 
+export const EVENT_ID_KEYS = ['event.id'] as const;
+
 /**
  * Type for {@link EVENT_ID} event.id
  */
@@ -6136,6 +6832,8 @@ export type EVENT_ID_TYPE = number;
  * @example "Process Payload"
  */
 export const EVENT_NAME = 'event.name';
+
+export const EVENT_NAME_KEYS = ['event.name'] as const;
 
 /**
  * Type for {@link EVENT_NAME} event.name
@@ -6158,6 +6856,8 @@ export type EVENT_NAME_TYPE = string;
  */
 export const EXCEPTION_ESCAPED = 'exception.escaped';
 
+export const EXCEPTION_ESCAPED_KEYS = ['exception.escaped'] as const;
+
 /**
  * Type for {@link EXCEPTION_ESCAPED} exception.escaped
  */
@@ -6178,6 +6878,8 @@ export type EXCEPTION_ESCAPED_TYPE = boolean;
  * @example "ENOENT: no such file or directory"
  */
 export const EXCEPTION_MESSAGE = 'exception.message';
+
+export const EXCEPTION_MESSAGE_KEYS = ['exception.message'] as const;
 
 /**
  * Type for {@link EXCEPTION_MESSAGE} exception.message
@@ -6200,6 +6902,8 @@ export type EXCEPTION_MESSAGE_TYPE = string;
  */
 export const EXCEPTION_STACKTRACE = 'exception.stacktrace';
 
+export const EXCEPTION_STACKTRACE_KEYS = ['exception.stacktrace'] as const;
+
 /**
  * Type for {@link EXCEPTION_STACKTRACE} exception.stacktrace
  */
@@ -6220,6 +6924,8 @@ export type EXCEPTION_STACKTRACE_TYPE = string;
  * @example "OSError"
  */
 export const EXCEPTION_TYPE = 'exception.type';
+
+export const EXCEPTION_TYPE_KEYS = ['exception.type'] as const;
 
 /**
  * Type for {@link EXCEPTION_TYPE} exception.type
@@ -6242,6 +6948,8 @@ export type EXCEPTION_TYPE_TYPE = string;
  */
 export const FAAS_COLDSTART = 'faas.coldstart';
 
+export const FAAS_COLDSTART_KEYS = ['faas.coldstart'] as const;
+
 /**
  * Type for {@link FAAS_COLDSTART} faas.coldstart
  */
@@ -6262,6 +6970,8 @@ export type FAAS_COLDSTART_TYPE = boolean;
  * @example "0/5 * * * ? *"
  */
 export const FAAS_CRON = 'faas.cron';
+
+export const FAAS_CRON_KEYS = ['faas.cron'] as const;
 
 /**
  * Type for {@link FAAS_CRON} faas.cron
@@ -6284,6 +6994,8 @@ export type FAAS_CRON_TYPE = string;
  */
 export const FAAS_DURATION_IN_MS = 'faas.duration_in_ms';
 
+export const FAAS_DURATION_IN_MS_KEYS = ['faas.duration_in_ms'] as const;
+
 /**
  * Type for {@link FAAS_DURATION_IN_MS} faas.duration_in_ms
  */
@@ -6304,6 +7016,8 @@ export type FAAS_DURATION_IN_MS_TYPE = number;
  * @example "my_main_function"
  */
 export const FAAS_ENTRY_POINT = 'faas.entry_point';
+
+export const FAAS_ENTRY_POINT_KEYS = ['faas.entry_point'] as const;
 
 /**
  * Type for {@link FAAS_ENTRY_POINT} faas.entry_point
@@ -6329,6 +7043,8 @@ export type FAAS_ENTRY_POINT_TYPE = string;
  */
 export const FAAS_EXECUTION = 'faas.execution';
 
+export const FAAS_EXECUTION_KEYS = ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'] as const;
+
 /**
  * Type for {@link FAAS_EXECUTION} faas.execution
  */
@@ -6353,6 +7069,8 @@ export type FAAS_EXECUTION_TYPE = string;
  */
 export const FAAS_ID = 'faas.id';
 
+export const FAAS_ID_KEYS = ['cloud.resource_id', 'faas.id'] as const;
+
 /**
  * Type for {@link FAAS_ID} faas.id
  */
@@ -6373,6 +7091,8 @@ export type FAAS_ID_TYPE = string;
  * @example "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
  */
 export const FAAS_IDENTITY = 'faas.identity';
+
+export const FAAS_IDENTITY_KEYS = ['faas.identity'] as const;
 
 /**
  * Type for {@link FAAS_IDENTITY} faas.identity
@@ -6397,6 +7117,8 @@ export type FAAS_IDENTITY_TYPE = string;
  */
 export const FAAS_INVOCATION_ID = 'faas.invocation_id';
 
+export const FAAS_INVOCATION_ID_KEYS = ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'] as const;
+
 /**
  * Type for {@link FAAS_INVOCATION_ID} faas.invocation_id
  */
@@ -6417,6 +7139,8 @@ export type FAAS_INVOCATION_ID_TYPE = string;
  * @example "my-function"
  */
 export const FAAS_INVOKED_NAME = 'faas.invoked_name';
+
+export const FAAS_INVOKED_NAME_KEYS = ['faas.invoked_name'] as const;
 
 /**
  * Type for {@link FAAS_INVOKED_NAME} faas.invoked_name
@@ -6439,6 +7163,8 @@ export type FAAS_INVOKED_NAME_TYPE = string;
  */
 export const FAAS_INVOKED_PROVIDER = 'faas.invoked_provider';
 
+export const FAAS_INVOKED_PROVIDER_KEYS = ['faas.invoked_provider'] as const;
+
 /**
  * Type for {@link FAAS_INVOKED_PROVIDER} faas.invoked_provider
  */
@@ -6459,6 +7185,8 @@ export type FAAS_INVOKED_PROVIDER_TYPE = string;
  * @example "eu-central-1"
  */
 export const FAAS_INVOKED_REGION = 'faas.invoked_region';
+
+export const FAAS_INVOKED_REGION_KEYS = ['faas.invoked_region'] as const;
 
 /**
  * Type for {@link FAAS_INVOKED_REGION} faas.invoked_region
@@ -6483,6 +7211,8 @@ export type FAAS_INVOKED_REGION_TYPE = string;
  */
 export const FAAS_NAME = 'faas.name';
 
+export const FAAS_NAME_KEYS = ['faas.name', 'aws.lambda.function_name'] as const;
+
 /**
  * Type for {@link FAAS_NAME} faas.name
  */
@@ -6504,6 +7234,8 @@ export type FAAS_NAME_TYPE = string;
  */
 export const FAAS_TIME = 'faas.time';
 
+export const FAAS_TIME_KEYS = ['faas.time'] as const;
+
 /**
  * Type for {@link FAAS_TIME} faas.time
  */
@@ -6524,6 +7256,8 @@ export type FAAS_TIME_TYPE = string;
  * @example "timer"
  */
 export const FAAS_TRIGGER = 'faas.trigger';
+
+export const FAAS_TRIGGER_KEYS = ['faas.trigger'] as const;
 
 /**
  * Type for {@link FAAS_TRIGGER} faas.trigger
@@ -6547,6 +7281,8 @@ export type FAAS_TRIGGER_TYPE = string;
  * @example "$LATEST"
  */
 export const FAAS_VERSION = 'faas.version';
+
+export const FAAS_VERSION_KEYS = ['faas.version', 'aws.lambda.function_version'] as const;
 
 /**
  * Type for {@link FAAS_VERSION} faas.version
@@ -6572,6 +7308,8 @@ export type FAAS_VERSION_TYPE = string;
  */
 export const FCP = 'fcp';
 
+export const FCP_KEYS = ['browser.web_vital.fcp.value', 'fcp'] as const;
+
 /**
  * Type for {@link FCP} fcp
  */
@@ -6593,6 +7331,8 @@ export type FCP_TYPE = number;
  */
 export const FILE_PATH = 'file.path';
 
+export const FILE_PATH_KEYS = ['file.path'] as const;
+
 /**
  * Type for {@link FILE_PATH} file.path
  */
@@ -6613,6 +7353,8 @@ export type FILE_PATH_TYPE = string;
  * @example 1024
  */
 export const FILE_SIZE = 'file.size';
+
+export const FILE_SIZE_KEYS = ['file.size'] as const;
 
 /**
  * Type for {@link FILE_SIZE} file.size
@@ -6636,6 +7378,8 @@ export type FILE_SIZE_TYPE = number;
  * @example "flag.evaluation.is_new_ui=true"
  */
 export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
+
+export const FLAG_EVALUATION_KEY_KEYS = ['flag.evaluation.<key>'] as const;
 
 /**
  * Base key for {@link FLAG_EVALUATION_KEY}. Use with a dynamic suffix, e.g. `${FLAG_EVALUATION_KEY_BASE}.${key}`.
@@ -6666,6 +7410,8 @@ export type FLAG_EVALUATION_KEY_TYPE = boolean;
  */
 export const FP = 'fp';
 
+export const FP_KEYS = ['browser.web_vital.fp.value', 'fp'] as const;
+
 /**
  * Type for {@link FP} fp
  */
@@ -6689,6 +7435,8 @@ export type FP_TYPE = number;
  * @example 5
  */
 export const FRAMES_DELAY = 'frames.delay';
+
+export const FRAMES_DELAY_KEYS = ['app.vitals.frames.delay.value', 'frames.delay'] as const;
 
 /**
  * Type for {@link FRAMES_DELAY} frames.delay
@@ -6714,6 +7462,8 @@ export type FRAMES_DELAY_TYPE = number;
  */
 export const FRAMES_FROZEN = 'frames.frozen';
 
+export const FRAMES_FROZEN_KEYS = ['app.vitals.frames.frozen.count', 'frames.frozen', 'sentry.frames.frozen'] as const;
+
 /**
  * Type for {@link FRAMES_FROZEN} frames.frozen
  */
@@ -6736,6 +7486,8 @@ export type FRAMES_FROZEN_TYPE = number;
  * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_RATE} (app.vitals.frames.frozen.rate) instead - Replaced by app.vitals.frames.frozen.rate to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const FRAMES_FROZEN_RATE = 'frames_frozen_rate';
+
+export const FRAMES_FROZEN_RATE_KEYS = ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'] as const;
 
 /**
  * Type for {@link FRAMES_FROZEN_RATE} frames_frozen_rate
@@ -6761,6 +7513,8 @@ export type FRAMES_FROZEN_RATE_TYPE = number;
  */
 export const FRAMES_SLOW = 'frames.slow';
 
+export const FRAMES_SLOW_KEYS = ['app.vitals.frames.slow.count', 'frames.slow', 'sentry.frames.slow'] as const;
+
 /**
  * Type for {@link FRAMES_SLOW} frames.slow
  */
@@ -6783,6 +7537,8 @@ export type FRAMES_SLOW_TYPE = number;
  * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_RATE} (app.vitals.frames.slow.rate) instead - Replaced by app.vitals.frames.slow.rate to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const FRAMES_SLOW_RATE = 'frames_slow_rate';
+
+export const FRAMES_SLOW_RATE_KEYS = ['app.vitals.frames.slow.rate', 'frames_slow_rate'] as const;
 
 /**
  * Type for {@link FRAMES_SLOW_RATE} frames_slow_rate
@@ -6808,6 +7564,8 @@ export type FRAMES_SLOW_RATE_TYPE = number;
  */
 export const FRAMES_TOTAL = 'frames.total';
 
+export const FRAMES_TOTAL_KEYS = ['app.vitals.frames.total.count', 'frames.total', 'sentry.frames.total'] as const;
+
 /**
  * Type for {@link FRAMES_TOTAL} frames.total
  */
@@ -6830,6 +7588,8 @@ export type FRAMES_TOTAL_TYPE = number;
  */
 export const FS_ERROR = 'fs_error';
 
+export const FS_ERROR_KEYS = ['error.type', 'fs_error', 'mcp.tool.result.is_error'] as const;
+
 /**
  * Type for {@link FS_ERROR} fs_error
  */
@@ -6850,6 +7610,8 @@ export type FS_ERROR_TYPE = string;
  * @example "1234567890"
  */
 export const GCP_FUNCTION_CONTEXT_EVENT_ID = 'gcp.function.context.event_id';
+
+export const GCP_FUNCTION_CONTEXT_EVENT_ID_KEYS = ['gcp.function.context.event_id'] as const;
 
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_EVENT_ID} gcp.function.context.event_id
@@ -6872,6 +7634,8 @@ export type GCP_FUNCTION_CONTEXT_EVENT_ID_TYPE = string;
  */
 export const GCP_FUNCTION_CONTEXT_EVENT_TYPE = 'gcp.function.context.event_type';
 
+export const GCP_FUNCTION_CONTEXT_EVENT_TYPE_KEYS = ['gcp.function.context.event_type'] as const;
+
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE} gcp.function.context.event_type
  */
@@ -6892,6 +7656,8 @@ export type GCP_FUNCTION_CONTEXT_EVENT_TYPE_TYPE = string;
  * @example "1234567890"
  */
 export const GCP_FUNCTION_CONTEXT_ID = 'gcp.function.context.id';
+
+export const GCP_FUNCTION_CONTEXT_ID_KEYS = ['gcp.function.context.id'] as const;
 
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_ID} gcp.function.context.id
@@ -6914,6 +7680,8 @@ export type GCP_FUNCTION_CONTEXT_ID_TYPE = string;
  */
 export const GCP_FUNCTION_CONTEXT_RESOURCE = 'gcp.function.context.resource';
 
+export const GCP_FUNCTION_CONTEXT_RESOURCE_KEYS = ['gcp.function.context.resource'] as const;
+
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_RESOURCE} gcp.function.context.resource
  */
@@ -6934,6 +7702,8 @@ export type GCP_FUNCTION_CONTEXT_RESOURCE_TYPE = string;
  * @example "//pubsub.googleapis.com/projects/my-project/topics/my-topic"
  */
 export const GCP_FUNCTION_CONTEXT_SOURCE = 'gcp.function.context.source';
+
+export const GCP_FUNCTION_CONTEXT_SOURCE_KEYS = ['gcp.function.context.source'] as const;
 
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_SOURCE} gcp.function.context.source
@@ -6956,6 +7726,8 @@ export type GCP_FUNCTION_CONTEXT_SOURCE_TYPE = string;
  */
 export const GCP_FUNCTION_CONTEXT_SPECVERSION = 'gcp.function.context.specversion';
 
+export const GCP_FUNCTION_CONTEXT_SPECVERSION_KEYS = ['gcp.function.context.specversion'] as const;
+
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_SPECVERSION} gcp.function.context.specversion
  */
@@ -6976,6 +7748,8 @@ export type GCP_FUNCTION_CONTEXT_SPECVERSION_TYPE = string;
  * @example "2024-01-01T00:00:00.000Z"
  */
 export const GCP_FUNCTION_CONTEXT_TIME = 'gcp.function.context.time';
+
+export const GCP_FUNCTION_CONTEXT_TIME_KEYS = ['gcp.function.context.time'] as const;
 
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_TIME} gcp.function.context.time
@@ -6998,6 +7772,8 @@ export type GCP_FUNCTION_CONTEXT_TIME_TYPE = string;
  */
 export const GCP_FUNCTION_CONTEXT_TIMESTAMP = 'gcp.function.context.timestamp';
 
+export const GCP_FUNCTION_CONTEXT_TIMESTAMP_KEYS = ['gcp.function.context.timestamp'] as const;
+
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_TIMESTAMP} gcp.function.context.timestamp
  */
@@ -7019,6 +7795,8 @@ export type GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE = string;
  */
 export const GCP_FUNCTION_CONTEXT_TYPE = 'gcp.function.context.type';
 
+export const GCP_FUNCTION_CONTEXT_TYPE_KEYS = ['gcp.function.context.type'] as const;
+
 /**
  * Type for {@link GCP_FUNCTION_CONTEXT_TYPE} gcp.function.context.type
  */
@@ -7039,6 +7817,8 @@ export type GCP_FUNCTION_CONTEXT_TYPE_TYPE = string;
  * @example "my-project-123"
  */
 export const GCP_PROJECT_ID = 'gcp.project.id';
+
+export const GCP_PROJECT_ID_KEYS = ['gcp.project.id'] as const;
 
 /**
  * Type for {@link GCP_PROJECT_ID} gcp.project.id
@@ -7064,6 +7844,8 @@ export type GCP_PROJECT_ID_TYPE = string;
  */
 export const GCP_REGION = 'gcp_region';
 
+export const GCP_REGION_KEYS = ['cloud.region', 'aws_region', 'gcp_region'] as const;
+
 /**
  * Type for {@link GCP_REGION} gcp_region
  */
@@ -7084,6 +7866,8 @@ export type GCP_REGION_TYPE = string;
  * @example "ResearchAssistant"
  */
 export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
+
+export const GEN_AI_AGENT_NAME_KEYS = ['gen_ai.agent.name'] as const;
 
 /**
  * Type for {@link GEN_AI_AGENT_NAME} gen_ai.agent.name
@@ -7106,6 +7890,8 @@ export type GEN_AI_AGENT_NAME_TYPE = string;
  */
 export const GEN_AI_CONTEXT_UTILIZATION = 'gen_ai.context.utilization';
 
+export const GEN_AI_CONTEXT_UTILIZATION_KEYS = ['gen_ai.context.utilization'] as const;
+
 /**
  * Type for {@link GEN_AI_CONTEXT_UTILIZATION} gen_ai.context.utilization
  */
@@ -7126,6 +7912,8 @@ export type GEN_AI_CONTEXT_UTILIZATION_TYPE = number;
  * @example 128000
  */
 export const GEN_AI_CONTEXT_WINDOW_SIZE = 'gen_ai.context.window_size';
+
+export const GEN_AI_CONTEXT_WINDOW_SIZE_KEYS = ['gen_ai.context.window_size'] as const;
 
 /**
  * Type for {@link GEN_AI_CONTEXT_WINDOW_SIZE} gen_ai.context.window_size
@@ -7148,6 +7936,8 @@ export type GEN_AI_CONTEXT_WINDOW_SIZE_TYPE = number;
  */
 export const GEN_AI_CONVERSATION_ID = 'gen_ai.conversation.id';
 
+export const GEN_AI_CONVERSATION_ID_KEYS = ['gen_ai.conversation.id'] as const;
+
 /**
  * Type for {@link GEN_AI_CONVERSATION_ID} gen_ai.conversation.id
  */
@@ -7168,6 +7958,8 @@ export type GEN_AI_CONVERSATION_ID_TYPE = string;
  * @example 12.34
  */
 export const GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.cost.cache_creation.input_tokens';
+
+export const GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_KEYS = ['gen_ai.cost.cache_creation.input_tokens'] as const;
 
 /**
  * Type for {@link GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS} gen_ai.cost.cache_creation.input_tokens
@@ -7190,6 +7982,8 @@ export type GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
  */
 export const GEN_AI_COST_CACHE_READ_INPUT_TOKENS = 'gen_ai.cost.cache_read.input_tokens';
 
+export const GEN_AI_COST_CACHE_READ_INPUT_TOKENS_KEYS = ['gen_ai.cost.cache_read.input_tokens'] as const;
+
 /**
  * Type for {@link GEN_AI_COST_CACHE_READ_INPUT_TOKENS} gen_ai.cost.cache_read.input_tokens
  */
@@ -7210,6 +8004,8 @@ export type GEN_AI_COST_CACHE_READ_INPUT_TOKENS_TYPE = number;
  * @example 123.45
  */
 export const GEN_AI_COST_INPUT_TOKENS = 'gen_ai.cost.input_tokens';
+
+export const GEN_AI_COST_INPUT_TOKENS_KEYS = ['gen_ai.cost.input_tokens'] as const;
 
 /**
  * Type for {@link GEN_AI_COST_INPUT_TOKENS} gen_ai.cost.input_tokens
@@ -7232,6 +8028,8 @@ export type GEN_AI_COST_INPUT_TOKENS_TYPE = number;
  */
 export const GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
 
+export const GEN_AI_COST_OUTPUT_TOKENS_KEYS = ['gen_ai.cost.output_tokens'] as const;
+
 /**
  * Type for {@link GEN_AI_COST_OUTPUT_TOKENS} gen_ai.cost.output_tokens
  */
@@ -7252,6 +8050,8 @@ export type GEN_AI_COST_OUTPUT_TOKENS_TYPE = number;
  * @example 12.34
  */
 export const GEN_AI_COST_REASONING_OUTPUT_TOKENS = 'gen_ai.cost.reasoning.output_tokens';
+
+export const GEN_AI_COST_REASONING_OUTPUT_TOKENS_KEYS = ['gen_ai.cost.reasoning.output_tokens'] as const;
 
 /**
  * Type for {@link GEN_AI_COST_REASONING_OUTPUT_TOKENS} gen_ai.cost.reasoning.output_tokens
@@ -7276,6 +8076,8 @@ export type GEN_AI_COST_REASONING_OUTPUT_TOKENS_TYPE = number;
  */
 export const GEN_AI_COST_TOTAL_TOKENS = 'gen_ai.cost.total_tokens';
 
+export const GEN_AI_COST_TOTAL_TOKENS_KEYS = ['gen_ai.cost.total_tokens', 'ai.total_cost'] as const;
+
 /**
  * Type for {@link GEN_AI_COST_TOTAL_TOKENS} gen_ai.cost.total_tokens
  */
@@ -7297,6 +8099,8 @@ export type GEN_AI_COST_TOTAL_TOKENS_TYPE = number;
  */
 export const GEN_AI_EMBEDDINGS_INPUT = 'gen_ai.embeddings.input';
 
+export const GEN_AI_EMBEDDINGS_INPUT_KEYS = ['gen_ai.embeddings.input'] as const;
+
 /**
  * Type for {@link GEN_AI_EMBEDDINGS_INPUT} gen_ai.embeddings.input
  */
@@ -7317,6 +8121,8 @@ export type GEN_AI_EMBEDDINGS_INPUT_TYPE = string;
  * @example "my-awesome-function"
  */
 export const GEN_AI_FUNCTION_ID = 'gen_ai.function_id';
+
+export const GEN_AI_FUNCTION_ID_KEYS = ['gen_ai.function_id'] as const;
 
 /**
  * Type for {@link GEN_AI_FUNCTION_ID} gen_ai.function_id
@@ -7341,6 +8147,15 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  */
 export const GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
 
+export const GEN_AI_INPUT_MESSAGES_KEYS = [
+  'gen_ai.input.messages',
+  'ai.input_messages',
+  'ai.prompt.messages',
+  'ai.texts',
+  'gen_ai.prompt',
+  'gen_ai.request.messages',
+] as const;
+
 /**
  * Type for {@link GEN_AI_INPUT_MESSAGES} gen_ai.input.messages
  */
@@ -7362,6 +8177,8 @@ export type GEN_AI_INPUT_MESSAGES_TYPE = string;
  */
 export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
 
+export const GEN_AI_OPERATION_NAME_KEYS = ['gen_ai.operation.name'] as const;
+
 /**
  * Type for {@link GEN_AI_OPERATION_NAME} gen_ai.operation.name
  */
@@ -7382,6 +8199,8 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  * @example "tool"
  */
 export const GEN_AI_OPERATION_TYPE = 'gen_ai.operation.type';
+
+export const GEN_AI_OPERATION_TYPE_KEYS = ['gen_ai.operation.type'] as const;
 
 /**
  * Type for {@link GEN_AI_OPERATION_TYPE} gen_ai.operation.type
@@ -7406,6 +8225,16 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  */
 export const GEN_AI_OUTPUT_MESSAGES = 'gen_ai.output.messages';
 
+export const GEN_AI_OUTPUT_MESSAGES_KEYS = [
+  'gen_ai.output.messages',
+  'ai.response.text',
+  'ai.response.toolCalls',
+  'ai.responses',
+  'ai.tool_calls',
+  'gen_ai.response.text',
+  'gen_ai.response.tool_calls',
+] as const;
+
 /**
  * Type for {@link GEN_AI_OUTPUT_MESSAGES} gen_ai.output.messages
  */
@@ -7428,6 +8257,8 @@ export type GEN_AI_OUTPUT_MESSAGES_TYPE = string;
  * @example "Autofix Pipeline"
  */
 export const GEN_AI_PIPELINE_NAME = 'gen_ai.pipeline.name';
+
+export const GEN_AI_PIPELINE_NAME_KEYS = ['gen_ai.pipeline.name', 'ai.pipeline.name'] as const;
 
 /**
  * Type for {@link GEN_AI_PIPELINE_NAME} gen_ai.pipeline.name
@@ -7453,6 +8284,15 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
 
+export const GEN_AI_PROMPT_KEYS = [
+  'gen_ai.input.messages',
+  'ai.input_messages',
+  'ai.prompt.messages',
+  'ai.texts',
+  'gen_ai.prompt',
+  'gen_ai.request.messages',
+] as const;
+
 /**
  * Type for {@link GEN_AI_PROMPT} gen_ai.prompt
  */
@@ -7475,6 +8315,8 @@ export type GEN_AI_PROMPT_TYPE = string;
  * @example "summarize_text"
  */
 export const GEN_AI_PROMPT_NAME = 'gen_ai.prompt.name';
+
+export const GEN_AI_PROMPT_NAME_KEYS = ['gen_ai.prompt.name', 'mcp.prompt.name'] as const;
 
 /**
  * Type for {@link GEN_AI_PROMPT_NAME} gen_ai.prompt.name
@@ -7499,6 +8341,8 @@ export type GEN_AI_PROMPT_NAME_TYPE = string;
  */
 export const GEN_AI_PROVIDER_NAME = 'gen_ai.provider.name';
 
+export const GEN_AI_PROVIDER_NAME_KEYS = ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'] as const;
+
 /**
  * Type for {@link GEN_AI_PROVIDER_NAME} gen_ai.provider.name
  */
@@ -7520,6 +8364,12 @@ export type GEN_AI_PROVIDER_NAME_TYPE = string;
  * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
  */
 export const GEN_AI_REQUEST_AVAILABLE_TOOLS = 'gen_ai.request.available_tools';
+
+export const GEN_AI_REQUEST_AVAILABLE_TOOLS_KEYS = [
+  'gen_ai.tool.definitions',
+  'ai.tools',
+  'gen_ai.request.available_tools',
+] as const;
 
 /**
  * Type for {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} gen_ai.request.available_tools
@@ -7544,6 +8394,11 @@ export type GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE = string;
  */
 export const GEN_AI_REQUEST_FREQUENCY_PENALTY = 'gen_ai.request.frequency_penalty';
 
+export const GEN_AI_REQUEST_FREQUENCY_PENALTY_KEYS = [
+  'gen_ai.request.frequency_penalty',
+  'ai.frequency_penalty',
+] as const;
+
 /**
  * Type for {@link GEN_AI_REQUEST_FREQUENCY_PENALTY} gen_ai.request.frequency_penalty
  */
@@ -7564,6 +8419,8 @@ export type GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE = number;
  * @example 2048
  */
 export const GEN_AI_REQUEST_MAX_TOKENS = 'gen_ai.request.max_tokens';
+
+export const GEN_AI_REQUEST_MAX_TOKENS_KEYS = ['gen_ai.request.max_tokens'] as const;
 
 /**
  * Type for {@link GEN_AI_REQUEST_MAX_TOKENS} gen_ai.request.max_tokens
@@ -7589,6 +8446,15 @@ export type GEN_AI_REQUEST_MAX_TOKENS_TYPE = number;
  */
 export const GEN_AI_REQUEST_MESSAGES = 'gen_ai.request.messages';
 
+export const GEN_AI_REQUEST_MESSAGES_KEYS = [
+  'gen_ai.input.messages',
+  'ai.input_messages',
+  'ai.prompt.messages',
+  'ai.texts',
+  'gen_ai.prompt',
+  'gen_ai.request.messages',
+] as const;
+
 /**
  * Type for {@link GEN_AI_REQUEST_MESSAGES} gen_ai.request.messages
  */
@@ -7611,6 +8477,8 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  * @example "gpt-4-turbo-preview"
  */
 export const GEN_AI_REQUEST_MODEL = 'gen_ai.request.model';
+
+export const GEN_AI_REQUEST_MODEL_KEYS = ['gen_ai.request.model', 'ai.model_id'] as const;
 
 /**
  * Type for {@link GEN_AI_REQUEST_MODEL} gen_ai.request.model
@@ -7635,6 +8503,8 @@ export type GEN_AI_REQUEST_MODEL_TYPE = string;
  */
 export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty';
 
+export const GEN_AI_REQUEST_PRESENCE_PENALTY_KEYS = ['gen_ai.request.presence_penalty', 'ai.presence_penalty'] as const;
+
 /**
  * Type for {@link GEN_AI_REQUEST_PRESENCE_PENALTY} gen_ai.request.presence_penalty
  */
@@ -7655,6 +8525,8 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
  * @example "high"
  */
 export const GEN_AI_REQUEST_REASONING_LEVEL = 'gen_ai.request.reasoning.level';
+
+export const GEN_AI_REQUEST_REASONING_LEVEL_KEYS = ['gen_ai.request.reasoning.level'] as const;
 
 /**
  * Type for {@link GEN_AI_REQUEST_REASONING_LEVEL} gen_ai.request.reasoning.level
@@ -7679,6 +8551,8 @@ export type GEN_AI_REQUEST_REASONING_LEVEL_TYPE = string;
  */
 export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
 
+export const GEN_AI_REQUEST_SEED_KEYS = ['gen_ai.request.seed', 'ai.seed'] as const;
+
 /**
  * Type for {@link GEN_AI_REQUEST_SEED} gen_ai.request.seed
  */
@@ -7699,6 +8573,8 @@ export type GEN_AI_REQUEST_SEED_TYPE = string;
  * @example ["forest","lived"]
  */
 export const GEN_AI_REQUEST_STOP_SEQUENCES = 'gen_ai.request.stop_sequences';
+
+export const GEN_AI_REQUEST_STOP_SEQUENCES_KEYS = ['gen_ai.request.stop_sequences'] as const;
 
 /**
  * Type for {@link GEN_AI_REQUEST_STOP_SEQUENCES} gen_ai.request.stop_sequences
@@ -7723,6 +8599,8 @@ export type GEN_AI_REQUEST_STOP_SEQUENCES_TYPE = Array<string>;
  */
 export const GEN_AI_REQUEST_TEMPERATURE = 'gen_ai.request.temperature';
 
+export const GEN_AI_REQUEST_TEMPERATURE_KEYS = ['gen_ai.request.temperature', 'ai.temperature'] as const;
+
 /**
  * Type for {@link GEN_AI_REQUEST_TEMPERATURE} gen_ai.request.temperature
  */
@@ -7746,6 +8624,8 @@ export type GEN_AI_REQUEST_TEMPERATURE_TYPE = number;
  */
 export const GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
 
+export const GEN_AI_REQUEST_TOP_K_KEYS = ['gen_ai.request.top_k', 'ai.top_k'] as const;
+
 /**
  * Type for {@link GEN_AI_REQUEST_TOP_K} gen_ai.request.top_k
  */
@@ -7768,6 +8648,8 @@ export type GEN_AI_REQUEST_TOP_K_TYPE = number;
  * @example 0.7
  */
 export const GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
+
+export const GEN_AI_REQUEST_TOP_P_KEYS = ['gen_ai.request.top_p', 'ai.top_p'] as const;
 
 /**
  * Type for {@link GEN_AI_REQUEST_TOP_P} gen_ai.request.top_p
@@ -7793,6 +8675,12 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
  */
 export const GEN_AI_RESPONSE_FINISH_REASON = 'gen_ai.response.finish_reason';
 
+export const GEN_AI_RESPONSE_FINISH_REASON_KEYS = [
+  'gen_ai.response.finish_reasons',
+  'ai.finish_reason',
+  'gen_ai.response.finish_reason',
+] as const;
+
 /**
  * Type for {@link GEN_AI_RESPONSE_FINISH_REASON} gen_ai.response.finish_reason
  */
@@ -7815,6 +8703,12 @@ export type GEN_AI_RESPONSE_FINISH_REASON_TYPE = string;
  * @example "COMPLETE"
  */
 export const GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
+
+export const GEN_AI_RESPONSE_FINISH_REASONS_KEYS = [
+  'gen_ai.response.finish_reasons',
+  'ai.finish_reason',
+  'gen_ai.response.finish_reason',
+] as const;
 
 /**
  * Type for {@link GEN_AI_RESPONSE_FINISH_REASONS} gen_ai.response.finish_reasons
@@ -7839,6 +8733,8 @@ export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
  */
 export const GEN_AI_RESPONSE_ID = 'gen_ai.response.id';
 
+export const GEN_AI_RESPONSE_ID_KEYS = ['gen_ai.response.id', 'ai.generation_id'] as const;
+
 /**
  * Type for {@link GEN_AI_RESPONSE_ID} gen_ai.response.id
  */
@@ -7859,6 +8755,8 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  * @example "gpt-4"
  */
 export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
+
+export const GEN_AI_RESPONSE_MODEL_KEYS = ['gen_ai.response.model'] as const;
 
 /**
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
@@ -7883,6 +8781,8 @@ export type GEN_AI_RESPONSE_MODEL_TYPE = string;
  */
 export const GEN_AI_RESPONSE_STREAMING = 'gen_ai.response.streaming';
 
+export const GEN_AI_RESPONSE_STREAMING_KEYS = ['gen_ai.response.streaming', 'ai.streaming'] as const;
+
 /**
  * Type for {@link GEN_AI_RESPONSE_STREAMING} gen_ai.response.streaming
  */
@@ -7904,6 +8804,16 @@ export type GEN_AI_RESPONSE_STREAMING_TYPE = boolean;
  * @example "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
  */
 export const GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
+
+export const GEN_AI_RESPONSE_TEXT_KEYS = [
+  'gen_ai.output.messages',
+  'ai.response.text',
+  'ai.response.toolCalls',
+  'ai.responses',
+  'ai.tool_calls',
+  'gen_ai.response.text',
+  'gen_ai.response.tool_calls',
+] as const;
 
 /**
  * Type for {@link GEN_AI_RESPONSE_TEXT} gen_ai.response.text
@@ -7927,6 +8837,11 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
  * @example 0.6853435
  */
 export const GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK = 'gen_ai.response.time_to_first_chunk';
+
+export const GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_KEYS = [
+  'gen_ai.response.time_to_first_chunk',
+  'gen_ai.response.time_to_first_token',
+] as const;
 
 /**
  * Type for {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK} gen_ai.response.time_to_first_chunk
@@ -7952,6 +8867,11 @@ export type GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE = number;
  */
 export const GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN = 'gen_ai.response.time_to_first_token';
 
+export const GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_KEYS = [
+  'gen_ai.response.time_to_first_chunk',
+  'gen_ai.response.time_to_first_token',
+] as const;
+
 /**
  * Type for {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN} gen_ai.response.time_to_first_token
  */
@@ -7972,6 +8892,8 @@ export type GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_TYPE = number;
  * @example 12345.67
  */
 export const GEN_AI_RESPONSE_TOKENS_PER_SECOND = 'gen_ai.response.tokens_per_second';
+
+export const GEN_AI_RESPONSE_TOKENS_PER_SECOND_KEYS = ['gen_ai.response.tokens_per_second'] as const;
 
 /**
  * Type for {@link GEN_AI_RESPONSE_TOKENS_PER_SECOND} gen_ai.response.tokens_per_second
@@ -7994,6 +8916,16 @@ export type GEN_AI_RESPONSE_TOKENS_PER_SECOND_TYPE = number;
  * @example "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
  */
 export const GEN_AI_RESPONSE_TOOL_CALLS = 'gen_ai.response.tool_calls';
+
+export const GEN_AI_RESPONSE_TOOL_CALLS_KEYS = [
+  'gen_ai.output.messages',
+  'ai.response.text',
+  'ai.response.toolCalls',
+  'ai.responses',
+  'ai.tool_calls',
+  'gen_ai.response.text',
+  'gen_ai.response.tool_calls',
+] as const;
 
 /**
  * Type for {@link GEN_AI_RESPONSE_TOOL_CALLS} gen_ai.response.tool_calls
@@ -8019,6 +8951,8 @@ export type GEN_AI_RESPONSE_TOOL_CALLS_TYPE = string;
  */
 export const GEN_AI_SYSTEM = 'gen_ai.system';
 
+export const GEN_AI_SYSTEM_KEYS = ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'] as const;
+
 /**
  * Type for {@link GEN_AI_SYSTEM} gen_ai.system
  */
@@ -8042,6 +8976,12 @@ export type GEN_AI_SYSTEM_TYPE = string;
  */
 export const GEN_AI_SYSTEM_INSTRUCTIONS = 'gen_ai.system_instructions';
 
+export const GEN_AI_SYSTEM_INSTRUCTIONS_KEYS = [
+  'gen_ai.system_instructions',
+  'ai.preamble',
+  'gen_ai.system.message',
+] as const;
+
 /**
  * Type for {@link GEN_AI_SYSTEM_INSTRUCTIONS} gen_ai.system_instructions
  */
@@ -8063,6 +9003,12 @@ export type GEN_AI_SYSTEM_INSTRUCTIONS_TYPE = string;
  * @example "You are a helpful assistant"
  */
 export const GEN_AI_SYSTEM_MESSAGE = 'gen_ai.system.message';
+
+export const GEN_AI_SYSTEM_MESSAGE_KEYS = [
+  'gen_ai.system_instructions',
+  'ai.preamble',
+  'gen_ai.system.message',
+] as const;
 
 /**
  * Type for {@link GEN_AI_SYSTEM_MESSAGE} gen_ai.system.message
@@ -8087,6 +9033,12 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  */
 export const GEN_AI_TOOL_CALL_ARGUMENTS = 'gen_ai.tool.call.arguments';
 
+export const GEN_AI_TOOL_CALL_ARGUMENTS_KEYS = [
+  'gen_ai.tool.call.arguments',
+  'ai.toolCall.args',
+  'gen_ai.tool.input',
+] as const;
+
 /**
  * Type for {@link GEN_AI_TOOL_CALL_ARGUMENTS} gen_ai.tool.call.arguments
  */
@@ -8110,6 +9062,14 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  */
 export const GEN_AI_TOOL_CALL_RESULT = 'gen_ai.tool.call.result';
 
+export const GEN_AI_TOOL_CALL_RESULT_KEYS = [
+  'gen_ai.tool.call.result',
+  'ai.toolCall.result',
+  'gen_ai.tool.message',
+  'gen_ai.tool.output',
+  'mcp.tool.result.content',
+] as const;
+
 /**
  * Type for {@link GEN_AI_TOOL_CALL_RESULT} gen_ai.tool.call.result
  */
@@ -8131,6 +9091,12 @@ export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
  */
 export const GEN_AI_TOOL_DEFINITIONS = 'gen_ai.tool.definitions';
 
+export const GEN_AI_TOOL_DEFINITIONS_KEYS = [
+  'gen_ai.tool.definitions',
+  'ai.tools',
+  'gen_ai.request.available_tools',
+] as const;
+
 /**
  * Type for {@link GEN_AI_TOOL_DEFINITIONS} gen_ai.tool.definitions
  */
@@ -8151,6 +9117,8 @@ export type GEN_AI_TOOL_DEFINITIONS_TYPE = string;
  * @example "Searches the web for current information about a topic"
  */
 export const GEN_AI_TOOL_DESCRIPTION = 'gen_ai.tool.description';
+
+export const GEN_AI_TOOL_DESCRIPTION_KEYS = ['gen_ai.tool.description'] as const;
 
 /**
  * Type for {@link GEN_AI_TOOL_DESCRIPTION} gen_ai.tool.description
@@ -8176,6 +9144,8 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  */
 export const GEN_AI_TOOL_INPUT = 'gen_ai.tool.input';
 
+export const GEN_AI_TOOL_INPUT_KEYS = ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'] as const;
+
 /**
  * Type for {@link GEN_AI_TOOL_INPUT} gen_ai.tool.input
  */
@@ -8200,6 +9170,14 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  */
 export const GEN_AI_TOOL_MESSAGE = 'gen_ai.tool.message';
 
+export const GEN_AI_TOOL_MESSAGE_KEYS = [
+  'gen_ai.tool.call.result',
+  'ai.toolCall.result',
+  'gen_ai.tool.message',
+  'gen_ai.tool.output',
+  'mcp.tool.result.content',
+] as const;
+
 /**
  * Type for {@link GEN_AI_TOOL_MESSAGE} gen_ai.tool.message
  */
@@ -8222,6 +9200,8 @@ export type GEN_AI_TOOL_MESSAGE_TYPE = string;
  * @example "Flights"
  */
 export const GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
+
+export const GEN_AI_TOOL_NAME_KEYS = ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'] as const;
 
 /**
  * Type for {@link GEN_AI_TOOL_NAME} gen_ai.tool.name
@@ -8247,6 +9227,14 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  */
 export const GEN_AI_TOOL_OUTPUT = 'gen_ai.tool.output';
 
+export const GEN_AI_TOOL_OUTPUT_KEYS = [
+  'gen_ai.tool.call.result',
+  'ai.toolCall.result',
+  'gen_ai.tool.message',
+  'gen_ai.tool.output',
+  'mcp.tool.result.content',
+] as const;
+
 /**
  * Type for {@link GEN_AI_TOOL_OUTPUT} gen_ai.tool.output
  */
@@ -8268,6 +9256,8 @@ export type GEN_AI_TOOL_OUTPUT_TYPE = string;
  * @example "function"
  */
 export const GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
+
+export const GEN_AI_TOOL_TYPE_KEYS = ['gen_ai.tool.type'] as const;
 
 /**
  * Type for {@link GEN_AI_TOOL_TYPE} gen_ai.tool.type
@@ -8292,6 +9282,11 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  */
 export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
 
+export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_KEYS = [
+  'gen_ai.usage.cache_creation.input_tokens',
+  'gen_ai.usage.input_tokens.cache_write',
+] as const;
+
 /**
  * Type for {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation.input_tokens
  */
@@ -8314,6 +9309,11 @@ export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
  * @example 50
  */
 export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read.input_tokens';
+
+export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_KEYS = [
+  'gen_ai.usage.cache_read.input_tokens',
+  'gen_ai.usage.input_tokens.cached',
+] as const;
 
 /**
  * Type for {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read.input_tokens
@@ -8339,6 +9339,12 @@ export type GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
  */
 export const GEN_AI_USAGE_COMPLETION_TOKENS = 'gen_ai.usage.completion_tokens';
 
+export const GEN_AI_USAGE_COMPLETION_TOKENS_KEYS = [
+  'gen_ai.usage.output_tokens',
+  'ai.completion_tokens.used',
+  'gen_ai.usage.completion_tokens',
+] as const;
+
 /**
  * Type for {@link GEN_AI_USAGE_COMPLETION_TOKENS} gen_ai.usage.completion_tokens
  */
@@ -8361,6 +9367,12 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
  * @example 10
  */
 export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
+
+export const GEN_AI_USAGE_INPUT_TOKENS_KEYS = [
+  'gen_ai.usage.input_tokens',
+  'ai.prompt_tokens.used',
+  'gen_ai.usage.prompt_tokens',
+] as const;
 
 /**
  * Type for {@link GEN_AI_USAGE_INPUT_TOKENS} gen_ai.usage.input_tokens
@@ -8386,6 +9398,11 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  */
 export const GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
 
+export const GEN_AI_USAGE_INPUT_TOKENS_CACHED_KEYS = [
+  'gen_ai.usage.cache_read.input_tokens',
+  'gen_ai.usage.input_tokens.cached',
+] as const;
+
 /**
  * Type for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} gen_ai.usage.input_tokens.cached
  */
@@ -8410,6 +9427,11 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  */
 export const GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE = 'gen_ai.usage.input_tokens.cache_write';
 
+export const GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_KEYS = [
+  'gen_ai.usage.cache_creation.input_tokens',
+  'gen_ai.usage.input_tokens.cache_write',
+] as const;
+
 /**
  * Type for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} gen_ai.usage.input_tokens.cache_write
  */
@@ -8432,6 +9454,12 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE = number;
  * @example 10
  */
 export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
+
+export const GEN_AI_USAGE_OUTPUT_TOKENS_KEYS = [
+  'gen_ai.usage.output_tokens',
+  'ai.completion_tokens.used',
+  'gen_ai.usage.completion_tokens',
+] as const;
 
 /**
  * Type for {@link GEN_AI_USAGE_OUTPUT_TOKENS} gen_ai.usage.output_tokens
@@ -8457,6 +9485,11 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_TYPE = number;
  */
 export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.reasoning';
 
+export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_KEYS = [
+  'gen_ai.usage.reasoning.output_tokens',
+  'gen_ai.usage.output_tokens.reasoning',
+] as const;
+
 /**
  * Type for {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} gen_ai.usage.output_tokens.reasoning
  */
@@ -8481,6 +9514,12 @@ export type GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_TYPE = number;
  */
 export const GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
 
+export const GEN_AI_USAGE_PROMPT_TOKENS_KEYS = [
+  'gen_ai.usage.input_tokens',
+  'ai.prompt_tokens.used',
+  'gen_ai.usage.prompt_tokens',
+] as const;
+
 /**
  * Type for {@link GEN_AI_USAGE_PROMPT_TOKENS} gen_ai.usage.prompt_tokens
  */
@@ -8503,6 +9542,11 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  * @example 75
  */
 export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = 'gen_ai.usage.reasoning.output_tokens';
+
+export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_KEYS = [
+  'gen_ai.usage.reasoning.output_tokens',
+  'gen_ai.usage.output_tokens.reasoning',
+] as const;
 
 /**
  * Type for {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS} gen_ai.usage.reasoning.output_tokens
@@ -8527,6 +9571,8 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
  */
 export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
 
+export const GEN_AI_USAGE_TOTAL_TOKENS_KEYS = ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'] as const;
+
 /**
  * Type for {@link GEN_AI_USAGE_TOTAL_TOKENS} gen_ai.usage.total_tokens
  */
@@ -8547,6 +9593,8 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  * @example "query findBookById { bookById(id: ?) { name } }"
  */
 export const GRAPHQL_DOCUMENT = 'graphql.document';
+
+export const GRAPHQL_DOCUMENT_KEYS = ['graphql.document'] as const;
 
 /**
  * Type for {@link GRAPHQL_DOCUMENT} graphql.document
@@ -8569,6 +9617,8 @@ export type GRAPHQL_DOCUMENT_TYPE = string;
  */
 export const GRAPHQL_OPERATION_NAME = 'graphql.operation.name';
 
+export const GRAPHQL_OPERATION_NAME_KEYS = ['graphql.operation.name'] as const;
+
 /**
  * Type for {@link GRAPHQL_OPERATION_NAME} graphql.operation.name
  */
@@ -8589,6 +9639,8 @@ export type GRAPHQL_OPERATION_NAME_TYPE = string;
  * @example "query"
  */
 export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
+
+export const GRAPHQL_OPERATION_TYPE_KEYS = ['graphql.operation.type'] as const;
 
 /**
  * Type for {@link GRAPHQL_OPERATION_TYPE} graphql.operation.type
@@ -8611,6 +9663,8 @@ export type GRAPHQL_OPERATION_TYPE_TYPE = string;
  */
 export const GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS = 'grpc.error.bad_request.field_violations';
 
+export const GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_KEYS = ['grpc.error.bad_request.field_violations'] as const;
+
 /**
  * Type for {@link GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS} grpc.error.bad_request.field_violations
  */
@@ -8631,6 +9685,8 @@ export type GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE = Array<string>;
  * @example "at com.example.Service.method(Service.java:42)"
  */
 export const GRPC_ERROR_DEBUG_INFO_DETAIL = 'grpc.error.debug_info.detail';
+
+export const GRPC_ERROR_DEBUG_INFO_DETAIL_KEYS = ['grpc.error.debug_info.detail'] as const;
 
 /**
  * Type for {@link GRPC_ERROR_DEBUG_INFO_DETAIL} grpc.error.debug_info.detail
@@ -8653,6 +9709,8 @@ export type GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE = string;
  */
 export const GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES = 'grpc.error.debug_info.stack_entries';
 
+export const GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_KEYS = ['grpc.error.debug_info.stack_entries'] as const;
+
 /**
  * Type for {@link GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES} grpc.error.debug_info.stack_entries
  */
@@ -8673,6 +9731,8 @@ export type GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE = Array<string>;
  * @example "example.sentry.io"
  */
 export const GRPC_ERROR_ERROR_INFO_DOMAIN = 'grpc.error.error_info.domain';
+
+export const GRPC_ERROR_ERROR_INFO_DOMAIN_KEYS = ['grpc.error.error_info.domain'] as const;
 
 /**
  * Type for {@link GRPC_ERROR_ERROR_INFO_DOMAIN} grpc.error.error_info.domain
@@ -8696,6 +9756,8 @@ export type GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE = string;
  * @example "grpc.error.error_info.metadata.user_id='123'"
  */
 export const GRPC_ERROR_ERROR_INFO_METADATA_KEY = 'grpc.error.error_info.metadata.<key>';
+
+export const GRPC_ERROR_ERROR_INFO_METADATA_KEY_KEYS = ['grpc.error.error_info.metadata.<key>'] as const;
 
 /**
  * Base key for {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY}. Use with a dynamic suffix, e.g. `${GRPC_ERROR_ERROR_INFO_METADATA_KEY_BASE}.${key}`.
@@ -8723,6 +9785,8 @@ export type GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE = string;
  */
 export const GRPC_ERROR_ERROR_INFO_REASON = 'grpc.error.error_info.reason';
 
+export const GRPC_ERROR_ERROR_INFO_REASON_KEYS = ['grpc.error.error_info.reason'] as const;
+
 /**
  * Type for {@link GRPC_ERROR_ERROR_INFO_REASON} grpc.error.error_info.reason
  */
@@ -8743,6 +9807,8 @@ export type GRPC_ERROR_ERROR_INFO_REASON_TYPE = string;
  * @example ["{\"type\":\"TOS\",\"subject\":\"example.com/user/123\",\"description\":\"User must accept the terms of service\"}"]
  */
 export const GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS = 'grpc.error.precondition_failure.violations';
+
+export const GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_KEYS = ['grpc.error.precondition_failure.violations'] as const;
 
 /**
  * Type for {@link GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS} grpc.error.precondition_failure.violations
@@ -8765,6 +9831,8 @@ export type GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE = Array<string>;
  */
 export const GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS = 'grpc.error.quota_failure.violations';
 
+export const GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_KEYS = ['grpc.error.quota_failure.violations'] as const;
+
 /**
  * Type for {@link GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS} grpc.error.quota_failure.violations
  */
@@ -8785,6 +9853,8 @@ export type GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE = Array<string>;
  * @example "Instance is not ready for the request."
  */
 export const GRPC_ERROR_RESOURCE_INFO_DESCRIPTION = 'grpc.error.resource_info.description';
+
+export const GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_KEYS = ['grpc.error.resource_info.description'] as const;
 
 /**
  * Type for {@link GRPC_ERROR_RESOURCE_INFO_DESCRIPTION} grpc.error.resource_info.description
@@ -8807,6 +9877,8 @@ export type GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE = string;
  */
 export const GRPC_ERROR_RESOURCE_INFO_OWNER = 'grpc.error.resource_info.owner';
 
+export const GRPC_ERROR_RESOURCE_INFO_OWNER_KEYS = ['grpc.error.resource_info.owner'] as const;
+
 /**
  * Type for {@link GRPC_ERROR_RESOURCE_INFO_OWNER} grpc.error.resource_info.owner
  */
@@ -8827,6 +9899,8 @@ export type GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE = string;
  * @example "projects/example/instances/example-instance"
  */
 export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME = 'grpc.error.resource_info.resource_name';
+
+export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_KEYS = ['grpc.error.resource_info.resource_name'] as const;
 
 /**
  * Type for {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME} grpc.error.resource_info.resource_name
@@ -8849,6 +9923,8 @@ export type GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE = string;
  */
 export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE = 'grpc.error.resource_info.resource_type';
 
+export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_KEYS = ['grpc.error.resource_info.resource_type'] as const;
+
 /**
  * Type for {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE} grpc.error.resource_info.resource_type
  */
@@ -8869,6 +9945,8 @@ export type GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE = string;
  * @example 5000
  */
 export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS = 'grpc.error.retry_info.retry_delay_ms';
+
+export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_KEYS = ['grpc.error.retry_info.retry_delay_ms'] as const;
 
 /**
  * Type for {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS} grpc.error.retry_info.retry_delay_ms
@@ -8894,6 +9972,8 @@ export type GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE = number;
  */
 export const HARDWARECONCURRENCY = 'hardwareConcurrency';
 
+export const HARDWARECONCURRENCY_KEYS = ['device.processor_count', 'hardwareConcurrency'] as const;
+
 /**
  * Type for {@link HARDWARECONCURRENCY} hardwareConcurrency
  */
@@ -8918,6 +9998,8 @@ export type HARDWARECONCURRENCY_TYPE = string;
  */
 export const HTTP_CLIENT_IP = 'http.client_ip';
 
+export const HTTP_CLIENT_IP_KEYS = ['client.address', 'http.client_ip'] as const;
+
 /**
  * Type for {@link HTTP_CLIENT_IP} http.client_ip
  */
@@ -8938,6 +10020,8 @@ export type HTTP_CLIENT_IP_TYPE = string;
  * @example 456
  */
 export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_content_length';
+
+export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH_KEYS = ['http.decoded_response_content_length'] as const;
 
 /**
  * Type for {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} http.decoded_response_content_length
@@ -8963,6 +10047,8 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  */
 export const HTTP_FLAVOR = 'http.flavor';
 
+export const HTTP_FLAVOR_KEYS = ['network.protocol.version', 'http.flavor', 'net.protocol.version'] as const;
+
 /**
  * Type for {@link HTTP_FLAVOR} http.flavor
  */
@@ -8983,6 +10069,8 @@ export type HTTP_FLAVOR_TYPE = string;
  * @example "#details"
  */
 export const HTTP_FRAGMENT = 'http.fragment';
+
+export const HTTP_FRAGMENT_KEYS = ['http.fragment'] as const;
 
 /**
  * Type for {@link HTTP_FRAGMENT} http.fragment
@@ -9008,6 +10096,16 @@ export type HTTP_FRAGMENT_TYPE = string;
  */
 export const HTTP_HOST = 'http.host';
 
+export const HTTP_HOST_KEYS = [
+  'server.address',
+  'address',
+  'http.host',
+  'http.server_name',
+  'net.host.name',
+  'net.peer.name',
+  'server_name',
+] as const;
+
 /**
  * Type for {@link HTTP_HOST} http.host
  */
@@ -9032,6 +10130,8 @@ export type HTTP_HOST_TYPE = string;
  */
 export const HTTP_METHOD = 'http.method';
 
+export const HTTP_METHOD_KEYS = ['http.request.method', 'http.method', 'http.request_method', 'method'] as const;
+
 /**
  * Type for {@link HTTP_METHOD} http.method
  */
@@ -9052,6 +10152,8 @@ export type HTTP_METHOD_TYPE = string;
  * @example "?foo=bar&bar=baz"
  */
 export const HTTP_QUERY = 'http.query';
+
+export const HTTP_QUERY_KEYS = ['http.query'] as const;
 
 /**
  * Type for {@link HTTP_QUERY} http.query
@@ -9074,6 +10176,8 @@ export type HTTP_QUERY_TYPE = string;
  */
 export const HTTP_REQUEST_BODY_DATA = 'http.request.body.data';
 
+export const HTTP_REQUEST_BODY_DATA_KEYS = ['http.request.body.data'] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_BODY_DATA} http.request.body.data
  */
@@ -9094,6 +10198,8 @@ export type HTTP_REQUEST_BODY_DATA_TYPE = string;
  * @example 1732829555.15
  */
 export const HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
+
+export const HTTP_REQUEST_CONNECTION_END_KEYS = ['http.request.connection_end'] as const;
 
 /**
  * Type for {@link HTTP_REQUEST_CONNECTION_END} http.request.connection_end
@@ -9116,6 +10222,8 @@ export type HTTP_REQUEST_CONNECTION_END_TYPE = number;
  */
 export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
 
+export const HTTP_REQUEST_CONNECT_START_KEYS = ['http.request.connect_start'] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_CONNECT_START} http.request.connect_start
  */
@@ -9136,6 +10244,8 @@ export type HTTP_REQUEST_CONNECT_START_TYPE = number;
  * @example 1732829555.201
  */
 export const HTTP_REQUEST_DOMAIN_LOOKUP_END = 'http.request.domain_lookup_end';
+
+export const HTTP_REQUEST_DOMAIN_LOOKUP_END_KEYS = ['http.request.domain_lookup_end'] as const;
 
 /**
  * Type for {@link HTTP_REQUEST_DOMAIN_LOOKUP_END} http.request.domain_lookup_end
@@ -9158,6 +10268,8 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE = number;
  */
 export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
 
+export const HTTP_REQUEST_DOMAIN_LOOKUP_START_KEYS = ['http.request.domain_lookup_start'] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_DOMAIN_LOOKUP_START} http.request.domain_lookup_start
  */
@@ -9178,6 +10290,8 @@ export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
  * @example 1732829555.389
  */
 export const HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
+
+export const HTTP_REQUEST_FETCH_START_KEYS = ['http.request.fetch_start'] as const;
 
 /**
  * Type for {@link HTTP_REQUEST_FETCH_START} http.request.fetch_start
@@ -9201,6 +10315,8 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  * @example "http.request.header.custom-header=['foo', 'bar']"
  */
 export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
+
+export const HTTP_REQUEST_HEADER_KEY_KEYS = ['http.request.header.<key>'] as const;
 
 /**
  * Base key for {@link HTTP_REQUEST_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_REQUEST_HEADER_KEY_BASE}.${key}`.
@@ -9230,6 +10346,13 @@ export type HTTP_REQUEST_HEADER_KEY_TYPE = Array<string>;
  */
 export const HTTP_REQUEST_METHOD = 'http.request.method';
 
+export const HTTP_REQUEST_METHOD_KEYS = [
+  'http.request.method',
+  'http.method',
+  'http.request_method',
+  'method',
+] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_METHOD} http.request.method
  */
@@ -9254,6 +10377,13 @@ export type HTTP_REQUEST_METHOD_TYPE = string;
  */
 export const _HTTP_REQUEST_METHOD = 'http.request_method';
 
+export const _HTTP_REQUEST_METHOD_KEYS = [
+  'http.request.method',
+  'http.method',
+  'http.request_method',
+  'method',
+] as const;
+
 /**
  * Type for {@link _HTTP_REQUEST_METHOD} http.request_method
  */
@@ -9274,6 +10404,8 @@ export type _HTTP_REQUEST_METHOD_TYPE = string;
  * @example 1732829558.502
  */
 export const HTTP_REQUEST_REDIRECT_END = 'http.request.redirect_end';
+
+export const HTTP_REQUEST_REDIRECT_END_KEYS = ['http.request.redirect_end'] as const;
 
 /**
  * Type for {@link HTTP_REQUEST_REDIRECT_END} http.request.redirect_end
@@ -9296,6 +10428,8 @@ export type HTTP_REQUEST_REDIRECT_END_TYPE = number;
  */
 export const HTTP_REQUEST_REDIRECT_START = 'http.request.redirect_start';
 
+export const HTTP_REQUEST_REDIRECT_START_KEYS = ['http.request.redirect_start'] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_REDIRECT_START} http.request.redirect_start
  */
@@ -9316,6 +10450,8 @@ export type HTTP_REQUEST_REDIRECT_START_TYPE = number;
  * @example 1732829555.51
  */
 export const HTTP_REQUEST_REQUEST_START = 'http.request.request_start';
+
+export const HTTP_REQUEST_REQUEST_START_KEYS = ['http.request.request_start'] as const;
 
 /**
  * Type for {@link HTTP_REQUEST_REQUEST_START} http.request.request_start
@@ -9338,6 +10474,8 @@ export type HTTP_REQUEST_REQUEST_START_TYPE = number;
  */
 export const HTTP_REQUEST_RESEND_COUNT = 'http.request.resend_count';
 
+export const HTTP_REQUEST_RESEND_COUNT_KEYS = ['http.request.resend_count'] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_RESEND_COUNT} http.request.resend_count
  */
@@ -9359,6 +10497,8 @@ export type HTTP_REQUEST_RESEND_COUNT_TYPE = number;
  */
 export const HTTP_REQUEST_RESPONSE_END = 'http.request.response_end';
 
+export const HTTP_REQUEST_RESPONSE_END_KEYS = ['http.request.response_end'] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_RESPONSE_END} http.request.response_end
  */
@@ -9379,6 +10519,8 @@ export type HTTP_REQUEST_RESPONSE_END_TYPE = number;
  * @example 1732829555.7
  */
 export const HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
+
+export const HTTP_REQUEST_RESPONSE_START_KEYS = ['http.request.response_start'] as const;
 
 /**
  * Type for {@link HTTP_REQUEST_RESPONSE_START} http.request.response_start
@@ -9403,6 +10545,8 @@ export type HTTP_REQUEST_RESPONSE_START_TYPE = number;
  */
 export const HTTP_REQUEST_SAME_ORIGIN = 'http.request.same_origin';
 
+export const HTTP_REQUEST_SAME_ORIGIN_KEYS = ['http.request.same_origin', 'url.same_origin'] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_SAME_ORIGIN} http.request.same_origin
  */
@@ -9423,6 +10567,8 @@ export type HTTP_REQUEST_SAME_ORIGIN_TYPE = boolean;
  * @example 1732829555.73
  */
 export const HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connection_start';
+
+export const HTTP_REQUEST_SECURE_CONNECTION_START_KEYS = ['http.request.secure_connection_start'] as const;
 
 /**
  * Type for {@link HTTP_REQUEST_SECURE_CONNECTION_START} http.request.secure_connection_start
@@ -9445,6 +10591,8 @@ export type HTTP_REQUEST_SECURE_CONNECTION_START_TYPE = number;
  */
 export const HTTP_REQUEST_TIME_TO_FIRST_BYTE = 'http.request.time_to_first_byte';
 
+export const HTTP_REQUEST_TIME_TO_FIRST_BYTE_KEYS = ['http.request.time_to_first_byte'] as const;
+
 /**
  * Type for {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE} http.request.time_to_first_byte
  */
@@ -9465,6 +10613,8 @@ export type HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE = number;
  * @example 1732829553.68
  */
 export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
+
+export const HTTP_REQUEST_WORKER_START_KEYS = ['http.request.worker_start'] as const;
 
 /**
  * Type for {@link HTTP_REQUEST_WORKER_START} http.request.worker_start
@@ -9488,6 +10638,8 @@ export type HTTP_REQUEST_WORKER_START_TYPE = number;
  * @example 123
  */
 export const HTTP_RESPONSE_BODY_SIZE = 'http.response.body.size';
+
+export const HTTP_RESPONSE_BODY_SIZE_KEYS = ['http.response.body.size', 'http.response_content_length'] as const;
 
 /**
  * Type for {@link HTTP_RESPONSE_BODY_SIZE} http.response.body.size
@@ -9513,6 +10665,8 @@ export type HTTP_RESPONSE_BODY_SIZE_TYPE = number;
  */
 export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
 
+export const HTTP_RESPONSE_CONTENT_LENGTH_KEYS = ['http.response.body.size', 'http.response_content_length'] as const;
+
 /**
  * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH} http.response_content_length
  */
@@ -9536,6 +10690,8 @@ export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
  */
 export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content-length';
 
+export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH_KEYS = ['http.response.header.content-length'] as const;
+
 /**
  * Type for {@link HTTP_RESPONSE_HEADER_CONTENT_LENGTH} http.response.header.content-length
  */
@@ -9558,6 +10714,8 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  * @example "http.response.header.custom-header=['foo', 'bar']"
  */
 export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
+
+export const HTTP_RESPONSE_HEADER_KEY_KEYS = ['http.response.header.<key>'] as const;
 
 /**
  * Base key for {@link HTTP_RESPONSE_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_RESPONSE_HEADER_KEY_BASE}.${key}`.
@@ -9587,6 +10745,8 @@ export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
  */
 export const HTTP_RESPONSE_SIZE = 'http.response.size';
 
+export const HTTP_RESPONSE_SIZE_KEYS = ['http.response.size', 'http.response_transfer_size'] as const;
+
 /**
  * Type for {@link HTTP_RESPONSE_SIZE} http.response.size
  */
@@ -9609,6 +10769,8 @@ export type HTTP_RESPONSE_SIZE_TYPE = number;
  * @example 404
  */
 export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
+
+export const HTTP_RESPONSE_STATUS_CODE_KEYS = ['http.response.status_code', 'http.status_code'] as const;
 
 /**
  * Type for {@link HTTP_RESPONSE_STATUS_CODE} http.response.status_code
@@ -9633,6 +10795,8 @@ export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
  * @example 456
  */
 export const HTTP_RESPONSE_TRANSFER_SIZE = 'http.response_transfer_size';
+
+export const HTTP_RESPONSE_TRANSFER_SIZE_KEYS = ['http.response.size', 'http.response_transfer_size'] as const;
 
 /**
  * Type for {@link HTTP_RESPONSE_TRANSFER_SIZE} http.response_transfer_size
@@ -9659,6 +10823,8 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  */
 export const HTTP_ROUTE = 'http.route';
 
+export const HTTP_ROUTE_KEYS = ['http.route', 'route'] as const;
+
 /**
  * Type for {@link HTTP_ROUTE} http.route
  */
@@ -9682,6 +10848,8 @@ export type HTTP_ROUTE_TYPE = string;
  * @example "https"
  */
 export const HTTP_SCHEME = 'http.scheme';
+
+export const HTTP_SCHEME_KEYS = ['url.scheme', 'http.scheme'] as const;
 
 /**
  * Type for {@link HTTP_SCHEME} http.scheme
@@ -9707,6 +10875,16 @@ export type HTTP_SCHEME_TYPE = string;
  */
 export const HTTP_SERVER_NAME = 'http.server_name';
 
+export const HTTP_SERVER_NAME_KEYS = [
+  'server.address',
+  'address',
+  'http.host',
+  'http.server_name',
+  'net.host.name',
+  'net.peer.name',
+  'server_name',
+] as const;
+
 /**
  * Type for {@link HTTP_SERVER_NAME} http.server_name
  */
@@ -9727,6 +10905,8 @@ export type HTTP_SERVER_NAME_TYPE = string;
  * @example 50
  */
 export const HTTP_SERVER_REQUEST_TIME_IN_QUEUE = 'http.server.request.time_in_queue';
+
+export const HTTP_SERVER_REQUEST_TIME_IN_QUEUE_KEYS = ['http.server.request.time_in_queue'] as const;
 
 /**
  * Type for {@link HTTP_SERVER_REQUEST_TIME_IN_QUEUE} http.server.request.time_in_queue
@@ -9752,6 +10932,8 @@ export type HTTP_SERVER_REQUEST_TIME_IN_QUEUE_TYPE = number;
  */
 export const HTTP_STATUS_CODE = 'http.status_code';
 
+export const HTTP_STATUS_CODE_KEYS = ['http.response.status_code', 'http.status_code'] as const;
+
 /**
  * Type for {@link HTTP_STATUS_CODE} http.status_code
  */
@@ -9773,6 +10955,8 @@ export type HTTP_STATUS_CODE_TYPE = number;
  * @example "/test?foo=bar#buzz"
  */
 export const HTTP_TARGET = 'http.target';
+
+export const HTTP_TARGET_KEYS = ['url.path', 'http.target'] as const;
 
 /**
  * Type for {@link HTTP_TARGET} http.target
@@ -9798,6 +10982,8 @@ export type HTTP_TARGET_TYPE = string;
  */
 export const HTTP_URL = 'http.url';
 
+export const HTTP_URL_KEYS = ['url.full', 'aws.request.url', 'http.url', 'url'] as const;
+
 /**
  * Type for {@link HTTP_URL} http.url
  */
@@ -9822,6 +11008,8 @@ export type HTTP_URL_TYPE = string;
  */
 export const HTTP_USER_AGENT = 'http.user_agent';
 
+export const HTTP_USER_AGENT_KEYS = ['user_agent.original', 'http.user_agent'] as const;
+
 /**
  * Type for {@link HTTP_USER_AGENT} http.user_agent
  */
@@ -9842,6 +11030,8 @@ export type HTTP_USER_AGENT_TYPE = string;
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
 export const ID = 'id';
+
+export const ID_KEYS = ['id'] as const;
 
 /**
  * Type for {@link ID} id
@@ -9867,6 +11057,8 @@ export type ID_TYPE = string;
  */
 export const INP = 'inp';
 
+export const INP_KEYS = ['browser.web_vital.inp.value', 'inp'] as const;
+
 /**
  * Type for {@link INP} inp
  */
@@ -9887,6 +11079,8 @@ export type INP_TYPE = number;
  * @example "2.0"
  */
 export const JSONRPC_PROTOCOL_VERSION = 'jsonrpc.protocol.version';
+
+export const JSONRPC_PROTOCOL_VERSION_KEYS = ['jsonrpc.protocol.version'] as const;
 
 /**
  * Type for {@link JSONRPC_PROTOCOL_VERSION} jsonrpc.protocol.version
@@ -9911,6 +11105,8 @@ export type JSONRPC_PROTOCOL_VERSION_TYPE = string;
  */
 export const JSONRPC_REQUEST_ID = 'jsonrpc.request.id';
 
+export const JSONRPC_REQUEST_ID_KEYS = ['jsonrpc.request.id', 'mcp.request.id'] as const;
+
 /**
  * Type for {@link JSONRPC_REQUEST_ID} jsonrpc.request.id
  */
@@ -9931,6 +11127,8 @@ export type JSONRPC_REQUEST_ID_TYPE = string;
  * @example "end of minor GC"
  */
 export const JVM_GC_ACTION = 'jvm.gc.action';
+
+export const JVM_GC_ACTION_KEYS = ['jvm.gc.action'] as const;
 
 /**
  * Type for {@link JVM_GC_ACTION} jvm.gc.action
@@ -9953,6 +11151,8 @@ export type JVM_GC_ACTION_TYPE = string;
  */
 export const JVM_GC_NAME = 'jvm.gc.name';
 
+export const JVM_GC_NAME_KEYS = ['jvm.gc.name'] as const;
+
 /**
  * Type for {@link JVM_GC_NAME} jvm.gc.name
  */
@@ -9973,6 +11173,8 @@ export type JVM_GC_NAME_TYPE = string;
  * @example "G1 Old Gen"
  */
 export const JVM_MEMORY_POOL_NAME = 'jvm.memory.pool.name';
+
+export const JVM_MEMORY_POOL_NAME_KEYS = ['jvm.memory.pool.name'] as const;
 
 /**
  * Type for {@link JVM_MEMORY_POOL_NAME} jvm.memory.pool.name
@@ -9995,6 +11197,8 @@ export type JVM_MEMORY_POOL_NAME_TYPE = string;
  */
 export const JVM_MEMORY_TYPE = 'jvm.memory.type';
 
+export const JVM_MEMORY_TYPE_KEYS = ['jvm.memory.type'] as const;
+
 /**
  * Type for {@link JVM_MEMORY_TYPE} jvm.memory.type
  */
@@ -10016,6 +11220,8 @@ export type JVM_MEMORY_TYPE_TYPE = string;
  */
 export const JVM_THREAD_DAEMON = 'jvm.thread.daemon';
 
+export const JVM_THREAD_DAEMON_KEYS = ['jvm.thread.daemon'] as const;
+
 /**
  * Type for {@link JVM_THREAD_DAEMON} jvm.thread.daemon
  */
@@ -10036,6 +11242,8 @@ export type JVM_THREAD_DAEMON_TYPE = boolean;
  * @example "blocked"
  */
 export const JVM_THREAD_STATE = 'jvm.thread.state';
+
+export const JVM_THREAD_STATE_KEYS = ['jvm.thread.state'] as const;
 
 /**
  * Type for {@link JVM_THREAD_STATE} jvm.thread.state
@@ -10059,6 +11267,8 @@ export type JVM_THREAD_STATE_TYPE = string;
  */
 export const KOA_NAME = 'koa.name';
 
+export const KOA_NAME_KEYS = ['koa.name'] as const;
+
 /**
  * Type for {@link KOA_NAME} koa.name
  */
@@ -10079,6 +11289,8 @@ export type KOA_NAME_TYPE = string;
  * @example "router"
  */
 export const KOA_TYPE = 'koa.type';
+
+export const KOA_TYPE_KEYS = ['koa.type'] as const;
 
 /**
  * Type for {@link KOA_TYPE} koa.type
@@ -10104,6 +11316,8 @@ export type KOA_TYPE_TYPE = string;
  */
 export const LCP = 'lcp';
 
+export const LCP_KEYS = ['browser.web_vital.lcp.value', 'lcp'] as const;
+
 /**
  * Type for {@link LCP} lcp
  */
@@ -10127,6 +11341,8 @@ export type LCP_TYPE = number;
  * @example "img"
  */
 export const LCP_ELEMENT = 'lcp.element';
+
+export const LCP_ELEMENT_KEYS = ['browser.web_vital.lcp.element', 'lcp.element'] as const;
 
 /**
  * Type for {@link LCP_ELEMENT} lcp.element
@@ -10152,6 +11368,8 @@ export type LCP_ELEMENT_TYPE = string;
  */
 export const LCP_ID = 'lcp.id';
 
+export const LCP_ID_KEYS = ['browser.web_vital.lcp.id', 'lcp.id'] as const;
+
 /**
  * Type for {@link LCP_ID} lcp.id
  */
@@ -10175,6 +11393,8 @@ export type LCP_ID_TYPE = string;
  * @example 1402
  */
 export const LCP_LOADTIME = 'lcp.loadTime';
+
+export const LCP_LOADTIME_KEYS = ['browser.web_vital.lcp.load_time', 'lcp.loadTime'] as const;
 
 /**
  * Type for {@link LCP_LOADTIME} lcp.loadTime
@@ -10200,6 +11420,8 @@ export type LCP_LOADTIME_TYPE = number;
  */
 export const LCP_RENDERTIME = 'lcp.renderTime';
 
+export const LCP_RENDERTIME_KEYS = ['browser.web_vital.lcp.render_time', 'lcp.renderTime'] as const;
+
 /**
  * Type for {@link LCP_RENDERTIME} lcp.renderTime
  */
@@ -10223,6 +11445,8 @@ export type LCP_RENDERTIME_TYPE = number;
  * @example 1234
  */
 export const LCP_SIZE = 'lcp.size';
+
+export const LCP_SIZE_KEYS = ['browser.web_vital.lcp.size', 'lcp.size'] as const;
 
 /**
  * Type for {@link LCP_SIZE} lcp.size
@@ -10248,6 +11472,8 @@ export type LCP_SIZE_TYPE = number;
  */
 export const LCP_URL = 'lcp.url';
 
+export const LCP_URL_KEYS = ['browser.web_vital.lcp.url', 'lcp.url'] as const;
+
 /**
  * Type for {@link LCP_URL} lcp.url
  */
@@ -10272,6 +11498,14 @@ export type LCP_URL_TYPE = string;
  */
 export const LITESTAR_MIDDLEWARE_NAME = 'litestar.middleware_name';
 
+export const LITESTAR_MIDDLEWARE_NAME_KEYS = [
+  'middleware.name',
+  'django.middleware_name',
+  'litestar.middleware_name',
+  'starlette.middleware_name',
+  'starlite.middleware_name',
+] as const;
+
 /**
  * Type for {@link LITESTAR_MIDDLEWARE_NAME} litestar.middleware_name
  */
@@ -10292,6 +11526,8 @@ export type LITESTAR_MIDDLEWARE_NAME_TYPE = string;
  * @example "myLogger"
  */
 export const LOGGER_NAME = 'logger.name';
+
+export const LOGGER_NAME_KEYS = ['logger.name'] as const;
 
 /**
  * Type for {@link LOGGER_NAME} logger.name
@@ -10314,6 +11550,8 @@ export type LOGGER_NAME_TYPE = string;
  */
 export const MCP_CANCELLED_REASON = 'mcp.cancelled.reason';
 
+export const MCP_CANCELLED_REASON_KEYS = ['mcp.cancelled.reason'] as const;
+
 /**
  * Type for {@link MCP_CANCELLED_REASON} mcp.cancelled.reason
  */
@@ -10334,6 +11572,8 @@ export type MCP_CANCELLED_REASON_TYPE = string;
  * @example "123"
  */
 export const MCP_CANCELLED_REQUEST_ID = 'mcp.cancelled.request_id';
+
+export const MCP_CANCELLED_REQUEST_ID_KEYS = ['mcp.cancelled.request_id'] as const;
 
 /**
  * Type for {@link MCP_CANCELLED_REQUEST_ID} mcp.cancelled.request_id
@@ -10356,6 +11596,8 @@ export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
  */
 export const MCP_CLIENT_NAME = 'mcp.client.name';
 
+export const MCP_CLIENT_NAME_KEYS = ['mcp.client.name'] as const;
+
 /**
  * Type for {@link MCP_CLIENT_NAME} mcp.client.name
  */
@@ -10376,6 +11618,8 @@ export type MCP_CLIENT_NAME_TYPE = string;
  * @example "Claude Desktop"
  */
 export const MCP_CLIENT_TITLE = 'mcp.client.title';
+
+export const MCP_CLIENT_TITLE_KEYS = ['mcp.client.title'] as const;
 
 /**
  * Type for {@link MCP_CLIENT_TITLE} mcp.client.title
@@ -10398,6 +11642,8 @@ export type MCP_CLIENT_TITLE_TYPE = string;
  */
 export const MCP_CLIENT_VERSION = 'mcp.client.version';
 
+export const MCP_CLIENT_VERSION_KEYS = ['mcp.client.version'] as const;
+
 /**
  * Type for {@link MCP_CLIENT_VERSION} mcp.client.version
  */
@@ -10418,6 +11664,8 @@ export type MCP_CLIENT_VERSION_TYPE = string;
  * @example "initialization_complete"
  */
 export const MCP_LIFECYCLE_PHASE = 'mcp.lifecycle.phase';
+
+export const MCP_LIFECYCLE_PHASE_KEYS = ['mcp.lifecycle.phase'] as const;
 
 /**
  * Type for {@link MCP_LIFECYCLE_PHASE} mcp.lifecycle.phase
@@ -10440,6 +11688,8 @@ export type MCP_LIFECYCLE_PHASE_TYPE = string;
  */
 export const MCP_LOGGING_DATA_TYPE = 'mcp.logging.data_type';
 
+export const MCP_LOGGING_DATA_TYPE_KEYS = ['mcp.logging.data_type'] as const;
+
 /**
  * Type for {@link MCP_LOGGING_DATA_TYPE} mcp.logging.data_type
  */
@@ -10460,6 +11710,8 @@ export type MCP_LOGGING_DATA_TYPE_TYPE = string;
  * @example "info"
  */
 export const MCP_LOGGING_LEVEL = 'mcp.logging.level';
+
+export const MCP_LOGGING_LEVEL_KEYS = ['mcp.logging.level'] as const;
 
 /**
  * Type for {@link MCP_LOGGING_LEVEL} mcp.logging.level
@@ -10482,6 +11734,8 @@ export type MCP_LOGGING_LEVEL_TYPE = string;
  */
 export const MCP_LOGGING_LOGGER = 'mcp.logging.logger';
 
+export const MCP_LOGGING_LOGGER_KEYS = ['mcp.logging.logger'] as const;
+
 /**
  * Type for {@link MCP_LOGGING_LOGGER} mcp.logging.logger
  */
@@ -10502,6 +11756,8 @@ export type MCP_LOGGING_LOGGER_TYPE = string;
  * @example "Tool execution completed successfully"
  */
 export const MCP_LOGGING_MESSAGE = 'mcp.logging.message';
+
+export const MCP_LOGGING_MESSAGE_KEYS = ['mcp.logging.message'] as const;
 
 /**
  * Type for {@link MCP_LOGGING_MESSAGE} mcp.logging.message
@@ -10524,6 +11780,8 @@ export type MCP_LOGGING_MESSAGE_TYPE = string;
  */
 export const MCP_METHOD_NAME = 'mcp.method.name';
 
+export const MCP_METHOD_NAME_KEYS = ['mcp.method.name'] as const;
+
 /**
  * Type for {@link MCP_METHOD_NAME} mcp.method.name
  */
@@ -10544,6 +11802,8 @@ export type MCP_METHOD_NAME_TYPE = string;
  * @example 50
  */
 export const MCP_PROGRESS_CURRENT = 'mcp.progress.current';
+
+export const MCP_PROGRESS_CURRENT_KEYS = ['mcp.progress.current'] as const;
 
 /**
  * Type for {@link MCP_PROGRESS_CURRENT} mcp.progress.current
@@ -10566,6 +11826,8 @@ export type MCP_PROGRESS_CURRENT_TYPE = number;
  */
 export const MCP_PROGRESS_MESSAGE = 'mcp.progress.message';
 
+export const MCP_PROGRESS_MESSAGE_KEYS = ['mcp.progress.message'] as const;
+
 /**
  * Type for {@link MCP_PROGRESS_MESSAGE} mcp.progress.message
  */
@@ -10586,6 +11848,8 @@ export type MCP_PROGRESS_MESSAGE_TYPE = string;
  * @example 50
  */
 export const MCP_PROGRESS_PERCENTAGE = 'mcp.progress.percentage';
+
+export const MCP_PROGRESS_PERCENTAGE_KEYS = ['mcp.progress.percentage'] as const;
 
 /**
  * Type for {@link MCP_PROGRESS_PERCENTAGE} mcp.progress.percentage
@@ -10608,6 +11872,8 @@ export type MCP_PROGRESS_PERCENTAGE_TYPE = number;
  */
 export const MCP_PROGRESS_TOKEN = 'mcp.progress.token';
 
+export const MCP_PROGRESS_TOKEN_KEYS = ['mcp.progress.token'] as const;
+
 /**
  * Type for {@link MCP_PROGRESS_TOKEN} mcp.progress.token
  */
@@ -10628,6 +11894,8 @@ export type MCP_PROGRESS_TOKEN_TYPE = string;
  * @example 100
  */
 export const MCP_PROGRESS_TOTAL = 'mcp.progress.total';
+
+export const MCP_PROGRESS_TOTAL_KEYS = ['mcp.progress.total'] as const;
 
 /**
  * Type for {@link MCP_PROGRESS_TOTAL} mcp.progress.total
@@ -10653,6 +11921,8 @@ export type MCP_PROGRESS_TOTAL_TYPE = number;
  */
 export const MCP_PROMPT_NAME = 'mcp.prompt.name';
 
+export const MCP_PROMPT_NAME_KEYS = ['gen_ai.prompt.name', 'mcp.prompt.name'] as const;
+
 /**
  * Type for {@link MCP_PROMPT_NAME} mcp.prompt.name
  */
@@ -10673,6 +11943,8 @@ export type MCP_PROMPT_NAME_TYPE = string;
  * @example "A summary of the requested information"
  */
 export const MCP_PROMPT_RESULT_DESCRIPTION = 'mcp.prompt.result.description';
+
+export const MCP_PROMPT_RESULT_DESCRIPTION_KEYS = ['mcp.prompt.result.description'] as const;
 
 /**
  * Type for {@link MCP_PROMPT_RESULT_DESCRIPTION} mcp.prompt.result.description
@@ -10695,6 +11967,8 @@ export type MCP_PROMPT_RESULT_DESCRIPTION_TYPE = string;
  */
 export const MCP_PROMPT_RESULT_MESSAGE_CONTENT = 'mcp.prompt.result.message_content';
 
+export const MCP_PROMPT_RESULT_MESSAGE_CONTENT_KEYS = ['mcp.prompt.result.message_content'] as const;
+
 /**
  * Type for {@link MCP_PROMPT_RESULT_MESSAGE_CONTENT} mcp.prompt.result.message_content
  */
@@ -10715,6 +11989,8 @@ export type MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE = string;
  * @example 3
  */
 export const MCP_PROMPT_RESULT_MESSAGE_COUNT = 'mcp.prompt.result.message_count';
+
+export const MCP_PROMPT_RESULT_MESSAGE_COUNT_KEYS = ['mcp.prompt.result.message_count'] as const;
 
 /**
  * Type for {@link MCP_PROMPT_RESULT_MESSAGE_COUNT} mcp.prompt.result.message_count
@@ -10737,6 +12013,8 @@ export type MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE = number;
  */
 export const MCP_PROMPT_RESULT_MESSAGE_ROLE = 'mcp.prompt.result.message_role';
 
+export const MCP_PROMPT_RESULT_MESSAGE_ROLE_KEYS = ['mcp.prompt.result.message_role'] as const;
+
 /**
  * Type for {@link MCP_PROMPT_RESULT_MESSAGE_ROLE} mcp.prompt.result.message_role
  */
@@ -10758,6 +12036,8 @@ export type MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE = string;
  */
 export const MCP_PROTOCOL_READY = 'mcp.protocol.ready';
 
+export const MCP_PROTOCOL_READY_KEYS = ['mcp.protocol.ready'] as const;
+
 /**
  * Type for {@link MCP_PROTOCOL_READY} mcp.protocol.ready
  */
@@ -10778,6 +12058,8 @@ export type MCP_PROTOCOL_READY_TYPE = number;
  * @example "2024-11-05"
  */
 export const MCP_PROTOCOL_VERSION = 'mcp.protocol.version';
+
+export const MCP_PROTOCOL_VERSION_KEYS = ['mcp.protocol.version'] as const;
 
 /**
  * Type for {@link MCP_PROTOCOL_VERSION} mcp.protocol.version
@@ -10801,6 +12083,8 @@ export type MCP_PROTOCOL_VERSION_TYPE = string;
  * @example "mcp.request.argument.query='weather in Paris'"
  */
 export const MCP_REQUEST_ARGUMENT_KEY = 'mcp.request.argument.<key>';
+
+export const MCP_REQUEST_ARGUMENT_KEY_KEYS = ['mcp.request.argument.<key>'] as const;
 
 /**
  * Base key for {@link MCP_REQUEST_ARGUMENT_KEY}. Use with a dynamic suffix, e.g. `${MCP_REQUEST_ARGUMENT_KEY_BASE}.${key}`.
@@ -10828,6 +12112,8 @@ export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
  */
 export const MCP_REQUEST_ARGUMENT_NAME = 'mcp.request.argument.name';
 
+export const MCP_REQUEST_ARGUMENT_NAME_KEYS = ['mcp.request.argument.name'] as const;
+
 /**
  * Type for {@link MCP_REQUEST_ARGUMENT_NAME} mcp.request.argument.name
  */
@@ -10848,6 +12134,8 @@ export type MCP_REQUEST_ARGUMENT_NAME_TYPE = string;
  * @example "file:///path/to/resource"
  */
 export const MCP_REQUEST_ARGUMENT_URI = 'mcp.request.argument.uri';
+
+export const MCP_REQUEST_ARGUMENT_URI_KEYS = ['mcp.request.argument.uri'] as const;
 
 /**
  * Type for {@link MCP_REQUEST_ARGUMENT_URI} mcp.request.argument.uri
@@ -10873,6 +12161,8 @@ export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
  */
 export const MCP_REQUEST_ID = 'mcp.request.id';
 
+export const MCP_REQUEST_ID_KEYS = ['jsonrpc.request.id', 'mcp.request.id'] as const;
+
 /**
  * Type for {@link MCP_REQUEST_ID} mcp.request.id
  */
@@ -10897,6 +12187,12 @@ export type MCP_REQUEST_ID_TYPE = string;
  */
 export const MCP_RESOURCE_PROTOCOL = 'mcp.resource.protocol';
 
+export const MCP_RESOURCE_PROTOCOL_KEYS = [
+  'network.protocol.name',
+  'mcp.resource.protocol',
+  'net.protocol.name',
+] as const;
+
 /**
  * Type for {@link MCP_RESOURCE_PROTOCOL} mcp.resource.protocol
  */
@@ -10917,6 +12213,8 @@ export type MCP_RESOURCE_PROTOCOL_TYPE = string;
  * @example "file:///path/to/file.txt"
  */
 export const MCP_RESOURCE_URI = 'mcp.resource.uri';
+
+export const MCP_RESOURCE_URI_KEYS = ['mcp.resource.uri'] as const;
 
 /**
  * Type for {@link MCP_RESOURCE_URI} mcp.resource.uri
@@ -10939,6 +12237,8 @@ export type MCP_RESOURCE_URI_TYPE = string;
  */
 export const MCP_SERVER_NAME = 'mcp.server.name';
 
+export const MCP_SERVER_NAME_KEYS = ['mcp.server.name'] as const;
+
 /**
  * Type for {@link MCP_SERVER_NAME} mcp.server.name
  */
@@ -10959,6 +12259,8 @@ export type MCP_SERVER_NAME_TYPE = string;
  * @example "Sentry MCP Server"
  */
 export const MCP_SERVER_TITLE = 'mcp.server.title';
+
+export const MCP_SERVER_TITLE_KEYS = ['mcp.server.title'] as const;
 
 /**
  * Type for {@link MCP_SERVER_TITLE} mcp.server.title
@@ -10981,6 +12283,8 @@ export type MCP_SERVER_TITLE_TYPE = string;
  */
 export const MCP_SERVER_VERSION = 'mcp.server.version';
 
+export const MCP_SERVER_VERSION_KEYS = ['mcp.server.version'] as const;
+
 /**
  * Type for {@link MCP_SERVER_VERSION} mcp.server.version
  */
@@ -11001,6 +12305,8 @@ export type MCP_SERVER_VERSION_TYPE = string;
  * @example "550e8400-e29b-41d4-a716-446655440000"
  */
 export const MCP_SESSION_ID = 'mcp.session.id';
+
+export const MCP_SESSION_ID_KEYS = ['mcp.session.id'] as const;
 
 /**
  * Type for {@link MCP_SESSION_ID} mcp.session.id
@@ -11026,6 +12332,8 @@ export type MCP_SESSION_ID_TYPE = string;
  */
 export const MCP_TOOL_NAME = 'mcp.tool.name';
 
+export const MCP_TOOL_NAME_KEYS = ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'] as const;
+
 /**
  * Type for {@link MCP_TOOL_NAME} mcp.tool.name
  */
@@ -11050,6 +12358,14 @@ export type MCP_TOOL_NAME_TYPE = string;
  */
 export const MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
 
+export const MCP_TOOL_RESULT_CONTENT_KEYS = [
+  'gen_ai.tool.call.result',
+  'ai.toolCall.result',
+  'gen_ai.tool.message',
+  'gen_ai.tool.output',
+  'mcp.tool.result.content',
+] as const;
+
 /**
  * Type for {@link MCP_TOOL_RESULT_CONTENT} mcp.tool.result.content
  */
@@ -11070,6 +12386,8 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  * @example 1
  */
 export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
+
+export const MCP_TOOL_RESULT_CONTENT_COUNT_KEYS = ['mcp.tool.result.content_count'] as const;
 
 /**
  * Type for {@link MCP_TOOL_RESULT_CONTENT_COUNT} mcp.tool.result.content_count
@@ -11092,6 +12410,8 @@ export type MCP_TOOL_RESULT_CONTENT_COUNT_TYPE = number;
  * @example false
  */
 export const MCP_TOOL_RESULT_IS_ERROR = 'mcp.tool.result.is_error';
+
+export const MCP_TOOL_RESULT_IS_ERROR_KEYS = ['error.type', 'fs_error', 'mcp.tool.result.is_error'] as const;
 
 /**
  * Type for {@link MCP_TOOL_RESULT_IS_ERROR} mcp.tool.result.is_error
@@ -11117,6 +12437,8 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
  */
 export const MCP_TRANSPORT = 'mcp.transport';
 
+export const MCP_TRANSPORT_KEYS = ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'] as const;
+
 /**
  * Type for {@link MCP_TRANSPORT} mcp.transport
  */
@@ -11139,6 +12461,8 @@ export type MCP_TRANSPORT_TYPE = string;
  * @example "mdc.some_key='some_value'"
  */
 export const MDC_KEY = 'mdc.<key>';
+
+export const MDC_KEY_KEYS = ['mdc.<key>'] as const;
 
 /**
  * Base key for {@link MDC_KEY}. Use with a dynamic suffix, e.g. `${MDC_KEY_BASE}.${key}`.
@@ -11166,6 +12490,8 @@ export type MDC_KEY_TYPE = string;
  */
 export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
 
+export const MESSAGING_BATCH_MESSAGE_COUNT_KEYS = ['messaging.batch.message_count'] as const;
+
 /**
  * Type for {@link MESSAGING_BATCH_MESSAGE_COUNT} messaging.batch.message_count
  */
@@ -11190,6 +12516,8 @@ export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
  */
 export const MESSAGING_DESTINATION = 'messaging.destination';
 
+export const MESSAGING_DESTINATION_KEYS = ['messaging.destination.name', 'messaging.destination'] as const;
+
 /**
  * Type for {@link MESSAGING_DESTINATION} messaging.destination
  */
@@ -11210,6 +12538,8 @@ export type MESSAGING_DESTINATION_TYPE = string;
  * @example "BestTopic"
  */
 export const MESSAGING_DESTINATION_CONNECTION = 'messaging.destination.connection';
+
+export const MESSAGING_DESTINATION_CONNECTION_KEYS = ['messaging.destination.connection'] as const;
 
 /**
  * Type for {@link MESSAGING_DESTINATION_CONNECTION} messaging.destination.connection
@@ -11232,6 +12562,8 @@ export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
  * @example "topic"
  */
 export const MESSAGING_DESTINATION_KIND = 'messaging.destination_kind';
+
+export const MESSAGING_DESTINATION_KIND_KEYS = ['messaging.destination_kind'] as const;
 
 /**
  * Type for {@link MESSAGING_DESTINATION_KIND} messaging.destination_kind
@@ -11256,6 +12588,8 @@ export type MESSAGING_DESTINATION_KIND_TYPE = string;
  */
 export const MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
 
+export const MESSAGING_DESTINATION_NAME_KEYS = ['messaging.destination.name', 'messaging.destination'] as const;
+
 /**
  * Type for {@link MESSAGING_DESTINATION_NAME} messaging.destination.name
  */
@@ -11276,6 +12610,8 @@ export type MESSAGING_DESTINATION_NAME_TYPE = string;
  * @example "1"
  */
 export const MESSAGING_DESTINATION_PARTITION_ID = 'messaging.destination.partition.id';
+
+export const MESSAGING_DESTINATION_PARTITION_ID_KEYS = ['messaging.destination.partition.id'] as const;
 
 /**
  * Type for {@link MESSAGING_DESTINATION_PARTITION_ID} messaging.destination.partition.id
@@ -11298,6 +12634,8 @@ export type MESSAGING_DESTINATION_PARTITION_ID_TYPE = string;
  */
 export const MESSAGING_KAFKA_MESSAGE_KEY = 'messaging.kafka.message.key';
 
+export const MESSAGING_KAFKA_MESSAGE_KEY_KEYS = ['messaging.kafka.message.key'] as const;
+
 /**
  * Type for {@link MESSAGING_KAFKA_MESSAGE_KEY} messaging.kafka.message.key
  */
@@ -11318,6 +12656,8 @@ export type MESSAGING_KAFKA_MESSAGE_KEY_TYPE = string;
  * @example true
  */
 export const MESSAGING_KAFKA_MESSAGE_TOMBSTONE = 'messaging.kafka.message.tombstone';
+
+export const MESSAGING_KAFKA_MESSAGE_TOMBSTONE_KEYS = ['messaging.kafka.message.tombstone'] as const;
 
 /**
  * Type for {@link MESSAGING_KAFKA_MESSAGE_TOMBSTONE} messaging.kafka.message.tombstone
@@ -11340,6 +12680,8 @@ export type MESSAGING_KAFKA_MESSAGE_TOMBSTONE_TYPE = boolean;
  */
 export const MESSAGING_KAFKA_OFFSET = 'messaging.kafka.offset';
 
+export const MESSAGING_KAFKA_OFFSET_KEYS = ['messaging.kafka.offset'] as const;
+
 /**
  * Type for {@link MESSAGING_KAFKA_OFFSET} messaging.kafka.offset
  */
@@ -11360,6 +12702,8 @@ export type MESSAGING_KAFKA_OFFSET_TYPE = number;
  * @example 839
  */
 export const MESSAGING_MESSAGE_BODY_SIZE = 'messaging.message.body.size';
+
+export const MESSAGING_MESSAGE_BODY_SIZE_KEYS = ['messaging.message.body.size'] as const;
 
 /**
  * Type for {@link MESSAGING_MESSAGE_BODY_SIZE} messaging.message.body.size
@@ -11382,6 +12726,8 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  */
 export const MESSAGING_MESSAGE_CONVERSATION_ID = 'messaging.message.conversation_id';
 
+export const MESSAGING_MESSAGE_CONVERSATION_ID_KEYS = ['messaging.message.conversation_id'] as const;
+
 /**
  * Type for {@link MESSAGING_MESSAGE_CONVERSATION_ID} messaging.message.conversation_id
  */
@@ -11402,6 +12748,8 @@ export type MESSAGING_MESSAGE_CONVERSATION_ID_TYPE = string;
  * @example 1045
  */
 export const MESSAGING_MESSAGE_ENVELOPE_SIZE = 'messaging.message.envelope.size';
+
+export const MESSAGING_MESSAGE_ENVELOPE_SIZE_KEYS = ['messaging.message.envelope.size'] as const;
 
 /**
  * Type for {@link MESSAGING_MESSAGE_ENVELOPE_SIZE} messaging.message.envelope.size
@@ -11424,6 +12772,8 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  */
 export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
 
+export const MESSAGING_MESSAGE_ID_KEYS = ['messaging.message.id'] as const;
+
 /**
  * Type for {@link MESSAGING_MESSAGE_ID} messaging.message.id
  */
@@ -11444,6 +12794,8 @@ export type MESSAGING_MESSAGE_ID_TYPE = string;
  * @example 1732847252
  */
 export const MESSAGING_MESSAGE_RECEIVE_LATENCY = 'messaging.message.receive.latency';
+
+export const MESSAGING_MESSAGE_RECEIVE_LATENCY_KEYS = ['messaging.message.receive.latency'] as const;
 
 /**
  * Type for {@link MESSAGING_MESSAGE_RECEIVE_LATENCY} messaging.message.receive.latency
@@ -11466,6 +12818,8 @@ export type MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE = number;
  */
 export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
 
+export const MESSAGING_MESSAGE_RETRY_COUNT_KEYS = ['messaging.message.retry.count'] as const;
+
 /**
  * Type for {@link MESSAGING_MESSAGE_RETRY_COUNT} messaging.message.retry.count
  */
@@ -11486,6 +12840,8 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  * @example "send"
  */
 export const MESSAGING_OPERATION_NAME = 'messaging.operation.name';
+
+export const MESSAGING_OPERATION_NAME_KEYS = ['messaging.operation.name'] as const;
 
 /**
  * Type for {@link MESSAGING_OPERATION_NAME} messaging.operation.name
@@ -11508,6 +12864,8 @@ export type MESSAGING_OPERATION_NAME_TYPE = string;
  */
 export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
 
+export const MESSAGING_OPERATION_TYPE_KEYS = ['messaging.operation.type'] as const;
+
 /**
  * Type for {@link MESSAGING_OPERATION_TYPE} messaging.operation.type
  */
@@ -11529,6 +12887,8 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  */
 export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.destination.routing_key';
 
+export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_KEYS = ['messaging.rabbitmq.destination.routing_key'] as const;
+
 /**
  * Type for {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} messaging.rabbitmq.destination.routing_key
  */
@@ -11549,6 +12909,8 @@ export type MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE = string;
  * @example "activemq"
  */
 export const MESSAGING_SYSTEM = 'messaging.system';
+
+export const MESSAGING_SYSTEM_KEYS = ['messaging.system'] as const;
 
 /**
  * Type for {@link MESSAGING_SYSTEM} messaging.system
@@ -11574,6 +12936,8 @@ export type MESSAGING_SYSTEM_TYPE = string;
  */
 export const METHOD = 'method';
 
+export const METHOD_KEYS = ['http.request.method', 'http.method', 'http.request_method', 'method'] as const;
+
 /**
  * Type for {@link METHOD} method
  */
@@ -11596,6 +12960,14 @@ export type METHOD_TYPE = string;
  * @example "AuthenticationMiddleware"
  */
 export const MIDDLEWARE_NAME = 'middleware.name';
+
+export const MIDDLEWARE_NAME_KEYS = [
+  'middleware.name',
+  'django.middleware_name',
+  'litestar.middleware_name',
+  'starlette.middleware_name',
+  'starlite.middleware_name',
+] as const;
 
 /**
  * Type for {@link MIDDLEWARE_NAME} middleware.name
@@ -11620,6 +12992,8 @@ export type MIDDLEWARE_NAME_TYPE = string;
  */
 export const NAVIGATION_ORIGIN = 'navigation.origin';
 
+export const NAVIGATION_ORIGIN_KEYS = ['navigation.origin', 'sentry.sveltekit.navigation.from'] as const;
+
 /**
  * Type for {@link NAVIGATION_ORIGIN} navigation.origin
  */
@@ -11640,6 +13014,8 @@ export type NAVIGATION_ORIGIN_TYPE = string;
  * @example "AboutView"
  */
 export const NAVIGATION_ROUTE_ID = 'navigation.route.id';
+
+export const NAVIGATION_ROUTE_ID_KEYS = ['navigation.route.id'] as const;
 
 /**
  * Type for {@link NAVIGATION_ROUTE_ID} navigation.route.id
@@ -11664,6 +13040,8 @@ export type NAVIGATION_ROUTE_ID_TYPE = string;
  */
 export const NAVIGATION_TYPE = 'navigation.type';
 
+export const NAVIGATION_TYPE_KEYS = ['navigation.type', 'sentry.sveltekit.navigation.type'] as const;
+
 /**
  * Type for {@link NAVIGATION_TYPE} navigation.type
  */
@@ -11684,6 +13062,8 @@ export type NAVIGATION_TYPE_TYPE = string;
  * @example 100
  */
 export const NEL_ELAPSED_TIME = 'nel.elapsed_time';
+
+export const NEL_ELAPSED_TIME_KEYS = ['nel.elapsed_time'] as const;
 
 /**
  * Type for {@link NEL_ELAPSED_TIME} nel.elapsed_time
@@ -11706,6 +13086,8 @@ export type NEL_ELAPSED_TIME_TYPE = number;
  */
 export const NEL_PHASE = 'nel.phase';
 
+export const NEL_PHASE_KEYS = ['nel.phase'] as const;
+
 /**
  * Type for {@link NEL_PHASE} nel.phase
  */
@@ -11726,6 +13108,8 @@ export type NEL_PHASE_TYPE = string;
  * @example "https://example.com/foo?bar=baz"
  */
 export const NEL_REFERRER = 'nel.referrer';
+
+export const NEL_REFERRER_KEYS = ['nel.referrer'] as const;
 
 /**
  * Type for {@link NEL_REFERRER} nel.referrer
@@ -11748,6 +13132,8 @@ export type NEL_REFERRER_TYPE = string;
  */
 export const NEL_SAMPLING_FUNCTION = 'nel.sampling_function';
 
+export const NEL_SAMPLING_FUNCTION_KEYS = ['nel.sampling_function'] as const;
+
 /**
  * Type for {@link NEL_SAMPLING_FUNCTION} nel.sampling_function
  */
@@ -11768,6 +13154,8 @@ export type NEL_SAMPLING_FUNCTION_TYPE = number;
  * @example "dns.unreachable"
  */
 export const NEL_TYPE = 'nel.type';
+
+export const NEL_TYPE_KEYS = ['nel.type'] as const;
 
 /**
  * Type for {@link NEL_TYPE} nel.type
@@ -11792,6 +13180,11 @@ export type NEL_TYPE_TYPE = string;
  */
 export const NETWORK_CONNECTION_EFFECTIVE_TYPE = 'network.connection.effective_type';
 
+export const NETWORK_CONNECTION_EFFECTIVE_TYPE_KEYS = [
+  'network.connection.effective_type',
+  'effectiveConnectionType',
+] as const;
+
 /**
  * Type for {@link NETWORK_CONNECTION_EFFECTIVE_TYPE} network.connection.effective_type
  */
@@ -11814,6 +13207,8 @@ export type NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE = string;
  * @example 100
  */
 export const NETWORK_CONNECTION_RTT = 'network.connection.rtt';
+
+export const NETWORK_CONNECTION_RTT_KEYS = ['network.connection.rtt', 'connection.rtt'] as const;
 
 /**
  * Type for {@link NETWORK_CONNECTION_RTT} network.connection.rtt
@@ -11838,6 +13233,12 @@ export type NETWORK_CONNECTION_RTT_TYPE = number;
  */
 export const NETWORK_CONNECTION_TYPE = 'network.connection.type';
 
+export const NETWORK_CONNECTION_TYPE_KEYS = [
+  'network.connection.type',
+  'connectionType',
+  'device.connection_type',
+] as const;
+
 /**
  * Type for {@link NETWORK_CONNECTION_TYPE} network.connection.type
  */
@@ -11860,6 +13261,8 @@ export type NETWORK_CONNECTION_TYPE_TYPE = string;
  * @example "10.1.2.80"
  */
 export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
+
+export const NETWORK_LOCAL_ADDRESS_KEYS = ['network.local.address', 'net.host.ip', 'net.sock.host.addr'] as const;
 
 /**
  * Type for {@link NETWORK_LOCAL_ADDRESS} network.local.address
@@ -11884,6 +13287,8 @@ export type NETWORK_LOCAL_ADDRESS_TYPE = string;
  */
 export const NETWORK_LOCAL_PORT = 'network.local.port';
 
+export const NETWORK_LOCAL_PORT_KEYS = ['network.local.port', 'net.sock.host.port'] as const;
+
 /**
  * Type for {@link NETWORK_LOCAL_PORT} network.local.port
  */
@@ -11907,6 +13312,8 @@ export type NETWORK_LOCAL_PORT_TYPE = number;
  */
 export const NETWORK_PEER_ADDRESS = 'network.peer.address';
 
+export const NETWORK_PEER_ADDRESS_KEYS = ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'] as const;
+
 /**
  * Type for {@link NETWORK_PEER_ADDRESS} network.peer.address
  */
@@ -11927,6 +13334,8 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  * @example 65400
  */
 export const NETWORK_PEER_PORT = 'network.peer.port';
+
+export const NETWORK_PEER_PORT_KEYS = ['network.peer.port', 'net.sock.peer.port'] as const;
 
 /**
  * Type for {@link NETWORK_PEER_PORT} network.peer.port
@@ -11951,6 +13360,12 @@ export type NETWORK_PEER_PORT_TYPE = number;
  */
 export const NETWORK_PROTOCOL_NAME = 'network.protocol.name';
 
+export const NETWORK_PROTOCOL_NAME_KEYS = [
+  'network.protocol.name',
+  'mcp.resource.protocol',
+  'net.protocol.name',
+] as const;
+
 /**
  * Type for {@link NETWORK_PROTOCOL_NAME} network.protocol.name
  */
@@ -11973,6 +13388,12 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  * @example "1.1"
  */
 export const NETWORK_PROTOCOL_VERSION = 'network.protocol.version';
+
+export const NETWORK_PROTOCOL_VERSION_KEYS = [
+  'network.protocol.version',
+  'http.flavor',
+  'net.protocol.version',
+] as const;
 
 /**
  * Type for {@link NETWORK_PROTOCOL_VERSION} network.protocol.version
@@ -11997,6 +13418,13 @@ export type NETWORK_PROTOCOL_VERSION_TYPE = string;
  */
 export const NETWORK_TRANSPORT = 'network.transport';
 
+export const NETWORK_TRANSPORT_KEYS = [
+  'network.transport',
+  'mcp.transport',
+  'net.sock.family',
+  'net.transport',
+] as const;
+
 /**
  * Type for {@link NETWORK_TRANSPORT} network.transport
  */
@@ -12017,6 +13445,8 @@ export type NETWORK_TRANSPORT_TYPE = string;
  * @example "ipv4"
  */
 export const NETWORK_TYPE = 'network.type';
+
+export const NETWORK_TYPE_KEYS = ['network.type'] as const;
 
 /**
  * Type for {@link NETWORK_TYPE} network.type
@@ -12042,6 +13472,8 @@ export type NETWORK_TYPE_TYPE = string;
  */
 export const NET_HOST_IP = 'net.host.ip';
 
+export const NET_HOST_IP_KEYS = ['network.local.address', 'net.host.ip', 'net.sock.host.addr'] as const;
+
 /**
  * Type for {@link NET_HOST_IP} net.host.ip
  */
@@ -12065,6 +13497,16 @@ export type NET_HOST_IP_TYPE = string;
  * @example "example.com"
  */
 export const NET_HOST_NAME = 'net.host.name';
+
+export const NET_HOST_NAME_KEYS = [
+  'server.address',
+  'address',
+  'http.host',
+  'http.server_name',
+  'net.host.name',
+  'net.peer.name',
+  'server_name',
+] as const;
 
 /**
  * Type for {@link NET_HOST_NAME} net.host.name
@@ -12090,6 +13532,8 @@ export type NET_HOST_NAME_TYPE = string;
  */
 export const NET_HOST_PORT = 'net.host.port';
 
+export const NET_HOST_PORT_KEYS = ['server.port', 'net.host.port', 'net.peer.port', 'port'] as const;
+
 /**
  * Type for {@link NET_HOST_PORT} net.host.port
  */
@@ -12114,6 +13558,8 @@ export type NET_HOST_PORT_TYPE = number;
  */
 export const NET_PEER_IP = 'net.peer.ip';
 
+export const NET_PEER_IP_KEYS = ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'] as const;
+
 /**
  * Type for {@link NET_PEER_IP} net.peer.ip
  */
@@ -12136,6 +13582,16 @@ export type NET_PEER_IP_TYPE = string;
  */
 export const NET_PEER_NAME = 'net.peer.name';
 
+export const NET_PEER_NAME_KEYS = [
+  'server.address',
+  'address',
+  'http.host',
+  'http.server_name',
+  'net.host.name',
+  'net.peer.name',
+  'server_name',
+] as const;
+
 /**
  * Type for {@link NET_PEER_NAME} net.peer.name
  */
@@ -12157,6 +13613,8 @@ export type NET_PEER_NAME_TYPE = string;
  * @example 1337
  */
 export const NET_PEER_PORT = 'net.peer.port';
+
+export const NET_PEER_PORT_KEYS = ['server.port', 'net.host.port', 'net.peer.port', 'port'] as const;
 
 /**
  * Type for {@link NET_PEER_PORT} net.peer.port
@@ -12182,6 +13640,8 @@ export type NET_PEER_PORT_TYPE = number;
  */
 export const NET_PROTOCOL_NAME = 'net.protocol.name';
 
+export const NET_PROTOCOL_NAME_KEYS = ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'] as const;
+
 /**
  * Type for {@link NET_PROTOCOL_NAME} net.protocol.name
  */
@@ -12206,6 +13666,8 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  */
 export const NET_PROTOCOL_VERSION = 'net.protocol.version';
 
+export const NET_PROTOCOL_VERSION_KEYS = ['network.protocol.version', 'http.flavor', 'net.protocol.version'] as const;
+
 /**
  * Type for {@link NET_PROTOCOL_VERSION} net.protocol.version
  */
@@ -12227,6 +13689,8 @@ export type NET_PROTOCOL_VERSION_TYPE = string;
  * @example "inet"
  */
 export const NET_SOCK_FAMILY = 'net.sock.family';
+
+export const NET_SOCK_FAMILY_KEYS = ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'] as const;
 
 /**
  * Type for {@link NET_SOCK_FAMILY} net.sock.family
@@ -12252,6 +13716,8 @@ export type NET_SOCK_FAMILY_TYPE = string;
  */
 export const NET_SOCK_HOST_ADDR = 'net.sock.host.addr';
 
+export const NET_SOCK_HOST_ADDR_KEYS = ['network.local.address', 'net.host.ip', 'net.sock.host.addr'] as const;
+
 /**
  * Type for {@link NET_SOCK_HOST_ADDR} net.sock.host.addr
  */
@@ -12275,6 +13741,8 @@ export type NET_SOCK_HOST_ADDR_TYPE = string;
  * @example 8080
  */
 export const NET_SOCK_HOST_PORT = 'net.sock.host.port';
+
+export const NET_SOCK_HOST_PORT_KEYS = ['network.local.port', 'net.sock.host.port'] as const;
 
 /**
  * Type for {@link NET_SOCK_HOST_PORT} net.sock.host.port
@@ -12300,6 +13768,8 @@ export type NET_SOCK_HOST_PORT_TYPE = number;
  */
 export const NET_SOCK_PEER_ADDR = 'net.sock.peer.addr';
 
+export const NET_SOCK_PEER_ADDR_KEYS = ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'] as const;
+
 /**
  * Type for {@link NET_SOCK_PEER_ADDR} net.sock.peer.addr
  */
@@ -12322,6 +13792,8 @@ export type NET_SOCK_PEER_ADDR_TYPE = string;
  */
 export const NET_SOCK_PEER_NAME = 'net.sock.peer.name';
 
+export const NET_SOCK_PEER_NAME_KEYS = ['net.sock.peer.name'] as const;
+
 /**
  * Type for {@link NET_SOCK_PEER_NAME} net.sock.peer.name
  */
@@ -12343,6 +13815,8 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  * @example 8080
  */
 export const NET_SOCK_PEER_PORT = 'net.sock.peer.port';
+
+export const NET_SOCK_PEER_PORT_KEYS = ['network.peer.port', 'net.sock.peer.port'] as const;
 
 /**
  * Type for {@link NET_SOCK_PEER_PORT} net.sock.peer.port
@@ -12368,6 +13842,8 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  */
 export const NET_TRANSPORT = 'net.transport';
 
+export const NET_TRANSPORT_KEYS = ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'] as const;
+
 /**
  * Type for {@link NET_TRANSPORT} net.transport
  */
@@ -12392,6 +13868,8 @@ export type NET_TRANSPORT_TYPE = string;
  */
 export const OS_BUILD = 'os.build';
 
+export const OS_BUILD_KEYS = ['os.build_id', 'os.build'] as const;
+
 /**
  * Type for {@link OS_BUILD} os.build
  */
@@ -12415,6 +13893,8 @@ export type OS_BUILD_TYPE = string;
  */
 export const OS_BUILD_ID = 'os.build_id';
 
+export const OS_BUILD_ID_KEYS = ['os.build_id', 'os.build'] as const;
+
 /**
  * Type for {@link OS_BUILD_ID} os.build_id
  */
@@ -12435,6 +13915,8 @@ export type OS_BUILD_ID_TYPE = string;
  * @example "Ubuntu 18.04.1 LTS"
  */
 export const OS_DESCRIPTION = 'os.description';
+
+export const OS_DESCRIPTION_KEYS = ['os.description'] as const;
 
 /**
  * Type for {@link OS_DESCRIPTION} os.description
@@ -12457,6 +13939,8 @@ export type OS_DESCRIPTION_TYPE = string;
  */
 export const OS_KERNEL_VERSION = 'os.kernel_version';
 
+export const OS_KERNEL_VERSION_KEYS = ['os.kernel_version'] as const;
+
 /**
  * Type for {@link OS_KERNEL_VERSION} os.kernel_version
  */
@@ -12477,6 +13961,8 @@ export type OS_KERNEL_VERSION_TYPE = string;
  * @example "Ubuntu"
  */
 export const OS_NAME = 'os.name';
+
+export const OS_NAME_KEYS = ['os.name'] as const;
 
 /**
  * Type for {@link OS_NAME} os.name
@@ -12499,6 +13985,8 @@ export type OS_NAME_TYPE = string;
  */
 export const OS_RAW_DESCRIPTION = 'os.raw_description';
 
+export const OS_RAW_DESCRIPTION_KEYS = ['os.raw_description'] as const;
+
 /**
  * Type for {@link OS_RAW_DESCRIPTION} os.raw_description
  */
@@ -12519,6 +14007,8 @@ export type OS_RAW_DESCRIPTION_TYPE = string;
  * @example true
  */
 export const OS_ROOTED = 'os.rooted';
+
+export const OS_ROOTED_KEYS = ['os.rooted'] as const;
 
 /**
  * Type for {@link OS_ROOTED} os.rooted
@@ -12541,6 +14031,8 @@ export type OS_ROOTED_TYPE = boolean;
  */
 export const OS_THEME = 'os.theme';
 
+export const OS_THEME_KEYS = ['os.theme'] as const;
+
 /**
  * Type for {@link OS_THEME} os.theme
  */
@@ -12562,6 +14054,8 @@ export type OS_THEME_TYPE = string;
  */
 export const OS_TYPE = 'os.type';
 
+export const OS_TYPE_KEYS = ['os.type'] as const;
+
 /**
  * Type for {@link OS_TYPE} os.type
  */
@@ -12582,6 +14076,8 @@ export type OS_TYPE_TYPE = string;
  * @example "18.04.2"
  */
 export const OS_VERSION = 'os.version';
+
+export const OS_VERSION_KEYS = ['os.version'] as const;
 
 /**
  * Type for {@link OS_VERSION} os.version
@@ -12607,6 +14103,8 @@ export type OS_VERSION_TYPE = string;
  */
 export const OTEL_KIND = 'otel.kind';
 
+export const OTEL_KIND_KEYS = ['sentry.kind', 'otel.kind'] as const;
+
 /**
  * Type for {@link OTEL_KIND} otel.kind
  */
@@ -12627,6 +14125,8 @@ export type OTEL_KIND_TYPE = string;
  * @example "io.opentelemetry.contrib.mongodb"
  */
 export const OTEL_SCOPE_NAME = 'otel.scope.name';
+
+export const OTEL_SCOPE_NAME_KEYS = ['otel.scope.name'] as const;
 
 /**
  * Type for {@link OTEL_SCOPE_NAME} otel.scope.name
@@ -12649,6 +14149,8 @@ export type OTEL_SCOPE_NAME_TYPE = string;
  */
 export const OTEL_SCOPE_VERSION = 'otel.scope.version';
 
+export const OTEL_SCOPE_VERSION_KEYS = ['otel.scope.version'] as const;
+
 /**
  * Type for {@link OTEL_SCOPE_VERSION} otel.scope.version
  */
@@ -12670,6 +14172,8 @@ export type OTEL_SCOPE_VERSION_TYPE = string;
  */
 export const OTEL_STATUS_CODE = 'otel.status_code';
 
+export const OTEL_STATUS_CODE_KEYS = ['otel.status_code'] as const;
+
 /**
  * Type for {@link OTEL_STATUS_CODE} otel.status_code
  */
@@ -12690,6 +14194,8 @@ export type OTEL_STATUS_CODE_TYPE = string;
  * @example "resource not found"
  */
 export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
+
+export const OTEL_STATUS_DESCRIPTION_KEYS = ['otel.status_description'] as const;
 
 /**
  * Type for {@link OTEL_STATUS_DESCRIPTION} otel.status_description
@@ -12715,6 +14221,8 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  * @example "params.id='123'"
  */
 export const PARAMS_KEY = 'params.<key>';
+
+export const PARAMS_KEY_KEYS = ['params.<key>'] as const;
 
 /**
  * Base key for {@link PARAMS_KEY}. Use with a dynamic suffix, e.g. `${PARAMS_KEY_BASE}.${key}`.
@@ -12745,6 +14253,11 @@ export type PARAMS_KEY_TYPE = string;
  */
 export const PERFORMANCE_ACTIVATIONSTART = 'performance.activationStart';
 
+export const PERFORMANCE_ACTIVATIONSTART_KEYS = [
+  'browser.performance.navigation.activation_start',
+  'performance.activationStart',
+] as const;
+
 /**
  * Type for {@link PERFORMANCE_ACTIVATIONSTART} performance.activationStart
  */
@@ -12768,6 +14281,8 @@ export type PERFORMANCE_ACTIVATIONSTART_TYPE = number;
  * @example 1776185678.886
  */
 export const PERFORMANCE_TIMEORIGIN = 'performance.timeOrigin';
+
+export const PERFORMANCE_TIMEORIGIN_KEYS = ['browser.performance.time_origin', 'performance.timeOrigin'] as const;
 
 /**
  * Type for {@link PERFORMANCE_TIMEORIGIN} performance.timeOrigin
@@ -12793,6 +14308,8 @@ export type PERFORMANCE_TIMEORIGIN_TYPE = number;
  */
 export const PORT = 'port';
 
+export const PORT_KEYS = ['server.port', 'net.host.port', 'net.peer.port', 'port'] as const;
+
 /**
  * Type for {@link PORT} port
  */
@@ -12813,6 +14330,8 @@ export type PORT_TYPE = number;
  * @example "HomeScreen"
  */
 export const PREVIOUS_ROUTE = 'previous_route';
+
+export const PREVIOUS_ROUTE_KEYS = ['previous_route'] as const;
 
 /**
  * Type for {@link PREVIOUS_ROUTE} previous_route
@@ -12835,6 +14354,8 @@ export type PREVIOUS_ROUTE_TYPE = string;
  */
 export const PROCESS_COMMAND_ARGS = 'process.command_args';
 
+export const PROCESS_COMMAND_ARGS_KEYS = ['process.command_args'] as const;
+
 /**
  * Type for {@link PROCESS_COMMAND_ARGS} process.command_args
  */
@@ -12855,6 +14376,8 @@ export type PROCESS_COMMAND_ARGS_TYPE = Array<string>;
  * @example "getsentry"
  */
 export const PROCESS_EXECUTABLE_NAME = 'process.executable.name';
+
+export const PROCESS_EXECUTABLE_NAME_KEYS = ['process.executable.name'] as const;
 
 /**
  * Type for {@link PROCESS_EXECUTABLE_NAME} process.executable.name
@@ -12879,6 +14402,8 @@ export type PROCESS_EXECUTABLE_NAME_TYPE = string;
  */
 export const PROCESS_PID = 'process.pid';
 
+export const PROCESS_PID_KEYS = ['process.pid', 'subprocess.pid'] as const;
+
 /**
  * Type for {@link PROCESS_PID} process.pid
  */
@@ -12902,6 +14427,8 @@ export type PROCESS_PID_TYPE = number;
  */
 export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
 
+export const PROCESS_RUNTIME_DESCRIPTION_KEYS = ['process.runtime.description', 'runtime.raw_description'] as const;
+
 /**
  * Type for {@link PROCESS_RUNTIME_DESCRIPTION} process.runtime.description
  */
@@ -12923,6 +14450,8 @@ export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
  */
 export const PROCESS_RUNTIME_ENGINE_NAME = 'process.runtime.engine.name';
 
+export const PROCESS_RUNTIME_ENGINE_NAME_KEYS = ['process.runtime.engine.name'] as const;
+
 /**
  * Type for {@link PROCESS_RUNTIME_ENGINE_NAME} process.runtime.engine.name
  */
@@ -12943,6 +14472,8 @@ export type PROCESS_RUNTIME_ENGINE_NAME_TYPE = string;
  * @example "12.9.202.13-rusty"
  */
 export const PROCESS_RUNTIME_ENGINE_VERSION = 'process.runtime.engine.version';
+
+export const PROCESS_RUNTIME_ENGINE_VERSION_KEYS = ['process.runtime.engine.version'] as const;
 
 /**
  * Type for {@link PROCESS_RUNTIME_ENGINE_VERSION} process.runtime.engine.version
@@ -12967,6 +14498,8 @@ export type PROCESS_RUNTIME_ENGINE_VERSION_TYPE = string;
  */
 export const PROCESS_RUNTIME_NAME = 'process.runtime.name';
 
+export const PROCESS_RUNTIME_NAME_KEYS = ['process.runtime.name', 'runtime.name'] as const;
+
 /**
  * Type for {@link PROCESS_RUNTIME_NAME} process.runtime.name
  */
@@ -12989,6 +14522,8 @@ export type PROCESS_RUNTIME_NAME_TYPE = string;
  * @example "18.04.2"
  */
 export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
+
+export const PROCESS_RUNTIME_VERSION_KEYS = ['process.runtime.version', 'runtime.version'] as const;
 
 /**
  * Type for {@link PROCESS_RUNTIME_VERSION} process.runtime.version
@@ -13014,6 +14549,8 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  */
 export const PROFILE_ID = 'profile_id';
 
+export const PROFILE_ID_KEYS = ['sentry.profile_id', 'profile_id'] as const;
+
 /**
  * Type for {@link PROFILE_ID} profile_id
  */
@@ -13038,6 +14575,8 @@ export type PROFILE_ID_TYPE = string;
  */
 export const QUERY = 'query';
 
+export const QUERY_KEYS = ['db.query.text', 'db.statement', 'query'] as const;
+
 /**
  * Type for {@link QUERY} query
  */
@@ -13061,6 +14600,8 @@ export type QUERY_TYPE = string;
  * @example "query.id='123'"
  */
 export const QUERY_KEY = 'query.<key>';
+
+export const QUERY_KEY_KEYS = ['url.query', 'query.<key>'] as const;
 
 /**
  * Base key for {@link QUERY_KEY}. Use with a dynamic suffix, e.g. `${QUERY_KEY_BASE}.${key}`.
@@ -13090,6 +14631,8 @@ export type QUERY_KEY_TYPE = string;
  */
 export const REACT_VERSION = 'react.version';
 
+export const REACT_VERSION_KEYS = ['react.version'] as const;
+
 /**
  * Type for {@link REACT_VERSION} react.version
  */
@@ -13113,6 +14656,13 @@ export type REACT_VERSION_TYPE = string;
  * @example "SELECT"
  */
 export const REDIS_COMMAND = 'redis.command';
+
+export const REDIS_COMMAND_KEYS = [
+  'db.operation.name',
+  'cloudflare.d1.query_type',
+  'db.operation',
+  'redis.command',
+] as const;
 
 /**
  * Type for {@link REDIS_COMMAND} redis.command
@@ -13138,6 +14688,8 @@ export type REDIS_COMMAND_TYPE = string;
  */
 export const REDIS_KEY = 'redis.key';
 
+export const REDIS_KEY_KEYS = ['db.redis.key', 'redis.key'] as const;
+
 /**
  * Type for {@link REDIS_KEY} redis.key
  */
@@ -13162,6 +14714,8 @@ export type REDIS_KEY_TYPE = string;
  */
 export const RELEASE = 'release';
 
+export const RELEASE_KEYS = ['sentry.release', 'release'] as const;
+
 /**
  * Type for {@link RELEASE} release
  */
@@ -13184,6 +14738,8 @@ export type RELEASE_TYPE = string;
  * @example "http.response.header.text='test'"
  */
 export const REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
+
+export const REMIX_ACTION_FORM_DATA_KEY_KEYS = ['remix.action_form_data.<key>'] as const;
 
 /**
  * Base key for {@link REMIX_ACTION_FORM_DATA_KEY}. Use with a dynamic suffix, e.g. `${REMIX_ACTION_FORM_DATA_KEY_BASE}.${key}`.
@@ -13214,6 +14770,8 @@ export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
  */
 export const REPLAY_ID = 'replay_id';
 
+export const REPLAY_ID_KEYS = ['sentry.replay_id', 'replay_id'] as const;
+
 /**
  * Type for {@link REPLAY_ID} replay_id
  */
@@ -13235,6 +14793,13 @@ export type REPLAY_ID_TYPE = string;
  * @example "production"
  */
 export const RESOURCE_DEPLOYMENT_ENVIRONMENT = 'resource.deployment.environment';
+
+export const RESOURCE_DEPLOYMENT_ENVIRONMENT_KEYS = [
+  'sentry.environment',
+  'environment',
+  'resource.deployment.environment',
+  'resource.deployment.environment.name',
+] as const;
 
 /**
  * Type for {@link RESOURCE_DEPLOYMENT_ENVIRONMENT} resource.deployment.environment
@@ -13258,6 +14823,13 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE = string;
  */
 export const RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME = 'resource.deployment.environment.name';
 
+export const RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_KEYS = [
+  'sentry.environment',
+  'environment',
+  'resource.deployment.environment',
+  'resource.deployment.environment.name',
+] as const;
+
 /**
  * Type for {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME} resource.deployment.environment.name
  */
@@ -13278,6 +14850,8 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE = string;
  * @example "non-blocking"
  */
 export const RESOURCE_RENDER_BLOCKING_STATUS = 'resource.render_blocking_status';
+
+export const RESOURCE_RENDER_BLOCKING_STATUS_KEYS = ['resource.render_blocking_status'] as const;
 
 /**
  * Type for {@link RESOURCE_RENDER_BLOCKING_STATUS} resource.render_blocking_status
@@ -13303,6 +14877,8 @@ export type RESOURCE_RENDER_BLOCKING_STATUS_TYPE = string;
  */
 export const ROUTE = 'route';
 
+export const ROUTE_KEYS = ['http.route', 'route'] as const;
+
 /**
  * Type for {@link ROUTE} route
  */
@@ -13327,6 +14903,8 @@ export type ROUTE_TYPE = string;
  */
 export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
 
+export const RPC_GRPC_STATUS_CODE_KEYS = ['rpc.response.status_code', 'code', 'rpc.grpc.status_code'] as const;
+
 /**
  * Type for {@link RPC_GRPC_STATUS_CODE} rpc.grpc.status_code
  */
@@ -13349,6 +14927,8 @@ export type RPC_GRPC_STATUS_CODE_TYPE = number;
  * @example "com.example.ExampleService/exampleMethod"
  */
 export const RPC_METHOD = 'rpc.method';
+
+export const RPC_METHOD_KEYS = ['rpc.method', 'aws.operation_name'] as const;
 
 /**
  * Type for {@link RPC_METHOD} rpc.method
@@ -13373,6 +14953,8 @@ export type RPC_METHOD_TYPE = string;
  */
 export const RPC_RESPONSE_STATUS_CODE = 'rpc.response.status_code';
 
+export const RPC_RESPONSE_STATUS_CODE_KEYS = ['rpc.response.status_code', 'code', 'rpc.grpc.status_code'] as const;
+
 /**
  * Type for {@link RPC_RESPONSE_STATUS_CODE} rpc.response.status_code
  */
@@ -13393,6 +14975,8 @@ export type RPC_RESPONSE_STATUS_CODE_TYPE = string;
  * @example "myService.BestService"
  */
 export const RPC_SERVICE = 'rpc.service';
+
+export const RPC_SERVICE_KEYS = ['rpc.service'] as const;
 
 /**
  * Type for {@link RPC_SERVICE} rpc.service
@@ -13418,6 +15002,8 @@ export type RPC_SERVICE_TYPE = string;
  */
 export const RPC_SYSTEM = 'rpc.system';
 
+export const RPC_SYSTEM_KEYS = ['rpc.system.name', 'rpc.system'] as const;
+
 /**
  * Type for {@link RPC_SYSTEM} rpc.system
  */
@@ -13441,6 +15027,8 @@ export type RPC_SYSTEM_TYPE = string;
  */
 export const RPC_SYSTEM_NAME = 'rpc.system.name';
 
+export const RPC_SYSTEM_NAME_KEYS = ['rpc.system.name', 'rpc.system'] as const;
+
 /**
  * Type for {@link RPC_SYSTEM_NAME} rpc.system.name
  */
@@ -13462,6 +15050,8 @@ export type RPC_SYSTEM_NAME_TYPE = string;
  * @example "stable"
  */
 export const RUNTIME_BUILD = 'runtime.build';
+
+export const RUNTIME_BUILD_KEYS = ['runtime.build'] as const;
 
 /**
  * Type for {@link RUNTIME_BUILD} runtime.build
@@ -13487,6 +15077,8 @@ export type RUNTIME_BUILD_TYPE = string;
  */
 export const RUNTIME_NAME = 'runtime.name';
 
+export const RUNTIME_NAME_KEYS = ['process.runtime.name', 'runtime.name'] as const;
+
 /**
  * Type for {@link RUNTIME_NAME} runtime.name
  */
@@ -13510,6 +15102,8 @@ export type RUNTIME_NAME_TYPE = string;
  * @example "Eclipse OpenJ9 VM openj9-0.21.0"
  */
 export const RUNTIME_RAW_DESCRIPTION = 'runtime.raw_description';
+
+export const RUNTIME_RAW_DESCRIPTION_KEYS = ['process.runtime.description', 'runtime.raw_description'] as const;
 
 /**
  * Type for {@link RUNTIME_RAW_DESCRIPTION} runtime.raw_description
@@ -13535,6 +15129,8 @@ export type RUNTIME_RAW_DESCRIPTION_TYPE = string;
  */
 export const RUNTIME_VERSION = 'runtime.version';
 
+export const RUNTIME_VERSION_KEYS = ['process.runtime.version', 'runtime.version'] as const;
+
 /**
  * Type for {@link RUNTIME_VERSION} runtime.version
  */
@@ -13557,6 +15153,8 @@ export type RUNTIME_VERSION_TYPE = string;
  * @example "score.cls=0.1723"
  */
 export const SCORE_KEY = 'score.<key>';
+
+export const SCORE_KEY_KEYS = ['score.<key>'] as const;
 
 /**
  * Base key for {@link SCORE_KEY}. Use with a dynamic suffix, e.g. `${SCORE_KEY_BASE}.${key}`.
@@ -13586,6 +15184,8 @@ export type SCORE_KEY_TYPE = number;
  */
 export const SCORE_RATIO_KEY = 'score.ratio.<key>';
 
+export const SCORE_RATIO_KEY_KEYS = ['score.ratio.<key>'] as const;
+
 /**
  * Base key for {@link SCORE_RATIO_KEY}. Use with a dynamic suffix, e.g. `${SCORE_RATIO_KEY_BASE}.${key}`.
  */
@@ -13610,6 +15210,8 @@ export type SCORE_RATIO_KEY_TYPE = number;
  */
 export const SCORE_TOTAL = 'score.total';
 
+export const SCORE_TOTAL_KEYS = ['score.total'] as const;
+
 /**
  * Type for {@link SCORE_TOTAL} score.total
  */
@@ -13632,6 +15234,8 @@ export type SCORE_TOTAL_TYPE = number;
  * @example "score.weight.fcp=0.25"
  */
 export const SCORE_WEIGHT_KEY = 'score.weight.<key>';
+
+export const SCORE_WEIGHT_KEY_KEYS = ['score.weight.<key>'] as const;
 
 /**
  * Base key for {@link SCORE_WEIGHT_KEY}. Use with a dynamic suffix, e.g. `${SCORE_WEIGHT_KEY_BASE}.${key}`.
@@ -13659,6 +15263,8 @@ export type SCORE_WEIGHT_KEY_TYPE = number;
  */
 export const SENTRY_ACTION = 'sentry.action';
 
+export const SENTRY_ACTION_KEYS = ['sentry.action'] as const;
+
 /**
  * Type for {@link SENTRY_ACTION} sentry.action
  */
@@ -13682,6 +15288,8 @@ export type SENTRY_ACTION_TYPE = string;
  * @example "Chrome"
  */
 export const SENTRY_BROWSER_NAME = 'sentry.browser.name';
+
+export const SENTRY_BROWSER_NAME_KEYS = ['browser.name', 'sentry.browser.name'] as const;
 
 /**
  * Type for {@link SENTRY_BROWSER_NAME} sentry.browser.name
@@ -13707,6 +15315,8 @@ export type SENTRY_BROWSER_NAME_TYPE = string;
  */
 export const SENTRY_BROWSER_VERSION = 'sentry.browser.version';
 
+export const SENTRY_BROWSER_VERSION_KEYS = ['browser.version', 'sentry.browser.version'] as const;
+
 /**
  * Type for {@link SENTRY_BROWSER_VERSION} sentry.browser.version
  */
@@ -13727,6 +15337,8 @@ export type SENTRY_BROWSER_VERSION_TYPE = string;
  * @example "document.hidden"
  */
 export const SENTRY_CANCELLATION_REASON = 'sentry.cancellation_reason';
+
+export const SENTRY_CANCELLATION_REASON_KEYS = ['sentry.cancellation_reason'] as const;
 
 /**
  * Type for {@link SENTRY_CANCELLATION_REASON} sentry.cancellation_reason
@@ -13749,6 +15361,8 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  */
 export const SENTRY_CATEGORY = 'sentry.category';
 
+export const SENTRY_CATEGORY_KEYS = ['sentry.category'] as const;
+
 /**
  * Type for {@link SENTRY_CATEGORY} sentry.category
  */
@@ -13770,6 +15384,8 @@ export type SENTRY_CATEGORY_TYPE = string;
  */
 export const SENTRY_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
 
+export const SENTRY_CLIENT_SAMPLE_RATE_KEYS = ['sentry.client_sample_rate'] as const;
+
 /**
  * Type for {@link SENTRY_CLIENT_SAMPLE_RATE} sentry.client_sample_rate
  */
@@ -13790,6 +15406,8 @@ export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
  * @example "index view query"
  */
 export const SENTRY_DESCRIPTION = 'sentry.description';
+
+export const SENTRY_DESCRIPTION_KEYS = ['sentry.description'] as const;
 
 /**
  * Type for {@link SENTRY_DESCRIPTION} sentry.description
@@ -13814,6 +15432,8 @@ export type SENTRY_DESCRIPTION_TYPE = string;
  */
 export const SENTRY_DIST = 'sentry.dist';
 
+export const SENTRY_DIST_KEYS = ['sentry.dist', 'dist'] as const;
+
 /**
  * Type for {@link SENTRY_DIST} sentry.dist
  */
@@ -13834,6 +15454,8 @@ export type SENTRY_DIST_TYPE = string;
  * @example "example.com"
  */
 export const SENTRY_DOMAIN = 'sentry.domain';
+
+export const SENTRY_DOMAIN_KEYS = ['sentry.domain'] as const;
 
 /**
  * Type for {@link SENTRY_DOMAIN} sentry.domain
@@ -13856,6 +15478,8 @@ export type SENTRY_DOMAIN_TYPE = string;
  */
 export const SENTRY_DSC_ENVIRONMENT = 'sentry.dsc.environment';
 
+export const SENTRY_DSC_ENVIRONMENT_KEYS = ['sentry.dsc.environment'] as const;
+
 /**
  * Type for {@link SENTRY_DSC_ENVIRONMENT} sentry.dsc.environment
  */
@@ -13876,6 +15500,8 @@ export type SENTRY_DSC_ENVIRONMENT_TYPE = string;
  * @example "12345"
  */
 export const SENTRY_DSC_PROJECT_ID = 'sentry.dsc.project_id';
+
+export const SENTRY_DSC_PROJECT_ID_KEYS = ['sentry.dsc.project_id'] as const;
 
 /**
  * Type for {@link SENTRY_DSC_PROJECT_ID} sentry.dsc.project_id
@@ -13898,6 +15524,8 @@ export type SENTRY_DSC_PROJECT_ID_TYPE = string;
  */
 export const SENTRY_DSC_PUBLIC_KEY = 'sentry.dsc.public_key';
 
+export const SENTRY_DSC_PUBLIC_KEY_KEYS = ['sentry.dsc.public_key'] as const;
+
 /**
  * Type for {@link SENTRY_DSC_PUBLIC_KEY} sentry.dsc.public_key
  */
@@ -13918,6 +15546,8 @@ export type SENTRY_DSC_PUBLIC_KEY_TYPE = string;
  * @example "frontend@e8211be71b214afab5b85de4b4c54be3714952bb"
  */
 export const SENTRY_DSC_RELEASE = 'sentry.dsc.release';
+
+export const SENTRY_DSC_RELEASE_KEYS = ['sentry.dsc.release'] as const;
 
 /**
  * Type for {@link SENTRY_DSC_RELEASE} sentry.dsc.release
@@ -13940,6 +15570,8 @@ export type SENTRY_DSC_RELEASE_TYPE = string;
  */
 export const SENTRY_DSC_SAMPLED = 'sentry.dsc.sampled';
 
+export const SENTRY_DSC_SAMPLED_KEYS = ['sentry.dsc.sampled'] as const;
+
 /**
  * Type for {@link SENTRY_DSC_SAMPLED} sentry.dsc.sampled
  */
@@ -13960,6 +15592,8 @@ export type SENTRY_DSC_SAMPLED_TYPE = boolean;
  * @example "1.0"
  */
 export const SENTRY_DSC_SAMPLE_RATE = 'sentry.dsc.sample_rate';
+
+export const SENTRY_DSC_SAMPLE_RATE_KEYS = ['sentry.dsc.sample_rate'] as const;
 
 /**
  * Type for {@link SENTRY_DSC_SAMPLE_RATE} sentry.dsc.sample_rate
@@ -13982,6 +15616,8 @@ export type SENTRY_DSC_SAMPLE_RATE_TYPE = string;
  */
 export const SENTRY_DSC_TRACE_ID = 'sentry.dsc.trace_id';
 
+export const SENTRY_DSC_TRACE_ID_KEYS = ['sentry.dsc.trace_id'] as const;
+
 /**
  * Type for {@link SENTRY_DSC_TRACE_ID} sentry.dsc.trace_id
  */
@@ -14002,6 +15638,8 @@ export type SENTRY_DSC_TRACE_ID_TYPE = string;
  * @example "/issues/errors-outages/"
  */
 export const SENTRY_DSC_TRANSACTION = 'sentry.dsc.transaction';
+
+export const SENTRY_DSC_TRANSACTION_KEYS = ['sentry.dsc.transaction'] as const;
 
 /**
  * Type for {@link SENTRY_DSC_TRANSACTION} sentry.dsc.transaction
@@ -14026,6 +15664,13 @@ export type SENTRY_DSC_TRANSACTION_TYPE = string;
  */
 export const SENTRY_ENVIRONMENT = 'sentry.environment';
 
+export const SENTRY_ENVIRONMENT_KEYS = [
+  'sentry.environment',
+  'environment',
+  'resource.deployment.environment',
+  'resource.deployment.environment.name',
+] as const;
+
 /**
  * Type for {@link SENTRY_ENVIRONMENT} sentry.environment
  */
@@ -14044,6 +15689,8 @@ export type SENTRY_ENVIRONMENT_TYPE = string;
  * Visibility: internal
  */
 export const SENTRY_EVENT_SERIALIZED_BREADCRUMBS = 'sentry.event.serialized_breadcrumbs';
+
+export const SENTRY_EVENT_SERIALIZED_BREADCRUMBS_KEYS = ['sentry.event.serialized_breadcrumbs'] as const;
 
 /**
  * Type for {@link SENTRY_EVENT_SERIALIZED_BREADCRUMBS} sentry.event.serialized_breadcrumbs
@@ -14064,6 +15711,8 @@ export type SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE = string;
  */
 export const SENTRY_EVENT_SERIALIZED_CONTEXTS = 'sentry.event.serialized_contexts';
 
+export const SENTRY_EVENT_SERIALIZED_CONTEXTS_KEYS = ['sentry.event.serialized_contexts'] as const;
+
 /**
  * Type for {@link SENTRY_EVENT_SERIALIZED_CONTEXTS} sentry.event.serialized_contexts
  */
@@ -14083,6 +15732,8 @@ export type SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE = string;
  */
 export const SENTRY_EVENT_SERIALIZED_EXTRA = 'sentry.event.serialized_extra';
 
+export const SENTRY_EVENT_SERIALIZED_EXTRA_KEYS = ['sentry.event.serialized_extra'] as const;
+
 /**
  * Type for {@link SENTRY_EVENT_SERIALIZED_EXTRA} sentry.event.serialized_extra
  */
@@ -14101,6 +15752,8 @@ export type SENTRY_EVENT_SERIALIZED_EXTRA_TYPE = string;
  * Visibility: internal
  */
 export const SENTRY_EVENT_SERIALIZED_META = 'sentry.event.serialized_meta';
+
+export const SENTRY_EVENT_SERIALIZED_META_KEYS = ['sentry.event.serialized_meta'] as const;
 
 /**
  * Type for {@link SENTRY_EVENT_SERIALIZED_META} sentry.event.serialized_meta
@@ -14122,6 +15775,8 @@ export type SENTRY_EVENT_SERIALIZED_META_TYPE = string;
  * @example 1234
  */
 export const SENTRY_EXCLUSIVE_TIME = 'sentry.exclusive_time';
+
+export const SENTRY_EXCLUSIVE_TIME_KEYS = ['sentry.exclusive_time'] as const;
 
 /**
  * Type for {@link SENTRY_EXCLUSIVE_TIME} sentry.exclusive_time
@@ -14147,6 +15802,12 @@ export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
  */
 export const SENTRY_FRAMES_FROZEN = 'sentry.frames.frozen';
 
+export const SENTRY_FRAMES_FROZEN_KEYS = [
+  'app.vitals.frames.frozen.count',
+  'frames.frozen',
+  'sentry.frames.frozen',
+] as const;
+
 /**
  * Type for {@link SENTRY_FRAMES_FROZEN} sentry.frames.frozen
  */
@@ -14170,6 +15831,8 @@ export type SENTRY_FRAMES_FROZEN_TYPE = number;
  * @example 1
  */
 export const SENTRY_FRAMES_SLOW = 'sentry.frames.slow';
+
+export const SENTRY_FRAMES_SLOW_KEYS = ['app.vitals.frames.slow.count', 'frames.slow', 'sentry.frames.slow'] as const;
 
 /**
  * Type for {@link SENTRY_FRAMES_SLOW} sentry.frames.slow
@@ -14195,6 +15858,12 @@ export type SENTRY_FRAMES_SLOW_TYPE = number;
  */
 export const SENTRY_FRAMES_TOTAL = 'sentry.frames.total';
 
+export const SENTRY_FRAMES_TOTAL_KEYS = [
+  'app.vitals.frames.total.count',
+  'frames.total',
+  'sentry.frames.total',
+] as const;
+
 /**
  * Type for {@link SENTRY_FRAMES_TOTAL} sentry.frames.total
  */
@@ -14216,6 +15885,8 @@ export type SENTRY_FRAMES_TOTAL_TYPE = number;
  */
 export const SENTRY_GRAPHQL_OPERATION = 'sentry.graphql.operation';
 
+export const SENTRY_GRAPHQL_OPERATION_KEYS = ['sentry.graphql.operation'] as const;
+
 /**
  * Type for {@link SENTRY_GRAPHQL_OPERATION} sentry.graphql.operation
  */
@@ -14234,6 +15905,8 @@ export type SENTRY_GRAPHQL_OPERATION_TYPE = string;
  * Visibility: public
  */
 export const SENTRY_GROUP = 'sentry.group';
+
+export const SENTRY_GROUP_KEYS = ['sentry.group'] as const;
 
 /**
  * Type for {@link SENTRY_GROUP} sentry.group
@@ -14256,6 +15929,8 @@ export type SENTRY_GROUP_TYPE = string;
  */
 export const SENTRY_HTTP_PREFETCH = 'sentry.http.prefetch';
 
+export const SENTRY_HTTP_PREFETCH_KEYS = ['sentry.http.prefetch'] as const;
+
 /**
  * Type for {@link SENTRY_HTTP_PREFETCH} sentry.http.prefetch
  */
@@ -14277,6 +15952,8 @@ export type SENTRY_HTTP_PREFETCH_TYPE = boolean;
  */
 export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
 
+export const SENTRY_IDLE_SPAN_FINISH_REASON_KEYS = ['sentry.idle_span_finish_reason'] as const;
+
 /**
  * Type for {@link SENTRY_IDLE_SPAN_FINISH_REASON} sentry.idle_span_finish_reason
  */
@@ -14297,6 +15974,8 @@ export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
  * @example true
  */
 export const SENTRY_IS_REMOTE = 'sentry.is_remote';
+
+export const SENTRY_IS_REMOTE_KEYS = ['sentry.is_remote'] as const;
 
 /**
  * Type for {@link SENTRY_IS_REMOTE} sentry.is_remote
@@ -14325,6 +16004,8 @@ export type SENTRY_IS_REMOTE_TYPE = boolean;
  */
 export const SENTRY_KIND = 'sentry.kind';
 
+export const SENTRY_KIND_KEYS = ['sentry.kind', 'otel.kind'] as const;
+
 /**
  * Type for {@link SENTRY_KIND} sentry.kind
  */
@@ -14345,6 +16026,8 @@ export type SENTRY_KIND_TYPE = string;
  * @example true
  */
 export const SENTRY_MAIN_THREAD = 'sentry.main_thread';
+
+export const SENTRY_MAIN_THREAD_KEYS = ['sentry.main_thread'] as const;
 
 /**
  * Type for {@link SENTRY_MAIN_THREAD} sentry.main_thread
@@ -14367,6 +16050,8 @@ export type SENTRY_MAIN_THREAD_TYPE = boolean;
  */
 export const SENTRY_MESSAGE_PARAMETER_KEY = 'sentry.message.parameter.<key>';
 
+export const SENTRY_MESSAGE_PARAMETER_KEY_KEYS = ['sentry.message.parameter.<key>'] as const;
+
 /**
  * Type for {@link SENTRY_MESSAGE_PARAMETER_KEY} sentry.message.parameter.<key>
  */
@@ -14387,6 +16072,8 @@ export type SENTRY_MESSAGE_PARAMETER_KEY_TYPE = string;
  * @example "Hello, {name}!"
  */
 export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
+
+export const SENTRY_MESSAGE_TEMPLATE_KEYS = ['sentry.message.template'] as const;
 
 /**
  * Type for {@link SENTRY_MESSAGE_TEMPLATE} sentry.message.template
@@ -14409,6 +16096,8 @@ export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
  */
 export const SENTRY_METRIC_SOURCE = 'sentry.metric.source';
 
+export const SENTRY_METRIC_SOURCE_KEYS = ['sentry.metric.source'] as const;
+
 /**
  * Type for {@link SENTRY_METRIC_SOURCE} sentry.metric.source
  */
@@ -14429,6 +16118,8 @@ export type SENTRY_METRIC_SOURCE_TYPE = string;
  * @example true
  */
 export const SENTRY_MOBILE = 'sentry.mobile';
+
+export const SENTRY_MOBILE_KEYS = ['sentry.mobile'] as const;
 
 /**
  * Type for {@link SENTRY_MOBILE} sentry.mobile
@@ -14452,6 +16143,8 @@ export type SENTRY_MOBILE_TYPE = boolean;
  * @example "sentry.module.brianium/paratest='v7.7.0'"
  */
 export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
+
+export const SENTRY_MODULE_KEY_KEYS = ['sentry.module.<key>'] as const;
 
 /**
  * Base key for {@link SENTRY_MODULE_KEY}. Use with a dynamic suffix, e.g. `${SENTRY_MODULE_KEY_BASE}.${key}`.
@@ -14479,6 +16172,8 @@ export type SENTRY_MODULE_KEY_TYPE = string;
  */
 export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE = 'sentry.nextjs.ssr.function.route';
 
+export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_KEYS = ['sentry.nextjs.ssr.function.route'] as const;
+
 /**
  * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_ROUTE} sentry.nextjs.ssr.function.route
  */
@@ -14499,6 +16194,8 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_TYPE = string;
  * @example "generateMetadata"
  */
 export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE = 'sentry.nextjs.ssr.function.type';
+
+export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE_KEYS = ['sentry.nextjs.ssr.function.type'] as const;
 
 /**
  * Type for {@link SENTRY_NEXTJS_SSR_FUNCTION_TYPE} sentry.nextjs.ssr.function.type
@@ -14521,6 +16218,8 @@ export type SENTRY_NEXTJS_SSR_FUNCTION_TYPE_TYPE = string;
  */
 export const SENTRY_NORMALIZED_DB_QUERY = 'sentry.normalized_db_query';
 
+export const SENTRY_NORMALIZED_DB_QUERY_KEYS = ['sentry.normalized_db_query'] as const;
+
 /**
  * Type for {@link SENTRY_NORMALIZED_DB_QUERY} sentry.normalized_db_query
  */
@@ -14539,6 +16238,8 @@ export type SENTRY_NORMALIZED_DB_QUERY_TYPE = string;
  * Visibility: public
  */
 export const SENTRY_NORMALIZED_DB_QUERY_HASH = 'sentry.normalized_db_query.hash';
+
+export const SENTRY_NORMALIZED_DB_QUERY_HASH_KEYS = ['sentry.normalized_db_query.hash'] as const;
 
 /**
  * Type for {@link SENTRY_NORMALIZED_DB_QUERY_HASH} sentry.normalized_db_query.hash
@@ -14561,6 +16262,8 @@ export type SENTRY_NORMALIZED_DB_QUERY_HASH_TYPE = string;
  */
 export const SENTRY_NORMALIZED_DESCRIPTION = 'sentry.normalized_description';
 
+export const SENTRY_NORMALIZED_DESCRIPTION_KEYS = ['sentry.normalized_description'] as const;
+
 /**
  * Type for {@link SENTRY_NORMALIZED_DESCRIPTION} sentry.normalized_description
  */
@@ -14581,6 +16284,8 @@ export type SENTRY_NORMALIZED_DESCRIPTION_TYPE = string;
  * @example "1544712660300000000"
  */
 export const SENTRY_OBSERVED_TIMESTAMP_NANOS = 'sentry.observed_timestamp_nanos';
+
+export const SENTRY_OBSERVED_TIMESTAMP_NANOS_KEYS = ['sentry.observed_timestamp_nanos'] as const;
 
 /**
  * Type for {@link SENTRY_OBSERVED_TIMESTAMP_NANOS} sentry.observed_timestamp_nanos
@@ -14603,6 +16308,8 @@ export type SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE = string;
  */
 export const SENTRY_OP = 'sentry.op';
 
+export const SENTRY_OP_KEYS = ['sentry.op'] as const;
+
 /**
  * Type for {@link SENTRY_OP} sentry.op
  */
@@ -14623,6 +16330,8 @@ export type SENTRY_OP_TYPE = string;
  * @example "auto.http.otel.fastify"
  */
 export const SENTRY_ORIGIN = 'sentry.origin';
+
+export const SENTRY_ORIGIN_KEYS = ['sentry.origin'] as const;
 
 /**
  * Type for {@link SENTRY_ORIGIN} sentry.origin
@@ -14645,6 +16354,8 @@ export type SENTRY_ORIGIN_TYPE = string;
  */
 export const SENTRY_PAGELOAD_SPAN_ID = 'sentry.pageload.span_id';
 
+export const SENTRY_PAGELOAD_SPAN_ID_KEYS = ['sentry.pageload.span_id'] as const;
+
 /**
  * Type for {@link SENTRY_PAGELOAD_SPAN_ID} sentry.pageload.span_id
  */
@@ -14666,6 +16377,8 @@ export type SENTRY_PAGELOAD_SPAN_ID_TYPE = string;
  */
 export const SENTRY_PLATFORM = 'sentry.platform';
 
+export const SENTRY_PLATFORM_KEYS = ['sentry.platform'] as const;
+
 /**
  * Type for {@link SENTRY_PLATFORM} sentry.platform
  */
@@ -14686,6 +16399,8 @@ export type SENTRY_PLATFORM_TYPE = string;
  * @example "18779b64dd35d1a538e7ce2dd2d3fad3"
  */
 export const SENTRY_PROFILER_ID = 'sentry.profiler_id';
+
+export const SENTRY_PROFILER_ID_KEYS = ['sentry.profiler_id'] as const;
 
 /**
  * Type for {@link SENTRY_PROFILER_ID} sentry.profiler_id
@@ -14710,6 +16425,8 @@ export type SENTRY_PROFILER_ID_TYPE = string;
  */
 export const SENTRY_PROFILE_ID = 'sentry.profile_id';
 
+export const SENTRY_PROFILE_ID_KEYS = ['sentry.profile_id', 'profile_id'] as const;
+
 /**
  * Type for {@link SENTRY_PROFILE_ID} sentry.profile_id
  */
@@ -14731,6 +16448,8 @@ export type SENTRY_PROFILE_ID_TYPE = string;
  */
 export const SENTRY_RELAY_INGRESS = 'sentry.relay.ingress';
 
+export const SENTRY_RELAY_INGRESS_KEYS = ['sentry.relay.ingress'] as const;
+
 /**
  * Type for {@link SENTRY_RELAY_INGRESS} sentry.relay.ingress
  */
@@ -14751,6 +16470,8 @@ export type SENTRY_RELAY_INGRESS_TYPE = string;
  * @example "span v2"
  */
 export const SENTRY_RELAY_PIPELINE = 'sentry.relay.pipeline';
+
+export const SENTRY_RELAY_PIPELINE_KEYS = ['sentry.relay.pipeline'] as const;
 
 /**
  * Type for {@link SENTRY_RELAY_PIPELINE} sentry.relay.pipeline
@@ -14775,6 +16496,8 @@ export type SENTRY_RELAY_PIPELINE_TYPE = string;
  */
 export const SENTRY_RELEASE = 'sentry.release';
 
+export const SENTRY_RELEASE_KEYS = ['sentry.release', 'release'] as const;
+
 /**
  * Type for {@link SENTRY_RELEASE} sentry.release
  */
@@ -14798,6 +16521,8 @@ export type SENTRY_RELEASE_TYPE = string;
  */
 export const SENTRY_REPLAY_ID = 'sentry.replay_id';
 
+export const SENTRY_REPLAY_ID_KEYS = ['sentry.replay_id', 'replay_id'] as const;
+
 /**
  * Type for {@link SENTRY_REPLAY_ID} sentry.replay_id
  */
@@ -14818,6 +16543,8 @@ export type SENTRY_REPLAY_ID_TYPE = string;
  * @example true
  */
 export const SENTRY_REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
+
+export const SENTRY_REPLAY_IS_BUFFERING_KEYS = ['sentry.replay_is_buffering'] as const;
 
 /**
  * Type for {@link SENTRY_REPLAY_IS_BUFFERING} sentry.replay_is_buffering
@@ -14841,6 +16568,8 @@ export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
  */
 export const SENTRY_REPORT_EVENT = 'sentry.report_event';
 
+export const SENTRY_REPORT_EVENT_KEYS = ['sentry.report_event'] as const;
+
 /**
  * Type for {@link SENTRY_REPORT_EVENT} sentry.report_event
  */
@@ -14861,6 +16590,8 @@ export type SENTRY_REPORT_EVENT_TYPE = string;
  * @example ["InboundFilters","FunctionToString","BrowserApiErrors","Breadcrumbs"]
  */
 export const SENTRY_SDK_INTEGRATIONS = 'sentry.sdk.integrations';
+
+export const SENTRY_SDK_INTEGRATIONS_KEYS = ['sentry.sdk.integrations'] as const;
 
 /**
  * Type for {@link SENTRY_SDK_INTEGRATIONS} sentry.sdk.integrations
@@ -14883,6 +16614,8 @@ export type SENTRY_SDK_INTEGRATIONS_TYPE = Array<string>;
  */
 export const SENTRY_SDK_NAME = 'sentry.sdk.name';
 
+export const SENTRY_SDK_NAME_KEYS = ['sentry.sdk.name'] as const;
+
 /**
  * Type for {@link SENTRY_SDK_NAME} sentry.sdk.name
  */
@@ -14903,6 +16636,8 @@ export type SENTRY_SDK_NAME_TYPE = string;
  * @example "7.0.0"
  */
 export const SENTRY_SDK_VERSION = 'sentry.sdk.version';
+
+export const SENTRY_SDK_VERSION_KEYS = ['sentry.sdk.version'] as const;
 
 /**
  * Type for {@link SENTRY_SDK_VERSION} sentry.sdk.version
@@ -14926,6 +16661,8 @@ export type SENTRY_SDK_VERSION_TYPE = string;
  * @example "051581bf3cb55c13"
  */
 export const SENTRY_SEGMENT_ID = 'sentry.segment.id';
+
+export const SENTRY_SEGMENT_ID_KEYS = ['sentry.segment.id', 'sentry.segment_id'] as const;
 
 /**
  * Type for {@link SENTRY_SEGMENT_ID} sentry.segment.id
@@ -14951,6 +16688,8 @@ export type SENTRY_SEGMENT_ID_TYPE = string;
  */
 export const _SENTRY_SEGMENT_ID = 'sentry.segment_id';
 
+export const _SENTRY_SEGMENT_ID_KEYS = ['sentry.segment.id', 'sentry.segment_id'] as const;
+
 /**
  * Type for {@link _SENTRY_SEGMENT_ID} sentry.segment_id
  */
@@ -14973,6 +16712,8 @@ export type _SENTRY_SEGMENT_ID_TYPE = string;
  * @example "GET /user"
  */
 export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
+
+export const SENTRY_SEGMENT_NAME_KEYS = ['sentry.segment.name', 'sentry.transaction', 'transaction'] as const;
 
 /**
  * Type for {@link SENTRY_SEGMENT_NAME} sentry.segment.name
@@ -15000,6 +16741,8 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  */
 export const SENTRY_SEGMENT_NAME_SOURCE = 'sentry.segment.name.source';
 
+export const SENTRY_SEGMENT_NAME_SOURCE_KEYS = ['sentry.segment.name.source'] as const;
+
 /**
  * Type for {@link SENTRY_SEGMENT_NAME_SOURCE} sentry.segment.name.source
  */
@@ -15020,6 +16763,8 @@ export type SENTRY_SEGMENT_NAME_SOURCE_TYPE = string;
  * @example 0.5
  */
 export const SENTRY_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
+
+export const SENTRY_SERVER_SAMPLE_RATE_KEYS = ['sentry.server_sample_rate'] as const;
 
 /**
  * Type for {@link SENTRY_SERVER_SAMPLE_RATE} sentry.server_sample_rate
@@ -15043,6 +16788,8 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  */
 export const SENTRY_SOURCE = 'sentry.source';
 
+export const SENTRY_SOURCE_KEYS = ['sentry.source'] as const;
+
 /**
  * Type for {@link SENTRY_SOURCE} sentry.source
  */
@@ -15065,6 +16812,8 @@ export type SENTRY_SOURCE_TYPE = string;
  */
 export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
 
+export const SENTRY_SPAN_SOURCE_KEYS = ['sentry.span.source'] as const;
+
 /**
  * Type for {@link SENTRY_SPAN_SOURCE} sentry.span.source
  */
@@ -15085,6 +16834,8 @@ export type SENTRY_SPAN_SOURCE_TYPE = string;
  * @example "ok"
  */
 export const SENTRY_STATUS = 'sentry.status';
+
+export const SENTRY_STATUS_KEYS = ['sentry.status'] as const;
 
 /**
  * Type for {@link SENTRY_STATUS} sentry.status
@@ -15107,6 +16858,8 @@ export type SENTRY_STATUS_TYPE = string;
  */
 export const SENTRY_STATUS_CODE = 'sentry.status_code';
 
+export const SENTRY_STATUS_CODE_KEYS = ['sentry.status_code'] as const;
+
 /**
  * Type for {@link SENTRY_STATUS_CODE} sentry.status_code
  */
@@ -15127,6 +16880,8 @@ export type SENTRY_STATUS_CODE_TYPE = number;
  * @example "foobar"
  */
 export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
+
+export const SENTRY_STATUS_MESSAGE_KEYS = ['sentry.status.message'] as const;
 
 /**
  * Type for {@link SENTRY_STATUS_MESSAGE} sentry.status.message
@@ -15152,6 +16907,8 @@ export type SENTRY_STATUS_MESSAGE_TYPE = string;
  */
 export const SENTRY_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
 
+export const SENTRY_SVELTEKIT_NAVIGATION_FROM_KEYS = ['navigation.origin', 'sentry.sveltekit.navigation.from'] as const;
+
 /**
  * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} sentry.sveltekit.navigation.from
  */
@@ -15173,6 +16930,8 @@ export type SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE = string;
  * @example "/users/:id"
  */
 export const SENTRY_SVELTEKIT_NAVIGATION_TO = 'sentry.sveltekit.navigation.to';
+
+export const SENTRY_SVELTEKIT_NAVIGATION_TO_KEYS = ['sentry.sveltekit.navigation.to'] as const;
 
 /**
  * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TO} sentry.sveltekit.navigation.to
@@ -15198,6 +16957,8 @@ export type SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE = string;
  */
 export const SENTRY_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
 
+export const SENTRY_SVELTEKIT_NAVIGATION_TYPE_KEYS = ['navigation.type', 'sentry.sveltekit.navigation.type'] as const;
+
 /**
  * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} sentry.sveltekit.navigation.type
  */
@@ -15220,6 +16981,8 @@ export type SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE = string;
  */
 export const SENTRY_THREAD_ID = 'sentry.thread.id';
 
+export const SENTRY_THREAD_ID_KEYS = ['thread.id', 'sentry.thread.id'] as const;
+
 /**
  * Type for {@link SENTRY_THREAD_ID} sentry.thread.id
  */
@@ -15241,6 +17004,8 @@ export type SENTRY_THREAD_ID_TYPE = number;
  */
 export const SENTRY_TIMESTAMP_SEQUENCE = 'sentry.timestamp.sequence';
 
+export const SENTRY_TIMESTAMP_SEQUENCE_KEYS = ['sentry.timestamp.sequence'] as const;
+
 /**
  * Type for {@link SENTRY_TIMESTAMP_SEQUENCE} sentry.timestamp.sequence
  */
@@ -15261,6 +17026,8 @@ export type SENTRY_TIMESTAMP_SEQUENCE_TYPE = number;
  * @example "stream"
  */
 export const SENTRY_TRACE_LIFECYCLE = 'sentry.trace_lifecycle';
+
+export const SENTRY_TRACE_LIFECYCLE_KEYS = ['sentry.trace_lifecycle'] as const;
 
 /**
  * Type for {@link SENTRY_TRACE_LIFECYCLE} sentry.trace_lifecycle
@@ -15284,6 +17051,8 @@ export type SENTRY_TRACE_LIFECYCLE_TYPE = string;
  */
 export const SENTRY_TRACE_PARENT_SPAN_ID = 'sentry.trace.parent_span_id';
 
+export const SENTRY_TRACE_PARENT_SPAN_ID_KEYS = ['sentry.trace.parent_span_id'] as const;
+
 /**
  * Type for {@link SENTRY_TRACE_PARENT_SPAN_ID} sentry.trace.parent_span_id
  */
@@ -15304,6 +17073,8 @@ export type SENTRY_TRACE_PARENT_SPAN_ID_TYPE = string;
  * @example "ok"
  */
 export const SENTRY_TRACE_STATUS = 'sentry.trace.status';
+
+export const SENTRY_TRACE_STATUS_KEYS = ['sentry.trace.status'] as const;
 
 /**
  * Type for {@link SENTRY_TRACE_STATUS} sentry.trace.status
@@ -15329,6 +17100,8 @@ export type SENTRY_TRACE_STATUS_TYPE = string;
  */
 export const SENTRY_TRANSACTION = 'sentry.transaction';
 
+export const SENTRY_TRANSACTION_KEYS = ['sentry.segment.name', 'sentry.transaction', 'transaction'] as const;
+
 /**
  * Type for {@link SENTRY_TRANSACTION} sentry.transaction
  */
@@ -15351,6 +17124,8 @@ export type SENTRY_TRANSACTION_TYPE = string;
  * @deprecated Use {@link USER_EMAIL} (user.email) instead
  */
 export const SENTRY_USER_EMAIL = 'sentry.user.email';
+
+export const SENTRY_USER_EMAIL_KEYS = ['user.email', 'sentry.user.email'] as const;
 
 /**
  * Type for {@link SENTRY_USER_EMAIL} sentry.user.email
@@ -15375,6 +17150,8 @@ export type SENTRY_USER_EMAIL_TYPE = string;
  */
 export const SENTRY_USER_GEO_CITY = 'sentry.user.geo.city';
 
+export const SENTRY_USER_GEO_CITY_KEYS = ['user.geo.city', 'sentry.user.geo.city'] as const;
+
 /**
  * Type for {@link SENTRY_USER_GEO_CITY} sentry.user.geo.city
  */
@@ -15397,6 +17174,8 @@ export type SENTRY_USER_GEO_CITY_TYPE = string;
  * @deprecated Use {@link USER_GEO_COUNTRY_CODE} (user.geo.country_code) instead
  */
 export const SENTRY_USER_GEO_COUNTRY_CODE = 'sentry.user.geo.country_code';
+
+export const SENTRY_USER_GEO_COUNTRY_CODE_KEYS = ['user.geo.country_code', 'sentry.user.geo.country_code'] as const;
 
 /**
  * Type for {@link SENTRY_USER_GEO_COUNTRY_CODE} sentry.user.geo.country_code
@@ -15421,6 +17200,8 @@ export type SENTRY_USER_GEO_COUNTRY_CODE_TYPE = string;
  */
 export const SENTRY_USER_GEO_REGION = 'sentry.user.geo.region';
 
+export const SENTRY_USER_GEO_REGION_KEYS = ['user.geo.region', 'sentry.user.geo.region'] as const;
+
 /**
  * Type for {@link SENTRY_USER_GEO_REGION} sentry.user.geo.region
  */
@@ -15443,6 +17224,8 @@ export type SENTRY_USER_GEO_REGION_TYPE = string;
  * @deprecated Use {@link USER_GEO_SUBDIVISION} (user.geo.subdivision) instead
  */
 export const SENTRY_USER_GEO_SUBDIVISION = 'sentry.user.geo.subdivision';
+
+export const SENTRY_USER_GEO_SUBDIVISION_KEYS = ['user.geo.subdivision', 'sentry.user.geo.subdivision'] as const;
 
 /**
  * Type for {@link SENTRY_USER_GEO_SUBDIVISION} sentry.user.geo.subdivision
@@ -15467,6 +17250,8 @@ export type SENTRY_USER_GEO_SUBDIVISION_TYPE = string;
  */
 export const SENTRY_USER_ID = 'sentry.user.id';
 
+export const SENTRY_USER_ID_KEYS = ['user.id', 'sentry.user.id'] as const;
+
 /**
  * Type for {@link SENTRY_USER_ID} sentry.user.id
  */
@@ -15489,6 +17274,8 @@ export type SENTRY_USER_ID_TYPE = string;
  * @deprecated Use {@link USER_IP_ADDRESS} (user.ip_address) instead
  */
 export const SENTRY_USER_IP = 'sentry.user.ip';
+
+export const SENTRY_USER_IP_KEYS = ['user.ip_address', 'sentry.user.ip'] as const;
 
 /**
  * Type for {@link SENTRY_USER_IP} sentry.user.ip
@@ -15513,6 +17300,8 @@ export type SENTRY_USER_IP_TYPE = string;
  */
 export const SENTRY_USER_USERNAME = 'sentry.user.username';
 
+export const SENTRY_USER_USERNAME_KEYS = ['user.name', 'sentry.user.username'] as const;
+
 /**
  * Type for {@link SENTRY_USER_USERNAME} sentry.user.username
  */
@@ -15535,6 +17324,16 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * @example "example.com"
  */
 export const SERVER_ADDRESS = 'server.address';
+
+export const SERVER_ADDRESS_KEYS = [
+  'server.address',
+  'address',
+  'http.host',
+  'http.server_name',
+  'net.host.name',
+  'net.peer.name',
+  'server_name',
+] as const;
 
 /**
  * Type for {@link SERVER_ADDRESS} server.address
@@ -15560,6 +17359,16 @@ export type SERVER_ADDRESS_TYPE = string;
  */
 export const SERVER_NAME = 'server_name';
 
+export const SERVER_NAME_KEYS = [
+  'server.address',
+  'address',
+  'http.host',
+  'http.server_name',
+  'net.host.name',
+  'net.peer.name',
+  'server_name',
+] as const;
+
 /**
  * Type for {@link SERVER_NAME} server_name
  */
@@ -15583,6 +17392,8 @@ export type SERVER_NAME_TYPE = string;
  */
 export const SERVER_PORT = 'server.port';
 
+export const SERVER_PORT_KEYS = ['server.port', 'net.host.port', 'net.peer.port', 'port'] as const;
+
 /**
  * Type for {@link SERVER_PORT} server.port
  */
@@ -15603,6 +17414,8 @@ export type SERVER_PORT_TYPE = number;
  * @example "omegastar"
  */
 export const SERVICE_NAME = 'service.name';
+
+export const SERVICE_NAME_KEYS = ['service.name'] as const;
 
 /**
  * Type for {@link SERVICE_NAME} service.name
@@ -15627,6 +17440,8 @@ export type SERVICE_NAME_TYPE = string;
  */
 export const SERVICE_VERSION = 'service.version';
 
+export const SERVICE_VERSION_KEYS = ['service.version'] as const;
+
 /**
  * Type for {@link SERVICE_VERSION} service.version
  */
@@ -15647,6 +17462,8 @@ export type SERVICE_VERSION_TYPE = string;
  * @example "00112233-4455-6677-8899-aabbccddeeff"
  */
 export const SESSION_ID = 'session.id';
+
+export const SESSION_ID_KEYS = ['session.id'] as const;
 
 /**
  * Type for {@link SESSION_ID} session.id
@@ -15671,6 +17488,8 @@ export type SESSION_ID_TYPE = string;
  */
 export const STALL_PERCENTAGE = 'stall_percentage';
 
+export const STALL_PERCENTAGE_KEYS = ['app.vitals.stall.percentage', 'stall_percentage'] as const;
+
 /**
  * Type for {@link STALL_PERCENTAGE} stall_percentage
  */
@@ -15693,6 +17512,8 @@ export type STALL_PERCENTAGE_TYPE = number;
  * @deprecated Use {@link APP_VITALS_STALL_DURATION} (app.vitals.stall.duration) instead - Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const STALL_TOTAL_TIME = 'stall_total_time';
+
+export const STALL_TOTAL_TIME_KEYS = ['app.vitals.stall.duration', 'stall_total_time'] as const;
 
 /**
  * Type for {@link STALL_TOTAL_TIME} stall_total_time
@@ -15718,6 +17539,14 @@ export type STALL_TOTAL_TIME_TYPE = number;
  */
 export const STARLETTE_MIDDLEWARE_NAME = 'starlette.middleware_name';
 
+export const STARLETTE_MIDDLEWARE_NAME_KEYS = [
+  'middleware.name',
+  'django.middleware_name',
+  'litestar.middleware_name',
+  'starlette.middleware_name',
+  'starlite.middleware_name',
+] as const;
+
 /**
  * Type for {@link STARLETTE_MIDDLEWARE_NAME} starlette.middleware_name
  */
@@ -15742,6 +17571,14 @@ export type STARLETTE_MIDDLEWARE_NAME_TYPE = string;
  */
 export const STARLITE_MIDDLEWARE_NAME = 'starlite.middleware_name';
 
+export const STARLITE_MIDDLEWARE_NAME_KEYS = [
+  'middleware.name',
+  'django.middleware_name',
+  'litestar.middleware_name',
+  'starlette.middleware_name',
+  'starlite.middleware_name',
+] as const;
+
 /**
  * Type for {@link STARLITE_MIDDLEWARE_NAME} starlite.middleware_name
  */
@@ -15762,6 +17599,8 @@ export type STARLITE_MIDDLEWARE_NAME_TYPE = string;
  * @example "redux"
  */
 export const STATE_TYPE = 'state.type';
+
+export const STATE_TYPE_KEYS = ['state.type'] as const;
 
 /**
  * Type for {@link STATE_TYPE} state.type
@@ -15787,6 +17626,8 @@ export type STATE_TYPE_TYPE = string;
  */
 export const SUBPROCESS_PID = 'subprocess.pid';
 
+export const SUBPROCESS_PID_KEYS = ['process.pid', 'subprocess.pid'] as const;
+
 /**
  * Type for {@link SUBPROCESS_PID} subprocess.pid
  */
@@ -15807,6 +17648,8 @@ export type SUBPROCESS_PID_TYPE = number;
  * @example 56
  */
 export const THREAD_ID = 'thread.id';
+
+export const THREAD_ID_KEYS = ['thread.id', 'sentry.thread.id'] as const;
 
 /**
  * Type for {@link THREAD_ID} thread.id
@@ -15829,6 +17672,8 @@ export type THREAD_ID_TYPE = number;
  */
 export const THREAD_NAME = 'thread.name';
 
+export const THREAD_NAME_KEYS = ['thread.name'] as const;
+
 /**
  * Type for {@link THREAD_NAME} thread.name
  */
@@ -15849,6 +17694,8 @@ export type THREAD_NAME_TYPE = string;
  * @example "MyTag"
  */
 export const TIMBER_TAG = 'timber.tag';
+
+export const TIMBER_TAG_KEYS = ['timber.tag'] as const;
 
 /**
  * Type for {@link TIMBER_TAG} timber.tag
@@ -15874,6 +17721,8 @@ export type TIMBER_TAG_TYPE = string;
  */
 export const TIME_TO_FULL_DISPLAY = 'time_to_full_display';
 
+export const TIME_TO_FULL_DISPLAY_KEYS = ['app.vitals.ttfd.value', 'time_to_full_display'] as const;
+
 /**
  * Type for {@link TIME_TO_FULL_DISPLAY} time_to_full_display
  */
@@ -15897,6 +17746,8 @@ export type TIME_TO_FULL_DISPLAY_TYPE = number;
  * @example 1234.56
  */
 export const TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
+
+export const TIME_TO_INITIAL_DISPLAY_KEYS = ['app.vitals.ttid.value', 'time_to_initial_display'] as const;
 
 /**
  * Type for {@link TIME_TO_INITIAL_DISPLAY} time_to_initial_display
@@ -15922,6 +17773,8 @@ export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
  */
 export const TRANSACTION = 'transaction';
 
+export const TRANSACTION_KEYS = ['sentry.segment.name', 'sentry.transaction', 'transaction'] as const;
+
 /**
  * Type for {@link TRANSACTION} transaction
  */
@@ -15943,6 +17796,8 @@ export type TRANSACTION_TYPE = string;
  */
 export const TRPC_PROCEDURE_PATH = 'trpc.procedure_path';
 
+export const TRPC_PROCEDURE_PATH_KEYS = ['trpc.procedure_path'] as const;
+
 /**
  * Type for {@link TRPC_PROCEDURE_PATH} trpc.procedure_path
  */
@@ -15963,6 +17818,8 @@ export type TRPC_PROCEDURE_PATH_TYPE = string;
  * @example "query"
  */
 export const TRPC_PROCEDURE_TYPE = 'trpc.procedure_type';
+
+export const TRPC_PROCEDURE_TYPE_KEYS = ['trpc.procedure_type'] as const;
 
 /**
  * Type for {@link TRPC_PROCEDURE_TYPE} trpc.procedure_type
@@ -15988,6 +17845,8 @@ export type TRPC_PROCEDURE_TYPE_TYPE = string;
  */
 export const TTFB = 'ttfb';
 
+export const TTFB_KEYS = ['browser.web_vital.ttfb.value', 'ttfb'] as const;
+
 /**
  * Type for {@link TTFB} ttfb
  */
@@ -16012,6 +17871,8 @@ export type TTFB_TYPE = number;
  */
 export const TTFB_REQUESTTIME = 'ttfb.requestTime';
 
+export const TTFB_REQUESTTIME_KEYS = ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'] as const;
+
 /**
  * Type for {@link TTFB_REQUESTTIME} ttfb.requestTime
  */
@@ -16032,6 +17893,8 @@ export type TTFB_REQUESTTIME_TYPE = number;
  * @example "fetch"
  */
 export const TYPE = 'type';
+
+export const TYPE_KEYS = ['type'] as const;
 
 /**
  * Type for {@link TYPE} type
@@ -16054,6 +17917,8 @@ export type TYPE_TYPE = string;
  */
 export const UI_COMPONENT_NAME = 'ui.component_name';
 
+export const UI_COMPONENT_NAME_KEYS = ['ui.component_name'] as const;
+
 /**
  * Type for {@link UI_COMPONENT_NAME} ui.component_name
  */
@@ -16074,6 +17939,8 @@ export type UI_COMPONENT_NAME_TYPE = string;
  * @example true
  */
 export const UI_CONTRIBUTES_TO_TTFD = 'ui.contributes_to_ttfd';
+
+export const UI_CONTRIBUTES_TO_TTFD_KEYS = ['ui.contributes_to_ttfd'] as const;
 
 /**
  * Type for {@link UI_CONTRIBUTES_TO_TTFD} ui.contributes_to_ttfd
@@ -16096,6 +17963,8 @@ export type UI_CONTRIBUTES_TO_TTFD_TYPE = boolean;
  */
 export const UI_CONTRIBUTES_TO_TTID = 'ui.contributes_to_ttid';
 
+export const UI_CONTRIBUTES_TO_TTID_KEYS = ['ui.contributes_to_ttid'] as const;
+
 /**
  * Type for {@link UI_CONTRIBUTES_TO_TTID} ui.contributes_to_ttid
  */
@@ -16116,6 +17985,8 @@ export type UI_CONTRIBUTES_TO_TTID_TYPE = boolean;
  * @example 256
  */
 export const UI_ELEMENT_HEIGHT = 'ui.element.height';
+
+export const UI_ELEMENT_HEIGHT_KEYS = ['ui.element.height'] as const;
 
 /**
  * Type for {@link UI_ELEMENT_HEIGHT} ui.element.height
@@ -16138,6 +18009,8 @@ export type UI_ELEMENT_HEIGHT_TYPE = number;
  */
 export const UI_ELEMENT_ID = 'ui.element.id';
 
+export const UI_ELEMENT_ID_KEYS = ['ui.element.id'] as const;
+
 /**
  * Type for {@link UI_ELEMENT_ID} ui.element.id
  */
@@ -16158,6 +18031,8 @@ export type UI_ELEMENT_ID_TYPE = string;
  * @example "heroImage"
  */
 export const UI_ELEMENT_IDENTIFIER = 'ui.element.identifier';
+
+export const UI_ELEMENT_IDENTIFIER_KEYS = ['ui.element.identifier'] as const;
 
 /**
  * Type for {@link UI_ELEMENT_IDENTIFIER} ui.element.identifier
@@ -16180,6 +18055,8 @@ export type UI_ELEMENT_IDENTIFIER_TYPE = string;
  */
 export const UI_ELEMENT_LOAD_TIME = 'ui.element.load_time';
 
+export const UI_ELEMENT_LOAD_TIME_KEYS = ['ui.element.load_time'] as const;
+
 /**
  * Type for {@link UI_ELEMENT_LOAD_TIME} ui.element.load_time
  */
@@ -16200,6 +18077,8 @@ export type UI_ELEMENT_LOAD_TIME_TYPE = number;
  * @example "image-paint"
  */
 export const UI_ELEMENT_PAINT_TYPE = 'ui.element.paint_type';
+
+export const UI_ELEMENT_PAINT_TYPE_KEYS = ['ui.element.paint_type'] as const;
 
 /**
  * Type for {@link UI_ELEMENT_PAINT_TYPE} ui.element.paint_type
@@ -16222,6 +18101,8 @@ export type UI_ELEMENT_PAINT_TYPE_TYPE = string;
  */
 export const UI_ELEMENT_RENDER_TIME = 'ui.element.render_time';
 
+export const UI_ELEMENT_RENDER_TIME_KEYS = ['ui.element.render_time'] as const;
+
 /**
  * Type for {@link UI_ELEMENT_RENDER_TIME} ui.element.render_time
  */
@@ -16242,6 +18123,8 @@ export type UI_ELEMENT_RENDER_TIME_TYPE = number;
  * @example "img"
  */
 export const UI_ELEMENT_TYPE = 'ui.element.type';
+
+export const UI_ELEMENT_TYPE_KEYS = ['ui.element.type'] as const;
 
 /**
  * Type for {@link UI_ELEMENT_TYPE} ui.element.type
@@ -16264,6 +18147,8 @@ export type UI_ELEMENT_TYPE_TYPE = string;
  */
 export const UI_ELEMENT_URL = 'ui.element.url';
 
+export const UI_ELEMENT_URL_KEYS = ['ui.element.url'] as const;
+
 /**
  * Type for {@link UI_ELEMENT_URL} ui.element.url
  */
@@ -16284,6 +18169,8 @@ export type UI_ELEMENT_URL_TYPE = string;
  * @example 512
  */
 export const UI_ELEMENT_WIDTH = 'ui.element.width';
+
+export const UI_ELEMENT_WIDTH_KEYS = ['ui.element.width'] as const;
 
 /**
  * Type for {@link UI_ELEMENT_WIDTH} ui.element.width
@@ -16309,6 +18196,8 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  */
 export const URL = 'url';
 
+export const URL_KEYS = ['url.full', 'aws.request.url', 'http.url', 'url'] as const;
+
 /**
  * Type for {@link URL} url
  */
@@ -16330,6 +18219,8 @@ export type URL_TYPE = string;
  */
 export const URL_DOMAIN = 'url.domain';
 
+export const URL_DOMAIN_KEYS = ['url.domain'] as const;
+
 /**
  * Type for {@link URL_DOMAIN} url.domain
  */
@@ -16350,6 +18241,8 @@ export type URL_DOMAIN_TYPE = string;
  * @example "details"
  */
 export const URL_FRAGMENT = 'url.fragment';
+
+export const URL_FRAGMENT_KEYS = ['url.fragment'] as const;
 
 /**
  * Type for {@link URL_FRAGMENT} url.fragment
@@ -16374,6 +18267,8 @@ export type URL_FRAGMENT_TYPE = string;
  */
 export const URL_FULL = 'url.full';
 
+export const URL_FULL_KEYS = ['url.full', 'aws.request.url', 'http.url', 'url'] as const;
+
 /**
  * Type for {@link URL_FULL} url.full
  */
@@ -16394,6 +18289,8 @@ export type URL_FULL_TYPE = string;
  * @example "/foo"
  */
 export const URL_PATH = 'url.path';
+
+export const URL_PATH_KEYS = ['url.path', 'http.target'] as const;
 
 /**
  * Type for {@link URL_PATH} url.path
@@ -16419,6 +18316,8 @@ export type URL_PATH_TYPE = string;
  * @example "url.path.parameter.id='123'"
  */
 export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
+
+export const URL_PATH_PARAMETER_KEY_KEYS = ['url.path.parameter.<key>'] as const;
 
 /**
  * Base key for {@link URL_PATH_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMETER_KEY_BASE}.${key}`.
@@ -16446,6 +18345,8 @@ export type URL_PATH_PARAMETER_KEY_TYPE = string;
  */
 export const URL_PORT = 'url.port';
 
+export const URL_PORT_KEYS = ['url.port'] as const;
+
 /**
  * Type for {@link URL_PORT} url.port
  */
@@ -16466,6 +18367,8 @@ export type URL_PORT_TYPE = number;
  * @example "foo=bar&bar=baz"
  */
 export const URL_QUERY = 'url.query';
+
+export const URL_QUERY_KEYS = ['url.query', 'query.<key>'] as const;
 
 /**
  * Type for {@link URL_QUERY} url.query
@@ -16491,6 +18394,8 @@ export type URL_QUERY_TYPE = string;
  */
 export const URL_SAME_ORIGIN = 'url.same_origin';
 
+export const URL_SAME_ORIGIN_KEYS = ['http.request.same_origin', 'url.same_origin'] as const;
+
 /**
  * Type for {@link URL_SAME_ORIGIN} url.same_origin
  */
@@ -16513,6 +18418,8 @@ export type URL_SAME_ORIGIN_TYPE = boolean;
  * @example "https"
  */
 export const URL_SCHEME = 'url.scheme';
+
+export const URL_SCHEME_KEYS = ['url.scheme', 'http.scheme'] as const;
 
 /**
  * Type for {@link URL_SCHEME} url.scheme
@@ -16537,6 +18444,8 @@ export type URL_SCHEME_TYPE = string;
  */
 export const URL_TEMPLATE = 'url.template';
 
+export const URL_TEMPLATE_KEYS = ['url.template'] as const;
+
 /**
  * Type for {@link URL_TEMPLATE} url.template
  */
@@ -16559,6 +18468,8 @@ export type URL_TEMPLATE_TYPE = string;
  * @example "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
  */
 export const USER_AGENT_ORIGINAL = 'user_agent.original';
+
+export const USER_AGENT_ORIGINAL_KEYS = ['user_agent.original', 'http.user_agent'] as const;
 
 /**
  * Type for {@link USER_AGENT_ORIGINAL} user_agent.original
@@ -16583,6 +18494,8 @@ export type USER_AGENT_ORIGINAL_TYPE = string;
  */
 export const USER_EMAIL = 'user.email';
 
+export const USER_EMAIL_KEYS = ['user.email', 'sentry.user.email'] as const;
+
 /**
  * Type for {@link USER_EMAIL} user.email
  */
@@ -16603,6 +18516,8 @@ export type USER_EMAIL_TYPE = string;
  * @example "John Smith"
  */
 export const USER_FULL_NAME = 'user.full_name';
+
+export const USER_FULL_NAME_KEYS = ['user.full_name'] as const;
 
 /**
  * Type for {@link USER_FULL_NAME} user.full_name
@@ -16627,6 +18542,8 @@ export type USER_FULL_NAME_TYPE = string;
  */
 export const USER_GEO_CITY = 'user.geo.city';
 
+export const USER_GEO_CITY_KEYS = ['user.geo.city', 'sentry.user.geo.city'] as const;
+
 /**
  * Type for {@link USER_GEO_CITY} user.geo.city
  */
@@ -16649,6 +18566,8 @@ export type USER_GEO_CITY_TYPE = string;
  * @example "CA"
  */
 export const USER_GEO_COUNTRY_CODE = 'user.geo.country_code';
+
+export const USER_GEO_COUNTRY_CODE_KEYS = ['user.geo.country_code', 'sentry.user.geo.country_code'] as const;
 
 /**
  * Type for {@link USER_GEO_COUNTRY_CODE} user.geo.country_code
@@ -16673,6 +18592,8 @@ export type USER_GEO_COUNTRY_CODE_TYPE = string;
  */
 export const USER_GEO_REGION = 'user.geo.region';
 
+export const USER_GEO_REGION_KEYS = ['user.geo.region', 'sentry.user.geo.region'] as const;
+
 /**
  * Type for {@link USER_GEO_REGION} user.geo.region
  */
@@ -16696,6 +18617,8 @@ export type USER_GEO_REGION_TYPE = string;
  */
 export const USER_GEO_SUBDIVISION = 'user.geo.subdivision';
 
+export const USER_GEO_SUBDIVISION_KEYS = ['user.geo.subdivision', 'sentry.user.geo.subdivision'] as const;
+
 /**
  * Type for {@link USER_GEO_SUBDIVISION} user.geo.subdivision
  */
@@ -16716,6 +18639,8 @@ export type USER_GEO_SUBDIVISION_TYPE = string;
  * @example "8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d"
  */
 export const USER_HASH = 'user.hash';
+
+export const USER_HASH_KEYS = ['user.hash'] as const;
 
 /**
  * Type for {@link USER_HASH} user.hash
@@ -16740,6 +18665,8 @@ export type USER_HASH_TYPE = string;
  */
 export const USER_ID = 'user.id';
 
+export const USER_ID_KEYS = ['user.id', 'sentry.user.id'] as const;
+
 /**
  * Type for {@link USER_ID} user.id
  */
@@ -16762,6 +18689,8 @@ export type USER_ID_TYPE = string;
  * @example "192.168.1.1"
  */
 export const USER_IP_ADDRESS = 'user.ip_address';
+
+export const USER_IP_ADDRESS_KEYS = ['user.ip_address', 'sentry.user.ip'] as const;
 
 /**
  * Type for {@link USER_IP_ADDRESS} user.ip_address
@@ -16786,6 +18715,8 @@ export type USER_IP_ADDRESS_TYPE = string;
  */
 export const USER_NAME = 'user.name';
 
+export const USER_NAME_KEYS = ['user.name', 'sentry.user.username'] as const;
+
 /**
  * Type for {@link USER_NAME} user.name
  */
@@ -16806,6 +18737,8 @@ export type USER_NAME_TYPE = string;
  * @example ["admin","editor"]
  */
 export const USER_ROLES = 'user.roles';
+
+export const USER_ROLES_KEYS = ['user.roles'] as const;
 
 /**
  * Type for {@link USER_ROLES} user.roles
@@ -16828,6 +18761,8 @@ export type USER_ROLES_TYPE = Array<string>;
  */
 export const VERCEL_BRANCH = 'vercel.branch';
 
+export const VERCEL_BRANCH_KEYS = ['vercel.branch'] as const;
+
 /**
  * Type for {@link VERCEL_BRANCH} vercel.branch
  */
@@ -16848,6 +18783,8 @@ export type VERCEL_BRANCH_TYPE = string;
  * @example "bld_cotnkcr76"
  */
 export const VERCEL_BUILD_ID = 'vercel.build_id';
+
+export const VERCEL_BUILD_ID_KEYS = ['vercel.build_id'] as const;
 
 /**
  * Type for {@link VERCEL_BUILD_ID} vercel.build_id
@@ -16870,6 +18807,8 @@ export type VERCEL_BUILD_ID_TYPE = string;
  */
 export const VERCEL_DEPLOYMENT_ID = 'vercel.deployment_id';
 
+export const VERCEL_DEPLOYMENT_ID_KEYS = ['vercel.deployment_id'] as const;
+
 /**
  * Type for {@link VERCEL_DEPLOYMENT_ID} vercel.deployment_id
  */
@@ -16890,6 +18829,8 @@ export type VERCEL_DEPLOYMENT_ID_TYPE = string;
  * @example "https://vitals.vercel-insights.com/v1"
  */
 export const VERCEL_DESTINATION = 'vercel.destination';
+
+export const VERCEL_DESTINATION_KEYS = ['vercel.destination'] as const;
 
 /**
  * Type for {@link VERCEL_DESTINATION} vercel.destination
@@ -16912,6 +18853,8 @@ export type VERCEL_DESTINATION_TYPE = string;
  */
 export const VERCEL_EDGE_TYPE = 'vercel.edge_type';
 
+export const VERCEL_EDGE_TYPE_KEYS = ['vercel.edge_type'] as const;
+
 /**
  * Type for {@link VERCEL_EDGE_TYPE} vercel.edge_type
  */
@@ -16932,6 +18875,8 @@ export type VERCEL_EDGE_TYPE_TYPE = string;
  * @example "api/index.js"
  */
 export const VERCEL_ENTRYPOINT = 'vercel.entrypoint';
+
+export const VERCEL_ENTRYPOINT_KEYS = ['vercel.entrypoint'] as const;
 
 /**
  * Type for {@link VERCEL_ENTRYPOINT} vercel.entrypoint
@@ -16954,6 +18899,8 @@ export type VERCEL_ENTRYPOINT_TYPE = string;
  */
 export const VERCEL_EXECUTION_REGION = 'vercel.execution_region';
 
+export const VERCEL_EXECUTION_REGION_KEYS = ['vercel.execution_region'] as const;
+
 /**
  * Type for {@link VERCEL_EXECUTION_REGION} vercel.execution_region
  */
@@ -16974,6 +18921,8 @@ export type VERCEL_EXECUTION_REGION_TYPE = string;
  * @example "1573817187330377061717300000"
  */
 export const VERCEL_ID = 'vercel.id';
+
+export const VERCEL_ID_KEYS = ['vercel.id'] as const;
 
 /**
  * Type for {@link VERCEL_ID} vercel.id
@@ -16996,6 +18945,8 @@ export type VERCEL_ID_TYPE = string;
  */
 export const VERCEL_JA3_DIGEST = 'vercel.ja3_digest';
 
+export const VERCEL_JA3_DIGEST_KEYS = ['vercel.ja3_digest'] as const;
+
 /**
  * Type for {@link VERCEL_JA3_DIGEST} vercel.ja3_digest
  */
@@ -17016,6 +18967,8 @@ export type VERCEL_JA3_DIGEST_TYPE = string;
  * @example "t13d1516h2_8daaf6152771_02713d6af862"
  */
 export const VERCEL_JA4_DIGEST = 'vercel.ja4_digest';
+
+export const VERCEL_JA4_DIGEST_KEYS = ['vercel.ja4_digest'] as const;
 
 /**
  * Type for {@link VERCEL_JA4_DIGEST} vercel.ja4_digest
@@ -17038,6 +18991,8 @@ export type VERCEL_JA4_DIGEST_TYPE = string;
  */
 export const VERCEL_LOG_TYPE = 'vercel.log_type';
 
+export const VERCEL_LOG_TYPE_KEYS = ['vercel.log_type'] as const;
+
 /**
  * Type for {@link VERCEL_LOG_TYPE} vercel.log_type
  */
@@ -17058,6 +19013,8 @@ export type VERCEL_LOG_TYPE_TYPE = string;
  * @example "/dynamic/[route].json"
  */
 export const VERCEL_PATH = 'vercel.path';
+
+export const VERCEL_PATH_KEYS = ['vercel.path'] as const;
 
 /**
  * Type for {@link VERCEL_PATH} vercel.path
@@ -17080,6 +19037,8 @@ export type VERCEL_PATH_TYPE = string;
  */
 export const VERCEL_PROJECT_ID = 'vercel.project_id';
 
+export const VERCEL_PROJECT_ID_KEYS = ['vercel.project_id'] as const;
+
 /**
  * Type for {@link VERCEL_PROJECT_ID} vercel.project_id
  */
@@ -17100,6 +19059,8 @@ export type VERCEL_PROJECT_ID_TYPE = string;
  * @example "my-app"
  */
 export const VERCEL_PROJECT_NAME = 'vercel.project_name';
+
+export const VERCEL_PROJECT_NAME_KEYS = ['vercel.project_name'] as const;
 
 /**
  * Type for {@link VERCEL_PROJECT_NAME} vercel.project_name
@@ -17122,6 +19083,8 @@ export type VERCEL_PROJECT_NAME_TYPE = string;
  */
 export const VERCEL_PROXY_CACHE_ID = 'vercel.proxy.cache_id';
 
+export const VERCEL_PROXY_CACHE_ID_KEYS = ['vercel.proxy.cache_id'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_CACHE_ID} vercel.proxy.cache_id
  */
@@ -17142,6 +19105,8 @@ export type VERCEL_PROXY_CACHE_ID_TYPE = string;
  * @example "120.75.16.101"
  */
 export const VERCEL_PROXY_CLIENT_IP = 'vercel.proxy.client_ip';
+
+export const VERCEL_PROXY_CLIENT_IP_KEYS = ['vercel.proxy.client_ip'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_CLIENT_IP} vercel.proxy.client_ip
@@ -17164,6 +19129,8 @@ export type VERCEL_PROXY_CLIENT_IP_TYPE = string;
  */
 export const VERCEL_PROXY_HOST = 'vercel.proxy.host';
 
+export const VERCEL_PROXY_HOST_KEYS = ['vercel.proxy.host'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_HOST} vercel.proxy.host
  */
@@ -17184,6 +19151,8 @@ export type VERCEL_PROXY_HOST_TYPE = string;
  * @example "sfo1"
  */
 export const VERCEL_PROXY_LAMBDA_REGION = 'vercel.proxy.lambda_region';
+
+export const VERCEL_PROXY_LAMBDA_REGION_KEYS = ['vercel.proxy.lambda_region'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_LAMBDA_REGION} vercel.proxy.lambda_region
@@ -17206,6 +19175,8 @@ export type VERCEL_PROXY_LAMBDA_REGION_TYPE = string;
  */
 export const VERCEL_PROXY_METHOD = 'vercel.proxy.method';
 
+export const VERCEL_PROXY_METHOD_KEYS = ['vercel.proxy.method'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_METHOD} vercel.proxy.method
  */
@@ -17226,6 +19197,8 @@ export type VERCEL_PROXY_METHOD_TYPE = string;
  * @example "/dynamic/some-value.json?route=some-value"
  */
 export const VERCEL_PROXY_PATH = 'vercel.proxy.path';
+
+export const VERCEL_PROXY_PATH_KEYS = ['vercel.proxy.path'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_PATH} vercel.proxy.path
@@ -17248,6 +19221,8 @@ export type VERCEL_PROXY_PATH_TYPE = string;
  */
 export const VERCEL_PROXY_PATH_TYPE = 'vercel.proxy.path_type';
 
+export const VERCEL_PROXY_PATH_TYPE_KEYS = ['vercel.proxy.path_type'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_PATH_TYPE} vercel.proxy.path_type
  */
@@ -17268,6 +19243,8 @@ export type VERCEL_PROXY_PATH_TYPE_TYPE = string;
  * @example "api"
  */
 export const VERCEL_PROXY_PATH_TYPE_VARIANT = 'vercel.proxy.path_type_variant';
+
+export const VERCEL_PROXY_PATH_TYPE_VARIANT_KEYS = ['vercel.proxy.path_type_variant'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_PATH_TYPE_VARIANT} vercel.proxy.path_type_variant
@@ -17290,6 +19267,8 @@ export type VERCEL_PROXY_PATH_TYPE_VARIANT_TYPE = string;
  */
 export const VERCEL_PROXY_REFERER = 'vercel.proxy.referer';
 
+export const VERCEL_PROXY_REFERER_KEYS = ['vercel.proxy.referer'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_REFERER} vercel.proxy.referer
  */
@@ -17310,6 +19289,8 @@ export type VERCEL_PROXY_REFERER_TYPE = string;
  * @example "sfo1"
  */
 export const VERCEL_PROXY_REGION = 'vercel.proxy.region';
+
+export const VERCEL_PROXY_REGION_KEYS = ['vercel.proxy.region'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_REGION} vercel.proxy.region
@@ -17332,6 +19313,8 @@ export type VERCEL_PROXY_REGION_TYPE = string;
  */
 export const VERCEL_PROXY_RESPONSE_BYTE_SIZE = 'vercel.proxy.response_byte_size';
 
+export const VERCEL_PROXY_RESPONSE_BYTE_SIZE_KEYS = ['vercel.proxy.response_byte_size'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_RESPONSE_BYTE_SIZE} vercel.proxy.response_byte_size
  */
@@ -17352,6 +19335,8 @@ export type VERCEL_PROXY_RESPONSE_BYTE_SIZE_TYPE = number;
  * @example "https"
  */
 export const VERCEL_PROXY_SCHEME = 'vercel.proxy.scheme';
+
+export const VERCEL_PROXY_SCHEME_KEYS = ['vercel.proxy.scheme'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_SCHEME} vercel.proxy.scheme
@@ -17374,6 +19359,8 @@ export type VERCEL_PROXY_SCHEME_TYPE = string;
  */
 export const VERCEL_PROXY_STATUS_CODE = 'vercel.proxy.status_code';
 
+export const VERCEL_PROXY_STATUS_CODE_KEYS = ['vercel.proxy.status_code'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_STATUS_CODE} vercel.proxy.status_code
  */
@@ -17394,6 +19381,8 @@ export type VERCEL_PROXY_STATUS_CODE_TYPE = number;
  * @example 1573817250172
  */
 export const VERCEL_PROXY_TIMESTAMP = 'vercel.proxy.timestamp';
+
+export const VERCEL_PROXY_TIMESTAMP_KEYS = ['vercel.proxy.timestamp'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_TIMESTAMP} vercel.proxy.timestamp
@@ -17416,6 +19405,8 @@ export type VERCEL_PROXY_TIMESTAMP_TYPE = number;
  */
 export const VERCEL_PROXY_USER_AGENT = 'vercel.proxy.user_agent';
 
+export const VERCEL_PROXY_USER_AGENT_KEYS = ['vercel.proxy.user_agent'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_USER_AGENT} vercel.proxy.user_agent
  */
@@ -17436,6 +19427,8 @@ export type VERCEL_PROXY_USER_AGENT_TYPE = Array<string>;
  * @example "REVALIDATED"
  */
 export const VERCEL_PROXY_VERCEL_CACHE = 'vercel.proxy.vercel_cache';
+
+export const VERCEL_PROXY_VERCEL_CACHE_KEYS = ['vercel.proxy.vercel_cache'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_VERCEL_CACHE} vercel.proxy.vercel_cache
@@ -17458,6 +19451,8 @@ export type VERCEL_PROXY_VERCEL_CACHE_TYPE = string;
  */
 export const VERCEL_PROXY_VERCEL_ID = 'vercel.proxy.vercel_id';
 
+export const VERCEL_PROXY_VERCEL_ID_KEYS = ['vercel.proxy.vercel_id'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_VERCEL_ID} vercel.proxy.vercel_id
  */
@@ -17478,6 +19473,8 @@ export type VERCEL_PROXY_VERCEL_ID_TYPE = string;
  * @example "deny"
  */
 export const VERCEL_PROXY_WAF_ACTION = 'vercel.proxy.waf_action';
+
+export const VERCEL_PROXY_WAF_ACTION_KEYS = ['vercel.proxy.waf_action'] as const;
 
 /**
  * Type for {@link VERCEL_PROXY_WAF_ACTION} vercel.proxy.waf_action
@@ -17500,6 +19497,8 @@ export type VERCEL_PROXY_WAF_ACTION_TYPE = string;
  */
 export const VERCEL_PROXY_WAF_RULE_ID = 'vercel.proxy.waf_rule_id';
 
+export const VERCEL_PROXY_WAF_RULE_ID_KEYS = ['vercel.proxy.waf_rule_id'] as const;
+
 /**
  * Type for {@link VERCEL_PROXY_WAF_RULE_ID} vercel.proxy.waf_rule_id
  */
@@ -17520,6 +19519,8 @@ export type VERCEL_PROXY_WAF_RULE_ID_TYPE = string;
  * @example "643af4e3-975a-4cc7-9e7a-1eda11539d90"
  */
 export const VERCEL_REQUEST_ID = 'vercel.request_id';
+
+export const VERCEL_REQUEST_ID_KEYS = ['vercel.request_id'] as const;
 
 /**
  * Type for {@link VERCEL_REQUEST_ID} vercel.request_id
@@ -17542,6 +19543,8 @@ export type VERCEL_REQUEST_ID_TYPE = string;
  */
 export const VERCEL_SOURCE = 'vercel.source';
 
+export const VERCEL_SOURCE_KEYS = ['vercel.source'] as const;
+
 /**
  * Type for {@link VERCEL_SOURCE} vercel.source
  */
@@ -17562,6 +19565,8 @@ export type VERCEL_SOURCE_TYPE = string;
  * @example 200
  */
 export const VERCEL_STATUS_CODE = 'vercel.status_code';
+
+export const VERCEL_STATUS_CODE_KEYS = ['vercel.status_code'] as const;
 
 /**
  * Type for {@link VERCEL_STATUS_CODE} vercel.status_code
