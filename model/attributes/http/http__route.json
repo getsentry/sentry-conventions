@@ -6,7 +6,7 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "examples": ["/users/:userID?", "my-controller/my-action/{id?}"],
+  "examples": ["/users/:id", "my-controller/my-action/{id}", "/posts"],
   "alias": ["url.template"],
   "visibility": "public",
   "changelog": [

@@ -6,7 +6,7 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "examples": ["/users/{id}", "/users/:id", "/users?id={id}"],
+  "examples": ["/users/{id}", "/users/:id", "/about"],
   "alias": ["http.route"],
   "visibility": "public",
   "changelog": [

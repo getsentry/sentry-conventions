@@ -9320,8 +9320,9 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  *
  * Aliases: {@link URL_TEMPLATE} `url.template`
  *
- * @example "/users/:userID?"
- * @example "my-controller/my-action/{id?}"
+ * @example "/users/:id"
+ * @example "my-controller/my-action/{id}"
+ * @example "/posts"
  */
 export const HTTP_ROUTE = 'http.route';
 
@@ -15834,7 +15835,7 @@ export type URL_SCHEME_TYPE = string;
  *
  * @example "/users/{id}"
  * @example "/users/:id"
- * @example "/users?id={id}"
+ * @example "/about"
  */
 export const URL_TEMPLATE = 'url.template';
 
@@ -24327,8 +24328,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/users/:userID?',
-    examples: ['/users/:userID?', 'my-controller/my-action/{id?}'],
+    example: '/users/:id',
+    examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
     aliases: ['url.template'],
     changelog: [
       { version: 'next', prs: [505], description: 'Added multiple examples' },
@@ -28304,7 +28305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '/users/{id}',
-    examples: ['/users/{id}', '/users/:id', '/users?id={id}'],
+    examples: ['/users/{id}', '/users/:id', '/about'],
     aliases: ['http.route'],
     changelog: [
       { version: 'next', prs: [505], description: 'Added multiple examples' },
