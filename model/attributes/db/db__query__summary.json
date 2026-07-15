@@ -11,6 +11,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [505],
       "description": "Added multiple examples"
     },
     {

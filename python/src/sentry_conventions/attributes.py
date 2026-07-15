@@ -12863,7 +12863,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="SELECT users",
         examples=["SELECT users", "INSERT products; UPDATE orders"],
         changelog=[
-            ChangelogEntry(version="next", description="Added multiple examples"),
+            ChangelogEntry(
+                version="next", prs=[505], description="Added multiple examples"
+            ),
             ChangelogEntry(version="0.4.0", prs=[208]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),

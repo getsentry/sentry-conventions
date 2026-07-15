@@ -21299,7 +21299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT users',
     examples: ['SELECT users', 'INSERT products; UPDATE orders'],
     changelog: [
-      { version: 'next', description: 'Added multiple examples' },
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
       { version: '0.4.0', prs: [208] },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
