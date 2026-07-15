@@ -1270,7 +1270,7 @@ export type APP_VITALS_FRAMES_DELAY_VALUE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FRAMES_FROZEN} `frames.frozen`
+ * Aliases: {@link FRAMES_FROZEN} `frames.frozen`, {@link SENTRY_FRAMES_FROZEN} `sentry.frames.frozen`
  *
  * @example 3
  */
@@ -1293,7 +1293,7 @@ export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FRAMES_SLOW} `frames.slow`
+ * Aliases: {@link FRAMES_SLOW} `frames.slow`, {@link SENTRY_FRAMES_SLOW} `sentry.frames.slow`
  *
  * @example 1
  */
@@ -1316,7 +1316,7 @@ export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FRAMES_TOTAL} `frames.total`
+ * Aliases: {@link FRAMES_TOTAL} `frames.total`, {@link SENTRY_FRAMES_TOTAL} `sentry.frames.total`
  *
  * @example 60
  */
@@ -6305,7 +6305,7 @@ export type FRAMES_DELAY_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`, {@link SENTRY_FRAMES_FROZEN} `sentry.frames.frozen`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_COUNT} (app.vitals.frames.frozen.count) instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 3
@@ -6348,7 +6348,7 @@ export type FRAMES_FROZEN_RATE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`, {@link SENTRY_FRAMES_SLOW} `sentry.frames.slow`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_COUNT} (app.vitals.frames.slow.count) instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 1
@@ -6391,7 +6391,7 @@ export type FRAMES_SLOW_RATE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`
+ * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`, {@link SENTRY_FRAMES_TOTAL} `sentry.frames.total`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_TOTAL_COUNT} (app.vitals.frames.total.count) instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 60
@@ -13379,6 +13379,78 @@ export const SENTRY_EXCLUSIVE_TIME = 'sentry.exclusive_time';
  */
 export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__frames__frozen.json
+
+/**
+ * The number of frozen frames rendered during the lifetime of the span. `sentry.frames.frozen`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_FRAMES_FROZEN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`, {@link FRAMES_FROZEN} `frames.frozen`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_COUNT} (app.vitals.frames.frozen.count) instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 3
+ */
+export const SENTRY_FRAMES_FROZEN = 'sentry.frames.frozen';
+
+/**
+ * Type for {@link SENTRY_FRAMES_FROZEN} sentry.frames.frozen
+ */
+export type SENTRY_FRAMES_FROZEN_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__frames__slow.json
+
+/**
+ * The number of slow frames rendered during the lifetime of the span. `sentry.frames.slow`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_FRAMES_SLOW_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`, {@link FRAMES_SLOW} `frames.slow`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_COUNT} (app.vitals.frames.slow.count) instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1
+ */
+export const SENTRY_FRAMES_SLOW = 'sentry.frames.slow';
+
+/**
+ * Type for {@link SENTRY_FRAMES_SLOW} sentry.frames.slow
+ */
+export type SENTRY_FRAMES_SLOW_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__frames__total.json
+
+/**
+ * The number of total frames rendered during the lifetime of the span. `sentry.frames.total`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_FRAMES_TOTAL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`, {@link FRAMES_TOTAL} `frames.total`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_TOTAL_COUNT} (app.vitals.frames.total.count) instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 60
+ */
+export const SENTRY_FRAMES_TOTAL = 'sentry.frames.total';
+
+/**
+ * Type for {@link SENTRY_FRAMES_TOTAL} sentry.frames.total
+ */
+export type SENTRY_FRAMES_TOTAL_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__graphql__operation.json
 
 /**
@@ -17302,6 +17374,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.dsc.transaction': 'string',
   'sentry.environment': 'string',
   'sentry.exclusive_time': 'double',
+  'sentry.frames.frozen': 'integer',
+  'sentry.frames.slow': 'integer',
+  'sentry.frames.total': 'integer',
   'sentry.graphql.operation': 'string',
   'sentry.group': 'string',
   'sentry.http.prefetch': 'boolean',
@@ -18057,6 +18132,9 @@ export type AttributeName =
   | typeof SENTRY_DSC_TRANSACTION
   | typeof SENTRY_ENVIRONMENT
   | typeof SENTRY_EXCLUSIVE_TIME
+  | typeof SENTRY_FRAMES_FROZEN
+  | typeof SENTRY_FRAMES_SLOW
+  | typeof SENTRY_FRAMES_TOTAL
   | typeof SENTRY_GRAPHQL_OPERATION
   | typeof SENTRY_GROUP
   | typeof SENTRY_HTTP_PREFETCH
@@ -19074,8 +19152,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3,
-    aliases: ['frames.frozen'],
+    aliases: ['frames.frozen', 'sentry.frames.frozen'],
     changelog: [
+      { version: 'next', description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
   },
@@ -19088,8 +19167,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    aliases: ['frames.slow'],
+    aliases: ['frames.slow', 'sentry.frames.slow'],
     changelog: [
+      { version: 'next', description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
   },
@@ -19102,8 +19182,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 60,
-    aliases: ['frames.total'],
+    aliases: ['frames.total', 'sentry.frames.total'],
     changelog: [
+      { version: 'next', description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
   },
@@ -21989,8 +22070,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
-    aliases: ['app.vitals.frames.frozen.count'],
+    aliases: ['app.vitals.frames.frozen.count', 'sentry.frames.frozen'],
     changelog: [
+      { version: 'next', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -22021,8 +22103,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
-    aliases: ['app.vitals.frames.slow.count'],
+    aliases: ['app.vitals.frames.slow.count', 'sentry.frames.slow'],
     changelog: [
+      { version: 'next', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -22053,8 +22136,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
     },
-    aliases: ['app.vitals.frames.total.count'],
+    aliases: ['app.vitals.frames.total.count', 'sentry.frames.total'],
     changelog: [
+      { version: 'next', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -26393,6 +26477,57 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.3.0', prs: [160] }, { version: '0.0.0' }],
   },
+  'sentry.frames.frozen': {
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 3,
+    deprecation: {
+      replacement: 'app.vitals.frames.frozen.count',
+      reason:
+        'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: ['app.vitals.frames.frozen.count', 'frames.frozen'],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
+  },
+  'sentry.frames.slow': {
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    deprecation: {
+      replacement: 'app.vitals.frames.slow.count',
+      reason:
+        'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: ['app.vitals.frames.slow.count', 'frames.slow'],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.slow attribute' }],
+  },
+  'sentry.frames.total': {
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 60,
+    deprecation: {
+      replacement: 'app.vitals.frames.total.count',
+      reason:
+        'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: ['app.vitals.frames.total.count', 'frames.total'],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.total attribute' }],
+  },
   'sentry.graphql.operation': {
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
     type: 'string',
@@ -28849,6 +28984,9 @@ export type Attributes = {
   [SENTRY_DSC_TRANSACTION]?: SENTRY_DSC_TRANSACTION_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
+  [SENTRY_FRAMES_FROZEN]?: SENTRY_FRAMES_FROZEN_TYPE;
+  [SENTRY_FRAMES_SLOW]?: SENTRY_FRAMES_SLOW_TYPE;
+  [SENTRY_FRAMES_TOTAL]?: SENTRY_FRAMES_TOTAL_TYPE;
   [SENTRY_GRAPHQL_OPERATION]?: SENTRY_GRAPHQL_OPERATION_TYPE;
   [SENTRY_GROUP]?: SENTRY_GROUP_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
