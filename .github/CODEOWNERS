@@ -4,3 +4,8 @@
 # Gen AI / AI attributes
 /model/attributes/gen_ai/ @getsentry/telemetry-experience
 /model/attributes/ai/ @getsentry/telemetry-experience
+
+# Generated files that aggregate every attribute namespace; left unowned so
+# individual namespace owners aren't required reviewers on unrelated diffs
+javascript/sentry-conventions/src/attributes.ts
+python/src/sentry_conventions/attributes.py
