@@ -9,12 +9,17 @@
   "example": "GET /",
   "alias": ["sentry.segment.name", "transaction"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "sentry.segment.name",
     "reason": "This attribute is being deprecated in favor of sentry.segment.name"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [497],
+      "description": "Change deprecation from backfill to normalize"
+    },
     {
       "version": "0.6.0",
       "prs": [345],
