@@ -26769,6 +26769,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.name', 'transaction'],
     changelog: [
+      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
       { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
       { version: '0.0.0' },
     ],
@@ -27084,6 +27085,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.name', 'sentry.transaction'],
     changelog: [
+      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
       {
         version: '0.6.0',
         prs: [345],
