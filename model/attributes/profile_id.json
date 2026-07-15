@@ -1,5 +1,5 @@
 {
-  "key": "sentry.profile_id",
+  "key": "profile_id",
   "brief": "The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
   "type": "string",
   "apply_scrubbing": {
@@ -7,18 +7,17 @@
   },
   "is_in_otel": false,
   "example": "123e4567e89b12d3a456426614174000",
-  "alias": ["profile_id"],
+  "alias": ["sentry.profile_id"],
+  "deprecation": {
+    "_status": "normalize",
+    "replacement": "sentry.profile_id"
+  },
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
-      "description": "Added profile_id as an alias",
+      "description": "Added profile_id attribute",
       "prs": [497]
-    },
-    {
-      "version": "0.6.0",
-      "prs": [344],
-      "description": "Added sentry.profile_id attribute"
     }
   ]
 }

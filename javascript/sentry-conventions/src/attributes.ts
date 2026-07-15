@@ -7206,26 +7206,26 @@ export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty'
  */
 export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
+// Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
 
 /**
- * Constrains the effort on reasoning for reasoning models. Supported values vary by provider. `gen_ai.request.reasoning_effort`
+ * The reasoning or thinking effort level requested for a GenAI model. `gen_ai.request.reasoning.level`
  *
- * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_EFFORT_TYPE}
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_LEVEL_TYPE}
  *
  * Apply Scrubbing: manual
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * @example "high"
  */
-export const GEN_AI_REQUEST_REASONING_EFFORT = 'gen_ai.request.reasoning_effort';
+export const GEN_AI_REQUEST_REASONING_LEVEL = 'gen_ai.request.reasoning.level';
 
 /**
- * Type for {@link GEN_AI_REQUEST_REASONING_EFFORT} gen_ai.request.reasoning_effort
+ * Type for {@link GEN_AI_REQUEST_REASONING_LEVEL} gen_ai.request.reasoning.level
  */
-export type GEN_AI_REQUEST_REASONING_EFFORT_TYPE = string;
+export type GEN_AI_REQUEST_REASONING_LEVEL_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__seed.json
 
@@ -12401,6 +12401,30 @@ export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
  */
 export type PROCESS_RUNTIME_VERSION_TYPE = string;
 
+// Path: model/attributes/profile_id.json
+
+/**
+ * The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling. `profile_id`
+ *
+ * Attribute Value Type: `string` {@link PROFILE_ID_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_PROFILE_ID} `sentry.profile_id`
+ *
+ * @deprecated Use {@link SENTRY_PROFILE_ID} (sentry.profile_id) instead
+ * @example "123e4567e89b12d3a456426614174000"
+ */
+export const PROFILE_ID = 'profile_id';
+
+/**
+ * Type for {@link PROFILE_ID} profile_id
+ */
+export type PROFILE_ID_TYPE = string;
+
 // Path: model/attributes/query/query__[key].json
 
 /**
@@ -12460,7 +12484,7 @@ export type REACT_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RELEASE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13854,6 +13878,8 @@ export type SENTRY_PROFILER_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link PROFILE_ID} `profile_id`
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
@@ -17000,7 +17026,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.messages': 'string',
   'gen_ai.request.model': 'string',
   'gen_ai.request.presence_penalty': 'double',
-  'gen_ai.request.reasoning_effort': 'string',
+  'gen_ai.request.reasoning.level': 'string',
   'gen_ai.request.seed': 'string',
   'gen_ai.request.stop_sequences': 'string[]',
   'gen_ai.request.temperature': 'double',
@@ -17233,6 +17259,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'process.runtime.engine.version': 'string',
   'process.runtime.name': 'string',
   'process.runtime.version': 'string',
+  profile_id: 'string',
   'query.<key>': 'string',
   'react.version': 'string',
   release: 'string',
@@ -17754,7 +17781,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_MESSAGES
   | typeof GEN_AI_REQUEST_MODEL
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
-  | typeof GEN_AI_REQUEST_REASONING_EFFORT
+  | typeof GEN_AI_REQUEST_REASONING_LEVEL
   | typeof GEN_AI_REQUEST_SEED
   | typeof GEN_AI_REQUEST_STOP_SEQUENCES
   | typeof GEN_AI_REQUEST_TEMPERATURE
@@ -17987,6 +18014,7 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_ENGINE_VERSION
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
+  | typeof PROFILE_ID
   | typeof QUERY_KEY
   | typeof REACT_VERSION
   | typeof RELEASE
@@ -21573,7 +21601,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.environment',
     },
     aliases: ['sentry.environment'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [427], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'error.type': {
     brief: 'Describes a class of error the operation ended with.',
@@ -22540,16 +22572,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [57] },
     ],
   },
-  'gen_ai.request.reasoning_effort': {
-    brief: 'Constrains the effort on reasoning for reasoning models. Supported values vary by provider.',
+  'gen_ai.request.reasoning.level': {
+    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: 'high',
-    changelog: [{ version: '0.13.0', prs: [334], description: 'Added gen_ai.request.reasoning_effort attribute' }],
+    changelog: [{ version: 'next', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
   },
   'gen_ai.request.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -24955,7 +24987,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'http.request.method',
     },
     aliases: ['http.request.method', 'http.request_method', 'http.method'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'middleware.name': {
     brief: 'The name of the middleware.',
@@ -25778,6 +25814,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['runtime.version'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  profile_id: {
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '123e4567e89b12d3a456426614174000',
+    deprecation: {
+      replacement: 'sentry.profile_id',
+    },
+    aliases: ['sentry.profile_id'],
+    changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
+  },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
@@ -25809,7 +25861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The sentry release.',
     type: 'string',
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
@@ -25818,7 +25870,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.release',
     },
     aliases: ['sentry.release'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'remix.action_form_data.<key>': {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
@@ -25845,7 +25901,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.replay_id',
     },
     aliases: ['sentry.replay_id'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'resource.deployment.environment': {
     brief: 'The software deployment environment name.',
@@ -26606,7 +26666,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '123e4567e89b12d3a456426614174000',
-    changelog: [{ version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' }],
+    aliases: ['profile_id'],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Added profile_id as an alias' },
+      { version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' },
+    ],
   },
   'sentry.relay.ingress': {
     brief: 'How an item (span, log, &c.) entered Relay.',
@@ -27273,6 +27337,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.name', 'sentry.transaction'],
     changelog: [
+      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
       {
         version: '0.6.0',
         prs: [345],
@@ -28508,7 +28573,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
-  [GEN_AI_REQUEST_REASONING_EFFORT]?: GEN_AI_REQUEST_REASONING_EFFORT_TYPE;
+  [GEN_AI_REQUEST_REASONING_LEVEL]?: GEN_AI_REQUEST_REASONING_LEVEL_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_STOP_SEQUENCES]?: GEN_AI_REQUEST_STOP_SEQUENCES_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
@@ -28741,6 +28806,7 @@ export type Attributes = {
   [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
+  [PROFILE_ID]?: PROFILE_ID_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
   [RELEASE]?: RELEASE_TYPE;

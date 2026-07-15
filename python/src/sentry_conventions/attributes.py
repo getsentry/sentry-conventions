@@ -259,6 +259,7 @@ class _AttributeNamesMeta(type):
         "OTEL_KIND",
         "PERFORMANCE_ACTIVATIONSTART",
         "PERFORMANCE_TIMEORIGIN",
+        "PROFILE_ID",
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -4346,15 +4347,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
-    # Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
-    GEN_AI_REQUEST_REASONING_EFFORT: Literal["gen_ai.request.reasoning_effort"] = (
-        "gen_ai.request.reasoning_effort"
+    # Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
+    GEN_AI_REQUEST_REASONING_LEVEL: Literal["gen_ai.request.reasoning.level"] = (
+        "gen_ai.request.reasoning.level"
     )
-    """Constrains the effort on reasoning for reasoning models. Supported values vary by provider.
+    """The reasoning or thinking effort level requested for a GenAI model.
 
     Type: str
     Apply Scrubbing: manual
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Visibility: public
     Example: "high"
     """
@@ -7272,6 +7273,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.04.2"
     """
 
+    # Path: model/attributes/profile_id.json
+    PROFILE_ID: Literal["profile_id"] = "profile_id"
+    """The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.profile_id
+    DEPRECATED: Use sentry.profile_id instead
+    Example: "123e4567e89b12d3a456426614174000"
+    """
+
     # Path: model/attributes/query/query__[key].json
     QUERY_KEY: Literal["query.<key>"] = "query.<key>"
     """An item in a query string. Usually added by client-side routing frameworks like vue-router.
@@ -7301,7 +7315,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry release.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.release
@@ -8051,6 +8065,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Aliases: profile_id
     Example: "123e4567e89b12d3a456426614174000"
     """
 
@@ -13399,9 +13414,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
-        deprecation=DeprecationInfo(replacement="sentry.environment"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.environment", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["sentry.environment"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[427], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -14439,18 +14459,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
     ),
-    "gen_ai.request.reasoning_effort": AttributeMetadata(
-        brief="Constrains the effort on reasoning for reasoning models. Supported values vary by provider.",
+    "gen_ai.request.reasoning.level": AttributeMetadata(
+        brief="The reasoning or thinking effort level requested for a GenAI model.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
+        is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="high",
         changelog=[
             ChangelogEntry(
-                version="0.13.0",
-                prs=[334],
-                description="Added gen_ai.request.reasoning_effort attribute",
+                version="next",
+                prs=[502],
+                description="Added gen_ai.request.reasoning.level attribute",
             ),
         ],
     ),
@@ -17025,9 +17045,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET",
-        deprecation=DeprecationInfo(replacement="http.request.method"),
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["http.request.method", "http.request_method", "http.method"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17894,6 +17919,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "profile_id": AttributeMetadata(
+        brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="123e4567e89b12d3a456426614174000",
+        deprecation=DeprecationInfo(
+            replacement="sentry.profile_id", status=DeprecationStatus.NORMALIZE
+        ),
+        aliases=["sentry.profile_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Added profile_id attribute"
+            ),
+        ],
+    ),
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
@@ -17926,13 +17968,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
-        deprecation=DeprecationInfo(replacement="sentry.release"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.release", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["sentry.release"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17956,9 +18003,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
-        deprecation=DeprecationInfo(replacement="sentry.replay_id"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.replay_id", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["sentry.replay_id"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -18725,7 +18777,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
+        aliases=["profile_id"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Added profile_id as an alias"
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[344],
@@ -19439,10 +19495,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="GET /",
         deprecation=DeprecationInfo(
-            replacement="sentry.segment.name", status=DeprecationStatus.BACKFILL
+            replacement="sentry.segment.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["sentry.segment.name", "sentry.transaction"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[497],
+                description="Change deprecation from backfill to normalize",
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[345],
@@ -20719,7 +20780,7 @@ Attributes = TypedDict(
         "gen_ai.request.messages": str,
         "gen_ai.request.model": str,
         "gen_ai.request.presence_penalty": float,
-        "gen_ai.request.reasoning_effort": str,
+        "gen_ai.request.reasoning.level": str,
         "gen_ai.request.seed": str,
         "gen_ai.request.stop_sequences": List[str],
         "gen_ai.request.temperature": float,
@@ -20952,6 +21013,7 @@ Attributes = TypedDict(
         "process.runtime.engine.version": str,
         "process.runtime.name": str,
         "process.runtime.version": str,
+        "profile_id": str,
         "query.<key>": str,
         "react.version": str,
         "release": str,
