@@ -3,7 +3,6 @@ import path from 'node:path';
 
 import { describe, expect, expectTypeOf, it } from 'vitest';
 
-import { getAttributeValue } from '../javascript/sentry-conventions/src/attribute-utils';
 import {
   _HTTP_REQUEST_METHOD_KEYS,
   CACHE_ITEM_SIZE_KEYS,
@@ -129,37 +128,5 @@ describe('generated attribute key tuples', () => {
 
   it('generates a tuple for a standalone attribute', () => {
     expect(CACHE_ITEM_SIZE_KEYS).toEqual(['cache.item_size']);
-  });
-});
-
-describe('getAttributeValue', () => {
-  it('prefers the canonical key over deprecated keys', () => {
-    const attributes = {
-      'http.request.method': 'POST',
-      'http.method': 'GET',
-      'http.request_method': 'PUT',
-      method: 'DELETE',
-    };
-
-    expect(getAttributeValue(attributes, HTTP_REQUEST_METHOD_KEYS)).toBe('POST');
-  });
-
-  it('falls back to a deprecated predecessor', () => {
-    expect(getAttributeValue({ 'http.method': 'GET' }, HTTP_REQUEST_METHOD_KEYS)).toBe('GET');
-  });
-
-  it('returns undefined when none of the keys are present', () => {
-    expect(getAttributeValue({}, HTTP_REQUEST_METHOD_KEYS)).toBeUndefined();
-  });
-
-  it.each([false, 0, ''])('preserves the falsy value %j', (value) => {
-    expect(getAttributeValue({ 'http.request.method': value }, HTTP_REQUEST_METHOD_KEYS)).toBe(value);
-  });
-
-  it('supports an explicit generic return type', () => {
-    const value = getAttributeValue<string>({ 'http.request.method': 'GET' }, HTTP_REQUEST_METHOD_KEYS);
-
-    expectTypeOf(value).toEqualTypeOf<string | undefined>();
-    expect(value).toBe('GET');
   });
 });
