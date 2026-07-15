@@ -1,0 +1,33 @@
+{
+  "brief": "Mobile",
+  "operations": [
+    {
+      "name": "App Start",
+      "brief": "Operations that represent starting a mobile application, including foreground and headless starts.",
+      "ops": ["app.start"],
+      "templates": ["App start to {{app.vitals.start.screen}}", "Headless app start"],
+      "examples": ["App start to MainActivity", "Headless app start"]
+    },
+    {
+      "name": "Screen Load",
+      "brief": "Loading a mobile application screen.",
+      "ops": ["ui.load"],
+      "templates": ["Screen load for {{sentry.segment.name}}"],
+      "examples": ["Screen load for MainActivity"]
+    },
+    {
+      "name": "Initial Display",
+      "brief": "The time until a mobile application screen is initially displayed.",
+      "ops": ["ui.load.initial_display"],
+      "templates": ["Time to initial display for {{sentry.segment.name}}"],
+      "examples": ["Time to initial display for MainActivity"]
+    },
+    {
+      "name": "Full Display",
+      "brief": "The time until a mobile application screen is fully displayed.",
+      "ops": ["ui.load.full_display"],
+      "templates": ["Time to full display for {{sentry.segment.name}}"],
+      "examples": ["Time to full display for MainActivity"]
+    }
+  ]
+}

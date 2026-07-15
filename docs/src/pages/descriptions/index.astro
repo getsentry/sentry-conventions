@@ -36,8 +36,8 @@ const totalOperations = allDescriptions.reduce((acc, desc) => acc + desc.data.op
       brackets should be replaced with the contents of the span attribute of the name within the brackets.
     </p>
     <p class="text-sm max-w-2xl">
-      The templates should be evaluated <strong>in order of appearance</strong>. Every template references
-      at least one attribute.
+      The templates should be evaluated <strong>in order of appearance</strong>. Templates reference
+      at least one attribute, except for an optional final literal template used as a fallback.
     </p>
 
     <div class="mt-6 p-4 bg-bg-elevated rounded-md border-l-[3px] border-accent">
