@@ -33,11 +33,9 @@ describe('Description JSON', async () => {
         }
       });
 
-      it('should have attributes in every template except a final literal fallback', () => {
+      it('should have attributes in every template', () => {
         for (const operation of content.operations) {
-          expect(operation.templates.some((tmpl) => tmpl.includes('{{'))).toBe(true);
-
-          for (const tmpl of operation.templates.slice(0, -1)) {
+          for (const tmpl of operation.templates) {
             expect(tmpl, `template "${tmpl}" should reference an attribute`).toContain('{{');
           }
         }

@@ -3,10 +3,10 @@
   "operations": [
     {
       "name": "App Start",
-      "brief": "Operations that represent starting a mobile application, including foreground and headless starts.",
+      "brief": "Operations that represent starting a mobile application and rendering its first screen.",
       "ops": ["app.start"],
-      "templates": ["App start to {{app.vitals.start.screen}}", "Headless app start"],
-      "examples": ["App start to MainActivity", "Headless app start"]
+      "templates": ["App start to {{app.vitals.start.screen}}"],
+      "examples": ["App start to MainActivity"]
     },
     {
       "name": "Cold App Start",
