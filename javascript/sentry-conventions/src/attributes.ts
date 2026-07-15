@@ -27084,6 +27084,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.name', 'sentry.transaction'],
     changelog: [
+      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
       {
         version: '0.6.0',
         prs: [345],

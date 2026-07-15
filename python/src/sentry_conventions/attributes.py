@@ -19279,10 +19279,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="GET /",
         deprecation=DeprecationInfo(
-            replacement="sentry.segment.name", status=DeprecationStatus.BACKFILL
+            replacement="sentry.segment.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["sentry.segment.name", "sentry.transaction"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[497],
+                description="Change deprecation from backfill to normalize",
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[345],
