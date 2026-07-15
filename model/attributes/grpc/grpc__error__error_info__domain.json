@@ -10,7 +10,7 @@
   "example": "example.sentry.io",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [460],
       "description": "Added grpc.error.error_info.domain attribute"
     }

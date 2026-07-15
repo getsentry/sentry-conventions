@@ -10,7 +10,7 @@
   "example": "bf2c8d3df84524de",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [495],
       "description": "Added sentry.pageload.span_id attribute"
     }

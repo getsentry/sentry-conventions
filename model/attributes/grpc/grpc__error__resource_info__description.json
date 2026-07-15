@@ -10,7 +10,7 @@
   "example": "Instance is not ready for the request.",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [460],
       "description": "Added grpc.error.resource_info.description attribute"
     }

@@ -13795,7 +13795,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/home/user/example.txt",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[458], description="Added file.path attribute"
+                version="0.17.0", prs=[458], description="Added file.path attribute"
             ),
         ],
     ),
@@ -13808,7 +13808,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1024,
         changelog=[
             ChangelogEntry(
-                version="next", prs=[458], description="Added file.size attribute"
+                version="0.17.0", prs=[458], description="Added file.size attribute"
             ),
         ],
     ),
@@ -14534,7 +14534,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="high",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[502],
                 description="Added gen_ai.request.reasoning.level attribute",
             ),
@@ -15250,7 +15250,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.bad_request.field_violations attribute",
             ),
@@ -15265,7 +15265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="at com.example.Service.method(Service.java:42)",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.debug_info.detail attribute",
             ),
@@ -15283,7 +15283,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.debug_info.stack_entries attribute",
             ),
@@ -15298,7 +15298,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="example.sentry.io",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.error_info.domain attribute",
             ),
@@ -15314,7 +15314,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="grpc.error.error_info.metadata.user_id='123'",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.error_info.metadata.<key> attribute",
             ),
@@ -15329,7 +15329,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="FIELD_INVALID",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.error_info.reason attribute",
             ),
@@ -15346,7 +15346,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.precondition_failure.violations attribute",
             ),
@@ -15363,7 +15363,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.quota_failure.violations attribute",
             ),
@@ -15378,7 +15378,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Instance is not ready for the request.",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.resource_info.description attribute",
             ),
@@ -15393,7 +15393,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="user@example.com",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.resource_info.owner attribute",
             ),
@@ -15408,7 +15408,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="projects/example/instances/example-instance",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.resource_info.resource_name attribute",
             ),
@@ -15423,7 +15423,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="database",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.resource_info.resource_type attribute",
             ),
@@ -15438,7 +15438,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=5000,
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[460],
                 description="Added grpc.error.retry_info.retry_delay_ms attribute",
             ),
@@ -18882,7 +18882,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="bf2c8d3df84524de",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[495],
                 description="Added sentry.pageload.span_id attribute",
             ),
@@ -18938,7 +18938,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="OTEL",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[491],
                 description="Added sentry.relay.ingress attribute",
             ),
@@ -18953,7 +18953,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="span v2",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.17.0",
                 prs=[491],
                 description="Added sentry.relay.pipeline attribute",
             ),
