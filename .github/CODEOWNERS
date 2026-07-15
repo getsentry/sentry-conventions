@@ -2,10 +2,10 @@
 * @Lms24 @cleptric @getsentry/ingest @mjq @nsdeschenes
 
 # Gen AI / AI attributes
-/model/attributes/gen_ai/ @getsentry/telemetry-experience
-/model/attributes/ai/ @getsentry/telemetry-experience
+/model/attributes/gen_ai/ @getsentry/telemetry-experience @Lms24 @cleptric @getsentry/ingest @mjq @nsdeschenes
+/model/attributes/ai/ @getsentry/telemetry-experience @Lms24 @cleptric @getsentry/ingest @mjq @nsdeschenes
 
 # Generated files that aggregate every attribute namespace; left unowned so
 # individual namespace owners aren't required reviewers on unrelated diffs
-javascript/sentry-conventions/src/attributes.ts
-python/src/sentry_conventions/attributes.py
+javascript/sentry-conventions/
+python/src/sentry_conventions/
