@@ -1,2 +1,6 @@
 # Global ownership
 * @Lms24 @cleptric @getsentry/ingest @mjq @nsdeschenes
+
+# Gen AI / AI attributes
+/model/attributes/gen_ai/ @getsentry/telemetry-experience
+/model/attributes/ai/ @getsentry/telemetry-experience
