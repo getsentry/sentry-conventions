@@ -6,10 +6,15 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "/users/:id",
+  "examples": ["/users/{id}", "/users/:id", "/users?id={id}"],
   "alias": ["http.route"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [505],
+      "description": "Added multiple examples"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

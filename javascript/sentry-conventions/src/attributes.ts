@@ -9320,7 +9320,8 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  *
  * Aliases: {@link URL_TEMPLATE} `url.template`
  *
- * @example "/users/:id"
+ * @example "/users/:userID?"
+ * @example "my-controller/my-action/{id?}"
  */
 export const HTTP_ROUTE = 'http.route';
 
@@ -15831,7 +15832,9 @@ export type URL_SCHEME_TYPE = string;
  *
  * Aliases: {@link HTTP_ROUTE} `http.route`
  *
+ * @example "/users/{id}"
  * @example "/users/:id"
+ * @example "/users?id={id}"
  */
 export const URL_TEMPLATE = 'url.template';
 
@@ -24324,9 +24327,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/users/:id',
+    example: '/users/:userID?',
+    examples: ['/users/:userID?', 'my-controller/my-action/{id?}'],
     aliases: ['url.template'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
@@ -28295,9 +28303,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/users/:id',
+    example: '/users/{id}',
+    examples: ['/users/{id}', '/users/:id', '/users?id={id}'],
     aliases: ['http.route'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'user_agent.original': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',

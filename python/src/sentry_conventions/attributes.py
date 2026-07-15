@@ -5604,7 +5604,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: url.template
-    Example: "/users/:id"
+    Example: "/users/:userID?"
+    Example: "my-controller/my-action/{id?}"
     """
 
     # Path: model/attributes/http/http__scheme.json
@@ -9143,7 +9144,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.route
+    Example: "/users/{id}"
     Example: "/users/:id"
+    Example: "/users?id={id}"
     """
 
     # Path: model/attributes/url.json
@@ -16140,9 +16143,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="/users/:id",
+        example="/users/:userID?",
+        examples=["/users/:userID?", "my-controller/my-action/{id?}"],
         aliases=["url.template"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[505], description="Added multiple examples"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20294,9 +20301,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="/users/:id",
+        example="/users/{id}",
+        examples=["/users/{id}", "/users/:id", "/users?id={id}"],
         aliases=["http.route"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[505], description="Added multiple examples"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],

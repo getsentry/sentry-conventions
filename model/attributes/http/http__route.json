@@ -6,10 +6,15 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "/users/:id",
+  "examples": ["/users/:userID?", "my-controller/my-action/{id?}"],
   "alias": ["url.template"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [505],
+      "description": "Added multiple examples"
+    },
     {
       "version": "0.1.0",
       "prs": [127]
