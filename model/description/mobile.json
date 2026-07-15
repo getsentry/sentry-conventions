@@ -9,6 +9,20 @@
       "examples": ["App start to MainActivity", "Headless app start"]
     },
     {
+      "name": "Cold App Start",
+      "brief": "A cold app start that leads to a mobile application screen.",
+      "ops": ["app.start.cold"],
+      "templates": ["Cold start to {{app.vitals.start.screen}}"],
+      "examples": ["Cold start to MainActivity"]
+    },
+    {
+      "name": "Warm App Start",
+      "brief": "A warm app start that leads to a mobile application screen.",
+      "ops": ["app.start.warm"],
+      "templates": ["Warm start to {{app.vitals.start.screen}}"],
+      "examples": ["Warm start to MainActivity"]
+    },
+    {
       "name": "Screen Load",
       "brief": "Loading a mobile application screen.",
       "ops": ["ui.load"],
