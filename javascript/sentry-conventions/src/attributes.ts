@@ -21805,7 +21805,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.frozen.count', 'sentry.frames.frozen'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.frozen as an alias' },
+      { version: 'next', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -21838,7 +21838,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.slow.count', 'sentry.frames.slow'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.slow as an alias' },
+      { version: 'next', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -21871,7 +21871,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.total.count', 'sentry.frames.total'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.total as an alias' },
+      { version: 'next', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },

@@ -13671,7 +13671,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.frozen.count", "sentry.frames.frozen"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added sentry.frames.frozen as an alias"
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.frozen as an alias",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -13697,7 +13699,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.slow.count", "sentry.frames.slow"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added sentry.frames.slow as an alias"
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.slow as an alias",
             ),
             ChangelogEntry(
                 version="0.5.0",
@@ -13723,7 +13727,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["app.vitals.frames.total.count", "sentry.frames.total"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added sentry.frames.total as an alias"
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.total as an alias",
             ),
             ChangelogEntry(
                 version="0.5.0",

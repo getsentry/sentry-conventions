@@ -17,6 +17,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [500],
       "description": "Added sentry.frames.total as an alias"
     },
     {
