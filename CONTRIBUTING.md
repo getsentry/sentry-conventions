@@ -46,12 +46,14 @@ Run `yarn run create:attribute` to create a new attribute. This will prompt you 
 - Interactive mode: This will prompt you to enter information about the attribute.
 - Non-interactive mode: This will use the information provided to create the attribute. You'll need to explicitly specify all the needed information when running the command.
 
+Provide example values with the `examples` field as a non-empty JSON array. For an array-valued attribute, each example is itself an array. The legacy `example` field remains supported for existing definitions, but new and updated attributes should use `examples`.
+
 ```bash
 # Interactive mode
 yarn run create:attribute
 
 # Non-interactive mode
-yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
+yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --examples '["/users/:id","/teams/:id"]' --alias "url.template"
 ```
 
 After you've created an attribute, the script will ask if you'd like to generate the docs. This will run `yarn run generate`. If you want to skip this step, you can run `yarn run generate` manually afterwards.

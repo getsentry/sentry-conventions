@@ -110,6 +110,9 @@ class AttributeMetadata:
     additional_context: Optional[List[str]] = None
     """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""
 
+    examples: Optional[List[AttributeValue]] = None
+    """Example values of the attribute"""
+
 
 class _AttributeNamesMeta(type):
     _deprecated_names = {
@@ -2942,6 +2945,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "SELECT users"
+    Example: "INSERT products; UPDATE orders"
     """
 
     # Path: model/attributes/db/db__query__text.json
@@ -12857,7 +12861,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT users",
+        examples=["SELECT users", "INSERT products; UPDATE orders"],
         changelog=[
+            ChangelogEntry(version="next", description="Added multiple examples"),
             ChangelogEntry(version="0.4.0", prs=[208]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),

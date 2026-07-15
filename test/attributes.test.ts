@@ -5,11 +5,107 @@ import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/attribute.schema.json';
-import type { AttributeJson } from '../scripts/types';
 import { compareVersions } from '../scripts/generate_attribute_changelog';
+import { getAttributeExamples, parseAttributeExamples, type AttributeJson } from '../scripts/types';
 import { attributeKeyToFileName, fileNameToAttributeKey } from '../scripts/utils';
 
 const traceFolders = path.resolve(__dirname, '../model/attributes');
+
+describe('attribute examples schema', () => {
+  const baseAttribute = {
+    key: 'test.attribute',
+    brief: 'An attribute used to test the schema.',
+    type: 'string',
+    apply_scrubbing: { key: 'never' },
+    is_in_otel: false,
+    visibility: 'public',
+  };
+
+  it('accepts multiple scalar examples', () => {
+    const ajv = new Ajv();
+    const valid = ajv.validate(schema, {
+      ...baseAttribute,
+      examples: ['first', 'second'],
+    });
+
+    expect(valid).toBe(true);
+  });
+
+  it('accepts multiple array-valued examples', () => {
+    const ajv = new Ajv();
+    const valid = ajv.validate(schema, {
+      ...baseAttribute,
+      type: 'string[]',
+      examples: [
+        ['first', 'second'],
+        ['third', 'fourth'],
+      ],
+    });
+
+    expect(valid).toBe(true);
+  });
+
+  it('accepts an empty array as an array-valued example', () => {
+    const ajv = new Ajv();
+    const valid = ajv.validate(schema, {
+      ...baseAttribute,
+      type: 'string[]',
+      examples: [[]],
+    });
+
+    expect(valid).toBe(true);
+  });
+
+  it('rejects examples that do not match the attribute type', () => {
+    const ajv = new Ajv();
+    const valid = ajv.validate(schema, {
+      ...baseAttribute,
+      type: 'string[]',
+      examples: [42],
+    });
+
+    expect(valid).toBe(false);
+  });
+
+  it('rejects singular and plural examples on the same attribute', () => {
+    const ajv = new Ajv();
+    const valid = ajv.validate(schema, {
+      ...baseAttribute,
+      example: 'first',
+      examples: ['first', 'second'],
+    });
+
+    expect(valid).toBe(false);
+  });
+});
+
+describe('getAttributeExamples', () => {
+  it('wraps a legacy example in an array', () => {
+    expect(getAttributeExamples({ example: 'legacy' })).toEqual(['legacy']);
+  });
+
+  it('preserves plural array-valued examples', () => {
+    const examples = [
+      ['first', 'second'],
+      ['third', 'fourth'],
+    ];
+
+    expect(getAttributeExamples({ examples })).toEqual(examples);
+  });
+});
+
+describe('parseAttributeExamples', () => {
+  it('parses JSON example lists including array-valued examples', () => {
+    expect(parseAttributeExamples('[["first","second"],["third"]]')).toEqual([['first', 'second'], ['third']]);
+  });
+
+  it('rejects a value that is not a non-empty JSON array', () => {
+    expect(() => parseAttributeExamples('"one example"')).toThrow(
+      'Examples must be provided as a non-empty JSON array',
+    );
+    expect(() => parseAttributeExamples('[]')).toThrow('Examples must be provided as a non-empty JSON array');
+  });
+});
 
 describe('attribute json', async () => {
   const filesIterator = await fs.promises.glob(`${traceFolders}/**/*.json`);
@@ -26,43 +122,47 @@ describe('attribute json', async () => {
         expect(ajv.errors).toBe(null);
       });
 
-      it('should have an example that follows the type set unless has_dynamic_suffix is true', () => {
-        if (content.has_dynamic_suffix) {
-          expect(typeof content.example).toBe('string');
+      it('should have examples that follow the type set unless has_dynamic_suffix is true', () => {
+        const examples = getAttributeExamples(content);
+        if (!examples) {
           return;
         }
 
-        if (!content.example) {
+        if (content.has_dynamic_suffix) {
+          expect(examples.every((example) => typeof example === 'string')).toBe(true);
           return;
         }
-        switch (content.type) {
-          case 'integer':
-          case 'double':
-            expect(typeof content.example).toBe('number');
-            break;
-          case 'integer[]':
-          case 'double[]':
-            expect(Array.isArray(content.example)).toBe(true);
-            expect((content.example as number[]).every((e: number) => typeof e === 'number')).toBe(true);
-            break;
-          case 'string':
-            expect(typeof content.example).toBe('string');
-            break;
-          case 'string[]':
-            expect(Array.isArray(content.example)).toBe(true);
-            expect((content.example as string[]).every((e: string) => typeof e === 'string')).toBe(true);
-            break;
-          case 'boolean':
-            expect(typeof content.example).toBe('boolean');
-            break;
-          case 'boolean[]':
-            expect(Array.isArray(content.example)).toBe(true);
-            expect((content.example as boolean[]).every((e: boolean) => typeof e === 'boolean')).toBe(true);
-            break;
-          case 'any':
-            break;
-          default:
-            throw new Error('Invalid type');
+
+        for (const example of examples) {
+          switch (content.type) {
+            case 'integer':
+            case 'double':
+              expect(typeof example).toBe('number');
+              break;
+            case 'integer[]':
+            case 'double[]':
+              expect(Array.isArray(example)).toBe(true);
+              expect((example as number[]).every((value) => typeof value === 'number')).toBe(true);
+              break;
+            case 'string':
+              expect(typeof example).toBe('string');
+              break;
+            case 'string[]':
+              expect(Array.isArray(example)).toBe(true);
+              expect((example as string[]).every((value) => typeof value === 'string')).toBe(true);
+              break;
+            case 'boolean':
+              expect(typeof example).toBe('boolean');
+              break;
+            case 'boolean[]':
+              expect(Array.isArray(example)).toBe(true);
+              expect((example as boolean[]).every((value) => typeof value === 'boolean')).toBe(true);
+              break;
+            case 'any':
+              break;
+            default:
+              throw new Error('Invalid type');
+          }
         }
       });
 

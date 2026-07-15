@@ -1,3 +1,5 @@
+export type AttributeValue = string | boolean | number | string[] | boolean[] | number[];
+
 export interface AttributeJson {
   key: string;
   brief: string;
@@ -9,7 +11,8 @@ export interface AttributeJson {
   };
   is_in_otel: boolean;
   visibility?: 'public' | 'internal';
-  example?: string | boolean | number | string[] | boolean[] | number[];
+  example?: AttributeValue;
+  examples?: AttributeValue[];
   deprecation?: {
     replacement?: string;
     reason?: string;
@@ -19,6 +22,26 @@ export interface AttributeJson {
   alias?: string[];
   additional_context?: string[];
   changelog?: { version: string; prs?: number[]; description?: string }[];
+}
+
+export function getAttributeExamples(
+  attribute: Pick<AttributeJson, 'example' | 'examples'>,
+): AttributeValue[] | undefined {
+  if (attribute.examples !== undefined) {
+    return attribute.examples;
+  }
+  if (attribute.example !== undefined) {
+    return [attribute.example];
+  }
+  return undefined;
+}
+
+export function parseAttributeExamples(value: string): AttributeValue[] {
+  const examples = JSON.parse(value) as unknown;
+  if (!Array.isArray(examples) || examples.length === 0) {
+    throw new Error('Examples must be provided as a non-empty JSON array');
+  }
+  return examples as AttributeValue[];
 }
 
 export interface NameJson {

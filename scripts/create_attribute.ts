@@ -4,6 +4,7 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { confirm, intro, isCancel, log, outro, select, text } from '@clack/prompts';
 import Ajv from 'ajv';
+import { parseAttributeExamples, type AttributeValue } from './types';
 
 const getNextPrNumber = (): number | undefined => {
   try {
@@ -31,7 +32,8 @@ Options:
   --apply_scrubbing, -s   How PII scrubbing should be applied (auto/manual/never)
   --is_in_otel, -o    Whether the attribute is in OpenTelemetry (true/false)
   --visibility, -v   The visibility of the attribute (public/internal)
-  --example, -e       An example value (optional)
+  --examples          Example values as a non-empty JSON array (optional, preferred)
+  --example, -e       A single example value (optional, legacy)
   --alias, -a         Comma-separated list of attributes that alias to this attribute (optional)
 
 Examples:
@@ -39,7 +41,7 @@ Examples:
   yarn run create:attribute
 
   # Non-interactive mode
-  yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
+  yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --examples '["/users/:id","/teams/:id"]' --alias "url.template"
 `;
 
 const validateSchema = (data: unknown) => {
@@ -65,6 +67,7 @@ const createAttribute = async () => {
         apply_scrubbing: { type: 'string', short: 's' },
         is_in_otel: { type: 'string', short: 'o' },
         visibility: { type: 'string', short: 'v' },
+        examples: { type: 'string' },
         example: { type: 'string', short: 'e' },
         alias: { type: 'string', short: 'a' },
       },
@@ -94,6 +97,7 @@ const createAttribute = async () => {
     let applyScrubbingKey: string | undefined;
     let isInOtel: string | undefined;
     let visibility: string | undefined;
+    let examples: string | undefined;
     let example: string | undefined;
     let alias: string | undefined;
 
@@ -104,7 +108,7 @@ const createAttribute = async () => {
       applyScrubbingKey = await askForApplyScrubbing();
       isInOtel = String(await askForAttributeIsInOtel());
       visibility = await askForAttributeVisibility();
-      example = await askForAttributeExample();
+      examples = await askForAttributeExamples();
       alias = await askForAttributeAlias();
     } else {
       key = values.key;
@@ -113,6 +117,7 @@ const createAttribute = async () => {
       applyScrubbingKey = values.apply_scrubbing;
       isInOtel = values.is_in_otel;
       visibility = values.visibility;
+      examples = values.examples;
       example = values.example;
       alias = values.alias;
     }
@@ -128,8 +133,18 @@ const createAttribute = async () => {
       process.exit(1);
     }
 
+    if (examples !== undefined && example !== undefined) {
+      console.error('Error: Use either --examples or --example, not both.');
+      process.exit(1);
+    }
+
     const hasDynamicSuffix = key.includes('.<key>');
-    let exampleValue: string | string[] | boolean | boolean[] | number | number[] | undefined;
+    let examplesValue: AttributeValue[] | undefined;
+    if (examples) {
+      examplesValue = parseAttributeExamples(examples);
+    }
+
+    let exampleValue: AttributeValue | undefined;
     if (example) {
       if (type === 'string[]' || type === 'boolean[]' || type === 'integer[]' || type === 'double[]') {
         exampleValue = JSON.parse(example);
@@ -156,6 +171,7 @@ const createAttribute = async () => {
       },
       is_in_otel: isInOtel.toLowerCase() === 'true',
       visibility,
+      ...(examplesValue && { examples: examplesValue }),
       ...(example && { example: exampleValue }),
       ...(alias && alias.trim() !== '' && { alias: alias.split(',').map((s) => s.trim()) }),
       changelog: [
@@ -297,11 +313,11 @@ async function askForAttributeVisibility() {
   );
 }
 
-async function askForAttributeExample() {
+async function askForAttributeExamples() {
   return abortIfCancelled(
     text({
-      message: 'Enter an example value (optional)',
-      placeholder: 'GET /users/:id',
+      message: 'Enter example values as a JSON array (optional)',
+      placeholder: '["GET /users/:id", "GET /teams/:id"]',
     }),
   );
 }

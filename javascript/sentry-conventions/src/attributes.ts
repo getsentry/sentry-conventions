@@ -4618,6 +4618,7 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  * Visibility: public
  *
  * @example "SELECT users"
+ * @example "INSERT products; UPDATE orders"
  */
 export const DB_QUERY_SUMMARY = 'db.query.summary';
 
@@ -16924,6 +16925,8 @@ export interface AttributeMetadata {
   hasDynamicSuffix?: boolean;
   /** An example value of the attribute */
   example?: AttributeValue;
+  /** Example values of the attribute */
+  examples?: AttributeValue[];
   /** If an attribute was deprecated, and what it was replaced with */
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
@@ -21294,7 +21297,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT users',
-    changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    examples: ['SELECT users', 'INSERT products; UPDATE orders'],
+    changelog: [
+      { version: 'next', description: 'Added multiple examples' },
+      { version: '0.4.0', prs: [208] },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.query.text': {
     brief:
