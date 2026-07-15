@@ -126,8 +126,11 @@ class _AttributeNamesMeta(type):
         "AI_PIPELINE_NAME",
         "AI_PREAMBLE",
         "AI_PRESENCE_PENALTY",
+        "AI_PROMPT_MESSAGES",
         "AI_PROMPT_TOKENS_USED",
         "AI_RAW_PROMPTING",
+        "AI_RESPONSE_TEXT",
+        "AI_RESPONSE_TOOLCALLS",
         "AI_RESPONSE_FORMAT",
         "AI_RESPONSES",
         "AI_SEARCH_QUERIES",
@@ -137,6 +140,8 @@ class _AttributeNamesMeta(type):
         "AI_TAGS",
         "AI_TEMPERATURE",
         "AI_TEXTS",
+        "AI_TOOLCALL_ARGS",
+        "AI_TOOLCALL_RESULT",
         "AI_TOOL_CALLS",
         "AI_TOOLS",
         "AI_TOP_K",
@@ -188,7 +193,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
-        "GEN_AI_REQUEST_REASONING_EFFORT",
+        "GEN_AI_RESPONSE_FINISH_REASON",
         "GEN_AI_RESPONSE_TEXT",
         "GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN",
         "GEN_AI_RESPONSE_TOOL_CALLS",
@@ -254,6 +259,7 @@ class _AttributeNamesMeta(type):
         "OTEL_KIND",
         "PERFORMANCE_ACTIVATIONSTART",
         "PERFORMANCE_TIMEORIGIN",
+        "PROFILE_ID",
         "QUERY_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -267,6 +273,9 @@ class _AttributeNamesMeta(type):
         "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_FRAMES_FROZEN",
+        "SENTRY_FRAMES_SLOW",
+        "SENTRY_FRAMES_TOTAL",
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
@@ -458,8 +467,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.response.model
-    DEPRECATED: Use gen_ai.response.model instead
+    Aliases: gen_ai.request.model
+    DEPRECATED: Use gen_ai.request.model instead
     Example: "gpt-4"
     """
 
@@ -502,6 +511,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
+    # Path: model/attributes/ai/ai__prompt__messages.json
+    AI_PROMPT_MESSAGES: Literal["ai.prompt.messages"] = "ai.prompt.messages"
+    """The input messages sent to the AI model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.input.messages, ai.texts, gen_ai.prompt
+    DEPRECATED: Use gen_ai.input.messages instead
+    Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
+    """
+
     # Path: model/attributes/ai/ai__prompt_tokens__used.json
     AI_PROMPT_TOKENS_USED: Literal["ai.prompt_tokens.used"] = "ai.prompt_tokens.used"
     """The number of tokens used to process just the prompt.
@@ -525,6 +547,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time
     Example: true
+    """
+
+    # Path: model/attributes/ai/ai__response__text.json
+    AI_RESPONSE_TEXT: Literal["ai.response.text"] = "ai.response.text"
+    """The text response from the AI model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.output.messages, ai.response.toolCalls
+    DEPRECATED: Use gen_ai.output.messages instead
+    Example: "The weather in Paris is currently rainy."
+    """
+
+    # Path: model/attributes/ai/ai__response__toolCalls.json
+    AI_RESPONSE_TOOLCALLS: Literal["ai.response.toolCalls"] = "ai.response.toolCalls"
+    """The tool calls in the AI model response.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.output.messages, ai.response.text
+    DEPRECATED: Use gen_ai.output.messages instead
+    Example: "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
     """
 
     # Path: model/attributes/ai/ai__response_format.json
@@ -634,9 +682,35 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.input.messages
+    Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead
     Example: ["Hello, how are you?","What is the capital of France?"]
+    """
+
+    # Path: model/attributes/ai/ai__toolCall__args.json
+    AI_TOOLCALL_ARGS: Literal["ai.toolCall.args"] = "ai.toolCall.args"
+    """The arguments of the tool call.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.tool.call.arguments, gen_ai.tool.input
+    DEPRECATED: Use gen_ai.tool.call.arguments instead
+    Example: "{\"location\": \"Paris\"}"
+    """
+
+    # Path: model/attributes/ai/ai__toolCall__result.json
+    AI_TOOLCALL_RESULT: Literal["ai.toolCall.result"] = "ai.toolCall.result"
+    """The result of the tool call.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content
+    DEPRECATED: Use gen_ai.tool.call.result instead
+    Example: "rainy, 57°F"
     """
 
     # Path: model/attributes/ai/ai__tool_calls.json
@@ -898,7 +972,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: frames.frozen
+    Aliases: frames.frozen, sentry.frames.frozen
     Example: 3
     """
 
@@ -912,7 +986,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: frames.slow
+    Aliases: frames.slow, sentry.frames.slow
     Example: 1
     """
 
@@ -926,7 +1000,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: frames.total
+    Aliases: frames.total, sentry.frames.total
     Example: 60
     """
 
@@ -3757,7 +3831,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: app.vitals.frames.frozen.count
+    Aliases: app.vitals.frames.frozen.count, sentry.frames.frozen
     DEPRECATED: Use app.vitals.frames.frozen.count instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 3
     """
@@ -3770,7 +3844,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: app.vitals.frames.slow.count
+    Aliases: app.vitals.frames.slow.count, sentry.frames.slow
     DEPRECATED: Use app.vitals.frames.slow.count instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1
     """
@@ -3783,7 +3857,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: app.vitals.frames.total.count
+    Aliases: app.vitals.frames.total.count, sentry.frames.total
     DEPRECATED: Use app.vitals.frames.total.count instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
     Example: 60
     """
@@ -4107,7 +4181,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.texts
+    Aliases: ai.texts, ai.prompt.messages, gen_ai.prompt
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
@@ -4141,6 +4215,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: ai.response.toolCalls, ai.response.text
     Example: "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
     """
 
@@ -4164,7 +4239,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    DEPRECATED: No replacement at this time - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
+    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages
+    DEPRECATED: Use gen_ai.input.messages instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
 
@@ -4256,6 +4332,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: ai.model_id
     Example: "gpt-4-turbo-preview"
     """
 
@@ -4283,22 +4360,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.request.reasoning_effort
-    Example: "high"
-    """
-
-    # Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
-    GEN_AI_REQUEST_REASONING_EFFORT: Literal["gen_ai.request.reasoning_effort"] = (
-        "gen_ai.request.reasoning_effort"
-    )
-    """Constrains the effort on reasoning for reasoning models. Supported values vary by provider.
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Aliases: gen_ai.request.reasoning.level
-    DEPRECATED: Use gen_ai.request.reasoning.level instead
     Example: "high"
     """
 
@@ -4365,6 +4426,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.7
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__response__finish_reason.json
+    GEN_AI_RESPONSE_FINISH_REASON: Literal["gen_ai.response.finish_reason"] = (
+        "gen_ai.response.finish_reason"
+    )
+    """The reason why the model stopped generating (singular form).
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.response.finish_reasons
+    DEPRECATED: Use gen_ai.response.finish_reasons instead
+    Example: "COMPLETE"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
     GEN_AI_RESPONSE_FINISH_REASONS: Literal["gen_ai.response.finish_reasons"] = (
         "gen_ai.response.finish_reasons"
@@ -4375,7 +4451,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.finish_reason
+    Aliases: ai.finish_reason, gen_ai.response.finish_reason
     Example: "COMPLETE"
     """
 
@@ -4399,7 +4475,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.model_id
     Example: "gpt-4"
     """
 
@@ -4534,7 +4609,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.tool.input
+    Aliases: gen_ai.tool.input, ai.toolCall.args
     Example: "{\"location\": \"Paris\"}"
     """
 
@@ -4548,7 +4623,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content
+    Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result
     Example: "rainy, 57°F"
     """
 
@@ -4586,7 +4661,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.arguments
+    Aliases: gen_ai.tool.call.arguments, ai.toolCall.args
     DEPRECATED: Use gen_ai.tool.call.arguments instead
     Example: "{\"location\": \"Paris\"}"
     """
@@ -4599,7 +4674,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -4624,7 +4699,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, mcp.tool.result.content
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -6200,7 +6275,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result
     DEPRECATED: Use gen_ai.tool.call.result instead - OTel uses gen_ai.tool.call.result for MCP tool results
     Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
     """
@@ -7201,6 +7276,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.04.2"
     """
 
+    # Path: model/attributes/profile_id.json
+    PROFILE_ID: Literal["profile_id"] = "profile_id"
+    """The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.profile_id
+    DEPRECATED: Use sentry.profile_id instead
+    Example: "123e4567e89b12d3a456426614174000"
+    """
+
     # Path: model/attributes/query/query__[key].json
     QUERY_KEY: Literal["query.<key>"] = "query.<key>"
     """An item in a query string. Usually added by client-side routing frameworks like vue-router.
@@ -7230,7 +7318,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry release.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.release
@@ -7708,6 +7796,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234
     """
 
+    # Path: model/attributes/sentry/sentry__frames__frozen.json
+    SENTRY_FRAMES_FROZEN: Literal["sentry.frames.frozen"] = "sentry.frames.frozen"
+    """The number of frozen frames rendered during the lifetime of the span.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: app.vitals.frames.frozen.count, frames.frozen
+    DEPRECATED: Use app.vitals.frames.frozen.count instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 3
+    """
+
+    # Path: model/attributes/sentry/sentry__frames__slow.json
+    SENTRY_FRAMES_SLOW: Literal["sentry.frames.slow"] = "sentry.frames.slow"
+    """The number of slow frames rendered during the lifetime of the span.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: app.vitals.frames.slow.count, frames.slow
+    DEPRECATED: Use app.vitals.frames.slow.count instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 1
+    """
+
+    # Path: model/attributes/sentry/sentry__frames__total.json
+    SENTRY_FRAMES_TOTAL: Literal["sentry.frames.total"] = "sentry.frames.total"
+    """The number of total frames rendered during the lifetime of the span.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: app.vitals.frames.total.count, frames.total
+    DEPRECATED: Use app.vitals.frames.total.count instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
+    Example: 60
+    """
+
     # Path: model/attributes/sentry/sentry__graphql__operation.json
     SENTRY_GRAPHQL_OPERATION: Literal["sentry.graphql.operation"] = (
         "sentry.graphql.operation"
@@ -7980,6 +8107,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Aliases: profile_id
     Example: "123e4567e89b12d3a456426614174000"
     """
 
@@ -9652,9 +9780,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="gpt-4",
         deprecation=DeprecationInfo(
-            replacement="gen_ai.response.model", status=DeprecationStatus.BACKFILL
+            replacement="gen_ai.request.model", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.response.model"],
+        aliases=["gen_ai.request.model"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -9708,6 +9836,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
     ),
+    "ai.prompt.messages": AttributeMetadata(
+        brief="The input messages sent to the AI model.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='[{"role": "user", "message": "hello"}]',
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.prompt.messages attribute",
+            ),
+        ],
+    ),
     "ai.prompt_tokens.used": AttributeMetadata(
         brief="The number of tokens used to process just the prompt.",
         type=AttributeType.INTEGER,
@@ -9736,6 +9883,44 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
+    ),
+    "ai.response.text": AttributeMetadata(
+        brief="The text response from the AI model.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="The weather in Paris is currently rainy.",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["gen_ai.output.messages", "ai.response.toolCalls"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.response.text attribute",
+            ),
+        ],
+    ),
+    "ai.response.toolCalls": AttributeMetadata(
+        brief="The tool calls in the AI model response.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.output.messages", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["gen_ai.output.messages", "ai.response.text"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.response.toolCalls attribute",
+            ),
         ],
     ),
     "ai.response_format": AttributeMetadata(
@@ -9862,10 +10047,53 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.input.messages"],
+        aliases=["gen_ai.input.messages", "ai.prompt.messages", "gen_ai.prompt"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
+        ],
+    ),
+    "ai.toolCall.args": AttributeMetadata(
+        brief="The arguments of the tool call.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"location": "Paris"}',
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["gen_ai.tool.call.arguments", "gen_ai.tool.input"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.toolCall.args attribute",
+            ),
+        ],
+    ),
+    "ai.toolCall.result": AttributeMetadata(
+        brief="The result of the tool call.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="rainy, 57°F",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.result", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=[
+            "gen_ai.tool.call.result",
+            "gen_ai.tool.output",
+            "gen_ai.tool.message",
+            "mcp.tool.result.content",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added ai.toolCall.result attribute",
+            ),
         ],
     ),
     "ai.tool_calls": AttributeMetadata(
@@ -10203,8 +10431,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
-        aliases=["frames.frozen"],
+        aliases=["frames.frozen", "sentry.frames.frozen"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.frozen as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -10219,8 +10450,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
-        aliases=["frames.slow"],
+        aliases=["frames.slow", "sentry.frames.slow"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.slow as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -10235,8 +10469,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=60,
-        aliases=["frames.total"],
+        aliases=["frames.total", "sentry.frames.total"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added sentry.frames.total as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -13228,9 +13465,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
-        deprecation=DeprecationInfo(replacement="sentry.environment"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.environment", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["sentry.environment"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[427], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -13634,8 +13876,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.frozen.count"],
+        aliases=["app.vitals.frames.frozen.count", "sentry.frames.frozen"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.frozen as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -13657,8 +13904,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.slow.count"],
+        aliases=["app.vitals.frames.slow.count", "sentry.frames.slow"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.slow as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -13680,8 +13932,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["app.vitals.frames.total.count"],
+        aliases=["app.vitals.frames.total.count", "sentry.frames.total"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.total as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -14084,7 +14341,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-        aliases=["ai.texts"],
+        aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -14121,6 +14378,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+        aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -14145,8 +14403,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "message": "hello"}]',
         deprecation=DeprecationInfo(
-            reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead."
+            replacement="gen_ai.input.messages",
+            reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead.",
+            status=DeprecationStatus.BACKFILL,
         ),
+        aliases=["gen_ai.input.messages", "ai.texts", "ai.prompt.messages"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
             ChangelogEntry(version="0.0.0"),
@@ -14246,6 +14507,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4-turbo-preview",
+        aliases=["ai.model_id"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
@@ -14270,37 +14532,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="high",
-        aliases=["gen_ai.request.reasoning_effort"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[502],
                 description="Added gen_ai.request.reasoning.level attribute",
-            ),
-        ],
-    ),
-    "gen_ai.request.reasoning_effort": AttributeMetadata(
-        brief="Constrains the effort on reasoning for reasoning models. Supported values vary by provider.",
-        type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="high",
-        deprecation=DeprecationInfo(
-            replacement="gen_ai.request.reasoning.level",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["gen_ai.request.reasoning.level"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[502],
-                description="Deprecated in favor of gen_ai.request.reasoning.level",
-            ),
-            ChangelogEntry(
-                version="0.13.0",
-                prs=[334],
-                description="Added gen_ai.request.reasoning_effort attribute",
             ),
         ],
     ),
@@ -14370,6 +14606,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57]),
         ],
     ),
+    "gen_ai.response.finish_reason": AttributeMetadata(
+        brief="The reason why the model stopped generating (singular form).",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="COMPLETE",
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.finish_reasons",
+            status=DeprecationStatus.NORMALIZE,
+        ),
+        aliases=["gen_ai.response.finish_reasons"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[498],
+                description="Added gen_ai.response.finish_reason attribute",
+            ),
+        ],
+    ),
     "gen_ai.response.finish_reasons": AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
@@ -14377,7 +14633,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="COMPLETE",
-        aliases=["ai.finish_reason"],
+        aliases=["ai.finish_reason", "gen_ai.response.finish_reason"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
@@ -14401,7 +14657,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4",
-        aliases=["ai.model_id"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14549,7 +14804,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='{"location": "Paris"}',
-        aliases=["gen_ai.tool.input"],
+        aliases=["gen_ai.tool.input", "ai.toolCall.args"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -14566,6 +14821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "gen_ai.tool.message",
             "mcp.tool.result.content",
+            "ai.toolCall.result",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -14604,7 +14860,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.call.arguments", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["gen_ai.tool.call.arguments"],
+        aliases=["gen_ai.tool.call.arguments", "ai.toolCall.args"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.1.0", prs=[63, 74]),
@@ -14624,6 +14880,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.call.result",
             "gen_ai.tool.output",
             "mcp.tool.result.content",
+            "ai.toolCall.result",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -14656,6 +14913,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.call.result",
             "gen_ai.tool.message",
             "mcp.tool.result.content",
+            "ai.toolCall.result",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -16574,6 +16832,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.call.result",
             "gen_ai.tool.message",
             "gen_ai.tool.output",
+            "ai.toolCall.result",
         ],
         changelog=[
             ChangelogEntry(
@@ -16852,9 +17111,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET",
-        deprecation=DeprecationInfo(replacement="http.request.method"),
+        deprecation=DeprecationInfo(
+            replacement="http.request.method", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["http.request.method", "http.request_method", "http.method"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17721,6 +17985,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "profile_id": AttributeMetadata(
+        brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="123e4567e89b12d3a456426614174000",
+        deprecation=DeprecationInfo(
+            replacement="sentry.profile_id", status=DeprecationStatus.NORMALIZE
+        ),
+        aliases=["sentry.profile_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Added profile_id attribute"
+            ),
+        ],
+    ),
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
@@ -17753,13 +18034,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
-        deprecation=DeprecationInfo(replacement="sentry.release"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.release", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["sentry.release"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17783,9 +18069,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
-        deprecation=DeprecationInfo(replacement="sentry.replay_id"),
+        deprecation=DeprecationInfo(
+            replacement="sentry.replay_id", status=DeprecationStatus.NORMALIZE
+        ),
         aliases=["sentry.replay_id"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Configured normalization"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -18293,6 +18584,69 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.frames.frozen": AttributeMetadata(
+        brief="The number of frozen frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=3,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.frozen.count",
+            reason="Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.frozen.count", "frames.frozen"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.frozen attribute",
+            ),
+        ],
+    ),
+    "sentry.frames.slow": AttributeMetadata(
+        brief="The number of slow frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.slow.count",
+            reason="Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.slow.count", "frames.slow"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.slow attribute",
+            ),
+        ],
+    ),
+    "sentry.frames.total": AttributeMetadata(
+        brief="The number of total frames rendered during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=60,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.frames.total.count",
+            reason="Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["app.vitals.frames.total.count", "frames.total"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[500],
+                description="Added sentry.frames.total attribute",
+            ),
+        ],
+    ),
     "sentry.graphql.operation": AttributeMetadata(
         brief="Indicates the type of graphql operation, emitted by the Javascript SDK.",
         type=AttributeType.STRING,
@@ -18552,7 +18906,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
+        aliases=["profile_id"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[497], description="Added profile_id as an alias"
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[344],
@@ -19266,10 +19624,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="GET /",
         deprecation=DeprecationInfo(
-            replacement="sentry.segment.name", status=DeprecationStatus.BACKFILL
+            replacement="sentry.segment.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["sentry.segment.name", "sentry.transaction"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[497],
+                description="Change deprecation from backfill to normalize",
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[345],
@@ -20235,8 +20598,11 @@ Attributes = TypedDict(
         "ai.pipeline.name": str,
         "ai.preamble": str,
         "ai.presence_penalty": float,
+        "ai.prompt.messages": str,
         "ai.prompt_tokens.used": int,
         "ai.raw_prompting": bool,
+        "ai.response.text": str,
+        "ai.response.toolCalls": str,
         "ai.response_format": str,
         "ai.responses": List[str],
         "ai.search_queries": List[str],
@@ -20246,6 +20612,8 @@ Attributes = TypedDict(
         "ai.tags": str,
         "ai.temperature": float,
         "ai.texts": List[str],
+        "ai.toolCall.args": str,
+        "ai.toolCall.result": str,
         "ai.tool_calls": List[str],
         "ai.tools": List[str],
         "ai.top_k": int,
@@ -20542,12 +20910,12 @@ Attributes = TypedDict(
         "gen_ai.request.model": str,
         "gen_ai.request.presence_penalty": float,
         "gen_ai.request.reasoning.level": str,
-        "gen_ai.request.reasoning_effort": str,
         "gen_ai.request.seed": str,
         "gen_ai.request.stop_sequences": List[str],
         "gen_ai.request.temperature": float,
         "gen_ai.request.top_k": int,
         "gen_ai.request.top_p": float,
+        "gen_ai.response.finish_reason": str,
         "gen_ai.response.finish_reasons": str,
         "gen_ai.response.id": str,
         "gen_ai.response.model": str,
@@ -20774,6 +21142,7 @@ Attributes = TypedDict(
         "process.runtime.engine.version": str,
         "process.runtime.name": str,
         "process.runtime.version": str,
+        "profile_id": str,
         "query.<key>": str,
         "react.version": str,
         "release": str,
@@ -20816,6 +21185,9 @@ Attributes = TypedDict(
         "sentry.dsc.transaction": str,
         "sentry.environment": str,
         "sentry.exclusive_time": float,
+        "sentry.frames.frozen": int,
+        "sentry.frames.slow": int,
+        "sentry.frames.total": int,
         "sentry.graphql.operation": str,
         "sentry.group": str,
         "sentry.http.prefetch": bool,
