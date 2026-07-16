@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "example.com",
-  "alias": ["server.address", "net.host.name", "http.host"],
+  "alias": ["server.address", "net.host.name", "http.host", "server_name"],
   "deprecation": {
     "_status": null,
     "replacement": "server.address"

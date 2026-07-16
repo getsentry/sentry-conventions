@@ -7,7 +7,6 @@
   },
   "is_in_otel": true,
   "example": "gpt-4",
-  "alias": ["ai.model_id"],
   "visibility": "public",
   "changelog": [
     {

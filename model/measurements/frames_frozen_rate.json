@@ -4,5 +4,5 @@
   "brief": "measurements.frames_frozen divided by the measurements.frames_total",
   "unit": "none",
   "platform": "mobile",
-  "attribute": "frames_frozen_rate"
+  "attribute": "app.vitals.frames.frozen.rate"
 }

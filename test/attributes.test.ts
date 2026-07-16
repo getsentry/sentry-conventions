@@ -237,7 +237,7 @@ describe('alias group consistency', async () => {
     const failedGroups: Array<{ group: string[]; missingAliases: Array<{ key: string; missing: string[] }> }> = [];
 
     // Validate each group
-    for (const [canonicalKey, group] of aliasGroups) {
+    for (const [_canonicalKey, group] of aliasGroups) {
       const groupArray = Array.from(group).sort();
       const missingAliases: Array<{ key: string; missing: string[] }> = [];
 
