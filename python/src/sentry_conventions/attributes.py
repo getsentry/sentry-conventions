@@ -8333,6 +8333,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "GET /user"
     """
 
+    # Path: model/attributes/sentry/sentry__segment__name__source.json
+    SENTRY_SEGMENT_NAME_SOURCE: Literal["sentry.segment.name.source"] = (
+        "sentry.segment.name.source"
+    )
+    """The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: internal
+    Example: "'route'"
+    """
+
     # Path: model/attributes/sentry/sentry__segment_id.json
     _SENTRY_SEGMENT_ID: Literal["sentry.segment_id"] = "sentry.segment_id"
     """The segment ID of a span
@@ -19273,6 +19286,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[104]),
         ],
     ),
+    "sentry.segment.name.source": AttributeMetadata(
+        brief="The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        example="'route'",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[466],
+                description="Added sentry.segment.name.source",
+            ),
+        ],
+    ),
     "sentry.segment_id": AttributeMetadata(
         brief="The segment ID of a span",
         type=AttributeType.STRING,
@@ -21444,6 +21472,7 @@ Attributes = TypedDict(
         "sentry.sdk.version": str,
         "sentry.segment.id": str,
         "sentry.segment.name": str,
+        "sentry.segment.name.source": str,
         "sentry.segment_id": str,
         "sentry.server_sample_rate": float,
         "sentry.source": str,
