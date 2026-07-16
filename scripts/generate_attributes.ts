@@ -366,7 +366,29 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
   content += 'T = TypeVar("T")\n\n';
   content += 'def get_attribute_value(attributes: Mapping[str, T], keys: Sequence[str]) -> Optional[T]:\n';
-  content += '    """Return the value for the first attribute key present in attributes."""\n';
+  content += `    """Return the value for the first attribute key present in attributes.
+
+    Use this helper with a deprecation chain or alias list to read the first
+    matching value from an attribute mapping.
+
+    Args:
+        attributes: Attribute key-value pairs. This helper does not support typed
+            attribute objects with \`\`value\`\`, \`\`type\`\`, and optional \`\`unit\`\` fields.
+        keys: Attribute keys in lookup order. Use
+            \`\`ATTRIBUTE_NAMES.<ATTRIBUTE_NAME>_KEYS\`\` for an attribute's current
+            and deprecated keys.
+
+    Returns:
+        The value for the first key present in \`\`attributes\`\`, or \`\`None\`\` if
+        no key is present.
+
+    Example:
+        >>> attributes = {"old_key": "value"}
+        >>> keys = ["new_key", "old_key"]
+        >>> get_attribute_value(attributes, keys)
+        'value'
+    """
+`;
   content += '    for key in keys:\n';
   content += '        if key in attributes:\n';
   content += '            return attributes[key]\n';

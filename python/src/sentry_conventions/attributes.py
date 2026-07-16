@@ -28,7 +28,28 @@ T = TypeVar("T")
 def get_attribute_value(
     attributes: Mapping[str, T], keys: Sequence[str]
 ) -> Optional[T]:
-    """Return the value for the first attribute key present in attributes."""
+    """Return the value for the first attribute key present in attributes.
+
+    Use this helper with a deprecation chain or alias list to read the first
+    matching value from an attribute mapping.
+
+    Args:
+        attributes: Attribute key-value pairs. This helper does not support typed
+            attribute objects with ``value``, ``type``, and optional ``unit`` fields.
+        keys: Attribute keys in lookup order. Use
+            ``ATTRIBUTE_NAMES.<ATTRIBUTE_NAME>_KEYS`` for an attribute's current
+            and deprecated keys.
+
+    Returns:
+        The value for the first key present in ``attributes``, or ``None`` if
+        no key is present.
+
+    Example:
+        >>> attributes = {"old_key": "value"}
+        >>> keys = ["new_key", "old_key"]
+        >>> get_attribute_value(attributes, keys)
+        'value'
+    """
     for key in keys:
         if key in attributes:
             return attributes[key]
