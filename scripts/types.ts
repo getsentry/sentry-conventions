@@ -13,7 +13,8 @@ export interface AttributeJson {
   deprecation?: {
     replacement?: string;
     reason?: string;
-    _status: string;
+    _status: 'backfill' | 'normalize' | 'transform' | null;
+    transformation?: string;
   };
   alias?: string[];
   additional_context?: string[];
@@ -42,4 +43,24 @@ export interface DescriptionJson {
     templates: string[];
     examples?: string[];
   }[];
+}
+
+export interface AttributeTransformationJson {
+  id: string;
+  brief: string;
+  inputs: AttributeTransformationAttributeReference[];
+  outputs: AttributeTransformationAttributeReference[];
+  actions: string[];
+  examples: AttributeTransformationExample[];
+}
+
+export interface AttributeTransformationAttributeReference {
+  attribute: string;
+  brief?: string;
+}
+
+export interface AttributeTransformationExample {
+  name: string;
+  input: Record<string, unknown>;
+  output: Record<string, unknown>;
 }

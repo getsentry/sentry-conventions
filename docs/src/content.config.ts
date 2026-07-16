@@ -21,7 +21,8 @@ const attributeSchema = z.object({
     .object({
       replacement: z.string().optional(),
       reason: z.string().optional(),
-      _status: z.enum(['backfill', 'normalize']).nullable(),
+      _status: z.enum(['backfill', 'normalize', 'transform']).nullable(),
+      transformation: z.string().optional(),
     })
     .optional(),
   alias: z.array(z.string()).optional(),
