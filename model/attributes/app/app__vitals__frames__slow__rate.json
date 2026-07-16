@@ -1,0 +1,19 @@
+{
+  "key": "app.vitals.frames.slow.rate",
+  "brief": "The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": 0.25,
+  "alias": ["frames_slow_rate"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [493],
+      "description": "Added app.vitals.frames.slow.rate attribute"
+    }
+  ]
+}

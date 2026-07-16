@@ -9,8 +9,9 @@
   "example": "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]",
   "alias": ["ai.input_messages"],
   "deprecation": {
-    "_status": "normalize",
-    "replacement": "gen_ai.input.messages"
+    "_status": "transform",
+    "replacement": "gen_ai.input.messages",
+    "transformation": "gen_ai_request_messages_to_input_messages"
   },
   "visibility": "public",
   "changelog": [

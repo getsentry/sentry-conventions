@@ -350,14 +350,16 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
   content += 'class DeprecationStatus(Enum):\n';
   content += '    BACKFILL = "backfill"\n';
-  content += '    NORMALIZE = "normalize"\n\n';
+  content += '    NORMALIZE = "normalize"\n';
+  content += '    TRANSFORM = "transform"\n\n';
 
   content += '@dataclass\n';
   content += 'class DeprecationInfo:\n';
   content += '    """Holds information about a deprecation."""\n';
   content += '    replacement: Optional[str] = None\n';
   content += '    reason: Optional[str] = None\n';
-  content += '    status: Optional[DeprecationStatus] = None\n\n';
+  content += '    status: Optional[DeprecationStatus] = None\n';
+  content += '    transformation: Optional[str] = None\n\n';
 
   content += '@dataclass\n';
   content += 'class ChangelogEntry:\n';
@@ -556,9 +558,11 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
         deprecationFields.push(`\n            reason=${JSON.stringify(deprecation.reason)}`);
       }
       if (deprecation._status) {
-        const deprecationStatus =
-          deprecation._status === 'backfill' ? 'DeprecationStatus.BACKFILL' : 'DeprecationStatus.NORMALIZE';
+        const deprecationStatus = getPythonDeprecationStatus(deprecation._status);
         deprecationFields.push(`\n            status=${deprecationStatus}`);
+      }
+      if (deprecation.transformation) {
+        deprecationFields.push(`\n            transformation=${JSON.stringify(deprecation.transformation)}`);
       }
       if (deprecationFields.length > 0) {
         metadataDict += deprecationFields.join(',');
@@ -654,6 +658,19 @@ function getPythonType(type: AttributeJson['type']): string {
   }
 }
 
+function getPythonDeprecationStatus(status: NonNullable<NonNullable<AttributeJson['deprecation']>['_status']>): string {
+  switch (status) {
+    case 'backfill':
+      return 'DeprecationStatus.BACKFILL';
+    case 'normalize':
+      return 'DeprecationStatus.NORMALIZE';
+    case 'transform':
+      return 'DeprecationStatus.TRANSFORM';
+    default:
+      throw new Error(`Unknown deprecation status: ${status}`);
+  }
+}
+
 function getAttributeTypeEnum(type: AttributeJson['type']): string {
   switch (type) {
     case 'string':
@@ -720,11 +737,20 @@ export interface ApplyScrubbingInfo {
   reason?: string;
 }
 
+export type DeprecationStatus =
+  | 'backfill'
+  | 'normalize'
+  | 'transform';
+
 export interface DeprecationInfo {
   /** What this attribute was replaced with */
   replacement?: string;
   /** Reason for deprecation */
   reason?: string;
+  /** How the attribute should be handled in the ingestion pipeline */
+  status?: DeprecationStatus;
+  /** Attribute transformation id to apply when status is transform */
+  transformation?: string;
 }
 
 export interface ChangelogEntry {
@@ -831,6 +857,12 @@ function generateMetadataDict(
       }
       if (deprecation.reason) {
         deprecationFields.push(`\n      reason: ${JSON.stringify(deprecation.reason)}`);
+      }
+      if (deprecation._status) {
+        deprecationFields.push(`\n      status: ${JSON.stringify(deprecation._status)}`);
+      }
+      if (deprecation.transformation) {
+        deprecationFields.push(`\n      transformation: ${JSON.stringify(deprecation.transformation)}`);
       }
       if (deprecationFields.length > 0) {
         metadataDict += deprecationFields.join(',');
