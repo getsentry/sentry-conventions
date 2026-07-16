@@ -16908,6 +16908,39 @@ export interface ChangelogEntry {
   description?: string;
 }
 
+export type AttributeSearchType =
+  | 'string'
+  | 'boolean'
+  | 'integer'
+  | 'number'
+  | 'byte'
+  | 'currency'
+  | 'millisecond'
+  | 'percentage'
+  | 'second';
+
+export interface AttributeSearchDatasetMappings {
+  /** The column expression in the indexed spans dataset */
+  spans?: string;
+  /** The column expression in the Events Analytics Platform dataset */
+  eap?: string;
+}
+
+export interface AttributeSearchAlias {
+  /** The public name exposed in Sentry search */
+  publicAlias: string;
+  /** The internal attribute name used by the EAP search resolver */
+  internalName: string;
+  /** The type exposed by Sentry search, including unit-aware types */
+  searchType: AttributeSearchType;
+  /** Exact query column mappings for Sentry span datasets */
+  datasetMappings: AttributeSearchDatasetMappings;
+  /** Whether the alias is accepted for queries but omitted from autocomplete suggestions */
+  secondaryAlias?: boolean;
+  /** Whether the internal attribute should be hidden from public search results */
+  private?: boolean;
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -16931,6 +16964,8 @@ export interface AttributeMetadata {
   changelog?: ChangelogEntry[];
   /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
   additionalContext?: string[];
+  /** Public search aliases and their mappings to Sentry span datasets */
+  searchAliases?: AttributeSearchAlias[];
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
@@ -27149,6 +27184,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'http.client',
     changelog: [{ version: '0.0.0' }],
+    searchAliases: [
+      {
+        publicAlias: 'span.op',
+        internalName: 'sentry.op',
+        searchType: 'string',
+        datasetMappings: {
+          spans: 'op',
+          eap: 'attr_str[sentry.op]',
+        },
+      },
+    ],
   },
   'sentry.origin': {
     brief: 'The origin of the instrumentation (e.g. span, log, etc.)',

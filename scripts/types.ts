@@ -17,6 +17,26 @@ export interface AttributeJson {
     transformation?: string;
   };
   alias?: string[];
+  search_aliases?: {
+    public_alias: string;
+    internal_name: string;
+    search_type:
+      | 'string'
+      | 'boolean'
+      | 'integer'
+      | 'number'
+      | 'byte'
+      | 'currency'
+      | 'millisecond'
+      | 'percentage'
+      | 'second';
+    secondary_alias?: boolean;
+    private?: boolean;
+    dataset_mappings: {
+      spans?: string;
+      eap?: string;
+    };
+  }[];
   additional_context?: string[];
   changelog?: { version: string; prs?: number[]; description?: string }[];
 }

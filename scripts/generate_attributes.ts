@@ -342,6 +342,18 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    PUBLIC = "public"\n';
   content += '    INTERNAL = "internal"\n\n';
 
+  content += 'AttributeSearchType = Literal[\n';
+  content += '    "string",\n';
+  content += '    "boolean",\n';
+  content += '    "integer",\n';
+  content += '    "number",\n';
+  content += '    "byte",\n';
+  content += '    "currency",\n';
+  content += '    "millisecond",\n';
+  content += '    "percentage",\n';
+  content += '    "second",\n';
+  content += ']\n\n';
+
   content += '@dataclass\n';
   content += 'class ApplyScrubbingInfo:\n';
   content += `    """Holds information about how PII scrubbing should be applied to an attribute's values."""\n`;
@@ -372,6 +384,36 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    \n';
   content += '    description: Optional[str] = None\n';
   content += '    """Optional description of what changed"""\n\n';
+
+  content += '@dataclass\n';
+  content += 'class AttributeSearchDatasetMappings:\n';
+  content += '    """Query column mappings for Sentry span datasets."""\n\n';
+  content += '    spans: Optional[str] = None\n';
+  content += '    """The column expression in the indexed spans dataset"""\n';
+  content += '    \n';
+  content += '    eap: Optional[str] = None\n';
+  content += '    """The column expression in the Events Analytics Platform dataset"""\n\n';
+
+  content += '@dataclass\n';
+  content += 'class AttributeSearchAlias:\n';
+  content += '    """A public search alias for an attribute."""\n\n';
+  content += '    public_alias: str\n';
+  content += '    """The public name exposed in Sentry search"""\n';
+  content += '    \n';
+  content += '    internal_name: str\n';
+  content += '    """The internal attribute name used by the EAP search resolver"""\n';
+  content += '    \n';
+  content += '    search_type: AttributeSearchType\n';
+  content += '    """The type exposed by Sentry search, including unit-aware types"""\n';
+  content += '    \n';
+  content += '    dataset_mappings: AttributeSearchDatasetMappings\n';
+  content += '    """Exact query column mappings for Sentry span datasets"""\n';
+  content += '    \n';
+  content += '    secondary_alias: bool = False\n';
+  content += '    """Whether the alias is omitted from autocomplete suggestions"""\n';
+  content += '    \n';
+  content += '    private: bool = False\n';
+  content += '    """Whether the internal attribute is hidden from public search results"""\n\n';
 
   content += '@dataclass\n';
   content += 'class AttributeMetadata:\n';
@@ -410,7 +452,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    \n';
   content += '    additional_context: Optional[List[str]] = None\n';
   content +=
-    '    """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""\n\n';
+    '    """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""\n';
+  content += '    \n';
+  content += '    search_aliases: Optional[List[AttributeSearchAlias]] = None\n';
+  content += '    """Public search aliases and their mappings to Sentry span datasets"""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -596,6 +641,32 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
       metadataDict += `        additional_context=${JSON.stringify(attributeJson.additional_context)},\n`;
     }
 
+    if (attributeJson.search_aliases && attributeJson.search_aliases.length > 0) {
+      metadataDict += '        search_aliases=[\n';
+      for (const searchAlias of attributeJson.search_aliases) {
+        metadataDict += '            AttributeSearchAlias(\n';
+        metadataDict += `                public_alias=${JSON.stringify(searchAlias.public_alias)},\n`;
+        metadataDict += `                internal_name=${JSON.stringify(searchAlias.internal_name)},\n`;
+        metadataDict += `                search_type=${JSON.stringify(searchAlias.search_type)},\n`;
+        metadataDict += '                dataset_mappings=AttributeSearchDatasetMappings(\n';
+        if (searchAlias.dataset_mappings.spans) {
+          metadataDict += `                    spans=${JSON.stringify(searchAlias.dataset_mappings.spans)},\n`;
+        }
+        if (searchAlias.dataset_mappings.eap) {
+          metadataDict += `                    eap=${JSON.stringify(searchAlias.dataset_mappings.eap)},\n`;
+        }
+        metadataDict += '                ),\n';
+        if (searchAlias.secondary_alias) {
+          metadataDict += '                secondary_alias=True,\n';
+        }
+        if (searchAlias.private) {
+          metadataDict += '                private=True,\n';
+        }
+        metadataDict += '            ),\n';
+      }
+      metadataDict += '        ],\n';
+    }
+
     metadataDict += '    ),\n';
   }
 
@@ -762,6 +833,39 @@ export interface ChangelogEntry {
   description?: string;
 }
 
+export type AttributeSearchType =
+  | 'string'
+  | 'boolean'
+  | 'integer'
+  | 'number'
+  | 'byte'
+  | 'currency'
+  | 'millisecond'
+  | 'percentage'
+  | 'second';
+
+export interface AttributeSearchDatasetMappings {
+  /** The column expression in the indexed spans dataset */
+  spans?: string;
+  /** The column expression in the Events Analytics Platform dataset */
+  eap?: string;
+}
+
+export interface AttributeSearchAlias {
+  /** The public name exposed in Sentry search */
+  publicAlias: string;
+  /** The internal attribute name used by the EAP search resolver */
+  internalName: string;
+  /** The type exposed by Sentry search, including unit-aware types */
+  searchType: AttributeSearchType;
+  /** Exact query column mappings for Sentry span datasets */
+  datasetMappings: AttributeSearchDatasetMappings;
+  /** Whether the alias is accepted for queries but omitted from autocomplete suggestions */
+  secondaryAlias?: boolean;
+  /** Whether the internal attribute should be hidden from public search results */
+  private?: boolean;
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -785,6 +889,8 @@ export interface AttributeMetadata {
   changelog?: ChangelogEntry[];
   /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
   additionalContext?: string[];
+  /** Public search aliases and their mappings to Sentry span datasets */
+  searchAliases?: AttributeSearchAlias[];
 }
 
 `;
@@ -902,6 +1008,32 @@ function generateMetadataDict(
 
     if (attributeJson.additional_context && attributeJson.additional_context.length > 0) {
       metadataDict += `    additionalContext: ${JSON.stringify(attributeJson.additional_context)},\n`;
+    }
+
+    if (attributeJson.search_aliases && attributeJson.search_aliases.length > 0) {
+      metadataDict += '    searchAliases: [\n';
+      for (const searchAlias of attributeJson.search_aliases) {
+        metadataDict += '      {\n';
+        metadataDict += `        publicAlias: ${JSON.stringify(searchAlias.public_alias)},\n`;
+        metadataDict += `        internalName: ${JSON.stringify(searchAlias.internal_name)},\n`;
+        metadataDict += `        searchType: ${JSON.stringify(searchAlias.search_type)},\n`;
+        metadataDict += '        datasetMappings: {\n';
+        if (searchAlias.dataset_mappings.spans) {
+          metadataDict += `          spans: ${JSON.stringify(searchAlias.dataset_mappings.spans)},\n`;
+        }
+        if (searchAlias.dataset_mappings.eap) {
+          metadataDict += `          eap: ${JSON.stringify(searchAlias.dataset_mappings.eap)},\n`;
+        }
+        metadataDict += '        },\n';
+        if (searchAlias.secondary_alias) {
+          metadataDict += '        secondaryAlias: true,\n';
+        }
+        if (searchAlias.private) {
+          metadataDict += '        private: true,\n';
+        }
+        metadataDict += '      },\n';
+      }
+      metadataDict += '    ],\n';
     }
 
     metadataDict += '  },\n';
