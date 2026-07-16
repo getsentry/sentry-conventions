@@ -10,7 +10,7 @@
   "example": "high",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [502],
       "description": "Added gen_ai.request.reasoning.level attribute"
     }

@@ -10,7 +10,7 @@
   "example": ["com.example.Service.method(Service.java:42)", "com.example.Server.handle(Server.java:100)"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [460],
       "description": "Added grpc.error.debug_info.stack_entries attribute"
     }

@@ -10,7 +10,7 @@
   "example": "FIELD_INVALID",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.17.0",
       "prs": [460],
       "description": "Added grpc.error.error_info.reason attribute"
     }
