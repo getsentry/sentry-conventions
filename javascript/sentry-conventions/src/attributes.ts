@@ -1281,6 +1281,29 @@ export const APP_VITALS_FRAMES_FROZEN_COUNT = 'app.vitals.frames.frozen.count';
  */
 export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
 
+// Path: model/attributes/app/app__vitals__frames__frozen__rate.json
+
+/**
+ * The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay. `app.vitals.frames.frozen.rate`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_FROZEN_RATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link FRAMES_FROZEN_RATE} `frames_frozen_rate`
+ *
+ * @example 0.5
+ */
+export const APP_VITALS_FRAMES_FROZEN_RATE = 'app.vitals.frames.frozen.rate';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_FROZEN_RATE} app.vitals.frames.frozen.rate
+ */
+export type APP_VITALS_FRAMES_FROZEN_RATE_TYPE = number;
+
 // Path: model/attributes/app/app__vitals__frames__slow__count.json
 
 /**
@@ -1304,6 +1327,29 @@ export const APP_VITALS_FRAMES_SLOW_COUNT = 'app.vitals.frames.slow.count';
  */
 export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
 
+// Path: model/attributes/app/app__vitals__frames__slow__rate.json
+
+/**
+ * The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay. `app.vitals.frames.slow.rate`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_SLOW_RATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link FRAMES_SLOW_RATE} `frames_slow_rate`
+ *
+ * @example 0.25
+ */
+export const APP_VITALS_FRAMES_SLOW_RATE = 'app.vitals.frames.slow.rate';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_SLOW_RATE} app.vitals.frames.slow.rate
+ */
+export type APP_VITALS_FRAMES_SLOW_RATE_TYPE = number;
+
 // Path: model/attributes/app/app__vitals__frames__total__count.json
 
 /**
@@ -1326,6 +1372,52 @@ export const APP_VITALS_FRAMES_TOTAL_COUNT = 'app.vitals.frames.total.count';
  * Type for {@link APP_VITALS_FRAMES_TOTAL_COUNT} app.vitals.frames.total.count
  */
 export type APP_VITALS_FRAMES_TOTAL_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__stall__duration.json
+
+/**
+ * The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay. `app.vitals.stall.duration`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_STALL_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link STALL_TOTAL_TIME} `stall_total_time`
+ *
+ * @example 4000
+ */
+export const APP_VITALS_STALL_DURATION = 'app.vitals.stall.duration';
+
+/**
+ * Type for {@link APP_VITALS_STALL_DURATION} app.vitals.stall.duration
+ */
+export type APP_VITALS_STALL_DURATION_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__stall__percentage.json
+
+/**
+ * The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay. `app.vitals.stall.percentage`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_STALL_PERCENTAGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link STALL_PERCENTAGE} `stall_percentage`
+ *
+ * @example 0.8
+ */
+export const APP_VITALS_STALL_PERCENTAGE = 'app.vitals.stall.percentage';
+
+/**
+ * Type for {@link APP_VITALS_STALL_PERCENTAGE} app.vitals.stall.percentage
+ */
+export type APP_VITALS_STALL_PERCENTAGE_TYPE = number;
 
 // Path: model/attributes/app/app__vitals__start__cold__value.json
 
@@ -6320,7 +6412,7 @@ export type FRAMES_FROZEN_TYPE = number;
 // Path: model/attributes/frames_frozen_rate.json
 
 /**
- * The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_frozen_rate`
+ * The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay. `frames_frozen_rate`
  *
  * Attribute Value Type: `number` {@link FRAMES_FROZEN_RATE_TYPE}
  *
@@ -6328,6 +6420,10 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_RATE} `app.vitals.frames.frozen.rate`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_RATE} (app.vitals.frames.frozen.rate) instead - Replaced by app.vitals.frames.frozen.rate to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const FRAMES_FROZEN_RATE = 'frames_frozen_rate';
 
@@ -6363,7 +6459,7 @@ export type FRAMES_SLOW_TYPE = number;
 // Path: model/attributes/frames_slow_rate.json
 
 /**
- * The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_slow_rate`
+ * The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay. `frames_slow_rate`
  *
  * Attribute Value Type: `number` {@link FRAMES_SLOW_RATE_TYPE}
  *
@@ -6371,6 +6467,10 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_RATE} `app.vitals.frames.slow.rate`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_RATE} (app.vitals.frames.slow.rate) instead - Replaced by app.vitals.frames.slow.rate to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const FRAMES_SLOW_RATE = 'frames_slow_rate';
 
@@ -14884,6 +14984,10 @@ export type SESSION_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_STALL_PERCENTAGE} `app.vitals.stall.percentage`
+ *
+ * @deprecated Use {@link APP_VITALS_STALL_PERCENTAGE} (app.vitals.stall.percentage) instead - Replaced by app.vitals.stall.percentage to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const STALL_PERCENTAGE = 'stall_percentage';
 
@@ -14903,6 +15007,10 @@ export type STALL_PERCENTAGE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_STALL_DURATION} `app.vitals.stall.duration`
+ *
+ * @deprecated Use {@link APP_VITALS_STALL_DURATION} (app.vitals.stall.duration) instead - Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const STALL_TOTAL_TIME = 'stall_total_time';
 
@@ -16827,8 +16935,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'app.version': 'string',
   'app.vitals.frames.delay.value': 'integer',
   'app.vitals.frames.frozen.count': 'integer',
+  'app.vitals.frames.frozen.rate': 'double',
   'app.vitals.frames.slow.count': 'integer',
+  'app.vitals.frames.slow.rate': 'double',
   'app.vitals.frames.total.count': 'integer',
+  'app.vitals.stall.duration': 'double',
+  'app.vitals.stall.percentage': 'double',
   'app.vitals.start.cold.value': 'double',
   'app.vitals.start.prewarmed': 'boolean',
   'app.vitals.start.reason': 'string',
@@ -17585,8 +17697,12 @@ export type AttributeName =
   | typeof APP_VERSION
   | typeof APP_VITALS_FRAMES_DELAY_VALUE
   | typeof APP_VITALS_FRAMES_FROZEN_COUNT
+  | typeof APP_VITALS_FRAMES_FROZEN_RATE
   | typeof APP_VITALS_FRAMES_SLOW_COUNT
+  | typeof APP_VITALS_FRAMES_SLOW_RATE
   | typeof APP_VITALS_FRAMES_TOTAL_COUNT
+  | typeof APP_VITALS_STALL_DURATION
+  | typeof APP_VITALS_STALL_PERCENTAGE
   | typeof APP_VITALS_START_COLD_VALUE
   | typeof APP_VITALS_START_PREWARMED
   | typeof APP_VITALS_START_REASON
@@ -19158,6 +19274,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
   },
+  'app.vitals.frames.frozen.rate': {
+    brief:
+      'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.5,
+    aliases: ['frames_frozen_rate'],
+    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
+  },
   'app.vitals.frames.slow.count': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
@@ -19173,6 +19302,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
   },
+  'app.vitals.frames.slow.rate': {
+    brief:
+      'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.25,
+    aliases: ['frames_slow_rate'],
+    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
+  },
   'app.vitals.frames.total.count': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
@@ -19187,6 +19329,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: 'next', description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
+  },
+  'app.vitals.stall.duration': {
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 4000,
+    aliases: ['stall_total_time'],
+    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
+  },
+  'app.vitals.stall.percentage': {
+    brief:
+      'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.8,
+    aliases: ['stall_percentage'],
+    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
   },
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
@@ -22080,14 +22248,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   frames_frozen_rate: {
     brief:
-      'The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
+      'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.frozen.rate',
+      reason:
+        'Replaced by app.vitals.frames.frozen.rate to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: ['app.vitals.frames.frozen.rate'],
+    changelog: [
+      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
+      { version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' },
+    ],
   },
   'frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -22113,14 +22290,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   frames_slow_rate: {
     brief:
-      'The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
+      'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.slow.rate',
+      reason:
+        'Replaced by app.vitals.frames.slow.rate to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: ['app.vitals.frames.slow.rate'],
+    changelog: [
+      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
+      { version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' },
+    ],
   },
   'frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -27367,7 +27553,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' }],
+    deprecation: {
+      replacement: 'app.vitals.stall.percentage',
+      reason:
+        'Replaced by app.vitals.stall.percentage to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: ['app.vitals.stall.percentage'],
+    changelog: [
+      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
+      { version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' },
+    ],
   },
   stall_total_time: {
     brief:
@@ -27378,7 +27573,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' }],
+    deprecation: {
+      replacement: 'app.vitals.stall.duration',
+      reason:
+        'Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes',
+    },
+    aliases: ['app.vitals.stall.duration'],
+    changelog: [
+      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
+      { version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' },
+    ],
   },
   'state.type': {
     brief: 'The type of state management library',
@@ -28441,8 +28645,12 @@ export type Attributes = {
   [APP_VERSION]?: APP_VERSION_TYPE;
   [APP_VITALS_FRAMES_DELAY_VALUE]?: APP_VITALS_FRAMES_DELAY_VALUE_TYPE;
   [APP_VITALS_FRAMES_FROZEN_COUNT]?: APP_VITALS_FRAMES_FROZEN_COUNT_TYPE;
+  [APP_VITALS_FRAMES_FROZEN_RATE]?: APP_VITALS_FRAMES_FROZEN_RATE_TYPE;
   [APP_VITALS_FRAMES_SLOW_COUNT]?: APP_VITALS_FRAMES_SLOW_COUNT_TYPE;
+  [APP_VITALS_FRAMES_SLOW_RATE]?: APP_VITALS_FRAMES_SLOW_RATE_TYPE;
   [APP_VITALS_FRAMES_TOTAL_COUNT]?: APP_VITALS_FRAMES_TOTAL_COUNT_TYPE;
+  [APP_VITALS_STALL_DURATION]?: APP_VITALS_STALL_DURATION_TYPE;
+  [APP_VITALS_STALL_PERCENTAGE]?: APP_VITALS_STALL_PERCENTAGE_TYPE;
   [APP_VITALS_START_COLD_VALUE]?: APP_VITALS_START_COLD_VALUE_TYPE;
   [APP_VITALS_START_PREWARMED]?: APP_VITALS_START_PREWARMED_TYPE;
   [APP_VITALS_START_REASON]?: APP_VITALS_START_REASON_TYPE;
