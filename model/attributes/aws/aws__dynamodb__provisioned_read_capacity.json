@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.provisioned_read_capacity",
+  "brief": "The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": 1,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [479],
+      "description": "Added aws.dynamodb.provisioned_read_capacity attribute"
+    }
+  ]
+}

@@ -86,11 +86,29 @@
           "type": "string"
         },
         "_status": {
-          "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. In both cases, existing values for the new name will not be overwritten. The attribute should be backfilled for 90 days before status is set to normalize.",
-          "enum": [null, "backfill", "normalize"]
+          "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize.",
+          "enum": [null, "backfill", "normalize", "transform"]
+        },
+        "transformation": {
+          "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/.",
+          "type": "string"
         }
       },
-      "required": ["_status"]
+      "required": ["_status"],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "_status": {
+                "const": "transform"
+              }
+            }
+          },
+          "then": {
+            "required": ["transformation"]
+          }
+        }
+      ]
     },
     "alias": {
       "description": "If there are attributes that alias to this attribute",

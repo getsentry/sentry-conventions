@@ -1,0 +1,24 @@
+{
+  "key": "aws.request.id",
+  "brief": "The AWS request ID as returned in the response headers.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "79b9da39-b7ae-508a-a6bc-864b2829c622",
+  "alias": ["aws.request_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "aws.request_id",
+    "reason": "This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [480],
+      "description": "Added aws.request.id attribute, deprecated in favor of aws.request_id"
+    }
+  ]
+}

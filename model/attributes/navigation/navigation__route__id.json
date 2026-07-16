@@ -1,0 +1,18 @@
+{
+  "key": "navigation.route.id",
+  "brief": "The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "example": "AboutView",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [468],
+      "description": "Added navigation.route.id attribute"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "key": "http.request.same_origin",
+  "brief": "Indicates that a URL has the same origin as the current page's origin in the browser.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": true,
+  "alias": ["url.same_origin"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [456],
+      "description": "Added http.request.same_origin attribute"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "key": "aws.dynamodb.local_secondary_indexes",
+  "brief": "The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": [
+    "{ \"IndexArn\": \"string\", \"IndexName\": \"string\", \"IndexSizeBytes\": number, \"ItemCount\": number, \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" } }"
+  ],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [479],
+      "description": "Added aws.dynamodb.local_secondary_indexes attribute"
+    }
+  ]
+}

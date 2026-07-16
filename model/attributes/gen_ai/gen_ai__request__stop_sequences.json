@@ -1,0 +1,18 @@
+{
+  "key": "gen_ai.request.stop_sequences",
+  "brief": "List of sequences that the model will use to stop generating further tokens.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": ["forest", "lived"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [482],
+      "description": "Added gen_ai.request.stop_sequences attribute"
+    }
+  ]
+}

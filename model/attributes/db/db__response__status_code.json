@@ -10,7 +10,7 @@
   "example": "ORA-17002",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.16.0",
       "prs": [462],
       "description": "Added db.response.status_code attribute"
     }

@@ -110,7 +110,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
   let individualConstants = '';
 
   // Generate individual attribute constants with documentation AND build the explicit type map
-  for (const { file, key, constantName, attributeJson, isDeprecated } of allAttributes) {
+  for (const { file, key, constantName, attributeJson, _isDeprecated } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, example, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
@@ -156,12 +156,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     // Deprecation
     if (deprecation) {
-      individualConstants += ' *\n';
-      let replacement = '';
-      if (deprecation.replacement) {
-        replacement = `Use {@link ${getConstantName(deprecation.replacement, false)}} (${deprecation.replacement}) instead`;
-      }
-      individualConstants += ` * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+      individualConstants += formatDeprecationJsdoc(deprecation, allAttributes, false);
     }
 
     // Example
@@ -174,6 +169,18 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     individualConstants += ' */\n';
     individualConstants += `export const ${constantName} = '${key}';\n\n`;
+
+    if (has_dynamic_suffix) {
+      const keyBase = getDynamicSuffixBase(key);
+      const constantNameBase = `${constantName}_BASE`;
+      individualConstants += '/**\n';
+      individualConstants += ` * Base key for {@link ${constantName}}. Use with a dynamic suffix, e.g. \`\${${constantNameBase}}.\${key}\`.\n`;
+      if (deprecation) {
+        individualConstants += formatDeprecationJsdoc(deprecation, allAttributes, true);
+      }
+      individualConstants += ' */\n';
+      individualConstants += `export const ${constantNameBase} = '${keyBase}';\n\n`;
+    }
 
     // Generate type constant
     individualConstants += '/**\n';
@@ -207,6 +214,33 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 const constantNameMemo = new Map<string, string>();
 const constantNameInnerMemo = new Map<string, string>();
 const usedConstantNames = new Set<string>();
+
+function getDynamicSuffixBase(key: string): string {
+  const suffix = '.<key>';
+  if (!key.endsWith(suffix)) {
+    throw new Error(`Expected dynamic suffix attribute key to end with "${suffix}", got "${key}"`);
+  }
+  return key.slice(0, -suffix.length);
+}
+
+function formatDeprecationJsdoc(
+  deprecation: NonNullable<AttributeJson['deprecation']>,
+  allAttributes: Array<{ key: string; attributeJson: AttributeJson }>,
+  isBase: boolean,
+): string {
+  let replacement = '';
+  if (deprecation.replacement) {
+    const replacementAttr = allAttributes.find((attr) => attr.key === deprecation.replacement);
+    const replacementConstantName = getConstantName(deprecation.replacement, false);
+    const replacementHasDynamicSuffix = !!replacementAttr?.attributeJson.has_dynamic_suffix;
+    const replacementLink =
+      isBase && replacementHasDynamicSuffix ? `${replacementConstantName}_BASE` : replacementConstantName;
+    const replacementDisplay =
+      isBase && replacementHasDynamicSuffix ? getDynamicSuffixBase(deprecation.replacement) : deprecation.replacement;
+    replacement = `Use {@link ${replacementLink}} (${replacementDisplay}) instead`;
+  }
+  return ` *\n * @deprecated ${replacement}${deprecation.reason ? ` - ${deprecation.reason}` : ''}\n`;
+}
 
 // Computes a constant name for an attribute without regard for deprecation status.
 function getConstantNameInner(key: string): string {
@@ -316,14 +350,16 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
 
   content += 'class DeprecationStatus(Enum):\n';
   content += '    BACKFILL = "backfill"\n';
-  content += '    NORMALIZE = "normalize"\n\n';
+  content += '    NORMALIZE = "normalize"\n';
+  content += '    TRANSFORM = "transform"\n\n';
 
   content += '@dataclass\n';
   content += 'class DeprecationInfo:\n';
   content += '    """Holds information about a deprecation."""\n';
   content += '    replacement: Optional[str] = None\n';
   content += '    reason: Optional[str] = None\n';
-  content += '    status: Optional[DeprecationStatus] = None\n\n';
+  content += '    status: Optional[DeprecationStatus] = None\n';
+  content += '    transformation: Optional[str] = None\n\n';
 
   content += '@dataclass\n';
   content += 'class ChangelogEntry:\n';
@@ -522,9 +558,11 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
         deprecationFields.push(`\n            reason=${JSON.stringify(deprecation.reason)}`);
       }
       if (deprecation._status) {
-        const deprecationStatus =
-          deprecation._status === 'backfill' ? 'DeprecationStatus.BACKFILL' : 'DeprecationStatus.NORMALIZE';
+        const deprecationStatus = getPythonDeprecationStatus(deprecation._status);
         deprecationFields.push(`\n            status=${deprecationStatus}`);
+      }
+      if (deprecation.transformation) {
+        deprecationFields.push(`\n            transformation=${JSON.stringify(deprecation.transformation)}`);
       }
       if (deprecationFields.length > 0) {
         metadataDict += deprecationFields.join(',');
@@ -620,6 +658,19 @@ function getPythonType(type: AttributeJson['type']): string {
   }
 }
 
+function getPythonDeprecationStatus(status: NonNullable<NonNullable<AttributeJson['deprecation']>['_status']>): string {
+  switch (status) {
+    case 'backfill':
+      return 'DeprecationStatus.BACKFILL';
+    case 'normalize':
+      return 'DeprecationStatus.NORMALIZE';
+    case 'transform':
+      return 'DeprecationStatus.TRANSFORM';
+    default:
+      throw new Error(`Unknown deprecation status: ${status}`);
+  }
+}
+
 function getAttributeTypeEnum(type: AttributeJson['type']): string {
   switch (type) {
     case 'string':
@@ -686,11 +737,20 @@ export interface ApplyScrubbingInfo {
   reason?: string;
 }
 
+export type DeprecationStatus =
+  | 'backfill'
+  | 'normalize'
+  | 'transform';
+
 export interface DeprecationInfo {
   /** What this attribute was replaced with */
   replacement?: string;
   /** Reason for deprecation */
   reason?: string;
+  /** How the attribute should be handled in the ingestion pipeline */
+  status?: DeprecationStatus;
+  /** Attribute transformation id to apply when status is transform */
+  transformation?: string;
 }
 
 export interface ChangelogEntry {
@@ -797,6 +857,12 @@ function generateMetadataDict(
       }
       if (deprecation.reason) {
         deprecationFields.push(`\n      reason: ${JSON.stringify(deprecation.reason)}`);
+      }
+      if (deprecation._status) {
+        deprecationFields.push(`\n      status: ${JSON.stringify(deprecation._status)}`);
+      }
+      if (deprecation.transformation) {
+        deprecationFields.push(`\n      transformation: ${JSON.stringify(deprecation.transformation)}`);
       }
       if (deprecationFields.length > 0) {
         metadataDict += deprecationFields.join(',');

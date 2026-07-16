@@ -1,0 +1,18 @@
+{
+  "key": "messaging.message.conversation_id",
+  "brief": "The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called \"Correlation ID\".",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "MyConversationId",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [468],
+      "description": "Added messaging.message.conversation_id attribute"
+    }
+  ]
+}
