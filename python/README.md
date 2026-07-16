@@ -22,5 +22,21 @@
 The package exports:
 
 - `attributes.ATTRIBUTE_NAMES`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
+- `attributes.ATTRIBUTE_NAMES.<ATTRIBUTE>_KEYS`: contains lookup keys for an attribute
+- `attributes.get_attribute_value`: reads an attribute using its lookup keys
 - `attributes.Attributes`: represents a bag of typed attributes
 - `attributes.ATTRIBUTE_METADATA`: provides metadata about attributes, such as their type, scrubbing definition, and deprecation info
+
+## Reading Attributes
+
+Pass an `ATTRIBUTE_NAMES.<ATTRIBUTE>_KEYS` tuple to `get_attribute_value`:
+
+```python
+from sentry_conventions.attributes import ATTRIBUTE_NAMES, get_attribute_value
+
+method = get_attribute_value(attributes, ATTRIBUTE_NAMES.HTTP_REQUEST_METHOD_KEYS)
+```
+
+Each tuple lists the stable key first, followed by deprecated predecessors in alphabetical order. The helper returns the raw value from the first key present in the mapping. It does not validate or transform values.
+
+Keys that contain a dynamic `<key>` segment are patterns, not literal lookup keys. Materialize each pattern by replacing `<key>` with the actual segment before calling the helper. The generated package does not include expanded lists for dynamic keys.

@@ -2,6 +2,46 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { AttributeJson } from './types';
 
+type AttributeDefinition = {
+  key: string;
+  attributeJson: AttributeJson;
+};
+
+export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map<string, string[]> {
+  const attributesByKey = new Map(attributes.map((attribute) => [attribute.key, attribute]));
+  const predecessorsByKey = new Map<string, string[]>();
+
+  for (const { key, attributeJson } of attributes) {
+    const replacement = attributeJson.deprecation?.replacement;
+    if (!replacement) {
+      continue;
+    }
+
+    const replacementAttribute = attributesByKey.get(replacement);
+    if (!replacementAttribute) {
+      throw new Error(`Replacement target "${replacement}" for deprecated attribute "${key}" does not exist`);
+    }
+    if (replacementAttribute.attributeJson.deprecation) {
+      throw new Error(`Replacement target "${replacement}" for deprecated attribute "${key}" must not be deprecated`);
+    }
+
+    const predecessors = predecessorsByKey.get(replacement) ?? [];
+    predecessors.push(key);
+    predecessorsByKey.set(replacement, predecessors);
+  }
+
+  const chains = new Map<string, string[]>();
+  for (const { key, attributeJson } of attributes) {
+    const replacement = attributeJson.deprecation?.replacement;
+    const stableKey = replacement ?? key;
+    const predecessors = predecessorsByKey.get(stableKey);
+    const chain = predecessors ? [stableKey, ...predecessors.toSorted()] : [key];
+    chains.set(key, chain);
+  }
+
+  return chains;
+}
+
 export async function generateAttributes() {
   const attributesDir = path.join(__dirname, '..', 'model', 'attributes');
 
@@ -106,6 +146,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
     });
   }
 
+  const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
   let attributeTypeMap = '';
   let individualConstants = '';
 
@@ -169,6 +210,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[]) {
 
     individualConstants += ' */\n';
     individualConstants += `export const ${constantName} = '${key}';\n\n`;
+    individualConstants += `export const ${constantName}_KEYS = ${JSON.stringify(attributeKeyChains.get(key))} as const;\n\n`;
 
     if (has_dynamic_suffix) {
       const keyBase = getDynamicSuffixBase(key);
@@ -318,9 +360,17 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += 'import warnings\n';
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
-  content += 'from typing import List, Union, Literal, Optional, Dict, TypedDict\n\n';
+  content +=
+    'from typing import Dict, List, Literal, Mapping, Optional, Sequence, Tuple, TypedDict, TypeVar, Union\n\n';
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
+  content += 'T = TypeVar("T")\n\n';
+  content += 'def get_attribute_value(attributes: Mapping[str, T], keys: Sequence[str]) -> Optional[T]:\n';
+  content += '    """Return the value for the first attribute key present in attributes."""\n';
+  content += '    for key in keys:\n';
+  content += '        if key in attributes:\n';
+  content += '            return attributes[key]\n';
+  content += '    return None\n\n';
 
   content += 'class AttributeType(Enum):\n';
   content += '    STRING = "string"\n';
@@ -416,14 +466,20 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   let metadataDict = '';
   const attributeNames: string[] = [];
   const deprecatedAttributes: { name: string; replacement?: string }[] = [];
-
-  // First pass: collect deprecated attributes
-  for (const file of attributeFiles) {
+  const allAttributes: AttributeDefinition[] = attributeFiles.map((file) => {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    return {
+      key: attributeJson.key,
+      attributeJson,
+    };
+  });
+  const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
 
+  // First pass: collect deprecated attributes
+  for (const { key, attributeJson } of allAttributes) {
     if (attributeJson.deprecation) {
-      const constantName = getConstantName(attributeJson.key, true);
+      const constantName = getConstantName(key, true);
       deprecatedAttributes.push({
         name: constantName,
         replacement: attributeJson.deprecation.replacement,
@@ -500,6 +556,11 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
     }
 
     content += '    """\n\n';
+    const keyChain = attributeKeyChains.get(key);
+    if (!keyChain) {
+      throw new Error(`Attribute key chain for "${key}" does not exist`);
+    }
+    content += `    ${constantName}_KEYS: Tuple[str, ...] = (${keyChain.map((attributeKey) => JSON.stringify(attributeKey)).join(', ')},)\n\n`;
 
     // Collect attribute names for the literal type
     attributeNames.push(constantName);
@@ -620,6 +681,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[]) {
   content += '    "ATTRIBUTE_METADATA",\n';
   content += '    "Attributes",\n';
   content += '    "ATTRIBUTE_NAMES",\n';
+  content += '    "get_attribute_value",\n';
   content += ']\n\n';
 
   // Write the generated content to the file
