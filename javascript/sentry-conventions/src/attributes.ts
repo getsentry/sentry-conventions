@@ -10856,6 +10856,28 @@ export const MESSAGING_DESTINATION_CONNECTION = 'messaging.destination.connectio
  */
 export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__destination_kind.json
+
+/**
+ * The kind of message destination. `messaging.destination_kind`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_KIND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name.
+ * @example "topic"
+ */
+export const MESSAGING_DESTINATION_KIND = 'messaging.destination_kind';
+
+/**
+ * Type for {@link MESSAGING_DESTINATION_KIND} messaging.destination_kind
+ */
+export type MESSAGING_DESTINATION_KIND_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination__name.json
 
 /**
@@ -12754,6 +12776,9 @@ export type ROUTE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
+ *
+ * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead - Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.
  * @example 2
  */
 export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
@@ -12795,6 +12820,8 @@ export type RPC_METHOD_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`
  *
  * @example "DEADLINE_EXCEEDED"
  */
@@ -17397,6 +17424,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.batch.message_count': 'integer',
   'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
+  'messaging.destination_kind': 'string',
   'messaging.destination.name': 'string',
   'messaging.message.body.size': 'integer',
   'messaging.message.conversation_id': 'string',
@@ -18160,6 +18188,7 @@ export type AttributeName =
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
   | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
+  | typeof MESSAGING_DESTINATION_KIND
   | typeof MESSAGING_DESTINATION_NAME
   | typeof MESSAGING_MESSAGE_BODY_SIZE
   | typeof MESSAGING_MESSAGE_CONVERSATION_ID
@@ -25255,6 +25284,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'messaging.destination_kind': {
+    brief: 'The kind of message destination.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'topic',
+    deprecation: {
+      reason:
+        'Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations.',
+      },
+    ],
+  },
   'messaging.destination.name': {
     brief: 'The message destination name.',
     type: 'string',
@@ -26391,7 +26441,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 2,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'rpc.response.status_code',
+      reason:
+        'Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.',
+    },
+    aliases: ['rpc.response.status_code'],
+    changelog: [
+      { version: 'next', description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'rpc.method': {
     brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
@@ -26413,7 +26473,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'DEADLINE_EXCEEDED',
-    changelog: [{ version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' }],
+    aliases: ['rpc.grpc.status_code'],
+    changelog: [
+      { version: 'next', description: 'Added rpc.grpc.status_code as an alias' },
+      { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
+    ],
   },
   'rpc.service': {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
@@ -29263,6 +29327,7 @@ export type Attributes = {
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
   [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
+  [MESSAGING_DESTINATION_KIND]?: MESSAGING_DESTINATION_KIND_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
   [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;

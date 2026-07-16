@@ -243,6 +243,7 @@ class _AttributeNamesMeta(type):
         "MCP_TOOL_RESULT_IS_ERROR",
         "MCP_TRANSPORT",
         "MESSAGING_DESTINATION",
+        "MESSAGING_DESTINATION_KIND",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -270,6 +271,7 @@ class _AttributeNamesMeta(type):
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
         "ROUTE",
+        "RPC_GRPC_STATUS_CODE",
         "RPC_SYSTEM",
         "RUNTIME_BUILD",
         "RUNTIME_NAME",
@@ -6452,6 +6454,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "BestTopic"
     """
 
+    # Path: model/attributes/messaging/messaging__destination_kind.json
+    MESSAGING_DESTINATION_KIND: Literal["messaging.destination_kind"] = (
+        "messaging.destination_kind"
+    )
+    """The kind of message destination.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name.
+    Example: "topic"
+    """
+
     # Path: model/attributes/messaging/messaging__message__body__size.json
     MESSAGING_MESSAGE_BODY_SIZE: Literal["messaging.message.body.size"] = (
         "messaging.message.body.size"
@@ -7482,6 +7498,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: rpc.response.status_code
+    DEPRECATED: Use rpc.response.status_code instead - Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.
     Example: 2
     """
 
@@ -7506,6 +7524,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: rpc.grpc.status_code
     Example: "DEADLINE_EXCEEDED"
     """
 
@@ -17153,6 +17172,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "messaging.destination_kind": AttributeMetadata(
+        brief="The kind of message destination.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="topic",
+        deprecation=DeprecationInfo(
+            reason="Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations.",
+            ),
+        ],
+    ),
     "messaging.message.body.size": AttributeMetadata(
         brief="The size of the message body in bytes.",
         type=AttributeType.INTEGER,
@@ -18319,7 +18355,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=2,
+        deprecation=DeprecationInfo(
+            replacement="rpc.response.status_code",
+            reason="Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.",
+        ),
+        aliases=["rpc.response.status_code"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated rpc.grpc.status_code in favor of rpc.response.status_code",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -18344,7 +18389,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="DEADLINE_EXCEEDED",
+        aliases=["rpc.grpc.status_code"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added rpc.grpc.status_code as an alias"
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 prs=[352],
@@ -21295,6 +21344,7 @@ Attributes = TypedDict(
         "messaging.destination": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
+        "messaging.destination_kind": str,
         "messaging.message.body.size": int,
         "messaging.message.conversation_id": str,
         "messaging.message.envelope.size": int,
