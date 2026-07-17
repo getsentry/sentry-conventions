@@ -1,3 +1,5 @@
+export type AttributeValue = string | boolean | number | string[] | boolean[] | number[];
+
 export interface AttributeJson {
   key: string;
   brief: string;
@@ -9,7 +11,8 @@ export interface AttributeJson {
   };
   is_in_otel: boolean;
   visibility?: 'public' | 'internal';
-  example?: string | boolean | number | string[] | boolean[] | number[];
+  example?: AttributeValue;
+  examples?: AttributeValue[];
   deprecation?: {
     replacement?: string;
     reason?: string;

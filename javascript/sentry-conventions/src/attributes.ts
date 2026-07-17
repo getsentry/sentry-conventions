@@ -4618,6 +4618,7 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  * Visibility: public
  *
  * @example "SELECT users"
+ * @example "INSERT products; UPDATE orders"
  */
 export const DB_QUERY_SUMMARY = 'db.query.summary';
 
@@ -9320,6 +9321,8 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  * Aliases: {@link URL_TEMPLATE} `url.template`
  *
  * @example "/users/:id"
+ * @example "my-controller/my-action/{id}"
+ * @example "/posts"
  */
 export const HTTP_ROUTE = 'http.route';
 
@@ -15830,7 +15833,9 @@ export type URL_SCHEME_TYPE = string;
  *
  * Aliases: {@link HTTP_ROUTE} `http.route`
  *
+ * @example "/users/{id}"
  * @example "/users/:id"
+ * @example "/about"
  */
 export const URL_TEMPLATE = 'url.template';
 
@@ -16924,6 +16929,8 @@ export interface AttributeMetadata {
   hasDynamicSuffix?: boolean;
   /** An example value of the attribute */
   example?: AttributeValue;
+  /** Example values of the attribute */
+  examples?: AttributeValue[];
   /** If an attribute was deprecated, and what it was replaced with */
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
@@ -21294,7 +21301,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT users',
-    changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    examples: ['SELECT users', 'INSERT products; UPDATE orders'],
+    changelog: [
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.4.0', prs: [208] },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.query.text': {
     brief:
@@ -24316,8 +24329,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '/users/:id',
+    examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
     aliases: ['url.template'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
@@ -28286,9 +28304,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/users/:id',
+    example: '/users/{id}',
+    examples: ['/users/{id}', '/users/:id', '/about'],
     aliases: ['http.route'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'user_agent.original': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',

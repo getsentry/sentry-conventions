@@ -44,7 +44,7 @@
     },
     "example": {
       "description": "An example value of the attribute",
-      "oneOf": [
+      "anyOf": [
         {
           "type": "string"
         },
@@ -73,6 +73,42 @@
           }
         }
       ]
+    },
+    "examples": {
+      "description": "Example values of the attribute",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "boolean"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        ]
+      }
     },
     "deprecation": {
       "description": "If an attribute was deprecated, and what it was replaced with",
@@ -151,5 +187,166 @@
       }
     }
   },
+  "not": {
+    "required": ["example", "examples"]
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["has_dynamic_suffix"],
+        "properties": {
+          "has_dynamic_suffix": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "anyOf": [
+          {
+            "required": ["example"]
+          },
+          {
+            "required": ["examples"]
+          }
+        ],
+        "properties": {
+          "example": {
+            "type": "string"
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "else": {
+        "oneOf": [
+          {
+            "properties": {
+              "type": {
+                "const": "string"
+              },
+              "example": {
+                "type": "string"
+              },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "properties": {
+              "type": {
+                "const": "boolean"
+              },
+              "example": {
+                "type": "boolean"
+              },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          {
+            "properties": {
+              "type": {
+                "enum": ["integer", "double"]
+              },
+              "example": {
+                "type": "number"
+              },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          {
+            "properties": {
+              "type": {
+                "const": "string[]"
+              },
+              "example": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "properties": {
+              "type": {
+                "const": "boolean[]"
+              },
+              "example": {
+                "type": "array",
+                "items": {
+                  "type": "boolean"
+                }
+              },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "properties": {
+              "type": {
+                "enum": ["integer[]", "double[]"]
+              },
+              "example": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "properties": {
+              "type": {
+                "const": "any"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
   "required": ["key", "brief", "type", "apply_scrubbing", "is_in_otel", "visibility"]
 }

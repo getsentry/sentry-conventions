@@ -110,6 +110,9 @@ class AttributeMetadata:
     additional_context: Optional[List[str]] = None
     """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""
 
+    examples: Optional[List[AttributeValue]] = None
+    """Example values of the attribute"""
+
 
 class _AttributeNamesMeta(type):
     _deprecated_names = {
@@ -2942,6 +2945,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "SELECT users"
+    Example: "INSERT products; UPDATE orders"
     """
 
     # Path: model/attributes/db/db__query__text.json
@@ -5601,6 +5605,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: url.template
     Example: "/users/:id"
+    Example: "my-controller/my-action/{id}"
+    Example: "/posts"
     """
 
     # Path: model/attributes/http/http__scheme.json
@@ -9139,7 +9145,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: http.route
+    Example: "/users/{id}"
     Example: "/users/:id"
+    Example: "/about"
     """
 
     # Path: model/attributes/url.json
@@ -12857,7 +12865,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT users",
+        examples=["SELECT users", "INSERT products; UPDATE orders"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[505], description="Added multiple examples"
+            ),
             ChangelogEntry(version="0.4.0", prs=[208]),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -16133,8 +16145,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/users/:id",
+        examples=["/users/:id", "my-controller/my-action/{id}", "/posts"],
         aliases=["url.template"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[505], description="Added multiple examples"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20286,9 +20302,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="/users/:id",
+        example="/users/{id}",
+        examples=["/users/{id}", "/users/:id", "/about"],
         aliases=["http.route"],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[505], description="Added multiple examples"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
