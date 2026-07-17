@@ -14407,7 +14407,7 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated Use {@link SENTRY_SPAN_SOURCE} (sentry.span.source) instead - This attribute is being deprecated in favor of sentry.span.source
+ * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
  */
 export const SENTRY_SOURCE = 'sentry.source';
@@ -14429,6 +14429,7 @@ export type SENTRY_SOURCE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
  */
 export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
@@ -27394,11 +27395,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'route',
     deprecation: {
-      replacement: 'sentry.span.source',
-      reason: 'This attribute is being deprecated in favor of sentry.span.source',
-      status: 'backfill',
+      reason:
+        'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
     },
-    changelog: [{ version: '0.5.0' }],
+    changelog: [{ version: 'next', description: 'Removed the sentry.span.source replacement' }, { version: '0.5.0' }],
   },
   'sentry.span.source': {
     brief:
@@ -27410,7 +27410,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'route',
-    changelog: [{ version: '0.4.0', prs: [214] }, { version: '0.0.0' }],
+    deprecation: {
+      reason:
+        'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
+    },
+    changelog: [
+      { version: 'next', description: 'Deprecated; superseded by sentry.segment.name.source on segment spans' },
+      { version: '0.4.0', prs: [214] },
+      { version: '0.0.0' },
+    ],
   },
   'sentry.status': {
     brief:

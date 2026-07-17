@@ -285,6 +285,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
+        "SENTRY_SPAN_SOURCE",
         "SENTRY_SVELTEKIT_NAVIGATION_FROM",
         "SENTRY_SVELTEKIT_NAVIGATION_TO",
         "SENTRY_SVELTEKIT_NAVIGATION_TYPE",
@@ -8384,7 +8385,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: Use sentry.span.source instead - This attribute is being deprecated in favor of sentry.span.source
+    DEPRECATED: No replacement at this time - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
     Example: "route"
     """
 
@@ -8396,6 +8397,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
     Example: "route"
     """
 
@@ -19352,11 +19354,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="route",
         deprecation=DeprecationInfo(
-            replacement="sentry.span.source",
-            reason="This attribute is being deprecated in favor of sentry.span.source",
-            status=DeprecationStatus.BACKFILL,
+            reason="This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans."
         ),
         changelog=[
+            ChangelogEntry(
+                version="next", description="Removed the sentry.span.source replacement"
+            ),
             ChangelogEntry(version="0.5.0"),
         ],
     ),
@@ -19367,7 +19370,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="route",
+        deprecation=DeprecationInfo(
+            reason="This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans."
+        ),
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated; superseded by sentry.segment.name.source on segment spans",
+            ),
             ChangelogEntry(version="0.4.0", prs=[214]),
             ChangelogEntry(version="0.0.0"),
         ],
