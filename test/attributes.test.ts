@@ -78,6 +78,17 @@ describe('attribute examples schema', () => {
 
     expect(valid).toBe(false);
   });
+
+  it('rejects a dynamic-suffix attribute without examples', () => {
+    const ajv = new Ajv();
+    const valid = ajv.validate(schema, {
+      ...baseAttribute,
+      key: 'test.<key>',
+      has_dynamic_suffix: true,
+    });
+
+    expect(valid).toBe(false);
+  });
 });
 
 describe('getAttributeExamples', () => {
@@ -125,12 +136,12 @@ describe('attribute json', async () => {
 
       it('should have examples that follow the type set unless has_dynamic_suffix is true', () => {
         const examples = getAttributeExamples(content);
-        if (!examples) {
+        if (content.has_dynamic_suffix) {
+          expect(examples?.every((example) => typeof example === 'string')).toBe(true);
           return;
         }
 
-        if (content.has_dynamic_suffix) {
-          expect(examples.every((example) => typeof example === 'string')).toBe(true);
+        if (!examples) {
           return;
         }
 
