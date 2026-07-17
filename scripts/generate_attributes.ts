@@ -1,6 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { getAttributeExamples, type AttributeJson } from './types';
+import { getAttributeExamples } from './attribute_examples';
+import type { AttributeJson } from './types';
 
 interface GenerateAttributesOptions {
   attributesDir: string;

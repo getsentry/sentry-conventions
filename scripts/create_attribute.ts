@@ -4,7 +4,8 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { confirm, intro, isCancel, log, outro, select, text } from '@clack/prompts';
 import Ajv from 'ajv';
-import { parseAttributeExamples, type AttributeValue } from './types';
+import { parseAttributeExamples } from './attribute_examples';
+import type { AttributeValue } from './types';
 
 const getNextPrNumber = (): number | undefined => {
   try {

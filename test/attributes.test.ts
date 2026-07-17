@@ -5,8 +5,9 @@ import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/attribute.schema.json';
+import { getAttributeExamples, parseAttributeExamples } from '../scripts/attribute_examples';
 import { compareVersions } from '../scripts/generate_attribute_changelog';
-import { getAttributeExamples, parseAttributeExamples, type AttributeJson } from '../scripts/types';
+import type { AttributeJson } from '../scripts/types';
 import { attributeKeyToFileName, fileNameToAttributeKey } from '../scripts/utils';
 
 const traceFolders = path.resolve(__dirname, '../model/attributes');
