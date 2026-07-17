@@ -1,3 +1,49 @@
+## 0.17.0
+
+### New Features ✨
+
+#### Attributes
+
+- Remove gen AI reasoning effort by @constantinius in [#503](https://github.com/getsentry/sentry-conventions/pull/503)
+- Deprecate gen AI reasoning effort by @constantinius in [#502](https://github.com/getsentry/sentry-conventions/pull/502)
+- Add `sentry.pageload.span_id` attribute by @Lms24 in [#495](https://github.com/getsentry/sentry-conventions/pull/495)
+- Add `sentry.relay.ingress` and `sentry.relay.pipeline` by @loewenheim in [#491](https://github.com/getsentry/sentry-conventions/pull/491)
+- Expand grpc attributes by @lucas-zimerman in [#460](https://github.com/getsentry/sentry-conventions/pull/460)
+- Add `file.path` and `file.size` by @buenaflor in [#458](https://github.com/getsentry/sentry-conventions/pull/458)
+
+## 0.16.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add dist (deprecated) by @alexander-alderman-webb in [#489](https://github.com/getsentry/sentry-conventions/pull/489)
+- Add `server_name` (deprecated) by @cleptric in [#477](https://github.com/getsentry/sentry-conventions/pull/477)
+- Add `navigation.origin` attribute and deprecate SvelteKit routing attributes by @Lms24 in [#467](https://github.com/getsentry/sentry-conventions/pull/467)
+- Add AWS service instrumentation attributes by @andreiborza in [#480](https://github.com/getsentry/sentry-conventions/pull/480)
+- Add messaging, rpc and gen_ai attributes by @andreiborza in [#482](https://github.com/getsentry/sentry-conventions/pull/482)
+- Add faas.invoked\_\* attributes by @andreiborza in [#481](https://github.com/getsentry/sentry-conventions/pull/481)
+- Add AWS DynamoDB instrumentation attributes by @andreiborza in [#479](https://github.com/getsentry/sentry-conventions/pull/479)
+- Add `sentry.metric.source` by @klochek in [#476](https://github.com/getsentry/sentry-conventions/pull/476)
+- Add `faas.id` (deprecated) in favor of `cloud.resource_id` by @andreiborza in [#475](https://github.com/getsentry/sentry-conventions/pull/475)
+- Add `faas.execution` (deprecated) in favor of `faas.invocation_id` by @andreiborza in [#473](https://github.com/getsentry/sentry-conventions/pull/473)
+- Add messaging attributes by @s1gr1d in [#469](https://github.com/getsentry/sentry-conventions/pull/469)
+- Add `url.same_origin` (deprecated) and `http.request.same_origin` (replacement) attributes by @Lms24 in [#456](https://github.com/getsentry/sentry-conventions/pull/456)
+- Add `db.response.status_code` by @s1gr1d in [#462](https://github.com/getsentry/sentry-conventions/pull/462)
+
+#### Other
+
+- (ai) Add granular cost attributes for cache and reasoning by @vgrozdanic in [#461](https://github.com/getsentry/sentry-conventions/pull/461)
+- (attribute) Add `koa.type` and (deprecated) `koa.name` by @s1gr1d in [#472](https://github.com/getsentry/sentry-conventions/pull/472)
+- (js) Add `_BASE` attribute key exports for dynamic attribute keys by @Lms24 in [#471](https://github.com/getsentry/sentry-conventions/pull/471)
+- (queues) Add Python `sentry.op` values for queues by @alexander-alderman-webb in [#470](https://github.com/getsentry/sentry-conventions/pull/470)
+- Add `navigation.route.id` and adjust pageload and navigation description rules by @Lms24 in [#468](https://github.com/getsentry/sentry-conventions/pull/468)
+
+### Internal Changes 🔧
+
+- (ci) Stop inheriting secrets for `changelog-preview` by @tobias-wilfert in [#463](https://github.com/getsentry/sentry-conventions/pull/463)
+- (repo) Remove socket registry from yarn lock by @Lms24 in [#490](https://github.com/getsentry/sentry-conventions/pull/490)
+
 ## 0.15.1
 
 ### Bug Fixes 🐛

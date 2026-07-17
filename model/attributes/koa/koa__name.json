@@ -1,0 +1,22 @@
+{
+  "key": "koa.name",
+  "brief": "The name of the Koa middleware or matched route that handled the request.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "/users/:id",
+  "visibility": "public",
+  "deprecation": {
+    "_status": null,
+    "reason": "No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead."
+  },
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [490],
+      "description": "Added koa.name attribute as deprecated"
+    }
+  ]
+}

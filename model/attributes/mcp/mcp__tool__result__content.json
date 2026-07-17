@@ -8,7 +8,7 @@
   },
   "is_in_otel": false,
   "example": "{\"output\": \"rainy\", \"toolCallId\": \"1\"}",
-  "alias": ["gen_ai.tool.call.result", "gen_ai.tool.message", "gen_ai.tool.output"],
+  "alias": ["gen_ai.tool.call.result", "gen_ai.tool.message", "gen_ai.tool.output", "ai.toolCall.result"],
   "visibility": "public",
   "changelog": [
     {

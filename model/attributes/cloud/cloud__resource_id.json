@@ -10,8 +10,14 @@
   "additional_context": [
     "This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other."
   ],
+  "alias": ["faas.id"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [475],
+      "description": "Added faas.id as an alias"
+    },
     {
       "version": "0.11.1",
       "prs": [414]

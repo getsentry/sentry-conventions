@@ -2,40 +2,53 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+const attributeValueSchema = z.union([
+  z.string(),
+  z.boolean(),
+  z.number(),
+  z.array(z.string()),
+  z.array(z.boolean()),
+  z.array(z.number()),
+]);
+
 // Schema matching schemas/attribute.schema.json
-const attributeSchema = z.object({
-  key: z.string(),
-  brief: z.string(),
-  has_dynamic_suffix: z.boolean().optional(),
-  type: z.enum(['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]']),
-  apply_scrubbing: z.object({
-    key: z.enum(['auto', 'manual', 'never']),
-    reason: z.string().optional(),
-  }),
-  is_in_otel: z.boolean(),
-  visibility: z.enum(['public', 'internal']),
-  example: z
-    .union([z.string(), z.boolean(), z.number(), z.array(z.string()), z.array(z.boolean()), z.array(z.number())])
-    .optional(),
-  deprecation: z
-    .object({
-      replacement: z.string().optional(),
+const attributeSchema = z
+  .object({
+    key: z.string(),
+    brief: z.string(),
+    has_dynamic_suffix: z.boolean().optional(),
+    type: z.enum(['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]']),
+    apply_scrubbing: z.object({
+      key: z.enum(['auto', 'manual', 'never']),
       reason: z.string().optional(),
-      _status: z.enum(['backfill', 'normalize']).nullable(),
-    })
-    .optional(),
-  alias: z.array(z.string()).optional(),
-  additional_context: z.array(z.string()).optional(),
-  changelog: z
-    .array(
-      z.object({
-        version: z.string(),
-        prs: z.array(z.number().int().positive()).optional(),
-        description: z.string().optional(),
-      }),
-    )
-    .optional(),
-});
+    }),
+    is_in_otel: z.boolean(),
+    visibility: z.enum(['public', 'internal']),
+    example: attributeValueSchema.optional(),
+    examples: z.array(attributeValueSchema).min(1).optional(),
+    deprecation: z
+      .object({
+        replacement: z.string().optional(),
+        reason: z.string().optional(),
+        _status: z.enum(['backfill', 'normalize', 'transform']).nullable(),
+        transformation: z.string().optional(),
+      })
+      .optional(),
+    alias: z.array(z.string()).optional(),
+    additional_context: z.array(z.string()).optional(),
+    changelog: z
+      .array(
+        z.object({
+          version: z.string(),
+          prs: z.array(z.number().int().positive()).optional(),
+          description: z.string().optional(),
+        }),
+      )
+      .optional(),
+  })
+  .refine((attribute) => attribute.example === undefined || attribute.examples === undefined, {
+    message: 'Use either example or examples, not both',
+  });
 
 // Schema matching schemas/name.schema.json
 const spanOperationSchema = z.object({
