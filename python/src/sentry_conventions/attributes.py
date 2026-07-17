@@ -8348,7 +8348,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_SEGMENT_NAME_SOURCE: Literal["sentry.segment.name.source"] = (
         "sentry.segment.name.source"
     )
-    """The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
+    """The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
 
     Type: str
     Apply Scrubbing: manual
@@ -19329,7 +19329,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.segment.name.source": AttributeMetadata(
-        brief="The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+        brief="The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -19341,6 +19341,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[466],
                 description="Added sentry.segment.name.source",
             ),
+        ],
+        additional_context=[
+            "This attribute is the replacement for `transaction_info.source` on transactions.",
+            "Should we bring back clustering for segment names (like we do for transaction names), this attribute will be used to determine if a segment name should be clustered.",
         ],
     ),
     "sentry.segment_id": AttributeMetadata(

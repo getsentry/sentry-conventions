@@ -14359,7 +14359,7 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
 // Path: model/attributes/sentry/sentry__segment__name__source.json
 
 /**
- * The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.segment.name.source`
+ * The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.segment.name.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_SOURCE_TYPE}
  *
@@ -27388,7 +27388,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'sentry.segment.name.source': {
     brief:
-      "The name source of the segment span. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -27397,6 +27397,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'internal',
     example: "'route'",
     changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.name.source' }],
+    additionalContext: [
+      'This attribute is the replacement for `transaction_info.source` on transactions.',
+      'Should we bring back clustering for segment names (like we do for transaction names), this attribute will be used to determine if a segment name should be clustered.',
+    ],
   },
   'sentry.server_sample_rate': {
     brief: 'Rate at which a span was sampled in Relay.',
