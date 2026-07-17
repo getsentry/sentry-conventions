@@ -3023,8 +3023,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.query.text
-    DEPRECATED: Use db.query.text instead
-    Example: "SELECT * FROM users"
+    DEPRECATED: Use db.query.text instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
+    Example: "SELECT * FROM users WHERE id = $1"
     """
 
     # Path: model/attributes/db/db__stored_procedure__name.json
@@ -12950,12 +12950,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="SELECT * FROM users",
+        example="SELECT * FROM users WHERE id = $1",
         deprecation=DeprecationInfo(
-            replacement="db.query.text", status=DeprecationStatus.NORMALIZE
+            replacement="db.query.text",
+            reason="While this attribute never specifically required parameterization, the replacement, db.query.text, does.",
+            status=DeprecationStatus.NORMALIZE,
         ),
         aliases=["db.query.text"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[501],
+                description="Improved example and added deprecation reason",
+            ),
             ChangelogEntry(version="0.4.0", prs=[199]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),

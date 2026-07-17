@@ -4769,8 +4769,8 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  *
  * Aliases: {@link DB_QUERY_TEXT} `db.query.text`
  *
- * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead
- * @example "SELECT * FROM users"
+ * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
+ * @example "SELECT * FROM users WHERE id = $1"
  */
 export const DB_STATEMENT = 'db.statement';
 
@@ -21378,13 +21378,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'SELECT * FROM users',
+    example: 'SELECT * FROM users WHERE id = $1',
     deprecation: {
       replacement: 'db.query.text',
+      reason:
+        'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
       status: 'normalize',
     },
     aliases: ['db.query.text'],
-    changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [501], description: 'Improved example and added deprecation reason' },
+      { version: '0.4.0', prs: [199] },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.stored_procedure.name': {
     brief: 'The name of a stored procedure being called.',
