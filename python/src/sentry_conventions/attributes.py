@@ -8354,7 +8354,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: internal
-    Example: "'route'"
+    Example: "route"
+    Example: "component"
+    Example: "view"
+    Example: "task"
+    Example: "custom"
+    Example: "url"
     """
 
     # Path: model/attributes/sentry/sentry__segment_id.json
@@ -19334,7 +19339,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
-        example="'route'",
+        example="route",
+        examples=["route", "component", "view", "task", "custom", "url"],
         changelog=[
             ChangelogEntry(
                 version="next",

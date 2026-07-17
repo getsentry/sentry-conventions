@@ -14368,7 +14368,12 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: internal
  *
- * @example "'route'"
+ * @example "route"
+ * @example "component"
+ * @example "view"
+ * @example "task"
+ * @example "custom"
+ * @example "url"
  */
 export const SENTRY_SEGMENT_NAME_SOURCE = 'sentry.segment.name.source';
 
@@ -27395,7 +27400,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'internal',
-    example: "'route'",
+    example: 'route',
+    examples: ['route', 'component', 'view', 'task', 'custom', 'url'],
     changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.name.source' }],
     additionalContext: [
       'This attribute is the replacement for `transaction_info.source` on transactions.',
