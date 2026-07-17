@@ -6460,6 +6460,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "BestTopic"
     """
 
+    # Path: model/attributes/messaging/messaging__destination__partition__id.json
+    MESSAGING_DESTINATION_PARTITION_ID: Literal[
+        "messaging.destination.partition.id"
+    ] = "messaging.destination.partition.id"
+    """The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "1"
+    """
+
     # Path: model/attributes/messaging/messaging__destination_kind.json
     MESSAGING_DESTINATION_KIND: Literal["messaging.destination_kind"] = (
         "messaging.destination_kind"
@@ -6472,6 +6485,43 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time - Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name.
     Example: "topic"
+    """
+
+    # Path: model/attributes/messaging/messaging__kafka__message__key.json
+    MESSAGING_KAFKA_MESSAGE_KEY: Literal["messaging.kafka.message.key"] = (
+        "messaging.kafka.message.key"
+    )
+    """Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myKey"
+    """
+
+    # Path: model/attributes/messaging/messaging__kafka__message__tombstone.json
+    MESSAGING_KAFKA_MESSAGE_TOMBSTONE: Literal["messaging.kafka.message.tombstone"] = (
+        "messaging.kafka.message.tombstone"
+    )
+    """A boolean that is true if the message is a tombstone.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: true
+    """
+
+    # Path: model/attributes/messaging/messaging__kafka__offset.json
+    MESSAGING_KAFKA_OFFSET: Literal["messaging.kafka.offset"] = "messaging.kafka.offset"
+    """The offset of a record in the corresponding Kafka partition.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 42
     """
 
     # Path: model/attributes/messaging/messaging__message__body__size.json
@@ -17200,6 +17250,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "messaging.destination.partition.id": AttributeMetadata(
+        brief="The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="1",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[474],
+                description="Added messaging.destination.partition.id attribute",
+            ),
+        ],
+    ),
     "messaging.destination_kind": AttributeMetadata(
         brief="The kind of message destination.",
         type=AttributeType.STRING,
@@ -17214,6 +17279,51 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 description="Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations.",
+            ),
+        ],
+    ),
+    "messaging.kafka.message.key": AttributeMetadata(
+        brief="Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myKey",
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[474],
+                description="Added messaging.kafka.message.key attribute",
+            ),
+        ],
+    ),
+    "messaging.kafka.message.tombstone": AttributeMetadata(
+        brief="A boolean that is true if the message is a tombstone.",
+        type=AttributeType.BOOLEAN,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[474],
+                description="Added messaging.kafka.message.tombstone attribute",
+            ),
+        ],
+    ),
+    "messaging.kafka.offset": AttributeMetadata(
+        brief="The offset of a record in the corresponding Kafka partition.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=42,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[474],
+                description="Added messaging.kafka.offset attribute",
             ),
         ],
     ),
@@ -21381,7 +21491,11 @@ Attributes = TypedDict(
         "messaging.destination": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
+        "messaging.destination.partition.id": str,
         "messaging.destination_kind": str,
+        "messaging.kafka.message.key": str,
+        "messaging.kafka.message.tombstone": bool,
+        "messaging.kafka.offset": int,
         "messaging.message.body.size": int,
         "messaging.message.conversation_id": str,
         "messaging.message.envelope.size": int,
