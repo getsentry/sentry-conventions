@@ -1937,6 +1937,61 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/browser/browser__bfcache__frame.json
+    BROWSER_BFCACHE_FRAME: Literal["browser.bfcache.frame"] = "browser.bfcache.frame"
+    """Which frame a back/forward cache not-restored reason originated from. 'masked' indicates a cross-origin subframe whose specific reason is hidden by the browser.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "top"
+    Example: "child"
+    Example: "masked"
+    Example: "unknown"
+    """
+
+    # Path: model/attributes/browser/browser__bfcache__not_restored_reason_count.json
+    BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT: Literal[
+        "browser.bfcache.not_restored_reason_count"
+    ] = "browser.bfcache.not_restored_reason_count"
+    """The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).
+
+    Type: int
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: 2
+    """
+
+    # Path: model/attributes/browser/browser__bfcache__outcome.json
+    BROWSER_BFCACHE_OUTCOME: Literal["browser.bfcache.outcome"] = (
+        "browser.bfcache.outcome"
+    )
+    """Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "hit"
+    Example: "miss"
+    """
+
+    # Path: model/attributes/browser/browser__bfcache__reason.json
+    BROWSER_BFCACHE_REASON: Literal["browser.bfcache.reason"] = "browser.bfcache.reason"
+    """A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "unload-listener"
+    Example: "websocket"
+    Example: "idbversionchangeevent"
+    Example: "response-cache-control-no-store"
+    """
+
     # Path: model/attributes/browser/browser__name.json
     BROWSER_NAME: Literal["browser.name"] = "browser.name"
     """The name of the browser.
@@ -11919,6 +11974,75 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "browser.bfcache.frame": AttributeMetadata(
+        brief="Which frame a back/forward cache not-restored reason originated from. 'masked' indicates a cross-origin subframe whose specific reason is hidden by the browser.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="top",
+        examples=["top", "child", "masked", "unknown"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[513],
+                description="Added browser.bfcache.frame attribute",
+            ),
+        ],
+    ),
+    "browser.bfcache.not_restored_reason_count": AttributeMetadata(
+        brief="The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        examples=[2],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[513],
+                description="Added browser.bfcache.not_restored_reason_count attribute",
+            ),
+        ],
+    ),
+    "browser.bfcache.outcome": AttributeMetadata(
+        brief="Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="hit",
+        examples=["hit", "miss"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[513],
+                description="Added browser.bfcache.outcome attribute",
+            ),
+        ],
+    ),
+    "browser.bfcache.reason": AttributeMetadata(
+        brief="A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="unload-listener",
+        examples=[
+            "unload-listener",
+            "websocket",
+            "idbversionchangeevent",
+            "response-cache-control-no-store",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[513],
+                description="Added browser.bfcache.reason attribute",
+            ),
+        ],
+    ),
     "browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
@@ -21370,6 +21494,10 @@ Attributes = TypedDict(
         "aws.step_functions.activity.arn": str,
         "aws.step_functions.state_machine.arn": str,
         "blocked_main_thread": bool,
+        "browser.bfcache.frame": str,
+        "browser.bfcache.not_restored_reason_count": int,
+        "browser.bfcache.outcome": str,
+        "browser.bfcache.reason": str,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,
         "browser.performance.time_origin": float,
