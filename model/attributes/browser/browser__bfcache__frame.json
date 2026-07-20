@@ -1,0 +1,18 @@
+{
+  "key": "browser.bfcache.frame",
+  "brief": "Which frame a back/forward cache not-restored reason originated from. 'masked' indicates a cross-origin subframe whose specific reason is hidden by the browser.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["top", "child", "masked", "unknown"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [513],
+      "description": "Added browser.bfcache.frame attribute"
+    }
+  ]
+}

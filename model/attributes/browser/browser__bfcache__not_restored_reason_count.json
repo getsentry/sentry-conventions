@@ -1,0 +1,18 @@
+{
+  "key": "browser.bfcache.not_restored_reason_count",
+  "brief": "The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [2],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [513],
+      "description": "Added browser.bfcache.not_restored_reason_count attribute"
+    }
+  ]
+}
