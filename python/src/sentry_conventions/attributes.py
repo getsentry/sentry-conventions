@@ -1939,7 +1939,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/browser/browser__bfcache__frame.json
     BROWSER_BFCACHE_FRAME: Literal["browser.bfcache.frame"] = "browser.bfcache.frame"
-    """Which frame a back/forward cache not-restored reason originated from. 'masked' indicates a cross-origin subframe whose specific reason is hidden by the browser.
+    """Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.
 
     Type: str
     Apply Scrubbing: never
@@ -1947,8 +1947,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Example: "top"
     Example: "child"
-    Example: "masked"
-    Example: "unknown"
     """
 
     # Path: model/attributes/browser/browser__bfcache__not_restored_reason_count.json
@@ -11975,13 +11973,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "browser.bfcache.frame": AttributeMetadata(
-        brief="Which frame a back/forward cache not-restored reason originated from. 'masked' indicates a cross-origin subframe whose specific reason is hidden by the browser.",
+        brief="Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="top",
-        examples=["top", "child", "masked", "unknown"],
+        examples=["top", "child"],
         changelog=[
             ChangelogEntry(
                 version="next",

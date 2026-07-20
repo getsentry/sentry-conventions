@@ -2829,7 +2829,7 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
 // Path: model/attributes/browser/browser__bfcache__frame.json
 
 /**
- * Which frame a back/forward cache not-restored reason originated from. 'masked' indicates a cross-origin subframe whose specific reason is hidden by the browser. `browser.bfcache.frame`
+ * Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame. `browser.bfcache.frame`
  *
  * Attribute Value Type: `string` {@link BROWSER_BFCACHE_FRAME_TYPE}
  *
@@ -2840,8 +2840,6 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  *
  * @example "top"
  * @example "child"
- * @example "masked"
- * @example "unknown"
  */
 export const BROWSER_BFCACHE_FRAME = 'browser.bfcache.frame';
 
@@ -20664,7 +20662,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'browser.bfcache.frame': {
     brief:
-      "Which frame a back/forward cache not-restored reason originated from. 'masked' indicates a cross-origin subframe whose specific reason is hidden by the browser.",
+      "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
     type: 'string',
     applyScrubbing: {
       key: 'never',
@@ -20672,7 +20670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'top',
-    examples: ['top', 'child', 'masked', 'unknown'],
+    examples: ['top', 'child'],
     changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
   },
   'browser.bfcache.not_restored_reason_count': {
