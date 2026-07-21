@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "8.1.2",
+    "@astrojs/svelte": "9.0.1",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "7.1.0",
     "dompurify": "^3.4.11",
