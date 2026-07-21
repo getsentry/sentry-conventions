@@ -1,15 +1,22 @@
 {
   "key": "sentry.kind",
   "brief": "Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.",
+  "additional_context": [
+    "Valid attribute values are: \"client\", \"server\", \"producer\", \"consumer\" and \"internal\""
+  ],
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "alias": ["otel.kind"],
   "is_in_otel": false,
-  "example": "server",
+  "examples": ["client", "server", "producer", "consumer", "internal"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "changes": ["Added more examples and additional_context to the attribute"]
+    },
     {
       "version": "0.3.1",
       "prs": [190]
