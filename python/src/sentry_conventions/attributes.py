@@ -19079,6 +19079,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["client", "server", "producer", "consumer", "internal"],
         aliases=["otel.kind"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[517],
+                description="Added more examples and additional_context to the attribute",
+            ),
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
         additional_context=[

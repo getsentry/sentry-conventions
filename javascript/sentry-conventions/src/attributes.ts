@@ -27171,7 +27171,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'client',
     examples: ['client', 'server', 'producer', 'consumer', 'internal'],
     aliases: ['otel.kind'],
-    changelog: [{ version: '0.3.1', prs: [190] }],
+    changelog: [
+      { version: 'next', prs: [517], description: 'Added more examples and additional_context to the attribute' },
+      { version: '0.3.1', prs: [190] },
+    ],
     additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
   },
   'sentry.main_thread': {

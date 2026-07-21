@@ -15,7 +15,8 @@
   "changelog": [
     {
       "version": "next",
-      "changes": ["Added more examples and additional_context to the attribute"]
+      "prs": [517],
+      "description": "Added more examples and additional_context to the attribute"
     },
     {
       "version": "0.3.1",
