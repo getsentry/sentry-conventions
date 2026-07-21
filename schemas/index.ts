@@ -1,3 +1,4 @@
+export * from './attribute';
 export * from './attribute-transformation';
 export * from './description';
 export * from './measurement';
