@@ -13782,7 +13782,11 @@ export type SENTRY_IS_REMOTE_TYPE = boolean;
  *
  * Aliases: {@link OTEL_KIND} `otel.kind`
  *
+ * @example "client"
  * @example "server"
+ * @example "producer"
+ * @example "consumer"
+ * @example "internal"
  */
 export const SENTRY_KIND = 'sentry.kind';
 
@@ -27164,9 +27168,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'server',
+    example: 'client',
+    examples: ['client', 'server', 'producer', 'consumer', 'internal'],
     aliases: ['otel.kind'],
-    changelog: [{ version: '0.3.1', prs: [190] }],
+    changelog: [
+      { version: 'next', prs: [517], description: 'Added more examples and additional_context to the attribute' },
+      { version: '0.3.1', prs: [190] },
+    ],
+    additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
   },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',

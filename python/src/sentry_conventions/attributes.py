@@ -8044,7 +8044,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: otel.kind
+    Example: "client"
     Example: "server"
+    Example: "producer"
+    Example: "consumer"
+    Example: "internal"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -19071,10 +19075,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="server",
+        example="client",
+        examples=["client", "server", "producer", "consumer", "internal"],
         aliases=["otel.kind"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[517],
+                description="Added more examples and additional_context to the attribute",
+            ),
             ChangelogEntry(version="0.3.1", prs=[190]),
+        ],
+        additional_context=[
+            'Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'
         ],
     ),
     "sentry.main_thread": AttributeMetadata(
