@@ -1,84 +1,122 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Sentry Attribute Transformation Schema",
-  "description": "Describes how one or more deprecated attributes are transformed into replacement attributes",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "id": {
-      "description": "Stable identifier for the transformation",
-      "type": "string",
-      "pattern": "^[a-z0-9_]+$"
+      "$ref": "#/definitions/__schema0"
     },
     "brief": {
-      "description": "Short explanation of when and why this transformation is applied",
-      "type": "string"
+      "$ref": "#/definitions/__schema1"
     },
     "inputs": {
-      "description": "Attributes consumed by this transformation",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "#/definitions/AttributeReference"
-      }
+      "$ref": "#/definitions/__schema2"
     },
     "outputs": {
-      "description": "Attributes produced by this transformation",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "#/definitions/AttributeReference"
-      }
+      "$ref": "#/definitions/__schema5"
     },
     "actions": {
-      "description": "Ordered description of the value transformations to apply. This describes behavior; Relay owns the implementation.",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "string"
-      }
+      "$ref": "#/definitions/__schema6"
     },
     "examples": {
-      "description": "Examples showing input attributes and expected output attributes",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "#/definitions/TransformationExample"
-      }
+      "$ref": "#/definitions/__schema8"
     }
   },
   "required": ["id", "brief", "inputs", "outputs", "actions", "examples"],
+  "additionalProperties": false,
+  "title": "Sentry Attribute Transformation Schema",
+  "description": "Describes how one or more deprecated attributes are transformed into replacement attributes",
   "definitions": {
+    "__schema0": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "__schema1": {
+      "type": "string"
+    },
+    "__schema2": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AttributeReference"
+      }
+    },
     "AttributeReference": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "attribute": {
-          "type": "string"
+          "$ref": "#/definitions/__schema3"
         },
         "brief": {
-          "type": "string"
+          "$ref": "#/definitions/__schema4"
         }
       },
-      "required": ["attribute"]
+      "required": ["attribute"],
+      "additionalProperties": false,
+      "title": "AttributeReference"
+    },
+    "__schema3": {
+      "type": "string"
+    },
+    "__schema4": {
+      "type": "string"
+    },
+    "__schema5": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AttributeReference"
+      }
+    },
+    "__schema6": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/__schema7"
+      }
+    },
+    "__schema7": {
+      "type": "string"
+    },
+    "__schema8": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TransformationExample"
+      }
     },
     "TransformationExample": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "$ref": "#/definitions/__schema9"
         },
         "input": {
-          "type": "object",
-          "additionalProperties": true
+          "$ref": "#/definitions/__schema10"
         },
         "output": {
-          "type": "object",
-          "additionalProperties": true
+          "$ref": "#/definitions/__schema11"
         }
       },
-      "required": ["name", "input", "output"]
+      "required": ["name", "input", "output"],
+      "additionalProperties": false,
+      "title": "TransformationExample"
+    },
+    "__schema9": {
+      "type": "string"
+    },
+    "__schema10": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {}
+    },
+    "__schema11": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {}
     }
   }
 }

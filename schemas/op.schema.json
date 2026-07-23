@@ -1,40 +1,52 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/SpanOperation",
+  "type": "object",
+  "properties": {
+    "name": {
+      "$ref": "#/definitions/__schema0"
+    },
+    "description": {
+      "$ref": "#/definitions/__schema1"
+    },
+    "fields": {
+      "$ref": "#/definitions/__schema2"
+    }
+  },
+  "required": ["name", "fields"],
+  "additionalProperties": false,
+  "title": "SpanOperation",
   "definitions": {
-    "SpanOperation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "fields": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Field"
-          }
-        }
-      },
-      "required": ["fields", "name"],
-      "title": "SpanOperation"
+    "__schema0": {
+      "type": "string"
+    },
+    "__schema1": {
+      "type": "string"
+    },
+    "__schema2": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Field"
+      }
     },
     "Field": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "$ref": "#/definitions/__schema3"
         },
         "description": {
-          "type": "string"
+          "$ref": "#/definitions/__schema4"
         }
       },
       "required": ["name"],
+      "additionalProperties": false,
       "title": "Field"
+    },
+    "__schema3": {
+      "type": "string"
+    },
+    "__schema4": {
+      "type": "string"
     }
   }
 }
