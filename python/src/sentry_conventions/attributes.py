@@ -184,6 +184,7 @@ class _AttributeNamesMeta(type):
         "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
         "DIST",
+        "DJANGO_MIDDLEWARE_NAME",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
         "FAAS_EXECUTION",
@@ -3542,6 +3543,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "1.0"
     """
 
+    # Path: model/attributes/django/django__middleware_name.json
+    DJANGO_MIDDLEWARE_NAME: Literal["django.middleware_name"] = "django.middleware_name"
+    """The name of the Django middleware.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: middleware.name
+    DEPRECATED: Use middleware.name instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+    Example: "AuthenticationMiddleware"
+    """
+
     # Path: model/attributes/effectiveConnectionType.json
     EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
         "effectiveConnectionType"
@@ -6671,6 +6685,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: django.middleware_name
     Example: "AuthenticationMiddleware"
     """
 
@@ -13683,6 +13698,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "django.middleware_name": AttributeMetadata(
+        brief="The name of the Django middleware.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AuthenticationMiddleware",
+        examples=["AuthenticationMiddleware"],
+        deprecation=DeprecationInfo(
+            replacement="middleware.name",
+            reason="This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["middleware.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[520],
+                description="Added django.middleware_name attribute",
+            ),
+        ],
+    ),
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
@@ -17485,7 +17522,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
+        aliases=["django.middleware_name"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added django.middleware_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[336],
@@ -21272,6 +21313,7 @@ Attributes = TypedDict(
         "device.usable_memory": int,
         "deviceMemory": str,
         "dist": str,
+        "django.middleware_name": str,
         "effectiveConnectionType": str,
         "environment": str,
         "error.type": str,
