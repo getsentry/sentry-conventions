@@ -9,6 +9,11 @@
   "visibility": "public",
   "examples": ["AuthenticationMiddleware"],
   "alias": ["middleware.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "middleware.name",
+    "reason": "This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement."
+  },
   "changelog": [
     {
       "version": "next",

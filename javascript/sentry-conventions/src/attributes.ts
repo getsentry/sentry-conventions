@@ -15180,6 +15180,7 @@ export type STALL_TOTAL_TIME_TYPE = number;
  *
  * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
  *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
  * @example "AuthenticationMiddleware"
  */
 export const STARLITE_MIDDLEWARE_NAME = 'starlite.middleware_name';
@@ -28049,6 +28050,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'AuthenticationMiddleware',
     examples: ['AuthenticationMiddleware'],
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
     aliases: ['middleware.name'],
     changelog: [{ version: 'next', prs: [519], description: 'Added starlite.middleware_name attribute' }],
   },
