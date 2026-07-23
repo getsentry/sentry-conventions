@@ -5722,6 +5722,30 @@ export const DIST = 'dist';
  */
 export type DIST_TYPE = string;
 
+// Path: model/attributes/django/django__middleware_name.json
+
+/**
+ * The name of the Django middleware. `django.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link DJANGO_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const DJANGO_MIDDLEWARE_NAME = 'django.middleware_name';
+
+/**
+ * Type for {@link DJANGO_MIDDLEWARE_NAME} django.middleware_name
+ */
+export type DJANGO_MIDDLEWARE_NAME_TYPE = string;
+
 // Path: model/attributes/effectiveConnectionType.json
 
 /**
@@ -11233,6 +11257,8 @@ export type METHOD_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link DJANGO_MIDDLEWARE_NAME} `django.middleware_name`
  *
  * @example "AuthenticationMiddleware"
  */
@@ -17293,6 +17319,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'device.timezone': 'string',
   'device.usable_memory': 'integer',
   dist: 'string',
+  'django.middleware_name': 'string',
   effectiveConnectionType: 'string',
   environment: 'string',
   'error.type': 'string',
@@ -18061,6 +18088,7 @@ export type AttributeName =
   | typeof DEVICE_TIMEZONE
   | typeof DEVICE_USABLE_MEMORY
   | typeof DIST
+  | typeof DJANGO_MIDDLEWARE_NAME
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -22048,6 +22076,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.dist'],
     changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist attribute' }],
   },
+  'django.middleware_name': {
+    brief: 'The name of the Django middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    examples: ['AuthenticationMiddleware'],
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [{ version: 'next', prs: [520], description: 'Added django.middleware_name attribute' }],
+  },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
@@ -25635,7 +25682,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'AuthenticationMiddleware',
-    changelog: [{ version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' }],
+    aliases: ['django.middleware_name'],
+    changelog: [
+      { version: 'next', description: 'Added django.middleware_name as an alias' },
+      { version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' },
+    ],
   },
   'navigation.origin': {
     brief:
@@ -29283,6 +29334,7 @@ export type Attributes = {
   [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [DIST]?: DIST_TYPE;
+  [DJANGO_MIDDLEWARE_NAME]?: DJANGO_MIDDLEWARE_NAME_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;

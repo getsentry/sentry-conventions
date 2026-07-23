@@ -7,8 +7,13 @@
   },
   "is_in_otel": false,
   "example": "AuthenticationMiddleware",
+  "alias": ["django.middleware_name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added django.middleware_name as an alias"
+    },
     {
       "version": "0.6.0",
       "prs": [336],

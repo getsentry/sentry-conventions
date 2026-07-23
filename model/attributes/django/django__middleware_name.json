@@ -1,0 +1,24 @@
+{
+  "key": "django.middleware_name",
+  "brief": "The name of the Django middleware.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["AuthenticationMiddleware"],
+  "alias": ["middleware.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "middleware.name",
+    "reason": "This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement."
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [520],
+      "description": "Added django.middleware_name attribute"
+    }
+  ]
+}
