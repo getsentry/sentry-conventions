@@ -24944,6 +24944,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'middleware.name',
       reason:
         'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
     },
     aliases: ['middleware.name'],
     changelog: [
