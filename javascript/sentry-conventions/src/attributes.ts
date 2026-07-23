@@ -21358,6 +21358,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.collection.name',
       reason:
         'This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.',
+      status: 'backfill',
     },
     aliases: ['db.collection.name'],
     changelog: [
