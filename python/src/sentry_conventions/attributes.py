@@ -6671,6 +6671,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: starlite.middleware_name
     Example: "AuthenticationMiddleware"
     """
 
@@ -8810,6 +8811,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: app.vitals.stall.duration
     DEPRECATED: Use app.vitals.stall.duration instead - Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes
+    """
+
+    # Path: model/attributes/starlite/starlite__middleware_name.json
+    STARLITE_MIDDLEWARE_NAME: Literal["starlite.middleware_name"] = (
+        "starlite.middleware_name"
+    )
+    """The name of the Starlite middleware.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: middleware.name
+    Example: "AuthenticationMiddleware"
     """
 
     # Path: model/attributes/state/state__type.json
@@ -17485,7 +17500,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
+        aliases=["starlite.middleware_name"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added starlite.middleware_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.6.0",
                 prs=[336],
@@ -19954,6 +19973,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "starlite.middleware_name": AttributeMetadata(
+        brief="The name of the Starlite middleware.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AuthenticationMiddleware",
+        examples=["AuthenticationMiddleware"],
+        aliases=["middleware.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[519],
+                description="Added starlite.middleware_name attribute",
+            ),
+        ],
+    ),
     "state.type": AttributeMetadata(
         brief="The type of state management library",
         type=AttributeType.STRING,
@@ -21696,6 +21732,7 @@ Attributes = TypedDict(
         "session.id": str,
         "stall_percentage": float,
         "stall_total_time": float,
+        "starlite.middleware_name": str,
         "state.type": str,
         "thread.id": int,
         "thread.name": str,
