@@ -163,6 +163,11 @@ const attributeFixtures: Fixture[] = [
     expected: false,
   },
   {
+    name: 'rejects an unknown deprecation property',
+    value: { ...baseAttribute, deprecation: { _status: null, unknown: true } },
+    expected: false,
+  },
+  {
     name: 'rejects transform deprecation without a transformation',
     value: {
       ...baseAttribute,
@@ -229,6 +234,16 @@ const nameFixtures: Fixture[] = [
     value: { brief: 'HTTP names', operations: [{ ...nameOperation, unexpected: true }] },
     expected: false,
   },
+  {
+    name: 'rejects a missing non-OTel name operation field',
+    value: { brief: 'HTTP names', operations: [{ ...nameOperation, brief: undefined }] },
+    expected: false,
+  },
+  {
+    name: 'rejects an unknown name document property',
+    value: { brief: 'HTTP names', operations: [nameOperation], unexpected: true },
+    expected: false,
+  },
   { name: 'rejects a missing name brief', value: { operations: [nameOperation] }, expected: false },
 ];
 
@@ -252,6 +267,16 @@ const descriptionFixtures: Fixture[] = [
   {
     name: 'rejects an unknown description operation property',
     value: { brief: 'Descriptions', operations: [{ ...descriptionOperation, unexpected: true }] },
+    expected: false,
+  },
+  {
+    name: 'rejects a missing description operation field',
+    value: { brief: 'Descriptions', operations: [{ ...descriptionOperation, brief: undefined }] },
+    expected: false,
+  },
+  {
+    name: 'rejects an unknown description document property',
+    value: { brief: 'Descriptions', operations: [descriptionOperation], unexpected: true },
     expected: false,
   },
   { name: 'rejects a missing description brief', value: { operations: [descriptionOperation] }, expected: false },
