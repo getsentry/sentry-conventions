@@ -1,0 +1,23 @@
+{
+  "key": "db.mongodb.collection",
+  "brief": "The MongoDB collection being accessed.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "users",
+  "alias": ["db.collection.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "db.collection.name",
+    "reason": "This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added db.mongodb.collection attribute, deprecated in favor of db.collection.name"
+    }
+  ]
+}

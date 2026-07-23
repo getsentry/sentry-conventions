@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.item_collection_metrics",
+  "brief": "The JSON-serialized value of the `ItemCollectionMetrics` response field.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "{ \"string\" : [ { \"ItemCollectionKey\": { \"string\" : { \"B\": blob, \"BOOL\": boolean, \"BS\": [ blob ], \"L\": [ \"AttributeValue\" ], \"M\": { \"string\" : \"AttributeValue\" }, \"N\": \"string\", \"NS\": [ \"string\" ], \"NULL\": boolean, \"S\": \"string\", \"SS\": [ \"string\" ] } }, \"SizeEstimateRangeGB\": [ number ] } ] }",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [479],
+      "description": "Added aws.dynamodb.item_collection_metrics attribute"
+    }
+  ]
+}

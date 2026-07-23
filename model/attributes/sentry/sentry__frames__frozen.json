@@ -1,0 +1,24 @@
+{
+  "key": "sentry.frames.frozen",
+  "brief": "The number of frozen frames rendered during the lifetime of the span.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 3,
+  "alias": ["app.vitals.frames.frozen.count", "frames.frozen"],
+  "deprecation": {
+    "replacement": "app.vitals.frames.frozen.count",
+    "reason": "Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes",
+    "_status": "backfill"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [500],
+      "description": "Added sentry.frames.frozen attribute"
+    }
+  ]
+}

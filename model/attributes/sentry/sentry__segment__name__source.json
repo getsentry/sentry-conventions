@@ -1,0 +1,22 @@
+{
+  "key": "sentry.segment.name.source",
+  "brief": "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+  "additional_context": [
+    "This attribute is the replacement for `transaction_info.source` on transactions.",
+    "Should we bring back clustering for segment names (like we do for transaction names), this attribute will be used to determine if a segment name should be clustered."
+  ],
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "internal",
+  "examples": ["route", "component", "view", "task", "custom", "url"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [466],
+      "description": "Added sentry.segment.name.source"
+    }
+  ]
+}

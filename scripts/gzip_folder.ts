@@ -1,5 +1,4 @@
-import { createReadStream, createWriteStream } from 'node:fs';
-import { join } from 'node:path';
+import { createWriteStream } from 'node:fs';
 import { pipeline } from 'node:stream';
 import { promisify } from 'node:util';
 import { createGzip } from 'node:zlib';

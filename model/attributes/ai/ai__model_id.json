@@ -7,10 +7,10 @@
   },
   "is_in_otel": false,
   "example": "gpt-4",
-  "alias": ["gen_ai.response.model"],
+  "alias": ["gen_ai.request.model"],
   "deprecation": {
     "_status": "backfill",
-    "replacement": "gen_ai.response.model"
+    "replacement": "gen_ai.request.model"
   },
   "visibility": "public",
   "changelog": [
