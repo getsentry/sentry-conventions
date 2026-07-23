@@ -1,0 +1,18 @@
+{
+  "key": "aws.step_functions.state_machine.arn",
+  "brief": "The ARN of the AWS Step Functions State Machine.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [480],
+      "description": "Added aws.step_functions.state_machine.arn attribute"
+    }
+  ]
+}
