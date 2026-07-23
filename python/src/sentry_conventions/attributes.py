@@ -239,6 +239,7 @@ class _AttributeNamesMeta(type):
         "LCP_SIZE",
         "LCP_URL",
         "LCP",
+        "LITESTAR_MIDDLEWARE_NAME",
         "MCP_PROMPT_NAME",
         "MCP_REQUEST_ID",
         "MCP_RESOURCE_PROTOCOL",
@@ -5946,6 +5947,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 2500
     """
 
+    # Path: model/attributes/litestar/litestar__middleware_name.json
+    LITESTAR_MIDDLEWARE_NAME: Literal["litestar.middleware_name"] = (
+        "litestar.middleware_name"
+    )
+    """The name of the Litestar middleware.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: middleware.name
+    DEPRECATED: Use middleware.name instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+    Example: "AuthenticationMiddleware"
+    """
+
     # Path: model/attributes/logger/logger__name.json
     LOGGER_NAME: Literal["logger.name"] = "logger.name"
     """The name of the logger that generated this event.
@@ -6689,7 +6705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: starlette.middleware_name
+    Aliases: litestar.middleware_name, starlette.middleware_name
     Example: "AuthenticationMiddleware"
     """
 
@@ -16681,6 +16697,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "litestar.middleware_name": AttributeMetadata(
+        brief="The name of the Litestar middleware.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AuthenticationMiddleware",
+        deprecation=DeprecationInfo(
+            replacement="middleware.name",
+            reason="This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["middleware.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added litestar.middleware_name attribute, deprecated in favor of middleware.name",
+            ),
+        ],
+    ),
     "logger.name": AttributeMetadata(
         brief="The name of the logger that generated this event.",
         type=AttributeType.STRING,
@@ -17558,11 +17594,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
-        aliases=["starlette.middleware_name"],
+        aliases=["litestar.middleware_name", "starlette.middleware_name"],
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Added starlette.middleware_name as an alias",
+                description="Added litestar.middleware_name and starlette.middleware_name as aliases",
             ),
             ChangelogEntry(
                 version="0.6.0",
@@ -21579,6 +21615,7 @@ Attributes = TypedDict(
         "lcp.size": int,
         "lcp.url": str,
         "lcp": float,
+        "litestar.middleware_name": str,
         "logger.name": str,
         "mcp.cancelled.reason": str,
         "mcp.cancelled.request_id": str,

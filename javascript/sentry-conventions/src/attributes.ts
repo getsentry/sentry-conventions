@@ -9948,6 +9948,30 @@ export const LCP_URL = 'lcp.url';
  */
 export type LCP_URL_TYPE = string;
 
+// Path: model/attributes/litestar/litestar__middleware_name.json
+
+/**
+ * The name of the Litestar middleware. `litestar.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link LITESTAR_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const LITESTAR_MIDDLEWARE_NAME = 'litestar.middleware_name';
+
+/**
+ * Type for {@link LITESTAR_MIDDLEWARE_NAME} litestar.middleware_name
+ */
+export type LITESTAR_MIDDLEWARE_NAME_TYPE = string;
+
 // Path: model/attributes/logger/logger__name.json
 
 /**
@@ -11262,7 +11286,7 @@ export type METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link STARLETTE_MIDDLEWARE_NAME} `starlette.middleware_name`
+ * Aliases: {@link LITESTAR_MIDDLEWARE_NAME} `litestar.middleware_name`, {@link STARLETTE_MIDDLEWARE_NAME} `starlette.middleware_name`
  *
  * @example "AuthenticationMiddleware"
  */
@@ -17560,6 +17584,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'lcp.renderTime': 'integer',
   'lcp.size': 'integer',
   'lcp.url': 'string',
+  'litestar.middleware_name': 'string',
   'logger.name': 'string',
   'mcp.cancelled.reason': 'string',
   'mcp.cancelled.request_id': 'string',
@@ -18331,6 +18356,7 @@ export type AttributeName =
   | typeof LCP_RENDERTIME
   | typeof LCP_SIZE
   | typeof LCP_URL
+  | typeof LITESTAR_MIDDLEWARE_NAME
   | typeof LOGGER_NAME
   | typeof MCP_CANCELLED_REASON
   | typeof MCP_CANCELLED_REQUEST_ID
@@ -24931,6 +24957,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['browser.web_vital.lcp.url'],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'litestar.middleware_name': {
+    brief: 'The name of the Litestar middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added litestar.middleware_name attribute, deprecated in favor of middleware.name',
+      },
+    ],
+  },
   'logger.name': {
     brief: 'The name of the logger that generated this event.',
     type: 'string',
@@ -25751,9 +25800,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'AuthenticationMiddleware',
-    aliases: ['starlette.middleware_name'],
+    aliases: ['litestar.middleware_name', 'starlette.middleware_name'],
     changelog: [
-      { version: 'next', description: 'Added starlette.middleware_name as an alias' },
+      { version: 'next', description: 'Added litestar.middleware_name and starlette.middleware_name as aliases' },
       { version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' },
     ],
   },
@@ -29632,6 +29681,7 @@ export type Attributes = {
   [LCP_RENDERTIME]?: LCP_RENDERTIME_TYPE;
   [LCP_SIZE]?: LCP_SIZE_TYPE;
   [LCP_URL]?: LCP_URL_TYPE;
+  [LITESTAR_MIDDLEWARE_NAME]?: LITESTAR_MIDDLEWARE_NAME_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
   [MCP_CANCELLED_REASON]?: MCP_CANCELLED_REASON_TYPE;
   [MCP_CANCELLED_REQUEST_ID]?: MCP_CANCELLED_REQUEST_ID_TYPE;

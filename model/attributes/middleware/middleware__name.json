@@ -7,12 +7,12 @@
   },
   "is_in_otel": false,
   "example": "AuthenticationMiddleware",
-  "alias": ["starlette.middleware_name"],
+  "alias": ["litestar.middleware_name", "starlette.middleware_name"],
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
-      "description": "Added starlette.middleware_name as an alias"
+      "description": "Added litestar.middleware_name and starlette.middleware_name as aliases"
     },
     {
       "version": "0.6.0",
