@@ -2676,6 +2676,30 @@ export const _AWS_REQUEST_ID = 'aws.request.id';
  */
 export type _AWS_REQUEST_ID_TYPE = string;
 
+// Path: model/attributes/aws/aws__request__url.json
+
+/**
+ * The URL of the AWS API request. `aws.request.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
+ * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
+ */
+export const AWS_REQUEST_URL = 'aws.request.url';
+
+/**
+ * Type for {@link AWS_REQUEST_URL} aws.request.url
+ */
+export type AWS_REQUEST_URL_TYPE = string;
+
 // Path: model/attributes/aws/aws__s3__bucket.json
 
 /**
@@ -9486,7 +9510,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -15823,7 +15847,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -15889,7 +15913,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -17282,6 +17306,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.request.extended_id': 'string',
   'aws.request_id': 'string',
   'aws.request.id': 'string',
+  'aws.request.url': 'string',
   'aws.s3.bucket': 'string',
   'aws.secretsmanager.secret.arn': 'string',
   'aws.sns.topic.arn': 'string',
@@ -18055,6 +18080,7 @@ export type AttributeName =
   | typeof AWS_REQUEST_EXTENDED_ID
   | typeof AWS_REQUEST_ID
   | typeof _AWS_REQUEST_ID
+  | typeof AWS_REQUEST_URL
   | typeof AWS_S3_BUCKET
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
@@ -20452,6 +20478,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: 'Added aws.request.id attribute, deprecated in favor of aws.request_id',
       },
     ],
+  },
+  'aws.request.url': {
+    brief: 'The URL of the AWS API request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'https://sqs.us-east-1.amazonaws.com/123456789/my-queue',
+    deprecation: {
+      replacement: 'url.full',
+      reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['url.full', 'http.url', 'url'],
+    changelog: [{ version: 'next', description: 'Added aws.request.url attribute, deprecated in favor of url.full' }],
   },
   'aws.s3.bucket': {
     brief: 'The S3 bucket name the request refers to.',
@@ -24692,7 +24735,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.full',
     },
-    aliases: ['url.full', 'url'],
+    aliases: ['url.full', 'url', 'aws.request.url'],
     changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
   },
   'http.user_agent': {
@@ -28588,7 +28631,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.full',
     },
-    aliases: ['url.full', 'http.url'],
+    aliases: ['url.full', 'http.url', 'aws.request.url'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'url.domain': {
@@ -28624,8 +28667,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url'],
-    changelog: [{ version: '0.1.0', prs: [108] }, { version: '0.0.0' }],
+    aliases: ['http.url', 'url', 'aws.request.url'],
+    changelog: [
+      { version: 'next', description: 'Added aws.request.url as an alias' },
+      { version: '0.1.0', prs: [108] },
+      { version: '0.0.0' },
+    ],
   },
   'url.path': {
     brief: 'The URI path component.',
@@ -29403,6 +29450,7 @@ export type Attributes = {
   [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
   [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
+  [AWS_REQUEST_URL]?: AWS_REQUEST_URL_TYPE;
   [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;

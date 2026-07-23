@@ -169,6 +169,7 @@ class _AttributeNamesMeta(type):
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
         "AWS_REQUEST_EXTENDED_ID",
         "_AWS_REQUEST_ID",
+        "AWS_REQUEST_URL",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -1837,6 +1838,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: aws.request_id
     DEPRECATED: Use aws.request_id instead - This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.
     Example: "79b9da39-b7ae-508a-a6bc-864b2829c622"
+    """
+
+    # Path: model/attributes/aws/aws__request__url.json
+    AWS_REQUEST_URL: Literal["aws.request.url"] = "aws.request.url"
+    """The URL of the AWS API request.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.full, http.url, url
+    DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
+    Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
     """
 
     # Path: model/attributes/aws/aws__request_id.json
@@ -5701,7 +5715,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.full, url
+    Aliases: url.full, url, aws.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -9196,7 +9210,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.url, url
+    Aliases: http.url, url, aws.request.url
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
@@ -9295,7 +9309,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url
+    Aliases: url.full, http.url, aws.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -11782,6 +11796,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0",
                 prs=[480],
                 description="Added aws.request.id attribute, deprecated in favor of aws.request_id",
+            ),
+        ],
+    ),
+    "aws.request.url": AttributeMetadata(
+        brief="The URL of the AWS API request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
+        deprecation=DeprecationInfo(
+            replacement="url.full",
+            reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["url.full", "http.url", "url"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.request.url attribute, deprecated in favor of url.full",
             ),
         ],
     ),
@@ -16396,7 +16430,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
-        aliases=["url.full", "url"],
+        aliases=["url.full", "url", "aws.request.url"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
@@ -20532,8 +20566,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url", "url"],
+        aliases=["http.url", "url", "aws.request.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added aws.request.url as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[108]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20647,7 +20684,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
-        aliases=["url.full", "http.url"],
+        aliases=["url.full", "http.url", "aws.request.url"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -21325,6 +21362,7 @@ Attributes = TypedDict(
         "aws.log.stream.names": List[str],
         "aws.request.extended_id": str,
         "aws.request.id": str,
+        "aws.request.url": str,
         "aws.request_id": str,
         "aws.s3.bucket": str,
         "aws.secretsmanager.secret.arn": str,
