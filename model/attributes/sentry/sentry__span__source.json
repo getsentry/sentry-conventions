@@ -7,8 +7,16 @@
   },
   "is_in_otel": false,
   "example": "route",
+  "deprecation": {
+    "_status": null,
+    "reason": "This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans."
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated; superseded by sentry.segment.name.source on segment spans"
+    },
     {
       "version": "0.4.0",
       "prs": [214]

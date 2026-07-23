@@ -7,8 +7,13 @@
   },
   "is_in_otel": true,
   "example": "users",
+  "alias": ["db.mongodb.collection"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added db.mongodb.collection as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [106, 127]

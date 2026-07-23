@@ -1,0 +1,18 @@
+{
+  "key": "messaging.kafka.message.key",
+  "brief": "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "myKey",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [474],
+      "description": "Added messaging.kafka.message.key attribute"
+    }
+  ]
+}

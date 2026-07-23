@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": 60,
-  "alias": ["app.vitals.frames.total.count"],
+  "alias": ["app.vitals.frames.total.count", "sentry.frames.total"],
   "deprecation": {
     "replacement": "app.vitals.frames.total.count",
     "reason": "Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes",
@@ -15,6 +15,11 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [500],
+      "description": "Added sentry.frames.total as an alias"
+    },
     {
       "version": "0.5.0",
       "prs": [313],

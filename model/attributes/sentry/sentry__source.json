@@ -8,12 +8,15 @@
   "is_in_otel": false,
   "example": "route",
   "deprecation": {
-    "_status": "backfill",
-    "replacement": "sentry.span.source",
-    "reason": "This attribute is being deprecated in favor of sentry.span.source"
+    "_status": null,
+    "reason": "This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans."
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Removed the sentry.span.source replacement"
+    },
     {
       "version": "0.5.0"
     }

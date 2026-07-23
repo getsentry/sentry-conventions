@@ -1,0 +1,18 @@
+{
+  "key": "messaging.kafka.offset",
+  "brief": "The offset of a record in the corresponding Kafka partition.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": 42,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [474],
+      "description": "Added messaging.kafka.offset attribute"
+    }
+  ]
+}

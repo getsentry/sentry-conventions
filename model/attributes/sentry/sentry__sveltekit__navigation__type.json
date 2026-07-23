@@ -1,0 +1,24 @@
+{
+  "key": "sentry.sveltekit.navigation.type",
+  "brief": "The type of navigation event emitted from the sveltekit client router",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "link",
+  "alias": ["navigation.type"],
+  "deprecation": {
+    "replacement": "navigation.type",
+    "reason": "Use the more generic attribute instead",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [467],
+      "description": "Added sentry.sveltekit.navigation.type attribute"
+    }
+  ]
+}
