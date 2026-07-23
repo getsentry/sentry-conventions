@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sentry Attribute Transformation Schema",
+  "description": "Describes how one or more deprecated attributes are transformed into replacement attributes",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "description": "Stable identifier for the transformation",
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "brief": {
+      "description": "Short explanation of when and why this transformation is applied",
+      "type": "string"
+    },
+    "inputs": {
+      "description": "Attributes consumed by this transformation",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/AttributeReference"
+      }
+    },
+    "outputs": {
+      "description": "Attributes produced by this transformation",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/AttributeReference"
+      }
+    },
+    "actions": {
+      "description": "Ordered description of the value transformations to apply. This describes behavior; Relay owns the implementation.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "examples": {
+      "description": "Examples showing input attributes and expected output attributes",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/TransformationExample"
+      }
+    }
+  },
+  "required": ["id", "brief", "inputs", "outputs", "actions", "examples"],
+  "definitions": {
+    "AttributeReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attribute": {
+          "type": "string"
+        },
+        "brief": {
+          "type": "string"
+        }
+      },
+      "required": ["attribute"]
+    },
+    "TransformationExample": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "input": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["name", "input", "output"]
+    }
+  }
+}

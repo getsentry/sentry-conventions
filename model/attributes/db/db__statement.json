@@ -6,14 +6,20 @@
     "key": "auto"
   },
   "is_in_otel": true,
-  "example": "SELECT * FROM users",
+  "example": "SELECT * FROM users WHERE id = $1",
   "alias": ["db.query.text"],
   "deprecation": {
     "_status": "normalize",
-    "replacement": "db.query.text"
+    "replacement": "db.query.text",
+    "reason": "While this attribute never specifically required parameterization, the replacement, db.query.text, does."
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [501],
+      "description": "Improved example and added deprecation reason"
+    },
     {
       "version": "0.4.0",
       "prs": [199]

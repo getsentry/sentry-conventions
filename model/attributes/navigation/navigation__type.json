@@ -10,11 +10,17 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "0.16.0",
+      "prs": [467],
+      "description": "Added new deprecated alias"
+    },
+    {
       "version": "0.1.0",
       "prs": [127]
     },
     {
       "version": "0.0.0"
     }
-  ]
+  ],
+  "alias": ["sentry.sveltekit.navigation.type"]
 }

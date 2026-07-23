@@ -1,0 +1,24 @@
+{
+  "key": "rpc.system",
+  "brief": "A string identifying the remoting system.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": "aws-api",
+  "alias": ["rpc.system.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "rpc.system.name",
+    "reason": "This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [482],
+      "description": "Added rpc.system attribute, deprecated in favor of rpc.system.name"
+    }
+  ]
+}

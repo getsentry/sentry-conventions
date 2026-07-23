@@ -7,8 +7,14 @@
   },
   "is_in_otel": false,
   "example": "1.0",
+  "alias": ["dist"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [489],
+      "description": "Added dist as an alias"
+    },
     {
       "version": "0.0.0"
     }

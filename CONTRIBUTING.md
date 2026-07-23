@@ -46,17 +46,41 @@ Run `yarn run create:attribute` to create a new attribute. This will prompt you 
 - Interactive mode: This will prompt you to enter information about the attribute.
 - Non-interactive mode: This will use the information provided to create the attribute. You'll need to explicitly specify all the needed information when running the command.
 
+Provide example values with the `examples` field as a non-empty JSON array. For an array-valued attribute, each example is itself an array. The legacy `example` field remains supported for existing definitions, but new and updated attributes should use `examples`.
+
 ```bash
 # Interactive mode
 yarn run create:attribute
 
 # Non-interactive mode
-yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --example "/users/:id" --alias "url.template"
+yarn run create:attribute --key http.route --description "The route pattern of the request" --type string --apply_scrubbing never --is_in_otel true --visibility public --examples '["/users/:id","/teams/:id"]' --alias "url.template"
 ```
 
 After you've created an attribute, the script will ask if you'd like to generate the docs. This will run `yarn run generate`. If you want to skip this step, you can run `yarn run generate` manually afterwards.
 
 If you need help, run `yarn run create:attribute --help` to see the available options.
+
+### Adding an attribute transformation
+
+Most deprecated attributes only need a direct rename via `deprecation.replacement` and a `_status` of `backfill` or `normalize`. Add an attribute transformation only when the replacement value must be derived or reshaped from one or more source attributes.
+
+Attribute transformations are descriptive documents in `model/attribute_transformations/`. They define the transformation contract for downstream consumers such as Relay; they do not contain executable transformation code. Relay owns the implementation.
+
+When adding an attribute transformation:
+
+1. Create a JSON document in `model/attribute_transformations/` using `schemas/attribute_transformation.schema.json`.
+2. Use a stable, descriptive `id`, for example `namespace_old_attribute_to_new_attribute`. The file name MUST match the id.
+3. List the source attributes in `inputs` and replacement attributes in `outputs`.
+4. Describe the transformation in `actions`, including how existing replacement values should be handled.
+5. Add examples showing input attributes and expected output attributes.
+6. On every source attribute, set:
+   - `deprecation.replacement` to the replacement attribute,
+   - `deprecation._status` to `transform`,
+   - `deprecation.transformation` to the transformation id.
+7. Run `yarn run generate` so generated metadata includes the transformation reference.
+8. Run the relevant tests, or `yarn test` for the full suite.
+
+After the change is released, update downstream consumers that apply conventions at ingest time, especially Relay.
 
 ## Adding a new convention for span names
 
@@ -98,6 +122,7 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
   - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
   - For both the new and the old attribute, and any existing aliases of the old attribute, the new and old names MUST be added to the `aliases` list.
   - The deprecation status of the old one SHOULD be set to `backfill` for at least 90 days, and then set to `normalize`.
+  - If the value cannot be copied directly to the replacement attribute, use `_status: "transform"` and reference an attribute transformation with `deprecation.transformation`.
 - Prefer keeping names stable. Renames require deprecation cycles across all SDKs that adopted the attribute!
 
 ## Testing

@@ -1,0 +1,24 @@
+{
+  "key": "server_name",
+  "brief": "Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "example.com",
+  "alias": ["server.address", "http.server_name", "net.host.name", "http.host"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "server.address",
+    "reason": "This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [477],
+      "description": "Added server_name attribute, deprecated in favor of server.address"
+    }
+  ]
+}
