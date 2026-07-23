@@ -6,12 +6,26 @@ import { schemaArtifacts } from '../schemas/artifacts';
 export function generateSchemas(outputDirectory = path.join(__dirname, '..', 'schemas')): void {
   fs.mkdirSync(outputDirectory, { recursive: true });
 
-  for (const { fileName, schema } of schemaArtifacts) {
+  for (const artifact of schemaArtifacts) {
+    const { fileName, schema } = artifact;
     const jsonSchema = z.toJSONSchema(schema, {
       target: 'draft-07',
       reused: 'ref',
       unrepresentable: 'throw',
     });
-    fs.writeFileSync(path.join(outputDirectory, fileName), `${JSON.stringify(jsonSchema, null, 2)}\n`);
+    const output =
+      'rootDefinition' in artifact
+        ? {
+            $schema: jsonSchema.$schema,
+            $ref: `#/definitions/${artifact.rootDefinition}`,
+            definitions: {
+              [artifact.rootDefinition]: Object.fromEntries(
+                Object.entries(jsonSchema).filter(([key]) => key !== '$schema' && key !== 'definitions'),
+              ),
+              ...jsonSchema.definitions,
+            },
+          }
+        : jsonSchema;
+    fs.writeFileSync(path.join(outputDirectory, fileName), `${JSON.stringify(output, null, 2)}\n`);
   }
 }

@@ -1,21 +1,24 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "name": {
-      "$ref": "#/definitions/__schema0"
-    },
-    "description": {
-      "$ref": "#/definitions/__schema1"
-    },
-    "fields": {
-      "$ref": "#/definitions/__schema2"
-    }
-  },
-  "required": ["name", "fields"],
-  "additionalProperties": false,
-  "title": "SpanOperation",
+  "$ref": "#/definitions/SpanOperation",
   "definitions": {
+    "SpanOperation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/__schema0"
+        },
+        "description": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "fields": {
+          "$ref": "#/definitions/__schema2"
+        }
+      },
+      "required": ["name", "fields"],
+      "additionalProperties": false,
+      "title": "SpanOperation"
+    },
     "__schema0": {
       "type": "string"
     },

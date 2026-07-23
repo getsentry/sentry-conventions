@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import { z } from 'zod';
+import { formatZodError } from './format_zod_error';
 
 function parseJson(source: string, sourceName: string): unknown {
   try {
@@ -13,7 +14,7 @@ function parseJson(source: string, sourceName: string): unknown {
 function validateJson<Schema extends z.ZodType>(value: unknown, schema: Schema, sourceName: string): z.output<Schema> {
   const result = schema.safeParse(value);
   if (!result.success) {
-    throw new Error(`Invalid JSON in ${sourceName}:\n${z.prettifyError(result.error)}`);
+    throw new Error(`Invalid JSON in ${sourceName}:\n${formatZodError(result.error)}`);
   }
   return result.data;
 }

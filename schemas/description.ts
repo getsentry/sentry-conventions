@@ -8,7 +8,7 @@ export const descriptionOperationSchema = z
     templates: z.array(z.string()).min(1),
     examples: z.array(z.string()).optional(),
   })
-  .meta({ id: 'DescriptionOperation', title: 'SpanOperation' });
+  .meta({ id: 'SpanOperation', title: 'SpanOperation' });
 
 export const descriptionSchema = z
   .strictObject({

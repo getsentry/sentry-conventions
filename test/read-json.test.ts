@@ -3,6 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { z } from 'zod';
+import { attributeSchema } from '../schemas';
 import { parseJsonValue, readJsonFile } from '../scripts/read_json';
 
 const tempDirs: string[] = [];
@@ -33,6 +34,24 @@ describe('readJsonFile', () => {
     const filePath = writeTempFile('invalid.json', '{"key":42}');
     expect(() => readJsonFile(filePath, schema)).toThrow(filePath);
     expect(() => readJsonFile(filePath, schema)).toThrow(/key/);
+  });
+
+  it('throws with the filename and union leaf path for invalid attribute data', () => {
+    const filePath = writeTempFile(
+      'invalid-attribute.json',
+      JSON.stringify({
+        key: 'test.attribute',
+        brief: 'Test attribute',
+        type: 'string',
+        apply_scrubbing: { key: 'never' },
+        is_in_otel: false,
+        visibility: 'public',
+        example: 42,
+      }),
+    );
+
+    expect(() => readJsonFile(filePath, attributeSchema)).toThrow(filePath);
+    expect(() => readJsonFile(filePath, attributeSchema)).toThrow(/example/);
   });
 
   it('throws with the filename and syntax context for malformed JSON', () => {

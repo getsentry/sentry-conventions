@@ -28,17 +28,20 @@
   "definitions": {
     "__schema0": {
       "type": "string",
-      "pattern": "^[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Stable identifier for the transformation"
     },
     "__schema1": {
-      "type": "string"
+      "type": "string",
+      "description": "Short explanation of when and why this transformation is applied"
     },
     "__schema2": {
       "minItems": 1,
       "type": "array",
       "items": {
         "$ref": "#/definitions/AttributeReference"
-      }
+      },
+      "description": "Attributes consumed by this transformation"
     },
     "AttributeReference": {
       "type": "object",
@@ -65,14 +68,16 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/AttributeReference"
-      }
+      },
+      "description": "Attributes produced by this transformation"
     },
     "__schema6": {
       "minItems": 1,
       "type": "array",
       "items": {
         "$ref": "#/definitions/__schema7"
-      }
+      },
+      "description": "Ordered description of the value transformations to apply. This describes behavior; Relay owns the implementation."
     },
     "__schema7": {
       "type": "string"
@@ -82,7 +87,8 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/TransformationExample"
-      }
+      },
+      "description": "Examples showing input attributes and expected output attributes"
     },
     "TransformationExample": {
       "type": "object",

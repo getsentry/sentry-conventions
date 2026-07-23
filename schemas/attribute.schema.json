@@ -5,61 +5,43 @@
       "$ref": "#/definitions/__schema0"
     },
     {
-      "$ref": "#/definitions/__schema12"
+      "$ref": "#/definitions/__schema23"
     },
     {
-      "$ref": "#/definitions/__schema14"
-    },
-    {
-      "$ref": "#/definitions/__schema15"
-    },
-    {
-      "$ref": "#/definitions/__schema18"
-    },
-    {
-      "$ref": "#/definitions/__schema20"
-    },
-    {
-      "$ref": "#/definitions/__schema21"
-    },
-    {
-      "$ref": "#/definitions/__schema24"
+      "$ref": "#/definitions/__schema25"
     },
     {
       "$ref": "#/definitions/__schema26"
     },
     {
-      "$ref": "#/definitions/__schema27"
+      "$ref": "#/definitions/__schema29"
     },
     {
-      "$ref": "#/definitions/__schema30"
+      "$ref": "#/definitions/__schema31"
     },
     {
       "$ref": "#/definitions/__schema32"
     },
     {
-      "$ref": "#/definitions/__schema33"
+      "$ref": "#/definitions/__schema35"
     },
     {
-      "$ref": "#/definitions/__schema36"
+      "$ref": "#/definitions/__schema37"
     },
     {
       "$ref": "#/definitions/__schema38"
     },
     {
-      "$ref": "#/definitions/__schema39"
+      "$ref": "#/definitions/__schema41"
     },
     {
-      "$ref": "#/definitions/__schema42"
+      "$ref": "#/definitions/__schema43"
     },
     {
       "$ref": "#/definitions/__schema44"
     },
     {
-      "$ref": "#/definitions/__schema45"
-    },
-    {
-      "$ref": "#/definitions/__schema48"
+      "$ref": "#/definitions/__schema47"
     },
     {
       "$ref": "#/definitions/__schema50"
@@ -71,22 +53,40 @@
       "$ref": "#/definitions/__schema54"
     },
     {
-      "$ref": "#/definitions/__schema56"
-    },
-    {
       "$ref": "#/definitions/__schema57"
     },
     {
-      "$ref": "#/definitions/__schema60"
+      "$ref": "#/definitions/__schema58"
     },
     {
-      "$ref": "#/definitions/__schema62"
+      "$ref": "#/definitions/__schema61"
     },
     {
-      "$ref": "#/definitions/__schema63"
+      "$ref": "#/definitions/__schema64"
     },
     {
-      "$ref": "#/definitions/__schema66"
+      "$ref": "#/definitions/__schema65"
+    },
+    {
+      "$ref": "#/definitions/__schema68"
+    },
+    {
+      "$ref": "#/definitions/__schema71"
+    },
+    {
+      "$ref": "#/definitions/__schema72"
+    },
+    {
+      "$ref": "#/definitions/__schema75"
+    },
+    {
+      "$ref": "#/definitions/__schema83"
+    },
+    {
+      "$ref": "#/definitions/__schema84"
+    },
+    {
+      "$ref": "#/definitions/__schema87"
     }
   ],
   "title": "Sentry Span Attribute Schema",
@@ -105,301 +105,210 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema10"
+          "$ref": "#/definitions/__schema21"
         },
         "type": {
-          "$ref": "#/definitions/__schema11"
+          "$ref": "#/definitions/__schema22"
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
       "additionalProperties": false
     },
     "__schema1": {
-      "type": "string"
+      "type": "string",
+      "description": "The name of the attribute, for ex. http.route"
     },
     "__schema2": {
-      "type": "string"
+      "type": "string",
+      "description": "A description of the attribute"
     },
     "__schema3": {
       "type": "object",
       "properties": {
         "key": {
-          "type": "string",
-          "enum": ["auto", "manual", "never"]
+          "$ref": "#/definitions/__schema4"
         },
         "reason": {
-          "type": "string"
+          "$ref": "#/definitions/__schema5"
         }
       },
       "required": ["key"],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
     },
     "__schema4": {
-      "type": "boolean"
+      "type": "string",
+      "enum": ["auto", "manual", "never"]
     },
     "__schema5": {
-      "type": "string",
-      "enum": ["public", "internal"]
+      "type": "string"
     },
     "__schema6": {
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "replacement": {
-              "type": "string"
-            },
-            "reason": {
-              "type": "string"
-            },
-            "_status": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "const": "backfill"
-                },
-                {
-                  "type": "string",
-                  "const": "normalize"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "transformation": {
-              "type": "string"
-            }
-          },
-          "required": ["_status"],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "replacement": {
-              "type": "string"
-            },
-            "reason": {
-              "type": "string"
-            },
-            "_status": {
-              "type": "string",
-              "const": "transform"
-            },
-            "transformation": {
-              "type": "string"
-            }
-          },
-          "required": ["_status", "transformation"],
-          "additionalProperties": false
-        }
-      ]
+      "type": "boolean"
     },
     "__schema7": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "type": "string",
+      "enum": ["public", "internal"],
+      "description": "The visibility of the attribute"
     },
     "__schema8": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "anyOf": [
+        {
+          "$ref": "#/definitions/__schema9"
+        },
+        {
+          "$ref": "#/definitions/__schema13"
+        }
+      ],
+      "description": "If an attribute was deprecated, and what it was replaced with"
     },
     "__schema9": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "version": {
-            "type": "string"
-          },
-          "prs": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "exclusiveMinimum": 0,
-              "maximum": 9007199254740991
-            }
-          },
-          "description": {
-            "type": "string"
-          }
+      "type": "object",
+      "properties": {
+        "replacement": {
+          "type": "string"
         },
-        "required": ["version"],
-        "additionalProperties": false
-      }
+        "reason": {
+          "type": "string"
+        },
+        "_status": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/__schema10"
+            },
+            {
+              "$ref": "#/definitions/__schema11"
+            },
+            {
+              "$ref": "#/definitions/__schema12"
+            }
+          ],
+          "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+        },
+        "transformation": {
+          "type": "string",
+          "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+        }
+      },
+      "required": ["_status"],
+      "additionalProperties": false
     },
     "__schema10": {
-      "type": "boolean",
-      "const": false
+      "type": "string",
+      "const": "backfill"
     },
     "__schema11": {
       "type": "string",
-      "const": "string"
+      "const": "normalize"
     },
     "__schema12": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema10"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema11"
-        },
-        "example": {
-          "$ref": "#/definitions/__schema13"
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
-      "additionalProperties": false
+      "type": "null"
     },
     "__schema13": {
-      "type": "string"
+      "type": "object",
+      "properties": {
+        "replacement": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "_status": {
+          "type": "string",
+          "const": "transform",
+          "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+        },
+        "transformation": {
+          "type": "string",
+          "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+        }
+      },
+      "required": ["_status", "transformation"],
+      "additionalProperties": false
     },
     "__schema14": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema10"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema11"
-        },
-        "examples": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/__schema13"
-          }
-        }
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/__schema15"
       },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
-      "additionalProperties": false
+      "description": "If there are attributes that alias to this attribute"
     },
     "__schema15": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema16"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema17"
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
-      "additionalProperties": false
+      "type": "string"
     },
     "__schema16": {
-      "type": "boolean",
-      "const": false
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/__schema17"
+      },
+      "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
     },
     "__schema17": {
-      "type": "string",
-      "const": "boolean"
+      "type": "string"
     },
     "__schema18": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/__schema19"
+      },
+      "description": "A list of changelog entries tracking how this attribute has changed across versions"
+    },
+    "__schema19": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "The sentry-conventions release version"
+        },
+        "prs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/__schema20"
+          },
+          "description": "GitHub PR numbers"
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description of what changed"
+        }
+      },
+      "required": ["version"],
+      "additionalProperties": false
+    },
+    "__schema20": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "__schema21": {
+      "type": "boolean",
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+    },
+    "__schema22": {
+      "type": "string",
+      "const": "string",
+      "description": "The type of the attribute value"
+    },
+    "__schema23": {
       "type": "object",
       "properties": {
         "key": {
@@ -412,40 +321,45 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
+        "alias": {
+          "$ref": "#/definitions/__schema14"
         },
-        "has_dynamic_suffix": {
+        "additional_context": {
           "$ref": "#/definitions/__schema16"
         },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema21"
+        },
         "type": {
-          "$ref": "#/definitions/__schema17"
+          "$ref": "#/definitions/__schema22"
         },
         "example": {
-          "$ref": "#/definitions/__schema19"
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema24"
+            }
+          ]
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
       "additionalProperties": false
     },
-    "__schema19": {
-      "type": "boolean"
+    "__schema24": {
+      "type": "string"
     },
-    "__schema20": {
+    "__schema25": {
       "type": "object",
       "properties": {
         "key": {
@@ -458,133 +372,40 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
+        "alias": {
+          "$ref": "#/definitions/__schema14"
         },
-        "has_dynamic_suffix": {
+        "additional_context": {
           "$ref": "#/definitions/__schema16"
         },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema21"
+        },
         "type": {
-          "$ref": "#/definitions/__schema17"
+          "$ref": "#/definitions/__schema22"
         },
         "examples": {
           "minItems": 1,
           "type": "array",
           "items": {
-            "$ref": "#/definitions/__schema19"
-          }
+            "$ref": "#/definitions/__schema24"
+          },
+          "description": "Example values of the attribute"
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
       "additionalProperties": false
-    },
-    "__schema21": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema22"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema23"
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
-      "additionalProperties": false
-    },
-    "__schema22": {
-      "type": "boolean",
-      "const": false
-    },
-    "__schema23": {
-      "type": "string",
-      "const": "integer"
-    },
-    "__schema24": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema22"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema23"
-        },
-        "example": {
-          "$ref": "#/definitions/__schema25"
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
-      "additionalProperties": false
-    },
-    "__schema25": {
-      "type": "number"
     },
     "__schema26": {
       "type": "object",
@@ -599,89 +420,44 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema22"
+          "$ref": "#/definitions/__schema27"
         },
         "type": {
-          "$ref": "#/definitions/__schema23"
-        },
-        "examples": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/__schema25"
-          }
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
-      "additionalProperties": false
-    },
-    "__schema27": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
           "$ref": "#/definitions/__schema28"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema29"
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
       "additionalProperties": false
     },
-    "__schema28": {
+    "__schema27": {
       "type": "boolean",
-      "const": false
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+    },
+    "__schema28": {
+      "type": "string",
+      "const": "boolean",
+      "description": "The type of the attribute value"
     },
     "__schema29": {
-      "type": "string",
-      "const": "double"
-    },
-    "__schema30": {
       "type": "object",
       "properties": {
         "key": {
@@ -694,38 +470,91 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema28"
+          "$ref": "#/definitions/__schema27"
         },
         "type": {
-          "$ref": "#/definitions/__schema29"
+          "$ref": "#/definitions/__schema28"
         },
         "example": {
-          "$ref": "#/definitions/__schema31"
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema30"
+            }
+          ]
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
       "additionalProperties": false
     },
+    "__schema30": {
+      "type": "boolean"
+    },
     "__schema31": {
-      "type": "number"
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema27"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema28"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/__schema30"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
     },
     "__schema32": {
       "type": "object",
@@ -740,89 +569,44 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema28"
+          "$ref": "#/definitions/__schema33"
         },
         "type": {
-          "$ref": "#/definitions/__schema29"
-        },
-        "examples": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/__schema31"
-          }
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
-      "additionalProperties": false
-    },
-    "__schema33": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
           "$ref": "#/definitions/__schema34"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema35"
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
       "additionalProperties": false
     },
-    "__schema34": {
+    "__schema33": {
       "type": "boolean",
-      "const": false
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+    },
+    "__schema34": {
+      "type": "string",
+      "const": "integer",
+      "description": "The type of the attribute value"
     },
     "__schema35": {
-      "type": "string",
-      "const": "string[]"
-    },
-    "__schema36": {
       "type": "object",
       "properties": {
         "key": {
@@ -835,41 +619,91 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema34"
+          "$ref": "#/definitions/__schema33"
         },
         "type": {
-          "$ref": "#/definitions/__schema35"
+          "$ref": "#/definitions/__schema34"
         },
         "example": {
-          "$ref": "#/definitions/__schema37"
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema36"
+            }
+          ]
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
       "additionalProperties": false
     },
+    "__schema36": {
+      "type": "number"
+    },
     "__schema37": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema33"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema34"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/__schema36"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
     },
     "__schema38": {
       "type": "object",
@@ -884,89 +718,44 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema34"
+          "$ref": "#/definitions/__schema39"
         },
         "type": {
-          "$ref": "#/definitions/__schema35"
-        },
-        "examples": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/__schema37"
-          }
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
-      "additionalProperties": false
-    },
-    "__schema39": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
           "$ref": "#/definitions/__schema40"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema41"
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
       "additionalProperties": false
     },
-    "__schema40": {
+    "__schema39": {
       "type": "boolean",
-      "const": false
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+    },
+    "__schema40": {
+      "type": "string",
+      "const": "double",
+      "description": "The type of the attribute value"
     },
     "__schema41": {
-      "type": "string",
-      "const": "boolean[]"
-    },
-    "__schema42": {
       "type": "object",
       "properties": {
         "key": {
@@ -979,41 +768,91 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema40"
+          "$ref": "#/definitions/__schema39"
         },
         "type": {
-          "$ref": "#/definitions/__schema41"
+          "$ref": "#/definitions/__schema40"
         },
         "example": {
-          "$ref": "#/definitions/__schema43"
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema42"
+            }
+          ]
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
       "additionalProperties": false
     },
+    "__schema42": {
+      "type": "number"
+    },
     "__schema43": {
-      "type": "array",
-      "items": {
-        "type": "boolean"
-      }
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema39"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema40"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/__schema42"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
     },
     "__schema44": {
       "type": "object",
@@ -1028,89 +867,44 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema40"
+          "$ref": "#/definitions/__schema45"
         },
         "type": {
-          "$ref": "#/definitions/__schema41"
-        },
-        "examples": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/__schema43"
-          }
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
-      "additionalProperties": false
-    },
-    "__schema45": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
           "$ref": "#/definitions/__schema46"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema47"
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
       "additionalProperties": false
     },
-    "__schema46": {
+    "__schema45": {
       "type": "boolean",
-      "const": false
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+    },
+    "__schema46": {
+      "type": "string",
+      "const": "string[]",
+      "description": "The type of the attribute value"
     },
     "__schema47": {
-      "type": "string",
-      "const": "integer[]"
-    },
-    "__schema48": {
       "type": "object",
       "properties": {
         "key": {
@@ -1123,40 +917,48 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema46"
+          "$ref": "#/definitions/__schema45"
         },
         "type": {
-          "$ref": "#/definitions/__schema47"
+          "$ref": "#/definitions/__schema46"
         },
         "example": {
-          "$ref": "#/definitions/__schema49"
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema49"
+            }
+          ]
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
       "additionalProperties": false
     },
+    "__schema48": {
+      "type": "string"
+    },
     "__schema49": {
       "type": "array",
       "items": {
-        "type": "number"
+        "$ref": "#/definitions/__schema48"
       }
     },
     "__schema50": {
@@ -1172,35 +974,36 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema46"
+          "$ref": "#/definitions/__schema45"
         },
         "type": {
-          "$ref": "#/definitions/__schema47"
+          "$ref": "#/definitions/__schema46"
         },
         "examples": {
           "minItems": 1,
           "type": "array",
           "items": {
             "$ref": "#/definitions/__schema49"
-          }
+          },
+          "description": "Example values of the attribute"
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
@@ -1219,22 +1022,22 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
           "$ref": "#/definitions/__schema52"
@@ -1248,11 +1051,13 @@
     },
     "__schema52": {
       "type": "boolean",
-      "const": false
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
     },
     "__schema53": {
       "type": "string",
-      "const": "double[]"
+      "const": "boolean[]",
+      "description": "The type of the attribute value"
     },
     "__schema54": {
       "type": "object",
@@ -1267,22 +1072,22 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
           "$ref": "#/definitions/__schema52"
@@ -1291,64 +1096,25 @@
           "$ref": "#/definitions/__schema53"
         },
         "example": {
-          "$ref": "#/definitions/__schema55"
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema56"
+            }
+          ]
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
       "additionalProperties": false
     },
     "__schema55": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      }
+      "type": "boolean"
     },
     "__schema56": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema52"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema53"
-        },
-        "examples": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/__schema55"
-          }
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
-      "additionalProperties": false
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/__schema55"
+      }
     },
     "__schema57": {
       "type": "object",
@@ -1363,163 +1129,42 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
-          "$ref": "#/definitions/__schema8"
-        },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema58"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema59"
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
-      "additionalProperties": false
-    },
-    "__schema58": {
-      "type": "boolean",
-      "const": false
-    },
-    "__schema59": {
-      "type": "string",
-      "const": "any"
-    },
-    "__schema60": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
         "visibility": {
-          "$ref": "#/definitions/__schema5"
+          "$ref": "#/definitions/__schema7"
         },
         "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
-        "alias": {
-          "$ref": "#/definitions/__schema7"
-        },
-        "additional_context": {
           "$ref": "#/definitions/__schema8"
         },
-        "changelog": {
-          "$ref": "#/definitions/__schema9"
-        },
-        "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema58"
-        },
-        "type": {
-          "$ref": "#/definitions/__schema59"
-        },
-        "example": {
-          "$ref": "#/definitions/__schema61"
-        }
-      },
-      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
-      "additionalProperties": false
-    },
-    "__schema61": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "number"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "boolean"
-          }
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
-        }
-      ]
-    },
-    "__schema62": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "#/definitions/__schema1"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema2"
-        },
-        "apply_scrubbing": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
-          "$ref": "#/definitions/__schema6"
-        },
         "alias": {
-          "$ref": "#/definitions/__schema7"
+          "$ref": "#/definitions/__schema14"
         },
         "additional_context": {
-          "$ref": "#/definitions/__schema8"
+          "$ref": "#/definitions/__schema16"
         },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema58"
+          "$ref": "#/definitions/__schema52"
         },
         "type": {
-          "$ref": "#/definitions/__schema59"
+          "$ref": "#/definitions/__schema53"
         },
         "examples": {
           "minItems": 1,
           "type": "array",
           "items": {
-            "$ref": "#/definitions/__schema61"
-          }
+            "$ref": "#/definitions/__schema56"
+          },
+          "description": "Example values of the attribute"
         }
       },
       "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
       "additionalProperties": false
     },
-    "__schema63": {
+    "__schema58": {
       "type": "object",
       "properties": {
         "key": {
@@ -1532,31 +1177,537 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema64"
+          "$ref": "#/definitions/__schema59"
         },
         "type": {
-          "$ref": "#/definitions/__schema65"
+          "$ref": "#/definitions/__schema60"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    "__schema59": {
+      "type": "boolean",
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+    },
+    "__schema60": {
+      "type": "string",
+      "const": "integer[]",
+      "description": "The type of the attribute value"
+    },
+    "__schema61": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema59"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema60"
         },
         "example": {
-          "type": "string"
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema63"
+            }
+          ]
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    "__schema62": {
+      "type": "number"
+    },
+    "__schema63": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/__schema62"
+      }
+    },
+    "__schema64": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema59"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema60"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/__schema63"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    "__schema65": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema66"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema67"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    "__schema66": {
+      "type": "boolean",
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+    },
+    "__schema67": {
+      "type": "string",
+      "const": "double[]",
+      "description": "The type of the attribute value"
+    },
+    "__schema68": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema66"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema67"
+        },
+        "example": {
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema70"
+            }
+          ]
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    "__schema69": {
+      "type": "number"
+    },
+    "__schema70": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/__schema69"
+      }
+    },
+    "__schema71": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema66"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema67"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/__schema70"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    "__schema72": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema73"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema74"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    "__schema73": {
+      "type": "boolean",
+      "const": false,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+    },
+    "__schema74": {
+      "type": "string",
+      "const": "any",
+      "description": "The type of the attribute value"
+    },
+    "__schema75": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema73"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema74"
+        },
+        "example": {
+          "description": "An example value of the attribute",
+          "allOf": [
+            {
+              "$ref": "#/definitions/__schema82"
+            }
+          ]
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    "__schema76": {
+      "type": "string"
+    },
+    "__schema77": {
+      "type": "boolean"
+    },
+    "__schema78": {
+      "type": "number"
+    },
+    "__schema79": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "__schema80": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      }
+    },
+    "__schema81": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "__schema82": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/__schema76"
+        },
+        {
+          "$ref": "#/definitions/__schema77"
+        },
+        {
+          "$ref": "#/definitions/__schema78"
+        },
+        {
+          "$ref": "#/definitions/__schema79"
+        },
+        {
+          "$ref": "#/definitions/__schema80"
+        },
+        {
+          "$ref": "#/definitions/__schema81"
+        }
+      ]
+    },
+    "__schema83": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema73"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema74"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/__schema82"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    "__schema84": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/__schema1"
+        },
+        "brief": {
+          "$ref": "#/definitions/__schema2"
+        },
+        "apply_scrubbing": {
+          "$ref": "#/definitions/__schema3"
+        },
+        "is_in_otel": {
+          "$ref": "#/definitions/__schema6"
+        },
+        "visibility": {
+          "$ref": "#/definitions/__schema7"
+        },
+        "deprecation": {
+          "$ref": "#/definitions/__schema8"
+        },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
+        "changelog": {
+          "$ref": "#/definitions/__schema18"
+        },
+        "has_dynamic_suffix": {
+          "$ref": "#/definitions/__schema85"
+        },
+        "type": {
+          "$ref": "#/definitions/__schema86"
+        },
+        "example": {
+          "type": "string",
+          "description": "An example value of the attribute"
         }
       },
       "required": [
@@ -1571,15 +1722,17 @@
       ],
       "additionalProperties": false
     },
-    "__schema64": {
+    "__schema85": {
       "type": "boolean",
-      "const": true
+      "const": true,
+      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
     },
-    "__schema65": {
+    "__schema86": {
       "type": "string",
-      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"]
+      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"],
+      "description": "The type of the attribute value"
     },
-    "__schema66": {
+    "__schema87": {
       "type": "object",
       "properties": {
         "key": {
@@ -1592,35 +1745,36 @@
           "$ref": "#/definitions/__schema3"
         },
         "is_in_otel": {
-          "$ref": "#/definitions/__schema4"
-        },
-        "visibility": {
-          "$ref": "#/definitions/__schema5"
-        },
-        "deprecation": {
           "$ref": "#/definitions/__schema6"
         },
-        "alias": {
+        "visibility": {
           "$ref": "#/definitions/__schema7"
         },
-        "additional_context": {
+        "deprecation": {
           "$ref": "#/definitions/__schema8"
         },
+        "alias": {
+          "$ref": "#/definitions/__schema14"
+        },
+        "additional_context": {
+          "$ref": "#/definitions/__schema16"
+        },
         "changelog": {
-          "$ref": "#/definitions/__schema9"
+          "$ref": "#/definitions/__schema18"
         },
         "has_dynamic_suffix": {
-          "$ref": "#/definitions/__schema64"
+          "$ref": "#/definitions/__schema85"
         },
         "type": {
-          "$ref": "#/definitions/__schema65"
+          "$ref": "#/definitions/__schema86"
         },
         "examples": {
           "minItems": 1,
           "type": "array",
           "items": {
-            "$ref": "#/definitions/__schema67"
-          }
+            "$ref": "#/definitions/__schema88"
+          },
+          "description": "Example values of the attribute"
         }
       },
       "required": [
@@ -1635,7 +1789,7 @@
       ],
       "additionalProperties": false
     },
-    "__schema67": {
+    "__schema88": {
       "type": "string"
     }
   }

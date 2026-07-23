@@ -3,9 +3,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { confirm, intro, isCancel, log, outro, select, text } from '@clack/prompts';
-import { z } from 'zod';
 import { attributeSchema, attributeValueSchema, type AttributeValue } from '../schemas';
 import { parseAttributeExamples } from './attribute_examples';
+import { formatZodError } from './format_zod_error';
 import { parseJsonValue } from './read_json';
 
 const getNextPrNumber = (): number | undefined => {
@@ -49,7 +49,7 @@ Examples:
 const validateSchema = (data: unknown) => {
   const result = attributeSchema.safeParse(data);
   if (!result.success) {
-    throw new Error(`Invalid attribute data:\n${z.prettifyError(result.error)}`);
+    throw new Error(`Invalid attribute data:\n${formatZodError(result.error)}`);
   }
 };
 

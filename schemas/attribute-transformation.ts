@@ -17,12 +17,29 @@ export const attributeTransformationExampleSchema = z
 
 export const attributeTransformationSchema = z
   .strictObject({
-    id: z.string().regex(/^[a-z0-9_]+$/),
-    brief: z.string(),
-    inputs: z.array(attributeTransformationAttributeReferenceSchema).min(1),
-    outputs: z.array(attributeTransformationAttributeReferenceSchema).min(1),
-    actions: z.array(z.string()).min(1),
-    examples: z.array(attributeTransformationExampleSchema).min(1),
+    id: z
+      .string()
+      .regex(/^[a-z0-9_]+$/)
+      .describe('Stable identifier for the transformation'),
+    brief: z.string().describe('Short explanation of when and why this transformation is applied'),
+    inputs: z
+      .array(attributeTransformationAttributeReferenceSchema)
+      .min(1)
+      .describe('Attributes consumed by this transformation'),
+    outputs: z
+      .array(attributeTransformationAttributeReferenceSchema)
+      .min(1)
+      .describe('Attributes produced by this transformation'),
+    actions: z
+      .array(z.string())
+      .min(1)
+      .describe(
+        'Ordered description of the value transformations to apply. This describes behavior; Relay owns the implementation.',
+      ),
+    examples: z
+      .array(attributeTransformationExampleSchema)
+      .min(1)
+      .describe('Examples showing input attributes and expected output attributes'),
   })
   .meta({
     title: 'Sentry Attribute Transformation Schema',
