@@ -244,9 +244,9 @@ export type AI_METADATA_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_RESPONSE_MODEL} `gen_ai.response.model`
+ * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`
  *
- * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead
+ * @deprecated Use {@link GEN_AI_REQUEST_MODEL} (gen_ai.request.model) instead
  * @example "gpt-4"
  */
 export const AI_MODEL_ID = 'ai.model_id';
@@ -352,6 +352,30 @@ export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
  */
 export type AI_PRESENCE_PENALTY_TYPE = number;
 
+// Path: model/attributes/ai/ai__prompt__messages.json
+
+/**
+ * The input messages sent to the AI model. `ai.prompt.messages`
+ *
+ * Attribute Value Type: `string` {@link AI_PROMPT_MESSAGES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ *
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
+ * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
+ */
+export const AI_PROMPT_MESSAGES = 'ai.prompt.messages';
+
+/**
+ * Type for {@link AI_PROMPT_MESSAGES} ai.prompt.messages
+ */
+export type AI_PROMPT_MESSAGES_TYPE = string;
+
 // Path: model/attributes/ai/ai__prompt_tokens__used.json
 
 /**
@@ -441,6 +465,54 @@ export const AI_RESPONSE_FORMAT = 'ai.response_format';
  * Type for {@link AI_RESPONSE_FORMAT} ai.response_format
  */
 export type AI_RESPONSE_FORMAT_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__text.json
+
+/**
+ * The text response from the AI model. `ai.response.text`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_OUTPUT_MESSAGES} `gen_ai.output.messages`, {@link AI_RESPONSE_TOOLCALLS} `ai.response.toolCalls`
+ *
+ * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
+ * @example "The weather in Paris is currently rainy."
+ */
+export const AI_RESPONSE_TEXT = 'ai.response.text';
+
+/**
+ * Type for {@link AI_RESPONSE_TEXT} ai.response.text
+ */
+export type AI_RESPONSE_TEXT_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__toolCalls.json
+
+/**
+ * The tool calls in the AI model response. `ai.response.toolCalls`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_TOOLCALLS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_OUTPUT_MESSAGES} `gen_ai.output.messages`, {@link AI_RESPONSE_TEXT} `ai.response.text`
+ *
+ * @deprecated Use {@link GEN_AI_OUTPUT_MESSAGES} (gen_ai.output.messages) instead
+ * @example "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
+ */
+export const AI_RESPONSE_TOOLCALLS = 'ai.response.toolCalls';
+
+/**
+ * Type for {@link AI_RESPONSE_TOOLCALLS} ai.response.toolCalls
+ */
+export type AI_RESPONSE_TOOLCALLS_TYPE = string;
 
 // Path: model/attributes/ai/ai__search_queries.json
 
@@ -592,7 +664,7 @@ export type AI_TEMPERATURE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example ["Hello, how are you?","What is the capital of France?"]
@@ -603,6 +675,54 @@ export const AI_TEXTS = 'ai.texts';
  * Type for {@link AI_TEXTS} ai.texts
  */
 export type AI_TEXTS_TYPE = Array<string>;
+
+// Path: model/attributes/ai/ai__toolCall__args.json
+
+/**
+ * The arguments of the tool call. `ai.toolCall.args`
+ *
+ * Attribute Value Type: `string` {@link AI_TOOLCALL_ARGS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_TOOL_CALL_ARGUMENTS} `gen_ai.tool.call.arguments`, {@link GEN_AI_TOOL_INPUT} `gen_ai.tool.input`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_ARGUMENTS} (gen_ai.tool.call.arguments) instead
+ * @example "{\"location\": \"Paris\"}"
+ */
+export const AI_TOOLCALL_ARGS = 'ai.toolCall.args';
+
+/**
+ * Type for {@link AI_TOOLCALL_ARGS} ai.toolCall.args
+ */
+export type AI_TOOLCALL_ARGS_TYPE = string;
+
+// Path: model/attributes/ai/ai__toolCall__result.json
+
+/**
+ * The result of the tool call. `ai.toolCall.result`
+ *
+ * Attribute Value Type: `string` {@link AI_TOOLCALL_RESULT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
+ * @example "rainy, 57°F"
+ */
+export const AI_TOOLCALL_RESULT = 'ai.toolCall.result';
+
+/**
+ * Type for {@link AI_TOOLCALL_RESULT} ai.toolCall.result
+ */
+export type AI_TOOLCALL_RESULT_TYPE = string;
 
 // Path: model/attributes/ai/ai__tools.json
 
@@ -1150,7 +1270,7 @@ export type APP_VITALS_FRAMES_DELAY_VALUE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FRAMES_FROZEN} `frames.frozen`
+ * Aliases: {@link FRAMES_FROZEN} `frames.frozen`, {@link SENTRY_FRAMES_FROZEN} `sentry.frames.frozen`
  *
  * @example 3
  */
@@ -1160,6 +1280,29 @@ export const APP_VITALS_FRAMES_FROZEN_COUNT = 'app.vitals.frames.frozen.count';
  * Type for {@link APP_VITALS_FRAMES_FROZEN_COUNT} app.vitals.frames.frozen.count
  */
 export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__frames__frozen__rate.json
+
+/**
+ * The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay. `app.vitals.frames.frozen.rate`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_FROZEN_RATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link FRAMES_FROZEN_RATE} `frames_frozen_rate`
+ *
+ * @example 0.5
+ */
+export const APP_VITALS_FRAMES_FROZEN_RATE = 'app.vitals.frames.frozen.rate';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_FROZEN_RATE} app.vitals.frames.frozen.rate
+ */
+export type APP_VITALS_FRAMES_FROZEN_RATE_TYPE = number;
 
 // Path: model/attributes/app/app__vitals__frames__slow__count.json
 
@@ -1173,7 +1316,7 @@ export type APP_VITALS_FRAMES_FROZEN_COUNT_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FRAMES_SLOW} `frames.slow`
+ * Aliases: {@link FRAMES_SLOW} `frames.slow`, {@link SENTRY_FRAMES_SLOW} `sentry.frames.slow`
  *
  * @example 1
  */
@@ -1183,6 +1326,29 @@ export const APP_VITALS_FRAMES_SLOW_COUNT = 'app.vitals.frames.slow.count';
  * Type for {@link APP_VITALS_FRAMES_SLOW_COUNT} app.vitals.frames.slow.count
  */
 export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__frames__slow__rate.json
+
+/**
+ * The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay. `app.vitals.frames.slow.rate`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_FRAMES_SLOW_RATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link FRAMES_SLOW_RATE} `frames_slow_rate`
+ *
+ * @example 0.25
+ */
+export const APP_VITALS_FRAMES_SLOW_RATE = 'app.vitals.frames.slow.rate';
+
+/**
+ * Type for {@link APP_VITALS_FRAMES_SLOW_RATE} app.vitals.frames.slow.rate
+ */
+export type APP_VITALS_FRAMES_SLOW_RATE_TYPE = number;
 
 // Path: model/attributes/app/app__vitals__frames__total__count.json
 
@@ -1196,7 +1362,7 @@ export type APP_VITALS_FRAMES_SLOW_COUNT_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link FRAMES_TOTAL} `frames.total`
+ * Aliases: {@link FRAMES_TOTAL} `frames.total`, {@link SENTRY_FRAMES_TOTAL} `sentry.frames.total`
  *
  * @example 60
  */
@@ -1206,6 +1372,52 @@ export const APP_VITALS_FRAMES_TOTAL_COUNT = 'app.vitals.frames.total.count';
  * Type for {@link APP_VITALS_FRAMES_TOTAL_COUNT} app.vitals.frames.total.count
  */
 export type APP_VITALS_FRAMES_TOTAL_COUNT_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__stall__duration.json
+
+/**
+ * The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay. `app.vitals.stall.duration`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_STALL_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link STALL_TOTAL_TIME} `stall_total_time`
+ *
+ * @example 4000
+ */
+export const APP_VITALS_STALL_DURATION = 'app.vitals.stall.duration';
+
+/**
+ * Type for {@link APP_VITALS_STALL_DURATION} app.vitals.stall.duration
+ */
+export type APP_VITALS_STALL_DURATION_TYPE = number;
+
+// Path: model/attributes/app/app__vitals__stall__percentage.json
+
+/**
+ * The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay. `app.vitals.stall.percentage`
+ *
+ * Attribute Value Type: `number` {@link APP_VITALS_STALL_PERCENTAGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link STALL_PERCENTAGE} `stall_percentage`
+ *
+ * @example 0.8
+ */
+export const APP_VITALS_STALL_PERCENTAGE = 'app.vitals.stall.percentage';
+
+/**
+ * Type for {@link APP_VITALS_STALL_PERCENTAGE} app.vitals.stall.percentage
+ */
+export type APP_VITALS_STALL_PERCENTAGE_TYPE = number;
 
 // Path: model/attributes/app/app__vitals__start__cold__value.json
 
@@ -1679,6 +1891,517 @@ export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
  */
 export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
 
+// Path: model/attributes/aws/aws__dynamodb__attribute_definitions.json
+
+/**
+ * The JSON-serialized value of each item in the `AttributeDefinitions` request field. `aws.dynamodb.attribute_definitions`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"AttributeName\": \"string\", \"AttributeType\": \"string\" }"]
+ */
+export const AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS = 'aws.dynamodb.attribute_definitions';
+
+/**
+ * Type for {@link AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS} aws.dynamodb.attribute_definitions
+ */
+export type AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__consistent_read.json
+
+/**
+ * The value of the `ConsistentRead` request parameter. `aws.dynamodb.consistent_read`
+ *
+ * Attribute Value Type: `boolean` {@link AWS_DYNAMODB_CONSISTENT_READ_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example true
+ */
+export const AWS_DYNAMODB_CONSISTENT_READ = 'aws.dynamodb.consistent_read';
+
+/**
+ * Type for {@link AWS_DYNAMODB_CONSISTENT_READ} aws.dynamodb.consistent_read
+ */
+export type AWS_DYNAMODB_CONSISTENT_READ_TYPE = boolean;
+
+// Path: model/attributes/aws/aws__dynamodb__consumed_capacity.json
+
+/**
+ * The JSON-serialized value of each item in the `ConsumedCapacity` response field. `aws.dynamodb.consumed_capacity`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"CapacityUnits\": number, \"GlobalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"LocalSecondaryIndexes\": { \"string\" : { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }, \"ReadCapacityUnits\": number, \"Table\": { \"CapacityUnits\": number, \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number }, \"TableName\": \"string\", \"WriteCapacityUnits\": number }"]
+ */
+export const AWS_DYNAMODB_CONSUMED_CAPACITY = 'aws.dynamodb.consumed_capacity';
+
+/**
+ * Type for {@link AWS_DYNAMODB_CONSUMED_CAPACITY} aws.dynamodb.consumed_capacity
+ */
+export type AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__count.json
+
+/**
+ * The value of the `Count` response parameter. `aws.dynamodb.count`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const AWS_DYNAMODB_COUNT = 'aws.dynamodb.count';
+
+/**
+ * Type for {@link AWS_DYNAMODB_COUNT} aws.dynamodb.count
+ */
+export type AWS_DYNAMODB_COUNT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__exclusive_start_table.json
+
+/**
+ * The value of the `ExclusiveStartTableName` request parameter. `aws.dynamodb.exclusive_start_table`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_EXCLUSIVE_START_TABLE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Users"
+ */
+export const AWS_DYNAMODB_EXCLUSIVE_START_TABLE = 'aws.dynamodb.exclusive_start_table';
+
+/**
+ * Type for {@link AWS_DYNAMODB_EXCLUSIVE_START_TABLE} aws.dynamodb.exclusive_start_table
+ */
+export type AWS_DYNAMODB_EXCLUSIVE_START_TABLE_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__global_secondary_indexes.json
+
+/**
+ * The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field. `aws.dynamodb.global_secondary_indexes`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"IndexName\": \"string\", \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" }, \"ProvisionedThroughput\": { \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }"]
+ */
+export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES = 'aws.dynamodb.global_secondary_indexes';
+
+/**
+ * Type for {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES} aws.dynamodb.global_secondary_indexes
+ */
+export type AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__global_secondary_index_updates.json
+
+/**
+ * The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field. `aws.dynamodb.global_secondary_index_updates`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"Create\": { \"IndexName\": \"string\", \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" }, \"ProvisionedThroughput\": { \"ReadCapacityUnits\": number, \"WriteCapacityUnits\": number } }"]
+ */
+export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES = 'aws.dynamodb.global_secondary_index_updates';
+
+/**
+ * Type for {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES} aws.dynamodb.global_secondary_index_updates
+ */
+export type AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__index_name.json
+
+/**
+ * The value of the `IndexName` request parameter. `aws.dynamodb.index_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_INDEX_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "name_to_group"
+ */
+export const AWS_DYNAMODB_INDEX_NAME = 'aws.dynamodb.index_name';
+
+/**
+ * Type for {@link AWS_DYNAMODB_INDEX_NAME} aws.dynamodb.index_name
+ */
+export type AWS_DYNAMODB_INDEX_NAME_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__item_collection_metrics.json
+
+/**
+ * The JSON-serialized value of the `ItemCollectionMetrics` response field. `aws.dynamodb.item_collection_metrics`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_ITEM_COLLECTION_METRICS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "{ \"string\" : [ { \"ItemCollectionKey\": { \"string\" : { \"B\": blob, \"BOOL\": boolean, \"BS\": [ blob ], \"L\": [ \"AttributeValue\" ], \"M\": { \"string\" : \"AttributeValue\" }, \"N\": \"string\", \"NS\": [ \"string\" ], \"NULL\": boolean, \"S\": \"string\", \"SS\": [ \"string\" ] } }, \"SizeEstimateRangeGB\": [ number ] } ] }"
+ */
+export const AWS_DYNAMODB_ITEM_COLLECTION_METRICS = 'aws.dynamodb.item_collection_metrics';
+
+/**
+ * Type for {@link AWS_DYNAMODB_ITEM_COLLECTION_METRICS} aws.dynamodb.item_collection_metrics
+ */
+export type AWS_DYNAMODB_ITEM_COLLECTION_METRICS_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__limit.json
+
+/**
+ * The value of the `Limit` request parameter. `aws.dynamodb.limit`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_LIMIT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const AWS_DYNAMODB_LIMIT = 'aws.dynamodb.limit';
+
+/**
+ * Type for {@link AWS_DYNAMODB_LIMIT} aws.dynamodb.limit
+ */
+export type AWS_DYNAMODB_LIMIT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__local_secondary_indexes.json
+
+/**
+ * The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field. `aws.dynamodb.local_secondary_indexes`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["{ \"IndexArn\": \"string\", \"IndexName\": \"string\", \"IndexSizeBytes\": number, \"ItemCount\": number, \"KeySchema\": [ { \"AttributeName\": \"string\", \"KeyType\": \"string\" } ], \"Projection\": { \"NonKeyAttributes\": [ \"string\" ], \"ProjectionType\": \"string\" } }"]
+ */
+export const AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES = 'aws.dynamodb.local_secondary_indexes';
+
+/**
+ * Type for {@link AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES} aws.dynamodb.local_secondary_indexes
+ */
+export type AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__projection.json
+
+/**
+ * The value of the `ProjectionExpression` request parameter. `aws.dynamodb.projection`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_PROJECTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Title, Price, Color"
+ */
+export const AWS_DYNAMODB_PROJECTION = 'aws.dynamodb.projection';
+
+/**
+ * Type for {@link AWS_DYNAMODB_PROJECTION} aws.dynamodb.projection
+ */
+export type AWS_DYNAMODB_PROJECTION_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__provisioned_read_capacity.json
+
+/**
+ * The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter. `aws.dynamodb.provisioned_read_capacity`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 1
+ */
+export const AWS_DYNAMODB_PROVISIONED_READ_CAPACITY = 'aws.dynamodb.provisioned_read_capacity';
+
+/**
+ * Type for {@link AWS_DYNAMODB_PROVISIONED_READ_CAPACITY} aws.dynamodb.provisioned_read_capacity
+ */
+export type AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__provisioned_write_capacity.json
+
+/**
+ * The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter. `aws.dynamodb.provisioned_write_capacity`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 2
+ */
+export const AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY = 'aws.dynamodb.provisioned_write_capacity';
+
+/**
+ * Type for {@link AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY} aws.dynamodb.provisioned_write_capacity
+ */
+export type AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__scanned_count.json
+
+/**
+ * The value of the `ScannedCount` response parameter. `aws.dynamodb.scanned_count`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_SCANNED_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 50
+ */
+export const AWS_DYNAMODB_SCANNED_COUNT = 'aws.dynamodb.scanned_count';
+
+/**
+ * Type for {@link AWS_DYNAMODB_SCANNED_COUNT} aws.dynamodb.scanned_count
+ */
+export type AWS_DYNAMODB_SCANNED_COUNT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__scan_forward.json
+
+/**
+ * The value of the `ScanIndexForward` request parameter. `aws.dynamodb.scan_forward`
+ *
+ * Attribute Value Type: `boolean` {@link AWS_DYNAMODB_SCAN_FORWARD_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example true
+ */
+export const AWS_DYNAMODB_SCAN_FORWARD = 'aws.dynamodb.scan_forward';
+
+/**
+ * Type for {@link AWS_DYNAMODB_SCAN_FORWARD} aws.dynamodb.scan_forward
+ */
+export type AWS_DYNAMODB_SCAN_FORWARD_TYPE = boolean;
+
+// Path: model/attributes/aws/aws__dynamodb__segment.json
+
+/**
+ * The value of the `Segment` request parameter. `aws.dynamodb.segment`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_SEGMENT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 10
+ */
+export const AWS_DYNAMODB_SEGMENT = 'aws.dynamodb.segment';
+
+/**
+ * Type for {@link AWS_DYNAMODB_SEGMENT} aws.dynamodb.segment
+ */
+export type AWS_DYNAMODB_SEGMENT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__select.json
+
+/**
+ * The value of the `Select` request parameter. `aws.dynamodb.select`
+ *
+ * Attribute Value Type: `string` {@link AWS_DYNAMODB_SELECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ALL_ATTRIBUTES"
+ */
+export const AWS_DYNAMODB_SELECT = 'aws.dynamodb.select';
+
+/**
+ * Type for {@link AWS_DYNAMODB_SELECT} aws.dynamodb.select
+ */
+export type AWS_DYNAMODB_SELECT_TYPE = string;
+
+// Path: model/attributes/aws/aws__dynamodb__table_count.json
+
+/**
+ * The number of items in the `TableNames` response parameter. `aws.dynamodb.table_count`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_TABLE_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 20
+ */
+export const AWS_DYNAMODB_TABLE_COUNT = 'aws.dynamodb.table_count';
+
+/**
+ * Type for {@link AWS_DYNAMODB_TABLE_COUNT} aws.dynamodb.table_count
+ */
+export type AWS_DYNAMODB_TABLE_COUNT_TYPE = number;
+
+// Path: model/attributes/aws/aws__dynamodb__table_names.json
+
+/**
+ * The keys in the `RequestItems` object field. `aws.dynamodb.table_names`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_TABLE_NAMES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["Users","Cats"]
+ */
+export const AWS_DYNAMODB_TABLE_NAMES = 'aws.dynamodb.table_names';
+
+/**
+ * Type for {@link AWS_DYNAMODB_TABLE_NAMES} aws.dynamodb.table_names
+ */
+export type AWS_DYNAMODB_TABLE_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__dynamodb__total_segments.json
+
+/**
+ * The value of the `TotalSegments` request parameter. `aws.dynamodb.total_segments`
+ *
+ * Attribute Value Type: `number` {@link AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 100
+ */
+export const AWS_DYNAMODB_TOTAL_SEGMENTS = 'aws.dynamodb.total_segments';
+
+/**
+ * Type for {@link AWS_DYNAMODB_TOTAL_SEGMENTS} aws.dynamodb.total_segments
+ */
+export type AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE = number;
+
+// Path: model/attributes/aws/aws__extended_request_id.json
+
+/**
+ * The AWS extended request ID as returned in the response headers. `aws.extended_request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_EXTENDED_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_REQUEST_EXTENDED_ID} `aws.request.extended_id`
+ *
+ * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+ */
+export const AWS_EXTENDED_REQUEST_ID = 'aws.extended_request_id';
+
+/**
+ * Type for {@link AWS_EXTENDED_REQUEST_ID} aws.extended_request_id
+ */
+export type AWS_EXTENDED_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__kinesis__stream_name.json
+
+/**
+ * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_KINESIS_STREAM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link _AWS_KINESIS_STREAM_NAME} `aws.kinesis.stream.name`
+ *
+ * @example "some-stream-name"
+ */
+export const AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream_name';
+
+/**
+ * Type for {@link AWS_KINESIS_STREAM_NAME} aws.kinesis.stream_name
+ */
+export type AWS_KINESIS_STREAM_NAME_TYPE = string;
+
+// Path: model/attributes/aws/aws__kinesis__stream__name.json
+
+/**
+ * The name of the AWS Kinesis stream the request refers to. `aws.kinesis.stream.name`
+ *
+ * Attribute Value Type: `string` {@link _AWS_KINESIS_STREAM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_KINESIS_STREAM_NAME} `aws.kinesis.stream_name`
+ *
+ * @deprecated Use {@link AWS_KINESIS_STREAM_NAME} (aws.kinesis.stream_name) instead - This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.
+ * @example "some-stream-name"
+ */
+export const _AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream.name';
+
+/**
+ * Type for {@link _AWS_KINESIS_STREAM_NAME} aws.kinesis.stream.name
+ */
+export type _AWS_KINESIS_STREAM_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__lambda__aws_request_id.json
 
 /**
@@ -1881,6 +2604,182 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  * Type for {@link AWS_LOG_STREAM_NAMES} aws.log.stream.names
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/aws/aws__request__extended_id.json
+
+/**
+ * The AWS extended request ID as returned in the response headers. `aws.request.extended_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_EXTENDED_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_EXTENDED_REQUEST_ID} `aws.extended_request_id`
+ *
+ * @deprecated Use {@link AWS_EXTENDED_REQUEST_ID} (aws.extended_request_id) instead - This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.
+ * @example "wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ="
+ */
+export const AWS_REQUEST_EXTENDED_ID = 'aws.request.extended_id';
+
+/**
+ * Type for {@link AWS_REQUEST_EXTENDED_ID} aws.request.extended_id
+ */
+export type AWS_REQUEST_EXTENDED_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__request_id.json
+
+/**
+ * The AWS request ID as returned in the response headers. `aws.request_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link _AWS_REQUEST_ID} `aws.request.id`
+ *
+ * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
+ */
+export const AWS_REQUEST_ID = 'aws.request_id';
+
+/**
+ * Type for {@link AWS_REQUEST_ID} aws.request_id
+ */
+export type AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__request__id.json
+
+/**
+ * The AWS request ID as returned in the response headers. `aws.request.id`
+ *
+ * Attribute Value Type: `string` {@link _AWS_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link AWS_REQUEST_ID} `aws.request_id`
+ *
+ * @deprecated Use {@link AWS_REQUEST_ID} (aws.request_id) instead - This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.
+ * @example "79b9da39-b7ae-508a-a6bc-864b2829c622"
+ */
+export const _AWS_REQUEST_ID = 'aws.request.id';
+
+/**
+ * Type for {@link _AWS_REQUEST_ID} aws.request.id
+ */
+export type _AWS_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__bucket.json
+
+/**
+ * The S3 bucket name the request refers to. `aws.s3.bucket`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_BUCKET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ot-demo-test"
+ */
+export const AWS_S3_BUCKET = 'aws.s3.bucket';
+
+/**
+ * Type for {@link AWS_S3_BUCKET} aws.s3.bucket
+ */
+export type AWS_S3_BUCKET_TYPE = string;
+
+// Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
+
+/**
+ * The ARN of the Secret stored in Secrets Manager. `aws.secretsmanager.secret.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_SECRETSMANAGER_SECRET_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
+ */
+export const AWS_SECRETSMANAGER_SECRET_ARN = 'aws.secretsmanager.secret.arn';
+
+/**
+ * Type for {@link AWS_SECRETSMANAGER_SECRET_ARN} aws.secretsmanager.secret.arn
+ */
+export type AWS_SECRETSMANAGER_SECRET_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__sns__topic__arn.json
+
+/**
+ * The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel. `aws.sns.topic.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_SNS_TOPIC_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
+ */
+export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
+
+/**
+ * Type for {@link AWS_SNS_TOPIC_ARN} aws.sns.topic.arn
+ */
+export type AWS_SNS_TOPIC_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__activity__arn.json
+
+/**
+ * The ARN of the AWS Step Functions Activity. `aws.step_functions.activity.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
+ */
+export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN} aws.step_functions.activity.arn
+ */
+export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
+
+/**
+ * The ARN of the AWS Step Functions State Machine. `aws.step_functions.state_machine.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
+ */
+export const AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN = 'aws.step_functions.state_machine.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN} aws.step_functions.state_machine.arn
+ */
+export type AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE = string;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -2119,6 +3018,11 @@ export type BROWSER_WEB_VITAL_CLS_REPORT_EVENT_TYPE = string;
  * @example "body > div#app"
  */
 export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
+
+/**
+ * Base key for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE}.${key}`.
+ */
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE = 'browser.web_vital.cls.source';
 
 /**
  * Type for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY} browser.web_vital.cls.source.<key>
@@ -3191,6 +4095,13 @@ export type CLS_TYPE = number;
 export const CLS_SOURCE_KEY = 'cls.source.<key>';
 
 /**
+ * Base key for {@link CLS_SOURCE_KEY}. Use with a dynamic suffix, e.g. `${CLS_SOURCE_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BASE} (browser.web_vital.cls.source) instead - The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.
+ */
+export const CLS_SOURCE_KEY_BASE = 'cls.source';
+
+/**
  * Type for {@link CLS_SOURCE_KEY} cls.source.<key>
  */
 export type CLS_SOURCE_KEY_TYPE = string;
@@ -3521,6 +4432,8 @@ export type CULTURE_TIMEZONE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link DB_MONGODB_COLLECTION} `db.mongodb.collection`
+ *
  * @example "users"
  */
 export const DB_COLLECTION_NAME = 'db.collection.name';
@@ -3550,6 +4463,30 @@ export const DB_DRIVER_NAME = 'db.driver.name';
  * Type for {@link DB_DRIVER_NAME} db.driver.name
  */
 export type DB_DRIVER_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__mongodb__collection.json
+
+/**
+ * The MongoDB collection being accessed. `db.mongodb.collection`
+ *
+ * Attribute Value Type: `string` {@link DB_MONGODB_COLLECTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_COLLECTION_NAME} `db.collection.name`
+ *
+ * @deprecated Use {@link DB_COLLECTION_NAME} (db.collection.name) instead - This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.
+ * @example "users"
+ */
+export const DB_MONGODB_COLLECTION = 'db.mongodb.collection';
+
+/**
+ * Type for {@link DB_MONGODB_COLLECTION} db.mongodb.collection
+ */
+export type DB_MONGODB_COLLECTION_TYPE = string;
 
 // Path: model/attributes/db/db__name.json
 
@@ -3685,6 +4622,11 @@ export type DB_OPERATION_NAME_TYPE = string;
 export const DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
 
 /**
+ * Base key for {@link DB_QUERY_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${DB_QUERY_PARAMETER_KEY_BASE}.${key}`.
+ */
+export const DB_QUERY_PARAMETER_KEY_BASE = 'db.query.parameter';
+
+/**
  * Type for {@link DB_QUERY_PARAMETER_KEY} db.query.parameter.<key>
  */
 export type DB_QUERY_PARAMETER_KEY_TYPE = string;
@@ -3702,6 +4644,7 @@ export type DB_QUERY_PARAMETER_KEY_TYPE = string;
  * Visibility: public
  *
  * @example "SELECT users"
+ * @example "INSERT products; UPDATE orders"
  */
 export const DB_QUERY_SUMMARY = 'db.query.summary';
 
@@ -3765,6 +4708,8 @@ export type DB_REDIS_CONNECTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link REDIS_KEY} `redis.key`
  *
  * @example "user:2047:city"
  */
@@ -3853,8 +4798,8 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  *
  * Aliases: {@link DB_QUERY_TEXT} `db.query.text`
  *
- * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead
- * @example "SELECT * FROM users"
+ * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
+ * @example "SELECT * FROM users WHERE id = $1"
  */
 export const DB_STATEMENT = 'db.statement';
 
@@ -4781,6 +5726,30 @@ export const DEVICE_USABLE_MEMORY = 'device.usable_memory';
  */
 export type DEVICE_USABLE_MEMORY_TYPE = number;
 
+// Path: model/attributes/dist.json
+
+/**
+ * The sentry dist. `dist`
+ *
+ * Attribute Value Type: `string` {@link DIST_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_DIST} `sentry.dist`
+ *
+ * @deprecated Use {@link SENTRY_DIST} (sentry.dist) instead - This attribute is being deprecated in favor of sentry.dist.
+ * @example "1.0"
+ */
+export const DIST = 'dist';
+
+/**
+ * Type for {@link DIST} dist
+ */
+export type DIST_TYPE = string;
+
 // Path: model/attributes/effectiveConnectionType.json
 
 /**
@@ -5152,6 +6121,69 @@ export const FAAS_INVOCATION_ID = 'faas.invocation_id';
  */
 export type FAAS_INVOCATION_ID_TYPE = string;
 
+// Path: model/attributes/faas/faas__invoked_name.json
+
+/**
+ * The name of the invoked function. `faas.invoked_name`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "my-function"
+ */
+export const FAAS_INVOKED_NAME = 'faas.invoked_name';
+
+/**
+ * Type for {@link FAAS_INVOKED_NAME} faas.invoked_name
+ */
+export type FAAS_INVOKED_NAME_TYPE = string;
+
+// Path: model/attributes/faas/faas__invoked_provider.json
+
+/**
+ * The cloud provider of the invoked function. `faas.invoked_provider`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_PROVIDER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "aws"
+ */
+export const FAAS_INVOKED_PROVIDER = 'faas.invoked_provider';
+
+/**
+ * Type for {@link FAAS_INVOKED_PROVIDER} faas.invoked_provider
+ */
+export type FAAS_INVOKED_PROVIDER_TYPE = string;
+
+// Path: model/attributes/faas/faas__invoked_region.json
+
+/**
+ * The cloud region of the invoked function. `faas.invoked_region`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INVOKED_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "eu-central-1"
+ */
+export const FAAS_INVOKED_REGION = 'faas.invoked_region';
+
+/**
+ * Type for {@link FAAS_INVOKED_REGION} faas.invoked_region
+ */
+export type FAAS_INVOKED_REGION_TYPE = string;
+
 // Path: model/attributes/faas/faas__name.json
 
 /**
@@ -5264,6 +6296,48 @@ export const FCP = 'fcp';
  */
 export type FCP_TYPE = number;
 
+// Path: model/attributes/file/file__path.json
+
+/**
+ * Path to the file. `file.path`
+ *
+ * Attribute Value Type: `string` {@link FILE_PATH_TYPE}
+ *
+ * Apply Scrubbing: auto - File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "/home/user/example.txt"
+ */
+export const FILE_PATH = 'file.path';
+
+/**
+ * Type for {@link FILE_PATH} file.path
+ */
+export type FILE_PATH_TYPE = string;
+
+// Path: model/attributes/file/file__size.json
+
+/**
+ * File size in bytes. `file.size`
+ *
+ * Attribute Value Type: `number` {@link FILE_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 1024
+ */
+export const FILE_SIZE = 'file.size';
+
+/**
+ * Type for {@link FILE_SIZE} file.size
+ */
+export type FILE_SIZE_TYPE = number;
+
 // Path: model/attributes/flag/flag__evaluation__[key].json
 
 /**
@@ -5281,6 +6355,11 @@ export type FCP_TYPE = number;
  * @example "flag.evaluation.is_new_ui=true"
  */
 export const FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
+
+/**
+ * Base key for {@link FLAG_EVALUATION_KEY}. Use with a dynamic suffix, e.g. `${FLAG_EVALUATION_KEY_BASE}.${key}`.
+ */
+export const FLAG_EVALUATION_KEY_BASE = 'flag.evaluation';
 
 /**
  * Type for {@link FLAG_EVALUATION_KEY} flag.evaluation.<key>
@@ -5347,7 +6426,7 @@ export type FRAMES_DELAY_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`, {@link SENTRY_FRAMES_FROZEN} `sentry.frames.frozen`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_COUNT} (app.vitals.frames.frozen.count) instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 3
@@ -5362,7 +6441,7 @@ export type FRAMES_FROZEN_TYPE = number;
 // Path: model/attributes/frames_frozen_rate.json
 
 /**
- * The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_frozen_rate`
+ * The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay. `frames_frozen_rate`
  *
  * Attribute Value Type: `number` {@link FRAMES_FROZEN_RATE_TYPE}
  *
@@ -5370,6 +6449,10 @@ export type FRAMES_FROZEN_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_RATE} `app.vitals.frames.frozen.rate`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_RATE} (app.vitals.frames.frozen.rate) instead - Replaced by app.vitals.frames.frozen.rate to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const FRAMES_FROZEN_RATE = 'frames_frozen_rate';
 
@@ -5390,7 +6473,7 @@ export type FRAMES_FROZEN_RATE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`, {@link SENTRY_FRAMES_SLOW} `sentry.frames.slow`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_COUNT} (app.vitals.frames.slow.count) instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 1
@@ -5405,7 +6488,7 @@ export type FRAMES_SLOW_TYPE = number;
 // Path: model/attributes/frames_slow_rate.json
 
 /**
- * The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay. `frames_slow_rate`
+ * The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay. `frames_slow_rate`
  *
  * Attribute Value Type: `number` {@link FRAMES_SLOW_RATE_TYPE}
  *
@@ -5413,6 +6496,10 @@ export type FRAMES_SLOW_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_RATE} `app.vitals.frames.slow.rate`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_RATE} (app.vitals.frames.slow.rate) instead - Replaced by app.vitals.frames.slow.rate to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const FRAMES_SLOW_RATE = 'frames_slow_rate';
 
@@ -5433,7 +6520,7 @@ export type FRAMES_SLOW_RATE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`
+ * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`, {@link SENTRY_FRAMES_TOTAL} `sentry.frames.total`
  *
  * @deprecated Use {@link APP_VITALS_FRAMES_TOTAL_COUNT} (app.vitals.frames.total.count) instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
  * @example 60
@@ -5943,7 +7030,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_TEXTS} `ai.texts`
+ * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  */
@@ -6008,6 +7095,8 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AI_RESPONSE_TOOLCALLS} `ai.response.toolCalls`, {@link AI_RESPONSE_TEXT} `ai.response.text`
+ *
  * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
  */
 export const GEN_AI_OUTPUT_MESSAGES = 'gen_ai.output.messages';
@@ -6052,7 +7141,9 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @deprecated  - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
+ *
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
  */
 export const GEN_AI_PROMPT = 'gen_ai.prompt';
@@ -6210,6 +7301,8 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AI_MODEL_ID} `ai.model_id`
+ *
  * @example "gpt-4-turbo-preview"
  */
 export const GEN_AI_REQUEST_MODEL = 'gen_ai.request.model';
@@ -6242,26 +7335,26 @@ export const GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty'
  */
 export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 
-// Path: model/attributes/gen_ai/gen_ai__request__reasoning_effort.json
+// Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
 
 /**
- * Constrains the effort on reasoning for reasoning models. Supported values vary by provider. `gen_ai.request.reasoning_effort`
+ * The reasoning or thinking effort level requested for a GenAI model. `gen_ai.request.reasoning.level`
  *
- * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_EFFORT_TYPE}
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_LEVEL_TYPE}
  *
  * Apply Scrubbing: manual
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * @example "high"
  */
-export const GEN_AI_REQUEST_REASONING_EFFORT = 'gen_ai.request.reasoning_effort';
+export const GEN_AI_REQUEST_REASONING_LEVEL = 'gen_ai.request.reasoning.level';
 
 /**
- * Type for {@link GEN_AI_REQUEST_REASONING_EFFORT} gen_ai.request.reasoning_effort
+ * Type for {@link GEN_AI_REQUEST_REASONING_LEVEL} gen_ai.request.reasoning.level
  */
-export type GEN_AI_REQUEST_REASONING_EFFORT_TYPE = string;
+export type GEN_AI_REQUEST_REASONING_LEVEL_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__seed.json
 
@@ -6285,6 +7378,27 @@ export const GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
  * Type for {@link GEN_AI_REQUEST_SEED} gen_ai.request.seed
  */
 export type GEN_AI_REQUEST_SEED_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__request__stop_sequences.json
+
+/**
+ * List of sequences that the model will use to stop generating further tokens. `gen_ai.request.stop_sequences`
+ *
+ * Attribute Value Type: `Array<string>` {@link GEN_AI_REQUEST_STOP_SEQUENCES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["forest","lived"]
+ */
+export const GEN_AI_REQUEST_STOP_SEQUENCES = 'gen_ai.request.stop_sequences';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_STOP_SEQUENCES} gen_ai.request.stop_sequences
+ */
+export type GEN_AI_REQUEST_STOP_SEQUENCES_TYPE = Array<string>;
 
 // Path: model/attributes/gen_ai/gen_ai__request__temperature.json
 
@@ -6355,6 +7469,30 @@ export const GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
  */
 export type GEN_AI_REQUEST_TOP_P_TYPE = number;
 
+// Path: model/attributes/gen_ai/gen_ai__response__finish_reason.json
+
+/**
+ * The reason why the model stopped generating (singular form). `gen_ai.response.finish_reason`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_FINISH_REASON_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_FINISH_REASONS} `gen_ai.response.finish_reasons`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_FINISH_REASONS} (gen_ai.response.finish_reasons) instead
+ * @example "COMPLETE"
+ */
+export const GEN_AI_RESPONSE_FINISH_REASON = 'gen_ai.response.finish_reason';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_FINISH_REASON} gen_ai.response.finish_reason
+ */
+export type GEN_AI_RESPONSE_FINISH_REASON_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__response__finish_reasons.json
 
 /**
@@ -6367,7 +7505,7 @@ export type GEN_AI_REQUEST_TOP_P_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`
+ * Aliases: {@link AI_FINISH_REASON} `ai.finish_reason`, {@link GEN_AI_RESPONSE_FINISH_REASON} `gen_ai.response.finish_reason`
  *
  * @example "COMPLETE"
  */
@@ -6412,8 +7550,6 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
- *
- * Aliases: {@link AI_MODEL_ID} `ai.model_id`
  *
  * @example "gpt-4"
  */
@@ -6640,7 +7776,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_INPUT} `gen_ai.tool.input`
+ * Aliases: {@link GEN_AI_TOOL_INPUT} `gen_ai.tool.input`, {@link AI_TOOLCALL_ARGS} `ai.toolCall.args`
  *
  * @example "{\"location\": \"Paris\"}"
  */
@@ -6663,7 +7799,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
  *
  * @example "rainy, 57°F"
  */
@@ -6728,7 +7864,7 @@ export type GEN_AI_TOOL_DESCRIPTION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_ARGUMENTS} `gen_ai.tool.call.arguments`
+ * Aliases: {@link GEN_AI_TOOL_CALL_ARGUMENTS} `gen_ai.tool.call.arguments`, {@link AI_TOOLCALL_ARGS} `ai.toolCall.args`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_ARGUMENTS} (gen_ai.tool.call.arguments) instead
  * @example "{\"location\": \"Paris\"}"
@@ -6752,7 +7888,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -6799,7 +7935,7 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -7154,6 +8290,286 @@ export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
  */
 export type GRAPHQL_OPERATION_TYPE_TYPE = string;
 
+// Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
+
+/**
+ * The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation. `grpc.error.bad_request.field_violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"field\":\"email\",\"description\":\"must be a valid email address\",\"reason\":\"FIELD_INVALID\",\"localized_message\":{\"locale\":\"en-US\",\"message\":\"Must be a valid email address\"}}"]
+ */
+export const GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS = 'grpc.error.bad_request.field_violations';
+
+/**
+ * Type for {@link GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS} grpc.error.bad_request.field_violations
+ */
+export type GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/grpc/grpc__error__debug_info__detail.json
+
+/**
+ * Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.debug_info.detail`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "at com.example.Service.method(Service.java:42)"
+ */
+export const GRPC_ERROR_DEBUG_INFO_DETAIL = 'grpc.error.debug_info.detail';
+
+/**
+ * Type for {@link GRPC_ERROR_DEBUG_INFO_DETAIL} grpc.error.debug_info.detail
+ */
+export type GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__debug_info__stack_entries.json
+
+/**
+ * The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.debug_info.stack_entries`
+ *
+ * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["com.example.Service.method(Service.java:42)","com.example.Server.handle(Server.java:100)"]
+ */
+export const GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES = 'grpc.error.debug_info.stack_entries';
+
+/**
+ * Type for {@link GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES} grpc.error.debug_info.stack_entries
+ */
+export type GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE = Array<string>;
+
+// Path: model/attributes/grpc/grpc__error__error_info__domain.json
+
+/**
+ * The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail. `grpc.error.error_info.domain`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "example.sentry.io"
+ */
+export const GRPC_ERROR_ERROR_INFO_DOMAIN = 'grpc.error.error_info.domain';
+
+/**
+ * Type for {@link GRPC_ERROR_ERROR_INFO_DOMAIN} grpc.error.error_info.domain
+ */
+export type GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__error_info__metadata__[key].json
+
+/**
+ * Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.error_info.metadata.<key>`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "grpc.error.error_info.metadata.user_id='123'"
+ */
+export const GRPC_ERROR_ERROR_INFO_METADATA_KEY = 'grpc.error.error_info.metadata.<key>';
+
+/**
+ * Base key for {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY}. Use with a dynamic suffix, e.g. `${GRPC_ERROR_ERROR_INFO_METADATA_KEY_BASE}.${key}`.
+ */
+export const GRPC_ERROR_ERROR_INFO_METADATA_KEY_BASE = 'grpc.error.error_info.metadata';
+
+/**
+ * Type for {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY} grpc.error.error_info.metadata.<key>
+ */
+export type GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__error_info__reason.json
+
+/**
+ * The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail. `grpc.error.error_info.reason`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_ERROR_INFO_REASON_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "FIELD_INVALID"
+ */
+export const GRPC_ERROR_ERROR_INFO_REASON = 'grpc.error.error_info.reason';
+
+/**
+ * Type for {@link GRPC_ERROR_ERROR_INFO_REASON} grpc.error.error_info.reason
+ */
+export type GRPC_ERROR_ERROR_INFO_REASON_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__precondition_failure__violations.json
+
+/**
+ * The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users. `grpc.error.precondition_failure.violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"type\":\"TOS\",\"subject\":\"example.com/user/123\",\"description\":\"User must accept the terms of service\"}"]
+ */
+export const GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS = 'grpc.error.precondition_failure.violations';
+
+/**
+ * Type for {@link GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS} grpc.error.precondition_failure.violations
+ */
+export type GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/grpc/grpc__error__quota_failure__violations.json
+
+/**
+ * The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users. `grpc.error.quota_failure.violations`
+ *
+ * Attribute Value Type: `Array<string>` {@link GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["{\"subject\":\"clientip:127.0.0.1\",\"description\":\"Limit checks failed.\",\"api_service\":\"example.googleapis.com\",\"quota_metric\":\"example.googleapis.com/read_requests\",\"quota_id\":\"ReadRequestsPerMinutePerProject\",\"quota_dimensions\":{\"region\":\"us-central1\"},\"quota_value\":1000}"]
+ */
+export const GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS = 'grpc.error.quota_failure.violations';
+
+/**
+ * Type for {@link GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS} grpc.error.quota_failure.violations
+ */
+export type GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE = Array<string>;
+
+// Path: model/attributes/grpc/grpc__error__resource_info__description.json
+
+/**
+ * A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail. `grpc.error.resource_info.description`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Instance is not ready for the request."
+ */
+export const GRPC_ERROR_RESOURCE_INFO_DESCRIPTION = 'grpc.error.resource_info.description';
+
+/**
+ * Type for {@link GRPC_ERROR_RESOURCE_INFO_DESCRIPTION} grpc.error.resource_info.description
+ */
+export type GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__resource_info__owner.json
+
+/**
+ * The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.resource_info.owner`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user@example.com"
+ */
+export const GRPC_ERROR_RESOURCE_INFO_OWNER = 'grpc.error.resource_info.owner';
+
+/**
+ * Type for {@link GRPC_ERROR_RESOURCE_INFO_OWNER} grpc.error.resource_info.owner
+ */
+export type GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__resource_info__resource_name.json
+
+/**
+ * The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly. `grpc.error.resource_info.resource_name`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "projects/example/instances/example-instance"
+ */
+export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME = 'grpc.error.resource_info.resource_name';
+
+/**
+ * Type for {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME} grpc.error.resource_info.resource_name
+ */
+export type GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__resource_info__resource_type.json
+
+/**
+ * The type of resource being accessed, from a google.rpc.ResourceInfo error detail. `grpc.error.resource_info.resource_type`
+ *
+ * Attribute Value Type: `string` {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "database"
+ */
+export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE = 'grpc.error.resource_info.resource_type';
+
+/**
+ * Type for {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE} grpc.error.resource_info.resource_type
+ */
+export type GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE = string;
+
+// Path: model/attributes/grpc/grpc__error__retry_info__retry_delay_ms.json
+
+/**
+ * How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail. `grpc.error.retry_info.retry_delay_ms`
+ *
+ * Attribute Value Type: `number` {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS = 'grpc.error.retry_info.retry_delay_ms';
+
+/**
+ * Type for {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS} grpc.error.retry_info.retry_delay_ms
+ */
+export type GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE = number;
+
 // Path: model/attributes/hardwareConcurrency.json
 
 /**
@@ -7280,7 +8696,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -7480,6 +8896,11 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  * @example "http.request.header.custom-header=['foo', 'bar']"
  */
 export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
+
+/**
+ * Base key for {@link HTTP_REQUEST_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_REQUEST_HEADER_KEY_BASE}.${key}`.
+ */
+export const HTTP_REQUEST_HEADER_KEY_BASE = 'http.request.header';
 
 /**
  * Type for {@link HTTP_REQUEST_HEADER_KEY} http.request.header.<key>
@@ -7834,6 +9255,11 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
 export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
 
 /**
+ * Base key for {@link HTTP_RESPONSE_HEADER_KEY}. Use with a dynamic suffix, e.g. `${HTTP_RESPONSE_HEADER_KEY_BASE}.${key}`.
+ */
+export const HTTP_RESPONSE_HEADER_KEY_BASE = 'http.response.header';
+
+/**
  * Type for {@link HTTP_RESPONSE_HEADER_KEY} http.response.header.<key>
  */
 export type HTTP_RESPONSE_HEADER_KEY_TYPE = Array<string>;
@@ -7923,6 +9349,8 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  * Aliases: {@link URL_TEMPLATE} `url.template`
  *
  * @example "/users/:id"
+ * @example "my-controller/my-action/{id}"
+ * @example "/posts"
  */
 export const HTTP_ROUTE = 'http.route';
 
@@ -7967,7 +9395,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -8308,6 +9736,49 @@ export const JVM_THREAD_STATE = 'jvm.thread.state';
  * Type for {@link JVM_THREAD_STATE} jvm.thread.state
  */
 export type JVM_THREAD_STATE_TYPE = string;
+
+// Path: model/attributes/koa/koa__name.json
+
+/**
+ * The name of the Koa middleware or matched route that handled the request. `koa.name`
+ *
+ * Attribute Value Type: `string` {@link KOA_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.
+ * @example "/users/:id"
+ */
+export const KOA_NAME = 'koa.name';
+
+/**
+ * Type for {@link KOA_NAME} koa.name
+ */
+export type KOA_NAME_TYPE = string;
+
+// Path: model/attributes/koa/koa__type.json
+
+/**
+ * The type of the Koa layer that handled the request. `koa.type`
+ *
+ * Attribute Value Type: `string` {@link KOA_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "router"
+ */
+export const KOA_TYPE = 'koa.type';
+
+/**
+ * Type for {@link KOA_TYPE} koa.type
+ */
+export type KOA_TYPE_TYPE = string;
 
 // Path: model/attributes/lcp.json
 
@@ -9003,6 +10474,11 @@ export type MCP_PROTOCOL_VERSION_TYPE = string;
 export const MCP_REQUEST_ARGUMENT_KEY = 'mcp.request.argument.<key>';
 
 /**
+ * Base key for {@link MCP_REQUEST_ARGUMENT_KEY}. Use with a dynamic suffix, e.g. `${MCP_REQUEST_ARGUMENT_KEY_BASE}.${key}`.
+ */
+export const MCP_REQUEST_ARGUMENT_KEY_BASE = 'mcp.request.argument';
+
+/**
  * Type for {@link MCP_REQUEST_ARGUMENT_KEY} mcp.request.argument.<key>
  */
 export type MCP_REQUEST_ARGUMENT_KEY_TYPE = string;
@@ -9238,7 +10714,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead - OTel uses gen_ai.tool.call.result for MCP tool results
  * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
@@ -9336,6 +10812,11 @@ export type MCP_TRANSPORT_TYPE = string;
 export const MDC_KEY = 'mdc.<key>';
 
 /**
+ * Base key for {@link MDC_KEY}. Use with a dynamic suffix, e.g. `${MDC_KEY_BASE}.${key}`.
+ */
+export const MDC_KEY_BASE = 'mdc';
+
+/**
  * Type for {@link MDC_KEY} mdc.<key>
  */
 export type MDC_KEY_TYPE = string;
@@ -9361,6 +10842,30 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__destination.json
+
+/**
+ * The message destination name. `messaging.destination`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`
+ *
+ * @deprecated Use {@link MESSAGING_DESTINATION_NAME} (messaging.destination.name) instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
+ * @example "BestTopic"
+ */
+export const MESSAGING_DESTINATION = 'messaging.destination';
+
+/**
+ * Type for {@link MESSAGING_DESTINATION} messaging.destination
+ */
+export type MESSAGING_DESTINATION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination__connection.json
 
 /**
@@ -9382,6 +10887,28 @@ export const MESSAGING_DESTINATION_CONNECTION = 'messaging.destination.connectio
  */
 export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__destination_kind.json
+
+/**
+ * The kind of message destination. `messaging.destination_kind`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_KIND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name.
+ * @example "topic"
+ */
+export const MESSAGING_DESTINATION_KIND = 'messaging.destination_kind';
+
+/**
+ * Type for {@link MESSAGING_DESTINATION_KIND} messaging.destination_kind
+ */
+export type MESSAGING_DESTINATION_KIND_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination__name.json
 
 /**
@@ -9394,6 +10921,8 @@ export type MESSAGING_DESTINATION_CONNECTION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_DESTINATION} `messaging.destination`
+ *
  * @example "BestTopic"
  */
 export const MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
@@ -9402,6 +10931,90 @@ export const MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
  * Type for {@link MESSAGING_DESTINATION_NAME} messaging.destination.name
  */
 export type MESSAGING_DESTINATION_NAME_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__destination__partition__id.json
+
+/**
+ * The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name. `messaging.destination.partition.id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_DESTINATION_PARTITION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "1"
+ */
+export const MESSAGING_DESTINATION_PARTITION_ID = 'messaging.destination.partition.id';
+
+/**
+ * Type for {@link MESSAGING_DESTINATION_PARTITION_ID} messaging.destination.partition.id
+ */
+export type MESSAGING_DESTINATION_PARTITION_ID_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__kafka__message__key.json
+
+/**
+ * Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set. `messaging.kafka.message.key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_KAFKA_MESSAGE_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "myKey"
+ */
+export const MESSAGING_KAFKA_MESSAGE_KEY = 'messaging.kafka.message.key';
+
+/**
+ * Type for {@link MESSAGING_KAFKA_MESSAGE_KEY} messaging.kafka.message.key
+ */
+export type MESSAGING_KAFKA_MESSAGE_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__kafka__message__tombstone.json
+
+/**
+ * A boolean that is true if the message is a tombstone. `messaging.kafka.message.tombstone`
+ *
+ * Attribute Value Type: `boolean` {@link MESSAGING_KAFKA_MESSAGE_TOMBSTONE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example true
+ */
+export const MESSAGING_KAFKA_MESSAGE_TOMBSTONE = 'messaging.kafka.message.tombstone';
+
+/**
+ * Type for {@link MESSAGING_KAFKA_MESSAGE_TOMBSTONE} messaging.kafka.message.tombstone
+ */
+export type MESSAGING_KAFKA_MESSAGE_TOMBSTONE_TYPE = boolean;
+
+// Path: model/attributes/messaging/messaging__kafka__offset.json
+
+/**
+ * The offset of a record in the corresponding Kafka partition. `messaging.kafka.offset`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_KAFKA_OFFSET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 42
+ */
+export const MESSAGING_KAFKA_OFFSET = 'messaging.kafka.offset';
+
+/**
+ * Type for {@link MESSAGING_KAFKA_OFFSET} messaging.kafka.offset
+ */
+export type MESSAGING_KAFKA_OFFSET_TYPE = number;
 
 // Path: model/attributes/messaging/messaging__message__body__size.json
 
@@ -9660,6 +11273,50 @@ export const MIDDLEWARE_NAME = 'middleware.name';
  */
 export type MIDDLEWARE_NAME_TYPE = string;
 
+// Path: model/attributes/navigation/navigation__origin.json
+
+/**
+ * The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
+ *
+ * Attribute Value Type: `string` {@link NAVIGATION_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
+ *
+ * @example "/users/:id"
+ */
+export const NAVIGATION_ORIGIN = 'navigation.origin';
+
+/**
+ * Type for {@link NAVIGATION_ORIGIN} navigation.origin
+ */
+export type NAVIGATION_ORIGIN_TYPE = string;
+
+// Path: model/attributes/navigation/navigation__route__id.json
+
+/**
+ * The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id). `navigation.route.id`
+ *
+ * Attribute Value Type: `string` {@link NAVIGATION_ROUTE_ID_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "AboutView"
+ */
+export const NAVIGATION_ROUTE_ID = 'navigation.route.id';
+
+/**
+ * Type for {@link NAVIGATION_ROUTE_ID} navigation.route.id
+ */
+export type NAVIGATION_ROUTE_ID_TYPE = string;
+
 // Path: model/attributes/navigation/navigation__type.json
 
 /**
@@ -9671,6 +11328,8 @@ export type MIDDLEWARE_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
  *
  * @example "router.push"
  */
@@ -10071,7 +11730,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -10729,6 +12388,11 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 export const PARAMS_KEY = 'params.<key>';
 
 /**
+ * Base key for {@link PARAMS_KEY}. Use with a dynamic suffix, e.g. `${PARAMS_KEY_BASE}.${key}`.
+ */
+export const PARAMS_KEY_BASE = 'params';
+
+/**
  * Type for {@link PARAMS_KEY} params.<key>
  */
 export type PARAMS_KEY_TYPE = string;
@@ -10976,6 +12640,30 @@ export const PROCESS_RUNTIME_VERSION = 'process.runtime.version';
  */
 export type PROCESS_RUNTIME_VERSION_TYPE = string;
 
+// Path: model/attributes/profile_id.json
+
+/**
+ * The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling. `profile_id`
+ *
+ * Attribute Value Type: `string` {@link PROFILE_ID_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_PROFILE_ID} `sentry.profile_id`
+ *
+ * @deprecated Use {@link SENTRY_PROFILE_ID} (sentry.profile_id) instead
+ * @example "123e4567e89b12d3a456426614174000"
+ */
+export const PROFILE_ID = 'profile_id';
+
+/**
+ * Type for {@link PROFILE_ID} profile_id
+ */
+export type PROFILE_ID_TYPE = string;
+
 // Path: model/attributes/query/query__[key].json
 
 /**
@@ -10994,6 +12682,13 @@ export type PROCESS_RUNTIME_VERSION_TYPE = string;
  * @example "query.id='123'"
  */
 export const QUERY_KEY = 'query.<key>';
+
+/**
+ * Base key for {@link QUERY_KEY}. Use with a dynamic suffix, e.g. `${QUERY_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_QUERY} (url.query) instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
+ */
+export const QUERY_KEY_BASE = 'query';
 
 /**
  * Type for {@link QUERY_KEY} query.<key>
@@ -11021,6 +12716,30 @@ export const REACT_VERSION = 'react.version';
  */
 export type REACT_VERSION_TYPE = string;
 
+// Path: model/attributes/redis/redis__key.json
+
+/**
+ * The key the Redis command is operating on. `redis.key`
+ *
+ * Attribute Value Type: `string` {@link REDIS_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_REDIS_KEY} `db.redis.key`
+ *
+ * @deprecated Use {@link DB_REDIS_KEY} (db.redis.key) instead - This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.
+ * @example "user:2047:city"
+ */
+export const REDIS_KEY = 'redis.key';
+
+/**
+ * Type for {@link REDIS_KEY} redis.key
+ */
+export type REDIS_KEY_TYPE = string;
+
 // Path: model/attributes/release.json
 
 /**
@@ -11028,7 +12747,7 @@ export type REACT_VERSION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RELEASE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -11062,6 +12781,11 @@ export type RELEASE_TYPE = string;
  * @example "http.response.header.text='test'"
  */
 export const REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
+
+/**
+ * Base key for {@link REMIX_ACTION_FORM_DATA_KEY}. Use with a dynamic suffix, e.g. `${REMIX_ACTION_FORM_DATA_KEY_BASE}.${key}`.
+ */
+export const REMIX_ACTION_FORM_DATA_KEY_BASE = 'remix.action_form_data';
 
 /**
  * Type for {@link REMIX_ACTION_FORM_DATA_KEY} remix.action_form_data.<key>
@@ -11193,6 +12917,9 @@ export type ROUTE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
+ *
+ * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead - Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.
  * @example 2
  */
 export const RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
@@ -11235,6 +12962,8 @@ export type RPC_METHOD_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`
+ *
  * @example "DEADLINE_EXCEEDED"
  */
 export const RPC_RESPONSE_STATUS_CODE = 'rpc.response.status_code';
@@ -11264,6 +12993,53 @@ export const RPC_SERVICE = 'rpc.service';
  * Type for {@link RPC_SERVICE} rpc.service
  */
 export type RPC_SERVICE_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__system.json
+
+/**
+ * A string identifying the remoting system. `rpc.system`
+ *
+ * Attribute Value Type: `string` {@link RPC_SYSTEM_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_SYSTEM_NAME} `rpc.system.name`
+ *
+ * @deprecated Use {@link RPC_SYSTEM_NAME} (rpc.system.name) instead - This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.
+ * @example "aws-api"
+ */
+export const RPC_SYSTEM = 'rpc.system';
+
+/**
+ * Type for {@link RPC_SYSTEM} rpc.system
+ */
+export type RPC_SYSTEM_TYPE = string;
+
+// Path: model/attributes/rpc/rpc__system__name.json
+
+/**
+ * A string identifying the remoting system. `rpc.system.name`
+ *
+ * Attribute Value Type: `string` {@link RPC_SYSTEM_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_SYSTEM} `rpc.system`
+ *
+ * @example "aws-api"
+ */
+export const RPC_SYSTEM_NAME = 'rpc.system.name';
+
+/**
+ * Type for {@link RPC_SYSTEM_NAME} rpc.system.name
+ */
+export type RPC_SYSTEM_NAME_TYPE = string;
 
 // Path: model/attributes/runtime/runtime__build.json
 
@@ -11378,6 +13154,11 @@ export type RUNTIME_VERSION_TYPE = string;
 export const SCORE_KEY = 'score.<key>';
 
 /**
+ * Base key for {@link SCORE_KEY}. Use with a dynamic suffix, e.g. `${SCORE_KEY_BASE}.${key}`.
+ */
+export const SCORE_KEY_BASE = 'score';
+
+/**
  * Type for {@link SCORE_KEY} score.<key>
  */
 export type SCORE_KEY_TYPE = number;
@@ -11399,6 +13180,11 @@ export type SCORE_KEY_TYPE = number;
  * @example "score.ratio.inp=0.7748"
  */
 export const SCORE_RATIO_KEY = 'score.ratio.<key>';
+
+/**
+ * Base key for {@link SCORE_RATIO_KEY}. Use with a dynamic suffix, e.g. `${SCORE_RATIO_KEY_BASE}.${key}`.
+ */
+export const SCORE_RATIO_KEY_BASE = 'score.ratio';
 
 /**
  * Type for {@link SCORE_RATIO_KEY} score.ratio.<key>
@@ -11441,6 +13227,11 @@ export type SCORE_TOTAL_TYPE = number;
  * @example "score.weight.fcp=0.25"
  */
 export const SCORE_WEIGHT_KEY = 'score.weight.<key>';
+
+/**
+ * Base key for {@link SCORE_WEIGHT_KEY}. Use with a dynamic suffix, e.g. `${SCORE_WEIGHT_KEY_BASE}.${key}`.
+ */
+export const SCORE_WEIGHT_KEY_BASE = 'score.weight';
 
 /**
  * Type for {@link SCORE_WEIGHT_KEY} score.weight.<key>
@@ -11611,6 +13402,8 @@ export type SENTRY_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link DIST} `dist`
  *
  * @example "1.0"
  */
@@ -11854,6 +13647,78 @@ export const SENTRY_EXCLUSIVE_TIME = 'sentry.exclusive_time';
  */
 export type SENTRY_EXCLUSIVE_TIME_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__frames__frozen.json
+
+/**
+ * The number of frozen frames rendered during the lifetime of the span. `sentry.frames.frozen`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_FRAMES_FROZEN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_FROZEN_COUNT} `app.vitals.frames.frozen.count`, {@link FRAMES_FROZEN} `frames.frozen`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_FROZEN_COUNT} (app.vitals.frames.frozen.count) instead - Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 3
+ */
+export const SENTRY_FRAMES_FROZEN = 'sentry.frames.frozen';
+
+/**
+ * Type for {@link SENTRY_FRAMES_FROZEN} sentry.frames.frozen
+ */
+export type SENTRY_FRAMES_FROZEN_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__frames__slow.json
+
+/**
+ * The number of slow frames rendered during the lifetime of the span. `sentry.frames.slow`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_FRAMES_SLOW_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_SLOW_COUNT} `app.vitals.frames.slow.count`, {@link FRAMES_SLOW} `frames.slow`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_SLOW_COUNT} (app.vitals.frames.slow.count) instead - Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 1
+ */
+export const SENTRY_FRAMES_SLOW = 'sentry.frames.slow';
+
+/**
+ * Type for {@link SENTRY_FRAMES_SLOW} sentry.frames.slow
+ */
+export type SENTRY_FRAMES_SLOW_TYPE = number;
+
+// Path: model/attributes/sentry/sentry__frames__total.json
+
+/**
+ * The number of total frames rendered during the lifetime of the span. `sentry.frames.total`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_FRAMES_TOTAL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_FRAMES_TOTAL_COUNT} `app.vitals.frames.total.count`, {@link FRAMES_TOTAL} `frames.total`
+ *
+ * @deprecated Use {@link APP_VITALS_FRAMES_TOTAL_COUNT} (app.vitals.frames.total.count) instead - Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes
+ * @example 60
+ */
+export const SENTRY_FRAMES_TOTAL = 'sentry.frames.total';
+
+/**
+ * Type for {@link SENTRY_FRAMES_TOTAL} sentry.frames.total
+ */
+export type SENTRY_FRAMES_TOTAL_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__graphql__operation.json
 
 /**
@@ -11971,7 +13836,11 @@ export type SENTRY_IS_REMOTE_TYPE = boolean;
  *
  * Aliases: {@link OTEL_KIND} `otel.kind`
  *
+ * @example "client"
  * @example "server"
+ * @example "producer"
+ * @example "consumer"
+ * @example "internal"
  */
 export const SENTRY_KIND = 'sentry.kind';
 
@@ -12102,6 +13971,11 @@ export type SENTRY_MOBILE_TYPE = boolean;
  * @example "sentry.module.brianium/paratest='v7.7.0'"
  */
 export const SENTRY_MODULE_KEY = 'sentry.module.<key>';
+
+/**
+ * Base key for {@link SENTRY_MODULE_KEY}. Use with a dynamic suffix, e.g. `${SENTRY_MODULE_KEY_BASE}.${key}`.
+ */
+export const SENTRY_MODULE_KEY_BASE = 'sentry.module';
 
 /**
  * Type for {@link SENTRY_MODULE_KEY} sentry.module.<key>
@@ -12274,6 +14148,27 @@ export const SENTRY_ORIGIN = 'sentry.origin';
  */
 export type SENTRY_ORIGIN_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__pageload__span_id.json
+
+/**
+ * The id of the pageload span, set by web vital spans and metrics `sentry.pageload.span_id`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_PAGELOAD_SPAN_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "bf2c8d3df84524de"
+ */
+export const SENTRY_PAGELOAD_SPAN_ID = 'sentry.pageload.span_id';
+
+/**
+ * Type for {@link SENTRY_PAGELOAD_SPAN_ID} sentry.pageload.span_id
+ */
+export type SENTRY_PAGELOAD_SPAN_ID_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__platform.json
 
 /**
@@ -12328,6 +14223,8 @@ export type SENTRY_PROFILER_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link PROFILE_ID} `profile_id`
+ *
  * @example "123e4567e89b12d3a456426614174000"
  */
 export const SENTRY_PROFILE_ID = 'sentry.profile_id';
@@ -12336,6 +14233,48 @@ export const SENTRY_PROFILE_ID = 'sentry.profile_id';
  * Type for {@link SENTRY_PROFILE_ID} sentry.profile_id
  */
 export type SENTRY_PROFILE_ID_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__relay__ingress.json
+
+/**
+ * How an item (span, log, &c.) entered Relay. `sentry.relay.ingress`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_RELAY_INGRESS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example "OTEL"
+ */
+export const SENTRY_RELAY_INGRESS = 'sentry.relay.ingress';
+
+/**
+ * Type for {@link SENTRY_RELAY_INGRESS} sentry.relay.ingress
+ */
+export type SENTRY_RELAY_INGRESS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__relay__pipeline.json
+
+/**
+ * An internal descriptor of which processing pipeline an item went through in Relay. `sentry.relay.pipeline`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_RELAY_PIPELINE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example "span v2"
+ */
+export const SENTRY_RELAY_PIPELINE = 'sentry.relay.pipeline';
+
+/**
+ * Type for {@link SENTRY_RELAY_PIPELINE} sentry.relay.pipeline
+ */
+export type SENTRY_RELAY_PIPELINE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__release.json
 
@@ -12559,6 +14498,32 @@ export const SENTRY_SEGMENT_NAME = 'sentry.segment.name';
  */
 export type SENTRY_SEGMENT_NAME_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__segment__name__source.json
+
+/**
+ * The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.segment.name.source`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example "route"
+ * @example "component"
+ * @example "view"
+ * @example "task"
+ * @example "custom"
+ * @example "url"
+ */
+export const SENTRY_SEGMENT_NAME_SOURCE = 'sentry.segment.name.source';
+
+/**
+ * Type for {@link SENTRY_SEGMENT_NAME_SOURCE} sentry.segment.name.source
+ */
+export type SENTRY_SEGMENT_NAME_SOURCE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__server_sample_rate.json
 
 /**
@@ -12592,7 +14557,7 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated Use {@link SENTRY_SPAN_SOURCE} (sentry.span.source) instead - This attribute is being deprecated in favor of sentry.span.source
+ * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
  */
 export const SENTRY_SOURCE = 'sentry.source';
@@ -12614,6 +14579,7 @@ export type SENTRY_SOURCE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
  */
 export const SENTRY_SPAN_SOURCE = 'sentry.span.source';
@@ -12685,6 +14651,76 @@ export const SENTRY_STATUS_MESSAGE = 'sentry.status.message';
  * Type for {@link SENTRY_STATUS_MESSAGE} sentry.status.message
  */
 export type SENTRY_STATUS_MESSAGE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__from.json
+
+/**
+ * the navigation origin (sveltekit router) `sentry.sveltekit.navigation.from`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`
+ *
+ * @deprecated Use {@link NAVIGATION_ORIGIN} (navigation.origin) instead - Use the more generic attribute instead
+ * @example "/home"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} sentry.sveltekit.navigation.from
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__to.json
+
+/**
+ * the navigation destination `sentry.sveltekit.navigation.to`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - the navigation destination is already covered by url.* attributes
+ * @example "/users/:id"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_TO = 'sentry.sveltekit.navigation.to';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TO} sentry.sveltekit.navigation.to
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__sveltekit__navigation__type.json
+
+/**
+ * The type of navigation event emitted from the sveltekit client router `sentry.sveltekit.navigation.type`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_TYPE} `navigation.type`
+ *
+ * @deprecated Use {@link NAVIGATION_TYPE} (navigation.type) instead - Use the more generic attribute instead
+ * @example "link"
+ */
+export const SENTRY_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
+
+/**
+ * Type for {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} sentry.sveltekit.navigation.type
+ */
+export type SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__thread__id.json
 
@@ -13013,7 +15049,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @example "example.com"
  */
@@ -13023,6 +15059,30 @@ export const SERVER_ADDRESS = 'server.address';
  * Type for {@link SERVER_ADDRESS} server.address
  */
 export type SERVER_ADDRESS_TYPE = string;
+
+// Path: model/attributes/server_name.json
+
+/**
+ * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server_name`
+ *
+ * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ *
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+ * @example "example.com"
+ */
+export const SERVER_NAME = 'server_name';
+
+/**
+ * Type for {@link SERVER_NAME} server_name
+ */
+export type SERVER_NAME_TYPE = string;
 
 // Path: model/attributes/server/server__port.json
 
@@ -13123,6 +15183,10 @@ export type SESSION_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_STALL_PERCENTAGE} `app.vitals.stall.percentage`
+ *
+ * @deprecated Use {@link APP_VITALS_STALL_PERCENTAGE} (app.vitals.stall.percentage) instead - Replaced by app.vitals.stall.percentage to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const STALL_PERCENTAGE = 'stall_percentage';
 
@@ -13142,6 +15206,10 @@ export type STALL_PERCENTAGE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link APP_VITALS_STALL_DURATION} `app.vitals.stall.duration`
+ *
+ * @deprecated Use {@link APP_VITALS_STALL_DURATION} (app.vitals.stall.duration) instead - Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes
  */
 export const STALL_TOTAL_TIME = 'stall_total_time';
 
@@ -13824,6 +15892,11 @@ export type URL_PATH_TYPE = string;
 export const URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
 
 /**
+ * Base key for {@link URL_PATH_PARAMETER_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMETER_KEY_BASE}.${key}`.
+ */
+export const URL_PATH_PARAMETER_KEY_BASE = 'url.path.parameter';
+
+/**
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
  */
 export type URL_PATH_PARAMETER_KEY_TYPE = string;
@@ -13931,7 +16004,9 @@ export type URL_SCHEME_TYPE = string;
  *
  * Aliases: {@link HTTP_ROUTE} `http.route`
  *
+ * @example "/users/{id}"
  * @example "/users/:id"
+ * @example "/about"
  */
 export const URL_TEMPLATE = 'url.template';
 
@@ -14988,11 +17063,17 @@ export interface ApplyScrubbingInfo {
   reason?: string;
 }
 
+export type DeprecationStatus = 'backfill' | 'normalize' | 'transform';
+
 export interface DeprecationInfo {
   /** What this attribute was replaced with */
   replacement?: string;
   /** Reason for deprecation */
   reason?: string;
+  /** How the attribute should be handled in the ingestion pipeline */
+  status?: DeprecationStatus;
+  /** Attribute transformation id to apply when status is transform */
+  transformation?: string;
 }
 
 export interface ChangelogEntry {
@@ -15019,6 +17100,8 @@ export interface AttributeMetadata {
   hasDynamicSuffix?: boolean;
   /** An example value of the attribute */
   example?: AttributeValue;
+  /** Example values of the attribute */
+  examples?: AttributeValue[];
   /** If an attribute was deprecated, and what it was replaced with */
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
@@ -15045,10 +17128,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.pipeline.name': 'string',
   'ai.preamble': 'string',
   'ai.presence_penalty': 'double',
+  'ai.prompt.messages': 'string',
   'ai.prompt_tokens.used': 'integer',
   'ai.raw_prompting': 'boolean',
   'ai.responses': 'string[]',
   'ai.response_format': 'string',
+  'ai.response.text': 'string',
+  'ai.response.toolCalls': 'string',
   'ai.search_queries': 'string[]',
   'ai.search_results': 'string[]',
   'ai.seed': 'string',
@@ -15056,6 +17142,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.tags': 'string',
   'ai.temperature': 'double',
   'ai.texts': 'string[]',
+  'ai.toolCall.args': 'string',
+  'ai.toolCall.result': 'string',
   'ai.tools': 'string[]',
   'ai.tool_calls': 'string[]',
   'ai.top_k': 'integer',
@@ -15080,8 +17168,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'app.version': 'string',
   'app.vitals.frames.delay.value': 'integer',
   'app.vitals.frames.frozen.count': 'integer',
+  'app.vitals.frames.frozen.rate': 'double',
   'app.vitals.frames.slow.count': 'integer',
+  'app.vitals.frames.slow.rate': 'double',
   'app.vitals.frames.total.count': 'integer',
+  'app.vitals.stall.duration': 'double',
+  'app.vitals.stall.percentage': 'double',
   'app.vitals.start.cold.value': 'double',
   'app.vitals.start.prewarmed': 'boolean',
   'app.vitals.start.reason': 'string',
@@ -15104,6 +17196,30 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.cloudwatch.logs.log_group': 'string',
   'aws.cloudwatch.logs.log_stream': 'string',
   'aws.cloudwatch.logs.url': 'string',
+  'aws.dynamodb.attribute_definitions': 'string[]',
+  'aws.dynamodb.consistent_read': 'boolean',
+  'aws.dynamodb.consumed_capacity': 'string[]',
+  'aws.dynamodb.count': 'integer',
+  'aws.dynamodb.exclusive_start_table': 'string',
+  'aws.dynamodb.global_secondary_indexes': 'string[]',
+  'aws.dynamodb.global_secondary_index_updates': 'string[]',
+  'aws.dynamodb.index_name': 'string',
+  'aws.dynamodb.item_collection_metrics': 'string',
+  'aws.dynamodb.limit': 'integer',
+  'aws.dynamodb.local_secondary_indexes': 'string[]',
+  'aws.dynamodb.projection': 'string',
+  'aws.dynamodb.provisioned_read_capacity': 'double',
+  'aws.dynamodb.provisioned_write_capacity': 'double',
+  'aws.dynamodb.scanned_count': 'integer',
+  'aws.dynamodb.scan_forward': 'boolean',
+  'aws.dynamodb.segment': 'integer',
+  'aws.dynamodb.select': 'string',
+  'aws.dynamodb.table_count': 'integer',
+  'aws.dynamodb.table_names': 'string[]',
+  'aws.dynamodb.total_segments': 'integer',
+  'aws.extended_request_id': 'string',
+  'aws.kinesis.stream_name': 'string',
+  'aws.kinesis.stream.name': 'string',
   'aws.lambda.aws_request_id': 'string',
   'aws.lambda.execution_duration_in_millis': 'double',
   'aws.lambda.function_name': 'string',
@@ -15113,6 +17229,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  'aws.request.extended_id': 'string',
+  'aws.request_id': 'string',
+  'aws.request.id': 'string',
+  'aws.s3.bucket': 'string',
+  'aws.secretsmanager.secret.arn': 'string',
+  'aws.sns.topic.arn': 'string',
+  'aws.step_functions.activity.arn': 'string',
+  'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
   'browser.name': 'string',
   'browser.performance.navigation.activation_start': 'double',
@@ -15189,6 +17313,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'culture.timezone': 'string',
   'db.collection.name': 'string',
   'db.driver.name': 'string',
+  'db.mongodb.collection': 'string',
   'db.name': 'string',
   'db.namespace': 'string',
   'db.operation': 'string',
@@ -15246,6 +17371,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'device.thermal_state': 'string',
   'device.timezone': 'string',
   'device.usable_memory': 'integer',
+  dist: 'string',
   effectiveConnectionType: 'string',
   environment: 'string',
   'error.type': 'string',
@@ -15263,11 +17389,16 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.id': 'string',
   'faas.identity': 'string',
   'faas.invocation_id': 'string',
+  'faas.invoked_name': 'string',
+  'faas.invoked_provider': 'string',
+  'faas.invoked_region': 'string',
   'faas.name': 'string',
   'faas.time': 'string',
   'faas.trigger': 'string',
   'faas.version': 'string',
   fcp: 'double',
+  'file.path': 'string',
+  'file.size': 'integer',
   'flag.evaluation.<key>': 'boolean',
   fp: 'double',
   'frames.delay': 'integer',
@@ -15313,11 +17444,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.messages': 'string',
   'gen_ai.request.model': 'string',
   'gen_ai.request.presence_penalty': 'double',
-  'gen_ai.request.reasoning_effort': 'string',
+  'gen_ai.request.reasoning.level': 'string',
   'gen_ai.request.seed': 'string',
+  'gen_ai.request.stop_sequences': 'string[]',
   'gen_ai.request.temperature': 'double',
   'gen_ai.request.top_k': 'integer',
   'gen_ai.request.top_p': 'double',
+  'gen_ai.response.finish_reason': 'string',
   'gen_ai.response.finish_reasons': 'string',
   'gen_ai.response.id': 'string',
   'gen_ai.response.model': 'string',
@@ -15353,6 +17486,19 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'graphql.document': 'string',
   'graphql.operation.name': 'string',
   'graphql.operation.type': 'string',
+  'grpc.error.bad_request.field_violations': 'string[]',
+  'grpc.error.debug_info.detail': 'string',
+  'grpc.error.debug_info.stack_entries': 'string[]',
+  'grpc.error.error_info.domain': 'string',
+  'grpc.error.error_info.metadata.<key>': 'string',
+  'grpc.error.error_info.reason': 'string',
+  'grpc.error.precondition_failure.violations': 'string[]',
+  'grpc.error.quota_failure.violations': 'string[]',
+  'grpc.error.resource_info.description': 'string',
+  'grpc.error.resource_info.owner': 'string',
+  'grpc.error.resource_info.resource_name': 'string',
+  'grpc.error.resource_info.resource_type': 'string',
+  'grpc.error.retry_info.retry_delay_ms': 'integer',
   hardwareConcurrency: 'string',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
@@ -15405,6 +17551,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'jvm.memory.type': 'string',
   'jvm.thread.daemon': 'boolean',
   'jvm.thread.state': 'string',
+  'koa.name': 'string',
+  'koa.type': 'string',
   lcp: 'double',
   'lcp.element': 'string',
   'lcp.id': 'string',
@@ -15453,8 +17601,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
+  'messaging.destination_kind': 'string',
   'messaging.destination.name': 'string',
+  'messaging.destination.partition.id': 'string',
+  'messaging.kafka.message.key': 'string',
+  'messaging.kafka.message.tombstone': 'boolean',
+  'messaging.kafka.offset': 'integer',
   'messaging.message.body.size': 'integer',
   'messaging.message.conversation_id': 'string',
   'messaging.message.envelope.size': 'integer',
@@ -15467,6 +17621,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.system': 'string',
   method: 'string',
   'middleware.name': 'string',
+  'navigation.origin': 'string',
+  'navigation.route.id': 'string',
   'navigation.type': 'string',
   'nel.elapsed_time': 'integer',
   'nel.phase': 'string',
@@ -15526,8 +17682,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'process.runtime.engine.version': 'string',
   'process.runtime.name': 'string',
   'process.runtime.version': 'string',
+  profile_id: 'string',
   'query.<key>': 'string',
   'react.version': 'string',
+  'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
   replay_id: 'string',
@@ -15539,6 +17697,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'rpc.method': 'string',
   'rpc.response.status_code': 'string',
   'rpc.service': 'string',
+  'rpc.system': 'string',
+  'rpc.system.name': 'string',
   'runtime.build': 'string',
   'runtime.name': 'string',
   'runtime.raw_description': 'string',
@@ -15566,6 +17726,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.dsc.transaction': 'string',
   'sentry.environment': 'string',
   'sentry.exclusive_time': 'double',
+  'sentry.frames.frozen': 'integer',
+  'sentry.frames.slow': 'integer',
+  'sentry.frames.total': 'integer',
   'sentry.graphql.operation': 'string',
   'sentry.group': 'string',
   'sentry.http.prefetch': 'boolean',
@@ -15586,9 +17749,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.observed_timestamp_nanos': 'string',
   'sentry.op': 'string',
   'sentry.origin': 'string',
+  'sentry.pageload.span_id': 'string',
   'sentry.platform': 'string',
   'sentry.profiler_id': 'string',
   'sentry.profile_id': 'string',
+  'sentry.relay.ingress': 'string',
+  'sentry.relay.pipeline': 'string',
   'sentry.release': 'string',
   'sentry.replay_id': 'string',
   'sentry.replay_is_buffering': 'boolean',
@@ -15599,12 +17765,16 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.segment.id': 'string',
   'sentry.segment_id': 'string',
   'sentry.segment.name': 'string',
+  'sentry.segment.name.source': 'string',
   'sentry.server_sample_rate': 'double',
   'sentry.source': 'string',
   'sentry.span.source': 'string',
   'sentry.status': 'string',
   'sentry.status_code': 'integer',
   'sentry.status.message': 'string',
+  'sentry.sveltekit.navigation.from': 'string',
+  'sentry.sveltekit.navigation.to': 'string',
+  'sentry.sveltekit.navigation.type': 'string',
   'sentry.thread.id': 'integer',
   'sentry.timestamp.sequence': 'integer',
   'sentry.trace_lifecycle': 'string',
@@ -15620,6 +17790,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.user.ip': 'string',
   'sentry.user.username': 'string',
   'server.address': 'string',
+  server_name: 'string',
   'server.port': 'integer',
   'service.name': 'string',
   'service.version': 'string',
@@ -15728,10 +17899,13 @@ export type AttributeName =
   | typeof AI_PIPELINE_NAME
   | typeof AI_PREAMBLE
   | typeof AI_PRESENCE_PENALTY
+  | typeof AI_PROMPT_MESSAGES
   | typeof AI_PROMPT_TOKENS_USED
   | typeof AI_RAW_PROMPTING
   | typeof AI_RESPONSES
   | typeof AI_RESPONSE_FORMAT
+  | typeof AI_RESPONSE_TEXT
+  | typeof AI_RESPONSE_TOOLCALLS
   | typeof AI_SEARCH_QUERIES
   | typeof AI_SEARCH_RESULTS
   | typeof AI_SEED
@@ -15739,6 +17913,8 @@ export type AttributeName =
   | typeof AI_TAGS
   | typeof AI_TEMPERATURE
   | typeof AI_TEXTS
+  | typeof AI_TOOLCALL_ARGS
+  | typeof AI_TOOLCALL_RESULT
   | typeof AI_TOOLS
   | typeof AI_TOOL_CALLS
   | typeof AI_TOP_K
@@ -15763,8 +17939,12 @@ export type AttributeName =
   | typeof APP_VERSION
   | typeof APP_VITALS_FRAMES_DELAY_VALUE
   | typeof APP_VITALS_FRAMES_FROZEN_COUNT
+  | typeof APP_VITALS_FRAMES_FROZEN_RATE
   | typeof APP_VITALS_FRAMES_SLOW_COUNT
+  | typeof APP_VITALS_FRAMES_SLOW_RATE
   | typeof APP_VITALS_FRAMES_TOTAL_COUNT
+  | typeof APP_VITALS_STALL_DURATION
+  | typeof APP_VITALS_STALL_PERCENTAGE
   | typeof APP_VITALS_START_COLD_VALUE
   | typeof APP_VITALS_START_PREWARMED
   | typeof APP_VITALS_START_REASON
@@ -15787,6 +17967,30 @@ export type AttributeName =
   | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
   | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
   | typeof AWS_CLOUDWATCH_LOGS_URL
+  | typeof AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS
+  | typeof AWS_DYNAMODB_CONSISTENT_READ
+  | typeof AWS_DYNAMODB_CONSUMED_CAPACITY
+  | typeof AWS_DYNAMODB_COUNT
+  | typeof AWS_DYNAMODB_EXCLUSIVE_START_TABLE
+  | typeof AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES
+  | typeof AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES
+  | typeof AWS_DYNAMODB_INDEX_NAME
+  | typeof AWS_DYNAMODB_ITEM_COLLECTION_METRICS
+  | typeof AWS_DYNAMODB_LIMIT
+  | typeof AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES
+  | typeof AWS_DYNAMODB_PROJECTION
+  | typeof AWS_DYNAMODB_PROVISIONED_READ_CAPACITY
+  | typeof AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY
+  | typeof AWS_DYNAMODB_SCANNED_COUNT
+  | typeof AWS_DYNAMODB_SCAN_FORWARD
+  | typeof AWS_DYNAMODB_SEGMENT
+  | typeof AWS_DYNAMODB_SELECT
+  | typeof AWS_DYNAMODB_TABLE_COUNT
+  | typeof AWS_DYNAMODB_TABLE_NAMES
+  | typeof AWS_DYNAMODB_TOTAL_SEGMENTS
+  | typeof AWS_EXTENDED_REQUEST_ID
+  | typeof AWS_KINESIS_STREAM_NAME
+  | typeof _AWS_KINESIS_STREAM_NAME
   | typeof AWS_LAMBDA_AWS_REQUEST_ID
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
@@ -15796,6 +18000,14 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_REQUEST_EXTENDED_ID
+  | typeof AWS_REQUEST_ID
+  | typeof _AWS_REQUEST_ID
+  | typeof AWS_S3_BUCKET
+  | typeof AWS_SECRETSMANAGER_SECRET_ARN
+  | typeof AWS_SNS_TOPIC_ARN
+  | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -15872,6 +18084,7 @@ export type AttributeName =
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
   | typeof DB_DRIVER_NAME
+  | typeof DB_MONGODB_COLLECTION
   | typeof DB_NAME
   | typeof DB_NAMESPACE
   | typeof DB_OPERATION
@@ -15929,6 +18142,7 @@ export type AttributeName =
   | typeof DEVICE_THERMAL_STATE
   | typeof DEVICE_TIMEZONE
   | typeof DEVICE_USABLE_MEMORY
+  | typeof DIST
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -15946,11 +18160,16 @@ export type AttributeName =
   | typeof FAAS_ID
   | typeof FAAS_IDENTITY
   | typeof FAAS_INVOCATION_ID
+  | typeof FAAS_INVOKED_NAME
+  | typeof FAAS_INVOKED_PROVIDER
+  | typeof FAAS_INVOKED_REGION
   | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
   | typeof FAAS_VERSION
   | typeof FCP
+  | typeof FILE_PATH
+  | typeof FILE_SIZE
   | typeof FLAG_EVALUATION_KEY
   | typeof FP
   | typeof FRAMES_DELAY
@@ -15996,11 +18215,13 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_MESSAGES
   | typeof GEN_AI_REQUEST_MODEL
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
-  | typeof GEN_AI_REQUEST_REASONING_EFFORT
+  | typeof GEN_AI_REQUEST_REASONING_LEVEL
   | typeof GEN_AI_REQUEST_SEED
+  | typeof GEN_AI_REQUEST_STOP_SEQUENCES
   | typeof GEN_AI_REQUEST_TEMPERATURE
   | typeof GEN_AI_REQUEST_TOP_K
   | typeof GEN_AI_REQUEST_TOP_P
+  | typeof GEN_AI_RESPONSE_FINISH_REASON
   | typeof GEN_AI_RESPONSE_FINISH_REASONS
   | typeof GEN_AI_RESPONSE_ID
   | typeof GEN_AI_RESPONSE_MODEL
@@ -16036,6 +18257,19 @@ export type AttributeName =
   | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
+  | typeof GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
+  | typeof GRPC_ERROR_DEBUG_INFO_DETAIL
+  | typeof GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
+  | typeof GRPC_ERROR_ERROR_INFO_DOMAIN
+  | typeof GRPC_ERROR_ERROR_INFO_METADATA_KEY
+  | typeof GRPC_ERROR_ERROR_INFO_REASON
+  | typeof GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS
+  | typeof GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS
+  | typeof GRPC_ERROR_RESOURCE_INFO_DESCRIPTION
+  | typeof GRPC_ERROR_RESOURCE_INFO_OWNER
+  | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME
+  | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE
+  | typeof GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS
   | typeof HARDWARECONCURRENCY
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
@@ -16088,6 +18322,8 @@ export type AttributeName =
   | typeof JVM_MEMORY_TYPE
   | typeof JVM_THREAD_DAEMON
   | typeof JVM_THREAD_STATE
+  | typeof KOA_NAME
+  | typeof KOA_TYPE
   | typeof LCP
   | typeof LCP_ELEMENT
   | typeof LCP_ID
@@ -16136,8 +18372,14 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
+  | typeof MESSAGING_DESTINATION_KIND
   | typeof MESSAGING_DESTINATION_NAME
+  | typeof MESSAGING_DESTINATION_PARTITION_ID
+  | typeof MESSAGING_KAFKA_MESSAGE_KEY
+  | typeof MESSAGING_KAFKA_MESSAGE_TOMBSTONE
+  | typeof MESSAGING_KAFKA_OFFSET
   | typeof MESSAGING_MESSAGE_BODY_SIZE
   | typeof MESSAGING_MESSAGE_CONVERSATION_ID
   | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
@@ -16150,6 +18392,8 @@ export type AttributeName =
   | typeof MESSAGING_SYSTEM
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
+  | typeof NAVIGATION_ORIGIN
+  | typeof NAVIGATION_ROUTE_ID
   | typeof NAVIGATION_TYPE
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
@@ -16209,8 +18453,10 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_ENGINE_VERSION
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
+  | typeof PROFILE_ID
   | typeof QUERY_KEY
   | typeof REACT_VERSION
+  | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
   | typeof REPLAY_ID
@@ -16222,6 +18468,8 @@ export type AttributeName =
   | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
   | typeof RPC_SERVICE
+  | typeof RPC_SYSTEM
+  | typeof RPC_SYSTEM_NAME
   | typeof RUNTIME_BUILD
   | typeof RUNTIME_NAME
   | typeof RUNTIME_RAW_DESCRIPTION
@@ -16249,6 +18497,9 @@ export type AttributeName =
   | typeof SENTRY_DSC_TRANSACTION
   | typeof SENTRY_ENVIRONMENT
   | typeof SENTRY_EXCLUSIVE_TIME
+  | typeof SENTRY_FRAMES_FROZEN
+  | typeof SENTRY_FRAMES_SLOW
+  | typeof SENTRY_FRAMES_TOTAL
   | typeof SENTRY_GRAPHQL_OPERATION
   | typeof SENTRY_GROUP
   | typeof SENTRY_HTTP_PREFETCH
@@ -16269,9 +18520,12 @@ export type AttributeName =
   | typeof SENTRY_OBSERVED_TIMESTAMP_NANOS
   | typeof SENTRY_OP
   | typeof SENTRY_ORIGIN
+  | typeof SENTRY_PAGELOAD_SPAN_ID
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
   | typeof SENTRY_PROFILE_ID
+  | typeof SENTRY_RELAY_INGRESS
+  | typeof SENTRY_RELAY_PIPELINE
   | typeof SENTRY_RELEASE
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
@@ -16282,12 +18536,16 @@ export type AttributeName =
   | typeof SENTRY_SEGMENT_ID
   | typeof _SENTRY_SEGMENT_ID
   | typeof SENTRY_SEGMENT_NAME
+  | typeof SENTRY_SEGMENT_NAME_SOURCE
   | typeof SENTRY_SERVER_SAMPLE_RATE
   | typeof SENTRY_SOURCE
   | typeof SENTRY_SPAN_SOURCE
   | typeof SENTRY_STATUS
   | typeof SENTRY_STATUS_CODE
   | typeof SENTRY_STATUS_MESSAGE
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_FROM
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_TO
+  | typeof SENTRY_SVELTEKIT_NAVIGATION_TYPE
   | typeof SENTRY_THREAD_ID
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
@@ -16303,6 +18561,7 @@ export type AttributeName =
   | typeof SENTRY_USER_IP
   | typeof SENTRY_USER_USERNAME
   | typeof SERVER_ADDRESS
+  | typeof SERVER_NAME
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
   | typeof SERVICE_VERSION
@@ -16421,6 +18680,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
+      status: 'backfill',
     },
     aliases: ['gen_ai.usage.output_tokens', 'gen_ai.usage.completion_tokens'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
@@ -16451,6 +18711,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'COMPLETE',
     deprecation: {
       replacement: 'gen_ai.response.finish_reasons',
+      status: 'backfill',
     },
     aliases: ['gen_ai.response.finish_reasons'],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
@@ -16467,6 +18728,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     deprecation: {
       replacement: 'gen_ai.request.frequency_penalty',
+      status: 'backfill',
     },
     aliases: ['gen_ai.request.frequency_penalty'],
     changelog: [
@@ -16486,6 +18748,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'function_name',
     deprecation: {
       replacement: 'gen_ai.tool.name',
+      status: 'backfill',
     },
     aliases: ['gen_ai.tool.name', 'mcp.tool.name'],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108] }],
@@ -16501,6 +18764,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'gen_123abc',
     deprecation: {
       replacement: 'gen_ai.response.id',
+      status: 'backfill',
     },
     aliases: ['gen_ai.response.id'],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
@@ -16516,6 +18780,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
+      status: 'backfill',
     },
     aliases: ['gen_ai.request.messages'],
     changelog: [{ version: '0.1.0', prs: [65, 119] }, { version: '0.0.0' }],
@@ -16560,9 +18825,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'gpt-4',
     deprecation: {
-      replacement: 'gen_ai.response.model',
+      replacement: 'gen_ai.request.model',
+      status: 'backfill',
     },
-    aliases: ['gen_ai.response.model'],
+    aliases: ['gen_ai.request.model'],
     changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
   },
   'ai.model.provider': {
@@ -16576,6 +18842,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'openai',
     deprecation: {
       replacement: 'gen_ai.provider.name',
+      status: 'backfill',
     },
     aliases: ['gen_ai.provider.name', 'gen_ai.system'],
     changelog: [
@@ -16594,6 +18861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Autofix Pipeline',
     deprecation: {
       replacement: 'gen_ai.pipeline.name',
+      status: 'backfill',
     },
     aliases: ['gen_ai.pipeline.name'],
     changelog: [{ version: '0.1.0', prs: [53, 76, 108, 127] }],
@@ -16610,6 +18878,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'You are now a clown.',
     deprecation: {
       replacement: 'gen_ai.system_instructions',
+      status: 'backfill',
     },
     aliases: ['gen_ai.system_instructions'],
     changelog: [
@@ -16629,12 +18898,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     deprecation: {
       replacement: 'gen_ai.request.presence_penalty',
+      status: 'backfill',
     },
     aliases: ['gen_ai.request.presence_penalty'],
     changelog: [
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [55, 57, 61, 108] },
     ],
+  },
+  'ai.prompt.messages': {
+    brief: 'The input messages sent to the AI model.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"role": "user", "message": "hello"}]',
+    deprecation: {
+      replacement: 'gen_ai.input.messages',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt'],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.prompt.messages attribute' }],
   },
   'ai.prompt_tokens.used': {
     brief: 'The number of tokens used to process just the prompt.',
@@ -16647,6 +18933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 20,
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
+      status: 'backfill',
     },
     aliases: ['gen_ai.usage.prompt_tokens', 'gen_ai.usage.input_tokens'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
@@ -16677,6 +18964,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['hello', 'world'],
     deprecation: {
       replacement: 'gen_ai.output.messages',
+      status: 'backfill',
     },
     changelog: [{ version: '0.1.0', prs: [65, 127] }, { version: '0.0.0' }],
   },
@@ -16694,6 +18982,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55, 127] },
     ],
+  },
+  'ai.response.text': {
+    brief: 'The text response from the AI model.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'The weather in Paris is currently rainy.',
+    deprecation: {
+      replacement: 'gen_ai.output.messages',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.output.messages', 'ai.response.toolCalls'],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.text attribute' }],
+  },
+  'ai.response.toolCalls': {
+    brief: 'The tool calls in the AI model response.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
+    deprecation: {
+      replacement: 'gen_ai.output.messages',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.output.messages', 'ai.response.text'],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
   },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
@@ -16736,6 +19056,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1234567890',
     deprecation: {
       replacement: 'gen_ai.request.seed',
+      status: 'backfill',
     },
     aliases: ['gen_ai.request.seed'],
     changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
@@ -16751,6 +19072,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     deprecation: {
       replacement: 'gen_ai.response.streaming',
+      status: 'backfill',
     },
     aliases: ['gen_ai.response.streaming'],
     changelog: [{ version: '0.1.0', prs: [76, 108] }, { version: '0.0.0' }],
@@ -16782,6 +19104,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.1,
     deprecation: {
       replacement: 'gen_ai.request.temperature',
+      status: 'backfill',
     },
     aliases: ['gen_ai.request.temperature'],
     changelog: [
@@ -16800,12 +19123,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['Hello, how are you?', 'What is the capital of France?'],
     deprecation: {
       replacement: 'gen_ai.input.messages',
+      status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages'],
+    aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt'],
     changelog: [
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
+  },
+  'ai.toolCall.args': {
+    brief: 'The arguments of the tool call.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"location": "Paris"}',
+    deprecation: {
+      replacement: 'gen_ai.tool.call.arguments',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.tool.call.arguments', 'gen_ai.tool.input'],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.args attribute' }],
+  },
+  'ai.toolCall.result': {
+    brief: 'The result of the tool call.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'rainy, 57°F',
+    deprecation: {
+      replacement: 'gen_ai.tool.call.result',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
+    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
     brief: 'For an AI model call, the functions that are available',
@@ -16818,6 +19174,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['function_1', 'function_2'],
     deprecation: {
       replacement: 'gen_ai.tool.definitions',
+      status: 'backfill',
     },
     changelog: [{ version: '0.1.0', prs: [55, 65, 127] }],
   },
@@ -16832,6 +19189,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['tool_call_1', 'tool_call_2'],
     deprecation: {
       replacement: 'gen_ai.output.messages',
+      status: 'backfill',
     },
     changelog: [{ version: '0.1.0', prs: [55, 65] }],
   },
@@ -16847,6 +19205,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 35,
     deprecation: {
       replacement: 'gen_ai.request.top_k',
+      status: 'backfill',
     },
     aliases: ['gen_ai.request.top_k'],
     changelog: [
@@ -16866,6 +19225,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.7,
     deprecation: {
       replacement: 'gen_ai.request.top_p',
+      status: 'backfill',
     },
     aliases: ['gen_ai.request.top_p'],
     changelog: [
@@ -16884,6 +19244,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12.34,
     deprecation: {
       replacement: 'gen_ai.cost.total_tokens',
+      status: 'backfill',
     },
     aliases: ['gen_ai.cost.total_tokens'],
     changelog: [
@@ -16903,6 +19264,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 30,
     deprecation: {
       replacement: 'gen_ai.usage.total_tokens',
+      status: 'backfill',
     },
     aliases: ['gen_ai.usage.total_tokens'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
@@ -16945,6 +19307,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.build',
       reason: 'Deprecated in favor of app.build',
+      status: 'backfill',
     },
     aliases: ['app.build'],
     changelog: [
@@ -16963,6 +19326,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.identifier',
       reason: 'Deprecated in favor of app.identifier',
+      status: 'backfill',
     },
     aliases: ['app.identifier'],
     changelog: [
@@ -16985,6 +19349,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.name',
       reason: 'Deprecated in favor of app.name',
+      status: 'backfill',
     },
     aliases: ['app.name'],
     changelog: [
@@ -17003,6 +19368,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.start_time',
       reason: 'Deprecated in favor of app.start_time',
+      status: 'backfill',
     },
     aliases: ['app.start_time'],
     changelog: [
@@ -17025,6 +19391,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.version',
       reason: 'Deprecated in favor of app.version',
+      status: 'backfill',
     },
     aliases: ['app.version'],
     changelog: [
@@ -17091,6 +19458,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.start.cold.value',
       reason:
         'Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: ['app.vitals.start.cold.value'],
     changelog: [
@@ -17122,6 +19490,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.start.type',
       reason:
         'Replaced by app.vitals.start.type to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: ['app.vitals.start.type'],
     changelog: [
@@ -17143,6 +19512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.start.warm.value',
       reason:
         'Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: ['app.vitals.start.warm.value'],
     changelog: [
@@ -17185,10 +19555,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3,
-    aliases: ['frames.frozen'],
+    aliases: ['frames.frozen', 'sentry.frames.frozen'],
     changelog: [
+      { version: 'next', description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
+  },
+  'app.vitals.frames.frozen.rate': {
+    brief:
+      'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.5,
+    aliases: ['frames_frozen_rate'],
+    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
   },
   'app.vitals.frames.slow.count': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -17199,10 +19583,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    aliases: ['frames.slow'],
+    aliases: ['frames.slow', 'sentry.frames.slow'],
     changelog: [
+      { version: 'next', description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
+  },
+  'app.vitals.frames.slow.rate': {
+    brief:
+      'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.25,
+    aliases: ['frames_slow_rate'],
+    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
   },
   'app.vitals.frames.total.count': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -17213,10 +19611,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 60,
-    aliases: ['frames.total'],
+    aliases: ['frames.total', 'sentry.frames.total'],
     changelog: [
+      { version: 'next', description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
+  },
+  'app.vitals.stall.duration': {
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 4000,
+    aliases: ['stall_total_time'],
+    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
+  },
+  'app.vitals.stall.percentage': {
+    brief:
+      'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.8,
+    aliases: ['stall_percentage'],
+    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
   },
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
@@ -17468,6 +19893,302 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
   },
+  'aws.dynamodb.attribute_definitions': {
+    brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['{ "AttributeName": "string", "AttributeType": "string" }'],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.attribute_definitions attribute' }],
+  },
+  'aws.dynamodb.consistent_read': {
+    brief: 'The value of the `ConsistentRead` request parameter.',
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: true,
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.consistent_read attribute' }],
+  },
+  'aws.dynamodb.consumed_capacity': {
+    brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: [
+      '{ "CapacityUnits": number, "GlobalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "LocalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "ReadCapacityUnits": number, "Table": { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number }, "TableName": "string", "WriteCapacityUnits": number }',
+    ],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.consumed_capacity attribute' }],
+  },
+  'aws.dynamodb.count': {
+    brief: 'The value of the `Count` response parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.count attribute' }],
+  },
+  'aws.dynamodb.exclusive_start_table': {
+    brief: 'The value of the `ExclusiveStartTableName` request parameter.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Users',
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.exclusive_start_table attribute' }],
+  },
+  'aws.dynamodb.global_secondary_indexes': {
+    brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: [
+      '{ "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
+    ],
+    changelog: [
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.global_secondary_indexes attribute' },
+    ],
+  },
+  'aws.dynamodb.global_secondary_index_updates': {
+    brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: [
+      '{ "Create": { "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
+    ],
+    changelog: [
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.global_secondary_index_updates attribute' },
+    ],
+  },
+  'aws.dynamodb.index_name': {
+    brief: 'The value of the `IndexName` request parameter.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'name_to_group',
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.index_name attribute' }],
+  },
+  'aws.dynamodb.item_collection_metrics': {
+    brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example:
+      '{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.item_collection_metrics attribute' }],
+  },
+  'aws.dynamodb.limit': {
+    brief: 'The value of the `Limit` request parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.limit attribute' }],
+  },
+  'aws.dynamodb.local_secondary_indexes': {
+    brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: [
+      '{ "IndexArn": "string", "IndexName": "string", "IndexSizeBytes": number, "ItemCount": number, "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" } }',
+    ],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.local_secondary_indexes attribute' }],
+  },
+  'aws.dynamodb.projection': {
+    brief: 'The value of the `ProjectionExpression` request parameter.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Title, Price, Color',
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.projection attribute' }],
+  },
+  'aws.dynamodb.provisioned_read_capacity': {
+    brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 1,
+    changelog: [
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.provisioned_read_capacity attribute' },
+    ],
+  },
+  'aws.dynamodb.provisioned_write_capacity': {
+    brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 2,
+    changelog: [
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.provisioned_write_capacity attribute' },
+    ],
+  },
+  'aws.dynamodb.scanned_count': {
+    brief: 'The value of the `ScannedCount` response parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 50,
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.scanned_count attribute' }],
+  },
+  'aws.dynamodb.scan_forward': {
+    brief: 'The value of the `ScanIndexForward` request parameter.',
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: true,
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.scan_forward attribute' }],
+  },
+  'aws.dynamodb.segment': {
+    brief: 'The value of the `Segment` request parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 10,
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.segment attribute' }],
+  },
+  'aws.dynamodb.select': {
+    brief: 'The value of the `Select` request parameter.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ALL_ATTRIBUTES',
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.select attribute' }],
+  },
+  'aws.dynamodb.table_count': {
+    brief: 'The number of items in the `TableNames` response parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 20,
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_count attribute' }],
+  },
+  'aws.dynamodb.table_names': {
+    brief: 'The keys in the `RequestItems` object field.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['Users', 'Cats'],
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_names attribute' }],
+  },
+  'aws.dynamodb.total_segments': {
+    brief: 'The value of the `TotalSegments` request parameter.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 100,
+    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.total_segments attribute' }],
+  },
+  'aws.extended_request_id': {
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
+    aliases: ['aws.request.extended_id'],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.extended_request_id attribute' }],
+  },
+  'aws.kinesis.stream_name': {
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'some-stream-name',
+    aliases: ['aws.kinesis.stream.name'],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.kinesis.stream_name attribute' }],
+  },
+  'aws.kinesis.stream.name': {
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'some-stream-name',
+    deprecation: {
+      replacement: 'aws.kinesis.stream_name',
+      reason:
+        'This attribute is being deprecated in favor of aws.kinesis.stream_name, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['aws.kinesis.stream_name'],
+    changelog: [
+      {
+        version: '0.16.0',
+        prs: [480],
+        description: 'Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name',
+      },
+    ],
+  },
   'aws.lambda.aws_request_id': {
     brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
@@ -17480,10 +20201,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'faas.invocation_id',
       reason: 'This attribute is being deprecated in favor of faas.invocation_id',
+      status: 'backfill',
     },
     aliases: ['faas.invocation_id', 'faas.execution'],
     changelog: [
-      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
+      { version: '0.16.0', prs: [473], description: 'Added faas.execution as an alias' },
       {
         version: '0.11.1',
         prs: [414, 424],
@@ -17517,6 +20239,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'faas.name',
       reason: 'Use the OTel-aligned faas.name attribute instead',
+      status: 'backfill',
     },
     aliases: ['faas.name'],
     changelog: [
@@ -17536,6 +20259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'faas.version',
       reason: 'Use the OTel-aligned faas.version attribute instead',
+      status: 'backfill',
     },
     aliases: ['faas.version'],
     changelog: [
@@ -17571,6 +20295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'aws.lambda.invoked_arn',
       reason: 'This attribute is being deprecated in favor of aws.lambda.invoked_arn',
+      status: 'backfill',
     },
     aliases: ['aws.lambda.invoked_arn'],
     changelog: [
@@ -17614,6 +20339,121 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
+  },
+  'aws.request.extended_id': {
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
+    deprecation: {
+      replacement: 'aws.extended_request_id',
+      reason:
+        'This attribute is being deprecated in favor of aws.extended_request_id, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['aws.extended_request_id'],
+    changelog: [
+      {
+        version: '0.16.0',
+        prs: [480],
+        description: 'Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id',
+      },
+    ],
+  },
+  'aws.request_id': {
+    brief: 'The AWS request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
+    aliases: ['aws.request.id'],
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.request_id attribute' }],
+  },
+  'aws.request.id': {
+    brief: 'The AWS request ID as returned in the response headers.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
+    deprecation: {
+      replacement: 'aws.request_id',
+      reason: 'This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['aws.request_id'],
+    changelog: [
+      {
+        version: '0.16.0',
+        prs: [480],
+        description: 'Added aws.request.id attribute, deprecated in favor of aws.request_id',
+      },
+    ],
+  },
+  'aws.s3.bucket': {
+    brief: 'The S3 bucket name the request refers to.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ot-demo-test',
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.s3.bucket attribute' }],
+  },
+  'aws.secretsmanager.secret.arn': {
+    brief: 'The ARN of the Secret stored in Secrets Manager.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
+  },
+  'aws.sns.topic.arn': {
+    brief:
+      'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
+  },
+  'aws.step_functions.activity.arn': {
+    brief: 'The ARN of the AWS Step Functions Activity.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
+  },
+  'aws.step_functions.state_machine.arn': {
+    brief: 'The ARN of the AWS Step Functions State Machine.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1',
+    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.state_machine.arn attribute' }],
   },
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -18037,6 +20877,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'run',
     deprecation: {
       replacement: 'db.operation.name',
+      status: 'backfill',
     },
     aliases: ['db.operation.name', 'db.operation'],
     changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
@@ -18289,7 +21130,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
     aliases: ['faas.id'],
     changelog: [
-      { version: 'next', prs: [475], description: 'Added faas.id as an alias' },
+      { version: '0.16.0', prs: [475], description: 'Added faas.id as an alias' },
       { version: '0.11.1', prs: [414] },
     ],
     additionalContext: [
@@ -18308,6 +21149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.cls.value',
       reason: 'The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.cls.value'],
     changelog: [
@@ -18331,6 +21173,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.cls.source.<key>',
       reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.cls.source.<key>'],
     changelog: [{ version: '0.5.0', prs: [234] }],
@@ -18441,6 +21284,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.connection.type',
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
+      status: 'backfill',
     },
     aliases: ['network.connection.type', 'device.connection_type'],
     changelog: [
@@ -18464,6 +21308,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.rtt',
       reason:
         'Old attribute name (no official namespace), to be replaced with network.connection.rtt for span-first future',
+      status: 'backfill',
     },
     aliases: ['network.connection.rtt'],
     changelog: [
@@ -18538,7 +21383,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'users',
-    changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
+    aliases: ['db.mongodb.collection'],
+    changelog: [
+      { version: 'next', description: 'Added db.mongodb.collection as an alias' },
+      { version: '0.1.0', prs: [106, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.driver.name': {
     brief: 'The name of the driver used for the database connection.',
@@ -18550,6 +21400,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'psycopg2',
     changelog: [{ version: '0.5.0', prs: [297], description: 'Added db.driver.name attribute' }],
+  },
+  'db.mongodb.collection': {
+    brief: 'The MongoDB collection being accessed.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'users',
+    deprecation: {
+      replacement: 'db.collection.name',
+      reason:
+        'This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['db.collection.name'],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added db.mongodb.collection attribute, deprecated in favor of db.collection.name',
+      },
+    ],
   },
   'db.name': {
     brief: 'The name of the database being accessed.',
@@ -18589,6 +21462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT',
     deprecation: {
       replacement: 'db.operation.name',
+      status: 'normalize',
     },
     aliases: ['db.operation.name', 'cloudflare.d1.query_type'],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -18640,7 +21514,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT users',
-    changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    examples: ['SELECT users', 'INSERT products; UPDATE orders'],
+    changelog: [
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.4.0', prs: [208] },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.query.text': {
     brief:
@@ -18675,7 +21555,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'user:2047:city',
-    changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
+    aliases: ['redis.key'],
+    changelog: [
+      { version: 'next', description: 'Added redis.key as an alias' },
+      { version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' },
+    ],
   },
   'db.redis.parameters': {
     brief: 'The array of command parameters given to a redis command.',
@@ -18698,7 +21582,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'ORA-17002',
-    changelog: [{ version: 'next', prs: [462], description: 'Added db.response.status_code attribute' }],
+    changelog: [{ version: '0.16.0', prs: [462], description: 'Added db.response.status_code attribute' }],
   },
   'db.sql.bindings': {
     brief: 'The array of query bindings.',
@@ -18724,12 +21608,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'SELECT * FROM users',
+    example: 'SELECT * FROM users WHERE id = $1',
     deprecation: {
       replacement: 'db.query.text',
+      reason:
+        'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
+      status: 'normalize',
     },
     aliases: ['db.query.text'],
-    changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [501], description: 'Improved example and added deprecation reason' },
+      { version: '0.4.0', prs: [199] },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.stored_procedure.name': {
     brief: 'The name of a stored procedure being called.',
@@ -18754,6 +21646,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'postgresql',
     deprecation: {
       replacement: 'db.system.name',
+      status: 'backfill',
     },
     aliases: ['db.system.name'],
     changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -18795,6 +21688,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'device.memory.estimated_capacity',
       reason:
         'Old namespace-less attribute, to be replaced with device.memory.estimated_capacity for span-first future',
+      status: 'backfill',
     },
     aliases: ['device.memory.estimated_capacity'],
     changelog: [
@@ -18906,6 +21800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.connection.type',
       reason: 'This attribute is being deprecated in favor of network.connection.type',
+      status: 'backfill',
     },
     aliases: ['network.connection.type', 'connectionType'],
     changelog: [
@@ -19252,6 +22147,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2147483648,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
+  dist: {
+    brief: 'The sentry dist.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1.0',
+    deprecation: {
+      replacement: 'sentry.dist',
+      reason: 'This attribute is being deprecated in favor of sentry.dist.',
+      status: 'backfill',
+    },
+    aliases: ['sentry.dist'],
+    changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist attribute' }],
+  },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
@@ -19265,6 +22177,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.connection.effective_type',
       reason:
         'Old namespace-less attribute, to be replaced with network.connection.effective_type for span-first future',
+      status: 'backfill',
     },
     aliases: ['network.connection.effective_type'],
     changelog: [
@@ -19286,9 +22199,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
+      status: 'normalize',
     },
     aliases: ['sentry.environment'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [427], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'error.type': {
     brief: 'Describes a class of error the operation ended with.',
@@ -19428,11 +22346,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'faas.invocation_id',
       reason:
         'This attribute is being deprecated in favor of faas.invocation_id, which is the OTel-aligned replacement.',
+      status: 'backfill',
     },
     aliases: ['faas.invocation_id', 'aws.lambda.aws_request_id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [473],
         description: 'Added faas.execution attribute, deprecated in favor of faas.invocation_id',
       },
@@ -19451,10 +22370,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'cloud.resource_id',
       reason:
         'This attribute is being deprecated in favor of cloud.resource_id, which is the OTel-aligned replacement (renamed in OTel semantic conventions v1.19.0).',
+      status: 'backfill',
     },
     aliases: ['cloud.resource_id'],
     changelog: [
-      { version: 'next', prs: [475], description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id' },
+      {
+        version: '0.16.0',
+        prs: [475],
+        description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id',
+      },
     ],
   },
   'faas.identity': {
@@ -19481,9 +22405,42 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
     aliases: ['aws.lambda.aws_request_id', 'faas.execution'],
     changelog: [
-      { version: 'next', prs: [473], description: 'Added faas.execution as an alias' },
+      { version: '0.16.0', prs: [473], description: 'Added faas.execution as an alias' },
       { version: '0.11.1', prs: [414, 424] },
     ],
+  },
+  'faas.invoked_name': {
+    brief: 'The name of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'my-function',
+    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_name attribute' }],
+  },
+  'faas.invoked_provider': {
+    brief: 'The cloud provider of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws',
+    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_provider attribute' }],
+  },
+  'faas.invoked_region': {
+    brief: 'The cloud region of the invoked function.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'eu-central-1',
+    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_region attribute' }],
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -19543,9 +22500,33 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.fcp.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fcp.value',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.fcp.value'],
     changelog: [{ version: '0.5.0', prs: [235] }],
+  },
+  'file.path': {
+    brief: 'Path to the file.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '/home/user/example.txt',
+    changelog: [{ version: '0.17.0', prs: [458], description: 'Added file.path attribute' }],
+  },
+  'file.size': {
+    brief: 'File size in bytes.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 1024,
+    changelog: [{ version: '0.17.0', prs: [458], description: 'Added file.size attribute' }],
   },
   'flag.evaluation.<key>': {
     brief:
@@ -19572,6 +22553,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.fp.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fp.value',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.fp.value'],
     changelog: [{ version: '0.5.0', prs: [235] }],
@@ -19590,6 +22572,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.frames.delay.value',
       reason:
         'Replaced by app.vitals.frames.delay.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: ['app.vitals.frames.delay.value'],
     changelog: [
@@ -19611,9 +22594,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.frames.frozen.count',
       reason:
         'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
-    aliases: ['app.vitals.frames.frozen.count'],
+    aliases: ['app.vitals.frames.frozen.count', 'sentry.frames.frozen'],
     changelog: [
+      { version: 'next', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -19621,14 +22606,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   frames_frozen_rate: {
     brief:
-      'The rate of frozen frames, or `app_vitals.frames.frozen.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
+      'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.frozen.rate',
+      reason:
+        'Replaced by app.vitals.frames.frozen.rate to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
+    },
+    aliases: ['app.vitals.frames.frozen.rate'],
+    changelog: [
+      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
+      { version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' },
+    ],
   },
   'frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -19643,9 +22638,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.frames.slow.count',
       reason:
         'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
-    aliases: ['app.vitals.frames.slow.count'],
+    aliases: ['app.vitals.frames.slow.count', 'sentry.frames.slow'],
     changelog: [
+      { version: 'next', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -19653,14 +22650,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   frames_slow_rate: {
     brief:
-      'The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.',
+      'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' }],
+    deprecation: {
+      replacement: 'app.vitals.frames.slow.rate',
+      reason:
+        'Replaced by app.vitals.frames.slow.rate to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
+    },
+    aliases: ['app.vitals.frames.slow.rate'],
+    changelog: [
+      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
+      { version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' },
+    ],
   },
   'frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -19675,9 +22682,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.frames.total.count',
       reason:
         'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
-    aliases: ['app.vitals.frames.total.count'],
+    aliases: ['app.vitals.frames.total.count', 'sentry.frames.total'],
     changelog: [
+      { version: 'next', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -19996,7 +23005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-    aliases: ['ai.texts'],
+    aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
     changelog: [
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
@@ -20043,6 +23052,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+    aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [{ version: '0.4.0', prs: [221] }],
   },
   'gen_ai.pipeline.name': {
@@ -20067,8 +23077,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
+      replacement: 'gen_ai.input.messages',
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
+      status: 'backfill',
     },
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages'],
     changelog: [{ version: '0.1.0', prs: [74, 108, 119] }, { version: '0.0.0' }],
   },
   'gen_ai.prompt.name': {
@@ -20108,6 +23121,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
     deprecation: {
       replacement: 'gen_ai.tool.definitions',
+      status: 'normalize',
     },
     changelog: [
       { version: '0.4.0', prs: [221] },
@@ -20157,6 +23171,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
+      status: 'transform',
+      transformation: 'gen_ai_request_messages_to_input_messages',
     },
     aliases: ['ai.input_messages'],
     changelog: [
@@ -20173,6 +23189,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4-turbo-preview',
+    aliases: ['ai.model_id'],
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   'gen_ai.request.presence_penalty': {
@@ -20191,16 +23208,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [57] },
     ],
   },
-  'gen_ai.request.reasoning_effort': {
-    brief: 'Constrains the effort on reasoning for reasoning models. Supported values vary by provider.',
+  'gen_ai.request.reasoning.level': {
+    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: 'high',
-    changelog: [{ version: '0.13.0', prs: [334], description: 'Added gen_ai.request.reasoning_effort attribute' }],
+    changelog: [{ version: '0.17.0', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
   },
   'gen_ai.request.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -20213,6 +23230,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1234567890',
     aliases: ['ai.seed'],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
+  },
+  'gen_ai.request.stop_sequences': {
+    brief: 'List of sequences that the model will use to stop generating further tokens.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['forest', 'lived'],
+    changelog: [{ version: '0.16.0', prs: [482], description: 'Added gen_ai.request.stop_sequences attribute' }],
   },
   'gen_ai.request.temperature': {
     brief:
@@ -20262,6 +23290,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [57] },
     ],
   },
+  'gen_ai.response.finish_reason': {
+    brief: 'The reason why the model stopped generating (singular form).',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'COMPLETE',
+    deprecation: {
+      replacement: 'gen_ai.response.finish_reasons',
+      status: 'normalize',
+    },
+    aliases: ['gen_ai.response.finish_reasons'],
+    changelog: [{ version: 'next', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
+  },
   'gen_ai.response.finish_reasons': {
     brief: 'The reason why the model stopped generating.',
     type: 'string',
@@ -20271,7 +23315,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'COMPLETE',
-    aliases: ['ai.finish_reason'],
+    aliases: ['ai.finish_reason', 'gen_ai.response.finish_reason'],
     changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   'gen_ai.response.id': {
@@ -20295,7 +23339,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4',
-    aliases: ['ai.model_id'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'gen_ai.response.streaming': {
@@ -20323,6 +23366,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
+      status: 'transform',
+      transformation: 'gen_ai_response_to_output_messages',
     },
     changelog: [
       { version: '0.4.0', prs: [221] },
@@ -20352,6 +23397,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.6853435,
     deprecation: {
       replacement: 'gen_ai.response.time_to_first_chunk',
+      status: 'backfill',
     },
     aliases: ['gen_ai.response.time_to_first_chunk'],
     changelog: [
@@ -20384,6 +23430,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
+      status: 'transform',
+      transformation: 'gen_ai_response_to_output_messages',
     },
     changelog: [
       { version: '0.4.0', prs: [221] },
@@ -20401,6 +23449,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'openai',
     deprecation: {
       replacement: 'gen_ai.provider.name',
+      status: 'normalize',
     },
     aliases: ['ai.model.provider', 'gen_ai.provider.name'],
     changelog: [
@@ -20434,6 +23483,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'You are a helpful assistant',
     deprecation: {
       replacement: 'gen_ai.system_instructions',
+      status: 'backfill',
     },
     changelog: [
       { version: '0.4.0', prs: [221] },
@@ -20449,7 +23499,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '{"location": "Paris"}',
-    aliases: ['gen_ai.tool.input'],
+    aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
@@ -20464,7 +23514,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'rainy, 57°F',
-    aliases: ['gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
+    aliases: ['gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
@@ -20504,8 +23554,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     deprecation: {
       replacement: 'gen_ai.tool.call.arguments',
+      status: 'normalize',
     },
-    aliases: ['gen_ai.tool.call.arguments'],
+    aliases: ['gen_ai.tool.call.arguments', 'ai.toolCall.args'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
@@ -20522,8 +23573,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
+      status: 'normalize',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'mcp.tool.result.content'],
+    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'mcp.tool.result.content', 'ai.toolCall.result'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [62] },
@@ -20552,8 +23604,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
+      status: 'normalize',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'mcp.tool.result.content'],
+    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
@@ -20617,6 +23670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
+      status: 'backfill',
     },
     aliases: ['ai.completion_tokens.used', 'gen_ai.usage.output_tokens'],
     changelog: [
@@ -20667,6 +23721,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 50,
     deprecation: {
       replacement: 'gen_ai.usage.cache_read.input_tokens',
+      status: 'backfill',
     },
     aliases: ['gen_ai.usage.cache_read.input_tokens'],
     changelog: [
@@ -20691,6 +23746,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
     deprecation: {
       replacement: 'gen_ai.usage.cache_creation.input_tokens',
+      status: 'backfill',
     },
     aliases: ['gen_ai.usage.cache_creation.input_tokens'],
     changelog: [
@@ -20740,6 +23796,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 75,
     deprecation: {
       replacement: 'gen_ai.usage.reasoning.output_tokens',
+      status: 'backfill',
     },
     aliases: ['gen_ai.usage.reasoning.output_tokens'],
     changelog: [
@@ -20764,6 +23821,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 20,
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
+      status: 'backfill',
     },
     aliases: ['ai.prompt_tokens.used', 'gen_ai.usage.input_tokens'],
     changelog: [
@@ -20852,6 +23910,173 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'query',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'grpc.error.bad_request.field_violations': {
+    brief:
+      'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: [
+      '{"field":"email","description":"must be a valid email address","reason":"FIELD_INVALID","localized_message":{"locale":"en-US","message":"Must be a valid email address"}}',
+    ],
+    changelog: [
+      { version: '0.17.0', prs: [460], description: 'Added grpc.error.bad_request.field_violations attribute' },
+    ],
+  },
+  'grpc.error.debug_info.detail': {
+    brief:
+      'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'at com.example.Service.method(Service.java:42)',
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.debug_info.detail attribute' }],
+  },
+  'grpc.error.debug_info.stack_entries': {
+    brief:
+      'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['com.example.Service.method(Service.java:42)', 'com.example.Server.handle(Server.java:100)'],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.debug_info.stack_entries attribute' }],
+  },
+  'grpc.error.error_info.domain': {
+    brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.sentry.io',
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.domain attribute' }],
+  },
+  'grpc.error.error_info.metadata.<key>': {
+    brief:
+      'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "grpc.error.error_info.metadata.user_id='123'",
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.metadata.<key> attribute' }],
+  },
+  'grpc.error.error_info.reason': {
+    brief:
+      'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'FIELD_INVALID',
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.reason attribute' }],
+  },
+  'grpc.error.precondition_failure.violations': {
+    brief:
+      'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['{"type":"TOS","subject":"example.com/user/123","description":"User must accept the terms of service"}'],
+    changelog: [
+      { version: '0.17.0', prs: [460], description: 'Added grpc.error.precondition_failure.violations attribute' },
+    ],
+  },
+  'grpc.error.quota_failure.violations': {
+    brief:
+      'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
+    type: 'string[]',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: [
+      '{"subject":"clientip:127.0.0.1","description":"Limit checks failed.","api_service":"example.googleapis.com","quota_metric":"example.googleapis.com/read_requests","quota_id":"ReadRequestsPerMinutePerProject","quota_dimensions":{"region":"us-central1"},"quota_value":1000}',
+    ],
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.quota_failure.violations attribute' }],
+  },
+  'grpc.error.resource_info.description': {
+    brief:
+      'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Instance is not ready for the request.',
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.description attribute' }],
+  },
+  'grpc.error.resource_info.owner': {
+    brief:
+      'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user@example.com',
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.owner attribute' }],
+  },
+  'grpc.error.resource_info.resource_name': {
+    brief:
+      'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'projects/example/instances/example-instance',
+    changelog: [
+      { version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.resource_name attribute' },
+    ],
+  },
+  'grpc.error.resource_info.resource_type': {
+    brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'database',
+    changelog: [
+      { version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.resource_type attribute' },
+    ],
+  },
+  'grpc.error.retry_info.retry_delay_ms': {
+    brief:
+      'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
+  },
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
     type: 'string',
@@ -20864,6 +24089,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'device.processor_count',
       reason: 'Old namespace-less attribute, to be replaced with device.processor_count for span-first future',
+      status: 'backfill',
     },
     aliases: ['device.processor_count'],
     changelog: [
@@ -20941,7 +24167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name'],
+    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.method': {
@@ -20955,6 +24181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
+      status: 'backfill',
     },
     aliases: ['http.request.method', 'http.request_method', 'method'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -21082,6 +24309,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
+      status: 'backfill',
     },
     aliases: ['method', 'http.method', 'http.request.method'],
     changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
@@ -21169,7 +24397,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: true,
     aliases: ['url.same_origin'],
-    changelog: [{ version: 'next', prs: [456], description: 'Added http.request.same_origin attribute' }],
+    changelog: [{ version: '0.16.0', prs: [456], description: 'Added http.request.same_origin attribute' }],
   },
   'http.request.secure_connection_start': {
     brief:
@@ -21236,6 +24464,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 123,
     deprecation: {
       replacement: 'http.response.body.size',
+      status: 'backfill',
     },
     aliases: ['http.response.body.size', 'http.response.header.content-length'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 106] }, { version: '0.0.0' }],
@@ -21303,6 +24532,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 456,
     deprecation: {
       replacement: 'http.response.size',
+      status: 'backfill',
     },
     aliases: ['http.response.size'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -21316,8 +24546,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '/users/:id',
+    examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
     aliases: ['url.template'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
@@ -21346,7 +24581,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host'],
+    aliases: ['server.address', 'net.host.name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.server.request.time_in_queue': {
@@ -21445,6 +24680,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.inp.value',
       reason: 'The INP web vital is now recorded as a browser.web_vital.inp.value attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.inp.value'],
     changelog: [
@@ -21544,6 +24780,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'blocked',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'koa.name': {
+    brief: 'The name of the Koa middleware or matched route that handled the request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    deprecation: {
+      reason:
+        'No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.',
+    },
+    changelog: [{ version: '0.16.0', prs: [490], description: 'Added koa.name attribute as deprecated' }],
+  },
+  'koa.type': {
+    brief: 'The type of the Koa layer that handled the request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'router',
+    changelog: [{ version: '0.16.0', prs: [471], description: 'Added koa.type attribute' }],
+  },
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
@@ -21556,6 +24818,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.value',
       reason: 'The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.value'],
     changelog: [
@@ -21578,6 +24841,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.element',
       reason: 'The LCP element is now recorded as a browser.web_vital.lcp.element attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.element'],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -21594,6 +24858,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.id',
       reason: 'The LCP id is now recorded as a browser.web_vital.lcp.id attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.id'],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -21610,6 +24875,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.load_time',
       reason: 'The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.load_time'],
     changelog: [{ version: '0.5.0', prs: [233] }],
@@ -21626,6 +24892,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.render_time',
       reason: 'The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.render_time'],
     changelog: [{ version: '0.5.0', prs: [233] }],
@@ -21642,6 +24909,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.size',
       reason: 'The LCP size is now recorded as a browser.web_vital.lcp.size attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.size'],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
@@ -21658,6 +24926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.lcp.url',
       reason: 'The LCP url is now recorded as a browser.web_vital.lcp.url attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.url'],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
@@ -21879,6 +25148,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.prompt.name',
       reason: 'OTel uses gen_ai.prompt.name for MCP prompt names',
+      status: 'backfill',
     },
     aliases: ['gen_ai.prompt.name'],
     changelog: [
@@ -22011,6 +25281,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'jsonrpc.request.id',
       reason: 'OTel models MCP as JSON-RPC, uses jsonrpc.request.id',
+      status: 'backfill',
     },
     aliases: ['jsonrpc.request.id'],
     changelog: [
@@ -22030,6 +25301,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.protocol.name',
       reason: 'OTel uses the generic network.protocol.name attribute',
+      status: 'backfill',
     },
     aliases: ['network.protocol.name', 'net.protocol.name'],
     changelog: [
@@ -22112,6 +25384,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.name',
       reason: 'OTel uses gen_ai.tool.name for MCP tool names',
+      status: 'backfill',
     },
     aliases: ['gen_ai.tool.name', 'ai.function_call'],
     changelog: [
@@ -22132,8 +25405,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
       reason: 'OTel uses gen_ai.tool.call.result for MCP tool results',
+      status: 'backfill',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'gen_ai.tool.output'],
+    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'gen_ai.tool.output', 'ai.toolCall.result'],
     changelog: [
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.tool.call.result' },
       { version: '0.3.0', prs: [171] },
@@ -22185,6 +25459,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'network.transport',
       reason: 'OTel uses the generic network.transport attribute',
+      status: 'backfill',
     },
     aliases: ['network.transport', 'net.transport'],
     changelog: [
@@ -22216,6 +25491,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
+  'messaging.destination': {
+    brief: 'The message destination name.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'BestTopic',
+    deprecation: {
+      replacement: 'messaging.destination.name',
+      reason:
+        'This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.destination.name'],
+    changelog: [
+      {
+        version: '0.16.0',
+        prs: [482],
+        description: 'Added messaging.destination attribute, deprecated in favor of messaging.destination.name',
+      },
+    ],
+  },
   'messaging.destination.connection': {
     brief: 'The message destination connection.',
     type: 'string',
@@ -22227,6 +25526,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'BestTopic',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'messaging.destination_kind': {
+    brief: 'The kind of message destination.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'topic',
+    deprecation: {
+      reason:
+        'Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations.',
+      },
+    ],
+  },
   'messaging.destination.name': {
     brief: 'The message destination name.',
     type: 'string',
@@ -22236,7 +25556,58 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'BestTopic',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['messaging.destination'],
+    changelog: [
+      { version: '0.16.0', prs: [482], description: 'Added messaging.destination as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'messaging.destination.partition.id': {
+    brief:
+      'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '1',
+    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
+  },
+  'messaging.kafka.message.key': {
+    brief:
+      "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'myKey',
+    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
+  },
+  'messaging.kafka.message.tombstone': {
+    brief: 'A boolean that is true if the message is a tombstone.',
+    type: 'boolean',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: true,
+    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
+  },
+  'messaging.kafka.offset': {
+    brief: 'The offset of a record in the corresponding Kafka partition.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 42,
+    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
   },
   'messaging.message.body.size': {
     brief: 'The size of the message body in bytes.',
@@ -22259,7 +25630,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'MyConversationId',
-    changelog: [{ version: 'next', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
+    changelog: [{ version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
   },
   'messaging.message.envelope.size': {
     brief: 'The size of the message body and metadata in bytes.',
@@ -22337,7 +25708,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myKey',
     changelog: [
-      { version: 'next', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
+      { version: '0.16.0', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
     ],
   },
   'messaging.system': {
@@ -22362,9 +25733,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
+      status: 'normalize',
     },
     aliases: ['http.request.method', 'http.request_method', 'http.method'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'middleware.name': {
     brief: 'The name of the middleware.',
@@ -22381,6 +25757,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' },
     ],
   },
+  'navigation.origin': {
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    aliases: ['sentry.sveltekit.navigation.from'],
+    changelog: [{ version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' }],
+  },
+  'navigation.route.id': {
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AboutView',
+    changelog: [{ version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' }],
+  },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
@@ -22390,7 +25791,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'router.push',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.sveltekit.navigation.type'],
+    changelog: [
+      { version: '0.16.0', prs: [467], description: 'Added new deprecated alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'nel.elapsed_time': {
     brief:
@@ -22630,7 +26036,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host'],
+    aliases: ['server.address', 'http.server_name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.host.port': {
@@ -22838,6 +26244,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1234567890',
     deprecation: {
       replacement: 'os.build_id',
+      status: 'backfill',
     },
     aliases: ['os.build_id'],
     changelog: [
@@ -22963,6 +26370,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.kind',
       reason: 'Deprecated in favor of sentry.kind',
+      status: 'backfill',
     },
     aliases: ['sentry.kind'],
     changelog: [{ version: '0.13.0', prs: [440], description: 'Added otel.kind attribute' }],
@@ -23037,6 +26445,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.performance.navigation.activation_start',
       reason: 'The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.performance.navigation.activation_start'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.activationStart attribute' }],
@@ -23053,6 +26462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.performance.time_origin',
       reason: 'The timeOrigin is now recorded as the browser.performance.time_origin attribute.',
+      status: 'backfill',
     },
     aliases: ['browser.performance.time_origin'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
@@ -23161,6 +26571,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['runtime.version'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  profile_id: {
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '123e4567e89b12d3a456426614174000',
+    deprecation: {
+      replacement: 'sentry.profile_id',
+      status: 'normalize',
+    },
+    aliases: ['sentry.profile_id'],
+    changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
+  },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
@@ -23188,20 +26615,42 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18.2.0',
     changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
   },
-  release: {
-    brief: 'The sentry release.',
+  'redis.key': {
+    brief: 'The key the Redis command is operating on.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
+    example: 'user:2047:city',
+    deprecation: {
+      replacement: 'db.redis.key',
+      reason: 'This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.',
+      status: 'backfill',
+    },
+    aliases: ['db.redis.key'],
+    changelog: [{ version: 'next', description: 'Added redis.key attribute, deprecated in favor of db.redis.key' }],
+  },
+  release: {
+    brief: 'The sentry release.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
     example: 'production',
     deprecation: {
       replacement: 'sentry.release',
+      status: 'normalize',
     },
     aliases: ['sentry.release'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'remix.action_form_data.<key>': {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
@@ -23226,9 +26675,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     deprecation: {
       replacement: 'sentry.replay_id',
+      status: 'normalize',
     },
     aliases: ['sentry.replay_id'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'resource.deployment.environment': {
     brief: 'The software deployment environment name.',
@@ -23241,6 +26695,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
+      status: 'backfill',
     },
     changelog: [{ version: '0.5.0', prs: [266] }],
   },
@@ -23255,6 +26710,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
+      status: 'backfill',
     },
     changelog: [{ version: '0.3.1', prs: [196] }],
   },
@@ -23294,7 +26750,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 2,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'rpc.response.status_code',
+      reason:
+        'Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.',
+    },
+    aliases: ['rpc.response.status_code'],
+    changelog: [
+      { version: 'next', description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'rpc.method': {
     brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
@@ -23316,7 +26782,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'DEADLINE_EXCEEDED',
-    changelog: [{ version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' }],
+    aliases: ['rpc.grpc.status_code'],
+    changelog: [
+      { version: 'next', description: 'Added rpc.grpc.status_code as an alias' },
+      { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
+    ],
   },
   'rpc.service': {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
@@ -23328,6 +26798,41 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myService.BestService',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'rpc.system': {
+    brief: 'A string identifying the remoting system.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws-api',
+    deprecation: {
+      replacement: 'rpc.system.name',
+      reason: 'This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['rpc.system.name'],
+    changelog: [
+      {
+        version: '0.16.0',
+        prs: [482],
+        description: 'Added rpc.system attribute, deprecated in favor of rpc.system.name',
+      },
+    ],
+  },
+  'rpc.system.name': {
+    brief: 'A string identifying the remoting system.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'aws-api',
+    aliases: ['rpc.system'],
+    changelog: [{ version: '0.16.0', prs: [482], description: 'Added rpc.system.name attribute' }],
   },
   'runtime.build': {
     brief: 'The application build string, when it is separate from the version.',
@@ -23555,7 +27060,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1.0',
-    changelog: [{ version: '0.0.0' }],
+    aliases: ['dist'],
+    changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist as an alias' }, { version: '0.0.0' }],
   },
   'sentry.domain': {
     brief:
@@ -23681,6 +27187,60 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1234,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.3.0', prs: [160] }, { version: '0.0.0' }],
   },
+  'sentry.frames.frozen': {
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 3,
+    deprecation: {
+      replacement: 'app.vitals.frames.frozen.count',
+      reason:
+        'Replaced by app.vitals.frames.frozen.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
+    },
+    aliases: ['app.vitals.frames.frozen.count', 'frames.frozen'],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
+  },
+  'sentry.frames.slow': {
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    deprecation: {
+      replacement: 'app.vitals.frames.slow.count',
+      reason:
+        'Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
+    },
+    aliases: ['app.vitals.frames.slow.count', 'frames.slow'],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.slow attribute' }],
+  },
+  'sentry.frames.total': {
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 60,
+    deprecation: {
+      replacement: 'app.vitals.frames.total.count',
+      reason:
+        'Replaced by app.vitals.frames.total.count to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
+    },
+    aliases: ['app.vitals.frames.total.count', 'frames.total'],
+    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.total attribute' }],
+  },
   'sentry.graphql.operation': {
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
     type: 'string',
@@ -23745,9 +27305,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'server',
+    example: 'client',
+    examples: ['client', 'server', 'producer', 'consumer', 'internal'],
     aliases: ['otel.kind'],
-    changelog: [{ version: '0.3.1', prs: [190] }],
+    changelog: [
+      { version: 'next', prs: [517], description: 'Added more examples and additional_context to the attribute' },
+      { version: '0.3.1', prs: [190] },
+    ],
+    additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
   },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
@@ -23793,7 +27358,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'span',
-    changelog: [{ version: 'next', description: 'Added sentry.metric.source attribute' }],
+    changelog: [{ version: '0.16.0', prs: [476], description: 'Added sentry.metric.source attribute' }],
   },
   'sentry.mobile': {
     brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
@@ -23911,6 +27476,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'auto.http.otel.fastify',
     changelog: [{ version: '0.1.0', prs: [68] }, { version: '0.0.0' }],
   },
+  'sentry.pageload.span_id': {
+    brief: 'The id of the pageload span, set by web vital spans and metrics',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'bf2c8d3df84524de',
+    changelog: [{ version: '0.17.0', prs: [495], description: 'Added sentry.pageload.span_id attribute' }],
+  },
   'sentry.platform': {
     brief: 'The sdk platform that generated the event.',
     type: 'string',
@@ -23943,7 +27519,33 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '123e4567e89b12d3a456426614174000',
-    changelog: [{ version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' }],
+    aliases: ['profile_id'],
+    changelog: [
+      { version: 'next', prs: [497], description: 'Added profile_id as an alias' },
+      { version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' },
+    ],
+  },
+  'sentry.relay.ingress': {
+    brief: 'How an item (span, log, &c.) entered Relay.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: 'OTEL',
+    changelog: [{ version: '0.17.0', prs: [491], description: 'Added sentry.relay.ingress attribute' }],
+  },
+  'sentry.relay.pipeline': {
+    brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: 'span v2',
+    changelog: [{ version: '0.17.0', prs: [491], description: 'Added sentry.relay.pipeline attribute' }],
   },
   'sentry.release': {
     brief: 'The sentry release.',
@@ -24053,6 +27655,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '051581bf3cb55c13',
     deprecation: {
       replacement: 'sentry.segment.id',
+      status: 'backfill',
     },
     aliases: ['sentry.segment.id'],
     changelog: [{ version: '0.1.0', prs: [124] }],
@@ -24070,6 +27673,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
       { version: '0.1.0', prs: [104] },
+    ],
+  },
+  'sentry.segment.name.source': {
+    brief:
+      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: 'route',
+    examples: ['route', 'component', 'view', 'task', 'custom', 'url'],
+    changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.name.source' }],
+    additionalContext: [
+      'This attribute is the replacement for `transaction_info.source` on transactions.',
+      'Should we bring back clustering for segment names (like we do for transaction names), this attribute will be used to determine if a segment name should be clustered.',
     ],
   },
   'sentry.server_sample_rate': {
@@ -24094,10 +27714,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'route',
     deprecation: {
-      replacement: 'sentry.span.source',
-      reason: 'This attribute is being deprecated in favor of sentry.span.source',
+      reason:
+        'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
     },
-    changelog: [{ version: '0.5.0' }],
+    changelog: [{ version: 'next', description: 'Removed the sentry.span.source replacement' }, { version: '0.5.0' }],
   },
   'sentry.span.source': {
     brief:
@@ -24109,7 +27729,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'route',
-    changelog: [{ version: '0.4.0', prs: [214] }, { version: '0.0.0' }],
+    deprecation: {
+      reason:
+        'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
+    },
+    changelog: [
+      { version: 'next', description: 'Deprecated; superseded by sentry.segment.name.source on segment spans' },
+      { version: '0.4.0', prs: [214] },
+      { version: '0.0.0' },
+    ],
   },
   'sentry.status': {
     brief:
@@ -24146,6 +27774,54 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
   },
+  'sentry.sveltekit.navigation.from': {
+    brief: 'the navigation origin (sveltekit router)',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/home',
+    deprecation: {
+      replacement: 'navigation.origin',
+      reason: 'Use the more generic attribute instead',
+      status: 'backfill',
+    },
+    aliases: ['navigation.origin'],
+    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
+  },
+  'sentry.sveltekit.navigation.to': {
+    brief: 'the navigation destination',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    deprecation: {
+      reason: 'the navigation destination is already covered by url.* attributes',
+    },
+    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.to attribute' }],
+  },
+  'sentry.sveltekit.navigation.type': {
+    brief: 'The type of navigation event emitted from the sveltekit client router',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'link',
+    deprecation: {
+      replacement: 'navigation.type',
+      reason: 'Use the more generic attribute instead',
+      status: 'backfill',
+    },
+    aliases: ['navigation.type'],
+    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
+  },
   'sentry.thread.id': {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
@@ -24158,6 +27834,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'thread.id',
       reason: 'This attribute is being deprecated in favor of the OTel-standard thread.id',
+      status: 'backfill',
     },
     changelog: [{ version: '0.13.0', prs: [451] }],
   },
@@ -24224,6 +27901,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'sentry.segment.name',
       reason: 'This attribute is being deprecated in favor of sentry.segment.name',
+      status: 'backfill',
     },
     aliases: ['sentry.segment.name', 'transaction'],
     changelog: [
@@ -24353,8 +28031,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['http.server_name', 'net.host.name', 'http.host', 'server_name'],
     changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
+  },
+  server_name: {
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.com',
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    changelog: [
+      {
+        version: '0.16.0',
+        prs: [477],
+        description: 'Added server_name attribute, deprecated in favor of server.address',
+      },
+    ],
   },
   'server.port': {
     brief: 'Server port number.',
@@ -24410,7 +28112,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' }],
+    deprecation: {
+      replacement: 'app.vitals.stall.percentage',
+      reason:
+        'Replaced by app.vitals.stall.percentage to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
+    },
+    aliases: ['app.vitals.stall.percentage'],
+    changelog: [
+      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
+      { version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' },
+    ],
   },
   stall_total_time: {
     brief:
@@ -24421,7 +28133,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' }],
+    deprecation: {
+      replacement: 'app.vitals.stall.duration',
+      reason:
+        'Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
+    },
+    aliases: ['app.vitals.stall.duration'],
+    changelog: [
+      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
+      { version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' },
+    ],
   },
   'starlette.middleware_name': {
     brief: 'The name of the Starlette middleware.',
@@ -24436,6 +28158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'middleware.name',
       reason:
         'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
     },
     aliases: ['middleware.name'],
     changelog: [
@@ -24502,6 +28225,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.ttfd.value',
       reason:
         'Replaced by app.vitals.ttfd.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: ['app.vitals.ttfd.value'],
     changelog: [
@@ -24521,6 +28245,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.ttid.value',
       reason:
         'Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes',
+      status: 'backfill',
     },
     aliases: ['app.vitals.ttid.value'],
     changelog: [
@@ -24538,9 +28263,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'GET /',
     deprecation: {
       replacement: 'sentry.segment.name',
+      status: 'normalize',
     },
     aliases: ['sentry.segment.name', 'sentry.transaction'],
     changelog: [
+      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
       {
         version: '0.6.0',
         prs: [345],
@@ -24584,6 +28311,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.ttfb.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.value',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.ttfb.value'],
     changelog: [{ version: '0.5.0', prs: [235] }],
@@ -24601,6 +28329,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'browser.web_vital.ttfb.request_time',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time',
+      status: 'backfill',
     },
     aliases: ['browser.web_vital.ttfb.request_time'],
     changelog: [{ version: '0.5.0', prs: [235] }],
@@ -24861,11 +28590,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'http.request.same_origin',
       reason: 'This attribute is being deprecated in favor of http.request.same_origin.',
+      status: 'backfill',
     },
     aliases: ['http.request.same_origin'],
     changelog: [
       {
-        version: 'next',
+        version: '0.16.0',
         prs: [456],
         description: 'Added url.same_origin attribute, deprecated in favor of http.request.same_origin',
       },
@@ -24891,9 +28621,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/users/:id',
+    example: '/users/{id}',
+    examples: ['/users/{id}', '/users/:id', '/about'],
     aliases: ['http.route'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'user_agent.original': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
@@ -25465,10 +29200,13 @@ export type Attributes = {
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
+  [AI_PROMPT_MESSAGES]?: AI_PROMPT_MESSAGES_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
+  [AI_RESPONSE_TEXT]?: AI_RESPONSE_TEXT_TYPE;
+  [AI_RESPONSE_TOOLCALLS]?: AI_RESPONSE_TOOLCALLS_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
   [AI_SEED]?: AI_SEED_TYPE;
@@ -25476,6 +29214,8 @@ export type Attributes = {
   [AI_TAGS]?: AI_TAGS_TYPE;
   [AI_TEMPERATURE]?: AI_TEMPERATURE_TYPE;
   [AI_TEXTS]?: AI_TEXTS_TYPE;
+  [AI_TOOLCALL_ARGS]?: AI_TOOLCALL_ARGS_TYPE;
+  [AI_TOOLCALL_RESULT]?: AI_TOOLCALL_RESULT_TYPE;
   [AI_TOOLS]?: AI_TOOLS_TYPE;
   [AI_TOOL_CALLS]?: AI_TOOL_CALLS_TYPE;
   [AI_TOP_K]?: AI_TOP_K_TYPE;
@@ -25500,8 +29240,12 @@ export type Attributes = {
   [APP_VERSION]?: APP_VERSION_TYPE;
   [APP_VITALS_FRAMES_DELAY_VALUE]?: APP_VITALS_FRAMES_DELAY_VALUE_TYPE;
   [APP_VITALS_FRAMES_FROZEN_COUNT]?: APP_VITALS_FRAMES_FROZEN_COUNT_TYPE;
+  [APP_VITALS_FRAMES_FROZEN_RATE]?: APP_VITALS_FRAMES_FROZEN_RATE_TYPE;
   [APP_VITALS_FRAMES_SLOW_COUNT]?: APP_VITALS_FRAMES_SLOW_COUNT_TYPE;
+  [APP_VITALS_FRAMES_SLOW_RATE]?: APP_VITALS_FRAMES_SLOW_RATE_TYPE;
   [APP_VITALS_FRAMES_TOTAL_COUNT]?: APP_VITALS_FRAMES_TOTAL_COUNT_TYPE;
+  [APP_VITALS_STALL_DURATION]?: APP_VITALS_STALL_DURATION_TYPE;
+  [APP_VITALS_STALL_PERCENTAGE]?: APP_VITALS_STALL_PERCENTAGE_TYPE;
   [APP_VITALS_START_COLD_VALUE]?: APP_VITALS_START_COLD_VALUE_TYPE;
   [APP_VITALS_START_PREWARMED]?: APP_VITALS_START_PREWARMED_TYPE;
   [APP_VITALS_START_REASON]?: APP_VITALS_START_REASON_TYPE;
@@ -25524,6 +29268,30 @@ export type Attributes = {
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
   [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
   [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
+  [AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS]?: AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE;
+  [AWS_DYNAMODB_CONSISTENT_READ]?: AWS_DYNAMODB_CONSISTENT_READ_TYPE;
+  [AWS_DYNAMODB_CONSUMED_CAPACITY]?: AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE;
+  [AWS_DYNAMODB_COUNT]?: AWS_DYNAMODB_COUNT_TYPE;
+  [AWS_DYNAMODB_EXCLUSIVE_START_TABLE]?: AWS_DYNAMODB_EXCLUSIVE_START_TABLE_TYPE;
+  [AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES]?: AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_TYPE;
+  [AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES]?: AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_TYPE;
+  [AWS_DYNAMODB_INDEX_NAME]?: AWS_DYNAMODB_INDEX_NAME_TYPE;
+  [AWS_DYNAMODB_ITEM_COLLECTION_METRICS]?: AWS_DYNAMODB_ITEM_COLLECTION_METRICS_TYPE;
+  [AWS_DYNAMODB_LIMIT]?: AWS_DYNAMODB_LIMIT_TYPE;
+  [AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES]?: AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_TYPE;
+  [AWS_DYNAMODB_PROJECTION]?: AWS_DYNAMODB_PROJECTION_TYPE;
+  [AWS_DYNAMODB_PROVISIONED_READ_CAPACITY]?: AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_TYPE;
+  [AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY]?: AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_TYPE;
+  [AWS_DYNAMODB_SCANNED_COUNT]?: AWS_DYNAMODB_SCANNED_COUNT_TYPE;
+  [AWS_DYNAMODB_SCAN_FORWARD]?: AWS_DYNAMODB_SCAN_FORWARD_TYPE;
+  [AWS_DYNAMODB_SEGMENT]?: AWS_DYNAMODB_SEGMENT_TYPE;
+  [AWS_DYNAMODB_SELECT]?: AWS_DYNAMODB_SELECT_TYPE;
+  [AWS_DYNAMODB_TABLE_COUNT]?: AWS_DYNAMODB_TABLE_COUNT_TYPE;
+  [AWS_DYNAMODB_TABLE_NAMES]?: AWS_DYNAMODB_TABLE_NAMES_TYPE;
+  [AWS_DYNAMODB_TOTAL_SEGMENTS]?: AWS_DYNAMODB_TOTAL_SEGMENTS_TYPE;
+  [AWS_EXTENDED_REQUEST_ID]?: AWS_EXTENDED_REQUEST_ID_TYPE;
+  [AWS_KINESIS_STREAM_NAME]?: AWS_KINESIS_STREAM_NAME_TYPE;
+  [_AWS_KINESIS_STREAM_NAME]?: _AWS_KINESIS_STREAM_NAME_TYPE;
   [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
@@ -25533,6 +29301,14 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
+  [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
+  [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
+  [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
+  [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
+  [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
@@ -25609,6 +29385,7 @@ export type Attributes = {
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
   [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
+  [DB_MONGODB_COLLECTION]?: DB_MONGODB_COLLECTION_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
   [DB_OPERATION]?: DB_OPERATION_TYPE;
@@ -25666,6 +29443,7 @@ export type Attributes = {
   [DEVICE_THERMAL_STATE]?: DEVICE_THERMAL_STATE_TYPE;
   [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
+  [DIST]?: DIST_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
@@ -25683,11 +29461,16 @@ export type Attributes = {
   [FAAS_ID]?: FAAS_ID_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
   [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
+  [FAAS_INVOKED_NAME]?: FAAS_INVOKED_NAME_TYPE;
+  [FAAS_INVOKED_PROVIDER]?: FAAS_INVOKED_PROVIDER_TYPE;
+  [FAAS_INVOKED_REGION]?: FAAS_INVOKED_REGION_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;
   [FAAS_VERSION]?: FAAS_VERSION_TYPE;
   [FCP]?: FCP_TYPE;
+  [FILE_PATH]?: FILE_PATH_TYPE;
+  [FILE_SIZE]?: FILE_SIZE_TYPE;
   [FLAG_EVALUATION_KEY]?: FLAG_EVALUATION_KEY_TYPE;
   [FP]?: FP_TYPE;
   [FRAMES_DELAY]?: FRAMES_DELAY_TYPE;
@@ -25733,11 +29516,13 @@ export type Attributes = {
   [GEN_AI_REQUEST_MESSAGES]?: GEN_AI_REQUEST_MESSAGES_TYPE;
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
-  [GEN_AI_REQUEST_REASONING_EFFORT]?: GEN_AI_REQUEST_REASONING_EFFORT_TYPE;
+  [GEN_AI_REQUEST_REASONING_LEVEL]?: GEN_AI_REQUEST_REASONING_LEVEL_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
+  [GEN_AI_REQUEST_STOP_SEQUENCES]?: GEN_AI_REQUEST_STOP_SEQUENCES_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
   [GEN_AI_REQUEST_TOP_K]?: GEN_AI_REQUEST_TOP_K_TYPE;
   [GEN_AI_REQUEST_TOP_P]?: GEN_AI_REQUEST_TOP_P_TYPE;
+  [GEN_AI_RESPONSE_FINISH_REASON]?: GEN_AI_RESPONSE_FINISH_REASON_TYPE;
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
@@ -25773,6 +29558,19 @@ export type Attributes = {
   [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
+  [GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS]?: GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE;
+  [GRPC_ERROR_DEBUG_INFO_DETAIL]?: GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE;
+  [GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES]?: GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE;
+  [GRPC_ERROR_ERROR_INFO_DOMAIN]?: GRPC_ERROR_ERROR_INFO_DOMAIN_TYPE;
+  [GRPC_ERROR_ERROR_INFO_METADATA_KEY]?: GRPC_ERROR_ERROR_INFO_METADATA_KEY_TYPE;
+  [GRPC_ERROR_ERROR_INFO_REASON]?: GRPC_ERROR_ERROR_INFO_REASON_TYPE;
+  [GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS]?: GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_TYPE;
+  [GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS]?: GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_TYPE;
+  [GRPC_ERROR_RESOURCE_INFO_DESCRIPTION]?: GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_TYPE;
+  [GRPC_ERROR_RESOURCE_INFO_OWNER]?: GRPC_ERROR_RESOURCE_INFO_OWNER_TYPE;
+  [GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE;
+  [GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE;
+  [GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS]?: GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
@@ -25825,6 +29623,8 @@ export type Attributes = {
   [JVM_MEMORY_TYPE]?: JVM_MEMORY_TYPE_TYPE;
   [JVM_THREAD_DAEMON]?: JVM_THREAD_DAEMON_TYPE;
   [JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
+  [KOA_NAME]?: KOA_NAME_TYPE;
+  [KOA_TYPE]?: KOA_TYPE_TYPE;
   [LCP]?: LCP_TYPE;
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
   [LCP_ID]?: LCP_ID_TYPE;
@@ -25873,8 +29673,14 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
+  [MESSAGING_DESTINATION_KIND]?: MESSAGING_DESTINATION_KIND_TYPE;
   [MESSAGING_DESTINATION_NAME]?: MESSAGING_DESTINATION_NAME_TYPE;
+  [MESSAGING_DESTINATION_PARTITION_ID]?: MESSAGING_DESTINATION_PARTITION_ID_TYPE;
+  [MESSAGING_KAFKA_MESSAGE_KEY]?: MESSAGING_KAFKA_MESSAGE_KEY_TYPE;
+  [MESSAGING_KAFKA_MESSAGE_TOMBSTONE]?: MESSAGING_KAFKA_MESSAGE_TOMBSTONE_TYPE;
+  [MESSAGING_KAFKA_OFFSET]?: MESSAGING_KAFKA_OFFSET_TYPE;
   [MESSAGING_MESSAGE_BODY_SIZE]?: MESSAGING_MESSAGE_BODY_SIZE_TYPE;
   [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
@@ -25887,6 +29693,8 @@ export type Attributes = {
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
+  [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
+  [NAVIGATION_ROUTE_ID]?: NAVIGATION_ROUTE_ID_TYPE;
   [NAVIGATION_TYPE]?: NAVIGATION_TYPE_TYPE;
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
@@ -25946,8 +29754,10 @@ export type Attributes = {
   [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
+  [PROFILE_ID]?: PROFILE_ID_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
+  [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
@@ -25959,6 +29769,8 @@ export type Attributes = {
   [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
   [RPC_SERVICE]?: RPC_SERVICE_TYPE;
+  [RPC_SYSTEM]?: RPC_SYSTEM_TYPE;
+  [RPC_SYSTEM_NAME]?: RPC_SYSTEM_NAME_TYPE;
   [RUNTIME_BUILD]?: RUNTIME_BUILD_TYPE;
   [RUNTIME_NAME]?: RUNTIME_NAME_TYPE;
   [RUNTIME_RAW_DESCRIPTION]?: RUNTIME_RAW_DESCRIPTION_TYPE;
@@ -25986,6 +29798,9 @@ export type Attributes = {
   [SENTRY_DSC_TRANSACTION]?: SENTRY_DSC_TRANSACTION_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
+  [SENTRY_FRAMES_FROZEN]?: SENTRY_FRAMES_FROZEN_TYPE;
+  [SENTRY_FRAMES_SLOW]?: SENTRY_FRAMES_SLOW_TYPE;
+  [SENTRY_FRAMES_TOTAL]?: SENTRY_FRAMES_TOTAL_TYPE;
   [SENTRY_GRAPHQL_OPERATION]?: SENTRY_GRAPHQL_OPERATION_TYPE;
   [SENTRY_GROUP]?: SENTRY_GROUP_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
@@ -26006,9 +29821,12 @@ export type Attributes = {
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
+  [SENTRY_PAGELOAD_SPAN_ID]?: SENTRY_PAGELOAD_SPAN_ID_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
   [SENTRY_PROFILE_ID]?: SENTRY_PROFILE_ID_TYPE;
+  [SENTRY_RELAY_INGRESS]?: SENTRY_RELAY_INGRESS_TYPE;
+  [SENTRY_RELAY_PIPELINE]?: SENTRY_RELAY_PIPELINE_TYPE;
   [SENTRY_RELEASE]?: SENTRY_RELEASE_TYPE;
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
@@ -26019,12 +29837,16 @@ export type Attributes = {
   [SENTRY_SEGMENT_ID]?: SENTRY_SEGMENT_ID_TYPE;
   [_SENTRY_SEGMENT_ID]?: _SENTRY_SEGMENT_ID_TYPE;
   [SENTRY_SEGMENT_NAME]?: SENTRY_SEGMENT_NAME_TYPE;
+  [SENTRY_SEGMENT_NAME_SOURCE]?: SENTRY_SEGMENT_NAME_SOURCE_TYPE;
   [SENTRY_SERVER_SAMPLE_RATE]?: SENTRY_SERVER_SAMPLE_RATE_TYPE;
   [SENTRY_SOURCE]?: SENTRY_SOURCE_TYPE;
   [SENTRY_SPAN_SOURCE]?: SENTRY_SPAN_SOURCE_TYPE;
   [SENTRY_STATUS]?: SENTRY_STATUS_TYPE;
   [SENTRY_STATUS_CODE]?: SENTRY_STATUS_CODE_TYPE;
   [SENTRY_STATUS_MESSAGE]?: SENTRY_STATUS_MESSAGE_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_FROM]?: SENTRY_SVELTEKIT_NAVIGATION_FROM_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_TO]?: SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE;
+  [SENTRY_SVELTEKIT_NAVIGATION_TYPE]?: SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
@@ -26040,6 +29862,7 @@ export type Attributes = {
   [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
   [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
+  [SERVER_NAME]?: SERVER_NAME_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;

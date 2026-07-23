@@ -1,0 +1,18 @@
+{
+  "key": "gen_ai.request.reasoning.level",
+  "brief": "The reasoning or thinking effort level requested for a GenAI model.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": "high",
+  "changelog": [
+    {
+      "version": "0.17.0",
+      "prs": [502],
+      "description": "Added gen_ai.request.reasoning.level attribute"
+    }
+  ]
+}

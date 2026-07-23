@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.scan_forward",
+  "brief": "The value of the `ScanIndexForward` request parameter.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": true,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [479],
+      "description": "Added aws.dynamodb.scan_forward attribute"
+    }
+  ]
+}
