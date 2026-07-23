@@ -9,11 +9,16 @@
   "example": "production",
   "alias": ["sentry.environment"],
   "deprecation": {
-    "_status": null,
+    "_status": "normalize",
     "replacement": "sentry.environment"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Configured normalization",
+      "prs": [427]
+    },
     {
       "version": "0.1.0",
       "prs": [61, 127]

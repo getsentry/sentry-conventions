@@ -7,8 +7,13 @@
   },
   "is_in_otel": true,
   "example": "DEADLINE_EXCEEDED",
+  "alias": ["rpc.grpc.status_code"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added rpc.grpc.status_code as an alias"
+    },
     {
       "version": "0.7.0",
       "prs": [352],

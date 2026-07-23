@@ -1,0 +1,22 @@
+{
+  "key": "sentry.sveltekit.navigation.to",
+  "brief": "the navigation destination",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "/users/:id",
+  "deprecation": {
+    "_status": null,
+    "reason": "the navigation destination is already covered by url.* attributes"
+  },
+  "changelog": [
+    {
+      "version": "0.16.0",
+      "prs": [467],
+      "description": "Added sentry.sveltekit.navigation.to attribute"
+    }
+  ]
+}

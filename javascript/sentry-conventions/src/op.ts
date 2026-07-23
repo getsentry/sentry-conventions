@@ -180,6 +180,46 @@ export const MESSAGING_QUEUE_PROCESS_SPAN_OP = 'queue.process';
  */
 export const MESSAGING_QUEUE_SETTLE_SPAN_OP = 'queue.settle';
 
+/**
+ * Publishing a message to an arq queue.
+ */
+export const MESSAGING_QUEUE_SUBMIT_ARQ_SPAN_OP = 'queue.submit.arq';
+
+/**
+ * Processing a message from an arq queue.
+ */
+export const MESSAGING_QUEUE_TASK_ARQ_SPAN_OP = 'queue.task.arq';
+
+/**
+ * Publishing a message to a Celery broker.
+ */
+export const MESSAGING_QUEUE_SUBMIT_CELERY_SPAN_OP = 'queue.submit.celery';
+
+/**
+ * Processing a message from a Celery queue.
+ */
+export const MESSAGING_QUEUE_TASK_CELERY_SPAN_OP = 'queue.task.celery';
+
+/**
+ * Processing a message from a Dramatiq queue.
+ */
+export const MESSAGING_QUEUE_TASK_DRAMATIQ_SPAN_OP = 'queue.task.dramatiq';
+
+/**
+ * Publishing a message to a Huey instance.
+ */
+export const MESSAGING_QUEUE_SUBMIT_HUEY_SPAN_OP = 'queue.submit.huey';
+
+/**
+ * Processing a message from a Huey instance.
+ */
+export const MESSAGING_QUEUE_TASK_HUEY_SPAN_OP = 'queue.task.huey';
+
+/**
+ * Processing a message from an RQ queue.
+ */
+export const MESSAGING_QUEUE_TASK_RQ_SPAN_OP = 'queue.task.rq';
+
 // Path: model/op/mobile.json
 // Name: mobile
 

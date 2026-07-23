@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": 1,
-  "alias": ["app.vitals.frames.slow.count"],
+  "alias": ["app.vitals.frames.slow.count", "sentry.frames.slow"],
   "deprecation": {
     "replacement": "app.vitals.frames.slow.count",
     "reason": "Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
@@ -15,6 +15,11 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [500],
+      "description": "Added sentry.frames.slow as an alias"
+    },
     {
       "version": "0.5.0",
       "prs": [313],
