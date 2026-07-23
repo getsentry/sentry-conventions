@@ -176,6 +176,7 @@ class _AttributeNamesMeta(type):
         "CODE_LINENO",
         "CONNECTION_RTT",
         "CONNECTIONTYPE",
+        "DB_MONGODB_COLLECTION",
         "DB_NAME",
         "DB_OPERATION",
         "DB_SQL_BINDINGS",
@@ -2845,6 +2846,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: db.mongodb.collection
     Example: "users"
     """
 
@@ -2857,6 +2859,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "psycopg2"
+    """
+
+    # Path: model/attributes/db/db__mongodb__collection.json
+    DB_MONGODB_COLLECTION: Literal["db.mongodb.collection"] = "db.mongodb.collection"
+    """The MongoDB collection being accessed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: db.collection.name
+    DEPRECATED: Use db.collection.name instead - This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.
+    Example: "users"
     """
 
     # Path: model/attributes/db/db__name.json
@@ -12815,7 +12830,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="users",
+        aliases=["db.mongodb.collection"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added db.mongodb.collection as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -12830,6 +12849,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[297], description="Added db.driver.name attribute"
+            ),
+        ],
+    ),
+    "db.mongodb.collection": AttributeMetadata(
+        brief="The MongoDB collection being accessed.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="users",
+        deprecation=DeprecationInfo(
+            replacement="db.collection.name",
+            reason="This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["db.collection.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added db.mongodb.collection attribute, deprecated in favor of db.collection.name",
             ),
         ],
     ),
@@ -21214,6 +21253,7 @@ Attributes = TypedDict(
         "culture.timezone": str,
         "db.collection.name": str,
         "db.driver.name": str,
+        "db.mongodb.collection": str,
         "db.name": str,
         "db.namespace": str,
         "db.operation": str,

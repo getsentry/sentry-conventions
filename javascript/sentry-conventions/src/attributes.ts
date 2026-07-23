@@ -4432,6 +4432,8 @@ export type CULTURE_TIMEZONE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link DB_MONGODB_COLLECTION} `db.mongodb.collection`
+ *
  * @example "users"
  */
 export const DB_COLLECTION_NAME = 'db.collection.name';
@@ -4461,6 +4463,30 @@ export const DB_DRIVER_NAME = 'db.driver.name';
  * Type for {@link DB_DRIVER_NAME} db.driver.name
  */
 export type DB_DRIVER_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__mongodb__collection.json
+
+/**
+ * The MongoDB collection being accessed. `db.mongodb.collection`
+ *
+ * Attribute Value Type: `string` {@link DB_MONGODB_COLLECTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_COLLECTION_NAME} `db.collection.name`
+ *
+ * @deprecated Use {@link DB_COLLECTION_NAME} (db.collection.name) instead - This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.
+ * @example "users"
+ */
+export const DB_MONGODB_COLLECTION = 'db.mongodb.collection';
+
+/**
+ * Type for {@link DB_MONGODB_COLLECTION} db.mongodb.collection
+ */
+export type DB_MONGODB_COLLECTION_TYPE = string;
 
 // Path: model/attributes/db/db__name.json
 
@@ -17235,6 +17261,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'culture.timezone': 'string',
   'db.collection.name': 'string',
   'db.driver.name': 'string',
+  'db.mongodb.collection': 'string',
   'db.name': 'string',
   'db.namespace': 'string',
   'db.operation': 'string',
@@ -18003,6 +18030,7 @@ export type AttributeName =
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
   | typeof DB_DRIVER_NAME
+  | typeof DB_MONGODB_COLLECTION
   | typeof DB_NAME
   | typeof DB_NAMESPACE
   | typeof DB_OPERATION
@@ -21299,7 +21327,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'users',
-    changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
+    aliases: ['db.mongodb.collection'],
+    changelog: [
+      { version: 'next', description: 'Added db.mongodb.collection as an alias' },
+      { version: '0.1.0', prs: [106, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.driver.name': {
     brief: 'The name of the driver used for the database connection.',
@@ -21311,6 +21344,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'psycopg2',
     changelog: [{ version: '0.5.0', prs: [297], description: 'Added db.driver.name attribute' }],
+  },
+  'db.mongodb.collection': {
+    brief: 'The MongoDB collection being accessed.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'users',
+    deprecation: {
+      replacement: 'db.collection.name',
+      reason:
+        'This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['db.collection.name'],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added db.mongodb.collection attribute, deprecated in favor of db.collection.name',
+      },
+    ],
   },
   'db.name': {
     brief: 'The name of the database being accessed.',
@@ -29225,6 +29281,7 @@ export type Attributes = {
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
   [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
+  [DB_MONGODB_COLLECTION]?: DB_MONGODB_COLLECTION_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
   [DB_OPERATION]?: DB_OPERATION_TYPE;
