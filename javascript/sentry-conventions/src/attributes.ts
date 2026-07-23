@@ -26595,6 +26595,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.redis.key',
       reason: 'This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.',
+      status: 'backfill',
     },
     aliases: ['db.redis.key'],
     changelog: [{ version: 'next', description: 'Added redis.key attribute, deprecated in favor of db.redis.key' }],
