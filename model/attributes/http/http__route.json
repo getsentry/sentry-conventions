@@ -10,6 +10,7 @@
     "key": "manual"
   },
   "is_in_otel": true,
+  "alias": ["route"],
   "examples": ["/users/:id", "my-controller/my-action/{id}", "/posts"],
   "visibility": "public",
   "changelog": [

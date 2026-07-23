@@ -5637,6 +5637,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: route
     Example: "/users/:id"
     Example: "my-controller/my-action/{id}"
     Example: "/posts"
@@ -16341,6 +16342,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="/users/:id",
         examples=["/users/:id", "my-controller/my-action/{id}", "/posts"],
+        aliases=["route"],
         changelog=[
             ChangelogEntry(
                 version="next",

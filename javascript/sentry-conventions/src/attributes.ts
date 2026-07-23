@@ -9370,6 +9370,8 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link ROUTE} `route`
+ *
  * @example "/users/:id"
  * @example "my-controller/my-action/{id}"
  * @example "/posts"
@@ -24640,6 +24642,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/:id',
     examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
+    aliases: ['route'],
     changelog: [
       {
         version: 'next',
