@@ -11286,7 +11286,7 @@ export type METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link LITESTAR_MIDDLEWARE_NAME} `litestar.middleware_name`
+ * Aliases: {@link LITESTAR_MIDDLEWARE_NAME} `litestar.middleware_name`, {@link STARLETTE_MIDDLEWARE_NAME} `starlette.middleware_name`
  *
  * @example "AuthenticationMiddleware"
  */
@@ -15242,6 +15242,30 @@ export const STALL_TOTAL_TIME = 'stall_total_time';
  */
 export type STALL_TOTAL_TIME_TYPE = number;
 
+// Path: model/attributes/starlette/starlette__middleware_name.json
+
+/**
+ * The name of the Starlette middleware. `starlette.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link STARLETTE_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const STARLETTE_MIDDLEWARE_NAME = 'starlette.middleware_name';
+
+/**
+ * Type for {@link STARLETTE_MIDDLEWARE_NAME} starlette.middleware_name
+ */
+export type STARLETTE_MIDDLEWARE_NAME_TYPE = string;
+
 // Path: model/attributes/state/state__type.json
 
 /**
@@ -17798,6 +17822,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'session.id': 'string',
   stall_percentage: 'double',
   stall_total_time: 'double',
+  'starlette.middleware_name': 'string',
   'state.type': 'string',
   'thread.id': 'integer',
   'thread.name': 'string',
@@ -18569,6 +18594,7 @@ export type AttributeName =
   | typeof SESSION_ID
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
+  | typeof STARLETTE_MIDDLEWARE_NAME
   | typeof STATE_TYPE
   | typeof THREAD_ID
   | typeof THREAD_NAME
@@ -25774,9 +25800,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'AuthenticationMiddleware',
-    aliases: ['litestar.middleware_name'],
+    aliases: ['litestar.middleware_name', 'starlette.middleware_name'],
     changelog: [
-      { version: 'next', description: 'Added litestar.middleware_name as an alias' },
+      { version: 'next', description: 'Added litestar.middleware_name and starlette.middleware_name as aliases' },
       { version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' },
     ],
   },
@@ -28168,6 +28194,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' },
     ],
   },
+  'starlette.middleware_name': {
+    brief: 'The name of the Starlette middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added starlette.middleware_name attribute, deprecated in favor of middleware.name',
+      },
+    ],
+  },
   'state.type': {
     brief: 'The type of state management library',
     type: 'string',
@@ -29870,6 +29919,7 @@ export type Attributes = {
   [SESSION_ID]?: SESSION_ID_TYPE;
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
+  [STARLETTE_MIDDLEWARE_NAME]?: STARLETTE_MIDDLEWARE_NAME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
