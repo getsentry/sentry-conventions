@@ -5637,7 +5637,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.template
+    Aliases: route
     Example: "/users/:id"
     Example: "my-controller/my-action/{id}"
     Example: "/posts"
@@ -9289,13 +9289,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/url/url__template.json
     URL_TEMPLATE: Literal["url.template"] = "url.template"
-    """The low-cardinality template of an absolute path reference.
+    """The low-cardinality template of an absolute URL path reference.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.route
     Example: "/users/{id}"
     Example: "/users/:id"
     Example: "/about"
@@ -16343,13 +16342,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="/users/:id",
         examples=["/users/:id", "my-controller/my-action/{id}", "/posts"],
-        aliases=["url.template"],
+        aliases=["route"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[505], description="Added multiple examples"
+                version="next",
+                prs=[505, 521],
+                description="Added multiple examples, removed alias to `url.template`, added additional context",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.",
+            "For `http.client` spans and client-side routing, use `url.template` instead.",
         ],
     ),
     "http.scheme": AttributeMetadata(
@@ -20660,20 +20665,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "url.template": AttributeMetadata(
-        brief="The low-cardinality template of an absolute path reference.",
+        brief="The low-cardinality template of an absolute URL path reference.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/users/{id}",
         examples=["/users/{id}", "/users/:id", "/about"],
-        aliases=["http.route"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[505], description="Added multiple examples"
+                version="next",
+                prs=[505, 521],
+                description="Added multiple examples, removed alias to `http.route`, added additional context",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).",
+            "Use `http.route` for server-side instrumentation that captures the framework route of an incoming request.",
         ],
     ),
     "url": AttributeMetadata(

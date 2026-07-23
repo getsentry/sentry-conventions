@@ -9370,7 +9370,7 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_TEMPLATE} `url.template`
+ * Aliases: {@link ROUTE} `route`
  *
  * @example "/users/:id"
  * @example "my-controller/my-action/{id}"
@@ -16067,7 +16067,7 @@ export type URL_SCHEME_TYPE = string;
 // Path: model/attributes/url/url__template.json
 
 /**
- * The low-cardinality template of an absolute path reference. `url.template`
+ * The low-cardinality template of an absolute URL path reference. `url.template`
  *
  * Attribute Value Type: `string` {@link URL_TEMPLATE_TYPE}
  *
@@ -16075,8 +16075,6 @@ export type URL_SCHEME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
- *
- * Aliases: {@link HTTP_ROUTE} `http.route`
  *
  * @example "/users/{id}"
  * @example "/users/:id"
@@ -24644,11 +24642,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/:id',
     examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
-    aliases: ['url.template'],
+    aliases: ['route'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      {
+        version: 'next',
+        prs: [505, 521],
+        description: 'Added multiple examples, removed alias to `url.template`, added additional context',
+      },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.',
+      'For `http.client` spans and client-side routing, use `url.template` instead.',
     ],
   },
   'http.scheme': {
@@ -28760,7 +28766,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'url.template': {
-    brief: 'The low-cardinality template of an absolute path reference.',
+    brief: 'The low-cardinality template of an absolute URL path reference.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -28769,11 +28775,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/{id}',
     examples: ['/users/{id}', '/users/:id', '/about'],
-    aliases: ['http.route'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      {
+        version: 'next',
+        prs: [505, 521],
+        description: 'Added multiple examples, removed alias to `http.route`, added additional context',
+      },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).',
+      'Use `http.route` for server-side instrumentation that captures the framework route of an incoming request.',
     ],
   },
   'user_agent.original': {
