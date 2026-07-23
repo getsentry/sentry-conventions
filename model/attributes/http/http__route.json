@@ -1,19 +1,22 @@
 {
   "key": "http.route",
   "brief": "The matched route, that is, the path template in the format used by the respective server framework.",
+  "additional_context": [
+    "This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.",
+    "For `http.client` spans and client-side routing, use `url.template` instead."
+  ],
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
   "examples": ["/users/:id", "my-controller/my-action/{id}", "/posts"],
-  "alias": ["url.template"],
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
-      "prs": [505],
-      "description": "Added multiple examples"
+      "prs": [505, 0],
+      "description": "Added multiple examples, removed alias to `url.template`, added additional context"
     },
     {
       "version": "0.1.0",

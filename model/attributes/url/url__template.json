@@ -1,19 +1,22 @@
 {
   "key": "url.template",
-  "brief": "The low-cardinality template of an absolute path reference.",
+  "brief": "The low-cardinality template of an absolute URL path reference.",
+  "additional_context": [
+    "This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).",
+    "Use `http.route` for server-side instrumentation that captures the framework route of an incoming request."
+  ],
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
   "examples": ["/users/{id}", "/users/:id", "/about"],
-  "alias": ["http.route"],
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
       "prs": [505],
-      "description": "Added multiple examples"
+      "description": "Added multiple examples, removed alias to `http.route`, added additional context"
     },
     {
       "version": "0.1.0",
