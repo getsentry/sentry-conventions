@@ -7,8 +7,13 @@
   },
   "is_in_otel": true,
   "example": 12345,
+  "alias": ["subprocess.pid"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added subprocess.pid as an alias"
+    },
     {
       "version": "0.4.0",
       "prs": [228]
