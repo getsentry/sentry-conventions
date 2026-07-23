@@ -58,6 +58,18 @@ const mismatchedExamples: Array<[string, unknown]> = [
   ['any', { arbitrary: 'object' }],
 ];
 
+const pluralDynamicAttribute = {
+  ...baseAttribute,
+  key: 'test.<key>',
+  has_dynamic_suffix: true,
+  examples: ['suffix'],
+};
+
+const missingDeprecationStatusAttribute = {
+  ...baseAttribute,
+  deprecation: { replacement: 'test.replacement' },
+};
+
 const attributeFixtures = [
   baseAttribute,
   ...matchingExamples.flatMap(([type, example]) => [
@@ -75,12 +87,9 @@ const attributeFixtures = [
   { ...baseAttribute, type: 'string[]', examples: [[]] },
   { ...baseAttribute, key: 'test.<key>', has_dynamic_suffix: true },
   { ...baseAttribute, key: 'test.<key>', has_dynamic_suffix: true, example: 'suffix' },
-  { ...baseAttribute, key: 'test.<key>', has_dynamic_suffix: true, examples: ['suffix'] },
+  pluralDynamicAttribute,
   { ...baseAttribute, key: 'test.<key>', has_dynamic_suffix: true, example: 1 },
-  {
-    ...baseAttribute,
-    deprecation: { replacement: 'test.replacement' },
-  },
+  missingDeprecationStatusAttribute,
   {
     ...baseAttribute,
     deprecation: { _status: 'transform', replacement: 'test.replacement' },
@@ -120,6 +129,16 @@ const transformation = {
 describe('generated schema parity', () => {
   it.each(attributeFixtures)('matches attribute validation for fixture %#', (value) => {
     expectParity(attributeSchema, attributeJsonSchema, value);
+  });
+
+  it('accepts plural dynamic-suffix examples', () => {
+    expect(attributeSchema.safeParse(pluralDynamicAttribute).success).toBe(true);
+    expect(new Ajv().validate(attributeJsonSchema, pluralDynamicAttribute)).toBe(true);
+  });
+
+  it('rejects a deprecation missing _status', () => {
+    expect(attributeSchema.safeParse(missingDeprecationStatusAttribute).success).toBe(false);
+    expect(new Ajv().validate(attributeJsonSchema, missingDeprecationStatusAttribute)).toBe(false);
   });
 
   it.each([
