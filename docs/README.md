@@ -42,7 +42,8 @@ The site reads directly from the `model/` directory in the repository root:
 - **Attributes**: `model/attributes/**/*.json` - Span and breadcrumb attribute definitions
 - **Names**: `model/name/*.json` - Span name template definitions
 
-Content is validated against Zod schemas matching the JSON schemas in `schemas/`.
+Content is validated with the canonical Zod schemas in `schemas/*.ts`. The same
+definitions generate the committed Draft 7 JSON Schemas used by other tools.
 
 ## Deployment
 

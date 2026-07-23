@@ -25,6 +25,7 @@
 ### Task 1: Add the shared schema foundation and non-attribute schemas
 
 **Files:**
+
 - Modify: `package.json`
 - Modify: `yarn.lock`
 - Create: `schemas/name.ts`
@@ -36,6 +37,7 @@
 - Create: `test/schema-definitions.test.ts`
 
 **Interfaces:**
+
 - Produces: `nameSchema`, `nameOperationSchema`, `descriptionSchema`, `descriptionOperationSchema`, `opSchema`, `opFieldSchema`, `measurementSchema`, `attributeTransformationSchema`
 - Produces: inferred `NameJson`, `NameOperation`, `DescriptionJson`, `DescriptionOperation`, `OpJson`, `OpField`, `MeasurementJson`, `AttributeTransformationJson`, `AttributeTransformationAttributeReference`, and `AttributeTransformationExample`
 - Consumes: nothing from later tasks
@@ -56,13 +58,7 @@ Create `test/schema-definitions.test.ts`:
 
 ```ts
 import { describe, expect, it } from 'vitest';
-import {
-  attributeTransformationSchema,
-  descriptionSchema,
-  measurementSchema,
-  nameSchema,
-  opSchema,
-} from '../schemas';
+import { attributeTransformationSchema, descriptionSchema, measurementSchema, nameSchema, opSchema } from '../schemas';
 
 describe('nameSchema', () => {
   const baseOperation = {
@@ -318,13 +314,10 @@ export const attributeTransformationSchema = z
   })
   .meta({
     title: 'Sentry Attribute Transformation Schema',
-    description:
-      'Describes how one or more deprecated attributes are transformed into replacement attributes',
+    description: 'Describes how one or more deprecated attributes are transformed into replacement attributes',
   });
 
-export type AttributeTransformationAttributeReference = z.infer<
-  typeof attributeTransformationAttributeReferenceSchema
->;
+export type AttributeTransformationAttributeReference = z.infer<typeof attributeTransformationAttributeReferenceSchema>;
 export type AttributeTransformationExample = z.infer<typeof attributeTransformationExampleSchema>;
 export type AttributeTransformationJson = z.infer<typeof attributeTransformationSchema>;
 ```
@@ -363,11 +356,13 @@ git commit -m "feat(schema): add shared model schemas"
 ### Task 2: Implement the canonical attribute schema
 
 **Files:**
+
 - Create: `schemas/attribute.ts`
 - Modify: `schemas/index.ts`
 - Create: `test/attribute-schema.test.ts`
 
 **Interfaces:**
+
 - Produces: `attributeSchema`, `attributeValueSchema`, `attributeTypeSchema`
 - Produces: `AttributeJson`, `AttributeValue`, `AttributeType`, and `ChangelogEntry`
 - Consumes: no later-task interfaces
@@ -423,9 +418,9 @@ describe('attributeSchema', () => {
   });
 
   it('rejects singular and plural examples together', () => {
-    expect(
-      attributeSchema.safeParse({ ...base, type: 'string', example: 'one', examples: ['two'] }).success,
-    ).toBe(false);
+    expect(attributeSchema.safeParse({ ...base, type: 'string', example: 'one', examples: ['two'] }).success).toBe(
+      false,
+    );
   });
 
   it('rejects an empty outer examples list', () => {
@@ -541,10 +536,7 @@ const commonAttributeShape = {
   changelog: z.array(changelogEntrySchema).optional(),
 };
 
-function staticAttributeVariants<const Type extends string, Value extends z.ZodType>(
-  type: Type,
-  valueSchema: Value,
-) {
+function staticAttributeVariants<const Type extends string, Value extends z.ZodType>(type: Type, valueSchema: Value) {
   const shape = {
     ...commonAttributeShape,
     has_dynamic_suffix: z.literal(false).optional(),
@@ -618,6 +610,7 @@ git commit -m "feat(schema): define canonical attribute schema"
 ### Task 3: Add fail-fast model loading and migrate script types
 
 **Files:**
+
 - Create: `scripts/read_json.ts`
 - Create: `test/read-json.test.ts`
 - Modify: `scripts/generate_attributes.ts`
@@ -635,6 +628,7 @@ git commit -m "feat(schema): define canonical attribute schema"
 - Delete: `scripts/types.ts`
 
 **Interfaces:**
+
 - Consumes: all schemas and inferred types from Tasks 1–2
 - Produces: `readJsonFile<Schema extends z.ZodType>(filePath: string, schema: Schema): z.output<Schema>`
 - Produces: `parseJsonValue<Schema extends z.ZodType>(source: string, schema: Schema): z.output<Schema>` for CLI JSON values
@@ -723,11 +717,7 @@ function parseJson(source: string, sourceName: string): unknown {
   }
 }
 
-function validateJson<Schema extends z.ZodType>(
-  value: unknown,
-  schema: Schema,
-  sourceName: string,
-): z.output<Schema> {
+function validateJson<Schema extends z.ZodType>(value: unknown, schema: Schema, sourceName: string): z.output<Schema> {
   const result = schema.safeParse(value);
   if (!result.success) {
     throw new Error(`Invalid JSON in ${sourceName}:\n${z.prettifyError(result.error)}`);
@@ -735,17 +725,11 @@ function validateJson<Schema extends z.ZodType>(
   return result.data;
 }
 
-export function readJsonFile<Schema extends z.ZodType>(
-  filePath: string,
-  schema: Schema,
-): z.output<Schema> {
+export function readJsonFile<Schema extends z.ZodType>(filePath: string, schema: Schema): z.output<Schema> {
   return validateJson(parseJson(fs.readFileSync(filePath, 'utf-8'), filePath), schema, filePath);
 }
 
-export function parseJsonValue<Schema extends z.ZodType>(
-  source: string,
-  schema: Schema,
-): z.output<Schema> {
+export function parseJsonValue<Schema extends z.ZodType>(source: string, schema: Schema): z.output<Schema> {
   return validateJson(parseJson(source, 'command-line value'), schema, 'command-line value');
 }
 ```
@@ -815,11 +799,7 @@ import { readJsonFile } from './read_json';
 In `scripts/bump_attribute_changelog.ts`, import:
 
 ```ts
-import {
-  attributeSchema,
-  type AttributeJson,
-  type ChangelogEntry,
-} from '../schemas';
+import { attributeSchema, type AttributeJson, type ChangelogEntry } from '../schemas';
 import { readJsonFile } from './read_json';
 ```
 
@@ -948,6 +928,7 @@ git commit -m "ref(scripts): validate model JSON with shared schemas"
 ### Task 4: Generate Draft 7 schemas and enforce Zod/AJV parity
 
 **Files:**
+
 - Create: `schemas/artifacts.ts`
 - Create: `scripts/generate_schemas.ts`
 - Modify: `scripts/generate.ts`
@@ -962,6 +943,7 @@ git commit -m "ref(scripts): validate model JSON with shared schemas"
 - Create: `test/op.test.ts`
 
 **Interfaces:**
+
 - Consumes: canonical schemas from Tasks 1–2
 - Produces: `schemaArtifacts`
 - Produces: `generateSchemas(outputDirectory?: string): void`
@@ -995,8 +977,7 @@ const expectedMetadata: Record<string, { title: string; description?: string }> 
   },
   'attribute_transformation.schema.json': {
     title: 'Sentry Attribute Transformation Schema',
-    description:
-      'Describes how one or more deprecated attributes are transformed into replacement attributes',
+    description: 'Describes how one or more deprecated attributes are transformed into replacement attributes',
   },
 };
 
@@ -1097,9 +1078,7 @@ import path from 'node:path';
 import { z } from 'zod';
 import { schemaArtifacts } from '../schemas/artifacts';
 
-export function generateSchemas(
-  outputDirectory = path.join(__dirname, '..', 'schemas'),
-): void {
+export function generateSchemas(outputDirectory = path.join(__dirname, '..', 'schemas')): void {
   fs.mkdirSync(outputDirectory, { recursive: true });
 
   for (const { fileName, schema } of schemaArtifacts) {
@@ -1108,10 +1087,7 @@ export function generateSchemas(
       reused: 'ref',
       unrepresentable: 'throw',
     });
-    fs.writeFileSync(
-      path.join(outputDirectory, fileName),
-      `${JSON.stringify(jsonSchema, null, 2)}\n`,
-    );
+    fs.writeFileSync(path.join(outputDirectory, fileName), `${JSON.stringify(jsonSchema, null, 2)}\n`);
   }
 }
 ```
@@ -1397,12 +1373,14 @@ git commit -m "feat(schema): generate Draft 7 artifacts from Zod"
 ### Task 5: Share schemas with Astro and complete CI/documentation integration
 
 **Files:**
+
 - Modify: `docs/src/content.config.ts`
 - Modify: `.github/workflows/build.yml`
 - Modify: `CONTRIBUTING.md`
 - Modify: `docs/README.md`
 
 **Interfaces:**
+
 - Consumes: canonical schemas and inferred types from Tasks 1–2
 - Produces: unchanged Astro collection names and page-facing type aliases
 
@@ -1413,13 +1391,7 @@ Replace `docs/src/content.config.ts` with:
 ```ts
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import {
-  attributeSchema,
-  descriptionSchema,
-  measurementSchema,
-  nameSchema,
-  opSchema,
-} from '../../schemas';
+import { attributeSchema, descriptionSchema, measurementSchema, nameSchema, opSchema } from '../../schemas';
 
 const attributes = defineCollection({
   loader: glob({ pattern: '**/*.json', base: '../model/attributes' }),
@@ -1475,9 +1447,9 @@ Expected: Astro and Pagefind complete successfully; every content collection val
 In `.github/workflows/build.yml`, add after the lint step in the `test` job:
 
 ```yaml
-      - name: Build docs
-        if: matrix.os == 'ubuntu-latest'
-        run: yarn docs:build
+- name: Build docs
+  if: matrix.os == 'ubuntu-latest'
+  run: yarn docs:build
 ```
 
 The schema/model Vitest coverage continues to run on both Ubuntu and Windows, while the complete Astro/Pagefind build runs once on Ubuntu.
@@ -1531,10 +1503,12 @@ git commit -m "ref(docs): consume canonical model schemas"
 ### Task 6: Run full verification and review generated compatibility
 
 **Files:**
+
 - Verify: all files changed in Tasks 1–5
 - Modify only if verification exposes a scoped defect
 
 **Interfaces:**
+
 - Consumes: the completed schema, loader, generator, docs, and CI integration
 - Produces: a clean, implementation-ready branch
 
@@ -1616,4 +1590,3 @@ git commit -m "test(schema): verify generated schema compatibility"
 ```
 
 Skip this commit when verification required no additional changes.
-
