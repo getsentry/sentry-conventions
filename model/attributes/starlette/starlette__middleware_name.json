@@ -1,0 +1,23 @@
+{
+  "key": "starlette.middleware_name",
+  "brief": "The name of the Starlette middleware.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "AuthenticationMiddleware",
+  "alias": ["middleware.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "middleware.name",
+    "reason": "This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added starlette.middleware_name attribute, deprecated in favor of middleware.name"
+    }
+  ]
+}
