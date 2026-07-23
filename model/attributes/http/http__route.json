@@ -15,7 +15,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [505, 0],
+      "prs": [505, 521],
       "description": "Added multiple examples, removed alias to `url.template`, added additional context"
     },
     {

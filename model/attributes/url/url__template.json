@@ -15,7 +15,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [505],
+      "prs": [505, 521],
       "description": "Added multiple examples, removed alias to `http.route`, added additional context"
     },
     {
