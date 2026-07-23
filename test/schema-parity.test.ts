@@ -75,7 +75,12 @@ const attributeFixtures = [
   { ...baseAttribute, type: 'string[]', examples: [[]] },
   { ...baseAttribute, key: 'test.<key>', has_dynamic_suffix: true },
   { ...baseAttribute, key: 'test.<key>', has_dynamic_suffix: true, example: 'suffix' },
+  { ...baseAttribute, key: 'test.<key>', has_dynamic_suffix: true, examples: ['suffix'] },
   { ...baseAttribute, key: 'test.<key>', has_dynamic_suffix: true, example: 1 },
+  {
+    ...baseAttribute,
+    deprecation: { replacement: 'test.replacement' },
+  },
   {
     ...baseAttribute,
     deprecation: { _status: 'transform', replacement: 'test.replacement' },

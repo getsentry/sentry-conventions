@@ -1,6 +1,6 @@
 # Schema Unification Design
 
-Status: Approved design  
+Status: Approved design
 Issue: [getsentry/sentry-conventions#512](https://github.com/getsentry/sentry-conventions/issues/512)
 
 ## Context
