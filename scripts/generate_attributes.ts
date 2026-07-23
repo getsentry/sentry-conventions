@@ -1,7 +1,8 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { attributeSchema, type AttributeJson, type AttributeValue } from '../schemas';
 import { getAttributeExamples } from './attribute_examples';
-import type { AttributeJson } from './types';
+import { readJsonFile } from './read_json';
 
 interface GenerateAttributesOptions {
   attributesDir: string;
@@ -67,7 +68,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
 
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    const attributeJson = readJsonFile(attributePath, attributeSchema);
     const isDeprecated = !!attributeJson.deprecation;
 
     allAttributesPartial.push({
@@ -122,7 +123,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   let individualConstants = '';
 
   // Generate individual attribute constants with documentation AND build the explicit type map
-  for (const { file, key, constantName, attributeJson, _isDeprecated } of allAttributes) {
+  for (const { file, key, constantName, attributeJson } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const examples = getAttributeExamples(attributeJson);
     const visibility = getVisibility(attributeJson);
@@ -439,7 +440,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   // First pass: collect deprecated attributes
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    const attributeJson = readJsonFile(attributePath, attributeSchema);
 
     if (attributeJson.deprecation) {
       const constantName = getConstantName(attributeJson.key, true);
@@ -478,7 +479,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   // Generate class attributes instead of top-level constants
   for (const file of attributeFiles) {
     const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    const attributeJson = readJsonFile(attributePath, attributeSchema);
 
     const { key, brief, type, apply_scrubbing, is_in_otel, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const examples = getAttributeExamples(attributeJson);
@@ -564,7 +565,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
     if (examples !== undefined) {
       const pythonExample = convertToPythonLiteral(examples[0]);
       metadataDict += `        example=${pythonExample},\n`;
-      if (attributeJson.examples !== undefined) {
+      if ('examples' in attributeJson && attributeJson.examples !== undefined) {
         metadataDict += `        examples=${convertToPythonLiteral(examples)},\n`;
       }
     }
@@ -717,7 +718,7 @@ function getAttributeTypeEnum(type: AttributeJson['type']): string {
   }
 }
 
-function convertToPythonLiteral(value: AttributeJson['example']): string {
+function convertToPythonLiteral(value: AttributeValue | AttributeValue[] | undefined): string {
   if (value === null) return 'None';
   if (typeof value === 'boolean') return value ? 'True' : 'False';
   if (typeof value === 'string') return JSON.stringify(value);
@@ -870,7 +871,7 @@ function generateMetadataDict(
 
     if (examples !== undefined) {
       metadataDict += `    example: ${JSON.stringify(examples[0])},\n`;
-      if (attributeJson.examples !== undefined) {
+      if ('examples' in attributeJson && attributeJson.examples !== undefined) {
         metadataDict += `    examples: ${JSON.stringify(examples)},\n`;
       }
     }

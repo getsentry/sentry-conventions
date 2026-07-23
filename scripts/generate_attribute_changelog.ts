@@ -1,7 +1,10 @@
 import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import type { AttributeJson } from './types';
+import { attributeSchema, type ChangelogEntry } from '../schemas';
+import { readJsonFile } from './read_json';
+
+export type { ChangelogEntry } from '../schemas';
 
 /**
  * Full commit hashes to ignore when building changelogs (e.g. the commit that
@@ -20,12 +23,6 @@ export function isCommitIgnored(hash: string): boolean {
     if (h === i || h.startsWith(i)) return true;
   }
   return false;
-}
-
-export interface ChangelogEntry {
-  version: string;
-  prs?: number[];
-  description?: string;
 }
 
 /**
@@ -74,7 +71,7 @@ export async function generateAttributeChangelog() {
       continue;
     }
 
-    const attributeJson = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as AttributeJson;
+    const attributeJson = readJsonFile(filePath, attributeSchema);
     attributeJson.changelog = mergeChangelogs(attributeJson.changelog ?? [], changelog, skippedPrs);
     fs.writeFileSync(filePath, `${JSON.stringify(attributeJson, null, 2)}\n`);
     updatedCount++;
