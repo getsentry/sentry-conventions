@@ -4709,6 +4709,8 @@ export type DB_REDIS_CONNECTION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link REDIS_KEY} `redis.key`
+ *
  * @example "user:2047:city"
  */
 export const DB_REDIS_KEY = 'db.redis.key';
@@ -12712,6 +12714,30 @@ export const REACT_VERSION = 'react.version';
  */
 export type REACT_VERSION_TYPE = string;
 
+// Path: model/attributes/redis/redis__key.json
+
+/**
+ * The key the Redis command is operating on. `redis.key`
+ *
+ * Attribute Value Type: `string` {@link REDIS_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_REDIS_KEY} `db.redis.key`
+ *
+ * @deprecated Use {@link DB_REDIS_KEY} (db.redis.key) instead - This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.
+ * @example "user:2047:city"
+ */
+export const REDIS_KEY = 'redis.key';
+
+/**
+ * Type for {@link REDIS_KEY} redis.key
+ */
+export type REDIS_KEY_TYPE = string;
+
 // Path: model/attributes/release.json
 
 /**
@@ -17633,6 +17659,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   profile_id: 'string',
   'query.<key>': 'string',
   'react.version': 'string',
+  'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
   replay_id: 'string',
@@ -18402,6 +18429,7 @@ export type AttributeName =
   | typeof PROFILE_ID
   | typeof QUERY_KEY
   | typeof REACT_VERSION
+  | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
   | typeof REPLAY_ID
@@ -21499,7 +21527,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'user:2047:city',
-    changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
+    aliases: ['redis.key'],
+    changelog: [
+      { version: 'next', description: 'Added redis.key as an alias' },
+      { version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' },
+    ],
   },
   'db.redis.parameters': {
     brief: 'The array of command parameters given to a redis command.',
@@ -26551,6 +26583,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18.2.0',
     changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
   },
+  'redis.key': {
+    brief: 'The key the Redis command is operating on.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user:2047:city',
+    deprecation: {
+      replacement: 'db.redis.key',
+      reason: 'This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.',
+      status: 'backfill',
+    },
+    aliases: ['db.redis.key'],
+    changelog: [{ version: 'next', description: 'Added redis.key attribute, deprecated in favor of db.redis.key' }],
+  },
   release: {
     brief: 'The sentry release.',
     type: 'string',
@@ -29653,6 +29702,7 @@ export type Attributes = {
   [PROFILE_ID]?: PROFILE_ID_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
+  [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;

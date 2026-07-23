@@ -270,6 +270,7 @@ class _AttributeNamesMeta(type):
         "PERFORMANCE_TIMEORIGIN",
         "PROFILE_ID",
         "QUERY_KEY",
+        "REDIS_KEY",
         "RELEASE",
         "REPLAY_ID",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
@@ -2994,6 +2995,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: redis.key
     Example: "user:2047:city"
     """
 
@@ -7465,6 +7467,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "18.2.0"
+    """
+
+    # Path: model/attributes/redis/redis__key.json
+    REDIS_KEY: Literal["redis.key"] = "redis.key"
+    """The key the Redis command is operating on.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: db.redis.key
+    DEPRECATED: Use db.redis.key instead - This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.
+    Example: "user:2047:city"
     """
 
     # Path: model/attributes/release.json
@@ -13006,7 +13021,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="user:2047:city",
+        aliases=["redis.key"],
         changelog=[
+            ChangelogEntry(version="next", description="Added redis.key as an alias"),
             ChangelogEntry(
                 version="0.6.0", prs=[326], description="Added db.redis.key attribute"
             ),
@@ -18425,6 +18442,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "redis.key": AttributeMetadata(
+        brief="The key the Redis command is operating on.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user:2047:city",
+        deprecation=DeprecationInfo(
+            replacement="db.redis.key",
+            reason="This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["db.redis.key"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added redis.key attribute, deprecated in favor of db.redis.key",
+            ),
+        ],
+    ),
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
@@ -21625,6 +21662,7 @@ Attributes = TypedDict(
         "profile_id": str,
         "query.<key>": str,
         "react.version": str,
+        "redis.key": str,
         "release": str,
         "remix.action_form_data.<key>": str,
         "replay_id": str,
