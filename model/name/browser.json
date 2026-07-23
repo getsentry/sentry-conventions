@@ -13,7 +13,7 @@
       "name": "Navigation",
       "brief": "Client-side browser history change in a web application.",
       "is_in_otel": false,
-      "ops": ["navigation"],
+      "ops": ["navigation", "navigation.redirect"],
       "templates": ["{{url.template}}", "Navigation"],
       "examples": ["/users/:id", "/home", "Navigation"]
     }
