@@ -2826,6 +2826,95 @@ export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
  */
 export type BLOCKED_MAIN_THREAD_TYPE = boolean;
 
+// Path: model/attributes/browser/browser__bfcache__frame.json
+
+/**
+ * Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame. `browser.bfcache.frame`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_FRAME_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "top"
+ * @example "child"
+ */
+export const BROWSER_BFCACHE_FRAME = 'browser.bfcache.frame';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_FRAME} browser.bfcache.frame
+ */
+export type BROWSER_BFCACHE_FRAME_TYPE = string;
+
+// Path: model/attributes/browser/browser__bfcache__not_restored_reason_count.json
+
+/**
+ * The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers). `browser.bfcache.not_restored_reason_count`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 2
+ */
+export const BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT = 'browser.bfcache.not_restored_reason_count';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT} browser.bfcache.not_restored_reason_count
+ */
+export type BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE = number;
+
+// Path: model/attributes/browser/browser__bfcache__outcome.json
+
+/**
+ * Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded. `browser.bfcache.outcome`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_OUTCOME_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "hit"
+ * @example "miss"
+ */
+export const BROWSER_BFCACHE_OUTCOME = 'browser.bfcache.outcome';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_OUTCOME} browser.bfcache.outcome
+ */
+export type BROWSER_BFCACHE_OUTCOME_TYPE = string;
+
+// Path: model/attributes/browser/browser__bfcache__reason.json
+
+/**
+ * A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only. `browser.bfcache.reason`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_REASON_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "unload-listener"
+ * @example "websocket"
+ * @example "idbversionchangeevent"
+ * @example "response-cache-control-no-store"
+ */
+export const BROWSER_BFCACHE_REASON = 'browser.bfcache.reason';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_REASON} browser.bfcache.reason
+ */
+export type BROWSER_BFCACHE_REASON_TYPE = string;
+
 // Path: model/attributes/browser/browser__name.json
 
 /**
@@ -17313,6 +17402,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.step_functions.activity.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
+  'browser.bfcache.frame': 'string',
+  'browser.bfcache.not_restored_reason_count': 'integer',
+  'browser.bfcache.outcome': 'string',
+  'browser.bfcache.reason': 'string',
   'browser.name': 'string',
   'browser.performance.navigation.activation_start': 'double',
   'browser.performance.time_origin': 'double',
@@ -18087,6 +18180,10 @@ export type AttributeName =
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
+  | typeof BROWSER_BFCACHE_FRAME
+  | typeof BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT
+  | typeof BROWSER_BFCACHE_OUTCOME
+  | typeof BROWSER_BFCACHE_REASON
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
   | typeof BROWSER_PERFORMANCE_TIME_ORIGIN
@@ -20562,6 +20659,60 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
+  },
+  'browser.bfcache.frame': {
+    brief:
+      "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'top',
+    examples: ['top', 'child'],
+    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
+  },
+  'browser.bfcache.not_restored_reason_count': {
+    brief:
+      'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2,
+    examples: [2],
+    changelog: [
+      { version: 'next', prs: [513], description: 'Added browser.bfcache.not_restored_reason_count attribute' },
+    ],
+  },
+  'browser.bfcache.outcome': {
+    brief:
+      "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'hit',
+    examples: ['hit', 'miss'],
+    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.outcome attribute' }],
+  },
+  'browser.bfcache.reason': {
+    brief:
+      'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'unload-listener',
+    examples: ['unload-listener', 'websocket', 'idbversionchangeevent', 'response-cache-control-no-store'],
+    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.reason attribute' }],
   },
   'browser.name': {
     brief: 'The name of the browser.',
@@ -29457,6 +29608,10 @@ export type Attributes = {
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
+  [BROWSER_BFCACHE_FRAME]?: BROWSER_BFCACHE_FRAME_TYPE;
+  [BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT]?: BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE;
+  [BROWSER_BFCACHE_OUTCOME]?: BROWSER_BFCACHE_OUTCOME_TYPE;
+  [BROWSER_BFCACHE_REASON]?: BROWSER_BFCACHE_REASON_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
   [BROWSER_PERFORMANCE_TIME_ORIGIN]?: BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE;

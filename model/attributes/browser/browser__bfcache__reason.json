@@ -1,0 +1,18 @@
+{
+  "key": "browser.bfcache.reason",
+  "brief": "A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["unload-listener", "websocket", "idbversionchangeevent", "response-cache-control-no-store"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [513],
+      "description": "Added browser.bfcache.reason attribute"
+    }
+  ]
+}
