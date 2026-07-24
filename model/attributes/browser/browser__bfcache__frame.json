@@ -3,7 +3,7 @@
   "brief": "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "never"
+    "key": "manual"
   },
   "is_in_otel": false,
   "visibility": "public",

@@ -1993,7 +1993,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "top"
@@ -2007,7 +2007,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).
 
     Type: int
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: 2
@@ -2020,7 +2020,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "hit"
@@ -2032,7 +2032,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "unload-listener"
@@ -12211,7 +12211,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.bfcache.frame": AttributeMetadata(
         brief="Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="top",
@@ -12227,7 +12227,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.bfcache.not_restored_reason_count": AttributeMetadata(
         brief="The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).",
         type=AttributeType.INTEGER,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2,
@@ -12243,7 +12243,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.bfcache.outcome": AttributeMetadata(
         brief="Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="hit",
@@ -12259,7 +12259,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.bfcache.reason": AttributeMetadata(
         brief="A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="unload-listener",

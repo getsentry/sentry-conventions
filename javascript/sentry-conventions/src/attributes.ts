@@ -2905,7 +2905,7 @@ export type BLOCKED_MAIN_THREAD_TYPE = boolean;
  *
  * Attribute Value Type: `string` {@link BROWSER_BFCACHE_FRAME_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2927,7 +2927,7 @@ export type BROWSER_BFCACHE_FRAME_TYPE = string;
  *
  * Attribute Value Type: `number` {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2948,7 +2948,7 @@ export type BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link BROWSER_BFCACHE_OUTCOME_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2970,7 +2970,7 @@ export type BROWSER_BFCACHE_OUTCOME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link BROWSER_BFCACHE_REASON_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -21030,7 +21030,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
     type: 'string',
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -21043,7 +21043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).',
     type: 'integer',
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -21058,7 +21058,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
     type: 'string',
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -21071,7 +21071,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
     type: 'string',
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
