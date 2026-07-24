@@ -3,53 +3,33 @@
   "type": "object",
   "properties": {
     "key": {
-      "$ref": "#/definitions/__schema0"
+      "type": "string",
+      "description": "The name of the measurement as sent in code, for ex. lcp"
     },
     "full_name": {
-      "$ref": "#/definitions/__schema1"
+      "type": "string",
+      "description": "The full name of the measurement, for ex. largest contentful paint"
     },
     "brief": {
-      "$ref": "#/definitions/__schema2"
+      "type": "string",
+      "description": "A description of the measurement"
     },
     "unit": {
-      "$ref": "#/definitions/__schema3"
+      "type": "string",
+      "description": "The unit of the measurement"
     },
     "platform": {
-      "$ref": "#/definitions/__schema4"
+      "type": "string",
+      "enum": ["web", "mobile"],
+      "description": "What platform the measurement is collected in"
     },
     "attribute": {
-      "$ref": "#/definitions/__schema5"
+      "type": "string",
+      "description": "The name of the attribute corresponding to this measurement"
     }
   },
   "required": ["key", "full_name", "unit", "platform"],
   "additionalProperties": false,
   "title": "Sentry Span Measurement Schema",
-  "description": "Describes an measurement and it's fields",
-  "definitions": {
-    "__schema0": {
-      "type": "string",
-      "description": "The name of the measurement as sent in code, for ex. lcp"
-    },
-    "__schema1": {
-      "type": "string",
-      "description": "The full name of the measurement, for ex. largest contentful paint"
-    },
-    "__schema2": {
-      "type": "string",
-      "description": "A description of the measurement"
-    },
-    "__schema3": {
-      "type": "string",
-      "description": "The unit of the measurement"
-    },
-    "__schema4": {
-      "type": "string",
-      "enum": ["web", "mobile"],
-      "description": "What platform the measurement is collected in"
-    },
-    "__schema5": {
-      "type": "string",
-      "description": "The name of the attribute corresponding to this measurement"
-    }
-  }
+  "description": "Describes an measurement and it's fields"
 }

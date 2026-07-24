@@ -74,6 +74,7 @@ describe('generateSchemas', () => {
       const secondText = fs.readFileSync(path.join(second, fileName), 'utf-8');
       expect(firstText).toBe(secondText);
       expect(firstText.endsWith('\n')).toBe(true);
+      expect(firstText).not.toMatch(/#\/definitions\/__schema\d+/);
       const schema = JSON.parse(firstText);
       expect(schema.$schema).toBe('http://json-schema.org/draft-07/schema#');
       const rootSchema = resolveRootSchema(schema);
@@ -90,7 +91,7 @@ describe('generateSchemas', () => {
 
       if (fileName === 'attribute.schema.json') {
         // Keep the required structural union, but catch accidental combinatorial expansion.
-        expect(firstText.split('\n').length).toBeLessThan(3000);
+        expect(firstText.split('\n').length).toBeLessThan(6000);
       }
     }
   });

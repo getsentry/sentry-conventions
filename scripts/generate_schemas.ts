@@ -10,7 +10,7 @@ export function generateSchemas(outputDirectory = path.join(__dirname, '..', 'sc
     const { fileName, schema } = artifact;
     const jsonSchema = z.toJSONSchema(schema, {
       target: 'draft-07',
-      reused: 'ref',
+      reused: 'inline',
       unrepresentable: 'throw',
     });
     const output =

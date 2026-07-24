@@ -3,39 +3,15 @@
   "type": "object",
   "properties": {
     "id": {
-      "$ref": "#/definitions/__schema0"
-    },
-    "brief": {
-      "$ref": "#/definitions/__schema1"
-    },
-    "inputs": {
-      "$ref": "#/definitions/__schema2"
-    },
-    "outputs": {
-      "$ref": "#/definitions/__schema5"
-    },
-    "actions": {
-      "$ref": "#/definitions/__schema6"
-    },
-    "examples": {
-      "$ref": "#/definitions/__schema8"
-    }
-  },
-  "required": ["id", "brief", "inputs", "outputs", "actions", "examples"],
-  "additionalProperties": false,
-  "title": "Sentry Attribute Transformation Schema",
-  "description": "Describes how one or more deprecated attributes are transformed into replacement attributes",
-  "definitions": {
-    "__schema0": {
       "type": "string",
       "pattern": "^[a-z0-9_]+$",
       "description": "Stable identifier for the transformation"
     },
-    "__schema1": {
+    "brief": {
       "type": "string",
       "description": "Short explanation of when and why this transformation is applied"
     },
-    "__schema2": {
+    "inputs": {
       "minItems": 1,
       "type": "array",
       "items": {
@@ -43,27 +19,7 @@
       },
       "description": "Attributes consumed by this transformation"
     },
-    "AttributeReference": {
-      "type": "object",
-      "properties": {
-        "attribute": {
-          "$ref": "#/definitions/__schema3"
-        },
-        "brief": {
-          "$ref": "#/definitions/__schema4"
-        }
-      },
-      "required": ["attribute"],
-      "additionalProperties": false,
-      "title": "AttributeReference"
-    },
-    "__schema3": {
-      "type": "string"
-    },
-    "__schema4": {
-      "type": "string"
-    },
-    "__schema5": {
+    "outputs": {
       "minItems": 1,
       "type": "array",
       "items": {
@@ -71,58 +27,66 @@
       },
       "description": "Attributes produced by this transformation"
     },
-    "__schema6": {
+    "actions": {
       "minItems": 1,
       "type": "array",
       "items": {
-        "$ref": "#/definitions/__schema7"
+        "type": "string"
       },
       "description": "Ordered description of the value transformations to apply. This describes behavior; Relay owns the implementation."
     },
-    "__schema7": {
-      "type": "string"
-    },
-    "__schema8": {
+    "examples": {
       "minItems": 1,
       "type": "array",
       "items": {
         "$ref": "#/definitions/TransformationExample"
       },
       "description": "Examples showing input attributes and expected output attributes"
+    }
+  },
+  "required": ["id", "brief", "inputs", "outputs", "actions", "examples"],
+  "additionalProperties": false,
+  "title": "Sentry Attribute Transformation Schema",
+  "description": "Describes how one or more deprecated attributes are transformed into replacement attributes",
+  "definitions": {
+    "AttributeReference": {
+      "type": "object",
+      "properties": {
+        "attribute": {
+          "type": "string"
+        },
+        "brief": {
+          "type": "string"
+        }
+      },
+      "required": ["attribute"],
+      "additionalProperties": false,
+      "title": "AttributeReference"
     },
     "TransformationExample": {
       "type": "object",
       "properties": {
         "name": {
-          "$ref": "#/definitions/__schema9"
+          "type": "string"
         },
         "input": {
-          "$ref": "#/definitions/__schema10"
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
         },
         "output": {
-          "$ref": "#/definitions/__schema11"
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
         }
       },
       "required": ["name", "input", "output"],
       "additionalProperties": false,
       "title": "TransformationExample"
-    },
-    "__schema9": {
-      "type": "string"
-    },
-    "__schema10": {
-      "type": "object",
-      "propertyNames": {
-        "type": "string"
-      },
-      "additionalProperties": {}
-    },
-    "__schema11": {
-      "type": "object",
-      "propertyNames": {
-        "type": "string"
-      },
-      "additionalProperties": {}
     }
   }
 }
