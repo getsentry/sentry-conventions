@@ -14415,6 +14415,27 @@ export const SENTRY_REPORT_EVENT = 'sentry.report_event';
  */
 export type SENTRY_REPORT_EVENT_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__sample_rate.json
+
+/**
+ * The sample rate that was locally applied to a span by the SDK. Only set on segment span. `sentry.sample_rate`
+ *
+ * Attribute Value Type: `number` {@link SENTRY_SAMPLE_RATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0.1
+ */
+export const SENTRY_SAMPLE_RATE = 'sentry.sample_rate';
+
+/**
+ * Type for {@link SENTRY_SAMPLE_RATE} sentry.sample_rate
+ */
+export type SENTRY_SAMPLE_RATE_TYPE = number;
+
 // Path: model/attributes/sentry/sentry__sdk__integrations.json
 
 /**
@@ -17835,6 +17856,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.replay_id': 'string',
   'sentry.replay_is_buffering': 'boolean',
   'sentry.report_event': 'string',
+  'sentry.sample_rate': 'double',
   'sentry.sdk.integrations': 'string[]',
   'sentry.sdk.name': 'string',
   'sentry.sdk.version': 'string',
@@ -18609,6 +18631,7 @@ export type AttributeName =
   | typeof SENTRY_REPLAY_ID
   | typeof SENTRY_REPLAY_IS_BUFFERING
   | typeof SENTRY_REPORT_EVENT
+  | typeof SENTRY_SAMPLE_RATE
   | typeof SENTRY_SDK_INTEGRATIONS
   | typeof SENTRY_SDK_NAME
   | typeof SENTRY_SDK_VERSION
@@ -27723,6 +27746,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
   },
+  'sentry.sample_rate': {
+    brief: 'The sample rate that was locally applied to a span by the SDK. Only set on segment span.',
+    type: 'double',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.1,
+    examples: [0.1],
+    changelog: [{ version: 'next', prs: [528], description: 'Added sentry.sample_rate attribute' }],
+    additionalContext: [
+      'This attribute is only set on segment spans if the span was sampled locally. The attribute is not set, if a trace is continued from an upstream service.',
+    ],
+  },
   'sentry.sdk.integrations': {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
@@ -29979,6 +30017,7 @@ export type Attributes = {
   [SENTRY_REPLAY_ID]?: SENTRY_REPLAY_ID_TYPE;
   [SENTRY_REPLAY_IS_BUFFERING]?: SENTRY_REPLAY_IS_BUFFERING_TYPE;
   [SENTRY_REPORT_EVENT]?: SENTRY_REPORT_EVENT_TYPE;
+  [SENTRY_SAMPLE_RATE]?: SENTRY_SAMPLE_RATE_TYPE;
   [SENTRY_SDK_INTEGRATIONS]?: SENTRY_SDK_INTEGRATIONS_TYPE;
   [SENTRY_SDK_NAME]?: SENTRY_SDK_NAME_TYPE;
   [SENTRY_SDK_VERSION]?: SENTRY_SDK_VERSION_TYPE;

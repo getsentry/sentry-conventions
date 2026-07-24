@@ -8403,6 +8403,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "pagehide"
     """
 
+    # Path: model/attributes/sentry/sentry__sample_rate.json
+    SENTRY_SAMPLE_RATE: Literal["sentry.sample_rate"] = "sentry.sample_rate"
+    """The sample rate that was locally applied to a span by the SDK. Only set on segment span.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0.1
+    """
+
     # Path: model/attributes/sentry/sentry__sdk__integrations.json
     SENTRY_SDK_INTEGRATIONS: Literal["sentry.sdk.integrations"] = (
         "sentry.sdk.integrations"
@@ -19576,6 +19587,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "sentry.sample_rate": AttributeMetadata(
+        brief="The sample rate that was locally applied to a span by the SDK. Only set on segment span.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0.1,
+        examples=[0.1],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[528],
+                description="Added sentry.sample_rate attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute is only set on segment spans if the span was sampled locally. The attribute is not set, if a trace is continued from an upstream service."
+        ],
+    ),
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
         type=AttributeType.STRING_ARRAY,
@@ -21892,6 +21922,7 @@ Attributes = TypedDict(
         "sentry.replay_id": str,
         "sentry.replay_is_buffering": bool,
         "sentry.report_event": str,
+        "sentry.sample_rate": float,
         "sentry.sdk.integrations": List[str],
         "sentry.sdk.name": str,
         "sentry.sdk.version": str,
