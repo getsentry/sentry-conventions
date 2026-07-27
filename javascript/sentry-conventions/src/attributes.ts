@@ -11310,7 +11310,7 @@ export type METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link LITESTAR_MIDDLEWARE_NAME} `litestar.middleware_name`, {@link STARLETTE_MIDDLEWARE_NAME} `starlette.middleware_name`
+ * Aliases: {@link STARLITE_MIDDLEWARE_NAME} `starlite.middleware_name`, {@link LITESTAR_MIDDLEWARE_NAME} `litestar.middleware_name`, {@link STARLETTE_MIDDLEWARE_NAME} `starlette.middleware_name`
  *
  * @example "AuthenticationMiddleware"
  */
@@ -15292,6 +15292,30 @@ export const STARLETTE_MIDDLEWARE_NAME = 'starlette.middleware_name';
  */
 export type STARLETTE_MIDDLEWARE_NAME_TYPE = string;
 
+// Path: model/attributes/starlite/starlite__middleware_name.json
+
+/**
+ * The name of the Starlite middleware. `starlite.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link STARLITE_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const STARLITE_MIDDLEWARE_NAME = 'starlite.middleware_name';
+
+/**
+ * Type for {@link STARLITE_MIDDLEWARE_NAME} starlite.middleware_name
+ */
+export type STARLITE_MIDDLEWARE_NAME_TYPE = string;
+
 // Path: model/attributes/state/state__type.json
 
 /**
@@ -17874,6 +17898,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   stall_percentage: 'double',
   stall_total_time: 'double',
   'starlette.middleware_name': 'string',
+  'starlite.middleware_name': 'string',
   'state.type': 'string',
   'subprocess.pid': 'integer',
   'thread.id': 'integer',
@@ -18648,6 +18673,7 @@ export type AttributeName =
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
   | typeof STARLETTE_MIDDLEWARE_NAME
+  | typeof STARLITE_MIDDLEWARE_NAME
   | typeof STATE_TYPE
   | typeof SUBPROCESS_PID
   | typeof THREAD_ID
@@ -25871,9 +25897,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'AuthenticationMiddleware',
-    aliases: ['litestar.middleware_name', 'starlette.middleware_name'],
+    aliases: ['starlite.middleware_name', 'litestar.middleware_name', 'starlette.middleware_name'],
     changelog: [
-      { version: 'next', description: 'Added litestar.middleware_name and starlette.middleware_name as aliases' },
+      {
+        version: 'next',
+        description:
+          'Added starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases',
+      },
       { version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' },
     ],
   },
@@ -28293,6 +28323,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  'starlite.middleware_name': {
+    brief: 'The name of the Starlite middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    examples: ['AuthenticationMiddleware'],
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [{ version: 'next', prs: [519], description: 'Added starlite.middleware_name attribute' }],
+  },
   'state.type': {
     brief: 'The type of state management library',
     type: 'string',
@@ -30018,6 +30067,7 @@ export type Attributes = {
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
   [STARLETTE_MIDDLEWARE_NAME]?: STARLETTE_MIDDLEWARE_NAME_TYPE;
+  [STARLITE_MIDDLEWARE_NAME]?: STARLITE_MIDDLEWARE_NAME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
   [SUBPROCESS_PID]?: SUBPROCESS_PID_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
