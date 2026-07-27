@@ -4145,7 +4145,7 @@ export type CLS_SOURCE_KEY_TYPE = string;
  * Aliases: {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`, {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
  *
  * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead
- * @example 2
+ * @example "DEADLINE_EXCEEDED"
  */
 export const CODE = 'code';
 
@@ -21361,8 +21361,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2,
-    examples: [2],
+    example: 'DEADLINE_EXCEEDED',
+    examples: ['DEADLINE_EXCEEDED'],
     deprecation: {
       replacement: 'rpc.response.status_code',
       status: 'backfill',
@@ -27032,7 +27032,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'DEADLINE_EXCEEDED',
     aliases: ['code', 'rpc.grpc.status_code'],
     changelog: [
-      { version: 'next', description: 'Added rpc.grpc.status_code as an alias' },
+      { version: 'next', description: 'Added code and rpc.grpc.status_code as aliases' },
       { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
     ],
   },

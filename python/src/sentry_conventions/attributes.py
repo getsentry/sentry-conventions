@@ -2786,7 +2786,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: rpc.grpc.status_code, rpc.response.status_code
     DEPRECATED: Use rpc.response.status_code instead
-    Example: 2
+    Example: "DEADLINE_EXCEEDED"
     """
 
     # Path: model/attributes/connection/connection__rtt.json
@@ -12873,8 +12873,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example=2,
-        examples=[2],
+        example="DEADLINE_EXCEEDED",
+        examples=["DEADLINE_EXCEEDED"],
         deprecation=DeprecationInfo(
             replacement="rpc.response.status_code", status=DeprecationStatus.BACKFILL
         ),
@@ -18810,7 +18810,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["code", "rpc.grpc.status_code"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added rpc.grpc.status_code as an alias"
+                version="next",
+                description="Added code and rpc.grpc.status_code as aliases",
             ),
             ChangelogEntry(
                 version="0.7.0",

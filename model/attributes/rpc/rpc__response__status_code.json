@@ -12,7 +12,7 @@
   "changelog": [
     {
       "version": "next",
-      "description": "Added rpc.grpc.status_code as an alias"
+      "description": "Added code and rpc.grpc.status_code as aliases"
     },
     {
       "version": "0.7.0",
