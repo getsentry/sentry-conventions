@@ -17,7 +17,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [529],
+      "prs": [530],
       "description": "Added query attribute"
     }
   ]

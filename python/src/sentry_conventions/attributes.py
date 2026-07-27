@@ -18628,7 +18628,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["db.query.text", "db.statement"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[529], description="Added query attribute"
+                version="next", prs=[530], description="Added query attribute"
             ),
         ],
     ),

@@ -26841,7 +26841,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['db.query.text', 'db.statement'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added query attribute' }],
+    changelog: [{ version: 'next', prs: [530], description: 'Added query attribute' }],
   },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
