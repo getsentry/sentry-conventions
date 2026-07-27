@@ -8,7 +8,8 @@
   },
   "deprecation": {
     "_status": "backfill",
-    "replacement": "url.query"
+    "replacement": "url.query",
+    "reason": "`url.query` is supported by OTel and conceptually more fitting."
   },
   "alias": ["url.query"],
   "is_in_otel": false,

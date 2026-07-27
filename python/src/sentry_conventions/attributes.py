@@ -5263,7 +5263,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: url.fragment
-    DEPRECATED: Use url.fragment instead
+    DEPRECATED: Use url.fragment instead - `url.fragment` is supported by OTel and conceptually more fitting.
     Example: "#details"
     """
 
@@ -5302,7 +5302,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: url.query
-    DEPRECATED: Use url.query instead
+    DEPRECATED: Use url.query instead - `url.query` is supported by OTel and conceptually more fitting.
     Example: "?foo=bar&bar=baz"
     """
 
@@ -15985,7 +15985,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="#details",
         deprecation=DeprecationInfo(
-            replacement="url.fragment", status=DeprecationStatus.BACKFILL
+            replacement="url.fragment",
+            reason="`url.fragment` is supported by OTel and conceptually more fitting.",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["url.fragment"],
         changelog=[
@@ -16042,7 +16044,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="?foo=bar&bar=baz",
         deprecation=DeprecationInfo(
-            replacement="url.query", status=DeprecationStatus.BACKFILL
+            replacement="url.query",
+            reason="`url.query` is supported by OTel and conceptually more fitting.",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["url.query"],
         changelog=[

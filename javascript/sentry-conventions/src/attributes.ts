@@ -8725,7 +8725,7 @@ export type HTTP_FLAVOR_TYPE = string;
  *
  * Aliases: {@link URL_FRAGMENT} `url.fragment`
  *
- * @deprecated Use {@link URL_FRAGMENT} (url.fragment) instead
+ * @deprecated Use {@link URL_FRAGMENT} (url.fragment) instead - `url.fragment` is supported by OTel and conceptually more fitting.
  * @example "#details"
  */
 export const HTTP_FRAGMENT = 'http.fragment';
@@ -8797,7 +8797,7 @@ export type HTTP_METHOD_TYPE = string;
  *
  * Aliases: {@link URL_QUERY} `url.query`
  *
- * @deprecated Use {@link URL_QUERY} (url.query) instead
+ * @deprecated Use {@link URL_QUERY} (url.query) instead - `url.query` is supported by OTel and conceptually more fitting.
  * @example "?foo=bar&bar=baz"
  */
 export const HTTP_QUERY = 'http.query';
@@ -24332,6 +24332,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '#details',
     deprecation: {
       replacement: 'url.fragment',
+      reason: '`url.fragment` is supported by OTel and conceptually more fitting.',
       status: 'backfill',
     },
     aliases: ['url.fragment'],
@@ -24383,6 +24384,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '?foo=bar&bar=baz',
     deprecation: {
       replacement: 'url.query',
+      reason: '`url.query` is supported by OTel and conceptually more fitting.',
       status: 'backfill',
     },
     aliases: ['url.query'],
