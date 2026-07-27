@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [529],
+      "prs": [537],
       "description": "Added aws_region attribute"
     }
   ]

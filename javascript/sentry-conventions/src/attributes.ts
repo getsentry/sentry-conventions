@@ -20515,7 +20515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['cloud.region'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added aws_region attribute' }],
+    changelog: [{ version: 'next', prs: [537], description: 'Added aws_region attribute' }],
   },
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
