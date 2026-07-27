@@ -5,6 +5,11 @@
   "apply_scrubbing": {
     "key": "auto"
   },
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "url.fragment"
+  },
+  "alias": ["url.fragment"],
   "is_in_otel": false,
   "example": "#details",
   "visibility": "public",

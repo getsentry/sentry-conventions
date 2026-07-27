@@ -221,8 +221,10 @@ class _AttributeNamesMeta(type):
         "HARDWARECONCURRENCY",
         "HTTP_CLIENT_IP",
         "HTTP_FLAVOR",
+        "HTTP_FRAGMENT",
         "HTTP_HOST",
         "HTTP_METHOD",
+        "HTTP_QUERY",
         "_HTTP_REQUEST_METHOD",
         "HTTP_RESPONSE_CONTENT_LENGTH",
         "HTTP_RESPONSE_TRANSFER_SIZE",
@@ -5260,6 +5262,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
+    Aliases: url.fragment
+    DEPRECATED: Use url.fragment instead
     Example: "#details"
     """
 
@@ -5297,6 +5301,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: No
     Visibility: public
+    Aliases: url.query
+    DEPRECATED: Use url.query instead
     Example: "?foo=bar&bar=baz"
     """
 
@@ -9229,6 +9235,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: http.fragment
     Example: "details"
     """
 
@@ -9289,6 +9296,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: http.query
     Example: "foo=bar&bar=baz"
     """
 
@@ -15976,6 +15984,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="#details",
+        deprecation=DeprecationInfo(
+            replacement="url.fragment", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["url.fragment"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16029,6 +16041,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="?foo=bar&bar=baz",
+        deprecation=DeprecationInfo(
+            replacement="url.query", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["url.query"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20634,6 +20650,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="details",
+        aliases=["http.fragment"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20700,6 +20717,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="foo=bar&bar=baz",
+        aliases=["http.query"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
