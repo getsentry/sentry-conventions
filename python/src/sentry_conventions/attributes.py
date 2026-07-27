@@ -186,6 +186,7 @@ class _AttributeNamesMeta(type):
         "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
         "DIST",
+        "DJANGO_FUNCTION_NAME",
         "DJANGO_MIDDLEWARE_NAME",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
@@ -2723,7 +2724,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: code.function.name
+    Aliases: code.function.name, django.function_name
     Example: "server_request"
     """
 
@@ -2735,7 +2736,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: code.function
+    Aliases: code.function, django.function_name
     Example: "server_request"
     """
 
@@ -3576,6 +3577,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: sentry.dist
     DEPRECATED: Use sentry.dist instead - This attribute is being deprecated in favor of sentry.dist.
     Example: "1.0"
+    """
+
+    # Path: model/attributes/django/django__function_name.json
+    DJANGO_FUNCTION_NAME: Literal["django.function_name"] = "django.function_name"
+    """The fully qualified name of a function used in a Django context.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: code.function.name, code.function
+    DEPRECATED: Use code.function.name instead - This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement.
+    Example: "django.contrib.sessions.middleware.SessionMiddleware"
     """
 
     # Path: model/attributes/django/django__middleware_name.json
@@ -12794,8 +12808,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="server_request",
-        aliases=["code.function.name"],
+        aliases=["code.function.name", "django.function_name"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added django.function_name as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -12807,8 +12824,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="server_request",
-        aliases=["code.function"],
+        aliases=["code.function", "django.function_name"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added django.function_name as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -13848,6 +13868,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.16.0", prs=[489], description="Added dist attribute"
+            ),
+        ],
+    ),
+    "django.function_name": AttributeMetadata(
+        brief="The fully qualified name of a function used in a Django context.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="django.contrib.sessions.middleware.SessionMiddleware",
+        examples=["django.contrib.sessions.middleware.SessionMiddleware"],
+        deprecation=DeprecationInfo(
+            replacement="code.function.name",
+            reason="This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["code.function.name", "code.function"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[529],
+                description="Added django.function_name attribute",
             ),
         ],
     ),
@@ -21583,6 +21625,7 @@ Attributes = TypedDict(
         "device.usable_memory": int,
         "deviceMemory": str,
         "dist": str,
+        "django.function_name": str,
         "django.middleware_name": str,
         "effectiveConnectionType": str,
         "environment": str,
