@@ -167,9 +167,11 @@ class _AttributeNamesMeta(type):
         "AWS_LAMBDA_FUNCTION_NAME",
         "AWS_LAMBDA_FUNCTION_VERSION",
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
+        "AWS_OPERATION_NAME",
         "AWS_REQUEST_EXTENDED_ID",
         "_AWS_REQUEST_ID",
         "AWS_REQUEST_URL",
+        "AWS_SERVICE_ID",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -1814,6 +1816,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
     """
 
+    # Path: model/attributes/aws/aws__operation_name.json
+    AWS_OPERATION_NAME: Literal["aws.operation_name"] = "aws.operation_name"
+    """The name of the API operation invoked on an AWS service.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: Use rpc.method instead - Deprecated, forms part of rpc.method together with aws.service_id.
+    Example: "PutObject"
+    """
+
     # Path: model/attributes/aws/aws__request__extended_id.json
     AWS_REQUEST_EXTENDED_ID: Literal["aws.request.extended_id"] = (
         "aws.request.extended_id"
@@ -1889,6 +1903,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
+    """
+
+    # Path: model/attributes/aws/aws__service_id.json
+    AWS_SERVICE_ID: Literal["aws.service_id"] = "aws.service_id"
+    """The identifier of the AWS service.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: Use rpc.method instead - Deprecated, forms part of rpc.method together with aws.operation_name.
+    Example: "s3"
     """
 
     # Path: model/attributes/aws/aws__sns__topic__arn.json
@@ -11787,6 +11813,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.11.1", prs=[414]),
         ],
     ),
+    "aws.operation_name": AttributeMetadata(
+        brief="The name of the API operation invoked on an AWS service.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="PutObject",
+        examples=["PutObject"],
+        deprecation=DeprecationInfo(
+            replacement="rpc.method",
+            reason="Deprecated, forms part of rpc.method together with aws.service_id.",
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[529],
+                description="Added aws.operation_name attribute",
+            ),
+        ],
+    ),
     "aws.request.extended_id": AttributeMetadata(
         brief="The AWS extended request ID as returned in the response headers.",
         type=AttributeType.STRING,
@@ -11890,6 +11936,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0",
                 prs=[480],
                 description="Added aws.secretsmanager.secret.arn attribute",
+            ),
+        ],
+    ),
+    "aws.service_id": AttributeMetadata(
+        brief="The identifier of the AWS service.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="s3",
+        examples=["s3"],
+        deprecation=DeprecationInfo(
+            replacement="rpc.method",
+            reason="Deprecated, forms part of rpc.method together with aws.operation_name.",
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[529], description="Added aws.service_id attribute"
             ),
         ],
     ),
@@ -21439,12 +21503,14 @@ Attributes = TypedDict(
         "aws.lambda.remaining_time_in_millis": float,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
+        "aws.operation_name": str,
         "aws.request.extended_id": str,
         "aws.request.id": str,
         "aws.request.url": str,
         "aws.request_id": str,
         "aws.s3.bucket": str,
         "aws.secretsmanager.secret.arn": str,
+        "aws.service_id": str,
         "aws.sns.topic.arn": str,
         "aws.step_functions.activity.arn": str,
         "aws.step_functions.state_machine.arn": str,

@@ -2605,6 +2605,28 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
 
+// Path: model/attributes/aws/aws__operation_name.json
+
+/**
+ * The name of the API operation invoked on an AWS service. `aws.operation_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_OPERATION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link RPC_METHOD} (rpc.method) instead - Deprecated, forms part of rpc.method together with aws.service_id.
+ * @example "PutObject"
+ */
+export const AWS_OPERATION_NAME = 'aws.operation_name';
+
+/**
+ * Type for {@link AWS_OPERATION_NAME} aws.operation_name
+ */
+export type AWS_OPERATION_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__request__extended_id.json
 
 /**
@@ -2741,6 +2763,28 @@ export const AWS_SECRETSMANAGER_SECRET_ARN = 'aws.secretsmanager.secret.arn';
  * Type for {@link AWS_SECRETSMANAGER_SECRET_ARN} aws.secretsmanager.secret.arn
  */
 export type AWS_SECRETSMANAGER_SECRET_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__service_id.json
+
+/**
+ * The identifier of the AWS service. `aws.service_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_SERVICE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link RPC_METHOD} (rpc.method) instead - Deprecated, forms part of rpc.method together with aws.operation_name.
+ * @example "s3"
+ */
+export const AWS_SERVICE_ID = 'aws.service_id';
+
+/**
+ * Type for {@link AWS_SERVICE_ID} aws.service_id
+ */
+export type AWS_SERVICE_ID_TYPE = string;
 
 // Path: model/attributes/aws/aws__sns__topic__arn.json
 
@@ -17351,12 +17395,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  'aws.operation_name': 'string',
   'aws.request.extended_id': 'string',
   'aws.request_id': 'string',
   'aws.request.id': 'string',
   'aws.request.url': 'string',
   'aws.s3.bucket': 'string',
   'aws.secretsmanager.secret.arn': 'string',
+  'aws.service_id': 'string',
   'aws.sns.topic.arn': 'string',
   'aws.step_functions.activity.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
@@ -18127,12 +18173,14 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_OPERATION_NAME
   | typeof AWS_REQUEST_EXTENDED_ID
   | typeof AWS_REQUEST_ID
   | typeof _AWS_REQUEST_ID
   | typeof AWS_REQUEST_URL
   | typeof AWS_S3_BUCKET
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
+  | typeof AWS_SERVICE_ID
   | typeof AWS_SNS_TOPIC_ARN
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
@@ -20472,6 +20520,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
   },
+  'aws.operation_name': {
+    brief: 'The name of the API operation invoked on an AWS service.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'PutObject',
+    examples: ['PutObject'],
+    deprecation: {
+      replacement: 'rpc.method',
+      reason: 'Deprecated, forms part of rpc.method together with aws.service_id.',
+    },
+    changelog: [{ version: 'next', prs: [529], description: 'Added aws.operation_name attribute' }],
+  },
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
@@ -20569,6 +20633,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
+  },
+  'aws.service_id': {
+    brief: 'The identifier of the AWS service.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 's3',
+    examples: ['s3'],
+    deprecation: {
+      replacement: 'rpc.method',
+      reason: 'Deprecated, forms part of rpc.method together with aws.operation_name.',
+    },
+    changelog: [{ version: 'next', prs: [529], description: 'Added aws.service_id attribute' }],
   },
   'aws.sns.topic.arn': {
     brief:
@@ -29546,12 +29626,14 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;
   [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
   [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
   [AWS_REQUEST_URL]?: AWS_REQUEST_URL_TYPE;
   [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
+  [AWS_SERVICE_ID]?: AWS_SERVICE_ID_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;

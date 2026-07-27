@@ -1,0 +1,23 @@
+{
+  "key": "aws.service_id",
+  "brief": "The identifier of the AWS service.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["s3"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "rpc.method",
+    "reason": "Deprecated, forms part of rpc.method together with aws.operation_name."
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [529],
+      "description": "Added aws.service_id attribute"
+    }
+  ]
+}
