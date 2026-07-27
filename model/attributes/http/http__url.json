@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "https://example.com/test?foo=bar#buzz",
-  "alias": ["url.full", "url"],
+  "alias": ["url.full", "url", "aws.request.url"],
   "deprecation": {
     "_status": null,
     "replacement": "url.full"

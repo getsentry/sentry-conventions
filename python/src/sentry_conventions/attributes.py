@@ -169,6 +169,7 @@ class _AttributeNamesMeta(type):
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
         "AWS_REQUEST_EXTENDED_ID",
         "_AWS_REQUEST_ID",
+        "AWS_REQUEST_URL",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -176,6 +177,7 @@ class _AttributeNamesMeta(type):
         "CODE_LINENO",
         "CONNECTION_RTT",
         "CONNECTIONTYPE",
+        "DB_MONGODB_COLLECTION",
         "DB_NAME",
         "DB_OPERATION",
         "DB_SQL_BINDINGS",
@@ -238,6 +240,7 @@ class _AttributeNamesMeta(type):
         "LCP_SIZE",
         "LCP_URL",
         "LCP",
+        "LITESTAR_MIDDLEWARE_NAME",
         "MCP_PROMPT_NAME",
         "MCP_REQUEST_ID",
         "MCP_RESOURCE_PROTOCOL",
@@ -269,6 +272,7 @@ class _AttributeNamesMeta(type):
         "PERFORMANCE_TIMEORIGIN",
         "PROFILE_ID",
         "QUERY_KEY",
+        "REDIS_KEY",
         "RELEASE",
         "REPLAY_ID",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
@@ -306,7 +310,9 @@ class _AttributeNamesMeta(type):
         "SERVER_NAME",
         "STALL_PERCENTAGE",
         "STALL_TOTAL_TIME",
+        "STARLETTE_MIDDLEWARE_NAME",
         "STARLITE_MIDDLEWARE_NAME",
+        "SUBPROCESS_PID",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
         "TRANSACTION",
@@ -1835,6 +1841,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "79b9da39-b7ae-508a-a6bc-864b2829c622"
     """
 
+    # Path: model/attributes/aws/aws__request__url.json
+    AWS_REQUEST_URL: Literal["aws.request.url"] = "aws.request.url"
+    """The URL of the AWS API request.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.full, http.url, url
+    DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
+    Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
+    """
+
     # Path: model/attributes/aws/aws__request_id.json
     AWS_REQUEST_ID: Literal["aws.request_id"] = "aws.request_id"
     """The AWS request ID as returned in the response headers.
@@ -2846,6 +2865,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: db.mongodb.collection
     Example: "users"
     """
 
@@ -2858,6 +2878,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "psycopg2"
+    """
+
+    # Path: model/attributes/db/db__mongodb__collection.json
+    DB_MONGODB_COLLECTION: Literal["db.mongodb.collection"] = "db.mongodb.collection"
+    """The MongoDB collection being accessed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: db.collection.name
+    DEPRECATED: Use db.collection.name instead - This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.
+    Example: "users"
     """
 
     # Path: model/attributes/db/db__name.json
@@ -2980,6 +3013,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: redis.key
     Example: "user:2047:city"
     """
 
@@ -5682,7 +5716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.full, url
+    Aliases: url.full, url, aws.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -5927,6 +5961,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: browser.web_vital.lcp.value
     DEPRECATED: Use browser.web_vital.lcp.value instead - The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.
     Example: 2500
+    """
+
+    # Path: model/attributes/litestar/litestar__middleware_name.json
+    LITESTAR_MIDDLEWARE_NAME: Literal["litestar.middleware_name"] = (
+        "litestar.middleware_name"
+    )
+    """The name of the Litestar middleware.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: middleware.name
+    DEPRECATED: Use middleware.name instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+    Example: "AuthenticationMiddleware"
     """
 
     # Path: model/attributes/logger/logger__name.json
@@ -6672,7 +6721,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: starlite.middleware_name
+    Aliases: starlite.middleware_name, litestar.middleware_name, starlette.middleware_name
     Example: "AuthenticationMiddleware"
     """
 
@@ -7348,6 +7397,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: subprocess.pid
     Example: 12345
     """
 
@@ -7452,6 +7502,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "18.2.0"
+    """
+
+    # Path: model/attributes/redis/redis__key.json
+    REDIS_KEY: Literal["redis.key"] = "redis.key"
+    """The key the Redis command is operating on.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: db.redis.key
+    DEPRECATED: Use db.redis.key instead - This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.
+    Example: "user:2047:city"
     """
 
     # Path: model/attributes/release.json
@@ -8814,6 +8877,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     DEPRECATED: Use app.vitals.stall.duration instead - Replaced by app.vitals.stall.duration to align with the app.vitals.* namespace for mobile performance attributes
     """
 
+    # Path: model/attributes/starlette/starlette__middleware_name.json
+    STARLETTE_MIDDLEWARE_NAME: Literal["starlette.middleware_name"] = (
+        "starlette.middleware_name"
+    )
+    """The name of the Starlette middleware.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: middleware.name
+    DEPRECATED: Use middleware.name instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+    Example: "AuthenticationMiddleware"
+    """
+
     # Path: model/attributes/starlite/starlite__middleware_name.json
     STARLITE_MIDDLEWARE_NAME: Literal["starlite.middleware_name"] = (
         "starlite.middleware_name"
@@ -8838,6 +8916,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "redux"
+    """
+
+    # Path: model/attributes/subprocess/subprocess__pid.json
+    SUBPROCESS_PID: Literal["subprocess.pid"] = "subprocess.pid"
+    """The process ID of a subprocess.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: process.pid
+    DEPRECATED: Use process.pid instead - This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.
+    Example: 12345
     """
 
     # Path: model/attributes/thread/thread__id.json
@@ -9135,7 +9226,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.url, url
+    Aliases: http.url, url, aws.request.url
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
@@ -9234,7 +9325,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url
+    Aliases: url.full, http.url, aws.request.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -11724,6 +11815,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.request.url": AttributeMetadata(
+        brief="The URL of the AWS API request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
+        deprecation=DeprecationInfo(
+            replacement="url.full",
+            reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["url.full", "http.url", "url"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.request.url attribute, deprecated in favor of url.full",
+            ),
+        ],
+    ),
     "aws.request_id": AttributeMetadata(
         brief="The AWS request ID as returned in the response headers.",
         type=AttributeType.STRING,
@@ -12832,7 +12943,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="users",
+        aliases=["db.mongodb.collection"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added db.mongodb.collection as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -12847,6 +12962,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.5.0", prs=[297], description="Added db.driver.name attribute"
+            ),
+        ],
+    ),
+    "db.mongodb.collection": AttributeMetadata(
+        brief="The MongoDB collection being accessed.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="users",
+        deprecation=DeprecationInfo(
+            replacement="db.collection.name",
+            reason="This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["db.collection.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added db.mongodb.collection attribute, deprecated in favor of db.collection.name",
             ),
         ],
     ),
@@ -12984,7 +13119,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="user:2047:city",
+        aliases=["redis.key"],
         changelog=[
+            ChangelogEntry(version="next", description="Added redis.key as an alias"),
             ChangelogEntry(
                 version="0.6.0", prs=[326], description="Added db.redis.key attribute"
             ),
@@ -16309,7 +16446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
-        aliases=["url.full", "url"],
+        aliases=["url.full", "url", "aws.request.url"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
@@ -16622,6 +16759,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0",
                 prs=[229],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
+            ),
+        ],
+    ),
+    "litestar.middleware_name": AttributeMetadata(
+        brief="The name of the Litestar middleware.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AuthenticationMiddleware",
+        deprecation=DeprecationInfo(
+            replacement="middleware.name",
+            reason="This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["middleware.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added litestar.middleware_name attribute, deprecated in favor of middleware.name",
             ),
         ],
     ),
@@ -17502,10 +17659,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
-        aliases=["starlite.middleware_name"],
+        aliases=[
+            "starlite.middleware_name",
+            "litestar.middleware_name",
+            "starlette.middleware_name",
+        ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added starlite.middleware_name as an alias"
+                version="next",
+                description="Added starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases",
             ),
             ChangelogEntry(
                 version="0.6.0",
@@ -18295,7 +18457,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=12345,
+        aliases=["subprocess.pid"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added subprocess.pid as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -18404,6 +18570,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.7.0", prs=[368], description="Added react.version attribute"
+            ),
+        ],
+    ),
+    "redis.key": AttributeMetadata(
+        brief="The key the Redis command is operating on.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user:2047:city",
+        deprecation=DeprecationInfo(
+            replacement="db.redis.key",
+            reason="This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["db.redis.key"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added redis.key attribute, deprecated in favor of db.redis.key",
             ),
         ],
     ),
@@ -19975,6 +20161,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "starlette.middleware_name": AttributeMetadata(
+        brief="The name of the Starlette middleware.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AuthenticationMiddleware",
+        deprecation=DeprecationInfo(
+            replacement="middleware.name",
+            reason="This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["middleware.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added starlette.middleware_name attribute, deprecated in favor of middleware.name",
+            ),
+        ],
+    ),
     "starlite.middleware_name": AttributeMetadata(
         brief="The name of the Starlite middleware.",
         type=AttributeType.STRING,
@@ -20007,6 +20213,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.7.0", prs=[365], description="Added state.type attribute"
+            ),
+        ],
+    ),
+    "subprocess.pid": AttributeMetadata(
+        brief="The process ID of a subprocess.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=12345,
+        deprecation=DeprecationInfo(
+            replacement="process.pid",
+            reason="This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["process.pid"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added subprocess.pid attribute, deprecated in favor of process.pid",
             ),
         ],
     ),
@@ -20382,8 +20608,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url", "url"],
+        aliases=["http.url", "url", "aws.request.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added aws.request.url as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[108]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20497,7 +20726,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(replacement="url.full"),
-        aliases=["url.full", "http.url"],
+        aliases=["url.full", "http.url", "aws.request.url"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -21175,6 +21404,7 @@ Attributes = TypedDict(
         "aws.log.stream.names": List[str],
         "aws.request.extended_id": str,
         "aws.request.id": str,
+        "aws.request.url": str,
         "aws.request_id": str,
         "aws.s3.bucket": str,
         "aws.secretsmanager.secret.arn": str,
@@ -21257,6 +21487,7 @@ Attributes = TypedDict(
         "culture.timezone": str,
         "db.collection.name": str,
         "db.driver.name": str,
+        "db.mongodb.collection": str,
         "db.name": str,
         "db.namespace": str,
         "db.operation": str,
@@ -21503,6 +21734,7 @@ Attributes = TypedDict(
         "lcp.size": int,
         "lcp.url": str,
         "lcp": float,
+        "litestar.middleware_name": str,
         "logger.name": str,
         "mcp.cancelled.reason": str,
         "mcp.cancelled.request_id": str,
@@ -21628,6 +21860,7 @@ Attributes = TypedDict(
         "profile_id": str,
         "query.<key>": str,
         "react.version": str,
+        "redis.key": str,
         "release": str,
         "remix.action_form_data.<key>": str,
         "replay_id": str,
@@ -21739,8 +21972,10 @@ Attributes = TypedDict(
         "session.id": str,
         "stall_percentage": float,
         "stall_total_time": float,
+        "starlette.middleware_name": str,
         "starlite.middleware_name": str,
         "state.type": str,
+        "subprocess.pid": int,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,

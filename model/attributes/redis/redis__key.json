@@ -1,0 +1,23 @@
+{
+  "key": "redis.key",
+  "brief": "The key the Redis command is operating on.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "user:2047:city",
+  "alias": ["db.redis.key"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "db.redis.key",
+    "reason": "This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added redis.key attribute, deprecated in favor of db.redis.key"
+    }
+  ]
+}
