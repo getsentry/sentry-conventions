@@ -11826,7 +11826,7 @@ export type NET_HOST_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_PORT} `server.port`
+ * Aliases: {@link SERVER_PORT} `server.port`, {@link PORT} `port`
  *
  * @deprecated Use {@link SERVER_PORT} (server.port) instead
  * @example 1337
@@ -12516,6 +12516,30 @@ export const PERFORMANCE_TIMEORIGIN = 'performance.timeOrigin';
  * Type for {@link PERFORMANCE_TIMEORIGIN} performance.timeOrigin
  */
 export type PERFORMANCE_TIMEORIGIN_TYPE = number;
+
+// Path: model/attributes/port.json
+
+/**
+ * The destination port for a TCP connection. `port`
+ *
+ * Attribute Value Type: `number` {@link PORT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_PORT} `server.port`, {@link NET_HOST_PORT} `net.host.port`
+ *
+ * @deprecated Use {@link SERVER_PORT} (server.port) instead - Old namespace-less attribute, to be replaced with server.port for span-first future
+ * @example 1337
+ */
+export const PORT = 'port';
+
+/**
+ * Type for {@link PORT} port
+ */
+export type PORT_TYPE = number;
 
 // Path: model/attributes/previous_route.json
 
@@ -15170,7 +15194,7 @@ export type SERVER_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_HOST_PORT} `net.host.port`
+ * Aliases: {@link NET_HOST_PORT} `net.host.port`, {@link PORT} `port`
  *
  * @example 1337
  */
@@ -17798,6 +17822,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'params.<key>': 'string',
   'performance.activationStart': 'double',
   'performance.timeOrigin': 'double',
+  port: 'integer',
   previous_route: 'string',
   'process.command_args': 'string[]',
   'process.executable.name': 'string',
@@ -18574,6 +18599,7 @@ export type AttributeName =
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
   | typeof PERFORMANCE_TIMEORIGIN
+  | typeof PORT
   | typeof PREVIOUS_ROUTE
   | typeof PROCESS_COMMAND_ARGS
   | typeof PROCESS_EXECUTABLE_NAME
@@ -26251,7 +26277,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.port',
     },
-    aliases: ['server.port'],
+    aliases: ['server.port', 'port'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'net.peer.ip': {
@@ -26666,6 +26692,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['browser.performance.time_origin'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
+  },
+  port: {
+    brief: 'The destination port for a TCP connection.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1337,
+    examples: [1337],
+    deprecation: {
+      replacement: 'server.port',
+      reason: 'Old namespace-less attribute, to be replaced with server.port for span-first future',
+      status: 'backfill',
+    },
+    aliases: ['server.port', 'net.host.port'],
+    changelog: [{ version: 'next', prs: [529], description: 'Added port attribute' }],
   },
   previous_route: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
@@ -28272,7 +28316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 1337,
-    aliases: ['net.host.port'],
+    aliases: ['net.host.port', 'port'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'service.name': {
@@ -29993,6 +30037,7 @@ export type Attributes = {
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
   [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
+  [PORT]?: PORT_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
   [PROCESS_COMMAND_ARGS]?: PROCESS_COMMAND_ARGS_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
