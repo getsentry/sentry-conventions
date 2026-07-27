@@ -7,12 +7,17 @@
   },
   "is_in_otel": false,
   "example": "AuthenticationMiddleware",
-  "alias": ["starlite.middleware_name", "litestar.middleware_name", "starlette.middleware_name"],
+  "alias": [
+    "django.middleware_name",
+    "starlite.middleware_name",
+    "litestar.middleware_name",
+    "starlette.middleware_name"
+  ],
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
-      "description": "Added starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases"
+      "description": "Added django.middleware_name, starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases"
     },
     {
       "version": "0.6.0",
