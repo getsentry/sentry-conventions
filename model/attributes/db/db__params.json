@@ -1,0 +1,23 @@
+{
+  "key": "db.params",
+  "brief": "The query bindings for a database request.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["[{\"x\": 100}]"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "db.query.parameter.<key>",
+    "reason": "Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>."
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [529],
+      "description": "Added db.params attribute"
+    }
+  ]
+}
