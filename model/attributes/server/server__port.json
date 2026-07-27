@@ -11,6 +11,10 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "description": "Added port as an alias"
+    },
+    {
       "version": "0.4.0",
       "prs": [228]
     },
