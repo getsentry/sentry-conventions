@@ -18633,7 +18633,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="SELECT",
         examples=["SELECT"],
         deprecation=DeprecationInfo(
-            replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
+            replacement="db.operation.name", status=DeprecationStatus.BACKFILL
         ),
         aliases=["db.operation.name", "db.operation"],
         changelog=[

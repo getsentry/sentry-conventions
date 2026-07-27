@@ -26858,7 +26858,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['SELECT'],
     deprecation: {
       replacement: 'db.operation.name',
-      status: 'normalize',
+      status: 'backfill',
     },
     aliases: ['db.operation.name', 'db.operation'],
     changelog: [{ version: 'next', prs: [529], description: 'Added redis.command attribute' }],

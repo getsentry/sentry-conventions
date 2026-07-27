@@ -10,7 +10,7 @@
   "examples": ["SELECT"],
   "alias": ["db.operation.name", "db.operation"],
   "deprecation": {
-    "_status": "normalize",
+    "_status": "backfill",
     "replacement": "db.operation.name"
   },
   "changelog": [
