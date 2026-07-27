@@ -17,7 +17,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [529],
+      "prs": [536],
       "description": "Added aws.operation_name attribute"
     }
   ]
