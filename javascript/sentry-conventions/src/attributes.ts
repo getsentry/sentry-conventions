@@ -4571,7 +4571,7 @@ export type DB_NAMESPACE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link REDIS_COMMAND} `redis.command`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "SELECT"
@@ -4616,7 +4616,7 @@ export type DB_OPERATION_BATCH_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION} `db.operation`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
+ * Aliases: {@link DB_OPERATION} `db.operation`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link REDIS_COMMAND} `redis.command`
  *
  * @example "SELECT"
  */
@@ -12790,6 +12790,30 @@ export const REACT_VERSION = 'react.version';
  */
 export type REACT_VERSION_TYPE = string;
 
+// Path: model/attributes/redis/redis__command.json
+
+/**
+ * The name of the Redis operation being executed. `redis.command`
+ *
+ * Attribute Value Type: `string` {@link REDIS_COMMAND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ *
+ * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
+ * @example "SELECT"
+ */
+export const REDIS_COMMAND = 'redis.command';
+
+/**
+ * Type for {@link REDIS_COMMAND} redis.command
+ */
+export type REDIS_COMMAND_TYPE = string;
+
 // Path: model/attributes/redis/redis__key.json
 
 /**
@@ -17810,6 +17834,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   profile_id: 'string',
   'query.<key>': 'string',
   'react.version': 'string',
+  'redis.command': 'string',
   'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
@@ -18586,6 +18611,7 @@ export type AttributeName =
   | typeof PROFILE_ID
   | typeof QUERY_KEY
   | typeof REACT_VERSION
+  | typeof REDIS_COMMAND
   | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
@@ -21613,7 +21639,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.operation.name',
       status: 'normalize',
     },
-    aliases: ['db.operation.name', 'cloudflare.d1.query_type'],
+    aliases: ['db.operation.name', 'cloudflare.d1.query_type', 'redis.command'],
     changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'db.operation.batch.size': {
@@ -21637,7 +21663,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT',
-    aliases: ['db.operation', 'cloudflare.d1.query_type'],
+    aliases: ['db.operation', 'cloudflare.d1.query_type', 'redis.command'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'db.query.parameter.<key>': {
@@ -26820,6 +26846,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18.2.0',
     changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
   },
+  'redis.command': {
+    brief: 'The name of the Redis operation being executed.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'SELECT',
+    examples: ['SELECT'],
+    deprecation: {
+      replacement: 'db.operation.name',
+      status: 'normalize',
+    },
+    aliases: ['db.operation.name', 'db.operation'],
+    changelog: [{ version: 'next', prs: [529], description: 'Added redis.command attribute' }],
+  },
   'redis.key': {
     brief: 'The key the Redis command is operating on.',
     type: 'string',
@@ -30005,6 +30048,7 @@ export type Attributes = {
   [PROFILE_ID]?: PROFILE_ID_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
+  [REDIS_COMMAND]?: REDIS_COMMAND_TYPE;
   [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;

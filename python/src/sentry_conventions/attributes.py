@@ -273,6 +273,7 @@ class _AttributeNamesMeta(type):
         "PERFORMANCE_TIMEORIGIN",
         "PROFILE_ID",
         "QUERY_KEY",
+        "REDIS_COMMAND",
         "REDIS_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -2927,7 +2928,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: db.operation.name, cloudflare.d1.query_type
+    Aliases: db.operation.name, cloudflare.d1.query_type, redis.command
     DEPRECATED: Use db.operation.name instead
     Example: "SELECT"
     """
@@ -2953,7 +2954,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: db.operation, cloudflare.d1.query_type
+    Aliases: db.operation, cloudflare.d1.query_type, redis.command
     Example: "SELECT"
     """
 
@@ -7516,6 +7517,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "18.2.0"
+    """
+
+    # Path: model/attributes/redis/redis__command.json
+    REDIS_COMMAND: Literal["redis.command"] = "redis.command"
+    """The name of the Redis operation being executed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: db.operation.name, db.operation
+    DEPRECATED: Use db.operation.name instead
+    Example: "SELECT"
     """
 
     # Path: model/attributes/redis/redis__key.json
@@ -13036,7 +13050,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["db.operation.name", "cloudflare.d1.query_type"],
+        aliases=["db.operation.name", "cloudflare.d1.query_type", "redis.command"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[199]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -13065,7 +13079,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT",
-        aliases=["db.operation", "cloudflare.d1.query_type"],
+        aliases=["db.operation", "cloudflare.d1.query_type", "redis.command"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -18610,6 +18624,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "redis.command": AttributeMetadata(
+        brief="The name of the Redis operation being executed.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="SELECT",
+        examples=["SELECT"],
+        deprecation=DeprecationInfo(
+            replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
+        ),
+        aliases=["db.operation.name", "db.operation"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[529], description="Added redis.command attribute"
+            ),
+        ],
+    ),
     "redis.key": AttributeMetadata(
         brief="The key the Redis command is operating on.",
         type=AttributeType.STRING,
@@ -21898,6 +21930,7 @@ Attributes = TypedDict(
         "profile_id": str,
         "query.<key>": str,
         "react.version": str,
+        "redis.command": str,
         "redis.key": str,
         "release": str,
         "remix.action_form_data.<key>": str,
