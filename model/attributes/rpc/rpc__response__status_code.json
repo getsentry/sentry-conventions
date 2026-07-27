@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "DEADLINE_EXCEEDED",
-  "alias": ["rpc.grpc.status_code"],
+  "alias": ["code", "rpc.grpc.status_code"],
   "visibility": "public",
   "changelog": [
     {
