@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": ["PutObject"],
+  "alias": ["rpc.method"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "rpc.method",
