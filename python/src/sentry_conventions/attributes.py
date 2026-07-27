@@ -12881,7 +12881,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["rpc.grpc.status_code", "rpc.response.status_code"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[529], description="Added code attribute"
+                version="next", prs=[533], description="Added code attribute"
             ),
         ],
     ),

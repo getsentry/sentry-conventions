@@ -21368,7 +21368,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['rpc.grpc.status_code', 'rpc.response.status_code'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added code attribute' }],
+    changelog: [{ version: 'next', prs: [533], description: 'Added code attribute' }],
   },
   'code.filepath': {
     brief:

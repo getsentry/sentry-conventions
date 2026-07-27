@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [529],
+      "prs": [533],
       "description": "Added code attribute"
     }
   ]
