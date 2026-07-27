@@ -22364,7 +22364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['code.function.name', 'code.function'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added django.function_name attribute' }],
+    changelog: [{ version: 'next', prs: [538], description: 'Added django.function_name attribute' }],
   },
   'django.middleware_name': {
     brief: 'The name of the Django middleware.',

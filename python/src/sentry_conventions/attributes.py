@@ -13888,7 +13888,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[529],
+                prs=[538],
                 description="Added django.function_name attribute",
             ),
         ],
