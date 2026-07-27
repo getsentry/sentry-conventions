@@ -9937,7 +9937,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[529], description="Added address attribute"
+                version="next", prs=[534], description="Added address attribute"
             ),
         ],
     ),

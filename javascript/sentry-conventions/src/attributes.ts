@@ -18828,7 +18828,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added address attribute' }],
+    changelog: [{ version: 'next', prs: [534], description: 'Added address attribute' }],
   },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
