@@ -26278,7 +26278,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.port',
     },
     aliases: ['server.port', 'port'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'net.peer.ip': {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
@@ -28317,7 +28322,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1337,
     aliases: ['net.host.port', 'port'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'service.name': {
     brief: 'Logical name of the service.',

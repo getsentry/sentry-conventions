@@ -17869,6 +17869,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="server.port"),
         aliases=["server.port", "port"],
         changelog=[
+            ChangelogEntry(version="next", description="Added port as an alias"),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -20119,6 +20120,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=1337,
         aliases=["net.host.port", "port"],
         changelog=[
+            ChangelogEntry(version="next", description="Added port as an alias"),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
