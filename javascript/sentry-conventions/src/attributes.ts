@@ -2676,6 +2676,30 @@ export const _AWS_REQUEST_ID = 'aws.request.id';
  */
 export type _AWS_REQUEST_ID_TYPE = string;
 
+// Path: model/attributes/aws/aws__request__url.json
+
+/**
+ * The URL of the AWS API request. `aws.request.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_REQUEST_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
+ * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
+ */
+export const AWS_REQUEST_URL = 'aws.request.url';
+
+/**
+ * Type for {@link AWS_REQUEST_URL} aws.request.url
+ */
+export type AWS_REQUEST_URL_TYPE = string;
+
 // Path: model/attributes/aws/aws__s3__bucket.json
 
 /**
@@ -4432,6 +4456,8 @@ export type CULTURE_TIMEZONE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link DB_MONGODB_COLLECTION} `db.mongodb.collection`
+ *
  * @example "users"
  */
 export const DB_COLLECTION_NAME = 'db.collection.name';
@@ -4461,6 +4487,30 @@ export const DB_DRIVER_NAME = 'db.driver.name';
  * Type for {@link DB_DRIVER_NAME} db.driver.name
  */
 export type DB_DRIVER_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__mongodb__collection.json
+
+/**
+ * The MongoDB collection being accessed. `db.mongodb.collection`
+ *
+ * Attribute Value Type: `string` {@link DB_MONGODB_COLLECTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_COLLECTION_NAME} `db.collection.name`
+ *
+ * @deprecated Use {@link DB_COLLECTION_NAME} (db.collection.name) instead - This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.
+ * @example "users"
+ */
+export const DB_MONGODB_COLLECTION = 'db.mongodb.collection';
+
+/**
+ * Type for {@link DB_MONGODB_COLLECTION} db.mongodb.collection
+ */
+export type DB_MONGODB_COLLECTION_TYPE = string;
 
 // Path: model/attributes/db/db__name.json
 
@@ -4682,6 +4732,8 @@ export type DB_REDIS_CONNECTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link REDIS_KEY} `redis.key`
  *
  * @example "user:2047:city"
  */
@@ -9482,7 +9534,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -9943,6 +9995,30 @@ export const LCP_URL = 'lcp.url';
  * Type for {@link LCP_URL} lcp.url
  */
 export type LCP_URL_TYPE = string;
+
+// Path: model/attributes/litestar/litestar__middleware_name.json
+
+/**
+ * The name of the Litestar middleware. `litestar.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link LITESTAR_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const LITESTAR_MIDDLEWARE_NAME = 'litestar.middleware_name';
+
+/**
+ * Type for {@link LITESTAR_MIDDLEWARE_NAME} litestar.middleware_name
+ */
+export type LITESTAR_MIDDLEWARE_NAME_TYPE = string;
 
 // Path: model/attributes/logger/logger__name.json
 
@@ -11258,7 +11334,7 @@ export type METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link DJANGO_MIDDLEWARE_NAME} `django.middleware_name`
+ * Aliases: {@link DJANGO_MIDDLEWARE_NAME} `django.middleware_name`, {@link STARLITE_MIDDLEWARE_NAME} `starlite.middleware_name`, {@link LITESTAR_MIDDLEWARE_NAME} `litestar.middleware_name`, {@link STARLETTE_MIDDLEWARE_NAME} `starlette.middleware_name`
  *
  * @example "AuthenticationMiddleware"
  */
@@ -12516,6 +12592,8 @@ export type PROCESS_EXECUTABLE_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link SUBPROCESS_PID} `subprocess.pid`
+ *
  * @example 12345
  */
 export const PROCESS_PID = 'process.pid';
@@ -12711,6 +12789,30 @@ export const REACT_VERSION = 'react.version';
  * Type for {@link REACT_VERSION} react.version
  */
 export type REACT_VERSION_TYPE = string;
+
+// Path: model/attributes/redis/redis__key.json
+
+/**
+ * The key the Redis command is operating on. `redis.key`
+ *
+ * Attribute Value Type: `string` {@link REDIS_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_REDIS_KEY} `db.redis.key`
+ *
+ * @deprecated Use {@link DB_REDIS_KEY} (db.redis.key) instead - This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.
+ * @example "user:2047:city"
+ */
+export const REDIS_KEY = 'redis.key';
+
+/**
+ * Type for {@link REDIS_KEY} redis.key
+ */
+export type REDIS_KEY_TYPE = string;
 
 // Path: model/attributes/release.json
 
@@ -15190,6 +15292,54 @@ export const STALL_TOTAL_TIME = 'stall_total_time';
  */
 export type STALL_TOTAL_TIME_TYPE = number;
 
+// Path: model/attributes/starlette/starlette__middleware_name.json
+
+/**
+ * The name of the Starlette middleware. `starlette.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link STARLETTE_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const STARLETTE_MIDDLEWARE_NAME = 'starlette.middleware_name';
+
+/**
+ * Type for {@link STARLETTE_MIDDLEWARE_NAME} starlette.middleware_name
+ */
+export type STARLETTE_MIDDLEWARE_NAME_TYPE = string;
+
+// Path: model/attributes/starlite/starlite__middleware_name.json
+
+/**
+ * The name of the Starlite middleware. `starlite.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link STARLITE_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const STARLITE_MIDDLEWARE_NAME = 'starlite.middleware_name';
+
+/**
+ * Type for {@link STARLITE_MIDDLEWARE_NAME} starlite.middleware_name
+ */
+export type STARLITE_MIDDLEWARE_NAME_TYPE = string;
+
 // Path: model/attributes/state/state__type.json
 
 /**
@@ -15210,6 +15360,30 @@ export const STATE_TYPE = 'state.type';
  * Type for {@link STATE_TYPE} state.type
  */
 export type STATE_TYPE_TYPE = string;
+
+// Path: model/attributes/subprocess/subprocess__pid.json
+
+/**
+ * The process ID of a subprocess. `subprocess.pid`
+ *
+ * Attribute Value Type: `number` {@link SUBPROCESS_PID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link PROCESS_PID} `process.pid`
+ *
+ * @deprecated Use {@link PROCESS_PID} (process.pid) instead - This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.
+ * @example 12345
+ */
+export const SUBPROCESS_PID = 'subprocess.pid';
+
+/**
+ * Type for {@link SUBPROCESS_PID} subprocess.pid
+ */
+export type SUBPROCESS_PID_TYPE = number;
 
 // Path: model/attributes/thread/thread__id.json
 
@@ -15721,7 +15895,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -15787,7 +15961,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -17180,6 +17354,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.request.extended_id': 'string',
   'aws.request_id': 'string',
   'aws.request.id': 'string',
+  'aws.request.url': 'string',
   'aws.s3.bucket': 'string',
   'aws.secretsmanager.secret.arn': 'string',
   'aws.sns.topic.arn': 'string',
@@ -17261,6 +17436,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'culture.timezone': 'string',
   'db.collection.name': 'string',
   'db.driver.name': 'string',
+  'db.mongodb.collection': 'string',
   'db.name': 'string',
   'db.namespace': 'string',
   'db.operation': 'string',
@@ -17508,6 +17684,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'lcp.renderTime': 'integer',
   'lcp.size': 'integer',
   'lcp.url': 'string',
+  'litestar.middleware_name': 'string',
   'logger.name': 'string',
   'mcp.cancelled.reason': 'string',
   'mcp.cancelled.request_id': 'string',
@@ -17633,6 +17810,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   profile_id: 'string',
   'query.<key>': 'string',
   'react.version': 'string',
+  'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
   replay_id: 'string',
@@ -17744,7 +17922,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'session.id': 'string',
   stall_percentage: 'double',
   stall_total_time: 'double',
+  'starlette.middleware_name': 'string',
+  'starlite.middleware_name': 'string',
   'state.type': 'string',
+  'subprocess.pid': 'integer',
   'thread.id': 'integer',
   'thread.name': 'string',
   'timber.tag': 'string',
@@ -17949,6 +18130,7 @@ export type AttributeName =
   | typeof AWS_REQUEST_EXTENDED_ID
   | typeof AWS_REQUEST_ID
   | typeof _AWS_REQUEST_ID
+  | typeof AWS_REQUEST_URL
   | typeof AWS_S3_BUCKET
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
@@ -18030,6 +18212,7 @@ export type AttributeName =
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
   | typeof DB_DRIVER_NAME
+  | typeof DB_MONGODB_COLLECTION
   | typeof DB_NAME
   | typeof DB_NAMESPACE
   | typeof DB_OPERATION
@@ -18277,6 +18460,7 @@ export type AttributeName =
   | typeof LCP_RENDERTIME
   | typeof LCP_SIZE
   | typeof LCP_URL
+  | typeof LITESTAR_MIDDLEWARE_NAME
   | typeof LOGGER_NAME
   | typeof MCP_CANCELLED_REASON
   | typeof MCP_CANCELLED_REQUEST_ID
@@ -18402,6 +18586,7 @@ export type AttributeName =
   | typeof PROFILE_ID
   | typeof QUERY_KEY
   | typeof REACT_VERSION
+  | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
   | typeof REPLAY_ID
@@ -18513,7 +18698,10 @@ export type AttributeName =
   | typeof SESSION_ID
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
+  | typeof STARLETTE_MIDDLEWARE_NAME
+  | typeof STARLITE_MIDDLEWARE_NAME
   | typeof STATE_TYPE
+  | typeof SUBPROCESS_PID
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
@@ -20343,6 +20531,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  'aws.request.url': {
+    brief: 'The URL of the AWS API request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'https://sqs.us-east-1.amazonaws.com/123456789/my-queue',
+    deprecation: {
+      replacement: 'url.full',
+      reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['url.full', 'http.url', 'url'],
+    changelog: [{ version: 'next', description: 'Added aws.request.url attribute, deprecated in favor of url.full' }],
+  },
   'aws.s3.bucket': {
     brief: 'The S3 bucket name the request refers to.',
     type: 'string',
@@ -21327,7 +21532,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'users',
-    changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
+    aliases: ['db.mongodb.collection'],
+    changelog: [
+      { version: 'next', description: 'Added db.mongodb.collection as an alias' },
+      { version: '0.1.0', prs: [106, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.driver.name': {
     brief: 'The name of the driver used for the database connection.',
@@ -21339,6 +21549,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'psycopg2',
     changelog: [{ version: '0.5.0', prs: [297], description: 'Added db.driver.name attribute' }],
+  },
+  'db.mongodb.collection': {
+    brief: 'The MongoDB collection being accessed.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'users',
+    deprecation: {
+      replacement: 'db.collection.name',
+      reason:
+        'This attribute is being deprecated in favor of db.collection.name, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['db.collection.name'],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added db.mongodb.collection attribute, deprecated in favor of db.collection.name',
+      },
+    ],
   },
   'db.name': {
     brief: 'The name of the database being accessed.',
@@ -21471,7 +21704,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'user:2047:city',
-    changelog: [{ version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' }],
+    aliases: ['redis.key'],
+    changelog: [
+      { version: 'next', description: 'Added redis.key as an alias' },
+      { version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' },
+    ],
   },
   'db.redis.parameters': {
     brief: 'The array of command parameters given to a redis command.',
@@ -24569,7 +24806,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.full',
     },
-    aliases: ['url.full', 'url'],
+    aliases: ['url.full', 'url', 'aws.request.url'],
     changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
   },
   'http.user_agent': {
@@ -24861,6 +25098,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['browser.web_vital.lcp.url'],
     changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'litestar.middleware_name': {
+    brief: 'The name of the Litestar middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added litestar.middleware_name attribute, deprecated in favor of middleware.name',
+      },
+    ],
   },
   'logger.name': {
     brief: 'The name of the logger that generated this event.',
@@ -25682,9 +25942,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'AuthenticationMiddleware',
-    aliases: ['django.middleware_name'],
+    aliases: [
+      'django.middleware_name',
+      'starlite.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+    ],
     changelog: [
-      { version: 'next', description: 'Added django.middleware_name as an alias' },
+      {
+        version: 'next',
+        description:
+          'Added django.middleware_name, starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases',
+      },
       { version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' },
     ],
   },
@@ -26440,7 +26709,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 12345,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    aliases: ['subprocess.pid'],
+    changelog: [
+      { version: 'next', description: 'Added subprocess.pid as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'process.runtime.description': {
     brief:
@@ -26545,6 +26819,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '18.2.0',
     changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
+  },
+  'redis.key': {
+    brief: 'The key the Redis command is operating on.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user:2047:city',
+    deprecation: {
+      replacement: 'db.redis.key',
+      reason: 'This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.',
+      status: 'backfill',
+    },
+    aliases: ['db.redis.key'],
+    changelog: [{ version: 'next', description: 'Added redis.key attribute, deprecated in favor of db.redis.key' }],
   },
   release: {
     brief: 'The sentry release.',
@@ -28059,6 +28350,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' },
     ],
   },
+  'starlette.middleware_name': {
+    brief: 'The name of the Starlette middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added starlette.middleware_name attribute, deprecated in favor of middleware.name',
+      },
+    ],
+  },
+  'starlite.middleware_name': {
+    brief: 'The name of the Starlite middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    examples: ['AuthenticationMiddleware'],
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [{ version: 'next', prs: [519], description: 'Added starlite.middleware_name attribute' }],
+  },
   'state.type': {
     brief: 'The type of state management library',
     type: 'string',
@@ -28069,6 +28402,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'redux',
     changelog: [{ version: '0.7.0', prs: [365], description: 'Added state.type attribute' }],
+  },
+  'subprocess.pid': {
+    brief: 'The process ID of a subprocess.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 12345,
+    deprecation: {
+      replacement: 'process.pid',
+      reason: 'This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.',
+      status: 'backfill',
+    },
+    aliases: ['process.pid'],
+    changelog: [{ version: 'next', description: 'Added subprocess.pid attribute, deprecated in favor of process.pid' }],
   },
   'thread.id': {
     brief: 'Current “managed” thread ID.',
@@ -28380,7 +28730,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'url.full',
     },
-    aliases: ['url.full', 'http.url'],
+    aliases: ['url.full', 'http.url', 'aws.request.url'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'url.domain': {
@@ -28416,8 +28766,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url'],
-    changelog: [{ version: '0.1.0', prs: [108] }, { version: '0.0.0' }],
+    aliases: ['http.url', 'url', 'aws.request.url'],
+    changelog: [
+      { version: 'next', description: 'Added aws.request.url as an alias' },
+      { version: '0.1.0', prs: [108] },
+      { version: '0.0.0' },
+    ],
   },
   'url.path': {
     brief: 'The URI path component.',
@@ -29195,6 +29549,7 @@ export type Attributes = {
   [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
   [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
+  [AWS_REQUEST_URL]?: AWS_REQUEST_URL_TYPE;
   [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
@@ -29276,6 +29631,7 @@ export type Attributes = {
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
   [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
+  [DB_MONGODB_COLLECTION]?: DB_MONGODB_COLLECTION_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
   [DB_NAMESPACE]?: DB_NAMESPACE_TYPE;
   [DB_OPERATION]?: DB_OPERATION_TYPE;
@@ -29523,6 +29879,7 @@ export type Attributes = {
   [LCP_RENDERTIME]?: LCP_RENDERTIME_TYPE;
   [LCP_SIZE]?: LCP_SIZE_TYPE;
   [LCP_URL]?: LCP_URL_TYPE;
+  [LITESTAR_MIDDLEWARE_NAME]?: LITESTAR_MIDDLEWARE_NAME_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
   [MCP_CANCELLED_REASON]?: MCP_CANCELLED_REASON_TYPE;
   [MCP_CANCELLED_REQUEST_ID]?: MCP_CANCELLED_REQUEST_ID_TYPE;
@@ -29648,6 +30005,7 @@ export type Attributes = {
   [PROFILE_ID]?: PROFILE_ID_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
+  [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
@@ -29759,7 +30117,10 @@ export type Attributes = {
   [SESSION_ID]?: SESSION_ID_TYPE;
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
+  [STARLETTE_MIDDLEWARE_NAME]?: STARLETTE_MIDDLEWARE_NAME_TYPE;
+  [STARLITE_MIDDLEWARE_NAME]?: STARLITE_MIDDLEWARE_NAME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
+  [SUBPROCESS_PID]?: SUBPROCESS_PID_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;

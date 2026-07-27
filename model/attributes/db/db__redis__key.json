@@ -7,8 +7,13 @@
   },
   "is_in_otel": false,
   "example": "user:2047:city",
+  "alias": ["redis.key"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added redis.key as an alias"
+    },
     {
       "version": "0.6.0",
       "prs": [326],
