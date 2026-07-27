@@ -171,7 +171,6 @@ class _AttributeNamesMeta(type):
         "AWS_REQUEST_EXTENDED_ID",
         "_AWS_REQUEST_ID",
         "AWS_REQUEST_URL",
-        "AWS_SERVICE_ID",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -1824,7 +1823,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: Use rpc.method instead - Deprecated, forms part of rpc.method together with aws.service_id.
+    DEPRECATED: Use rpc.method instead - This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.
     Example: "PutObject"
     """
 
@@ -1903,18 +1902,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
-    """
-
-    # Path: model/attributes/aws/aws__service_id.json
-    AWS_SERVICE_ID: Literal["aws.service_id"] = "aws.service_id"
-    """The identifier of the AWS service.
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    DEPRECATED: Use rpc.method instead - Deprecated, forms part of rpc.method together with aws.operation_name.
-    Example: "s3"
     """
 
     # Path: model/attributes/aws/aws__sns__topic__arn.json
@@ -11823,7 +11810,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["PutObject"],
         deprecation=DeprecationInfo(
             replacement="rpc.method",
-            reason="Deprecated, forms part of rpc.method together with aws.service_id.",
+            reason="This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
         ),
         changelog=[
             ChangelogEntry(
@@ -11936,24 +11924,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0",
                 prs=[480],
                 description="Added aws.secretsmanager.secret.arn attribute",
-            ),
-        ],
-    ),
-    "aws.service_id": AttributeMetadata(
-        brief="The identifier of the AWS service.",
-        type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="s3",
-        examples=["s3"],
-        deprecation=DeprecationInfo(
-            replacement="rpc.method",
-            reason="Deprecated, forms part of rpc.method together with aws.operation_name.",
-        ),
-        changelog=[
-            ChangelogEntry(
-                version="next", prs=[529], description="Added aws.service_id attribute"
             ),
         ],
     ),
@@ -21510,7 +21480,6 @@ Attributes = TypedDict(
         "aws.request_id": str,
         "aws.s3.bucket": str,
         "aws.secretsmanager.secret.arn": str,
-        "aws.service_id": str,
         "aws.sns.topic.arn": str,
         "aws.step_functions.activity.arn": str,
         "aws.step_functions.state_machine.arn": str,

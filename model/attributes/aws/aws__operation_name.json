@@ -9,9 +9,9 @@
   "visibility": "public",
   "examples": ["PutObject"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "rpc.method",
-    "reason": "Deprecated, forms part of rpc.method together with aws.service_id."
+    "reason": "This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement."
   },
   "changelog": [
     {
