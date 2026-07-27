@@ -23032,7 +23032,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['cloud.region'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added gcp_region attribute' }],
+    changelog: [{ version: 'next', prs: [535], description: 'Added gcp_region attribute' }],
   },
   'gen_ai.agent.name': {
     brief: 'The name of the agent being used.',

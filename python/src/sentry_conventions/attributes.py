@@ -14627,7 +14627,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["cloud.region"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[529], description="Added gcp_region attribute"
+                version="next", prs=[535], description="Added gcp_region attribute"
             ),
         ],
     ),
