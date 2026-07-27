@@ -2963,7 +2963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The query bindings for a database request.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.
@@ -13087,7 +13087,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.params": AttributeMetadata(
         brief="The query bindings for a database request.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example='[{"x": 100}]',

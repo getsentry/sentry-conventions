@@ -4634,7 +4634,7 @@ export type DB_OPERATION_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_PARAMS_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -21668,7 +21668,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The query bindings for a database request.',
     type: 'string',
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',

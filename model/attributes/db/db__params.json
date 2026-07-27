@@ -3,7 +3,7 @@
   "brief": "The query bindings for a database request.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "auto"
   },
   "is_in_otel": false,
   "visibility": "public",
