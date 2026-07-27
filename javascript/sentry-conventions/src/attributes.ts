@@ -21708,7 +21708,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'SELECT * FROM users WHERE id = $1',
     aliases: ['db.statement', 'query'],
-    changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added query as an alias' },
+      { version: '0.4.0', prs: [208] },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.redis.connection': {
     brief: 'The redis connection name.',
