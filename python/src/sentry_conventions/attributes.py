@@ -2989,7 +2989,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.statement, query
@@ -7513,7 +7513,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database query being executed.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
     Aliases: db.query.text, db.statement
@@ -13117,7 +13117,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.text": AttributeMetadata(
         brief="The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT * FROM users WHERE id = $1",
@@ -18614,7 +18614,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "query": AttributeMetadata(
         brief="The database query being executed.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="SELECT * FROM users WHERE id = $1",

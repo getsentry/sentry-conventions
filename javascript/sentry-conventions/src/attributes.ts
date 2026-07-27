@@ -4684,7 +4684,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_QUERY_TEXT_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -12745,7 +12745,7 @@ export type PROFILE_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link QUERY_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -21702,7 +21702,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
     type: 'string',
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
@@ -26823,7 +26823,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The database query being executed.',
     type: 'string',
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
