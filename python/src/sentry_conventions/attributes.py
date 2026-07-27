@@ -11819,7 +11819,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[529],
+                prs=[536],
                 description="Added aws.operation_name attribute",
             ),
         ],

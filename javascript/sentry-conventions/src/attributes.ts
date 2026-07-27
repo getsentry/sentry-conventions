@@ -20516,7 +20516,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['rpc.method'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added aws.operation_name attribute' }],
+    changelog: [{ version: 'next', prs: [536], description: 'Added aws.operation_name attribute' }],
   },
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
