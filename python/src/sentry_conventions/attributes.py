@@ -18644,7 +18644,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["db.operation.name", "db.operation"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[529], description="Added redis.command attribute"
+                version="next", prs=[531], description="Added redis.command attribute"
             ),
         ],
     ),

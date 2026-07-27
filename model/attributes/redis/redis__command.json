@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [529],
+      "prs": [531],
       "description": "Added redis.command attribute"
     }
   ]

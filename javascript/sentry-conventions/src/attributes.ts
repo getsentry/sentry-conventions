@@ -26870,7 +26870,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['db.operation.name', 'db.operation'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added redis.command attribute' }],
+    changelog: [{ version: 'next', prs: [531], description: 'Added redis.command attribute' }],
   },
   'redis.key': {
     brief: 'The key the Redis command is operating on.',
