@@ -18622,7 +18622,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="db.query.text",
             reason="While this attribute never specifically required parameterization, the replacement, db.query.text, does.",
-            status=DeprecationStatus.NORMALIZE,
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["db.query.text", "db.statement"],
         changelog=[

@@ -10,7 +10,7 @@
   "examples": ["SELECT * FROM users WHERE id = $1"],
   "alias": ["db.query.text", "db.statement"],
   "deprecation": {
-    "_status": "normalize",
+    "_status": "backfill",
     "replacement": "db.query.text",
     "reason": "While this attribute never specifically required parameterization, the replacement, db.query.text, does."
   },

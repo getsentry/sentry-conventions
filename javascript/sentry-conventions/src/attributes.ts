@@ -26833,7 +26833,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.query.text',
       reason:
         'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
-      status: 'normalize',
+      status: 'backfill',
     },
     aliases: ['db.query.text', 'db.statement'],
     changelog: [{ version: 'next', prs: [529], description: 'Added query attribute' }],
