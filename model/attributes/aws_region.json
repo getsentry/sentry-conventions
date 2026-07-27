@@ -1,0 +1,23 @@
+{
+  "key": "aws_region",
+  "brief": "The geographical region the AWS resource is running",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["us-east-1"],
+  "alias": ["cloud.region"],
+  "deprecation": {
+    "replacement": "cloud.region",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [529],
+      "description": "Added aws_region attribute"
+    }
+  ]
+}

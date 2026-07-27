@@ -8,7 +8,12 @@
   "is_in_otel": true,
   "example": "us-east-1",
   "visibility": "public",
+  "alias": ["aws_region"],
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws_region as an alias"
+    },
     {
       "version": "0.7.0",
       "prs": [364],
