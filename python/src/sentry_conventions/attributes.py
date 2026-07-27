@@ -13052,6 +13052,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["db.operation.name", "cloudflare.d1.query_type", "redis.command"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added redis.command as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[199]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -13081,6 +13084,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="SELECT",
         aliases=["db.operation", "cloudflare.d1.query_type", "redis.command"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added redis.command as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],

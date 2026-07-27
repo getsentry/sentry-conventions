@@ -11,6 +11,10 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "description": "Added redis.command as an alias"
+    },
+    {
       "version": "0.1.0",
       "prs": [127]
     },

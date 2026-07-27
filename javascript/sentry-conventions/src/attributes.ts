@@ -21640,7 +21640,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'normalize',
     },
     aliases: ['db.operation.name', 'cloudflare.d1.query_type', 'redis.command'],
-    changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.4.0', prs: [199] },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.operation.batch.size': {
     brief:
@@ -21664,7 +21669,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'SELECT',
     aliases: ['db.operation', 'cloudflare.d1.query_type', 'redis.command'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.query.parameter.<key>': {
     brief:
