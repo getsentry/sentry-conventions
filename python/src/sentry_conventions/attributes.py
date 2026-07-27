@@ -18479,7 +18479,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["server.port", "net.host.port"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[529], description="Added port attribute"
+                version="next", prs=[532], description="Added port attribute"
             ),
         ],
     ),

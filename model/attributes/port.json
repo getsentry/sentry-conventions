@@ -17,7 +17,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [529],
+      "prs": [532],
       "description": "Added port attribute"
     }
   ]

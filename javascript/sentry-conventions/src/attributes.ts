@@ -26714,7 +26714,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['server.port', 'net.host.port'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added port attribute' }],
+    changelog: [{ version: 'next', prs: [532], description: 'Added port attribute' }],
   },
   previous_route: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
