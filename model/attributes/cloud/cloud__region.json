@@ -8,7 +8,12 @@
   "is_in_otel": true,
   "example": "us-east-1",
   "visibility": "public",
+  "alias": ["gcp_region"],
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added gcp_region as an alias"
+    },
     {
       "version": "0.7.0",
       "prs": [364],
