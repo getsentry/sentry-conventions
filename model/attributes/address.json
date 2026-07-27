@@ -17,7 +17,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [529],
+      "prs": [534],
       "description": "Added address attribute"
     }
   ]
