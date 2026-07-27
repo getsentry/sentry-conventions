@@ -273,6 +273,7 @@ class _AttributeNamesMeta(type):
         "PERFORMANCE_TIMEORIGIN",
         "PROFILE_ID",
         "QUERY_KEY",
+        "QUERY",
         "REDIS_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -2988,10 +2989,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: db.statement
+    Aliases: db.statement, query
     Example: "SELECT * FROM users WHERE id = $1"
     """
 
@@ -3062,7 +3063,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: db.query.text
+    Aliases: db.query.text, query
     DEPRECATED: Use db.query.text instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
     Example: "SELECT * FROM users WHERE id = $1"
     """
@@ -7505,6 +7506,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Has Dynamic Suffix: true
     DEPRECATED: Use url.query instead - Instead of sending items individually in query.<key>, they should be sent all together with url.query.
     Example: "query.id='123'"
+    """
+
+    # Path: model/attributes/query.json
+    QUERY: Literal["query"] = "query"
+    """The database query being executed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: db.query.text, db.statement
+    DEPRECATED: Use db.query.text instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
+    Example: "SELECT * FROM users WHERE id = $1"
     """
 
     # Path: model/attributes/react/react__version.json
@@ -13103,11 +13117,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.text": AttributeMetadata(
         brief="The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT * FROM users WHERE id = $1",
-        aliases=["db.statement"],
+        aliases=["db.statement", "query"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[208]),
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -13195,7 +13209,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="While this attribute never specifically required parameterization, the replacement, db.query.text, does.",
             status=DeprecationStatus.NORMALIZE,
         ),
-        aliases=["db.query.text"],
+        aliases=["db.query.text", "query"],
         changelog=[
             ChangelogEntry(
                 version="next",
@@ -18597,6 +18611,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
+    "query": AttributeMetadata(
+        brief="The database query being executed.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="SELECT * FROM users WHERE id = $1",
+        examples=["SELECT * FROM users WHERE id = $1"],
+        deprecation=DeprecationInfo(
+            replacement="db.query.text",
+            reason="While this attribute never specifically required parameterization, the replacement, db.query.text, does.",
+            status=DeprecationStatus.NORMALIZE,
+        ),
+        aliases=["db.query.text", "db.statement"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[529], description="Added query attribute"
+            ),
+        ],
+    ),
     "react.version": AttributeMetadata(
         brief="The version of the React framework",
         type=AttributeType.STRING,
@@ -21897,6 +21931,7 @@ Attributes = TypedDict(
         "process.runtime.version": str,
         "profile_id": str,
         "query.<key>": str,
+        "query": str,
         "react.version": str,
         "redis.key": str,
         "release": str,

@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users WHERE id = $1",
-  "alias": ["db.query.text"],
+  "alias": ["db.query.text", "query"],
   "deprecation": {
     "_status": "normalize",
     "replacement": "db.query.text",

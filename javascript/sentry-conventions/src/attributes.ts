@@ -4684,12 +4684,12 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_QUERY_TEXT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_STATEMENT} `db.statement`
+ * Aliases: {@link DB_STATEMENT} `db.statement`, {@link QUERY} `query`
  *
  * @example "SELECT * FROM users WHERE id = $1"
  */
@@ -4820,7 +4820,7 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_QUERY_TEXT} `db.query.text`
+ * Aliases: {@link DB_QUERY_TEXT} `db.query.text`, {@link QUERY} `query`
  *
  * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
  * @example "SELECT * FROM users WHERE id = $1"
@@ -12738,6 +12738,30 @@ export const PROFILE_ID = 'profile_id';
  */
 export type PROFILE_ID_TYPE = string;
 
+// Path: model/attributes/query.json
+
+/**
+ * The database query being executed. `query`
+ *
+ * Attribute Value Type: `string` {@link QUERY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_QUERY_TEXT} `db.query.text`, {@link DB_STATEMENT} `db.statement`
+ *
+ * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
+ * @example "SELECT * FROM users WHERE id = $1"
+ */
+export const QUERY = 'query';
+
+/**
+ * Type for {@link QUERY} query
+ */
+export type QUERY_TYPE = string;
+
 // Path: model/attributes/query/query__[key].json
 
 /**
@@ -17808,6 +17832,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'process.runtime.name': 'string',
   'process.runtime.version': 'string',
   profile_id: 'string',
+  query: 'string',
   'query.<key>': 'string',
   'react.version': 'string',
   'redis.key': 'string',
@@ -18584,6 +18609,7 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
   | typeof PROFILE_ID
+  | typeof QUERY
   | typeof QUERY_KEY
   | typeof REACT_VERSION
   | typeof REDIS_KEY
@@ -21676,12 +21702,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
     type: 'string',
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT * FROM users WHERE id = $1',
-    aliases: ['db.statement'],
+    aliases: ['db.statement', 'query'],
     changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'db.redis.connection': {
@@ -21764,7 +21790,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
       status: 'normalize',
     },
-    aliases: ['db.query.text'],
+    aliases: ['db.query.text', 'query'],
     changelog: [
       { version: 'next', prs: [501], description: 'Improved example and added deprecation reason' },
       { version: '0.4.0', prs: [199] },
@@ -26793,6 +26819,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.profile_id'],
     changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
   },
+  query: {
+    brief: 'The database query being executed.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'SELECT * FROM users WHERE id = $1',
+    examples: ['SELECT * FROM users WHERE id = $1'],
+    deprecation: {
+      replacement: 'db.query.text',
+      reason:
+        'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
+      status: 'normalize',
+    },
+    aliases: ['db.query.text', 'db.statement'],
+    changelog: [{ version: 'next', prs: [529], description: 'Added query attribute' }],
+  },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
@@ -30003,6 +30048,7 @@ export type Attributes = {
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
   [PROFILE_ID]?: PROFILE_ID_TYPE;
+  [QUERY]?: QUERY_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
   [REDIS_KEY]?: REDIS_KEY_TYPE;

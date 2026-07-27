@@ -1,0 +1,24 @@
+{
+  "key": "query",
+  "brief": "The database query being executed.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["SELECT * FROM users WHERE id = $1"],
+  "alias": ["db.query.text", "db.statement"],
+  "deprecation": {
+    "_status": "normalize",
+    "replacement": "db.query.text",
+    "reason": "While this attribute never specifically required parameterization, the replacement, db.query.text, does."
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [529],
+      "description": "Added query attribute"
+    }
+  ]
+}
