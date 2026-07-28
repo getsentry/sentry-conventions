@@ -2431,6 +2431,30 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function"
     """
 
+    # Path: model/attributes/cloudflare/cloudflare__agent__class.json
+    CLOUDFLARE_AGENT_CLASS: Literal["cloudflare.agent.class"] = "cloudflare.agent.class"
+    """The class name of the Cloudflare agent that produced the span.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "MyBaseAgent"
+    Example: "AIChatAgent"
+    """
+
+    # Path: model/attributes/cloudflare/cloudflare__agent__name.json
+    CLOUDFLARE_AGENT_NAME: Literal["cloudflare.agent.name"] = "cloudflare.agent.name"
+    """The user-configured name of the Cloudflare agent instance that produced the span.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "user-123"
+    Example: "chat-rpc-instance"
+    """
+
     # Path: model/attributes/cloudflare/cloudflare__d1__duration.json
     CLOUDFLARE_D1_DURATION: Literal["cloudflare.d1.duration"] = "cloudflare.d1.duration"
     """The duration of a Cloudflare D1 operation.
@@ -12457,6 +12481,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other."
         ],
     ),
+    "cloudflare.agent.class": AttributeMetadata(
+        brief="The class name of the Cloudflare agent that produced the span.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="MyBaseAgent",
+        examples=["MyBaseAgent", "AIChatAgent"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[541],
+                description="Added cloudflare.agent.class attribute",
+            ),
+        ],
+    ),
+    "cloudflare.agent.name": AttributeMetadata(
+        brief="The user-configured name of the Cloudflare agent instance that produced the span.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user-123",
+        examples=["user-123", "chat-rpc-instance"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[541],
+                description="Added cloudflare.agent.name attribute",
+            ),
+        ],
+    ),
     "cloudflare.d1.duration": AttributeMetadata(
         brief="The duration of a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
@@ -21488,6 +21544,8 @@ Attributes = TypedDict(
         "cloud.provider": str,
         "cloud.region": str,
         "cloud.resource_id": str,
+        "cloudflare.agent.class": str,
+        "cloudflare.agent.name": str,
         "cloudflare.d1.duration": int,
         "cloudflare.d1.query_type": str,
         "cloudflare.d1.rows_read": int,

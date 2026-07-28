@@ -1,0 +1,18 @@
+{
+  "key": "cloudflare.agent.class",
+  "brief": "The class name of the Cloudflare agent that produced the span.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["MyBaseAgent", "AIChatAgent"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [541],
+      "description": "Added cloudflare.agent.class attribute"
+    }
+  ]
+}

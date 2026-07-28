@@ -3564,6 +3564,50 @@ export const CLIENT_PORT = 'client.port';
  */
 export type CLIENT_PORT_TYPE = number;
 
+// Path: model/attributes/cloudflare/cloudflare__agent__class.json
+
+/**
+ * The class name of the Cloudflare agent that produced the span. `cloudflare.agent.class`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_AGENT_CLASS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "MyBaseAgent"
+ * @example "AIChatAgent"
+ */
+export const CLOUDFLARE_AGENT_CLASS = 'cloudflare.agent.class';
+
+/**
+ * Type for {@link CLOUDFLARE_AGENT_CLASS} cloudflare.agent.class
+ */
+export type CLOUDFLARE_AGENT_CLASS_TYPE = string;
+
+// Path: model/attributes/cloudflare/cloudflare__agent__name.json
+
+/**
+ * The user-configured name of the Cloudflare agent instance that produced the span. `cloudflare.agent.name`
+ *
+ * Attribute Value Type: `string` {@link CLOUDFLARE_AGENT_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user-123"
+ * @example "chat-rpc-instance"
+ */
+export const CLOUDFLARE_AGENT_NAME = 'cloudflare.agent.name';
+
+/**
+ * Type for {@link CLOUDFLARE_AGENT_NAME} cloudflare.agent.name
+ */
+export type CLOUDFLARE_AGENT_NAME_TYPE = string;
+
 // Path: model/attributes/cloudflare/cloudflare__d1__duration.json
 
 /**
@@ -17394,6 +17438,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   channel: 'string',
   'client.address': 'string',
   'client.port': 'integer',
+  'cloudflare.agent.class': 'string',
+  'cloudflare.agent.name': 'string',
   'cloudflare.d1.duration': 'integer',
   'cloudflare.d1.query_type': 'string',
   'cloudflare.d1.rows_read': 'integer',
@@ -18170,6 +18216,8 @@ export type AttributeName =
   | typeof CHANNEL
   | typeof CLIENT_ADDRESS
   | typeof CLIENT_PORT
+  | typeof CLOUDFLARE_AGENT_CLASS
+  | typeof CLOUDFLARE_AGENT_NAME
   | typeof CLOUDFLARE_D1_DURATION
   | typeof CLOUDFLARE_D1_QUERY_TYPE
   | typeof CLOUDFLARE_D1_ROWS_READ
@@ -21003,6 +21051,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5432,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+  },
+  'cloudflare.agent.class': {
+    brief: 'The class name of the Cloudflare agent that produced the span.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'MyBaseAgent',
+    examples: ['MyBaseAgent', 'AIChatAgent'],
+    changelog: [{ version: 'next', prs: [541], description: 'Added cloudflare.agent.class attribute' }],
+  },
+  'cloudflare.agent.name': {
+    brief: 'The user-configured name of the Cloudflare agent instance that produced the span.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user-123',
+    examples: ['user-123', 'chat-rpc-instance'],
+    changelog: [{ version: 'next', prs: [541], description: 'Added cloudflare.agent.name attribute' }],
   },
   'cloudflare.d1.duration': {
     brief: 'The duration of a Cloudflare D1 operation.',
@@ -29589,6 +29661,8 @@ export type Attributes = {
   [CHANNEL]?: CHANNEL_TYPE;
   [CLIENT_ADDRESS]?: CLIENT_ADDRESS_TYPE;
   [CLIENT_PORT]?: CLIENT_PORT_TYPE;
+  [CLOUDFLARE_AGENT_CLASS]?: CLOUDFLARE_AGENT_CLASS_TYPE;
+  [CLOUDFLARE_AGENT_NAME]?: CLOUDFLARE_AGENT_NAME_TYPE;
   [CLOUDFLARE_D1_DURATION]?: CLOUDFLARE_D1_DURATION_TYPE;
   [CLOUDFLARE_D1_QUERY_TYPE]?: CLOUDFLARE_D1_QUERY_TYPE_TYPE;
   [CLOUDFLARE_D1_ROWS_READ]?: CLOUDFLARE_D1_ROWS_READ_TYPE;
