@@ -4191,6 +4191,7 @@ export type CODE_FILE_PATH_TYPE = string;
  *
  * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`
  *
+ * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - `code.function` was deprecated by OTel in favor of `code.function.name`.
  * @example "server_request"
  */
 export const CODE_FUNCTION = 'code.function';
@@ -21365,8 +21366,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'server_request',
+    deprecation: {
+      replacement: 'code.function.name',
+      reason: '`code.function` was deprecated by OTel in favor of `code.function.name`.',
+      status: 'backfill',
+    },
     aliases: ['code.function.name'],
-    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [542], description: 'Deprecated code.function in favor of code.function.name' },
+      { version: '0.1.0', prs: [61, 74] },
+      { version: '0.0.0' },
+    ],
   },
   'code.function.name': {
     brief: 'The method or function fully-qualified name without arguments.',

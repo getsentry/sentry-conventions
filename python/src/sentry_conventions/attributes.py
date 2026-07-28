@@ -174,6 +174,7 @@ class _AttributeNamesMeta(type):
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
+        "CODE_FUNCTION",
         "CODE_LINENO",
         "CONNECTION_RTT",
         "CONNECTIONTYPE",
@@ -2724,6 +2725,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.function.name
+    DEPRECATED: Use code.function.name instead - `code.function` was deprecated by OTel in favor of `code.function.name`.
     Example: "server_request"
     """
 
@@ -12794,8 +12796,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="server_request",
+        deprecation=DeprecationInfo(
+            replacement="code.function.name",
+            reason="`code.function` was deprecated by OTel in favor of `code.function.name`.",
+            status=DeprecationStatus.BACKFILL,
+        ),
         aliases=["code.function.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[542],
+                description="Deprecated code.function in favor of code.function.name",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
         ],
