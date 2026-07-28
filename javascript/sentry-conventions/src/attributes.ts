@@ -4787,7 +4787,7 @@ export type CODE_FUNCTION_TYPE = string;
 // Path: model/attributes/code/code__function__name.json
 
 /**
- * The method or function fully-qualified name without arguments. `code.function.name`
+ * The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples. `code.function.name`
  *
  * Attribute Value Type: `string` {@link CODE_FUNCTION_NAME_TYPE}
  *
@@ -4798,7 +4798,11 @@ export type CODE_FUNCTION_TYPE = string;
  *
  * Aliases: {@link CODE_FUNCTION} `code.function`, {@link DJANGO_FUNCTION_NAME} `django.function_name`
  *
+ * @example "com.example.MyHttpService.serveRequest"
  * @example "server_request"
+ * @example "getAllUsers"
+ * @example "UserService.getAllUsers"
+ * @example "GuzzleHttp\\Client::transfer"
  */
 export const CODE_FUNCTION_NAME = 'code.function.name';
 
@@ -24524,7 +24528,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'code.function.name': {
-    brief: 'The method or function fully-qualified name without arguments.',
+    brief:
+      'The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples.',
     type: 'string',
     keys: ['code.function.name', 'code.function', 'django.function_name'],
     applyScrubbing: {
@@ -24532,9 +24537,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'server_request',
+    example: 'com.example.MyHttpService.serveRequest',
+    examples: [
+      'com.example.MyHttpService.serveRequest',
+      'server_request',
+      'getAllUsers',
+      'UserService.getAllUsers',
+      'GuzzleHttp\\Client::transfer',
+    ],
     aliases: ['code.function', 'django.function_name'],
     changelog: [
+      {
+        version: 'next',
+        prs: [542],
+        description: 'Loosened specification around fully qualified to also accept a simple function name.',
+      },
       { version: '0.19.0', prs: [538], description: 'Added django.function_name as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },

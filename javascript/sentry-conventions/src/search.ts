@@ -7266,7 +7266,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'code.function.name': {
     canonicalName: 'code.function.name',
     type: 'string',
-    brief: 'The method or function fully-qualified name without arguments.',
+    brief:
+      'The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples.',
     deprecationChain: ['code.function.name', 'code.function', 'django.function_name'],
   },
   'code.line.number': {
