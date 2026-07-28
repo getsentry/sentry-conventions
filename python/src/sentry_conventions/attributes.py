@@ -226,6 +226,7 @@ class _AttributeNamesMeta(type):
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
+        "CODE_FUNCTION",
         "CODE_LINENO",
         "CODE",
         "CONNECTION_RTT",
@@ -3140,6 +3141,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.function.name, django.function_name
+    DEPRECATED: Use code.function.name instead - `code.function` was deprecated by OTel in favor of `code.function.name`.
     Example: "server_request"
     """
 
@@ -15340,16 +15342,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
         type=AttributeType.STRING,
         keys=(
-            "code.function",
             "code.function.name",
+            "code.function",
             "django.function_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="server_request",
+        deprecation=DeprecationInfo(
+            replacement="code.function.name",
+            reason="`code.function` was deprecated by OTel in favor of `code.function.name`.",
+            status=DeprecationStatus.BACKFILL,
+        ),
         aliases=["code.function.name", "django.function_name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[542],
+                description="Deprecated code.function in favor of code.function.name",
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[538],

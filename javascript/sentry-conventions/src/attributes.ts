@@ -4774,6 +4774,7 @@ export type CODE_FILE_PATH_TYPE = string;
  *
  * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`, {@link DJANGO_FUNCTION_NAME} `django.function_name`
  *
+ * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - `code.function` was deprecated by OTel in favor of `code.function.name`.
  * @example "server_request"
  */
 export const CODE_FUNCTION = 'code.function';
@@ -24502,15 +24503,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'code.function': {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
     type: 'string',
-    keys: ['code.function', 'code.function.name', 'django.function_name'],
+    keys: ['code.function.name', 'code.function', 'django.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'server_request',
+    deprecation: {
+      replacement: 'code.function.name',
+      reason: '`code.function` was deprecated by OTel in favor of `code.function.name`.',
+      status: 'backfill',
+    },
     aliases: ['code.function.name', 'django.function_name'],
     changelog: [
+      { version: 'next', prs: [542], description: 'Deprecated code.function in favor of code.function.name' },
       { version: '0.19.0', prs: [538], description: 'Added django.function_name as an alias' },
       { version: '0.1.0', prs: [61, 74] },
       { version: '0.0.0' },
