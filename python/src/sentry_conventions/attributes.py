@@ -2731,14 +2731,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/code/code__function__name.json
     CODE_FUNCTION_NAME: Literal["code.function.name"] = "code.function.name"
-    """The method or function fully-qualified name without arguments.
+    """The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.function
+    Example: "com.example.MyHttpService.serveRequest"
     Example: "server_request"
+    Example: "getAllUsers"
+    Example: "UserService.getAllUsers"
+    Example: "GuzzleHttp\\Client::transfer"
     """
 
     # Path: model/attributes/code/code__line__number.json
@@ -12813,14 +12817,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "code.function.name": AttributeMetadata(
-        brief="The method or function fully-qualified name without arguments.",
+        brief="The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="server_request",
+        example="com.example.MyHttpService.serveRequest",
+        examples=[
+            "com.example.MyHttpService.serveRequest",
+            "server_request",
+            "getAllUsers",
+            "UserService.getAllUsers",
+            "GuzzleHttp\\Client::transfer",
+        ],
         aliases=["code.function"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[542],
+                description="Loosened specification around fully qualified to also accept a simple function name.",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
