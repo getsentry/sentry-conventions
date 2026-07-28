@@ -186,6 +186,7 @@ class _AttributeNamesMeta(type):
         "DEVICE_CONNECTION_TYPE",
         "DEVICEMEMORY",
         "DIST",
+        "DJANGO_MIDDLEWARE_NAME",
         "EFFECTIVECONNECTIONTYPE",
         "ENVIRONMENT",
         "FAAS_EXECUTION",
@@ -311,6 +312,7 @@ class _AttributeNamesMeta(type):
         "STALL_PERCENTAGE",
         "STALL_TOTAL_TIME",
         "STARLETTE_MIDDLEWARE_NAME",
+        "STARLITE_MIDDLEWARE_NAME",
         "SUBPROCESS_PID",
         "TIME_TO_FULL_DISPLAY",
         "TIME_TO_INITIAL_DISPLAY",
@@ -3576,6 +3578,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "1.0"
     """
 
+    # Path: model/attributes/django/django__middleware_name.json
+    DJANGO_MIDDLEWARE_NAME: Literal["django.middleware_name"] = "django.middleware_name"
+    """The name of the Django middleware.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: middleware.name
+    DEPRECATED: Use middleware.name instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+    Example: "AuthenticationMiddleware"
+    """
+
     # Path: model/attributes/effectiveConnectionType.json
     EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
         "effectiveConnectionType"
@@ -6720,7 +6735,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: litestar.middleware_name, starlette.middleware_name
+    Aliases: django.middleware_name, starlite.middleware_name, litestar.middleware_name, starlette.middleware_name
     Example: "AuthenticationMiddleware"
     """
 
@@ -8881,6 +8896,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "starlette.middleware_name"
     )
     """The name of the Starlette middleware.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: middleware.name
+    DEPRECATED: Use middleware.name instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+    Example: "AuthenticationMiddleware"
+    """
+
+    # Path: model/attributes/starlite/starlite__middleware_name.json
+    STARLITE_MIDDLEWARE_NAME: Literal["starlite.middleware_name"] = (
+        "starlite.middleware_name"
+    )
+    """The name of the Starlite middleware.
 
     Type: str
     Apply Scrubbing: manual
@@ -13820,6 +13850,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "django.middleware_name": AttributeMetadata(
+        brief="The name of the Django middleware.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AuthenticationMiddleware",
+        examples=["AuthenticationMiddleware"],
+        deprecation=DeprecationInfo(
+            replacement="middleware.name",
+            reason="This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["middleware.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[520],
+                description="Added django.middleware_name attribute",
+            ),
+        ],
+    ),
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
@@ -17648,11 +17700,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AuthenticationMiddleware",
-        aliases=["litestar.middleware_name", "starlette.middleware_name"],
+        aliases=[
+            "django.middleware_name",
+            "starlite.middleware_name",
+            "litestar.middleware_name",
+            "starlette.middleware_name",
+        ],
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Added litestar.middleware_name and starlette.middleware_name as aliases",
+                description="Added django.middleware_name, starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases",
             ),
             ChangelogEntry(
                 version="0.6.0",
@@ -20166,6 +20223,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "starlite.middleware_name": AttributeMetadata(
+        brief="The name of the Starlite middleware.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AuthenticationMiddleware",
+        examples=["AuthenticationMiddleware"],
+        deprecation=DeprecationInfo(
+            replacement="middleware.name",
+            reason="This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["middleware.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[519],
+                description="Added starlite.middleware_name attribute",
+            ),
+        ],
+    ),
     "state.type": AttributeMetadata(
         brief="The type of state management library",
         type=AttributeType.STRING,
@@ -21514,6 +21593,7 @@ Attributes = TypedDict(
         "device.usable_memory": int,
         "deviceMemory": str,
         "dist": str,
+        "django.middleware_name": str,
         "effectiveConnectionType": str,
         "environment": str,
         "error.type": str,
@@ -21941,6 +22021,7 @@ Attributes = TypedDict(
         "stall_percentage": float,
         "stall_total_time": float,
         "starlette.middleware_name": str,
+        "starlite.middleware_name": str,
         "state.type": str,
         "subprocess.pid": int,
         "thread.id": int,
