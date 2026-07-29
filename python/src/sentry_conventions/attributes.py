@@ -168,6 +168,7 @@ class _AttributeNamesMeta(type):
         "AWS_LAMBDA_FUNCTION_NAME",
         "AWS_LAMBDA_FUNCTION_VERSION",
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
+        "AWS_OPERATION_NAME",
         "AWS_REQUEST_EXTENDED_ID",
         "_AWS_REQUEST_ID",
         "AWS_REQUEST_URL",
@@ -1833,6 +1834,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: ["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"]
+    """
+
+    # Path: model/attributes/aws/aws__operation_name.json
+    AWS_OPERATION_NAME: Literal["aws.operation_name"] = "aws.operation_name"
+    """The name of the API operation invoked on an AWS service.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: rpc.method
+    DEPRECATED: Use rpc.method instead - This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.
+    Example: "PutObject"
     """
 
     # Path: model/attributes/aws/aws__request__extended_id.json
@@ -7758,6 +7772,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: aws.operation_name
     Example: "com.example.ExampleService/exampleMethod"
     """
 
@@ -11922,6 +11937,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["logs/main/10838bed-421f-43ef-870a-f43feacbbb5b"],
         changelog=[
             ChangelogEntry(version="0.11.1", prs=[414]),
+        ],
+    ),
+    "aws.operation_name": AttributeMetadata(
+        brief="The name of the API operation invoked on an AWS service.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="PutObject",
+        examples=["PutObject"],
+        deprecation=DeprecationInfo(
+            replacement="rpc.method",
+            reason="This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["rpc.method"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[536],
+                description="Added aws.operation_name attribute",
+            ),
         ],
     ),
     "aws.request.extended_id": AttributeMetadata(
@@ -19073,7 +19110,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="com.example.ExampleService/exampleMethod",
+        aliases=["aws.operation_name"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added aws.operation_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.7.0", prs=[351], description="Added rpc.method attribute"
             ),
@@ -21772,6 +21813,7 @@ Attributes = TypedDict(
         "aws.lambda.remaining_time_in_millis": float,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
+        "aws.operation_name": str,
         "aws.request.extended_id": str,
         "aws.request.id": str,
         "aws.request.url": str,
