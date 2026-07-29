@@ -1,0 +1,42 @@
+{
+  "name": "object",
+  "description": "Object storage related spans represent operations on object storage systems such as Cloudflare R2, Amazon S3, and compatible services.",
+  "fields": [
+    {
+      "name": "object.get",
+      "description": "Retrieving an object from an object store."
+    },
+    {
+      "name": "object.head",
+      "description": "Retrieving the metadata of an object from an object store."
+    },
+    {
+      "name": "object.put",
+      "description": "Storing an object in an object store."
+    },
+    {
+      "name": "object.delete",
+      "description": "Deleting an object from an object store."
+    },
+    {
+      "name": "object.list",
+      "description": "Listing objects in an object store."
+    },
+    {
+      "name": "object.upload_part",
+      "description": "Uploading a single part of a multipart upload to an object store."
+    },
+    {
+      "name": "object.multipart_upload.abort",
+      "description": "Aborting a multipart upload to an object store."
+    },
+    {
+      "name": "object.multipart_upload.create",
+      "description": "Creating a multipart upload to an object store."
+    },
+    {
+      "name": "object.multipart_upload.complete",
+      "description": "Completing a multipart upload to an object store."
+    }
+  ]
+}
