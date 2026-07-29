@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": ["SELECT"],
-  "alias": ["db.operation.name", "db.operation"],
+  "alias": ["cloudflare.d1.query_type", "db.operation.name", "db.operation"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "db.operation.name"

@@ -3645,7 +3645,7 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`, {@link REDIS_COMMAND} `redis.command`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "run"
@@ -12876,7 +12876,7 @@ export type REACT_VERSION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ * Aliases: {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "SELECT"
@@ -21167,8 +21167,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.operation.name',
       status: 'backfill',
     },
-    aliases: ['db.operation.name', 'db.operation'],
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
+    aliases: ['db.operation.name', 'db.operation', 'redis.command'],
+    changelog: [
+      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' },
+    ],
   },
   'cloudflare.d1.rows_read': {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
@@ -27023,7 +27026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.operation.name',
       status: 'backfill',
     },
-    aliases: ['db.operation.name', 'db.operation'],
+    aliases: ['cloudflare.d1.query_type', 'db.operation.name', 'db.operation'],
     changelog: [{ version: 'next', prs: [531], description: 'Added redis.command attribute' }],
   },
   'redis.key': {

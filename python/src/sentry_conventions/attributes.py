@@ -2483,7 +2483,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: db.operation.name, db.operation
+    Aliases: db.operation.name, db.operation, redis.command
     DEPRECATED: Use db.operation.name instead
     Example: "run"
     """
@@ -7570,7 +7570,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: db.operation.name, db.operation
+    Aliases: cloudflare.d1.query_type, db.operation.name, db.operation
     DEPRECATED: Use db.operation.name instead
     Example: "SELECT"
     """
@@ -12583,8 +12583,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="db.operation.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["db.operation.name", "db.operation"],
+        aliases=["db.operation.name", "db.operation", "redis.command"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added redis.command as an alias"
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[392],
@@ -18771,7 +18774,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="db.operation.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["db.operation.name", "db.operation"],
+        aliases=["cloudflare.d1.query_type", "db.operation.name", "db.operation"],
         changelog=[
             ChangelogEntry(
                 version="next", prs=[531], description="Added redis.command attribute"
