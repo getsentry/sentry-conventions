@@ -183,6 +183,7 @@ class _AttributeNamesMeta(type):
         "DB_MONGODB_COLLECTION",
         "DB_NAME",
         "DB_OPERATION",
+        "DB_PARAMS",
         "DB_SQL_BINDINGS",
         "DB_STATEMENT",
         "DB_SYSTEM",
@@ -3002,6 +3003,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: db.operation, cloudflare.d1.query_type, redis.command
     Example: "SELECT"
+    """
+
+    # Path: model/attributes/db/db__params.json
+    DB_PARAMS: Literal["db.params"] = "db.params"
+    """The query bindings for a database request.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.
+    Example: "[{\"x\": 100}]"
     """
 
     # Path: model/attributes/db/db__query__parameter__[key].json
@@ -13250,6 +13263,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "db.params": AttributeMetadata(
+        brief="The query bindings for a database request.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='[{"x": 100}]',
+        examples=['[{"x": 100}]'],
+        deprecation=DeprecationInfo(
+            replacement="db.query.parameter.<key>",
+            reason="Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.",
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[529], description="Added db.params attribute"
+            ),
+        ],
+    ),
     "db.query.parameter.<key>": AttributeMetadata(
         brief="A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.",
         type=AttributeType.STRING,
@@ -21834,6 +21865,7 @@ Attributes = TypedDict(
         "db.operation": str,
         "db.operation.batch.size": int,
         "db.operation.name": str,
+        "db.params": str,
         "db.query.parameter.<key>": str,
         "db.query.summary": str,
         "db.query.text": str,

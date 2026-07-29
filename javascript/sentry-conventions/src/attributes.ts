@@ -4701,6 +4701,28 @@ export const DB_OPERATION_NAME = 'db.operation.name';
  */
 export type DB_OPERATION_NAME_TYPE = string;
 
+// Path: model/attributes/db/db__params.json
+
+/**
+ * The query bindings for a database request. `db.params`
+ *
+ * Attribute Value Type: `string` {@link DB_PARAMS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.
+ * @example "[{\"x\": 100}]"
+ */
+export const DB_PARAMS = 'db.params';
+
+/**
+ * Type for {@link DB_PARAMS} db.params
+ */
+export type DB_PARAMS_TYPE = string;
+
 // Path: model/attributes/db/db__query__parameter__[key].json
 
 /**
@@ -17613,6 +17635,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'db.operation': 'string',
   'db.operation.batch.size': 'integer',
   'db.operation.name': 'string',
+  'db.params': 'string',
   'db.query.parameter.<key>': 'string',
   'db.query.summary': 'string',
   'db.query.text': 'string',
@@ -18396,6 +18419,7 @@ export type AttributeName =
   | typeof DB_OPERATION
   | typeof DB_OPERATION_BATCH_SIZE
   | typeof DB_OPERATION_NAME
+  | typeof DB_PARAMS
   | typeof DB_QUERY_PARAMETER_KEY
   | typeof DB_QUERY_SUMMARY
   | typeof DB_QUERY_TEXT
@@ -21897,6 +21921,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
+  },
+  'db.params': {
+    brief: 'The query bindings for a database request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"x": 100}]',
+    examples: ['[{"x": 100}]'],
+    deprecation: {
+      replacement: 'db.query.parameter.<key>',
+      reason:
+        'Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.',
+    },
+    changelog: [{ version: 'next', prs: [529], description: 'Added db.params attribute' }],
   },
   'db.query.parameter.<key>': {
     brief:
@@ -30010,6 +30051,7 @@ export type Attributes = {
   [DB_OPERATION]?: DB_OPERATION_TYPE;
   [DB_OPERATION_BATCH_SIZE]?: DB_OPERATION_BATCH_SIZE_TYPE;
   [DB_OPERATION_NAME]?: DB_OPERATION_NAME_TYPE;
+  [DB_PARAMS]?: DB_PARAMS_TYPE;
   [DB_QUERY_PARAMETER_KEY]?: DB_QUERY_PARAMETER_KEY_TYPE;
   [DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
   [DB_QUERY_TEXT]?: DB_QUERY_TEXT_TYPE;
