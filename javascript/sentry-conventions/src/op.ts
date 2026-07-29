@@ -295,6 +295,11 @@ export const GENERAL_MARK_SPAN_OP = 'mark';
  */
 export const GENERAL_FUNCTION_SPAN_OP = 'function';
 
+/**
+ * A user-defined measurement of the duration between two points in time
+ */
+export const GENERAL_MEASURE_SPAN_OP = 'measure';
+
 // Path: model/op/messaging.json
 // Name: messaging
 
