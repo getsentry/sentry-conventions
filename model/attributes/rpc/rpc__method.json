@@ -8,7 +8,12 @@
   "is_in_otel": true,
   "example": "com.example.ExampleService/exampleMethod",
   "visibility": "public",
+  "alias": ["aws.operation_name"],
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.operation_name as an alias"
+    },
     {
       "version": "0.7.0",
       "prs": [351],
