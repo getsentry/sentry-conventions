@@ -35,11 +35,91 @@ export const BROWSER_RESOURCE_IFRAME_SPAN_OP = 'resource.iframe';
 export const BROWSER_RESOURCE_OTHER_SPAN_OP = 'resource.other';
 
 /**
+ * Loading of a resource initiated by a worker (e.g. Web Worker or Service Worker).
+ */
+export const BROWSER_RESOURCE_WORKER_SPAN_OP = 'resource.worker';
+
+/**
+ * Loading of an icon resource.
+ */
+export const BROWSER_RESOURCE_ICON_SPAN_OP = 'resource.icon';
+
+/**
+ * Loading of a resource initiated by a frame.
+ */
+export const BROWSER_RESOURCE_FRAME_SPAN_OP = 'resource.frame';
+
+/**
+ * Loading of a resource initiated by an `<object>` element.
+ */
+export const BROWSER_RESOURCE_OBJECT_SPAN_OP = 'resource.object';
+
+/**
+ * A hyperlink auditing ping request.
+ */
+export const BROWSER_RESOURCE_PING_SPAN_OP = 'resource.ping';
+
+/**
+ * Loading of a `<track>` element resource (e.g. subtitles or captions).
+ */
+export const BROWSER_RESOURCE_TRACK_SPAN_OP = 'resource.track';
+
+/**
  * Usage of browser APIs or functionality
  */
 export const BROWSER_BROWSER_SPAN_OP = 'browser';
 
 export const BROWSER_BROWSER_PAINT_SPAN_OP = 'browser.paint';
+
+/**
+ * The unload event phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_UNLOAD_EVENT_SPAN_OP = 'browser.unload_event';
+
+/**
+ * The redirect phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_REDIRECT_SPAN_OP = 'browser.redirect';
+
+/**
+ * The DOMContentLoaded event phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_DOM_CONTENT_LOADED_EVENT_SPAN_OP = 'browser.dom_content_loaded_event';
+
+/**
+ * The load event phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_LOAD_EVENT_SPAN_OP = 'browser.load_event';
+
+/**
+ * The connection phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_CONNECT_SPAN_OP = 'browser.connect';
+
+/**
+ * The secure connection (TLS/SSL) phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_TLS_SSL_SPAN_OP = 'browser.tls_ssl';
+
+/**
+ * The cache lookup / fetch start phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_CACHE_SPAN_OP = 'browser.cache';
+
+/**
+ * The DNS domain lookup phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_DNS_SPAN_OP = 'browser.dns';
+
+/**
+ * The request phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_REQUEST_SPAN_OP = 'browser.request';
+
+/**
+ * The response phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_RESPONSE_SPAN_OP = 'browser.response';
 
 /**
  * Operations related to browser UI
@@ -52,6 +132,61 @@ export const BROWSER_UI_SPAN_OP = 'ui';
 export const BROWSER_UI_TASK_SPAN_OP = 'ui.task';
 
 export const BROWSER_UI_RENDER_SPAN_OP = 'ui.render';
+
+/**
+ * Mounting of a UI component or application (e.g. initial render/bootstrap).
+ */
+export const BROWSER_UI_MOUNT_SPAN_OP = 'ui.mount';
+
+/**
+ * Updating of an already-mounted UI component.
+ */
+export const BROWSER_UI_UPDATE_SPAN_OP = 'ui.update';
+
+/**
+ * Unmounting/teardown of a UI component.
+ */
+export const BROWSER_UI_UNMOUNT_SPAN_OP = 'ui.unmount';
+
+/**
+ * A long task on the main UI thread, as reported by the Long Tasks API.
+ */
+export const BROWSER_UI_LONG_TASK_SPAN_OP = 'ui.long_task';
+
+/**
+ * A long animation frame, as reported by the Long Animation Frames API.
+ */
+export const BROWSER_UI_LONG_ANIMATION_FRAME_SPAN_OP = 'ui.long_animation_frame';
+
+/**
+ * A click interaction measured via Interaction to Next Paint (INP).
+ */
+export const BROWSER_UI_INTERACTION_CLICK_SPAN_OP = 'ui.interaction.click';
+
+/**
+ * A hover interaction measured via Interaction to Next Paint (INP).
+ */
+export const BROWSER_UI_INTERACTION_HOVER_SPAN_OP = 'ui.interaction.hover';
+
+/**
+ * A drag interaction measured via Interaction to Next Paint (INP).
+ */
+export const BROWSER_UI_INTERACTION_DRAG_SPAN_OP = 'ui.interaction.drag';
+
+/**
+ * A key press interaction measured via Interaction to Next Paint (INP).
+ */
+export const BROWSER_UI_INTERACTION_PRESS_SPAN_OP = 'ui.interaction.press';
+
+/**
+ * A Largest Contentful Paint (LCP) web vital measurement.
+ */
+export const BROWSER_UI_WEBVITAL_LCP_SPAN_OP = 'ui.webvital.lcp';
+
+/**
+ * A Cumulative Layout Shift (CLS) web vital measurement.
+ */
+export const BROWSER_UI_WEBVITAL_CLS_SPAN_OP = 'ui.webvital.cls';
 
 export const BROWSER_UI_ACTION_SPAN_OP = 'ui.action';
 
