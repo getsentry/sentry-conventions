@@ -1,0 +1,10 @@
+{
+  "name": "routing",
+  "description": "Routing related spans represent work performed by frontend and backend application routers.",
+  "fields": [
+    {
+      "name": "router",
+      "description": "A framework-neutral operation for work performed by an application router."
+    }
+  ]
+}
