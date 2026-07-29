@@ -1,0 +1,23 @@
+{
+  "key": "gcp_region",
+  "brief": "The geographical region the GCP resource is running",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["us-east-1"],
+  "alias": ["cloud.region"],
+  "deprecation": {
+    "replacement": "cloud.region",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [535],
+      "description": "Added gcp_region attribute"
+    }
+  ]
+}

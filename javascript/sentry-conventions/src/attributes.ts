@@ -4041,6 +4041,8 @@ export type CLOUD_PROVIDER_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link GCP_REGION} `gcp_region`
+ *
  * @example "us-east-1"
  */
 export const CLOUD_REGION = 'cloud.region';
@@ -6811,6 +6813,30 @@ export const GCP_PROJECT_ID = 'gcp.project.id';
  * Type for {@link GCP_PROJECT_ID} gcp.project.id
  */
 export type GCP_PROJECT_ID_TYPE = string;
+
+// Path: model/attributes/gcp_region.json
+
+/**
+ * The geographical region the GCP resource is running `gcp_region`
+ *
+ * Attribute Value Type: `string` {@link GCP_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_REGION} `cloud.region`
+ *
+ * @deprecated Use {@link CLOUD_REGION} (cloud.region) instead
+ * @example "us-east-1"
+ */
+export const GCP_REGION = 'gcp_region';
+
+/**
+ * Type for {@link GCP_REGION} gcp_region
+ */
+export type GCP_REGION_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
@@ -17540,6 +17566,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gcp.function.context.timestamp': 'string',
   'gcp.function.context.type': 'string',
   'gcp.project.id': 'string',
+  gcp_region: 'string',
   'gen_ai.agent.name': 'string',
   'gen_ai.context.utilization': 'double',
   'gen_ai.context.window_size': 'integer',
@@ -18316,6 +18343,7 @@ export type AttributeName =
   | typeof GCP_FUNCTION_CONTEXT_TIMESTAMP
   | typeof GCP_FUNCTION_CONTEXT_TYPE
   | typeof GCP_PROJECT_ID
+  | typeof GCP_REGION
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
@@ -21264,7 +21292,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'us-east-1',
-    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' }],
+    aliases: ['gcp_region'],
+    changelog: [
+      { version: 'next', description: 'Added gcp_region as an alias' },
+      { version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' },
+    ],
   },
   'cloud.resource_id': {
     brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
@@ -22982,6 +23014,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'my-project-123',
     changelog: [{ version: '0.11.0', prs: [403] }],
+  },
+  gcp_region: {
+    brief: 'The geographical region the GCP resource is running',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'us-east-1',
+    examples: ['us-east-1'],
+    deprecation: {
+      replacement: 'cloud.region',
+      status: 'backfill',
+    },
+    aliases: ['cloud.region'],
+    changelog: [{ version: 'next', prs: [535], description: 'Added gcp_region attribute' }],
   },
   'gen_ai.agent.name': {
     brief: 'The name of the agent being used.',
@@ -29750,6 +29799,7 @@ export type Attributes = {
   [GCP_FUNCTION_CONTEXT_TIMESTAMP]?: GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE;
   [GCP_FUNCTION_CONTEXT_TYPE]?: GCP_FUNCTION_CONTEXT_TYPE_TYPE;
   [GCP_PROJECT_ID]?: GCP_PROJECT_ID_TYPE;
+  [GCP_REGION]?: GCP_REGION_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;

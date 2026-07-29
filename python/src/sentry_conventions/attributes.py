@@ -200,6 +200,7 @@ class _AttributeNamesMeta(type):
         "FRAMES_FROZEN_RATE",
         "FRAMES_SLOW_RATE",
         "FS_ERROR",
+        "GCP_REGION",
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
@@ -2416,6 +2417,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: gcp_region
     Example: "us-east-1"
     """
 
@@ -4142,6 +4144,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "my-project-123"
+    """
+
+    # Path: model/attributes/gcp_region.json
+    GCP_REGION: Literal["gcp_region"] = "gcp_region"
+    """The geographical region the GCP resource is running
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: cloud.region
+    DEPRECATED: Use cloud.region instead
+    Example: "us-east-1"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__agent__name.json
@@ -12432,7 +12447,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="us-east-1",
+        aliases=["gcp_region"],
         changelog=[
+            ChangelogEntry(version="next", description="Added gcp_region as an alias"),
             ChangelogEntry(
                 version="0.7.0", prs=[364], description="Added cloud.region attribute"
             ),
@@ -14593,6 +14610,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="my-project-123",
         changelog=[
             ChangelogEntry(version="0.11.0", prs=[403]),
+        ],
+    ),
+    "gcp_region": AttributeMetadata(
+        brief="The geographical region the GCP resource is running",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="us-east-1",
+        examples=["us-east-1"],
+        deprecation=DeprecationInfo(
+            replacement="cloud.region", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["cloud.region"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[535], description="Added gcp_region attribute"
+            ),
         ],
     ),
     "gen_ai.agent.name": AttributeMetadata(
@@ -21640,6 +21675,7 @@ Attributes = TypedDict(
         "gcp.function.context.timestamp": str,
         "gcp.function.context.type": str,
         "gcp.project.id": str,
+        "gcp_region": str,
         "gen_ai.agent.name": str,
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,
