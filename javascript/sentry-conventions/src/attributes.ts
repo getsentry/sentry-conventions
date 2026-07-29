@@ -4239,7 +4239,7 @@ export type CODE_FILE_PATH_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`
+ * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`, {@link DJANGO_FUNCTION_NAME} `django.function_name`
  *
  * @example "server_request"
  */
@@ -4262,7 +4262,7 @@ export type CODE_FUNCTION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FUNCTION} `code.function`
+ * Aliases: {@link CODE_FUNCTION} `code.function`, {@link DJANGO_FUNCTION_NAME} `django.function_name`
  *
  * @example "server_request"
  */
@@ -5823,6 +5823,30 @@ export const DIST = 'dist';
  * Type for {@link DIST} dist
  */
 export type DIST_TYPE = string;
+
+// Path: model/attributes/django/django__function_name.json
+
+/**
+ * The fully qualified name of a function used in a Django context. `django.function_name`
+ *
+ * Attribute Value Type: `string` {@link DJANGO_FUNCTION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`, {@link CODE_FUNCTION} `code.function`
+ *
+ * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement.
+ * @example "django.contrib.sessions.middleware.SessionMiddleware"
+ */
+export const DJANGO_FUNCTION_NAME = 'django.function_name';
+
+/**
+ * Type for {@link DJANGO_FUNCTION_NAME} django.function_name
+ */
+export type DJANGO_FUNCTION_NAME_TYPE = string;
 
 // Path: model/attributes/django/django__middleware_name.json
 
@@ -17617,6 +17641,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'device.timezone': 'string',
   'device.usable_memory': 'integer',
   dist: 'string',
+  'django.function_name': 'string',
   'django.middleware_name': 'string',
   effectiveConnectionType: 'string',
   environment: 'string',
@@ -18398,6 +18423,7 @@ export type AttributeName =
   | typeof DEVICE_TIMEZONE
   | typeof DEVICE_USABLE_MEMORY
   | typeof DIST
+  | typeof DJANGO_FUNCTION_NAME
   | typeof DJANGO_MIDDLEWARE_NAME
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
@@ -21537,8 +21563,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'server_request',
-    aliases: ['code.function.name'],
-    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
+    aliases: ['code.function.name', 'django.function_name'],
+    changelog: [
+      { version: 'next', description: 'Added django.function_name as an alias' },
+      { version: '0.1.0', prs: [61, 74] },
+      { version: '0.0.0' },
+    ],
   },
   'code.function.name': {
     brief: 'The method or function fully-qualified name without arguments.',
@@ -21549,8 +21579,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'server_request',
-    aliases: ['code.function'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['code.function', 'django.function_name'],
+    changelog: [
+      { version: 'next', description: 'Added django.function_name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'code.lineno': {
     brief:
@@ -22493,6 +22527,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.dist'],
     changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist attribute' }],
+  },
+  'django.function_name': {
+    brief: 'The fully qualified name of a function used in a Django context.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'django.contrib.sessions.middleware.SessionMiddleware',
+    examples: ['django.contrib.sessions.middleware.SessionMiddleware'],
+    deprecation: {
+      replacement: 'code.function.name',
+      reason:
+        'This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['code.function.name', 'code.function'],
+    changelog: [{ version: 'next', prs: [538], description: 'Added django.function_name attribute' }],
   },
   'django.middleware_name': {
     brief: 'The name of the Django middleware.',
@@ -29966,6 +30019,7 @@ export type Attributes = {
   [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [DIST]?: DIST_TYPE;
+  [DJANGO_FUNCTION_NAME]?: DJANGO_FUNCTION_NAME_TYPE;
   [DJANGO_MIDDLEWARE_NAME]?: DJANGO_MIDDLEWARE_NAME_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;

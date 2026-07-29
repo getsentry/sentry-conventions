@@ -1,0 +1,24 @@
+{
+  "key": "django.function_name",
+  "brief": "The fully qualified name of a function used in a Django context.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["django.contrib.sessions.middleware.SessionMiddleware"],
+  "alias": ["code.function.name", "code.function"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "code.function.name",
+    "reason": "This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement."
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [538],
+      "description": "Added django.function_name attribute"
+    }
+  ]
+}
