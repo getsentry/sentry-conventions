@@ -1,5 +1,29 @@
 // This is an auto-generated file. Do not edit!
 
+// Path: model/attributes/address.json
+
+/**
+ * The destination hostname or IP address for a TCP connection. `address`
+ *
+ * Attribute Value Type: `string` {@link ADDRESS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ *
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
+ * @example "example.com"
+ */
+export const ADDRESS = 'address';
+
+/**
+ * Type for {@link ADDRESS} address
+ */
+export type ADDRESS_TYPE = string;
+
 // Path: model/attributes/ai/ai__citations.json
 
 /**
@@ -2605,6 +2629,30 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
 
+// Path: model/attributes/aws_region.json
+
+/**
+ * The geographical region the AWS resource is running `aws_region`
+ *
+ * Attribute Value Type: `string` {@link AWS_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_REGION} `cloud.region`, {@link GCP_REGION} `gcp_region`
+ *
+ * @deprecated Use {@link CLOUD_REGION} (cloud.region) instead
+ * @example "us-east-1"
+ */
+export const AWS_REGION = 'aws_region';
+
+/**
+ * Type for {@link AWS_REGION} aws_region
+ */
+export type AWS_REGION_TYPE = string;
+
 // Path: model/attributes/aws/aws__request__extended_id.json
 
 /**
@@ -4040,6 +4088,8 @@ export type CLOUD_PROVIDER_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link AWS_REGION} `aws_region`, {@link GCP_REGION} `gcp_region`
  *
  * @example "us-east-1"
  */
@@ -6812,6 +6862,30 @@ export const GCP_PROJECT_ID = 'gcp.project.id';
  */
 export type GCP_PROJECT_ID_TYPE = string;
 
+// Path: model/attributes/gcp_region.json
+
+/**
+ * The geographical region the GCP resource is running `gcp_region`
+ *
+ * Attribute Value Type: `string` {@link GCP_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_REGION} `cloud.region`, {@link AWS_REGION} `aws_region`
+ *
+ * @deprecated Use {@link CLOUD_REGION} (cloud.region) instead
+ * @example "us-east-1"
+ */
+export const GCP_REGION = 'gcp_region';
+
+/**
+ * Type for {@link GCP_REGION} gcp_region
+ */
+export type GCP_REGION_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
 /**
@@ -8744,7 +8818,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -9394,7 +9468,7 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_TEMPLATE} `url.template`
+ * Aliases: {@link ROUTE} `route`
  *
  * @example "/users/:id"
  * @example "my-controller/my-action/{id}"
@@ -9443,7 +9517,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -11802,7 +11876,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -15147,7 +15221,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @example "example.com"
  */
@@ -15170,7 +15244,7 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
  * @example "example.com"
@@ -16139,7 +16213,7 @@ export type URL_SCHEME_TYPE = string;
 // Path: model/attributes/url/url__template.json
 
 /**
- * The low-cardinality template of an absolute path reference. `url.template`
+ * The low-cardinality template of an absolute URL path reference. `url.template`
  *
  * Attribute Value Type: `string` {@link URL_TEMPLATE_TYPE}
  *
@@ -16147,8 +16221,6 @@ export type URL_SCHEME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
- *
- * Aliases: {@link HTTP_ROUTE} `http.route`
  *
  * @example "/users/{id}"
  * @example "/users/:id"
@@ -17259,6 +17331,7 @@ export interface AttributeMetadata {
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
+  address: 'string',
   'ai.citations': 'string[]',
   'ai.completion_tokens.used': 'integer',
   'ai.documents': 'string[]',
@@ -17375,6 +17448,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  aws_region: 'string',
   'aws.request.extended_id': 'string',
   'aws.request_id': 'string',
   'aws.request.id': 'string',
@@ -17566,6 +17640,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gcp.function.context.timestamp': 'string',
   'gcp.function.context.type': 'string',
   'gcp.project.id': 'string',
+  gcp_region: 'string',
   'gen_ai.agent.name': 'string',
   'gen_ai.context.utilization': 'double',
   'gen_ai.context.window_size': 'integer',
@@ -18036,6 +18111,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
 };
 
 export type AttributeName =
+  | typeof ADDRESS
   | typeof AI_CITATIONS
   | typeof AI_COMPLETION_TOKENS_USED
   | typeof AI_DOCUMENTS
@@ -18152,6 +18228,7 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_REGION
   | typeof AWS_REQUEST_EXTENDED_ID
   | typeof AWS_REQUEST_ID
   | typeof _AWS_REQUEST_ID
@@ -18343,6 +18420,7 @@ export type AttributeName =
   | typeof GCP_FUNCTION_CONTEXT_TIMESTAMP
   | typeof GCP_FUNCTION_CONTEXT_TYPE
   | typeof GCP_PROJECT_ID
+  | typeof GCP_REGION
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
@@ -18812,6 +18890,24 @@ export type AttributeName =
   | typeof VERCEL_STATUS_CODE;
 
 export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
+  address: {
+    brief: 'The destination hostname or IP address for a TCP connection.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.com',
+    examples: ['example.com'],
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
+      status: 'backfill',
+    },
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [{ version: 'next', prs: [534], description: 'Added address attribute' }],
+  },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
     type: 'string[]',
@@ -20498,6 +20594,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
   },
+  aws_region: {
+    brief: 'The geographical region the AWS resource is running',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'us-east-1',
+    examples: ['us-east-1'],
+    deprecation: {
+      replacement: 'cloud.region',
+      status: 'backfill',
+    },
+    aliases: ['cloud.region', 'gcp_region'],
+    changelog: [{ version: 'next', prs: [537], description: 'Added aws_region attribute' }],
+  },
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
@@ -21292,7 +21405,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'us-east-1',
-    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' }],
+    aliases: ['aws_region', 'gcp_region'],
+    changelog: [
+      { version: 'next', description: 'Added aws_region and gcp_region as aliases' },
+      { version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' },
+    ],
   },
   'cloud.resource_id': {
     brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
@@ -23020,6 +23137,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'my-project-123',
     changelog: [{ version: '0.11.0', prs: [403] }],
   },
+  gcp_region: {
+    brief: 'The geographical region the GCP resource is running',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'us-east-1',
+    examples: ['us-east-1'],
+    deprecation: {
+      replacement: 'cloud.region',
+      status: 'backfill',
+    },
+    aliases: ['cloud.region', 'aws_region'],
+    changelog: [{ version: 'next', prs: [535], description: 'Added gcp_region attribute' }],
+  },
   'gen_ai.agent.name': {
     brief: 'The name of the agent being used.',
     type: 'string',
@@ -24370,8 +24504,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.method': {
     brief: 'The HTTP method used.',
@@ -24750,11 +24888,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/:id',
     examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
-    aliases: ['url.template'],
+    aliases: ['route'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      {
+        version: 'next',
+        prs: [505, 521],
+        description: 'Added multiple examples, removed alias to `url.template`, added additional context',
+      },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.',
+      'For `http.client` spans and client-side routing, use `url.template` instead.',
     ],
   },
   'http.scheme': {
@@ -24784,8 +24930,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.server.request.time_in_queue': {
     brief:
@@ -26271,8 +26421,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.host.port': {
     brief: 'Server port number.',
@@ -28288,8 +28442,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   server_name: {
     brief:
@@ -28306,8 +28464,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
     changelog: [
+      { version: 'next', description: 'Added address as an alias' },
       {
         version: '0.16.0',
         prs: [477],
@@ -28911,7 +29070,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'url.template': {
-    brief: 'The low-cardinality template of an absolute path reference.',
+    brief: 'The low-cardinality template of an absolute URL path reference.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -28920,11 +29079,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/{id}',
     examples: ['/users/{id}', '/users/:id', '/about'],
-    aliases: ['http.route'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      {
+        version: 'next',
+        prs: [505, 521],
+        description: 'Added multiple examples, removed alias to `http.route`, added additional context',
+      },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).',
+      'Use `http.route` for server-side instrumentation that captures the framework route of an incoming request.',
     ],
   },
   'user_agent.original': {
@@ -29482,6 +29648,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
+  [ADDRESS]?: ADDRESS_TYPE;
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
@@ -29598,6 +29765,7 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_REGION]?: AWS_REGION_TYPE;
   [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
   [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
@@ -29789,6 +29957,7 @@ export type Attributes = {
   [GCP_FUNCTION_CONTEXT_TIMESTAMP]?: GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE;
   [GCP_FUNCTION_CONTEXT_TYPE]?: GCP_FUNCTION_CONTEXT_TYPE_TYPE;
   [GCP_PROJECT_ID]?: GCP_PROJECT_ID_TYPE;
+  [GCP_REGION]?: GCP_REGION_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
