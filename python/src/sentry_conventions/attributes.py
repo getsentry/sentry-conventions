@@ -201,6 +201,7 @@ class _AttributeNamesMeta(type):
         "FRAMES_FROZEN_RATE",
         "FRAMES_SLOW_RATE",
         "FS_ERROR",
+        "GCP_REGION",
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
@@ -1937,7 +1938,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: cloud.region
+    Aliases: cloud.region, gcp_region
     DEPRECATED: Use cloud.region instead
     Example: "us-east-1"
     """
@@ -2430,7 +2431,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: aws_region
+    Aliases: aws_region, gcp_region
     Example: "us-east-1"
     """
 
@@ -4159,6 +4160,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "my-project-123"
     """
 
+    # Path: model/attributes/gcp_region.json
+    GCP_REGION: Literal["gcp_region"] = "gcp_region"
+    """The geographical region the GCP resource is running
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: cloud.region, aws_region
+    DEPRECATED: Use cloud.region instead
+    Example: "us-east-1"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__agent__name.json
     GEN_AI_AGENT_NAME: Literal["gen_ai.agent.name"] = "gen_ai.agent.name"
     """The name of the agent being used.
@@ -5667,7 +5681,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.template
+    Aliases: route
     Example: "/users/:id"
     Example: "my-controller/my-action/{id}"
     Example: "/posts"
@@ -9334,13 +9348,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/url/url__template.json
     URL_TEMPLATE: Literal["url.template"] = "url.template"
-    """The low-cardinality template of an absolute path reference.
+    """The low-cardinality template of an absolute URL path reference.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.route
     Example: "/users/{id}"
     Example: "/users/:id"
     Example: "/about"
@@ -11964,7 +11977,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="cloud.region", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["cloud.region"],
+        aliases=["cloud.region", "gcp_region"],
         changelog=[
             ChangelogEntry(
                 version="next", prs=[537], description="Added aws_region attribute"
@@ -12466,9 +12479,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="us-east-1",
-        aliases=["aws_region"],
+        aliases=["aws_region", "gcp_region"],
         changelog=[
-            ChangelogEntry(version="next", description="Added aws_region as an alias"),
+            ChangelogEntry(
+                version="next", description="Added aws_region and gcp_region as aliases"
+            ),
             ChangelogEntry(
                 version="0.7.0", prs=[364], description="Added cloud.region attribute"
             ),
@@ -14631,6 +14646,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.11.0", prs=[403]),
         ],
     ),
+    "gcp_region": AttributeMetadata(
+        brief="The geographical region the GCP resource is running",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="us-east-1",
+        examples=["us-east-1"],
+        deprecation=DeprecationInfo(
+            replacement="cloud.region", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["cloud.region", "aws_region"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[535], description="Added gcp_region attribute"
+            ),
+        ],
+    ),
     "gen_ai.agent.name": AttributeMetadata(
         brief="The name of the agent being used.",
         type=AttributeType.STRING,
@@ -16430,13 +16463,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="/users/:id",
         examples=["/users/:id", "my-controller/my-action/{id}", "/posts"],
-        aliases=["url.template"],
+        aliases=["route"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[505], description="Added multiple examples"
+                version="next",
+                prs=[505, 521],
+                description="Added multiple examples, removed alias to `url.template`, added additional context",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.",
+            "For `http.client` spans and client-side routing, use `url.template` instead.",
         ],
     ),
     "http.scheme": AttributeMetadata(
@@ -20774,20 +20813,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "url.template": AttributeMetadata(
-        brief="The low-cardinality template of an absolute path reference.",
+        brief="The low-cardinality template of an absolute URL path reference.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/users/{id}",
         examples=["/users/{id}", "/users/:id", "/about"],
-        aliases=["http.route"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[505], description="Added multiple examples"
+                version="next",
+                prs=[505, 521],
+                description="Added multiple examples, removed alias to `http.route`, added additional context",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).",
+            "Use `http.route` for server-side instrumentation that captures the framework route of an incoming request.",
         ],
     ),
     "url": AttributeMetadata(
@@ -21666,6 +21710,7 @@ Attributes = TypedDict(
         "gcp.function.context.timestamp": str,
         "gcp.function.context.type": str,
         "gcp.project.id": str,
+        "gcp_region": str,
         "gen_ai.agent.name": str,
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,

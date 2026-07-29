@@ -1,6 +1,6 @@
 {
-  "key": "aws_region",
-  "brief": "The geographical region the AWS resource is running",
+  "key": "gcp_region",
+  "brief": "The geographical region the GCP resource is running",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": ["us-east-1"],
-  "alias": ["cloud.region", "gcp_region"],
+  "alias": ["cloud.region", "aws_region"],
   "deprecation": {
     "replacement": "cloud.region",
     "_status": "backfill"
@@ -16,8 +16,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [537],
-      "description": "Added aws_region attribute"
+      "prs": [535],
+      "description": "Added gcp_region attribute"
     }
   ]
 }
