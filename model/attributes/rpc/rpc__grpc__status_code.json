@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": 2,
-  "alias": ["rpc.response.status_code"],
+  "alias": ["code", "rpc.response.status_code"],
   "deprecation": {
     "_status": null,
     "replacement": "rpc.response.status_code",

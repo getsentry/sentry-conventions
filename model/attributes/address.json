@@ -1,0 +1,24 @@
+{
+  "key": "address",
+  "brief": "The destination hostname or IP address for a TCP connection.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["example.com"],
+  "alias": ["server.address", "http.server_name", "net.host.name", "http.host", "server_name"],
+  "deprecation": {
+    "replacement": "server.address",
+    "reason": "Old namespace-less attribute, to be replaced with server.address for span-first future",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [534],
+      "description": "Added address attribute"
+    }
+  ]
+}
