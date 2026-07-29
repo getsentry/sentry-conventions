@@ -1,0 +1,23 @@
+{
+  "key": "redis.command",
+  "brief": "The name of the Redis operation being executed.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["SELECT"],
+  "alias": ["cloudflare.d1.query_type", "db.operation.name", "db.operation"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "db.operation.name"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [531],
+      "description": "Added redis.command attribute"
+    }
+  ]
+}

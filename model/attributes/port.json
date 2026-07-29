@@ -1,0 +1,24 @@
+{
+  "key": "port",
+  "brief": "The destination port for a TCP connection.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [1337],
+  "alias": ["server.port", "net.host.port"],
+  "deprecation": {
+    "replacement": "server.port",
+    "reason": "Old namespace-less attribute, to be replaced with server.port for span-first future",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [532],
+      "description": "Added port attribute"
+    }
+  ]
+}

@@ -116,6 +116,7 @@ class AttributeMetadata:
 
 class _AttributeNamesMeta(type):
     _deprecated_names = {
+        "ADDRESS",
         "AI_CITATIONS",
         "AI_COMPLETION_TOKENS_USED",
         "AI_DOCUMENTS",
@@ -170,6 +171,7 @@ class _AttributeNamesMeta(type):
         "AWS_REQUEST_EXTENDED_ID",
         "_AWS_REQUEST_ID",
         "AWS_REQUEST_URL",
+        "AWS_REGION",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -201,6 +203,7 @@ class _AttributeNamesMeta(type):
         "FRAMES_FROZEN_RATE",
         "FRAMES_SLOW_RATE",
         "FS_ERROR",
+        "GCP_REGION",
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
@@ -272,8 +275,10 @@ class _AttributeNamesMeta(type):
         "OTEL_KIND",
         "PERFORMANCE_ACTIVATIONSTART",
         "PERFORMANCE_TIMEORIGIN",
+        "PORT",
         "PROFILE_ID",
         "QUERY_KEY",
+        "REDIS_COMMAND",
         "REDIS_KEY",
         "RELEASE",
         "REPLAY_ID",
@@ -338,6 +343,19 @@ class _AttributeNamesMeta(type):
 
 class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Contains all attribute names as class attributes with their documentation."""
+
+    # Path: model/attributes/address.json
+    ADDRESS: Literal["address"] = "address"
+    """The destination hostname or IP address for a TCP connection.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.address, http.server_name, net.host.name, http.host, server_name
+    DEPRECATED: Use server.address instead - Old namespace-less attribute, to be replaced with server.address for span-first future
+    Example: "example.com"
+    """
 
     # Path: model/attributes/ai/ai__citations.json
     AI_CITATIONS: Literal["ai.citations"] = "ai.citations"
@@ -1929,6 +1947,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
     """
 
+    # Path: model/attributes/aws_region.json
+    AWS_REGION: Literal["aws_region"] = "aws_region"
+    """The geographical region the AWS resource is running
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: cloud.region, gcp_region
+    DEPRECATED: Use cloud.region instead
+    Example: "us-east-1"
+    """
+
     # Path: model/attributes/blocked_main_thread.json
     BLOCKED_MAIN_THREAD: Literal["blocked_main_thread"] = "blocked_main_thread"
     """Whether the main thread was blocked by the span.
@@ -2417,6 +2448,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: aws_region, gcp_region
     Example: "us-east-1"
     """
 
@@ -2453,7 +2485,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: db.operation.name, db.operation
+    Aliases: db.operation.name, db.operation, redis.command
     DEPRECATED: Use db.operation.name instead
     Example: "run"
     """
@@ -2928,7 +2960,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: db.operation.name, cloudflare.d1.query_type
+    Aliases: db.operation.name, cloudflare.d1.query_type, redis.command
     DEPRECATED: Use db.operation.name instead
     Example: "SELECT"
     """
@@ -2954,7 +2986,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: db.operation, cloudflare.d1.query_type
+    Aliases: db.operation, cloudflare.d1.query_type, redis.command
     Example: "SELECT"
     """
 
@@ -4158,6 +4190,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "my-project-123"
     """
 
+    # Path: model/attributes/gcp_region.json
+    GCP_REGION: Literal["gcp_region"] = "gcp_region"
+    """The geographical region the GCP resource is running
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: cloud.region, aws_region
+    DEPRECATED: Use cloud.region instead
+    Example: "us-east-1"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__agent__name.json
     GEN_AI_AGENT_NAME: Literal["gen_ai.agent.name"] = "gen_ai.agent.name"
     """The name of the agent being used.
@@ -5285,7 +5330,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, client.address, http.server_name, net.host.name, server_name
+    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -5666,7 +5711,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.template
+    Aliases: route
     Example: "/users/:id"
     Example: "my-controller/my-action/{id}"
     Example: "/posts"
@@ -5706,7 +5751,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, net.host.name, http.host, server_name
+    Aliases: address, server.address, net.host.name, http.host, server_name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -6864,7 +6909,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.address, http.server_name, http.host, server_name
+    Aliases: address, server.address, http.server_name, http.host, server_name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -6877,7 +6922,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.port
+    Aliases: server.port, port
     DEPRECATED: Use server.port instead
     Example: 1337
     """
@@ -7382,6 +7427,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1776185678.886
     """
 
+    # Path: model/attributes/port.json
+    PORT: Literal["port"] = "port"
+    """The destination port for a TCP connection.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.port, net.host.port
+    DEPRECATED: Use server.port instead - Old namespace-less attribute, to be replaced with server.port for span-first future
+    Example: 1337
+    """
+
     # Path: model/attributes/previous_route.json
     PREVIOUS_ROUTE: Literal["previous_route"] = "previous_route"
     """Also used by mobile SDKs to indicate the previous route in the application.
@@ -7530,6 +7588,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "18.2.0"
+    """
+
+    # Path: model/attributes/redis/redis__command.json
+    REDIS_COMMAND: Literal["redis.command"] = "redis.command"
+    """The name of the Redis operation being executed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: cloudflare.d1.query_type, db.operation.name, db.operation
+    DEPRECATED: Use db.operation.name instead
+    Example: "SELECT"
     """
 
     # Path: model/attributes/redis/redis__key.json
@@ -8818,7 +8889,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.server_name, net.host.name, http.host, server_name
+    Aliases: address, http.server_name, net.host.name, http.host, server_name
     Example: "example.com"
     """
 
@@ -8830,7 +8901,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.host.port
+    Aliases: net.host.port, port
     Example: 1337
     """
 
@@ -8842,7 +8913,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: server.address, http.server_name, net.host.name, http.host
+    Aliases: address, server.address, http.server_name, net.host.name, http.host
     DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
     Example: "example.com"
     """
@@ -9333,13 +9404,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/url/url__template.json
     URL_TEMPLATE: Literal["url.template"] = "url.template"
-    """The low-cardinality template of an absolute path reference.
+    """The low-cardinality template of an absolute URL path reference.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.route
     Example: "/users/{id}"
     Example: "/users/:id"
     Example: "/about"
@@ -9915,6 +9985,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
 
 ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
+    "address": AttributeMetadata(
+        brief="The destination hostname or IP address for a TCP connection.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="example.com",
+        examples=["example.com"],
+        deprecation=DeprecationInfo(
+            replacement="server.address",
+            reason="Old namespace-less attribute, to be replaced with server.address for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "server.address",
+            "http.server_name",
+            "net.host.name",
+            "http.host",
+            "server_name",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[534], description="Added address attribute"
+            ),
+        ],
+    ),
     "ai.citations": AttributeMetadata(
         brief="References or sources cited by the AI model in its response.",
         type=AttributeType.STRING_ARRAY,
@@ -11952,6 +12048,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws_region": AttributeMetadata(
+        brief="The geographical region the AWS resource is running",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="us-east-1",
+        examples=["us-east-1"],
+        deprecation=DeprecationInfo(
+            replacement="cloud.region", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["cloud.region", "gcp_region"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[537], description="Added aws_region attribute"
+            ),
+        ],
+    ),
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
         type=AttributeType.BOOLEAN,
@@ -12447,7 +12561,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="us-east-1",
+        aliases=["aws_region", "gcp_region"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added aws_region and gcp_region as aliases"
+            ),
             ChangelogEntry(
                 version="0.7.0", prs=[364], description="Added cloud.region attribute"
             ),
@@ -12493,8 +12611,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="db.operation.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["db.operation.name", "db.operation"],
+        aliases=["db.operation.name", "db.operation", "redis.command"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added redis.command as an alias"
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[392],
@@ -13056,8 +13177,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="db.operation.name", status=DeprecationStatus.NORMALIZE
         ),
-        aliases=["db.operation.name", "cloudflare.d1.query_type"],
+        aliases=["db.operation.name", "cloudflare.d1.query_type", "redis.command"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added redis.command as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[199]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -13085,8 +13209,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT",
-        aliases=["db.operation", "cloudflare.d1.query_type"],
+        aliases=["db.operation", "cloudflare.d1.query_type", "redis.command"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added redis.command as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -14638,6 +14765,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.11.0", prs=[403]),
         ],
     ),
+    "gcp_region": AttributeMetadata(
+        brief="The geographical region the GCP resource is running",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="us-east-1",
+        examples=["us-east-1"],
+        deprecation=DeprecationInfo(
+            replacement="cloud.region", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["cloud.region", "aws_region"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[535], description="Added gcp_region attribute"
+            ),
+        ],
+    ),
     "gen_ai.agent.name": AttributeMetadata(
         brief="The name of the agent being used.",
         type=AttributeType.STRING,
@@ -16034,6 +16179,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Deprecated, use one of `server.address` or `client.address`, depending on the usage",
         ),
         aliases=[
+            "address",
             "server.address",
             "client.address",
             "http.server_name",
@@ -16041,6 +16187,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server_name",
         ],
         changelog=[
+            ChangelogEntry(version="next", description="Added address as an alias"),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16437,13 +16584,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="/users/:id",
         examples=["/users/:id", "my-controller/my-action/{id}", "/posts"],
-        aliases=["url.template"],
+        aliases=["route"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[505], description="Added multiple examples"
+                version="next",
+                prs=[505, 521],
+                description="Added multiple examples, removed alias to `url.template`, added additional context",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.",
+            "For `http.client` spans and client-side routing, use `url.template` instead.",
         ],
     ),
     "http.scheme": AttributeMetadata(
@@ -16479,8 +16632,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
-        aliases=["server.address", "net.host.name", "http.host", "server_name"],
+        aliases=[
+            "address",
+            "server.address",
+            "net.host.name",
+            "http.host",
+            "server_name",
+        ],
         changelog=[
+            ChangelogEntry(version="next", description="Added address as an alias"),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17881,8 +18041,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(replacement="server.address"),
-        aliases=["server.address", "http.server_name", "http.host", "server_name"],
+        aliases=[
+            "address",
+            "server.address",
+            "http.server_name",
+            "http.host",
+            "server_name",
+        ],
         changelog=[
+            ChangelogEntry(version="next", description="Added address as an alias"),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17895,8 +18062,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1337,
         deprecation=DeprecationInfo(replacement="server.port"),
-        aliases=["server.port"],
+        aliases=["server.port", "port"],
         changelog=[
+            ChangelogEntry(version="next", description="Added port as an alias"),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -18490,6 +18658,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "port": AttributeMetadata(
+        brief="The destination port for a TCP connection.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1337,
+        examples=[1337],
+        deprecation=DeprecationInfo(
+            replacement="server.port",
+            reason="Old namespace-less attribute, to be replaced with server.port for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["server.port", "net.host.port"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[532], description="Added port attribute"
+            ),
+        ],
+    ),
     "previous_route": AttributeMetadata(
         brief="Also used by mobile SDKs to indicate the previous route in the application.",
         type=AttributeType.STRING,
@@ -18649,6 +18837,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.7.0", prs=[368], description="Added react.version attribute"
+            ),
+        ],
+    ),
+    "redis.command": AttributeMetadata(
+        brief="The name of the Redis operation being executed.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="SELECT",
+        examples=["SELECT"],
+        deprecation=DeprecationInfo(
+            replacement="db.operation.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["cloudflare.d1.query_type", "db.operation.name", "db.operation"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[531], description="Added redis.command attribute"
             ),
         ],
     ),
@@ -20112,8 +20318,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
-        aliases=["http.server_name", "net.host.name", "http.host", "server_name"],
+        aliases=[
+            "address",
+            "http.server_name",
+            "net.host.name",
+            "http.host",
+            "server_name",
+        ],
         changelog=[
+            ChangelogEntry(version="next", description="Added address as an alias"),
             ChangelogEntry(version="0.1.0", prs=[108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20125,8 +20338,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1337,
-        aliases=["net.host.port"],
+        aliases=["net.host.port", "port"],
         changelog=[
+            ChangelogEntry(version="next", description="Added port as an alias"),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20143,8 +20357,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["server.address", "http.server_name", "net.host.name", "http.host"],
+        aliases=[
+            "address",
+            "server.address",
+            "http.server_name",
+            "net.host.name",
+            "http.host",
+        ],
         changelog=[
+            ChangelogEntry(version="next", description="Added address as an alias"),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[477],
@@ -20781,20 +21002,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "url.template": AttributeMetadata(
-        brief="The low-cardinality template of an absolute path reference.",
+        brief="The low-cardinality template of an absolute URL path reference.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/users/{id}",
         examples=["/users/{id}", "/users/:id", "/about"],
-        aliases=["http.route"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[505], description="Added multiple examples"
+                version="next",
+                prs=[505, 521],
+                description="Added multiple examples, removed alias to `http.route`, added additional context",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).",
+            "Use `http.route` for server-side instrumentation that captures the framework route of an incoming request.",
         ],
     ),
     "url": AttributeMetadata(
@@ -21365,6 +21591,7 @@ If a key is not present in this dictionary, it means that attribute is not defin
 Attributes = TypedDict(
     "Attributes",
     {
+        "address": str,
         "ai.citations": List[str],
         "ai.completion_tokens.used": int,
         "ai.documents": List[str],
@@ -21490,6 +21717,7 @@ Attributes = TypedDict(
         "aws.sns.topic.arn": str,
         "aws.step_functions.activity.arn": str,
         "aws.step_functions.state_machine.arn": str,
+        "aws_region": str,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,
@@ -21673,6 +21901,7 @@ Attributes = TypedDict(
         "gcp.function.context.timestamp": str,
         "gcp.function.context.type": str,
         "gcp.project.id": str,
+        "gcp_region": str,
         "gen_ai.agent.name": str,
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,
@@ -21929,6 +22158,7 @@ Attributes = TypedDict(
         "params.<key>": str,
         "performance.activationStart": float,
         "performance.timeOrigin": float,
+        "port": int,
         "previous_route": str,
         "process.command_args": List[str],
         "process.executable.name": str,
@@ -21941,6 +22171,7 @@ Attributes = TypedDict(
         "profile_id": str,
         "query.<key>": str,
         "react.version": str,
+        "redis.command": str,
         "redis.key": str,
         "release": str,
         "remix.action_form_data.<key>": str,
