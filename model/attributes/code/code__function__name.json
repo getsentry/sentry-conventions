@@ -1,15 +1,26 @@
 {
   "key": "code.function.name",
-  "brief": "The method or function fully-qualified name without arguments.",
+  "brief": "The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "server_request",
+  "examples": [
+    "com.example.MyHttpService.serveRequest",
+    "server_request",
+    "getAllUsers",
+    "UserService.getAllUsers",
+    "GuzzleHttp\\Client::transfer"
+  ],
   "alias": ["code.function"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [542],
+      "description": "Loosened specification around fully qualified to also accept a simple function name."
+    },
     {
       "version": "0.1.0",
       "prs": [127]

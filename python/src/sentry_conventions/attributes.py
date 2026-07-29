@@ -174,6 +174,7 @@ class _AttributeNamesMeta(type):
         "CLS_SOURCE_KEY",
         "CLS",
         "CODE_FILEPATH",
+        "CODE_FUNCTION",
         "CODE_LINENO",
         "CONNECTION_RTT",
         "CONNECTIONTYPE",
@@ -2726,19 +2727,24 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.function.name
+    DEPRECATED: Use code.function.name instead - `code.function` was deprecated by OTel in favor of `code.function.name`.
     Example: "server_request"
     """
 
     # Path: model/attributes/code/code__function__name.json
     CODE_FUNCTION_NAME: Literal["code.function.name"] = "code.function.name"
-    """The method or function fully-qualified name without arguments.
+    """The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: code.function
+    Example: "com.example.MyHttpService.serveRequest"
     Example: "server_request"
+    Example: "getAllUsers"
+    Example: "UserService.getAllUsers"
+    Example: "GuzzleHttp\\Client::transfer"
     """
 
     # Path: model/attributes/code/code__line__number.json
@@ -12810,21 +12816,43 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="server_request",
+        deprecation=DeprecationInfo(
+            replacement="code.function.name",
+            reason="`code.function` was deprecated by OTel in favor of `code.function.name`.",
+            status=DeprecationStatus.BACKFILL,
+        ),
         aliases=["code.function.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[542],
+                description="Deprecated code.function in favor of code.function.name",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
     "code.function.name": AttributeMetadata(
-        brief="The method or function fully-qualified name without arguments.",
+        brief="The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples.",
         type=AttributeType.STRING,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="server_request",
+        example="com.example.MyHttpService.serveRequest",
+        examples=[
+            "com.example.MyHttpService.serveRequest",
+            "server_request",
+            "getAllUsers",
+            "UserService.getAllUsers",
+            "GuzzleHttp\\Client::transfer",
+        ],
         aliases=["code.function"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[542],
+                description="Loosened specification around fully qualified to also accept a simple function name.",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],

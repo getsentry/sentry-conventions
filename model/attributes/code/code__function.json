@@ -8,8 +8,18 @@
   "is_in_otel": true,
   "example": "server_request",
   "alias": ["code.function.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "code.function.name",
+    "reason": "`code.function` was deprecated by OTel in favor of `code.function.name`."
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [542],
+      "description": "Deprecated code.function in favor of code.function.name"
+    },
     {
       "version": "0.1.0",
       "prs": [61, 74]
