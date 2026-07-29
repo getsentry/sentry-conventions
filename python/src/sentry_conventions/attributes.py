@@ -13462,7 +13462,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[501],
-                description="Improved example and added deprecation reason",
+                description="Improved example, added deprecation reason, and added query as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[199]),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
