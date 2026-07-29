@@ -170,6 +170,7 @@ class _AttributeNamesMeta(type):
         "AWS_REQUEST_EXTENDED_ID",
         "_AWS_REQUEST_ID",
         "AWS_REQUEST_URL",
+        "AWS_REGION",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -1929,6 +1930,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
     """
 
+    # Path: model/attributes/aws_region.json
+    AWS_REGION: Literal["aws_region"] = "aws_region"
+    """The geographical region the AWS resource is running
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: cloud.region, gcp_region
+    DEPRECATED: Use cloud.region instead
+    Example: "us-east-1"
+    """
+
     # Path: model/attributes/blocked_main_thread.json
     BLOCKED_MAIN_THREAD: Literal["blocked_main_thread"] = "blocked_main_thread"
     """Whether the main thread was blocked by the span.
@@ -2417,7 +2431,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gcp_region
+    Aliases: aws_region, gcp_region
     Example: "us-east-1"
     """
 
@@ -4154,7 +4168,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: cloud.region
+    Aliases: cloud.region, aws_region
     DEPRECATED: Use cloud.region instead
     Example: "us-east-1"
     """
@@ -11952,6 +11966,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws_region": AttributeMetadata(
+        brief="The geographical region the AWS resource is running",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="us-east-1",
+        examples=["us-east-1"],
+        deprecation=DeprecationInfo(
+            replacement="cloud.region", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["cloud.region", "gcp_region"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[537], description="Added aws_region attribute"
+            ),
+        ],
+    ),
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
         type=AttributeType.BOOLEAN,
@@ -12447,9 +12479,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="us-east-1",
-        aliases=["gcp_region"],
+        aliases=["aws_region", "gcp_region"],
         changelog=[
-            ChangelogEntry(version="next", description="Added gcp_region as an alias"),
+            ChangelogEntry(
+                version="next", description="Added aws_region and gcp_region as aliases"
+            ),
             ChangelogEntry(
                 version="0.7.0", prs=[364], description="Added cloud.region attribute"
             ),
@@ -14623,7 +14657,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="cloud.region", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["cloud.region"],
+        aliases=["cloud.region", "aws_region"],
         changelog=[
             ChangelogEntry(
                 version="next", prs=[535], description="Added gcp_region attribute"
@@ -21493,6 +21527,7 @@ Attributes = TypedDict(
         "aws.sns.topic.arn": str,
         "aws.step_functions.activity.arn": str,
         "aws.step_functions.state_machine.arn": str,
+        "aws_region": str,
         "blocked_main_thread": bool,
         "browser.name": str,
         "browser.performance.navigation.activation_start": float,

@@ -8,11 +8,11 @@
   "is_in_otel": true,
   "example": "us-east-1",
   "visibility": "public",
-  "alias": ["gcp_region"],
+  "alias": ["aws_region", "gcp_region"],
   "changelog": [
     {
       "version": "next",
-      "description": "Added gcp_region as an alias"
+      "description": "Added aws_region and gcp_region as aliases"
     },
     {
       "version": "0.7.0",
