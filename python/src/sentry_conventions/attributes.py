@@ -274,6 +274,7 @@ class _AttributeNamesMeta(type):
         "OTEL_KIND",
         "PERFORMANCE_ACTIVATIONSTART",
         "PERFORMANCE_TIMEORIGIN",
+        "PORT",
         "PROFILE_ID",
         "QUERY_KEY",
         "REDIS_COMMAND",
@@ -6907,7 +6908,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: server.port
+    Aliases: server.port, port
     DEPRECATED: Use server.port instead
     Example: 1337
     """
@@ -7410,6 +7411,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: browser.performance.time_origin
     DEPRECATED: Use browser.performance.time_origin instead - The timeOrigin is now recorded as the browser.performance.time_origin attribute.
     Example: 1776185678.886
+    """
+
+    # Path: model/attributes/port.json
+    PORT: Literal["port"] = "port"
+    """The destination port for a TCP connection.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.port, net.host.port
+    DEPRECATED: Use server.port instead - Old namespace-less attribute, to be replaced with server.port for span-first future
+    Example: 1337
     """
 
     # Path: model/attributes/previous_route.json
@@ -8873,7 +8887,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.host.port
+    Aliases: net.host.port, port
     Example: 1337
     """
 
@@ -18006,8 +18020,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1337,
         deprecation=DeprecationInfo(replacement="server.port"),
-        aliases=["server.port"],
+        aliases=["server.port", "port"],
         changelog=[
+            ChangelogEntry(version="next", description="Added port as an alias"),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -18598,6 +18613,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0",
                 prs=[321],
                 description="Added performance.timeOrigin attribute",
+            ),
+        ],
+    ),
+    "port": AttributeMetadata(
+        brief="The destination port for a TCP connection.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1337,
+        examples=[1337],
+        deprecation=DeprecationInfo(
+            replacement="server.port",
+            reason="Old namespace-less attribute, to be replaced with server.port for span-first future",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["server.port", "net.host.port"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[532], description="Added port attribute"
             ),
         ],
     ),
@@ -20261,8 +20296,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1337,
-        aliases=["net.host.port"],
+        aliases=["net.host.port", "port"],
         changelog=[
+            ChangelogEntry(version="next", description="Added port as an alias"),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -22079,6 +22115,7 @@ Attributes = TypedDict(
         "params.<key>": str,
         "performance.activationStart": float,
         "performance.timeOrigin": float,
+        "port": int,
         "previous_route": str,
         "process.command_args": List[str],
         "process.executable.name": str,
