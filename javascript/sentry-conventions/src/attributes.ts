@@ -1,5 +1,29 @@
 // This is an auto-generated file. Do not edit!
 
+// Path: model/attributes/address.json
+
+/**
+ * The destination hostname or IP address for a TCP connection. `address`
+ *
+ * Attribute Value Type: `string` {@link ADDRESS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ *
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
+ * @example "example.com"
+ */
+export const ADDRESS = 'address';
+
+/**
+ * Type for {@link ADDRESS} address
+ */
+export type ADDRESS_TYPE = string;
+
 // Path: model/attributes/ai/ai__citations.json
 
 /**
@@ -8794,7 +8818,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -9493,7 +9517,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -11852,7 +11876,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -15173,7 +15197,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @example "example.com"
  */
@@ -15196,7 +15220,7 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
  * @example "example.com"
@@ -17283,6 +17307,7 @@ export interface AttributeMetadata {
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
+  address: 'string',
   'ai.citations': 'string[]',
   'ai.completion_tokens.used': 'integer',
   'ai.documents': 'string[]',
@@ -18061,6 +18086,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
 };
 
 export type AttributeName =
+  | typeof ADDRESS
   | typeof AI_CITATIONS
   | typeof AI_COMPLETION_TOKENS_USED
   | typeof AI_DOCUMENTS
@@ -18838,6 +18864,24 @@ export type AttributeName =
   | typeof VERCEL_STATUS_CODE;
 
 export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
+  address: {
+    brief: 'The destination hostname or IP address for a TCP connection.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.com',
+    examples: ['example.com'],
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
+      status: 'backfill',
+    },
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [{ version: 'next', prs: [534], description: 'Added address attribute' }],
+  },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
     type: 'string[]',
@@ -24425,8 +24469,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.method': {
     brief: 'The HTTP method used.',
@@ -24847,8 +24895,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.server.request.time_in_queue': {
     brief:
@@ -26334,8 +26386,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.host.port': {
     brief: 'Server port number.',
@@ -28334,8 +28390,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   server_name: {
     brief:
@@ -28352,8 +28412,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
     changelog: [
+      { version: 'next', description: 'Added address as an alias' },
       {
         version: '0.16.0',
         prs: [477],
@@ -29535,6 +29596,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
+  [ADDRESS]?: ADDRESS_TYPE;
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
