@@ -245,6 +245,11 @@ export const WEB_SERVER_HTTP_SPAN_OP = 'http';
 
 export const WEB_SERVER_HTTP_CLIENT_SPAN_OP = 'http.client';
 
+/**
+ * Consumption of a streaming HTTP client response body
+ */
+export const WEB_SERVER_HTTP_CLIENT_STREAM_SPAN_OP = 'http.client.stream';
+
 export const WEB_SERVER_HTTP_SERVER_SPAN_OP = 'http.server';
 
 export const WEB_SERVER_WEBSOCKET_SPAN_OP = 'websocket';

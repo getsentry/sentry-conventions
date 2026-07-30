@@ -187,6 +187,9 @@ pub const WEB_SERVER_HTTP_SPAN_OP: &str = "http";
 
 pub const WEB_SERVER_HTTP_CLIENT_SPAN_OP: &str = "http.client";
 
+/// Consumption of a streaming HTTP client response body
+pub const WEB_SERVER_HTTP_CLIENT_STREAM_SPAN_OP: &str = "http.client.stream";
+
 pub const WEB_SERVER_HTTP_SERVER_SPAN_OP: &str = "http.server";
 
 pub const WEB_SERVER_WEBSOCKET_SPAN_OP: &str = "websocket";

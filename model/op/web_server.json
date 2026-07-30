@@ -10,6 +10,10 @@
       "name": "http.client"
     },
     {
+      "name": "http.client.stream",
+      "description": "Consumption of a streaming HTTP client response body"
+    },
+    {
       "name": "http.server"
     },
     {
