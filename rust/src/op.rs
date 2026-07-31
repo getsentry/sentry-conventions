@@ -179,6 +179,37 @@ pub const MOBILE_SERIALIZE_SPAN_OP: &str = "serialize";
 
 pub const MOBILE_HTTP_SPAN_OP: &str = "http";
 
+// Path: model/op/object.json
+// Name: object
+
+// Description: Object storage related spans represent operations on object storage systems such as Cloudflare R2, Amazon S3, and compatible services.
+/// Retrieving an object from an object store.
+pub const OBJECT_OBJECT_GET_SPAN_OP: &str = "object.get";
+
+/// Retrieving the metadata of an object from an object store.
+pub const OBJECT_OBJECT_HEAD_SPAN_OP: &str = "object.head";
+
+/// Storing an object in an object store.
+pub const OBJECT_OBJECT_PUT_SPAN_OP: &str = "object.put";
+
+/// Deleting an object from an object store.
+pub const OBJECT_OBJECT_DELETE_SPAN_OP: &str = "object.delete";
+
+/// Listing objects in an object store.
+pub const OBJECT_OBJECT_LIST_SPAN_OP: &str = "object.list";
+
+/// Uploading a single part of a multipart upload to an object store.
+pub const OBJECT_OBJECT_UPLOAD_PART_SPAN_OP: &str = "object.upload_part";
+
+/// Aborting a multipart upload to an object store.
+pub const OBJECT_OBJECT_MULTIPART_UPLOAD_ABORT_SPAN_OP: &str = "object.multipart_upload.abort";
+
+/// Creating a multipart upload to an object store.
+pub const OBJECT_OBJECT_MULTIPART_UPLOAD_CREATE_SPAN_OP: &str = "object.multipart_upload.create";
+
+/// Completing a multipart upload to an object store.
+pub const OBJECT_OBJECT_MULTIPART_UPLOAD_COMPLETE_SPAN_OP: &str = "object.multipart_upload.complete";
+
 // Path: model/op/web_server.json
 // Name: web_server
 
