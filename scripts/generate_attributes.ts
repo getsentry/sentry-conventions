@@ -253,7 +253,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   attributesContent += generateMetadataTypes();
 
   // Generate metadata dictionary
-  attributesContent += generateMetadataDict(attributesDir, attributeFiles, allAttributes);
+  attributesContent += generateMetadataDict(allAttributes);
 
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
@@ -667,9 +667,9 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
       metadataDict += '        has_dynamic_suffix=True,\n';
     }
 
-    if (examples !== undefined) {
-      const pythonExample = convertToPythonLiteral(examples[0]);
-      metadataDict += `        example=${pythonExample},\n`;
+    const [firstExample] = examples ?? [];
+    if (examples !== undefined && firstExample !== undefined) {
+      metadataDict += `        example=${convertToPythonLiteral(firstExample)},\n`;
       if (attributeJson.examples !== undefined) {
         metadataDict += `        examples=${convertToPythonLiteral(examples)},\n`;
       }
@@ -953,8 +953,6 @@ export interface AttributeMetadata {
 }
 
 function generateMetadataDict(
-  attributesDir: string,
-  attributeFiles: string[],
   allAttributes: Array<{
     file: string;
     key: string;

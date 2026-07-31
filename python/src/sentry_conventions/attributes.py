@@ -24,14 +24,10 @@ AttributeValue = Union[
 
 T = TypeVar("T")
 
-<<<<<<< HEAD
 
 def get_attribute_value(
     attributes: Mapping[str, T], keys: Sequence[str]
 ) -> Optional[T]:
-    """Return the value for the first attribute key present in attributes."""
-=======
-def get_attribute_value(attributes: Mapping[str, T], keys: Sequence[str]) -> Optional[T]:
     """Return the value for the first attribute key present in attributes.
 
     Use this helper with a deprecation chain or alias list to read the first
@@ -54,7 +50,6 @@ def get_attribute_value(attributes: Mapping[str, T], keys: Sequence[str]) -> Opt
         >>> get_attribute_value(attributes, keys)
         'value'
     """
->>>>>>> 76f6a39b (docs(attributes): Document attribute lookup helpers)
     for key in keys:
         if key in attributes:
             return attributes[key]
