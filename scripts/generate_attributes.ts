@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { getAttributeExamples } from './attribute_examples';
-import type { AttributeJson } from './types';
+import type { AttributeJson, AttributeValue } from './types';
 
 interface GenerateAttributesOptions {
   attributesDir: string;
@@ -163,7 +163,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   let individualConstants = '';
 
   // Generate individual attribute constants with documentation AND build the explicit type map
-  for (const { file, key, constantName, attributeJson, _isDeprecated } of allAttributes) {
+  for (const { file, key, constantName, attributeJson } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const examples = getAttributeExamples(attributeJson);
     const visibility = getVisibility(attributeJson);
@@ -253,7 +253,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   attributesContent += generateMetadataTypes();
 
   // Generate metadata dictionary
-  attributesContent += generateMetadataDict(attributesDir, attributeFiles, allAttributes);
+  attributesContent += generateMetadataDict(allAttributes);
 
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
@@ -671,9 +671,9 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
       metadataDict += '        has_dynamic_suffix=True,\n';
     }
 
-    if (examples !== undefined) {
-      const pythonExample = convertToPythonLiteral(examples[0]);
-      metadataDict += `        example=${pythonExample},\n`;
+    const [firstExample] = examples ?? [];
+    if (examples !== undefined && firstExample !== undefined) {
+      metadataDict += `        example=${convertToPythonLiteral(firstExample)},\n`;
       if (attributeJson.examples !== undefined) {
         metadataDict += `        examples=${convertToPythonLiteral(examples)},\n`;
       }
@@ -840,7 +840,7 @@ function getAttributeTypeEnum(type: AttributeJson['type']): string {
   }
 }
 
-function convertToPythonLiteral(value: AttributeJson['example']): string {
+function convertToPythonLiteral(value: AttributeValue | AttributeValue[] | null): string {
   if (value === null) return 'None';
   if (typeof value === 'boolean') return value ? 'True' : 'False';
   if (typeof value === 'string') return JSON.stringify(value);
@@ -959,8 +959,6 @@ export interface AttributeMetadata {
 }
 
 function generateMetadataDict(
-  attributesDir: string,
-  attributeFiles: string[],
   allAttributes: Array<{
     file: string;
     key: string;
