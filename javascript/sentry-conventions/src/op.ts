@@ -115,22 +115,37 @@ export const FAAS_FUNCTION_AZURE_SPAN_OP = 'function.azure';
 /**
  * A chat interaction with a generative AI model
  */
-export const GEN_AI_CHAT_SPAN_OP = 'chat';
+export const GEN_AI_GEN_AI_CHAT_SPAN_OP = 'gen_ai.chat';
 
 /**
  * Execution of a tool or function by a generative AI model
  */
-export const GEN_AI_EXECUTE_TOOL_SPAN_OP = 'execute_tool';
+export const GEN_AI_GEN_AI_EXECUTE_TOOL_SPAN_OP = 'gen_ai.execute_tool';
 
 /**
  * Handoff of control between different AI agents or components
  */
-export const GEN_AI_HANDOFF_SPAN_OP = 'handoff';
+export const GEN_AI_GEN_AI_HANDOFF_SPAN_OP = 'gen_ai.handoff';
 
 /**
  * Invocation of an AI agent to perform a task
  */
-export const GEN_AI_INVOKE_AGENT_SPAN_OP = 'invoke_agent';
+export const GEN_AI_GEN_AI_INVOKE_AGENT_SPAN_OP = 'gen_ai.invoke_agent';
+
+/**
+ * Generation of embeddings by a generative AI model
+ */
+export const GEN_AI_GEN_AI_EMBEDDINGS_SPAN_OP = 'gen_ai.embeddings';
+
+/**
+ * Content generation by a generative AI model
+ */
+export const GEN_AI_GEN_AI_GENERATE_CONTENT_SPAN_OP = 'gen_ai.generate_content';
+
+/**
+ * Reranking of documents or results by a generative AI model
+ */
+export const GEN_AI_GEN_AI_RERANK_SPAN_OP = 'gen_ai.rerank';
 
 // Path: model/op/general.json
 // Name: general
