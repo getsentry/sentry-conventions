@@ -12,15 +12,15 @@
 import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import type { AttributeJson } from './types';
+import { attributeSchema, type AttributeJson, type ChangelogEntry } from '../schemas';
 import {
   getAllJsonFiles,
   compareVersions,
   getCommitsInRange,
   extractPrNumber,
   isCommitIgnored,
-  type ChangelogEntry,
 } from './generate_attribute_changelog';
+import { readJsonFile } from './read_json';
 
 const SEMVER_RE = /^\d+\.\d+\.\d+$/;
 
@@ -104,8 +104,7 @@ async function bumpNextChangelog(targetVersion: string): Promise<void> {
 
   for (const relativeFile of files) {
     const filePath = path.join(attributesDir, relativeFile);
-    const content = await fs.promises.readFile(filePath, 'utf-8');
-    const json: AttributeJson = JSON.parse(content);
+    const json = readJsonFile(filePath, attributeSchema);
 
     if (!json.changelog || !json.changelog.length) {
       continue;

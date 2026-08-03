@@ -1,5 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { opSchema } from '../schemas';
+import { readJsonFile } from './read_json';
 
 export async function generateOps() {
   const opDir = path.join(__dirname, '..', 'model', 'op');
@@ -14,7 +16,7 @@ function writeToRust(opDir: string, opFiles: string[]) {
 
   for (const file of opFiles) {
     const opPath = path.join(opDir, file);
-    const opJson = JSON.parse(fs.readFileSync(opPath, 'utf-8'));
+    const opJson = readJsonFile(opPath, opSchema);
 
     const { name, description, fields } = opJson;
 
@@ -48,7 +50,7 @@ function writeToJs(opDir: string, opFiles: string[]) {
 
   for (const file of opFiles) {
     const opPath = path.join(opDir, file);
-    const opJson = JSON.parse(fs.readFileSync(opPath, 'utf-8'));
+    const opJson = readJsonFile(opPath, opSchema);
 
     const { name, description, fields } = opJson;
 

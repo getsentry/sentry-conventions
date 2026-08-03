@@ -1,352 +1,4575 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Sentry Span Attribute Schema",
-  "description": "Describes an attribute and how it's meant to be used",
-  "type": "object",
-  "additionalProperties": false,
-  "properties": {
-    "key": {
-      "description": "The name of the attribute, for ex. http.route",
-      "type": "string"
-    },
-    "brief": {
-      "description": "A description of the attribute",
-      "type": "string"
-    },
-    "has_dynamic_suffix": {
-      "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic",
-      "type": "boolean"
-    },
-    "type": {
-      "description": "The type of the attribute value",
-      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"]
-    },
-    "apply_scrubbing": {
-      "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies",
+  "anyOf": [
+    {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "key": {
-          "enum": ["auto", "manual", "never"]
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
         },
-        "reason": {
-          "type": "string"
-        }
-      },
-      "required": ["key"]
-    },
-    "is_in_otel": {
-      "type": "boolean"
-    },
-    "visibility": {
-      "description": "The visibility of the attribute",
-      "enum": ["public", "internal"]
-    },
-    "example": {
-      "description": "An example value of the attribute",
-      "anyOf": [
-        {
-          "type": "string"
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
         },
-        {
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
           "type": "boolean"
         },
-        {
-          "type": "number"
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
         },
-        {
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "If there are attributes that alias to this attribute"
         },
-        {
+        "additional_context": {
           "type": "array",
           "items": {
-            "type": "boolean"
-          }
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
         },
-        {
+        "changelog": {
           "type": "array",
           "items": {
-            "type": "number"
-          }
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "string",
+          "description": "The type of the attribute value"
         }
-      ]
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
     },
-    "examples": {
-      "description": "Example values of the attribute",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "anyOf": [
-          {
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
             "type": "string"
           },
-          {
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "string",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "string",
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "string",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "boolean",
+          "description": "The type of the attribute value"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "boolean",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "boolean",
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "boolean",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
             "type": "boolean"
           },
-          {
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "integer",
+          "description": "The type of the attribute value"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "integer",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "number",
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "integer",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
             "type": "number"
           },
-          {
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "double",
+          "description": "The type of the attribute value"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "double",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "number",
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "double",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "string[]",
+          "description": "The type of the attribute value"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "string[]",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "string[]",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          {
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "boolean[]",
+          "description": "The type of the attribute value"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "boolean[]",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "array",
+          "items": {
+            "type": "boolean"
+          },
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "boolean[]",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
             "type": "array",
             "items": {
               "type": "boolean"
             }
           },
-          {
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "integer[]",
+          "description": "The type of the attribute value"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "integer[]",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "integer[]",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
             "type": "array",
             "items": {
               "type": "number"
             }
-          }
-        ]
-      }
-    },
-    "deprecation": {
-      "description": "If an attribute was deprecated, and what it was replaced with",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "replacement": {
-          "type": "string"
-        },
-        "reason": {
-          "type": "string"
-        },
-        "_status": {
-          "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize.",
-          "enum": [null, "backfill", "normalize", "transform"]
-        },
-        "transformation": {
-          "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/.",
-          "type": "string"
+          },
+          "description": "Example values of the attribute"
         }
       },
-      "required": ["_status"],
-      "allOf": [
-        {
-          "if": {
-            "properties": {
-              "_status": {
-                "const": "transform"
-              }
-            }
-          },
-          "then": {
-            "required": ["transformation"]
-          }
-        }
-      ]
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
     },
-    "alias": {
-      "description": "If there are attributes that alias to this attribute",
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "additional_context": {
-      "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances",
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "changelog": {
-      "description": "A list of changelog entries tracking how this attribute has changed across versions",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "version": {
-            "description": "The sentry-conventions release version",
-            "type": "string"
-          },
-          "prs": {
-            "description": "GitHub PR numbers",
-            "type": "array",
-            "items": {
-              "type": "integer"
-            }
-          },
-          "description": {
-            "description": "Optional description of what changed",
-            "type": "string"
-          }
-        },
-        "required": ["version"]
-      }
-    }
-  },
-  "not": {
-    "required": ["example", "examples"]
-  },
-  "allOf": [
     {
-      "if": {
-        "required": ["has_dynamic_suffix"],
-        "properties": {
-          "has_dynamic_suffix": {
-            "const": true
-          }
-        }
-      },
-      "then": {
-        "anyOf": [
-          {
-            "required": ["example"]
-          },
-          {
-            "required": ["examples"]
-          }
-        ],
-        "properties": {
-          "example": {
-            "type": "string"
-          },
-          "examples": {
-            "type": "array",
-            "items": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
               "type": "string"
             }
-          }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "double[]",
+          "description": "The type of the attribute value"
         }
       },
-      "else": {
-        "oneOf": [
-          {
-            "properties": {
-              "type": {
-                "const": "string"
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
               },
-              "example": {
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "double[]",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "double[]",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "any",
+          "description": "The type of the attribute value"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "any",
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          ],
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "example"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": false,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "const": "any",
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
                 "type": "string"
               },
-              "examples": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          {
-            "properties": {
-              "type": {
-                "const": "boolean"
-              },
-              "example": {
+              {
                 "type": "boolean"
               },
-              "examples": {
-                "type": "array",
-                "items": {
-                  "type": "boolean"
-                }
-              }
-            }
-          },
-          {
-            "properties": {
-              "type": {
-                "enum": ["integer", "double"]
-              },
-              "example": {
+              {
                 "type": "number"
               },
-              "examples": {
-                "type": "array",
-                "items": {
-                  "type": "number"
-                }
-              }
-            }
-          },
-          {
-            "properties": {
-              "type": {
-                "const": "string[]"
-              },
-              "example": {
+              {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "examples": {
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "properties": {
-              "type": {
-                "const": "boolean[]"
-              },
-              "example": {
+              {
                 "type": "array",
                 "items": {
                   "type": "boolean"
                 }
               },
-              "examples": {
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "boolean"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "properties": {
-              "type": {
-                "enum": ["integer[]", "double[]"]
-              },
-              "example": {
+              {
                 "type": "array",
                 "items": {
                   "type": "number"
                 }
-              },
-              "examples": {
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "number"
-                  }
-                }
               }
+            ]
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": ["key", "brief", "apply_scrubbing", "is_in_otel", "visibility", "type", "examples"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
             }
           },
-          {
-            "properties": {
-              "type": {
-                "const": "any"
-              }
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
             }
-          }
-        ]
-      }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": true,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"],
+          "description": "The type of the attribute value"
+        },
+        "example": {
+          "type": "string",
+          "description": "An example value of the attribute"
+        }
+      },
+      "required": [
+        "key",
+        "brief",
+        "apply_scrubbing",
+        "is_in_otel",
+        "visibility",
+        "has_dynamic_suffix",
+        "type",
+        "example"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the attribute, for ex. http.route"
+        },
+        "brief": {
+          "type": "string",
+          "description": "A description of the attribute"
+        },
+        "apply_scrubbing": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "enum": ["auto", "manual", "never"]
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies"
+        },
+        "is_in_otel": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "internal"],
+          "description": "The visibility of the attribute"
+        },
+        "deprecation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "backfill"
+                    },
+                    {
+                      "type": "string",
+                      "const": "normalize"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "replacement": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "_status": {
+                  "type": "string",
+                  "const": "transform",
+                  "description": "How the attribute should be handled in the ingestion pipeline. 'backfill' copies the value to the new name. 'normalize' moves the value to the new name. 'transform' applies the referenced attribute transformation. Existing values for the replacement attribute will not be overwritten. The attribute should be backfilled or transformed for 90 days before status is set to normalize."
+                },
+                "transformation": {
+                  "type": "string",
+                  "description": "The id of the attribute transformation to apply when _status is 'transform'. Transformation definitions live in model/attribute_transformations/."
+                }
+              },
+              "required": ["_status", "transformation"],
+              "additionalProperties": false
+            }
+          ],
+          "description": "If an attribute was deprecated, and what it was replaced with"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If there are attributes that alias to this attribute"
+        },
+        "additional_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "description": "The sentry-conventions release version"
+              },
+              "prs": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "description": "GitHub PR numbers"
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional description of what changed"
+              }
+            },
+            "required": ["version"],
+            "additionalProperties": false
+          },
+          "description": "A list of changelog entries tracking how this attribute has changed across versions"
+        },
+        "has_dynamic_suffix": {
+          "type": "boolean",
+          "const": true,
+          "description": "If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"],
+          "description": "The type of the attribute value"
+        },
+        "examples": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Example values of the attribute"
+        }
+      },
+      "required": [
+        "key",
+        "brief",
+        "apply_scrubbing",
+        "is_in_otel",
+        "visibility",
+        "has_dynamic_suffix",
+        "type",
+        "examples"
+      ],
+      "additionalProperties": false
     }
   ],
-  "required": ["key", "brief", "type", "apply_scrubbing", "is_in_otel", "visibility"]
+  "title": "Sentry Span Attribute Schema",
+  "description": "Describes an attribute and how it's meant to be used"
 }

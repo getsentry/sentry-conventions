@@ -3,9 +3,7 @@
   "$ref": "#/definitions/SpanName",
   "definitions": {
     "SpanName": {
-      "title": "SpanName",
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "brief": {
           "type": "string"
@@ -13,17 +11,27 @@
         "operations": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/SpanOperation",
-            "minItems": 1
+            "$ref": "#/definitions/SpanOperation"
           }
         }
       },
-      "required": ["brief", "operations"]
+      "required": ["brief", "operations"],
+      "additionalProperties": false,
+      "title": "SpanName"
     },
     "SpanOperation": {
-      "title": "SpanOperation",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/OtelSpanOperation"
+        },
+        {
+          "$ref": "#/definitions/NonOtelSpanOperation"
+        }
+      ],
+      "title": "SpanOperation"
+    },
+    "OtelSpanOperation": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string"
@@ -31,24 +39,16 @@
         "brief": {
           "type": "string"
         },
-        "is_in_otel": {
-          "type": "boolean"
-        },
-        "otel_notes": {
-          "type": "string"
-        },
         "ops": {
           "type": "array",
           "items": {
-            "type": "string",
-            "minItems": 1
+            "type": "string"
           }
         },
         "templates": {
           "type": "array",
           "items": {
-            "type": "string",
-            "minItems": 1
+            "type": "string"
           }
         },
         "examples": {
@@ -56,19 +56,57 @@
           "items": {
             "type": "string"
           }
+        },
+        "is_in_otel": {
+          "type": "boolean",
+          "const": true
+        },
+        "otel_notes": {
+          "type": "string"
         }
       },
-      "required": ["brief", "is_in_otel", "ops", "templates"],
-      "if": {
-        "properties": {
-          "is_in_otel": {
-            "const": true
+      "required": ["brief", "ops", "templates", "is_in_otel", "otel_notes"],
+      "additionalProperties": false,
+      "title": "SpanOperation"
+    },
+    "NonOtelSpanOperation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "brief": {
+          "type": "string"
+        },
+        "ops": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
+        },
+        "templates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "examples": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "is_in_otel": {
+          "type": "boolean",
+          "const": false
+        },
+        "otel_notes": {
+          "type": "string"
         }
       },
-      "then": {
-        "required": ["otel_notes"]
-      }
+      "required": ["brief", "ops", "templates", "is_in_otel"],
+      "additionalProperties": false,
+      "title": "SpanOperation"
     }
   }
 }

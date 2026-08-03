@@ -99,6 +99,11 @@ Remember to run `yarn run generate` after editing or creating a `name` conventio
 
 ## Code Generation
 
+Model formats are defined by the Zod modules in `schemas/*.ts`. The corresponding
+Draft 7 JSON Schema files are generated compatibility artifacts. Edit the Zod
+schema, add or update validation tests, and run `yarn generate`; do not edit a
+`*.schema.json` file directly.
+
 After you edit an attribute or add a new one, run `yarn run generate` to generate and format the code, which are generated from the json files stored in the `model` directory.
 
 Docs are generated on every PR merge.

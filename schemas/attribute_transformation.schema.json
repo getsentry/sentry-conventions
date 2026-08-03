@@ -1,57 +1,56 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Sentry Attribute Transformation Schema",
-  "description": "Describes how one or more deprecated attributes are transformed into replacement attributes",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "id": {
-      "description": "Stable identifier for the transformation",
       "type": "string",
-      "pattern": "^[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Stable identifier for the transformation"
     },
     "brief": {
-      "description": "Short explanation of when and why this transformation is applied",
-      "type": "string"
+      "type": "string",
+      "description": "Short explanation of when and why this transformation is applied"
     },
     "inputs": {
-      "description": "Attributes consumed by this transformation",
-      "type": "array",
       "minItems": 1,
+      "type": "array",
       "items": {
         "$ref": "#/definitions/AttributeReference"
-      }
+      },
+      "description": "Attributes consumed by this transformation"
     },
     "outputs": {
-      "description": "Attributes produced by this transformation",
-      "type": "array",
       "minItems": 1,
+      "type": "array",
       "items": {
         "$ref": "#/definitions/AttributeReference"
-      }
+      },
+      "description": "Attributes produced by this transformation"
     },
     "actions": {
-      "description": "Ordered description of the value transformations to apply. This describes behavior; Relay owns the implementation.",
-      "type": "array",
       "minItems": 1,
+      "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Ordered description of the value transformations to apply. This describes behavior; Relay owns the implementation."
     },
     "examples": {
-      "description": "Examples showing input attributes and expected output attributes",
-      "type": "array",
       "minItems": 1,
+      "type": "array",
       "items": {
         "$ref": "#/definitions/TransformationExample"
-      }
+      },
+      "description": "Examples showing input attributes and expected output attributes"
     }
   },
   "required": ["id", "brief", "inputs", "outputs", "actions", "examples"],
+  "additionalProperties": false,
+  "title": "Sentry Attribute Transformation Schema",
+  "description": "Describes how one or more deprecated attributes are transformed into replacement attributes",
   "definitions": {
     "AttributeReference": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "attribute": {
           "type": "string"
@@ -60,25 +59,34 @@
           "type": "string"
         }
       },
-      "required": ["attribute"]
+      "required": ["attribute"],
+      "additionalProperties": false,
+      "title": "AttributeReference"
     },
     "TransformationExample": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string"
         },
         "input": {
           "type": "object",
-          "additionalProperties": true
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
         },
         "output": {
           "type": "object",
-          "additionalProperties": true
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
         }
       },
-      "required": ["name", "input", "output"]
+      "required": ["name", "input", "output"],
+      "additionalProperties": false,
+      "title": "TransformationExample"
     }
   }
 }

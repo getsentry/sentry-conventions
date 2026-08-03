@@ -3,27 +3,25 @@
   "$ref": "#/definitions/SpanDescription",
   "definitions": {
     "SpanDescription": {
-      "title": "SpanDescription",
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "brief": {
           "type": "string"
         },
         "operations": {
-          "type": "array",
           "minItems": 1,
+          "type": "array",
           "items": {
             "$ref": "#/definitions/SpanOperation"
           }
         }
       },
-      "required": ["brief", "operations"]
+      "required": ["brief", "operations"],
+      "additionalProperties": false,
+      "title": "SpanDescription"
     },
     "SpanOperation": {
-      "title": "SpanOperation",
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string"
@@ -32,15 +30,15 @@
           "type": "string"
         },
         "ops": {
-          "type": "array",
           "minItems": 1,
+          "type": "array",
           "items": {
             "type": "string"
           }
         },
         "templates": {
-          "type": "array",
           "minItems": 1,
+          "type": "array",
           "items": {
             "type": "string"
           }
@@ -52,7 +50,9 @@
           }
         }
       },
-      "required": ["brief", "ops", "templates"]
+      "required": ["brief", "ops", "templates"],
+      "additionalProperties": false,
+      "title": "SpanOperation"
     }
   }
 }

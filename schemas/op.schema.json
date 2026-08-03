@@ -4,7 +4,6 @@
   "definitions": {
     "SpanOperation": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string"
@@ -19,12 +18,12 @@
           }
         }
       },
-      "required": ["fields", "name"],
+      "required": ["name", "fields"],
+      "additionalProperties": false,
       "title": "SpanOperation"
     },
     "Field": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string"
@@ -34,6 +33,7 @@
         }
       },
       "required": ["name"],
+      "additionalProperties": false,
       "title": "Field"
     }
   }

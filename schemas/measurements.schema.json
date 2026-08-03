@@ -1,34 +1,35 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Sentry Span Measurement Schema",
-  "description": "Describes an measurement and it's fields",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "key": {
-      "description": "The name of the measurement as sent in code, for ex. lcp",
-      "type": "string"
+      "type": "string",
+      "description": "The name of the measurement as sent in code, for ex. lcp"
     },
     "full_name": {
-      "description": "The full name of the measurement, for ex. largest contentful paint",
-      "type": "string"
+      "type": "string",
+      "description": "The full name of the measurement, for ex. largest contentful paint"
     },
     "brief": {
-      "description": "A description of the measurement",
-      "type": "string"
+      "type": "string",
+      "description": "A description of the measurement"
     },
     "unit": {
-      "description": "The unit of the measurement",
-      "type": "string"
+      "type": "string",
+      "description": "The unit of the measurement"
     },
     "platform": {
-      "description": "What platform the measurement is collected in",
-      "enum": ["web", "mobile"]
+      "type": "string",
+      "enum": ["web", "mobile"],
+      "description": "What platform the measurement is collected in"
     },
     "attribute": {
-      "description": "The name of the attribute corresponding to this measurement",
-      "type": "string"
+      "type": "string",
+      "description": "The name of the attribute corresponding to this measurement"
     }
   },
-  "required": ["key", "full_name", "unit", "platform"]
+  "required": ["key", "full_name", "unit", "platform"],
+  "additionalProperties": false,
+  "title": "Sentry Span Measurement Schema",
+  "description": "Describes an measurement and it's fields"
 }

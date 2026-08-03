@@ -4,7 +4,9 @@ import path from 'node:path';
 import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
+import { attributeSchema, measurementSchema } from '../schemas';
 import schema from '../schemas/measurements.schema.json';
+import { readJsonFile } from '../scripts/read_json';
 
 const traceFolders = path.resolve(__dirname, '../model/measurements');
 const attributeFolder = path.resolve(__dirname, '../model/attributes');
@@ -40,7 +42,7 @@ describe('measurements json', async () => {
   for (const file of files) {
     const name = path.basename(file);
     describe(name, async () => {
-      const content = JSON.parse(await fs.promises.readFile(file, 'utf-8'));
+      const content = readJsonFile(file, measurementSchema);
 
       it('should follow the measurements json schema', () => {
         const ajv = new Ajv();
@@ -52,7 +54,7 @@ describe('measurements json', async () => {
         const attribute = content.attribute;
 
         if (attribute !== undefined) {
-          const attributeContent = JSON.parse(await fs.promises.readFile(attribute_path(attribute), 'utf-8'));
+          const attributeContent = readJsonFile(attribute_path(attribute), attributeSchema);
           const deprecation = attributeContent.deprecation;
           if (deprecation !== undefined) {
             expect(deprecation.replacement).toBe(undefined);

@@ -41,6 +41,10 @@ jobs:
       - name: Run lints
         run: yarn lint
 
+      - name: Build docs
+        if: matrix.os == 'ubuntu-latest'
+        run: yarn docs:build
+
       - name: Check for changes
         if: matrix.os == 'ubuntu-latest'
         id: verify-changed-files

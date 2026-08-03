@@ -4,8 +4,9 @@ import path from 'node:path';
 import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
+import { attributeSchema, descriptionSchema } from '../schemas';
 import schema from '../schemas/description.schema.json';
-import type { AttributeJson, DescriptionJson } from '../scripts/types';
+import { readJsonFile } from '../scripts/read_json';
 import { attributeKeyToFileName } from '../scripts/utils';
 
 const descriptionsFolder = path.resolve(__dirname, '../model/description');
@@ -20,7 +21,7 @@ describe('Description JSON', async () => {
     const name = path.basename(file);
 
     describe(name, async () => {
-      const content: DescriptionJson = JSON.parse(await fs.promises.readFile(file, 'utf-8'));
+      const content = readJsonFile(file, descriptionSchema);
 
       it('should follow the description json schema', () => {
         ajv.validate(schema, content);
@@ -66,7 +67,7 @@ describe('Description JSON', async () => {
                 continue;
               }
 
-              const attr: AttributeJson = JSON.parse(await fs.promises.readFile(filePath, 'utf-8'));
+              const attr = readJsonFile(filePath, attributeSchema);
               if (attr.deprecation?.replacement) {
                 deprecated.push(key);
               }

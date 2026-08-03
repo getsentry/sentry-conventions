@@ -4,10 +4,11 @@ import path from 'node:path';
 import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
+import { attributeSchema, type AttributeJson } from '../schemas';
 import schema from '../schemas/attribute.schema.json';
 import { getAttributeExamples, parseAttributeExamples } from '../scripts/attribute_examples';
 import { compareVersions } from '../scripts/generate_attribute_changelog';
-import type { AttributeJson } from '../scripts/types';
+import { readJsonFile } from '../scripts/read_json';
 import { attributeKeyToFileName, fileNameToAttributeKey } from '../scripts/utils';
 
 const traceFolders = path.resolve(__dirname, '../model/attributes');
@@ -126,7 +127,7 @@ describe('attribute json', async () => {
   for (const file of files) {
     const name = path.basename(file);
     describe(name, async () => {
-      const content: AttributeJson = JSON.parse(await fs.promises.readFile(file, 'utf-8'));
+      const content = readJsonFile(file, attributeSchema);
 
       it('should follow the attribute json schema', () => {
         const ajv = new Ajv();
@@ -254,7 +255,7 @@ describe('attribute json', async () => {
           replacementFilePath = path.join(traceFolders, replacementFileName);
         }
 
-        const replacementContent: AttributeJson = JSON.parse(await fs.promises.readFile(replacementFilePath, 'utf-8'));
+        const replacementContent = readJsonFile(replacementFilePath, attributeSchema);
         expect(replacementContent.deprecation, `replacement "${replacement}" is itself deprecated`).toBeUndefined();
       });
 
@@ -319,7 +320,7 @@ describe('alias group consistency', async () => {
   // Load all attributes
   const attributes = new Map<string, AttributeJson>();
   for (const file of files) {
-    const content: AttributeJson = JSON.parse(await fs.promises.readFile(file, 'utf-8'));
+    const content = readJsonFile(file, attributeSchema);
     attributes.set(content.key, content);
   }
 

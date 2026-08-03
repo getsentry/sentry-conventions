@@ -1,8 +1,13 @@
-import type { AttributeJson, AttributeValue } from './types';
+import { z } from 'zod';
+import { attributeValueSchema, type AttributeJson, type AttributeValue } from '../schemas';
+import { parseJsonValue } from './read_json';
 
-export function getAttributeExamples(
-  attribute: Pick<AttributeJson, 'example' | 'examples'>,
-): AttributeValue[] | undefined {
+type AttributeExamples = Partial<AttributeJson> & {
+  example?: AttributeValue;
+  examples?: AttributeValue[];
+};
+
+export function getAttributeExamples(attribute: AttributeExamples): AttributeValue[] | undefined {
   if (attribute.examples !== undefined) {
     return attribute.examples;
   }
@@ -13,9 +18,9 @@ export function getAttributeExamples(
 }
 
 export function parseAttributeExamples(value: string): AttributeValue[] {
-  const examples = JSON.parse(value) as unknown;
-  if (!Array.isArray(examples) || examples.length === 0) {
+  try {
+    return parseJsonValue(value, z.array(attributeValueSchema).min(1));
+  } catch {
     throw new Error('Examples must be provided as a non-empty JSON array');
   }
-  return examples as AttributeValue[];
 }

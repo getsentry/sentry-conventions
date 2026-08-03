@@ -3,9 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { confirm, intro, isCancel, log, outro, select, text } from '@clack/prompts';
-import Ajv from 'ajv';
+import { attributeSchema, attributeValueSchema, type AttributeValue } from '../schemas';
 import { parseAttributeExamples } from './attribute_examples';
-import type { AttributeValue } from './types';
+import { formatZodError } from './format_zod_error';
+import { parseJsonValue } from './read_json';
 
 const getNextPrNumber = (): number | undefined => {
   try {
@@ -46,14 +47,9 @@ Examples:
 `;
 
 const validateSchema = (data: unknown) => {
-  const schema = JSON.parse(fs.readFileSync('schemas/attribute.schema.json', 'utf-8'));
-  const ajv = new Ajv();
-  const validate = ajv.compile(schema);
-  const valid = validate(data);
-
-  if (!valid) {
-    console.error('Validation errors:', validate.errors);
-    throw new Error('Invalid attribute data');
+  const result = attributeSchema.safeParse(data);
+  if (!result.success) {
+    throw new Error(`Invalid attribute data:\n${formatZodError(result.error)}`);
   }
 };
 
@@ -148,7 +144,7 @@ const createAttribute = async () => {
     let exampleValue: AttributeValue | undefined;
     if (example) {
       if (type === 'string[]' || type === 'boolean[]' || type === 'integer[]' || type === 'double[]') {
-        exampleValue = JSON.parse(example);
+        exampleValue = parseJsonValue(example, attributeValueSchema);
       } else if (type === 'boolean') {
         exampleValue = example === 'true';
       } else if (type === 'integer') {

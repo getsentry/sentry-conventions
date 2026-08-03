@@ -1,7 +1,8 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import type { AttributeJson } from './types';
+import { attributeSchema } from '../schemas';
 import { getAllJsonFiles } from './generate_attribute_changelog';
+import { readJsonFile } from './read_json';
 
 const attributesDir = path.join(__dirname, '..', 'model', 'attributes');
 
@@ -11,8 +12,7 @@ async function clearAll(): Promise<void> {
 
   for (const relativeFile of files) {
     const filePath = path.join(attributesDir, relativeFile);
-    const content = await fs.promises.readFile(filePath, 'utf-8');
-    const json: AttributeJson = JSON.parse(content);
+    const json = readJsonFile(filePath, attributeSchema);
 
     if ('changelog' in json) {
       json.changelog = undefined;
@@ -29,8 +29,7 @@ async function clearByKey(key: string): Promise<void> {
 
   for (const relativeFile of files) {
     const filePath = path.join(attributesDir, relativeFile);
-    const content = await fs.promises.readFile(filePath, 'utf-8');
-    const json: AttributeJson = JSON.parse(content);
+    const json = readJsonFile(filePath, attributeSchema);
 
     if (json.key === key) {
       if ('changelog' in json) {
@@ -57,8 +56,8 @@ if (args.includes('--all')) {
   });
 } else {
   const keyIndex = args.indexOf('--key');
-  if (keyIndex !== -1 && args[keyIndex + 1]) {
-    const key = args[keyIndex + 1];
+  const key = args[keyIndex + 1];
+  if (keyIndex !== -1 && key) {
     clearByKey(key).catch((err) => {
       console.error(err);
       process.exit(1);

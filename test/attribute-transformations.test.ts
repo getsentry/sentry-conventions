@@ -4,9 +4,15 @@ import path from 'node:path';
 import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
-import attributeSchema from '../schemas/attribute.schema.json';
-import transformationSchema from '../schemas/attribute_transformation.schema.json';
-import type { AttributeJson, AttributeTransformationJson } from '../scripts/types';
+import {
+  attributeSchema,
+  attributeTransformationSchema,
+  type AttributeJson,
+  type AttributeTransformationJson,
+} from '../schemas';
+import attributeJsonSchema from '../schemas/attribute.schema.json';
+import transformationJsonSchema from '../schemas/attribute_transformation.schema.json';
+import { readJsonFile } from '../scripts/read_json';
 import { attributeKeyToFileName } from '../scripts/utils';
 
 const attributesFolder = path.resolve(__dirname, '../model/attributes');
@@ -17,13 +23,13 @@ async function readAttribute(key: string): Promise<AttributeJson> {
   const filePath = key.includes('.')
     ? path.join(attributesFolder, key.split('.')[0] as string, fileName)
     : path.join(attributesFolder, fileName);
-  return JSON.parse(await fs.promises.readFile(filePath, 'utf-8')) as AttributeJson;
+  return readJsonFile(filePath, attributeSchema);
 }
 
 async function readTransformations(): Promise<AttributeTransformationJson[]> {
   const filesIterator = fs.promises.glob(`${transformationsFolder}/*.json`);
   const files = await Array.fromAsync(filesIterator);
-  return Promise.all(files.map(async (file) => JSON.parse(await fs.promises.readFile(file, 'utf-8'))));
+  return files.map((file) => readJsonFile(file, attributeTransformationSchema));
 }
 
 describe('attribute transformations', async () => {
@@ -33,9 +39,9 @@ describe('attribute transformations', async () => {
 
   it('all transformation documents follow the schema', async () => {
     for (const file of transformationFiles) {
-      const transformation = JSON.parse(await fs.promises.readFile(file, 'utf-8')) as AttributeTransformationJson;
+      const transformation = readJsonFile(file, attributeTransformationSchema);
 
-      ajv.validate(transformationSchema, transformation);
+      ajv.validate(transformationJsonSchema, transformation);
 
       expect(ajv.errors, file).toBe(null);
     }
@@ -43,7 +49,7 @@ describe('attribute transformations', async () => {
 
   it('transformation ids match their filenames', async () => {
     for (const file of transformationFiles) {
-      const transformation = JSON.parse(await fs.promises.readFile(file, 'utf-8')) as AttributeTransformationJson;
+      const transformation = readJsonFile(file, attributeTransformationSchema);
       const fileName = path.basename(file, '.json');
 
       expect(transformation.id).toBe(fileName);
@@ -73,7 +79,7 @@ describe('attribute transformations', async () => {
     const transformations = new Set((await readTransformations()).map((transformation) => transformation.id));
 
     for (const file of attributeFiles) {
-      const attribute = JSON.parse(await fs.promises.readFile(file, 'utf-8')) as AttributeJson;
+      const attribute = readJsonFile(file, attributeSchema);
       if (attribute.deprecation?._status !== 'transform') {
         continue;
       }
@@ -125,7 +131,7 @@ describe('attribute transformations', async () => {
       },
     };
 
-    ajv.validate(attributeSchema, attribute);
+    ajv.validate(attributeJsonSchema, attribute);
 
     expect(ajv.errors).toBe(null);
   });
