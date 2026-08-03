@@ -5,6 +5,12 @@
   "apply_scrubbing": {
     "key": "auto"
   },
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "url.fragment",
+    "reason": "`url.fragment` is supported by OTel and conceptually more fitting."
+  },
+  "alias": ["url.fragment"],
   "is_in_otel": false,
   "example": "#details",
   "visibility": "public",

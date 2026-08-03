@@ -6,6 +6,12 @@
     "key": "auto",
     "reason": "Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
   },
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "url.query",
+    "reason": "`url.query` is supported by OTel and conceptually more fitting."
+  },
+  "alias": ["url.query"],
   "is_in_otel": false,
   "example": "?foo=bar&bar=baz",
   "visibility": "public",
