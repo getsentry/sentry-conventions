@@ -208,6 +208,9 @@ pub const GENERAL_MARK_SPAN_OP: &str = "mark";
 /// The time it took for a set of instructions to execute
 pub const GENERAL_FUNCTION_SPAN_OP: &str = "function";
 
+/// A user-defined measurement of the duration between two points in time
+pub const GENERAL_MEASURE_SPAN_OP: &str = "measure";
+
 // Path: model/op/messaging.json
 // Name: messaging
 
