@@ -487,7 +487,7 @@ export const WEB_SERVER_MIDDLEWARE_SPAN_OP = 'middleware';
 /**
  * Handling of an incoming request by a web server route handler
  */
-export const WEB_SERVER_REQUEST_HANDLER_SPAN_OP = 'request_handler';
+export const WEB_SERVER_HANDLER_SPAN_OP = 'handler';
 
 export const WEB_SERVER_VIEW_SPAN_OP = 'view';
 

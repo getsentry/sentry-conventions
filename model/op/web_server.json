@@ -35,7 +35,7 @@
       "name": "middleware"
     },
     {
-      "name": "request_handler",
+      "name": "handler",
       "description": "Handling of an incoming request by a web server route handler"
     },
     {

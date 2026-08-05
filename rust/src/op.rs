@@ -339,7 +339,7 @@ pub const WEB_SERVER_SUBPROCESS_SPAN_OP: &str = "subprocess";
 pub const WEB_SERVER_MIDDLEWARE_SPAN_OP: &str = "middleware";
 
 /// Handling of an incoming request by a web server route handler
-pub const WEB_SERVER_REQUEST_HANDLER_SPAN_OP: &str = "request_handler";
+pub const WEB_SERVER_HANDLER_SPAN_OP: &str = "handler";
 
 pub const WEB_SERVER_VIEW_SPAN_OP: &str = "view";
 
