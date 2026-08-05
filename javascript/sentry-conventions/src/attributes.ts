@@ -13782,7 +13782,7 @@ export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link SENTRY_DESCRIPTION_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -27899,7 +27899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The human-readable description of a span.',
     type: 'string',
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
