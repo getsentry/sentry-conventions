@@ -9,6 +9,9 @@ pub const BROWSER_PAGELOAD_SPAN_OP: &str = "pageload";
 /// Client-side browser history change in a web application.
 pub const BROWSER_NAVIGATION_SPAN_OP: &str = "navigation";
 
+/// A client-side automatic redirect navigation (e.g. from framework router redirects) triggerign a browser history change.
+pub const BROWSER_NAVIGATION_REDIRECT_SPAN_OP: &str = "navigation.redirect";
+
 /// Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified.
 pub const BROWSER_RESOURCE_SPAN_OP: &str = "resource";
 
