@@ -8200,6 +8200,42 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "production"
     """
 
+    # Path: model/attributes/sentry/sentry__event__serialized_breadcrumbs.json
+    SENTRY_EVENT_SERIALIZED_BREADCRUMBS: Literal[
+        "sentry.event.serialized_breadcrumbs"
+    ] = "sentry.event.serialized_breadcrumbs"
+    """JSON-serialized `breadcrumbs` property from a Sentry event.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: internal
+    """
+
+    # Path: model/attributes/sentry/sentry__event__serialized_contexts.json
+    SENTRY_EVENT_SERIALIZED_CONTEXTS: Literal["sentry.event.serialized_contexts"] = (
+        "sentry.event.serialized_contexts"
+    )
+    """JSON-serialized `contexts` property from a Sentry event.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: internal
+    """
+
+    # Path: model/attributes/sentry/sentry__event__serialized_extra.json
+    SENTRY_EVENT_SERIALIZED_EXTRA: Literal["sentry.event.serialized_extra"] = (
+        "sentry.event.serialized_extra"
+    )
+    """JSON-serialized `extra` property from a Sentry event.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: internal
+    """
+
     # Path: model/attributes/sentry/sentry__exclusive_time.json
     SENTRY_EXCLUSIVE_TIME: Literal["sentry.exclusive_time"] = "sentry.exclusive_time"
     """The exclusive time duration of the span in milliseconds.
@@ -19693,6 +19729,36 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.event.serialized_breadcrumbs": AttributeMetadata(
+        brief="JSON-serialized `breadcrumbs` property from a Sentry event.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
+    "sentry.event.serialized_contexts": AttributeMetadata(
+        brief="JSON-serialized `contexts` property from a Sentry event.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
+    "sentry.event.serialized_extra": AttributeMetadata(
+        brief="JSON-serialized `extra` property from a Sentry event.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        changelog=[
+            ChangelogEntry(version="next"),
+        ],
+    ),
     "sentry.exclusive_time": AttributeMetadata(
         brief="The exclusive time duration of the span in milliseconds.",
         type=AttributeType.DOUBLE,
@@ -22482,6 +22548,9 @@ Attributes = TypedDict(
         "sentry.dsc.trace_id": str,
         "sentry.dsc.transaction": str,
         "sentry.environment": str,
+        "sentry.event.serialized_breadcrumbs": str,
+        "sentry.event.serialized_contexts": str,
+        "sentry.event.serialized_extra": str,
         "sentry.exclusive_time": float,
         "sentry.frames.frozen": int,
         "sentry.frames.slow": int,

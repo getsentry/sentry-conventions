@@ -14031,6 +14031,63 @@ export const SENTRY_ENVIRONMENT = 'sentry.environment';
  */
 export type SENTRY_ENVIRONMENT_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__event__serialized_breadcrumbs.json
+
+/**
+ * JSON-serialized `breadcrumbs` property from a Sentry event. `sentry.event.serialized_breadcrumbs`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_BREADCRUMBS = 'sentry.event.serialized_breadcrumbs';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_BREADCRUMBS} sentry.event.serialized_breadcrumbs
+ */
+export type SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_contexts.json
+
+/**
+ * JSON-serialized `contexts` property from a Sentry event. `sentry.event.serialized_contexts`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_CONTEXTS = 'sentry.event.serialized_contexts';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_CONTEXTS} sentry.event.serialized_contexts
+ */
+export type SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_extra.json
+
+/**
+ * JSON-serialized `extra` property from a Sentry event. `sentry.event.serialized_extra`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_EXTRA_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_EXTRA = 'sentry.event.serialized_extra';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_EXTRA} sentry.event.serialized_extra
+ */
+export type SENTRY_EVENT_SERIALIZED_EXTRA_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__exclusive_time.json
 
 /**
@@ -18193,6 +18250,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.dsc.trace_id': 'string',
   'sentry.dsc.transaction': 'string',
   'sentry.environment': 'string',
+  'sentry.event.serialized_breadcrumbs': 'string',
+  'sentry.event.serialized_contexts': 'string',
+  'sentry.event.serialized_extra': 'string',
   'sentry.exclusive_time': 'double',
   'sentry.frames.frozen': 'integer',
   'sentry.frames.slow': 'integer',
@@ -18983,6 +19043,9 @@ export type AttributeName =
   | typeof SENTRY_DSC_TRACE_ID
   | typeof SENTRY_DSC_TRANSACTION
   | typeof SENTRY_ENVIRONMENT
+  | typeof SENTRY_EVENT_SERIALIZED_BREADCRUMBS
+  | typeof SENTRY_EVENT_SERIALIZED_CONTEXTS
+  | typeof SENTRY_EVENT_SERIALIZED_EXTRA
   | typeof SENTRY_EXCLUSIVE_TIME
   | typeof SENTRY_FRAMES_FROZEN
   | typeof SENTRY_FRAMES_SLOW
@@ -28031,6 +28094,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['environment'],
     changelog: [{ version: '0.0.0' }],
   },
+  'sentry.event.serialized_breadcrumbs': {
+    brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: 'next' }],
+  },
+  'sentry.event.serialized_contexts': {
+    brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: 'next' }],
+  },
+  'sentry.event.serialized_extra': {
+    brief: 'JSON-serialized `extra` property from a Sentry event.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: 'next' }],
+  },
   'sentry.exclusive_time': {
     brief: 'The exclusive time duration of the span in milliseconds.',
     type: 'double',
@@ -30725,6 +30818,9 @@ export type Attributes = {
   [SENTRY_DSC_TRACE_ID]?: SENTRY_DSC_TRACE_ID_TYPE;
   [SENTRY_DSC_TRANSACTION]?: SENTRY_DSC_TRANSACTION_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
+  [SENTRY_EVENT_SERIALIZED_BREADCRUMBS]?: SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE;
+  [SENTRY_EVENT_SERIALIZED_CONTEXTS]?: SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE;
+  [SENTRY_EVENT_SERIALIZED_EXTRA]?: SENTRY_EVENT_SERIALIZED_EXTRA_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_FRAMES_FROZEN]?: SENTRY_FRAMES_FROZEN_TYPE;
   [SENTRY_FRAMES_SLOW]?: SENTRY_FRAMES_SLOW_TYPE;
