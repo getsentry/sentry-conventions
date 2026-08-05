@@ -40,11 +40,91 @@ export const BROWSER_RESOURCE_IFRAME_SPAN_OP = 'resource.iframe';
 export const BROWSER_RESOURCE_OTHER_SPAN_OP = 'resource.other';
 
 /**
+ * Loading of a resource initiated by a worker (e.g. Web Worker or Service Worker).
+ */
+export const BROWSER_RESOURCE_WORKER_SPAN_OP = 'resource.worker';
+
+/**
+ * Loading of an icon resource.
+ */
+export const BROWSER_RESOURCE_ICON_SPAN_OP = 'resource.icon';
+
+/**
+ * Loading of a resource initiated by a frame.
+ */
+export const BROWSER_RESOURCE_FRAME_SPAN_OP = 'resource.frame';
+
+/**
+ * Loading of a resource initiated by an `<object>` element.
+ */
+export const BROWSER_RESOURCE_OBJECT_SPAN_OP = 'resource.object';
+
+/**
+ * A hyperlink auditing ping request.
+ */
+export const BROWSER_RESOURCE_PING_SPAN_OP = 'resource.ping';
+
+/**
+ * Loading of a `<track>` element resource (e.g. subtitles or captions).
+ */
+export const BROWSER_RESOURCE_TRACK_SPAN_OP = 'resource.track';
+
+/**
  * Usage of browser APIs or functionality
  */
 export const BROWSER_BROWSER_SPAN_OP = 'browser';
 
 export const BROWSER_BROWSER_PAINT_SPAN_OP = 'browser.paint';
+
+/**
+ * The unload event phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_UNLOAD_EVENT_SPAN_OP = 'browser.unload_event';
+
+/**
+ * The redirect phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_REDIRECT_SPAN_OP = 'browser.redirect';
+
+/**
+ * The DOMContentLoaded event phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_DOM_CONTENT_LOADED_EVENT_SPAN_OP = 'browser.dom_content_loaded_event';
+
+/**
+ * The load event phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_LOAD_EVENT_SPAN_OP = 'browser.load_event';
+
+/**
+ * The connection phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_CONNECT_SPAN_OP = 'browser.connect';
+
+/**
+ * The secure connection (TLS/SSL) phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_TLS_SSL_SPAN_OP = 'browser.tls_ssl';
+
+/**
+ * The cache lookup / fetch start phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_CACHE_SPAN_OP = 'browser.cache';
+
+/**
+ * The DNS domain lookup phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_DNS_SPAN_OP = 'browser.dns';
+
+/**
+ * The request phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_REQUEST_SPAN_OP = 'browser.request';
+
+/**
+ * The response phase of a browser navigation.
+ */
+export const BROWSER_BROWSER_RESPONSE_SPAN_OP = 'browser.response';
 
 /**
  * Operations related to browser UI
@@ -57,6 +137,61 @@ export const BROWSER_UI_SPAN_OP = 'ui';
 export const BROWSER_UI_TASK_SPAN_OP = 'ui.task';
 
 export const BROWSER_UI_RENDER_SPAN_OP = 'ui.render';
+
+/**
+ * Mounting of a UI component or application (e.g. initial render/bootstrap).
+ */
+export const BROWSER_UI_MOUNT_SPAN_OP = 'ui.mount';
+
+/**
+ * Updating of an already-mounted UI component.
+ */
+export const BROWSER_UI_UPDATE_SPAN_OP = 'ui.update';
+
+/**
+ * Unmounting/teardown of a UI component.
+ */
+export const BROWSER_UI_UNMOUNT_SPAN_OP = 'ui.unmount';
+
+/**
+ * A long task on the main UI thread, as reported by the Long Tasks API.
+ */
+export const BROWSER_UI_LONG_TASK_SPAN_OP = 'ui.long_task';
+
+/**
+ * A long animation frame, as reported by the Long Animation Frames API.
+ */
+export const BROWSER_UI_LONG_ANIMATION_FRAME_SPAN_OP = 'ui.long_animation_frame';
+
+/**
+ * A click interaction measured via Interaction to Next Paint (INP).
+ */
+export const BROWSER_UI_INTERACTION_CLICK_SPAN_OP = 'ui.interaction.click';
+
+/**
+ * A hover interaction measured via Interaction to Next Paint (INP).
+ */
+export const BROWSER_UI_INTERACTION_HOVER_SPAN_OP = 'ui.interaction.hover';
+
+/**
+ * A drag interaction measured via Interaction to Next Paint (INP).
+ */
+export const BROWSER_UI_INTERACTION_DRAG_SPAN_OP = 'ui.interaction.drag';
+
+/**
+ * A key press interaction measured via Interaction to Next Paint (INP).
+ */
+export const BROWSER_UI_INTERACTION_PRESS_SPAN_OP = 'ui.interaction.press';
+
+/**
+ * A Largest Contentful Paint (LCP) web vital measurement.
+ */
+export const BROWSER_UI_WEBVITAL_LCP_SPAN_OP = 'ui.webvital.lcp';
+
+/**
+ * A Cumulative Layout Shift (CLS) web vital measurement.
+ */
+export const BROWSER_UI_WEBVITAL_CLS_SPAN_OP = 'ui.webvital.cls';
 
 export const BROWSER_UI_ACTION_SPAN_OP = 'ui.action';
 
@@ -120,22 +255,37 @@ export const FAAS_FUNCTION_AZURE_SPAN_OP = 'function.azure';
 /**
  * A chat interaction with a generative AI model
  */
-export const GEN_AI_CHAT_SPAN_OP = 'chat';
+export const GEN_AI_GEN_AI_CHAT_SPAN_OP = 'gen_ai.chat';
 
 /**
  * Execution of a tool or function by a generative AI model
  */
-export const GEN_AI_EXECUTE_TOOL_SPAN_OP = 'execute_tool';
+export const GEN_AI_GEN_AI_EXECUTE_TOOL_SPAN_OP = 'gen_ai.execute_tool';
 
 /**
  * Handoff of control between different AI agents or components
  */
-export const GEN_AI_HANDOFF_SPAN_OP = 'handoff';
+export const GEN_AI_GEN_AI_HANDOFF_SPAN_OP = 'gen_ai.handoff';
 
 /**
  * Invocation of an AI agent to perform a task
  */
-export const GEN_AI_INVOKE_AGENT_SPAN_OP = 'invoke_agent';
+export const GEN_AI_GEN_AI_INVOKE_AGENT_SPAN_OP = 'gen_ai.invoke_agent';
+
+/**
+ * Generation of embeddings by a generative AI model
+ */
+export const GEN_AI_GEN_AI_EMBEDDINGS_SPAN_OP = 'gen_ai.embeddings';
+
+/**
+ * Content generation by a generative AI model
+ */
+export const GEN_AI_GEN_AI_GENERATE_CONTENT_SPAN_OP = 'gen_ai.generate_content';
+
+/**
+ * Reranking of documents or results by a generative AI model
+ */
+export const GEN_AI_GEN_AI_RERANK_SPAN_OP = 'gen_ai.rerank';
 
 // Path: model/op/general.json
 // Name: general
@@ -149,6 +299,11 @@ export const GENERAL_MARK_SPAN_OP = 'mark';
  * The time it took for a set of instructions to execute
  */
 export const GENERAL_FUNCTION_SPAN_OP = 'function';
+
+/**
+ * A user-defined measurement of the duration between two points in time
+ */
+export const GENERAL_MEASURE_SPAN_OP = 'measure';
 
 // Path: model/op/messaging.json
 // Name: messaging
@@ -240,6 +395,56 @@ export const MOBILE_SERIALIZE_SPAN_OP = 'serialize';
 
 export const MOBILE_HTTP_SPAN_OP = 'http';
 
+// Path: model/op/object.json
+// Name: object
+
+// Description: Object storage related spans represent operations on object storage systems such as Cloudflare R2, Amazon S3, and compatible services.
+
+/**
+ * Retrieving an object from an object store.
+ */
+export const OBJECT_OBJECT_GET_SPAN_OP = 'object.get';
+
+/**
+ * Retrieving the metadata of an object from an object store.
+ */
+export const OBJECT_OBJECT_HEAD_SPAN_OP = 'object.head';
+
+/**
+ * Storing an object in an object store.
+ */
+export const OBJECT_OBJECT_PUT_SPAN_OP = 'object.put';
+
+/**
+ * Deleting an object from an object store.
+ */
+export const OBJECT_OBJECT_DELETE_SPAN_OP = 'object.delete';
+
+/**
+ * Listing objects in an object store.
+ */
+export const OBJECT_OBJECT_LIST_SPAN_OP = 'object.list';
+
+/**
+ * Uploading a single part of a multipart upload to an object store.
+ */
+export const OBJECT_OBJECT_UPLOAD_PART_SPAN_OP = 'object.upload_part';
+
+/**
+ * Aborting a multipart upload to an object store.
+ */
+export const OBJECT_OBJECT_MULTIPART_UPLOAD_ABORT_SPAN_OP = 'object.multipart_upload.abort';
+
+/**
+ * Creating a multipart upload to an object store.
+ */
+export const OBJECT_OBJECT_MULTIPART_UPLOAD_CREATE_SPAN_OP = 'object.multipart_upload.create';
+
+/**
+ * Completing a multipart upload to an object store.
+ */
+export const OBJECT_OBJECT_MULTIPART_UPLOAD_COMPLETE_SPAN_OP = 'object.multipart_upload.complete';
+
 // Path: model/op/web_server.json
 // Name: web_server
 
@@ -249,6 +454,11 @@ export const MOBILE_HTTP_SPAN_OP = 'http';
 export const WEB_SERVER_HTTP_SPAN_OP = 'http';
 
 export const WEB_SERVER_HTTP_CLIENT_SPAN_OP = 'http.client';
+
+/**
+ * Consumption of a streaming HTTP client response body
+ */
+export const WEB_SERVER_HTTP_CLIENT_STREAM_SPAN_OP = 'http.client.stream';
 
 export const WEB_SERVER_HTTP_SERVER_SPAN_OP = 'http.server';
 

@@ -1,5 +1,29 @@
 // This is an auto-generated file. Do not edit!
 
+// Path: model/attributes/address.json
+
+/**
+ * The destination hostname or IP address for a TCP connection. `address`
+ *
+ * Attribute Value Type: `string` {@link ADDRESS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ *
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
+ * @example "example.com"
+ */
+export const ADDRESS = 'address';
+
+/**
+ * Type for {@link ADDRESS} address
+ */
+export type ADDRESS_TYPE = string;
+
 // Path: model/attributes/ai/ai__citations.json
 
 /**
@@ -2605,6 +2629,54 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
 
+// Path: model/attributes/aws/aws__operation_name.json
+
+/**
+ * The name of the API operation invoked on an AWS service. `aws.operation_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_OPERATION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_METHOD} `rpc.method`
+ *
+ * @deprecated Use {@link RPC_METHOD} (rpc.method) instead - This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.
+ * @example "PutObject"
+ */
+export const AWS_OPERATION_NAME = 'aws.operation_name';
+
+/**
+ * Type for {@link AWS_OPERATION_NAME} aws.operation_name
+ */
+export type AWS_OPERATION_NAME_TYPE = string;
+
+// Path: model/attributes/aws_region.json
+
+/**
+ * The geographical region the AWS resource is running `aws_region`
+ *
+ * Attribute Value Type: `string` {@link AWS_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_REGION} `cloud.region`, {@link GCP_REGION} `gcp_region`
+ *
+ * @deprecated Use {@link CLOUD_REGION} (cloud.region) instead
+ * @example "us-east-1"
+ */
+export const AWS_REGION = 'aws_region';
+
+/**
+ * Type for {@link AWS_REGION} aws_region
+ */
+export type AWS_REGION_TYPE = string;
+
 // Path: model/attributes/aws/aws__request__extended_id.json
 
 /**
@@ -2825,6 +2897,95 @@ export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
  * Type for {@link BLOCKED_MAIN_THREAD} blocked_main_thread
  */
 export type BLOCKED_MAIN_THREAD_TYPE = boolean;
+
+// Path: model/attributes/browser/browser__bfcache__frame.json
+
+/**
+ * Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame. `browser.bfcache.frame`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_FRAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "top"
+ * @example "child"
+ */
+export const BROWSER_BFCACHE_FRAME = 'browser.bfcache.frame';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_FRAME} browser.bfcache.frame
+ */
+export type BROWSER_BFCACHE_FRAME_TYPE = string;
+
+// Path: model/attributes/browser/browser__bfcache__not_restored_reason_count.json
+
+/**
+ * The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers). `browser.bfcache.not_restored_reason_count`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 2
+ */
+export const BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT = 'browser.bfcache.not_restored_reason_count';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT} browser.bfcache.not_restored_reason_count
+ */
+export type BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE = number;
+
+// Path: model/attributes/browser/browser__bfcache__outcome.json
+
+/**
+ * Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded. `browser.bfcache.outcome`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_OUTCOME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "hit"
+ * @example "miss"
+ */
+export const BROWSER_BFCACHE_OUTCOME = 'browser.bfcache.outcome';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_OUTCOME} browser.bfcache.outcome
+ */
+export type BROWSER_BFCACHE_OUTCOME_TYPE = string;
+
+// Path: model/attributes/browser/browser__bfcache__reason.json
+
+/**
+ * A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only. `browser.bfcache.reason`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_REASON_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "unload-listener"
+ * @example "websocket"
+ * @example "idbversionchangeevent"
+ * @example "response-cache-control-no-store"
+ */
+export const BROWSER_BFCACHE_REASON = 'browser.bfcache.reason';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_REASON} browser.bfcache.reason
+ */
+export type BROWSER_BFCACHE_REASON_TYPE = string;
 
 // Path: model/attributes/browser/browser__name.json
 
@@ -3597,7 +3758,7 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`, {@link REDIS_COMMAND} `redis.command`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "run"
@@ -4041,6 +4202,8 @@ export type CLOUD_PROVIDER_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AWS_REGION} `aws_region`, {@link GCP_REGION} `gcp_region`
+ *
  * @example "us-east-1"
  */
 export const CLOUD_REGION = 'cloud.region';
@@ -4130,6 +4293,30 @@ export const CLS_SOURCE_KEY_BASE = 'cls.source';
  */
 export type CLS_SOURCE_KEY_TYPE = string;
 
+// Path: model/attributes/code.json
+
+/**
+ * Status code of the RPC returned by the RPC server or generated by the client. `code`
+ *
+ * Attribute Value Type: `string` {@link CODE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`, {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
+ *
+ * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead
+ * @example "DEADLINE_EXCEEDED"
+ */
+export const CODE = 'code';
+
+/**
+ * Type for {@link CODE} code
+ */
+export type CODE_TYPE = string;
+
 // Path: model/attributes/code/code__filepath.json
 
 /**
@@ -4189,7 +4376,7 @@ export type CODE_FILE_PATH_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`
+ * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`, {@link DJANGO_FUNCTION_NAME} `django.function_name`
  *
  * @example "server_request"
  */
@@ -4212,7 +4399,7 @@ export type CODE_FUNCTION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FUNCTION} `code.function`
+ * Aliases: {@link CODE_FUNCTION} `code.function`, {@link DJANGO_FUNCTION_NAME} `django.function_name`
  *
  * @example "server_request"
  */
@@ -4571,7 +4758,7 @@ export type DB_NAMESPACE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link REDIS_COMMAND} `redis.command`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "SELECT"
@@ -4616,7 +4803,7 @@ export type DB_OPERATION_BATCH_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION} `db.operation`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
+ * Aliases: {@link DB_OPERATION} `db.operation`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link REDIS_COMMAND} `redis.command`
  *
  * @example "SELECT"
  */
@@ -4626,6 +4813,28 @@ export const DB_OPERATION_NAME = 'db.operation.name';
  * Type for {@link DB_OPERATION_NAME} db.operation.name
  */
 export type DB_OPERATION_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__params.json
+
+/**
+ * The query bindings for a database request. `db.params`
+ *
+ * Attribute Value Type: `string` {@link DB_PARAMS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.
+ * @example "[{\"x\": 100}]"
+ */
+export const DB_PARAMS = 'db.params';
+
+/**
+ * Type for {@link DB_PARAMS} db.params
+ */
+export type DB_PARAMS_TYPE = string;
 
 // Path: model/attributes/db/db__query__parameter__[key].json
 
@@ -4689,7 +4898,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_STATEMENT} `db.statement`
+ * Aliases: {@link DB_STATEMENT} `db.statement`, {@link QUERY} `query`
  *
  * @example "SELECT * FROM users WHERE id = $1"
  */
@@ -4820,7 +5029,7 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_QUERY_TEXT} `db.query.text`
+ * Aliases: {@link DB_QUERY_TEXT} `db.query.text`, {@link QUERY} `query`
  *
  * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
  * @example "SELECT * FROM users WHERE id = $1"
@@ -5773,6 +5982,54 @@ export const DIST = 'dist';
  * Type for {@link DIST} dist
  */
 export type DIST_TYPE = string;
+
+// Path: model/attributes/django/django__function_name.json
+
+/**
+ * The fully qualified name of a function used in a Django context. `django.function_name`
+ *
+ * Attribute Value Type: `string` {@link DJANGO_FUNCTION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`, {@link CODE_FUNCTION} `code.function`
+ *
+ * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement.
+ * @example "django.contrib.sessions.middleware.SessionMiddleware"
+ */
+export const DJANGO_FUNCTION_NAME = 'django.function_name';
+
+/**
+ * Type for {@link DJANGO_FUNCTION_NAME} django.function_name
+ */
+export type DJANGO_FUNCTION_NAME_TYPE = string;
+
+// Path: model/attributes/django/django__middleware_name.json
+
+/**
+ * The name of the Django middleware. `django.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link DJANGO_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const DJANGO_MIDDLEWARE_NAME = 'django.middleware_name';
+
+/**
+ * Type for {@link DJANGO_MIDDLEWARE_NAME} django.middleware_name
+ */
+export type DJANGO_MIDDLEWARE_NAME_TYPE = string;
 
 // Path: model/attributes/effectiveConnectionType.json
 
@@ -6787,6 +7044,30 @@ export const GCP_PROJECT_ID = 'gcp.project.id';
  * Type for {@link GCP_PROJECT_ID} gcp.project.id
  */
 export type GCP_PROJECT_ID_TYPE = string;
+
+// Path: model/attributes/gcp_region.json
+
+/**
+ * The geographical region the GCP resource is running `gcp_region`
+ *
+ * Attribute Value Type: `string` {@link GCP_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_REGION} `cloud.region`, {@link AWS_REGION} `aws_region`
+ *
+ * @deprecated Use {@link CLOUD_REGION} (cloud.region) instead
+ * @example "us-east-1"
+ */
+export const GCP_REGION = 'gcp_region';
+
+/**
+ * Type for {@link GCP_REGION} gcp_region
+ */
+export type GCP_REGION_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
@@ -8720,7 +9001,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -9370,7 +9651,7 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_TEMPLATE} `url.template`
+ * Aliases: {@link ROUTE} `route`
  *
  * @example "/users/:id"
  * @example "my-controller/my-action/{id}"
@@ -9419,7 +9700,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -11310,7 +11591,7 @@ export type METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link LITESTAR_MIDDLEWARE_NAME} `litestar.middleware_name`, {@link STARLETTE_MIDDLEWARE_NAME} `starlette.middleware_name`
+ * Aliases: {@link DJANGO_MIDDLEWARE_NAME} `django.middleware_name`, {@link STARLITE_MIDDLEWARE_NAME} `starlite.middleware_name`, {@link LITESTAR_MIDDLEWARE_NAME} `litestar.middleware_name`, {@link STARLETTE_MIDDLEWARE_NAME} `starlette.middleware_name`
  *
  * @example "AuthenticationMiddleware"
  */
@@ -11778,7 +12059,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -11802,7 +12083,7 @@ export type NET_HOST_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_PORT} `server.port`
+ * Aliases: {@link SERVER_PORT} `server.port`, {@link PORT} `port`
  *
  * @deprecated Use {@link SERVER_PORT} (server.port) instead
  * @example 1337
@@ -12493,6 +12774,30 @@ export const PERFORMANCE_TIMEORIGIN = 'performance.timeOrigin';
  */
 export type PERFORMANCE_TIMEORIGIN_TYPE = number;
 
+// Path: model/attributes/port.json
+
+/**
+ * The destination port for a TCP connection. `port`
+ *
+ * Attribute Value Type: `number` {@link PORT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_PORT} `server.port`, {@link NET_HOST_PORT} `net.host.port`
+ *
+ * @deprecated Use {@link SERVER_PORT} (server.port) instead - Old namespace-less attribute, to be replaced with server.port for span-first future
+ * @example 1337
+ */
+export const PORT = 'port';
+
+/**
+ * Type for {@link PORT} port
+ */
+export type PORT_TYPE = number;
+
 // Path: model/attributes/previous_route.json
 
 /**
@@ -12714,6 +13019,30 @@ export const PROFILE_ID = 'profile_id';
  */
 export type PROFILE_ID_TYPE = string;
 
+// Path: model/attributes/query.json
+
+/**
+ * The database query being executed. `query`
+ *
+ * Attribute Value Type: `string` {@link QUERY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_QUERY_TEXT} `db.query.text`, {@link DB_STATEMENT} `db.statement`
+ *
+ * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
+ * @example "SELECT * FROM users WHERE id = $1"
+ */
+export const QUERY = 'query';
+
+/**
+ * Type for {@link QUERY} query
+ */
+export type QUERY_TYPE = string;
+
 // Path: model/attributes/query/query__[key].json
 
 /**
@@ -12765,6 +13094,30 @@ export const REACT_VERSION = 'react.version';
  * Type for {@link REACT_VERSION} react.version
  */
 export type REACT_VERSION_TYPE = string;
+
+// Path: model/attributes/redis/redis__command.json
+
+/**
+ * The name of the Redis operation being executed. `redis.command`
+ *
+ * Attribute Value Type: `string` {@link REDIS_COMMAND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ *
+ * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
+ * @example "SELECT"
+ */
+export const REDIS_COMMAND = 'redis.command';
+
+/**
+ * Type for {@link REDIS_COMMAND} redis.command
+ */
+export type REDIS_COMMAND_TYPE = string;
 
 // Path: model/attributes/redis/redis__key.json
 
@@ -12967,7 +13320,7 @@ export type ROUTE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
+ * Aliases: {@link CODE} `code`, {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
  *
  * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead - Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.
  * @example 2
@@ -12991,6 +13344,8 @@ export type RPC_GRPC_STATUS_CODE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AWS_OPERATION_NAME} `aws.operation_name`
+ *
  * @example "com.example.ExampleService/exampleMethod"
  */
 export const RPC_METHOD = 'rpc.method';
@@ -13012,7 +13367,7 @@ export type RPC_METHOD_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`
+ * Aliases: {@link CODE} `code`, {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`
  *
  * @example "DEADLINE_EXCEEDED"
  */
@@ -15099,7 +15454,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @example "example.com"
  */
@@ -15122,7 +15477,7 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
  * @example "example.com"
@@ -15146,7 +15501,7 @@ export type SERVER_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_HOST_PORT} `net.host.port`
+ * Aliases: {@link NET_HOST_PORT} `net.host.port`, {@link PORT} `port`
  *
  * @example 1337
  */
@@ -15291,6 +15646,30 @@ export const STARLETTE_MIDDLEWARE_NAME = 'starlette.middleware_name';
  * Type for {@link STARLETTE_MIDDLEWARE_NAME} starlette.middleware_name
  */
 export type STARLETTE_MIDDLEWARE_NAME_TYPE = string;
+
+// Path: model/attributes/starlite/starlite__middleware_name.json
+
+/**
+ * The name of the Starlite middleware. `starlite.middleware_name`
+ *
+ * Attribute Value Type: `string` {@link STARLITE_MIDDLEWARE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MIDDLEWARE_NAME} `middleware.name`
+ *
+ * @deprecated Use {@link MIDDLEWARE_NAME} (middleware.name) instead - This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.
+ * @example "AuthenticationMiddleware"
+ */
+export const STARLITE_MIDDLEWARE_NAME = 'starlite.middleware_name';
+
+/**
+ * Type for {@link STARLITE_MIDDLEWARE_NAME} starlite.middleware_name
+ */
+export type STARLITE_MIDDLEWARE_NAME_TYPE = string;
 
 // Path: model/attributes/state/state__type.json
 
@@ -16067,7 +16446,7 @@ export type URL_SCHEME_TYPE = string;
 // Path: model/attributes/url/url__template.json
 
 /**
- * The low-cardinality template of an absolute path reference. `url.template`
+ * The low-cardinality template of an absolute URL path reference. `url.template`
  *
  * Attribute Value Type: `string` {@link URL_TEMPLATE_TYPE}
  *
@@ -16075,8 +16454,6 @@ export type URL_SCHEME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
- *
- * Aliases: {@link HTTP_ROUTE} `http.route`
  *
  * @example "/users/{id}"
  * @example "/users/:id"
@@ -17187,6 +17564,7 @@ export interface AttributeMetadata {
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
+  address: 'string',
   'ai.citations': 'string[]',
   'ai.completion_tokens.used': 'integer',
   'ai.documents': 'string[]',
@@ -17303,6 +17681,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  'aws.operation_name': 'string',
+  aws_region: 'string',
   'aws.request.extended_id': 'string',
   'aws.request_id': 'string',
   'aws.request.id': 'string',
@@ -17313,6 +17693,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.step_functions.activity.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
+  'browser.bfcache.frame': 'string',
+  'browser.bfcache.not_restored_reason_count': 'integer',
+  'browser.bfcache.outcome': 'string',
+  'browser.bfcache.reason': 'string',
   'browser.name': 'string',
   'browser.performance.navigation.activation_start': 'double',
   'browser.performance.time_origin': 'double',
@@ -17372,6 +17756,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'cloud.resource_id': 'string',
   cls: 'double',
   'cls.source.<key>': 'string',
+  code: 'string',
   'code.filepath': 'string',
   'code.file.path': 'string',
   'code.function': 'string',
@@ -17394,6 +17779,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'db.operation': 'string',
   'db.operation.batch.size': 'integer',
   'db.operation.name': 'string',
+  'db.params': 'string',
   'db.query.parameter.<key>': 'string',
   'db.query.summary': 'string',
   'db.query.text': 'string',
@@ -17447,6 +17833,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'device.timezone': 'string',
   'device.usable_memory': 'integer',
   dist: 'string',
+  'django.function_name': 'string',
+  'django.middleware_name': 'string',
   effectiveConnectionType: 'string',
   environment: 'string',
   'error.type': 'string',
@@ -17493,6 +17881,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gcp.function.context.timestamp': 'string',
   'gcp.function.context.type': 'string',
   'gcp.project.id': 'string',
+  gcp_region: 'string',
   'gen_ai.agent.name': 'string',
   'gen_ai.context.utilization': 'double',
   'gen_ai.context.window_size': 'integer',
@@ -17749,6 +18138,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'params.<key>': 'string',
   'performance.activationStart': 'double',
   'performance.timeOrigin': 'double',
+  port: 'integer',
   previous_route: 'string',
   'process.command_args': 'string[]',
   'process.executable.name': 'string',
@@ -17759,8 +18149,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'process.runtime.name': 'string',
   'process.runtime.version': 'string',
   profile_id: 'string',
+  query: 'string',
   'query.<key>': 'string',
   'react.version': 'string',
+  'redis.command': 'string',
   'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
@@ -17874,6 +18266,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   stall_percentage: 'double',
   stall_total_time: 'double',
   'starlette.middleware_name': 'string',
+  'starlite.middleware_name': 'string',
   'state.type': 'string',
   'subprocess.pid': 'integer',
   'thread.id': 'integer',
@@ -17961,6 +18354,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
 };
 
 export type AttributeName =
+  | typeof ADDRESS
   | typeof AI_CITATIONS
   | typeof AI_COMPLETION_TOKENS_USED
   | typeof AI_DOCUMENTS
@@ -18077,6 +18471,8 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_OPERATION_NAME
+  | typeof AWS_REGION
   | typeof AWS_REQUEST_EXTENDED_ID
   | typeof AWS_REQUEST_ID
   | typeof _AWS_REQUEST_ID
@@ -18087,6 +18483,10 @@ export type AttributeName =
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
+  | typeof BROWSER_BFCACHE_FRAME
+  | typeof BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT
+  | typeof BROWSER_BFCACHE_OUTCOME
+  | typeof BROWSER_BFCACHE_REASON
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
   | typeof BROWSER_PERFORMANCE_TIME_ORIGIN
@@ -18146,6 +18546,7 @@ export type AttributeName =
   | typeof CLOUD_RESOURCE_ID
   | typeof CLS
   | typeof CLS_SOURCE_KEY
+  | typeof CODE
   | typeof CODE_FILEPATH
   | typeof CODE_FILE_PATH
   | typeof CODE_FUNCTION
@@ -18168,6 +18569,7 @@ export type AttributeName =
   | typeof DB_OPERATION
   | typeof DB_OPERATION_BATCH_SIZE
   | typeof DB_OPERATION_NAME
+  | typeof DB_PARAMS
   | typeof DB_QUERY_PARAMETER_KEY
   | typeof DB_QUERY_SUMMARY
   | typeof DB_QUERY_TEXT
@@ -18221,6 +18623,8 @@ export type AttributeName =
   | typeof DEVICE_TIMEZONE
   | typeof DEVICE_USABLE_MEMORY
   | typeof DIST
+  | typeof DJANGO_FUNCTION_NAME
+  | typeof DJANGO_MIDDLEWARE_NAME
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -18267,6 +18671,7 @@ export type AttributeName =
   | typeof GCP_FUNCTION_CONTEXT_TIMESTAMP
   | typeof GCP_FUNCTION_CONTEXT_TYPE
   | typeof GCP_PROJECT_ID
+  | typeof GCP_REGION
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
@@ -18523,6 +18928,7 @@ export type AttributeName =
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
   | typeof PERFORMANCE_TIMEORIGIN
+  | typeof PORT
   | typeof PREVIOUS_ROUTE
   | typeof PROCESS_COMMAND_ARGS
   | typeof PROCESS_EXECUTABLE_NAME
@@ -18533,8 +18939,10 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
   | typeof PROFILE_ID
+  | typeof QUERY
   | typeof QUERY_KEY
   | typeof REACT_VERSION
+  | typeof REDIS_COMMAND
   | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
@@ -18648,6 +19056,7 @@ export type AttributeName =
   | typeof STALL_PERCENTAGE
   | typeof STALL_TOTAL_TIME
   | typeof STARLETTE_MIDDLEWARE_NAME
+  | typeof STARLITE_MIDDLEWARE_NAME
   | typeof STATE_TYPE
   | typeof SUBPROCESS_PID
   | typeof THREAD_ID
@@ -18734,6 +19143,24 @@ export type AttributeName =
   | typeof VERCEL_STATUS_CODE;
 
 export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
+  address: {
+    brief: 'The destination hostname or IP address for a TCP connection.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.com',
+    examples: ['example.com'],
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
+      status: 'backfill',
+    },
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [{ version: 'next', prs: [534], description: 'Added address attribute' }],
+  },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
     type: 'string[]',
@@ -20420,6 +20847,41 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
   },
+  'aws.operation_name': {
+    brief: 'The name of the API operation invoked on an AWS service.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'PutObject',
+    examples: ['PutObject'],
+    deprecation: {
+      replacement: 'rpc.method',
+      reason: 'This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['rpc.method'],
+    changelog: [{ version: 'next', prs: [536], description: 'Added aws.operation_name attribute' }],
+  },
+  aws_region: {
+    brief: 'The geographical region the AWS resource is running',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'us-east-1',
+    examples: ['us-east-1'],
+    deprecation: {
+      replacement: 'cloud.region',
+      status: 'backfill',
+    },
+    aliases: ['cloud.region', 'gcp_region'],
+    changelog: [{ version: 'next', prs: [537], description: 'Added aws_region attribute' }],
+  },
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
@@ -20562,6 +21024,60 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
+  },
+  'browser.bfcache.frame': {
+    brief:
+      "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'top',
+    examples: ['top', 'child'],
+    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
+  },
+  'browser.bfcache.not_restored_reason_count': {
+    brief:
+      'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2,
+    examples: [2],
+    changelog: [
+      { version: 'next', prs: [513], description: 'Added browser.bfcache.not_restored_reason_count attribute' },
+    ],
+  },
+  'browser.bfcache.outcome': {
+    brief:
+      "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'hit',
+    examples: ['hit', 'miss'],
+    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.outcome attribute' }],
+  },
+  'browser.bfcache.reason': {
+    brief:
+      'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'unload-listener',
+    examples: ['unload-listener', 'websocket', 'idbversionchangeevent', 'response-cache-control-no-store'],
+    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.reason attribute' }],
   },
   'browser.name': {
     brief: 'The name of the browser.',
@@ -20976,8 +21492,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.operation.name',
       status: 'backfill',
     },
-    aliases: ['db.operation.name', 'db.operation'],
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
+    aliases: ['db.operation.name', 'db.operation', 'redis.command'],
+    changelog: [
+      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' },
+    ],
   },
   'cloudflare.d1.rows_read': {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
@@ -21214,7 +21733,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'us-east-1',
-    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' }],
+    aliases: ['aws_region', 'gcp_region'],
+    changelog: [
+      { version: 'next', description: 'Added aws_region and gcp_region as aliases' },
+      { version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' },
+    ],
   },
   'cloud.resource_id': {
     brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
@@ -21275,6 +21798,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['browser.web_vital.cls.source.<key>'],
     changelog: [{ version: '0.5.0', prs: [234] }],
   },
+  code: {
+    brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'DEADLINE_EXCEEDED',
+    examples: ['DEADLINE_EXCEEDED'],
+    deprecation: {
+      replacement: 'rpc.response.status_code',
+      status: 'backfill',
+    },
+    aliases: ['rpc.grpc.status_code', 'rpc.response.status_code'],
+    changelog: [{ version: 'next', prs: [533], description: 'Added code attribute' }],
+  },
   'code.filepath': {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
@@ -21313,8 +21853,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'server_request',
-    aliases: ['code.function.name'],
-    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
+    aliases: ['code.function.name', 'django.function_name'],
+    changelog: [
+      { version: 'next', description: 'Added django.function_name as an alias' },
+      { version: '0.1.0', prs: [61, 74] },
+      { version: '0.0.0' },
+    ],
   },
   'code.function.name': {
     brief: 'The method or function fully-qualified name without arguments.',
@@ -21325,8 +21869,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'server_request',
-    aliases: ['code.function'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['code.function', 'django.function_name'],
+    changelog: [
+      { version: 'next', description: 'Added django.function_name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'code.lineno': {
     brief:
@@ -21561,8 +22109,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.operation.name',
       status: 'normalize',
     },
-    aliases: ['db.operation.name', 'cloudflare.d1.query_type'],
-    changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['db.operation.name', 'cloudflare.d1.query_type', 'redis.command'],
+    changelog: [
+      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.4.0', prs: [199] },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.operation.batch.size': {
     brief:
@@ -21585,8 +22138,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT',
-    aliases: ['db.operation', 'cloudflare.d1.query_type'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['db.operation', 'cloudflare.d1.query_type', 'redis.command'],
+    changelog: [
+      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'db.params': {
+    brief: 'The query bindings for a database request.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"x": 100}]',
+    examples: ['[{"x": 100}]'],
+    deprecation: {
+      replacement: 'db.query.parameter.<key>',
+      reason:
+        'Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.',
+    },
+    changelog: [{ version: 'next', prs: [529], description: 'Added db.params attribute' }],
   },
   'db.query.parameter.<key>': {
     brief:
@@ -21629,8 +22203,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT * FROM users WHERE id = $1',
-    aliases: ['db.statement'],
-    changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['db.statement', 'query'],
+    changelog: [
+      { version: 'next', description: 'Added query as an alias' },
+      { version: '0.4.0', prs: [208] },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.redis.connection': {
     brief: 'The redis connection name.',
@@ -21712,9 +22291,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
       status: 'normalize',
     },
-    aliases: ['db.query.text'],
+    aliases: ['db.query.text', 'query'],
     changelog: [
-      { version: 'next', prs: [501], description: 'Improved example and added deprecation reason' },
+      {
+        version: 'next',
+        prs: [501],
+        description: 'Improved example, added deprecation reason, and added query as an alias',
+      },
       { version: '0.4.0', prs: [199] },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -22260,6 +22843,44 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.dist'],
     changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist attribute' }],
+  },
+  'django.function_name': {
+    brief: 'The fully qualified name of a function used in a Django context.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'django.contrib.sessions.middleware.SessionMiddleware',
+    examples: ['django.contrib.sessions.middleware.SessionMiddleware'],
+    deprecation: {
+      replacement: 'code.function.name',
+      reason:
+        'This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['code.function.name', 'code.function'],
+    changelog: [{ version: 'next', prs: [538], description: 'Added django.function_name attribute' }],
+  },
+  'django.middleware_name': {
+    brief: 'The name of the Django middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    examples: ['AuthenticationMiddleware'],
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [{ version: 'next', prs: [520], description: 'Added django.middleware_name attribute' }],
   },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -22913,6 +23534,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'my-project-123',
     changelog: [{ version: '0.11.0', prs: [403] }],
+  },
+  gcp_region: {
+    brief: 'The geographical region the GCP resource is running',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'us-east-1',
+    examples: ['us-east-1'],
+    deprecation: {
+      replacement: 'cloud.region',
+      status: 'backfill',
+    },
+    aliases: ['cloud.region', 'aws_region'],
+    changelog: [{ version: 'next', prs: [535], description: 'Added gcp_region attribute' }],
   },
   'gen_ai.agent.name': {
     brief: 'The name of the agent being used.',
@@ -24264,8 +24902,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.method': {
     brief: 'The HTTP method used.',
@@ -24644,11 +25286,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/:id',
     examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
-    aliases: ['url.template'],
+    aliases: ['route'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      {
+        version: 'next',
+        prs: [505, 521],
+        description: 'Added multiple examples, removed alias to `url.template`, added additional context',
+      },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.',
+      'For `http.client` spans and client-side routing, use `url.template` instead.',
     ],
   },
   'http.scheme': {
@@ -24678,8 +25328,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.server.request.time_in_queue': {
     brief:
@@ -25871,9 +26525,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'AuthenticationMiddleware',
-    aliases: ['litestar.middleware_name', 'starlette.middleware_name'],
+    aliases: [
+      'django.middleware_name',
+      'starlite.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+    ],
     changelog: [
-      { version: 'next', description: 'Added litestar.middleware_name and starlette.middleware_name as aliases' },
+      {
+        version: 'next',
+        description:
+          'Added django.middleware_name, starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases',
+      },
       { version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' },
     ],
   },
@@ -26156,8 +26819,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.address',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.host.port': {
     brief: 'Server port number.',
@@ -26171,8 +26838,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'server.port',
     },
-    aliases: ['server.port'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['server.port', 'port'],
+    changelog: [
+      { version: 'next', description: 'Added port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'net.peer.ip': {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
@@ -26587,6 +27259,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['browser.performance.time_origin'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
   },
+  port: {
+    brief: 'The destination port for a TCP connection.',
+    type: 'integer',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1337,
+    examples: [1337],
+    deprecation: {
+      replacement: 'server.port',
+      reason: 'Old namespace-less attribute, to be replaced with server.port for span-first future',
+      status: 'backfill',
+    },
+    aliases: ['server.port', 'net.host.port'],
+    changelog: [{ version: 'next', prs: [532], description: 'Added port attribute' }],
+  },
   previous_route: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
     type: 'string',
@@ -26713,6 +27403,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.profile_id'],
     changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
   },
+  query: {
+    brief: 'The database query being executed.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'SELECT * FROM users WHERE id = $1',
+    examples: ['SELECT * FROM users WHERE id = $1'],
+    deprecation: {
+      replacement: 'db.query.text',
+      reason:
+        'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
+      status: 'backfill',
+    },
+    aliases: ['db.query.text', 'db.statement'],
+    changelog: [{ version: 'next', prs: [530], description: 'Added query attribute' }],
+  },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
@@ -26739,6 +27448,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '18.2.0',
     changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
+  },
+  'redis.command': {
+    brief: 'The name of the Redis operation being executed.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'SELECT',
+    examples: ['SELECT'],
+    deprecation: {
+      replacement: 'db.operation.name',
+      status: 'backfill',
+    },
+    aliases: ['cloudflare.d1.query_type', 'db.operation.name', 'db.operation'],
+    changelog: [{ version: 'next', prs: [531], description: 'Added redis.command attribute' }],
   },
   'redis.key': {
     brief: 'The key the Redis command is operating on.',
@@ -26880,7 +27606,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.',
     },
-    aliases: ['rpc.response.status_code'],
+    aliases: ['code', 'rpc.response.status_code'],
     changelog: [
       { version: 'next', description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code' },
       { version: '0.4.0', prs: [228] },
@@ -26896,7 +27622,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'com.example.ExampleService/exampleMethod',
-    changelog: [{ version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' }],
+    aliases: ['aws.operation_name'],
+    changelog: [
+      { version: 'next', description: 'Added aws.operation_name as an alias' },
+      { version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' },
+    ],
   },
   'rpc.response.status_code': {
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
@@ -26907,9 +27637,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'DEADLINE_EXCEEDED',
-    aliases: ['rpc.grpc.status_code'],
+    aliases: ['code', 'rpc.grpc.status_code'],
     changelog: [
-      { version: 'next', description: 'Added rpc.grpc.status_code as an alias' },
+      { version: 'next', description: 'Added code and rpc.grpc.status_code as aliases' },
       { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
     ],
   },
@@ -28156,8 +28886,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   server_name: {
     brief:
@@ -28174,8 +28908,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
     changelog: [
+      { version: 'next', description: 'Added address as an alias' },
       {
         version: '0.16.0',
         prs: [477],
@@ -28192,8 +28927,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 1337,
-    aliases: ['net.host.port'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    aliases: ['net.host.port', 'port'],
+    changelog: [
+      { version: 'next', description: 'Added port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'service.name': {
     brief: 'Logical name of the service.',
@@ -28292,6 +29031,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: 'Added starlette.middleware_name attribute, deprecated in favor of middleware.name',
       },
     ],
+  },
+  'starlite.middleware_name': {
+    brief: 'The name of the Starlite middleware.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AuthenticationMiddleware',
+    examples: ['AuthenticationMiddleware'],
+    deprecation: {
+      replacement: 'middleware.name',
+      reason:
+        'This attribute is being deprecated in favor of middleware.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['middleware.name'],
+    changelog: [{ version: 'next', prs: [519], description: 'Added starlite.middleware_name attribute' }],
   },
   'state.type': {
     brief: 'The type of state management library',
@@ -28760,7 +29518,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'url.template': {
-    brief: 'The low-cardinality template of an absolute path reference.',
+    brief: 'The low-cardinality template of an absolute URL path reference.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -28769,11 +29527,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/{id}',
     examples: ['/users/{id}', '/users/:id', '/about'],
-    aliases: ['http.route'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      {
+        version: 'next',
+        prs: [505, 521],
+        description: 'Added multiple examples, removed alias to `http.route`, added additional context',
+      },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).',
+      'Use `http.route` for server-side instrumentation that captures the framework route of an incoming request.',
     ],
   },
   'user_agent.original': {
@@ -29331,6 +30096,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
+  [ADDRESS]?: ADDRESS_TYPE;
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
@@ -29447,6 +30213,8 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;
+  [AWS_REGION]?: AWS_REGION_TYPE;
   [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
   [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
@@ -29457,6 +30225,10 @@ export type Attributes = {
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
+  [BROWSER_BFCACHE_FRAME]?: BROWSER_BFCACHE_FRAME_TYPE;
+  [BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT]?: BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE;
+  [BROWSER_BFCACHE_OUTCOME]?: BROWSER_BFCACHE_OUTCOME_TYPE;
+  [BROWSER_BFCACHE_REASON]?: BROWSER_BFCACHE_REASON_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
   [BROWSER_PERFORMANCE_TIME_ORIGIN]?: BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE;
@@ -29516,6 +30288,7 @@ export type Attributes = {
   [CLOUD_RESOURCE_ID]?: CLOUD_RESOURCE_ID_TYPE;
   [CLS]?: CLS_TYPE;
   [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
+  [CODE]?: CODE_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
   [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;
@@ -29538,6 +30311,7 @@ export type Attributes = {
   [DB_OPERATION]?: DB_OPERATION_TYPE;
   [DB_OPERATION_BATCH_SIZE]?: DB_OPERATION_BATCH_SIZE_TYPE;
   [DB_OPERATION_NAME]?: DB_OPERATION_NAME_TYPE;
+  [DB_PARAMS]?: DB_PARAMS_TYPE;
   [DB_QUERY_PARAMETER_KEY]?: DB_QUERY_PARAMETER_KEY_TYPE;
   [DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
   [DB_QUERY_TEXT]?: DB_QUERY_TEXT_TYPE;
@@ -29591,6 +30365,8 @@ export type Attributes = {
   [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [DIST]?: DIST_TYPE;
+  [DJANGO_FUNCTION_NAME]?: DJANGO_FUNCTION_NAME_TYPE;
+  [DJANGO_MIDDLEWARE_NAME]?: DJANGO_MIDDLEWARE_NAME_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;
@@ -29637,6 +30413,7 @@ export type Attributes = {
   [GCP_FUNCTION_CONTEXT_TIMESTAMP]?: GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE;
   [GCP_FUNCTION_CONTEXT_TYPE]?: GCP_FUNCTION_CONTEXT_TYPE_TYPE;
   [GCP_PROJECT_ID]?: GCP_PROJECT_ID_TYPE;
+  [GCP_REGION]?: GCP_REGION_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
@@ -29893,6 +30670,7 @@ export type Attributes = {
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
   [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
+  [PORT]?: PORT_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
   [PROCESS_COMMAND_ARGS]?: PROCESS_COMMAND_ARGS_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
@@ -29903,8 +30681,10 @@ export type Attributes = {
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
   [PROFILE_ID]?: PROFILE_ID_TYPE;
+  [QUERY]?: QUERY_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
+  [REDIS_COMMAND]?: REDIS_COMMAND_TYPE;
   [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
@@ -30018,6 +30798,7 @@ export type Attributes = {
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;
   [STALL_TOTAL_TIME]?: STALL_TOTAL_TIME_TYPE;
   [STARLETTE_MIDDLEWARE_NAME]?: STARLETTE_MIDDLEWARE_NAME_TYPE;
+  [STARLITE_MIDDLEWARE_NAME]?: STARLITE_MIDDLEWARE_NAME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
   [SUBPROCESS_PID]?: SUBPROCESS_PID_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
