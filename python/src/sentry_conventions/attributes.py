@@ -8071,7 +8071,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The human-readable description of a span.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "index view query"
@@ -19555,7 +19555,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="index view query",
