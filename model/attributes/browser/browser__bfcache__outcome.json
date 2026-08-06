@@ -10,7 +10,7 @@
   "examples": ["hit", "miss"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.18.0",
       "prs": [513],
       "description": "Added browser.bfcache.outcome attribute"
     }

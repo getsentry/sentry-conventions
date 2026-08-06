@@ -10,7 +10,7 @@
   "example": true,
   "changelog": [
     {
-      "version": "next",
+      "version": "0.18.0",
       "prs": [474],
       "description": "Added messaging.kafka.message.tombstone attribute"
     }

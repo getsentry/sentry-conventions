@@ -15,9 +15,9 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
-      "description": "Configured normalization",
-      "prs": [427]
+      "version": "0.18.0",
+      "prs": [427],
+      "description": "Configured normalization"
     },
     {
       "version": "0.1.0",

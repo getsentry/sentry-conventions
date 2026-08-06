@@ -11,7 +11,7 @@
   "alias": ["stall_percentage"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.18.0",
       "prs": [493],
       "description": "Added app.vitals.stall.percentage attribute"
     }

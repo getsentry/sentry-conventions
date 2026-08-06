@@ -15,7 +15,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.18.0",
       "prs": [498],
       "description": "Added ai.toolCall.args attribute"
     }

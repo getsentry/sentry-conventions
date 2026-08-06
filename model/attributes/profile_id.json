@@ -15,9 +15,9 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
-      "description": "Added profile_id attribute",
-      "prs": [497]
+      "version": "0.18.0",
+      "prs": [497],
+      "description": "Added profile_id attribute"
     }
   ]
 }

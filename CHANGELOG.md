@@ -1,3 +1,85 @@
+## 0.18.0
+
+### Breaking Changes 🛠
+
+- (op) Add `gen_ai` prefix to existing ops and add `embeddings`, `generate_content`, and `rerank` ops by @msonnb in [#543](https://github.com/getsentry/sentry-conventions/pull/543)
+
+### New Features ✨
+
+#### Attributes
+
+- Add `sentry.event.serialized_*` attributes by @mjq in [#556](https://github.com/getsentry/sentry-conventions/pull/556)
+- Add browser.bfcache.\* attributes by @logaretm in [#513](https://github.com/getsentry/sentry-conventions/pull/513)
+- Add `query`, deprecated in favor of `db.query.text` by @alexander-alderman-webb in [#530](https://github.com/getsentry/sentry-conventions/pull/530)
+- Add `aws.operation_name`, deprecated in favor of `rpc.method` by @alexander-alderman-webb in [#536](https://github.com/getsentry/sentry-conventions/pull/536)
+- Add `db.params`, deprecated in favor of `db.query.parameter.<key>` by @alexander-alderman-webb in [#529](https://github.com/getsentry/sentry-conventions/pull/529)
+- Add `code`, deprecated in favor of `rpc.response.status_code` by @alexander-alderman-webb in [#533](https://github.com/getsentry/sentry-conventions/pull/533)
+- Add `django.function_name`, deprecated in favor of `code.function.name` by @alexander-alderman-webb in [#538](https://github.com/getsentry/sentry-conventions/pull/538)
+- Add `port`, deprecated in favor of `server.port` by @alexander-alderman-webb in [#532](https://github.com/getsentry/sentry-conventions/pull/532)
+- Add `redis.command`, deprecated in favor of `db.operation.name` by @alexander-alderman-webb in [#531](https://github.com/getsentry/sentry-conventions/pull/531)
+- Add `address`, deprecated in favor of `server.address` by @alexander-alderman-webb in [#534](https://github.com/getsentry/sentry-conventions/pull/534)
+- Add `aws_region`, deprecated in favor of `cloud.region` by @alexander-alderman-webb in [#537](https://github.com/getsentry/sentry-conventions/pull/537)
+- Add `gcp_region`, deprecated in favor of `cloud.region` by @alexander-alderman-webb in [#535](https://github.com/getsentry/sentry-conventions/pull/535)
+- Add `django.middleware_name` (deprecated) in favor of `middleware.name` by @alexander-alderman-webb in [#520](https://github.com/getsentry/sentry-conventions/pull/520)
+- Add `starlite.middleware_name` (deprecated) in favor of `middleware.name` by @alexander-alderman-webb in [#519](https://github.com/getsentry/sentry-conventions/pull/519)
+- Add `aws.request.url` (deprecated) in favor of `url.full` by @sentrivana in [#488](https://github.com/getsentry/sentry-conventions/pull/488)
+- Add `subprocess.pid` (deprecated) in favor of `process.pid` by @sentrivana in [#487](https://github.com/getsentry/sentry-conventions/pull/487)
+- Add `litestar.middleware_name` (deprecated) in favor of `middleware.name` by @sentrivana in [#486](https://github.com/getsentry/sentry-conventions/pull/486)
+- Add `starlette.middleware_name` (deprecated) in favor of `middleware.name` by @sentrivana in [#485](https://github.com/getsentry/sentry-conventions/pull/485)
+- Add `redis.key` (deprecated) in favor of `db.redis.key` by @sentrivana in [#484](https://github.com/getsentry/sentry-conventions/pull/484)
+- Add `db.mongodb.collection` (deprecated) in favor of `db.collection.name` by @sentrivana in [#483](https://github.com/getsentry/sentry-conventions/pull/483)
+- Add Kafka messaging attributes by @chargome in [#474](https://github.com/getsentry/sentry-conventions/pull/474)
+- Deprecate rpc.grpc.status_code in favor of rpc.response.status_code by @lucas-zimerman in [#494](https://github.com/getsentry/sentry-conventions/pull/494)
+- Add deprecated messaging.destination_kind by @andreiborza in [#509](https://github.com/getsentry/sentry-conventions/pull/509)
+- Add `sentry.segment.name.source` attribute by @Lms24 in [#466](https://github.com/getsentry/sentry-conventions/pull/466)
+- Add attribute transformations by @constantinius in [#465](https://github.com/getsentry/sentry-conventions/pull/465)
+- Add stable app vitals attributes by @buenaflor in [#493](https://github.com/getsentry/sentry-conventions/pull/493)
+- Deprecate `sentry.frames.*` attributes by @buenaflor in [#500](https://github.com/getsentry/sentry-conventions/pull/500)
+- Add missing AI legacy aliases from Relay SpanData by @vgrozdanic in [#498](https://github.com/getsentry/sentry-conventions/pull/498)
+
+#### Op
+
+- Add general `measure` span operation by @msonnb in [#550](https://github.com/getsentry/sentry-conventions/pull/550)
+- Add browser resource, timing phase, and UI span operations by @msonnb in [#547](https://github.com/getsentry/sentry-conventions/pull/547)
+- Add object storage span operations by @msonnb in [#545](https://github.com/getsentry/sentry-conventions/pull/545)
+- Add `http.client.stream` op by @msonnb in [#544](https://github.com/getsentry/sentry-conventions/pull/544)
+
+#### Other
+
+- (conventions) Support multiple examples by @Lms24 in [#505](https://github.com/getsentry/sentry-conventions/pull/505)
+- (descriptions) Add `http.route` description template for `http.server` span description inference by @Lms24 in [#518](https://github.com/getsentry/sentry-conventions/pull/518)
+- (ops) Add `navigation.redirect` op and update name and description rules by @Lms24 in [#522](https://github.com/getsentry/sentry-conventions/pull/522)
+
+### Internal Changes 🔧
+
+#### Attribute
+
+- Add more examples for valid `sentry.kind` values by @Lms24 in [#517](https://github.com/getsentry/sentry-conventions/pull/517)
+- Improve `db.statement` example and add deprecation reason by @Lms24 in [#501](https://github.com/getsentry/sentry-conventions/pull/501)
+
+#### Attributes
+
+- Disambiguate `http.route` and `url.template` attributes by @Lms24 in [#521](https://github.com/getsentry/sentry-conventions/pull/521)
+- Improve description of `sentry.segment.name.source` by @Lms24 in [#511](https://github.com/getsentry/sentry-conventions/pull/511)
+- Deprecate `sentry.span.source` and change backfill status of `sentry.source` by @Lms24 in [#510](https://github.com/getsentry/sentry-conventions/pull/510)
+
+#### Deps
+
+- Bump fast-uri from 3.1.4 to 3.1.5 by @dependabot in [#557](https://github.com/getsentry/sentry-conventions/pull/557)
+- Bump postcss from 8.5.15 to 8.5.25 by @dependabot in [#549](https://github.com/getsentry/sentry-conventions/pull/549)
+- Bump dompurify from 3.4.11 to 3.4.12 by @dependabot in [#525](https://github.com/getsentry/sentry-conventions/pull/525)
+- Bump fast-uri from 3.1.2 to 3.1.4 by @dependabot in [#526](https://github.com/getsentry/sentry-conventions/pull/526)
+- Bump svgo from 4.0.1 to 4.0.2 by @dependabot in [#524](https://github.com/getsentry/sentry-conventions/pull/524)
+- Bump js-yaml from 4.2.0 to 4.3.0 by @dependabot in [#516](https://github.com/getsentry/sentry-conventions/pull/516)
+- Bump astro from 6.4.7 to 7.1.0 in /docs by @dependabot in [#514](https://github.com/getsentry/sentry-conventions/pull/514)
+
+#### Other
+
+- (attrs) Backport attributes and normalizations from Relay by @Dav1dde in [#497](https://github.com/getsentry/sentry-conventions/pull/497)
+- (codeowners) Assign telemetry-experience to gen_ai/ai attributes by @vgrozdanic in [#506](https://github.com/getsentry/sentry-conventions/pull/506)
+- (deps-dev) Bump tar from 7.5.16 to 7.5.19 by @dependabot in [#515](https://github.com/getsentry/sentry-conventions/pull/515)
+- (release) Show version in workflow run title by @constantinius in [#504](https://github.com/getsentry/sentry-conventions/pull/504)
+
 ## 0.17.0
 
 ### New Features ✨

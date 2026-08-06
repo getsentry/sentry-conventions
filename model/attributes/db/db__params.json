@@ -15,7 +15,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.18.0",
       "prs": [529],
       "description": "Added db.params attribute"
     }

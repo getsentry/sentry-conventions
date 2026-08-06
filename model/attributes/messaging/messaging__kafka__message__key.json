@@ -10,7 +10,7 @@
   "example": "myKey",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.18.0",
       "prs": [474],
       "description": "Added messaging.kafka.message.key attribute"
     }

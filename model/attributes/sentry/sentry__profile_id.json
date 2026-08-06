@@ -11,9 +11,9 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
-      "description": "Added profile_id as an alias",
-      "prs": [497]
+      "version": "0.18.0",
+      "prs": [497],
+      "description": "Added profile_id as an alias"
     },
     {
       "version": "0.6.0",

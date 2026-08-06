@@ -15,7 +15,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.18.0",
       "prs": [493],
       "description": "Deprecated in favor of app.vitals.frames.slow.rate"
     },

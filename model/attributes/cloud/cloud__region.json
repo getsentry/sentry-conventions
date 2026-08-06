@@ -11,7 +11,8 @@
   "alias": ["aws_region", "gcp_region"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.18.0",
+      "prs": [535, 537],
       "description": "Added aws_region and gcp_region as aliases"
     },
     {
