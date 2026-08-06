@@ -1,0 +1,12 @@
+{
+  "brief": "Web server",
+  "operations": [
+    {
+      "name": "Request handler",
+      "brief": "Handling of an incoming request by a web server route handler.",
+      "ops": ["handler"],
+      "templates": ["{{http.route}}", "{{url.path}}"],
+      "examples": ["/users/:id", "/users/123"]
+    }
+  ]
+}
