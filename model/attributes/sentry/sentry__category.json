@@ -8,7 +8,9 @@
   "is_in_otel": false,
   "example": "db",
   "visibility": "public",
-  "public_alias": "span.category",
+  "search_alias": {
+    "name": "span.category"
+  },
   "changelog": [
     {
       "version": "0.4.0",

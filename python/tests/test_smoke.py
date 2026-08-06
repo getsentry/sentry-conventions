@@ -43,6 +43,8 @@ def test_full_attributes_typeddict() -> None:
         assert tokens_used == 10
 
 
-def test_attribute_public_alias_metadata() -> None:
-    public_alias = ATTRIBUTE_METADATA[ATTRIBUTE_NAMES.SENTRY_OP].public_alias
-    assert public_alias == "span.op"
+def test_attribute_search_alias_metadata() -> None:
+    search_alias = ATTRIBUTE_METADATA[ATTRIBUTE_NAMES.SENTRY_OP].search_alias
+    assert search_alias is not None
+    assert search_alias.name == "span.op"
+    assert search_alias.type == "string"

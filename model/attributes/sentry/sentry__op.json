@@ -8,7 +8,9 @@
   "is_in_otel": false,
   "example": "http.client",
   "visibility": "public",
-  "public_alias": "span.op",
+  "search_alias": {
+    "name": "span.op"
+  },
   "changelog": [
     {
       "version": "0.0.0"

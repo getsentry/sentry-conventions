@@ -153,9 +153,28 @@
         "type": "string"
       }
     },
-    "public_alias": {
-      "description": "The public name exposed in Sentry search",
-      "type": "string"
+    "search_alias": {
+      "description": "How this attribute is exposed in Sentry search",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "The public name exposed in Sentry search",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type exposed by Sentry search. Defaults to string if omitted",
+          "enum": ["string", "boolean", "integer", "number", "byte", "currency", "millisecond", "percentage", "second"]
+        },
+        "aliases": {
+          "description": "Additional aliases accepted in search queries",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["name"]
     },
     "additional_context": {
       "description": "A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances",

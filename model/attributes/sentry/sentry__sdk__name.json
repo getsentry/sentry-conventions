@@ -8,7 +8,9 @@
   "is_in_otel": false,
   "example": "@sentry/react",
   "visibility": "public",
-  "public_alias": "sdk.name",
+  "search_alias": {
+    "name": "sdk.name"
+  },
   "changelog": [
     {
       "version": "0.0.0"

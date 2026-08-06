@@ -14,7 +14,9 @@
     "_status": "backfill"
   },
   "visibility": "public",
-  "public_alias": "mobile.frozen_frames",
+  "search_alias": {
+    "name": "mobile.frozen_frames"
+  },
   "changelog": [
     {
       "version": "0.19.0",

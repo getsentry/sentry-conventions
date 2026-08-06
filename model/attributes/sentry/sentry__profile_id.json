@@ -9,7 +9,9 @@
   "example": "123e4567e89b12d3a456426614174000",
   "alias": ["profile_id"],
   "visibility": "public",
-  "public_alias": "profile.id",
+  "search_alias": {
+    "name": "profile.id"
+  },
   "changelog": [
     {
       "version": "0.19.0",

@@ -14,7 +14,9 @@
     "_status": "backfill"
   },
   "visibility": "public",
-  "public_alias": "mobile.frames_delay",
+  "search_alias": {
+    "name": "mobile.frames_delay"
+  },
   "changelog": [
     {
       "version": "0.5.0",

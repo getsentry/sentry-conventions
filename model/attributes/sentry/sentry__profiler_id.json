@@ -8,7 +8,9 @@
   "is_in_otel": false,
   "example": "18779b64dd35d1a538e7ce2dd2d3fad3",
   "visibility": "public",
-  "public_alias": "profiler.id",
+  "search_alias": {
+    "name": "profiler.id"
+  },
   "changelog": [
     {
       "version": "0.4.0",

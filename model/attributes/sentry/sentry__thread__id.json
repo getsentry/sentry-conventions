@@ -8,7 +8,9 @@
   "is_in_otel": false,
   "example": 56,
   "visibility": "public",
-  "public_alias": "thread.id",
+  "search_alias": {
+    "name": "thread.id"
+  },
   "deprecation": {
     "_status": "backfill",
     "replacement": "thread.id",

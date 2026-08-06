@@ -20,7 +20,11 @@ export interface AttributeJson {
     transformation?: string;
   };
   alias?: string[];
-  public_alias?: string;
+  search_alias?: {
+    name: string;
+    type?: 'string' | 'boolean' | 'integer' | 'number' | 'byte' | 'currency' | 'millisecond' | 'percentage' | 'second';
+    aliases?: string[];
+  };
   additional_context?: string[];
   changelog?: { version: string; prs?: number[]; description?: string }[];
 }
