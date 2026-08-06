@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "auto.http.otel.fastify",
   "visibility": "public",
+  "public_alias": "origin",
   "changelog": [
     {
       "version": "0.1.0",

@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "visibility": "public",
+  "public_alias": "span.group",
   "changelog": [
     {
       "version": "0.4.0",

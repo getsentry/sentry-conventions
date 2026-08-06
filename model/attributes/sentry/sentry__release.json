@@ -9,6 +9,7 @@
   "example": "7.0.0",
   "alias": ["service.version", "release"],
   "visibility": "public",
+  "public_alias": "release",
   "changelog": [
     {
       "version": "0.0.0"

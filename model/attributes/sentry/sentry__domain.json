@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "example.com",
   "visibility": "public",
+  "public_alias": "span.domain",
   "changelog": [
     {
       "version": "0.4.0",

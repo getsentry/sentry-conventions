@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "example": "ok",
   "visibility": "public",
+  "public_alias": "span.status",
   "changelog": [
     {
       "version": "0.14.0",

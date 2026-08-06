@@ -12,6 +12,7 @@
   "is_in_otel": false,
   "examples": ["client", "server", "producer", "consumer", "internal"],
   "visibility": "public",
+  "public_alias": "span.kind",
   "changelog": [
     {
       "version": "next",
