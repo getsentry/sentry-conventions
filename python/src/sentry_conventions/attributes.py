@@ -73,6 +73,33 @@ class ChangelogEntry:
     """Optional description of what changed"""
 
 
+SearchAliasType = Literal[
+    "string",
+    "boolean",
+    "integer",
+    "number",
+    "byte",
+    "currency",
+    "millisecond",
+    "percentage",
+    "second",
+]
+
+
+@dataclass
+class SearchAlias:
+    """How an attribute is exposed in Sentry search."""
+
+    name: str
+    """The public name exposed in Sentry search"""
+
+    type: SearchAliasType = "string"
+    """The type exposed by Sentry search"""
+
+    aliases: Optional[List[str]] = None
+    """Additional aliases accepted in search queries"""
+
+
 @dataclass
 class AttributeMetadata:
     """The metadata for an attribute."""
@@ -113,8 +140,8 @@ class AttributeMetadata:
     examples: Optional[List[AttributeValue]] = None
     """Example values of the attribute"""
 
-    public_alias: Optional[str] = None
-    """The public name exposed in Sentry search"""
+    search_alias: Optional[SearchAlias] = None
+    """How this attribute is exposed in Sentry search"""
 
 
 class _AttributeNamesMeta(type):
@@ -14744,7 +14771,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="mobile.frames_delay",
+        search_alias=SearchAlias(name="mobile.frames_delay"),
     ),
     "frames.frozen": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
@@ -14773,7 +14800,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="mobile.frozen_frames",
+        search_alias=SearchAlias(name="mobile.frozen_frames"),
     ),
     "frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
@@ -14802,7 +14829,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="mobile.slow_frames",
+        search_alias=SearchAlias(name="mobile.slow_frames"),
     ),
     "frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
@@ -14831,7 +14858,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="mobile.total_frames",
+        search_alias=SearchAlias(name="mobile.total_frames"),
     ),
     "frames_frozen_rate": AttributeMetadata(
         brief="The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
@@ -16821,7 +16848,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="http.response_status_code",
+        search_alias=SearchAlias(name="http.response_status_code"),
     ),
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
@@ -19536,7 +19563,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[212]),
         ],
-        public_alias="span.action",
+        search_alias=SearchAlias(name="span.action"),
     ),
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
@@ -19550,7 +19577,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
         ],
-        public_alias="browser.name",
+        search_alias=SearchAlias(name="browser.name"),
     ),
     "sentry.browser.version": AttributeMetadata(
         brief="The version of the browser.",
@@ -19586,7 +19613,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[218]),
         ],
-        public_alias="span.category",
+        search_alias=SearchAlias(name="span.category"),
     ),
     "sentry.client_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in the SDK.",
@@ -19598,7 +19625,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
-        public_alias="client_sample_rate",
+        search_alias=SearchAlias(name="client_sample_rate"),
     ),
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
@@ -19636,7 +19663,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[212]),
         ],
-        public_alias="span.domain",
+        search_alias=SearchAlias(name="span.domain"),
     ),
     "sentry.dsc.environment": AttributeMetadata(
         brief="The environment from the dynamic sampling context.",
@@ -19741,7 +19768,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="environment",
+        search_alias=SearchAlias(name="environment"),
     ),
     "sentry.event.serialized_breadcrumbs": AttributeMetadata(
         brief="JSON-serialized `breadcrumbs` property from a Sentry event.",
@@ -19869,7 +19896,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[212]),
         ],
-        public_alias="span.group",
+        search_alias=SearchAlias(name="span.group"),
     ),
     "sentry.http.prefetch": AttributeMetadata(
         brief="If an http request was a prefetch request.",
@@ -19924,7 +19951,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             'Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'
         ],
-        public_alias="span.kind",
+        search_alias=SearchAlias(name="span.kind"),
     ),
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
@@ -20073,7 +20100,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="span.op",
+        search_alias=SearchAlias(name="span.op"),
     ),
     "sentry.origin": AttributeMetadata(
         brief="The origin of the instrumentation (e.g. span, log, etc.)",
@@ -20086,7 +20113,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[68]),
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="origin",
+        search_alias=SearchAlias(name="origin"),
     ),
     "sentry.pageload.span_id": AttributeMetadata(
         brief="The id of the pageload span, set by web vital spans and metrics",
@@ -20113,7 +20140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="platform",
+        search_alias=SearchAlias(name="platform"),
     ),
     "sentry.profile_id": AttributeMetadata(
         brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
@@ -20133,7 +20160,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added sentry.profile_id attribute",
             ),
         ],
-        public_alias="profile.id",
+        search_alias=SearchAlias(name="profile.id"),
     ),
     "sentry.profiler_id": AttributeMetadata(
         brief="The id of the currently running profiler (continuous profiling)",
@@ -20145,7 +20172,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[242]),
         ],
-        public_alias="profiler.id",
+        search_alias=SearchAlias(name="profiler.id"),
     ),
     "sentry.relay.ingress": AttributeMetadata(
         brief="How an item (span, log, &c.) entered Relay.",
@@ -20188,7 +20215,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="release",
+        search_alias=SearchAlias(name="release"),
     ),
     "sentry.replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
@@ -20201,7 +20228,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="replay.id",
+        search_alias=SearchAlias(name="replay.id"),
     ),
     "sentry.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
@@ -20258,7 +20285,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="sdk.name",
+        search_alias=SearchAlias(name="sdk.name"),
     ),
     "sentry.sdk.version": AttributeMetadata(
         brief="The sentry sdk version.",
@@ -20270,7 +20297,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="sdk.version",
+        search_alias=SearchAlias(name="sdk.version"),
     ),
     "sentry.segment.id": AttributeMetadata(
         brief="The segment ID of a span",
@@ -20335,7 +20362,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[124]),
         ],
-        public_alias="transaction.span_id",
+        search_alias=SearchAlias(name="transaction.span_id"),
     ),
     "sentry.server_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in Relay.",
@@ -20347,7 +20374,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
-        public_alias="server_sample_rate",
+        search_alias=SearchAlias(name="server_sample_rate"),
     ),
     "sentry.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
@@ -20395,7 +20422,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.14.0", prs=[453]),
         ],
-        public_alias="span.status",
+        search_alias=SearchAlias(name="span.status"),
     ),
     "sentry.status.message": AttributeMetadata(
         brief="The from OTLP extracted status message.",
@@ -20407,7 +20434,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.3.1", prs=[190]),
         ],
-        public_alias="span.status.message",
+        search_alias=SearchAlias(name="span.status.message"),
     ),
     "sentry.status_code": AttributeMetadata(
         brief="The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.",
@@ -20419,7 +20446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[223, 228]),
         ],
-        public_alias="span.status_code",
+        search_alias=SearchAlias(name="span.status_code"),
     ),
     "sentry.sveltekit.navigation.from": AttributeMetadata(
         brief="the navigation origin (sveltekit router)",
@@ -20496,7 +20523,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.13.0", prs=[451]),
         ],
-        public_alias="thread.id",
+        search_alias=SearchAlias(name="thread.id"),
     ),
     "sentry.timestamp.sequence": AttributeMetadata(
         brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
@@ -20536,7 +20563,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.14.0", prs=[453]),
         ],
-        public_alias="trace.status",
+        search_alias=SearchAlias(name="trace.status"),
     ),
     "sentry.trace_lifecycle": AttributeMetadata(
         brief="Indicates the chosen trace lifecycle mode of the SDK (stream or static)",
@@ -20552,7 +20579,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added sentry.trace_lifecycle attribute",
             ),
         ],
-        public_alias="trace_lifecycle",
+        search_alias=SearchAlias(name="trace_lifecycle"),
     ),
     "sentry.transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
@@ -20575,7 +20602,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.0.0"),
         ],
-        public_alias="transaction",
+        search_alias=SearchAlias(name="transaction"),
     ),
     "sentry.user.email": AttributeMetadata(
         brief="User email address.",
@@ -20588,7 +20615,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
         ],
-        public_alias="user.email",
+        search_alias=SearchAlias(name="user.email"),
     ),
     "sentry.user.geo.city": AttributeMetadata(
         brief="Human readable city name.",
@@ -20601,7 +20628,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
         ],
-        public_alias="user.geo.city",
+        search_alias=SearchAlias(name="user.geo.city"),
     ),
     "sentry.user.geo.country_code": AttributeMetadata(
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
@@ -20614,7 +20641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
         ],
-        public_alias="user.geo.country_code",
+        search_alias=SearchAlias(name="user.geo.country_code"),
     ),
     "sentry.user.geo.region": AttributeMetadata(
         brief="Human readable region name or code.",
@@ -20627,7 +20654,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
         ],
-        public_alias="user.geo.region",
+        search_alias=SearchAlias(name="user.geo.region"),
     ),
     "sentry.user.geo.subdivision": AttributeMetadata(
         brief="Human readable subdivision name.",
@@ -20640,7 +20667,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
         ],
-        public_alias="user.geo.subdivision",
+        search_alias=SearchAlias(name="user.geo.subdivision"),
     ),
     "sentry.user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
@@ -20653,7 +20680,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
         ],
-        public_alias="user.id",
+        search_alias=SearchAlias(name="user.id"),
     ),
     "sentry.user.ip": AttributeMetadata(
         brief="The IP address of the user.",
@@ -20666,7 +20693,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
         ],
-        public_alias="user.ip",
+        search_alias=SearchAlias(name="user.ip"),
     ),
     "sentry.user.username": AttributeMetadata(
         brief="Short name or login/username of the user.",
@@ -20679,7 +20706,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
         ],
-        public_alias="user.username",
+        search_alias=SearchAlias(name="user.username"),
     ),
     "server.address": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",

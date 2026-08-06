@@ -12,7 +12,9 @@
     "_status": null
   },
   "visibility": "public",
-  "public_alias": "user.geo.region",
+  "search_alias": {
+    "name": "user.geo.region"
+  },
   "changelog": [
     {
       "version": "0.10.0",

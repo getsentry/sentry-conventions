@@ -14,7 +14,9 @@
     "_status": "backfill"
   },
   "visibility": "public",
-  "public_alias": "mobile.slow_frames",
+  "search_alias": {
+    "name": "mobile.slow_frames"
+  },
   "changelog": [
     {
       "version": "next",

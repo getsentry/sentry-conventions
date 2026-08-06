@@ -8,7 +8,9 @@
   "is_in_otel": false,
   "example": "php",
   "visibility": "public",
-  "public_alias": "platform",
+  "search_alias": {
+    "name": "platform"
+  },
   "changelog": [
     {
       "version": "0.0.0"

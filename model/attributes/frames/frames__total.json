@@ -14,7 +14,9 @@
     "_status": "backfill"
   },
   "visibility": "public",
-  "public_alias": "mobile.total_frames",
+  "search_alias": {
+    "name": "mobile.total_frames"
+  },
   "changelog": [
     {
       "version": "next",

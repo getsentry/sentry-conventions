@@ -12,7 +12,9 @@
     "_status": null
   },
   "visibility": "public",
-  "public_alias": "user.geo.subdivision",
+  "search_alias": {
+    "name": "user.geo.subdivision"
+  },
   "changelog": [
     {
       "version": "0.10.0",
