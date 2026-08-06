@@ -8,6 +8,10 @@
   "is_in_otel": false,
   "example": true,
   "visibility": "public",
+  "search_alias": {
+    "name": "cache.hit",
+    "type": "boolean"
+  },
   "changelog": [
     {
       "version": "0.0.0"

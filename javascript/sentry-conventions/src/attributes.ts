@@ -19844,6 +19844,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [53] },
     ],
+    searchAlias: {
+      name: 'ai.total_cost',
+      type: 'currency',
+    },
   },
   'ai.total_tokens.used': {
     brief: 'The total number of tokens used to process the prompt.',
@@ -19860,6 +19864,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.usage.total_tokens'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'ai.total_tokens.used',
+      type: 'integer',
+    },
   },
   'ai.warnings': {
     brief: 'Warning messages generated during model execution.',
@@ -21462,6 +21470,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'cache.hit',
+      type: 'boolean',
+    },
   },
   'cache.item_size': {
     brief: 'The size of the requested item in the cache. In bytes.',
@@ -21473,6 +21485,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 58,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'cache.item_size',
+      type: 'byte',
+    },
   },
   'cache.key': {
     brief: 'The key of the cache accessed.',
@@ -21976,6 +21992,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['code.line.number'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'code.lineno',
+      type: 'number',
+    },
   },
   'code.line.number': {
     brief:
@@ -24966,6 +24986,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 456,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.decoded_response_content_length',
+      type: 'byte',
+    },
   },
   'http.flavor': {
     brief: 'The actual version of the protocol used for network communication.',
@@ -25312,6 +25336,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.response.body.size', 'http.response.header.content-length'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 106] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.response_content_length',
+      type: 'byte',
+    },
   },
   'http.response.header.content-length': {
     brief: 'The size of the message body sent to the recipient (in bytes)',
@@ -25384,6 +25412,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.response.size'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.response_transfer_size',
+      type: 'byte',
+    },
   },
   'http.route': {
     brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
@@ -26502,6 +26534,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 839,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'messaging.message.body.size',
+      type: 'byte',
+    },
   },
   'messaging.message.conversation_id': {
     brief:
@@ -26547,6 +26583,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1732847252,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'messaging.message.receive.latency',
+      type: 'millisecond',
+    },
   },
   'messaging.message.retry.count': {
     brief: 'The amount of attempts to send the message.',
@@ -26558,6 +26598,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'messaging.message.retry.count',
+      type: 'number',
+    },
   },
   'messaging.operation.name': {
     brief: 'The name of the messaging operation being performed',

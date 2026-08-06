@@ -8,6 +8,10 @@
   "is_in_otel": false,
   "example": 2,
   "visibility": "public",
+  "search_alias": {
+    "name": "messaging.message.retry.count",
+    "type": "number"
+  },
   "changelog": [
     {
       "version": "0.4.0",
