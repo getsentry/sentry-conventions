@@ -10762,6 +10762,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[53]),
         ],
+        search_alias=SearchAlias(name="ai.total_cost", type="currency"),
     ),
     "ai.total_tokens.used": AttributeMetadata(
         brief="The total number of tokens used to process the prompt.",
@@ -10779,6 +10780,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="ai.total_tokens.used", type="integer"),
     ),
     "ai.warnings": AttributeMetadata(
         brief="Warning messages generated during model execution.",
@@ -12687,6 +12689,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="cache.hit", type="boolean"),
     ),
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
@@ -12699,6 +12702,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="cache.item_size", type="byte"),
     ),
     "cache.key": AttributeMetadata(
         brief="The key of the cache accessed.",
@@ -13274,6 +13278,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="code.lineno", type="number"),
     ),
     "code.namespace": AttributeMetadata(
         brief="The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
@@ -16487,6 +16492,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(
+            name="http.decoded_response_content_length", type="byte"
+        ),
     ),
     "http.flavor": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
@@ -16907,6 +16915,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[61, 106]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="http.response_content_length", type="byte"),
     ),
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
@@ -16924,6 +16933,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="http.response_transfer_size", type="byte"),
     ),
     "http.route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework.",
@@ -18107,6 +18117,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="messaging.message.body.size", type="byte"),
     ),
     "messaging.message.conversation_id": AttributeMetadata(
         brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
@@ -18158,6 +18169,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(
+            name="messaging.message.receive.latency", type="millisecond"
+        ),
     ),
     "messaging.message.retry.count": AttributeMetadata(
         brief="The amount of attempts to send the message.",
@@ -18170,6 +18184,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="messaging.message.retry.count", type="number"),
     ),
     "messaging.operation.name": AttributeMetadata(
         brief="The name of the messaging operation being performed",
