@@ -10,7 +10,8 @@
   "alias": ["http.status_code"],
   "visibility": "public",
   "search_alias": {
-    "name": "http.response_status_code"
+    "name": "http.response_status_code",
+    "type": "integer"
   },
   "changelog": [
     {

@@ -13684,6 +13684,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="db.system", aliases=["span.system"]),
     ),
     "db.system.name": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
@@ -14771,7 +14772,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="mobile.frames_delay"),
+        search_alias=SearchAlias(name="mobile.frames_delay", type="second"),
     ),
     "frames.frozen": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
@@ -14800,7 +14801,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="mobile.frozen_frames"),
+        search_alias=SearchAlias(name="mobile.frozen_frames", type="number"),
     ),
     "frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
@@ -14829,7 +14830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="mobile.slow_frames"),
+        search_alias=SearchAlias(name="mobile.slow_frames", type="number"),
     ),
     "frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
@@ -14858,7 +14859,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="mobile.total_frames"),
+        search_alias=SearchAlias(name="mobile.total_frames", type="number"),
     ),
     "frames_frozen_rate": AttributeMetadata(
         brief="The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
@@ -16848,7 +16849,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="http.response_status_code"),
+        search_alias=SearchAlias(name="http.response_status_code", type="integer"),
     ),
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
@@ -19625,7 +19626,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
-        search_alias=SearchAlias(name="client_sample_rate"),
+        search_alias=SearchAlias(name="client_sample_rate", type="number"),
     ),
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
@@ -20374,7 +20375,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
-        search_alias=SearchAlias(name="server_sample_rate"),
+        search_alias=SearchAlias(name="server_sample_rate", type="number"),
     ),
     "sentry.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
