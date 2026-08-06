@@ -14,6 +14,7 @@
     "reason": "This attribute is being deprecated in favor of sentry.segment.name"
   },
   "visibility": "public",
+  "public_alias": "transaction",
   "changelog": [
     {
       "version": "0.6.0",

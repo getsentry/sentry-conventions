@@ -23391,6 +23391,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    publicAlias: 'mobile.frames_delay',
   },
   'frames.frozen': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
@@ -23414,6 +23415,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    publicAlias: 'mobile.frozen_frames',
   },
   frames_frozen_rate: {
     brief:
@@ -23458,6 +23460,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    publicAlias: 'mobile.slow_frames',
   },
   frames_slow_rate: {
     brief:
@@ -23502,6 +23505,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    publicAlias: 'mobile.total_frames',
   },
   fs_error: {
     brief: 'The error message of a file system error.',
@@ -25352,6 +25356,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 404,
     aliases: ['http.status_code'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    publicAlias: 'http.response_status_code',
   },
   'http.response_transfer_size': {
     brief: 'The transfer size of the response (in bytes).',
@@ -27932,6 +27937,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'SELECT',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    publicAlias: 'span.action',
   },
   'sentry.browser.name': {
     brief: 'The name of the browser.',
@@ -27947,6 +27953,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['browser.name'],
     changelog: [{ version: '0.1.0', prs: [139] }],
+    publicAlias: 'browser.name',
   },
   'sentry.browser.version': {
     brief: 'The version of the browser.',
@@ -27985,6 +27992,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'db',
     changelog: [{ version: '0.4.0', prs: [218] }],
+    publicAlias: 'span.category',
   },
   'sentry.client_sample_rate': {
     brief: 'Rate at which a span was sampled in the SDK.',
@@ -27996,6 +28004,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
+    publicAlias: 'client_sample_rate',
   },
   'sentry.description': {
     brief: 'The human-readable description of a span.',
@@ -28031,6 +28040,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'example.com',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    publicAlias: 'span.domain',
   },
   'sentry.dsc.environment': {
     brief: 'The environment from the dynamic sampling context.',
@@ -28132,6 +28142,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     aliases: ['environment'],
     changelog: [{ version: '0.0.0' }],
+    publicAlias: 'environment',
   },
   'sentry.event.serialized_breadcrumbs': {
     brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
@@ -28259,6 +28270,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    publicAlias: 'span.group',
   },
   'sentry.http.prefetch': {
     brief: 'If an http request was a prefetch request.',
@@ -28310,6 +28322,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.3.1', prs: [190] },
     ],
     additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
+    publicAlias: 'span.kind',
   },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
@@ -28473,6 +28486,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'auto.http.otel.fastify',
     changelog: [{ version: '0.1.0', prs: [68] }, { version: '0.0.0' }],
+    publicAlias: 'origin',
   },
   'sentry.pageload.span_id': {
     brief: 'The id of the pageload span, set by web vital spans and metrics',
@@ -28495,6 +28509,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'php',
     changelog: [{ version: '0.0.0' }],
+    publicAlias: 'platform',
   },
   'sentry.profiler_id': {
     brief: 'The id of the currently running profiler (continuous profiling)',
@@ -28506,6 +28521,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
     changelog: [{ version: '0.4.0', prs: [242] }],
+    publicAlias: 'profiler.id',
   },
   'sentry.profile_id': {
     brief:
@@ -28522,6 +28538,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.19.0', prs: [497], description: 'Added profile_id as an alias' },
       { version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' },
     ],
+    publicAlias: 'profile.id',
   },
   'sentry.relay.ingress': {
     brief: 'How an item (span, log, &c.) entered Relay.',
@@ -28556,6 +28573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '7.0.0',
     aliases: ['service.version', 'release'],
     changelog: [{ version: '0.0.0' }],
+    publicAlias: 'release',
   },
   'sentry.replay_id': {
     brief: 'The id of the sentry replay.',
@@ -28568,6 +28586,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     aliases: ['replay_id'],
     changelog: [{ version: '0.0.0' }],
+    publicAlias: 'replay.id',
   },
   'sentry.replay_is_buffering': {
     brief:
@@ -28618,6 +28637,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '@sentry/react',
     changelog: [{ version: '0.0.0' }],
+    publicAlias: 'sdk.name',
   },
   'sentry.sdk.version': {
     brief: 'The sentry sdk version.',
@@ -28629,6 +28649,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '7.0.0',
     changelog: [{ version: '0.0.0' }],
+    publicAlias: 'sdk.version',
   },
   'sentry.segment.id': {
     brief: 'The segment ID of a span',
@@ -28657,6 +28678,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.id'],
     changelog: [{ version: '0.1.0', prs: [124] }],
+    publicAlias: 'transaction.span_id',
   },
   'sentry.segment.name': {
     brief: 'The segment name of a span',
@@ -28700,6 +28722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
+    publicAlias: 'server_sample_rate',
   },
   'sentry.source': {
     brief:
@@ -28755,6 +28778,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ok',
     changelog: [{ version: '0.14.0', prs: [453] }],
+    publicAlias: 'span.status',
   },
   'sentry.status_code': {
     brief:
@@ -28767,6 +28791,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 200,
     changelog: [{ version: '0.4.0', prs: [223, 228] }],
+    publicAlias: 'span.status_code',
   },
   'sentry.status.message': {
     brief: 'The from OTLP extracted status message.',
@@ -28778,6 +28803,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
+    publicAlias: 'span.status.message',
   },
   'sentry.sveltekit.navigation.from': {
     brief: 'the navigation origin (sveltekit router)',
@@ -28842,6 +28868,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     changelog: [{ version: '0.13.0', prs: [451] }],
+    publicAlias: 'thread.id',
   },
   'sentry.timestamp.sequence': {
     brief:
@@ -28865,6 +28892,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'stream',
     changelog: [{ version: '0.13.0', prs: [442], description: 'Added sentry.trace_lifecycle attribute' }],
+    publicAlias: 'trace_lifecycle',
   },
   'sentry.trace.parent_span_id': {
     brief:
@@ -28893,6 +28921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ok',
     changelog: [{ version: '0.14.0', prs: [453] }],
+    publicAlias: 'trace.status',
   },
   'sentry.transaction': {
     brief: 'The sentry transaction (segment name).',
@@ -28913,6 +28942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
       { version: '0.0.0' },
     ],
+    publicAlias: 'transaction',
   },
   'sentry.user.email': {
     brief: 'User email address.',
@@ -28927,6 +28957,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['user.email'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    publicAlias: 'user.email',
   },
   'sentry.user.geo.city': {
     brief: 'Human readable city name.',
@@ -28941,6 +28972,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['user.geo.city'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    publicAlias: 'user.geo.city',
   },
   'sentry.user.geo.country_code': {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
@@ -28955,6 +28987,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['user.geo.country_code'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    publicAlias: 'user.geo.country_code',
   },
   'sentry.user.geo.region': {
     brief: 'Human readable region name or code.',
@@ -28969,6 +29002,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['user.geo.region'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    publicAlias: 'user.geo.region',
   },
   'sentry.user.geo.subdivision': {
     brief: 'Human readable subdivision name.',
@@ -28983,6 +29017,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['user.geo.subdivision'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    publicAlias: 'user.geo.subdivision',
   },
   'sentry.user.id': {
     brief: 'Unique identifier of the user.',
@@ -28997,6 +29032,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['user.id'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    publicAlias: 'user.id',
   },
   'sentry.user.ip': {
     brief: 'The IP address of the user.',
@@ -29011,6 +29047,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['user.ip_address'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    publicAlias: 'user.ip',
   },
   'sentry.user.username': {
     brief: 'Short name or login/username of the user.',
@@ -29025,6 +29062,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['user.name'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    publicAlias: 'user.username',
   },
   'server.address': {
     brief:

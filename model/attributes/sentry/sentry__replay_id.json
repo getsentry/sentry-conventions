@@ -9,6 +9,7 @@
   "example": "123e4567e89b12d3a456426614174000",
   "alias": ["replay_id"],
   "visibility": "public",
+  "public_alias": "replay.id",
   "changelog": [
     {
       "version": "0.0.0"

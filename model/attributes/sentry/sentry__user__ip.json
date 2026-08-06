@@ -12,6 +12,7 @@
     "_status": null
   },
   "visibility": "public",
+  "public_alias": "user.ip",
   "changelog": [
     {
       "version": "0.10.0",

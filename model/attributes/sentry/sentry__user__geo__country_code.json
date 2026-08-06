@@ -12,6 +12,7 @@
     "_status": null
   },
   "visibility": "public",
+  "public_alias": "user.geo.country_code",
   "changelog": [
     {
       "version": "0.10.0",
