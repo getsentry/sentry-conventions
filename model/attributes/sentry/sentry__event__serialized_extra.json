@@ -1,0 +1,15 @@
+{
+  "key": "sentry.event.serialized_extra",
+  "brief": "JSON-serialized `extra` property from a Sentry event.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "internal",
+  "changelog": [
+    {
+      "version": "next"
+    }
+  ]
+}
