@@ -1,0 +1,24 @@
+{
+  "key": "sentry.frames.slow",
+  "brief": "The number of slow frames rendered during the lifetime of the span.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 1,
+  "alias": ["app.vitals.frames.slow.count", "frames.slow"],
+  "deprecation": {
+    "replacement": "app.vitals.frames.slow.count",
+    "reason": "Replaced by app.vitals.frames.slow.count to align with the app.vitals.* namespace for mobile performance attributes",
+    "_status": "backfill"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [500],
+      "description": "Added sentry.frames.slow attribute"
+    }
+  ]
+}

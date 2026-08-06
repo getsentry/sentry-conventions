@@ -1,0 +1,23 @@
+{
+  "key": "subprocess.pid",
+  "brief": "The process ID of a subprocess.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 12345,
+  "alias": ["process.pid"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "process.pid",
+    "reason": "This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added subprocess.pid attribute, deprecated in favor of process.pid"
+    }
+  ]
+}

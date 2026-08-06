@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "COMPLETE",
-  "alias": ["ai.finish_reason"],
+  "alias": ["ai.finish_reason", "gen_ai.response.finish_reason"],
   "visibility": "public",
   "changelog": [
     {

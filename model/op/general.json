@@ -9,6 +9,10 @@
     {
       "name": "function",
       "description": "The time it took for a set of instructions to execute"
+    },
+    {
+      "name": "measure",
+      "description": "A user-defined measurement of the duration between two points in time"
     }
   ]
 }

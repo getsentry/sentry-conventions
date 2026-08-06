@@ -7,13 +7,17 @@
   },
   "is_in_otel": true,
   "example": "SELECT",
-  "alias": ["db.operation.name", "cloudflare.d1.query_type"],
+  "alias": ["db.operation.name", "cloudflare.d1.query_type", "redis.command"],
   "deprecation": {
     "_status": "normalize",
     "replacement": "db.operation.name"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added redis.command as an alias"
+    },
     {
       "version": "0.4.0",
       "prs": [199]

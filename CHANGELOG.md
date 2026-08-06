@@ -1,3 +1,16 @@
+## 0.17.0
+
+### New Features ✨
+
+#### Attributes
+
+- Remove gen AI reasoning effort by @constantinius in [#503](https://github.com/getsentry/sentry-conventions/pull/503)
+- Deprecate gen AI reasoning effort by @constantinius in [#502](https://github.com/getsentry/sentry-conventions/pull/502)
+- Add `sentry.pageload.span_id` attribute by @Lms24 in [#495](https://github.com/getsentry/sentry-conventions/pull/495)
+- Add `sentry.relay.ingress` and `sentry.relay.pipeline` by @loewenheim in [#491](https://github.com/getsentry/sentry-conventions/pull/491)
+- Expand grpc attributes by @lucas-zimerman in [#460](https://github.com/getsentry/sentry-conventions/pull/460)
+- Add `file.path` and `file.size` by @buenaflor in [#458](https://github.com/getsentry/sentry-conventions/pull/458)
+
 ## 0.16.0
 
 ### New Features ✨

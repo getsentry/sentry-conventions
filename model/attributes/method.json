@@ -9,11 +9,16 @@
   "example": "GET",
   "alias": ["http.request.method", "http.request_method", "http.method"],
   "deprecation": {
-    "_status": null,
+    "_status": "normalize",
     "replacement": "http.request.method"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Configured normalization",
+      "prs": [497]
+    },
     {
       "version": "0.1.0",
       "prs": [61, 127]

@@ -1,0 +1,18 @@
+{
+  "key": "messaging.kafka.message.tombstone",
+  "brief": "A boolean that is true if the message is a tombstone.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "example": true,
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [474],
+      "description": "Added messaging.kafka.message.tombstone attribute"
+    }
+  ]
+}

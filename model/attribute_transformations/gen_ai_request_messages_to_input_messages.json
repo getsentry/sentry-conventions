@@ -1,0 +1,64 @@
+{
+  "id": "gen_ai_request_messages_to_input_messages",
+  "brief": "Transform deprecated gen_ai.request.messages values into the newer gen_ai.input.messages format.",
+  "inputs": [
+    {
+      "attribute": "gen_ai.request.messages",
+      "brief": "Deprecated request messages attribute to transform."
+    }
+  ],
+  "outputs": [
+    {
+      "attribute": "gen_ai.input.messages",
+      "brief": "Normalized input messages attribute."
+    }
+  ],
+  "actions": [
+    "If gen_ai.input.messages is already present, keep it and do not overwrite it.",
+    "Read gen_ai.request.messages as a JSON array of message objects.",
+    "For each message object, move content to parts.",
+    "If content is a string, convert it to a text part with type=\"text\" and content set to the string.",
+    "If content is an array, use it as parts and, for text parts that only have text, also set content to the same value.",
+    "Preserve message fields that are not renamed, such as role and response_metadata.",
+    "Write the transformed messages to gen_ai.input.messages.",
+    "Remove gen_ai.request.messages once the deprecated attribute is normalized."
+  ],
+  "examples": [
+    {
+      "name": "user message with string content",
+      "input": {
+        "gen_ai.request.messages": "[{\"role\":\"user\",\"content\":\"What is the capital of France?\"}]"
+      },
+      "output": {
+        "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"What is the capital of France?\"}]}]"
+      }
+    },
+    {
+      "name": "system and user messages with metadata",
+      "input": {
+        "gen_ai.request.messages": "[{\"role\":\"system\",\"content\":\"You are a helpful assistant.\",\"response_metadata\":{}},{\"role\":\"user\",\"content\":\"What is the capital of France?\",\"response_metadata\":{}}]"
+      },
+      "output": {
+        "gen_ai.input.messages": "[{\"role\":\"system\",\"response_metadata\":{},\"parts\":[{\"type\":\"text\",\"content\":\"You are a helpful assistant.\"}]},{\"role\":\"user\",\"response_metadata\":{},\"parts\":[{\"type\":\"text\",\"content\":\"What is the capital of France?\"}]}]"
+      }
+    },
+    {
+      "name": "system and user messages with array content",
+      "input": {
+        "gen_ai.request.messages": "[{\"role\":\"system\",\"content\":[{\"text\":\"A helpful assistant that answers questions\",\"type\":\"text\"}]},{\"role\":\"user\",\"content\":[{\"text\":\"What is the capital of France?\",\"type\":\"text\"}]}]"
+      },
+      "output": {
+        "gen_ai.input.messages": "[{\"role\":\"system\",\"parts\":[{\"text\":\"A helpful assistant that answers questions\",\"type\":\"text\",\"content\":\"A helpful assistant that answers questions\"}]},{\"role\":\"user\",\"parts\":[{\"text\":\"What is the capital of France?\",\"type\":\"text\",\"content\":\"What is the capital of France?\"}]}]"
+      }
+    },
+    {
+      "name": "user message with array content",
+      "input": {
+        "gen_ai.request.messages": "[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What is the capital of France?\"}]}]"
+      },
+      "output": {
+        "gen_ai.input.messages": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"text\":\"What is the capital of France?\",\"content\":\"What is the capital of France?\"}]}]"
+      }
+    }
+  ]
+}

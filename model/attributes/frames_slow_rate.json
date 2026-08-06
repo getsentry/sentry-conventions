@@ -1,13 +1,24 @@
 {
   "key": "frames_slow_rate",
-  "brief": "The rate of slow frames, or `app_vitals.frames.slow.count` divided by `app_vitals.frames.total.count`. This is computed by Relay.",
+  "brief": "The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
   "type": "double",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
+  "alias": ["app.vitals.frames.slow.rate"],
+  "deprecation": {
+    "replacement": "app.vitals.frames.slow.rate",
+    "reason": "Replaced by app.vitals.frames.slow.rate to align with the app.vitals.* namespace for mobile performance attributes",
+    "_status": "backfill"
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [493],
+      "description": "Deprecated in favor of app.vitals.frames.slow.rate"
+    },
     {
       "version": "0.7.0",
       "prs": [362],

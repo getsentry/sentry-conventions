@@ -59,9 +59,15 @@ export const GET: APIRoute = async () => {
         `- Apply Scrubbing: ${data.apply_scrubbing.key}${data.apply_scrubbing.reason ? ` (${data.apply_scrubbing.reason})` : ''}`,
       );
 
-      if (data.example !== undefined) {
-        const exampleStr = Array.isArray(data.example) ? data.example.join(', ') : String(data.example);
-        lines.push(`- Example: ${exampleStr}`);
+      if (data.examples !== undefined) {
+        lines.push('- Examples:');
+        for (const example of data.examples) {
+          const exampleText = Array.isArray(example) ? JSON.stringify(example) : String(example);
+          lines.push(`  - ${exampleText}`);
+        }
+      } else if (data.example !== undefined) {
+        const exampleText = Array.isArray(data.example) ? JSON.stringify(data.example) : String(data.example);
+        lines.push(`- Example: ${exampleText}`);
       }
 
       if (data.alias && data.alias.length > 0) {

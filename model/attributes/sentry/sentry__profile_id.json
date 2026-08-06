@@ -7,8 +7,14 @@
   },
   "is_in_otel": false,
   "example": "123e4567e89b12d3a456426614174000",
+  "alias": ["profile_id"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added profile_id as an alias",
+      "prs": [497]
+    },
     {
       "version": "0.6.0",
       "prs": [344],

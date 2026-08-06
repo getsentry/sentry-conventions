@@ -3,20 +3,32 @@
   "description": "Operations related to Generative AI interactions",
   "fields": [
     {
-      "name": "chat",
+      "name": "gen_ai.chat",
       "description": "A chat interaction with a generative AI model"
     },
     {
-      "name": "execute_tool",
+      "name": "gen_ai.execute_tool",
       "description": "Execution of a tool or function by a generative AI model"
     },
     {
-      "name": "handoff",
+      "name": "gen_ai.handoff",
       "description": "Handoff of control between different AI agents or components"
     },
     {
-      "name": "invoke_agent",
+      "name": "gen_ai.invoke_agent",
       "description": "Invocation of an AI agent to perform a task"
+    },
+    {
+      "name": "gen_ai.embeddings",
+      "description": "Generation of embeddings by a generative AI model"
+    },
+    {
+      "name": "gen_ai.generate_content",
+      "description": "Content generation by a generative AI model"
+    },
+    {
+      "name": "gen_ai.rerank",
+      "description": "Reranking of documents or results by a generative AI model"
     }
   ]
 }

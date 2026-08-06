@@ -13,6 +13,7 @@
       "brief": "Operations that represent processing incoming HTTP requests in a web server.",
       "ops": ["http.server"],
       "templates": [
+        "{{http.request.method}} {{http.route}}",
         "{{http.request.method}} {{url.template}}",
         "{{http.request.method}} {{url.path}}",
         "{{http.request.method}} {{url.full}}"

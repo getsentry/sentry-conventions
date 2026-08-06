@@ -20,6 +20,7 @@ const { category } = parseAttributeId(id);
 const isDeprecated = !!attribute.deprecation;
 const anchorId = attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '');
 const rawJson = JSON.stringify(attribute, null, 2);
+const examples = attribute.examples ?? (attribute.example !== undefined ? [attribute.example] : []);
 ---
 
 <article 
@@ -74,10 +75,14 @@ const rawJson = JSON.stringify(attribute, null, 2);
       </div>
     )}
     
-    {attribute.example !== undefined && (
+    {examples.length > 0 && (
       <div class="flex items-baseline gap-3 text-sm">
-        <span class="text-text-muted min-w-[100px] flex-shrink-0">Example</span>
-        <code class="text-xs mr-1">{typeof attribute.example === 'object' ? JSON.stringify(attribute.example) : String(attribute.example)}</code>
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">{attribute.examples ? 'Examples' : 'Example'}</span>
+        <span class="flex flex-wrap gap-1">
+          {examples.map((example) => (
+            <code class="text-xs">{typeof example === 'object' ? JSON.stringify(example) : String(example)}</code>
+          ))}
+        </span>
       </div>
     )}
     

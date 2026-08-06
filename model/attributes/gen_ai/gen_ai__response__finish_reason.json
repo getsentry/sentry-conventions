@@ -1,0 +1,23 @@
+{
+  "key": "gen_ai.response.finish_reason",
+  "brief": "The reason why the model stopped generating (singular form).",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "example": "COMPLETE",
+  "alias": ["gen_ai.response.finish_reasons"],
+  "deprecation": {
+    "_status": "normalize",
+    "replacement": "gen_ai.response.finish_reasons"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [498],
+      "description": "Added gen_ai.response.finish_reason attribute"
+    }
+  ]
+}

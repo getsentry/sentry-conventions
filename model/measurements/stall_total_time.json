@@ -4,5 +4,5 @@
   "brief": "The total stall time is the total combined time of all stalls. Only applies to React Native.",
   "unit": "milliseconds",
   "platform": "mobile",
-  "attribute": "stall_total_time"
+  "attribute": "app.vitals.stall.duration"
 }

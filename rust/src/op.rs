@@ -9,6 +9,9 @@ pub const BROWSER_PAGELOAD_SPAN_OP: &str = "pageload";
 /// Client-side browser history change in a web application.
 pub const BROWSER_NAVIGATION_SPAN_OP: &str = "navigation";
 
+/// A client-side automatic redirect navigation (e.g. from framework router redirects) triggerign a browser history change.
+pub const BROWSER_NAVIGATION_REDIRECT_SPAN_OP: &str = "navigation.redirect";
+
 /// Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified.
 pub const BROWSER_RESOURCE_SPAN_OP: &str = "resource";
 
@@ -28,10 +31,58 @@ pub const BROWSER_RESOURCE_IFRAME_SPAN_OP: &str = "resource.iframe";
 
 pub const BROWSER_RESOURCE_OTHER_SPAN_OP: &str = "resource.other";
 
+/// Loading of a resource initiated by a worker (e.g. Web Worker or Service Worker).
+pub const BROWSER_RESOURCE_WORKER_SPAN_OP: &str = "resource.worker";
+
+/// Loading of an icon resource.
+pub const BROWSER_RESOURCE_ICON_SPAN_OP: &str = "resource.icon";
+
+/// Loading of a resource initiated by a frame.
+pub const BROWSER_RESOURCE_FRAME_SPAN_OP: &str = "resource.frame";
+
+/// Loading of a resource initiated by an `<object>` element.
+pub const BROWSER_RESOURCE_OBJECT_SPAN_OP: &str = "resource.object";
+
+/// A hyperlink auditing ping request.
+pub const BROWSER_RESOURCE_PING_SPAN_OP: &str = "resource.ping";
+
+/// Loading of a `<track>` element resource (e.g. subtitles or captions).
+pub const BROWSER_RESOURCE_TRACK_SPAN_OP: &str = "resource.track";
+
 /// Usage of browser APIs or functionality
 pub const BROWSER_BROWSER_SPAN_OP: &str = "browser";
 
 pub const BROWSER_BROWSER_PAINT_SPAN_OP: &str = "browser.paint";
+
+/// The unload event phase of a browser navigation.
+pub const BROWSER_BROWSER_UNLOAD_EVENT_SPAN_OP: &str = "browser.unload_event";
+
+/// The redirect phase of a browser navigation.
+pub const BROWSER_BROWSER_REDIRECT_SPAN_OP: &str = "browser.redirect";
+
+/// The DOMContentLoaded event phase of a browser navigation.
+pub const BROWSER_BROWSER_DOM_CONTENT_LOADED_EVENT_SPAN_OP: &str = "browser.dom_content_loaded_event";
+
+/// The load event phase of a browser navigation.
+pub const BROWSER_BROWSER_LOAD_EVENT_SPAN_OP: &str = "browser.load_event";
+
+/// The connection phase of a browser navigation.
+pub const BROWSER_BROWSER_CONNECT_SPAN_OP: &str = "browser.connect";
+
+/// The secure connection (TLS/SSL) phase of a browser navigation.
+pub const BROWSER_BROWSER_TLS_SSL_SPAN_OP: &str = "browser.tls_ssl";
+
+/// The cache lookup / fetch start phase of a browser navigation.
+pub const BROWSER_BROWSER_CACHE_SPAN_OP: &str = "browser.cache";
+
+/// The DNS domain lookup phase of a browser navigation.
+pub const BROWSER_BROWSER_DNS_SPAN_OP: &str = "browser.dns";
+
+/// The request phase of a browser navigation.
+pub const BROWSER_BROWSER_REQUEST_SPAN_OP: &str = "browser.request";
+
+/// The response phase of a browser navigation.
+pub const BROWSER_BROWSER_RESPONSE_SPAN_OP: &str = "browser.response";
 
 /// Operations related to browser UI
 pub const BROWSER_UI_SPAN_OP: &str = "ui";
@@ -40,6 +91,39 @@ pub const BROWSER_UI_SPAN_OP: &str = "ui";
 pub const BROWSER_UI_TASK_SPAN_OP: &str = "ui.task";
 
 pub const BROWSER_UI_RENDER_SPAN_OP: &str = "ui.render";
+
+/// Mounting of a UI component or application (e.g. initial render/bootstrap).
+pub const BROWSER_UI_MOUNT_SPAN_OP: &str = "ui.mount";
+
+/// Updating of an already-mounted UI component.
+pub const BROWSER_UI_UPDATE_SPAN_OP: &str = "ui.update";
+
+/// Unmounting/teardown of a UI component.
+pub const BROWSER_UI_UNMOUNT_SPAN_OP: &str = "ui.unmount";
+
+/// A long task on the main UI thread, as reported by the Long Tasks API.
+pub const BROWSER_UI_LONG_TASK_SPAN_OP: &str = "ui.long_task";
+
+/// A long animation frame, as reported by the Long Animation Frames API.
+pub const BROWSER_UI_LONG_ANIMATION_FRAME_SPAN_OP: &str = "ui.long_animation_frame";
+
+/// A click interaction measured via Interaction to Next Paint (INP).
+pub const BROWSER_UI_INTERACTION_CLICK_SPAN_OP: &str = "ui.interaction.click";
+
+/// A hover interaction measured via Interaction to Next Paint (INP).
+pub const BROWSER_UI_INTERACTION_HOVER_SPAN_OP: &str = "ui.interaction.hover";
+
+/// A drag interaction measured via Interaction to Next Paint (INP).
+pub const BROWSER_UI_INTERACTION_DRAG_SPAN_OP: &str = "ui.interaction.drag";
+
+/// A key press interaction measured via Interaction to Next Paint (INP).
+pub const BROWSER_UI_INTERACTION_PRESS_SPAN_OP: &str = "ui.interaction.press";
+
+/// A Largest Contentful Paint (LCP) web vital measurement.
+pub const BROWSER_UI_WEBVITAL_LCP_SPAN_OP: &str = "ui.webvital.lcp";
+
+/// A Cumulative Layout Shift (CLS) web vital measurement.
+pub const BROWSER_UI_WEBVITAL_CLS_SPAN_OP: &str = "ui.webvital.cls";
 
 pub const BROWSER_UI_ACTION_SPAN_OP: &str = "ui.action";
 
@@ -98,16 +182,25 @@ pub const FAAS_FUNCTION_AZURE_SPAN_OP: &str = "function.azure";
 
 // Description: Operations related to Generative AI interactions
 /// A chat interaction with a generative AI model
-pub const GEN_AI_CHAT_SPAN_OP: &str = "chat";
+pub const GEN_AI_GEN_AI_CHAT_SPAN_OP: &str = "gen_ai.chat";
 
 /// Execution of a tool or function by a generative AI model
-pub const GEN_AI_EXECUTE_TOOL_SPAN_OP: &str = "execute_tool";
+pub const GEN_AI_GEN_AI_EXECUTE_TOOL_SPAN_OP: &str = "gen_ai.execute_tool";
 
 /// Handoff of control between different AI agents or components
-pub const GEN_AI_HANDOFF_SPAN_OP: &str = "handoff";
+pub const GEN_AI_GEN_AI_HANDOFF_SPAN_OP: &str = "gen_ai.handoff";
 
 /// Invocation of an AI agent to perform a task
-pub const GEN_AI_INVOKE_AGENT_SPAN_OP: &str = "invoke_agent";
+pub const GEN_AI_GEN_AI_INVOKE_AGENT_SPAN_OP: &str = "gen_ai.invoke_agent";
+
+/// Generation of embeddings by a generative AI model
+pub const GEN_AI_GEN_AI_EMBEDDINGS_SPAN_OP: &str = "gen_ai.embeddings";
+
+/// Content generation by a generative AI model
+pub const GEN_AI_GEN_AI_GENERATE_CONTENT_SPAN_OP: &str = "gen_ai.generate_content";
+
+/// Reranking of documents or results by a generative AI model
+pub const GEN_AI_GEN_AI_RERANK_SPAN_OP: &str = "gen_ai.rerank";
 
 // Path: model/op/general.json
 // Name: general
@@ -117,6 +210,9 @@ pub const GENERAL_MARK_SPAN_OP: &str = "mark";
 
 /// The time it took for a set of instructions to execute
 pub const GENERAL_FUNCTION_SPAN_OP: &str = "function";
+
+/// A user-defined measurement of the duration between two points in time
+pub const GENERAL_MEASURE_SPAN_OP: &str = "measure";
 
 // Path: model/op/messaging.json
 // Name: messaging
@@ -179,6 +275,37 @@ pub const MOBILE_SERIALIZE_SPAN_OP: &str = "serialize";
 
 pub const MOBILE_HTTP_SPAN_OP: &str = "http";
 
+// Path: model/op/object.json
+// Name: object
+
+// Description: Object storage related spans represent operations on object storage systems such as Cloudflare R2, Amazon S3, and compatible services.
+/// Retrieving an object from an object store.
+pub const OBJECT_OBJECT_GET_SPAN_OP: &str = "object.get";
+
+/// Retrieving the metadata of an object from an object store.
+pub const OBJECT_OBJECT_HEAD_SPAN_OP: &str = "object.head";
+
+/// Storing an object in an object store.
+pub const OBJECT_OBJECT_PUT_SPAN_OP: &str = "object.put";
+
+/// Deleting an object from an object store.
+pub const OBJECT_OBJECT_DELETE_SPAN_OP: &str = "object.delete";
+
+/// Listing objects in an object store.
+pub const OBJECT_OBJECT_LIST_SPAN_OP: &str = "object.list";
+
+/// Uploading a single part of a multipart upload to an object store.
+pub const OBJECT_OBJECT_UPLOAD_PART_SPAN_OP: &str = "object.upload_part";
+
+/// Aborting a multipart upload to an object store.
+pub const OBJECT_OBJECT_MULTIPART_UPLOAD_ABORT_SPAN_OP: &str = "object.multipart_upload.abort";
+
+/// Creating a multipart upload to an object store.
+pub const OBJECT_OBJECT_MULTIPART_UPLOAD_CREATE_SPAN_OP: &str = "object.multipart_upload.create";
+
+/// Completing a multipart upload to an object store.
+pub const OBJECT_OBJECT_MULTIPART_UPLOAD_COMPLETE_SPAN_OP: &str = "object.multipart_upload.complete";
+
 // Path: model/op/web_server.json
 // Name: web_server
 
@@ -186,6 +313,9 @@ pub const MOBILE_HTTP_SPAN_OP: &str = "http";
 pub const WEB_SERVER_HTTP_SPAN_OP: &str = "http";
 
 pub const WEB_SERVER_HTTP_CLIENT_SPAN_OP: &str = "http.client";
+
+/// Consumption of a streaming HTTP client response body
+pub const WEB_SERVER_HTTP_CLIENT_STREAM_SPAN_OP: &str = "http.client.stream";
 
 pub const WEB_SERVER_HTTP_SERVER_SPAN_OP: &str = "http.server";
 

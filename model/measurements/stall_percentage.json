@@ -1,8 +1,8 @@
 {
   "key": "stall_percentage",
   "full_name": "Stall Percentage",
-  "brief": "Stall percentage is equal to the stall_total_time divided by the transaction.duration. Only applies to React Native.",
+  "brief": "Stall percentage is equal to app.vitals.stall.duration divided by transaction.duration. Only applies to React Native.",
   "unit": "none",
   "platform": "mobile",
-  "attribute": "stall_percentage"
+  "attribute": "app.vitals.stall.percentage"
 }

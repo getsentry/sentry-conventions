@@ -1,0 +1,21 @@
+{
+  "key": "messaging.destination_kind",
+  "brief": "The kind of message destination.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "topic",
+  "deprecation": {
+    "_status": null,
+    "reason": "Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations."
+    }
+  ]
+}
