@@ -15,7 +15,8 @@
   },
   "visibility": "public",
   "search_alias": {
-    "name": "mobile.total_frames"
+    "name": "mobile.total_frames",
+    "type": "number"
   },
   "changelog": [
     {

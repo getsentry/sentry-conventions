@@ -22443,6 +22443,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['db.system.name'],
     changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'db.system',
+      aliases: ['span.system'],
+    },
   },
   'db.system.name': {
     brief:
@@ -23413,6 +23417,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     searchAlias: {
       name: 'mobile.frames_delay',
+      type: 'second',
     },
   },
   'frames.frozen': {
@@ -23439,6 +23444,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     searchAlias: {
       name: 'mobile.frozen_frames',
+      type: 'number',
     },
   },
   frames_frozen_rate: {
@@ -23486,6 +23492,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     searchAlias: {
       name: 'mobile.slow_frames',
+      type: 'number',
     },
   },
   frames_slow_rate: {
@@ -23533,6 +23540,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     searchAlias: {
       name: 'mobile.total_frames',
+      type: 'number',
     },
   },
   fs_error: {
@@ -25386,6 +25394,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
     searchAlias: {
       name: 'http.response_status_code',
+      type: 'integer',
     },
   },
   'http.response_transfer_size': {
@@ -28042,6 +28051,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [102] }],
     searchAlias: {
       name: 'client_sample_rate',
+      type: 'number',
     },
   },
   'sentry.description': {
@@ -28790,6 +28800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [102] }],
     searchAlias: {
       name: 'server_sample_rate',
+      type: 'number',
     },
   },
   'sentry.source': {

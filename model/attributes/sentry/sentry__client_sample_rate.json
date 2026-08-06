@@ -9,7 +9,8 @@
   "example": 0.5,
   "visibility": "public",
   "search_alias": {
-    "name": "client_sample_rate"
+    "name": "client_sample_rate",
+    "type": "number"
   },
   "changelog": [
     {
