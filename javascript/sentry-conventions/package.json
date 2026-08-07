@@ -11,6 +11,14 @@
       "import": "./dist/attributes.mjs",
       "require": "./dist/attributes.cjs"
     },
+    "./attributes/metadata": {
+      "import": "./dist/attributeMetadata.mjs",
+      "require": "./dist/attributeMetadata.cjs"
+    },
+    "./attributes/documentation": {
+      "import": "./dist/attributeDocumentation.mjs",
+      "require": "./dist/attributeDocumentation.cjs"
+    },
     "./op": {
       "import": "./dist/op.mjs",
       "require": "./dist/op.cjs"
