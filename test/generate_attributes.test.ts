@@ -59,6 +59,8 @@ describe('generateAttributes', () => {
       expect(javascript).not.toContain('examples: ["first","second"],');
 
       const documentation = fs.readFileSync(jsDocumentationOutputFilePath, 'utf8');
+      expect(documentation).toContain('export const TEST_ATTRIBUTE_BRIEF = "An attribute used to test generation.";');
+      expect(documentation).toContain('brief: "An attribute used to test generation.",');
       expect(documentation).toContain('example: "first",');
       expect(documentation).toContain('examples: ["first","second"],');
       expect(documentation).toContain('example: ["first","second"],');

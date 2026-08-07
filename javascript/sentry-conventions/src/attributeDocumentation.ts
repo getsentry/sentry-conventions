@@ -24,6 +24,1844 @@ export interface AttributeDocumentation {
   additionalContext?: string[];
 }
 
+export const ADDRESS_BRIEF = 'The destination hostname or IP address for a TCP connection.';
+
+export const AI_CITATIONS_BRIEF = 'References or sources cited by the AI model in its response.';
+
+export const AI_COMPLETION_TOKENS_USED_BRIEF = 'The number of tokens used to respond to the message.';
+
+export const AI_DOCUMENTS_BRIEF = 'Documents or content chunks used as context for the AI model.';
+
+export const AI_FINISH_REASON_BRIEF = 'The reason why the model stopped generating.';
+
+export const AI_FREQUENCY_PENALTY_BRIEF =
+  'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.';
+
+export const AI_FUNCTION_CALL_BRIEF =
+  'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls';
+
+export const AI_GENERATION_ID_BRIEF = 'Unique identifier for the completion.';
+
+export const AI_INPUT_MESSAGES_BRIEF = 'The input messages sent to the model';
+
+export const AI_IS_SEARCH_REQUIRED_BRIEF = 'Boolean indicating if the model needs to perform a search.';
+
+export const AI_METADATA_BRIEF = 'Extra metadata passed to an AI pipeline step.';
+
+export const AI_MODEL_ID_BRIEF = 'The vendor-specific ID of the model used.';
+
+export const AI_MODEL_PROVIDER_BRIEF = 'The provider of the model.';
+
+export const AI_PIPELINE_NAME_BRIEF = 'The name of the AI pipeline.';
+
+export const AI_PREAMBLE_BRIEF =
+  "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.";
+
+export const AI_PRESENCE_PENALTY_BRIEF =
+  'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.';
+
+export const AI_PROMPT_MESSAGES_BRIEF = 'The input messages sent to the AI model.';
+
+export const AI_PROMPT_TOKENS_USED_BRIEF = 'The number of tokens used to process just the prompt.';
+
+export const AI_RAW_PROMPTING_BRIEF =
+  'When enabled, the user’s prompt will be sent to the model without any pre-processing.';
+
+export const AI_RESPONSES_BRIEF = 'The response messages sent back by the AI model.';
+
+export const AI_RESPONSE_FORMAT_BRIEF = 'For an AI model call, the format of the response';
+
+export const AI_RESPONSE_TEXT_BRIEF = 'The text response from the AI model.';
+
+export const AI_RESPONSE_TOOLCALLS_BRIEF = 'The tool calls in the AI model response.';
+
+export const AI_SEARCH_QUERIES_BRIEF = 'Queries used to search for relevant context or documents.';
+
+export const AI_SEARCH_RESULTS_BRIEF = 'Results returned from search queries for context.';
+
+export const AI_SEED_BRIEF =
+  'The seed, ideally models given the same seed and same other parameters will produce the exact same output.';
+
+export const AI_STREAMING_BRIEF = 'Whether the request was streamed back.';
+
+export const AI_TAGS_BRIEF = 'Tags that describe an AI pipeline step.';
+
+export const AI_TEMPERATURE_BRIEF =
+  'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.';
+
+export const AI_TEXTS_BRIEF = 'Raw text inputs provided to the model.';
+
+export const AI_TOOLCALL_ARGS_BRIEF = 'The arguments of the tool call.';
+
+export const AI_TOOLCALL_RESULT_BRIEF = 'The result of the tool call.';
+
+export const AI_TOOLS_BRIEF = 'For an AI model call, the functions that are available';
+
+export const AI_TOOL_CALLS_BRIEF = 'For an AI model call, the tool calls that were made.';
+
+export const AI_TOP_K_BRIEF =
+  'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).';
+
+export const AI_TOP_P_BRIEF =
+  'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).';
+
+export const AI_TOTAL_COST_BRIEF = 'The total cost for the tokens used.';
+
+export const AI_TOTAL_TOKENS_USED_BRIEF = 'The total number of tokens used to process the prompt.';
+
+export const AI_WARNINGS_BRIEF = 'Warning messages generated during model execution.';
+
+export const ANGULAR_VERSION_BRIEF = 'The version of the Angular framework';
+
+export const APP_APP_BUILD_BRIEF = 'Internal build identifier, as it appears on the platform.';
+
+export const APP_APP_IDENTIFIER_BRIEF = 'Version-independent application identifier, often a dotted bundle ID.';
+
+export const APP_APP_NAME_BRIEF = 'Human readable application name, as it appears on the platform.';
+
+export const APP_APP_START_TIME_BRIEF = 'Formatted UTC timestamp when the user started the application.';
+
+export const APP_APP_VERSION_BRIEF = 'Human readable application version, as it appears on the platform.';
+
+export const APP_BUILD_BRIEF = 'Internal build identifier, as it appears on the platform.';
+
+export const APP_IDENTIFIER_BRIEF = 'Version-independent application identifier, often a dotted bundle ID.';
+
+export const APP_IN_FOREGROUND_BRIEF = 'Whether the application is currently in the foreground.';
+
+export const APP_NAME_BRIEF = 'Human readable application name, as it appears on the platform.';
+
+export const APP_START_COLD_BRIEF = 'The duration of a cold app start in milliseconds';
+
+export const APP_START_TIME_BRIEF = 'Formatted UTC timestamp when the user started the application.';
+
+export const APP_START_TYPE_BRIEF = 'Mobile app start variant. Either cold or warm.';
+
+export const APP_START_WARM_BRIEF = 'The duration of a warm app start in milliseconds';
+
+export const APP_VERSION_BRIEF = 'Human readable application version, as it appears on the platform.';
+
+export const APP_VITALS_FRAMES_DELAY_VALUE_BRIEF =
+  'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).';
+
+export const APP_VITALS_FRAMES_FROZEN_COUNT_BRIEF =
+  'The number of frozen frames rendered during the lifetime of the span.';
+
+export const APP_VITALS_FRAMES_FROZEN_RATE_BRIEF =
+  'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.';
+
+export const APP_VITALS_FRAMES_SLOW_COUNT_BRIEF = 'The number of slow frames rendered during the lifetime of the span.';
+
+export const APP_VITALS_FRAMES_SLOW_RATE_BRIEF =
+  'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.';
+
+export const APP_VITALS_FRAMES_TOTAL_COUNT_BRIEF =
+  'The number of total frames rendered during the lifetime of the span.';
+
+export const APP_VITALS_STALL_DURATION_BRIEF =
+  'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.';
+
+export const APP_VITALS_STALL_PERCENTAGE_BRIEF =
+  'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.';
+
+export const APP_VITALS_START_COLD_VALUE_BRIEF = 'The duration of a cold app start in milliseconds';
+
+export const APP_VITALS_START_PREWARMED_BRIEF = 'Whether the app start was prewarmed.';
+
+export const APP_VITALS_START_REASON_BRIEF = 'The reason that triggered the app start.';
+
+export const APP_VITALS_START_SCREEN_BRIEF =
+  'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.';
+
+export const APP_VITALS_START_TYPE_BRIEF = 'The type of app start, for example `cold` or `warm`';
+
+export const APP_VITALS_START_WARM_VALUE_BRIEF = 'The duration of a warm app start in milliseconds';
+
+export const APP_VITALS_TTFD_VALUE_BRIEF = 'The duration of time to full display in milliseconds';
+
+export const APP_VITALS_TTID_VALUE_BRIEF = 'The duration of time to initial display in milliseconds';
+
+export const ART_GC_BLOCKING_COUNT_BRIEF =
+  'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime';
+
+export const ART_GC_BLOCKING_TIME_BRIEF =
+  'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds';
+
+export const ART_GC_PRE_OOME_COUNT_BRIEF =
+  'Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime';
+
+export const ART_GC_TOTAL_COUNT_BRIEF = 'Total number of garbage collections performed by the Android Runtime';
+
+export const ART_GC_TOTAL_TIME_BRIEF = 'Total time spent in garbage collection by the Android Runtime, in milliseconds';
+
+export const ART_GC_WAITING_TIME_BRIEF =
+  'Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds';
+
+export const ART_MEMORY_FREE_BRIEF =
+  'Free memory available to the process as reported by the Android Runtime, in bytes';
+
+export const ART_MEMORY_FREE_UNTIL_GC_BRIEF =
+  'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes';
+
+export const ART_MEMORY_FREE_UNTIL_OOME_BRIEF =
+  'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes';
+
+export const ART_MEMORY_MAX_BRIEF =
+  'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes';
+
+export const ART_MEMORY_TOTAL_BRIEF =
+  'Total memory currently allocated to the process by the Android Runtime, in bytes';
+
+export const AWS_CLOUDWATCH_LOGS_LOG_GROUP_BRIEF = 'The name of the CloudWatch Logs log group';
+
+export const AWS_CLOUDWATCH_LOGS_LOG_STREAM_BRIEF = 'The name of the CloudWatch Logs log stream';
+
+export const AWS_CLOUDWATCH_LOGS_URL_BRIEF = 'The URL to the CloudWatch Logs log group';
+
+export const AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_BRIEF =
+  'The JSON-serialized value of each item in the `AttributeDefinitions` request field.';
+
+export const AWS_DYNAMODB_CONSISTENT_READ_BRIEF = 'The value of the `ConsistentRead` request parameter.';
+
+export const AWS_DYNAMODB_CONSUMED_CAPACITY_BRIEF =
+  'The JSON-serialized value of each item in the `ConsumedCapacity` response field.';
+
+export const AWS_DYNAMODB_COUNT_BRIEF = 'The value of the `Count` response parameter.';
+
+export const AWS_DYNAMODB_EXCLUSIVE_START_TABLE_BRIEF = 'The value of the `ExclusiveStartTableName` request parameter.';
+
+export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES_BRIEF =
+  'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.';
+
+export const AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES_BRIEF =
+  'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.';
+
+export const AWS_DYNAMODB_INDEX_NAME_BRIEF = 'The value of the `IndexName` request parameter.';
+
+export const AWS_DYNAMODB_ITEM_COLLECTION_METRICS_BRIEF =
+  'The JSON-serialized value of the `ItemCollectionMetrics` response field.';
+
+export const AWS_DYNAMODB_LIMIT_BRIEF = 'The value of the `Limit` request parameter.';
+
+export const AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES_BRIEF =
+  'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.';
+
+export const AWS_DYNAMODB_PROJECTION_BRIEF = 'The value of the `ProjectionExpression` request parameter.';
+
+export const AWS_DYNAMODB_PROVISIONED_READ_CAPACITY_BRIEF =
+  'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.';
+
+export const AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY_BRIEF =
+  'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.';
+
+export const AWS_DYNAMODB_SCANNED_COUNT_BRIEF = 'The value of the `ScannedCount` response parameter.';
+
+export const AWS_DYNAMODB_SCAN_FORWARD_BRIEF = 'The value of the `ScanIndexForward` request parameter.';
+
+export const AWS_DYNAMODB_SEGMENT_BRIEF = 'The value of the `Segment` request parameter.';
+
+export const AWS_DYNAMODB_SELECT_BRIEF = 'The value of the `Select` request parameter.';
+
+export const AWS_DYNAMODB_TABLE_COUNT_BRIEF = 'The number of items in the `TableNames` response parameter.';
+
+export const AWS_DYNAMODB_TABLE_NAMES_BRIEF = 'The keys in the `RequestItems` object field.';
+
+export const AWS_DYNAMODB_TOTAL_SEGMENTS_BRIEF = 'The value of the `TotalSegments` request parameter.';
+
+export const AWS_EXTENDED_REQUEST_ID_BRIEF = 'The AWS extended request ID as returned in the response headers.';
+
+export const AWS_KINESIS_STREAM_NAME_BRIEF = 'The name of the AWS Kinesis stream the request refers to.';
+
+export const _AWS_KINESIS_STREAM_NAME_BRIEF = 'The name of the AWS Kinesis stream the request refers to.';
+
+export const AWS_LAMBDA_AWS_REQUEST_ID_BRIEF = 'The AWS request ID as received by the Lambda function runtime';
+
+export const AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_BRIEF =
+  'The execution duration of the Lambda function invocation in milliseconds';
+
+export const AWS_LAMBDA_FUNCTION_NAME_BRIEF = 'The name of the Lambda function';
+
+export const AWS_LAMBDA_FUNCTION_VERSION_BRIEF = 'The version of the Lambda function';
+
+export const AWS_LAMBDA_INVOKED_ARN_BRIEF = 'The full ARN of the Lambda function that was invoked';
+
+export const AWS_LAMBDA_INVOKED_FUNCTION_ARN_BRIEF = 'The full ARN of the Lambda function that was invoked';
+
+export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_BRIEF =
+  'The remaining time in milliseconds before the Lambda function times out';
+
+export const AWS_LOG_GROUP_NAMES_BRIEF = 'The name(s) of the AWS log group(s) an application is writing to.';
+
+export const AWS_LOG_STREAM_NAMES_BRIEF = 'The name(s) of the AWS log stream(s) an application is writing to.';
+
+export const AWS_OPERATION_NAME_BRIEF = 'The name of the API operation invoked on an AWS service.';
+
+export const AWS_REGION_BRIEF = 'The geographical region the AWS resource is running';
+
+export const AWS_REQUEST_EXTENDED_ID_BRIEF = 'The AWS extended request ID as returned in the response headers.';
+
+export const AWS_REQUEST_ID_BRIEF = 'The AWS request ID as returned in the response headers.';
+
+export const _AWS_REQUEST_ID_BRIEF = 'The AWS request ID as returned in the response headers.';
+
+export const AWS_REQUEST_URL_BRIEF = 'The URL of the AWS API request.';
+
+export const AWS_S3_BUCKET_BRIEF = 'The S3 bucket name the request refers to.';
+
+export const AWS_SECRETSMANAGER_SECRET_ARN_BRIEF = 'The ARN of the Secret stored in Secrets Manager.';
+
+export const AWS_SNS_TOPIC_ARN_BRIEF =
+  'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.';
+
+export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN_BRIEF = 'The ARN of the AWS Step Functions Activity.';
+
+export const AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_BRIEF = 'The ARN of the AWS Step Functions State Machine.';
+
+export const BLOCKED_MAIN_THREAD_BRIEF = 'Whether the main thread was blocked by the span.';
+
+export const BROWSER_BFCACHE_FRAME_BRIEF =
+  "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.";
+
+export const BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_BRIEF =
+  'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).';
+
+export const BROWSER_BFCACHE_OUTCOME_BRIEF =
+  "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.";
+
+export const BROWSER_BFCACHE_REASON_BRIEF =
+  'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.';
+
+export const BROWSER_NAME_BRIEF = 'The name of the browser.';
+
+export const BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_BRIEF =
+  'The time between initiating a navigation to a page and the browser activating the page';
+
+export const BROWSER_PERFORMANCE_TIME_ORIGIN_BRIEF =
+  "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated";
+
+export const BROWSER_REPORT_TYPE_BRIEF = 'A browser report sent via reporting API..';
+
+export const BROWSER_SCRIPT_INVOKER_BRIEF = 'How a script was called in the browser.';
+
+export const BROWSER_SCRIPT_INVOKER_TYPE_BRIEF = 'Browser script entry point type.';
+
+export const BROWSER_SCRIPT_SOURCE_CHAR_POSITION_BRIEF =
+  'A number representing the script character position of the script.';
+
+export const BROWSER_VERSION_BRIEF = 'The version of the browser.';
+
+export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT_BRIEF =
+  'The event that caused the SDK to report CLS (pagehide or navigation)';
+
+export const BROWSER_WEB_VITAL_CLS_SOURCE_KEY_BRIEF =
+  'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N';
+
+export const BROWSER_WEB_VITAL_CLS_VALUE_BRIEF = 'The value of the recorded Cumulative Layout Shift (CLS) web vital';
+
+export const BROWSER_WEB_VITAL_FCP_VALUE_BRIEF =
+  'The time it takes for the browser to render the first piece of meaningful content on the screen';
+
+export const BROWSER_WEB_VITAL_FP_VALUE_BRIEF =
+  'The time in milliseconds it takes for the browser to render the first pixel on the screen';
+
+export const BROWSER_WEB_VITAL_INP_VALUE_BRIEF = 'The value of the recorded Interaction to Next Paint (INP) web vital';
+
+export const BROWSER_WEB_VITAL_LCP_ELEMENT_BRIEF =
+  'The HTML element selector or component name for which LCP was reported';
+
+export const BROWSER_WEB_VITAL_LCP_ID_BRIEF = 'The id of the dom element responsible for the largest contentful paint';
+
+export const BROWSER_WEB_VITAL_LCP_LOAD_TIME_BRIEF = 'The time it took for the LCP element to be loaded';
+
+export const BROWSER_WEB_VITAL_LCP_RENDER_TIME_BRIEF = 'The time it took for the LCP element to be rendered';
+
+export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT_BRIEF =
+  'The event that caused the SDK to report LCP (pagehide or navigation)';
+
+export const BROWSER_WEB_VITAL_LCP_SIZE_BRIEF = 'The size of the largest contentful paint element';
+
+export const BROWSER_WEB_VITAL_LCP_URL_BRIEF =
+  'The url of the dom element responsible for the largest contentful paint';
+
+export const BROWSER_WEB_VITAL_LCP_VALUE_BRIEF = 'The value of the recorded Largest Contentful Paint (LCP) web vital';
+
+export const BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_BRIEF =
+  "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser";
+
+export const BROWSER_WEB_VITAL_TTFB_VALUE_BRIEF =
+  'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds';
+
+export const CACHE_HIT_BRIEF = 'If the cache was hit during this span.';
+
+export const CACHE_ITEM_SIZE_BRIEF = 'The size of the requested item in the cache. In bytes.';
+
+export const CACHE_KEY_BRIEF = 'The key of the cache accessed.';
+
+export const CACHE_OPERATION_BRIEF = 'The operation being performed on the cache.';
+
+export const CACHE_TTL_BRIEF = 'The ttl of the cache in seconds';
+
+export const CACHE_WRITE_BRIEF = 'If the cache operation resulted in a write to the cache.';
+
+export const CHANNEL_BRIEF = 'The channel name that is being used.';
+
+export const CLIENT_ADDRESS_BRIEF =
+  'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.';
+
+export const CLIENT_PORT_BRIEF = 'Client port number.';
+
+export const CLOUDFLARE_D1_DURATION_BRIEF = 'The duration of a Cloudflare D1 operation.';
+
+export const CLOUDFLARE_D1_QUERY_TYPE_BRIEF = 'The type of query executed in a Cloudflare D1 operation';
+
+export const CLOUDFLARE_D1_ROWS_READ_BRIEF = 'The number of rows read in a Cloudflare D1 operation.';
+
+export const CLOUDFLARE_D1_ROWS_WRITTEN_BRIEF = 'The number of rows written in a Cloudflare D1 operation.';
+
+export const CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS_BRIEF =
+  'The number of bound parameters passed to the SQL exec call.';
+
+export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ_BRIEF =
+  'The number of rows read by a Cloudflare Durable Object SQL operation.';
+
+export const CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN_BRIEF =
+  'The number of rows written by a Cloudflare Durable Object SQL operation.';
+
+export const CLOUDFLARE_R2_BUCKET_BRIEF = 'The name of the Cloudflare R2 bucket binding';
+
+export const CLOUDFLARE_R2_OPERATION_BRIEF = 'The R2 API operation being performed';
+
+export const CLOUDFLARE_R2_REQUEST_DELIMITER_BRIEF = 'The delimiter used to group objects in an R2 list operation';
+
+export const CLOUDFLARE_R2_REQUEST_KEY_BRIEF = 'The object key used in the R2 operation';
+
+export const CLOUDFLARE_R2_REQUEST_PART_NUMBER_BRIEF = 'The part number in a multipart upload operation';
+
+export const CLOUDFLARE_R2_REQUEST_PREFIX_BRIEF = 'The prefix used to filter objects in an R2 list operation';
+
+export const CLOUDFLARE_WORKFLOW_ATTEMPT_BRIEF = 'The current attempt number for a Cloudflare Workflow step';
+
+export const CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF_BRIEF = 'The backoff strategy for Cloudflare Workflow step retries';
+
+export const CLOUDFLARE_WORKFLOW_RETRIES_DELAY_BRIEF = 'The delay between Cloudflare Workflow step retries';
+
+export const CLOUDFLARE_WORKFLOW_RETRIES_LIMIT_BRIEF = 'The maximum number of retries for a Cloudflare Workflow step';
+
+export const CLOUDFLARE_WORKFLOW_TIMEOUT_BRIEF = 'The timeout duration for a Cloudflare Workflow step';
+
+export const CLOUD_ACCOUNT_ID_BRIEF = 'The cloud account ID the resource is assigned to';
+
+export const CLOUD_AVAILABILITY_ZONE_BRIEF =
+  'Cloud regions often have multiple, isolated locations known as zones to increase availability';
+
+export const CLOUD_PLATFORM_BRIEF = 'The cloud platform in use';
+
+export const CLOUD_PROVIDER_BRIEF = 'Name of the cloud provider';
+
+export const CLOUD_REGION_BRIEF = 'The geographical region the resource is running';
+
+export const CLOUD_RESOURCE_ID_BRIEF = 'Cloud provider-specific native identifier of the monitored cloud resource';
+
+export const CLS_BRIEF = 'The value of the recorded Cumulative Layout Shift (CLS) web vital';
+
+export const CLS_SOURCE_KEY_BRIEF =
+  'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N';
+
+export const CODE_BRIEF = 'Status code of the RPC returned by the RPC server or generated by the client.';
+
+export const CODE_FILEPATH_BRIEF =
+  'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).';
+
+export const CODE_FILE_PATH_BRIEF =
+  'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).';
+
+export const CODE_FUNCTION_BRIEF =
+  "The method or function name, or equivalent (usually rightmost part of the code unit's name).";
+
+export const CODE_FUNCTION_NAME_BRIEF = 'The method or function fully-qualified name without arguments.';
+
+export const CODE_LINENO_BRIEF =
+  'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function';
+
+export const CODE_LINE_NUMBER_BRIEF =
+  'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function';
+
+export const CODE_NAMESPACE_BRIEF =
+  "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.";
+
+export const CONNECTIONTYPE_BRIEF =
+  'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).';
+
+export const CONNECTION_RTT_BRIEF =
+  'Specifies the estimated effective round-trip time of the current connection, in milliseconds.';
+
+export const CULTURE_CALENDAR_BRIEF = 'The calendar system used by the culture.';
+
+export const CULTURE_DISPLAY_NAME_BRIEF = 'Human readable name of the culture.';
+
+export const CULTURE_IS_24_HOUR_FORMAT_BRIEF = 'Whether the culture uses 24-hour time format.';
+
+export const CULTURE_LOCALE_BRIEF = 'The locale identifier following RFC 4646.';
+
+export const CULTURE_TIMEZONE_BRIEF = 'The timezone of the culture, as a geographic timezone identifier.';
+
+export const DB_COLLECTION_NAME_BRIEF = 'The name of a collection (table, container) within the database.';
+
+export const DB_DRIVER_NAME_BRIEF = 'The name of the driver used for the database connection.';
+
+export const DB_MONGODB_COLLECTION_BRIEF = 'The MongoDB collection being accessed.';
+
+export const DB_NAME_BRIEF = 'The name of the database being accessed.';
+
+export const DB_NAMESPACE_BRIEF = 'The name of the database being accessed.';
+
+export const DB_OPERATION_BRIEF = 'The name of the operation being executed.';
+
+export const DB_OPERATION_BATCH_SIZE_BRIEF =
+  'The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.';
+
+export const DB_OPERATION_NAME_BRIEF = 'The name of the operation being executed.';
+
+export const DB_PARAMS_BRIEF = 'The query bindings for a database request.';
+
+export const DB_QUERY_PARAMETER_KEY_BRIEF =
+  'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.';
+
+export const DB_QUERY_SUMMARY_BRIEF =
+  'A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.';
+
+export const DB_QUERY_TEXT_BRIEF =
+  'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.';
+
+export const DB_REDIS_CONNECTION_BRIEF = 'The redis connection name.';
+
+export const DB_REDIS_KEY_BRIEF = 'The key the Redis command is operating on.';
+
+export const DB_REDIS_PARAMETERS_BRIEF = 'The array of command parameters given to a redis command.';
+
+export const DB_RESPONSE_STATUS_CODE_BRIEF =
+  'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.';
+
+export const DB_SQL_BINDINGS_BRIEF = 'The array of query bindings.';
+
+export const DB_STATEMENT_BRIEF = 'The database statement being executed.';
+
+export const DB_STORED_PROCEDURE_NAME_BRIEF = 'The name of a stored procedure being called.';
+
+export const DB_SYSTEM_BRIEF =
+  'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.';
+
+export const DB_SYSTEM_NAME_BRIEF =
+  'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.';
+
+export const DB_USER_BRIEF = 'The database user.';
+
+export const DEVICEMEMORY_BRIEF =
+  'The estimated total memory capacity of the device, only a rough estimation in gigabytes.';
+
+export const DEVICE_ARCHS_BRIEF = 'The CPU architectures of the device.';
+
+export const DEVICE_BATTERY_LEVEL_BRIEF = 'The battery level of the device as a percentage (0-100).';
+
+export const DEVICE_BATTERY_TEMPERATURE_BRIEF = 'The battery temperature of the device in Celsius.';
+
+export const DEVICE_BOOT_TIME_BRIEF = 'A formatted UTC timestamp when the system was booted.';
+
+export const DEVICE_BRAND_BRIEF = 'The brand of the device.';
+
+export const DEVICE_CHARGING_BRIEF = 'Whether the device was charging or not.';
+
+export const DEVICE_CHIPSET_BRIEF = 'The chipset of the device.';
+
+export const DEVICE_CLASS_BRIEF =
+  'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.';
+
+export const DEVICE_CONNECTION_TYPE_BRIEF = 'The internet connection type currently being used by the device.';
+
+export const DEVICE_CPU_DESCRIPTION_BRIEF = 'A description of the CPU of the device.';
+
+export const DEVICE_EXTERNAL_FREE_STORAGE_BRIEF = 'External storage free size in bytes.';
+
+export const DEVICE_EXTERNAL_STORAGE_SIZE_BRIEF = 'External storage total size in bytes.';
+
+export const DEVICE_FAMILY_BRIEF = 'The family of the device.';
+
+export const DEVICE_FREE_MEMORY_BRIEF = 'Free system memory in bytes.';
+
+export const DEVICE_FREE_STORAGE_BRIEF = 'Free device storage in bytes.';
+
+export const DEVICE_ID_BRIEF = 'Unique device identifier.';
+
+export const DEVICE_LOCALE_BRIEF = 'The locale of the device.';
+
+export const DEVICE_LOW_MEMORY_BRIEF = 'Whether the device was low on memory.';
+
+export const DEVICE_LOW_POWER_MODE_BRIEF = 'Whether the device is in Low Power Mode.';
+
+export const DEVICE_MANUFACTURER_BRIEF = 'The manufacturer of the device.';
+
+export const DEVICE_MEMORY_ESTIMATED_CAPACITY_BRIEF =
+  'The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB';
+
+export const DEVICE_MEMORY_SIZE_BRIEF = 'Total system memory available in bytes.';
+
+export const DEVICE_MODEL_BRIEF = 'The model of the device.';
+
+export const DEVICE_MODEL_ID_BRIEF = 'An internal hardware revision to identify the device exactly.';
+
+export const DEVICE_NAME_BRIEF =
+  'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.';
+
+export const DEVICE_ONLINE_BRIEF = 'Whether the device was online or not.';
+
+export const DEVICE_ORIENTATION_BRIEF = 'The orientation of the device, either "portrait" or "landscape".';
+
+export const DEVICE_PROCESSOR_COUNT_BRIEF = 'Number of "logical processors".';
+
+export const DEVICE_PROCESSOR_FREQUENCY_BRIEF = 'Processor frequency in MHz.';
+
+export const DEVICE_SCREEN_DENSITY_BRIEF = 'The screen density of the device.';
+
+export const DEVICE_SCREEN_DPI_BRIEF = 'The screen density in dots-per-inch (DPI) of the device.';
+
+export const DEVICE_SCREEN_HEIGHT_PIXELS_BRIEF = 'The height of the device screen in pixels.';
+
+export const DEVICE_SCREEN_WIDTH_PIXELS_BRIEF = 'The width of the device screen in pixels.';
+
+export const DEVICE_SIMULATOR_BRIEF = 'Whether the device is a simulator or an actual device.';
+
+export const DEVICE_STORAGE_SIZE_BRIEF = 'Total device storage in bytes.';
+
+export const DEVICE_THERMAL_STATE_BRIEF =
+  "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.";
+
+export const DEVICE_TIMEZONE_BRIEF = 'The timezone of the device.';
+
+export const DEVICE_USABLE_MEMORY_BRIEF = 'Memory usable for the app in bytes.';
+
+export const DIST_BRIEF = 'The sentry dist.';
+
+export const DJANGO_FUNCTION_NAME_BRIEF = 'The fully qualified name of a function used in a Django context.';
+
+export const DJANGO_MIDDLEWARE_NAME_BRIEF = 'The name of the Django middleware.';
+
+export const EFFECTIVECONNECTIONTYPE_BRIEF =
+  'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).';
+
+export const ENVIRONMENT_BRIEF = 'The sentry environment.';
+
+export const ERROR_TYPE_BRIEF = 'Describes a class of error the operation ended with.';
+
+export const EVENT_ID_BRIEF = 'The unique identifier for this event (log record)';
+
+export const EVENT_NAME_BRIEF = 'The name that uniquely identifies this event (log record)';
+
+export const EXCEPTION_ESCAPED_BRIEF =
+  'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.';
+
+export const EXCEPTION_MESSAGE_BRIEF = 'The error message.';
+
+export const EXCEPTION_STACKTRACE_BRIEF =
+  'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.';
+
+export const EXCEPTION_TYPE_BRIEF =
+  'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.';
+
+export const FAAS_COLDSTART_BRIEF =
+  'A boolean that is true if the serverless function is executed for the first time (aka cold-start).';
+
+export const FAAS_CRON_BRIEF = 'A string containing the schedule period as Cron Expression.';
+
+export const FAAS_DURATION_IN_MS_BRIEF = 'The duration a function took to run, in milliseconds.';
+
+export const FAAS_ENTRY_POINT_BRIEF = "The code that's run when the cloud provider invokes your function.";
+
+export const FAAS_EXECUTION_BRIEF = 'The execution ID of the current function execution.';
+
+export const FAAS_ID_BRIEF = 'The unique ID of the single function that this runtime instance executes.';
+
+export const FAAS_IDENTITY_BRIEF =
+  'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services';
+
+export const FAAS_INVOCATION_ID_BRIEF = 'The invocation ID of the current function invocation.';
+
+export const FAAS_INVOKED_NAME_BRIEF = 'The name of the invoked function.';
+
+export const FAAS_INVOKED_PROVIDER_BRIEF = 'The cloud provider of the invoked function.';
+
+export const FAAS_INVOKED_REGION_BRIEF = 'The cloud region of the invoked function.';
+
+export const FAAS_NAME_BRIEF = 'The name of the serverless function';
+
+export const FAAS_TIME_BRIEF =
+  'A string containing the function invocation time in the ISO 8601 format expressed in UTC.';
+
+export const FAAS_TRIGGER_BRIEF = 'Type of the trigger which caused this function invocation.';
+
+export const FAAS_VERSION_BRIEF = 'The version of the function that was invoked';
+
+export const FCP_BRIEF =
+  'The time it takes for the browser to render the first piece of meaningful content on the screen';
+
+export const FILE_PATH_BRIEF = 'Path to the file.';
+
+export const FILE_SIZE_BRIEF = 'File size in bytes.';
+
+export const FLAG_EVALUATION_KEY_BRIEF =
+  'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.';
+
+export const FP_BRIEF = 'The time it takes for the browser to render the first pixel on the screen';
+
+export const FRAMES_DELAY_BRIEF =
+  'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).';
+
+export const FRAMES_FROZEN_BRIEF = 'The number of frozen frames rendered during the lifetime of the span.';
+
+export const FRAMES_FROZEN_RATE_BRIEF =
+  'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.';
+
+export const FRAMES_SLOW_BRIEF = 'The number of slow frames rendered during the lifetime of the span.';
+
+export const FRAMES_SLOW_RATE_BRIEF =
+  'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.';
+
+export const FRAMES_TOTAL_BRIEF = 'The number of total frames rendered during the lifetime of the span.';
+
+export const FS_ERROR_BRIEF = 'The error message of a file system error.';
+
+export const GCP_FUNCTION_CONTEXT_EVENT_ID_BRIEF = 'The event ID from the legacy GCP Cloud Function context (1st gen)';
+
+export const GCP_FUNCTION_CONTEXT_EVENT_TYPE_BRIEF = 'The type of the GCP Cloud Function event';
+
+export const GCP_FUNCTION_CONTEXT_ID_BRIEF =
+  'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)';
+
+export const GCP_FUNCTION_CONTEXT_RESOURCE_BRIEF = 'The resource that triggered the GCP Cloud Function event';
+
+export const GCP_FUNCTION_CONTEXT_SOURCE_BRIEF = 'The source of the GCP Cloud Function event';
+
+export const GCP_FUNCTION_CONTEXT_SPECVERSION_BRIEF =
+  'The CloudEvents specification version of the GCP Cloud Function event';
+
+export const GCP_FUNCTION_CONTEXT_TIME_BRIEF = 'The timestamp of the GCP Cloud Function event';
+
+export const GCP_FUNCTION_CONTEXT_TIMESTAMP_BRIEF = 'The legacy timestamp of the GCP Cloud Function event';
+
+export const GCP_FUNCTION_CONTEXT_TYPE_BRIEF = 'The type of the GCP Cloud Function event context';
+
+export const GCP_PROJECT_ID_BRIEF = 'The ID of the project in GCP that this resource is associated with';
+
+export const GCP_REGION_BRIEF = 'The geographical region the GCP resource is running';
+
+export const GEN_AI_AGENT_NAME_BRIEF = 'The name of the agent being used.';
+
+export const GEN_AI_CONTEXT_UTILIZATION_BRIEF = 'The fraction of the model context window utilized by this generation.';
+
+export const GEN_AI_CONTEXT_WINDOW_SIZE_BRIEF =
+  'The maximum context window size supported by the model for this generation.';
+
+export const GEN_AI_CONVERSATION_ID_BRIEF =
+  'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.';
+
+export const GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_BRIEF = 'The cost of input tokens written to cache in USD.';
+
+export const GEN_AI_COST_CACHE_READ_INPUT_TOKENS_BRIEF = 'The cost of cached input tokens in USD.';
+
+export const GEN_AI_COST_INPUT_TOKENS_BRIEF =
+  'The total cost of all input tokens in USD (includes cached and cache creation tokens).';
+
+export const GEN_AI_COST_OUTPUT_TOKENS_BRIEF =
+  'The total cost of all output tokens in USD (includes reasoning tokens).';
+
+export const GEN_AI_COST_REASONING_OUTPUT_TOKENS_BRIEF = 'The cost of reasoning output tokens in USD.';
+
+export const GEN_AI_COST_TOTAL_TOKENS_BRIEF = 'The total cost for the tokens used.';
+
+export const GEN_AI_EMBEDDINGS_INPUT_BRIEF = 'The input to the embeddings model.';
+
+export const GEN_AI_FUNCTION_ID_BRIEF =
+  'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.';
+
+export const GEN_AI_INPUT_MESSAGES_BRIEF =
+  'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.';
+
+export const GEN_AI_OPERATION_NAME_BRIEF =
+  "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.";
+
+export const GEN_AI_OPERATION_TYPE_BRIEF =
+  "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI";
+
+export const GEN_AI_OUTPUT_MESSAGES_BRIEF =
+  "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.";
+
+export const GEN_AI_PIPELINE_NAME_BRIEF = 'Name of the AI pipeline or chain being executed.';
+
+export const GEN_AI_PROMPT_BRIEF = 'The input messages sent to the model';
+
+export const GEN_AI_PROMPT_NAME_BRIEF = 'The name of the prompt that uniquely identifies it.';
+
+export const GEN_AI_PROVIDER_NAME_BRIEF =
+  'The Generative AI provider as identified by the client or server instrumentation.';
+
+export const GEN_AI_REQUEST_AVAILABLE_TOOLS_BRIEF =
+  'The available tools for the model. It has to be a stringified version of an array of objects.';
+
+export const GEN_AI_REQUEST_FREQUENCY_PENALTY_BRIEF =
+  'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.';
+
+export const GEN_AI_REQUEST_MAX_TOKENS_BRIEF = 'The maximum number of tokens to generate in the response.';
+
+export const GEN_AI_REQUEST_MESSAGES_BRIEF =
+  'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.';
+
+export const GEN_AI_REQUEST_MODEL_BRIEF = 'The model identifier being used for the request.';
+
+export const GEN_AI_REQUEST_PRESENCE_PENALTY_BRIEF =
+  'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.';
+
+export const GEN_AI_REQUEST_REASONING_LEVEL_BRIEF =
+  'The reasoning or thinking effort level requested for a GenAI model.';
+
+export const GEN_AI_REQUEST_SEED_BRIEF =
+  'The seed, ideally models given the same seed and same other parameters will produce the exact same output.';
+
+export const GEN_AI_REQUEST_STOP_SEQUENCES_BRIEF =
+  'List of sequences that the model will use to stop generating further tokens.';
+
+export const GEN_AI_REQUEST_TEMPERATURE_BRIEF =
+  'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.';
+
+export const GEN_AI_REQUEST_TOP_K_BRIEF =
+  'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).';
+
+export const GEN_AI_REQUEST_TOP_P_BRIEF =
+  'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).';
+
+export const GEN_AI_RESPONSE_FINISH_REASON_BRIEF = 'The reason why the model stopped generating (singular form).';
+
+export const GEN_AI_RESPONSE_FINISH_REASONS_BRIEF = 'The reason why the model stopped generating.';
+
+export const GEN_AI_RESPONSE_ID_BRIEF = 'Unique identifier for the completion.';
+
+export const GEN_AI_RESPONSE_MODEL_BRIEF = 'The vendor-specific ID of the model used.';
+
+export const GEN_AI_RESPONSE_STREAMING_BRIEF =
+  "Whether or not the AI model call's response was streamed back asynchronously";
+
+export const GEN_AI_RESPONSE_TEXT_BRIEF =
+  "The model's response text messages. It has to be a stringified version of an array of response text messages.";
+
+export const GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_BRIEF =
+  'Time in seconds when the first response content chunk arrived in streaming responses.';
+
+export const GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN_BRIEF =
+  'Time in seconds when the first response content chunk arrived in streaming responses.';
+
+export const GEN_AI_RESPONSE_TOKENS_PER_SECOND_BRIEF = 'The total output tokens per seconds throughput';
+
+export const GEN_AI_RESPONSE_TOOL_CALLS_BRIEF =
+  "The tool calls in the model's response. It has to be a stringified version of an array of objects.";
+
+export const GEN_AI_SYSTEM_BRIEF = 'The provider of the model.';
+
+export const GEN_AI_SYSTEM_INSTRUCTIONS_BRIEF = 'The system instructions passed to the model.';
+
+export const GEN_AI_SYSTEM_MESSAGE_BRIEF = 'The system instructions passed to the model.';
+
+export const GEN_AI_TOOL_CALL_ARGUMENTS_BRIEF =
+  'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.';
+
+export const GEN_AI_TOOL_CALL_RESULT_BRIEF =
+  'The result of the tool call. It has to be a stringified version of the result of the tool.';
+
+export const GEN_AI_TOOL_DEFINITIONS_BRIEF =
+  'The list of source system tool definitions available to the GenAI agent or model.';
+
+export const GEN_AI_TOOL_DESCRIPTION_BRIEF = 'The description of the tool being used.';
+
+export const GEN_AI_TOOL_INPUT_BRIEF =
+  'The input of the tool being used. It has to be a stringified version of the input to the tool.';
+
+export const GEN_AI_TOOL_MESSAGE_BRIEF = 'The response from a tool or function call passed to the model.';
+
+export const GEN_AI_TOOL_NAME_BRIEF = 'Name of the tool utilized by the agent.';
+
+export const GEN_AI_TOOL_OUTPUT_BRIEF =
+  'The output of the tool being used. It has to be a stringified version of the output of the tool.';
+
+export const GEN_AI_TOOL_TYPE_BRIEF = 'The type of tool being used.';
+
+export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_BRIEF =
+  'The number of tokens written to the cache when processing the AI input (prompt).';
+
+export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_BRIEF =
+  'The number of cached tokens used to process the AI input (prompt).';
+
+export const GEN_AI_USAGE_COMPLETION_TOKENS_BRIEF = 'The number of tokens used in the GenAI response (completion).';
+
+export const GEN_AI_USAGE_INPUT_TOKENS_BRIEF =
+  'The number of tokens used to process the AI input (prompt) including cached input tokens.';
+
+export const GEN_AI_USAGE_INPUT_TOKENS_CACHED_BRIEF =
+  'The number of cached tokens used to process the AI input (prompt).';
+
+export const GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_BRIEF =
+  'The number of tokens written to the cache when processing the AI input (prompt).';
+
+export const GEN_AI_USAGE_OUTPUT_TOKENS_BRIEF =
+  'The number of tokens used for creating the AI output (including reasoning tokens).';
+
+export const GEN_AI_USAGE_OUTPUT_TOKENS_REASONING_BRIEF =
+  'The number of tokens used for reasoning to create the AI output.';
+
+export const GEN_AI_USAGE_PROMPT_TOKENS_BRIEF = 'The number of tokens used in the GenAI input (prompt).';
+
+export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_BRIEF =
+  'The number of tokens used for reasoning to create the AI output.';
+
+export const GEN_AI_USAGE_TOTAL_TOKENS_BRIEF =
+  'The total number of tokens used to process the prompt. (input tokens plus output todkens)';
+
+export const GRAPHQL_DOCUMENT_BRIEF = 'The GraphQL document being executed.';
+
+export const GRAPHQL_OPERATION_NAME_BRIEF = 'The name of the operation being executed.';
+
+export const GRAPHQL_OPERATION_TYPE_BRIEF = 'The type of the operation being executed.';
+
+export const GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_BRIEF =
+  'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.';
+
+export const GRPC_ERROR_DEBUG_INFO_DETAIL_BRIEF =
+  'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.';
+
+export const GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_BRIEF =
+  'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.';
+
+export const GRPC_ERROR_ERROR_INFO_DOMAIN_BRIEF =
+  'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.';
+
+export const GRPC_ERROR_ERROR_INFO_METADATA_KEY_BRIEF =
+  'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.';
+
+export const GRPC_ERROR_ERROR_INFO_REASON_BRIEF =
+  'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.';
+
+export const GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS_BRIEF =
+  'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.';
+
+export const GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS_BRIEF =
+  'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.';
+
+export const GRPC_ERROR_RESOURCE_INFO_DESCRIPTION_BRIEF =
+  'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.';
+
+export const GRPC_ERROR_RESOURCE_INFO_OWNER_BRIEF =
+  'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.';
+
+export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_BRIEF =
+  'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.';
+
+export const GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_BRIEF =
+  'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.';
+
+export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_BRIEF =
+  'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.';
+
+export const HARDWARECONCURRENCY_BRIEF = 'The number of logical CPU cores available.';
+
+export const HTTP_CLIENT_IP_BRIEF =
+  'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.';
+
+export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH_BRIEF = 'The decoded body size of the response (in bytes).';
+
+export const HTTP_FLAVOR_BRIEF = 'The actual version of the protocol used for network communication.';
+
+export const HTTP_FRAGMENT_BRIEF =
+  'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.';
+
+export const HTTP_HOST_BRIEF = 'The domain name.';
+
+export const HTTP_METHOD_BRIEF = 'The HTTP method used.';
+
+export const HTTP_QUERY_BRIEF =
+  'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.';
+
+export const HTTP_REQUEST_BODY_DATA_BRIEF =
+  'HTTP request body data. Can be given as string or structural data of any format.';
+
+export const HTTP_REQUEST_CONNECTION_END_BRIEF =
+  'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.';
+
+export const HTTP_REQUEST_CONNECT_START_BRIEF =
+  'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.';
+
+export const HTTP_REQUEST_DOMAIN_LOOKUP_END_BRIEF =
+  'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.';
+
+export const HTTP_REQUEST_DOMAIN_LOOKUP_START_BRIEF =
+  'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.';
+
+export const HTTP_REQUEST_FETCH_START_BRIEF =
+  'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.';
+
+export const HTTP_REQUEST_HEADER_KEY_BRIEF =
+  'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.';
+
+export const HTTP_REQUEST_METHOD_BRIEF = 'The HTTP method used.';
+
+export const _HTTP_REQUEST_METHOD_BRIEF = 'The HTTP method used.';
+
+export const HTTP_REQUEST_REDIRECT_END_BRIEF =
+  'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect';
+
+export const HTTP_REQUEST_REDIRECT_START_BRIEF =
+  'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.';
+
+export const HTTP_REQUEST_REQUEST_START_BRIEF =
+  'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.';
+
+export const HTTP_REQUEST_RESEND_COUNT_BRIEF =
+  'The ordinal number of request resending attempt (for any reason, including redirects).';
+
+export const HTTP_REQUEST_RESPONSE_END_BRIEF =
+  'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.';
+
+export const HTTP_REQUEST_RESPONSE_START_BRIEF =
+  'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.';
+
+export const HTTP_REQUEST_SAME_ORIGIN_BRIEF =
+  "Indicates that a URL has the same origin as the current page's origin in the browser.";
+
+export const HTTP_REQUEST_SECURE_CONNECTION_START_BRIEF =
+  'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.';
+
+export const HTTP_REQUEST_TIME_TO_FIRST_BYTE_BRIEF =
+  "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests";
+
+export const HTTP_REQUEST_WORKER_START_BRIEF =
+  'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.';
+
+export const HTTP_RESPONSE_BODY_SIZE_BRIEF = 'The encoded body size of the response (in bytes).';
+
+export const HTTP_RESPONSE_CONTENT_LENGTH_BRIEF = 'The encoded body size of the response (in bytes).';
+
+export const HTTP_RESPONSE_HEADER_CONTENT_LENGTH_BRIEF =
+  'The size of the message body sent to the recipient (in bytes)';
+
+export const HTTP_RESPONSE_HEADER_KEY_BRIEF =
+  'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.';
+
+export const HTTP_RESPONSE_SIZE_BRIEF = 'The transfer size of the response (in bytes).';
+
+export const HTTP_RESPONSE_STATUS_CODE_BRIEF = 'The status code of the HTTP response.';
+
+export const HTTP_RESPONSE_TRANSFER_SIZE_BRIEF = 'The transfer size of the response (in bytes).';
+
+export const HTTP_ROUTE_BRIEF =
+  'The matched route, that is, the path template in the format used by the respective server framework.';
+
+export const HTTP_SCHEME_BRIEF = 'The URI scheme component identifying the used protocol.';
+
+export const HTTP_SERVER_NAME_BRIEF = 'The server domain name';
+
+export const HTTP_SERVER_REQUEST_TIME_IN_QUEUE_BRIEF =
+  'The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.';
+
+export const HTTP_STATUS_CODE_BRIEF = 'The status code of the HTTP response.';
+
+export const HTTP_TARGET_BRIEF = 'The pathname and query string of the URL.';
+
+export const HTTP_URL_BRIEF = 'The URL of the resource that was fetched.';
+
+export const HTTP_USER_AGENT_BRIEF = 'Value of the HTTP User-Agent header sent by the client.';
+
+export const ID_BRIEF = 'A unique identifier for the span.';
+
+export const INP_BRIEF = 'The value of the recorded Interaction to Next Paint (INP) web vital';
+
+export const JSONRPC_PROTOCOL_VERSION_BRIEF = 'The version of the JSON-RPC protocol used.';
+
+export const JSONRPC_REQUEST_ID_BRIEF = 'The JSON-RPC request identifier. Unique within the session.';
+
+export const JVM_GC_ACTION_BRIEF = 'Name of the garbage collector action.';
+
+export const JVM_GC_NAME_BRIEF = 'Name of the garbage collector.';
+
+export const JVM_MEMORY_POOL_NAME_BRIEF = 'Name of the memory pool.';
+
+export const JVM_MEMORY_TYPE_BRIEF = 'Name of the memory pool.';
+
+export const JVM_THREAD_DAEMON_BRIEF = 'Whether the thread is daemon or not.';
+
+export const JVM_THREAD_STATE_BRIEF = 'State of the thread.';
+
+export const KOA_NAME_BRIEF = 'The name of the Koa middleware or matched route that handled the request.';
+
+export const KOA_TYPE_BRIEF = 'The type of the Koa layer that handled the request.';
+
+export const LCP_BRIEF = 'The value of the recorded Largest Contentful Paint (LCP) web vital';
+
+export const LCP_ELEMENT_BRIEF = 'The dom element responsible for the largest contentful paint.';
+
+export const LCP_ID_BRIEF = 'The id of the dom element responsible for the largest contentful paint.';
+
+export const LCP_LOADTIME_BRIEF = 'The time it took for the LCP element to be loaded';
+
+export const LCP_RENDERTIME_BRIEF = 'The time it took for the LCP element to be rendered';
+
+export const LCP_SIZE_BRIEF = 'The size of the largest contentful paint element.';
+
+export const LCP_URL_BRIEF = 'The url of the dom element responsible for the largest contentful paint.';
+
+export const LITESTAR_MIDDLEWARE_NAME_BRIEF = 'The name of the Litestar middleware.';
+
+export const LOGGER_NAME_BRIEF = 'The name of the logger that generated this event.';
+
+export const MCP_CANCELLED_REASON_BRIEF = 'Reason for the cancellation of an MCP operation.';
+
+export const MCP_CANCELLED_REQUEST_ID_BRIEF = 'Request ID of the cancelled MCP operation.';
+
+export const MCP_CLIENT_NAME_BRIEF = 'Name of the MCP client application.';
+
+export const MCP_CLIENT_TITLE_BRIEF = 'Display title of the MCP client application.';
+
+export const MCP_CLIENT_VERSION_BRIEF = 'Version of the MCP client application.';
+
+export const MCP_LIFECYCLE_PHASE_BRIEF = 'Lifecycle phase indicator for MCP operations.';
+
+export const MCP_LOGGING_DATA_TYPE_BRIEF = 'Data type of the logged message content.';
+
+export const MCP_LOGGING_LEVEL_BRIEF = 'Log level for MCP logging operations.';
+
+export const MCP_LOGGING_LOGGER_BRIEF = 'Logger name for MCP logging operations.';
+
+export const MCP_LOGGING_MESSAGE_BRIEF = 'Log message content from MCP logging operations.';
+
+export const MCP_METHOD_NAME_BRIEF = 'The name of the MCP request or notification method being called.';
+
+export const MCP_PROGRESS_CURRENT_BRIEF = 'Current progress value of an MCP operation.';
+
+export const MCP_PROGRESS_MESSAGE_BRIEF = 'Progress message describing the current state of an MCP operation.';
+
+export const MCP_PROGRESS_PERCENTAGE_BRIEF =
+  'Calculated progress percentage of an MCP operation. Computed from current/total * 100.';
+
+export const MCP_PROGRESS_TOKEN_BRIEF = 'Token for tracking progress of an MCP operation.';
+
+export const MCP_PROGRESS_TOTAL_BRIEF = 'Total progress target value of an MCP operation.';
+
+export const MCP_PROMPT_NAME_BRIEF = 'Name of the MCP prompt template being used.';
+
+export const MCP_PROMPT_RESULT_DESCRIPTION_BRIEF = 'Description of the prompt result.';
+
+export const MCP_PROMPT_RESULT_MESSAGE_CONTENT_BRIEF =
+  'Content of the message in the prompt result. Used for single message results only.';
+
+export const MCP_PROMPT_RESULT_MESSAGE_COUNT_BRIEF = 'Number of messages in the prompt result.';
+
+export const MCP_PROMPT_RESULT_MESSAGE_ROLE_BRIEF =
+  'Role of the message in the prompt result. Used for single message results only.';
+
+export const MCP_PROTOCOL_READY_BRIEF =
+  'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.';
+
+export const MCP_PROTOCOL_VERSION_BRIEF = 'MCP protocol version used in the session.';
+
+export const MCP_REQUEST_ARGUMENT_KEY_BRIEF =
+  'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.';
+
+export const MCP_REQUEST_ARGUMENT_NAME_BRIEF = 'Name argument from prompts/get MCP request.';
+
+export const MCP_REQUEST_ARGUMENT_URI_BRIEF = 'URI argument from resources/read MCP request.';
+
+export const MCP_REQUEST_ID_BRIEF = 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.';
+
+export const MCP_RESOURCE_PROTOCOL_BRIEF = 'Protocol of the resource URI being accessed, extracted from the URI.';
+
+export const MCP_RESOURCE_URI_BRIEF = 'The resource URI being accessed in an MCP operation.';
+
+export const MCP_SERVER_NAME_BRIEF = 'Name of the MCP server application.';
+
+export const MCP_SERVER_TITLE_BRIEF = 'Display title of the MCP server application.';
+
+export const MCP_SERVER_VERSION_BRIEF = 'Version of the MCP server application.';
+
+export const MCP_SESSION_ID_BRIEF = 'Identifier for the MCP session.';
+
+export const MCP_TOOL_NAME_BRIEF = 'Name of the MCP tool being called.';
+
+export const MCP_TOOL_RESULT_CONTENT_BRIEF = 'The content of the tool result.';
+
+export const MCP_TOOL_RESULT_CONTENT_COUNT_BRIEF = 'Number of content items in the tool result.';
+
+export const MCP_TOOL_RESULT_IS_ERROR_BRIEF = 'Whether a tool execution resulted in an error.';
+
+export const MCP_TRANSPORT_BRIEF = 'Transport method used for MCP communication.';
+
+export const MDC_KEY_BRIEF =
+  "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.";
+
+export const MESSAGING_BATCH_MESSAGE_COUNT_BRIEF =
+  'The number of messages sent, received, or processed in the scope of the batching operation.';
+
+export const MESSAGING_DESTINATION_BRIEF = 'The message destination name.';
+
+export const MESSAGING_DESTINATION_CONNECTION_BRIEF = 'The message destination connection.';
+
+export const MESSAGING_DESTINATION_KIND_BRIEF = 'The kind of message destination.';
+
+export const MESSAGING_DESTINATION_NAME_BRIEF = 'The message destination name.';
+
+export const MESSAGING_DESTINATION_PARTITION_ID_BRIEF =
+  'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.';
+
+export const MESSAGING_KAFKA_MESSAGE_KEY_BRIEF =
+  "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.";
+
+export const MESSAGING_KAFKA_MESSAGE_TOMBSTONE_BRIEF = 'A boolean that is true if the message is a tombstone.';
+
+export const MESSAGING_KAFKA_OFFSET_BRIEF = 'The offset of a record in the corresponding Kafka partition.';
+
+export const MESSAGING_MESSAGE_BODY_SIZE_BRIEF = 'The size of the message body in bytes.';
+
+export const MESSAGING_MESSAGE_CONVERSATION_ID_BRIEF =
+  'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".';
+
+export const MESSAGING_MESSAGE_ENVELOPE_SIZE_BRIEF = 'The size of the message body and metadata in bytes.';
+
+export const MESSAGING_MESSAGE_ID_BRIEF =
+  'A value used by the messaging system as an identifier for the message, represented as a string.';
+
+export const MESSAGING_MESSAGE_RECEIVE_LATENCY_BRIEF =
+  'The latency between when the message was published and received.';
+
+export const MESSAGING_MESSAGE_RETRY_COUNT_BRIEF = 'The amount of attempts to send the message.';
+
+export const MESSAGING_OPERATION_NAME_BRIEF = 'The name of the messaging operation being performed';
+
+export const MESSAGING_OPERATION_TYPE_BRIEF = 'A string identifying the type of the messaging operation';
+
+export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_BRIEF = 'RabbitMQ message routing key.';
+
+export const MESSAGING_SYSTEM_BRIEF = 'The messaging system as identified by the client instrumentation.';
+
+export const METHOD_BRIEF = 'The HTTP method used.';
+
+export const MIDDLEWARE_NAME_BRIEF = 'The name of the middleware.';
+
+export const NAVIGATION_ORIGIN_BRIEF =
+  'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.';
+
+export const NAVIGATION_ROUTE_ID_BRIEF =
+  'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).';
+
+export const NAVIGATION_TYPE_BRIEF = 'The type of navigation done by a client-side router.';
+
+export const NEL_ELAPSED_TIME_BRIEF =
+  'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.';
+
+export const NEL_PHASE_BRIEF =
+  'If request failed, the phase of its network error. If request succeeded, "application".';
+
+export const NEL_REFERRER_BRIEF =
+  "request's referrer, as determined by the referrer policy associated with its client.";
+
+export const NEL_SAMPLING_FUNCTION_BRIEF = 'The sampling function used to determine if the request should be sampled.';
+
+export const NEL_TYPE_BRIEF = 'If request failed, the type of its network error. If request succeeded, "ok".';
+
+export const NETWORK_CONNECTION_EFFECTIVE_TYPE_BRIEF =
+  'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).';
+
+export const NETWORK_CONNECTION_RTT_BRIEF =
+  'Specifies the estimated effective round-trip time of the current connection, in milliseconds.';
+
+export const NETWORK_CONNECTION_TYPE_BRIEF =
+  'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).';
+
+export const NETWORK_LOCAL_ADDRESS_BRIEF =
+  'Local address of the network connection - IP address or Unix domain socket name.';
+
+export const NETWORK_LOCAL_PORT_BRIEF = 'Local port number of the network connection.';
+
+export const NETWORK_PEER_ADDRESS_BRIEF =
+  'Peer address of the network connection - IP address or Unix domain socket name.';
+
+export const NETWORK_PEER_PORT_BRIEF = 'Peer port number of the network connection.';
+
+export const NETWORK_PROTOCOL_NAME_BRIEF = 'OSI application layer or non-OSI equivalent.';
+
+export const NETWORK_PROTOCOL_VERSION_BRIEF = 'The actual version of the protocol used for network communication.';
+
+export const NETWORK_TRANSPORT_BRIEF = 'OSI transport layer or inter-process communication method.';
+
+export const NETWORK_TYPE_BRIEF = 'OSI network layer or non-OSI equivalent.';
+
+export const NET_HOST_IP_BRIEF = 'Local address of the network connection - IP address or Unix domain socket name.';
+
+export const NET_HOST_NAME_BRIEF =
+  'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.';
+
+export const NET_HOST_PORT_BRIEF = 'Server port number.';
+
+export const NET_PEER_IP_BRIEF = 'Peer address of the network connection - IP address or Unix domain socket name.';
+
+export const NET_PEER_NAME_BRIEF =
+  'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.';
+
+export const NET_PEER_PORT_BRIEF = 'Peer port number.';
+
+export const NET_PROTOCOL_NAME_BRIEF = 'OSI application layer or non-OSI equivalent.';
+
+export const NET_PROTOCOL_VERSION_BRIEF = 'The actual version of the protocol used for network communication.';
+
+export const NET_SOCK_FAMILY_BRIEF = 'OSI transport and network layer';
+
+export const NET_SOCK_HOST_ADDR_BRIEF = 'Local address of the network connection mapping to Unix domain socket name.';
+
+export const NET_SOCK_HOST_PORT_BRIEF = 'Local port number of the network connection.';
+
+export const NET_SOCK_PEER_ADDR_BRIEF = 'Peer address of the network connection - IP address';
+
+export const NET_SOCK_PEER_NAME_BRIEF = 'Peer address of the network connection - Unix domain socket name';
+
+export const NET_SOCK_PEER_PORT_BRIEF = 'Peer port number of the network connection.';
+
+export const NET_TRANSPORT_BRIEF = 'OSI transport layer or inter-process communication method.';
+
+export const OS_BUILD_BRIEF = 'The build ID of the operating system.';
+
+export const OS_BUILD_ID_BRIEF = 'The build ID of the operating system.';
+
+export const OS_DESCRIPTION_BRIEF =
+  'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.';
+
+export const OS_KERNEL_VERSION_BRIEF =
+  'An independent kernel version string. Typically the entire output of the `uname` syscall.';
+
+export const OS_NAME_BRIEF = 'Human readable operating system name.';
+
+export const OS_RAW_DESCRIPTION_BRIEF =
+  'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.';
+
+export const OS_ROOTED_BRIEF = 'Whether the operating system has been jailbroken or rooted.';
+
+export const OS_THEME_BRIEF = 'Whether the OS runs in dark mode or light mode.';
+
+export const OS_TYPE_BRIEF = 'The operating system type.';
+
+export const OS_VERSION_BRIEF = 'The version of the operating system.';
+
+export const OTEL_KIND_BRIEF =
+  'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.';
+
+export const OTEL_SCOPE_NAME_BRIEF = 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).';
+
+export const OTEL_SCOPE_VERSION_BRIEF =
+  'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).';
+
+export const OTEL_STATUS_CODE_BRIEF =
+  'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.';
+
+export const OTEL_STATUS_DESCRIPTION_BRIEF = 'Description of the Status if it has a value, otherwise not set.';
+
+export const PARAMS_KEY_BRIEF =
+  'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.';
+
+export const PERFORMANCE_ACTIVATIONSTART_BRIEF =
+  'The time between initiating a navigation to a page and the browser activating the page';
+
+export const PERFORMANCE_TIMEORIGIN_BRIEF =
+  "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated";
+
+export const PORT_BRIEF = 'The destination port for a TCP connection.';
+
+export const PREVIOUS_ROUTE_BRIEF = 'Also used by mobile SDKs to indicate the previous route in the application.';
+
+export const PROCESS_COMMAND_ARGS_BRIEF =
+  'All the command arguments (including the command/executable itself) as received by the process.';
+
+export const PROCESS_EXECUTABLE_NAME_BRIEF = 'The name of the executable that started the process.';
+
+export const PROCESS_PID_BRIEF = 'The process ID of the running process.';
+
+export const PROCESS_RUNTIME_DESCRIPTION_BRIEF =
+  'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.';
+
+export const PROCESS_RUNTIME_ENGINE_NAME_BRIEF = 'The name of the runtime engine.';
+
+export const PROCESS_RUNTIME_ENGINE_VERSION_BRIEF = 'The version of the runtime engine.';
+
+export const PROCESS_RUNTIME_NAME_BRIEF =
+  'The name of the runtime. Equivalent to `name` in the Sentry runtime context.';
+
+export const PROCESS_RUNTIME_VERSION_BRIEF =
+  'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.';
+
+export const PROFILE_ID_BRIEF =
+  'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.';
+
+export const QUERY_BRIEF = 'The database query being executed.';
+
+export const QUERY_KEY_BRIEF =
+  'An item in a query string. Usually added by client-side routing frameworks like vue-router.';
+
+export const REACT_VERSION_BRIEF = 'The version of the React framework';
+
+export const REDIS_COMMAND_BRIEF = 'The name of the Redis operation being executed.';
+
+export const REDIS_KEY_BRIEF = 'The key the Redis command is operating on.';
+
+export const RELEASE_BRIEF = 'The sentry release.';
+
+export const REMIX_ACTION_FORM_DATA_KEY_BRIEF =
+  'Remix form data, <key> being the form data key, the value being the form data value.';
+
+export const REPLAY_ID_BRIEF = 'The id of the sentry replay.';
+
+export const RESOURCE_DEPLOYMENT_ENVIRONMENT_BRIEF = 'The software deployment environment name.';
+
+export const RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_BRIEF = 'The software deployment environment name.';
+
+export const RESOURCE_RENDER_BLOCKING_STATUS_BRIEF = 'The render blocking status of the resource.';
+
+export const ROUTE_BRIEF =
+  'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.';
+
+export const RPC_GRPC_STATUS_CODE_BRIEF = 'The numeric status code of the gRPC request.';
+
+export const RPC_METHOD_BRIEF = 'The fully-qualified logical name of the method from the RPC interface perspective.';
+
+export const RPC_RESPONSE_STATUS_CODE_BRIEF =
+  'Status code of the RPC returned by the RPC server or generated by the client.';
+
+export const RPC_SERVICE_BRIEF =
+  'The full (logical) name of the service being called, including its package name, if applicable.';
+
+export const RPC_SYSTEM_BRIEF = 'A string identifying the remoting system.';
+
+export const RPC_SYSTEM_NAME_BRIEF = 'A string identifying the remoting system.';
+
+export const RUNTIME_BUILD_BRIEF = 'The application build string, when it is separate from the version.';
+
+export const RUNTIME_NAME_BRIEF = 'The name of the runtime. For example node, CPython, or rustc.';
+
+export const RUNTIME_RAW_DESCRIPTION_BRIEF =
+  'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.';
+
+export const RUNTIME_VERSION_BRIEF = 'The version of the runtime.';
+
+export const SCORE_KEY_BRIEF =
+  'The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.';
+
+export const SCORE_RATIO_KEY_BRIEF = 'The score for a web vital, normalized to a number between 0 and 1.';
+
+export const SCORE_TOTAL_BRIEF =
+  'The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).';
+
+export const SCORE_WEIGHT_KEY_BRIEF = "The relative weight of a web vital in a span's performance score.";
+
+export const SENTRY_ACTION_BRIEF =
+  'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.';
+
+export const SENTRY_BROWSER_NAME_BRIEF = 'The name of the browser.';
+
+export const SENTRY_BROWSER_VERSION_BRIEF = 'The version of the browser.';
+
+export const SENTRY_CANCELLATION_REASON_BRIEF = 'The reason why a span ended early.';
+
+export const SENTRY_CATEGORY_BRIEF =
+  "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.";
+
+export const SENTRY_CLIENT_SAMPLE_RATE_BRIEF = 'Rate at which a span was sampled in the SDK.';
+
+export const SENTRY_DESCRIPTION_BRIEF = 'The human-readable description of a span.';
+
+export const SENTRY_DIST_BRIEF = 'The sentry dist.';
+
+export const SENTRY_DOMAIN_BRIEF =
+  'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.';
+
+export const SENTRY_DSC_ENVIRONMENT_BRIEF = 'The environment from the dynamic sampling context.';
+
+export const SENTRY_DSC_PROJECT_ID_BRIEF =
+  'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.';
+
+export const SENTRY_DSC_PUBLIC_KEY_BRIEF = 'The public key from the dynamic sampling context.';
+
+export const SENTRY_DSC_RELEASE_BRIEF = 'The release identifier from the dynamic sampling context.';
+
+export const SENTRY_DSC_SAMPLED_BRIEF = 'Whether the event was sampled according to the dynamic sampling context.';
+
+export const SENTRY_DSC_SAMPLE_RATE_BRIEF = 'The sample rate from the dynamic sampling context.';
+
+export const SENTRY_DSC_TRACE_ID_BRIEF = 'The trace ID from the dynamic sampling context.';
+
+export const SENTRY_DSC_TRANSACTION_BRIEF = 'The transaction name from the dynamic sampling context.';
+
+export const SENTRY_ENVIRONMENT_BRIEF = 'The sentry environment.';
+
+export const SENTRY_EVENT_SERIALIZED_BREADCRUMBS_BRIEF = 'JSON-serialized `breadcrumbs` property from a Sentry event.';
+
+export const SENTRY_EVENT_SERIALIZED_CONTEXTS_BRIEF = 'JSON-serialized `contexts` property from a Sentry event.';
+
+export const SENTRY_EVENT_SERIALIZED_EXTRA_BRIEF = 'JSON-serialized `extra` property from a Sentry event.';
+
+export const SENTRY_EXCLUSIVE_TIME_BRIEF = 'The exclusive time duration of the span in milliseconds.';
+
+export const SENTRY_FRAMES_FROZEN_BRIEF = 'The number of frozen frames rendered during the lifetime of the span.';
+
+export const SENTRY_FRAMES_SLOW_BRIEF = 'The number of slow frames rendered during the lifetime of the span.';
+
+export const SENTRY_FRAMES_TOTAL_BRIEF = 'The number of total frames rendered during the lifetime of the span.';
+
+export const SENTRY_GRAPHQL_OPERATION_BRIEF = 'Indicates the type of graphql operation, emitted by the Javascript SDK.';
+
+export const SENTRY_GROUP_BRIEF =
+  'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.';
+
+export const SENTRY_HTTP_PREFETCH_BRIEF = 'If an http request was a prefetch request.';
+
+export const SENTRY_IDLE_SPAN_FINISH_REASON_BRIEF = 'The reason why an idle span ended early.';
+
+export const SENTRY_IS_REMOTE_BRIEF = "Indicates whether a span's parent is remote.";
+
+export const SENTRY_KIND_BRIEF =
+  'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.';
+
+export const SENTRY_MAIN_THREAD_BRIEF =
+  'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.';
+
+export const SENTRY_MESSAGE_PARAMETER_KEY_BRIEF =
+  "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)";
+
+export const SENTRY_MESSAGE_TEMPLATE_BRIEF = 'The parameterized template string.';
+
+export const SENTRY_METRIC_SOURCE_BRIEF =
+  'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.';
+
+export const SENTRY_MOBILE_BRIEF =
+  'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.';
+
+export const SENTRY_MODULE_KEY_BRIEF = 'A module that was loaded in the process. The key is the name of the module.';
+
+export const SENTRY_NEXTJS_SSR_FUNCTION_ROUTE_BRIEF =
+  'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.';
+
+export const SENTRY_NEXTJS_SSR_FUNCTION_TYPE_BRIEF =
+  'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.';
+
+export const SENTRY_NORMALIZED_DB_QUERY_BRIEF = 'The normalized version of `db.query.text`.';
+
+export const SENTRY_NORMALIZED_DB_QUERY_HASH_BRIEF = 'The hash of `sentry.normalized_db_query`.';
+
+export const SENTRY_NORMALIZED_DESCRIPTION_BRIEF =
+  'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).';
+
+export const SENTRY_OBSERVED_TIMESTAMP_NANOS_BRIEF =
+  'The timestamp at which an envelope was received by Relay, in nanoseconds.';
+
+export const SENTRY_OP_BRIEF = 'The operation of a span.';
+
+export const SENTRY_ORIGIN_BRIEF = 'The origin of the instrumentation (e.g. span, log, etc.)';
+
+export const SENTRY_PAGELOAD_SPAN_ID_BRIEF = 'The id of the pageload span, set by web vital spans and metrics';
+
+export const SENTRY_PLATFORM_BRIEF = 'The sdk platform that generated the event.';
+
+export const SENTRY_PROFILER_ID_BRIEF = 'The id of the currently running profiler (continuous profiling)';
+
+export const SENTRY_PROFILE_ID_BRIEF =
+  'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.';
+
+export const SENTRY_RELAY_INGRESS_BRIEF = 'How an item (span, log, &c.) entered Relay.';
+
+export const SENTRY_RELAY_PIPELINE_BRIEF =
+  'An internal descriptor of which processing pipeline an item went through in Relay.';
+
+export const SENTRY_RELEASE_BRIEF = 'The sentry release.';
+
+export const SENTRY_REPLAY_ID_BRIEF = 'The id of the sentry replay.';
+
+export const SENTRY_REPLAY_IS_BUFFERING_BRIEF =
+  'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).';
+
+export const SENTRY_REPORT_EVENT_BRIEF =
+  '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)';
+
+export const SENTRY_SDK_INTEGRATIONS_BRIEF =
+  'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.';
+
+export const SENTRY_SDK_NAME_BRIEF = 'The sentry sdk name.';
+
+export const SENTRY_SDK_VERSION_BRIEF = 'The sentry sdk version.';
+
+export const SENTRY_SEGMENT_ID_BRIEF = 'The segment ID of a span';
+
+export const _SENTRY_SEGMENT_ID_BRIEF = 'The segment ID of a span';
+
+export const SENTRY_SEGMENT_NAME_BRIEF = 'The segment name of a span';
+
+export const SENTRY_SEGMENT_NAME_SOURCE_BRIEF =
+  "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.";
+
+export const SENTRY_SERVER_SAMPLE_RATE_BRIEF = 'Rate at which a span was sampled in Relay.';
+
+export const SENTRY_SOURCE_BRIEF =
+  "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.";
+
+export const SENTRY_SPAN_SOURCE_BRIEF =
+  "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.";
+
+export const SENTRY_STATUS_BRIEF =
+  'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.';
+
+export const SENTRY_STATUS_CODE_BRIEF =
+  'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.';
+
+export const SENTRY_STATUS_MESSAGE_BRIEF = 'The from OTLP extracted status message.';
+
+export const SENTRY_SVELTEKIT_NAVIGATION_FROM_BRIEF = 'the navigation origin (sveltekit router)';
+
+export const SENTRY_SVELTEKIT_NAVIGATION_TO_BRIEF = 'the navigation destination';
+
+export const SENTRY_SVELTEKIT_NAVIGATION_TYPE_BRIEF =
+  'The type of navigation event emitted from the sveltekit client router';
+
+export const SENTRY_THREAD_ID_BRIEF = 'Current “managed” thread ID.';
+
+export const SENTRY_TIMESTAMP_SEQUENCE_BRIEF =
+  'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.';
+
+export const SENTRY_TRACE_LIFECYCLE_BRIEF = 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)';
+
+export const SENTRY_TRACE_PARENT_SPAN_ID_BRIEF =
+  'The span id of the span that was active when the log was collected. This should not be set if there was no active span.';
+
+export const SENTRY_TRACE_STATUS_BRIEF =
+  'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.';
+
+export const SENTRY_TRANSACTION_BRIEF = 'The sentry transaction (segment name).';
+
+export const SENTRY_USER_EMAIL_BRIEF = 'User email address.';
+
+export const SENTRY_USER_GEO_CITY_BRIEF = 'Human readable city name.';
+
+export const SENTRY_USER_GEO_COUNTRY_CODE_BRIEF = 'Two-letter country code (ISO 3166-1 alpha-2).';
+
+export const SENTRY_USER_GEO_REGION_BRIEF = 'Human readable region name or code.';
+
+export const SENTRY_USER_GEO_SUBDIVISION_BRIEF = 'Human readable subdivision name.';
+
+export const SENTRY_USER_ID_BRIEF = 'Unique identifier of the user.';
+
+export const SENTRY_USER_IP_BRIEF = 'The IP address of the user.';
+
+export const SENTRY_USER_USERNAME_BRIEF = 'Short name or login/username of the user.';
+
+export const SERVER_ADDRESS_BRIEF =
+  'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.';
+
+export const SERVER_NAME_BRIEF =
+  'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.';
+
+export const SERVER_PORT_BRIEF = 'Server port number.';
+
+export const SERVICE_NAME_BRIEF = 'Logical name of the service.';
+
+export const SERVICE_VERSION_BRIEF =
+  'The version string of the service API or implementation. The format is not defined by these conventions.';
+
+export const SESSION_ID_BRIEF = 'A unique id identifying the active session at the time of setting this attribute';
+
+export const STALL_PERCENTAGE_BRIEF =
+  'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.';
+
+export const STALL_TOTAL_TIME_BRIEF =
+  'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.';
+
+export const STARLETTE_MIDDLEWARE_NAME_BRIEF = 'The name of the Starlette middleware.';
+
+export const STARLITE_MIDDLEWARE_NAME_BRIEF = 'The name of the Starlite middleware.';
+
+export const STATE_TYPE_BRIEF = 'The type of state management library';
+
+export const SUBPROCESS_PID_BRIEF = 'The process ID of a subprocess.';
+
+export const THREAD_ID_BRIEF = 'Current “managed” thread ID.';
+
+export const THREAD_NAME_BRIEF = 'Current thread name.';
+
+export const TIMBER_TAG_BRIEF = 'The log tag provided by the timber logging framework.';
+
+export const TIME_TO_FULL_DISPLAY_BRIEF = 'The duration of time to full display in milliseconds';
+
+export const TIME_TO_INITIAL_DISPLAY_BRIEF = 'The duration of time to initial display in milliseconds';
+
+export const TRANSACTION_BRIEF = 'The sentry transaction (segment name).';
+
+export const TRPC_PROCEDURE_PATH_BRIEF = 'The path of the tRPC procedure being called';
+
+export const TRPC_PROCEDURE_TYPE_BRIEF = 'The type of the tRPC procedure';
+
+export const TTFB_BRIEF = 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds';
+
+export const TTFB_REQUESTTIME_BRIEF =
+  "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser";
+
+export const TYPE_BRIEF = 'More granular type of the operation happening.';
+
+export const UI_COMPONENT_NAME_BRIEF = 'The name of the associated component.';
+
+export const UI_CONTRIBUTES_TO_TTFD_BRIEF =
+  'Whether the span execution contributed to the TTFD (time to fully drawn) metric.';
+
+export const UI_CONTRIBUTES_TO_TTID_BRIEF =
+  'Whether the span execution contributed to the TTID (time to initial display) metric.';
+
+export const UI_ELEMENT_HEIGHT_BRIEF = 'The height of the UI element (for Html in pixels)';
+
+export const UI_ELEMENT_ID_BRIEF = 'The id of the UI element';
+
+export const UI_ELEMENT_IDENTIFIER_BRIEF = 'The identifier used to measure the UI element timing';
+
+export const UI_ELEMENT_LOAD_TIME_BRIEF = 'The loading time of a UI element (from time origin to finished loading)';
+
+export const UI_ELEMENT_PAINT_TYPE_BRIEF = "The type of element paint. Can either be 'image-paint' or 'text-paint'";
+
+export const UI_ELEMENT_RENDER_TIME_BRIEF =
+  'The rendering time of the UI element (from time origin to finished rendering)';
+
+export const UI_ELEMENT_TYPE_BRIEF = 'type of the UI element';
+
+export const UI_ELEMENT_URL_BRIEF = 'The URL of the UI element (e.g. an img src)';
+
+export const UI_ELEMENT_WIDTH_BRIEF = 'The width of the UI element (for HTML in pixels)';
+
+export const URL_BRIEF = 'The URL of the resource that was fetched.';
+
+export const URL_DOMAIN_BRIEF =
+  'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.';
+
+export const URL_FRAGMENT_BRIEF =
+  'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.';
+
+export const URL_FULL_BRIEF = 'The URL of the resource that was fetched.';
+
+export const URL_PATH_BRIEF = 'The URI path component.';
+
+export const URL_PATH_PARAMETER_KEY_BRIEF =
+  'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.';
+
+export const URL_PORT_BRIEF = 'Server port number.';
+
+export const URL_QUERY_BRIEF =
+  'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.';
+
+export const URL_SAME_ORIGIN_BRIEF =
+  "Indicates that a URL has the same origin as the current page's origin in the browser.";
+
+export const URL_SCHEME_BRIEF = 'The URI scheme component identifying the used protocol.';
+
+export const URL_TEMPLATE_BRIEF = 'The low-cardinality template of an absolute URL path reference.';
+
+export const USER_AGENT_ORIGINAL_BRIEF = 'Value of the HTTP User-Agent header sent by the client.';
+
+export const USER_EMAIL_BRIEF = 'User email address.';
+
+export const USER_FULL_NAME_BRIEF = "User's full name.";
+
+export const USER_GEO_CITY_BRIEF = 'Human readable city name.';
+
+export const USER_GEO_COUNTRY_CODE_BRIEF = 'Two-letter country code (ISO 3166-1 alpha-2).';
+
+export const USER_GEO_REGION_BRIEF = 'Human readable region name or code.';
+
+export const USER_GEO_SUBDIVISION_BRIEF = 'Human readable subdivision name.';
+
+export const USER_HASH_BRIEF = 'Unique user hash to correlate information for a user in anonymized form.';
+
+export const USER_ID_BRIEF = 'Unique identifier of the user.';
+
+export const USER_IP_ADDRESS_BRIEF = 'The IP address of the user.';
+
+export const USER_NAME_BRIEF = 'Short name or login/username of the user.';
+
+export const USER_ROLES_BRIEF = 'Array of user roles at the time of the event.';
+
+export const VERCEL_BRANCH_BRIEF = 'Git branch name for Vercel project';
+
+export const VERCEL_BUILD_ID_BRIEF = 'Identifier for the Vercel build (only present on build logs)';
+
+export const VERCEL_DEPLOYMENT_ID_BRIEF = 'Identifier for the Vercel deployment';
+
+export const VERCEL_DESTINATION_BRIEF = 'Origin of the external content in Vercel (only on external logs)';
+
+export const VERCEL_EDGE_TYPE_BRIEF = 'Type of edge runtime in Vercel';
+
+export const VERCEL_ENTRYPOINT_BRIEF = 'Entrypoint for the request in Vercel';
+
+export const VERCEL_EXECUTION_REGION_BRIEF = 'Region where the request is executed';
+
+export const VERCEL_ID_BRIEF = 'Unique identifier for the log entry in Vercel';
+
+export const VERCEL_JA3_DIGEST_BRIEF = 'JA3 fingerprint digest of Vercel request';
+
+export const VERCEL_JA4_DIGEST_BRIEF = 'JA4 fingerprint digest';
+
+export const VERCEL_LOG_TYPE_BRIEF = 'Vercel log output type';
+
+export const VERCEL_PATH_BRIEF = 'Function or dynamic path of the request in Vercel.';
+
+export const VERCEL_PROJECT_ID_BRIEF = 'Identifier for the Vercel project';
+
+export const VERCEL_PROJECT_NAME_BRIEF = 'Name of the Vercel project';
+
+export const VERCEL_PROXY_CACHE_ID_BRIEF = 'Original request ID when request is served from cache';
+
+export const VERCEL_PROXY_CLIENT_IP_BRIEF = 'Client IP address';
+
+export const VERCEL_PROXY_HOST_BRIEF = 'Hostname of the request';
+
+export const VERCEL_PROXY_LAMBDA_REGION_BRIEF = 'Region where lambda function executed';
+
+export const VERCEL_PROXY_METHOD_BRIEF = 'HTTP method of the request';
+
+export const VERCEL_PROXY_PATH_BRIEF = 'Request path with query parameters';
+
+export const VERCEL_PROXY_PATH_TYPE_BRIEF = 'How the request was served based on its path and project configuration';
+
+export const VERCEL_PROXY_PATH_TYPE_VARIANT_BRIEF = 'Variant of the path type';
+
+export const VERCEL_PROXY_REFERER_BRIEF = 'Referer of the request';
+
+export const VERCEL_PROXY_REGION_BRIEF = 'Region where the request is processed';
+
+export const VERCEL_PROXY_RESPONSE_BYTE_SIZE_BRIEF = 'Size of the response in bytes';
+
+export const VERCEL_PROXY_SCHEME_BRIEF = 'Protocol of the request';
+
+export const VERCEL_PROXY_STATUS_CODE_BRIEF = 'HTTP status code of the proxy request';
+
+export const VERCEL_PROXY_TIMESTAMP_BRIEF = 'Unix timestamp when the proxy request was made';
+
+export const VERCEL_PROXY_USER_AGENT_BRIEF = 'User agent strings of the request';
+
+export const VERCEL_PROXY_VERCEL_CACHE_BRIEF = 'Cache status sent to the browser';
+
+export const VERCEL_PROXY_VERCEL_ID_BRIEF = 'Vercel-specific identifier';
+
+export const VERCEL_PROXY_WAF_ACTION_BRIEF = 'Action taken by firewall rules';
+
+export const VERCEL_PROXY_WAF_RULE_ID_BRIEF = 'ID of the firewall rule that matched';
+
+export const VERCEL_REQUEST_ID_BRIEF = 'Identifier of the Vercel request';
+
+export const VERCEL_SOURCE_BRIEF = 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)';
+
+export const VERCEL_STATUS_CODE_BRIEF =
+  'HTTP status code of the request (-1 means no response returned and the lambda crashed)';
+
 export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentation> = {
   address: {
     brief: 'The destination hostname or IP address for a TCP connection.',

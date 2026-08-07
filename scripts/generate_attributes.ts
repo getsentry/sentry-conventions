@@ -930,11 +930,14 @@ export interface AttributeDocumentation {
 }
 
 function generateDocumentationDict(allAttributes: GeneratedAttribute[]): string {
+  let briefConstants = '';
   let documentationDict = 'export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentation> = {\n';
 
-  for (const { key, attributeJson } of allAttributes) {
+  for (const { key, constantName, attributeJson } of allAttributes) {
     const examples = getAttributeExamples(attributeJson);
+    const briefConstantName = `${constantName}_BRIEF`;
 
+    briefConstants += `export const ${briefConstantName} = ${JSON.stringify(attributeJson.brief)};\n\n`;
     documentationDict += `  ${JSON.stringify(key)}: {\n`;
     documentationDict += `    brief: ${JSON.stringify(attributeJson.brief)},\n`;
 
@@ -969,5 +972,5 @@ function generateDocumentationDict(allAttributes: GeneratedAttribute[]): string 
   }
 
   documentationDict += '};\n\n';
-  return documentationDict;
+  return briefConstants + documentationDict;
 }
