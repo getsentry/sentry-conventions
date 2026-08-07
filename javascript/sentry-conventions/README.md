@@ -23,5 +23,30 @@
 The package exports:
 
 - `attributes`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
+- `attributes.<ATTRIBUTE>_KEYS`: contains readonly lookup keys for an attribute
+- `attribute-utils.getAttributeValue`: reads an attribute using its lookup keys
 - `attributes.Attributes`: represents a bag of typed attributes
 - `op`: contains constants for span operations used in Sentry
+
+## Reading Attributes
+
+Import a readonly `<ATTRIBUTE>_KEYS` tuple from `@sentry/conventions/attributes` and pass it to `getAttributeValue<T>` from `@sentry/conventions/attribute-utils`:
+
+```ts
+import { getAttributeValue } from '@sentry/conventions/attribute-utils';
+import { HTTP_REQUEST_METHOD_KEYS } from '@sentry/conventions/attributes';
+
+const method = getAttributeValue<string>(attributes, HTTP_REQUEST_METHOD_KEYS);
+```
+
+Each tuple lists every key the value may be stored under, ordered so that the stable key comes first:
+
+1. the stable, non-deprecated attribute, followed by the names it is exposed as in Sentry search
+2. its non-deprecated aliases, each followed by their own search names
+3. the deprecated attributes it replaces, in alphabetical order, each followed by their own search names
+
+All attributes in a family share the same tuple, so a read prefers the stable key regardless of which constant you import. Deprecated attributes only join a family when their value is backfilled or normalized onto the replacement.
+
+The helper returns the raw value from the first key whose value is not `undefined`. It does not validate or transform values. The caller-supplied generic is only a TypeScript type assertion and adds no runtime checks.
+
+Keys that contain a dynamic `<key>` segment are patterns, not literal lookup keys. Materialize each pattern by replacing `<key>` with the actual segment before calling the helper. The generated package does not include expanded lists for dynamic keys.
