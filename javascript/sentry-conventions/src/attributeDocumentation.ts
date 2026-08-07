@@ -1867,7 +1867,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The destination hostname or IP address for a TCP connection.',
     example: 'example.com',
     examples: ['example.com'],
-    changelog: [{ version: 'next', prs: [534], description: 'Added address attribute' }],
+    changelog: [{ version: '0.19.0', prs: [534], description: 'Added address attribute' }],
   },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
@@ -1975,7 +1975,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   'ai.prompt.messages': {
     brief: 'The input messages sent to the AI model.',
     example: '[{"role": "user", "message": "hello"}]',
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.prompt.messages attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.prompt.messages attribute' }],
   },
   'ai.prompt_tokens.used': {
     brief: 'The number of tokens used to process just the prompt.',
@@ -2006,12 +2006,12 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   'ai.response.text': {
     brief: 'The text response from the AI model.',
     example: 'The weather in Paris is currently rainy.',
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.text attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.text attribute' }],
   },
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
     example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
   },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
@@ -2067,12 +2067,12 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   'ai.toolCall.args': {
     brief: 'The arguments of the tool call.',
     example: '{"location": "Paris"}',
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.args attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.toolCall.args attribute' }],
   },
   'ai.toolCall.result': {
     brief: 'The result of the tool call.',
     example: 'rainy, 57°F',
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.result attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
     brief: 'For an AI model call, the functions that are available',
@@ -2237,7 +2237,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     example: 3,
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.frozen as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
   },
@@ -2245,13 +2245,13 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     example: 0.5,
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
   },
   'app.vitals.frames.slow.count': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     example: 1,
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.slow as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
   },
@@ -2259,13 +2259,13 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     example: 0.25,
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
   },
   'app.vitals.frames.total.count': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     example: 60,
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.total as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
   },
@@ -2273,13 +2273,13 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     example: 4000,
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
   },
   'app.vitals.stall.percentage': {
     brief:
       'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
     example: 0.8,
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
   },
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
@@ -2613,13 +2613,13 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The name of the API operation invoked on an AWS service.',
     example: 'PutObject',
     examples: ['PutObject'],
-    changelog: [{ version: 'next', prs: [536], description: 'Added aws.operation_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [536], description: 'Added aws.operation_name attribute' }],
   },
   aws_region: {
     brief: 'The geographical region the AWS resource is running',
     example: 'us-east-1',
     examples: ['us-east-1'],
-    changelog: [{ version: 'next', prs: [537], description: 'Added aws_region attribute' }],
+    changelog: [{ version: '0.19.0', prs: [537], description: 'Added aws_region attribute' }],
   },
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
@@ -2651,7 +2651,13 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   'aws.request.url': {
     brief: 'The URL of the AWS API request.',
     example: 'https://sqs.us-east-1.amazonaws.com/123456789/my-queue',
-    changelog: [{ version: 'next', description: 'Added aws.request.url attribute, deprecated in favor of url.full' }],
+    changelog: [
+      {
+        version: '0.19.0',
+        prs: [488],
+        description: 'Added aws.request.url attribute, deprecated in favor of url.full',
+      },
+    ],
   },
   'aws.s3.bucket': {
     brief: 'The S3 bucket name the request refers to.',
@@ -2689,7 +2695,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
       "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
     example: 'top',
     examples: ['top', 'child'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
   },
   'browser.bfcache.not_restored_reason_count': {
     brief:
@@ -2697,7 +2703,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 2,
     examples: [2],
     changelog: [
-      { version: 'next', prs: [513], description: 'Added browser.bfcache.not_restored_reason_count attribute' },
+      { version: '0.19.0', prs: [513], description: 'Added browser.bfcache.not_restored_reason_count attribute' },
     ],
   },
   'browser.bfcache.outcome': {
@@ -2705,14 +2711,14 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
       "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
     example: 'hit',
     examples: ['hit', 'miss'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.outcome attribute' }],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.outcome attribute' }],
   },
   'browser.bfcache.reason': {
     brief:
       'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
     example: 'unload-listener',
     examples: ['unload-listener', 'websocket', 'idbversionchangeevent', 'response-cache-control-no-store'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.reason attribute' }],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.reason attribute' }],
   },
   'browser.name': {
     brief: 'The name of the browser.',
@@ -2894,7 +2900,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The type of query executed in a Cloudflare D1 operation',
     example: 'run',
     changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
       { version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' },
     ],
   },
@@ -3008,7 +3014,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The geographical region the resource is running',
     example: 'us-east-1',
     changelog: [
-      { version: 'next', description: 'Added aws_region and gcp_region as aliases' },
+      { version: '0.19.0', prs: [535, 537], description: 'Added aws_region and gcp_region as aliases' },
       { version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' },
     ],
   },
@@ -3043,7 +3049,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
     example: 'DEADLINE_EXCEEDED',
     examples: ['DEADLINE_EXCEEDED'],
-    changelog: [{ version: 'next', prs: [533], description: 'Added code attribute' }],
+    changelog: [{ version: '0.19.0', prs: [533], description: 'Added code attribute' }],
   },
   'code.filepath': {
     brief:
@@ -3061,7 +3067,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
     example: 'server_request',
     changelog: [
-      { version: 'next', description: 'Added django.function_name as an alias' },
+      { version: '0.19.0', prs: [538], description: 'Added django.function_name as an alias' },
       { version: '0.1.0', prs: [61, 74] },
       { version: '0.0.0' },
     ],
@@ -3070,7 +3076,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The method or function fully-qualified name without arguments.',
     example: 'server_request',
     changelog: [
-      { version: 'next', description: 'Added django.function_name as an alias' },
+      { version: '0.19.0', prs: [538], description: 'Added django.function_name as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -3144,7 +3150,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The name of a collection (table, container) within the database.',
     example: 'users',
     changelog: [
-      { version: 'next', description: 'Added db.mongodb.collection as an alias' },
+      { version: '0.19.0', prs: [483], description: 'Added db.mongodb.collection as an alias' },
       { version: '0.1.0', prs: [106, 127] },
       { version: '0.0.0' },
     ],
@@ -3159,7 +3165,8 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 'users',
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [483],
         description: 'Added db.mongodb.collection attribute, deprecated in favor of db.collection.name',
       },
     ],
@@ -3178,7 +3185,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The name of the operation being executed.',
     example: 'SELECT',
     changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
       { version: '0.4.0', prs: [199] },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -3194,7 +3201,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The name of the operation being executed.',
     example: 'SELECT',
     changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -3203,7 +3210,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The query bindings for a database request.',
     example: '[{"x": 100}]',
     examples: ['[{"x": 100}]'],
-    changelog: [{ version: 'next', prs: [529], description: 'Added db.params attribute' }],
+    changelog: [{ version: '0.19.0', prs: [529], description: 'Added db.params attribute' }],
   },
   'db.query.parameter.<key>': {
     brief:
@@ -3217,7 +3224,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 'SELECT users',
     examples: ['SELECT users', 'INSERT products; UPDATE orders'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.19.0', prs: [505], description: 'Added multiple examples' },
       { version: '0.4.0', prs: [208] },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -3228,7 +3235,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
       'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
     example: 'SELECT * FROM users WHERE id = $1',
     changelog: [
-      { version: 'next', description: 'Added query as an alias' },
+      { version: '0.19.0', prs: [530], description: 'Added query as an alias' },
       { version: '0.4.0', prs: [208] },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -3243,7 +3250,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The key the Redis command is operating on.',
     example: 'user:2047:city',
     changelog: [
-      { version: 'next', description: 'Added redis.key as an alias' },
+      { version: '0.19.0', prs: [484], description: 'Added redis.key as an alias' },
       { version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' },
     ],
   },
@@ -3268,7 +3275,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 'SELECT * FROM users WHERE id = $1',
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
         prs: [501],
         description: 'Improved example, added deprecation reason, and added query as an alias',
       },
@@ -3531,13 +3538,13 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The fully qualified name of a function used in a Django context.',
     example: 'django.contrib.sessions.middleware.SessionMiddleware',
     examples: ['django.contrib.sessions.middleware.SessionMiddleware'],
-    changelog: [{ version: 'next', prs: [538], description: 'Added django.function_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [538], description: 'Added django.function_name attribute' }],
   },
   'django.middleware_name': {
     brief: 'The name of the Django middleware.',
     example: 'AuthenticationMiddleware',
     examples: ['AuthenticationMiddleware'],
-    changelog: [{ version: 'next', prs: [520], description: 'Added django.middleware_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [520], description: 'Added django.middleware_name attribute' }],
   },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -3554,7 +3561,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The sentry environment.',
     example: 'production',
     changelog: [
-      { version: 'next', prs: [427], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [427], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -3730,7 +3737,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     example: 3,
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -3740,7 +3747,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
       { version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' },
     ],
   },
@@ -3748,7 +3755,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     example: 1,
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.slow as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -3758,7 +3765,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
       { version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' },
     ],
   },
@@ -3766,7 +3773,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The number of total frames rendered during the lifetime of the span.',
     example: 60,
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.total as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -3831,7 +3838,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The geographical region the GCP resource is running',
     example: 'us-east-1',
     examples: ['us-east-1'],
-    changelog: [{ version: 'next', prs: [535], description: 'Added gcp_region attribute' }],
+    changelog: [{ version: '0.19.0', prs: [535], description: 'Added gcp_region attribute' }],
   },
   'gen_ai.agent.name': {
     brief: 'The name of the agent being used.',
@@ -4087,7 +4094,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   'gen_ai.response.finish_reason': {
     brief: 'The reason why the model stopped generating (singular form).',
     example: 'COMPLETE',
-    changelog: [{ version: 'next', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
   },
   'gen_ai.response.finish_reasons': {
     brief: 'The reason why the model stopped generating.',
@@ -4525,7 +4532,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The domain name.',
     example: 'example.com',
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
     ],
@@ -4705,7 +4712,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
         prs: [505, 521],
         description: 'Added multiple examples, removed alias to `url.template`, added additional context',
       },
@@ -4726,7 +4733,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The server domain name',
     example: 'example.com',
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
     ],
@@ -4870,7 +4877,8 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 'AuthenticationMiddleware',
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [486],
         description: 'Added litestar.middleware_name attribute, deprecated in favor of middleware.name',
       },
     ],
@@ -5155,7 +5163,8 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 'topic',
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [509],
         description:
           'Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations.',
       },
@@ -5174,23 +5183,23 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
     example: '1',
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
   },
   'messaging.kafka.message.key': {
     brief:
       "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
     example: 'myKey',
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
   },
   'messaging.kafka.message.tombstone': {
     brief: 'A boolean that is true if the message is a tombstone.',
     example: true,
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
   },
   'messaging.kafka.offset': {
     brief: 'The offset of a record in the corresponding Kafka partition.',
     example: 42,
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
   },
   'messaging.message.body.size': {
     brief: 'The size of the message body in bytes.',
@@ -5249,7 +5258,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The HTTP method used.',
     example: 'GET',
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -5259,7 +5268,8 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 'AuthenticationMiddleware',
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [485, 486, 519, 520],
         description:
           'Added django.middleware_name, starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases',
       },
@@ -5402,7 +5412,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     example: 'example.com',
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
     ],
@@ -5411,7 +5421,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'Server port number.',
     example: 1337,
     changelog: [
-      { version: 'next', description: 'Added port as an alias' },
+      { version: '0.19.0', prs: [532], description: 'Added port as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
@@ -5582,7 +5592,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The destination port for a TCP connection.',
     example: 1337,
     examples: [1337],
-    changelog: [{ version: 'next', prs: [532], description: 'Added port attribute' }],
+    changelog: [{ version: '0.19.0', prs: [532], description: 'Added port attribute' }],
   },
   previous_route: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
@@ -5603,7 +5613,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The process ID of the running process.',
     example: 12345,
     changelog: [
-      { version: 'next', description: 'Added subprocess.pid as an alias' },
+      { version: '0.19.0', prs: [487], description: 'Added subprocess.pid as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -5639,13 +5649,13 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     example: '123e4567e89b12d3a456426614174000',
-    changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
+    changelog: [{ version: '0.19.0', prs: [497], description: 'Added profile_id attribute' }],
   },
   query: {
     brief: 'The database query being executed.',
     example: 'SELECT * FROM users WHERE id = $1',
     examples: ['SELECT * FROM users WHERE id = $1'],
-    changelog: [{ version: 'next', prs: [530], description: 'Added query attribute' }],
+    changelog: [{ version: '0.19.0', prs: [530], description: 'Added query attribute' }],
   },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
@@ -5661,18 +5671,20 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The name of the Redis operation being executed.',
     example: 'SELECT',
     examples: ['SELECT'],
-    changelog: [{ version: 'next', prs: [531], description: 'Added redis.command attribute' }],
+    changelog: [{ version: '0.19.0', prs: [531], description: 'Added redis.command attribute' }],
   },
   'redis.key': {
     brief: 'The key the Redis command is operating on.',
     example: 'user:2047:city',
-    changelog: [{ version: 'next', description: 'Added redis.key attribute, deprecated in favor of db.redis.key' }],
+    changelog: [
+      { version: '0.19.0', prs: [484], description: 'Added redis.key attribute, deprecated in favor of db.redis.key' },
+    ],
   },
   release: {
     brief: 'The sentry release.',
     example: 'production',
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -5686,7 +5698,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The id of the sentry replay.',
     example: '123e4567e89b12d3a456426614174000',
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
     ],
@@ -5716,7 +5728,11 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The numeric status code of the gRPC request.',
     example: 2,
     changelog: [
-      { version: 'next', description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code' },
+      {
+        version: '0.19.0',
+        prs: [494, 533],
+        description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -5725,7 +5741,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
     example: 'com.example.ExampleService/exampleMethod',
     changelog: [
-      { version: 'next', description: 'Added aws.operation_name as an alias' },
+      { version: '0.19.0', prs: [536], description: 'Added aws.operation_name as an alias' },
       { version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' },
     ],
   },
@@ -5733,7 +5749,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
     example: 'DEADLINE_EXCEEDED',
     changelog: [
-      { version: 'next', description: 'Added code and rpc.grpc.status_code as aliases' },
+      { version: '0.19.0', prs: [494, 533], description: 'Added code and rpc.grpc.status_code as aliases' },
       { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
     ],
   },
@@ -5914,15 +5930,15 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   },
   'sentry.event.serialized_breadcrumbs': {
     brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.19.0', prs: [556] }],
   },
   'sentry.event.serialized_contexts': {
     brief: 'JSON-serialized `contexts` property from a Sentry event.',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.19.0', prs: [556] }],
   },
   'sentry.event.serialized_extra': {
     brief: 'JSON-serialized `extra` property from a Sentry event.',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.19.0', prs: [556] }],
   },
   'sentry.exclusive_time': {
     brief: 'The exclusive time duration of the span in milliseconds.',
@@ -5932,17 +5948,17 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   'sentry.frames.frozen': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     example: 3,
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
   },
   'sentry.frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     example: 1,
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.slow attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow attribute' }],
   },
   'sentry.frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     example: 60,
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.total attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.total attribute' }],
   },
   'sentry.graphql.operation': {
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
@@ -5975,7 +5991,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 'client',
     examples: ['client', 'server', 'producer', 'consumer', 'internal'],
     changelog: [
-      { version: 'next', prs: [517], description: 'Added more examples and additional_context to the attribute' },
+      { version: '0.19.0', prs: [517], description: 'Added more examples and additional_context to the attribute' },
       { version: '0.3.1', prs: [190] },
     ],
     additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
@@ -6077,7 +6093,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     example: '123e4567e89b12d3a456426614174000',
     changelog: [
-      { version: 'next', prs: [497], description: 'Added profile_id as an alias' },
+      { version: '0.19.0', prs: [497], description: 'Added profile_id as an alias' },
       { version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' },
     ],
   },
@@ -6151,7 +6167,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
       "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
     example: 'route',
     examples: ['route', 'component', 'view', 'task', 'custom', 'url'],
-    changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.name.source' }],
+    changelog: [{ version: '0.19.0', prs: [466], description: 'Added sentry.segment.name.source' }],
     additionalContext: [
       'This attribute is the replacement for `transaction_info.source` on transactions.',
       'Should we bring back clustering for segment names (like we do for transaction names), this attribute will be used to determine if a segment name should be clustered.',
@@ -6166,14 +6182,21 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     example: 'route',
-    changelog: [{ version: 'next', description: 'Removed the sentry.span.source replacement' }, { version: '0.5.0' }],
+    changelog: [
+      { version: '0.19.0', prs: [510], description: 'Removed the sentry.span.source replacement' },
+      { version: '0.5.0' },
+    ],
   },
   'sentry.span.source': {
     brief:
       "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     example: 'route',
     changelog: [
-      { version: 'next', description: 'Deprecated; superseded by sentry.segment.name.source on segment spans' },
+      {
+        version: '0.19.0',
+        prs: [510],
+        description: 'Deprecated; superseded by sentry.segment.name.source on segment spans',
+      },
       { version: '0.4.0', prs: [214] },
       { version: '0.0.0' },
     ],
@@ -6286,7 +6309,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     example: 'example.com',
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
       { version: '0.0.0' },
     ],
@@ -6296,7 +6319,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     example: 'example.com',
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
         prs: [477],
@@ -6308,7 +6331,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'Server port number.',
     example: 1337,
     changelog: [
-      { version: 'next', description: 'Added port as an alias' },
+      { version: '0.19.0', prs: [532], description: 'Added port as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -6331,7 +6354,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   stall_percentage: {
     brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
       { version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' },
     ],
   },
@@ -6339,7 +6362,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief:
       'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
       { version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' },
     ],
   },
@@ -6348,7 +6371,8 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     example: 'AuthenticationMiddleware',
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [485],
         description: 'Added starlette.middleware_name attribute, deprecated in favor of middleware.name',
       },
     ],
@@ -6357,7 +6381,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The name of the Starlite middleware.',
     example: 'AuthenticationMiddleware',
     examples: ['AuthenticationMiddleware'],
-    changelog: [{ version: 'next', prs: [519], description: 'Added starlite.middleware_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [519], description: 'Added starlite.middleware_name attribute' }],
   },
   'state.type': {
     brief: 'The type of state management library',
@@ -6367,7 +6391,13 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
   'subprocess.pid': {
     brief: 'The process ID of a subprocess.',
     example: 12345,
-    changelog: [{ version: 'next', description: 'Added subprocess.pid attribute, deprecated in favor of process.pid' }],
+    changelog: [
+      {
+        version: '0.19.0',
+        prs: [487],
+        description: 'Added subprocess.pid attribute, deprecated in favor of process.pid',
+      },
+    ],
   },
   'thread.id': {
     brief: 'Current “managed” thread ID.',
@@ -6402,7 +6432,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The sentry transaction (segment name).',
     example: 'GET /',
     changelog: [
-      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
+      { version: '0.19.0', prs: [497], description: 'Change deprecation from backfill to normalize' },
       {
         version: '0.6.0',
         prs: [345],
@@ -6519,7 +6549,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     brief: 'The URL of the resource that was fetched.',
     example: 'https://example.com/test?foo=bar#buzz',
     changelog: [
-      { version: 'next', description: 'Added aws.request.url as an alias' },
+      { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
       { version: '0.0.0' },
     ],
@@ -6568,7 +6598,7 @@ export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentati
     examples: ['/users/{id}', '/users/:id', '/about'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
         prs: [505, 521],
         description: 'Added multiple examples, removed alias to `http.route`, added additional context',
       },

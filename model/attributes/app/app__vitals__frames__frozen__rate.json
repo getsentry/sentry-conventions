@@ -11,7 +11,7 @@
   "alias": ["frames_frozen_rate"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.19.0",
       "prs": [493],
       "description": "Added app.vitals.frames.frozen.rate attribute"
     }
