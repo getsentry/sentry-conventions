@@ -15,7 +15,6 @@ describe('generateAttributes', () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
-    const jsMetadataOutputFilePath = path.join(temporaryDirectory, 'attributeMetadata.ts');
     const jsDocumentationOutputFilePath = path.join(temporaryDirectory, 'attributeDocumentation.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
     fs.mkdirSync(attributesDir);
@@ -48,7 +47,6 @@ describe('generateAttributes', () => {
       await generateAttributes({
         attributesDir,
         jsOutputFilePath,
-        jsMetadataOutputFilePath,
         jsDocumentationOutputFilePath,
         pythonOutputFilePath,
       });
@@ -59,9 +57,6 @@ describe('generateAttributes', () => {
       expect(javascript).toContain("type: 'string',");
       expect(javascript).not.toContain('example: "first",');
       expect(javascript).not.toContain('examples: ["first","second"],');
-
-      const metadata = fs.readFileSync(jsMetadataOutputFilePath, 'utf8');
-      expect(metadata).toContain("export { ATTRIBUTE_METADATA, ATTRIBUTE_TYPE } from './attributes';");
 
       const documentation = fs.readFileSync(jsDocumentationOutputFilePath, 'utf8');
       expect(documentation).toContain('example: "first",');

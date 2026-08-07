@@ -1,12 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
 import { ATTRIBUTE_DOCUMENTATION } from '../javascript/sentry-conventions/src/attributeDocumentation';
-import { ATTRIBUTE_METADATA as LEGACY_ATTRIBUTE_METADATA } from '../javascript/sentry-conventions/src/attributes';
-import { ATTRIBUTE_METADATA } from '../javascript/sentry-conventions/src/attributeMetadata';
+import { ATTRIBUTE_METADATA } from '../javascript/sentry-conventions/src/attributes';
 
-describe('JavaScript attribute metadata entry points', () => {
-  it('exposes the same runtime metadata from both entry points', () => {
-    expect(LEGACY_ATTRIBUTE_METADATA).toBe(ATTRIBUTE_METADATA);
+describe('JavaScript attribute metadata', () => {
+  it('has matching runtime metadata and documentation entries', () => {
     expect(Object.keys(ATTRIBUTE_METADATA)).toEqual(Object.keys(ATTRIBUTE_DOCUMENTATION));
   });
 

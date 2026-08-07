@@ -6,7 +6,6 @@ import type { AttributeJson } from './types';
 interface GenerateAttributesOptions {
   attributesDir: string;
   jsOutputFilePath: string;
-  jsMetadataOutputFilePath: string;
   jsDocumentationOutputFilePath: string;
   pythonOutputFilePath: string;
 }
@@ -16,8 +15,6 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
   const attributesDir = options?.attributesDir ?? path.join(repositoryRoot, 'model', 'attributes');
   const jsOutputFilePath =
     options?.jsOutputFilePath ?? path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'attributes.ts');
-  const jsMetadataOutputFilePath =
-    options?.jsMetadataOutputFilePath ?? path.join(path.dirname(jsOutputFilePath), 'attributeMetadata.ts');
   const jsDocumentationOutputFilePath =
     options?.jsDocumentationOutputFilePath ?? path.join(path.dirname(jsOutputFilePath), 'attributeDocumentation.ts');
   const pythonOutputFilePath =
@@ -27,7 +24,7 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
   const attributeFiles = await getAllJsonFiles(attributesDir);
 
   // Generate and write JavaScript code
-  writeToJs(attributesDir, attributeFiles, jsOutputFilePath, jsMetadataOutputFilePath, jsDocumentationOutputFilePath);
+  writeToJs(attributesDir, attributeFiles, jsOutputFilePath, jsDocumentationOutputFilePath);
 
   // Generate and write Python code
   writeToPython(attributesDir, attributeFiles, pythonOutputFilePath);
@@ -59,7 +56,6 @@ function writeToJs(
   attributesDir: string,
   attributeFiles: string[],
   outputFilePath: string,
-  metadataOutputFilePath: string,
   documentationOutputFilePath: string,
 ) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
@@ -229,10 +225,6 @@ function writeToJs(
   // Write the generated content to the file
   fs.writeFileSync(outputFilePath, attributesContent);
   fs.writeFileSync(
-    metadataOutputFilePath,
-    '// This is an auto-generated file. Do not edit!\n\n' + generateMetadataReexports(),
-  );
-  fs.writeFileSync(
     documentationOutputFilePath,
     '// This is an auto-generated file. Do not edit!\n\n' +
       generateDocumentationTypes() +
@@ -240,7 +232,6 @@ function writeToJs(
   );
 
   console.log(`Generated attributes file at: ${outputFilePath}`);
-  console.log(`Generated attribute metadata file at: ${metadataOutputFilePath}`);
   console.log(`Generated attribute documentation file at: ${documentationOutputFilePath}`);
 }
 
@@ -823,21 +814,6 @@ export interface AttributeMetadata {
   aliases?: AttributeName[];
 }
 
-`;
-}
-
-function generateMetadataReexports(): string {
-  return `
-export type {
-  ApplyScrubbing,
-  ApplyScrubbingInfo,
-  AttributeMetadata,
-  AttributeType,
-  AttributeVisibility,
-  DeprecationInfo,
-  DeprecationStatus,
-} from './attributes';
-export { ATTRIBUTE_METADATA, ATTRIBUTE_TYPE } from './attributes';
 `;
 }
 

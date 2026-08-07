@@ -24,13 +24,12 @@ The package exports:
 
 - `attributes`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
 - `attributes.Attributes`: represents a bag of typed attributes
-- `attributes/metadata`: contains runtime metadata such as types, scrubbing behavior, aliases, and deprecations
 - `attributes/documentation`: contains descriptions, examples, additional context, and changelogs
 - `op`: contains constants for span operations used in Sentry
 
 Runtime metadata and documentation are separate:
 
 ```ts
-import { ATTRIBUTE_METADATA } from '@sentry/conventions/attributes/metadata';
+import { ATTRIBUTE_METADATA } from '@sentry/conventions/attributes';
 import { ATTRIBUTE_DOCUMENTATION } from '@sentry/conventions/attributes/documentation';
 ```
