@@ -24,4 +24,14 @@ The package exports:
 
 - `attributes`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
 - `attributes.Attributes`: represents a bag of typed attributes
+- `attributes/documentation`: contains descriptions, examples, additional context, and changelogs
 - `op`: contains constants for span operations used in Sentry
+
+Runtime metadata and documentation are separate:
+
+```ts
+import { ATTRIBUTE_METADATA } from '@sentry/conventions/attributes';
+import { ATTRIBUTE_DOCUMENTATION, BROWSER_NAME_BRIEF } from '@sentry/conventions/attributes/documentation';
+```
+
+Prefer an individual brief export when only a few descriptions are needed so bundlers can remove the rest.

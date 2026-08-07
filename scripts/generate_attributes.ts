@@ -6,6 +6,7 @@ import type { AttributeJson } from './types';
 interface GenerateAttributesOptions {
   attributesDir: string;
   jsOutputFilePath: string;
+  jsDocumentationOutputFilePath: string;
   pythonOutputFilePath: string;
 }
 
@@ -14,6 +15,8 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
   const attributesDir = options?.attributesDir ?? path.join(repositoryRoot, 'model', 'attributes');
   const jsOutputFilePath =
     options?.jsOutputFilePath ?? path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'attributes.ts');
+  const jsDocumentationOutputFilePath =
+    options?.jsDocumentationOutputFilePath ?? path.join(path.dirname(jsOutputFilePath), 'attributeDocumentation.ts');
   const pythonOutputFilePath =
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
 
@@ -21,7 +24,7 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
   const attributeFiles = await getAllJsonFiles(attributesDir);
 
   // Generate and write JavaScript code
-  writeToJs(attributesDir, attributeFiles, jsOutputFilePath);
+  writeToJs(attributesDir, attributeFiles, jsOutputFilePath, jsDocumentationOutputFilePath);
 
   // Generate and write Python code
   writeToPython(attributesDir, attributeFiles, pythonOutputFilePath);
@@ -49,7 +52,12 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
   return allFiles;
 }
 
-function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePath: string) {
+function writeToJs(
+  attributesDir: string,
+  attributeFiles: string[],
+  outputFilePath: string,
+  documentationOutputFilePath: string,
+) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
   // Reset memoization for fresh calculation
@@ -207,22 +215,24 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   // Add individual constants first
   attributesContent += individualConstants;
 
-  // Generate metadata types and interfaces
-  attributesContent += generateMetadataTypes();
-
-  // Generate metadata dictionary
-  attributesContent += generateMetadataDict(attributesDir, attributeFiles, allAttributes);
-
+  attributesContent += generateRuntimeMetadataTypes();
+  attributesContent += generateRuntimeMetadataDict(allAttributes);
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
-
   attributesContent += `export type Attributes = {${attributeTypeMap}
 } & Record<string, AttributeValue | undefined>;\n\n`;
 
   // Write the generated content to the file
   fs.writeFileSync(outputFilePath, attributesContent);
+  fs.writeFileSync(
+    documentationOutputFilePath,
+    '// This is an auto-generated file. Do not edit!\n\n' +
+      generateDocumentationTypes() +
+      generateDocumentationDict(allAttributes),
+  );
 
   console.log(`Generated attributes file at: ${outputFilePath}`);
+  console.log(`Generated attribute documentation file at: ${documentationOutputFilePath}`);
 }
 
 const constantNameMemo = new Map<string, string>();
@@ -729,7 +739,20 @@ function convertToPythonLiteral(value: AttributeJson['example']): string {
   return JSON.stringify(value);
 }
 
-function generateMetadataTypes(): string {
+type GeneratedAttribute = {
+  file: string;
+  key: string;
+  constantName: string;
+  attributeJson: AttributeJson;
+  isDeprecated: boolean;
+};
+
+function generateAttributeNameType(allAttributes: GeneratedAttribute[]): string {
+  const allConstantNames = allAttributes.map((attribute) => attribute.constantName);
+  return `export type AttributeName = ${allConstantNames.map((name) => `typeof ${name}`).join(' | ')};\n\n`;
+}
+
+function generateRuntimeMetadataTypes(): string {
   return `
 export type AttributeType =
   | 'string'
@@ -774,18 +797,7 @@ export interface DeprecationInfo {
   transformation?: string;
 }
 
-export interface ChangelogEntry {
-  /** The sentry-conventions release version */
-  version: string;
-  /** GitHub PR numbers */
-  prs?: number[];
-  /** Optional description of what changed */
-  description?: string;
-}
-
 export interface AttributeMetadata {
-  /** A description of the attribute */
-  brief: string;
   /** The type of the attribute value */
   type: AttributeType;
   /** How PII scrubbing should be applied to the attribute value */
@@ -796,34 +808,16 @@ export interface AttributeMetadata {
   visibility: AttributeVisibility;
   /** If an attribute has a dynamic suffix */
   hasDynamicSuffix?: boolean;
-  /** An example value of the attribute */
-  example?: AttributeValue;
-  /** Example values of the attribute */
-  examples?: AttributeValue[];
   /** If an attribute was deprecated, and what it was replaced with */
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
   aliases?: AttributeName[];
-  /** Changelog entries tracking how this attribute has changed across versions */
-  changelog?: ChangelogEntry[];
-  /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
-  additionalContext?: string[];
 }
 
 `;
 }
 
-function generateMetadataDict(
-  attributesDir: string,
-  attributeFiles: string[],
-  allAttributes: Array<{
-    file: string;
-    key: string;
-    constantName: string;
-    attributeJson: AttributeJson;
-    isDeprecated: boolean;
-  }>,
-): string {
+function generateRuntimeMetadataDict(allAttributes: GeneratedAttribute[]): string {
   // Use string literal keys so bundlers can tree-shake unused attribute constants.
   let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {\n';
 
@@ -835,20 +829,14 @@ function generateMetadataDict(
 
   attributeTypeMap += '};\n\n';
 
-  // Generate type for the attribute names from the individual constants
-  const allConstantNames = allAttributes.map((attr) => attr.constantName);
-  const attributeNameType = `export type AttributeName = ${allConstantNames.map((name) => `typeof ${name}`).join(' | ')};\n\n`;
-
-  let metadataDict = attributeTypeMap + attributeNameType;
+  let metadataDict = attributeTypeMap + generateAttributeNameType(allAttributes);
   metadataDict += 'export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {\n';
 
   for (const { key, attributeJson } of allAttributes) {
-    const { brief, type, apply_scrubbing, is_in_otel, has_dynamic_suffix, deprecation, alias } = attributeJson;
-    const examples = getAttributeExamples(attributeJson);
+    const { type, apply_scrubbing, is_in_otel, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const visibility = getVisibility(attributeJson);
 
     metadataDict += `  ${JSON.stringify(key)}: {\n`;
-    metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
     metadataDict += `    type: '${type}',\n`;
 
     // Build scrubbing info structure
@@ -866,13 +854,6 @@ function generateMetadataDict(
 
     if (has_dynamic_suffix) {
       metadataDict += '    hasDynamicSuffix: true,\n';
-    }
-
-    if (examples !== undefined) {
-      metadataDict += `    example: ${JSON.stringify(examples[0])},\n`;
-      if (attributeJson.examples !== undefined) {
-        metadataDict += `    examples: ${JSON.stringify(examples)},\n`;
-      }
     }
 
     // Build deprecation info structure if present
@@ -911,30 +892,85 @@ function generateMetadataDict(
       metadataDict += `    aliases: [${stringAliases}],\n`;
     }
 
-    if (attributeJson.changelog && attributeJson.changelog.length > 0) {
-      metadataDict += '    changelog: [\n';
-      for (const entry of attributeJson.changelog) {
-        metadataDict += '      {';
-        metadataDict += ` version: ${JSON.stringify(entry.version)}`;
-        if (entry.prs && entry.prs.length > 0) {
-          metadataDict += `, prs: [${entry.prs.join(', ')}]`;
-        }
-        if (entry.description) {
-          metadataDict += `, description: ${JSON.stringify(entry.description)}`;
-        }
-        metadataDict += ' },\n';
-      }
-      metadataDict += '    ],\n';
-    }
-
-    if (attributeJson.additional_context && attributeJson.additional_context.length > 0) {
-      metadataDict += `    additionalContext: ${JSON.stringify(attributeJson.additional_context)},\n`;
-    }
-
     metadataDict += '  },\n';
   }
 
   metadataDict += '};\n\n';
 
   return metadataDict;
+}
+
+function generateDocumentationTypes(): string {
+  return `
+import type { AttributeName, AttributeValue } from './attributes';
+
+export interface ChangelogEntry {
+  /** The sentry-conventions release version */
+  version: string;
+  /** GitHub PR numbers */
+  prs?: number[];
+  /** Optional description of what changed */
+  description?: string;
+}
+
+export interface AttributeDocumentation {
+  /** A description of the attribute */
+  brief: string;
+  /** An example value of the attribute */
+  example?: AttributeValue;
+  /** Example values of the attribute */
+  examples?: AttributeValue[];
+  /** Changelog entries tracking how this attribute has changed across versions */
+  changelog?: ChangelogEntry[];
+  /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
+  additionalContext?: string[];
+}
+
+`;
+}
+
+function generateDocumentationDict(allAttributes: GeneratedAttribute[]): string {
+  let briefConstants = '';
+  let documentationDict = 'export const ATTRIBUTE_DOCUMENTATION: Record<AttributeName, AttributeDocumentation> = {\n';
+
+  for (const { key, constantName, attributeJson } of allAttributes) {
+    const examples = getAttributeExamples(attributeJson);
+    const briefConstantName = `${constantName}_BRIEF`;
+
+    briefConstants += `export const ${briefConstantName} = ${JSON.stringify(attributeJson.brief)};\n\n`;
+    documentationDict += `  ${JSON.stringify(key)}: {\n`;
+    documentationDict += `    brief: ${JSON.stringify(attributeJson.brief)},\n`;
+
+    if (examples !== undefined) {
+      documentationDict += `    example: ${JSON.stringify(examples[0])},\n`;
+      if (attributeJson.examples !== undefined) {
+        documentationDict += `    examples: ${JSON.stringify(examples)},\n`;
+      }
+    }
+
+    if (attributeJson.changelog && attributeJson.changelog.length > 0) {
+      documentationDict += '    changelog: [\n';
+      for (const entry of attributeJson.changelog) {
+        documentationDict += '      {';
+        documentationDict += ` version: ${JSON.stringify(entry.version)}`;
+        if (entry.prs && entry.prs.length > 0) {
+          documentationDict += `, prs: [${entry.prs.join(', ')}]`;
+        }
+        if (entry.description) {
+          documentationDict += `, description: ${JSON.stringify(entry.description)}`;
+        }
+        documentationDict += ' },\n';
+      }
+      documentationDict += '    ],\n';
+    }
+
+    if (attributeJson.additional_context && attributeJson.additional_context.length > 0) {
+      documentationDict += `    additionalContext: ${JSON.stringify(attributeJson.additional_context)},\n`;
+    }
+
+    documentationDict += '  },\n';
+  }
+
+  documentationDict += '};\n\n';
+  return briefConstants + documentationDict;
 }

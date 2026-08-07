@@ -15,6 +15,7 @@ describe('generateAttributes', () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
+    const jsDocumentationOutputFilePath = path.join(temporaryDirectory, 'attributeDocumentation.ts');
     const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
     fs.mkdirSync(attributesDir);
     fs.writeFileSync(
@@ -43,15 +44,27 @@ describe('generateAttributes', () => {
     );
 
     try {
-      await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath });
+      await generateAttributes({
+        attributesDir,
+        jsOutputFilePath,
+        jsDocumentationOutputFilePath,
+        pythonOutputFilePath,
+      });
 
       const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
       expect(javascript).toContain('* @example "first"');
       expect(javascript).toContain('* @example "second"');
-      expect(javascript).toContain('example: "first",');
-      expect(javascript).toContain('examples: ["first","second"],');
-      expect(javascript).toContain('example: ["first","second"],');
-      expect(javascript).toContain('examples: [["first","second"],["third"]],');
+      expect(javascript).toContain("type: 'string',");
+      expect(javascript).not.toContain('example: "first",');
+      expect(javascript).not.toContain('examples: ["first","second"],');
+
+      const documentation = fs.readFileSync(jsDocumentationOutputFilePath, 'utf8');
+      expect(documentation).toContain('export const TEST_ATTRIBUTE_BRIEF = "An attribute used to test generation.";');
+      expect(documentation).toContain('brief: "An attribute used to test generation.",');
+      expect(documentation).toContain('example: "first",');
+      expect(documentation).toContain('examples: ["first","second"],');
+      expect(documentation).toContain('example: ["first","second"],');
+      expect(documentation).toContain('examples: [["first","second"],["third"]],');
 
       const python = fs.readFileSync(pythonOutputFilePath, 'utf8');
       expect(python.indexOf('examples: Optional[List[AttributeValue]]')).toBeGreaterThan(
