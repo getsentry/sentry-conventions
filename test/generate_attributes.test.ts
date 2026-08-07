@@ -56,13 +56,12 @@ describe('generateAttributes', () => {
       const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
       expect(javascript).toContain('* @example "first"');
       expect(javascript).toContain('* @example "second"');
-      expect(javascript).toContain('example: "first",');
-      expect(javascript).toContain('examples: ["first","second"],');
+      expect(javascript).toContain("type: 'string',");
+      expect(javascript).not.toContain('example: "first",');
+      expect(javascript).not.toContain('examples: ["first","second"],');
 
       const metadata = fs.readFileSync(jsMetadataOutputFilePath, 'utf8');
-      expect(metadata).toContain("type: 'string',");
-      expect(metadata).not.toContain('brief:');
-      expect(metadata).not.toContain('example:');
+      expect(metadata).toContain("export { ATTRIBUTE_METADATA, ATTRIBUTE_TYPE } from './attributes';");
 
       const documentation = fs.readFileSync(jsDocumentationOutputFilePath, 'utf8');
       expect(documentation).toContain('example: "first",');

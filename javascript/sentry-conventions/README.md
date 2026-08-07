@@ -28,8 +28,9 @@ The package exports:
 - `attributes/documentation`: contains descriptions, examples, additional context, and changelogs
 - `op`: contains constants for span operations used in Sentry
 
-For metadata used at runtime, import the smaller entry point directly:
+Runtime metadata and documentation are separate:
 
 ```ts
 import { ATTRIBUTE_METADATA } from '@sentry/conventions/attributes/metadata';
+import { ATTRIBUTE_DOCUMENTATION } from '@sentry/conventions/attributes/documentation';
 ```

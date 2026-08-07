@@ -5,15 +5,9 @@ import { ATTRIBUTE_METADATA as LEGACY_ATTRIBUTE_METADATA } from '../javascript/s
 import { ATTRIBUTE_METADATA } from '../javascript/sentry-conventions/src/attributeMetadata';
 
 describe('JavaScript attribute metadata entry points', () => {
-  it('keeps the legacy metadata export equivalent to the split exports', () => {
+  it('exposes the same runtime metadata from both entry points', () => {
+    expect(LEGACY_ATTRIBUTE_METADATA).toBe(ATTRIBUTE_METADATA);
     expect(Object.keys(ATTRIBUTE_METADATA)).toEqual(Object.keys(ATTRIBUTE_DOCUMENTATION));
-
-    for (const key of Object.keys(LEGACY_ATTRIBUTE_METADATA) as Array<keyof typeof LEGACY_ATTRIBUTE_METADATA>) {
-      expect(LEGACY_ATTRIBUTE_METADATA[key]).toEqual({
-        ...ATTRIBUTE_METADATA[key],
-        ...ATTRIBUTE_DOCUMENTATION[key],
-      });
-    }
   });
 
   it('keeps documentation fields out of runtime metadata', () => {

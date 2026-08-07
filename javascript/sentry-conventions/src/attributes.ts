@@ -17584,18 +17584,7 @@ export interface DeprecationInfo {
   transformation?: string;
 }
 
-export interface ChangelogEntry {
-  /** The sentry-conventions release version */
-  version: string;
-  /** GitHub PR numbers */
-  prs?: number[];
-  /** Optional description of what changed */
-  description?: string;
-}
-
 export interface AttributeMetadata {
-  /** A description of the attribute */
-  brief: string;
   /** The type of the attribute value */
   type: AttributeType;
   /** How PII scrubbing should be applied to the attribute value */
@@ -17606,18 +17595,10 @@ export interface AttributeMetadata {
   visibility: AttributeVisibility;
   /** If an attribute has a dynamic suffix */
   hasDynamicSuffix?: boolean;
-  /** An example value of the attribute */
-  example?: AttributeValue;
-  /** Example values of the attribute */
-  examples?: AttributeValue[];
   /** If an attribute was deprecated, and what it was replaced with */
   deprecation?: DeprecationInfo;
   /** If there are attributes that alias to this attribute */
   aliases?: AttributeName[];
-  /** Changelog entries tracking how this attribute has changed across versions */
-  changelog?: ChangelogEntry[];
-  /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
-  additionalContext?: string[];
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
@@ -19207,823 +19188,590 @@ export type AttributeName =
 
 export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   address: {
-    brief: 'The destination hostname or IP address for a TCP connection.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'example.com',
-    examples: ['example.com'],
     deprecation: {
       replacement: 'server.address',
       reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
       status: 'backfill',
     },
     aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: 'next', prs: [534], description: 'Added address attribute' }],
   },
   'ai.citations': {
-    brief: 'References or sources cited by the AI model in its response.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['Citation 1', 'Citation 2'],
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'ai.completion_tokens.used': {
-    brief: 'The number of tokens used to respond to the message.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 10,
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
       status: 'backfill',
     },
     aliases: ['gen_ai.usage.output_tokens', 'gen_ai.usage.completion_tokens'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
   'ai.documents': {
-    brief: 'Documents or content chunks used as context for the AI model.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['document1.txt', 'document2.pdf'],
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'ai.finish_reason': {
-    brief: 'The reason why the model stopped generating.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'COMPLETE',
     deprecation: {
       replacement: 'gen_ai.response.finish_reasons',
       status: 'backfill',
     },
     aliases: ['gen_ai.response.finish_reasons'],
-    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
   },
   'ai.frequency_penalty': {
-    brief:
-      'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.5,
     deprecation: {
       replacement: 'gen_ai.request.frequency_penalty',
       status: 'backfill',
     },
     aliases: ['gen_ai.request.frequency_penalty'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [55, 57, 61, 108] },
-    ],
   },
   'ai.function_call': {
-    brief:
-      'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'function_name',
     deprecation: {
       replacement: 'gen_ai.tool.name',
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.name', 'mcp.tool.name'],
-    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108] }],
   },
   'ai.generation_id': {
-    brief: 'Unique identifier for the completion.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'gen_123abc',
     deprecation: {
       replacement: 'gen_ai.response.id',
       status: 'backfill',
     },
     aliases: ['gen_ai.response.id'],
-    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
   },
   'ai.input_messages': {
-    brief: 'The input messages sent to the model',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
     aliases: ['gen_ai.request.messages'],
-    changelog: [{ version: '0.1.0', prs: [65, 119] }, { version: '0.0.0' }],
   },
   'ai.is_search_required': {
-    brief: 'Boolean indicating if the model needs to perform a search.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: false,
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'ai.metadata': {
-    brief: 'Extra metadata passed to an AI pipeline step.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '{"user_id": 123, "session_id": "abc123"}',
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55, 127] },
-    ],
   },
   'ai.model_id': {
-    brief: 'The vendor-specific ID of the model used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'gpt-4',
     deprecation: {
       replacement: 'gen_ai.request.model',
       status: 'backfill',
     },
     aliases: ['gen_ai.request.model'],
-    changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
   },
   'ai.model.provider': {
-    brief: 'The provider of the model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'openai',
     deprecation: {
       replacement: 'gen_ai.provider.name',
       status: 'backfill',
     },
     aliases: ['gen_ai.provider.name', 'gen_ai.system'],
-    changelog: [
-      { version: '0.4.0', prs: [253] },
-      { version: '0.1.0', prs: [57, 61, 108, 127] },
-    ],
   },
   'ai.pipeline.name': {
-    brief: 'The name of the AI pipeline.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Autofix Pipeline',
     deprecation: {
       replacement: 'gen_ai.pipeline.name',
       status: 'backfill',
     },
     aliases: ['gen_ai.pipeline.name'],
-    changelog: [{ version: '0.1.0', prs: [53, 76, 108, 127] }],
   },
   'ai.preamble': {
-    brief:
-      "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'You are now a clown.',
     deprecation: {
       replacement: 'gen_ai.system_instructions',
       status: 'backfill',
     },
     aliases: ['gen_ai.system_instructions'],
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'ai.presence_penalty': {
-    brief:
-      'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.5,
     deprecation: {
       replacement: 'gen_ai.request.presence_penalty',
       status: 'backfill',
     },
     aliases: ['gen_ai.request.presence_penalty'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [55, 57, 61, 108] },
-    ],
   },
   'ai.prompt.messages': {
-    brief: 'The input messages sent to the AI model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
     aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.prompt.messages attribute' }],
   },
   'ai.prompt_tokens.used': {
-    brief: 'The number of tokens used to process just the prompt.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 20,
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
       status: 'backfill',
     },
     aliases: ['gen_ai.usage.prompt_tokens', 'gen_ai.usage.input_tokens'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
   'ai.raw_prompting': {
-    brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'ai.responses': {
-    brief: 'The response messages sent back by the AI model.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['hello', 'world'],
     deprecation: {
       replacement: 'gen_ai.output.messages',
       status: 'backfill',
     },
-    changelog: [{ version: '0.1.0', prs: [65, 127] }, { version: '0.0.0' }],
   },
   'ai.response_format': {
-    brief: 'For an AI model call, the format of the response',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'json_object',
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55, 127] },
-    ],
   },
   'ai.response.text': {
-    brief: 'The text response from the AI model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'The weather in Paris is currently rainy.',
     deprecation: {
       replacement: 'gen_ai.output.messages',
       status: 'backfill',
     },
     aliases: ['gen_ai.output.messages', 'ai.response.toolCalls'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.text attribute' }],
   },
   'ai.response.toolCalls': {
-    brief: 'The tool calls in the AI model response.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
       status: 'backfill',
     },
     aliases: ['gen_ai.output.messages', 'ai.response.text'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
   },
   'ai.search_queries': {
-    brief: 'Queries used to search for relevant context or documents.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['climate change effects', 'renewable energy'],
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'ai.search_results': {
-    brief: 'Results returned from search queries for context.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['search_result_1, search_result_2'],
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'ai.seed': {
-    brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1234567890',
     deprecation: {
       replacement: 'gen_ai.request.seed',
       status: 'backfill',
     },
     aliases: ['gen_ai.request.seed'],
-    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
   },
   'ai.streaming': {
-    brief: 'Whether the request was streamed back.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
     deprecation: {
       replacement: 'gen_ai.response.streaming',
       status: 'backfill',
     },
     aliases: ['gen_ai.response.streaming'],
-    changelog: [{ version: '0.1.0', prs: [76, 108] }, { version: '0.0.0' }],
   },
   'ai.tags': {
-    brief: 'Tags that describe an AI pipeline step.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '{"executed_function": "add_integers"}',
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55, 127] },
-    ],
   },
   'ai.temperature': {
-    brief:
-      'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.1,
     deprecation: {
       replacement: 'gen_ai.request.temperature',
       status: 'backfill',
     },
     aliases: ['gen_ai.request.temperature'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [55, 57, 61, 108] },
-    ],
   },
   'ai.texts': {
-    brief: 'Raw text inputs provided to the model.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['Hello, how are you?', 'What is the capital of France?'],
     deprecation: {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
     aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt'],
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'ai.toolCall.args': {
-    brief: 'The arguments of the tool call.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '{"location": "Paris"}',
     deprecation: {
       replacement: 'gen_ai.tool.call.arguments',
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.call.arguments', 'gen_ai.tool.input'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.args attribute' }],
   },
   'ai.toolCall.result': {
-    brief: 'The result of the tool call.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
-    brief: 'For an AI model call, the functions that are available',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['function_1', 'function_2'],
     deprecation: {
       replacement: 'gen_ai.tool.definitions',
       status: 'backfill',
     },
-    changelog: [{ version: '0.1.0', prs: [55, 65, 127] }],
   },
   'ai.tool_calls': {
-    brief: 'For an AI model call, the tool calls that were made.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['tool_call_1', 'tool_call_2'],
     deprecation: {
       replacement: 'gen_ai.output.messages',
       status: 'backfill',
     },
-    changelog: [{ version: '0.1.0', prs: [55, 65] }],
   },
   'ai.top_k': {
-    brief:
-      'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 35,
     deprecation: {
       replacement: 'gen_ai.request.top_k',
       status: 'backfill',
     },
     aliases: ['gen_ai.request.top_k'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [55, 57, 61, 108] },
-    ],
   },
   'ai.top_p': {
-    brief:
-      'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.7,
     deprecation: {
       replacement: 'gen_ai.request.top_p',
       status: 'backfill',
     },
     aliases: ['gen_ai.request.top_p'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [55, 57, 61, 108] },
-    ],
   },
   'ai.total_cost': {
-    brief: 'The total cost for the tokens used.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12.34,
     deprecation: {
       replacement: 'gen_ai.cost.total_tokens',
       status: 'backfill',
     },
     aliases: ['gen_ai.cost.total_tokens'],
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [53] },
-    ],
   },
   'ai.total_tokens.used': {
-    brief: 'The total number of tokens used to process the prompt.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 30,
     deprecation: {
       replacement: 'gen_ai.usage.total_tokens',
       status: 'backfill',
     },
     aliases: ['gen_ai.usage.total_tokens'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
   },
   'ai.warnings': {
-    brief: 'Warning messages generated during model execution.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['Token limit exceeded'],
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.1.0', prs: [55] },
-    ],
   },
   'angular.version': {
-    brief: 'The version of the Angular framework',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '17.1.0',
-    changelog: [{ version: '0.7.0', prs: [367], description: 'Added angular.version attribute' }],
   },
   'app.app_build': {
-    brief: 'Internal build identifier, as it appears on the platform.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1',
     deprecation: {
       replacement: 'app.build',
       reason: 'Deprecated in favor of app.build',
       status: 'backfill',
     },
     aliases: ['app.build'],
-    changelog: [
-      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_build in favor of app.build' },
-    ],
   },
   'app.app_identifier': {
-    brief: 'Version-independent application identifier, often a dotted bundle ID.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'com.example.myapp',
     deprecation: {
       replacement: 'app.identifier',
       reason: 'Deprecated in favor of app.identifier',
       status: 'backfill',
     },
     aliases: ['app.identifier'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [296],
-        description: 'Added and deprecated app.app_identifier in favor of app.identifier',
-      },
-    ],
   },
   'app.app_name': {
-    brief: 'Human readable application name, as it appears on the platform.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'My App',
     deprecation: {
       replacement: 'app.name',
       reason: 'Deprecated in favor of app.name',
       status: 'backfill',
     },
     aliases: ['app.name'],
-    changelog: [
-      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_name in favor of app.name' },
-    ],
   },
   'app.app_start_time': {
-    brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '2025-01-01T00:00:00.000Z',
     deprecation: {
       replacement: 'app.start_time',
       reason: 'Deprecated in favor of app.start_time',
       status: 'backfill',
     },
     aliases: ['app.start_time'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [296],
-        description: 'Added and deprecated app.app_start_time in favor of app.start_time',
-      },
-    ],
   },
   'app.app_version': {
-    brief: 'Human readable application version, as it appears on the platform.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1.0.0',
     deprecation: {
       replacement: 'app.version',
       reason: 'Deprecated in favor of app.version',
       status: 'backfill',
     },
     aliases: ['app.version'],
-    changelog: [
-      { version: '0.5.0', prs: [296], description: 'Added and deprecated app.app_version in favor of app.version' },
-    ],
   },
   'app.build': {
-    brief: 'Internal build identifier, as it appears on the platform.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1',
     aliases: ['app.app_build'],
-    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.build attribute' }],
   },
   'app.identifier': {
-    brief: 'Version-independent application identifier, often a dotted bundle ID.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'com.example.myapp',
     aliases: ['app.app_identifier'],
-    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.identifier attribute' }],
   },
   'app.in_foreground': {
-    brief: 'Whether the application is currently in the foreground.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.in_foreground attribute' }],
   },
   'app.name': {
-    brief: 'Human readable application name, as it appears on the platform.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'My App',
     aliases: ['app.app_name'],
-    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.name attribute' }],
   },
   app_start_cold: {
-    brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
     deprecation: {
       replacement: 'app.vitals.start.cold.value',
       reason:
@@ -20031,31 +19779,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.start.cold.value'],
-    changelog: [
-      { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
-    ],
   },
   'app.start_time': {
-    brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '2025-01-01T00:00:00.000Z',
     aliases: ['app.app_start_time'],
-    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.start_time attribute' }],
   },
   app_start_type: {
-    brief: 'Mobile app start variant. Either cold or warm.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'cold',
     deprecation: {
       replacement: 'app.vitals.start.type',
       reason:
@@ -20063,21 +19803,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.start.type'],
-    changelog: [
-      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.start.type' },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
   },
   app_start_warm: {
-    brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
     deprecation: {
       replacement: 'app.vitals.start.warm.value',
       reason:
@@ -20085,665 +19818,462 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.start.warm.value'],
-    changelog: [
-      { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
-    ],
   },
   'app.version': {
-    brief: 'Human readable application version, as it appears on the platform.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1.0.0',
     aliases: ['app.app_version'],
-    changelog: [{ version: '0.5.0', prs: [296], description: 'Added app.version attribute' }],
   },
   'app.vitals.frames.delay.value': {
-    brief:
-      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 5,
     aliases: ['frames.delay'],
-    changelog: [
-      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.delay.value to replace frames.delay' },
-    ],
   },
   'app.vitals.frames.frozen.count': {
-    brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 3,
     aliases: ['frames.frozen', 'sentry.frames.frozen'],
-    changelog: [
-      { version: 'next', description: 'Added sentry.frames.frozen as an alias' },
-      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
-    ],
   },
   'app.vitals.frames.frozen.rate': {
-    brief:
-      'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.5,
     aliases: ['frames_frozen_rate'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
   },
   'app.vitals.frames.slow.count': {
-    brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
     aliases: ['frames.slow', 'sentry.frames.slow'],
-    changelog: [
-      { version: 'next', description: 'Added sentry.frames.slow as an alias' },
-      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
-    ],
   },
   'app.vitals.frames.slow.rate': {
-    brief:
-      'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.25,
     aliases: ['frames_slow_rate'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
   },
   'app.vitals.frames.total.count': {
-    brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 60,
     aliases: ['frames.total', 'sentry.frames.total'],
-    changelog: [
-      { version: 'next', description: 'Added sentry.frames.total as an alias' },
-      { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
-    ],
   },
   'app.vitals.stall.duration': {
-    brief:
-      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 4000,
     aliases: ['stall_total_time'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
   },
   'app.vitals.stall.percentage': {
-    brief:
-      'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.8,
     aliases: ['stall_percentage'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
   },
   'app.vitals.start.cold.value': {
-    brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
     aliases: ['app_start_cold'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' }],
   },
   'app.vitals.start.prewarmed': {
-    brief: 'Whether the app start was prewarmed.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.11.0', prs: [379], description: 'Added app.vitals.start.prewarmed attribute' }],
   },
   'app.vitals.start.reason': {
-    brief: 'The reason that triggered the app start.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'push',
-    changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.reason attribute' }],
   },
   'app.vitals.start.screen': {
-    brief:
-      'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'MainActivity',
-    changelog: [{ version: '0.7.0', prs: [353], description: 'Added app.vitals.start.screen attribute' }],
   },
   'app.vitals.start.type': {
-    brief: 'The type of app start, for example `cold` or `warm`',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'cold',
     aliases: ['app_start_type'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.type attribute' }],
   },
   'app.vitals.start.warm.value': {
-    brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
     aliases: ['app_start_warm'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' }],
   },
   'app.vitals.ttfd.value': {
-    brief: 'The duration of time to full display in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
     aliases: ['time_to_full_display'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttfd.value attribute' }],
   },
   'app.vitals.ttid.value': {
-    brief: 'The duration of time to initial display in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
     aliases: ['time_to_initial_display'],
-    changelog: [{ version: '0.5.0', prs: [313], description: 'Added app.vitals.ttid.value attribute' }],
   },
   'art.gc.blocking_count': {
-    brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.blocking_count attribute' }],
   },
   'art.gc.blocking_time': {
-    brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 11.873,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.blocking_time attribute' }],
   },
   'art.gc.pre_oome_count': {
-    brief:
-      'Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.pre_oome_count attribute' }],
   },
   'art.gc.total_count': {
-    brief: 'Total number of garbage collections performed by the Android Runtime',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.total_count attribute' }],
   },
   'art.gc.total_time': {
-    brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 11.807,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.total_time attribute' }],
   },
   'art.gc.waiting_time': {
-    brief:
-      'Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 8.054,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.gc.waiting_time attribute' }],
   },
   'art.memory.free': {
-    brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 3181568,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free attribute' }],
   },
   'art.memory.free_until_gc': {
-    brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 3181568,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free_until_gc attribute' }],
   },
   'art.memory.free_until_oome': {
-    brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 196083712,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.free_until_oome attribute' }],
   },
   'art.memory.max': {
-    brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 201326592,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.max attribute' }],
   },
   'art.memory.total': {
-    brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 7774208,
-    changelog: [{ version: '0.11.0', prs: [382], description: 'Added art.memory.total attribute' }],
   },
   'aws.cloudwatch.logs.log_group': {
-    brief: 'The name of the CloudWatch Logs log group',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/aws/lambda/my-function',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.log_group attribute' }],
   },
   'aws.cloudwatch.logs.log_stream': {
-    brief: 'The name of the CloudWatch Logs log stream',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '2024/01/01/[$LATEST]abcdef1234567890',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.log_stream attribute' }],
   },
   'aws.cloudwatch.logs.url': {
-    brief: 'The URL to the CloudWatch Logs log group',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
   },
   'aws.dynamodb.attribute_definitions': {
-    brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: ['{ "AttributeName": "string", "AttributeType": "string" }'],
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.attribute_definitions attribute' }],
   },
   'aws.dynamodb.consistent_read': {
-    brief: 'The value of the `ConsistentRead` request parameter.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.consistent_read attribute' }],
   },
   'aws.dynamodb.consumed_capacity': {
-    brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: [
-      '{ "CapacityUnits": number, "GlobalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "LocalSecondaryIndexes": { "string" : { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number } }, "ReadCapacityUnits": number, "Table": { "CapacityUnits": number, "ReadCapacityUnits": number, "WriteCapacityUnits": number }, "TableName": "string", "WriteCapacityUnits": number }',
-    ],
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.consumed_capacity attribute' }],
   },
   'aws.dynamodb.count': {
-    brief: 'The value of the `Count` response parameter.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.count attribute' }],
   },
   'aws.dynamodb.exclusive_start_table': {
-    brief: 'The value of the `ExclusiveStartTableName` request parameter.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Users',
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.exclusive_start_table attribute' }],
   },
   'aws.dynamodb.global_secondary_indexes': {
-    brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: [
-      '{ "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
-    ],
-    changelog: [
-      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.global_secondary_indexes attribute' },
-    ],
   },
   'aws.dynamodb.global_secondary_index_updates': {
-    brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: [
-      '{ "Create": { "IndexName": "string", "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" }, "ProvisionedThroughput": { "ReadCapacityUnits": number, "WriteCapacityUnits": number } }',
-    ],
-    changelog: [
-      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.global_secondary_index_updates attribute' },
-    ],
   },
   'aws.dynamodb.index_name': {
-    brief: 'The value of the `IndexName` request parameter.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'name_to_group',
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.index_name attribute' }],
   },
   'aws.dynamodb.item_collection_metrics': {
-    brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example:
-      '{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.item_collection_metrics attribute' }],
   },
   'aws.dynamodb.limit': {
-    brief: 'The value of the `Limit` request parameter.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.limit attribute' }],
   },
   'aws.dynamodb.local_secondary_indexes': {
-    brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: [
-      '{ "IndexArn": "string", "IndexName": "string", "IndexSizeBytes": number, "ItemCount": number, "KeySchema": [ { "AttributeName": "string", "KeyType": "string" } ], "Projection": { "NonKeyAttributes": [ "string" ], "ProjectionType": "string" } }',
-    ],
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.local_secondary_indexes attribute' }],
   },
   'aws.dynamodb.projection': {
-    brief: 'The value of the `ProjectionExpression` request parameter.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Title, Price, Color',
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.projection attribute' }],
   },
   'aws.dynamodb.provisioned_read_capacity': {
-    brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 1,
-    changelog: [
-      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.provisioned_read_capacity attribute' },
-    ],
   },
   'aws.dynamodb.provisioned_write_capacity': {
-    brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 2,
-    changelog: [
-      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.provisioned_write_capacity attribute' },
-    ],
   },
   'aws.dynamodb.scanned_count': {
-    brief: 'The value of the `ScannedCount` response parameter.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 50,
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.scanned_count attribute' }],
   },
   'aws.dynamodb.scan_forward': {
-    brief: 'The value of the `ScanIndexForward` request parameter.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.scan_forward attribute' }],
   },
   'aws.dynamodb.segment': {
-    brief: 'The value of the `Segment` request parameter.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.segment attribute' }],
   },
   'aws.dynamodb.select': {
-    brief: 'The value of the `Select` request parameter.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'ALL_ATTRIBUTES',
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.select attribute' }],
   },
   'aws.dynamodb.table_count': {
-    brief: 'The number of items in the `TableNames` response parameter.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 20,
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_count attribute' }],
   },
   'aws.dynamodb.table_names': {
-    brief: 'The keys in the `RequestItems` object field.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: ['Users', 'Cats'],
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_names attribute' }],
   },
   'aws.dynamodb.total_segments': {
-    brief: 'The value of the `TotalSegments` request parameter.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 100,
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.total_segments attribute' }],
   },
   'aws.extended_request_id': {
-    brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
     aliases: ['aws.request.extended_id'],
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.extended_request_id attribute' }],
   },
   'aws.kinesis.stream_name': {
-    brief: 'The name of the AWS Kinesis stream the request refers to.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'some-stream-name',
     aliases: ['aws.kinesis.stream.name'],
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.kinesis.stream_name attribute' }],
   },
   'aws.kinesis.stream.name': {
-    brief: 'The name of the AWS Kinesis stream the request refers to.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'some-stream-name',
     deprecation: {
       replacement: 'aws.kinesis.stream_name',
       reason:
@@ -20751,209 +20281,138 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['aws.kinesis.stream_name'],
-    changelog: [
-      {
-        version: '0.16.0',
-        prs: [480],
-        description: 'Added aws.kinesis.stream.name attribute, deprecated in favor of aws.kinesis.stream_name',
-      },
-    ],
   },
   'aws.lambda.aws_request_id': {
-    brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '8476a536-e9f4-11e8-9739-2dfe598c3fcd',
     deprecation: {
       replacement: 'faas.invocation_id',
       reason: 'This attribute is being deprecated in favor of faas.invocation_id',
       status: 'backfill',
     },
     aliases: ['faas.invocation_id', 'faas.execution'],
-    changelog: [
-      { version: '0.16.0', prs: [473], description: 'Added faas.execution as an alias' },
-      {
-        version: '0.11.1',
-        prs: [414, 424],
-        description: 'Deprecated aws.lambda.aws_request_id in favor of faas.invocation_id',
-      },
-      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.aws_request_id attribute' },
-    ],
   },
   'aws.lambda.execution_duration_in_millis': {
-    brief: 'The execution duration of the Lambda function invocation in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
-    changelog: [
-      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.execution_duration_in_millis attribute' },
-    ],
   },
   'aws.lambda.function_name': {
-    brief: 'The name of the Lambda function',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'my-function',
     deprecation: {
       replacement: 'faas.name',
       reason: 'Use the OTel-aligned faas.name attribute instead',
       status: 'backfill',
     },
     aliases: ['faas.name'],
-    changelog: [
-      { version: '0.11.1', prs: [414], description: 'Deprecated aws.lambda.function_name in favor of faas.name' },
-      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_name attribute' },
-    ],
   },
   'aws.lambda.function_version': {
-    brief: 'The version of the Lambda function',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '$LATEST',
     deprecation: {
       replacement: 'faas.version',
       reason: 'Use the OTel-aligned faas.version attribute instead',
       status: 'backfill',
     },
     aliases: ['faas.version'],
-    changelog: [
-      {
-        version: '0.11.1',
-        prs: [414, 424],
-        description: 'Deprecated aws.lambda.function_version in favor of faas.version',
-      },
-      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' },
-    ],
   },
   'aws.lambda.invoked_arn': {
-    brief: 'The full ARN of the Lambda function that was invoked',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
     aliases: ['aws.lambda.invoked_function_arn'],
-    changelog: [{ version: '0.11.1', prs: [414] }],
   },
   'aws.lambda.invoked_function_arn': {
-    brief: 'The full ARN of the Lambda function that was invoked',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'arn:aws:lambda:us-east-1:123456789012:function:my-function',
     deprecation: {
       replacement: 'aws.lambda.invoked_arn',
       reason: 'This attribute is being deprecated in favor of aws.lambda.invoked_arn',
       status: 'backfill',
     },
     aliases: ['aws.lambda.invoked_arn'],
-    changelog: [
-      {
-        version: '0.11.1',
-        prs: [414],
-        description: 'Deprecated aws.lambda.invoked_function_arn in favor of aws.lambda.invoked_arn',
-      },
-      { version: '0.7.0', prs: [369], description: 'Added aws.lambda.invoked_function_arn attribute' },
-    ],
   },
   'aws.lambda.remaining_time_in_millis': {
-    brief: 'The remaining time in milliseconds before the Lambda function times out',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 5000,
-    changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
   },
   'aws.log.group.names': {
-    brief: 'The name(s) of the AWS log group(s) an application is writing to.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: ['/aws/lambda/my-function', 'opentelemetry-service'],
-    changelog: [{ version: '0.11.1', prs: [414] }],
   },
   'aws.log.stream.names': {
-    brief: 'The name(s) of the AWS log stream(s) an application is writing to.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
-    changelog: [{ version: '0.11.1', prs: [414] }],
   },
   'aws.operation_name': {
-    brief: 'The name of the API operation invoked on an AWS service.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'PutObject',
-    examples: ['PutObject'],
     deprecation: {
       replacement: 'rpc.method',
       reason: 'This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.',
       status: 'backfill',
     },
     aliases: ['rpc.method'],
-    changelog: [{ version: 'next', prs: [536], description: 'Added aws.operation_name attribute' }],
   },
   aws_region: {
-    brief: 'The geographical region the AWS resource is running',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'us-east-1',
-    examples: ['us-east-1'],
     deprecation: {
       replacement: 'cloud.region',
       status: 'backfill',
     },
     aliases: ['cloud.region', 'gcp_region'],
-    changelog: [{ version: 'next', prs: [537], description: 'Added aws_region attribute' }],
   },
   'aws.request.extended_id': {
-    brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'wzHcyEWfmOGDIE5QOhTAqFDoDWP3y8IUvpNINCwL9N4TEHbUw0/gZJ+VZTmCNCWR7fezEN3eCiQ=',
     deprecation: {
       replacement: 'aws.extended_request_id',
       reason:
@@ -20961,296 +20420,201 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['aws.extended_request_id'],
-    changelog: [
-      {
-        version: '0.16.0',
-        prs: [480],
-        description: 'Added aws.request.extended_id attribute, deprecated in favor of aws.extended_request_id',
-      },
-    ],
   },
   'aws.request_id': {
-    brief: 'The AWS request ID as returned in the response headers.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
     aliases: ['aws.request.id'],
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.request_id attribute' }],
   },
   'aws.request.id': {
-    brief: 'The AWS request ID as returned in the response headers.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '79b9da39-b7ae-508a-a6bc-864b2829c622',
     deprecation: {
       replacement: 'aws.request_id',
       reason: 'This attribute is being deprecated in favor of aws.request_id, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
     aliases: ['aws.request_id'],
-    changelog: [
-      {
-        version: '0.16.0',
-        prs: [480],
-        description: 'Added aws.request.id attribute, deprecated in favor of aws.request_id',
-      },
-    ],
   },
   'aws.request.url': {
-    brief: 'The URL of the AWS API request.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https://sqs.us-east-1.amazonaws.com/123456789/my-queue',
     deprecation: {
       replacement: 'url.full',
       reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
     aliases: ['url.full', 'http.url', 'url'],
-    changelog: [{ version: 'next', description: 'Added aws.request.url attribute, deprecated in favor of url.full' }],
   },
   'aws.s3.bucket': {
-    brief: 'The S3 bucket name the request refers to.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'ot-demo-test',
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.s3.bucket attribute' }],
   },
   'aws.secretsmanager.secret.arn': {
-    brief: 'The ARN of the Secret stored in Secrets Manager.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
   },
   'aws.sns.topic.arn': {
-    brief:
-      'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
   },
   'aws.step_functions.activity.arn': {
-    brief: 'The ARN of the AWS Step Functions Activity.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
   },
   'aws.step_functions.state_machine.arn': {
-    brief: 'The ARN of the AWS Step Functions State Machine.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1',
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.state_machine.arn attribute' }],
   },
   blocked_main_thread: {
-    brief: 'Whether the main thread was blocked by the span.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.0.0' }],
   },
   'browser.bfcache.frame': {
-    brief:
-      "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'top',
-    examples: ['top', 'child'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
   },
   'browser.bfcache.not_restored_reason_count': {
-    brief:
-      'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2,
-    examples: [2],
-    changelog: [
-      { version: 'next', prs: [513], description: 'Added browser.bfcache.not_restored_reason_count attribute' },
-    ],
   },
   'browser.bfcache.outcome': {
-    brief:
-      "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'hit',
-    examples: ['hit', 'miss'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.outcome attribute' }],
   },
   'browser.bfcache.reason': {
-    brief:
-      'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'unload-listener',
-    examples: ['unload-listener', 'websocket', 'idbversionchangeevent', 'response-cache-control-no-store'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.reason attribute' }],
   },
   'browser.name': {
-    brief: 'The name of the browser.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Chrome',
     aliases: ['sentry.browser.name'],
-    changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
   },
   'browser.performance.navigation.activation_start': {
-    brief: 'The time between initiating a navigation to a page and the browser activating the page',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1.983,
     aliases: ['performance.activationStart'],
-    changelog: [
-      { version: '0.5.0', prs: [321], description: 'Added browser.performance.navigation.activation_start attribute' },
-    ],
   },
   'browser.performance.time_origin': {
-    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1776185678.886,
     aliases: ['performance.timeOrigin'],
-    changelog: [
-      { version: '0.5.0', prs: [321], description: 'Added browser.performance.time_origin attribute attribute' },
-    ],
   },
   'browser.report.type': {
-    brief: 'A browser report sent via reporting API..',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'network-error',
-    changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
   'browser.script.invoker': {
-    brief: 'How a script was called in the browser.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Window.requestAnimationFrame',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'browser.script.invoker_type': {
-    brief: 'Browser script entry point type.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'event-listener',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'browser.script.source_char_position': {
-    brief: 'A number representing the script character position of the script.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 678,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'browser.version': {
-    brief: 'The version of the browser.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '120.0.6099.130',
     aliases: ['sentry.browser.version'],
-    changelog: [{ version: '0.1.0', prs: [59, 127, 139] }],
   },
   'browser.web_vital.cls.report_event': {
-    brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'navigation',
-    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
   },
   'browser.web_vital.cls.source.<key>': {
-    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -21258,593 +20622,420 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: 'body > div#app',
     aliases: ['cls.source.<key>'],
-    changelog: [{ version: '0.5.0', prs: [234] }],
   },
   'browser.web_vital.cls.value': {
-    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.2361,
     aliases: ['cls'],
-    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.cls.value attribute' }],
   },
   'browser.web_vital.fcp.value': {
-    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 547.6951,
     aliases: ['fcp'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   'browser.web_vital.fp.value': {
-    brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 477.1926,
     aliases: ['fp'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   'browser.web_vital.inp.value': {
-    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 200,
     aliases: ['inp'],
-    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.inp.value attribute' }],
   },
   'browser.web_vital.lcp.element': {
-    brief: 'The HTML element selector or component name for which LCP was reported',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'body > div#app > div#container > div',
     aliases: ['lcp.element'],
-    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'browser.web_vital.lcp.id': {
-    brief: 'The id of the dom element responsible for the largest contentful paint',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '#gero',
     aliases: ['lcp.id'],
-    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'browser.web_vital.lcp.load_time': {
-    brief: 'The time it took for the LCP element to be loaded',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1402,
     aliases: ['lcp.loadTime'],
-    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'browser.web_vital.lcp.render_time': {
-    brief: 'The time it took for the LCP element to be rendered',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1685,
     aliases: ['lcp.renderTime'],
-    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'browser.web_vital.lcp.report_event': {
-    brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'pagehide',
-    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
   },
   'browser.web_vital.lcp.size': {
-    brief: 'The size of the largest contentful paint element',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1024,
     aliases: ['lcp.size'],
-    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'browser.web_vital.lcp.url': {
-    brief: 'The url of the dom element responsible for the largest contentful paint',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https://example.com/static/img.png',
     aliases: ['lcp.url'],
-    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'browser.web_vital.lcp.value': {
-    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2500,
     aliases: ['lcp'],
-    changelog: [{ version: '0.5.0', prs: [229], description: 'Added browser.web_vital.lcp.value attribute' }],
   },
   'browser.web_vital.ttfb.request_time': {
-    brief:
-      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1554.5814,
     aliases: ['ttfb.requestTime'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   'browser.web_vital.ttfb.value': {
-    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 194.3322,
     aliases: ['ttfb'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   'cache.hit': {
-    brief: 'If the cache was hit during this span.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.0.0' }],
   },
   'cache.item_size': {
-    brief: 'The size of the requested item in the cache. In bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 58,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'cache.key': {
-    brief: 'The key of the cache accessed.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['my-cache-key', 'my-other-cache-key'],
-    changelog: [{ version: '0.0.0' }],
   },
   'cache.operation': {
-    brief: 'The operation being performed on the cache.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'get',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'cache.ttl': {
-    brief: 'The ttl of the cache in seconds',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 120,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'cache.write': {
-    brief: 'If the cache operation resulted in a write to the cache.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.5.0' }],
   },
   channel: {
-    brief: 'The channel name that is being used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'mail',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'client.address': {
-    brief:
-      'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'example.com',
     aliases: ['http.client_ip'],
-    changelog: [{ version: '0.1.0', prs: [106, 127] }, { version: '0.0.0' }],
   },
   'client.port': {
-    brief: 'Client port number.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 5432,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'cloudflare.d1.duration': {
-    brief: 'The duration of a Cloudflare D1 operation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 543,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'cloudflare.d1.query_type': {
-    brief: 'The type of query executed in a Cloudflare D1 operation',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'run',
     deprecation: {
       replacement: 'db.operation.name',
       status: 'backfill',
     },
     aliases: ['db.operation.name', 'db.operation', 'redis.command'],
-    changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
-      { version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' },
-    ],
   },
   'cloudflare.d1.rows_read': {
-    brief: 'The number of rows read in a Cloudflare D1 operation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'cloudflare.d1.rows_written': {
-    brief: 'The number of rows written in a Cloudflare D1 operation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'cloudflare.durable_object.query.bindings': {
-    brief: 'The number of bound parameters passed to the SQL exec call.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2,
-    changelog: [
-      { version: '0.13.0', prs: [435], description: 'Added cloudflare.durable_object.query.bindings attribute' },
-    ],
   },
   'cloudflare.durable_object.response.rows_read': {
-    brief: 'The number of rows read by a Cloudflare Durable Object SQL operation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12,
-    changelog: [
-      { version: '0.13.0', prs: [435], description: 'Added cloudflare.durable_object.response.rows_read attribute' },
-    ],
   },
   'cloudflare.durable_object.response.rows_written': {
-    brief: 'The number of rows written by a Cloudflare Durable Object SQL operation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
-    changelog: [
-      { version: '0.13.0', prs: [435], description: 'Added cloudflare.durable_object.response.rows_written attribute' },
-    ],
   },
   'cloudflare.r2.bucket': {
-    brief: 'The name of the Cloudflare R2 bucket binding',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'MY_BUCKET',
-    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.bucket attribute' }],
   },
   'cloudflare.r2.operation': {
-    brief: 'The R2 API operation being performed',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'GetObject',
-    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.operation attribute' }],
   },
   'cloudflare.r2.request.delimiter': {
-    brief: 'The delimiter used to group objects in an R2 list operation',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/',
-    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.request.delimiter attribute' }],
   },
   'cloudflare.r2.request.key': {
-    brief: 'The object key used in the R2 operation',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'my-file.txt',
-    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.request.key attribute' }],
   },
   'cloudflare.r2.request.part_number': {
-    brief: 'The part number in a multipart upload operation',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
-    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.request.part_number attribute' }],
   },
   'cloudflare.r2.request.prefix': {
-    brief: 'The prefix used to filter objects in an R2 list operation',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'images/',
-    changelog: [{ version: '0.11.1', prs: [413], description: 'Added cloudflare.r2.request.prefix attribute' }],
   },
   'cloudflare.workflow.attempt': {
-    brief: 'The current attempt number for a Cloudflare Workflow step',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.attempt attribute' }],
   },
   'cloudflare.workflow.retries.backoff': {
-    brief: 'The backoff strategy for Cloudflare Workflow step retries',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'exponential',
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.backoff attribute' }],
   },
   'cloudflare.workflow.retries.delay': {
-    brief: 'The delay between Cloudflare Workflow step retries',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '5 seconds',
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.delay attribute' }],
   },
   'cloudflare.workflow.retries.limit': {
-    brief: 'The maximum number of retries for a Cloudflare Workflow step',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 3,
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.retries.limit attribute' }],
   },
   'cloudflare.workflow.timeout': {
-    brief: 'The timeout duration for a Cloudflare Workflow step',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1 minute',
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.workflow.timeout attribute' }],
   },
   'cloud.account.id': {
-    brief: 'The cloud account ID the resource is assigned to',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '123456789012',
-    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.account.id attribute' }],
   },
   'cloud.availability_zone': {
-    brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'us-east-1c',
-    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.availability_zone attribute' }],
   },
   'cloud.platform': {
-    brief: 'The cloud platform in use',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'aws_lambda',
-    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.platform attribute' }],
   },
   'cloud.provider': {
-    brief: 'Name of the cloud provider',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'aws',
-    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.provider attribute' }],
   },
   'cloud.region': {
-    brief: 'The geographical region the resource is running',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'us-east-1',
     aliases: ['aws_region', 'gcp_region'],
-    changelog: [
-      { version: 'next', description: 'Added aws_region and gcp_region as aliases' },
-      { version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' },
-    ],
   },
   'cloud.resource_id': {
-    brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
     aliases: ['faas.id'],
-    changelog: [
-      { version: '0.16.0', prs: [475], description: 'Added faas.id as an alias' },
-      { version: '0.11.1', prs: [414] },
-    ],
-    additionalContext: [
-      'This can be an identifier for a resource in AWS, GCP, or Azure. There may be some overlap in values found here with other attributes. For instance, an AWS lambda ARN may be found here as well as in `aws.lambda.invoked_arn`. OTEL recommends setting them alongside each other.',
-    ],
   },
   cls: {
-    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.2361,
     deprecation: {
       replacement: 'browser.web_vital.cls.value',
       reason: 'The CLS web vital is now recorded as a browser.web_vital.cls.value attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.cls.value'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [229],
-        description: "Added and deprecated attribute to document JS SDK's current behaviour",
-      },
-    ],
   },
   'cls.source.<key>': {
-    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -21852,166 +21043,115 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: 'body > div#app',
     deprecation: {
       replacement: 'browser.web_vital.cls.source.<key>',
       reason: 'The CLS source is now recorded as a browser.web_vital.cls.source.<key> attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.cls.source.<key>'],
-    changelog: [{ version: '0.5.0', prs: [234] }],
   },
   code: {
-    brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'DEADLINE_EXCEEDED',
-    examples: ['DEADLINE_EXCEEDED'],
     deprecation: {
       replacement: 'rpc.response.status_code',
       status: 'backfill',
     },
     aliases: ['rpc.grpc.status_code', 'rpc.response.status_code'],
-    changelog: [{ version: 'next', prs: [533], description: 'Added code attribute' }],
   },
   'code.filepath': {
-    brief:
-      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/app/myapplication/http/handler/server.py',
     deprecation: {
       replacement: 'code.file.path',
     },
     aliases: ['code.file.path'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'code.file.path': {
-    brief:
-      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/app/myapplication/http/handler/server.py',
     aliases: ['code.filepath'],
-    changelog: [{ version: '0.0.0' }],
   },
   'code.function': {
-    brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'server_request',
     aliases: ['code.function.name', 'django.function_name'],
-    changelog: [
-      { version: 'next', description: 'Added django.function_name as an alias' },
-      { version: '0.1.0', prs: [61, 74] },
-      { version: '0.0.0' },
-    ],
   },
   'code.function.name': {
-    brief: 'The method or function fully-qualified name without arguments.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'server_request',
     aliases: ['code.function', 'django.function_name'],
-    changelog: [
-      { version: 'next', description: 'Added django.function_name as an alias' },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
   },
   'code.lineno': {
-    brief:
-      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 42,
     deprecation: {
       replacement: 'code.line.number',
     },
     aliases: ['code.line.number'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
   },
   'code.line.number': {
-    brief:
-      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 42,
     aliases: ['code.lineno'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'code.namespace': {
-    brief:
-      "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'http.handler',
-    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   connectionType: {
-    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'wifi',
     deprecation: {
       replacement: 'network.connection.type',
       reason: 'Old namespace-less attribute, to be replaced with network.connection.type for span-first future',
       status: 'backfill',
     },
     aliases: ['network.connection.type', 'device.connection_type'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [279],
-        description: "Added and deprecated attribute to document JS SDK's current behaviour",
-      },
-    ],
   },
   'connection.rtt': {
-    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 100,
     deprecation: {
       replacement: 'network.connection.rtt',
       reason:
@@ -22019,105 +21159,71 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['network.connection.rtt'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [279],
-        description: "Added and deprecated attribute to document JS SDK's current behaviour",
-      },
-    ],
   },
   'culture.calendar': {
-    brief: 'The calendar system used by the culture.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'GregorianCalendar',
-    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   'culture.display_name': {
-    brief: 'Human readable name of the culture.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'English (United States)',
-    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   'culture.is_24_hour_format': {
-    brief: 'Whether the culture uses 24-hour time format.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   'culture.locale': {
-    brief: 'The locale identifier following RFC 4646.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'en-US',
-    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   'culture.timezone': {
-    brief: 'The timezone of the culture, as a geographic timezone identifier.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Europe/Vienna',
-    changelog: [{ version: '0.4.0', prs: [243] }],
   },
   'db.collection.name': {
-    brief: 'The name of a collection (table, container) within the database.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'users',
     aliases: ['db.mongodb.collection'],
-    changelog: [
-      { version: 'next', description: 'Added db.mongodb.collection as an alias' },
-      { version: '0.1.0', prs: [106, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'db.driver.name': {
-    brief: 'The name of the driver used for the database connection.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'psycopg2',
-    changelog: [{ version: '0.5.0', prs: [297], description: 'Added db.driver.name attribute' }],
   },
   'db.mongodb.collection': {
-    brief: 'The MongoDB collection being accessed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'users',
     deprecation: {
       replacement: 'db.collection.name',
       reason:
@@ -22125,109 +21231,72 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['db.collection.name'],
-    changelog: [
-      {
-        version: 'next',
-        description: 'Added db.mongodb.collection attribute, deprecated in favor of db.collection.name',
-      },
-    ],
   },
   'db.name': {
-    brief: 'The name of the database being accessed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'customers',
     deprecation: {
       replacement: 'db.namespace',
     },
     aliases: ['db.namespace'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'db.namespace': {
-    brief: 'The name of the database being accessed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'customers',
     aliases: ['db.name'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'db.operation': {
-    brief: 'The name of the operation being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'SELECT',
     deprecation: {
       replacement: 'db.operation.name',
       status: 'normalize',
     },
     aliases: ['db.operation.name', 'cloudflare.d1.query_type', 'redis.command'],
-    changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
-      { version: '0.4.0', prs: [199] },
-      { version: '0.1.0', prs: [61, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'db.operation.batch.size': {
-    brief:
-      'The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 3,
-    changelog: [{ version: '0.11.0', prs: [407], description: 'Added db.operation.batch.size attribute' }],
   },
   'db.operation.name': {
-    brief: 'The name of the operation being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'SELECT',
     aliases: ['db.operation', 'cloudflare.d1.query_type', 'redis.command'],
-    changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
   },
   'db.params': {
-    brief: 'The query bindings for a database request.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '[{"x": 100}]',
-    examples: ['[{"x": 100}]'],
     deprecation: {
       replacement: 'db.query.parameter.<key>',
       reason:
         'Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.',
     },
-    changelog: [{ version: 'next', prs: [529], description: 'Added db.params attribute' }],
   },
   'db.query.parameter.<key>': {
-    brief:
-      'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -22235,119 +21304,77 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "db.query.parameter.foo='123'",
-    changelog: [{ version: '0.1.0', prs: [103, 127] }],
   },
   'db.query.summary': {
-    brief:
-      'A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'SELECT users',
-    examples: ['SELECT users', 'INSERT products; UPDATE orders'],
-    changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
-      { version: '0.4.0', prs: [208] },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
   },
   'db.query.text': {
-    brief:
-      'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'SELECT * FROM users WHERE id = $1',
     aliases: ['db.statement', 'query'],
-    changelog: [
-      { version: 'next', description: 'Added query as an alias' },
-      { version: '0.4.0', prs: [208] },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
   },
   'db.redis.connection': {
-    brief: 'The redis connection name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'my-redis-instance',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'db.redis.key': {
-    brief: 'The key the Redis command is operating on.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'user:2047:city',
     aliases: ['redis.key'],
-    changelog: [
-      { version: 'next', description: 'Added redis.key as an alias' },
-      { version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' },
-    ],
   },
   'db.redis.parameters': {
-    brief: 'The array of command parameters given to a redis command.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['test', '*'],
-    changelog: [{ version: '0.0.0' }],
   },
   'db.response.status_code': {
-    brief:
-      'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'ORA-17002',
-    changelog: [{ version: '0.16.0', prs: [462], description: 'Added db.response.status_code attribute' }],
   },
   'db.sql.bindings': {
-    brief: 'The array of query bindings.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['1', 'foo'],
     deprecation: {
       replacement: 'db.query.parameter.<key>',
       reason:
         'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.',
     },
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'db.statement': {
-    brief: 'The database statement being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'SELECT * FROM users WHERE id = $1',
     deprecation: {
       replacement: 'db.query.text',
       reason:
@@ -22355,78 +21382,52 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'normalize',
     },
     aliases: ['db.query.text', 'query'],
-    changelog: [
-      {
-        version: 'next',
-        prs: [501],
-        description: 'Improved example, added deprecation reason, and added query as an alias',
-      },
-      { version: '0.4.0', prs: [199] },
-      { version: '0.1.0', prs: [61, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'db.stored_procedure.name': {
-    brief: 'The name of a stored procedure being called.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'GetUserById',
-    changelog: [{ version: '0.11.0', prs: [398] }],
   },
   'db.system': {
-    brief:
-      'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'postgresql',
     deprecation: {
       replacement: 'db.system.name',
       status: 'backfill',
     },
     aliases: ['db.system.name'],
-    changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'db.system.name': {
-    brief:
-      'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'postgresql',
     aliases: ['db.system'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'db.user': {
-    brief: 'The database user.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'fancy_user',
-    changelog: [{ version: '0.0.0' }],
   },
   deviceMemory: {
-    brief: 'The estimated total memory capacity of the device, only a rough estimation in gigabytes.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '8 GB',
     deprecation: {
       replacement: 'device.memory.estimated_capacity',
       reason:
@@ -22434,489 +21435,340 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['device.memory.estimated_capacity'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [281],
-        description: "Added and deprecated attribute to document JS SDK's current behaviour",
-      },
-    ],
   },
   'device.archs': {
-    brief: 'The CPU architectures of the device.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['arm64-v8a', 'armeabi-v7a', 'armeabi'],
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.archs attribute' }],
   },
   'device.battery_level': {
-    brief: 'The battery level of the device as a percentage (0-100).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 100,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_level attribute' }],
   },
   'device.battery_temperature': {
-    brief: 'The battery temperature of the device in Celsius.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 25,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.battery_temperature attribute' }],
   },
   'device.boot_time': {
-    brief: 'A formatted UTC timestamp when the system was booted.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '2018-02-08T12:52:12Z',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.boot_time attribute' }],
   },
   'device.brand': {
-    brief: 'The brand of the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Apple',
-    changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
   'device.charging': {
-    brief: 'Whether the device was charging or not.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: false,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.charging attribute' }],
   },
   'device.chipset': {
-    brief: 'The chipset of the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Qualcomm SM8550',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.chipset attribute' }],
   },
   'device.class': {
-    brief:
-      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'medium',
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.class attribute' }],
   },
   'device.connection_type': {
-    brief: 'The internet connection type currently being used by the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'wifi',
     deprecation: {
       replacement: 'network.connection.type',
       reason: 'This attribute is being deprecated in favor of network.connection.type',
       status: 'backfill',
     },
     aliases: ['network.connection.type', 'connectionType'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [303],
-        description: 'Added and deprecated device.connection_type in favor of network.connection.type',
-      },
-    ],
   },
   'device.cpu_description': {
-    brief: 'A description of the CPU of the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.cpu_description attribute' }],
   },
   'device.external_free_storage': {
-    brief: 'External storage free size in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 67108864000,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.external_free_storage attribute' }],
   },
   'device.external_storage_size': {
-    brief: 'External storage total size in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 134217728000,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.external_storage_size attribute' }],
   },
   'device.family': {
-    brief: 'The family of the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'iPhone',
-    changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
   'device.free_memory': {
-    brief: 'Free system memory in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2147483648,
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.free_memory attribute' }],
   },
   'device.free_storage': {
-    brief: 'Free device storage in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 107374182400,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.free_storage attribute' }],
   },
   'device.id': {
-    brief: 'Unique device identifier.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.id attribute' }],
   },
   'device.locale': {
-    brief: 'The locale of the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'en-US',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.locale attribute' }],
   },
   'device.low_memory': {
-    brief: 'Whether the device was low on memory.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: false,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.low_memory attribute' }],
   },
   'device.low_power_mode': {
-    brief: 'Whether the device is in Low Power Mode.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.6.0', prs: [314], description: 'Added device.low_power_mode attribute' }],
   },
   'device.manufacturer': {
-    brief: 'The manufacturer of the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Google',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.manufacturer attribute' }],
   },
   'device.memory.estimated_capacity': {
-    brief:
-      'The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 8,
     aliases: ['deviceMemory'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [281],
-        description: 'Added attribute device.memory.estimated_capacity to be used instead of deviceMemory',
-      },
-    ],
   },
   'device.memory_size': {
-    brief: 'Total system memory available in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 17179869184,
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.memory_size attribute' }],
   },
   'device.model': {
-    brief: 'The model of the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'iPhone 15 Pro Max',
-    changelog: [{ version: '0.1.0', prs: [116, 127] }],
   },
   'device.model_id': {
-    brief: 'An internal hardware revision to identify the device exactly.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'N861AP',
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.model_id attribute' }],
   },
   'device.name': {
-    brief:
-      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'localhost',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.name attribute' }],
   },
   'device.online': {
-    brief: 'Whether the device was online or not.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.online attribute' }],
   },
   'device.orientation': {
-    brief: 'The orientation of the device, either "portrait" or "landscape".',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'portrait',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.orientation attribute' }],
   },
   'device.processor_count': {
-    brief: 'Number of "logical processors".',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 8,
     aliases: ['hardwareConcurrency'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [300],
-        description: 'Added and deprecated attribute device.processor_count in favor of device.cpu.logical_core_count',
-      },
-    ],
   },
   'device.processor_frequency': {
-    brief: 'Processor frequency in MHz.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2400,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.processor_frequency attribute' }],
   },
   'device.screen_density': {
-    brief: 'The screen density of the device.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2.625,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_density attribute' }],
   },
   'device.screen_dpi': {
-    brief: 'The screen density in dots-per-inch (DPI) of the device.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 420,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_dpi attribute' }],
   },
   'device.screen_height_pixels': {
-    brief: 'The height of the device screen in pixels.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2400,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_height_pixels attribute' }],
   },
   'device.screen_width_pixels': {
-    brief: 'The width of the device screen in pixels.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1080,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.screen_width_pixels attribute' }],
   },
   'device.simulator': {
-    brief: 'Whether the device is a simulator or an actual device.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: false,
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.simulator attribute' }],
   },
   'device.storage_size': {
-    brief: 'Total device storage in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 274877906944,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.storage_size attribute' }],
   },
   'device.thermal_state': {
-    brief:
-      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'nominal',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.thermal_state attribute' }],
   },
   'device.timezone': {
-    brief: 'The timezone of the device.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Europe/Vienna',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.timezone attribute' }],
   },
   'device.usable_memory': {
-    brief: 'Memory usable for the app in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2147483648,
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.usable_memory attribute' }],
   },
   dist: {
-    brief: 'The sentry dist.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1.0',
     deprecation: {
       replacement: 'sentry.dist',
       reason: 'This attribute is being deprecated in favor of sentry.dist.',
       status: 'backfill',
     },
     aliases: ['sentry.dist'],
-    changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist attribute' }],
   },
   'django.function_name': {
-    brief: 'The fully qualified name of a function used in a Django context.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'django.contrib.sessions.middleware.SessionMiddleware',
-    examples: ['django.contrib.sessions.middleware.SessionMiddleware'],
     deprecation: {
       replacement: 'code.function.name',
       reason:
@@ -22924,18 +21776,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['code.function.name', 'code.function'],
-    changelog: [{ version: 'next', prs: [538], description: 'Added django.function_name attribute' }],
   },
   'django.middleware_name': {
-    brief: 'The name of the Django middleware.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'AuthenticationMiddleware',
-    examples: ['AuthenticationMiddleware'],
     deprecation: {
       replacement: 'middleware.name',
       reason:
@@ -22943,17 +21791,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['middleware.name'],
-    changelog: [{ version: 'next', prs: [520], description: 'Added django.middleware_name attribute' }],
   },
   effectiveConnectionType: {
-    brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '4g',
     deprecation: {
       replacement: 'network.connection.effective_type',
       reason:
@@ -22961,168 +21806,115 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['network.connection.effective_type'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [279],
-        description: "Added and deprecated attribute to document JS SDK's current behaviour",
-      },
-    ],
   },
   environment: {
-    brief: 'The sentry environment.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
       status: 'normalize',
     },
     aliases: ['sentry.environment'],
-    changelog: [
-      { version: 'next', prs: [427], description: 'Configured normalization' },
-      { version: '0.1.0', prs: [61, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'error.type': {
-    brief: 'Describes a class of error the operation ended with.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'timeout',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'event.id': {
-    brief: 'The unique identifier for this event (log record)',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234567890,
-    changelog: [{ version: '0.1.0', prs: [101] }],
   },
   'event.name': {
-    brief: 'The name that uniquely identifies this event (log record)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Process Payload',
-    changelog: [{ version: '0.1.0', prs: [101, 127] }],
   },
   'exception.escaped': {
-    brief:
-      'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.0.0' }],
   },
   'exception.message': {
-    brief: 'The error message.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'ENOENT: no such file or directory',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'exception.stacktrace': {
-    brief:
-      'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example:
-      'Exception in thread "main" java.lang.RuntimeException: Test exception\n at com.example.GenerateTrace.methodB(GenerateTrace.java:13)\n at com.example.GenerateTrace.methodA(GenerateTrace.java:9)\n at com.example.GenerateTrace.main(GenerateTrace.java:5)',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'exception.type': {
-    brief:
-      'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'OSError',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'faas.coldstart': {
-    brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.0.0' }],
   },
   'faas.cron': {
-    brief: 'A string containing the schedule period as Cron Expression.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '0/5 * * * ? *',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'faas.duration_in_ms': {
-    brief: 'The duration a function took to run, in milliseconds.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 120,
-    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   'faas.entry_point': {
-    brief: "The code that's run when the cloud provider invokes your function.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'my_main_function',
-    changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   'faas.execution': {
-    brief: 'The execution ID of the current function execution.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
     deprecation: {
       replacement: 'faas.invocation_id',
       reason:
@@ -23130,23 +21922,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['faas.invocation_id', 'aws.lambda.aws_request_id'],
-    changelog: [
-      {
-        version: '0.16.0',
-        prs: [473],
-        description: 'Added faas.execution attribute, deprecated in favor of faas.invocation_id',
-      },
-    ],
   },
   'faas.id': {
-    brief: 'The unique ID of the single function that this runtime instance executes.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function',
     deprecation: {
       replacement: 'cloud.resource_id',
       reason:
@@ -23154,140 +21937,97 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['cloud.resource_id'],
-    changelog: [
-      {
-        version: '0.16.0',
-        prs: [475],
-        description: 'Added faas.id attribute, deprecated in favor of cloud.resource_id',
-      },
-    ],
   },
   'faas.identity': {
-    brief:
-      'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example:
-      'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
-    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   'faas.invocation_id': {
-    brief: 'The invocation ID of the current function invocation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'af9d5aa4-a685-4c5f-a22b-444f80b3cc28',
     aliases: ['aws.lambda.aws_request_id', 'faas.execution'],
-    changelog: [
-      { version: '0.16.0', prs: [473], description: 'Added faas.execution as an alias' },
-      { version: '0.11.1', prs: [414, 424] },
-    ],
   },
   'faas.invoked_name': {
-    brief: 'The name of the invoked function.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'my-function',
-    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_name attribute' }],
   },
   'faas.invoked_provider': {
-    brief: 'The cloud provider of the invoked function.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'aws',
-    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_provider attribute' }],
   },
   'faas.invoked_region': {
-    brief: 'The cloud region of the invoked function.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'eu-central-1',
-    changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_region attribute' }],
   },
   'faas.name': {
-    brief: 'The name of the serverless function',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'my_function',
     aliases: ['aws.lambda.function_name'],
-    changelog: [{ version: '0.11.0', prs: [403, 415] }],
   },
   'faas.time': {
-    brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '2020-01-23T13:47:06Z',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'faas.trigger': {
-    brief: 'Type of the trigger which caused this function invocation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'timer',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'faas.version': {
-    brief: 'The version of the function that was invoked',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '$LATEST',
     aliases: ['aws.lambda.function_version'],
-    changelog: [{ version: '0.11.1', prs: [414, 424] }],
   },
   fcp: {
-    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 547.6951,
     deprecation: {
       replacement: 'browser.web_vital.fcp.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fcp.value',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.fcp.value'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   'file.path': {
-    brief: 'Path to the file.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -23295,23 +22035,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/home/user/example.txt',
-    changelog: [{ version: '0.17.0', prs: [458], description: 'Added file.path attribute' }],
   },
   'file.size': {
-    brief: 'File size in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 1024,
-    changelog: [{ version: '0.17.0', prs: [458], description: 'Added file.size attribute' }],
   },
   'flag.evaluation.<key>': {
-    brief:
-      'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
@@ -23319,36 +22052,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: 'flag.evaluation.is_new_ui=true',
-    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   fp: {
-    brief: 'The time it takes for the browser to render the first pixel on the screen',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 477.1926,
     deprecation: {
       replacement: 'browser.web_vital.fp.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.fp.value',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.fp.value'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   'frames.delay': {
-    brief:
-      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 5,
     deprecation: {
       replacement: 'app.vitals.frames.delay.value',
       reason:
@@ -23356,21 +22081,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.delay.value'],
-    changelog: [
-      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.delay.value' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.0.0' },
-    ],
   },
   'frames.frozen': {
-    brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 3,
     deprecation: {
       replacement: 'app.vitals.frames.frozen.count',
       reason:
@@ -23378,16 +22096,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.frozen.count', 'sentry.frames.frozen'],
-    changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
-      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.0.0' },
-    ],
   },
   frames_frozen_rate: {
-    brief:
-      'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -23401,20 +22111,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.frozen.rate'],
-    changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
-      { version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' },
-    ],
   },
   'frames.slow': {
-    brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
     deprecation: {
       replacement: 'app.vitals.frames.slow.count',
       reason:
@@ -23422,16 +22126,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.slow.count', 'sentry.frames.slow'],
-    changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.slow as an alias' },
-      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.0.0' },
-    ],
   },
   frames_slow_rate: {
-    brief:
-      'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -23445,20 +22141,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.slow.rate'],
-    changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
-      { version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' },
-    ],
   },
   'frames.total': {
-    brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 60,
     deprecation: {
       replacement: 'app.vitals.frames.total.count',
       reason:
@@ -23466,424 +22156,267 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.total.count', 'sentry.frames.total'],
-    changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.total as an alias' },
-      { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.0.0' },
-    ],
   },
   fs_error: {
-    brief: 'The error message of a file system error.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'ENOENT: no such file or directory',
     deprecation: {
       replacement: 'error.type',
       reason: 'This attribute is not part of the OpenTelemetry specification and error.type fits much better.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'gcp.function.context.event_id': {
-    brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1234567890',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.event_id attribute' }],
   },
   'gcp.function.context.event_type': {
-    brief: 'The type of the GCP Cloud Function event',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'google.pubsub.topic.publish',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.event_type attribute' }],
   },
   'gcp.function.context.id': {
-    brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1234567890',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.id attribute' }],
   },
   'gcp.function.context.resource': {
-    brief: 'The resource that triggered the GCP Cloud Function event',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'projects/my-project/topics/my-topic',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.resource attribute' }],
   },
   'gcp.function.context.source': {
-    brief: 'The source of the GCP Cloud Function event',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '//pubsub.googleapis.com/projects/my-project/topics/my-topic',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.source attribute' }],
   },
   'gcp.function.context.specversion': {
-    brief: 'The CloudEvents specification version of the GCP Cloud Function event',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1.0',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.specversion attribute' }],
   },
   'gcp.function.context.time': {
-    brief: 'The timestamp of the GCP Cloud Function event',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '2024-01-01T00:00:00.000Z',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.time attribute' }],
   },
   'gcp.function.context.timestamp': {
-    brief: 'The legacy timestamp of the GCP Cloud Function event',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '2024-01-01T00:00:00.000Z',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.timestamp attribute' }],
   },
   'gcp.function.context.type': {
-    brief: 'The type of the GCP Cloud Function event context',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'cloud_functions.context',
-    changelog: [{ version: '0.7.0', prs: [371], description: 'Added gcp.function.context.type attribute' }],
   },
   'gcp.project.id': {
-    brief: 'The ID of the project in GCP that this resource is associated with',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'my-project-123',
-    changelog: [{ version: '0.11.0', prs: [403] }],
   },
   gcp_region: {
-    brief: 'The geographical region the GCP resource is running',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'us-east-1',
-    examples: ['us-east-1'],
     deprecation: {
       replacement: 'cloud.region',
       status: 'backfill',
     },
     aliases: ['cloud.region', 'aws_region'],
-    changelog: [{ version: 'next', prs: [535], description: 'Added gcp_region attribute' }],
   },
   'gen_ai.agent.name': {
-    brief: 'The name of the agent being used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'ResearchAssistant',
-    changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   'gen_ai.context.utilization': {
-    brief: 'The fraction of the model context window utilized by this generation.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.75,
-    changelog: [{ version: '0.5.0', prs: [315], description: 'Added gen_ai.context.utilization attribute' }],
   },
   'gen_ai.context.window_size': {
-    brief: 'The maximum context window size supported by the model for this generation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 128000,
-    changelog: [{ version: '0.5.0', prs: [315], description: 'Added gen_ai.context.window_size attribute' }],
   },
   'gen_ai.conversation.id': {
-    brief:
-      'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'conv_5j66UpCpwteGg4YSxUnt7lPY',
-    changelog: [{ version: '0.4.0', prs: [250] }],
   },
   'gen_ai.cost.cache_creation.input_tokens': {
-    brief: 'The cost of input tokens written to cache in USD.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_creation.input_tokens attribute' }],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      "Despite the name 'cost.cache_creation.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_creation.input_tokens.",
-      'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
-    ],
   },
   'gen_ai.cost.cache_read.input_tokens': {
-    brief: 'The cost of cached input tokens in USD.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.cache_read.input_tokens attribute' }],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      "Despite the name 'cost.cache_read.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.cache_read.input_tokens.",
-      'This is a subset of gen_ai.cost.input_tokens, not an independent cost. Do not sum this with gen_ai.cost.input_tokens — it is already included.',
-    ],
   },
   'gen_ai.cost.input_tokens': {
-    brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 123.45,
-    changelog: [
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [112] },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      "Despite the name 'cost.input_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.input_tokens.",
-      'This is the total cost of all input tokens, including cached and cache creation tokens at their respective rates. For the cached portion, see gen_ai.cost.cache_read.input_tokens. For the cache creation portion, see gen_ai.cost.cache_creation.input_tokens.',
-    ],
   },
   'gen_ai.cost.output_tokens': {
-    brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 123.45,
-    changelog: [
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [112] },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      "Despite the name 'cost.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.output_tokens.",
-      'This is the total cost of all output tokens, including reasoning tokens at their respective rate. For the reasoning portion, see gen_ai.cost.reasoning.output_tokens.',
-    ],
   },
   'gen_ai.cost.reasoning.output_tokens': {
-    brief: 'The cost of reasoning output tokens in USD.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12.34,
-    changelog: [{ version: '0.16.0', description: 'Added gen_ai.cost.reasoning.output_tokens attribute' }],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      "Despite the name 'cost.reasoning.output_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.reasoning.output_tokens.",
-      'This is a subset of gen_ai.cost.output_tokens, not an independent cost. Do not sum this with gen_ai.cost.output_tokens — it is already included.',
-    ],
   },
   'gen_ai.cost.total_tokens': {
-    brief: 'The total cost for the tokens used.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12.34,
     aliases: ['ai.total_cost'],
-    changelog: [
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.5.0', prs: [264] },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [126] },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to calculate total cost, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      "Despite the name 'cost.total_tokens', this value is cost in USD, not a token count. For token counts, use gen_ai.usage.total_tokens.",
-    ],
   },
   'gen_ai.embeddings.input': {
-    brief: 'The input to the embeddings model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: "What's the weather in Paris?",
-    changelog: [{ version: '0.3.1', prs: [195] }],
   },
   'gen_ai.function_id': {
-    brief:
-      'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'my-awesome-function',
-    changelog: [{ version: '0.5.0', prs: [308], description: 'Added gen_ai.function_id attribute' }],
   },
   'gen_ai.input.messages': {
-    brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example:
-      '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.4.0', prs: [221] },
-    ],
   },
   'gen_ai.operation.name': {
-    brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'chat',
-    changelog: [
-      { version: '0.4.0', prs: [225] },
-      { version: '0.1.0', prs: [62, 127] },
-    ],
   },
   'gen_ai.operation.type': {
-    brief:
-      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'tool',
-    changelog: [
-      { version: '0.4.0', prs: [257] },
-      { version: '0.1.0', prs: [113, 127] },
-    ],
   },
   'gen_ai.output.messages': {
-    brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example:
-      '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
-    changelog: [{ version: '0.4.0', prs: [221] }],
   },
   'gen_ai.pipeline.name': {
-    brief: 'Name of the AI pipeline or chain being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Autofix Pipeline',
     aliases: ['ai.pipeline.name'],
-    changelog: [{ version: '0.1.0', prs: [76, 127] }],
   },
   'gen_ai.prompt': {
-    brief: 'The input messages sent to the model',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '[{"role": "user", "message": "hello"}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
       status: 'backfill',
     },
     aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages'],
-    changelog: [{ version: '0.1.0', prs: [74, 108, 119] }, { version: '0.0.0' }],
   },
   'gen_ai.prompt.name': {
-    brief: 'The name of the prompt that uniquely identifies it.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -23891,785 +22424,481 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'summarize_text',
     aliases: ['mcp.prompt.name'],
-    changelog: [{ version: '0.12.0', prs: [420], description: 'Added gen_ai.prompt.name attribute' }],
   },
   'gen_ai.provider.name': {
-    brief: 'The Generative AI provider as identified by the client or server instrumentation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'openai',
     aliases: ['ai.model.provider', 'gen_ai.system'],
-    changelog: [{ version: '0.4.0', prs: [253] }],
   },
   'gen_ai.request.available_tools': {
-    brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example:
-      '[{"name": "get_weather", "description": "Get the weather for a given location"}, {"name": "get_news", "description": "Get the news for a given topic"}]',
     deprecation: {
       replacement: 'gen_ai.tool.definitions',
       status: 'normalize',
     },
-    changelog: [
-      { version: '0.4.0', prs: [221] },
-      { version: '0.1.0', prs: [63, 127] },
-    ],
   },
   'gen_ai.request.frequency_penalty': {
-    brief:
-      'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 0.5,
     aliases: ['ai.frequency_penalty'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [57] },
-    ],
   },
   'gen_ai.request.max_tokens': {
-    brief: 'The maximum number of tokens to generate in the response.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 2048,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [62] },
-    ],
   },
   'gen_ai.request.messages': {
-    brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example:
-      '[{"role": "system", "content": "Generate a random number."}, {"role": "user", "content": [{"text": "Generate a random number between 0 and 10.", "type": "text"}]}, {"role": "tool", "content": {"toolCallId": "1", "toolName": "Weather", "output": "rainy"}}]',
     deprecation: {
       replacement: 'gen_ai.input.messages',
       status: 'transform',
       transformation: 'gen_ai_request_messages_to_input_messages',
     },
     aliases: ['ai.input_messages'],
-    changelog: [
-      { version: '0.4.0', prs: [221] },
-      { version: '0.1.0', prs: [63, 74, 108, 119, 122] },
-    ],
   },
   'gen_ai.request.model': {
-    brief: 'The model identifier being used for the request.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'gpt-4-turbo-preview',
     aliases: ['ai.model_id'],
-    changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   'gen_ai.request.presence_penalty': {
-    brief:
-      'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 0.5,
     aliases: ['ai.presence_penalty'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [57] },
-    ],
   },
   'gen_ai.request.reasoning.level': {
-    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'high',
-    changelog: [{ version: '0.17.0', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
   },
   'gen_ai.request.seed': {
-    brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '1234567890',
     aliases: ['ai.seed'],
-    changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   'gen_ai.request.stop_sequences': {
-    brief: 'List of sequences that the model will use to stop generating further tokens.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: ['forest', 'lived'],
-    changelog: [{ version: '0.16.0', prs: [482], description: 'Added gen_ai.request.stop_sequences attribute' }],
   },
   'gen_ai.request.temperature': {
-    brief:
-      'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 0.1,
     aliases: ['ai.temperature'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [57] },
-    ],
   },
   'gen_ai.request.top_k': {
-    brief:
-      'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 35,
     aliases: ['ai.top_k'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [57] },
-    ],
   },
   'gen_ai.request.top_p': {
-    brief:
-      'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 0.7,
     aliases: ['ai.top_p'],
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [57] },
-    ],
   },
   'gen_ai.response.finish_reason': {
-    brief: 'The reason why the model stopped generating (singular form).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'COMPLETE',
     deprecation: {
       replacement: 'gen_ai.response.finish_reasons',
       status: 'normalize',
     },
     aliases: ['gen_ai.response.finish_reasons'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
   },
   'gen_ai.response.finish_reasons': {
-    brief: 'The reason why the model stopped generating.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'COMPLETE',
     aliases: ['ai.finish_reason', 'gen_ai.response.finish_reason'],
-    changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   'gen_ai.response.id': {
-    brief: 'Unique identifier for the completion.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'gen_123abc',
     aliases: ['ai.generation_id'],
-    changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   'gen_ai.response.model': {
-    brief: 'The vendor-specific ID of the model used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'gpt-4',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'gen_ai.response.streaming': {
-    brief: "Whether or not the AI model call's response was streamed back asynchronously",
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
     aliases: ['ai.streaming'],
-    changelog: [{ version: '0.1.0', prs: [76] }],
   },
   'gen_ai.response.text': {
-    brief:
-      "The model's response text messages. It has to be a stringified version of an array of response text messages.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example:
-      '["The weather in Paris is rainy and overcast, with temperatures around 57°F", "The weather in London is sunny and warm, with temperatures around 65°F"]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
       status: 'transform',
       transformation: 'gen_ai_response_to_output_messages',
     },
-    changelog: [
-      { version: '0.4.0', prs: [221] },
-      { version: '0.1.0', prs: [63, 74] },
-    ],
   },
   'gen_ai.response.time_to_first_chunk': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 0.6853435,
     aliases: ['gen_ai.response.time_to_first_token'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
   },
   'gen_ai.response.time_to_first_token': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.6853435,
     deprecation: {
       replacement: 'gen_ai.response.time_to_first_chunk',
       status: 'backfill',
     },
     aliases: ['gen_ai.response.time_to_first_chunk'],
-    changelog: [
-      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.response.time_to_first_chunk' },
-      { version: '0.4.0', prs: [227] },
-    ],
   },
   'gen_ai.response.tokens_per_second': {
-    brief: 'The total output tokens per seconds throughput',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12345.67,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [66] },
-    ],
   },
   'gen_ai.response.tool_calls': {
-    brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '[{"name": "get_weather", "arguments": {"location": "Paris"}}]',
     deprecation: {
       replacement: 'gen_ai.output.messages',
       status: 'transform',
       transformation: 'gen_ai_response_to_output_messages',
     },
-    changelog: [
-      { version: '0.4.0', prs: [221] },
-      { version: '0.1.0', prs: [63, 74] },
-    ],
   },
   'gen_ai.system': {
-    brief: 'The provider of the model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'openai',
     deprecation: {
       replacement: 'gen_ai.provider.name',
       status: 'normalize',
     },
     aliases: ['ai.model.provider', 'gen_ai.provider.name'],
-    changelog: [
-      { version: '0.4.0', prs: [253] },
-      { version: '0.1.0', prs: [57, 127] },
-    ],
   },
   'gen_ai.system_instructions': {
-    brief: 'The system instructions passed to the model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'You are a helpful assistant',
     aliases: ['ai.preamble'],
-    changelog: [
-      { version: '0.5.0', prs: [264] },
-      { version: '0.4.0', prs: [221] },
-    ],
   },
   'gen_ai.system.message': {
-    brief: 'The system instructions passed to the model.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'You are a helpful assistant',
     deprecation: {
       replacement: 'gen_ai.system_instructions',
       status: 'backfill',
     },
-    changelog: [
-      { version: '0.4.0', prs: [221] },
-      { version: '0.1.0', prs: [62] },
-    ],
   },
   'gen_ai.tool.call.arguments': {
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '{"location": "Paris"}',
     aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
-    changelog: [
-      { version: '0.5.0', prs: [265] },
-      { version: '0.4.0', prs: [221] },
-    ],
   },
   'gen_ai.tool.call.result': {
-    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'rainy, 57°F',
     aliases: ['gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
-    changelog: [
-      { version: '0.5.0', prs: [265] },
-      { version: '0.4.0', prs: [221] },
-    ],
   },
   'gen_ai.tool.definitions': {
-    brief: 'The list of source system tool definitions available to the GenAI agent or model.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example:
-      '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
-    changelog: [{ version: '0.4.0', prs: [221] }],
   },
   'gen_ai.tool.description': {
-    brief: 'The description of the tool being used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Searches the web for current information about a topic',
-    changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   'gen_ai.tool.input': {
-    brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '{"location": "Paris"}',
     deprecation: {
       replacement: 'gen_ai.tool.call.arguments',
       status: 'normalize',
     },
     aliases: ['gen_ai.tool.call.arguments', 'ai.toolCall.args'],
-    changelog: [
-      { version: '0.5.0', prs: [265] },
-      { version: '0.1.0', prs: [63, 74] },
-    ],
   },
   'gen_ai.tool.message': {
-    brief: 'The response from a tool or function call passed to the model.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
       status: 'normalize',
     },
     aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'mcp.tool.result.content', 'ai.toolCall.result'],
-    changelog: [
-      { version: '0.5.0', prs: [265] },
-      { version: '0.1.0', prs: [62] },
-    ],
   },
   'gen_ai.tool.name': {
-    brief: 'Name of the tool utilized by the agent.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Flights',
     aliases: ['ai.function_call', 'mcp.tool.name'],
-    changelog: [{ version: '0.1.0', prs: [57, 127] }],
   },
   'gen_ai.tool.output': {
-    brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'rainy, 57°F',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
       status: 'normalize',
     },
     aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
-    changelog: [
-      { version: '0.5.0', prs: [265] },
-      { version: '0.1.0', prs: [63, 74] },
-    ],
   },
   'gen_ai.tool.type': {
-    brief: 'The type of tool being used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'function',
     deprecation: {
       reason: 'The gen_ai.tool.type attribute is deprecated and should no longer be set.',
     },
-    changelog: [{ version: '0.1.0', prs: [62, 127] }],
   },
   'gen_ai.usage.cache_creation.input_tokens': {
-    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 100,
     aliases: ['gen_ai.usage.input_tokens.cache_write'],
-    changelog: [
-      { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-    ],
   },
   'gen_ai.usage.cache_read.input_tokens': {
-    brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 50,
     aliases: ['gen_ai.usage.input_tokens.cached'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
-    ],
   },
   'gen_ai.usage.completion_tokens': {
-    brief: 'The number of tokens used in the GenAI response (completion).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
     deprecation: {
       replacement: 'gen_ai.usage.output_tokens',
       status: 'backfill',
     },
     aliases: ['ai.completion_tokens.used', 'gen_ai.usage.output_tokens'],
-    changelog: [
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [61] },
-      { version: '0.0.0' },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-    ],
   },
   'gen_ai.usage.input_tokens': {
-    brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
     aliases: ['ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
-    changelog: [
-      {
-        version: '0.11.0',
-        prs: [418],
-        description: 'Update additional_context to reference gen_ai.usage.cache_read.input_tokens',
-      },
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.5.0', prs: [261] },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [112] },
-      { version: '0.0.0' },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This count includes cached input tokens. gen_ai.usage.cache_read.input_tokens is a subset of this value, not an independent count — do not sum them together.',
-    ],
   },
   'gen_ai.usage.input_tokens.cached': {
-    brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 50,
     deprecation: {
       replacement: 'gen_ai.usage.cache_read.input_tokens',
       status: 'backfill',
     },
     aliases: ['gen_ai.usage.cache_read.input_tokens'],
-    changelog: [
-      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [62, 112] },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
-    ],
   },
   'gen_ai.usage.input_tokens.cache_write': {
-    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 100,
     deprecation: {
       replacement: 'gen_ai.usage.cache_creation.input_tokens',
       status: 'backfill',
     },
     aliases: ['gen_ai.usage.cache_creation.input_tokens'],
-    changelog: [
-      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.4.0', prs: [217, 228] },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-    ],
   },
   'gen_ai.usage.output_tokens': {
-    brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
     aliases: ['ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
-    changelog: [
-      {
-        version: '0.11.0',
-        prs: [418],
-        description: 'Update additional_context to reference gen_ai.usage.reasoning.output_tokens',
-      },
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.5.0', prs: [261] },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [112] },
-      { version: '0.0.0' },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This count includes reasoning tokens. gen_ai.usage.reasoning.output_tokens is a subset of this value, not an independent count — do not sum them together.',
-    ],
   },
   'gen_ai.usage.output_tokens.reasoning': {
-    brief: 'The number of tokens used for reasoning to create the AI output.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 75,
     deprecation: {
       replacement: 'gen_ai.usage.reasoning.output_tokens',
       status: 'backfill',
     },
     aliases: ['gen_ai.usage.reasoning.output_tokens'],
-    changelog: [
-      { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.reasoning.output_tokens' },
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [62, 112] },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.',
-    ],
   },
   'gen_ai.usage.prompt_tokens': {
-    brief: 'The number of tokens used in the GenAI input (prompt).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 20,
     deprecation: {
       replacement: 'gen_ai.usage.input_tokens',
       status: 'backfill',
     },
     aliases: ['ai.prompt_tokens.used', 'gen_ai.usage.input_tokens'],
-    changelog: [
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [61] },
-      { version: '0.0.0' },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-    ],
   },
   'gen_ai.usage.reasoning.output_tokens': {
-    brief: 'The number of tokens used for reasoning to create the AI output.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 75,
     aliases: ['gen_ai.usage.output_tokens.reasoning'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This is a subset of gen_ai.usage.output_tokens, not an independent count. Do not sum this with gen_ai.usage.output_tokens — it is already included.',
-    ],
   },
   'gen_ai.usage.total_tokens': {
-    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 20,
     aliases: ['ai.total_tokens.used'],
-    changelog: [
-      { version: '0.9.0', prs: [397], description: 'Add additional_context' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [57] },
-    ],
-    additionalContext: [
-      'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
-      'This is the sum of gen_ai.usage.input_tokens and gen_ai.usage.output_tokens. Do not sum this with either of them — they are already included.',
-    ],
   },
   'graphql.document': {
-    brief: 'The GraphQL document being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -24678,90 +22907,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'query findBookById { bookById(id: ?) { name } }',
-    changelog: [
-      {
-        version: '0.7.0',
-        description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
-      },
-    ],
   },
   'graphql.operation.name': {
-    brief: 'The name of the operation being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'findBookById',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'graphql.operation.type': {
-    brief: 'The type of the operation being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'query',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'grpc.error.bad_request.field_violations': {
-    brief:
-      'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: [
-      '{"field":"email","description":"must be a valid email address","reason":"FIELD_INVALID","localized_message":{"locale":"en-US","message":"Must be a valid email address"}}',
-    ],
-    changelog: [
-      { version: '0.17.0', prs: [460], description: 'Added grpc.error.bad_request.field_violations attribute' },
-    ],
   },
   'grpc.error.debug_info.detail': {
-    brief:
-      'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'at com.example.Service.method(Service.java:42)',
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.debug_info.detail attribute' }],
   },
   'grpc.error.debug_info.stack_entries': {
-    brief:
-      'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['com.example.Service.method(Service.java:42)', 'com.example.Server.handle(Server.java:100)'],
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.debug_info.stack_entries attribute' }],
   },
   'grpc.error.error_info.domain': {
-    brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'example.sentry.io',
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.domain attribute' }],
   },
   'grpc.error.error_info.metadata.<key>': {
-    brief:
-      'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -24769,228 +22964,152 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "grpc.error.error_info.metadata.user_id='123'",
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.metadata.<key> attribute' }],
   },
   'grpc.error.error_info.reason': {
-    brief:
-      'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'FIELD_INVALID',
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.error_info.reason attribute' }],
   },
   'grpc.error.precondition_failure.violations': {
-    brief:
-      'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['{"type":"TOS","subject":"example.com/user/123","description":"User must accept the terms of service"}'],
-    changelog: [
-      { version: '0.17.0', prs: [460], description: 'Added grpc.error.precondition_failure.violations attribute' },
-    ],
   },
   'grpc.error.quota_failure.violations': {
-    brief:
-      'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: [
-      '{"subject":"clientip:127.0.0.1","description":"Limit checks failed.","api_service":"example.googleapis.com","quota_metric":"example.googleapis.com/read_requests","quota_id":"ReadRequestsPerMinutePerProject","quota_dimensions":{"region":"us-central1"},"quota_value":1000}',
-    ],
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.quota_failure.violations attribute' }],
   },
   'grpc.error.resource_info.description': {
-    brief:
-      'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Instance is not ready for the request.',
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.description attribute' }],
   },
   'grpc.error.resource_info.owner': {
-    brief:
-      'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'user@example.com',
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.owner attribute' }],
   },
   'grpc.error.resource_info.resource_name': {
-    brief:
-      'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'projects/example/instances/example-instance',
-    changelog: [
-      { version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.resource_name attribute' },
-    ],
   },
   'grpc.error.resource_info.resource_type': {
-    brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'database',
-    changelog: [
-      { version: '0.17.0', prs: [460], description: 'Added grpc.error.resource_info.resource_type attribute' },
-    ],
   },
   'grpc.error.retry_info.retry_delay_ms': {
-    brief:
-      'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 5000,
-    changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
   },
   hardwareConcurrency: {
-    brief: 'The number of logical CPU cores available.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '14',
     deprecation: {
       replacement: 'device.processor_count',
       reason: 'Old namespace-less attribute, to be replaced with device.processor_count for span-first future',
       status: 'backfill',
     },
     aliases: ['device.processor_count'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [281, 300],
-        description: "Added and deprecated attribute to document JS SDK's current behaviour",
-      },
-    ],
   },
   'http.client_ip': {
-    brief:
-      'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'example.com',
     deprecation: {
       replacement: 'client.address',
     },
     aliases: ['client.address'],
-    changelog: [{ version: '0.1.0', prs: [61, 106, 127] }, { version: '0.0.0' }],
   },
   'http.decoded_response_content_length': {
-    brief: 'The decoded body size of the response (in bytes).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 456,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'http.flavor': {
-    brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
     },
     aliases: ['network.protocol.version', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'http.fragment': {
-    brief:
-      'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '#details',
-    changelog: [{ version: '0.0.0' }],
   },
   'http.host': {
-    brief: 'The domain name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'example.com',
     deprecation: {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
     aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
-    changelog: [
-      { version: 'next', description: 'Added address as an alias' },
-      { version: '0.1.0', prs: [61, 108, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'http.method': {
-    brief: 'The HTTP method used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
       status: 'backfill',
     },
     aliases: ['http.request.method', 'http.request_method', 'method'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'http.query': {
-    brief:
-      'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -24999,82 +23118,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: '?foo=bar&bar=baz',
-    changelog: [{ version: '0.0.0' }],
   },
   'http.request.body.data': {
-    brief: 'HTTP request body data. Can be given as string or structural data of any format.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '[{"role": "user", "message": "hello"}]',
-    changelog: [{ version: '0.6.0', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
   'http.request.connection_end': {
-    brief:
-      'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.15,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.connect_start': {
-    brief:
-      'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.111,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.domain_lookup_end': {
-    brief:
-      'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.201,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.domain_lookup_start': {
-    brief:
-      'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.322,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.fetch_start': {
-    brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.389,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.header.<key>': {
-    brief:
-      'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
@@ -25082,210 +23175,142 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "http.request.header.custom-header=['foo', 'bar']",
-    changelog: [
-      { version: '0.4.0', prs: [201, 204] },
-      { version: '0.1.0', prs: [103] },
-    ],
   },
   'http.request.method': {
-    brief: 'The HTTP method used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'GET',
     aliases: ['method', 'http.method', 'http.request_method'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'http.request_method': {
-    brief: 'The HTTP method used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
       status: 'backfill',
     },
     aliases: ['method', 'http.method', 'http.request.method'],
-    changelog: [{ version: '0.6.0', prs: [343], description: 'Added http.request_method attribute' }],
   },
   'http.request.redirect_end': {
-    brief:
-      'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829558.502,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [130, 134] },
-    ],
   },
   'http.request.redirect_start': {
-    brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.495,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.request_start': {
-    brief:
-      'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.51,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.resend_count': {
-    brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'http.request.response_end': {
-    brief:
-      'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.89,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.response_start': {
-    brief:
-      'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.7,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.same_origin': {
-    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
     aliases: ['url.same_origin'],
-    changelog: [{ version: '0.16.0', prs: [456], description: 'Added http.request.same_origin attribute' }],
   },
   'http.request.secure_connection_start': {
-    brief:
-      'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829555.73,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
   'http.request.time_to_first_byte': {
-    brief:
-      "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1.032,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [131] },
-    ],
   },
   'http.request.worker_start': {
-    brief:
-      'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732829553.68,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [130, 134] },
-    ],
   },
   'http.response.body.size': {
-    brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 123,
     aliases: ['http.response_content_length', 'http.response.header.content-length'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [106] }, { version: '0.0.0' }],
   },
   'http.response_content_length': {
-    brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 123,
     deprecation: {
       replacement: 'http.response.body.size',
       status: 'backfill',
     },
     aliases: ['http.response.body.size', 'http.response.header.content-length'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 106] }, { version: '0.0.0' }],
   },
   'http.response.header.content-length': {
-    brief: 'The size of the message body sent to the recipient (in bytes)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: "http.response.header.custom-header=['foo', 'bar']",
     aliases: ['http.response_content_length', 'http.response.body.size'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'http.response.header.<key>': {
-    brief:
-      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
@@ -25293,467 +23318,339 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "http.response.header.custom-header=['foo', 'bar']",
-    changelog: [
-      { version: '0.4.0', prs: [201, 204] },
-      { version: '0.1.0', prs: [103] },
-    ],
   },
   'http.response.size': {
-    brief: 'The transfer size of the response (in bytes).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 456,
     aliases: ['http.response_transfer_size'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'http.response.status_code': {
-    brief: 'The status code of the HTTP response.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 404,
     aliases: ['http.status_code'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'http.response_transfer_size': {
-    brief: 'The transfer size of the response (in bytes).',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 456,
     deprecation: {
       replacement: 'http.response.size',
       status: 'backfill',
     },
     aliases: ['http.response.size'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'http.route': {
-    brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/users/:id',
-    examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
     aliases: ['route'],
-    changelog: [
-      {
-        version: 'next',
-        prs: [505, 521],
-        description: 'Added multiple examples, removed alias to `url.template`, added additional context',
-      },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
-    additionalContext: [
-      'This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.',
-      'For `http.client` spans and client-side routing, use `url.template` instead.',
-    ],
   },
   'http.scheme': {
-    brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'https',
     deprecation: {
       replacement: 'url.scheme',
     },
     aliases: ['url.scheme'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'http.server_name': {
-    brief: 'The server domain name',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'example.com',
     deprecation: {
       replacement: 'server.address',
     },
     aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [
-      { version: 'next', description: 'Added address as an alias' },
-      { version: '0.1.0', prs: [61, 108, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'http.server.request.time_in_queue': {
-    brief:
-      'The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 50,
-    changelog: [{ version: '0.5.0', prs: [267] }],
   },
   'http.status_code': {
-    brief: 'The status code of the HTTP response.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 404,
     deprecation: {
       replacement: 'http.response.status_code',
     },
     aliases: ['http.response.status_code'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'http.target': {
-    brief: 'The pathname and query string of the URL.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.path',
       reason: 'This attribute is being deprecated in favor of url.path and url.query',
     },
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'http.url': {
-    brief: 'The URL of the resource that was fetched.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
     },
     aliases: ['url.full', 'url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
   },
   'http.user_agent': {
-    brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example:
-      'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     deprecation: {
       replacement: 'user_agent.original',
     },
     aliases: ['user_agent.original'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   id: {
-    brief: 'A unique identifier for the span.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    changelog: [{ version: '0.0.0' }],
   },
   inp: {
-    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 200,
     deprecation: {
       replacement: 'browser.web_vital.inp.value',
       reason: 'The INP web vital is now recorded as a browser.web_vital.inp.value attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.inp.value'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [229],
-        description: "Added and deprecated attribute to document JS SDK's current behaviour",
-      },
-    ],
   },
   'jsonrpc.protocol.version': {
-    brief: 'The version of the JSON-RPC protocol used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '2.0',
-    changelog: [{ version: '0.12.0', prs: [420], description: 'Added jsonrpc.protocol.version attribute' }],
   },
   'jsonrpc.request.id': {
-    brief: 'The JSON-RPC request identifier. Unique within the session.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '1',
     aliases: ['mcp.request.id'],
-    changelog: [{ version: '0.12.0', prs: [420], description: 'Added jsonrpc.request.id attribute' }],
   },
   'jvm.gc.action': {
-    brief: 'Name of the garbage collector action.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'end of minor GC',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'jvm.gc.name': {
-    brief: 'Name of the garbage collector.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'G1 Young Generation',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'jvm.memory.pool.name': {
-    brief: 'Name of the memory pool.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'G1 Old Gen',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'jvm.memory.type': {
-    brief: 'Name of the memory pool.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'G1 Old Gen',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'jvm.thread.daemon': {
-    brief: 'Whether the thread is daemon or not.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.0.0' }],
   },
   'jvm.thread.state': {
-    brief: 'State of the thread.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'blocked',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'koa.name': {
-    brief: 'The name of the Koa middleware or matched route that handled the request.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/users/:id',
     deprecation: {
       reason:
         'No single replacement. SDKs should use http.route for router layers and code.function.name for middleware layers instead.',
     },
-    changelog: [{ version: '0.16.0', prs: [490], description: 'Added koa.name attribute as deprecated' }],
   },
   'koa.type': {
-    brief: 'The type of the Koa layer that handled the request.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'router',
-    changelog: [{ version: '0.16.0', prs: [471], description: 'Added koa.type attribute' }],
   },
   lcp: {
-    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2500,
     deprecation: {
       replacement: 'browser.web_vital.lcp.value',
       reason: 'The LCP web vital is now recorded as a browser.web_vital.lcp.value attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.value'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [229],
-        description: "Added and deprecated attribute to document JS SDK's current behaviour",
-      },
-    ],
   },
   'lcp.element': {
-    brief: 'The dom element responsible for the largest contentful paint.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'img',
     deprecation: {
       replacement: 'browser.web_vital.lcp.element',
       reason: 'The LCP element is now recorded as a browser.web_vital.lcp.element attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.element'],
-    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'lcp.id': {
-    brief: 'The id of the dom element responsible for the largest contentful paint.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '#hero',
     deprecation: {
       replacement: 'browser.web_vital.lcp.id',
       reason: 'The LCP id is now recorded as a browser.web_vital.lcp.id attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.id'],
-    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'lcp.loadTime': {
-    brief: 'The time it took for the LCP element to be loaded',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1402,
     deprecation: {
       replacement: 'browser.web_vital.lcp.load_time',
       reason: 'The LCP load time is now recorded as a browser.web_vital.lcp.load_time attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.load_time'],
-    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'lcp.renderTime': {
-    brief: 'The time it took for the LCP element to be rendered',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1685,
     deprecation: {
       replacement: 'browser.web_vital.lcp.render_time',
       reason: 'The LCP render time is now recorded as a browser.web_vital.lcp.render_time attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.render_time'],
-    changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'lcp.size': {
-    brief: 'The size of the largest contentful paint element.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234,
     deprecation: {
       replacement: 'browser.web_vital.lcp.size',
       reason: 'The LCP size is now recorded as a browser.web_vital.lcp.size attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.size'],
-    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'lcp.url': {
-    brief: 'The url of the dom element responsible for the largest contentful paint.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https://example.com',
     deprecation: {
       replacement: 'browser.web_vital.lcp.url',
       reason: 'The LCP url is now recorded as a browser.web_vital.lcp.url attribute.',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.lcp.url'],
-    changelog: [{ version: '0.5.0', prs: [233] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'litestar.middleware_name': {
-    brief: 'The name of the Litestar middleware.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'AuthenticationMiddleware',
     deprecation: {
       replacement: 'middleware.name',
       reason:
@@ -25761,26 +23658,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['middleware.name'],
-    changelog: [
-      {
-        version: 'next',
-        description: 'Added litestar.middleware_name attribute, deprecated in favor of middleware.name',
-      },
-    ],
   },
   'logger.name': {
-    brief: 'The name of the logger that generated this event.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'myLogger',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'mcp.cancelled.reason': {
-    brief: 'Reason for the cancellation of an MCP operation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -25788,33 +23675,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'User cancelled the request',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.cancelled.request_id': {
-    brief: 'Request ID of the cancelled MCP operation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '123',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.client.name': {
-    brief: 'Name of the MCP client application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'claude-desktop',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.client.title': {
-    brief: 'Display title of the MCP client application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -25822,55 +23700,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Claude Desktop',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.client.version': {
-    brief: 'Version of the MCP client application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1.0.0',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.lifecycle.phase': {
-    brief: 'Lifecycle phase indicator for MCP operations.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'initialization_complete',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.logging.data_type': {
-    brief: 'Data type of the logged message content.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'string',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.logging.level': {
-    brief: 'Log level for MCP logging operations.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'info',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.logging.logger': {
-    brief: 'Logger name for MCP logging operations.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -25878,11 +23741,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'mcp_server',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.logging.message': {
-    brief: 'Log message content from MCP logging operations.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -25890,39 +23750,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Tool execution completed successfully',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.method.name': {
-    brief: 'The name of the MCP request or notification method being called.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'tools/call',
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.progress.current': {
-    brief: 'Current progress value of an MCP operation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 50,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.progress.message': {
-    brief: 'Progress message describing the current state of an MCP operation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -25930,50 +23775,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Processing 50 of 100 items',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.progress.percentage': {
-    brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 50,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.progress.token': {
-    brief: 'Token for tracking progress of an MCP operation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'progress-token-123',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.progress.total': {
-    brief: 'Total progress target value of an MCP operation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 100,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.prompt.name': {
-    brief: 'Name of the MCP prompt template being used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -25981,96 +23808,62 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'summarize',
     deprecation: {
       replacement: 'gen_ai.prompt.name',
       reason: 'OTel uses gen_ai.prompt.name for MCP prompt names',
       status: 'backfill',
     },
     aliases: ['gen_ai.prompt.name'],
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.prompt.name' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.prompt.result.description': {
-    brief: 'Description of the prompt result.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'A summary of the requested information',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.prompt.result.message_content': {
-    brief: 'Content of the message in the prompt result. Used for single message results only.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Please provide a summary of the document',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.prompt.result.message_count': {
-    brief: 'Number of messages in the prompt result.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 3,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.prompt.result.message_role': {
-    brief: 'Role of the message in the prompt result. Used for single message results only.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'user',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.protocol.ready': {
-    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.protocol.version': {
-    brief: 'MCP protocol version used in the session.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '2024-11-05',
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.request.argument.<key>': {
-    brief:
-      'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -26079,11 +23872,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "mcp.request.argument.query='weather in Paris'",
-    changelog: [{ version: '0.3.0', prs: [176] }],
   },
   'mcp.request.argument.name': {
-    brief: 'Name argument from prompts/get MCP request.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -26091,11 +23881,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'summarize',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.request.argument.uri': {
-    brief: 'URI argument from resources/read MCP request.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -26103,51 +23890,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'file:///path/to/resource',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.request.id': {
-    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1',
     deprecation: {
       replacement: 'jsonrpc.request.id',
       reason: 'OTel models MCP as JSON-RPC, uses jsonrpc.request.id',
       status: 'backfill',
     },
     aliases: ['jsonrpc.request.id'],
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of jsonrpc.request.id' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.resource.protocol': {
-    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'file',
     deprecation: {
       replacement: 'network.protocol.name',
       reason: 'OTel uses the generic network.protocol.name attribute',
       status: 'backfill',
     },
     aliases: ['network.protocol.name', 'net.protocol.name'],
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.resource.uri': {
-    brief: 'The resource URI being accessed in an MCP operation.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -26155,25 +23927,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'file:///path/to/file.txt',
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.server.name': {
-    brief: 'Name of the MCP server application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'sentry-mcp-server',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.server.title': {
-    brief: 'Display title of the MCP server application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -26181,56 +23944,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Sentry MCP Server',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.server.version': {
-    brief: 'Version of the MCP server application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '0.1.0',
-    changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.session.id': {
-    brief: 'Identifier for the MCP session.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '550e8400-e29b-41d4-a716-446655440000',
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.tool.name': {
-    brief: 'Name of the MCP tool being called.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'calculator',
     deprecation: {
       replacement: 'gen_ai.tool.name',
       reason: 'OTel uses gen_ai.tool.name for MCP tool names',
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.name', 'ai.function_call'],
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.tool.name' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.tool.result.content': {
-    brief: 'The content of the tool result.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -26238,75 +23983,49 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: '{"output": "rainy", "toolCallId": "1"}',
     deprecation: {
       replacement: 'gen_ai.tool.call.result',
       reason: 'OTel uses gen_ai.tool.call.result for MCP tool results',
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'gen_ai.tool.output', 'ai.toolCall.result'],
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.tool.call.result' },
-      { version: '0.3.0', prs: [171] },
-      { version: '0.2.0', prs: [164] },
-    ],
   },
   'mcp.tool.result.content_count': {
-    brief: 'Number of content items in the tool result.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.tool.result.is_error': {
-    brief: 'Whether a tool execution resulted in an error.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: false,
     deprecation: {
       replacement: 'error.type',
       reason:
         "OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string).",
     },
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of error.type' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mcp.transport': {
-    brief: 'Transport method used for MCP communication.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'stdio',
     deprecation: {
       replacement: 'network.transport',
       reason: 'OTel uses the generic network.transport attribute',
       status: 'backfill',
     },
     aliases: ['network.transport', 'net.transport'],
-    changelog: [
-      { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.transport' },
-      { version: '0.3.0', prs: [171] },
-    ],
   },
   'mdc.<key>': {
-    brief:
-      "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -26314,29 +24033,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "mdc.some_key='some_value'",
-    changelog: [{ version: '0.3.0', prs: [176] }],
   },
   'messaging.batch.message_count': {
-    brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
-    changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
   'messaging.destination': {
-    brief: 'The message destination name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'BestTopic',
     deprecation: {
       replacement: 'messaging.destination.name',
       reason:
@@ -26344,939 +24056,649 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['messaging.destination.name'],
-    changelog: [
-      {
-        version: '0.16.0',
-        prs: [482],
-        description: 'Added messaging.destination attribute, deprecated in favor of messaging.destination.name',
-      },
-    ],
   },
   'messaging.destination.connection': {
-    brief: 'The message destination connection.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'BestTopic',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'messaging.destination_kind': {
-    brief: 'The kind of message destination.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'topic',
     deprecation: {
       reason:
         'Deprecated from OTEL, which now models the destination kind via messaging.operation.type and messaging.destination.name.',
     },
-    changelog: [
-      {
-        version: 'next',
-        description:
-          'Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations.',
-      },
-    ],
   },
   'messaging.destination.name': {
-    brief: 'The message destination name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'BestTopic',
     aliases: ['messaging.destination'],
-    changelog: [
-      { version: '0.16.0', prs: [482], description: 'Added messaging.destination as an alias' },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
   },
   'messaging.destination.partition.id': {
-    brief:
-      'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '1',
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
   },
   'messaging.kafka.message.key': {
-    brief:
-      "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'myKey',
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
   },
   'messaging.kafka.message.tombstone': {
-    brief: 'A boolean that is true if the message is a tombstone.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
   },
   'messaging.kafka.offset': {
-    brief: 'The offset of a record in the corresponding Kafka partition.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 42,
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
   },
   'messaging.message.body.size': {
-    brief: 'The size of the message body in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 839,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'messaging.message.conversation_id': {
-    brief:
-      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'MyConversationId',
-    changelog: [{ version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
   },
   'messaging.message.envelope.size': {
-    brief: 'The size of the message body and metadata in bytes.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 1045,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'messaging.message.id': {
-    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'messaging.message.receive.latency': {
-    brief: 'The latency between when the message was published and received.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1732847252,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'messaging.message.retry.count': {
-    brief: 'The amount of attempts to send the message.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 2,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'messaging.operation.name': {
-    brief: 'The name of the messaging operation being performed',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'send',
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' }],
   },
   'messaging.operation.type': {
-    brief: 'A string identifying the type of the messaging operation',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'create',
-    changelog: [{ version: '0.1.0', prs: [51, 127] }],
   },
   'messaging.rabbitmq.destination.routing_key': {
-    brief: 'RabbitMQ message routing key.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'myKey',
-    changelog: [
-      { version: '0.16.0', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
-    ],
   },
   'messaging.system': {
-    brief: 'The messaging system as identified by the client instrumentation.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'activemq',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   method: {
-    brief: 'The HTTP method used.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'GET',
     deprecation: {
       replacement: 'http.request.method',
       status: 'normalize',
     },
     aliases: ['http.request.method', 'http.request_method', 'http.method'],
-    changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
-      { version: '0.1.0', prs: [61, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'middleware.name': {
-    brief: 'The name of the middleware.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'AuthenticationMiddleware',
     aliases: [
       'django.middleware_name',
       'starlite.middleware_name',
       'litestar.middleware_name',
       'starlette.middleware_name',
     ],
-    changelog: [
-      {
-        version: 'next',
-        description:
-          'Added django.middleware_name, starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases',
-      },
-      { version: '0.6.0', prs: [336], description: 'Added middleware.name attribute' },
-    ],
   },
   'navigation.origin': {
-    brief:
-      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/users/:id',
     aliases: ['sentry.sveltekit.navigation.from'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' }],
   },
   'navigation.route.id': {
-    brief:
-      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'AboutView',
-    changelog: [{ version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' }],
   },
   'navigation.type': {
-    brief: 'The type of navigation done by a client-side router.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'router.push',
     aliases: ['sentry.sveltekit.navigation.type'],
-    changelog: [
-      { version: '0.16.0', prs: [467], description: 'Added new deprecated alias' },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
   },
   'nel.elapsed_time': {
-    brief:
-      'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 100,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [68] },
-    ],
   },
   'nel.phase': {
-    brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'application',
-    changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
   'nel.referrer': {
-    brief: "request's referrer, as determined by the referrer policy associated with its client.",
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https://example.com/foo?bar=baz',
-    changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
   'nel.sampling_function': {
-    brief: 'The sampling function used to determine if the request should be sampled.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.5,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [68] },
-    ],
   },
   'nel.type': {
-    brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'dns.unreachable',
-    changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
   'network.connection.effective_type': {
-    brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '4g',
     aliases: ['effectiveConnectionType'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [279],
-        description: 'Added attribute network.connection.effective_type to be used instead of effectiveConnectionType',
-      },
-    ],
   },
   'network.connection.rtt': {
-    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 100,
     aliases: ['connection.rtt'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [279],
-        description: 'Added attribute network.connection.rtt to be used instead of connection.rtt',
-      },
-    ],
   },
   'network.connection.type': {
-    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'wifi',
     aliases: ['device.connection_type', 'connectionType'],
-    changelog: [
-      {
-        version: '0.5.0',
-        prs: [279],
-        description: 'Added attribute network.connection.type to be used instead of connectionType',
-      },
-    ],
   },
   'network.local.address': {
-    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '10.1.2.80',
     aliases: ['net.host.ip', 'net.sock.host.addr'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'network.local.port': {
-    brief: 'Local port number of the network connection.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 65400,
     aliases: ['net.sock.host.port'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'network.peer.address': {
-    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '10.1.2.80',
     aliases: ['net.peer.ip', 'net.sock.peer.addr'],
-    changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
   },
   'network.peer.port': {
-    brief: 'Peer port number of the network connection.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 65400,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'network.protocol.name': {
-    brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'http',
     aliases: ['net.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'network.protocol.version': {
-    brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '1.1',
     aliases: ['http.flavor', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'network.transport': {
-    brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'tcp',
     aliases: ['net.transport', 'mcp.transport'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'network.type': {
-    brief: 'OSI network layer or non-OSI equivalent.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'ipv4',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'net.host.ip': {
-    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '192.168.0.1',
     deprecation: {
       replacement: 'network.local.address',
     },
     aliases: ['network.local.address', 'net.sock.host.addr'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.host.name': {
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'example.com',
     deprecation: {
       replacement: 'server.address',
     },
     aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
-    changelog: [
-      { version: 'next', description: 'Added address as an alias' },
-      { version: '0.1.0', prs: [61, 108, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'net.host.port': {
-    brief: 'Server port number.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 1337,
     deprecation: {
       replacement: 'server.port',
     },
     aliases: ['server.port', 'port'],
-    changelog: [
-      { version: 'next', description: 'Added port as an alias' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.1.0', prs: [61] },
-      { version: '0.0.0' },
-    ],
   },
   'net.peer.ip': {
-    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
     },
     aliases: ['network.peer.address', 'net.sock.peer.addr'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.peer.name': {
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'example.com',
     deprecation: {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'net.peer.port': {
-    brief: 'Peer port number.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 1337,
     deprecation: {
       replacement: 'server.port',
       reason: 'Deprecated, use server.port on client spans and client.port on server spans.',
     },
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'net.protocol.name': {
-    brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'http',
     deprecation: {
       replacement: 'network.protocol.name',
     },
     aliases: ['network.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'net.protocol.version': {
-    brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
     },
     aliases: ['network.protocol.version', 'http.flavor'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.sock.family': {
-    brief: 'OSI transport and network layer',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'inet',
     deprecation: {
       replacement: 'network.transport',
       reason: 'Deprecated, use network.transport and network.type.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'net.sock.host.addr': {
-    brief: 'Local address of the network connection mapping to Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/var/my.sock',
     deprecation: {
       replacement: 'network.local.address',
     },
     aliases: ['network.local.address', 'net.host.ip'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.sock.host.port': {
-    brief: 'Local port number of the network connection.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 8080,
     deprecation: {
       replacement: 'network.local.port',
     },
     aliases: ['network.local.port'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'net.sock.peer.addr': {
-    brief: 'Peer address of the network connection - IP address',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
     },
     aliases: ['network.peer.address', 'net.peer.ip'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
   },
   'net.sock.peer.name': {
-    brief: 'Peer address of the network connection - Unix domain socket name',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/var/my.sock',
     deprecation: {
       reason: 'Deprecated from OTEL, no replacement at this time',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 119, 127] }, { version: '0.0.0' }],
   },
   'net.sock.peer.port': {
-    brief: 'Peer port number of the network connection.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 8080,
     deprecation: {
       replacement: 'network.peer.port',
     },
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'net.transport': {
-    brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'tcp',
     deprecation: {
       replacement: 'network.transport',
     },
     aliases: ['network.transport', 'mcp.transport'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
   },
   'os.build': {
-    brief: 'The build ID of the operating system.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1234567890',
     deprecation: {
       replacement: 'os.build_id',
       status: 'backfill',
     },
     aliases: ['os.build_id'],
-    changelog: [
-      { version: '0.5.0', prs: [301], description: 'Added os.build attribute, deprecated in favor of os.build_id' },
-    ],
   },
   'os.build_id': {
-    brief: 'The build ID of the operating system.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '1234567890',
     aliases: ['os.build'],
-    changelog: [
-      { version: '0.5.0', prs: [301], description: 'Added os.build as alias' },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
   },
   'os.description': {
-    brief:
-      'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Ubuntu 18.04.1 LTS',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'os.kernel_version': {
-    brief: 'An independent kernel version string. Typically the entire output of the `uname` syscall.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '20.2.0',
-    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.kernel_version attribute' }],
   },
   'os.name': {
-    brief: 'Human readable operating system name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Ubuntu',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'os.raw_description': {
-    brief:
-      'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Ubuntu 22.04.4 LTS (Jammy Jellyfish)',
-    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.raw_description attribute' }],
   },
   'os.rooted': {
-    brief: 'Whether the operating system has been jailbroken or rooted.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' }],
   },
   'os.theme': {
-    brief: 'Whether the OS runs in dark mode or light mode.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'dark',
-    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.theme attribute' }],
   },
   'os.type': {
-    brief: 'The operating system type.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'linux',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'os.version': {
-    brief: 'The version of the operating system.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '18.04.2',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'otel.kind': {
-    brief:
-      'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'SERVER',
     deprecation: {
       replacement: 'sentry.kind',
       reason: 'Deprecated in favor of sentry.kind',
       status: 'backfill',
     },
     aliases: ['sentry.kind'],
-    changelog: [{ version: '0.13.0', prs: [440], description: 'Added otel.kind attribute' }],
   },
   'otel.scope.name': {
-    brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'io.opentelemetry.contrib.mongodb',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'otel.scope.version': {
-    brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '2.4.5',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'otel.status_code': {
-    brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'OK',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'otel.status_description': {
-    brief: 'Description of the Status if it has a value, otherwise not set.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'resource not found',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'params.<key>': {
-    brief:
-      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -27284,198 +24706,146 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "params.id='123'",
     aliases: ['url.path.parameter.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   'performance.activationStart': {
-    brief: 'The time between initiating a navigation to a page and the browser activating the page',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1.983,
     deprecation: {
       replacement: 'browser.performance.navigation.activation_start',
       reason: 'The activationStart is now recorded as the browser.performance.navigation.activation_start attribute.',
       status: 'backfill',
     },
     aliases: ['browser.performance.navigation.activation_start'],
-    changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.activationStart attribute' }],
   },
   'performance.timeOrigin': {
-    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1776185678.886,
     deprecation: {
       replacement: 'browser.performance.time_origin',
       reason: 'The timeOrigin is now recorded as the browser.performance.time_origin attribute.',
       status: 'backfill',
     },
     aliases: ['browser.performance.time_origin'],
-    changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
   },
   port: {
-    brief: 'The destination port for a TCP connection.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1337,
-    examples: [1337],
     deprecation: {
       replacement: 'server.port',
       reason: 'Old namespace-less attribute, to be replaced with server.port for span-first future',
       status: 'backfill',
     },
     aliases: ['server.port', 'net.host.port'],
-    changelog: [{ version: 'next', prs: [532], description: 'Added port attribute' }],
   },
   previous_route: {
-    brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'HomeScreen',
-    changelog: [{ version: '0.1.0', prs: [74] }, { version: '0.0.0' }],
   },
   'process.command_args': {
-    brief: 'All the command arguments (including the command/executable itself) as received by the process.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: ['cmd/otecol', '--config=config.yaml'],
-    changelog: [{ version: '0.6.0', prs: [327], description: 'Added process.command_args attribute' }],
   },
   'process.executable.name': {
-    brief: 'The name of the executable that started the process.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'getsentry',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'process.pid': {
-    brief: 'The process ID of the running process.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 12345,
     aliases: ['subprocess.pid'],
-    changelog: [
-      { version: 'next', description: 'Added subprocess.pid as an alias' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.0.0' },
-    ],
   },
   'process.runtime.description': {
-    brief:
-      'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Eclipse OpenJ9 VM openj9-0.21.0',
     aliases: ['runtime.raw_description'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'process.runtime.engine.name': {
-    brief: 'The name of the runtime engine.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'v8',
-    changelog: [{ version: '0.0.0' }],
   },
   'process.runtime.engine.version': {
-    brief: 'The version of the runtime engine.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '12.9.202.13-rusty',
-    changelog: [{ version: '0.0.0' }],
   },
   'process.runtime.name': {
-    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'node',
     aliases: ['runtime.name'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'process.runtime.version': {
-    brief:
-      'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '18.04.2',
     aliases: ['runtime.version'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   profile_id: {
-    brief:
-      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '123e4567e89b12d3a456426614174000',
     deprecation: {
       replacement: 'sentry.profile_id',
       status: 'normalize',
     },
     aliases: ['sentry.profile_id'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
   },
   query: {
-    brief: 'The database query being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'SELECT * FROM users WHERE id = $1',
-    examples: ['SELECT * FROM users WHERE id = $1'],
     deprecation: {
       replacement: 'db.query.text',
       reason:
@@ -27483,10 +24853,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['db.query.text', 'db.statement'],
-    changelog: [{ version: 'next', prs: [530], description: 'Added query attribute' }],
   },
   'query.<key>': {
-    brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -27494,80 +24862,60 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "query.id='123'",
     deprecation: {
       replacement: 'url.query',
       reason: 'Instead of sending items individually in query.<key>, they should be sent all together with url.query.',
     },
-    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   'react.version': {
-    brief: 'The version of the React framework',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '18.2.0',
-    changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
   },
   'redis.command': {
-    brief: 'The name of the Redis operation being executed.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'SELECT',
-    examples: ['SELECT'],
     deprecation: {
       replacement: 'db.operation.name',
       status: 'backfill',
     },
     aliases: ['cloudflare.d1.query_type', 'db.operation.name', 'db.operation'],
-    changelog: [{ version: 'next', prs: [531], description: 'Added redis.command attribute' }],
   },
   'redis.key': {
-    brief: 'The key the Redis command is operating on.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'user:2047:city',
     deprecation: {
       replacement: 'db.redis.key',
       reason: 'This attribute is being deprecated in favor of db.redis.key, which is the preferred replacement.',
       status: 'backfill',
     },
     aliases: ['db.redis.key'],
-    changelog: [{ version: 'next', description: 'Added redis.key attribute, deprecated in favor of db.redis.key' }],
   },
   release: {
-    brief: 'The sentry release.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'production',
     deprecation: {
       replacement: 'sentry.release',
       status: 'normalize',
     },
     aliases: ['sentry.release'],
-    changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
-      { version: '0.1.0', prs: [61, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'remix.action_form_data.<key>': {
-    brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -27575,268 +24923,179 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "http.response.header.text='test'",
-    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   replay_id: {
-    brief: 'The id of the sentry replay.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '123e4567e89b12d3a456426614174000',
     deprecation: {
       replacement: 'sentry.replay_id',
       status: 'normalize',
     },
     aliases: ['sentry.replay_id'],
-    changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
-      { version: '0.1.0', prs: [61] },
-      { version: '0.0.0' },
-    ],
   },
   'resource.deployment.environment': {
-    brief: 'The software deployment environment name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
       status: 'backfill',
     },
-    changelog: [{ version: '0.5.0', prs: [266] }],
   },
   'resource.deployment.environment.name': {
-    brief: 'The software deployment environment name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'production',
     deprecation: {
       replacement: 'sentry.environment',
       status: 'backfill',
     },
-    changelog: [{ version: '0.3.1', prs: [196] }],
   },
   'resource.render_blocking_status': {
-    brief: 'The render blocking status of the resource.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'non-blocking',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   route: {
-    brief:
-      'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'App\\Controller::indexAction',
     deprecation: {
       replacement: 'http.route',
     },
     aliases: ['http.route'],
-    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
   'rpc.grpc.status_code': {
-    brief: 'The numeric status code of the gRPC request.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 2,
     deprecation: {
       replacement: 'rpc.response.status_code',
       reason:
         'Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.',
     },
     aliases: ['code', 'rpc.response.status_code'],
-    changelog: [
-      { version: 'next', description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.0.0' },
-    ],
   },
   'rpc.method': {
-    brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'com.example.ExampleService/exampleMethod',
     aliases: ['aws.operation_name'],
-    changelog: [
-      { version: 'next', description: 'Added aws.operation_name as an alias' },
-      { version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' },
-    ],
   },
   'rpc.response.status_code': {
-    brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'DEADLINE_EXCEEDED',
     aliases: ['code', 'rpc.grpc.status_code'],
-    changelog: [
-      { version: 'next', description: 'Added code and rpc.grpc.status_code as aliases' },
-      { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
-    ],
   },
   'rpc.service': {
-    brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'myService.BestService',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'rpc.system': {
-    brief: 'A string identifying the remoting system.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'aws-api',
     deprecation: {
       replacement: 'rpc.system.name',
       reason: 'This attribute is being deprecated in favor of rpc.system.name, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
     aliases: ['rpc.system.name'],
-    changelog: [
-      {
-        version: '0.16.0',
-        prs: [482],
-        description: 'Added rpc.system attribute, deprecated in favor of rpc.system.name',
-      },
-    ],
   },
   'rpc.system.name': {
-    brief: 'A string identifying the remoting system.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'aws-api',
     aliases: ['rpc.system'],
-    changelog: [{ version: '0.16.0', prs: [482], description: 'Added rpc.system.name attribute' }],
   },
   'runtime.build': {
-    brief: 'The application build string, when it is separate from the version.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'stable',
     deprecation: {
       reason:
         'The runtime.* namespace is deprecated in favor of process.runtime.*. No direct OTel equivalent exists for this attribute.',
     },
-    changelog: [{ version: '0.11.0', prs: [383], description: 'Added and deprecated runtime.build attribute' }],
   },
   'runtime.name': {
-    brief: 'The name of the runtime. For example node, CPython, or rustc.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'node',
     deprecation: {
       replacement: 'process.runtime.name',
       reason: 'Prefer OTel-aligned process.runtime.name',
     },
     aliases: ['process.runtime.name'],
-    changelog: [
-      {
-        version: '0.11.0',
-        prs: [383],
-        description: 'Added and deprecated runtime.name attribute in favor of process.runtime.name',
-      },
-    ],
   },
   'runtime.raw_description': {
-    brief:
-      'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Eclipse OpenJ9 VM openj9-0.21.0',
     deprecation: {
       replacement: 'process.runtime.description',
       reason: 'Prefer OTel-aligned process.runtime.description',
     },
     aliases: ['process.runtime.description'],
-    changelog: [
-      {
-        version: '0.11.0',
-        prs: [383],
-        description: 'Added and deprecated runtime.raw_description attribute in favor of process.runtime.description',
-      },
-    ],
   },
   'runtime.version': {
-    brief: 'The version of the runtime.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '18.04.2',
     deprecation: {
       replacement: 'process.runtime.version',
       reason: 'Prefer OTel-aligned process.runtime.version',
     },
     aliases: ['process.runtime.version'],
-    changelog: [
-      {
-        version: '0.11.0',
-        prs: [383],
-        description: 'Added and deprecated runtime.version attribute in favor of process.runtime.version',
-      },
-    ],
   },
   'score.<key>': {
-    brief:
-      'The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -27844,11 +25103,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: 'score.cls=0.1723',
-    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.<key> attribute' }],
   },
   'score.ratio.<key>': {
-    brief: 'The score for a web vital, normalized to a number between 0 and 1.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -27856,22 +25112,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: 'score.ratio.inp=0.7748',
-    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.ratio.<key> attribute' }],
   },
   'score.total': {
-    brief:
-      'The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.total attribute' }],
   },
   'score.weight.<key>': {
-    brief: "The relative weight of a web vital in a span's performance score.",
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -27879,271 +25129,200 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: 'score.weight.fcp=0.25',
-    changelog: [{ version: '0.7.0', prs: [355], description: 'Added score.weight.<key> attribute' }],
   },
   'sentry.action': {
-    brief:
-      'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'SELECT',
-    changelog: [{ version: '0.4.0', prs: [212] }],
   },
   'sentry.browser.name': {
-    brief: 'The name of the browser.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Chrome',
     deprecation: {
       replacement: 'browser.name',
     },
     aliases: ['browser.name'],
-    changelog: [{ version: '0.1.0', prs: [139] }],
   },
   'sentry.browser.version': {
-    brief: 'The version of the browser.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '120.0.6099.130',
     deprecation: {
       replacement: 'browser.version',
     },
     aliases: ['browser.version'],
-    changelog: [{ version: '0.1.0', prs: [139] }],
   },
   'sentry.cancellation_reason': {
-    brief: 'The reason why a span ended early.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'document.hidden',
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.category': {
-    brief:
-      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'db',
-    changelog: [{ version: '0.4.0', prs: [218] }],
   },
   'sentry.client_sample_rate': {
-    brief: 'Rate at which a span was sampled in the SDK.',
     type: 'double',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.5,
-    changelog: [{ version: '0.1.0', prs: [102] }],
   },
   'sentry.description': {
-    brief: 'The human-readable description of a span.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'index view query',
-    changelog: [{ version: '0.1.0', prs: [135] }],
   },
   'sentry.dist': {
-    brief: 'The sentry dist.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1.0',
     aliases: ['dist'],
-    changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist as an alias' }, { version: '0.0.0' }],
   },
   'sentry.domain': {
-    brief:
-      'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'example.com',
-    changelog: [{ version: '0.4.0', prs: [212] }],
   },
   'sentry.dsc.environment': {
-    brief: 'The environment from the dynamic sampling context.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: 'prod',
-    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   'sentry.dsc.project_id': {
-    brief:
-      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: '12345',
-    changelog: [{ version: '0.7.0', prs: [358], description: 'Add sentry.dsc.project_id as an attribute' }],
   },
   'sentry.dsc.public_key': {
-    brief: 'The public key from the dynamic sampling context.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: 'c51734c603c4430eb57cb0a5728a479d',
-    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   'sentry.dsc.release': {
-    brief: 'The release identifier from the dynamic sampling context.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: 'frontend@e8211be71b214afab5b85de4b4c54be3714952bb',
-    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   'sentry.dsc.sampled': {
-    brief: 'Whether the event was sampled according to the dynamic sampling context.',
     type: 'boolean',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: true,
-    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   'sentry.dsc.sample_rate': {
-    brief: 'The sample rate from the dynamic sampling context.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: '1.0',
-    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   'sentry.dsc.trace_id': {
-    brief: 'The trace ID from the dynamic sampling context.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: '047372980460430cbc78d9779df33a46',
-    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   'sentry.dsc.transaction': {
-    brief: 'The transaction name from the dynamic sampling context.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: '/issues/errors-outages/',
-    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   'sentry.environment': {
-    brief: 'The sentry environment.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'production',
     aliases: ['environment'],
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.event.serialized_breadcrumbs': {
-    brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    changelog: [{ version: 'next' }],
   },
   'sentry.event.serialized_contexts': {
-    brief: 'JSON-serialized `contexts` property from a Sentry event.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    changelog: [{ version: 'next' }],
   },
   'sentry.event.serialized_extra': {
-    brief: 'JSON-serialized `extra` property from a Sentry event.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    changelog: [{ version: 'next' }],
   },
   'sentry.exclusive_time': {
-    brief: 'The exclusive time duration of the span in milliseconds.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.3.0', prs: [160] }, { version: '0.0.0' }],
   },
   'sentry.frames.frozen': {
-    brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 3,
     deprecation: {
       replacement: 'app.vitals.frames.frozen.count',
       reason:
@@ -28151,17 +25330,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.frozen.count', 'frames.frozen'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
   },
   'sentry.frames.slow': {
-    brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1,
     deprecation: {
       replacement: 'app.vitals.frames.slow.count',
       reason:
@@ -28169,17 +25345,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.slow.count', 'frames.slow'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.slow attribute' }],
   },
   'sentry.frames.total': {
-    brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 60,
     deprecation: {
       replacement: 'app.vitals.frames.total.count',
       reason:
@@ -28187,140 +25360,97 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.total.count', 'frames.total'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.total attribute' }],
   },
   'sentry.graphql.operation': {
-    brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'getUserById',
-    changelog: [{ version: '0.3.1', prs: [190] }],
   },
   'sentry.group': {
-    brief:
-      'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.4.0', prs: [212] }],
   },
   'sentry.http.prefetch': {
-    brief: 'If an http request was a prefetch request.',
     type: 'boolean',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.idle_span_finish_reason': {
-    brief: 'The reason why an idle span ended early.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'idleTimeout',
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.is_remote': {
-    brief: "Indicates whether a span's parent is remote.",
     type: 'boolean',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.3.1', prs: [190] }],
   },
   'sentry.kind': {
-    brief:
-      'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'client',
-    examples: ['client', 'server', 'producer', 'consumer', 'internal'],
     aliases: ['otel.kind'],
-    changelog: [
-      { version: 'next', prs: [517], description: 'Added more examples and additional_context to the attribute' },
-      { version: '0.3.1', prs: [190] },
-    ],
-    additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
   },
   'sentry.main_thread': {
-    brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.5.0' }],
   },
   'sentry.message.parameter.<key>': {
-    brief:
-      "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: "sentry.message.parameter.0='123'",
-    changelog: [{ version: '0.1.0', prs: [116] }],
   },
   'sentry.message.template': {
-    brief: 'The parameterized template string.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Hello, {name}!',
-    changelog: [{ version: '0.1.0', prs: [116] }],
   },
   'sentry.metric.source': {
-    brief:
-      'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'span',
-    changelog: [{ version: '0.16.0', prs: [476], description: 'Added sentry.metric.source attribute' }],
   },
   'sentry.mobile': {
-    brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.5.0' }],
   },
   'sentry.module.<key>': {
-    brief: 'A module that was loaded in the process. The key is the name of the module.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -28328,537 +25458,377 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "sentry.module.brianium/paratest='v7.7.0'",
-    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   'sentry.nextjs.ssr.function.route': {
-    brief:
-      'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/posts/[id]/layout',
-    changelog: [{ version: '0.1.0', prs: [54, 106] }],
   },
   'sentry.nextjs.ssr.function.type': {
-    brief:
-      'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'generateMetadata',
-    changelog: [{ version: '0.1.0', prs: [54, 106] }],
   },
   'sentry.normalized_db_query': {
-    brief: 'The normalized version of `db.query.text`.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
-    changelog: [{ version: '0.3.1', prs: [194] }],
   },
   'sentry.normalized_db_query.hash': {
-    brief: 'The hash of `sentry.normalized_db_query`.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    changelog: [{ version: '0.4.0', prs: [200] }],
   },
   'sentry.normalized_description': {
-    brief:
-      'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'SELECT .. FROM sentry_project WHERE (project_id = %s)',
-    changelog: [{ version: '0.4.0', prs: [212] }],
   },
   'sentry.observed_timestamp_nanos': {
-    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1544712660300000000',
-    changelog: [
-      { version: '0.3.0', prs: [174] },
-      { version: '0.2.0', prs: [137] },
-    ],
   },
   'sentry.op': {
-    brief: 'The operation of a span.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'http.client',
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.origin': {
-    brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'auto.http.otel.fastify',
-    changelog: [{ version: '0.1.0', prs: [68] }, { version: '0.0.0' }],
   },
   'sentry.pageload.span_id': {
-    brief: 'The id of the pageload span, set by web vital spans and metrics',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'bf2c8d3df84524de',
-    changelog: [{ version: '0.17.0', prs: [495], description: 'Added sentry.pageload.span_id attribute' }],
   },
   'sentry.platform': {
-    brief: 'The sdk platform that generated the event.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'php',
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.profiler_id': {
-    brief: 'The id of the currently running profiler (continuous profiling)',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '18779b64dd35d1a538e7ce2dd2d3fad3',
-    changelog: [{ version: '0.4.0', prs: [242] }],
   },
   'sentry.profile_id': {
-    brief:
-      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '123e4567e89b12d3a456426614174000',
     aliases: ['profile_id'],
-    changelog: [
-      { version: 'next', prs: [497], description: 'Added profile_id as an alias' },
-      { version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' },
-    ],
   },
   'sentry.relay.ingress': {
-    brief: 'How an item (span, log, &c.) entered Relay.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: 'OTEL',
-    changelog: [{ version: '0.17.0', prs: [491], description: 'Added sentry.relay.ingress attribute' }],
   },
   'sentry.relay.pipeline': {
-    brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: 'span v2',
-    changelog: [{ version: '0.17.0', prs: [491], description: 'Added sentry.relay.pipeline attribute' }],
   },
   'sentry.release': {
-    brief: 'The sentry release.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '7.0.0',
     aliases: ['service.version', 'release'],
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.replay_id': {
-    brief: 'The id of the sentry replay.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '123e4567e89b12d3a456426614174000',
     aliases: ['replay_id'],
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.replay_is_buffering': {
-    brief:
-      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
     type: 'boolean',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.3.0', prs: [185] }],
   },
   'sentry.report_event': {
-    brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'pagehide',
     deprecation: {
       reason:
         'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
     },
-    changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
   },
   'sentry.sdk.integrations': {
-    brief:
-      'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
     type: 'string[]',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['InboundFilters', 'FunctionToString', 'BrowserApiErrors', 'Breadcrumbs'],
-    changelog: [{ version: '0.0.0', prs: [42] }],
   },
   'sentry.sdk.name': {
-    brief: 'The sentry sdk name.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '@sentry/react',
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.sdk.version': {
-    brief: 'The sentry sdk version.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '7.0.0',
-    changelog: [{ version: '0.0.0' }],
   },
   'sentry.segment.id': {
-    brief: 'The segment ID of a span',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '051581bf3cb55c13',
     aliases: ['sentry.segment_id'],
-    changelog: [{ version: '0.1.0', prs: [107, 124] }],
   },
   'sentry.segment_id': {
-    brief: 'The segment ID of a span',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '051581bf3cb55c13',
     deprecation: {
       replacement: 'sentry.segment.id',
       status: 'backfill',
     },
     aliases: ['sentry.segment.id'],
-    changelog: [{ version: '0.1.0', prs: [124] }],
   },
   'sentry.segment.name': {
-    brief: 'The segment name of a span',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'GET /user',
     aliases: ['sentry.transaction', 'transaction'],
-    changelog: [
-      { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
-      { version: '0.1.0', prs: [104] },
-    ],
   },
   'sentry.segment.name.source': {
-    brief:
-      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'internal',
-    example: 'route',
-    examples: ['route', 'component', 'view', 'task', 'custom', 'url'],
-    changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.name.source' }],
-    additionalContext: [
-      'This attribute is the replacement for `transaction_info.source` on transactions.',
-      'Should we bring back clustering for segment names (like we do for transaction names), this attribute will be used to determine if a segment name should be clustered.',
-    ],
   },
   'sentry.server_sample_rate': {
-    brief: 'Rate at which a span was sampled in Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0.5,
-    changelog: [{ version: '0.1.0', prs: [102] }],
   },
   'sentry.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'route',
     deprecation: {
       reason:
         'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
     },
-    changelog: [{ version: 'next', description: 'Removed the sentry.span.source replacement' }, { version: '0.5.0' }],
   },
   'sentry.span.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'route',
     deprecation: {
       reason:
         'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
     },
-    changelog: [
-      { version: 'next', description: 'Deprecated; superseded by sentry.segment.name.source on segment spans' },
-      { version: '0.4.0', prs: [214] },
-      { version: '0.0.0' },
-    ],
   },
   'sentry.status': {
-    brief:
-      'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'ok',
-    changelog: [{ version: '0.14.0', prs: [453] }],
   },
   'sentry.status_code': {
-    brief:
-      'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 200,
-    changelog: [{ version: '0.4.0', prs: [223, 228] }],
   },
   'sentry.status.message': {
-    brief: 'The from OTLP extracted status message.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'foobar',
-    changelog: [{ version: '0.3.1', prs: [190] }],
   },
   'sentry.sveltekit.navigation.from': {
-    brief: 'the navigation origin (sveltekit router)',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/home',
     deprecation: {
       replacement: 'navigation.origin',
       reason: 'Use the more generic attribute instead',
       status: 'backfill',
     },
     aliases: ['navigation.origin'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
   },
   'sentry.sveltekit.navigation.to': {
-    brief: 'the navigation destination',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/users/:id',
     deprecation: {
       reason: 'the navigation destination is already covered by url.* attributes',
     },
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.to attribute' }],
   },
   'sentry.sveltekit.navigation.type': {
-    brief: 'The type of navigation event emitted from the sveltekit client router',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'link',
     deprecation: {
       replacement: 'navigation.type',
       reason: 'Use the more generic attribute instead',
       status: 'backfill',
     },
     aliases: ['navigation.type'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
   },
   'sentry.thread.id': {
-    brief: 'Current “managed” thread ID.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 56,
     deprecation: {
       replacement: 'thread.id',
       reason: 'This attribute is being deprecated in favor of the OTel-standard thread.id',
       status: 'backfill',
     },
-    changelog: [{ version: '0.13.0', prs: [451] }],
   },
   'sentry.timestamp.sequence': {
-    brief:
-      'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
     type: 'integer',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 0,
-    changelog: [{ version: '0.5.0', prs: [262] }],
   },
   'sentry.trace_lifecycle': {
-    brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'stream',
-    changelog: [{ version: '0.13.0', prs: [442], description: 'Added sentry.trace_lifecycle attribute' }],
   },
   'sentry.trace.parent_span_id': {
-    brief:
-      'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'b0e6f15b45c36b12',
     deprecation: {},
-    changelog: [
-      { version: '0.5.0', prs: [287], description: 'Deprecate `sentry.trace.parent_span_id`' },
-      { version: '0.1.0', prs: [116] },
-    ],
   },
   'sentry.trace.status': {
-    brief:
-      'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'ok',
-    changelog: [{ version: '0.14.0', prs: [453] }],
   },
   'sentry.transaction': {
-    brief: 'The sentry transaction (segment name).',
     type: 'string',
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'GET /',
     deprecation: {
       replacement: 'sentry.segment.name',
       reason: 'This attribute is being deprecated in favor of sentry.segment.name',
       status: 'backfill',
     },
     aliases: ['sentry.segment.name', 'transaction'],
-    changelog: [
-      { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
-      { version: '0.0.0' },
-    ],
   },
   'sentry.user.email': {
-    brief: 'User email address.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -28869,10 +25839,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.email',
     },
     aliases: ['user.email'],
-    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   'sentry.user.geo.city': {
-    brief: 'Human readable city name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -28883,10 +25851,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.geo.city',
     },
     aliases: ['user.geo.city'],
-    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   'sentry.user.geo.country_code': {
-    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -28897,10 +25863,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.geo.country_code',
     },
     aliases: ['user.geo.country_code'],
-    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   'sentry.user.geo.region': {
-    brief: 'Human readable region name or code.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -28911,10 +25875,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.geo.region',
     },
     aliases: ['user.geo.region'],
-    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   'sentry.user.geo.subdivision': {
-    brief: 'Human readable subdivision name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
@@ -28925,10 +25887,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.geo.subdivision',
     },
     aliases: ['user.geo.subdivision'],
-    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   'sentry.user.id': {
-    brief: 'Unique identifier of the user.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -28939,10 +25899,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.id',
     },
     aliases: ['user.id'],
-    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   'sentry.user.ip': {
-    brief: 'The IP address of the user.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -28953,10 +25911,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.ip_address',
     },
     aliases: ['user.ip_address'],
-    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   'sentry.user.username': {
-    brief: 'Short name or login/username of the user.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -28967,102 +25923,65 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'user.name',
     },
     aliases: ['user.name'],
-    changelog: [{ version: '0.10.0', prs: [406] }],
   },
   'server.address': {
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'example.com',
     aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [
-      { version: 'next', description: 'Added address as an alias' },
-      { version: '0.1.0', prs: [108, 127] },
-      { version: '0.0.0' },
-    ],
   },
   server_name: {
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'example.com',
     deprecation: {
       replacement: 'server.address',
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
     aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
-    changelog: [
-      { version: 'next', description: 'Added address as an alias' },
-      {
-        version: '0.16.0',
-        prs: [477],
-        description: 'Added server_name attribute, deprecated in favor of server.address',
-      },
-    ],
   },
   'server.port': {
-    brief: 'Server port number.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 1337,
     aliases: ['net.host.port', 'port'],
-    changelog: [
-      { version: 'next', description: 'Added port as an alias' },
-      { version: '0.4.0', prs: [228] },
-      { version: '0.0.0' },
-    ],
   },
   'service.name': {
-    brief: 'Logical name of the service.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'omegastar',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'service.version': {
-    brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '5.0.0',
     aliases: ['sentry.release'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'session.id': {
-    brief: 'A unique id identifying the active session at the time of setting this attribute',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '00112233-4455-6677-8899-aabbccddeeff',
-    changelog: [{ version: '0.11.0', prs: [412], description: 'Added session.id attribute' }],
   },
   stall_percentage: {
-    brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -29076,14 +25995,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.stall.percentage'],
-    changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
-      { version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' },
-    ],
   },
   stall_total_time: {
-    brief:
-      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
@@ -29097,20 +26010,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.stall.duration'],
-    changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
-      { version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' },
-    ],
   },
   'starlette.middleware_name': {
-    brief: 'The name of the Starlette middleware.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'AuthenticationMiddleware',
     deprecation: {
       replacement: 'middleware.name',
       reason:
@@ -29118,23 +26025,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['middleware.name'],
-    changelog: [
-      {
-        version: 'next',
-        description: 'Added starlette.middleware_name attribute, deprecated in favor of middleware.name',
-      },
-    ],
   },
   'starlite.middleware_name': {
-    brief: 'The name of the Starlite middleware.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'AuthenticationMiddleware',
-    examples: ['AuthenticationMiddleware'],
     deprecation: {
       replacement: 'middleware.name',
       reason:
@@ -29142,78 +26040,60 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['middleware.name'],
-    changelog: [{ version: 'next', prs: [519], description: 'Added starlite.middleware_name attribute' }],
   },
   'state.type': {
-    brief: 'The type of state management library',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'redux',
-    changelog: [{ version: '0.7.0', prs: [365], description: 'Added state.type attribute' }],
   },
   'subprocess.pid': {
-    brief: 'The process ID of a subprocess.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 12345,
     deprecation: {
       replacement: 'process.pid',
       reason: 'This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
     aliases: ['process.pid'],
-    changelog: [{ version: 'next', description: 'Added subprocess.pid attribute, deprecated in favor of process.pid' }],
   },
   'thread.id': {
-    brief: 'Current “managed” thread ID.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 56,
-    changelog: [{ version: '0.0.0' }],
   },
   'thread.name': {
-    brief: 'Current thread name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'main',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'timber.tag': {
-    brief: 'The log tag provided by the timber logging framework.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'MyTag',
-    changelog: [{ version: '0.3.0', prs: [183] }],
   },
   time_to_full_display: {
-    brief: 'The duration of time to full display in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
     deprecation: {
       replacement: 'app.vitals.ttfd.value',
       reason:
@@ -29221,19 +26101,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.ttfd.value'],
-    changelog: [
-      { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttfd.value' },
-    ],
   },
   time_to_initial_display: {
-    brief: 'The duration of time to initial display in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1234.56,
     deprecation: {
       replacement: 'app.vitals.ttid.value',
       reason:
@@ -29241,304 +26116,214 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.ttid.value'],
-    changelog: [
-      { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' },
-    ],
   },
   transaction: {
-    brief: 'The sentry transaction (segment name).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'GET /',
     deprecation: {
       replacement: 'sentry.segment.name',
       status: 'normalize',
     },
     aliases: ['sentry.segment.name', 'sentry.transaction'],
-    changelog: [
-      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
-      {
-        version: '0.6.0',
-        prs: [345],
-        description: 'Updated transaction deprecation replacement to sentry.segment.name',
-      },
-      { version: '0.1.0', prs: [61, 127] },
-      { version: '0.0.0' },
-    ],
   },
   'trpc.procedure_path': {
-    brief: 'The path of the tRPC procedure being called',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'user.getById',
-    changelog: [{ version: '0.7.0', prs: [370], description: 'Added trpc.procedure_path attribute' }],
   },
   'trpc.procedure_type': {
-    brief: 'The type of the tRPC procedure',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'query',
-    changelog: [{ version: '0.7.0', prs: [370], description: 'Added trpc.procedure_type attribute' }],
   },
   ttfb: {
-    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 194,
     deprecation: {
       replacement: 'browser.web_vital.ttfb.value',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.value',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.ttfb.value'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   'ttfb.requestTime': {
-    brief:
-      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1554.5814,
     deprecation: {
       replacement: 'browser.web_vital.ttfb.request_time',
       reason: 'This attribute is being deprecated in favor of browser.web_vital.ttfb.request_time',
       status: 'backfill',
     },
     aliases: ['browser.web_vital.ttfb.request_time'],
-    changelog: [{ version: '0.5.0', prs: [235] }],
   },
   type: {
-    brief: 'More granular type of the operation happening.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'fetch',
-    changelog: [{ version: '0.0.0' }],
   },
   'ui.component_name': {
-    brief: 'The name of the associated component.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'HomeButton',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'ui.contributes_to_ttfd': {
-    brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.0.0' }],
   },
   'ui.contributes_to_ttid': {
-    brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
-    changelog: [{ version: '0.0.0' }],
   },
   'ui.element.height': {
-    brief: 'The height of the UI element (for Html in pixels)',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 256,
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.height attribute' }],
   },
   'ui.element.id': {
-    brief: 'The id of the UI element',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'btn-login',
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.id attribute' }],
   },
   'ui.element.identifier': {
-    brief: 'The identifier used to measure the UI element timing',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'heroImage',
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.identifier attribute' }],
   },
   'ui.element.load_time': {
-    brief: 'The loading time of a UI element (from time origin to finished loading)',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 998.2234,
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.load_time attribute' }],
   },
   'ui.element.paint_type': {
-    brief: "The type of element paint. Can either be 'image-paint' or 'text-paint'",
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'image-paint',
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.paint_type attribute' }],
   },
   'ui.element.render_time': {
-    brief: 'The rendering time of the UI element (from time origin to finished rendering)',
     type: 'double',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1023.1124,
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.render_time attribute' }],
   },
   'ui.element.type': {
-    brief: 'type of the UI element',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'img',
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.type attribute' }],
   },
   'ui.element.url': {
-    brief: 'The URL of the UI element (e.g. an img src)',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https://assets.myapp.com/hero.png',
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.url attribute' }],
   },
   'ui.element.width': {
-    brief: 'The width of the UI element (for HTML in pixels)',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 512,
-    changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.width attribute' }],
   },
   url: {
-    brief: 'The URL of the resource that was fetched.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
     },
     aliases: ['url.full', 'http.url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'url.domain': {
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'example.com',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'url.fragment': {
-    brief:
-      'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'details',
-    changelog: [{ version: '0.0.0' }],
   },
   'url.full': {
-    brief: 'The URL of the resource that was fetched.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'https://example.com/test?foo=bar#buzz',
     aliases: ['http.url', 'url', 'aws.request.url'],
-    changelog: [
-      { version: 'next', description: 'Added aws.request.url as an alias' },
-      { version: '0.1.0', prs: [108] },
-      { version: '0.0.0' },
-    ],
   },
   'url.path': {
-    brief: 'The URI path component.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/foo',
-    changelog: [{ version: '0.0.0' }],
   },
   'url.path.parameter.<key>': {
-    brief:
-      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -29546,24 +26331,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     hasDynamicSuffix: true,
-    example: "url.path.parameter.id='123'",
     aliases: ['params.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
   },
   'url.port': {
-    brief: 'Server port number.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 1337,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
   'url.query': {
-    brief:
-      'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
@@ -29572,617 +26350,430 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'foo=bar&bar=baz',
-    changelog: [{ version: '0.0.0' }],
   },
   'url.same_origin': {
-    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
     type: 'boolean',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: true,
     deprecation: {
       replacement: 'http.request.same_origin',
       reason: 'This attribute is being deprecated in favor of http.request.same_origin.',
       status: 'backfill',
     },
     aliases: ['http.request.same_origin'],
-    changelog: [
-      {
-        version: '0.16.0',
-        prs: [456],
-        description: 'Added url.same_origin attribute, deprecated in favor of http.request.same_origin',
-      },
-    ],
   },
   'url.scheme': {
-    brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'https',
     aliases: ['http.scheme'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'url.template': {
-    brief: 'The low-cardinality template of an absolute URL path reference.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '/users/{id}',
-    examples: ['/users/{id}', '/users/:id', '/about'],
-    changelog: [
-      {
-        version: 'next',
-        prs: [505, 521],
-        description: 'Added multiple examples, removed alias to `http.route`, added additional context',
-      },
-      { version: '0.1.0', prs: [127] },
-      { version: '0.0.0' },
-    ],
-    additionalContext: [
-      'This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).',
-      'Use `http.route` for server-side instrumentation that captures the framework route of an incoming request.',
-    ],
   },
   'user_agent.original': {
-    brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
-    example:
-      'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     aliases: ['http.user_agent'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'user.email': {
-    brief: 'User email address.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'test@example.com',
     aliases: ['sentry.user.email'],
-    changelog: [{ version: '0.0.0' }],
   },
   'user.full_name': {
-    brief: "User's full name.",
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'John Smith',
-    changelog: [{ version: '0.0.0' }],
   },
   'user.geo.city': {
-    brief: 'Human readable city name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Toronto',
     aliases: ['sentry.user.geo.city'],
-    changelog: [{ version: '0.0.0' }],
   },
   'user.geo.country_code': {
-    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'CA',
     aliases: ['sentry.user.geo.country_code'],
-    changelog: [{ version: '0.0.0' }],
   },
   'user.geo.region': {
-    brief: 'Human readable region name or code.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Canada',
     aliases: ['sentry.user.geo.region'],
-    changelog: [{ version: '0.0.0' }],
   },
   'user.geo.subdivision': {
-    brief: 'Human readable subdivision name.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Ontario',
     aliases: ['sentry.user.geo.subdivision'],
-    changelog: [{ version: '0.0.0' }],
   },
   'user.hash': {
-    brief: 'Unique user hash to correlate information for a user in anonymized form.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: '8ae4c2993e0f4f3b8b2d1b1f3b5e8f4d',
-    changelog: [{ version: '0.0.0' }],
   },
   'user.id': {
-    brief: 'Unique identifier of the user.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'S-1-5-21-202424912787-2692429404-2351956786-1000',
     aliases: ['sentry.user.id'],
-    changelog: [{ version: '0.0.0' }],
   },
   'user.ip_address': {
-    brief: 'The IP address of the user.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '192.168.1.1',
     aliases: ['sentry.user.ip'],
-    changelog: [{ version: '0.1.0', prs: [75] }],
   },
   'user.name': {
-    brief: 'Short name or login/username of the user.',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'j.smith',
     aliases: ['sentry.user.username'],
-    changelog: [{ version: '0.0.0' }],
   },
   'user.roles': {
-    brief: 'Array of user roles at the time of the event.',
     type: 'string[]',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
-    example: ['admin', 'editor'],
-    changelog: [{ version: '0.0.0' }],
   },
   'vercel.branch': {
-    brief: 'Git branch name for Vercel project',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'main',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.build_id': {
-    brief: 'Identifier for the Vercel build (only present on build logs)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'bld_cotnkcr76',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.deployment_id': {
-    brief: 'Identifier for the Vercel deployment',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'dpl_233NRGRjVZX1caZrXWtz5g1TAksD',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.destination': {
-    brief: 'Origin of the external content in Vercel (only on external logs)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https://vitals.vercel-insights.com/v1',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.edge_type': {
-    brief: 'Type of edge runtime in Vercel',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'edge-function',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.entrypoint': {
-    brief: 'Entrypoint for the request in Vercel',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'api/index.js',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.execution_region': {
-    brief: 'Region where the request is executed',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'sfo1',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.id': {
-    brief: 'Unique identifier for the log entry in Vercel',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '1573817187330377061717300000',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.ja3_digest': {
-    brief: 'JA3 fingerprint digest of Vercel request',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '769,47-53-5-10-49161-49162-49171-49172-50-56-19-4,0-10-11,23-24-25,0',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.ja4_digest': {
-    brief: 'JA4 fingerprint digest',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 't13d1516h2_8daaf6152771_02713d6af862',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.log_type': {
-    brief: 'Vercel log output type',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'stdout',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.path': {
-    brief: 'Function or dynamic path of the request in Vercel.',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/dynamic/[route].json',
-    changelog: [{ version: '0.6.0', prs: [349], description: 'Added vercel.path attribute' }],
   },
   'vercel.project_id': {
-    brief: 'Identifier for the Vercel project',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'gdufoJxB6b9b1fEqr1jUtFkyavUU',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.project_name': {
-    brief: 'Name of the Vercel project',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'my-app',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.cache_id': {
-    brief: 'Original request ID when request is served from cache',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'pdx1::v8g4b-1744143786684-93dafbc0f70d',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.client_ip': {
-    brief: 'Client IP address',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '120.75.16.101',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.host': {
-    brief: 'Hostname of the request',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'test.vercel.app',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.lambda_region': {
-    brief: 'Region where lambda function executed',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'sfo1',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.method': {
-    brief: 'HTTP method of the request',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'GET',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.path': {
-    brief: 'Request path with query parameters',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '/dynamic/some-value.json?route=some-value',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.path_type': {
-    brief: 'How the request was served based on its path and project configuration',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'func',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.path_type_variant': {
-    brief: 'Variant of the path type',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'api',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.referer': {
-    brief: 'Referer of the request',
     type: 'string',
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '*.vercel.app',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.region': {
-    brief: 'Region where the request is processed',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'sfo1',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.response_byte_size': {
-    brief: 'Size of the response in bytes',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1024,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.2.0', prs: [163] },
-    ],
   },
   'vercel.proxy.scheme': {
-    brief: 'Protocol of the request',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'https',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.status_code': {
-    brief: 'HTTP status code of the proxy request',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 200,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.2.0', prs: [163] },
-    ],
   },
   'vercel.proxy.timestamp': {
-    brief: 'Unix timestamp when the proxy request was made',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 1573817250172,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.2.0', prs: [163] },
-    ],
   },
   'vercel.proxy.user_agent': {
-    brief: 'User agent strings of the request',
     type: 'string[]',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: ['Mozilla/5.0...'],
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.vercel_cache': {
-    brief: 'Cache status sent to the browser',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'REVALIDATED',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.vercel_id': {
-    brief: 'Vercel-specific identifier',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'sfo1::abc123',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.waf_action': {
-    brief: 'Action taken by firewall rules',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'deny',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.proxy.waf_rule_id': {
-    brief: 'ID of the firewall rule that matched',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'rule_gAHz8jtSB1Gy',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.request_id': {
-    brief: 'Identifier of the Vercel request',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: '643af4e3-975a-4cc7-9e7a-1eda11539d90',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.source': {
-    brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
     type: 'string',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'build',
-    changelog: [{ version: '0.2.0', prs: [163] }],
   },
   'vercel.status_code': {
-    brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 200,
-    changelog: [
-      { version: '0.4.0', prs: [228] },
-      { version: '0.2.0', prs: [163] },
-    ],
   },
 };
 
