@@ -37,6 +37,14 @@ from sentry_conventions.attributes import ATTRIBUTE_NAMES, get_attribute_value
 method = get_attribute_value(attributes, ATTRIBUTE_NAMES.HTTP_REQUEST_METHOD_KEYS)
 ```
 
-Each tuple lists the stable key first, followed by deprecated predecessors in alphabetical order. The helper returns the raw value from the first key present in the mapping. It does not validate or transform values.
+Each tuple lists every key the value may be stored under, ordered so that the stable key comes first:
+
+1. the stable, non-deprecated attribute, followed by the names it is exposed as in Sentry search
+2. its non-deprecated aliases, each followed by their own search names
+3. the deprecated attributes it replaces, in alphabetical order, each followed by their own search names
+
+All attributes in a family share the same tuple, so a read prefers the stable key regardless of which constant you use. Deprecated attributes only join a family when their value is backfilled or normalized onto the replacement.
+
+The helper returns the raw value from the first key present in the mapping. It does not validate or transform values.
 
 Keys that contain a dynamic `<key>` segment are patterns, not literal lookup keys. Materialize each pattern by replacing `<key>` with the actual segment before calling the helper. The generated package does not include expanded lists for dynamic keys.

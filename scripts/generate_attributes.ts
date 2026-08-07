@@ -14,10 +14,42 @@ type AttributeDefinition = {
   attributeJson: AttributeJson;
 };
 
+/**
+ * Deprecation statuses where the ingestion pipeline rewrites the value onto the replacement
+ * attribute. Only these statuses link an attribute to its replacement in a key chain, because only
+ * for these is a reader guaranteed to find the same value under either key.
+ */
+const REWRITING_DEPRECATION_STATUSES: ReadonlySet<string> = new Set(['backfill', 'normalize']);
+
+function isRewritingDeprecation(attributeJson: AttributeJson): boolean {
+  const status = attributeJson.deprecation?._status;
+  return status != null && REWRITING_DEPRECATION_STATUSES.has(status);
+}
+
+/**
+ * Derives the ordered list of attribute keys a value may be stored under, for every attribute.
+ *
+ * All members of a family share a single chain led by the non-deprecated attribute, so a read
+ * always prefers the current key no matter which constant the caller reached for. Within a chain
+ * the order is:
+ *
+ * 1. the non-deprecated attribute: its key, then its search alias name, then its search alias aliases
+ * 2. its non-deprecated aliases, each expanded to their own key and search alias names
+ * 3. the attributes it replaces (sorted), each expanded the same way
+ */
 export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map<string, string[]> {
   const attributesByKey = new Map(attributes.map((attribute) => [attribute.key, attribute]));
-  const predecessorsByKey = new Map<string, string[]>();
 
+  // Every name an attribute is readable under: its own key plus the names Sentry search exposes it as.
+  function readableNames(key: string): string[] {
+    const searchAlias = attributesByKey.get(key)?.attributeJson.search_alias;
+    if (!searchAlias) {
+      return [key];
+    }
+    return [key, searchAlias.name, ...(searchAlias.aliases ?? [])];
+  }
+
+  const predecessorsByKey = new Map<string, string[]>();
   for (const { key, attributeJson } of attributes) {
     const replacement = attributeJson.deprecation?.replacement;
     if (!replacement) {
@@ -32,18 +64,54 @@ export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map
       throw new Error(`Replacement target "${replacement}" for deprecated attribute "${key}" must not be deprecated`);
     }
 
+    // Non-rewriting deprecations (`transform`, or no status) leave the value under the original key,
+    // so they do not join the replacement's chain.
+    if (!isRewritingDeprecation(attributeJson)) {
+      continue;
+    }
+
     const predecessors = predecessorsByKey.get(replacement) ?? [];
     predecessors.push(key);
     predecessorsByKey.set(replacement, predecessors);
   }
 
+  const chainsByStableKey = new Map<string, string[]>();
+  function chainForStableKey(stableKey: string): string[] {
+    const cachedChain = chainsByStableKey.get(stableKey);
+    if (cachedChain) {
+      return cachedChain;
+    }
+
+    const chain: string[] = [];
+    const addName = (name: string) => {
+      if (!chain.includes(name)) {
+        chain.push(name);
+      }
+    };
+
+    readableNames(stableKey).forEach(addName);
+
+    // Deprecated aliases are skipped here: either they replace this attribute, in which case they
+    // are appended below as predecessors, or their value is never rewritten onto it.
+    for (const aliasKey of attributesByKey.get(stableKey)?.attributeJson.alias ?? []) {
+      if (attributesByKey.get(aliasKey)?.attributeJson.deprecation) {
+        continue;
+      }
+      readableNames(aliasKey).forEach(addName);
+    }
+
+    for (const predecessor of predecessorsByKey.get(stableKey)?.toSorted() ?? []) {
+      readableNames(predecessor).forEach(addName);
+    }
+
+    chainsByStableKey.set(stableKey, chain);
+    return chain;
+  }
+
   const chains = new Map<string, string[]>();
   for (const { key, attributeJson } of attributes) {
-    const replacement = attributeJson.deprecation?.replacement;
-    const stableKey = replacement ?? key;
-    const predecessors = predecessorsByKey.get(stableKey);
-    const chain = predecessors ? [stableKey, ...predecessors.toSorted()] : [key];
-    chains.set(key, chain);
+    const replacement = isRewritingDeprecation(attributeJson) ? attributeJson.deprecation?.replacement : undefined;
+    chains.set(key, chainForStableKey(replacement ?? key));
   }
 
   return chains;
@@ -225,6 +293,11 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
 
     individualConstants += ' */\n';
     individualConstants += `export const ${constantName} = '${key}';\n\n`;
+    individualConstants += '/**\n';
+    individualConstants += ` * Every key {@link ${constantName}} may be stored under, stable key first.\n`;
+    individualConstants += ' *\n';
+    individualConstants += ` * Pass this to \`getAttributeValue\` to read ${key} from an attribute record.\n`;
+    individualConstants += ' */\n';
     individualConstants += `export const ${constantName}_KEYS = ${JSON.stringify(attributeKeyChains.get(key))} as const;\n\n`;
 
     if (has_dynamic_suffix) {
