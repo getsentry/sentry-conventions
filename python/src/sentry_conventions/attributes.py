@@ -438,10 +438,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     ADDRESS_KEYS: Tuple[str, ...] = (
         "server.address",
         "address",
-        "http.host",
-        "http.server_name",
-        "net.host.name",
-        "net.peer.name",
         "server_name",
     )
 
@@ -587,7 +583,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.prompt.messages",
         "ai.texts",
         "gen_ai.prompt",
-        "gen_ai.request.messages",
     )
 
     # Path: model/attributes/ai/ai__is_search_required.json
@@ -729,7 +724,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.prompt.messages",
         "ai.texts",
         "gen_ai.prompt",
-        "gen_ai.request.messages",
     )
 
     # Path: model/attributes/ai/ai__prompt_tokens__used.json
@@ -784,8 +778,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.response.toolCalls",
         "ai.responses",
         "ai.tool_calls",
-        "gen_ai.response.text",
-        "gen_ai.response.tool_calls",
     )
 
     # Path: model/attributes/ai/ai__response__toolCalls.json
@@ -807,8 +799,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.response.toolCalls",
         "ai.responses",
         "ai.tool_calls",
-        "gen_ai.response.text",
-        "gen_ai.response.tool_calls",
     )
 
     # Path: model/attributes/ai/ai__response_format.json
@@ -843,8 +833,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.response.toolCalls",
         "ai.responses",
         "ai.tool_calls",
-        "gen_ai.response.text",
-        "gen_ai.response.tool_calls",
     )
 
     # Path: model/attributes/ai/ai__search_queries.json
@@ -962,7 +950,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.prompt.messages",
         "ai.texts",
         "gen_ai.prompt",
-        "gen_ai.request.messages",
     )
 
     # Path: model/attributes/ai/ai__toolCall__args.json
@@ -1023,8 +1010,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.response.toolCalls",
         "ai.responses",
         "ai.tool_calls",
-        "gen_ai.response.text",
-        "gen_ai.response.tool_calls",
     )
 
     # Path: model/attributes/ai/ai__tools.json
@@ -1349,6 +1334,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_VITALS_FRAMES_DELAY_VALUE_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.delay.value",
         "frames.delay",
+        "mobile.frames_delay",
     )
 
     # Path: model/attributes/app/app__vitals__frames__frozen__count.json
@@ -1368,6 +1354,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_VITALS_FRAMES_FROZEN_COUNT_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.frozen.count",
         "frames.frozen",
+        "mobile.frozen_frames",
         "sentry.frames.frozen",
     )
 
@@ -1407,6 +1394,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_VITALS_FRAMES_SLOW_COUNT_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.slow.count",
         "frames.slow",
+        "mobile.slow_frames",
         "sentry.frames.slow",
     )
 
@@ -1446,6 +1434,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     APP_VITALS_FRAMES_TOTAL_COUNT_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.total.count",
         "frames.total",
+        "mobile.total_frames",
         "sentry.frames.total",
     )
 
@@ -2486,8 +2475,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     AWS_REQUEST_URL_KEYS: Tuple[str, ...] = (
         "url.full",
         "aws.request.url",
-        "http.url",
-        "url",
     )
 
     # Path: model/attributes/aws/aws__request_id.json
@@ -2691,10 +2678,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Chrome"
     """
 
-    BROWSER_NAME_KEYS: Tuple[str, ...] = (
-        "browser.name",
-        "sentry.browser.name",
-    )
+    BROWSER_NAME_KEYS: Tuple[str, ...] = ("browser.name",)
 
     # Path: model/attributes/browser/browser__performance__navigation__activation_start.json
     BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START: Literal[
@@ -2804,10 +2788,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "120.0.6099.130"
     """
 
-    BROWSER_VERSION_KEYS: Tuple[str, ...] = (
-        "browser.version",
-        "sentry.browser.version",
-    )
+    BROWSER_VERSION_KEYS: Tuple[str, ...] = ("browser.version",)
 
     # Path: model/attributes/browser/browser__web_vital__cls__report_event.json
     BROWSER_WEB_VITAL_CLS_REPORT_EVENT: Literal[
@@ -3213,10 +3194,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "example.com"
     """
 
-    CLIENT_ADDRESS_KEYS: Tuple[str, ...] = (
-        "client.address",
-        "http.client_ip",
-    )
+    CLIENT_ADDRESS_KEYS: Tuple[str, ...] = ("client.address",)
 
     # Path: model/attributes/client/client__port.json
     CLIENT_PORT: Literal["client.port"] = "client.port"
@@ -3660,10 +3638,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "/app/myapplication/http/handler/server.py"
     """
 
-    CODE_FILE_PATH_KEYS: Tuple[str, ...] = (
-        "code.file.path",
-        "code.filepath",
-    )
+    CODE_FILE_PATH_KEYS: Tuple[str, ...] = ("code.file.path",)
 
     # Path: model/attributes/code/code__filepath.json
     CODE_FILEPATH: Literal["code.filepath"] = "code.filepath"
@@ -3679,8 +3654,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     CODE_FILEPATH_KEYS: Tuple[str, ...] = (
-        "code.file.path",
         "code.filepath",
+        "code.file.path",
     )
 
     # Path: model/attributes/code/code__function.json
@@ -3695,7 +3670,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "server_request"
     """
 
-    CODE_FUNCTION_KEYS: Tuple[str, ...] = ("code.function",)
+    CODE_FUNCTION_KEYS: Tuple[str, ...] = (
+        "code.function",
+        "code.function.name",
+    )
 
     # Path: model/attributes/code/code__function__name.json
     CODE_FUNCTION_NAME: Literal["code.function.name"] = "code.function.name"
@@ -3711,6 +3689,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     CODE_FUNCTION_NAME_KEYS: Tuple[str, ...] = (
         "code.function.name",
+        "code.function",
         "django.function_name",
     )
 
@@ -3726,10 +3705,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 42
     """
 
-    CODE_LINE_NUMBER_KEYS: Tuple[str, ...] = (
-        "code.line.number",
-        "code.lineno",
-    )
+    CODE_LINE_NUMBER_KEYS: Tuple[str, ...] = ("code.line.number",)
 
     # Path: model/attributes/code/code__lineno.json
     CODE_LINENO: Literal["code.lineno"] = "code.lineno"
@@ -3745,8 +3721,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     CODE_LINENO_KEYS: Tuple[str, ...] = (
-        "code.line.number",
         "code.lineno",
+        "code.line.number",
     )
 
     # Path: model/attributes/code/code__namespace.json
@@ -3778,7 +3754,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     CODE_KEYS: Tuple[str, ...] = (
         "rpc.response.status_code",
         "code",
-        "rpc.grpc.status_code",
     )
 
     # Path: model/attributes/connection/connection__rtt.json
@@ -3947,8 +3922,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     DB_NAME_KEYS: Tuple[str, ...] = (
-        "db.namespace",
         "db.name",
+        "db.namespace",
     )
 
     # Path: model/attributes/db/db__namespace.json
@@ -3963,10 +3938,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "customers"
     """
 
-    DB_NAMESPACE_KEYS: Tuple[str, ...] = (
-        "db.namespace",
-        "db.name",
-    )
+    DB_NAMESPACE_KEYS: Tuple[str, ...] = ("db.namespace",)
 
     # Path: model/attributes/db/db__operation.json
     DB_OPERATION: Literal["db.operation"] = "db.operation"
@@ -4034,11 +4006,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[{\"x\": 100}]"
     """
 
-    DB_PARAMS_KEYS: Tuple[str, ...] = (
-        "db.query.parameter.<key>",
-        "db.params",
-        "db.sql.bindings",
-    )
+    DB_PARAMS_KEYS: Tuple[str, ...] = ("db.params",)
 
     # Path: model/attributes/db/db__query__parameter__[key].json
     DB_QUERY_PARAMETER_KEY: Literal["db.query.parameter.<key>"] = (
@@ -4054,11 +4022,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "db.query.parameter.foo='123'"
     """
 
-    DB_QUERY_PARAMETER_KEY_KEYS: Tuple[str, ...] = (
-        "db.query.parameter.<key>",
-        "db.params",
-        "db.sql.bindings",
-    )
+    DB_QUERY_PARAMETER_KEY_KEYS: Tuple[str, ...] = ("db.query.parameter.<key>",)
 
     # Path: model/attributes/db/db__query__summary.json
     DB_QUERY_SUMMARY: Literal["db.query.summary"] = "db.query.summary"
@@ -4162,11 +4126,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["1","foo"]
     """
 
-    DB_SQL_BINDINGS_KEYS: Tuple[str, ...] = (
-        "db.query.parameter.<key>",
-        "db.params",
-        "db.sql.bindings",
-    )
+    DB_SQL_BINDINGS_KEYS: Tuple[str, ...] = ("db.sql.bindings",)
 
     # Path: model/attributes/db/db__statement.json
     DB_STATEMENT: Literal["db.statement"] = "db.statement"
@@ -4218,6 +4178,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     DB_SYSTEM_KEYS: Tuple[str, ...] = (
         "db.system.name",
         "db.system",
+        "span.system",
     )
 
     # Path: model/attributes/db/db__system__name.json
@@ -4235,6 +4196,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     DB_SYSTEM_NAME_KEYS: Tuple[str, ...] = (
         "db.system.name",
         "db.system",
+        "span.system",
     )
 
     # Path: model/attributes/db/db__user.json
@@ -4827,6 +4789,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     DJANGO_FUNCTION_NAME_KEYS: Tuple[str, ...] = (
         "code.function.name",
+        "code.function",
         "django.function_name",
     )
 
@@ -4902,11 +4865,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "timeout"
     """
 
-    ERROR_TYPE_KEYS: Tuple[str, ...] = (
-        "error.type",
-        "fs_error",
-        "mcp.tool.result.is_error",
-    )
+    ERROR_TYPE_KEYS: Tuple[str, ...] = ("error.type",)
 
     # Path: model/attributes/event/event__id.json
     EVENT_ID: Literal["event.id"] = "event.id"
@@ -5297,6 +5256,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     FRAMES_DELAY_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.delay.value",
         "frames.delay",
+        "mobile.frames_delay",
     )
 
     # Path: model/attributes/frames/frames__frozen.json
@@ -5315,6 +5275,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     FRAMES_FROZEN_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.frozen.count",
         "frames.frozen",
+        "mobile.frozen_frames",
         "sentry.frames.frozen",
     )
 
@@ -5334,6 +5295,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     FRAMES_SLOW_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.slow.count",
         "frames.slow",
+        "mobile.slow_frames",
         "sentry.frames.slow",
     )
 
@@ -5353,6 +5315,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     FRAMES_TOTAL_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.total.count",
         "frames.total",
+        "mobile.total_frames",
         "sentry.frames.total",
     )
 
@@ -5402,11 +5365,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ENOENT: no such file or directory"
     """
 
-    FS_ERROR_KEYS: Tuple[str, ...] = (
-        "error.type",
-        "fs_error",
-        "mcp.tool.result.is_error",
-    )
+    FS_ERROR_KEYS: Tuple[str, ...] = ("fs_error",)
 
     # Path: model/attributes/gcp/gcp__function__context__event_id.json
     GCP_FUNCTION_CONTEXT_EVENT_ID: Literal["gcp.function.context.event_id"] = (
@@ -5787,7 +5746,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.prompt.messages",
         "ai.texts",
         "gen_ai.prompt",
-        "gen_ai.request.messages",
     )
 
     # Path: model/attributes/gen_ai/gen_ai__operation__name.json
@@ -5834,8 +5792,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.response.toolCalls",
         "ai.responses",
         "ai.tool_calls",
-        "gen_ai.response.text",
-        "gen_ai.response.tool_calls",
     )
 
     # Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
@@ -5874,7 +5830,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "ai.prompt.messages",
         "ai.texts",
         "gen_ai.prompt",
-        "gen_ai.request.messages",
     )
 
     # Path: model/attributes/gen_ai/gen_ai__prompt__name.json
@@ -5981,14 +5936,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[{\"role\": \"system\", \"content\": \"Generate a random number.\"}, {\"role\": \"user\", \"content\": [{\"text\": \"Generate a random number between 0 and 10.\", \"type\": \"text\"}]}, {\"role\": \"tool\", \"content\": {\"toolCallId\": \"1\", \"toolName\": \"Weather\", \"output\": \"rainy\"}}]"
     """
 
-    GEN_AI_REQUEST_MESSAGES_KEYS: Tuple[str, ...] = (
-        "gen_ai.input.messages",
-        "ai.input_messages",
-        "ai.prompt.messages",
-        "ai.texts",
-        "gen_ai.prompt",
-        "gen_ai.request.messages",
-    )
+    GEN_AI_REQUEST_MESSAGES_KEYS: Tuple[str, ...] = ("gen_ai.request.messages",)
 
     # Path: model/attributes/gen_ai/gen_ai__request__model.json
     GEN_AI_REQUEST_MODEL: Literal["gen_ai.request.model"] = "gen_ai.request.model"
@@ -6232,15 +6180,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[\"The weather in Paris is rainy and overcast, with temperatures around 57°F\", \"The weather in London is sunny and warm, with temperatures around 65°F\"]"
     """
 
-    GEN_AI_RESPONSE_TEXT_KEYS: Tuple[str, ...] = (
-        "gen_ai.output.messages",
-        "ai.response.text",
-        "ai.response.toolCalls",
-        "ai.responses",
-        "ai.tool_calls",
-        "gen_ai.response.text",
-        "gen_ai.response.tool_calls",
-    )
+    GEN_AI_RESPONSE_TEXT_KEYS: Tuple[str, ...] = ("gen_ai.response.text",)
 
     # Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
     GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK: Literal[
@@ -6312,15 +6252,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]"
     """
 
-    GEN_AI_RESPONSE_TOOL_CALLS_KEYS: Tuple[str, ...] = (
-        "gen_ai.output.messages",
-        "ai.response.text",
-        "ai.response.toolCalls",
-        "ai.responses",
-        "ai.tool_calls",
-        "gen_ai.response.text",
-        "gen_ai.response.tool_calls",
-    )
+    GEN_AI_RESPONSE_TOOL_CALLS_KEYS: Tuple[str, ...] = ("gen_ai.response.tool_calls",)
 
     # Path: model/attributes/gen_ai/gen_ai__system.json
     GEN_AI_SYSTEM: Literal["gen_ai.system"] = "gen_ai.system"
@@ -7059,8 +6991,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     HTTP_CLIENT_IP_KEYS: Tuple[str, ...] = (
-        "client.address",
         "http.client_ip",
+        "client.address",
     )
 
     # Path: model/attributes/http/http__decoded_response_content_length.json
@@ -7094,9 +7026,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     HTTP_FLAVOR_KEYS: Tuple[str, ...] = (
-        "network.protocol.version",
         "http.flavor",
-        "net.protocol.version",
+        "network.protocol.version",
     )
 
     # Path: model/attributes/http/http__fragment.json
@@ -7126,13 +7057,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     HTTP_HOST_KEYS: Tuple[str, ...] = (
-        "server.address",
-        "address",
         "http.host",
-        "http.server_name",
-        "net.host.name",
-        "net.peer.name",
-        "server_name",
+        "server.address",
+        "client.address",
     )
 
     # Path: model/attributes/http/http__method.json
@@ -7489,6 +7416,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     HTTP_RESPONSE_BODY_SIZE_KEYS: Tuple[str, ...] = (
         "http.response.body.size",
+        "http.response.header.content-length",
         "http.response_content_length",
     )
 
@@ -7524,6 +7452,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     HTTP_RESPONSE_HEADER_CONTENT_LENGTH_KEYS: Tuple[str, ...] = (
         "http.response.header.content-length",
+        "http.response.body.size",
     )
 
     # Path: model/attributes/http/http__response__size.json
@@ -7559,7 +7488,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     HTTP_RESPONSE_STATUS_CODE_KEYS: Tuple[str, ...] = (
         "http.response.status_code",
-        "http.status_code",
+        "http.response_status_code",
     )
 
     # Path: model/attributes/http/http__response_content_length.json
@@ -7579,6 +7508,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     HTTP_RESPONSE_CONTENT_LENGTH_KEYS: Tuple[str, ...] = (
         "http.response.body.size",
+        "http.response.header.content-length",
         "http.response_content_length",
     )
 
@@ -7616,10 +7546,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "/posts"
     """
 
-    HTTP_ROUTE_KEYS: Tuple[str, ...] = (
-        "http.route",
-        "route",
-    )
+    HTTP_ROUTE_KEYS: Tuple[str, ...] = ("http.route",)
 
     # Path: model/attributes/http/http__scheme.json
     HTTP_SCHEME: Literal["http.scheme"] = "http.scheme"
@@ -7635,8 +7562,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     HTTP_SCHEME_KEYS: Tuple[str, ...] = (
-        "url.scheme",
         "http.scheme",
+        "url.scheme",
     )
 
     # Path: model/attributes/http/http__server__request__time_in_queue.json
@@ -7670,13 +7597,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     HTTP_SERVER_NAME_KEYS: Tuple[str, ...] = (
-        "server.address",
-        "address",
-        "http.host",
         "http.server_name",
-        "net.host.name",
-        "net.peer.name",
-        "server_name",
+        "server.address",
     )
 
     # Path: model/attributes/http/http__status_code.json
@@ -7693,8 +7615,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     HTTP_STATUS_CODE_KEYS: Tuple[str, ...] = (
-        "http.response.status_code",
         "http.status_code",
+        "http.response.status_code",
+        "http.response_status_code",
     )
 
     # Path: model/attributes/http/http__target.json
@@ -7709,10 +7632,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "/test?foo=bar#buzz"
     """
 
-    HTTP_TARGET_KEYS: Tuple[str, ...] = (
-        "url.path",
-        "http.target",
-    )
+    HTTP_TARGET_KEYS: Tuple[str, ...] = ("http.target",)
 
     # Path: model/attributes/http/http__url.json
     HTTP_URL: Literal["http.url"] = "http.url"
@@ -7728,10 +7648,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     HTTP_URL_KEYS: Tuple[str, ...] = (
-        "url.full",
-        "aws.request.url",
         "http.url",
-        "url",
+        "url.full",
     )
 
     # Path: model/attributes/http/http__user_agent.json
@@ -7748,8 +7666,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     HTTP_USER_AGENT_KEYS: Tuple[str, ...] = (
-        "user_agent.original",
         "http.user_agent",
+        "user_agent.original",
     )
 
     # Path: model/attributes/id.json
@@ -8486,7 +8404,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     MCP_RESOURCE_PROTOCOL_KEYS: Tuple[str, ...] = (
         "network.protocol.name",
         "mcp.resource.protocol",
-        "net.protocol.name",
     )
 
     # Path: model/attributes/mcp/mcp__resource__uri.json
@@ -8627,11 +8544,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
-    MCP_TOOL_RESULT_IS_ERROR_KEYS: Tuple[str, ...] = (
-        "error.type",
-        "fs_error",
-        "mcp.tool.result.is_error",
-    )
+    MCP_TOOL_RESULT_IS_ERROR_KEYS: Tuple[str, ...] = ("mcp.tool.result.is_error",)
 
     # Path: model/attributes/mcp/mcp__transport.json
     MCP_TRANSPORT: Literal["mcp.transport"] = "mcp.transport"
@@ -8649,8 +8562,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     MCP_TRANSPORT_KEYS: Tuple[str, ...] = (
         "network.transport",
         "mcp.transport",
-        "net.sock.family",
-        "net.transport",
     )
 
     # Path: model/attributes/mdc/mdc__[key].json
@@ -9138,9 +9049,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_HOST_IP_KEYS: Tuple[str, ...] = (
-        "network.local.address",
         "net.host.ip",
-        "net.sock.host.addr",
+        "network.local.address",
     )
 
     # Path: model/attributes/net/net__host__name.json
@@ -9157,13 +9067,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_HOST_NAME_KEYS: Tuple[str, ...] = (
-        "server.address",
-        "address",
-        "http.host",
-        "http.server_name",
         "net.host.name",
-        "net.peer.name",
-        "server_name",
+        "server.address",
     )
 
     # Path: model/attributes/net/net__host__port.json
@@ -9180,10 +9085,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_HOST_PORT_KEYS: Tuple[str, ...] = (
-        "server.port",
         "net.host.port",
-        "net.peer.port",
-        "port",
+        "server.port",
     )
 
     # Path: model/attributes/net/net__peer__ip.json
@@ -9200,9 +9103,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_PEER_IP_KEYS: Tuple[str, ...] = (
-        "network.peer.address",
         "net.peer.ip",
-        "net.sock.peer.addr",
+        "network.peer.address",
     )
 
     # Path: model/attributes/net/net__peer__name.json
@@ -9217,15 +9119,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "example.com"
     """
 
-    NET_PEER_NAME_KEYS: Tuple[str, ...] = (
-        "server.address",
-        "address",
-        "http.host",
-        "http.server_name",
-        "net.host.name",
-        "net.peer.name",
-        "server_name",
-    )
+    NET_PEER_NAME_KEYS: Tuple[str, ...] = ("net.peer.name",)
 
     # Path: model/attributes/net/net__peer__port.json
     NET_PEER_PORT: Literal["net.peer.port"] = "net.peer.port"
@@ -9239,12 +9133,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1337
     """
 
-    NET_PEER_PORT_KEYS: Tuple[str, ...] = (
-        "server.port",
-        "net.host.port",
-        "net.peer.port",
-        "port",
-    )
+    NET_PEER_PORT_KEYS: Tuple[str, ...] = ("net.peer.port",)
 
     # Path: model/attributes/net/net__protocol__name.json
     NET_PROTOCOL_NAME: Literal["net.protocol.name"] = "net.protocol.name"
@@ -9260,9 +9149,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_PROTOCOL_NAME_KEYS: Tuple[str, ...] = (
-        "network.protocol.name",
-        "mcp.resource.protocol",
         "net.protocol.name",
+        "network.protocol.name",
     )
 
     # Path: model/attributes/net/net__protocol__version.json
@@ -9279,9 +9167,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_PROTOCOL_VERSION_KEYS: Tuple[str, ...] = (
-        "network.protocol.version",
-        "http.flavor",
         "net.protocol.version",
+        "network.protocol.version",
     )
 
     # Path: model/attributes/net/net__sock__family.json
@@ -9296,12 +9183,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "inet"
     """
 
-    NET_SOCK_FAMILY_KEYS: Tuple[str, ...] = (
-        "network.transport",
-        "mcp.transport",
-        "net.sock.family",
-        "net.transport",
-    )
+    NET_SOCK_FAMILY_KEYS: Tuple[str, ...] = ("net.sock.family",)
 
     # Path: model/attributes/net/net__sock__host__addr.json
     NET_SOCK_HOST_ADDR: Literal["net.sock.host.addr"] = "net.sock.host.addr"
@@ -9317,9 +9199,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_SOCK_HOST_ADDR_KEYS: Tuple[str, ...] = (
-        "network.local.address",
-        "net.host.ip",
         "net.sock.host.addr",
+        "network.local.address",
     )
 
     # Path: model/attributes/net/net__sock__host__port.json
@@ -9336,8 +9217,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_SOCK_HOST_PORT_KEYS: Tuple[str, ...] = (
-        "network.local.port",
         "net.sock.host.port",
+        "network.local.port",
     )
 
     # Path: model/attributes/net/net__sock__peer__addr.json
@@ -9354,9 +9235,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_SOCK_PEER_ADDR_KEYS: Tuple[str, ...] = (
-        "network.peer.address",
-        "net.peer.ip",
         "net.sock.peer.addr",
+        "network.peer.address",
     )
 
     # Path: model/attributes/net/net__sock__peer__name.json
@@ -9385,10 +9265,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 8080
     """
 
-    NET_SOCK_PEER_PORT_KEYS: Tuple[str, ...] = (
-        "network.peer.port",
-        "net.sock.peer.port",
-    )
+    NET_SOCK_PEER_PORT_KEYS: Tuple[str, ...] = ("net.sock.peer.port",)
 
     # Path: model/attributes/net/net__transport.json
     NET_TRANSPORT: Literal["net.transport"] = "net.transport"
@@ -9404,10 +9281,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     NET_TRANSPORT_KEYS: Tuple[str, ...] = (
-        "network.transport",
-        "mcp.transport",
-        "net.sock.family",
         "net.transport",
+        "network.transport",
     )
 
     # Path: model/attributes/network/network__connection__effective_type.json
@@ -9478,11 +9353,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "10.1.2.80"
     """
 
-    NETWORK_LOCAL_ADDRESS_KEYS: Tuple[str, ...] = (
-        "network.local.address",
-        "net.host.ip",
-        "net.sock.host.addr",
-    )
+    NETWORK_LOCAL_ADDRESS_KEYS: Tuple[str, ...] = ("network.local.address",)
 
     # Path: model/attributes/network/network__local__port.json
     NETWORK_LOCAL_PORT: Literal["network.local.port"] = "network.local.port"
@@ -9496,10 +9367,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 65400
     """
 
-    NETWORK_LOCAL_PORT_KEYS: Tuple[str, ...] = (
-        "network.local.port",
-        "net.sock.host.port",
-    )
+    NETWORK_LOCAL_PORT_KEYS: Tuple[str, ...] = ("network.local.port",)
 
     # Path: model/attributes/network/network__peer__address.json
     NETWORK_PEER_ADDRESS: Literal["network.peer.address"] = "network.peer.address"
@@ -9513,11 +9381,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "10.1.2.80"
     """
 
-    NETWORK_PEER_ADDRESS_KEYS: Tuple[str, ...] = (
-        "network.peer.address",
-        "net.peer.ip",
-        "net.sock.peer.addr",
-    )
+    NETWORK_PEER_ADDRESS_KEYS: Tuple[str, ...] = ("network.peer.address",)
 
     # Path: model/attributes/network/network__peer__port.json
     NETWORK_PEER_PORT: Literal["network.peer.port"] = "network.peer.port"
@@ -9530,10 +9394,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 65400
     """
 
-    NETWORK_PEER_PORT_KEYS: Tuple[str, ...] = (
-        "network.peer.port",
-        "net.sock.peer.port",
-    )
+    NETWORK_PEER_PORT_KEYS: Tuple[str, ...] = ("network.peer.port",)
 
     # Path: model/attributes/network/network__protocol__name.json
     NETWORK_PROTOCOL_NAME: Literal["network.protocol.name"] = "network.protocol.name"
@@ -9550,7 +9411,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     NETWORK_PROTOCOL_NAME_KEYS: Tuple[str, ...] = (
         "network.protocol.name",
         "mcp.resource.protocol",
-        "net.protocol.name",
     )
 
     # Path: model/attributes/network/network__protocol__version.json
@@ -9567,11 +9427,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "1.1"
     """
 
-    NETWORK_PROTOCOL_VERSION_KEYS: Tuple[str, ...] = (
-        "network.protocol.version",
-        "http.flavor",
-        "net.protocol.version",
-    )
+    NETWORK_PROTOCOL_VERSION_KEYS: Tuple[str, ...] = ("network.protocol.version",)
 
     # Path: model/attributes/network/network__transport.json
     NETWORK_TRANSPORT: Literal["network.transport"] = "network.transport"
@@ -9588,8 +9444,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     NETWORK_TRANSPORT_KEYS: Tuple[str, ...] = (
         "network.transport",
         "mcp.transport",
-        "net.sock.family",
-        "net.transport",
     )
 
     # Path: model/attributes/network/network__type.json
@@ -9759,6 +9613,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     OTEL_KIND_KEYS: Tuple[str, ...] = (
         "sentry.kind",
+        "span.kind",
         "otel.kind",
     )
 
@@ -9829,7 +9684,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "params.id='123'"
     """
 
-    PARAMS_KEY_KEYS: Tuple[str, ...] = ("params.<key>",)
+    PARAMS_KEY_KEYS: Tuple[str, ...] = (
+        "params.<key>",
+        "url.path.parameter.<key>",
+    )
 
     # Path: model/attributes/performance/performance__activationStart.json
     PERFORMANCE_ACTIVATIONSTART: Literal["performance.activationStart"] = (
@@ -9884,8 +9742,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     PORT_KEYS: Tuple[str, ...] = (
         "server.port",
-        "net.host.port",
-        "net.peer.port",
         "port",
     )
 
@@ -9961,10 +9817,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
-    PROCESS_RUNTIME_DESCRIPTION_KEYS: Tuple[str, ...] = (
-        "process.runtime.description",
-        "runtime.raw_description",
-    )
+    PROCESS_RUNTIME_DESCRIPTION_KEYS: Tuple[str, ...] = ("process.runtime.description",)
 
     # Path: model/attributes/process/process__runtime__engine__name.json
     PROCESS_RUNTIME_ENGINE_NAME: Literal["process.runtime.engine.name"] = (
@@ -10010,10 +9863,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "node"
     """
 
-    PROCESS_RUNTIME_NAME_KEYS: Tuple[str, ...] = (
-        "process.runtime.name",
-        "runtime.name",
-    )
+    PROCESS_RUNTIME_NAME_KEYS: Tuple[str, ...] = ("process.runtime.name",)
 
     # Path: model/attributes/process/process__runtime__version.json
     PROCESS_RUNTIME_VERSION: Literal["process.runtime.version"] = (
@@ -10029,10 +9879,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.04.2"
     """
 
-    PROCESS_RUNTIME_VERSION_KEYS: Tuple[str, ...] = (
-        "process.runtime.version",
-        "runtime.version",
-    )
+    PROCESS_RUNTIME_VERSION_KEYS: Tuple[str, ...] = ("process.runtime.version",)
 
     # Path: model/attributes/profile_id.json
     PROFILE_ID: Literal["profile_id"] = "profile_id"
@@ -10049,6 +9896,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     PROFILE_ID_KEYS: Tuple[str, ...] = (
         "sentry.profile_id",
+        "profile.id",
         "profile_id",
     )
 
@@ -10065,10 +9913,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "query.id='123'"
     """
 
-    QUERY_KEY_KEYS: Tuple[str, ...] = (
-        "url.query",
-        "query.<key>",
-    )
+    QUERY_KEY_KEYS: Tuple[str, ...] = ("query.<key>",)
 
     # Path: model/attributes/query.json
     QUERY: Literal["query"] = "query"
@@ -10156,6 +10001,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     RELEASE_KEYS: Tuple[str, ...] = (
         "sentry.release",
         "release",
+        "service.version",
     )
 
     # Path: model/attributes/remix/remix__action_form_data__[key].json
@@ -10189,6 +10035,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     REPLAY_ID_KEYS: Tuple[str, ...] = (
         "sentry.replay_id",
+        "replay.id",
         "replay_id",
     )
 
@@ -10265,8 +10112,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     ROUTE_KEYS: Tuple[str, ...] = (
-        "http.route",
         "route",
+        "http.route",
     )
 
     # Path: model/attributes/rpc/rpc__grpc__status_code.json
@@ -10283,9 +10130,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     RPC_GRPC_STATUS_CODE_KEYS: Tuple[str, ...] = (
-        "rpc.response.status_code",
-        "code",
         "rpc.grpc.status_code",
+        "rpc.response.status_code",
     )
 
     # Path: model/attributes/rpc/rpc__method.json
@@ -10322,7 +10168,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     RPC_RESPONSE_STATUS_CODE_KEYS: Tuple[str, ...] = (
         "rpc.response.status_code",
         "code",
-        "rpc.grpc.status_code",
     )
 
     # Path: model/attributes/rpc/rpc__service.json
@@ -10401,8 +10246,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     RUNTIME_NAME_KEYS: Tuple[str, ...] = (
-        "process.runtime.name",
         "runtime.name",
+        "process.runtime.name",
     )
 
     # Path: model/attributes/runtime/runtime__raw_description.json
@@ -10421,8 +10266,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     RUNTIME_RAW_DESCRIPTION_KEYS: Tuple[str, ...] = (
-        "process.runtime.description",
         "runtime.raw_description",
+        "process.runtime.description",
     )
 
     # Path: model/attributes/runtime/runtime__version.json
@@ -10439,8 +10284,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     RUNTIME_VERSION_KEYS: Tuple[str, ...] = (
-        "process.runtime.version",
         "runtime.version",
+        "process.runtime.version",
     )
 
     # Path: model/attributes/score/score__[key].json
@@ -10508,7 +10353,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "SELECT"
     """
 
-    SENTRY_ACTION_KEYS: Tuple[str, ...] = ("sentry.action",)
+    SENTRY_ACTION_KEYS: Tuple[str, ...] = (
+        "sentry.action",
+        "span.action",
+    )
 
     # Path: model/attributes/sentry/sentry__browser__name.json
     SENTRY_BROWSER_NAME: Literal["sentry.browser.name"] = "sentry.browser.name"
@@ -10524,8 +10372,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_BROWSER_NAME_KEYS: Tuple[str, ...] = (
-        "browser.name",
         "sentry.browser.name",
+        "browser.name",
     )
 
     # Path: model/attributes/sentry/sentry__browser__version.json
@@ -10542,8 +10390,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_BROWSER_VERSION_KEYS: Tuple[str, ...] = (
-        "browser.version",
         "sentry.browser.version",
+        "browser.version",
     )
 
     # Path: model/attributes/sentry/sentry__cancellation_reason.json
@@ -10572,7 +10420,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "db"
     """
 
-    SENTRY_CATEGORY_KEYS: Tuple[str, ...] = ("sentry.category",)
+    SENTRY_CATEGORY_KEYS: Tuple[str, ...] = (
+        "sentry.category",
+        "span.category",
+    )
 
     # Path: model/attributes/sentry/sentry__client_sample_rate.json
     SENTRY_CLIENT_SAMPLE_RATE: Literal["sentry.client_sample_rate"] = (
@@ -10587,7 +10438,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
-    SENTRY_CLIENT_SAMPLE_RATE_KEYS: Tuple[str, ...] = ("sentry.client_sample_rate",)
+    SENTRY_CLIENT_SAMPLE_RATE_KEYS: Tuple[str, ...] = (
+        "sentry.client_sample_rate",
+        "client_sample_rate",
+    )
 
     # Path: model/attributes/sentry/sentry__description.json
     SENTRY_DESCRIPTION: Literal["sentry.description"] = "sentry.description"
@@ -10630,7 +10484,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "example.com"
     """
 
-    SENTRY_DOMAIN_KEYS: Tuple[str, ...] = ("sentry.domain",)
+    SENTRY_DOMAIN_KEYS: Tuple[str, ...] = (
+        "sentry.domain",
+        "span.domain",
+    )
 
     # Path: model/attributes/sentry/sentry__dsc__environment.json
     SENTRY_DSC_ENVIRONMENT: Literal["sentry.dsc.environment"] = "sentry.dsc.environment"
@@ -10832,6 +10689,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_FRAMES_FROZEN_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.frozen.count",
         "frames.frozen",
+        "mobile.frozen_frames",
         "sentry.frames.frozen",
     )
 
@@ -10851,6 +10709,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_FRAMES_SLOW_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.slow.count",
         "frames.slow",
+        "mobile.slow_frames",
         "sentry.frames.slow",
     )
 
@@ -10870,6 +10729,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_FRAMES_TOTAL_KEYS: Tuple[str, ...] = (
         "app.vitals.frames.total.count",
         "frames.total",
+        "mobile.total_frames",
         "sentry.frames.total",
     )
 
@@ -10898,7 +10758,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     """
 
-    SENTRY_GROUP_KEYS: Tuple[str, ...] = ("sentry.group",)
+    SENTRY_GROUP_KEYS: Tuple[str, ...] = (
+        "sentry.group",
+        "span.group",
+    )
 
     # Path: model/attributes/sentry/sentry__http__prefetch.json
     SENTRY_HTTP_PREFETCH: Literal["sentry.http.prefetch"] = "sentry.http.prefetch"
@@ -10961,6 +10824,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     SENTRY_KIND_KEYS: Tuple[str, ...] = (
         "sentry.kind",
+        "span.kind",
         "otel.kind",
     )
 
@@ -11159,7 +11023,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "http.client"
     """
 
-    SENTRY_OP_KEYS: Tuple[str, ...] = ("sentry.op",)
+    SENTRY_OP_KEYS: Tuple[str, ...] = (
+        "sentry.op",
+        "span.op",
+    )
 
     # Path: model/attributes/sentry/sentry__origin.json
     SENTRY_ORIGIN: Literal["sentry.origin"] = "sentry.origin"
@@ -11172,7 +11039,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "auto.http.otel.fastify"
     """
 
-    SENTRY_ORIGIN_KEYS: Tuple[str, ...] = ("sentry.origin",)
+    SENTRY_ORIGIN_KEYS: Tuple[str, ...] = (
+        "sentry.origin",
+        "origin",
+    )
 
     # Path: model/attributes/sentry/sentry__pageload__span_id.json
     SENTRY_PAGELOAD_SPAN_ID: Literal["sentry.pageload.span_id"] = (
@@ -11200,7 +11070,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "php"
     """
 
-    SENTRY_PLATFORM_KEYS: Tuple[str, ...] = ("sentry.platform",)
+    SENTRY_PLATFORM_KEYS: Tuple[str, ...] = (
+        "sentry.platform",
+        "platform",
+    )
 
     # Path: model/attributes/sentry/sentry__profile_id.json
     SENTRY_PROFILE_ID: Literal["sentry.profile_id"] = "sentry.profile_id"
@@ -11216,6 +11089,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     SENTRY_PROFILE_ID_KEYS: Tuple[str, ...] = (
         "sentry.profile_id",
+        "profile.id",
         "profile_id",
     )
 
@@ -11230,7 +11104,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18779b64dd35d1a538e7ce2dd2d3fad3"
     """
 
-    SENTRY_PROFILER_ID_KEYS: Tuple[str, ...] = ("sentry.profiler_id",)
+    SENTRY_PROFILER_ID_KEYS: Tuple[str, ...] = (
+        "sentry.profiler_id",
+        "profiler.id",
+    )
 
     # Path: model/attributes/sentry/sentry__relay__ingress.json
     SENTRY_RELAY_INGRESS: Literal["sentry.relay.ingress"] = "sentry.relay.ingress"
@@ -11273,6 +11150,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_RELEASE_KEYS: Tuple[str, ...] = (
         "sentry.release",
         "release",
+        "service.version",
     )
 
     # Path: model/attributes/sentry/sentry__replay_id.json
@@ -11289,6 +11167,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     SENTRY_REPLAY_ID_KEYS: Tuple[str, ...] = (
         "sentry.replay_id",
+        "replay.id",
         "replay_id",
     )
 
@@ -11347,7 +11226,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "@sentry/react"
     """
 
-    SENTRY_SDK_NAME_KEYS: Tuple[str, ...] = ("sentry.sdk.name",)
+    SENTRY_SDK_NAME_KEYS: Tuple[str, ...] = (
+        "sentry.sdk.name",
+        "sdk.name",
+    )
 
     # Path: model/attributes/sentry/sentry__sdk__version.json
     SENTRY_SDK_VERSION: Literal["sentry.sdk.version"] = "sentry.sdk.version"
@@ -11360,7 +11242,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "7.0.0"
     """
 
-    SENTRY_SDK_VERSION_KEYS: Tuple[str, ...] = ("sentry.sdk.version",)
+    SENTRY_SDK_VERSION_KEYS: Tuple[str, ...] = (
+        "sentry.sdk.version",
+        "sdk.version",
+    )
 
     # Path: model/attributes/sentry/sentry__segment__id.json
     SENTRY_SEGMENT_ID: Literal["sentry.segment.id"] = "sentry.segment.id"
@@ -11377,6 +11262,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_SEGMENT_ID_KEYS: Tuple[str, ...] = (
         "sentry.segment.id",
         "sentry.segment_id",
+        "transaction.span_id",
     )
 
     # Path: model/attributes/sentry/sentry__segment__name.json
@@ -11433,6 +11319,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     _SENTRY_SEGMENT_ID_KEYS: Tuple[str, ...] = (
         "sentry.segment.id",
         "sentry.segment_id",
+        "transaction.span_id",
     )
 
     # Path: model/attributes/sentry/sentry__server_sample_rate.json
@@ -11448,7 +11335,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
-    SENTRY_SERVER_SAMPLE_RATE_KEYS: Tuple[str, ...] = ("sentry.server_sample_rate",)
+    SENTRY_SERVER_SAMPLE_RATE_KEYS: Tuple[str, ...] = (
+        "sentry.server_sample_rate",
+        "server_sample_rate",
+    )
 
     # Path: model/attributes/sentry/sentry__source.json
     SENTRY_SOURCE: Literal["sentry.source"] = "sentry.source"
@@ -11489,7 +11379,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ok"
     """
 
-    SENTRY_STATUS_KEYS: Tuple[str, ...] = ("sentry.status",)
+    SENTRY_STATUS_KEYS: Tuple[str, ...] = (
+        "sentry.status",
+        "span.status",
+    )
 
     # Path: model/attributes/sentry/sentry__status__message.json
     SENTRY_STATUS_MESSAGE: Literal["sentry.status.message"] = "sentry.status.message"
@@ -11502,7 +11395,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "foobar"
     """
 
-    SENTRY_STATUS_MESSAGE_KEYS: Tuple[str, ...] = ("sentry.status.message",)
+    SENTRY_STATUS_MESSAGE_KEYS: Tuple[str, ...] = (
+        "sentry.status.message",
+        "span.status.message",
+    )
 
     # Path: model/attributes/sentry/sentry__status_code.json
     SENTRY_STATUS_CODE: Literal["sentry.status_code"] = "sentry.status_code"
@@ -11515,7 +11411,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 200
     """
 
-    SENTRY_STATUS_CODE_KEYS: Tuple[str, ...] = ("sentry.status_code",)
+    SENTRY_STATUS_CODE_KEYS: Tuple[str, ...] = (
+        "sentry.status_code",
+        "span.status_code",
+    )
 
     # Path: model/attributes/sentry/sentry__sveltekit__navigation__from.json
     SENTRY_SVELTEKIT_NAVIGATION_FROM: Literal["sentry.sveltekit.navigation.from"] = (
@@ -11634,7 +11533,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ok"
     """
 
-    SENTRY_TRACE_STATUS_KEYS: Tuple[str, ...] = ("sentry.trace.status",)
+    SENTRY_TRACE_STATUS_KEYS: Tuple[str, ...] = (
+        "sentry.trace.status",
+        "trace.status",
+    )
 
     # Path: model/attributes/sentry/sentry__trace_lifecycle.json
     SENTRY_TRACE_LIFECYCLE: Literal["sentry.trace_lifecycle"] = "sentry.trace_lifecycle"
@@ -11647,7 +11549,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "stream"
     """
 
-    SENTRY_TRACE_LIFECYCLE_KEYS: Tuple[str, ...] = ("sentry.trace_lifecycle",)
+    SENTRY_TRACE_LIFECYCLE_KEYS: Tuple[str, ...] = (
+        "sentry.trace_lifecycle",
+        "trace_lifecycle",
+    )
 
     # Path: model/attributes/sentry/sentry__transaction.json
     SENTRY_TRANSACTION: Literal["sentry.transaction"] = "sentry.transaction"
@@ -11681,8 +11586,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_USER_EMAIL_KEYS: Tuple[str, ...] = (
-        "user.email",
         "sentry.user.email",
+        "user.email",
     )
 
     # Path: model/attributes/sentry/sentry__user__geo__city.json
@@ -11698,8 +11603,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_USER_GEO_CITY_KEYS: Tuple[str, ...] = (
-        "user.geo.city",
         "sentry.user.geo.city",
+        "user.geo.city",
     )
 
     # Path: model/attributes/sentry/sentry__user__geo__country_code.json
@@ -11717,8 +11622,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_USER_GEO_COUNTRY_CODE_KEYS: Tuple[str, ...] = (
-        "user.geo.country_code",
         "sentry.user.geo.country_code",
+        "user.geo.country_code",
     )
 
     # Path: model/attributes/sentry/sentry__user__geo__region.json
@@ -11734,8 +11639,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_USER_GEO_REGION_KEYS: Tuple[str, ...] = (
-        "user.geo.region",
         "sentry.user.geo.region",
+        "user.geo.region",
     )
 
     # Path: model/attributes/sentry/sentry__user__geo__subdivision.json
@@ -11753,8 +11658,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_USER_GEO_SUBDIVISION_KEYS: Tuple[str, ...] = (
-        "user.geo.subdivision",
         "sentry.user.geo.subdivision",
+        "user.geo.subdivision",
     )
 
     # Path: model/attributes/sentry/sentry__user__id.json
@@ -11770,8 +11675,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_USER_ID_KEYS: Tuple[str, ...] = (
-        "user.id",
         "sentry.user.id",
+        "user.id",
     )
 
     # Path: model/attributes/sentry/sentry__user__ip.json
@@ -11787,8 +11692,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_USER_IP_KEYS: Tuple[str, ...] = (
-        "user.ip_address",
         "sentry.user.ip",
+        "user.ip",
+        "user.ip_address",
     )
 
     # Path: model/attributes/sentry/sentry__user__username.json
@@ -11804,8 +11710,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     SENTRY_USER_USERNAME_KEYS: Tuple[str, ...] = (
-        "user.name",
         "sentry.user.username",
+        "user.username",
+        "user.name",
     )
 
     # Path: model/attributes/server/server__address.json
@@ -11823,10 +11730,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SERVER_ADDRESS_KEYS: Tuple[str, ...] = (
         "server.address",
         "address",
-        "http.host",
-        "http.server_name",
-        "net.host.name",
-        "net.peer.name",
         "server_name",
     )
 
@@ -11844,8 +11747,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     SERVER_PORT_KEYS: Tuple[str, ...] = (
         "server.port",
-        "net.host.port",
-        "net.peer.port",
         "port",
     )
 
@@ -11865,10 +11766,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SERVER_NAME_KEYS: Tuple[str, ...] = (
         "server.address",
         "address",
-        "http.host",
-        "http.server_name",
-        "net.host.name",
-        "net.peer.name",
         "server_name",
     )
 
@@ -11897,7 +11794,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "5.0.0"
     """
 
-    SERVICE_VERSION_KEYS: Tuple[str, ...] = ("service.version",)
+    SERVICE_VERSION_KEYS: Tuple[str, ...] = (
+        "service.version",
+        "sentry.release",
+        "release",
+    )
 
     # Path: model/attributes/session/session__id.json
     SESSION_ID: Literal["session.id"] = "session.id"
@@ -12394,8 +12295,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     URL_FULL_KEYS: Tuple[str, ...] = (
         "url.full",
         "aws.request.url",
-        "http.url",
-        "url",
     )
 
     # Path: model/attributes/url/url__path.json
@@ -12409,10 +12308,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "/foo"
     """
 
-    URL_PATH_KEYS: Tuple[str, ...] = (
-        "url.path",
-        "http.target",
-    )
+    URL_PATH_KEYS: Tuple[str, ...] = ("url.path",)
 
     # Path: model/attributes/url/url__path__parameter__[key].json
     URL_PATH_PARAMETER_KEY: Literal["url.path.parameter.<key>"] = (
@@ -12429,7 +12325,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "url.path.parameter.id='123'"
     """
 
-    URL_PATH_PARAMETER_KEY_KEYS: Tuple[str, ...] = ("url.path.parameter.<key>",)
+    URL_PATH_PARAMETER_KEY_KEYS: Tuple[str, ...] = (
+        "url.path.parameter.<key>",
+        "params.<key>",
+    )
 
     # Path: model/attributes/url/url__port.json
     URL_PORT: Literal["url.port"] = "url.port"
@@ -12455,10 +12354,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "foo=bar&bar=baz"
     """
 
-    URL_QUERY_KEYS: Tuple[str, ...] = (
-        "url.query",
-        "query.<key>",
-    )
+    URL_QUERY_KEYS: Tuple[str, ...] = ("url.query",)
 
     # Path: model/attributes/url/url__same_origin.json
     URL_SAME_ORIGIN: Literal["url.same_origin"] = "url.same_origin"
@@ -12490,10 +12386,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "https"
     """
 
-    URL_SCHEME_KEYS: Tuple[str, ...] = (
-        "url.scheme",
-        "http.scheme",
-    )
+    URL_SCHEME_KEYS: Tuple[str, ...] = ("url.scheme",)
 
     # Path: model/attributes/url/url__template.json
     URL_TEMPLATE: Literal["url.template"] = "url.template"
@@ -12524,10 +12417,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     URL_KEYS: Tuple[str, ...] = (
-        "url.full",
-        "aws.request.url",
-        "http.url",
         "url",
+        "url.full",
     )
 
     # Path: model/attributes/user/user__email.json
@@ -12542,10 +12433,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "test@example.com"
     """
 
-    USER_EMAIL_KEYS: Tuple[str, ...] = (
-        "user.email",
-        "sentry.user.email",
-    )
+    USER_EMAIL_KEYS: Tuple[str, ...] = ("user.email",)
 
     # Path: model/attributes/user/user__full_name.json
     USER_FULL_NAME: Literal["user.full_name"] = "user.full_name"
@@ -12572,10 +12460,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Toronto"
     """
 
-    USER_GEO_CITY_KEYS: Tuple[str, ...] = (
-        "user.geo.city",
-        "sentry.user.geo.city",
-    )
+    USER_GEO_CITY_KEYS: Tuple[str, ...] = ("user.geo.city",)
 
     # Path: model/attributes/user/user__geo__country_code.json
     USER_GEO_COUNTRY_CODE: Literal["user.geo.country_code"] = "user.geo.country_code"
@@ -12589,10 +12474,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "CA"
     """
 
-    USER_GEO_COUNTRY_CODE_KEYS: Tuple[str, ...] = (
-        "user.geo.country_code",
-        "sentry.user.geo.country_code",
-    )
+    USER_GEO_COUNTRY_CODE_KEYS: Tuple[str, ...] = ("user.geo.country_code",)
 
     # Path: model/attributes/user/user__geo__region.json
     USER_GEO_REGION: Literal["user.geo.region"] = "user.geo.region"
@@ -12606,10 +12488,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Canada"
     """
 
-    USER_GEO_REGION_KEYS: Tuple[str, ...] = (
-        "user.geo.region",
-        "sentry.user.geo.region",
-    )
+    USER_GEO_REGION_KEYS: Tuple[str, ...] = ("user.geo.region",)
 
     # Path: model/attributes/user/user__geo__subdivision.json
     USER_GEO_SUBDIVISION: Literal["user.geo.subdivision"] = "user.geo.subdivision"
@@ -12623,10 +12502,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Ontario"
     """
 
-    USER_GEO_SUBDIVISION_KEYS: Tuple[str, ...] = (
-        "user.geo.subdivision",
-        "sentry.user.geo.subdivision",
-    )
+    USER_GEO_SUBDIVISION_KEYS: Tuple[str, ...] = ("user.geo.subdivision",)
 
     # Path: model/attributes/user/user__hash.json
     USER_HASH: Literal["user.hash"] = "user.hash"
@@ -12653,10 +12529,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "S-1-5-21-202424912787-2692429404-2351956786-1000"
     """
 
-    USER_ID_KEYS: Tuple[str, ...] = (
-        "user.id",
-        "sentry.user.id",
-    )
+    USER_ID_KEYS: Tuple[str, ...] = ("user.id",)
 
     # Path: model/attributes/user/user__ip_address.json
     USER_IP_ADDRESS: Literal["user.ip_address"] = "user.ip_address"
@@ -12670,10 +12543,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "192.168.1.1"
     """
 
-    USER_IP_ADDRESS_KEYS: Tuple[str, ...] = (
-        "user.ip_address",
-        "sentry.user.ip",
-    )
+    USER_IP_ADDRESS_KEYS: Tuple[str, ...] = ("user.ip_address",)
 
     # Path: model/attributes/user/user__name.json
     USER_NAME: Literal["user.name"] = "user.name"
@@ -12687,10 +12557,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "j.smith"
     """
 
-    USER_NAME_KEYS: Tuple[str, ...] = (
-        "user.name",
-        "sentry.user.username",
-    )
+    USER_NAME_KEYS: Tuple[str, ...] = ("user.name",)
 
     # Path: model/attributes/user/user__roles.json
     USER_ROLES: Literal["user.roles"] = "user.roles"
@@ -12717,10 +12584,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     """
 
-    USER_AGENT_ORIGINAL_KEYS: Tuple[str, ...] = (
-        "user_agent.original",
-        "http.user_agent",
-    )
+    USER_AGENT_ORIGINAL_KEYS: Tuple[str, ...] = ("user_agent.original",)
 
     # Path: model/attributes/vercel/vercel__branch.json
     VERCEL_BRANCH: Literal["vercel.branch"] = "vercel.branch"
