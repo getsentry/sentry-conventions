@@ -15,7 +15,11 @@ cd $ROOT_DIR
 
 npx tsx scripts/bump_attribute_changelog.ts "${NEW_VERSION}"
 
-yarn install
+# --frozen-lockfile: the release only needs node_modules to run `yarn generate`, it must
+# not re-resolve dependencies. A plain `yarn install` writes the lockfile back from the
+# release runner's perspective, dropping every optional native binary that doesn't match
+# it (linux-x64) and leaving the lockfile broken for every other platform.
+yarn install --frozen-lockfile
 yarn generate
 
 # ==================== JS ====================
