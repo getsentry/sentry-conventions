@@ -6,6 +6,14 @@
       "name": "app"
     },
     {
+      "name": "app.update.check",
+      "description": "The time it takes to check for an available over-the-air (OTA) update."
+    },
+    {
+      "name": "app.update.download",
+      "description": "The time it takes to download an over-the-air (OTA) update."
+    },
+    {
       "name": "ui"
     },
     {

@@ -265,6 +265,12 @@ pub const MESSAGING_QUEUE_TASK_RQ_SPAN_OP: &str = "queue.task.rq";
 
 pub const MOBILE_APP_SPAN_OP: &str = "app";
 
+/// The time it takes to check for an available over-the-air (OTA) update.
+pub const MOBILE_APP_UPDATE_CHECK_SPAN_OP: &str = "app.update.check";
+
+/// The time it takes to download an over-the-air (OTA) update.
+pub const MOBILE_APP_UPDATE_DOWNLOAD_SPAN_OP: &str = "app.update.download";
+
 pub const MOBILE_UI_SPAN_OP: &str = "ui";
 
 pub const MOBILE_NAVIGATION_SPAN_OP: &str = "navigation";
