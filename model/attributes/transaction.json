@@ -15,7 +15,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.19.0",
       "prs": [497],
       "description": "Change deprecation from backfill to normalize"
     },
