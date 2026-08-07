@@ -305,6 +305,26 @@ export const GENERAL_FUNCTION_SPAN_OP = 'function';
  */
 export const GENERAL_MEASURE_SPAN_OP = 'measure';
 
+// Path: model/op/mcp.json
+// Name: mcp
+
+// Description: Operations related to Model Context Protocol (MCP) interactions
+
+/**
+ * A request handled by an MCP server (e.g. a tool call, resource read, or prompt request).
+ */
+export const MCP_MCP_SERVER_SPAN_OP = 'mcp.server';
+
+/**
+ * A notification sent from an MCP client to an MCP server.
+ */
+export const MCP_MCP_NOTIFICATION_CLIENT_TO_SERVER_SPAN_OP = 'mcp.notification.client_to_server';
+
+/**
+ * A notification sent from an MCP server to an MCP client.
+ */
+export const MCP_MCP_NOTIFICATION_SERVER_TO_CLIENT_SPAN_OP = 'mcp.notification.server_to_client';
+
 // Path: model/op/messaging.json
 // Name: messaging
 

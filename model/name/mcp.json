@@ -14,6 +14,15 @@
         "MCP server operation"
       ],
       "examples": ["tools/call get-weather", "prompts/get analyze-code", "resources/read", "initialize"]
+    },
+    {
+      "name": "Notification",
+      "brief": "MCP notifications. One-way messages exchanged between an MCP client and server that do not expect a response.",
+      "is_in_otel": true,
+      "otel_notes": "OpenTelemetry does not model notifications as distinct operations; they are covered by the MCP Client and Server spans.",
+      "ops": ["mcp.notification.client_to_server", "mcp.notification.server_to_client"],
+      "templates": ["{{mcp.method.name}}", "MCP notification"],
+      "examples": ["notifications/initialized", "notifications/cancelled", "notifications/progress"]
     }
   ]
 }
