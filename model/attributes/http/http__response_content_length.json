@@ -13,6 +13,10 @@
     "replacement": "http.response.body.size"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "http.response_content_length",
+    "type": "byte"
+  },
   "changelog": [
     {
       "version": "0.4.0",

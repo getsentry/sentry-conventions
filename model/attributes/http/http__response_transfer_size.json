@@ -13,6 +13,10 @@
     "replacement": "http.response.size"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "http.response_transfer_size",
+    "type": "byte"
+  },
   "changelog": [
     {
       "version": "0.4.0",

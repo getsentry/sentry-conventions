@@ -13,6 +13,9 @@
     "replacement": "browser.name"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "browser.name"
+  },
   "changelog": [
     {
       "version": "0.1.0",
