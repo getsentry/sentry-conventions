@@ -26,9 +26,5 @@
   "volta": {
     "node": "22.15.0",
     "yarn": "1.22.22"
-  },
-  "resolutions": {
-    "//esbuild": "Forces patched esbuild (GHSA-gv7w-rqvm-qjhr, GHSA-g7r4-m6w7-qqqr). Remove once upstream bumps to >=0.28.1.",
-    "esbuild": "~0.28.1"
   }
 }
