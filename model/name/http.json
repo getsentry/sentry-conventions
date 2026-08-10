@@ -6,7 +6,7 @@
       "brief": "Operations that represent outgoing HTTP requests.",
       "is_in_otel": true,
       "otel_notes": "",
-      "ops": ["http.client"],
+      "ops": ["http.client", "http.client.stream"],
       "templates": [
         "{{http.request.method}} {{http.route}}",
         "{{http.request.method}} {{url.template}}",
