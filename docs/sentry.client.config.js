@@ -6,7 +6,6 @@ Sentry.init({
   enabled: import.meta.env.PROD,
   environment: import.meta.env.PROD ? 'production' : 'development',
   integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
-  enableLogs: true,
   tracesSampleRate: 1.0,
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
