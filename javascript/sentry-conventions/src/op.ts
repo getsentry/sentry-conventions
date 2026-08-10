@@ -445,6 +445,16 @@ export const OBJECT_OBJECT_MULTIPART_UPLOAD_CREATE_SPAN_OP = 'object.multipart_u
  */
 export const OBJECT_OBJECT_MULTIPART_UPLOAD_COMPLETE_SPAN_OP = 'object.multipart_upload.complete';
 
+// Path: model/op/routing.json
+// Name: routing
+
+// Description: Routing related spans represent work performed by frontend and backend application routers.
+
+/**
+ * A framework-neutral operation for work performed by an application router.
+ */
+export const ROUTING_ROUTER_SPAN_OP = 'router';
+
 // Path: model/op/web_server.json
 // Name: web_server
 
@@ -473,6 +483,11 @@ export const WEB_SERVER_GRAPHQL_SPAN_OP = 'graphql';
 export const WEB_SERVER_SUBPROCESS_SPAN_OP = 'subprocess';
 
 export const WEB_SERVER_MIDDLEWARE_SPAN_OP = 'middleware';
+
+/**
+ * Handling of an incoming request by a web server route handler
+ */
+export const WEB_SERVER_HANDLER_SPAN_OP = 'handler';
 
 export const WEB_SERVER_VIEW_SPAN_OP = 'view';
 
