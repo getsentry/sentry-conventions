@@ -11,7 +11,7 @@
     {
       "name": "Navigation",
       "brief": "Client-side browser history change in a web application.",
-      "ops": ["navigation"],
+      "ops": ["navigation", "navigation.redirect"],
       "templates": ["{{navigation.route.id}}", "{{url.template}}", "{{url.path}}", "{{url.full}}"],
       "examples": ["UserProfile", "/users/:id", "/users/123", "http://example.com/users/123"]
     }

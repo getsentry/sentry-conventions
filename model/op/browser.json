@@ -11,6 +11,10 @@
       "description": "Client-side browser history change in a web application."
     },
     {
+      "name": "navigation.redirect",
+      "description": "A client-side automatic redirect navigation (e.g. from framework router redirects) triggerign a browser history change."
+    },
+    {
       "name": "resource",
       "description": "Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified."
     },

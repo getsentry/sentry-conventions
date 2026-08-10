@@ -14031,6 +14031,63 @@ export const SENTRY_ENVIRONMENT = 'sentry.environment';
  */
 export type SENTRY_ENVIRONMENT_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__event__serialized_breadcrumbs.json
+
+/**
+ * JSON-serialized `breadcrumbs` property from a Sentry event. `sentry.event.serialized_breadcrumbs`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_BREADCRUMBS = 'sentry.event.serialized_breadcrumbs';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_BREADCRUMBS} sentry.event.serialized_breadcrumbs
+ */
+export type SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_contexts.json
+
+/**
+ * JSON-serialized `contexts` property from a Sentry event. `sentry.event.serialized_contexts`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_CONTEXTS = 'sentry.event.serialized_contexts';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_CONTEXTS} sentry.event.serialized_contexts
+ */
+export type SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_extra.json
+
+/**
+ * JSON-serialized `extra` property from a Sentry event. `sentry.event.serialized_extra`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_EXTRA_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_EXTRA = 'sentry.event.serialized_extra';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_EXTRA} sentry.event.serialized_extra
+ */
+export type SENTRY_EVENT_SERIALIZED_EXTRA_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__exclusive_time.json
 
 /**
@@ -18193,6 +18250,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.dsc.trace_id': 'string',
   'sentry.dsc.transaction': 'string',
   'sentry.environment': 'string',
+  'sentry.event.serialized_breadcrumbs': 'string',
+  'sentry.event.serialized_contexts': 'string',
+  'sentry.event.serialized_extra': 'string',
   'sentry.exclusive_time': 'double',
   'sentry.frames.frozen': 'integer',
   'sentry.frames.slow': 'integer',
@@ -18983,6 +19043,9 @@ export type AttributeName =
   | typeof SENTRY_DSC_TRACE_ID
   | typeof SENTRY_DSC_TRANSACTION
   | typeof SENTRY_ENVIRONMENT
+  | typeof SENTRY_EVENT_SERIALIZED_BREADCRUMBS
+  | typeof SENTRY_EVENT_SERIALIZED_CONTEXTS
+  | typeof SENTRY_EVENT_SERIALIZED_EXTRA
   | typeof SENTRY_EXCLUSIVE_TIME
   | typeof SENTRY_FRAMES_FROZEN
   | typeof SENTRY_FRAMES_SLOW
@@ -19159,7 +19222,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: 'next', prs: [534], description: 'Added address attribute' }],
+    changelog: [{ version: '0.19.0', prs: [534], description: 'Added address attribute' }],
   },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
@@ -19427,7 +19490,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.prompt.messages attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.prompt.messages attribute' }],
   },
   'ai.prompt_tokens.used': {
     brief: 'The number of tokens used to process just the prompt.',
@@ -19504,7 +19567,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.output.messages', 'ai.response.toolCalls'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.text attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.text attribute' }],
   },
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
@@ -19520,7 +19583,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.output.messages', 'ai.response.text'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
   },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
@@ -19652,7 +19715,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.call.arguments', 'gen_ai.tool.input'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.args attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.toolCall.args attribute' }],
   },
   'ai.toolCall.result': {
     brief: 'The result of the tool call.',
@@ -19668,7 +19731,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.result attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
     brief: 'For an AI model call, the functions that are available',
@@ -20064,7 +20127,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 3,
     aliases: ['frames.frozen', 'sentry.frames.frozen'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.frozen as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
   },
@@ -20079,7 +20142,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     aliases: ['frames_frozen_rate'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
   },
   'app.vitals.frames.slow.count': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -20092,7 +20155,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1,
     aliases: ['frames.slow', 'sentry.frames.slow'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.slow as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
   },
@@ -20107,7 +20170,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.25,
     aliases: ['frames_slow_rate'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
   },
   'app.vitals.frames.total.count': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -20120,7 +20183,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 60,
     aliases: ['frames.total', 'sentry.frames.total'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.total as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
   },
@@ -20135,7 +20198,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 4000,
     aliases: ['stall_total_time'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
   },
   'app.vitals.stall.percentage': {
     brief:
@@ -20148,7 +20211,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.8,
     aliases: ['stall_percentage'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
   },
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
@@ -20863,7 +20926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['rpc.method'],
-    changelog: [{ version: 'next', prs: [536], description: 'Added aws.operation_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [536], description: 'Added aws.operation_name attribute' }],
   },
   aws_region: {
     brief: 'The geographical region the AWS resource is running',
@@ -20880,7 +20943,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['cloud.region', 'gcp_region'],
-    changelog: [{ version: 'next', prs: [537], description: 'Added aws_region attribute' }],
+    changelog: [{ version: '0.19.0', prs: [537], description: 'Added aws_region attribute' }],
   },
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
@@ -20956,7 +21019,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['url.full', 'http.url', 'url'],
-    changelog: [{ version: 'next', description: 'Added aws.request.url attribute, deprecated in favor of url.full' }],
+    changelog: [
+      {
+        version: '0.19.0',
+        prs: [488],
+        description: 'Added aws.request.url attribute, deprecated in favor of url.full',
+      },
+    ],
   },
   'aws.s3.bucket': {
     brief: 'The S3 bucket name the request refers to.',
@@ -21036,7 +21105,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'top',
     examples: ['top', 'child'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
   },
   'browser.bfcache.not_restored_reason_count': {
     brief:
@@ -21050,7 +21119,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2,
     examples: [2],
     changelog: [
-      { version: 'next', prs: [513], description: 'Added browser.bfcache.not_restored_reason_count attribute' },
+      { version: '0.19.0', prs: [513], description: 'Added browser.bfcache.not_restored_reason_count attribute' },
     ],
   },
   'browser.bfcache.outcome': {
@@ -21064,7 +21133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'hit',
     examples: ['hit', 'miss'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.outcome attribute' }],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.outcome attribute' }],
   },
   'browser.bfcache.reason': {
     brief:
@@ -21077,7 +21146,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'unload-listener',
     examples: ['unload-listener', 'websocket', 'idbversionchangeevent', 'response-cache-control-no-store'],
-    changelog: [{ version: 'next', prs: [513], description: 'Added browser.bfcache.reason attribute' }],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.reason attribute' }],
   },
   'browser.name': {
     brief: 'The name of the browser.',
@@ -21494,7 +21563,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['db.operation.name', 'db.operation', 'redis.command'],
     changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
       { version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' },
     ],
   },
@@ -21735,7 +21804,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'us-east-1',
     aliases: ['aws_region', 'gcp_region'],
     changelog: [
-      { version: 'next', description: 'Added aws_region and gcp_region as aliases' },
+      { version: '0.19.0', prs: [535, 537], description: 'Added aws_region and gcp_region as aliases' },
       { version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' },
     ],
   },
@@ -21813,7 +21882,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['rpc.grpc.status_code', 'rpc.response.status_code'],
-    changelog: [{ version: 'next', prs: [533], description: 'Added code attribute' }],
+    changelog: [{ version: '0.19.0', prs: [533], description: 'Added code attribute' }],
   },
   'code.filepath': {
     brief:
@@ -21855,7 +21924,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'server_request',
     aliases: ['code.function.name', 'django.function_name'],
     changelog: [
-      { version: 'next', description: 'Added django.function_name as an alias' },
+      { version: '0.19.0', prs: [538], description: 'Added django.function_name as an alias' },
       { version: '0.1.0', prs: [61, 74] },
       { version: '0.0.0' },
     ],
@@ -21871,7 +21940,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'server_request',
     aliases: ['code.function', 'django.function_name'],
     changelog: [
-      { version: 'next', description: 'Added django.function_name as an alias' },
+      { version: '0.19.0', prs: [538], description: 'Added django.function_name as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -22030,7 +22099,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'users',
     aliases: ['db.mongodb.collection'],
     changelog: [
-      { version: 'next', description: 'Added db.mongodb.collection as an alias' },
+      { version: '0.19.0', prs: [483], description: 'Added db.mongodb.collection as an alias' },
       { version: '0.1.0', prs: [106, 127] },
       { version: '0.0.0' },
     ],
@@ -22064,7 +22133,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['db.collection.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [483],
         description: 'Added db.mongodb.collection attribute, deprecated in favor of db.collection.name',
       },
     ],
@@ -22111,7 +22181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['db.operation.name', 'cloudflare.d1.query_type', 'redis.command'],
     changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
       { version: '0.4.0', prs: [199] },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -22140,7 +22210,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT',
     aliases: ['db.operation', 'cloudflare.d1.query_type', 'redis.command'],
     changelog: [
-      { version: 'next', description: 'Added redis.command as an alias' },
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -22160,7 +22230,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.',
     },
-    changelog: [{ version: 'next', prs: [529], description: 'Added db.params attribute' }],
+    changelog: [{ version: '0.19.0', prs: [529], description: 'Added db.params attribute' }],
   },
   'db.query.parameter.<key>': {
     brief:
@@ -22187,7 +22257,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT users',
     examples: ['SELECT users', 'INSERT products; UPDATE orders'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.19.0', prs: [505], description: 'Added multiple examples' },
       { version: '0.4.0', prs: [208] },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -22205,7 +22275,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT * FROM users WHERE id = $1',
     aliases: ['db.statement', 'query'],
     changelog: [
-      { version: 'next', description: 'Added query as an alias' },
+      { version: '0.19.0', prs: [530], description: 'Added query as an alias' },
       { version: '0.4.0', prs: [208] },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -22233,7 +22303,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'user:2047:city',
     aliases: ['redis.key'],
     changelog: [
-      { version: 'next', description: 'Added redis.key as an alias' },
+      { version: '0.19.0', prs: [484], description: 'Added redis.key as an alias' },
       { version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' },
     ],
   },
@@ -22294,7 +22364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['db.query.text', 'query'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
         prs: [501],
         description: 'Improved example, added deprecation reason, and added query as an alias',
       },
@@ -22861,7 +22931,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['code.function.name', 'code.function'],
-    changelog: [{ version: 'next', prs: [538], description: 'Added django.function_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [538], description: 'Added django.function_name attribute' }],
   },
   'django.middleware_name': {
     brief: 'The name of the Django middleware.',
@@ -22880,7 +22950,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['middleware.name'],
-    changelog: [{ version: 'next', prs: [520], description: 'Added django.middleware_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [520], description: 'Added django.middleware_name attribute' }],
   },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -22921,7 +22991,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.environment'],
     changelog: [
-      { version: 'next', prs: [427], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [427], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -23316,7 +23386,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.frozen.count', 'sentry.frames.frozen'],
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -23339,7 +23409,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.frozen.rate'],
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
       { version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' },
     ],
   },
@@ -23360,7 +23430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.slow.count', 'sentry.frames.slow'],
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.slow as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -23383,7 +23453,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.slow.rate'],
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
       { version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' },
     ],
   },
@@ -23404,7 +23474,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.total.count', 'sentry.frames.total'],
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.total as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
@@ -23550,7 +23620,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['cloud.region', 'aws_region'],
-    changelog: [{ version: 'next', prs: [535], description: 'Added gcp_region attribute' }],
+    changelog: [{ version: '0.19.0', prs: [535], description: 'Added gcp_region attribute' }],
   },
   'gen_ai.agent.name': {
     brief: 'The name of the agent being used.',
@@ -24039,7 +24109,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'normalize',
     },
     aliases: ['gen_ai.response.finish_reasons'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
   },
   'gen_ai.response.finish_reasons': {
     brief: 'The reason why the model stopped generating.',
@@ -24904,7 +24974,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
     ],
@@ -25289,7 +25359,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['route'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
         prs: [505, 521],
         description: 'Added multiple examples, removed alias to `url.template`, added additional context',
       },
@@ -25330,7 +25400,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
     ],
@@ -25700,7 +25770,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['middleware.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [486],
         description: 'Added litestar.middleware_name attribute, deprecated in favor of middleware.name',
       },
     ],
@@ -26315,7 +26386,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [509],
         description:
           'Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations.',
       },
@@ -26347,7 +26419,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '1',
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
   },
   'messaging.kafka.message.key': {
     brief:
@@ -26359,7 +26431,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'myKey',
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
   },
   'messaging.kafka.message.tombstone': {
     brief: 'A boolean that is true if the message is a tombstone.',
@@ -26370,7 +26442,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: true,
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
   },
   'messaging.kafka.offset': {
     brief: 'The offset of a record in the corresponding Kafka partition.',
@@ -26381,7 +26453,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 42,
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
   },
   'messaging.message.body.size': {
     brief: 'The size of the message body in bytes.',
@@ -26511,7 +26583,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.request.method', 'http.request_method', 'http.method'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -26533,7 +26605,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [485, 486, 519, 520],
         description:
           'Added django.middleware_name, starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases',
       },
@@ -26821,7 +26894,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
     ],
@@ -26840,7 +26913,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['server.port', 'port'],
     changelog: [
-      { version: 'next', description: 'Added port as an alias' },
+      { version: '0.19.0', prs: [532], description: 'Added port as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
@@ -27275,7 +27348,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['server.port', 'net.host.port'],
-    changelog: [{ version: 'next', prs: [532], description: 'Added port attribute' }],
+    changelog: [{ version: '0.19.0', prs: [532], description: 'Added port attribute' }],
   },
   previous_route: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
@@ -27321,7 +27394,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12345,
     aliases: ['subprocess.pid'],
     changelog: [
-      { version: 'next', description: 'Added subprocess.pid as an alias' },
+      { version: '0.19.0', prs: [487], description: 'Added subprocess.pid as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -27401,7 +27474,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'normalize',
     },
     aliases: ['sentry.profile_id'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
+    changelog: [{ version: '0.19.0', prs: [497], description: 'Added profile_id attribute' }],
   },
   query: {
     brief: 'The database query being executed.',
@@ -27420,7 +27493,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['db.query.text', 'db.statement'],
-    changelog: [{ version: 'next', prs: [530], description: 'Added query attribute' }],
+    changelog: [{ version: '0.19.0', prs: [530], description: 'Added query attribute' }],
   },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
@@ -27464,7 +27537,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['cloudflare.d1.query_type', 'db.operation.name', 'db.operation'],
-    changelog: [{ version: 'next', prs: [531], description: 'Added redis.command attribute' }],
+    changelog: [{ version: '0.19.0', prs: [531], description: 'Added redis.command attribute' }],
   },
   'redis.key': {
     brief: 'The key the Redis command is operating on.',
@@ -27481,7 +27554,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['db.redis.key'],
-    changelog: [{ version: 'next', description: 'Added redis.key attribute, deprecated in favor of db.redis.key' }],
+    changelog: [
+      { version: '0.19.0', prs: [484], description: 'Added redis.key attribute, deprecated in favor of db.redis.key' },
+    ],
   },
   release: {
     brief: 'The sentry release.',
@@ -27498,7 +27573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.release'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -27530,7 +27605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.replay_id'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
     ],
@@ -27608,7 +27683,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['code', 'rpc.response.status_code'],
     changelog: [
-      { version: 'next', description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code' },
+      {
+        version: '0.19.0',
+        prs: [494, 533],
+        description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -27624,7 +27703,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'com.example.ExampleService/exampleMethod',
     aliases: ['aws.operation_name'],
     changelog: [
-      { version: 'next', description: 'Added aws.operation_name as an alias' },
+      { version: '0.19.0', prs: [536], description: 'Added aws.operation_name as an alias' },
       { version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' },
     ],
   },
@@ -27639,7 +27718,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'DEADLINE_EXCEEDED',
     aliases: ['code', 'rpc.grpc.status_code'],
     changelog: [
-      { version: 'next', description: 'Added code and rpc.grpc.status_code as aliases' },
+      { version: '0.19.0', prs: [494, 533], description: 'Added code and rpc.grpc.status_code as aliases' },
       { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
     ],
   },
@@ -28031,6 +28110,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['environment'],
     changelog: [{ version: '0.0.0' }],
   },
+  'sentry.event.serialized_breadcrumbs': {
+    brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: '0.19.0', prs: [556] }],
+  },
+  'sentry.event.serialized_contexts': {
+    brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: '0.19.0', prs: [556] }],
+  },
+  'sentry.event.serialized_extra': {
+    brief: 'JSON-serialized `extra` property from a Sentry event.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: '0.19.0', prs: [556] }],
+  },
   'sentry.exclusive_time': {
     brief: 'The exclusive time duration of the span in milliseconds.',
     type: 'double',
@@ -28058,7 +28167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.frozen.count', 'frames.frozen'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
   },
   'sentry.frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
@@ -28076,7 +28185,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.slow.count', 'frames.slow'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.slow attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow attribute' }],
   },
   'sentry.frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
@@ -28094,7 +28203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.total.count', 'frames.total'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.total attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.total attribute' }],
   },
   'sentry.graphql.operation': {
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
@@ -28164,7 +28273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['client', 'server', 'producer', 'consumer', 'internal'],
     aliases: ['otel.kind'],
     changelog: [
-      { version: 'next', prs: [517], description: 'Added more examples and additional_context to the attribute' },
+      { version: '0.19.0', prs: [517], description: 'Added more examples and additional_context to the attribute' },
       { version: '0.3.1', prs: [190] },
     ],
     additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
@@ -28376,7 +28485,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     aliases: ['profile_id'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Added profile_id as an alias' },
+      { version: '0.19.0', prs: [497], description: 'Added profile_id as an alias' },
       { version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' },
     ],
   },
@@ -28541,7 +28650,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'internal',
     example: 'route',
     examples: ['route', 'component', 'view', 'task', 'custom', 'url'],
-    changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.name.source' }],
+    changelog: [{ version: '0.19.0', prs: [466], description: 'Added sentry.segment.name.source' }],
     additionalContext: [
       'This attribute is the replacement for `transaction_info.source` on transactions.',
       'Should we bring back clustering for segment names (like we do for transaction names), this attribute will be used to determine if a segment name should be clustered.',
@@ -28572,7 +28681,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
     },
-    changelog: [{ version: 'next', description: 'Removed the sentry.span.source replacement' }, { version: '0.5.0' }],
+    changelog: [
+      { version: '0.19.0', prs: [510], description: 'Removed the sentry.span.source replacement' },
+      { version: '0.5.0' },
+    ],
   },
   'sentry.span.source': {
     brief:
@@ -28589,7 +28701,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
     },
     changelog: [
-      { version: 'next', description: 'Deprecated; superseded by sentry.segment.name.source on segment spans' },
+      {
+        version: '0.19.0',
+        prs: [510],
+        description: 'Deprecated; superseded by sentry.segment.name.source on segment spans',
+      },
       { version: '0.4.0', prs: [214] },
       { version: '0.0.0' },
     ],
@@ -28888,7 +29004,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
       { version: '0.0.0' },
     ],
@@ -28910,7 +29026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
     changelog: [
-      { version: 'next', description: 'Added address as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
         prs: [477],
@@ -28929,7 +29045,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1337,
     aliases: ['net.host.port', 'port'],
     changelog: [
-      { version: 'next', description: 'Added port as an alias' },
+      { version: '0.19.0', prs: [532], description: 'Added port as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -28984,7 +29100,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.stall.percentage'],
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
       { version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' },
     ],
   },
@@ -29005,7 +29121,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.stall.duration'],
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
       { version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' },
     ],
   },
@@ -29027,7 +29143,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['middleware.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [485],
         description: 'Added starlette.middleware_name attribute, deprecated in favor of middleware.name',
       },
     ],
@@ -29049,7 +29166,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['middleware.name'],
-    changelog: [{ version: 'next', prs: [519], description: 'Added starlite.middleware_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [519], description: 'Added starlite.middleware_name attribute' }],
   },
   'state.type': {
     brief: 'The type of state management library',
@@ -29077,7 +29194,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['process.pid'],
-    changelog: [{ version: 'next', description: 'Added subprocess.pid attribute, deprecated in favor of process.pid' }],
+    changelog: [
+      {
+        version: '0.19.0',
+        prs: [487],
+        description: 'Added subprocess.pid attribute, deprecated in favor of process.pid',
+      },
+    ],
   },
   'thread.id': {
     brief: 'Current “managed” thread ID.',
@@ -29167,7 +29290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.name', 'sentry.transaction'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
+      { version: '0.19.0', prs: [497], description: 'Change deprecation from backfill to normalize' },
       {
         version: '0.6.0',
         prs: [345],
@@ -29427,7 +29550,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     aliases: ['http.url', 'url', 'aws.request.url'],
     changelog: [
-      { version: 'next', description: 'Added aws.request.url as an alias' },
+      { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
       { version: '0.0.0' },
     ],
@@ -29529,7 +29652,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['/users/{id}', '/users/:id', '/about'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
         prs: [505, 521],
         description: 'Added multiple examples, removed alias to `http.route`, added additional context',
       },
@@ -30725,6 +30848,9 @@ export type Attributes = {
   [SENTRY_DSC_TRACE_ID]?: SENTRY_DSC_TRACE_ID_TYPE;
   [SENTRY_DSC_TRANSACTION]?: SENTRY_DSC_TRANSACTION_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
+  [SENTRY_EVENT_SERIALIZED_BREADCRUMBS]?: SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE;
+  [SENTRY_EVENT_SERIALIZED_CONTEXTS]?: SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE;
+  [SENTRY_EVENT_SERIALIZED_EXTRA]?: SENTRY_EVENT_SERIALIZED_EXTRA_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_FRAMES_FROZEN]?: SENTRY_FRAMES_FROZEN_TYPE;
   [SENTRY_FRAMES_SLOW]?: SENTRY_FRAMES_SLOW_TYPE;

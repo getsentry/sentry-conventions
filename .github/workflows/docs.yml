@@ -37,6 +37,8 @@ jobs:
       - name: Build Astro site
         working-directory: docs
         run: yarn build
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3

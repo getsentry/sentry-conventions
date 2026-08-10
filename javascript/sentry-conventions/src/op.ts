@@ -14,6 +14,11 @@ export const BROWSER_PAGELOAD_SPAN_OP = 'pageload';
 export const BROWSER_NAVIGATION_SPAN_OP = 'navigation';
 
 /**
+ * A client-side automatic redirect navigation (e.g. from framework router redirects) triggerign a browser history change.
+ */
+export const BROWSER_NAVIGATION_REDIRECT_SPAN_OP = 'navigation.redirect';
+
+/**
  * Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified.
  */
 export const BROWSER_RESOURCE_SPAN_OP = 'resource';
@@ -440,6 +445,16 @@ export const OBJECT_OBJECT_MULTIPART_UPLOAD_CREATE_SPAN_OP = 'object.multipart_u
  */
 export const OBJECT_OBJECT_MULTIPART_UPLOAD_COMPLETE_SPAN_OP = 'object.multipart_upload.complete';
 
+// Path: model/op/routing.json
+// Name: routing
+
+// Description: Routing related spans represent work performed by frontend and backend application routers.
+
+/**
+ * A framework-neutral operation for work performed by an application router.
+ */
+export const ROUTING_ROUTER_SPAN_OP = 'router';
+
 // Path: model/op/web_server.json
 // Name: web_server
 
@@ -468,6 +483,11 @@ export const WEB_SERVER_GRAPHQL_SPAN_OP = 'graphql';
 export const WEB_SERVER_SUBPROCESS_SPAN_OP = 'subprocess';
 
 export const WEB_SERVER_MIDDLEWARE_SPAN_OP = 'middleware';
+
+/**
+ * Handling of an incoming request by a web server route handler
+ */
+export const WEB_SERVER_HANDLER_SPAN_OP = 'handler';
 
 export const WEB_SERVER_VIEW_SPAN_OP = 'view';
 
