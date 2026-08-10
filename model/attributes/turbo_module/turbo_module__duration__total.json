@@ -1,0 +1,18 @@
+{
+  "key": "turbo_module.duration.total",
+  "brief": "The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration. Only applies to React Native.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 128.45,
+  "alias": ["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added turbo_module.duration.total attribute"
+    }
+  ]
+}

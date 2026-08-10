@@ -1,0 +1,23 @@
+{
+  "key": "turbo_module.unique_methods",
+  "brief": "The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 7,
+  "alias": ["turbo_module.call.distinct_count", "turbo_modules.unique_methods"],
+  "deprecation": {
+    "replacement": "turbo_module.call.distinct_count",
+    "reason": "Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+    "_status": "backfill"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added turbo_module.unique_methods and deprecated it in favor of turbo_module.call.distinct_count"
+    }
+  ]
+}

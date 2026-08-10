@@ -275,6 +275,9 @@ pub const MOBILE_SERIALIZE_SPAN_OP: &str = "serialize";
 
 pub const MOBILE_HTTP_SPAN_OP: &str = "http";
 
+/// A call from JavaScript into a React Native native module, or an aggregate of such calls.
+pub const MOBILE_TURBO_MODULE_SPAN_OP: &str = "turbo_module";
+
 // Path: model/op/object.json
 // Name: object
 

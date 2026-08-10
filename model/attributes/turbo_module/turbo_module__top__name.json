@@ -1,0 +1,19 @@
+{
+  "key": "turbo_module.top.name",
+  "brief": "The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`. Only applies to React Native.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual",
+    "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
+  },
+  "is_in_otel": false,
+  "example": "RNDeviceInfo.getUniqueId",
+  "alias": ["turbo_module.top_module"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added turbo_module.top.name attribute"
+    }
+  ]
+}
