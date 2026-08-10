@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/svelte": "9.0.1",
-    "@sentry/astro": "^10.69.0",
+    "@sentry/astro": "^11.0.0-alpha.0",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "7.1.0",
     "dompurify": "^3.4.12",
@@ -26,5 +26,9 @@
   "volta": {
     "node": "22.15.0",
     "yarn": "1.22.22"
+  },
+  "resolutions": {
+    "//esbuild": "Forces patched esbuild (GHSA-gv7w-rqvm-qjhr, GHSA-g7r4-m6w7-qqqr). Remove once upstream bumps to >=0.28.1.",
+    "esbuild": "~0.28.1"
   }
 }
