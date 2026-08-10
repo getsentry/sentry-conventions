@@ -306,6 +306,13 @@ pub const OBJECT_OBJECT_MULTIPART_UPLOAD_CREATE_SPAN_OP: &str = "object.multipar
 /// Completing a multipart upload to an object store.
 pub const OBJECT_OBJECT_MULTIPART_UPLOAD_COMPLETE_SPAN_OP: &str = "object.multipart_upload.complete";
 
+// Path: model/op/routing.json
+// Name: routing
+
+// Description: Routing related spans represent work performed by frontend and backend application routers.
+/// A framework-neutral operation for work performed by an application router.
+pub const ROUTING_ROUTER_SPAN_OP: &str = "router";
+
 // Path: model/op/web_server.json
 // Name: web_server
 
@@ -330,6 +337,9 @@ pub const WEB_SERVER_GRAPHQL_SPAN_OP: &str = "graphql";
 pub const WEB_SERVER_SUBPROCESS_SPAN_OP: &str = "subprocess";
 
 pub const WEB_SERVER_MIDDLEWARE_SPAN_OP: &str = "middleware";
+
+/// Handling of an incoming request by a web server route handler
+pub const WEB_SERVER_HANDLER_SPAN_OP: &str = "handler";
 
 pub const WEB_SERVER_VIEW_SPAN_OP: &str = "view";
 
