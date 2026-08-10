@@ -19,7 +19,6 @@
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "@types/dompurify": "^3.2.0",
     "pagefind": "^1.5.2"
   },
   "volta": {
