@@ -15206,7 +15206,7 @@ export type SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE = string;
 // Path: model/attributes/sentry/sentry__thread__id.json
 
 /**
- * Current “managed” thread ID. `sentry.thread.id`
+ * Current "managed" thread ID. `sentry.thread.id`
  *
  * Attribute Value Type: `number` {@link SENTRY_THREAD_ID_TYPE}
  *
@@ -17628,8 +17628,8 @@ export interface SearchAlias {
   name: string;
   /** The type exposed by Sentry search. Defaults to string if omitted */
   type?: SearchAliasType;
-  /** Additional aliases accepted in search queries */
-  aliases?: string[];
+  /** Deprecated aliases still accepted in search queries */
+  deprecatedAliases?: string[];
 }
 
 export interface AttributeMetadata {
@@ -22465,7 +22465,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
     searchAlias: {
       name: 'db.system',
-      aliases: ['span.system'],
+      deprecatedAliases: ['span.system'],
     },
   },
   'db.system.name': {
@@ -28983,7 +28983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
   },
   'sentry.thread.id': {
-    brief: 'Current “managed” thread ID.',
+    brief: 'Current "managed" thread ID.',
     type: 'integer',
     applyScrubbing: {
       key: 'manual',

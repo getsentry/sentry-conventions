@@ -166,8 +166,8 @@
           "description": "The type exposed by Sentry search. Defaults to string if omitted",
           "enum": ["string", "boolean", "integer", "number", "byte", "currency", "millisecond", "percentage", "second"]
         },
-        "aliases": {
-          "description": "Additional aliases accepted in search queries",
+        "deprecated_aliases": {
+          "description": "Deprecated aliases still accepted in search queries",
           "type": "array",
           "items": {
             "type": "string"

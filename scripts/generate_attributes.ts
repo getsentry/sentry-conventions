@@ -408,8 +408,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    type: SearchAliasType = "string"\n';
   content += '    """The type exposed by Sentry search"""\n';
   content += '    \n';
-  content += '    aliases: Optional[List[str]] = None\n';
-  content += '    """Additional aliases accepted in search queries"""\n\n';
+  content += '    deprecated_aliases: Optional[List[str]] = None\n';
+  content += '    """Deprecated aliases still accepted in search queries"""\n\n';
 
   content += '@dataclass\n';
   content += 'class AttributeMetadata:\n';
@@ -651,8 +651,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
       if (sa.type && sa.type !== 'string') {
         saFields += `,\n            type=${JSON.stringify(sa.type)}`;
       }
-      if (sa.aliases && sa.aliases.length > 0) {
-        saFields += `,\n            aliases=${JSON.stringify(sa.aliases)}`;
+      if (sa.deprecated_aliases && sa.deprecated_aliases.length > 0) {
+        saFields += `,\n            deprecated_aliases=${JSON.stringify(sa.deprecated_aliases)}`;
       }
       metadataDict += `        search_alias=SearchAlias(${saFields}\n        ),\n`;
     }
@@ -838,8 +838,8 @@ export interface SearchAlias {
   name: string;
   /** The type exposed by Sentry search. Defaults to string if omitted */
   type?: SearchAliasType;
-  /** Additional aliases accepted in search queries */
-  aliases?: string[];
+  /** Deprecated aliases still accepted in search queries */
+  deprecatedAliases?: string[];
 }
 
 export interface AttributeMetadata {
@@ -999,8 +999,8 @@ function generateMetadataDict(
       if (sa.type && sa.type !== 'string') {
         metadataDict += `      type: ${JSON.stringify(sa.type)},\n`;
       }
-      if (sa.aliases && sa.aliases.length > 0) {
-        metadataDict += `      aliases: ${JSON.stringify(sa.aliases)},\n`;
+      if (sa.deprecated_aliases && sa.deprecated_aliases.length > 0) {
+        metadataDict += `      deprecatedAliases: ${JSON.stringify(sa.deprecated_aliases)},\n`;
       }
       metadataDict += '    },\n';
     }

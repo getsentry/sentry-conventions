@@ -23,7 +23,7 @@ export interface AttributeJson {
   search_alias?: {
     name: string;
     type?: 'string' | 'boolean' | 'integer' | 'number' | 'byte' | 'currency' | 'millisecond' | 'percentage' | 'second';
-    aliases?: string[];
+    deprecated_aliases?: string[];
   };
   additional_context?: string[];
   changelog?: { version: string; prs?: number[]; description?: string }[];

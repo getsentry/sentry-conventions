@@ -96,8 +96,8 @@ class SearchAlias:
     type: SearchAliasType = "string"
     """The type exposed by Sentry search"""
 
-    aliases: Optional[List[str]] = None
-    """Additional aliases accepted in search queries"""
+    deprecated_aliases: Optional[List[str]] = None
+    """Deprecated aliases still accepted in search queries"""
 
 
 @dataclass
@@ -8896,7 +8896,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__thread__id.json
     SENTRY_THREAD_ID: Literal["sentry.thread.id"] = "sentry.thread.id"
-    """Current “managed” thread ID.
+    """Current "managed" thread ID.
 
     Type: int
     Apply Scrubbing: manual
@@ -13727,7 +13727,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="db.system", aliases=["span.system"]),
+        search_alias=SearchAlias(name="db.system", deprecated_aliases=["span.system"]),
     ),
     "db.system.name": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
@@ -20594,7 +20594,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.thread.id": AttributeMetadata(
-        brief="Current “managed” thread ID.",
+        brief='Current "managed" thread ID.',
         type=AttributeType.INTEGER,
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
