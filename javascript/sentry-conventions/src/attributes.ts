@@ -19885,10 +19885,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.usage.total_tokens'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
-    searchAlias: {
-      name: 'ai.total_tokens.used',
-      type: 'integer',
-    },
   },
   'ai.warnings': {
     brief: 'Warning messages generated during model execution.',
@@ -21497,10 +21493,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: true,
     changelog: [{ version: '0.0.0' }],
-    searchAlias: {
-      name: 'cache.hit',
-      type: 'boolean',
-    },
   },
   'cache.item_size': {
     brief: 'The size of the requested item in the cache. In bytes.',

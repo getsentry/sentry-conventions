@@ -10780,7 +10780,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="ai.total_tokens.used", type="integer"),
     ),
     "ai.warnings": AttributeMetadata(
         brief="Warning messages generated during model execution.",
@@ -12689,7 +12688,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="cache.hit", type="boolean"),
     ),
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
