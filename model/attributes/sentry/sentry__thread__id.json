@@ -1,6 +1,6 @@
 {
   "key": "sentry.thread.id",
-  "brief": "Current \u201cmanaged\u201d thread ID.",
+  "brief": "Current \"managed\" thread ID.",
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"
