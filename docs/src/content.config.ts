@@ -35,6 +35,13 @@ const attributeSchema = z
       })
       .optional(),
     alias: z.array(z.string()).optional(),
+    search_alias: z
+      .object({
+        name: z.string(),
+        type: z.enum(['byte', 'currency', 'millisecond', 'percentage', 'second']).optional(),
+        deprecated_aliases: z.array(z.string()).optional(),
+      })
+      .optional(),
     additional_context: z.array(z.string()).optional(),
     changelog: z
       .array(

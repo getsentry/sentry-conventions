@@ -387,6 +387,26 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    description: Optional[str] = None\n';
   content += '    """Optional description of what changed"""\n\n';
 
+  content += 'SearchAliasType = Literal[\n';
+  content += '    "byte",\n';
+  content += '    "currency",\n';
+  content += '    "millisecond",\n';
+  content += '    "percentage",\n';
+  content += '    "second",\n';
+  content += ']\n\n';
+
+  content += '@dataclass\n';
+  content += 'class SearchAlias:\n';
+  content += '    """How an attribute is exposed in Sentry search."""\n\n';
+  content += '    name: str\n';
+  content += '    """The public name exposed in Sentry search"""\n';
+  content += '    \n';
+  content += '    type: Optional[SearchAliasType] = None\n';
+  content += '    """The type exposed by Sentry search. Defaults to the attribute\'s primary type if omitted"""\n';
+  content += '    \n';
+  content += '    deprecated_aliases: Optional[List[str]] = None\n';
+  content += '    """Deprecated aliases still accepted in search queries"""\n\n';
+
   content += '@dataclass\n';
   content += 'class AttributeMetadata:\n';
   content += '    """The metadata for an attribute."""\n\n';
@@ -427,7 +447,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
     '    """A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances"""\n';
   content += '    \n';
   content += '    examples: Optional[List[AttributeValue]] = None\n';
-  content += '    """Example values of the attribute"""\n\n';
+  content += '    """Example values of the attribute"""\n';
+  content += '    \n';
+  content += '    search_alias: Optional[SearchAlias] = None\n';
+  content += '    """How this attribute is exposed in Sentry search"""\n\n';
 
   let attributesTypeMembers = '';
   let deprecatedAttributesTypeMembers = '';
@@ -618,6 +641,18 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
       metadataDict += `        additional_context=${JSON.stringify(attributeJson.additional_context)},\n`;
     }
 
+    if (attributeJson.search_alias) {
+      const sa = attributeJson.search_alias;
+      let saFields = `\n            name=${JSON.stringify(sa.name)}`;
+      if (sa.type) {
+        saFields += `,\n            type=${JSON.stringify(sa.type)}`;
+      }
+      if (sa.deprecated_aliases && sa.deprecated_aliases.length > 0) {
+        saFields += `,\n            deprecated_aliases=${JSON.stringify(sa.deprecated_aliases)}`;
+      }
+      metadataDict += `        search_alias=SearchAlias(${saFields}\n        ),\n`;
+    }
+
     metadataDict += '    ),\n';
   }
 
@@ -783,6 +818,22 @@ export interface ChangelogEntry {
   description?: string;
 }
 
+export type SearchAliasType =
+  | 'byte'
+  | 'currency'
+  | 'millisecond'
+  | 'percentage'
+  | 'second';
+
+export interface SearchAlias {
+  /** The public name exposed in Sentry search */
+  name: string;
+  /** The type exposed by Sentry search. Defaults to the attribute's primary type if omitted */
+  type?: SearchAliasType;
+  /** Deprecated aliases still accepted in search queries */
+  deprecatedAliases?: string[];
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -808,6 +859,8 @@ export interface AttributeMetadata {
   changelog?: ChangelogEntry[];
   /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
   additionalContext?: string[];
+  /** How this attribute is exposed in Sentry search */
+  searchAlias?: SearchAlias;
 }
 
 `;
@@ -929,6 +982,19 @@ function generateMetadataDict(
 
     if (attributeJson.additional_context && attributeJson.additional_context.length > 0) {
       metadataDict += `    additionalContext: ${JSON.stringify(attributeJson.additional_context)},\n`;
+    }
+
+    if (attributeJson.search_alias) {
+      const sa = attributeJson.search_alias;
+      metadataDict += '    searchAlias: {\n';
+      metadataDict += `      name: ${JSON.stringify(sa.name)},\n`;
+      if (sa.type) {
+        metadataDict += `      type: ${JSON.stringify(sa.type)},\n`;
+      }
+      if (sa.deprecated_aliases && sa.deprecated_aliases.length > 0) {
+        metadataDict += `      deprecatedAliases: ${JSON.stringify(sa.deprecated_aliases)},\n`;
+      }
+      metadataDict += '    },\n';
     }
 
     metadataDict += '  },\n';

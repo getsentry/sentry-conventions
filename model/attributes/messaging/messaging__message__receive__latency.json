@@ -8,6 +8,10 @@
   "is_in_otel": false,
   "example": 1732847252,
   "visibility": "public",
+  "search_alias": {
+    "name": "messaging.message.receive.latency",
+    "type": "millisecond"
+  },
   "changelog": [
     {
       "version": "0.4.0",

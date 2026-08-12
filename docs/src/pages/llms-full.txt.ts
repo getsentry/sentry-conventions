@@ -74,6 +74,15 @@ export const GET: APIRoute = async () => {
         lines.push(`- Aliases: ${data.alias.join(', ')}`);
       }
 
+      if (data.search_alias) {
+        const searchType = data.search_alias.type ? ` (${data.search_alias.type})` : '';
+        lines.push(`- Search alias: ${data.search_alias.name}${searchType}`);
+
+        if (data.search_alias.deprecated_aliases && data.search_alias.deprecated_aliases.length > 0) {
+          lines.push(`- Deprecated search aliases: ${data.search_alias.deprecated_aliases.join(', ')}`);
+        }
+      }
+
       if (data.has_dynamic_suffix) {
         lines.push('- Has dynamic suffix: yes');
       }
