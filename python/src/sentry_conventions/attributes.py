@@ -74,10 +74,6 @@ class ChangelogEntry:
 
 
 SearchAliasType = Literal[
-    "string",
-    "boolean",
-    "integer",
-    "number",
     "byte",
     "currency",
     "millisecond",
@@ -93,8 +89,8 @@ class SearchAlias:
     name: str
     """The public name exposed in Sentry search"""
 
-    type: SearchAliasType = "string"
-    """The type exposed by Sentry search"""
+    type: Optional[SearchAliasType] = None
+    """The type exposed by Sentry search. Defaults to the attribute's primary type if omitted"""
 
     deprecated_aliases: Optional[List[str]] = None
     """Deprecated aliases still accepted in search queries"""
@@ -13276,7 +13272,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="code.lineno", type="number"),
     ),
     "code.namespace": AttributeMetadata(
         brief="The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
@@ -14842,7 +14837,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="mobile.frozen_frames", type="number"),
+        search_alias=SearchAlias(name="mobile.frozen_frames"),
     ),
     "frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
@@ -14871,7 +14866,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="mobile.slow_frames", type="number"),
+        search_alias=SearchAlias(name="mobile.slow_frames"),
     ),
     "frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
@@ -14900,7 +14895,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="mobile.total_frames", type="number"),
+        search_alias=SearchAlias(name="mobile.total_frames"),
     ),
     "frames_frozen_rate": AttributeMetadata(
         brief="The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
@@ -16895,7 +16890,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="http.response_status_code", type="integer"),
+        search_alias=SearchAlias(name="http.response_status_code"),
     ),
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
@@ -18182,7 +18177,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="messaging.message.retry.count", type="number"),
     ),
     "messaging.operation.name": AttributeMetadata(
         brief="The name of the messaging operation being performed",
@@ -19695,7 +19689,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
-        search_alias=SearchAlias(name="client_sample_rate", type="number"),
+        search_alias=SearchAlias(name="client_sample_rate"),
     ),
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
@@ -20454,7 +20448,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[102]),
         ],
-        search_alias=SearchAlias(name="server_sample_rate", type="number"),
+        search_alias=SearchAlias(name="server_sample_rate"),
     ),
     "sentry.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",

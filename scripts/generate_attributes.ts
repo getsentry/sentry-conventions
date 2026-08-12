@@ -388,10 +388,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    """Optional description of what changed"""\n\n';
 
   content += 'SearchAliasType = Literal[\n';
-  content += '    "string",\n';
-  content += '    "boolean",\n';
-  content += '    "integer",\n';
-  content += '    "number",\n';
   content += '    "byte",\n';
   content += '    "currency",\n';
   content += '    "millisecond",\n';
@@ -405,8 +401,8 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    name: str\n';
   content += '    """The public name exposed in Sentry search"""\n';
   content += '    \n';
-  content += '    type: SearchAliasType = "string"\n';
-  content += '    """The type exposed by Sentry search"""\n';
+  content += '    type: Optional[SearchAliasType] = None\n';
+  content += '    """The type exposed by Sentry search. Defaults to the attribute\'s primary type if omitted"""\n';
   content += '    \n';
   content += '    deprecated_aliases: Optional[List[str]] = None\n';
   content += '    """Deprecated aliases still accepted in search queries"""\n\n';
@@ -648,7 +644,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
     if (attributeJson.search_alias) {
       const sa = attributeJson.search_alias;
       let saFields = `\n            name=${JSON.stringify(sa.name)}`;
-      if (sa.type && sa.type !== 'string') {
+      if (sa.type) {
         saFields += `,\n            type=${JSON.stringify(sa.type)}`;
       }
       if (sa.deprecated_aliases && sa.deprecated_aliases.length > 0) {
@@ -823,10 +819,6 @@ export interface ChangelogEntry {
 }
 
 export type SearchAliasType =
-  | 'string'
-  | 'boolean'
-  | 'integer'
-  | 'number'
   | 'byte'
   | 'currency'
   | 'millisecond'
@@ -836,7 +828,7 @@ export type SearchAliasType =
 export interface SearchAlias {
   /** The public name exposed in Sentry search */
   name: string;
-  /** The type exposed by Sentry search. Defaults to string if omitted */
+  /** The type exposed by Sentry search. Defaults to the attribute's primary type if omitted */
   type?: SearchAliasType;
   /** Deprecated aliases still accepted in search queries */
   deprecatedAliases?: string[];
@@ -996,7 +988,7 @@ function generateMetadataDict(
       const sa = attributeJson.search_alias;
       metadataDict += '    searchAlias: {\n';
       metadataDict += `      name: ${JSON.stringify(sa.name)},\n`;
-      if (sa.type && sa.type !== 'string') {
+      if (sa.type) {
         metadataDict += `      type: ${JSON.stringify(sa.type)},\n`;
       }
       if (sa.deprecated_aliases && sa.deprecated_aliases.length > 0) {

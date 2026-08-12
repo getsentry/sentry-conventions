@@ -15,8 +15,7 @@
   },
   "visibility": "public",
   "search_alias": {
-    "name": "mobile.frozen_frames",
-    "type": "number"
+    "name": "mobile.frozen_frames"
   },
   "changelog": [
     {

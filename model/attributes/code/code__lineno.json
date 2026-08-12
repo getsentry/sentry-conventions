@@ -13,10 +13,6 @@
     "replacement": "code.line.number"
   },
   "visibility": "public",
-  "search_alias": {
-    "name": "code.lineno",
-    "type": "number"
-  },
   "changelog": [
     {
       "version": "0.4.0",

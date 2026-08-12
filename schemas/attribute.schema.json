@@ -154,7 +154,7 @@
       }
     },
     "search_alias": {
-      "description": "How this attribute is exposed in Sentry search",
+      "description": "How this attribute is exposed in Sentry search. Used to define user-facing aliases or narrowing search types.",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -163,8 +163,8 @@
           "type": "string"
         },
         "type": {
-          "description": "The type exposed by Sentry search. Defaults to string if omitted",
-          "enum": ["string", "boolean", "integer", "number", "byte", "currency", "millisecond", "percentage", "second"]
+          "description": "The type exposed by Sentry search. Defaults to primary `type` if omitted",
+          "enum": ["byte", "currency", "millisecond", "percentage", "second"]
         },
         "deprecated_aliases": {
           "description": "Deprecated aliases still accepted in search queries",

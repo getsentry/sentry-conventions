@@ -47,4 +47,4 @@ def test_attribute_search_alias_metadata() -> None:
     search_alias = ATTRIBUTE_METADATA[ATTRIBUTE_NAMES.SENTRY_OP].search_alias
     assert search_alias is not None
     assert search_alias.name == "span.op"
-    assert search_alias.type == "string"
+    assert search_alias.type is None
