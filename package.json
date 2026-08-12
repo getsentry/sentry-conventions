@@ -7,8 +7,11 @@
     "format": "yarn format:js && yarn format:python",
     "format:js": "oxfmt",
     "format:python": "(cd python && uv run black src/ && uv run isort src/)",
-    "lint": "yarn lint:js && yarn lint:python",
+    "lint": "yarn lint:js && yarn lint:types && yarn lint:python",
     "lint:js": "oxfmt --check && oxlint",
+    "lint:types": "yarn lint:types:js && yarn lint:types:docs",
+    "lint:types:js": "tsc --noEmit",
+    "lint:types:docs": "yarn workspace docs lint:types",
     "lint:python": "(cd python && uv run pyflakes src/ && uv run mypy .)",
     "lint-fix": "oxlint --fix",
     "test": "yarn test:js && yarn test:python",
@@ -43,6 +46,7 @@
     "oxlint": "^1.71.0",
     "tar": "^7.5.19",
     "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.9"
   },
   "resolutions": {

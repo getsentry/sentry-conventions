@@ -141,3 +141,9 @@ This repo uses [oxlint](https://oxc.rs/docs/guide/usage/linter.html) and [oxfmt]
 ```bash
 yarn lint
 ```
+
+This includes TypeScript type checking, which you can also run on its own:
+
+```bash
+yarn lint:types
+```

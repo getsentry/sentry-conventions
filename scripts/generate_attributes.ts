@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { getAttributeExamples } from './attribute_examples';
-import type { AttributeJson } from './types';
+import type { AttributeJson, AttributeValue } from './types';
 
 interface GenerateAttributesOptions {
   attributesDir: string;
@@ -122,7 +122,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   let individualConstants = '';
 
   // Generate individual attribute constants with documentation AND build the explicit type map
-  for (const { file, key, constantName, attributeJson, _isDeprecated } of allAttributes) {
+  for (const { file, key, constantName, attributeJson } of allAttributes) {
     const { brief, type, apply_scrubbing, is_in_otel, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const examples = getAttributeExamples(attributeJson);
     const visibility = getVisibility(attributeJson);
@@ -717,7 +717,9 @@ function getAttributeTypeEnum(type: AttributeJson['type']): string {
   }
 }
 
-function convertToPythonLiteral(value: AttributeJson['example']): string {
+// Accepts a nested array as well, so that an attribute's full `examples` list can be
+// converted into a single Python list literal via the recursive `Array.isArray` branch.
+function convertToPythonLiteral(value: AttributeValue | AttributeValue[] | undefined): string {
   if (value === null) return 'None';
   if (typeof value === 'boolean') return value ? 'True' : 'False';
   if (typeof value === 'string') return JSON.stringify(value);

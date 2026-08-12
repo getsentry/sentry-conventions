@@ -8,7 +8,8 @@
     "build": "astro build && yarn postbuild",
     "postbuild": "pagefind --site dist --output-subdir pagefind",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint:types": "astro sync && tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/svelte": "9.0.1",
