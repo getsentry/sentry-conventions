@@ -39,6 +39,11 @@ interface AttributeIndex {
   category: string;
   url: string;
   deprecated: boolean;
+  search_alias?: {
+    name: string;
+    type?: string;
+    deprecated_aliases?: string[];
+  };
 }
 
 let isOpen = $state(false);
