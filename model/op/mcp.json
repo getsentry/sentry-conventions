@@ -1,0 +1,18 @@
+{
+  "name": "mcp",
+  "description": "Operations related to Model Context Protocol (MCP) interactions",
+  "fields": [
+    {
+      "name": "mcp.server",
+      "description": "A request handled by an MCP server (e.g. a tool call, resource read, or prompt request)."
+    },
+    {
+      "name": "mcp.notification.client_to_server",
+      "description": "A notification sent from an MCP client to an MCP server."
+    },
+    {
+      "name": "mcp.notification.server_to_client",
+      "description": "A notification sent from an MCP server to an MCP client."
+    }
+  ]
+}

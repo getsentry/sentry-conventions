@@ -303,6 +303,26 @@ export const FUNCTION = 'function';
  */
 export const MEASURE = 'measure';
 
+// Path: model/op/mcp.json
+// Name: mcp
+
+// Description: Operations related to Model Context Protocol (MCP) interactions
+
+/**
+ * A request handled by an MCP server (e.g. a tool call, resource read, or prompt request).
+ */
+export const MCP_SERVER = 'mcp.server';
+
+/**
+ * A notification sent from an MCP client to an MCP server.
+ */
+export const MCP_NOTIFICATION_CLIENT_TO_SERVER = 'mcp.notification.client_to_server';
+
+/**
+ * A notification sent from an MCP server to an MCP client.
+ */
+export const MCP_NOTIFICATION_SERVER_TO_CLIENT = 'mcp.notification.server_to_client';
+
 // Path: model/op/messaging.json
 // Name: messaging
 
