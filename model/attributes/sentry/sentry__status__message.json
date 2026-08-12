@@ -8,6 +8,9 @@
   "is_in_otel": false,
   "example": "foobar",
   "visibility": "public",
+  "search_alias": {
+    "name": "span.status.message"
+  },
   "changelog": [
     {
       "version": "0.3.1",

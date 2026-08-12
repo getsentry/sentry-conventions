@@ -8,6 +8,9 @@
   "is_in_otel": false,
   "example": "ok",
   "visibility": "public",
+  "search_alias": {
+    "name": "trace.status"
+  },
   "changelog": [
     {
       "version": "0.14.0",
