@@ -27,7 +27,7 @@ The package exports:
 
 ## Attribute Key Chains
 
-An attribute's value may be stored under several keys: its own, the names Sentry search exposes it as, and the deprecated attributes it replaces. `ATTRIBUTE_METADATA[key].keys` lists all of them, ordered so that the stable key comes first:
+An attribute's value may be readable under several keys: its own, the names Sentry search exposes it as, and the deprecated attributes it replaces. `ATTRIBUTE_METADATA[key].keys` lists all of them, most preferred first:
 
 ```python
 from sentry_conventions.attributes import ATTRIBUTE_METADATA, ATTRIBUTE_NAMES
@@ -38,6 +38,10 @@ ATTRIBUTE_METADATA[ATTRIBUTE_NAMES.HTTP_REQUEST_METHOD].keys
 
 The order within a chain is:
 
-1. the stable, non-deprecated attribute, followed by the names it is exposed as in Sentry search
+1. the attribute heading the chain, followed by the names it is exposed as in Sentry search
 2. its non-deprecated aliases, each followed by their own search names
 3. the deprecated attributes it replaces, in alphabetical order, each followed by their own search names
+
+Deprecated attributes are only added to a chain if their status is `normalize` or `backfill`.
+If an attribute is deprecated with another status or status `null`, it's own `keys` array will not contain any
+replacing attribute. Therefore, there's **no guarantee** for a stable attribute in a key chain.

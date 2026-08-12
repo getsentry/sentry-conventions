@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import type { AttributeName } from '../javascript/sentry-conventions/src/attributes';
+import type { AttributeMetadata, AttributeName } from '../javascript/sentry-conventions/src/attributes';
 import { ATTRIBUTE_METADATA } from '../javascript/sentry-conventions/src/attributes';
 import { deriveAttributeKeyChains } from '../scripts/generate_attributes';
+
+// Chains contain search-only aliases as well as attribute keys, so look ups are widened to string.
+const metadataByKey = ATTRIBUTE_METADATA as Record<string, AttributeMetadata | undefined>;
 
 const HTTP_METHOD_ATTRIBUTE_KEYS: AttributeName[] = [
   'http.request.method',
@@ -137,6 +140,38 @@ describe('deriveAttributeKeyChains', () => {
     expect(chains.get('legacy')).toEqual(['legacy']);
   });
 
+  it.each(['transform', null] as const)(
+    'does not expand the aliases of a %s deprecation, including its replacement',
+    (status) => {
+      const chains = deriveAttributeKeyChains([
+        // The registry commonly lists a replacement under `alias` as well. The value is not
+        // rewritten onto either alias, so neither is readable in place of `legacy`.
+        attribute('legacy', { replacement: 'stable', status, alias: ['stable', 'other'] }),
+        attribute('stable'),
+        attribute('other'),
+      ]);
+
+      expect(chains.get('legacy')).toEqual(['legacy']);
+      expect(chains.get('stable')).toEqual(['stable']);
+      expect(chains.get('other')).toEqual(['other']);
+    },
+  );
+
+  it('still expands the search aliases of a non-rewriting deprecation', () => {
+    // Its own search names read the same value, unlike its aliases.
+    const chains = deriveAttributeKeyChains([
+      attribute('legacy', {
+        replacement: 'stable',
+        status: null,
+        alias: ['stable'],
+        searchAlias: { name: 'legacy.search', deprecated_aliases: ['legacy.extra'] },
+      }),
+      attribute('stable'),
+    ]);
+
+    expect(chains.get('legacy')).toEqual(['legacy', 'legacy.search', 'legacy.extra']);
+  });
+
   it('throws when a replacement target does not exist', () => {
     expect(() => deriveAttributeKeyChains([attribute('legacy', { replacement: 'missing' })])).toThrowError(
       'Replacement target "missing" for deprecated attribute "legacy" does not exist',
@@ -157,7 +192,7 @@ describe('generated attribute key chains', () => {
   it('exposes a non-empty key chain on every metadata entry', () => {
     const entries = Object.entries(ATTRIBUTE_METADATA);
     const missingKeyChains = entries.filter(([, metadata]) => !metadata.keys?.length).map(([key]) => key);
-    // The stable key leads its chain, so a chain never starts with a rewritten predecessor.
+    // Every attribute is readable under its own key, so it always appears in its own chain.
     const chainsMissingTheirOwnKey = entries
       .filter(([key, metadata]) => !metadata.keys.includes(key))
       .map(([key]) => key);
@@ -167,8 +202,34 @@ describe('generated attribute key chains', () => {
     expect(chainsMissingTheirOwnKey).toEqual([]);
   });
 
+  it('only ever chains keys the same value is readable under', () => {
+    // A non-rewriting deprecation keeps its value under its own key, so it must never appear in
+    // another attribute's chain, and its own chain must not reach for a replacement or alias.
+    const leakedNonRewritingKeys = Object.entries(ATTRIBUTE_METADATA).flatMap(([key, metadata]) =>
+      metadata.keys
+        .filter((chainKey) => chainKey !== key)
+        .filter((chainKey) => {
+          // Search-only aliases have no metadata entry of their own, so they are never a leak.
+          const status = metadataByKey[chainKey]?.deprecation?.status;
+          return status !== undefined && status !== 'backfill' && status !== 'normalize';
+        })
+        .map((chainKey) => `${key} -> ${chainKey}`),
+    );
+
+    expect(leakedNonRewritingKeys).toEqual([]);
+  });
+
+  it('gives a non-rewriting deprecation a chain of only its own names', () => {
+    // `http.url` names `url.full` as its replacement and also lists it under `alias`, but its value
+    // is never rewritten there, so the chain stops at itself.
+    expect(ATTRIBUTE_METADATA['http.url']?.keys).toEqual(['http.url']);
+    expect(ATTRIBUTE_METADATA['url.full']?.keys).not.toContain('http.url');
+    // `http.host` aliases both `server.address` and `client.address`; neither is a substitute.
+    expect(ATTRIBUTE_METADATA['http.host']?.keys).toEqual(['http.host']);
+  });
+
   it('shares one chain across every member of a family', () => {
-    // Each member's chain is the family chain, so a read prefers the stable key either way.
+    // Each member's chain is the family chain, so a read prefers the same key either way.
     for (const key of HTTP_METHOD_ATTRIBUTE_KEYS) {
       expect(ATTRIBUTE_METADATA[key]?.keys).toEqual(HTTP_METHOD_ATTRIBUTE_KEYS);
     }

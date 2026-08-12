@@ -116,11 +116,14 @@ class AttributeMetadata:
     """Whether the attribute is public or internal to Sentry"""
 
     keys: Tuple[str, ...]
-    """Every key this attribute's value may be stored under, stable key first.
+    """Every key this attribute's value may be readable under, preferred key first.
 
-    All members of a family share one chain, so a read prefers the stable key no matter
+    All members of a family share one chain, so a read prefers the same key no matter
     which member you look up. Only ``backfill`` and ``normalize`` deprecations join their
     replacement's chain, because only for those is the value rewritten onto the replacement.
+    An attribute with any other deprecation therefore has a chain of just its own names, and
+    the first key is not guaranteed to be non-deprecated -- check ``deprecation`` if that
+    matters.
     """
 
     has_dynamic_suffix: Optional[bool] = None
@@ -13714,10 +13717,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.filepath": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
-        keys=(
-            "code.filepath",
-            "code.file.path",
-        ),
+        keys=("code.filepath",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13791,10 +13791,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.lineno": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        keys=(
-            "code.lineno",
-            "code.line.number",
-        ),
+        keys=("code.lineno",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14017,10 +14014,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.name": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        keys=(
-            "db.name",
-            "db.namespace",
-        ),
+        keys=("db.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17495,10 +17489,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=(
-            "http.client_ip",
-            "client.address",
-        ),
+        keys=("http.client_ip",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17529,10 +17520,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.flavor": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        keys=(
-            "http.flavor",
-            "network.protocol.version",
-        ),
+        keys=("http.flavor",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17559,11 +17547,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.host": AttributeMetadata(
         brief="The domain name.",
         type=AttributeType.STRING,
-        keys=(
-            "http.host",
-            "server.address",
-            "client.address",
-        ),
+        keys=("http.host",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18068,10 +18052,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        keys=(
-            "http.scheme",
-            "url.scheme",
-        ),
+        keys=("http.scheme",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18098,10 +18079,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.server_name": AttributeMetadata(
         brief="The server domain name",
         type=AttributeType.STRING,
-        keys=(
-            "http.server_name",
-            "server.address",
-        ),
+        keys=("http.server_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18125,11 +18103,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
-        keys=(
-            "http.status_code",
-            "http.response.status_code",
-            "http.response_status_code",
-        ),
+        keys=("http.status_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18162,10 +18136,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        keys=(
-            "http.url",
-            "url.full",
-        ),
+        keys=("http.url",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18180,10 +18151,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.user_agent": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        keys=(
-            "http.user_agent",
-            "user_agent.original",
-        ),
+        keys=("http.user_agent",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19687,10 +19655,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.ip": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=(
-            "net.host.ip",
-            "network.local.address",
-        ),
+        keys=("net.host.ip",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19705,10 +19670,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=(
-            "net.host.name",
-            "server.address",
-        ),
+        keys=("net.host.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19732,10 +19694,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        keys=(
-            "net.host.port",
-            "server.port",
-        ),
+        keys=("net.host.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19754,10 +19713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.ip": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=(
-            "net.peer.ip",
-            "network.peer.address",
-        ),
+        keys=("net.peer.ip",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19807,10 +19763,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        keys=(
-            "net.protocol.name",
-            "network.protocol.name",
-        ),
+        keys=("net.protocol.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19825,10 +19778,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        keys=(
-            "net.protocol.version",
-            "network.protocol.version",
-        ),
+        keys=("net.protocol.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19860,10 +19810,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.addr": AttributeMetadata(
         brief="Local address of the network connection mapping to Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=(
-            "net.sock.host.addr",
-            "network.local.address",
-        ),
+        keys=("net.sock.host.addr",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19878,10 +19825,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        keys=(
-            "net.sock.host.port",
-            "network.local.port",
-        ),
+        keys=("net.sock.host.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19897,10 +19841,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.addr": AttributeMetadata(
         brief="Peer address of the network connection - IP address",
         type=AttributeType.STRING,
-        keys=(
-            "net.sock.peer.addr",
-            "network.peer.address",
-        ),
+        keys=("net.sock.peer.addr",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19946,10 +19887,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        keys=(
-            "net.transport",
-            "network.transport",
-        ),
+        keys=("net.transport",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20834,10 +20772,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.",
         type=AttributeType.STRING,
-        keys=(
-            "route",
-            "http.route",
-        ),
+        keys=("route",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20852,10 +20787,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.grpc.status_code": AttributeMetadata(
         brief="The numeric status code of the gRPC request.",
         type=AttributeType.INTEGER,
-        keys=(
-            "rpc.grpc.status_code",
-            "rpc.response.status_code",
-        ),
+        keys=("rpc.grpc.status_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21003,10 +20935,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.name": AttributeMetadata(
         brief="The name of the runtime. For example node, CPython, or rustc.",
         type=AttributeType.STRING,
-        keys=(
-            "runtime.name",
-            "process.runtime.name",
-        ),
+        keys=("runtime.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21027,10 +20956,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.raw_description": AttributeMetadata(
         brief="Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.",
         type=AttributeType.STRING,
-        keys=(
-            "runtime.raw_description",
-            "process.runtime.description",
-        ),
+        keys=("runtime.raw_description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21051,10 +20977,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.version": AttributeMetadata(
         brief="The version of the runtime.",
         type=AttributeType.STRING,
-        keys=(
-            "runtime.version",
-            "process.runtime.version",
-        ),
+        keys=("runtime.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21171,10 +21094,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
-        keys=(
-            "sentry.browser.version",
-            "browser.version",
-        ),
+        keys=("sentry.browser.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22505,7 +22425,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "sentry.user.ip",
             "user.ip",
-            "user.ip_address",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -22523,7 +22442,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "sentry.user.username",
             "user.username",
-            "user.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -23369,10 +23287,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        keys=(
-            "url",
-            "url.full",
-        ),
+        keys=("url",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,

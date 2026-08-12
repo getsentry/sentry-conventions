@@ -29,13 +29,17 @@ function isRewritingDeprecation(attributeJson: AttributeJson): boolean {
 /**
  * Derives the ordered list of attribute keys a value may be stored under, for every attribute.
  *
- * All members of a family share a single chain led by the non-deprecated attribute, so a read
- * always prefers the current key no matter which constant the caller reached for. Within a chain
- * the order is:
+ * A chain only ever contains keys the same value is readable under, so every member of a family
+ * shares one chain and a read prefers the key at its head. Within a chain the order is:
  *
- * 1. the non-deprecated attribute: its key, then its search alias name, then its deprecated search aliases
+ * 1. the attribute heading the chain: its key, then its search alias name, then its deprecated search aliases
  * 2. its non-deprecated aliases, each expanded to their own key and search alias names
  * 3. the attributes it replaces (sorted), each expanded the same way
+ *
+ * A chain is headed by a non-deprecated attribute only when one is guaranteed to hold the value,
+ * which means the head is deprecated whenever the deprecation is non-rewriting: the pipeline leaves
+ * such a value under the original key, so neither the replacement nor any alias is a substitute for
+ * it, and steps 2 and 3 contribute nothing. Callers must not assume the first key is stable.
  */
 export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map<string, string[]> {
   const attributesByKey = new Map(attributes.map((attribute) => [attribute.key, attribute]));
@@ -75,9 +79,9 @@ export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map
     predecessorsByKey.set(replacement, predecessors);
   }
 
-  const chainsByStableKey = new Map<string, string[]>();
-  function chainForStableKey(stableKey: string): string[] {
-    const cachedChain = chainsByStableKey.get(stableKey);
+  const chainsByHeadKey = new Map<string, string[]>();
+  function chainForHeadKey(headKey: string): string[] {
+    const cachedChain = chainsByHeadKey.get(headKey);
     if (cachedChain) {
       return cachedChain;
     }
@@ -89,29 +93,38 @@ export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map
       }
     };
 
-    readableNames(stableKey).forEach(addName);
+    readableNames(headKey).forEach(addName);
 
-    // Deprecated aliases are skipped here: either they replace this attribute, in which case they
-    // are appended below as predecessors, or their value is never rewritten onto it.
-    for (const aliasKey of attributesByKey.get(stableKey)?.attributeJson.alias ?? []) {
-      if (attributesByKey.get(aliasKey)?.attributeJson.deprecation) {
-        continue;
+    const headAttribute = attributesByKey.get(headKey);
+
+    // A non-rewriting deprecation heads its own chain, and the pipeline never copies its value
+    // anywhere else, so its aliases are not readable substitutes for it. Expanding them would
+    // reintroduce the very keys the predecessor pass above deliberately left out.
+    if (headAttribute && !headAttribute.attributeJson.deprecation) {
+      // Deprecated aliases are skipped here: either they replace this attribute, in which case they
+      // are appended below as predecessors, or their value is never rewritten onto it.
+      for (const aliasKey of headAttribute.attributeJson.alias ?? []) {
+        if (attributesByKey.get(aliasKey)?.attributeJson.deprecation) {
+          continue;
+        }
+        readableNames(aliasKey).forEach(addName);
       }
-      readableNames(aliasKey).forEach(addName);
     }
 
-    for (const predecessor of predecessorsByKey.get(stableKey)?.toSorted() ?? []) {
+    for (const predecessor of predecessorsByKey.get(headKey)?.toSorted() ?? []) {
       readableNames(predecessor).forEach(addName);
     }
 
-    chainsByStableKey.set(stableKey, chain);
+    chainsByHeadKey.set(headKey, chain);
     return chain;
   }
 
   const chains = new Map<string, string[]>();
   for (const { key, attributeJson } of attributes) {
+    // Only a rewriting deprecation joins its replacement's chain. Every other attribute heads its
+    // own chain, including a non-rewriting deprecation that names a replacement.
     const replacement = isRewritingDeprecation(attributeJson) ? attributeJson.deprecation?.replacement : undefined;
-    chains.set(key, chainForStableKey(replacement ?? key));
+    chains.set(key, chainForHeadKey(replacement ?? key));
   }
 
   return chains;
@@ -536,11 +549,14 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    """Whether the attribute is public or internal to Sentry"""\n';
   content += '    \n';
   content += '    keys: Tuple[str, ...]\n';
-  content += `    """Every key this attribute's value may be stored under, stable key first.\n\n`;
+  content += `    """Every key this attribute's value may be readable under, preferred key first.\n\n`;
   content +=
-    '    All members of a family share one chain, so a read prefers the stable key no matter\n' +
+    '    All members of a family share one chain, so a read prefers the same key no matter\n' +
     '    which member you look up. Only ``backfill`` and ``normalize`` deprecations join their\n' +
-    "    replacement's chain, because only for those is the value rewritten onto the replacement.\n";
+    "    replacement's chain, because only for those is the value rewritten onto the replacement.\n" +
+    '    An attribute with any other deprecation therefore has a chain of just its own names, and\n' +
+    '    the first key is not guaranteed to be non-deprecated -- check ``deprecation`` if that\n' +
+    '    matters.\n';
   content += '    """\n';
   content += '    \n';
   content += '    has_dynamic_suffix: Optional[bool] = None\n';
@@ -970,11 +986,13 @@ export interface AttributeMetadata {
   /** The type of the attribute value */
   type: AttributeType;
   /**
-   * Every key this attribute's value may be stored under, stable key first.
+   * Every key this attribute's value may be readable under, preferred key first.
    *
-   * All members of a family share one chain, so a read prefers the stable key no matter which
-   * member you look up. Only \`backfill\` and \`normalize\` deprecations join their replacement's
-   * chain, because only for those is the value rewritten onto the replacement.
+   * All members of a family share one chain, so a read prefers the same key no matter which member
+   * you look up. Only \`backfill\` and \`normalize\` deprecations join their replacement's chain,
+   * because only for those is the value rewritten onto the replacement. An attribute with any other
+   * deprecation therefore has a chain of just its own names, and the first key is not guaranteed to
+   * be non-deprecated — check \`deprecation\` if that matters.
    */
   keys: readonly string[];
   /** How PII scrubbing should be applied to the attribute value */
