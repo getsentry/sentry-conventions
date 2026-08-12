@@ -836,6 +836,17 @@ export interface SearchAlias {
   deprecatedAliases?: string[];
 }
 
+export type AttributeSearchType = AttributeType | SearchAliasType;
+
+export interface AttributeSearchMetadata {
+  /** A description of the attribute */
+  brief: string;
+  /** The type exposed by Sentry search */
+  type: AttributeSearchType;
+  /** Deprecated aliases still accepted in search queries */
+  deprecatedAliases?: string[];
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -999,6 +1010,54 @@ function generateMetadataDict(
       metadataDict += '    },\n';
     }
 
+    metadataDict += '  },\n';
+  }
+
+  metadataDict += '};\n\n';
+
+  const searchMetadataByName = new Map<string, typeof allAttributes>();
+
+  for (const attribute of allAttributes) {
+    const name = attribute.attributeJson.search_alias?.name ?? attribute.key;
+    const candidates = searchMetadataByName.get(name) ?? [];
+    candidates.push(attribute);
+    searchMetadataByName.set(name, candidates);
+  }
+
+  metadataDict += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
+
+  for (const name of [...searchMetadataByName.keys()].sort()) {
+    const candidates = searchMetadataByName.get(name) as typeof allAttributes;
+    candidates.sort((a, b) => {
+      if (a.isDeprecated !== b.isDeprecated) {
+        return a.isDeprecated ? 1 : -1;
+      }
+
+      const aHasSearchAlias = a.attributeJson.search_alias !== undefined;
+      const bHasSearchAlias = b.attributeJson.search_alias !== undefined;
+      if (aHasSearchAlias !== bHasSearchAlias) {
+        return aHasSearchAlias ? -1 : 1;
+      }
+
+      return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
+    });
+
+    const preferredAttribute = candidates[0];
+    if (!preferredAttribute) {
+      throw new Error(`No attribute found for search metadata name ${name}`);
+    }
+    const deprecatedAliases = [
+      ...new Set(candidates.flatMap(({ attributeJson }) => attributeJson.search_alias?.deprecated_aliases ?? [])),
+    ].filter((alias) => alias !== name);
+
+    metadataDict += `  ${JSON.stringify(name)}: {\n`;
+    metadataDict += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
+    metadataDict += `    type: ${JSON.stringify(
+      preferredAttribute.attributeJson.search_alias?.type ?? preferredAttribute.attributeJson.type,
+    )},\n`;
+    if (deprecatedAliases.length > 0) {
+      metadataDict += `    deprecatedAliases: ${JSON.stringify(deprecatedAliases)},\n`;
+    }
     metadataDict += '  },\n';
   }
 
