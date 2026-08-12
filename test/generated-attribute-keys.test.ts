@@ -1,23 +1,15 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import { describe, expect, it } from 'vitest';
 
-import { describe, expect, expectTypeOf, it } from 'vitest';
-
-import {
-  _HTTP_REQUEST_METHOD_KEYS,
-  ADDRESS_KEYS,
-  CACHE_ITEM_SIZE_KEYS,
-  DB_SYSTEM_KEYS,
-  DB_SYSTEM_NAME_KEYS,
-  HTTP_METHOD_KEYS,
-  HTTP_REQUEST_METHOD_KEYS,
-  METHOD_KEYS,
-  REPLAY_ID_KEYS,
-  SENTRY_REPLAY_ID_KEYS,
-} from '../javascript/sentry-conventions/src/attributes';
+import type { AttributeName } from '../javascript/sentry-conventions/src/attributes';
+import { ATTRIBUTE_METADATA } from '../javascript/sentry-conventions/src/attributes';
 import { deriveAttributeKeyChains } from '../scripts/generate_attributes';
 
-const HTTP_METHOD_ATTRIBUTE_KEYS = ['http.request.method', 'http.method', 'http.request_method', 'method'] as const;
+const HTTP_METHOD_ATTRIBUTE_KEYS: AttributeName[] = [
+  'http.request.method',
+  'http.method',
+  'http.request_method',
+  'method',
+];
 
 function attribute(
   key: string,
@@ -26,7 +18,7 @@ function attribute(
     replacement?: string;
     deprecated?: boolean;
     status?: 'backfill' | 'normalize' | 'transform' | null;
-    searchAlias?: { name: string; aliases?: string[] };
+    searchAlias?: { name: string; deprecated_aliases?: string[] };
   } = {},
 ) {
   return {
@@ -97,7 +89,7 @@ describe('deriveAttributeKeyChains', () => {
     const chains = deriveAttributeKeyChains([
       attribute('stable', {
         alias: ['alias.a'],
-        searchAlias: { name: 'stable.search', aliases: ['stable.extra'] },
+        searchAlias: { name: 'stable.search', deprecated_aliases: ['stable.extra'] },
       }),
       attribute('alias.a', { searchAlias: { name: 'alias.search' } }),
       attribute('legacy', { replacement: 'stable', searchAlias: { name: 'legacy.search' } }),
@@ -161,70 +153,52 @@ describe('deriveAttributeKeyChains', () => {
   });
 });
 
-describe('generated attribute key tuples', () => {
-  it('exports a readonly key tuple for every generated attribute constant', () => {
-    const attributesSource = fs.readFileSync(
-      path.resolve(__dirname, '../javascript/sentry-conventions/src/attributes.ts'),
-      'utf8',
-    );
-    const attributeNames = Array.from(
-      attributesSource.matchAll(/^export const ([A-Z_][A-Z0-9_]*) = '[^']+';$/gm),
-      (match) => match[1]!,
-    ).filter((name) => !name.endsWith('_BASE'));
-    const keyTupleDeclarations = new Map(
-      Array.from(
-        attributesSource.matchAll(/^export const ([A-Z_][A-Z0-9_]*_KEYS) = ([\s\S]*?);$/gm),
-        (match) => [match[1]!, match[2]!] as const,
-      ),
-    );
+describe('generated attribute key chains', () => {
+  it('exposes a non-empty key chain on every metadata entry', () => {
+    const entries = Object.entries(ATTRIBUTE_METADATA);
+    const missingKeyChains = entries.filter(([, metadata]) => !metadata.keys?.length).map(([key]) => key);
+    // The stable key leads its chain, so a chain never starts with a rewritten predecessor.
+    const chainsMissingTheirOwnKey = entries
+      .filter(([key, metadata]) => !metadata.keys.includes(key))
+      .map(([key]) => key);
 
-    const missingKeyTuples = attributeNames.filter((name) => !keyTupleDeclarations.has(`${name}_KEYS`));
-    const mutableKeyTuples = attributeNames.filter((name) => {
-      const declaration = keyTupleDeclarations.get(`${name}_KEYS`);
-      return declaration !== undefined && !/\bas const\s*$/.test(declaration);
-    });
-
-    expect(attributeNames.length).toBeGreaterThan(0);
-    expect(missingKeyTuples).toEqual([]);
-    expect(mutableKeyTuples).toEqual([]);
-    expect(attributesSource).not.toMatch(/^export const [A-Z_][A-Z0-9_]*_BASE_KEYS =/m);
+    expect(entries.length).toBeGreaterThan(0);
+    expect(missingKeyChains).toEqual([]);
+    expect(chainsMissingTheirOwnKey).toEqual([]);
   });
 
-  it('orders the HTTP request method family with the canonical key first', () => {
-    expect(HTTP_REQUEST_METHOD_KEYS).toEqual(HTTP_METHOD_ATTRIBUTE_KEYS);
-    expect(HTTP_METHOD_KEYS).toEqual(HTTP_METHOD_ATTRIBUTE_KEYS);
-    expect(_HTTP_REQUEST_METHOD_KEYS).toEqual(HTTP_METHOD_ATTRIBUTE_KEYS);
-    expect(METHOD_KEYS).toEqual(HTTP_METHOD_ATTRIBUTE_KEYS);
-
-    expectTypeOf(HTTP_REQUEST_METHOD_KEYS).toEqualTypeOf<typeof HTTP_METHOD_ATTRIBUTE_KEYS>();
-    expectTypeOf(HTTP_METHOD_KEYS).toEqualTypeOf<typeof HTTP_METHOD_ATTRIBUTE_KEYS>();
-    expectTypeOf(_HTTP_REQUEST_METHOD_KEYS).toEqualTypeOf<typeof HTTP_METHOD_ATTRIBUTE_KEYS>();
-    expectTypeOf(METHOD_KEYS).toEqualTypeOf<typeof HTTP_METHOD_ATTRIBUTE_KEYS>();
+  it('shares one chain across every member of a family', () => {
+    // Each member's chain is the family chain, so a read prefers the stable key either way.
+    for (const key of HTTP_METHOD_ATTRIBUTE_KEYS) {
+      expect(ATTRIBUTE_METADATA[key]?.keys).toEqual(HTTP_METHOD_ATTRIBUTE_KEYS);
+    }
   });
 
-  it('generates a tuple for a standalone attribute', () => {
-    expect(CACHE_ITEM_SIZE_KEYS).toEqual(['cache.item_size']);
+  it('generates a chain for a standalone attribute', () => {
+    // Its search alias repeats its key, so the chain collapses to a single entry.
+    expect(ATTRIBUTE_METADATA['cache.item_size']?.keys).toEqual(['cache.item_size']);
   });
 
   it('includes the search alias of the canonical key and of the attributes it replaces', () => {
     // `sentry.replay_id` is exposed as `replay.id` in search, and replaces `replay_id`.
     const replayIdKeys = ['sentry.replay_id', 'replay.id', 'replay_id'];
 
-    expect(SENTRY_REPLAY_ID_KEYS).toEqual(replayIdKeys);
-    expect(REPLAY_ID_KEYS).toEqual(replayIdKeys);
+    expect(ATTRIBUTE_METADATA['sentry.replay_id']?.keys).toEqual(replayIdKeys);
+    expect(ATTRIBUTE_METADATA['replay_id']?.keys).toEqual(replayIdKeys);
   });
 
-  it('includes additional search alias aliases', () => {
-    // `db.system` carries `search_alias.aliases: ["span.system"]` and is replaced by `db.system.name`.
+  it('includes deprecated search aliases', () => {
+    // `db.system` carries `search_alias.deprecated_aliases: ["span.system"]` and is replaced by
+    // `db.system.name`.
     const dbSystemKeys = ['db.system.name', 'db.system', 'span.system'];
 
-    expect(DB_SYSTEM_NAME_KEYS).toEqual(dbSystemKeys);
-    expect(DB_SYSTEM_KEYS).toEqual(dbSystemKeys);
+    expect(ATTRIBUTE_METADATA['db.system.name']?.keys).toEqual(dbSystemKeys);
+    expect(ATTRIBUTE_METADATA['db.system']?.keys).toEqual(dbSystemKeys);
   });
 
   it('omits deprecated aliases that are not part of the family', () => {
     // `address` aliases several deprecated attributes that are replaced by other keys; only
     // `server.address` (its replacement) and `server_name` (a fellow predecessor) belong here.
-    expect(ADDRESS_KEYS).toEqual(['server.address', 'address', 'server_name']);
+    expect(ATTRIBUTE_METADATA['address']?.keys).toEqual(['server.address', 'address', 'server_name']);
   });
 });

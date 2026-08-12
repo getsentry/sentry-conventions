@@ -33,7 +33,7 @@ function isRewritingDeprecation(attributeJson: AttributeJson): boolean {
  * always prefers the current key no matter which constant the caller reached for. Within a chain
  * the order is:
  *
- * 1. the non-deprecated attribute: its key, then its search alias name, then its search alias aliases
+ * 1. the non-deprecated attribute: its key, then its search alias name, then its deprecated search aliases
  * 2. its non-deprecated aliases, each expanded to their own key and search alias names
  * 3. the attributes it replaces (sorted), each expanded the same way
  */
@@ -46,7 +46,7 @@ export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map
     if (!searchAlias) {
       return [key];
     }
-    return [key, searchAlias.name, ...(searchAlias.aliases ?? [])];
+    return [key, searchAlias.name, ...(searchAlias.deprecated_aliases ?? [])];
   }
 
   const predecessorsByKey = new Map<string, string[]>();
@@ -293,12 +293,6 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
 
     individualConstants += ' */\n';
     individualConstants += `export const ${constantName} = '${key}';\n\n`;
-    individualConstants += '/**\n';
-    individualConstants += ` * Every key {@link ${constantName}} may be stored under, stable key first.\n`;
-    individualConstants += ' *\n';
-    individualConstants += ` * Pass this to \`getAttributeValue\` to read ${key} from an attribute record.\n`;
-    individualConstants += ' */\n';
-    individualConstants += `export const ${constantName}_KEYS = ${JSON.stringify(attributeKeyChains.get(key))} as const;\n\n`;
 
     if (has_dynamic_suffix) {
       const keyBase = getDynamicSuffixBase(key);
@@ -326,7 +320,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   attributesContent += generateMetadataTypes();
 
   // Generate metadata dictionary
-  attributesContent += generateMetadataDict(allAttributes);
+  attributesContent += generateMetadataDict(allAttributes, attributeKeyChains);
 
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
@@ -447,39 +441,9 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += 'import warnings\n';
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
-  content +=
-    'from typing import Dict, List, Literal, Mapping, Optional, Sequence, Tuple, TypedDict, TypeVar, Union\n\n';
+  content += 'from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union\n\n';
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
-  content += 'T = TypeVar("T")\n\n';
-  content += 'def get_attribute_value(attributes: Mapping[str, T], keys: Sequence[str]) -> Optional[T]:\n';
-  content += `    """Return the value for the first attribute key present in attributes.
-
-    Use this helper with a deprecation chain or alias list to read the first
-    matching value from an attribute mapping.
-
-    Args:
-        attributes: Attribute key-value pairs. This helper does not support typed
-            attribute objects with \`\`value\`\`, \`\`type\`\`, and optional \`\`unit\`\` fields.
-        keys: Attribute keys in lookup order. Use
-            \`\`ATTRIBUTE_NAMES.<ATTRIBUTE_NAME>_KEYS\`\` for an attribute's current
-            and deprecated keys.
-
-    Returns:
-        The value for the first key present in \`\`attributes\`\`, or \`\`None\`\` if
-        no key is present.
-
-    Example:
-        >>> attributes = {"old_key": "value"}
-        >>> keys = ["new_key", "old_key"]
-        >>> get_attribute_value(attributes, keys)
-        'value'
-    """
-`;
-  content += '    for key in keys:\n';
-  content += '        if key in attributes:\n';
-  content += '            return attributes[key]\n';
-  content += '    return None\n\n';
 
   content += 'class AttributeType(Enum):\n';
   content += '    STRING = "string"\n';
@@ -570,6 +534,14 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    \n';
   content += '    visibility: Visibility\n';
   content += '    """Whether the attribute is public or internal to Sentry"""\n';
+  content += '    \n';
+  content += '    keys: Tuple[str, ...]\n';
+  content += `    """Every key this attribute's value may be stored under, stable key first.\n\n`;
+  content +=
+    '    All members of a family share one chain, so a read prefers the stable key no matter\n' +
+    '    which member you look up. Only ``backfill`` and ``normalize`` deprecations join their\n' +
+    "    replacement's chain, because only for those is the value rewritten onto the replacement.\n";
+  content += '    """\n';
   content += '    \n';
   content += '    has_dynamic_suffix: Optional[bool] = None\n';
   content +=
@@ -699,7 +671,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
     if (!keyChain) {
       throw new Error(`Attribute key chain for "${key}" does not exist`);
     }
-    content += `    ${constantName}_KEYS: Tuple[str, ...] = (${keyChain.map((attributeKey) => JSON.stringify(attributeKey)).join(', ')},)\n\n`;
 
     // Collect attribute names for the literal type
     attributeNames.push(constantName);
@@ -718,6 +689,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
     metadataDict += `    "${key}": AttributeMetadata(\n`;
     metadataDict += `        brief=${JSON.stringify(brief)},\n`;
     metadataDict += `        type=AttributeType.${getAttributeTypeEnum(type)},\n`;
+    metadataDict += `        keys=(${keyChain.map((attributeKey) => JSON.stringify(attributeKey)).join(', ')},),\n`;
 
     // Build scrubbing info structure
     const scrubbingStatus =
@@ -837,7 +809,6 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    "ATTRIBUTE_METADATA",\n';
   content += '    "Attributes",\n';
   content += '    "ATTRIBUTE_NAMES",\n';
-  content += '    "get_attribute_value",\n';
   content += ']\n\n';
 
   // Write the generated content to the file
@@ -998,6 +969,14 @@ export interface AttributeMetadata {
   brief: string;
   /** The type of the attribute value */
   type: AttributeType;
+  /**
+   * Every key this attribute's value may be stored under, stable key first.
+   *
+   * All members of a family share one chain, so a read prefers the stable key no matter which
+   * member you look up. Only \`backfill\` and \`normalize\` deprecations join their replacement's
+   * chain, because only for those is the value rewritten onto the replacement.
+   */
+  keys: readonly string[];
   /** How PII scrubbing should be applied to the attribute value */
   applyScrubbing: ApplyScrubbingInfo;
   /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
@@ -1033,6 +1012,7 @@ function generateMetadataDict(
     attributeJson: AttributeJson;
     isDeprecated: boolean;
   }>,
+  attributeKeyChains: Map<string, string[]>,
 ): string {
   // Use string literal keys so bundlers can tree-shake unused attribute constants.
   let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {\n';
@@ -1057,9 +1037,15 @@ function generateMetadataDict(
     const examples = getAttributeExamples(attributeJson);
     const visibility = getVisibility(attributeJson);
 
+    const keyChain = attributeKeyChains.get(key);
+    if (!keyChain) {
+      throw new Error(`Attribute key chain for "${key}" does not exist`);
+    }
+
     metadataDict += `  ${JSON.stringify(key)}: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
     metadataDict += `    type: '${type}',\n`;
+    metadataDict += `    keys: ${JSON.stringify(keyChain)},\n`;
 
     // Build scrubbing info structure
     const scrubbingStatus =

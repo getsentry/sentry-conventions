@@ -1,7 +1,7 @@
 import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
-  entries: ['./src/index', './src/attributes', './src/attribute-utils', './src/op'],
+  entries: ['./src/index', './src/attributes', './src/op'],
   outDir: 'dist',
   declaration: 'compatible',
   sourcemap: true,
