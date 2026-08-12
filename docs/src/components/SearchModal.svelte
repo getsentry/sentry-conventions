@@ -46,9 +46,16 @@ interface AttributeIndex {
   };
 }
 
+/** Where in an attribute the query matched, so the result row can explain itself. */
+type MatchSource = 'key' | 'search_alias' | 'deprecated_alias';
+
+interface AttributeMatch extends AttributeIndex {
+  match: { text: string; source: MatchSource; index: number };
+}
+
 let isOpen = $state(false);
 let query = $state('');
-let attributeResults = $state<AttributeIndex[]>([]);
+let attributeResults = $state<AttributeMatch[]>([]);
 let pageResults = $state<SearchResult[]>([]);
 let selectedIndex = $state(0);
 let isLoading = $state(false);
@@ -157,22 +164,20 @@ $effect(() => {
     const windowWithPagefind = window as WindowWithPagefind;
     if (windowWithPagefind.attributeIndex) {
       const matches = windowWithPagefind.attributeIndex
-        .filter((attr) => {
-          const key = attr.key.toLowerCase();
-          return key.includes(trimmedQuery);
-        })
+        .map((attr) => findBestMatch(attr, trimmedQuery))
+        .filter((match): match is AttributeMatch => match !== null)
         .sort((a, b) => {
-          const aKey = a.key.toLowerCase();
-          const bKey = b.key.toLowerCase();
-          const aStartsWith = aKey.startsWith(trimmedQuery);
-          const bStartsWith = bKey.startsWith(trimmedQuery);
+          // Prefer matches on the attribute key, then the search alias, then
+          // deprecated aliases, so canonical names always rank above legacy ones.
+          const sourceRank = SOURCE_RANK[a.match.source] - SOURCE_RANK[b.match.source];
+          if (sourceRank !== 0) return sourceRank;
 
+          const aStartsWith = a.match.index === 0;
+          const bStartsWith = b.match.index === 0;
           if (aStartsWith && !bStartsWith) return -1;
           if (!aStartsWith && bStartsWith) return 1;
 
-          const aIndex = aKey.indexOf(trimmedQuery);
-          const bIndex = bKey.indexOf(trimmedQuery);
-          if (aIndex !== bIndex) return aIndex - bIndex;
+          if (a.match.index !== b.match.index) return a.match.index - b.match.index;
 
           return a.key.localeCompare(b.key);
         })
@@ -265,6 +270,50 @@ $effect(() => {
   }
 });
 
+const SOURCE_RANK: Record<MatchSource, number> = {
+  key: 0,
+  search_alias: 1,
+  deprecated_alias: 2,
+};
+
+/**
+ * Find where `query` matches an attribute, checking the key first and falling back to
+ * the search alias and its deprecated aliases. Returns null when nothing matches.
+ */
+function findBestMatch(attr: AttributeIndex, query: string): AttributeMatch | null {
+  const candidates: Array<{ text: string; source: MatchSource }> = [{ text: attr.key, source: 'key' }];
+
+  if (attr.search_alias) {
+    // Only worth offering when it differs from the key the user already sees.
+    if (attr.search_alias.name !== attr.key) {
+      candidates.push({ text: attr.search_alias.name, source: 'search_alias' });
+    }
+
+    for (const alias of attr.search_alias.deprecated_aliases ?? []) {
+      candidates.push({ text: alias, source: 'deprecated_alias' });
+    }
+  }
+
+  let best: AttributeMatch['match'] | null = null;
+
+  for (const candidate of candidates) {
+    const index = candidate.text.toLowerCase().indexOf(query);
+    if (index === -1) continue;
+
+    // Keep the strongest match: preferred source first, then the earliest position.
+    const isBetter =
+      best === null ||
+      SOURCE_RANK[candidate.source] < SOURCE_RANK[best.source] ||
+      (SOURCE_RANK[candidate.source] === SOURCE_RANK[best.source] && index < best.index);
+
+    if (isBetter) {
+      best = { text: candidate.text, source: candidate.source, index };
+    }
+  }
+
+  return best ? { ...attr, match: best } : null;
+}
+
 function highlightMatch(key: string, searchQuery: string): { before: string; match: string; after: string } | null {
   const lowerKey = key.toLowerCase();
   const lowerQuery = searchQuery.toLowerCase();
@@ -326,7 +375,8 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
               Attributes
             </div>
             {#each attributeResults as attr, index}
-              {@const highlighted = highlightMatch(attr.key, query)}
+              {@const isKeyMatch = attr.match.source === 'key'}
+              {@const highlighted = highlightMatch(isKeyMatch ? attr.key : attr.match.text, query)}
               <button
                 class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {index === selectedIndex ? 'bg-accent-soft border-l-accent selected shadow-[inset_0_0_0_1px_var(--color-accent-soft)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
                 onclick={() => navigateToAttribute(attr)}
@@ -335,13 +385,31 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
               >
                 <div class="flex items-center justify-between gap-3 flex-wrap">
                   <code class="font-mono text-sm font-medium bg-transparent p-0 border-none text-accent">
-                    {#if highlighted}
-                      {highlighted.before}<mark class="bg-accent-soft text-accent px-0.5 rounded-sm font-semibold">{highlighted.match}</mark>{highlighted.after}
+                    {#if isKeyMatch}
+                      {#if highlighted}
+                        {highlighted.before}<mark class="bg-accent-soft text-accent px-0.5 rounded-sm font-semibold">{highlighted.match}</mark>{highlighted.after}
+                      {:else}
+                        {attr.key}
+                      {/if}
                     {:else}
-                      {attr.key}
+                      <!-- Matched an alias: show it, plus the attribute it resolves to. -->
+                      <span class:line-through={attr.match.source === 'deprecated_alias'}>
+                        {#if highlighted}
+                          {highlighted.before}<mark class="bg-accent-soft text-accent px-0.5 rounded-sm font-semibold">{highlighted.match}</mark>{highlighted.after}
+                        {:else}
+                          {attr.match.text}
+                        {/if}
+                      </span>
+                      <span class="text-text-muted font-sans font-normal">→</span>
+                      <span class="text-text-secondary">{attr.key}</span>
                     {/if}
                   </code>
                   <div class="flex items-center gap-2">
+                    {#if attr.match.source === 'search_alias'}
+                      <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-accent-soft text-accent" title="Matched the name this attribute is exposed under in Sentry search">search alias</span>
+                    {:else if attr.match.source === 'deprecated_alias'}
+                      <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-warning-soft text-warning" title="Matched a deprecated search alias that is still accepted in queries">deprecated alias</span>
+                    {/if}
                     <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-muted">{attr.type}</span>
                     <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-secondary">{attr.category}</span>
                     {#if attr.deprecated}
