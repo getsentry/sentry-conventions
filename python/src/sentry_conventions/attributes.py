@@ -8081,7 +8081,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The human-readable description of a span.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "index view query"
@@ -8239,6 +8239,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
         "sentry.event.serialized_extra"
     )
     """JSON-serialized `extra` property from a Sentry event.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: internal
+    """
+
+    # Path: model/attributes/sentry/sentry__event__serialized_meta.json
+    SENTRY_EVENT_SERIALIZED_META: Literal["sentry.event.serialized_meta"] = (
+        "sentry.event.serialized_meta"
+    )
+    """JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.
 
     Type: str
     Apply Scrubbing: never
@@ -19934,7 +19946,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
         type=AttributeType.STRING,
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="index view query",
@@ -20100,6 +20112,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.INTERNAL,
         changelog=[
             ChangelogEntry(version="0.19.0", prs=[556]),
+        ],
+    ),
+    "sentry.event.serialized_meta": AttributeMetadata(
+        brief="JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        changelog=[
+            ChangelogEntry(version="next"),
         ],
     ),
     "sentry.exclusive_time": AttributeMetadata(
@@ -23273,6 +23295,7 @@ Attributes = TypedDict(
         "sentry.event.serialized_breadcrumbs": str,
         "sentry.event.serialized_contexts": str,
         "sentry.event.serialized_extra": str,
+        "sentry.event.serialized_meta": str,
         "sentry.exclusive_time": float,
         "sentry.frames.frozen": int,
         "sentry.frames.slow": int,

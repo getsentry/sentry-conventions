@@ -1,22 +1,79 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
+interface OpField {
+  name: string;
+  description?: string;
+}
+
+interface OpCategory {
+  file: string;
+  name: string;
+  description?: string;
+  fields: OpField[];
+}
+
 export async function generateOps() {
   const opDir = path.join(__dirname, '..', 'model', 'op');
 
   const opFiles = await fs.promises.readdir(opDir);
-  writeToJs(opDir, opFiles);
-  writeToRust(opDir, opFiles);
+  const categories = readCategories(opDir, opFiles);
+  const owners = resolveConstantOwners(categories);
+
+  writeToJs(categories, owners);
+  writeToRust(categories, owners);
 }
 
-function writeToRust(opDir: string, opFiles: string[]) {
+function readCategories(opDir: string, opFiles: string[]): OpCategory[] {
+  // Sort for deterministic output: the file order decides both the order of the emitted blocks and,
+  // for ops defined in multiple categories without a description, which category owns the constant.
+  return [...opFiles].sort().map((file) => {
+    const opJson = JSON.parse(fs.readFileSync(path.join(opDir, file), 'utf-8'));
+    return { file, name: opJson.name, description: opJson.description, fields: opJson.fields };
+  });
+}
+
+function constantName(fieldName: string): string {
+  return fieldName.toUpperCase().replaceAll('.', '_');
+}
+
+/**
+ * Constant names don't include the op's category, so the same op defined in multiple categories
+ * (e.g. `http` in `faas`, `mobile` and `web_server`) would yield duplicate constants. Emit each op
+ * exactly once, in the category that documents it, falling back to the first category defining it.
+ *
+ * Returns a map of op name -> file that owns its constant.
+ */
+function resolveConstantOwners(categories: OpCategory[]): Map<string, string> {
+  const owners = new Map<string, { file: string; described: boolean }>();
+
+  for (const category of categories) {
+    for (const field of category.fields) {
+      const owner = owners.get(field.name);
+      if (!owner || (!owner.described && !!field.description)) {
+        owners.set(field.name, { file: category.file, described: !!field.description });
+      }
+    }
+  }
+
+  return new Map([...owners].map(([name, { file }]) => [name, file]));
+}
+
+/** The fields of `category` whose constant is emitted in this category. */
+function ownedFields(category: OpCategory, owners: Map<string, string>): OpField[] {
+  return category.fields.filter((field) => owners.get(field.name) === category.file);
+}
+
+function writeToRust(categories: OpCategory[], owners: Map<string, string>) {
   let opContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  for (const file of opFiles) {
-    const opPath = path.join(opDir, file);
-    const opJson = JSON.parse(fs.readFileSync(opPath, 'utf-8'));
+  for (const category of categories) {
+    const fields = ownedFields(category, owners);
+    if (fields.length === 0) {
+      continue;
+    }
 
-    const { name, description, fields } = opJson;
+    const { file, name, description } = category;
 
     opContent += `// Path: model/op/${file}\n// Name: ${name}\n\n`;
     if (description) {
@@ -29,9 +86,7 @@ function writeToRust(opDir: string, opFiles: string[]) {
         opContent += field.description.split('\n').join('\n/// ');
         opContent += '\n';
       }
-      opContent += `pub const ${name.toUpperCase().replaceAll('.', '_')}_${field.name
-        .toUpperCase()
-        .replaceAll('.', '_')}_SPAN_OP: &str = "${field.name}";\n\n`;
+      opContent += `pub const ${constantName(field.name)}: &str = "${field.name}";\n\n`;
     }
   }
 
@@ -43,14 +98,16 @@ function writeToRust(opDir: string, opFiles: string[]) {
   fs.writeFileSync(opFilePath, opContent);
 }
 
-function writeToJs(opDir: string, opFiles: string[]) {
+function writeToJs(categories: OpCategory[], owners: Map<string, string>) {
   let opContent = '// This is an auto-generated file. Do not edit!\n';
 
-  for (const file of opFiles) {
-    const opPath = path.join(opDir, file);
-    const opJson = JSON.parse(fs.readFileSync(opPath, 'utf-8'));
+  for (const category of categories) {
+    const fields = ownedFields(category, owners);
+    if (fields.length === 0) {
+      continue;
+    }
 
-    const { name, description, fields } = opJson;
+    const { file, name, description } = category;
 
     opContent += `\n// Path: model/op/${file}\n// Name: ${name}\n`;
     if (description) {
@@ -65,9 +122,7 @@ function writeToJs(opDir: string, opFiles: string[]) {
       } else {
         opContent += '\n';
       }
-      opContent += `export const ${name.toUpperCase().replaceAll('.', '_')}_${field.name
-        .toUpperCase()
-        .replaceAll('.', '_')}_SPAN_OP = '${field.name}';\n`;
+      opContent += `export const ${constantName(field.name)} = '${field.name}';\n`;
     }
   }
 

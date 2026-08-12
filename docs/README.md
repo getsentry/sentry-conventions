@@ -54,6 +54,16 @@ The site is automatically deployed to GitHub Pages via the `.github/workflows/do
 
 The site is available at: https://getsentry.github.io/sentry-conventions/
 
+## Error Monitoring
+
+The client-side site is instrumented with [Sentry](https://sentry.io) (`sentry` org, `conventions` project):
+
+- **SDK config**: `sentry.client.config.js` — reporting is disabled outside production builds
+- **Integration config**: the `sentry()` integration in `astro.config.mjs` handles source map upload
+
+Source maps are only generated and uploaded when `SENTRY_AUTH_TOKEN` is set, which the deploy workflow
+provides from repository secrets. They are deleted from `dist/` after upload so they aren't published.
+
 ## Adding New Features
 
 ### Adding a new page

@@ -13782,7 +13782,7 @@ export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link SENTRY_DESCRIPTION_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -14087,6 +14087,25 @@ export const SENTRY_EVENT_SERIALIZED_EXTRA = 'sentry.event.serialized_extra';
  * Type for {@link SENTRY_EVENT_SERIALIZED_EXTRA} sentry.event.serialized_extra
  */
 export type SENTRY_EVENT_SERIALIZED_EXTRA_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_meta.json
+
+/**
+ * JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event. `sentry.event.serialized_meta`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_META_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_META = 'sentry.event.serialized_meta';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_META} sentry.event.serialized_meta
+ */
+export type SENTRY_EVENT_SERIALIZED_META_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__exclusive_time.json
 
@@ -18736,6 +18755,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.event.serialized_breadcrumbs': 'string',
   'sentry.event.serialized_contexts': 'string',
   'sentry.event.serialized_extra': 'string',
+  'sentry.event.serialized_meta': 'string',
   'sentry.exclusive_time': 'double',
   'sentry.frames.frozen': 'integer',
   'sentry.frames.slow': 'integer',
@@ -19550,6 +19570,7 @@ export type AttributeName =
   | typeof SENTRY_EVENT_SERIALIZED_BREADCRUMBS
   | typeof SENTRY_EVENT_SERIALIZED_CONTEXTS
   | typeof SENTRY_EVENT_SERIALIZED_EXTRA
+  | typeof SENTRY_EVENT_SERIALIZED_META
   | typeof SENTRY_EXCLUSIVE_TIME
   | typeof SENTRY_FRAMES_FROZEN
   | typeof SENTRY_FRAMES_SLOW
@@ -28503,7 +28524,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief: 'The human-readable description of a span.',
     type: 'string',
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28664,6 +28685,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'internal',
     changelog: [{ version: '0.19.0', prs: [556] }],
+  },
+  'sentry.event.serialized_meta': {
+    brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
+    type: 'string',
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: 'next' }],
   },
   'sentry.exclusive_time': {
     brief: 'The exclusive time duration of the span in milliseconds.',
@@ -31760,6 +31791,7 @@ export type Attributes = {
   [SENTRY_EVENT_SERIALIZED_BREADCRUMBS]?: SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE;
   [SENTRY_EVENT_SERIALIZED_CONTEXTS]?: SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE;
   [SENTRY_EVENT_SERIALIZED_EXTRA]?: SENTRY_EVENT_SERIALIZED_EXTRA_TYPE;
+  [SENTRY_EVENT_SERIALIZED_META]?: SENTRY_EVENT_SERIALIZED_META_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_FRAMES_FROZEN]?: SENTRY_FRAMES_FROZEN_TYPE;
   [SENTRY_FRAMES_SLOW]?: SENTRY_FRAMES_SLOW_TYPE;
