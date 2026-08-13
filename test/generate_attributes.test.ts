@@ -68,7 +68,7 @@ describe('generateAttributes', () => {
     }
   });
 
-  it('generates compact search metadata with resolved names, types, and collisions', async () => {
+  it('generates search metadata for every attribute with its deprecation chain', async () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
@@ -88,7 +88,7 @@ describe('generateAttributes', () => {
         search_alias: {
           name: 'shared.name',
           type: 'byte',
-          deprecated_aliases: ['old.name', 'shared.name'],
+          deprecated_aliases: ['old.name', 'current.attribute'],
         },
       },
       {
@@ -96,38 +96,11 @@ describe('generateAttributes', () => {
         brief: 'The deprecated attribute.',
         type: 'double',
         search_alias: {
-          name: 'shared.name',
+          name: 'legacy.search',
           type: 'percentage',
-          deprecated_aliases: ['old.name', 'older.name'],
+          deprecated_aliases: ['older.name'],
         },
         deprecation: { replacement: 'current.attribute', _status: 'normalize' },
-      },
-      {
-        key: 'fallback.collision',
-        brief: 'The fallback collision candidate.',
-        type: 'integer',
-        deprecation: { _status: 'normalize' },
-      },
-      {
-        key: 'explicit.attribute',
-        brief: 'The explicit collision candidate.',
-        type: 'string',
-        search_alias: { name: 'fallback.collision' },
-        deprecation: { _status: 'normalize' },
-      },
-      {
-        key: 'alpha.attribute',
-        brief: 'The alphabetically preferred candidate.',
-        type: 'string',
-        search_alias: { name: 'alphabetical.collision' },
-        deprecation: { _status: 'normalize' },
-      },
-      {
-        key: 'beta.attribute',
-        brief: 'The alphabetically later candidate.',
-        type: 'double',
-        search_alias: { name: 'alphabetical.collision' },
-        deprecation: { _status: 'normalize' },
       },
     ];
 
@@ -153,23 +126,18 @@ describe('generateAttributes', () => {
 
       expect(javascript).toContain('export type AttributeSearchType = AttributeType | SearchAliasType;');
       expect(compactMetadata).toContain(
-        '"fallback.attribute": {\n    brief: "An attribute without explicit search metadata.",\n    type: "boolean",',
+        '"fallback.attribute": {\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute"],',
       );
       expect(compactMetadata).toContain(
-        '"shared.name": {\n    brief: "The preferred attribute.",\n    type: "byte",\n    deprecatedAliases: ["old.name","older.name"],',
+        '"current.attribute": {\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name","legacy.attribute","legacy.search","older.name"],',
       );
       expect(compactMetadata).toContain(
-        '"fallback.collision": {\n    brief: "The explicit collision candidate.",\n    type: "string",',
+        '"legacy.attribute": {\n    type: "percentage",\n    brief: "The deprecated attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name","legacy.attribute","legacy.search","older.name"],',
       );
-      expect(compactMetadata).not.toContain('deprecatedAliases: ["fallback.collision"]');
-      expect(compactMetadata).toContain(
-        '"alphabetical.collision": {\n    brief: "The alphabetically preferred candidate.",\n    type: "string",',
-      );
-      expect(compactMetadata).not.toContain('The deprecated attribute.');
-      expect(compactMetadata).not.toContain('The alphabetically later candidate.');
+      expect(compactMetadata).not.toContain('"shared.name": {');
 
       const compactPropertyNames = [...compactMetadata.matchAll(/^    (\w+):/gm)].map((match) => match[1]);
-      expect(new Set(compactPropertyNames)).toEqual(new Set(['brief', 'type', 'deprecatedAliases']));
+      expect(new Set(compactPropertyNames)).toEqual(new Set(['type', 'brief', 'deprecationChain']));
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true });
     }
