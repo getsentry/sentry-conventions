@@ -209,9 +209,14 @@ describe('generated attribute key chains', () => {
       metadata.keys
         .filter((chainKey) => chainKey !== key)
         .filter((chainKey) => {
-          // Search-only aliases have no metadata entry of their own, so they are never a leak.
-          const status = metadataByKey[chainKey]?.deprecation?.status;
-          return status !== undefined && status !== 'backfill' && status !== 'normalize';
+          // Search-only aliases have no metadata entry of their own, and a non-deprecated key holds
+          // the value for its whole family, so neither is ever a leak.
+          const deprecation = metadataByKey[chainKey]?.deprecation;
+          if (!deprecation) {
+            return false;
+          }
+          // An absent status is `_status: null`, which does not rewrite the value either.
+          return deprecation.status !== 'backfill' && deprecation.status !== 'normalize';
         })
         .map((chainKey) => `${key} -> ${chainKey}`),
     );
