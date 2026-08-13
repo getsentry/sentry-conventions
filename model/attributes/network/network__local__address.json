@@ -6,7 +6,7 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "10.1.2.80",
+  "examples": ["10.1.2.80", "/var/run/my.sock"],
   "alias": ["net.host.ip", "net.sock.host.addr"],
   "visibility": "public",
   "changelog": [
