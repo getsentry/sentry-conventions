@@ -30,11 +30,15 @@ function isRewritingDeprecation(attributeJson: AttributeJson): boolean {
  * Derives the ordered list of attribute keys a value may be stored under, for every attribute.
  *
  * A chain only ever contains keys the same value is readable under, so every member of a family
- * shares one chain and a read prefers the key at its head. Within a chain the order is:
+ * reads the same set of keys. Within a chain the order is:
  *
  * 1. the attribute heading the chain: its key, then its search alias name, then its deprecated search aliases
  * 2. its non-deprecated aliases, each expanded to their own key and search alias names
- * 3. the attributes it replaces (sorted), each expanded the same way
+ * 3. the attributes replaced by it or by one of those aliases (sorted), each expanded the same way
+ *
+ * Mutually aliased attributes are each their own head, because nothing in the registry marks one of
+ * them as canonical. Their chains therefore hold the same keys in a different order, and which key a
+ * read prefers depends on which member was looked up.
  *
  * A chain is headed by a non-deprecated attribute only when one is guaranteed to hold the value,
  * which means the head is deprecated whenever the deprecation is non-rewriting: the pipeline leaves
@@ -100,18 +104,25 @@ export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map
     // A non-rewriting deprecation heads its own chain, and the pipeline never copies its value
     // anywhere else, so its aliases are not readable substitutes for it. Expanding them would
     // reintroduce the very keys the predecessor pass above deliberately left out.
-    if (headAttribute && !headAttribute.attributeJson.deprecation) {
-      // Deprecated aliases are skipped here: either they replace this attribute, in which case they
-      // are appended below as predecessors, or their value is never rewritten onto it.
-      for (const aliasKey of headAttribute.attributeJson.alias ?? []) {
-        if (attributesByKey.get(aliasKey)?.attributeJson.deprecation) {
-          continue;
-        }
-        readableNames(aliasKey).forEach(addName);
-      }
+    const aliasKeys =
+      headAttribute && !headAttribute.attributeJson.deprecation
+        ? // Deprecated aliases are skipped here: either they replace this attribute, in which case
+          // they are appended below as predecessors, or their value is never rewritten onto it.
+          (headAttribute.attributeJson.alias ?? []).filter(
+            (aliasKey) => !attributesByKey.get(aliasKey)?.attributeJson.deprecation,
+          )
+        : [];
+
+    for (const aliasKey of aliasKeys) {
+      readableNames(aliasKey).forEach(addName);
     }
 
-    for (const predecessor of predecessorsByKey.get(headKey)?.toSorted() ?? []) {
+    // An alias holds the same value as the head, so anything rewritten onto the alias is readable
+    // under the head too. Without this, the head of a mutual alias pair would miss the predecessors
+    // that name the other member as their replacement, and the two would disagree on chain
+    // membership rather than only on which key they prefer.
+    const predecessors = [headKey, ...aliasKeys].flatMap((key) => predecessorsByKey.get(key) ?? []);
+    for (const predecessor of predecessors.toSorted()) {
       readableNames(predecessor).forEach(addName);
     }
 
@@ -988,8 +999,9 @@ export interface AttributeMetadata {
   /**
    * Every key this attribute's value may be readable under, preferred key first.
    *
-   * All members of a family share one chain, so a read prefers the same key no matter which member
-   * you look up. Only \`backfill\` and \`normalize\` deprecations join their replacement's chain,
+   * All members of a family read the same set of keys. Mutually aliased attributes each head their
+   * own chain, so those chains agree on membership but differ in which key they prefer. Only
+   * \`backfill\` and \`normalize\` deprecations join their replacement's chain,
    * because only for those is the value rewritten onto the replacement. An attribute with any other
    * deprecation therefore has a chain of just its own names, and the first key is not guaranteed to
    * be non-deprecated — check \`deprecation\` if that matters.

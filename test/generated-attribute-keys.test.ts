@@ -120,6 +120,20 @@ describe('deriveAttributeKeyChains', () => {
     expect(chains.get('thread.id')).toEqual(['thread.id', 'sentry.thread.id']);
   });
 
+  it('includes the predecessors of an alias, which hold the same value as the head', () => {
+    // `legacy` is rewritten onto `alias.a`, and `alias.a` holds the same value as `stable`, so
+    // `legacy` is readable under `stable` too. Both members must agree on chain membership.
+    const chains = deriveAttributeKeyChains([
+      attribute('stable', { alias: ['alias.a'] }),
+      attribute('alias.a', { alias: ['stable'] }),
+      attribute('legacy', { replacement: 'alias.a', status: 'backfill' }),
+    ]);
+
+    expect(chains.get('stable')).toEqual(['stable', 'alias.a', 'legacy']);
+    expect(chains.get('alias.a')).toEqual(['alias.a', 'stable', 'legacy']);
+    expect(chains.get('legacy')).toEqual(['alias.a', 'stable', 'legacy']);
+  });
+
   it('does not expand aliases of aliases', () => {
     const chains = deriveAttributeKeyChains([
       attribute('stable', { alias: ['alias.a'] }),
@@ -238,6 +252,37 @@ describe('generated attribute key chains', () => {
     for (const key of HTTP_METHOD_ATTRIBUTE_KEYS) {
       expect(ATTRIBUTE_METADATA[key]?.keys).toEqual(HTTP_METHOD_ATTRIBUTE_KEYS);
     }
+  });
+
+  it('reads the same keys from either member of a mutual alias pair', () => {
+    // `code.function` and `code.function.name` alias each other, and `django.function_name` is
+    // backfilled onto `code.function.name`, so it is readable under both.
+    const codeFunctionFamily = ['code.function', 'code.function.name', 'django.function_name'];
+
+    expect(ATTRIBUTE_METADATA['code.function']?.keys.toSorted()).toEqual(codeFunctionFamily);
+    expect(ATTRIBUTE_METADATA['code.function.name']?.keys.toSorted()).toEqual(codeFunctionFamily);
+    expect(ATTRIBUTE_METADATA['django.function_name']?.keys.toSorted()).toEqual(codeFunctionFamily);
+  });
+
+  it('agrees on chain membership between every pair of chained attributes', () => {
+    // A non-rewriting deprecation is exempt: its chain is only its own names, and one of those names
+    // may be a search alias that collides with an unrelated attribute's key.
+    const isNonRewriting = (key: string) => {
+      const deprecation = metadataByKey[key]?.deprecation;
+      return deprecation != null && deprecation.status !== 'backfill' && deprecation.status !== 'normalize';
+    };
+
+    const disagreements = Object.entries(ATTRIBUTE_METADATA)
+      .filter(([key]) => !isNonRewriting(key))
+      .flatMap(([key, metadata]) => {
+        const family = JSON.stringify(metadata.keys.toSorted());
+        return metadata.keys
+          .filter((chainKey) => chainKey !== key && metadataByKey[chainKey] && !isNonRewriting(chainKey))
+          .filter((chainKey) => JSON.stringify(metadataByKey[chainKey]?.keys.toSorted()) !== family)
+          .map((chainKey) => `${key} -> ${chainKey}`);
+      });
+
+    expect(disagreements).toEqual([]);
   });
 
   it('generates a chain for a standalone attribute', () => {

@@ -17631,8 +17631,9 @@ export interface AttributeMetadata {
   /**
    * Every key this attribute's value may be readable under, preferred key first.
    *
-   * All members of a family share one chain, so a read prefers the same key no matter which member
-   * you look up. Only `backfill` and `normalize` deprecations join their replacement's chain,
+   * All members of a family read the same set of keys. Mutually aliased attributes each head their
+   * own chain, so those chains agree on membership but differ in which key they prefer. Only
+   * `backfill` and `normalize` deprecations join their replacement's chain,
    * because only for those is the value rewritten onto the replacement. An attribute with any other
    * deprecation therefore has a chain of just its own names, and the first key is not guaranteed to
    * be non-deprecated — check `deprecation` if that matters.
@@ -22169,7 +22170,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'code.function': {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
     type: 'string',
-    keys: ['code.function', 'code.function.name'],
+    keys: ['code.function', 'code.function.name', 'django.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25821,7 +25822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.response.header.content-length': {
     brief: 'The size of the message body sent to the recipient (in bytes)',
     type: 'string',
-    keys: ['http.response.header.content-length', 'http.response.body.size'],
+    keys: ['http.response.header.content-length', 'http.response.body.size', 'http.response_content_length'],
     applyScrubbing: {
       key: 'manual',
     },
