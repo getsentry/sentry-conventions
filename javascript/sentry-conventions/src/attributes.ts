@@ -11858,6 +11858,7 @@ export type NETWORK_CONNECTION_TYPE_TYPE = string;
  * Aliases: {@link NET_HOST_IP} `net.host.ip`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
  *
  * @example "10.1.2.80"
+ * @example "/var/run/my.sock"
  */
 export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
 
@@ -27469,6 +27470,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '10.1.2.80',
+    examples: ['10.1.2.80', '/var/run/my.sock'],
     aliases: ['net.host.ip', 'net.sock.host.addr'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },

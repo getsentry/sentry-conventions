@@ -7260,6 +7260,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: net.host.ip, net.sock.host.addr
     Example: "10.1.2.80"
+    Example: "/var/run/my.sock"
     """
 
     # Path: model/attributes/network/network__local__port.json
@@ -20122,6 +20123,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="10.1.2.80",
+        examples=["10.1.2.80", "/var/run/my.sock"],
         aliases=["net.host.ip", "net.sock.host.addr"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
