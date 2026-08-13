@@ -17623,6 +17623,17 @@ export interface SearchAlias {
   deprecatedAliases?: string[];
 }
 
+export type AttributeSearchType = AttributeType | SearchAliasType;
+
+export interface AttributeSearchMetadata {
+  /** The type exposed by Sentry search */
+  type: AttributeSearchType;
+  /** A description of the attribute */
+  brief: string;
+  /** Every key under which the attribute's value is readable, preferred key first */
+  deprecationChain: readonly string[];
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -31289,6 +31300,4179 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.2.0', prs: [163] },
     ],
+  },
+};
+
+export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {
+  address: {
+    type: 'string',
+    brief: 'The destination hostname or IP address for a TCP connection.',
+    deprecationChain: ['server.address', 'address', 'server_name'],
+  },
+  'ai.citations': {
+    type: 'string[]',
+    brief: 'References or sources cited by the AI model in its response.',
+    deprecationChain: ['ai.citations'],
+  },
+  'ai.completion_tokens.used': {
+    type: 'integer',
+    brief: 'The number of tokens used to respond to the message.',
+    deprecationChain: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
+  },
+  'ai.documents': {
+    type: 'string[]',
+    brief: 'Documents or content chunks used as context for the AI model.',
+    deprecationChain: ['ai.documents'],
+  },
+  'ai.finish_reason': {
+    type: 'string',
+    brief: 'The reason why the model stopped generating.',
+    deprecationChain: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
+  },
+  'ai.frequency_penalty': {
+    type: 'double',
+    brief:
+      'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
+    deprecationChain: ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'],
+  },
+  'ai.function_call': {
+    type: 'string',
+    brief:
+      'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls',
+    deprecationChain: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
+  },
+  'ai.generation_id': {
+    type: 'string',
+    brief: 'Unique identifier for the completion.',
+    deprecationChain: ['gen_ai.response.id', 'ai.generation_id'],
+  },
+  'ai.input_messages': {
+    type: 'string',
+    brief: 'The input messages sent to the model',
+    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+  },
+  'ai.is_search_required': {
+    type: 'boolean',
+    brief: 'Boolean indicating if the model needs to perform a search.',
+    deprecationChain: ['ai.is_search_required'],
+  },
+  'ai.metadata': {
+    type: 'string',
+    brief: 'Extra metadata passed to an AI pipeline step.',
+    deprecationChain: ['ai.metadata'],
+  },
+  'ai.model.provider': {
+    type: 'string',
+    brief: 'The provider of the model.',
+    deprecationChain: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
+  },
+  'ai.model_id': {
+    type: 'string',
+    brief: 'The vendor-specific ID of the model used.',
+    deprecationChain: ['gen_ai.request.model', 'ai.model_id'],
+  },
+  'ai.pipeline.name': {
+    type: 'string',
+    brief: 'The name of the AI pipeline.',
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+  },
+  'ai.preamble': {
+    type: 'string',
+    brief:
+      "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
+    deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
+  },
+  'ai.presence_penalty': {
+    type: 'double',
+    brief:
+      'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
+    deprecationChain: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
+  },
+  'ai.prompt.messages': {
+    type: 'string',
+    brief: 'The input messages sent to the AI model.',
+    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+  },
+  'ai.prompt_tokens.used': {
+    type: 'integer',
+    brief: 'The number of tokens used to process just the prompt.',
+    deprecationChain: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
+  },
+  'ai.raw_prompting': {
+    type: 'boolean',
+    brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
+    deprecationChain: ['ai.raw_prompting'],
+  },
+  'ai.response.text': {
+    type: 'string',
+    brief: 'The text response from the AI model.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.response.toolCalls': {
+    type: 'string',
+    brief: 'The tool calls in the AI model response.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.response_format': {
+    type: 'string',
+    brief: 'For an AI model call, the format of the response',
+    deprecationChain: ['ai.response_format'],
+  },
+  'ai.responses': {
+    type: 'string[]',
+    brief: 'The response messages sent back by the AI model.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.search_queries': {
+    type: 'string[]',
+    brief: 'Queries used to search for relevant context or documents.',
+    deprecationChain: ['ai.search_queries'],
+  },
+  'ai.search_results': {
+    type: 'string[]',
+    brief: 'Results returned from search queries for context.',
+    deprecationChain: ['ai.search_results'],
+  },
+  'ai.seed': {
+    type: 'string',
+    brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
+    deprecationChain: ['gen_ai.request.seed', 'ai.seed'],
+  },
+  'ai.streaming': {
+    type: 'boolean',
+    brief: 'Whether the request was streamed back.',
+    deprecationChain: ['gen_ai.response.streaming', 'ai.streaming'],
+  },
+  'ai.tags': {
+    type: 'string',
+    brief: 'Tags that describe an AI pipeline step.',
+    deprecationChain: ['ai.tags'],
+  },
+  'ai.temperature': {
+    type: 'double',
+    brief:
+      'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
+    deprecationChain: ['gen_ai.request.temperature', 'ai.temperature'],
+  },
+  'ai.texts': {
+    type: 'string[]',
+    brief: 'Raw text inputs provided to the model.',
+    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+  },
+  'ai.toolCall.args': {
+    type: 'string',
+    brief: 'The arguments of the tool call.',
+    deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
+  },
+  'ai.toolCall.result': {
+    type: 'string',
+    brief: 'The result of the tool call.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'ai.tool_calls': {
+    type: 'string[]',
+    brief: 'For an AI model call, the tool calls that were made.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.tools': {
+    type: 'string[]',
+    brief: 'For an AI model call, the functions that are available',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+  },
+  'ai.top_k': {
+    type: 'integer',
+    brief:
+      'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
+    deprecationChain: ['gen_ai.request.top_k', 'ai.top_k'],
+  },
+  'ai.top_p': {
+    type: 'double',
+    brief:
+      'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
+    deprecationChain: ['gen_ai.request.top_p', 'ai.top_p'],
+  },
+  'ai.total_cost': {
+    type: 'currency',
+    brief: 'The total cost for the tokens used.',
+    deprecationChain: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
+  },
+  'ai.total_tokens.used': {
+    type: 'integer',
+    brief: 'The total number of tokens used to process the prompt.',
+    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+  },
+  'ai.warnings': {
+    type: 'string[]',
+    brief: 'Warning messages generated during model execution.',
+    deprecationChain: ['ai.warnings'],
+  },
+  'angular.version': {
+    type: 'string',
+    brief: 'The version of the Angular framework',
+    deprecationChain: ['angular.version'],
+  },
+  'app.app_build': {
+    type: 'string',
+    brief: 'Internal build identifier, as it appears on the platform.',
+    deprecationChain: ['app.build', 'app.app_build'],
+  },
+  'app.app_identifier': {
+    type: 'string',
+    brief: 'Version-independent application identifier, often a dotted bundle ID.',
+    deprecationChain: ['app.identifier', 'app.app_identifier'],
+  },
+  'app.app_name': {
+    type: 'string',
+    brief: 'Human readable application name, as it appears on the platform.',
+    deprecationChain: ['app.name', 'app.app_name'],
+  },
+  'app.app_start_time': {
+    type: 'string',
+    brief: 'Formatted UTC timestamp when the user started the application.',
+    deprecationChain: ['app.start_time', 'app.app_start_time'],
+  },
+  'app.app_version': {
+    type: 'string',
+    brief: 'Human readable application version, as it appears on the platform.',
+    deprecationChain: ['app.version', 'app.app_version'],
+  },
+  'app.build': {
+    type: 'string',
+    brief: 'Internal build identifier, as it appears on the platform.',
+    deprecationChain: ['app.build', 'app.app_build'],
+  },
+  'app.identifier': {
+    type: 'string',
+    brief: 'Version-independent application identifier, often a dotted bundle ID.',
+    deprecationChain: ['app.identifier', 'app.app_identifier'],
+  },
+  'app.in_foreground': {
+    type: 'boolean',
+    brief: 'Whether the application is currently in the foreground.',
+    deprecationChain: ['app.in_foreground'],
+  },
+  'app.name': {
+    type: 'string',
+    brief: 'Human readable application name, as it appears on the platform.',
+    deprecationChain: ['app.name', 'app.app_name'],
+  },
+  'app.start_time': {
+    type: 'string',
+    brief: 'Formatted UTC timestamp when the user started the application.',
+    deprecationChain: ['app.start_time', 'app.app_start_time'],
+  },
+  'app.version': {
+    type: 'string',
+    brief: 'Human readable application version, as it appears on the platform.',
+    deprecationChain: ['app.version', 'app.app_version'],
+  },
+  'app.vitals.frames.delay.value': {
+    type: 'integer',
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    deprecationChain: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
+  },
+  'app.vitals.frames.frozen.count': {
+    type: 'integer',
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    deprecationChain: [
+      'app.vitals.frames.frozen.count',
+      'frames.frozen',
+      'mobile.frozen_frames',
+      'sentry.frames.frozen',
+    ],
+  },
+  'app.vitals.frames.frozen.rate': {
+    type: 'double',
+    brief:
+      'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    deprecationChain: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
+  },
+  'app.vitals.frames.slow.count': {
+    type: 'integer',
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
+  },
+  'app.vitals.frames.slow.rate': {
+    type: 'double',
+    brief:
+      'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    deprecationChain: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
+  },
+  'app.vitals.frames.total.count': {
+    type: 'integer',
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
+  },
+  'app.vitals.stall.duration': {
+    type: 'double',
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
+    deprecationChain: ['app.vitals.stall.duration', 'stall_total_time'],
+  },
+  'app.vitals.stall.percentage': {
+    type: 'double',
+    brief:
+      'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
+    deprecationChain: ['app.vitals.stall.percentage', 'stall_percentage'],
+  },
+  'app.vitals.start.cold.value': {
+    type: 'double',
+    brief: 'The duration of a cold app start in milliseconds',
+    deprecationChain: ['app.vitals.start.cold.value', 'app_start_cold'],
+  },
+  'app.vitals.start.prewarmed': {
+    type: 'boolean',
+    brief: 'Whether the app start was prewarmed.',
+    deprecationChain: ['app.vitals.start.prewarmed'],
+  },
+  'app.vitals.start.reason': {
+    type: 'string',
+    brief: 'The reason that triggered the app start.',
+    deprecationChain: ['app.vitals.start.reason'],
+  },
+  'app.vitals.start.screen': {
+    type: 'string',
+    brief:
+      'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.',
+    deprecationChain: ['app.vitals.start.screen'],
+  },
+  'app.vitals.start.type': {
+    type: 'string',
+    brief: 'The type of app start, for example `cold` or `warm`',
+    deprecationChain: ['app.vitals.start.type', 'app_start_type'],
+  },
+  'app.vitals.start.warm.value': {
+    type: 'double',
+    brief: 'The duration of a warm app start in milliseconds',
+    deprecationChain: ['app.vitals.start.warm.value', 'app_start_warm'],
+  },
+  'app.vitals.ttfd.value': {
+    type: 'double',
+    brief: 'The duration of time to full display in milliseconds',
+    deprecationChain: ['app.vitals.ttfd.value', 'time_to_full_display'],
+  },
+  'app.vitals.ttid.value': {
+    type: 'double',
+    brief: 'The duration of time to initial display in milliseconds',
+    deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
+  },
+  app_start_cold: {
+    type: 'double',
+    brief: 'The duration of a cold app start in milliseconds',
+    deprecationChain: ['app.vitals.start.cold.value', 'app_start_cold'],
+  },
+  app_start_type: {
+    type: 'string',
+    brief: 'Mobile app start variant. Either cold or warm.',
+    deprecationChain: ['app.vitals.start.type', 'app_start_type'],
+  },
+  app_start_warm: {
+    type: 'double',
+    brief: 'The duration of a warm app start in milliseconds',
+    deprecationChain: ['app.vitals.start.warm.value', 'app_start_warm'],
+  },
+  'art.gc.blocking_count': {
+    type: 'integer',
+    brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
+    deprecationChain: ['art.gc.blocking_count'],
+  },
+  'art.gc.blocking_time': {
+    type: 'double',
+    brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
+    deprecationChain: ['art.gc.blocking_time'],
+  },
+  'art.gc.pre_oome_count': {
+    type: 'integer',
+    brief:
+      'Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime',
+    deprecationChain: ['art.gc.pre_oome_count'],
+  },
+  'art.gc.total_count': {
+    type: 'integer',
+    brief: 'Total number of garbage collections performed by the Android Runtime',
+    deprecationChain: ['art.gc.total_count'],
+  },
+  'art.gc.total_time': {
+    type: 'double',
+    brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
+    deprecationChain: ['art.gc.total_time'],
+  },
+  'art.gc.waiting_time': {
+    type: 'double',
+    brief:
+      'Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds',
+    deprecationChain: ['art.gc.waiting_time'],
+  },
+  'art.memory.free': {
+    type: 'integer',
+    brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.free'],
+  },
+  'art.memory.free_until_gc': {
+    type: 'integer',
+    brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.free_until_gc'],
+  },
+  'art.memory.free_until_oome': {
+    type: 'integer',
+    brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.free_until_oome'],
+  },
+  'art.memory.max': {
+    type: 'integer',
+    brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.max'],
+  },
+  'art.memory.total': {
+    type: 'integer',
+    brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.total'],
+  },
+  'aws.cloudwatch.logs.log_group': {
+    type: 'string',
+    brief: 'The name of the CloudWatch Logs log group',
+    deprecationChain: ['aws.cloudwatch.logs.log_group'],
+  },
+  'aws.cloudwatch.logs.log_stream': {
+    type: 'string',
+    brief: 'The name of the CloudWatch Logs log stream',
+    deprecationChain: ['aws.cloudwatch.logs.log_stream'],
+  },
+  'aws.cloudwatch.logs.url': {
+    type: 'string',
+    brief: 'The URL to the CloudWatch Logs log group',
+    deprecationChain: ['aws.cloudwatch.logs.url'],
+  },
+  'aws.dynamodb.attribute_definitions': {
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
+    deprecationChain: ['aws.dynamodb.attribute_definitions'],
+  },
+  'aws.dynamodb.consistent_read': {
+    type: 'boolean',
+    brief: 'The value of the `ConsistentRead` request parameter.',
+    deprecationChain: ['aws.dynamodb.consistent_read'],
+  },
+  'aws.dynamodb.consumed_capacity': {
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
+    deprecationChain: ['aws.dynamodb.consumed_capacity'],
+  },
+  'aws.dynamodb.count': {
+    type: 'integer',
+    brief: 'The value of the `Count` response parameter.',
+    deprecationChain: ['aws.dynamodb.count'],
+  },
+  'aws.dynamodb.exclusive_start_table': {
+    type: 'string',
+    brief: 'The value of the `ExclusiveStartTableName` request parameter.',
+    deprecationChain: ['aws.dynamodb.exclusive_start_table'],
+  },
+  'aws.dynamodb.global_secondary_index_updates': {
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
+    deprecationChain: ['aws.dynamodb.global_secondary_index_updates'],
+  },
+  'aws.dynamodb.global_secondary_indexes': {
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
+    deprecationChain: ['aws.dynamodb.global_secondary_indexes'],
+  },
+  'aws.dynamodb.index_name': {
+    type: 'string',
+    brief: 'The value of the `IndexName` request parameter.',
+    deprecationChain: ['aws.dynamodb.index_name'],
+  },
+  'aws.dynamodb.item_collection_metrics': {
+    type: 'string',
+    brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
+    deprecationChain: ['aws.dynamodb.item_collection_metrics'],
+  },
+  'aws.dynamodb.limit': {
+    type: 'integer',
+    brief: 'The value of the `Limit` request parameter.',
+    deprecationChain: ['aws.dynamodb.limit'],
+  },
+  'aws.dynamodb.local_secondary_indexes': {
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
+    deprecationChain: ['aws.dynamodb.local_secondary_indexes'],
+  },
+  'aws.dynamodb.projection': {
+    type: 'string',
+    brief: 'The value of the `ProjectionExpression` request parameter.',
+    deprecationChain: ['aws.dynamodb.projection'],
+  },
+  'aws.dynamodb.provisioned_read_capacity': {
+    type: 'double',
+    brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
+    deprecationChain: ['aws.dynamodb.provisioned_read_capacity'],
+  },
+  'aws.dynamodb.provisioned_write_capacity': {
+    type: 'double',
+    brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
+    deprecationChain: ['aws.dynamodb.provisioned_write_capacity'],
+  },
+  'aws.dynamodb.scan_forward': {
+    type: 'boolean',
+    brief: 'The value of the `ScanIndexForward` request parameter.',
+    deprecationChain: ['aws.dynamodb.scan_forward'],
+  },
+  'aws.dynamodb.scanned_count': {
+    type: 'integer',
+    brief: 'The value of the `ScannedCount` response parameter.',
+    deprecationChain: ['aws.dynamodb.scanned_count'],
+  },
+  'aws.dynamodb.segment': {
+    type: 'integer',
+    brief: 'The value of the `Segment` request parameter.',
+    deprecationChain: ['aws.dynamodb.segment'],
+  },
+  'aws.dynamodb.select': {
+    type: 'string',
+    brief: 'The value of the `Select` request parameter.',
+    deprecationChain: ['aws.dynamodb.select'],
+  },
+  'aws.dynamodb.table_count': {
+    type: 'integer',
+    brief: 'The number of items in the `TableNames` response parameter.',
+    deprecationChain: ['aws.dynamodb.table_count'],
+  },
+  'aws.dynamodb.table_names': {
+    type: 'string[]',
+    brief: 'The keys in the `RequestItems` object field.',
+    deprecationChain: ['aws.dynamodb.table_names'],
+  },
+  'aws.dynamodb.total_segments': {
+    type: 'integer',
+    brief: 'The value of the `TotalSegments` request parameter.',
+    deprecationChain: ['aws.dynamodb.total_segments'],
+  },
+  'aws.extended_request_id': {
+    type: 'string',
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    deprecationChain: ['aws.extended_request_id', 'aws.request.extended_id'],
+  },
+  'aws.kinesis.stream.name': {
+    type: 'string',
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    deprecationChain: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
+  },
+  'aws.kinesis.stream_name': {
+    type: 'string',
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    deprecationChain: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
+  },
+  'aws.lambda.aws_request_id': {
+    type: 'string',
+    brief: 'The AWS request ID as received by the Lambda function runtime',
+    deprecationChain: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
+  },
+  'aws.lambda.execution_duration_in_millis': {
+    type: 'double',
+    brief: 'The execution duration of the Lambda function invocation in milliseconds',
+    deprecationChain: ['aws.lambda.execution_duration_in_millis'],
+  },
+  'aws.lambda.function_name': {
+    type: 'string',
+    brief: 'The name of the Lambda function',
+    deprecationChain: ['faas.name', 'aws.lambda.function_name'],
+  },
+  'aws.lambda.function_version': {
+    type: 'string',
+    brief: 'The version of the Lambda function',
+    deprecationChain: ['faas.version', 'aws.lambda.function_version'],
+  },
+  'aws.lambda.invoked_arn': {
+    type: 'string',
+    brief: 'The full ARN of the Lambda function that was invoked',
+    deprecationChain: ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'],
+  },
+  'aws.lambda.invoked_function_arn': {
+    type: 'string',
+    brief: 'The full ARN of the Lambda function that was invoked',
+    deprecationChain: ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'],
+  },
+  'aws.lambda.remaining_time_in_millis': {
+    type: 'double',
+    brief: 'The remaining time in milliseconds before the Lambda function times out',
+    deprecationChain: ['aws.lambda.remaining_time_in_millis'],
+  },
+  'aws.log.group.names': {
+    type: 'string[]',
+    brief: 'The name(s) of the AWS log group(s) an application is writing to.',
+    deprecationChain: ['aws.log.group.names'],
+  },
+  'aws.log.stream.names': {
+    type: 'string[]',
+    brief: 'The name(s) of the AWS log stream(s) an application is writing to.',
+    deprecationChain: ['aws.log.stream.names'],
+  },
+  'aws.operation_name': {
+    type: 'string',
+    brief: 'The name of the API operation invoked on an AWS service.',
+    deprecationChain: ['rpc.method', 'aws.operation_name'],
+  },
+  'aws.request.extended_id': {
+    type: 'string',
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    deprecationChain: ['aws.extended_request_id', 'aws.request.extended_id'],
+  },
+  'aws.request.id': {
+    type: 'string',
+    brief: 'The AWS request ID as returned in the response headers.',
+    deprecationChain: ['aws.request_id', 'aws.request.id'],
+  },
+  'aws.request.url': {
+    type: 'string',
+    brief: 'The URL of the AWS API request.',
+    deprecationChain: ['url.full', 'aws.request.url'],
+  },
+  'aws.request_id': {
+    type: 'string',
+    brief: 'The AWS request ID as returned in the response headers.',
+    deprecationChain: ['aws.request_id', 'aws.request.id'],
+  },
+  'aws.s3.bucket': {
+    type: 'string',
+    brief: 'The S3 bucket name the request refers to.',
+    deprecationChain: ['aws.s3.bucket'],
+  },
+  'aws.secretsmanager.secret.arn': {
+    type: 'string',
+    brief: 'The ARN of the Secret stored in Secrets Manager.',
+    deprecationChain: ['aws.secretsmanager.secret.arn'],
+  },
+  'aws.sns.topic.arn': {
+    type: 'string',
+    brief:
+      'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
+    deprecationChain: ['aws.sns.topic.arn'],
+  },
+  'aws.step_functions.activity.arn': {
+    type: 'string',
+    brief: 'The ARN of the AWS Step Functions Activity.',
+    deprecationChain: ['aws.step_functions.activity.arn'],
+  },
+  'aws.step_functions.state_machine.arn': {
+    type: 'string',
+    brief: 'The ARN of the AWS Step Functions State Machine.',
+    deprecationChain: ['aws.step_functions.state_machine.arn'],
+  },
+  aws_region: {
+    type: 'string',
+    brief: 'The geographical region the AWS resource is running',
+    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
+  },
+  blocked_main_thread: {
+    type: 'boolean',
+    brief: 'Whether the main thread was blocked by the span.',
+    deprecationChain: ['blocked_main_thread'],
+  },
+  'browser.bfcache.frame': {
+    type: 'string',
+    brief:
+      "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
+    deprecationChain: ['browser.bfcache.frame'],
+  },
+  'browser.bfcache.not_restored_reason_count': {
+    type: 'integer',
+    brief:
+      'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).',
+    deprecationChain: ['browser.bfcache.not_restored_reason_count'],
+  },
+  'browser.bfcache.outcome': {
+    type: 'string',
+    brief:
+      "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
+    deprecationChain: ['browser.bfcache.outcome'],
+  },
+  'browser.bfcache.reason': {
+    type: 'string',
+    brief:
+      'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
+    deprecationChain: ['browser.bfcache.reason'],
+  },
+  'browser.name': {
+    type: 'string',
+    brief: 'The name of the browser.',
+    deprecationChain: ['browser.name', 'sentry.browser.name'],
+  },
+  'browser.performance.navigation.activation_start': {
+    type: 'double',
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    deprecationChain: ['browser.performance.navigation.activation_start', 'performance.activationStart'],
+  },
+  'browser.performance.time_origin': {
+    type: 'double',
+    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    deprecationChain: ['browser.performance.time_origin', 'performance.timeOrigin'],
+  },
+  'browser.report.type': {
+    type: 'string',
+    brief: 'A browser report sent via reporting API..',
+    deprecationChain: ['browser.report.type'],
+  },
+  'browser.script.invoker': {
+    type: 'string',
+    brief: 'How a script was called in the browser.',
+    deprecationChain: ['browser.script.invoker'],
+  },
+  'browser.script.invoker_type': {
+    type: 'string',
+    brief: 'Browser script entry point type.',
+    deprecationChain: ['browser.script.invoker_type'],
+  },
+  'browser.script.source_char_position': {
+    type: 'integer',
+    brief: 'A number representing the script character position of the script.',
+    deprecationChain: ['browser.script.source_char_position'],
+  },
+  'browser.version': {
+    type: 'string',
+    brief: 'The version of the browser.',
+    deprecationChain: ['browser.version'],
+  },
+  'browser.web_vital.cls.report_event': {
+    type: 'string',
+    brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
+    deprecationChain: ['browser.web_vital.cls.report_event'],
+  },
+  'browser.web_vital.cls.source.<key>': {
+    type: 'string',
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    deprecationChain: ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'],
+  },
+  'browser.web_vital.cls.value': {
+    type: 'double',
+    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
+    deprecationChain: ['browser.web_vital.cls.value', 'cls'],
+  },
+  'browser.web_vital.fcp.value': {
+    type: 'double',
+    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
+    deprecationChain: ['browser.web_vital.fcp.value', 'fcp'],
+  },
+  'browser.web_vital.fp.value': {
+    type: 'double',
+    brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
+    deprecationChain: ['browser.web_vital.fp.value', 'fp'],
+  },
+  'browser.web_vital.inp.value': {
+    type: 'double',
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    deprecationChain: ['browser.web_vital.inp.value', 'inp'],
+  },
+  'browser.web_vital.lcp.element': {
+    type: 'string',
+    brief: 'The HTML element selector or component name for which LCP was reported',
+    deprecationChain: ['browser.web_vital.lcp.element', 'lcp.element'],
+  },
+  'browser.web_vital.lcp.id': {
+    type: 'string',
+    brief: 'The id of the dom element responsible for the largest contentful paint',
+    deprecationChain: ['browser.web_vital.lcp.id', 'lcp.id'],
+  },
+  'browser.web_vital.lcp.load_time': {
+    type: 'integer',
+    brief: 'The time it took for the LCP element to be loaded',
+    deprecationChain: ['browser.web_vital.lcp.load_time', 'lcp.loadTime'],
+  },
+  'browser.web_vital.lcp.render_time': {
+    type: 'integer',
+    brief: 'The time it took for the LCP element to be rendered',
+    deprecationChain: ['browser.web_vital.lcp.render_time', 'lcp.renderTime'],
+  },
+  'browser.web_vital.lcp.report_event': {
+    type: 'string',
+    brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
+    deprecationChain: ['browser.web_vital.lcp.report_event'],
+  },
+  'browser.web_vital.lcp.size': {
+    type: 'integer',
+    brief: 'The size of the largest contentful paint element',
+    deprecationChain: ['browser.web_vital.lcp.size', 'lcp.size'],
+  },
+  'browser.web_vital.lcp.url': {
+    type: 'string',
+    brief: 'The url of the dom element responsible for the largest contentful paint',
+    deprecationChain: ['browser.web_vital.lcp.url', 'lcp.url'],
+  },
+  'browser.web_vital.lcp.value': {
+    type: 'double',
+    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
+    deprecationChain: ['browser.web_vital.lcp.value', 'lcp'],
+  },
+  'browser.web_vital.ttfb.request_time': {
+    type: 'double',
+    brief:
+      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+    deprecationChain: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
+  },
+  'browser.web_vital.ttfb.value': {
+    type: 'double',
+    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
+    deprecationChain: ['browser.web_vital.ttfb.value', 'ttfb'],
+  },
+  'cache.hit': {
+    type: 'boolean',
+    brief: 'If the cache was hit during this span.',
+    deprecationChain: ['cache.hit'],
+  },
+  'cache.item_size': {
+    type: 'byte',
+    brief: 'The size of the requested item in the cache. In bytes.',
+    deprecationChain: ['cache.item_size'],
+  },
+  'cache.key': {
+    type: 'string[]',
+    brief: 'The key of the cache accessed.',
+    deprecationChain: ['cache.key'],
+  },
+  'cache.operation': {
+    type: 'string',
+    brief: 'The operation being performed on the cache.',
+    deprecationChain: ['cache.operation'],
+  },
+  'cache.ttl': {
+    type: 'integer',
+    brief: 'The ttl of the cache in seconds',
+    deprecationChain: ['cache.ttl'],
+  },
+  'cache.write': {
+    type: 'boolean',
+    brief: 'If the cache operation resulted in a write to the cache.',
+    deprecationChain: ['cache.write'],
+  },
+  channel: {
+    type: 'string',
+    brief: 'The channel name that is being used.',
+    deprecationChain: ['channel'],
+  },
+  'client.address': {
+    type: 'string',
+    brief:
+      'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['client.address'],
+  },
+  'client.port': {
+    type: 'integer',
+    brief: 'Client port number.',
+    deprecationChain: ['client.port'],
+  },
+  client_sample_rate: {
+    type: 'double',
+    brief: 'Rate at which a span was sampled in the SDK.',
+    deprecationChain: ['sentry.client_sample_rate', 'client_sample_rate'],
+  },
+  'cloud.account.id': {
+    type: 'string',
+    brief: 'The cloud account ID the resource is assigned to',
+    deprecationChain: ['cloud.account.id'],
+  },
+  'cloud.availability_zone': {
+    type: 'string',
+    brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
+    deprecationChain: ['cloud.availability_zone'],
+  },
+  'cloud.platform': {
+    type: 'string',
+    brief: 'The cloud platform in use',
+    deprecationChain: ['cloud.platform'],
+  },
+  'cloud.provider': {
+    type: 'string',
+    brief: 'Name of the cloud provider',
+    deprecationChain: ['cloud.provider'],
+  },
+  'cloud.region': {
+    type: 'string',
+    brief: 'The geographical region the resource is running',
+    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
+  },
+  'cloud.resource_id': {
+    type: 'string',
+    brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
+    deprecationChain: ['cloud.resource_id', 'faas.id'],
+  },
+  'cloudflare.d1.duration': {
+    type: 'integer',
+    brief: 'The duration of a Cloudflare D1 operation.',
+    deprecationChain: ['cloudflare.d1.duration'],
+  },
+  'cloudflare.d1.query_type': {
+    type: 'string',
+    brief: 'The type of query executed in a Cloudflare D1 operation',
+    deprecationChain: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+  },
+  'cloudflare.d1.rows_read': {
+    type: 'integer',
+    brief: 'The number of rows read in a Cloudflare D1 operation.',
+    deprecationChain: ['cloudflare.d1.rows_read'],
+  },
+  'cloudflare.d1.rows_written': {
+    type: 'integer',
+    brief: 'The number of rows written in a Cloudflare D1 operation.',
+    deprecationChain: ['cloudflare.d1.rows_written'],
+  },
+  'cloudflare.durable_object.query.bindings': {
+    type: 'integer',
+    brief: 'The number of bound parameters passed to the SQL exec call.',
+    deprecationChain: ['cloudflare.durable_object.query.bindings'],
+  },
+  'cloudflare.durable_object.response.rows_read': {
+    type: 'integer',
+    brief: 'The number of rows read by a Cloudflare Durable Object SQL operation.',
+    deprecationChain: ['cloudflare.durable_object.response.rows_read'],
+  },
+  'cloudflare.durable_object.response.rows_written': {
+    type: 'integer',
+    brief: 'The number of rows written by a Cloudflare Durable Object SQL operation.',
+    deprecationChain: ['cloudflare.durable_object.response.rows_written'],
+  },
+  'cloudflare.r2.bucket': {
+    type: 'string',
+    brief: 'The name of the Cloudflare R2 bucket binding',
+    deprecationChain: ['cloudflare.r2.bucket'],
+  },
+  'cloudflare.r2.operation': {
+    type: 'string',
+    brief: 'The R2 API operation being performed',
+    deprecationChain: ['cloudflare.r2.operation'],
+  },
+  'cloudflare.r2.request.delimiter': {
+    type: 'string',
+    brief: 'The delimiter used to group objects in an R2 list operation',
+    deprecationChain: ['cloudflare.r2.request.delimiter'],
+  },
+  'cloudflare.r2.request.key': {
+    type: 'string',
+    brief: 'The object key used in the R2 operation',
+    deprecationChain: ['cloudflare.r2.request.key'],
+  },
+  'cloudflare.r2.request.part_number': {
+    type: 'integer',
+    brief: 'The part number in a multipart upload operation',
+    deprecationChain: ['cloudflare.r2.request.part_number'],
+  },
+  'cloudflare.r2.request.prefix': {
+    type: 'string',
+    brief: 'The prefix used to filter objects in an R2 list operation',
+    deprecationChain: ['cloudflare.r2.request.prefix'],
+  },
+  'cloudflare.workflow.attempt': {
+    type: 'integer',
+    brief: 'The current attempt number for a Cloudflare Workflow step',
+    deprecationChain: ['cloudflare.workflow.attempt'],
+  },
+  'cloudflare.workflow.retries.backoff': {
+    type: 'string',
+    brief: 'The backoff strategy for Cloudflare Workflow step retries',
+    deprecationChain: ['cloudflare.workflow.retries.backoff'],
+  },
+  'cloudflare.workflow.retries.delay': {
+    type: 'string',
+    brief: 'The delay between Cloudflare Workflow step retries',
+    deprecationChain: ['cloudflare.workflow.retries.delay'],
+  },
+  'cloudflare.workflow.retries.limit': {
+    type: 'integer',
+    brief: 'The maximum number of retries for a Cloudflare Workflow step',
+    deprecationChain: ['cloudflare.workflow.retries.limit'],
+  },
+  'cloudflare.workflow.timeout': {
+    type: 'string',
+    brief: 'The timeout duration for a Cloudflare Workflow step',
+    deprecationChain: ['cloudflare.workflow.timeout'],
+  },
+  cls: {
+    type: 'double',
+    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
+    deprecationChain: ['browser.web_vital.cls.value', 'cls'],
+  },
+  'cls.source.<key>': {
+    type: 'string',
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    deprecationChain: ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'],
+  },
+  code: {
+    type: 'string',
+    brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
+    deprecationChain: ['rpc.response.status_code', 'code'],
+  },
+  'code.file.path': {
+    type: 'string',
+    brief:
+      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
+    deprecationChain: ['code.file.path'],
+  },
+  'code.filepath': {
+    type: 'string',
+    brief:
+      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
+    deprecationChain: ['code.filepath'],
+  },
+  'code.function': {
+    type: 'string',
+    brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+    deprecationChain: ['code.function', 'code.function.name', 'django.function_name'],
+  },
+  'code.function.name': {
+    type: 'string',
+    brief: 'The method or function fully-qualified name without arguments.',
+    deprecationChain: ['code.function.name', 'code.function', 'django.function_name'],
+  },
+  'code.line.number': {
+    type: 'integer',
+    brief:
+      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
+    deprecationChain: ['code.line.number'],
+  },
+  'code.lineno': {
+    type: 'integer',
+    brief:
+      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
+    deprecationChain: ['code.lineno'],
+  },
+  'code.namespace': {
+    type: 'string',
+    brief:
+      "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
+    deprecationChain: ['code.namespace'],
+  },
+  'connection.rtt': {
+    type: 'integer',
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    deprecationChain: ['network.connection.rtt', 'connection.rtt'],
+  },
+  connectionType: {
+    type: 'string',
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
+  },
+  'culture.calendar': {
+    type: 'string',
+    brief: 'The calendar system used by the culture.',
+    deprecationChain: ['culture.calendar'],
+  },
+  'culture.display_name': {
+    type: 'string',
+    brief: 'Human readable name of the culture.',
+    deprecationChain: ['culture.display_name'],
+  },
+  'culture.is_24_hour_format': {
+    type: 'boolean',
+    brief: 'Whether the culture uses 24-hour time format.',
+    deprecationChain: ['culture.is_24_hour_format'],
+  },
+  'culture.locale': {
+    type: 'string',
+    brief: 'The locale identifier following RFC 4646.',
+    deprecationChain: ['culture.locale'],
+  },
+  'culture.timezone': {
+    type: 'string',
+    brief: 'The timezone of the culture, as a geographic timezone identifier.',
+    deprecationChain: ['culture.timezone'],
+  },
+  'db.collection.name': {
+    type: 'string',
+    brief: 'The name of a collection (table, container) within the database.',
+    deprecationChain: ['db.collection.name', 'db.mongodb.collection'],
+  },
+  'db.driver.name': {
+    type: 'string',
+    brief: 'The name of the driver used for the database connection.',
+    deprecationChain: ['db.driver.name'],
+  },
+  'db.mongodb.collection': {
+    type: 'string',
+    brief: 'The MongoDB collection being accessed.',
+    deprecationChain: ['db.collection.name', 'db.mongodb.collection'],
+  },
+  'db.name': {
+    type: 'string',
+    brief: 'The name of the database being accessed.',
+    deprecationChain: ['db.name'],
+  },
+  'db.namespace': {
+    type: 'string',
+    brief: 'The name of the database being accessed.',
+    deprecationChain: ['db.namespace'],
+  },
+  'db.operation': {
+    type: 'string',
+    brief: 'The name of the operation being executed.',
+    deprecationChain: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+  },
+  'db.operation.batch.size': {
+    type: 'integer',
+    brief:
+      'The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.',
+    deprecationChain: ['db.operation.batch.size'],
+  },
+  'db.operation.name': {
+    type: 'string',
+    brief: 'The name of the operation being executed.',
+    deprecationChain: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+  },
+  'db.params': {
+    type: 'string',
+    brief: 'The query bindings for a database request.',
+    deprecationChain: ['db.params'],
+  },
+  'db.query.parameter.<key>': {
+    type: 'string',
+    brief:
+      'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
+    deprecationChain: ['db.query.parameter.<key>'],
+  },
+  'db.query.summary': {
+    type: 'string',
+    brief:
+      'A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.',
+    deprecationChain: ['db.query.summary'],
+  },
+  'db.query.text': {
+    type: 'string',
+    brief:
+      'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
+    deprecationChain: ['db.query.text', 'db.statement', 'query'],
+  },
+  'db.redis.connection': {
+    type: 'string',
+    brief: 'The redis connection name.',
+    deprecationChain: ['db.redis.connection'],
+  },
+  'db.redis.key': {
+    type: 'string',
+    brief: 'The key the Redis command is operating on.',
+    deprecationChain: ['db.redis.key', 'redis.key'],
+  },
+  'db.redis.parameters': {
+    type: 'string[]',
+    brief: 'The array of command parameters given to a redis command.',
+    deprecationChain: ['db.redis.parameters'],
+  },
+  'db.response.status_code': {
+    type: 'string',
+    brief:
+      'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
+    deprecationChain: ['db.response.status_code'],
+  },
+  'db.sql.bindings': {
+    type: 'string[]',
+    brief: 'The array of query bindings.',
+    deprecationChain: ['db.sql.bindings'],
+  },
+  'db.statement': {
+    type: 'string',
+    brief: 'The database statement being executed.',
+    deprecationChain: ['db.query.text', 'db.statement', 'query'],
+  },
+  'db.stored_procedure.name': {
+    type: 'string',
+    brief: 'The name of a stored procedure being called.',
+    deprecationChain: ['db.stored_procedure.name'],
+  },
+  'db.system': {
+    type: 'string',
+    brief:
+      'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
+    deprecationChain: ['db.system.name', 'db.system', 'span.system'],
+  },
+  'db.system.name': {
+    type: 'string',
+    brief:
+      'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
+    deprecationChain: ['db.system.name', 'db.system', 'span.system'],
+  },
+  'db.user': {
+    type: 'string',
+    brief: 'The database user.',
+    deprecationChain: ['db.user'],
+  },
+  'device.archs': {
+    type: 'string[]',
+    brief: 'The CPU architectures of the device.',
+    deprecationChain: ['device.archs'],
+  },
+  'device.battery_level': {
+    type: 'double',
+    brief: 'The battery level of the device as a percentage (0-100).',
+    deprecationChain: ['device.battery_level'],
+  },
+  'device.battery_temperature': {
+    type: 'double',
+    brief: 'The battery temperature of the device in Celsius.',
+    deprecationChain: ['device.battery_temperature'],
+  },
+  'device.boot_time': {
+    type: 'string',
+    brief: 'A formatted UTC timestamp when the system was booted.',
+    deprecationChain: ['device.boot_time'],
+  },
+  'device.brand': {
+    type: 'string',
+    brief: 'The brand of the device.',
+    deprecationChain: ['device.brand'],
+  },
+  'device.charging': {
+    type: 'boolean',
+    brief: 'Whether the device was charging or not.',
+    deprecationChain: ['device.charging'],
+  },
+  'device.chipset': {
+    type: 'string',
+    brief: 'The chipset of the device.',
+    deprecationChain: ['device.chipset'],
+  },
+  'device.class': {
+    type: 'string',
+    brief:
+      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    deprecationChain: ['device.class'],
+  },
+  'device.connection_type': {
+    type: 'string',
+    brief: 'The internet connection type currently being used by the device.',
+    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
+  },
+  'device.cpu_description': {
+    type: 'string',
+    brief: 'A description of the CPU of the device.',
+    deprecationChain: ['device.cpu_description'],
+  },
+  'device.external_free_storage': {
+    type: 'integer',
+    brief: 'External storage free size in bytes.',
+    deprecationChain: ['device.external_free_storage'],
+  },
+  'device.external_storage_size': {
+    type: 'integer',
+    brief: 'External storage total size in bytes.',
+    deprecationChain: ['device.external_storage_size'],
+  },
+  'device.family': {
+    type: 'string',
+    brief: 'The family of the device.',
+    deprecationChain: ['device.family'],
+  },
+  'device.free_memory': {
+    type: 'integer',
+    brief: 'Free system memory in bytes.',
+    deprecationChain: ['device.free_memory'],
+  },
+  'device.free_storage': {
+    type: 'integer',
+    brief: 'Free device storage in bytes.',
+    deprecationChain: ['device.free_storage'],
+  },
+  'device.id': {
+    type: 'string',
+    brief: 'Unique device identifier.',
+    deprecationChain: ['device.id'],
+  },
+  'device.locale': {
+    type: 'string',
+    brief: 'The locale of the device.',
+    deprecationChain: ['device.locale'],
+  },
+  'device.low_memory': {
+    type: 'boolean',
+    brief: 'Whether the device was low on memory.',
+    deprecationChain: ['device.low_memory'],
+  },
+  'device.low_power_mode': {
+    type: 'boolean',
+    brief: 'Whether the device is in Low Power Mode.',
+    deprecationChain: ['device.low_power_mode'],
+  },
+  'device.manufacturer': {
+    type: 'string',
+    brief: 'The manufacturer of the device.',
+    deprecationChain: ['device.manufacturer'],
+  },
+  'device.memory.estimated_capacity': {
+    type: 'integer',
+    brief:
+      'The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB',
+    deprecationChain: ['device.memory.estimated_capacity', 'deviceMemory'],
+  },
+  'device.memory_size': {
+    type: 'integer',
+    brief: 'Total system memory available in bytes.',
+    deprecationChain: ['device.memory_size'],
+  },
+  'device.model': {
+    type: 'string',
+    brief: 'The model of the device.',
+    deprecationChain: ['device.model'],
+  },
+  'device.model_id': {
+    type: 'string',
+    brief: 'An internal hardware revision to identify the device exactly.',
+    deprecationChain: ['device.model_id'],
+  },
+  'device.name': {
+    type: 'string',
+    brief:
+      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    deprecationChain: ['device.name'],
+  },
+  'device.online': {
+    type: 'boolean',
+    brief: 'Whether the device was online or not.',
+    deprecationChain: ['device.online'],
+  },
+  'device.orientation': {
+    type: 'string',
+    brief: 'The orientation of the device, either "portrait" or "landscape".',
+    deprecationChain: ['device.orientation'],
+  },
+  'device.processor_count': {
+    type: 'integer',
+    brief: 'Number of "logical processors".',
+    deprecationChain: ['device.processor_count', 'hardwareConcurrency'],
+  },
+  'device.processor_frequency': {
+    type: 'double',
+    brief: 'Processor frequency in MHz.',
+    deprecationChain: ['device.processor_frequency'],
+  },
+  'device.screen_density': {
+    type: 'double',
+    brief: 'The screen density of the device.',
+    deprecationChain: ['device.screen_density'],
+  },
+  'device.screen_dpi': {
+    type: 'integer',
+    brief: 'The screen density in dots-per-inch (DPI) of the device.',
+    deprecationChain: ['device.screen_dpi'],
+  },
+  'device.screen_height_pixels': {
+    type: 'integer',
+    brief: 'The height of the device screen in pixels.',
+    deprecationChain: ['device.screen_height_pixels'],
+  },
+  'device.screen_width_pixels': {
+    type: 'integer',
+    brief: 'The width of the device screen in pixels.',
+    deprecationChain: ['device.screen_width_pixels'],
+  },
+  'device.simulator': {
+    type: 'boolean',
+    brief: 'Whether the device is a simulator or an actual device.',
+    deprecationChain: ['device.simulator'],
+  },
+  'device.storage_size': {
+    type: 'integer',
+    brief: 'Total device storage in bytes.',
+    deprecationChain: ['device.storage_size'],
+  },
+  'device.thermal_state': {
+    type: 'string',
+    brief:
+      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    deprecationChain: ['device.thermal_state'],
+  },
+  'device.timezone': {
+    type: 'string',
+    brief: 'The timezone of the device.',
+    deprecationChain: ['device.timezone'],
+  },
+  'device.usable_memory': {
+    type: 'integer',
+    brief: 'Memory usable for the app in bytes.',
+    deprecationChain: ['device.usable_memory'],
+  },
+  deviceMemory: {
+    type: 'string',
+    brief: 'The estimated total memory capacity of the device, only a rough estimation in gigabytes.',
+    deprecationChain: ['device.memory.estimated_capacity', 'deviceMemory'],
+  },
+  dist: {
+    type: 'string',
+    brief: 'The sentry dist.',
+    deprecationChain: ['sentry.dist', 'dist'],
+  },
+  'django.function_name': {
+    type: 'string',
+    brief: 'The fully qualified name of a function used in a Django context.',
+    deprecationChain: ['code.function.name', 'code.function', 'django.function_name'],
+  },
+  'django.middleware_name': {
+    type: 'string',
+    brief: 'The name of the Django middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  effectiveConnectionType: {
+    type: 'string',
+    brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    deprecationChain: ['network.connection.effective_type', 'effectiveConnectionType'],
+  },
+  environment: {
+    type: 'string',
+    brief: 'The sentry environment.',
+    deprecationChain: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
+  },
+  'error.type': {
+    type: 'string',
+    brief: 'Describes a class of error the operation ended with.',
+    deprecationChain: ['error.type'],
+  },
+  'event.id': {
+    type: 'integer',
+    brief: 'The unique identifier for this event (log record)',
+    deprecationChain: ['event.id'],
+  },
+  'event.name': {
+    type: 'string',
+    brief: 'The name that uniquely identifies this event (log record)',
+    deprecationChain: ['event.name'],
+  },
+  'exception.escaped': {
+    type: 'boolean',
+    brief:
+      'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
+    deprecationChain: ['exception.escaped'],
+  },
+  'exception.message': {
+    type: 'string',
+    brief: 'The error message.',
+    deprecationChain: ['exception.message'],
+  },
+  'exception.stacktrace': {
+    type: 'string',
+    brief:
+      'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
+    deprecationChain: ['exception.stacktrace'],
+  },
+  'exception.type': {
+    type: 'string',
+    brief:
+      'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
+    deprecationChain: ['exception.type'],
+  },
+  'faas.coldstart': {
+    type: 'boolean',
+    brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
+    deprecationChain: ['faas.coldstart'],
+  },
+  'faas.cron': {
+    type: 'string',
+    brief: 'A string containing the schedule period as Cron Expression.',
+    deprecationChain: ['faas.cron'],
+  },
+  'faas.duration_in_ms': {
+    type: 'integer',
+    brief: 'The duration a function took to run, in milliseconds.',
+    deprecationChain: ['faas.duration_in_ms'],
+  },
+  'faas.entry_point': {
+    type: 'string',
+    brief: "The code that's run when the cloud provider invokes your function.",
+    deprecationChain: ['faas.entry_point'],
+  },
+  'faas.execution': {
+    type: 'string',
+    brief: 'The execution ID of the current function execution.',
+    deprecationChain: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
+  },
+  'faas.id': {
+    type: 'string',
+    brief: 'The unique ID of the single function that this runtime instance executes.',
+    deprecationChain: ['cloud.resource_id', 'faas.id'],
+  },
+  'faas.identity': {
+    type: 'string',
+    brief:
+      'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
+    deprecationChain: ['faas.identity'],
+  },
+  'faas.invocation_id': {
+    type: 'string',
+    brief: 'The invocation ID of the current function invocation.',
+    deprecationChain: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
+  },
+  'faas.invoked_name': {
+    type: 'string',
+    brief: 'The name of the invoked function.',
+    deprecationChain: ['faas.invoked_name'],
+  },
+  'faas.invoked_provider': {
+    type: 'string',
+    brief: 'The cloud provider of the invoked function.',
+    deprecationChain: ['faas.invoked_provider'],
+  },
+  'faas.invoked_region': {
+    type: 'string',
+    brief: 'The cloud region of the invoked function.',
+    deprecationChain: ['faas.invoked_region'],
+  },
+  'faas.name': {
+    type: 'string',
+    brief: 'The name of the serverless function',
+    deprecationChain: ['faas.name', 'aws.lambda.function_name'],
+  },
+  'faas.time': {
+    type: 'string',
+    brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
+    deprecationChain: ['faas.time'],
+  },
+  'faas.trigger': {
+    type: 'string',
+    brief: 'Type of the trigger which caused this function invocation.',
+    deprecationChain: ['faas.trigger'],
+  },
+  'faas.version': {
+    type: 'string',
+    brief: 'The version of the function that was invoked',
+    deprecationChain: ['faas.version', 'aws.lambda.function_version'],
+  },
+  fcp: {
+    type: 'double',
+    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
+    deprecationChain: ['browser.web_vital.fcp.value', 'fcp'],
+  },
+  'file.path': {
+    type: 'string',
+    brief: 'Path to the file.',
+    deprecationChain: ['file.path'],
+  },
+  'file.size': {
+    type: 'integer',
+    brief: 'File size in bytes.',
+    deprecationChain: ['file.size'],
+  },
+  'flag.evaluation.<key>': {
+    type: 'boolean',
+    brief:
+      'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
+    deprecationChain: ['flag.evaluation.<key>'],
+  },
+  fp: {
+    type: 'double',
+    brief: 'The time it takes for the browser to render the first pixel on the screen',
+    deprecationChain: ['browser.web_vital.fp.value', 'fp'],
+  },
+  frames_frozen_rate: {
+    type: 'double',
+    brief:
+      'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    deprecationChain: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
+  },
+  frames_slow_rate: {
+    type: 'double',
+    brief:
+      'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    deprecationChain: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
+  },
+  fs_error: {
+    type: 'string',
+    brief: 'The error message of a file system error.',
+    deprecationChain: ['fs_error'],
+  },
+  'gcp.function.context.event_id': {
+    type: 'string',
+    brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
+    deprecationChain: ['gcp.function.context.event_id'],
+  },
+  'gcp.function.context.event_type': {
+    type: 'string',
+    brief: 'The type of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.event_type'],
+  },
+  'gcp.function.context.id': {
+    type: 'string',
+    brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
+    deprecationChain: ['gcp.function.context.id'],
+  },
+  'gcp.function.context.resource': {
+    type: 'string',
+    brief: 'The resource that triggered the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.resource'],
+  },
+  'gcp.function.context.source': {
+    type: 'string',
+    brief: 'The source of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.source'],
+  },
+  'gcp.function.context.specversion': {
+    type: 'string',
+    brief: 'The CloudEvents specification version of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.specversion'],
+  },
+  'gcp.function.context.time': {
+    type: 'string',
+    brief: 'The timestamp of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.time'],
+  },
+  'gcp.function.context.timestamp': {
+    type: 'string',
+    brief: 'The legacy timestamp of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.timestamp'],
+  },
+  'gcp.function.context.type': {
+    type: 'string',
+    brief: 'The type of the GCP Cloud Function event context',
+    deprecationChain: ['gcp.function.context.type'],
+  },
+  'gcp.project.id': {
+    type: 'string',
+    brief: 'The ID of the project in GCP that this resource is associated with',
+    deprecationChain: ['gcp.project.id'],
+  },
+  gcp_region: {
+    type: 'string',
+    brief: 'The geographical region the GCP resource is running',
+    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
+  },
+  'gen_ai.agent.name': {
+    type: 'string',
+    brief: 'The name of the agent being used.',
+    deprecationChain: ['gen_ai.agent.name'],
+  },
+  'gen_ai.context.utilization': {
+    type: 'double',
+    brief: 'The fraction of the model context window utilized by this generation.',
+    deprecationChain: ['gen_ai.context.utilization'],
+  },
+  'gen_ai.context.window_size': {
+    type: 'integer',
+    brief: 'The maximum context window size supported by the model for this generation.',
+    deprecationChain: ['gen_ai.context.window_size'],
+  },
+  'gen_ai.conversation.id': {
+    type: 'string',
+    brief:
+      'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.',
+    deprecationChain: ['gen_ai.conversation.id'],
+  },
+  'gen_ai.cost.cache_creation.input_tokens': {
+    type: 'double',
+    brief: 'The cost of input tokens written to cache in USD.',
+    deprecationChain: ['gen_ai.cost.cache_creation.input_tokens'],
+  },
+  'gen_ai.cost.cache_read.input_tokens': {
+    type: 'double',
+    brief: 'The cost of cached input tokens in USD.',
+    deprecationChain: ['gen_ai.cost.cache_read.input_tokens'],
+  },
+  'gen_ai.cost.input_tokens': {
+    type: 'double',
+    brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
+    deprecationChain: ['gen_ai.cost.input_tokens'],
+  },
+  'gen_ai.cost.output_tokens': {
+    type: 'double',
+    brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
+    deprecationChain: ['gen_ai.cost.output_tokens'],
+  },
+  'gen_ai.cost.reasoning.output_tokens': {
+    type: 'double',
+    brief: 'The cost of reasoning output tokens in USD.',
+    deprecationChain: ['gen_ai.cost.reasoning.output_tokens'],
+  },
+  'gen_ai.cost.total_tokens': {
+    type: 'double',
+    brief: 'The total cost for the tokens used.',
+    deprecationChain: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
+  },
+  'gen_ai.embeddings.input': {
+    type: 'string',
+    brief: 'The input to the embeddings model.',
+    deprecationChain: ['gen_ai.embeddings.input'],
+  },
+  'gen_ai.function_id': {
+    type: 'string',
+    brief:
+      'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
+    deprecationChain: ['gen_ai.function_id'],
+  },
+  'gen_ai.input.messages': {
+    type: 'string',
+    brief:
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+  },
+  'gen_ai.operation.name': {
+    type: 'string',
+    brief:
+      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+    deprecationChain: ['gen_ai.operation.name'],
+  },
+  'gen_ai.operation.type': {
+    type: 'string',
+    brief:
+      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+    deprecationChain: ['gen_ai.operation.type'],
+  },
+  'gen_ai.output.messages': {
+    type: 'string',
+    brief:
+      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'gen_ai.pipeline.name': {
+    type: 'string',
+    brief: 'Name of the AI pipeline or chain being executed.',
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+  },
+  'gen_ai.prompt': {
+    type: 'string',
+    brief: 'The input messages sent to the model',
+    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+  },
+  'gen_ai.prompt.name': {
+    type: 'string',
+    brief: 'The name of the prompt that uniquely identifies it.',
+    deprecationChain: ['gen_ai.prompt.name', 'mcp.prompt.name'],
+  },
+  'gen_ai.provider.name': {
+    type: 'string',
+    brief: 'The Generative AI provider as identified by the client or server instrumentation.',
+    deprecationChain: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
+  },
+  'gen_ai.request.available_tools': {
+    type: 'string',
+    brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+  },
+  'gen_ai.request.frequency_penalty': {
+    type: 'double',
+    brief:
+      'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
+    deprecationChain: ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'],
+  },
+  'gen_ai.request.max_tokens': {
+    type: 'integer',
+    brief: 'The maximum number of tokens to generate in the response.',
+    deprecationChain: ['gen_ai.request.max_tokens'],
+  },
+  'gen_ai.request.messages': {
+    type: 'string',
+    brief:
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+    deprecationChain: ['gen_ai.request.messages'],
+  },
+  'gen_ai.request.model': {
+    type: 'string',
+    brief: 'The model identifier being used for the request.',
+    deprecationChain: ['gen_ai.request.model', 'ai.model_id'],
+  },
+  'gen_ai.request.presence_penalty': {
+    type: 'double',
+    brief:
+      'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
+    deprecationChain: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
+  },
+  'gen_ai.request.reasoning.level': {
+    type: 'string',
+    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
+    deprecationChain: ['gen_ai.request.reasoning.level'],
+  },
+  'gen_ai.request.seed': {
+    type: 'string',
+    brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
+    deprecationChain: ['gen_ai.request.seed', 'ai.seed'],
+  },
+  'gen_ai.request.stop_sequences': {
+    type: 'string[]',
+    brief: 'List of sequences that the model will use to stop generating further tokens.',
+    deprecationChain: ['gen_ai.request.stop_sequences'],
+  },
+  'gen_ai.request.temperature': {
+    type: 'double',
+    brief:
+      'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
+    deprecationChain: ['gen_ai.request.temperature', 'ai.temperature'],
+  },
+  'gen_ai.request.top_k': {
+    type: 'integer',
+    brief:
+      'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
+    deprecationChain: ['gen_ai.request.top_k', 'ai.top_k'],
+  },
+  'gen_ai.request.top_p': {
+    type: 'double',
+    brief:
+      'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
+    deprecationChain: ['gen_ai.request.top_p', 'ai.top_p'],
+  },
+  'gen_ai.response.finish_reason': {
+    type: 'string',
+    brief: 'The reason why the model stopped generating (singular form).',
+    deprecationChain: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
+  },
+  'gen_ai.response.finish_reasons': {
+    type: 'string',
+    brief: 'The reason why the model stopped generating.',
+    deprecationChain: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
+  },
+  'gen_ai.response.id': {
+    type: 'string',
+    brief: 'Unique identifier for the completion.',
+    deprecationChain: ['gen_ai.response.id', 'ai.generation_id'],
+  },
+  'gen_ai.response.model': {
+    type: 'string',
+    brief: 'The vendor-specific ID of the model used.',
+    deprecationChain: ['gen_ai.response.model'],
+  },
+  'gen_ai.response.streaming': {
+    type: 'boolean',
+    brief: "Whether or not the AI model call's response was streamed back asynchronously",
+    deprecationChain: ['gen_ai.response.streaming', 'ai.streaming'],
+  },
+  'gen_ai.response.text': {
+    type: 'string',
+    brief:
+      "The model's response text messages. It has to be a stringified version of an array of response text messages.",
+    deprecationChain: ['gen_ai.response.text'],
+  },
+  'gen_ai.response.time_to_first_chunk': {
+    type: 'double',
+    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
+  },
+  'gen_ai.response.time_to_first_token': {
+    type: 'double',
+    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
+  },
+  'gen_ai.response.tokens_per_second': {
+    type: 'double',
+    brief: 'The total output tokens per seconds throughput',
+    deprecationChain: ['gen_ai.response.tokens_per_second'],
+  },
+  'gen_ai.response.tool_calls': {
+    type: 'string',
+    brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
+    deprecationChain: ['gen_ai.response.tool_calls'],
+  },
+  'gen_ai.system': {
+    type: 'string',
+    brief: 'The provider of the model.',
+    deprecationChain: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
+  },
+  'gen_ai.system.message': {
+    type: 'string',
+    brief: 'The system instructions passed to the model.',
+    deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
+  },
+  'gen_ai.system_instructions': {
+    type: 'string',
+    brief: 'The system instructions passed to the model.',
+    deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
+  },
+  'gen_ai.tool.call.arguments': {
+    type: 'string',
+    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
+  },
+  'gen_ai.tool.call.result': {
+    type: 'string',
+    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'gen_ai.tool.definitions': {
+    type: 'string',
+    brief: 'The list of source system tool definitions available to the GenAI agent or model.',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+  },
+  'gen_ai.tool.description': {
+    type: 'string',
+    brief: 'The description of the tool being used.',
+    deprecationChain: ['gen_ai.tool.description'],
+  },
+  'gen_ai.tool.input': {
+    type: 'string',
+    brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
+    deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
+  },
+  'gen_ai.tool.message': {
+    type: 'string',
+    brief: 'The response from a tool or function call passed to the model.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'gen_ai.tool.name': {
+    type: 'string',
+    brief: 'Name of the tool utilized by the agent.',
+    deprecationChain: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
+  },
+  'gen_ai.tool.output': {
+    type: 'string',
+    brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'gen_ai.tool.type': {
+    type: 'string',
+    brief: 'The type of tool being used.',
+    deprecationChain: ['gen_ai.tool.type'],
+  },
+  'gen_ai.usage.cache_creation.input_tokens': {
+    type: 'integer',
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+  },
+  'gen_ai.usage.cache_read.input_tokens': {
+    type: 'integer',
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+  },
+  'gen_ai.usage.completion_tokens': {
+    type: 'integer',
+    brief: 'The number of tokens used in the GenAI response (completion).',
+    deprecationChain: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
+  },
+  'gen_ai.usage.input_tokens': {
+    type: 'integer',
+    brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
+    deprecationChain: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
+  },
+  'gen_ai.usage.input_tokens.cache_write': {
+    type: 'integer',
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+  },
+  'gen_ai.usage.input_tokens.cached': {
+    type: 'integer',
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+  },
+  'gen_ai.usage.output_tokens': {
+    type: 'integer',
+    brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
+    deprecationChain: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
+  },
+  'gen_ai.usage.output_tokens.reasoning': {
+    type: 'integer',
+    brief: 'The number of tokens used for reasoning to create the AI output.',
+    deprecationChain: ['gen_ai.usage.reasoning.output_tokens', 'gen_ai.usage.output_tokens.reasoning'],
+  },
+  'gen_ai.usage.prompt_tokens': {
+    type: 'integer',
+    brief: 'The number of tokens used in the GenAI input (prompt).',
+    deprecationChain: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
+  },
+  'gen_ai.usage.reasoning.output_tokens': {
+    type: 'integer',
+    brief: 'The number of tokens used for reasoning to create the AI output.',
+    deprecationChain: ['gen_ai.usage.reasoning.output_tokens', 'gen_ai.usage.output_tokens.reasoning'],
+  },
+  'gen_ai.usage.total_tokens': {
+    type: 'integer',
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+  },
+  'graphql.document': {
+    type: 'string',
+    brief: 'The GraphQL document being executed.',
+    deprecationChain: ['graphql.document'],
+  },
+  'graphql.operation.name': {
+    type: 'string',
+    brief: 'The name of the operation being executed.',
+    deprecationChain: ['graphql.operation.name'],
+  },
+  'graphql.operation.type': {
+    type: 'string',
+    brief: 'The type of the operation being executed.',
+    deprecationChain: ['graphql.operation.type'],
+  },
+  'grpc.error.bad_request.field_violations': {
+    type: 'string[]',
+    brief:
+      'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.',
+    deprecationChain: ['grpc.error.bad_request.field_violations'],
+  },
+  'grpc.error.debug_info.detail': {
+    type: 'string',
+    brief:
+      'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.debug_info.detail'],
+  },
+  'grpc.error.debug_info.stack_entries': {
+    type: 'string[]',
+    brief:
+      'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.debug_info.stack_entries'],
+  },
+  'grpc.error.error_info.domain': {
+    type: 'string',
+    brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
+    deprecationChain: ['grpc.error.error_info.domain'],
+  },
+  'grpc.error.error_info.metadata.<key>': {
+    type: 'string',
+    brief:
+      'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.error_info.metadata.<key>'],
+  },
+  'grpc.error.error_info.reason': {
+    type: 'string',
+    brief:
+      'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.',
+    deprecationChain: ['grpc.error.error_info.reason'],
+  },
+  'grpc.error.precondition_failure.violations': {
+    type: 'string[]',
+    brief:
+      'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
+    deprecationChain: ['grpc.error.precondition_failure.violations'],
+  },
+  'grpc.error.quota_failure.violations': {
+    type: 'string[]',
+    brief:
+      'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
+    deprecationChain: ['grpc.error.quota_failure.violations'],
+  },
+  'grpc.error.resource_info.description': {
+    type: 'string',
+    brief:
+      'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.',
+    deprecationChain: ['grpc.error.resource_info.description'],
+  },
+  'grpc.error.resource_info.owner': {
+    type: 'string',
+    brief:
+      'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.resource_info.owner'],
+  },
+  'grpc.error.resource_info.resource_name': {
+    type: 'string',
+    brief:
+      'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.resource_info.resource_name'],
+  },
+  'grpc.error.resource_info.resource_type': {
+    type: 'string',
+    brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
+    deprecationChain: ['grpc.error.resource_info.resource_type'],
+  },
+  'grpc.error.retry_info.retry_delay_ms': {
+    type: 'integer',
+    brief:
+      'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
+    deprecationChain: ['grpc.error.retry_info.retry_delay_ms'],
+  },
+  hardwareConcurrency: {
+    type: 'string',
+    brief: 'The number of logical CPU cores available.',
+    deprecationChain: ['device.processor_count', 'hardwareConcurrency'],
+  },
+  'http.client_ip': {
+    type: 'string',
+    brief:
+      'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['http.client_ip'],
+  },
+  'http.decoded_response_content_length': {
+    type: 'byte',
+    brief: 'The decoded body size of the response (in bytes).',
+    deprecationChain: ['http.decoded_response_content_length'],
+  },
+  'http.flavor': {
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['http.flavor'],
+  },
+  'http.fragment': {
+    type: 'string',
+    brief:
+      'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
+    deprecationChain: ['http.fragment'],
+  },
+  'http.host': {
+    type: 'string',
+    brief: 'The domain name.',
+    deprecationChain: ['http.host'],
+  },
+  'http.method': {
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'http.query': {
+    type: 'string',
+    brief:
+      'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
+    deprecationChain: ['http.query'],
+  },
+  'http.request.body.data': {
+    type: 'string',
+    brief: 'HTTP request body data. Can be given as string or structural data of any format.',
+    deprecationChain: ['http.request.body.data'],
+  },
+  'http.request.connect_start': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
+    deprecationChain: ['http.request.connect_start'],
+  },
+  'http.request.connection_end': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
+    deprecationChain: ['http.request.connection_end'],
+  },
+  'http.request.domain_lookup_end': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
+    deprecationChain: ['http.request.domain_lookup_end'],
+  },
+  'http.request.domain_lookup_start': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
+    deprecationChain: ['http.request.domain_lookup_start'],
+  },
+  'http.request.fetch_start': {
+    type: 'double',
+    brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
+    deprecationChain: ['http.request.fetch_start'],
+  },
+  'http.request.header.<key>': {
+    type: 'string[]',
+    brief:
+      'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+    deprecationChain: ['http.request.header.<key>'],
+  },
+  'http.request.method': {
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'http.request.redirect_end': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
+    deprecationChain: ['http.request.redirect_end'],
+  },
+  'http.request.redirect_start': {
+    type: 'double',
+    brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
+    deprecationChain: ['http.request.redirect_start'],
+  },
+  'http.request.request_start': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
+    deprecationChain: ['http.request.request_start'],
+  },
+  'http.request.resend_count': {
+    type: 'integer',
+    brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
+    deprecationChain: ['http.request.resend_count'],
+  },
+  'http.request.response_end': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
+    deprecationChain: ['http.request.response_end'],
+  },
+  'http.request.response_start': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
+    deprecationChain: ['http.request.response_start'],
+  },
+  'http.request.same_origin': {
+    type: 'boolean',
+    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
+    deprecationChain: ['http.request.same_origin', 'url.same_origin'],
+  },
+  'http.request.secure_connection_start': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
+    deprecationChain: ['http.request.secure_connection_start'],
+  },
+  'http.request.time_to_first_byte': {
+    type: 'double',
+    brief:
+      "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
+    deprecationChain: ['http.request.time_to_first_byte'],
+  },
+  'http.request.worker_start': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
+    deprecationChain: ['http.request.worker_start'],
+  },
+  'http.request_method': {
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'http.response.body.size': {
+    type: 'integer',
+    brief: 'The encoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.size',
+      'http.response.header.content-length',
+      'http.response_content_length',
+    ],
+  },
+  'http.response.header.<key>': {
+    type: 'string[]',
+    brief:
+      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+    deprecationChain: ['http.response.header.<key>'],
+  },
+  'http.response.header.content-length': {
+    type: 'string',
+    brief: 'The size of the message body sent to the recipient (in bytes)',
+    deprecationChain: [
+      'http.response.header.content-length',
+      'http.response.body.size',
+      'http.response_content_length',
+    ],
+  },
+  'http.response.size': {
+    type: 'integer',
+    brief: 'The transfer size of the response (in bytes).',
+    deprecationChain: ['http.response.size', 'http.response_transfer_size'],
+  },
+  'http.response_content_length': {
+    type: 'byte',
+    brief: 'The encoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.size',
+      'http.response.header.content-length',
+      'http.response_content_length',
+    ],
+  },
+  'http.response_status_code': {
+    type: 'integer',
+    brief: 'The status code of the HTTP response.',
+    deprecationChain: ['http.response.status_code', 'http.response_status_code'],
+  },
+  'http.response_transfer_size': {
+    type: 'byte',
+    brief: 'The transfer size of the response (in bytes).',
+    deprecationChain: ['http.response.size', 'http.response_transfer_size'],
+  },
+  'http.route': {
+    type: 'string',
+    brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
+    deprecationChain: ['http.route'],
+  },
+  'http.scheme': {
+    type: 'string',
+    brief: 'The URI scheme component identifying the used protocol.',
+    deprecationChain: ['http.scheme'],
+  },
+  'http.server.request.time_in_queue': {
+    type: 'double',
+    brief:
+      'The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.',
+    deprecationChain: ['http.server.request.time_in_queue'],
+  },
+  'http.server_name': {
+    type: 'string',
+    brief: 'The server domain name',
+    deprecationChain: ['http.server_name'],
+  },
+  'http.status_code': {
+    type: 'integer',
+    brief: 'The status code of the HTTP response.',
+    deprecationChain: ['http.status_code'],
+  },
+  'http.target': {
+    type: 'string',
+    brief: 'The pathname and query string of the URL.',
+    deprecationChain: ['http.target'],
+  },
+  'http.url': {
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['http.url'],
+  },
+  'http.user_agent': {
+    type: 'string',
+    brief: 'Value of the HTTP User-Agent header sent by the client.',
+    deprecationChain: ['http.user_agent'],
+  },
+  id: {
+    type: 'string',
+    brief: 'A unique identifier for the span.',
+    deprecationChain: ['id'],
+  },
+  inp: {
+    type: 'double',
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    deprecationChain: ['browser.web_vital.inp.value', 'inp'],
+  },
+  'jsonrpc.protocol.version': {
+    type: 'string',
+    brief: 'The version of the JSON-RPC protocol used.',
+    deprecationChain: ['jsonrpc.protocol.version'],
+  },
+  'jsonrpc.request.id': {
+    type: 'string',
+    brief: 'The JSON-RPC request identifier. Unique within the session.',
+    deprecationChain: ['jsonrpc.request.id', 'mcp.request.id'],
+  },
+  'jvm.gc.action': {
+    type: 'string',
+    brief: 'Name of the garbage collector action.',
+    deprecationChain: ['jvm.gc.action'],
+  },
+  'jvm.gc.name': {
+    type: 'string',
+    brief: 'Name of the garbage collector.',
+    deprecationChain: ['jvm.gc.name'],
+  },
+  'jvm.memory.pool.name': {
+    type: 'string',
+    brief: 'Name of the memory pool.',
+    deprecationChain: ['jvm.memory.pool.name'],
+  },
+  'jvm.memory.type': {
+    type: 'string',
+    brief: 'Name of the memory pool.',
+    deprecationChain: ['jvm.memory.type'],
+  },
+  'jvm.thread.daemon': {
+    type: 'boolean',
+    brief: 'Whether the thread is daemon or not.',
+    deprecationChain: ['jvm.thread.daemon'],
+  },
+  'jvm.thread.state': {
+    type: 'string',
+    brief: 'State of the thread.',
+    deprecationChain: ['jvm.thread.state'],
+  },
+  'koa.name': {
+    type: 'string',
+    brief: 'The name of the Koa middleware or matched route that handled the request.',
+    deprecationChain: ['koa.name'],
+  },
+  'koa.type': {
+    type: 'string',
+    brief: 'The type of the Koa layer that handled the request.',
+    deprecationChain: ['koa.type'],
+  },
+  lcp: {
+    type: 'double',
+    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
+    deprecationChain: ['browser.web_vital.lcp.value', 'lcp'],
+  },
+  'lcp.element': {
+    type: 'string',
+    brief: 'The dom element responsible for the largest contentful paint.',
+    deprecationChain: ['browser.web_vital.lcp.element', 'lcp.element'],
+  },
+  'lcp.id': {
+    type: 'string',
+    brief: 'The id of the dom element responsible for the largest contentful paint.',
+    deprecationChain: ['browser.web_vital.lcp.id', 'lcp.id'],
+  },
+  'lcp.loadTime': {
+    type: 'integer',
+    brief: 'The time it took for the LCP element to be loaded',
+    deprecationChain: ['browser.web_vital.lcp.load_time', 'lcp.loadTime'],
+  },
+  'lcp.renderTime': {
+    type: 'integer',
+    brief: 'The time it took for the LCP element to be rendered',
+    deprecationChain: ['browser.web_vital.lcp.render_time', 'lcp.renderTime'],
+  },
+  'lcp.size': {
+    type: 'integer',
+    brief: 'The size of the largest contentful paint element.',
+    deprecationChain: ['browser.web_vital.lcp.size', 'lcp.size'],
+  },
+  'lcp.url': {
+    type: 'string',
+    brief: 'The url of the dom element responsible for the largest contentful paint.',
+    deprecationChain: ['browser.web_vital.lcp.url', 'lcp.url'],
+  },
+  'litestar.middleware_name': {
+    type: 'string',
+    brief: 'The name of the Litestar middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  'logger.name': {
+    type: 'string',
+    brief: 'The name of the logger that generated this event.',
+    deprecationChain: ['logger.name'],
+  },
+  'mcp.cancelled.reason': {
+    type: 'string',
+    brief: 'Reason for the cancellation of an MCP operation.',
+    deprecationChain: ['mcp.cancelled.reason'],
+  },
+  'mcp.cancelled.request_id': {
+    type: 'string',
+    brief: 'Request ID of the cancelled MCP operation.',
+    deprecationChain: ['mcp.cancelled.request_id'],
+  },
+  'mcp.client.name': {
+    type: 'string',
+    brief: 'Name of the MCP client application.',
+    deprecationChain: ['mcp.client.name'],
+  },
+  'mcp.client.title': {
+    type: 'string',
+    brief: 'Display title of the MCP client application.',
+    deprecationChain: ['mcp.client.title'],
+  },
+  'mcp.client.version': {
+    type: 'string',
+    brief: 'Version of the MCP client application.',
+    deprecationChain: ['mcp.client.version'],
+  },
+  'mcp.lifecycle.phase': {
+    type: 'string',
+    brief: 'Lifecycle phase indicator for MCP operations.',
+    deprecationChain: ['mcp.lifecycle.phase'],
+  },
+  'mcp.logging.data_type': {
+    type: 'string',
+    brief: 'Data type of the logged message content.',
+    deprecationChain: ['mcp.logging.data_type'],
+  },
+  'mcp.logging.level': {
+    type: 'string',
+    brief: 'Log level for MCP logging operations.',
+    deprecationChain: ['mcp.logging.level'],
+  },
+  'mcp.logging.logger': {
+    type: 'string',
+    brief: 'Logger name for MCP logging operations.',
+    deprecationChain: ['mcp.logging.logger'],
+  },
+  'mcp.logging.message': {
+    type: 'string',
+    brief: 'Log message content from MCP logging operations.',
+    deprecationChain: ['mcp.logging.message'],
+  },
+  'mcp.method.name': {
+    type: 'string',
+    brief: 'The name of the MCP request or notification method being called.',
+    deprecationChain: ['mcp.method.name'],
+  },
+  'mcp.progress.current': {
+    type: 'integer',
+    brief: 'Current progress value of an MCP operation.',
+    deprecationChain: ['mcp.progress.current'],
+  },
+  'mcp.progress.message': {
+    type: 'string',
+    brief: 'Progress message describing the current state of an MCP operation.',
+    deprecationChain: ['mcp.progress.message'],
+  },
+  'mcp.progress.percentage': {
+    type: 'double',
+    brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
+    deprecationChain: ['mcp.progress.percentage'],
+  },
+  'mcp.progress.token': {
+    type: 'string',
+    brief: 'Token for tracking progress of an MCP operation.',
+    deprecationChain: ['mcp.progress.token'],
+  },
+  'mcp.progress.total': {
+    type: 'integer',
+    brief: 'Total progress target value of an MCP operation.',
+    deprecationChain: ['mcp.progress.total'],
+  },
+  'mcp.prompt.name': {
+    type: 'string',
+    brief: 'Name of the MCP prompt template being used.',
+    deprecationChain: ['gen_ai.prompt.name', 'mcp.prompt.name'],
+  },
+  'mcp.prompt.result.description': {
+    type: 'string',
+    brief: 'Description of the prompt result.',
+    deprecationChain: ['mcp.prompt.result.description'],
+  },
+  'mcp.prompt.result.message_content': {
+    type: 'string',
+    brief: 'Content of the message in the prompt result. Used for single message results only.',
+    deprecationChain: ['mcp.prompt.result.message_content'],
+  },
+  'mcp.prompt.result.message_count': {
+    type: 'integer',
+    brief: 'Number of messages in the prompt result.',
+    deprecationChain: ['mcp.prompt.result.message_count'],
+  },
+  'mcp.prompt.result.message_role': {
+    type: 'string',
+    brief: 'Role of the message in the prompt result. Used for single message results only.',
+    deprecationChain: ['mcp.prompt.result.message_role'],
+  },
+  'mcp.protocol.ready': {
+    type: 'integer',
+    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
+    deprecationChain: ['mcp.protocol.ready'],
+  },
+  'mcp.protocol.version': {
+    type: 'string',
+    brief: 'MCP protocol version used in the session.',
+    deprecationChain: ['mcp.protocol.version'],
+  },
+  'mcp.request.argument.<key>': {
+    type: 'string',
+    brief:
+      'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.',
+    deprecationChain: ['mcp.request.argument.<key>'],
+  },
+  'mcp.request.argument.name': {
+    type: 'string',
+    brief: 'Name argument from prompts/get MCP request.',
+    deprecationChain: ['mcp.request.argument.name'],
+  },
+  'mcp.request.argument.uri': {
+    type: 'string',
+    brief: 'URI argument from resources/read MCP request.',
+    deprecationChain: ['mcp.request.argument.uri'],
+  },
+  'mcp.request.id': {
+    type: 'string',
+    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
+    deprecationChain: ['jsonrpc.request.id', 'mcp.request.id'],
+  },
+  'mcp.resource.protocol': {
+    type: 'string',
+    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol'],
+  },
+  'mcp.resource.uri': {
+    type: 'string',
+    brief: 'The resource URI being accessed in an MCP operation.',
+    deprecationChain: ['mcp.resource.uri'],
+  },
+  'mcp.server.name': {
+    type: 'string',
+    brief: 'Name of the MCP server application.',
+    deprecationChain: ['mcp.server.name'],
+  },
+  'mcp.server.title': {
+    type: 'string',
+    brief: 'Display title of the MCP server application.',
+    deprecationChain: ['mcp.server.title'],
+  },
+  'mcp.server.version': {
+    type: 'string',
+    brief: 'Version of the MCP server application.',
+    deprecationChain: ['mcp.server.version'],
+  },
+  'mcp.session.id': {
+    type: 'string',
+    brief: 'Identifier for the MCP session.',
+    deprecationChain: ['mcp.session.id'],
+  },
+  'mcp.tool.name': {
+    type: 'string',
+    brief: 'Name of the MCP tool being called.',
+    deprecationChain: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
+  },
+  'mcp.tool.result.content': {
+    type: 'string',
+    brief: 'The content of the tool result.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'mcp.tool.result.content_count': {
+    type: 'integer',
+    brief: 'Number of content items in the tool result.',
+    deprecationChain: ['mcp.tool.result.content_count'],
+  },
+  'mcp.tool.result.is_error': {
+    type: 'boolean',
+    brief: 'Whether a tool execution resulted in an error.',
+    deprecationChain: ['mcp.tool.result.is_error'],
+  },
+  'mcp.transport': {
+    type: 'string',
+    brief: 'Transport method used for MCP communication.',
+    deprecationChain: ['network.transport', 'mcp.transport'],
+  },
+  'mdc.<key>': {
+    type: 'string',
+    brief:
+      "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
+    deprecationChain: ['mdc.<key>'],
+  },
+  'messaging.batch.message_count': {
+    type: 'integer',
+    brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
+    deprecationChain: ['messaging.batch.message_count'],
+  },
+  'messaging.destination': {
+    type: 'string',
+    brief: 'The message destination name.',
+    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+  },
+  'messaging.destination.connection': {
+    type: 'string',
+    brief: 'The message destination connection.',
+    deprecationChain: ['messaging.destination.connection'],
+  },
+  'messaging.destination.name': {
+    type: 'string',
+    brief: 'The message destination name.',
+    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+  },
+  'messaging.destination.partition.id': {
+    type: 'string',
+    brief:
+      'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
+    deprecationChain: ['messaging.destination.partition.id'],
+  },
+  'messaging.destination_kind': {
+    type: 'string',
+    brief: 'The kind of message destination.',
+    deprecationChain: ['messaging.destination_kind'],
+  },
+  'messaging.kafka.message.key': {
+    type: 'string',
+    brief:
+      "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
+    deprecationChain: ['messaging.kafka.message.key'],
+  },
+  'messaging.kafka.message.tombstone': {
+    type: 'boolean',
+    brief: 'A boolean that is true if the message is a tombstone.',
+    deprecationChain: ['messaging.kafka.message.tombstone'],
+  },
+  'messaging.kafka.offset': {
+    type: 'integer',
+    brief: 'The offset of a record in the corresponding Kafka partition.',
+    deprecationChain: ['messaging.kafka.offset'],
+  },
+  'messaging.message.body.size': {
+    type: 'byte',
+    brief: 'The size of the message body in bytes.',
+    deprecationChain: ['messaging.message.body.size'],
+  },
+  'messaging.message.conversation_id': {
+    type: 'string',
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    deprecationChain: ['messaging.message.conversation_id'],
+  },
+  'messaging.message.envelope.size': {
+    type: 'integer',
+    brief: 'The size of the message body and metadata in bytes.',
+    deprecationChain: ['messaging.message.envelope.size'],
+  },
+  'messaging.message.id': {
+    type: 'string',
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    deprecationChain: ['messaging.message.id'],
+  },
+  'messaging.message.receive.latency': {
+    type: 'millisecond',
+    brief: 'The latency between when the message was published and received.',
+    deprecationChain: ['messaging.message.receive.latency'],
+  },
+  'messaging.message.retry.count': {
+    type: 'integer',
+    brief: 'The amount of attempts to send the message.',
+    deprecationChain: ['messaging.message.retry.count'],
+  },
+  'messaging.operation.name': {
+    type: 'string',
+    brief: 'The name of the messaging operation being performed',
+    deprecationChain: ['messaging.operation.name'],
+  },
+  'messaging.operation.type': {
+    type: 'string',
+    brief: 'A string identifying the type of the messaging operation',
+    deprecationChain: ['messaging.operation.type'],
+  },
+  'messaging.rabbitmq.destination.routing_key': {
+    type: 'string',
+    brief: 'RabbitMQ message routing key.',
+    deprecationChain: ['messaging.rabbitmq.destination.routing_key'],
+  },
+  'messaging.system': {
+    type: 'string',
+    brief: 'The messaging system as identified by the client instrumentation.',
+    deprecationChain: ['messaging.system'],
+  },
+  method: {
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'middleware.name': {
+    type: 'string',
+    brief: 'The name of the middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  'mobile.frames_delay': {
+    type: 'second',
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    deprecationChain: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
+  },
+  'mobile.frozen_frames': {
+    type: 'integer',
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    deprecationChain: [
+      'app.vitals.frames.frozen.count',
+      'frames.frozen',
+      'mobile.frozen_frames',
+      'sentry.frames.frozen',
+    ],
+  },
+  'mobile.slow_frames': {
+    type: 'integer',
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
+  },
+  'mobile.total_frames': {
+    type: 'integer',
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
+  },
+  'navigation.origin': {
+    type: 'string',
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+    deprecationChain: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+  },
+  'navigation.route.id': {
+    type: 'string',
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    deprecationChain: ['navigation.route.id'],
+  },
+  'navigation.type': {
+    type: 'string',
+    brief: 'The type of navigation done by a client-side router.',
+    deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
+  'nel.elapsed_time': {
+    type: 'integer',
+    brief:
+      'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
+    deprecationChain: ['nel.elapsed_time'],
+  },
+  'nel.phase': {
+    type: 'string',
+    brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
+    deprecationChain: ['nel.phase'],
+  },
+  'nel.referrer': {
+    type: 'string',
+    brief: "request's referrer, as determined by the referrer policy associated with its client.",
+    deprecationChain: ['nel.referrer'],
+  },
+  'nel.sampling_function': {
+    type: 'double',
+    brief: 'The sampling function used to determine if the request should be sampled.',
+    deprecationChain: ['nel.sampling_function'],
+  },
+  'nel.type': {
+    type: 'string',
+    brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
+    deprecationChain: ['nel.type'],
+  },
+  'net.host.ip': {
+    type: 'string',
+    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['net.host.ip'],
+  },
+  'net.host.name': {
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['net.host.name'],
+  },
+  'net.host.port': {
+    type: 'integer',
+    brief: 'Server port number.',
+    deprecationChain: ['net.host.port'],
+  },
+  'net.peer.ip': {
+    type: 'string',
+    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['net.peer.ip'],
+  },
+  'net.peer.name': {
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['net.peer.name'],
+  },
+  'net.peer.port': {
+    type: 'integer',
+    brief: 'Peer port number.',
+    deprecationChain: ['net.peer.port'],
+  },
+  'net.protocol.name': {
+    type: 'string',
+    brief: 'OSI application layer or non-OSI equivalent.',
+    deprecationChain: ['net.protocol.name'],
+  },
+  'net.protocol.version': {
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['net.protocol.version'],
+  },
+  'net.sock.family': {
+    type: 'string',
+    brief: 'OSI transport and network layer',
+    deprecationChain: ['net.sock.family'],
+  },
+  'net.sock.host.addr': {
+    type: 'string',
+    brief: 'Local address of the network connection mapping to Unix domain socket name.',
+    deprecationChain: ['net.sock.host.addr'],
+  },
+  'net.sock.host.port': {
+    type: 'integer',
+    brief: 'Local port number of the network connection.',
+    deprecationChain: ['net.sock.host.port'],
+  },
+  'net.sock.peer.addr': {
+    type: 'string',
+    brief: 'Peer address of the network connection - IP address',
+    deprecationChain: ['net.sock.peer.addr'],
+  },
+  'net.sock.peer.name': {
+    type: 'string',
+    brief: 'Peer address of the network connection - Unix domain socket name',
+    deprecationChain: ['net.sock.peer.name'],
+  },
+  'net.sock.peer.port': {
+    type: 'integer',
+    brief: 'Peer port number of the network connection.',
+    deprecationChain: ['net.sock.peer.port'],
+  },
+  'net.transport': {
+    type: 'string',
+    brief: 'OSI transport layer or inter-process communication method.',
+    deprecationChain: ['net.transport'],
+  },
+  'network.connection.effective_type': {
+    type: 'string',
+    brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    deprecationChain: ['network.connection.effective_type', 'effectiveConnectionType'],
+  },
+  'network.connection.rtt': {
+    type: 'integer',
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    deprecationChain: ['network.connection.rtt', 'connection.rtt'],
+  },
+  'network.connection.type': {
+    type: 'string',
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
+  },
+  'network.local.address': {
+    type: 'string',
+    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['network.local.address'],
+  },
+  'network.local.port': {
+    type: 'integer',
+    brief: 'Local port number of the network connection.',
+    deprecationChain: ['network.local.port'],
+  },
+  'network.peer.address': {
+    type: 'string',
+    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['network.peer.address'],
+  },
+  'network.peer.port': {
+    type: 'integer',
+    brief: 'Peer port number of the network connection.',
+    deprecationChain: ['network.peer.port'],
+  },
+  'network.protocol.name': {
+    type: 'string',
+    brief: 'OSI application layer or non-OSI equivalent.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol'],
+  },
+  'network.protocol.version': {
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['network.protocol.version'],
+  },
+  'network.transport': {
+    type: 'string',
+    brief: 'OSI transport layer or inter-process communication method.',
+    deprecationChain: ['network.transport', 'mcp.transport'],
+  },
+  'network.type': {
+    type: 'string',
+    brief: 'OSI network layer or non-OSI equivalent.',
+    deprecationChain: ['network.type'],
+  },
+  origin: {
+    type: 'string',
+    brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
+    deprecationChain: ['sentry.origin', 'origin'],
+  },
+  'os.build': {
+    type: 'string',
+    brief: 'The build ID of the operating system.',
+    deprecationChain: ['os.build_id', 'os.build'],
+  },
+  'os.build_id': {
+    type: 'string',
+    brief: 'The build ID of the operating system.',
+    deprecationChain: ['os.build_id', 'os.build'],
+  },
+  'os.description': {
+    type: 'string',
+    brief:
+      'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.',
+    deprecationChain: ['os.description'],
+  },
+  'os.kernel_version': {
+    type: 'string',
+    brief: 'An independent kernel version string. Typically the entire output of the `uname` syscall.',
+    deprecationChain: ['os.kernel_version'],
+  },
+  'os.name': {
+    type: 'string',
+    brief: 'Human readable operating system name.',
+    deprecationChain: ['os.name'],
+  },
+  'os.raw_description': {
+    type: 'string',
+    brief:
+      'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.',
+    deprecationChain: ['os.raw_description'],
+  },
+  'os.rooted': {
+    type: 'boolean',
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    deprecationChain: ['os.rooted'],
+  },
+  'os.theme': {
+    type: 'string',
+    brief: 'Whether the OS runs in dark mode or light mode.',
+    deprecationChain: ['os.theme'],
+  },
+  'os.type': {
+    type: 'string',
+    brief: 'The operating system type.',
+    deprecationChain: ['os.type'],
+  },
+  'os.version': {
+    type: 'string',
+    brief: 'The version of the operating system.',
+    deprecationChain: ['os.version'],
+  },
+  'otel.kind': {
+    type: 'string',
+    brief:
+      'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
+    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+  },
+  'otel.scope.name': {
+    type: 'string',
+    brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
+    deprecationChain: ['otel.scope.name'],
+  },
+  'otel.scope.version': {
+    type: 'string',
+    brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
+    deprecationChain: ['otel.scope.version'],
+  },
+  'otel.status_code': {
+    type: 'string',
+    brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
+    deprecationChain: ['otel.status_code'],
+  },
+  'otel.status_description': {
+    type: 'string',
+    brief: 'Description of the Status if it has a value, otherwise not set.',
+    deprecationChain: ['otel.status_description'],
+  },
+  'params.<key>': {
+    type: 'string',
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['params.<key>', 'url.path.parameter.<key>'],
+  },
+  'performance.activationStart': {
+    type: 'double',
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    deprecationChain: ['browser.performance.navigation.activation_start', 'performance.activationStart'],
+  },
+  'performance.timeOrigin': {
+    type: 'double',
+    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    deprecationChain: ['browser.performance.time_origin', 'performance.timeOrigin'],
+  },
+  platform: {
+    type: 'string',
+    brief: 'The sdk platform that generated the event.',
+    deprecationChain: ['sentry.platform', 'platform'],
+  },
+  port: {
+    type: 'integer',
+    brief: 'The destination port for a TCP connection.',
+    deprecationChain: ['server.port', 'port'],
+  },
+  previous_route: {
+    type: 'string',
+    brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
+    deprecationChain: ['previous_route'],
+  },
+  'process.command_args': {
+    type: 'string[]',
+    brief: 'All the command arguments (including the command/executable itself) as received by the process.',
+    deprecationChain: ['process.command_args'],
+  },
+  'process.executable.name': {
+    type: 'string',
+    brief: 'The name of the executable that started the process.',
+    deprecationChain: ['process.executable.name'],
+  },
+  'process.pid': {
+    type: 'integer',
+    brief: 'The process ID of the running process.',
+    deprecationChain: ['process.pid', 'subprocess.pid'],
+  },
+  'process.runtime.description': {
+    type: 'string',
+    brief:
+      'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.description'],
+  },
+  'process.runtime.engine.name': {
+    type: 'string',
+    brief: 'The name of the runtime engine.',
+    deprecationChain: ['process.runtime.engine.name'],
+  },
+  'process.runtime.engine.version': {
+    type: 'string',
+    brief: 'The version of the runtime engine.',
+    deprecationChain: ['process.runtime.engine.version'],
+  },
+  'process.runtime.name': {
+    type: 'string',
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.name'],
+  },
+  'process.runtime.version': {
+    type: 'string',
+    brief:
+      'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.version'],
+  },
+  'profile.id': {
+    type: 'string',
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+  },
+  profile_id: {
+    type: 'string',
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+  },
+  'profiler.id': {
+    type: 'string',
+    brief: 'The id of the currently running profiler (continuous profiling)',
+    deprecationChain: ['sentry.profiler_id', 'profiler.id'],
+  },
+  query: {
+    type: 'string',
+    brief: 'The database query being executed.',
+    deprecationChain: ['db.query.text', 'db.statement', 'query'],
+  },
+  'query.<key>': {
+    type: 'string',
+    brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['query.<key>'],
+  },
+  'react.version': {
+    type: 'string',
+    brief: 'The version of the React framework',
+    deprecationChain: ['react.version'],
+  },
+  'redis.command': {
+    type: 'string',
+    brief: 'The name of the Redis operation being executed.',
+    deprecationChain: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+  },
+  'redis.key': {
+    type: 'string',
+    brief: 'The key the Redis command is operating on.',
+    deprecationChain: ['db.redis.key', 'redis.key'],
+  },
+  release: {
+    type: 'string',
+    brief: 'The sentry release.',
+    deprecationChain: ['sentry.release', 'release', 'service.version'],
+  },
+  'remix.action_form_data.<key>': {
+    type: 'string',
+    brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
+    deprecationChain: ['remix.action_form_data.<key>'],
+  },
+  'replay.id': {
+    type: 'string',
+    brief: 'The id of the sentry replay.',
+    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
+  },
+  replay_id: {
+    type: 'string',
+    brief: 'The id of the sentry replay.',
+    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
+  },
+  'resource.deployment.environment': {
+    type: 'string',
+    brief: 'The software deployment environment name.',
+    deprecationChain: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
+  },
+  'resource.deployment.environment.name': {
+    type: 'string',
+    brief: 'The software deployment environment name.',
+    deprecationChain: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
+  },
+  'resource.render_blocking_status': {
+    type: 'string',
+    brief: 'The render blocking status of the resource.',
+    deprecationChain: ['resource.render_blocking_status'],
+  },
+  route: {
+    type: 'string',
+    brief:
+      'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
+    deprecationChain: ['route'],
+  },
+  'rpc.grpc.status_code': {
+    type: 'integer',
+    brief: 'The numeric status code of the gRPC request.',
+    deprecationChain: ['rpc.grpc.status_code'],
+  },
+  'rpc.method': {
+    type: 'string',
+    brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
+    deprecationChain: ['rpc.method', 'aws.operation_name'],
+  },
+  'rpc.response.status_code': {
+    type: 'string',
+    brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
+    deprecationChain: ['rpc.response.status_code', 'code'],
+  },
+  'rpc.service': {
+    type: 'string',
+    brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
+    deprecationChain: ['rpc.service'],
+  },
+  'rpc.system': {
+    type: 'string',
+    brief: 'A string identifying the remoting system.',
+    deprecationChain: ['rpc.system.name', 'rpc.system'],
+  },
+  'rpc.system.name': {
+    type: 'string',
+    brief: 'A string identifying the remoting system.',
+    deprecationChain: ['rpc.system.name', 'rpc.system'],
+  },
+  'runtime.build': {
+    type: 'string',
+    brief: 'The application build string, when it is separate from the version.',
+    deprecationChain: ['runtime.build'],
+  },
+  'runtime.name': {
+    type: 'string',
+    brief: 'The name of the runtime. For example node, CPython, or rustc.',
+    deprecationChain: ['runtime.name'],
+  },
+  'runtime.raw_description': {
+    type: 'string',
+    brief:
+      'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.',
+    deprecationChain: ['runtime.raw_description'],
+  },
+  'runtime.version': {
+    type: 'string',
+    brief: 'The version of the runtime.',
+    deprecationChain: ['runtime.version'],
+  },
+  'score.<key>': {
+    type: 'double',
+    brief:
+      'The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.',
+    deprecationChain: ['score.<key>'],
+  },
+  'score.ratio.<key>': {
+    type: 'double',
+    brief: 'The score for a web vital, normalized to a number between 0 and 1.',
+    deprecationChain: ['score.ratio.<key>'],
+  },
+  'score.total': {
+    type: 'double',
+    brief:
+      'The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).',
+    deprecationChain: ['score.total'],
+  },
+  'score.weight.<key>': {
+    type: 'double',
+    brief: "The relative weight of a web vital in a span's performance score.",
+    deprecationChain: ['score.weight.<key>'],
+  },
+  'sdk.name': {
+    type: 'string',
+    brief: 'The sentry sdk name.',
+    deprecationChain: ['sentry.sdk.name', 'sdk.name'],
+  },
+  'sdk.version': {
+    type: 'string',
+    brief: 'The sentry sdk version.',
+    deprecationChain: ['sentry.sdk.version', 'sdk.version'],
+  },
+  'sentry.browser.version': {
+    type: 'string',
+    brief: 'The version of the browser.',
+    deprecationChain: ['sentry.browser.version'],
+  },
+  'sentry.cancellation_reason': {
+    type: 'string',
+    brief: 'The reason why a span ended early.',
+    deprecationChain: ['sentry.cancellation_reason'],
+  },
+  'sentry.description': {
+    type: 'string',
+    brief: 'The human-readable description of a span.',
+    deprecationChain: ['sentry.description'],
+  },
+  'sentry.dist': {
+    type: 'string',
+    brief: 'The sentry dist.',
+    deprecationChain: ['sentry.dist', 'dist'],
+  },
+  'sentry.dsc.environment': {
+    type: 'string',
+    brief: 'The environment from the dynamic sampling context.',
+    deprecationChain: ['sentry.dsc.environment'],
+  },
+  'sentry.dsc.project_id': {
+    type: 'string',
+    brief:
+      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    deprecationChain: ['sentry.dsc.project_id'],
+  },
+  'sentry.dsc.public_key': {
+    type: 'string',
+    brief: 'The public key from the dynamic sampling context.',
+    deprecationChain: ['sentry.dsc.public_key'],
+  },
+  'sentry.dsc.release': {
+    type: 'string',
+    brief: 'The release identifier from the dynamic sampling context.',
+    deprecationChain: ['sentry.dsc.release'],
+  },
+  'sentry.dsc.sample_rate': {
+    type: 'string',
+    brief: 'The sample rate from the dynamic sampling context.',
+    deprecationChain: ['sentry.dsc.sample_rate'],
+  },
+  'sentry.dsc.sampled': {
+    type: 'boolean',
+    brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    deprecationChain: ['sentry.dsc.sampled'],
+  },
+  'sentry.dsc.trace_id': {
+    type: 'string',
+    brief: 'The trace ID from the dynamic sampling context.',
+    deprecationChain: ['sentry.dsc.trace_id'],
+  },
+  'sentry.dsc.transaction': {
+    type: 'string',
+    brief: 'The transaction name from the dynamic sampling context.',
+    deprecationChain: ['sentry.dsc.transaction'],
+  },
+  'sentry.event.serialized_breadcrumbs': {
+    type: 'string',
+    brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    deprecationChain: ['sentry.event.serialized_breadcrumbs'],
+  },
+  'sentry.event.serialized_contexts': {
+    type: 'string',
+    brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    deprecationChain: ['sentry.event.serialized_contexts'],
+  },
+  'sentry.event.serialized_extra': {
+    type: 'string',
+    brief: 'JSON-serialized `extra` property from a Sentry event.',
+    deprecationChain: ['sentry.event.serialized_extra'],
+  },
+  'sentry.event.serialized_meta': {
+    type: 'string',
+    brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
+    deprecationChain: ['sentry.event.serialized_meta'],
+  },
+  'sentry.exclusive_time': {
+    type: 'double',
+    brief: 'The exclusive time duration of the span in milliseconds.',
+    deprecationChain: ['sentry.exclusive_time'],
+  },
+  'sentry.frames.frozen': {
+    type: 'integer',
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    deprecationChain: [
+      'app.vitals.frames.frozen.count',
+      'frames.frozen',
+      'mobile.frozen_frames',
+      'sentry.frames.frozen',
+    ],
+  },
+  'sentry.frames.slow': {
+    type: 'integer',
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
+  },
+  'sentry.frames.total': {
+    type: 'integer',
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
+  },
+  'sentry.graphql.operation': {
+    type: 'string',
+    brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
+    deprecationChain: ['sentry.graphql.operation'],
+  },
+  'sentry.http.prefetch': {
+    type: 'boolean',
+    brief: 'If an http request was a prefetch request.',
+    deprecationChain: ['sentry.http.prefetch'],
+  },
+  'sentry.idle_span_finish_reason': {
+    type: 'string',
+    brief: 'The reason why an idle span ended early.',
+    deprecationChain: ['sentry.idle_span_finish_reason'],
+  },
+  'sentry.is_remote': {
+    type: 'boolean',
+    brief: "Indicates whether a span's parent is remote.",
+    deprecationChain: ['sentry.is_remote'],
+  },
+  'sentry.main_thread': {
+    type: 'boolean',
+    brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
+    deprecationChain: ['sentry.main_thread'],
+  },
+  'sentry.message.parameter.<key>': {
+    type: 'string',
+    brief:
+      "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
+    deprecationChain: ['sentry.message.parameter.<key>'],
+  },
+  'sentry.message.template': {
+    type: 'string',
+    brief: 'The parameterized template string.',
+    deprecationChain: ['sentry.message.template'],
+  },
+  'sentry.metric.source': {
+    type: 'string',
+    brief:
+      'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.',
+    deprecationChain: ['sentry.metric.source'],
+  },
+  'sentry.mobile': {
+    type: 'boolean',
+    brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
+    deprecationChain: ['sentry.mobile'],
+  },
+  'sentry.module.<key>': {
+    type: 'string',
+    brief: 'A module that was loaded in the process. The key is the name of the module.',
+    deprecationChain: ['sentry.module.<key>'],
+  },
+  'sentry.nextjs.ssr.function.route': {
+    type: 'string',
+    brief:
+      'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
+    deprecationChain: ['sentry.nextjs.ssr.function.route'],
+  },
+  'sentry.nextjs.ssr.function.type': {
+    type: 'string',
+    brief:
+      'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
+    deprecationChain: ['sentry.nextjs.ssr.function.type'],
+  },
+  'sentry.normalized_db_query': {
+    type: 'string',
+    brief: 'The normalized version of `db.query.text`.',
+    deprecationChain: ['sentry.normalized_db_query'],
+  },
+  'sentry.normalized_db_query.hash': {
+    type: 'string',
+    brief: 'The hash of `sentry.normalized_db_query`.',
+    deprecationChain: ['sentry.normalized_db_query.hash'],
+  },
+  'sentry.normalized_description': {
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
+    deprecationChain: ['sentry.normalized_description'],
+  },
+  'sentry.observed_timestamp_nanos': {
+    type: 'string',
+    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
+    deprecationChain: ['sentry.observed_timestamp_nanos'],
+  },
+  'sentry.pageload.span_id': {
+    type: 'string',
+    brief: 'The id of the pageload span, set by web vital spans and metrics',
+    deprecationChain: ['sentry.pageload.span_id'],
+  },
+  'sentry.relay.ingress': {
+    type: 'string',
+    brief: 'How an item (span, log, &c.) entered Relay.',
+    deprecationChain: ['sentry.relay.ingress'],
+  },
+  'sentry.relay.pipeline': {
+    type: 'string',
+    brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
+    deprecationChain: ['sentry.relay.pipeline'],
+  },
+  'sentry.replay_is_buffering': {
+    type: 'boolean',
+    brief:
+      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
+    deprecationChain: ['sentry.replay_is_buffering'],
+  },
+  'sentry.report_event': {
+    type: 'string',
+    brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
+    deprecationChain: ['sentry.report_event'],
+  },
+  'sentry.sdk.integrations': {
+    type: 'string[]',
+    brief:
+      'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
+    deprecationChain: ['sentry.sdk.integrations'],
+  },
+  'sentry.segment.id': {
+    type: 'string',
+    brief: 'The segment ID of a span',
+    deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
+  },
+  'sentry.segment.name': {
+    type: 'string',
+    brief: 'The segment name of a span',
+    deprecationChain: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
+  },
+  'sentry.segment.name.source': {
+    type: 'string',
+    brief:
+      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    deprecationChain: ['sentry.segment.name.source'],
+  },
+  'sentry.source': {
+    type: 'string',
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    deprecationChain: ['sentry.source'],
+  },
+  'sentry.span.source': {
+    type: 'string',
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    deprecationChain: ['sentry.span.source'],
+  },
+  'sentry.sveltekit.navigation.from': {
+    type: 'string',
+    brief: 'the navigation origin (sveltekit router)',
+    deprecationChain: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+  },
+  'sentry.sveltekit.navigation.to': {
+    type: 'string',
+    brief: 'the navigation destination',
+    deprecationChain: ['sentry.sveltekit.navigation.to'],
+  },
+  'sentry.sveltekit.navigation.type': {
+    type: 'string',
+    brief: 'The type of navigation event emitted from the sveltekit client router',
+    deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
+  'sentry.timestamp.sequence': {
+    type: 'integer',
+    brief:
+      'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
+    deprecationChain: ['sentry.timestamp.sequence'],
+  },
+  'sentry.trace.parent_span_id': {
+    type: 'string',
+    brief:
+      'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
+    deprecationChain: ['sentry.trace.parent_span_id'],
+  },
+  'server.address': {
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['server.address', 'address', 'server_name'],
+  },
+  'server.port': {
+    type: 'integer',
+    brief: 'Server port number.',
+    deprecationChain: ['server.port', 'port'],
+  },
+  server_name: {
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['server.address', 'address', 'server_name'],
+  },
+  server_sample_rate: {
+    type: 'double',
+    brief: 'Rate at which a span was sampled in Relay.',
+    deprecationChain: ['sentry.server_sample_rate', 'server_sample_rate'],
+  },
+  'service.name': {
+    type: 'string',
+    brief: 'Logical name of the service.',
+    deprecationChain: ['service.name'],
+  },
+  'service.version': {
+    type: 'string',
+    brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
+    deprecationChain: ['service.version', 'sentry.release', 'release'],
+  },
+  'session.id': {
+    type: 'string',
+    brief: 'A unique id identifying the active session at the time of setting this attribute',
+    deprecationChain: ['session.id'],
+  },
+  'span.action': {
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
+    deprecationChain: ['sentry.action', 'span.action'],
+  },
+  'span.category': {
+    type: 'string',
+    brief:
+      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+    deprecationChain: ['sentry.category', 'span.category'],
+  },
+  'span.domain': {
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
+    deprecationChain: ['sentry.domain', 'span.domain'],
+  },
+  'span.group': {
+    type: 'string',
+    brief:
+      'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
+    deprecationChain: ['sentry.group', 'span.group'],
+  },
+  'span.kind': {
+    type: 'string',
+    brief:
+      'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
+    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+  },
+  'span.op': {
+    type: 'string',
+    brief: 'The operation of a span.',
+    deprecationChain: ['sentry.op', 'span.op'],
+  },
+  'span.status': {
+    type: 'string',
+    brief:
+      'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+    deprecationChain: ['sentry.status', 'span.status'],
+  },
+  'span.status.message': {
+    type: 'string',
+    brief: 'The from OTLP extracted status message.',
+    deprecationChain: ['sentry.status.message', 'span.status.message'],
+  },
+  'span.status_code': {
+    type: 'integer',
+    brief:
+      'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
+    deprecationChain: ['sentry.status_code', 'span.status_code'],
+  },
+  stall_percentage: {
+    type: 'double',
+    brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
+    deprecationChain: ['app.vitals.stall.percentage', 'stall_percentage'],
+  },
+  stall_total_time: {
+    type: 'double',
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
+    deprecationChain: ['app.vitals.stall.duration', 'stall_total_time'],
+  },
+  'starlette.middleware_name': {
+    type: 'string',
+    brief: 'The name of the Starlette middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  'starlite.middleware_name': {
+    type: 'string',
+    brief: 'The name of the Starlite middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  'state.type': {
+    type: 'string',
+    brief: 'The type of state management library',
+    deprecationChain: ['state.type'],
+  },
+  'subprocess.pid': {
+    type: 'integer',
+    brief: 'The process ID of a subprocess.',
+    deprecationChain: ['process.pid', 'subprocess.pid'],
+  },
+  'thread.id': {
+    type: 'integer',
+    brief: 'Current “managed” thread ID.',
+    deprecationChain: ['thread.id', 'sentry.thread.id'],
+  },
+  'thread.name': {
+    type: 'string',
+    brief: 'Current thread name.',
+    deprecationChain: ['thread.name'],
+  },
+  'timber.tag': {
+    type: 'string',
+    brief: 'The log tag provided by the timber logging framework.',
+    deprecationChain: ['timber.tag'],
+  },
+  time_to_full_display: {
+    type: 'double',
+    brief: 'The duration of time to full display in milliseconds',
+    deprecationChain: ['app.vitals.ttfd.value', 'time_to_full_display'],
+  },
+  time_to_initial_display: {
+    type: 'double',
+    brief: 'The duration of time to initial display in milliseconds',
+    deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
+  },
+  'trace.status': {
+    type: 'string',
+    brief:
+      'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+    deprecationChain: ['sentry.trace.status', 'trace.status'],
+  },
+  trace_lifecycle: {
+    type: 'string',
+    brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
+    deprecationChain: ['sentry.trace_lifecycle', 'trace_lifecycle'],
+  },
+  transaction: {
+    type: 'string',
+    brief: 'The sentry transaction (segment name).',
+    deprecationChain: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
+  },
+  'transaction.span_id': {
+    type: 'string',
+    brief: 'The segment ID of a span',
+    deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
+  },
+  'trpc.procedure_path': {
+    type: 'string',
+    brief: 'The path of the tRPC procedure being called',
+    deprecationChain: ['trpc.procedure_path'],
+  },
+  'trpc.procedure_type': {
+    type: 'string',
+    brief: 'The type of the tRPC procedure',
+    deprecationChain: ['trpc.procedure_type'],
+  },
+  ttfb: {
+    type: 'double',
+    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
+    deprecationChain: ['browser.web_vital.ttfb.value', 'ttfb'],
+  },
+  'ttfb.requestTime': {
+    type: 'double',
+    brief:
+      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+    deprecationChain: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
+  },
+  type: {
+    type: 'string',
+    brief: 'More granular type of the operation happening.',
+    deprecationChain: ['type'],
+  },
+  'ui.component_name': {
+    type: 'string',
+    brief: 'The name of the associated component.',
+    deprecationChain: ['ui.component_name'],
+  },
+  'ui.contributes_to_ttfd': {
+    type: 'boolean',
+    brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
+    deprecationChain: ['ui.contributes_to_ttfd'],
+  },
+  'ui.contributes_to_ttid': {
+    type: 'boolean',
+    brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
+    deprecationChain: ['ui.contributes_to_ttid'],
+  },
+  'ui.element.height': {
+    type: 'integer',
+    brief: 'The height of the UI element (for Html in pixels)',
+    deprecationChain: ['ui.element.height'],
+  },
+  'ui.element.id': {
+    type: 'string',
+    brief: 'The id of the UI element',
+    deprecationChain: ['ui.element.id'],
+  },
+  'ui.element.identifier': {
+    type: 'string',
+    brief: 'The identifier used to measure the UI element timing',
+    deprecationChain: ['ui.element.identifier'],
+  },
+  'ui.element.load_time': {
+    type: 'double',
+    brief: 'The loading time of a UI element (from time origin to finished loading)',
+    deprecationChain: ['ui.element.load_time'],
+  },
+  'ui.element.paint_type': {
+    type: 'string',
+    brief: "The type of element paint. Can either be 'image-paint' or 'text-paint'",
+    deprecationChain: ['ui.element.paint_type'],
+  },
+  'ui.element.render_time': {
+    type: 'double',
+    brief: 'The rendering time of the UI element (from time origin to finished rendering)',
+    deprecationChain: ['ui.element.render_time'],
+  },
+  'ui.element.type': {
+    type: 'string',
+    brief: 'type of the UI element',
+    deprecationChain: ['ui.element.type'],
+  },
+  'ui.element.url': {
+    type: 'string',
+    brief: 'The URL of the UI element (e.g. an img src)',
+    deprecationChain: ['ui.element.url'],
+  },
+  'ui.element.width': {
+    type: 'integer',
+    brief: 'The width of the UI element (for HTML in pixels)',
+    deprecationChain: ['ui.element.width'],
+  },
+  url: {
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url'],
+  },
+  'url.domain': {
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['url.domain'],
+  },
+  'url.fragment': {
+    type: 'string',
+    brief:
+      'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
+    deprecationChain: ['url.fragment'],
+  },
+  'url.full': {
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url.full', 'aws.request.url'],
+  },
+  'url.path': {
+    type: 'string',
+    brief: 'The URI path component.',
+    deprecationChain: ['url.path'],
+  },
+  'url.path.parameter.<key>': {
+    type: 'string',
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['url.path.parameter.<key>', 'params.<key>'],
+  },
+  'url.port': {
+    type: 'integer',
+    brief: 'Server port number.',
+    deprecationChain: ['url.port'],
+  },
+  'url.query': {
+    type: 'string',
+    brief:
+      'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
+    deprecationChain: ['url.query'],
+  },
+  'url.same_origin': {
+    type: 'boolean',
+    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
+    deprecationChain: ['http.request.same_origin', 'url.same_origin'],
+  },
+  'url.scheme': {
+    type: 'string',
+    brief: 'The URI scheme component identifying the used protocol.',
+    deprecationChain: ['url.scheme'],
+  },
+  'url.template': {
+    type: 'string',
+    brief: 'The low-cardinality template of an absolute URL path reference.',
+    deprecationChain: ['url.template'],
+  },
+  'user.email': {
+    type: 'string',
+    brief: 'User email address.',
+    deprecationChain: ['user.email', 'sentry.user.email'],
+  },
+  'user.full_name': {
+    type: 'string',
+    brief: "User's full name.",
+    deprecationChain: ['user.full_name'],
+  },
+  'user.geo.city': {
+    type: 'string',
+    brief: 'Human readable city name.',
+    deprecationChain: ['user.geo.city', 'sentry.user.geo.city'],
+  },
+  'user.geo.country_code': {
+    type: 'string',
+    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
+    deprecationChain: ['user.geo.country_code', 'sentry.user.geo.country_code'],
+  },
+  'user.geo.region': {
+    type: 'string',
+    brief: 'Human readable region name or code.',
+    deprecationChain: ['user.geo.region', 'sentry.user.geo.region'],
+  },
+  'user.geo.subdivision': {
+    type: 'string',
+    brief: 'Human readable subdivision name.',
+    deprecationChain: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
+  },
+  'user.hash': {
+    type: 'string',
+    brief: 'Unique user hash to correlate information for a user in anonymized form.',
+    deprecationChain: ['user.hash'],
+  },
+  'user.id': {
+    type: 'string',
+    brief: 'Unique identifier of the user.',
+    deprecationChain: ['user.id', 'sentry.user.id'],
+  },
+  'user.ip': {
+    type: 'string',
+    brief: 'The IP address of the user.',
+    deprecationChain: ['sentry.user.ip', 'user.ip'],
+  },
+  'user.ip_address': {
+    type: 'string',
+    brief: 'The IP address of the user.',
+    deprecationChain: ['user.ip_address'],
+  },
+  'user.name': {
+    type: 'string',
+    brief: 'Short name or login/username of the user.',
+    deprecationChain: ['user.name'],
+  },
+  'user.roles': {
+    type: 'string[]',
+    brief: 'Array of user roles at the time of the event.',
+    deprecationChain: ['user.roles'],
+  },
+  'user.username': {
+    type: 'string',
+    brief: 'Short name or login/username of the user.',
+    deprecationChain: ['sentry.user.username', 'user.username'],
+  },
+  'user_agent.original': {
+    type: 'string',
+    brief: 'Value of the HTTP User-Agent header sent by the client.',
+    deprecationChain: ['user_agent.original'],
+  },
+  'vercel.branch': {
+    type: 'string',
+    brief: 'Git branch name for Vercel project',
+    deprecationChain: ['vercel.branch'],
+  },
+  'vercel.build_id': {
+    type: 'string',
+    brief: 'Identifier for the Vercel build (only present on build logs)',
+    deprecationChain: ['vercel.build_id'],
+  },
+  'vercel.deployment_id': {
+    type: 'string',
+    brief: 'Identifier for the Vercel deployment',
+    deprecationChain: ['vercel.deployment_id'],
+  },
+  'vercel.destination': {
+    type: 'string',
+    brief: 'Origin of the external content in Vercel (only on external logs)',
+    deprecationChain: ['vercel.destination'],
+  },
+  'vercel.edge_type': {
+    type: 'string',
+    brief: 'Type of edge runtime in Vercel',
+    deprecationChain: ['vercel.edge_type'],
+  },
+  'vercel.entrypoint': {
+    type: 'string',
+    brief: 'Entrypoint for the request in Vercel',
+    deprecationChain: ['vercel.entrypoint'],
+  },
+  'vercel.execution_region': {
+    type: 'string',
+    brief: 'Region where the request is executed',
+    deprecationChain: ['vercel.execution_region'],
+  },
+  'vercel.id': {
+    type: 'string',
+    brief: 'Unique identifier for the log entry in Vercel',
+    deprecationChain: ['vercel.id'],
+  },
+  'vercel.ja3_digest': {
+    type: 'string',
+    brief: 'JA3 fingerprint digest of Vercel request',
+    deprecationChain: ['vercel.ja3_digest'],
+  },
+  'vercel.ja4_digest': {
+    type: 'string',
+    brief: 'JA4 fingerprint digest',
+    deprecationChain: ['vercel.ja4_digest'],
+  },
+  'vercel.log_type': {
+    type: 'string',
+    brief: 'Vercel log output type',
+    deprecationChain: ['vercel.log_type'],
+  },
+  'vercel.path': {
+    type: 'string',
+    brief: 'Function or dynamic path of the request in Vercel.',
+    deprecationChain: ['vercel.path'],
+  },
+  'vercel.project_id': {
+    type: 'string',
+    brief: 'Identifier for the Vercel project',
+    deprecationChain: ['vercel.project_id'],
+  },
+  'vercel.project_name': {
+    type: 'string',
+    brief: 'Name of the Vercel project',
+    deprecationChain: ['vercel.project_name'],
+  },
+  'vercel.proxy.cache_id': {
+    type: 'string',
+    brief: 'Original request ID when request is served from cache',
+    deprecationChain: ['vercel.proxy.cache_id'],
+  },
+  'vercel.proxy.client_ip': {
+    type: 'string',
+    brief: 'Client IP address',
+    deprecationChain: ['vercel.proxy.client_ip'],
+  },
+  'vercel.proxy.host': {
+    type: 'string',
+    brief: 'Hostname of the request',
+    deprecationChain: ['vercel.proxy.host'],
+  },
+  'vercel.proxy.lambda_region': {
+    type: 'string',
+    brief: 'Region where lambda function executed',
+    deprecationChain: ['vercel.proxy.lambda_region'],
+  },
+  'vercel.proxy.method': {
+    type: 'string',
+    brief: 'HTTP method of the request',
+    deprecationChain: ['vercel.proxy.method'],
+  },
+  'vercel.proxy.path': {
+    type: 'string',
+    brief: 'Request path with query parameters',
+    deprecationChain: ['vercel.proxy.path'],
+  },
+  'vercel.proxy.path_type': {
+    type: 'string',
+    brief: 'How the request was served based on its path and project configuration',
+    deprecationChain: ['vercel.proxy.path_type'],
+  },
+  'vercel.proxy.path_type_variant': {
+    type: 'string',
+    brief: 'Variant of the path type',
+    deprecationChain: ['vercel.proxy.path_type_variant'],
+  },
+  'vercel.proxy.referer': {
+    type: 'string',
+    brief: 'Referer of the request',
+    deprecationChain: ['vercel.proxy.referer'],
+  },
+  'vercel.proxy.region': {
+    type: 'string',
+    brief: 'Region where the request is processed',
+    deprecationChain: ['vercel.proxy.region'],
+  },
+  'vercel.proxy.response_byte_size': {
+    type: 'integer',
+    brief: 'Size of the response in bytes',
+    deprecationChain: ['vercel.proxy.response_byte_size'],
+  },
+  'vercel.proxy.scheme': {
+    type: 'string',
+    brief: 'Protocol of the request',
+    deprecationChain: ['vercel.proxy.scheme'],
+  },
+  'vercel.proxy.status_code': {
+    type: 'integer',
+    brief: 'HTTP status code of the proxy request',
+    deprecationChain: ['vercel.proxy.status_code'],
+  },
+  'vercel.proxy.timestamp': {
+    type: 'integer',
+    brief: 'Unix timestamp when the proxy request was made',
+    deprecationChain: ['vercel.proxy.timestamp'],
+  },
+  'vercel.proxy.user_agent': {
+    type: 'string[]',
+    brief: 'User agent strings of the request',
+    deprecationChain: ['vercel.proxy.user_agent'],
+  },
+  'vercel.proxy.vercel_cache': {
+    type: 'string',
+    brief: 'Cache status sent to the browser',
+    deprecationChain: ['vercel.proxy.vercel_cache'],
+  },
+  'vercel.proxy.vercel_id': {
+    type: 'string',
+    brief: 'Vercel-specific identifier',
+    deprecationChain: ['vercel.proxy.vercel_id'],
+  },
+  'vercel.proxy.waf_action': {
+    type: 'string',
+    brief: 'Action taken by firewall rules',
+    deprecationChain: ['vercel.proxy.waf_action'],
+  },
+  'vercel.proxy.waf_rule_id': {
+    type: 'string',
+    brief: 'ID of the firewall rule that matched',
+    deprecationChain: ['vercel.proxy.waf_rule_id'],
+  },
+  'vercel.request_id': {
+    type: 'string',
+    brief: 'Identifier of the Vercel request',
+    deprecationChain: ['vercel.request_id'],
+  },
+  'vercel.source': {
+    type: 'string',
+    brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
+    deprecationChain: ['vercel.source'],
+  },
+  'vercel.status_code': {
+    type: 'integer',
+    brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
+    deprecationChain: ['vercel.status_code'],
   },
 };
 

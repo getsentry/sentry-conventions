@@ -991,6 +991,17 @@ export interface SearchAlias {
   deprecatedAliases?: string[];
 }
 
+export type AttributeSearchType = AttributeType | SearchAliasType;
+
+export interface AttributeSearchMetadata {
+  /** The type exposed by Sentry search */
+  type: AttributeSearchType;
+  /** A description of the attribute */
+  brief: string;
+  /** Every key under which the attribute's value is readable, preferred key first */
+  deprecationChain: readonly string[];
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -1170,6 +1181,62 @@ function generateMetadataDict(
       metadataDict += '    },\n';
     }
 
+    metadataDict += '  },\n';
+  }
+
+  metadataDict += '};\n\n';
+
+  const searchMetadataByKey = new Map<string, typeof allAttributes>();
+
+  for (const attribute of allAttributes) {
+    const searchKey = attribute.attributeJson.search_alias?.name ?? attribute.key;
+    const candidates = searchMetadataByKey.get(searchKey) ?? [];
+    candidates.push(attribute);
+    searchMetadataByKey.set(searchKey, candidates);
+  }
+
+  metadataDict += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
+
+  for (const searchKey of [...searchMetadataByKey.keys()].sort()) {
+    const candidates = searchMetadataByKey.get(searchKey) as typeof allAttributes;
+    candidates.sort((a, b) => {
+      if (a.isDeprecated !== b.isDeprecated) {
+        return a.isDeprecated ? 1 : -1;
+      }
+
+      return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
+    });
+
+    const preferredAttribute = candidates[0];
+    if (!preferredAttribute) {
+      throw new Error(`No attribute found for search metadata key "${searchKey}"`);
+    }
+
+    const keyChain = attributeKeyChains.get(preferredAttribute.key);
+    if (!keyChain) {
+      throw new Error(`Attribute key chain for "${preferredAttribute.key}" does not exist`);
+    }
+
+    const deprecationChain = new Set(keyChain);
+    if (!preferredAttribute.isDeprecated) {
+      for (const candidate of candidates.filter((candidate) => candidate.isDeprecated)) {
+        const deprecatedKeyChain = attributeKeyChains.get(candidate.key);
+        if (!deprecatedKeyChain) {
+          throw new Error(`Attribute key chain for "${candidate.key}" does not exist`);
+        }
+
+        for (const key of deprecatedKeyChain) {
+          deprecationChain.add(key);
+        }
+      }
+    }
+
+    metadataDict += `  ${JSON.stringify(searchKey)}: {\n`;
+    metadataDict += `    type: ${JSON.stringify(
+      preferredAttribute.attributeJson.search_alias?.type ?? preferredAttribute.attributeJson.type,
+    )},\n`;
+    metadataDict += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
+    metadataDict += `    deprecationChain: ${JSON.stringify([...deprecationChain])},\n`;
     metadataDict += '  },\n';
   }
 

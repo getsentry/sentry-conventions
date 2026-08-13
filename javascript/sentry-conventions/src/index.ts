@@ -7,6 +7,8 @@ export type {
   ApplyScrubbingInfo,
   DeprecationInfo,
   AttributeMetadata,
+  AttributeSearchMetadata,
+  AttributeSearchType,
 } from './attributes';
 
-export { ATTRIBUTE_METADATA, ATTRIBUTE_TYPE } from './attributes';
+export { ATTRIBUTE_METADATA, ATTRIBUTE_SEARCH_METADATA, ATTRIBUTE_TYPE } from './attributes';
