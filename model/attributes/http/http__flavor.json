@@ -9,7 +9,7 @@
   "example": "1.1",
   "alias": ["network.protocol.version", "net.protocol.version"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "network.protocol.version"
   },
   "visibility": "public",

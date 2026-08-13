@@ -239,12 +239,10 @@ describe('generated attribute key chains', () => {
   });
 
   it('gives a non-rewriting deprecation a chain of only its own names', () => {
-    // `http.url` names `url.full` as its replacement and also lists it under `alias`, but its value
-    // is never rewritten there, so the chain stops at itself.
-    expect(ATTRIBUTE_METADATA['http.url']?.keys).toEqual(['http.url']);
-    expect(ATTRIBUTE_METADATA['url.full']?.keys).not.toContain('http.url');
-    // `http.host` aliases both `server.address` and `client.address`; neither is a substitute.
+    // `http.host` names `server.address` as its replacement and also lists it under `alias` (next to
+    // `client.address`), but its value is never rewritten there, so the chain stops at itself.
     expect(ATTRIBUTE_METADATA['http.host']?.keys).toEqual(['http.host']);
+    expect(ATTRIBUTE_METADATA['server.address']?.keys).not.toContain('http.host');
   });
 
   it('shares one chain across every member of a family', () => {
@@ -308,8 +306,15 @@ describe('generated attribute key chains', () => {
   });
 
   it('omits deprecated aliases that are not part of the family', () => {
-    // `address` aliases several deprecated attributes that are replaced by other keys; only
-    // `server.address` (its replacement) and `server_name` (a fellow predecessor) belong here.
-    expect(ATTRIBUTE_METADATA['address']?.keys).toEqual(['server.address', 'address', 'server_name']);
+    // `address` aliases five deprecated attributes. Its replacement `server.address` heads the chain
+    // and the other backfilled ones follow as fellow predecessors, but `http.host` is left out: its
+    // value is never rewritten onto `server.address`.
+    expect(ATTRIBUTE_METADATA['address']?.keys).toEqual([
+      'server.address',
+      'address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+    ]);
   });
 });
