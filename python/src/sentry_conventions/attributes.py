@@ -10185,6 +10185,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "server.address",
             "address",
+            "http.server_name",
+            "net.host.name",
             "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -12527,6 +12529,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "url.full",
             "aws.request.url",
+            "http.url",
+            "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
@@ -12755,7 +12759,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
-        keys=("browser.name",),
+        keys=(
+            "browser.name",
+            "sentry.browser.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12860,7 +12867,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
-        keys=("browser.version",),
+        keys=(
+            "browser.version",
+            "sentry.browser.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13231,7 +13241,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "client.address": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=("client.address",),
+        keys=(
+            "client.address",
+            "http.client_ip",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13704,7 +13717,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.file.path": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
-        keys=("code.file.path",),
+        keys=(
+            "code.file.path",
+            "code.filepath",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13717,12 +13733,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.filepath": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
-        keys=("code.filepath",),
+        keys=(
+            "code.file.path",
+            "code.filepath",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/app/myapplication/http/handler/server.py",
-        deprecation=DeprecationInfo(replacement="code.file.path"),
+        deprecation=DeprecationInfo(
+            replacement="code.file.path", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["code.file.path"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -13778,7 +13799,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.line.number": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        keys=("code.line.number",),
+        keys=(
+            "code.line.number",
+            "code.lineno",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13792,12 +13816,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.lineno": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
-        keys=("code.lineno",),
+        keys=(
+            "code.line.number",
+            "code.lineno",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=42,
-        deprecation=DeprecationInfo(replacement="code.line.number"),
+        deprecation=DeprecationInfo(
+            replacement="code.line.number", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["code.line.number"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -14015,12 +14044,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.name": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        keys=("db.name",),
+        keys=(
+            "db.namespace",
+            "db.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="customers",
-        deprecation=DeprecationInfo(replacement="db.namespace"),
+        deprecation=DeprecationInfo(
+            replacement="db.namespace", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["db.namespace"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -14030,7 +14064,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.namespace": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
-        keys=("db.namespace",),
+        keys=(
+            "db.namespace",
+            "db.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17490,12 +17527,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=("http.client_ip",),
+        keys=(
+            "client.address",
+            "http.client_ip",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
-        deprecation=DeprecationInfo(replacement="client.address"),
+        deprecation=DeprecationInfo(
+            replacement="client.address", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["client.address"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 106, 127]),
@@ -17521,12 +17563,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.flavor": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        keys=("http.flavor",),
+        keys=(
+            "network.protocol.version",
+            "http.flavor",
+            "net.protocol.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1.1",
-        deprecation=DeprecationInfo(replacement="network.protocol.version"),
+        deprecation=DeprecationInfo(
+            replacement="network.protocol.version", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.protocol.version", "net.protocol.version"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -17970,6 +18018,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "http.response.status_code",
             "http.response_status_code",
+            "http.status_code",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -18054,12 +18103,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        keys=("http.scheme",),
+        keys=(
+            "url.scheme",
+            "http.scheme",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https",
-        deprecation=DeprecationInfo(replacement="url.scheme"),
+        deprecation=DeprecationInfo(
+            replacement="url.scheme", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["url.scheme"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -18081,12 +18135,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.server_name": AttributeMetadata(
         brief="The server domain name",
         type=AttributeType.STRING,
-        keys=("http.server_name",),
+        keys=(
+            "server.address",
+            "address",
+            "http.server_name",
+            "net.host.name",
+            "server_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
-        deprecation=DeprecationInfo(replacement="server.address"),
+        deprecation=DeprecationInfo(
+            replacement="server.address", status=DeprecationStatus.BACKFILL
+        ),
         aliases=[
             "address",
             "server.address",
@@ -18105,12 +18167,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
-        keys=("http.status_code",),
+        keys=(
+            "http.response.status_code",
+            "http.response_status_code",
+            "http.status_code",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=404,
-        deprecation=DeprecationInfo(replacement="http.response.status_code"),
+        deprecation=DeprecationInfo(
+            replacement="http.response.status_code", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["http.response.status_code"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -18138,12 +18206,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        keys=("http.url",),
+        keys=(
+            "url.full",
+            "aws.request.url",
+            "http.url",
+            "url",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        deprecation=DeprecationInfo(replacement="url.full"),
+        deprecation=DeprecationInfo(
+            replacement="url.full", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["url.full", "url", "aws.request.url"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
@@ -18153,12 +18228,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.user_agent": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        keys=("http.user_agent",),
+        keys=(
+            "user_agent.original",
+            "http.user_agent",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
-        deprecation=DeprecationInfo(replacement="user_agent.original"),
+        deprecation=DeprecationInfo(
+            replacement="user_agent.original", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user_agent.original"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -18945,6 +19025,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.name",
             "mcp.resource.protocol",
+            "net.protocol.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -19144,6 +19225,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.transport",
             "mcp.transport",
+            "net.transport",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -19657,12 +19739,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.ip": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=("net.host.ip",),
+        keys=(
+            "network.local.address",
+            "net.host.ip",
+            "net.sock.host.addr",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
-        deprecation=DeprecationInfo(replacement="network.local.address"),
+        deprecation=DeprecationInfo(
+            replacement="network.local.address", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.local.address", "net.sock.host.addr"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -19672,12 +19760,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=("net.host.name",),
+        keys=(
+            "server.address",
+            "address",
+            "http.server_name",
+            "net.host.name",
+            "server_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
-        deprecation=DeprecationInfo(replacement="server.address"),
+        deprecation=DeprecationInfo(
+            replacement="server.address", status=DeprecationStatus.BACKFILL
+        ),
         aliases=[
             "address",
             "server.address",
@@ -19696,12 +19792,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
-        keys=("net.host.port",),
+        keys=(
+            "server.port",
+            "net.host.port",
+            "port",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=1337,
-        deprecation=DeprecationInfo(replacement="server.port"),
+        deprecation=DeprecationInfo(
+            replacement="server.port", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["server.port", "port"],
         changelog=[
             ChangelogEntry(
@@ -19715,12 +19817,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.ip": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=("net.peer.ip",),
+        keys=(
+            "network.peer.address",
+            "net.peer.ip",
+            "net.sock.peer.addr",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
-        deprecation=DeprecationInfo(replacement="network.peer.address"),
+        deprecation=DeprecationInfo(
+            replacement="network.peer.address", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.peer.address", "net.sock.peer.addr"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -19765,12 +19873,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
-        keys=("net.protocol.name",),
+        keys=(
+            "network.protocol.name",
+            "mcp.resource.protocol",
+            "net.protocol.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
-        deprecation=DeprecationInfo(replacement="network.protocol.name"),
+        deprecation=DeprecationInfo(
+            replacement="network.protocol.name", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.protocol.name", "mcp.resource.protocol"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -19780,12 +19894,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        keys=("net.protocol.version",),
+        keys=(
+            "network.protocol.version",
+            "http.flavor",
+            "net.protocol.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1.1",
-        deprecation=DeprecationInfo(replacement="network.protocol.version"),
+        deprecation=DeprecationInfo(
+            replacement="network.protocol.version", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.protocol.version", "http.flavor"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -19812,12 +19932,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.addr": AttributeMetadata(
         brief="Local address of the network connection mapping to Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=("net.sock.host.addr",),
+        keys=(
+            "network.local.address",
+            "net.host.ip",
+            "net.sock.host.addr",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/var/my.sock",
-        deprecation=DeprecationInfo(replacement="network.local.address"),
+        deprecation=DeprecationInfo(
+            replacement="network.local.address", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.local.address", "net.host.ip"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -19827,12 +19953,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        keys=("net.sock.host.port",),
+        keys=(
+            "network.local.port",
+            "net.sock.host.port",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=8080,
-        deprecation=DeprecationInfo(replacement="network.local.port"),
+        deprecation=DeprecationInfo(
+            replacement="network.local.port", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.local.port"],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
@@ -19843,12 +19974,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.addr": AttributeMetadata(
         brief="Peer address of the network connection - IP address",
         type=AttributeType.STRING,
-        keys=("net.sock.peer.addr",),
+        keys=(
+            "network.peer.address",
+            "net.peer.ip",
+            "net.sock.peer.addr",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
-        deprecation=DeprecationInfo(replacement="network.peer.address"),
+        deprecation=DeprecationInfo(
+            replacement="network.peer.address", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.peer.address", "net.peer.ip"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -19874,12 +20011,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
-        keys=("net.sock.peer.port",),
+        keys=(
+            "network.peer.port",
+            "net.sock.peer.port",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=8080,
-        deprecation=DeprecationInfo(replacement="network.peer.port"),
+        deprecation=DeprecationInfo(
+            replacement="network.peer.port", status=DeprecationStatus.BACKFILL
+        ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -19889,12 +20031,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        keys=("net.transport",),
+        keys=(
+            "network.transport",
+            "mcp.transport",
+            "net.transport",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
-        deprecation=DeprecationInfo(replacement="network.transport"),
+        deprecation=DeprecationInfo(
+            replacement="network.transport", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["network.transport", "mcp.transport"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -19965,7 +20113,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.local.address": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=("network.local.address",),
+        keys=(
+            "network.local.address",
+            "net.host.ip",
+            "net.sock.host.addr",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19979,7 +20131,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.local.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
-        keys=("network.local.port",),
+        keys=(
+            "network.local.port",
+            "net.sock.host.port",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19993,7 +20148,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.address": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
-        keys=("network.peer.address",),
+        keys=(
+            "network.peer.address",
+            "net.peer.ip",
+            "net.sock.peer.addr",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20007,7 +20166,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
-        keys=("network.peer.port",),
+        keys=(
+            "network.peer.port",
+            "net.sock.peer.port",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20023,6 +20185,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.name",
             "mcp.resource.protocol",
+            "net.protocol.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -20037,7 +20200,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
-        keys=("network.protocol.version",),
+        keys=(
+            "network.protocol.version",
+            "http.flavor",
+            "net.protocol.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20054,6 +20221,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.transport",
             "mcp.transport",
+            "net.transport",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -20381,6 +20549,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         keys=(
             "server.port",
+            "net.host.port",
             "port",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -20467,7 +20636,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.description": AttributeMetadata(
         brief="An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        keys=("process.runtime.description",),
+        keys=(
+            "process.runtime.description",
+            "runtime.raw_description",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20505,7 +20677,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.name": AttributeMetadata(
         brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        keys=("process.runtime.name",),
+        keys=(
+            "process.runtime.name",
+            "runtime.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20519,7 +20694,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.version": AttributeMetadata(
         brief="The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.",
         type=AttributeType.STRING,
-        keys=("process.runtime.version",),
+        keys=(
+            "process.runtime.version",
+            "runtime.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20937,7 +21115,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.name": AttributeMetadata(
         brief="The name of the runtime. For example node, CPython, or rustc.",
         type=AttributeType.STRING,
-        keys=("runtime.name",),
+        keys=(
+            "process.runtime.name",
+            "runtime.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20945,6 +21126,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="process.runtime.name",
             reason="Prefer OTel-aligned process.runtime.name",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["process.runtime.name"],
         changelog=[
@@ -20958,7 +21140,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.raw_description": AttributeMetadata(
         brief="Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.",
         type=AttributeType.STRING,
-        keys=("runtime.raw_description",),
+        keys=(
+            "process.runtime.description",
+            "runtime.raw_description",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20966,6 +21151,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="process.runtime.description",
             reason="Prefer OTel-aligned process.runtime.description",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["process.runtime.description"],
         changelog=[
@@ -20979,7 +21165,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.version": AttributeMetadata(
         brief="The version of the runtime.",
         type=AttributeType.STRING,
-        keys=("runtime.version",),
+        keys=(
+            "process.runtime.version",
+            "runtime.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20987,6 +21176,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="process.runtime.version",
             reason="Prefer OTel-aligned process.runtime.version",
+            status=DeprecationStatus.BACKFILL,
         ),
         aliases=["process.runtime.version"],
         changelog=[
@@ -21079,14 +21269,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The name of the browser.",
         type=AttributeType.STRING,
         keys=(
-            "sentry.browser.name",
             "browser.name",
+            "sentry.browser.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Chrome",
-        deprecation=DeprecationInfo(replacement="browser.name"),
+        deprecation=DeprecationInfo(
+            replacement="browser.name", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["browser.name"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
@@ -21096,12 +21288,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
-        keys=("sentry.browser.version",),
+        keys=(
+            "browser.version",
+            "sentry.browser.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="120.0.6099.130",
-        deprecation=DeprecationInfo(replacement="browser.version"),
+        deprecation=DeprecationInfo(
+            replacement="browser.version", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["browser.version"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[139]),
@@ -22323,13 +22520,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="User email address.",
         type=AttributeType.STRING,
         keys=(
-            "sentry.user.email",
             "user.email",
+            "sentry.user.email",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        deprecation=DeprecationInfo(replacement="user.email"),
+        deprecation=DeprecationInfo(
+            replacement="user.email", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user.email"],
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
@@ -22340,13 +22539,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Human readable city name.",
         type=AttributeType.STRING,
         keys=(
-            "sentry.user.geo.city",
             "user.geo.city",
+            "sentry.user.geo.city",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        deprecation=DeprecationInfo(replacement="user.geo.city"),
+        deprecation=DeprecationInfo(
+            replacement="user.geo.city", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user.geo.city"],
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
@@ -22357,13 +22558,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
         type=AttributeType.STRING,
         keys=(
-            "sentry.user.geo.country_code",
             "user.geo.country_code",
+            "sentry.user.geo.country_code",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        deprecation=DeprecationInfo(replacement="user.geo.country_code"),
+        deprecation=DeprecationInfo(
+            replacement="user.geo.country_code", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user.geo.country_code"],
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
@@ -22374,13 +22577,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Human readable region name or code.",
         type=AttributeType.STRING,
         keys=(
-            "sentry.user.geo.region",
             "user.geo.region",
+            "sentry.user.geo.region",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        deprecation=DeprecationInfo(replacement="user.geo.region"),
+        deprecation=DeprecationInfo(
+            replacement="user.geo.region", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user.geo.region"],
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
@@ -22391,13 +22596,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Human readable subdivision name.",
         type=AttributeType.STRING,
         keys=(
-            "sentry.user.geo.subdivision",
             "user.geo.subdivision",
+            "sentry.user.geo.subdivision",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        deprecation=DeprecationInfo(replacement="user.geo.subdivision"),
+        deprecation=DeprecationInfo(
+            replacement="user.geo.subdivision", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user.geo.subdivision"],
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
@@ -22408,13 +22615,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
         keys=(
-            "sentry.user.id",
             "user.id",
+            "sentry.user.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        deprecation=DeprecationInfo(replacement="user.id"),
+        deprecation=DeprecationInfo(
+            replacement="user.id", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user.id"],
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
@@ -22425,13 +22634,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The IP address of the user.",
         type=AttributeType.STRING,
         keys=(
+            "user.ip_address",
             "sentry.user.ip",
             "user.ip",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        deprecation=DeprecationInfo(replacement="user.ip_address"),
+        deprecation=DeprecationInfo(
+            replacement="user.ip_address", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user.ip_address"],
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
@@ -22442,13 +22654,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Short name or login/username of the user.",
         type=AttributeType.STRING,
         keys=(
+            "user.name",
             "sentry.user.username",
             "user.username",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        deprecation=DeprecationInfo(replacement="user.name"),
+        deprecation=DeprecationInfo(
+            replacement="user.name", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["user.name"],
         changelog=[
             ChangelogEntry(version="0.10.0", prs=[406]),
@@ -22461,6 +22676,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "server.address",
             "address",
+            "http.server_name",
+            "net.host.name",
             "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -22487,6 +22704,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         keys=(
             "server.port",
+            "net.host.port",
             "port",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -22508,6 +22726,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "server.address",
             "address",
+            "http.server_name",
+            "net.host.name",
             "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -23151,6 +23371,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "url.full",
             "aws.request.url",
+            "http.url",
+            "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
@@ -23252,7 +23474,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
-        keys=("url.scheme",),
+        keys=(
+            "url.scheme",
+            "http.scheme",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -23289,12 +23514,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
-        keys=("url",),
+        keys=(
+            "url.full",
+            "aws.request.url",
+            "http.url",
+            "url",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        deprecation=DeprecationInfo(replacement="url.full"),
+        deprecation=DeprecationInfo(
+            replacement="url.full", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["url.full", "http.url", "aws.request.url"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -23304,7 +23536,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.email": AttributeMetadata(
         brief="User email address.",
         type=AttributeType.STRING,
-        keys=("user.email",),
+        keys=(
+            "user.email",
+            "sentry.user.email",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -23329,7 +23564,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.city": AttributeMetadata(
         brief="Human readable city name.",
         type=AttributeType.STRING,
-        keys=("user.geo.city",),
+        keys=(
+            "user.geo.city",
+            "sentry.user.geo.city",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -23342,7 +23580,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.country_code": AttributeMetadata(
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
         type=AttributeType.STRING,
-        keys=("user.geo.country_code",),
+        keys=(
+            "user.geo.country_code",
+            "sentry.user.geo.country_code",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -23355,7 +23596,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.region": AttributeMetadata(
         brief="Human readable region name or code.",
         type=AttributeType.STRING,
-        keys=("user.geo.region",),
+        keys=(
+            "user.geo.region",
+            "sentry.user.geo.region",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -23368,7 +23612,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.subdivision": AttributeMetadata(
         brief="Human readable subdivision name.",
         type=AttributeType.STRING,
-        keys=("user.geo.subdivision",),
+        keys=(
+            "user.geo.subdivision",
+            "sentry.user.geo.subdivision",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -23393,7 +23640,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
-        keys=("user.id",),
+        keys=(
+            "user.id",
+            "sentry.user.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -23406,7 +23656,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.ip_address": AttributeMetadata(
         brief="The IP address of the user.",
         type=AttributeType.STRING,
-        keys=("user.ip_address",),
+        keys=(
+            "user.ip_address",
+            "sentry.user.ip",
+            "user.ip",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -23419,7 +23673,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.name": AttributeMetadata(
         brief="Short name or login/username of the user.",
         type=AttributeType.STRING,
-        keys=("user.name",),
+        keys=(
+            "user.name",
+            "sentry.user.username",
+            "user.username",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -23444,7 +23702,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user_agent.original": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
-        keys=("user_agent.original",),
+        keys=(
+            "user_agent.original",
+            "http.user_agent",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,

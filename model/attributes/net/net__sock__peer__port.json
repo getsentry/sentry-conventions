@@ -8,7 +8,7 @@
   "is_in_otel": true,
   "example": 8080,
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "network.peer.port"
   },
   "visibility": "public",

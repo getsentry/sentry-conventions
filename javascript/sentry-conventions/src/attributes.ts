@@ -19254,7 +19254,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   address: {
     brief: 'The destination hostname or IP address for a TCP connection.',
     type: 'string',
-    keys: ['server.address', 'address', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21184,7 +21184,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.url': {
     brief: 'The URL of the AWS API request.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21339,7 +21339,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.name': {
     brief: 'The name of the browser.',
     type: 'string',
-    keys: ['browser.name'],
+    keys: ['browser.name', 'sentry.browser.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21430,7 +21430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.version': {
     brief: 'The version of the browser.',
     type: 'string',
-    keys: ['browser.version'],
+    keys: ['browser.version', 'sentry.browser.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21740,7 +21740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['client.address'],
+    keys: ['client.address', 'http.client_ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22140,7 +22140,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
-    keys: ['code.filepath'],
+    keys: ['code.file.path', 'code.filepath'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22149,6 +22149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/app/myapplication/http/handler/server.py',
     deprecation: {
       replacement: 'code.file.path',
+      status: 'backfill',
     },
     aliases: ['code.file.path'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -22157,7 +22158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
-    keys: ['code.file.path'],
+    keys: ['code.file.path', 'code.filepath'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22205,7 +22206,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
-    keys: ['code.lineno'],
+    keys: ['code.line.number', 'code.lineno'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22214,6 +22215,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 42,
     deprecation: {
       replacement: 'code.line.number',
+      status: 'backfill',
     },
     aliases: ['code.line.number'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
@@ -22222,7 +22224,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
-    keys: ['code.line.number'],
+    keys: ['code.line.number', 'code.lineno'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22411,7 +22413,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.name': {
     brief: 'The name of the database being accessed.',
     type: 'string',
-    keys: ['db.name'],
+    keys: ['db.namespace', 'db.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22420,6 +22422,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'customers',
     deprecation: {
       replacement: 'db.namespace',
+      status: 'backfill',
     },
     aliases: ['db.namespace'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -22427,7 +22430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.namespace': {
     brief: 'The name of the database being accessed.',
     type: 'string',
-    keys: ['db.namespace'],
+    keys: ['db.namespace', 'db.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25414,7 +25417,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['http.client_ip'],
+    keys: ['client.address', 'http.client_ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25423,6 +25426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'client.address',
+      status: 'backfill',
     },
     aliases: ['client.address'],
     changelog: [{ version: '0.1.0', prs: [61, 106, 127] }, { version: '0.0.0' }],
@@ -25446,7 +25450,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.flavor': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['http.flavor'],
+    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25455,6 +25459,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
+      status: 'backfill',
     },
     aliases: ['network.protocol.version', 'net.protocol.version'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -25865,7 +25870,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.response.status_code': {
     brief: 'The status code of the HTTP response.',
     type: 'integer',
-    keys: ['http.response.status_code', 'http.response_status_code'],
+    keys: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25928,7 +25933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
-    keys: ['http.scheme'],
+    keys: ['url.scheme', 'http.scheme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25937,6 +25942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https',
     deprecation: {
       replacement: 'url.scheme',
+      status: 'backfill',
     },
     aliases: ['url.scheme'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -25944,7 +25950,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.server_name': {
     brief: 'The server domain name',
     type: 'string',
-    keys: ['http.server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25953,6 +25959,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
+      status: 'backfill',
     },
     aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
     changelog: [
@@ -25977,7 +25984,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.status_code': {
     brief: 'The status code of the HTTP response.',
     type: 'integer',
-    keys: ['http.status_code'],
+    keys: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25986,6 +25993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 404,
     deprecation: {
       replacement: 'http.response.status_code',
+      status: 'backfill',
     },
     aliases: ['http.response.status_code'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -26009,7 +26017,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.url': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['http.url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26018,6 +26026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
+      status: 'backfill',
     },
     aliases: ['url.full', 'url', 'aws.request.url'],
     changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
@@ -26025,7 +26034,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.user_agent': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
-    keys: ['http.user_agent'],
+    keys: ['user_agent.original', 'http.user_agent'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26035,6 +26044,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     deprecation: {
       replacement: 'user_agent.original',
+      status: 'backfill',
     },
     aliases: ['user_agent.original'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -26752,7 +26762,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.resource.protocol': {
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26926,7 +26936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.transport': {
     brief: 'Transport method used for MCP communication.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport'],
+    keys: ['network.transport', 'mcp.transport', 'net.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27452,7 +27462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.local.address': {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['network.local.address'],
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27465,7 +27475,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.local.port': {
     brief: 'Local port number of the network connection.',
     type: 'integer',
-    keys: ['network.local.port'],
+    keys: ['network.local.port', 'net.sock.host.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27478,7 +27488,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.peer.address': {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['network.peer.address'],
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27491,7 +27501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.peer.port': {
     brief: 'Peer port number of the network connection.',
     type: 'integer',
-    keys: ['network.peer.port'],
+    keys: ['network.peer.port', 'net.sock.peer.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27503,7 +27513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27516,7 +27526,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['network.protocol.version'],
+    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27529,7 +27539,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport'],
+    keys: ['network.transport', 'mcp.transport', 'net.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27554,7 +27564,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.host.ip': {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['net.host.ip'],
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27563,6 +27573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.local.address',
+      status: 'backfill',
     },
     aliases: ['network.local.address', 'net.sock.host.addr'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27571,7 +27582,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['net.host.name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27580,6 +27591,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
+      status: 'backfill',
     },
     aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
     changelog: [
@@ -27591,7 +27603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.host.port': {
     brief: 'Server port number.',
     type: 'integer',
-    keys: ['net.host.port'],
+    keys: ['server.port', 'net.host.port', 'port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27600,6 +27612,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1337,
     deprecation: {
       replacement: 'server.port',
+      status: 'backfill',
     },
     aliases: ['server.port', 'port'],
     changelog: [
@@ -27612,7 +27625,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.peer.ip': {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['net.peer.ip'],
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27621,6 +27634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
+      status: 'backfill',
     },
     aliases: ['network.peer.address', 'net.sock.peer.addr'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27661,7 +27675,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['net.protocol.name'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27670,6 +27684,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'http',
     deprecation: {
       replacement: 'network.protocol.name',
+      status: 'backfill',
     },
     aliases: ['network.protocol.name', 'mcp.resource.protocol'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -27677,7 +27692,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['net.protocol.version'],
+    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27686,6 +27701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
+      status: 'backfill',
     },
     aliases: ['network.protocol.version', 'http.flavor'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27709,7 +27725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.host.addr': {
     brief: 'Local address of the network connection mapping to Unix domain socket name.',
     type: 'string',
-    keys: ['net.sock.host.addr'],
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27718,6 +27734,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/var/my.sock',
     deprecation: {
       replacement: 'network.local.address',
+      status: 'backfill',
     },
     aliases: ['network.local.address', 'net.host.ip'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27725,7 +27742,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.host.port': {
     brief: 'Local port number of the network connection.',
     type: 'integer',
-    keys: ['net.sock.host.port'],
+    keys: ['network.local.port', 'net.sock.host.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27734,6 +27751,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8080,
     deprecation: {
       replacement: 'network.local.port',
+      status: 'backfill',
     },
     aliases: ['network.local.port'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -27741,7 +27759,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.peer.addr': {
     brief: 'Peer address of the network connection - IP address',
     type: 'string',
-    keys: ['net.sock.peer.addr'],
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27750,6 +27768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
+      status: 'backfill',
     },
     aliases: ['network.peer.address', 'net.peer.ip'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27772,7 +27791,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.peer.port': {
     brief: 'Peer port number of the network connection.',
     type: 'integer',
-    keys: ['net.sock.peer.port'],
+    keys: ['network.peer.port', 'net.sock.peer.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27781,13 +27800,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8080,
     deprecation: {
       replacement: 'network.peer.port',
+      status: 'backfill',
     },
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
   'net.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
-    keys: ['net.transport'],
+    keys: ['network.transport', 'mcp.transport', 'net.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27796,6 +27816,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'tcp',
     deprecation: {
       replacement: 'network.transport',
+      status: 'backfill',
     },
     aliases: ['network.transport', 'mcp.transport'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -28055,7 +28076,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   port: {
     brief: 'The destination port for a TCP connection.',
     type: 'integer',
-    keys: ['server.port', 'port'],
+    keys: ['server.port', 'net.host.port', 'port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28128,7 +28149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
     type: 'string',
-    keys: ['process.runtime.description'],
+    keys: ['process.runtime.description', 'runtime.raw_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28165,7 +28186,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.name': {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: 'string',
-    keys: ['process.runtime.name'],
+    keys: ['process.runtime.name', 'runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28179,7 +28200,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
     type: 'string',
-    keys: ['process.runtime.version'],
+    keys: ['process.runtime.version', 'runtime.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28546,7 +28567,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.name': {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
     type: 'string',
-    keys: ['runtime.name'],
+    keys: ['process.runtime.name', 'runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28556,6 +28577,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.name',
       reason: 'Prefer OTel-aligned process.runtime.name',
+      status: 'backfill',
     },
     aliases: ['process.runtime.name'],
     changelog: [
@@ -28570,7 +28592,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.',
     type: 'string',
-    keys: ['runtime.raw_description'],
+    keys: ['process.runtime.description', 'runtime.raw_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28580,6 +28602,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.description',
       reason: 'Prefer OTel-aligned process.runtime.description',
+      status: 'backfill',
     },
     aliases: ['process.runtime.description'],
     changelog: [
@@ -28593,7 +28616,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.version': {
     brief: 'The version of the runtime.',
     type: 'string',
-    keys: ['runtime.version'],
+    keys: ['process.runtime.version', 'runtime.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28603,6 +28626,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.version',
       reason: 'Prefer OTel-aligned process.runtime.version',
+      status: 'backfill',
     },
     aliases: ['process.runtime.version'],
     changelog: [
@@ -28684,7 +28708,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.browser.name': {
     brief: 'The name of the browser.',
     type: 'string',
-    keys: ['sentry.browser.name', 'browser.name'],
+    keys: ['browser.name', 'sentry.browser.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28693,6 +28717,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     deprecation: {
       replacement: 'browser.name',
+      status: 'backfill',
     },
     aliases: ['browser.name'],
     changelog: [{ version: '0.1.0', prs: [139] }],
@@ -28703,7 +28728,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.browser.version': {
     brief: 'The version of the browser.',
     type: 'string',
-    keys: ['sentry.browser.version'],
+    keys: ['browser.version', 'sentry.browser.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28712,6 +28737,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '120.0.6099.130',
     deprecation: {
       replacement: 'browser.version',
+      status: 'backfill',
     },
     aliases: ['browser.version'],
     changelog: [{ version: '0.1.0', prs: [139] }],
@@ -29821,7 +29847,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.email': {
     brief: 'User email address.',
     type: 'string',
-    keys: ['sentry.user.email', 'user.email'],
+    keys: ['user.email', 'sentry.user.email'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29829,6 +29855,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.email',
+      status: 'backfill',
     },
     aliases: ['user.email'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -29839,7 +29866,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.geo.city': {
     brief: 'Human readable city name.',
     type: 'string',
-    keys: ['sentry.user.geo.city', 'user.geo.city'],
+    keys: ['user.geo.city', 'sentry.user.geo.city'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29847,6 +29874,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.city',
+      status: 'backfill',
     },
     aliases: ['user.geo.city'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -29857,7 +29885,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.geo.country_code': {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: 'string',
-    keys: ['sentry.user.geo.country_code', 'user.geo.country_code'],
+    keys: ['user.geo.country_code', 'sentry.user.geo.country_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29865,6 +29893,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.country_code',
+      status: 'backfill',
     },
     aliases: ['user.geo.country_code'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -29875,7 +29904,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.geo.region': {
     brief: 'Human readable region name or code.',
     type: 'string',
-    keys: ['sentry.user.geo.region', 'user.geo.region'],
+    keys: ['user.geo.region', 'sentry.user.geo.region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29883,6 +29912,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.region',
+      status: 'backfill',
     },
     aliases: ['user.geo.region'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -29893,7 +29923,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.geo.subdivision': {
     brief: 'Human readable subdivision name.',
     type: 'string',
-    keys: ['sentry.user.geo.subdivision', 'user.geo.subdivision'],
+    keys: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29901,6 +29931,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.subdivision',
+      status: 'backfill',
     },
     aliases: ['user.geo.subdivision'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -29911,7 +29942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.id': {
     brief: 'Unique identifier of the user.',
     type: 'string',
-    keys: ['sentry.user.id', 'user.id'],
+    keys: ['user.id', 'sentry.user.id'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29919,6 +29950,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.id',
+      status: 'backfill',
     },
     aliases: ['user.id'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -29929,7 +29961,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.ip': {
     brief: 'The IP address of the user.',
     type: 'string',
-    keys: ['sentry.user.ip', 'user.ip'],
+    keys: ['user.ip_address', 'sentry.user.ip', 'user.ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29937,6 +29969,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.ip_address',
+      status: 'backfill',
     },
     aliases: ['user.ip_address'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -29947,7 +29980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.username': {
     brief: 'Short name or login/username of the user.',
     type: 'string',
-    keys: ['sentry.user.username', 'user.username'],
+    keys: ['user.name', 'sentry.user.username', 'user.username'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29955,6 +29988,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.name',
+      status: 'backfill',
     },
     aliases: ['user.name'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -29966,7 +30000,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['server.address', 'address', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29984,7 +30018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['server.address', 'address', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30009,7 +30043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'server.port': {
     brief: 'Server port number.',
     type: 'integer',
-    keys: ['server.port', 'port'],
+    keys: ['server.port', 'net.host.port', 'port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30520,7 +30554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   url: {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30529,6 +30563,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
+      status: 'backfill',
     },
     aliases: ['url.full', 'http.url', 'aws.request.url'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -30562,7 +30597,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.full': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30657,7 +30692,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
-    keys: ['url.scheme'],
+    keys: ['url.scheme', 'http.scheme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30695,7 +30730,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user_agent.original': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
-    keys: ['user_agent.original'],
+    keys: ['user_agent.original', 'http.user_agent'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30709,7 +30744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.email': {
     brief: 'User email address.',
     type: 'string',
-    keys: ['user.email'],
+    keys: ['user.email', 'sentry.user.email'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30734,7 +30769,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.city': {
     brief: 'Human readable city name.',
     type: 'string',
-    keys: ['user.geo.city'],
+    keys: ['user.geo.city', 'sentry.user.geo.city'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30747,7 +30782,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.country_code': {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: 'string',
-    keys: ['user.geo.country_code'],
+    keys: ['user.geo.country_code', 'sentry.user.geo.country_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30760,7 +30795,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.region': {
     brief: 'Human readable region name or code.',
     type: 'string',
-    keys: ['user.geo.region'],
+    keys: ['user.geo.region', 'sentry.user.geo.region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30773,7 +30808,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.subdivision': {
     brief: 'Human readable subdivision name.',
     type: 'string',
-    keys: ['user.geo.subdivision'],
+    keys: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30798,7 +30833,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.id': {
     brief: 'Unique identifier of the user.',
     type: 'string',
-    keys: ['user.id'],
+    keys: ['user.id', 'sentry.user.id'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30811,7 +30846,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.ip_address': {
     brief: 'The IP address of the user.',
     type: 'string',
-    keys: ['user.ip_address'],
+    keys: ['user.ip_address', 'sentry.user.ip', 'user.ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30824,7 +30859,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.name': {
     brief: 'Short name or login/username of the user.',
     type: 'string',
-    keys: ['user.name'],
+    keys: ['user.name', 'sentry.user.username', 'user.username'],
     applyScrubbing: {
       key: 'auto',
     },
