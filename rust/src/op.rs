@@ -212,6 +212,19 @@ pub const FUNCTION: &str = "function";
 /// A user-defined measurement of the duration between two points in time
 pub const MEASURE: &str = "measure";
 
+// Path: model/op/mcp.json
+// Name: mcp
+
+// Description: Operations related to Model Context Protocol (MCP) interactions
+/// A request handled by an MCP server (e.g. a tool call, resource read, or prompt request).
+pub const MCP_SERVER: &str = "mcp.server";
+
+/// A notification sent from an MCP client to an MCP server.
+pub const MCP_NOTIFICATION_CLIENT_TO_SERVER: &str = "mcp.notification.client_to_server";
+
+/// A notification sent from an MCP server to an MCP client.
+pub const MCP_NOTIFICATION_SERVER_TO_CLIENT: &str = "mcp.notification.server_to_client";
+
 // Path: model/op/messaging.json
 // Name: messaging
 

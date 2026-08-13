@@ -9,6 +9,138 @@ interface GenerateAttributesOptions {
   pythonOutputFilePath: string;
 }
 
+type AttributeDefinition = {
+  key: string;
+  attributeJson: AttributeJson;
+};
+
+/**
+ * Deprecation statuses where the ingestion pipeline rewrites the value onto the replacement
+ * attribute. Only these statuses link an attribute to its replacement in a key chain, because only
+ * for these is a reader guaranteed to find the same value under either key.
+ */
+const REWRITING_DEPRECATION_STATUSES: ReadonlySet<string> = new Set(['backfill', 'normalize']);
+
+function isRewritingDeprecation(attributeJson: AttributeJson): boolean {
+  const status = attributeJson.deprecation?._status;
+  return status != null && REWRITING_DEPRECATION_STATUSES.has(status);
+}
+
+/**
+ * Derives the ordered list of attribute keys a value may be stored under, for every attribute.
+ *
+ * A chain only ever contains keys the same value is readable under, so every member of a family
+ * reads the same set of keys. Within a chain the order is:
+ *
+ * 1. the attribute heading the chain: its key, then its search alias name, then its deprecated search aliases
+ * 2. its non-deprecated aliases, each expanded to their own key and search alias names
+ * 3. the attributes replaced by it or by one of those aliases (sorted), each expanded the same way
+ *
+ * Mutually aliased attributes are each their own head, because nothing in the registry marks one of
+ * them as canonical. Their chains therefore hold the same keys in a different order, and which key a
+ * read prefers depends on which member was looked up.
+ *
+ * A chain is headed by a non-deprecated attribute only when one is guaranteed to hold the value,
+ * which means the head is deprecated whenever the deprecation is non-rewriting: the pipeline leaves
+ * such a value under the original key, so neither the replacement nor any alias is a substitute for
+ * it, and steps 2 and 3 contribute nothing. Callers must not assume the first key is stable.
+ */
+export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map<string, string[]> {
+  const attributesByKey = new Map(attributes.map((attribute) => [attribute.key, attribute]));
+
+  // Every name an attribute is readable under: its own key plus the names Sentry search exposes it as.
+  function readableNames(key: string): string[] {
+    const searchAlias = attributesByKey.get(key)?.attributeJson.search_alias;
+    if (!searchAlias) {
+      return [key];
+    }
+    return [key, searchAlias.name, ...(searchAlias.deprecated_aliases ?? [])];
+  }
+
+  const predecessorsByKey = new Map<string, string[]>();
+  for (const { key, attributeJson } of attributes) {
+    const replacement = attributeJson.deprecation?.replacement;
+    if (!replacement) {
+      continue;
+    }
+
+    const replacementAttribute = attributesByKey.get(replacement);
+    if (!replacementAttribute) {
+      throw new Error(`Replacement target "${replacement}" for deprecated attribute "${key}" does not exist`);
+    }
+    if (replacementAttribute.attributeJson.deprecation) {
+      throw new Error(`Replacement target "${replacement}" for deprecated attribute "${key}" must not be deprecated`);
+    }
+
+    // Non-rewriting deprecations (`transform`, or no status) leave the value under the original key,
+    // so they do not join the replacement's chain.
+    if (!isRewritingDeprecation(attributeJson)) {
+      continue;
+    }
+
+    const predecessors = predecessorsByKey.get(replacement) ?? [];
+    predecessors.push(key);
+    predecessorsByKey.set(replacement, predecessors);
+  }
+
+  const chainsByHeadKey = new Map<string, string[]>();
+  function chainForHeadKey(headKey: string): string[] {
+    const cachedChain = chainsByHeadKey.get(headKey);
+    if (cachedChain) {
+      return cachedChain;
+    }
+
+    const chain: string[] = [];
+    const addName = (name: string) => {
+      if (!chain.includes(name)) {
+        chain.push(name);
+      }
+    };
+
+    readableNames(headKey).forEach(addName);
+
+    const headAttribute = attributesByKey.get(headKey);
+
+    // A non-rewriting deprecation heads its own chain, and the pipeline never copies its value
+    // anywhere else, so its aliases are not readable substitutes for it. Expanding them would
+    // reintroduce the very keys the predecessor pass above deliberately left out.
+    const aliasKeys =
+      headAttribute && !headAttribute.attributeJson.deprecation
+        ? // Deprecated aliases are skipped here: either they replace this attribute, in which case
+          // they are appended below as predecessors, or their value is never rewritten onto it.
+          (headAttribute.attributeJson.alias ?? []).filter(
+            (aliasKey) => !attributesByKey.get(aliasKey)?.attributeJson.deprecation,
+          )
+        : [];
+
+    for (const aliasKey of aliasKeys) {
+      readableNames(aliasKey).forEach(addName);
+    }
+
+    // An alias holds the same value as the head, so anything rewritten onto the alias is readable
+    // under the head too. Without this, the head of a mutual alias pair would miss the predecessors
+    // that name the other member as their replacement, and the two would disagree on chain
+    // membership rather than only on which key they prefer.
+    const predecessors = [headKey, ...aliasKeys].flatMap((key) => predecessorsByKey.get(key) ?? []);
+    for (const predecessor of predecessors.toSorted()) {
+      readableNames(predecessor).forEach(addName);
+    }
+
+    chainsByHeadKey.set(headKey, chain);
+    return chain;
+  }
+
+  const chains = new Map<string, string[]>();
+  for (const { key, attributeJson } of attributes) {
+    // Only a rewriting deprecation joins its replacement's chain. Every other attribute heads its
+    // own chain, including a non-rewriting deprecation that names a replacement.
+    const replacement = isRewritingDeprecation(attributeJson) ? attributeJson.deprecation?.replacement : undefined;
+    chains.set(key, chainForHeadKey(replacement ?? key));
+  }
+
+  return chains;
+}
+
 export async function generateAttributes(options?: Partial<GenerateAttributesOptions>) {
   const repositoryRoot = path.join(__dirname, '..');
   const attributesDir = options?.attributesDir ?? path.join(repositoryRoot, 'model', 'attributes');
@@ -118,6 +250,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
     });
   }
 
+  const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
   let attributeTypeMap = '';
   let individualConstants = '';
 
@@ -211,7 +344,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   attributesContent += generateMetadataTypes();
 
   // Generate metadata dictionary
-  attributesContent += generateMetadataDict(attributesDir, attributeFiles, allAttributes);
+  attributesContent += generateMetadataDict(allAttributes, attributeKeyChains);
 
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
@@ -332,7 +465,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += 'import warnings\n';
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
-  content += 'from typing import List, Union, Literal, Optional, Dict, TypedDict\n\n';
+  content += 'from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union\n\n';
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
 
@@ -426,6 +559,17 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    visibility: Visibility\n';
   content += '    """Whether the attribute is public or internal to Sentry"""\n';
   content += '    \n';
+  content += '    keys: Tuple[str, ...]\n';
+  content += `    """Every key this attribute's value may be readable under, preferred key first.\n\n`;
+  content +=
+    '    All members of a family share one chain, so a read prefers the same key no matter\n' +
+    '    which member you look up. Only ``backfill`` and ``normalize`` deprecations join their\n' +
+    "    replacement's chain, because only for those is the value rewritten onto the replacement.\n" +
+    '    An attribute with any other deprecation therefore has a chain of just its own names, and\n' +
+    '    the first key is not guaranteed to be non-deprecated -- check ``deprecation`` if that\n' +
+    '    matters.\n';
+  content += '    """\n';
+  content += '    \n';
   content += '    has_dynamic_suffix: Optional[bool] = None\n';
   content +=
     '    """If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"""\n';
@@ -458,14 +602,20 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   let metadataDict = '';
   const attributeNames: string[] = [];
   const deprecatedAttributes: { name: string; replacement?: string }[] = [];
-
-  // First pass: collect deprecated attributes
-  for (const file of attributeFiles) {
+  const allAttributes: AttributeDefinition[] = attributeFiles.map((file) => {
     const attributePath = path.join(attributesDir, file);
     const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+    return {
+      key: attributeJson.key,
+      attributeJson,
+    };
+  });
+  const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
 
+  // First pass: collect deprecated attributes
+  for (const { key, attributeJson } of allAttributes) {
     if (attributeJson.deprecation) {
-      const constantName = getConstantName(attributeJson.key, true);
+      const constantName = getConstantName(key, true);
       deprecatedAttributes.push({
         name: constantName,
         replacement: attributeJson.deprecation.replacement,
@@ -544,6 +694,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
     }
 
     content += '    """\n\n';
+    const keyChain = attributeKeyChains.get(key);
+    if (!keyChain) {
+      throw new Error(`Attribute key chain for "${key}" does not exist`);
+    }
 
     // Collect attribute names for the literal type
     attributeNames.push(constantName);
@@ -562,6 +716,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
     metadataDict += `    "${key}": AttributeMetadata(\n`;
     metadataDict += `        brief=${JSON.stringify(brief)},\n`;
     metadataDict += `        type=AttributeType.${getAttributeTypeEnum(type)},\n`;
+    metadataDict += `        keys=(${keyChain.map((attributeKey) => JSON.stringify(attributeKey)).join(', ')},),\n`;
 
     // Build scrubbing info structure
     const scrubbingStatus =
@@ -584,9 +739,9 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
       metadataDict += '        has_dynamic_suffix=True,\n';
     }
 
-    if (examples !== undefined) {
-      const pythonExample = convertToPythonLiteral(examples[0]);
-      metadataDict += `        example=${pythonExample},\n`;
+    const [firstExample] = examples ?? [];
+    if (examples !== undefined && firstExample !== undefined) {
+      metadataDict += `        example=${convertToPythonLiteral(firstExample)},\n`;
       if (attributeJson.examples !== undefined) {
         metadataDict += `        examples=${convertToPythonLiteral(examples)},\n`;
       }
@@ -852,6 +1007,17 @@ export interface AttributeMetadata {
   brief: string;
   /** The type of the attribute value */
   type: AttributeType;
+  /**
+   * Every key this attribute's value may be readable under, preferred key first.
+   *
+   * All members of a family read the same set of keys. Mutually aliased attributes each head their
+   * own chain, so those chains agree on membership but differ in which key they prefer. Only
+   * \`backfill\` and \`normalize\` deprecations join their replacement's chain,
+   * because only for those is the value rewritten onto the replacement. An attribute with any other
+   * deprecation therefore has a chain of just its own names, and the first key is not guaranteed to
+   * be non-deprecated — check \`deprecation\` if that matters.
+   */
+  keys: readonly string[];
   /** How PII scrubbing should be applied to the attribute value */
   applyScrubbing: ApplyScrubbingInfo;
   /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
@@ -880,8 +1046,6 @@ export interface AttributeMetadata {
 }
 
 function generateMetadataDict(
-  attributesDir: string,
-  attributeFiles: string[],
   allAttributes: Array<{
     file: string;
     key: string;
@@ -889,6 +1053,7 @@ function generateMetadataDict(
     attributeJson: AttributeJson;
     isDeprecated: boolean;
   }>,
+  attributeKeyChains: Map<string, string[]>,
 ): string {
   // Use string literal keys so bundlers can tree-shake unused attribute constants.
   let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {\n';
@@ -913,9 +1078,15 @@ function generateMetadataDict(
     const examples = getAttributeExamples(attributeJson);
     const visibility = getVisibility(attributeJson);
 
+    const keyChain = attributeKeyChains.get(key);
+    if (!keyChain) {
+      throw new Error(`Attribute key chain for "${key}" does not exist`);
+    }
+
     metadataDict += `  ${JSON.stringify(key)}: {\n`;
     metadataDict += `    brief: ${JSON.stringify(brief)},\n`;
     metadataDict += `    type: '${type}',\n`;
+    metadataDict += `    keys: ${JSON.stringify(keyChain)},\n`;
 
     // Build scrubbing info structure
     const scrubbingStatus =

@@ -1,0 +1,22 @@
+---
+interface Props {
+  /** The explanatory text shown on hover/focus. */
+  text: string;
+  /** Render the bubble below the icon instead of above. */
+  below?: boolean;
+}
+
+const { text, below = false } = Astro.props;
+---
+
+<span class="info-tooltip" tabindex="0" role="note" aria-label={text}>
+  {/*
+    One filled path with fill-rule="evenodd": the dot and stem are knocked out of a
+    solid disc. Filled shapes stay crisp at 16px where hairline strokes smear — the
+    stem is a full 2px wide at this size instead of a sub-pixel line.
+  */}
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" aria-hidden="true">
+    <path d="M12 1.5a10.5 10.5 0 100 21 10.5 10.5 0 000-21ZM12 5.4a1.6 1.6 0 110 3.2 1.6 1.6 0 010-3.2ZM10.5 11.9a1.5 1.5 0 013 0v5.2a1.5 1.5 0 01-3 0Z"/>
+  </svg>
+  <span class:list={['info-tooltip-content', { 'info-tooltip-below': below }]}>{text}</span>
+</span>

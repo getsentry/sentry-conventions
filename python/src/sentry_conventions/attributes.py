@@ -5,7 +5,7 @@
 import warnings
 from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, List, Literal, Optional, TypedDict, Union
+from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union
 
 AttributeValue = Union[
     str, int, float, bool, List[str], List[int], List[float], List[bool]
@@ -114,6 +114,17 @@ class AttributeMetadata:
 
     visibility: Visibility
     """Whether the attribute is public or internal to Sentry"""
+
+    keys: Tuple[str, ...]
+    """Every key this attribute's value may be readable under, preferred key first.
+
+    All members of a family share one chain, so a read prefers the same key no matter
+    which member you look up. Only ``backfill`` and ``normalize`` deprecations join their
+    replacement's chain, because only for those is the value rewritten onto the replacement.
+    An attribute with any other deprecation therefore has a chain of just its own names, and
+    the first key is not guaranteed to be non-deprecated -- check ``deprecation`` if that
+    matters.
+    """
 
     has_dynamic_suffix: Optional[bool] = None
     """If an attribute has a dynamic suffix, for example http.response.header.<key> where <key> is dynamic"""
@@ -10171,6 +10182,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "address": AttributeMetadata(
         brief="The destination hostname or IP address for a TCP connection.",
         type=AttributeType.STRING,
+        keys=(
+            "server.address",
+            "address",
+            "server_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10197,6 +10213,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.citations": AttributeMetadata(
         brief="References or sources cited by the AI model in its response.",
         type=AttributeType.STRING_ARRAY,
+        keys=("ai.citations",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10210,6 +10227,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.completion_tokens.used": AttributeMetadata(
         brief="The number of tokens used to respond to the message.",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.output_tokens",
+            "ai.completion_tokens.used",
+            "gen_ai.usage.completion_tokens",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10227,6 +10249,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.documents": AttributeMetadata(
         brief="Documents or content chunks used as context for the AI model.",
         type=AttributeType.STRING_ARRAY,
+        keys=("ai.documents",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10240,6 +10263,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.finish_reason": AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.finish_reasons",
+            "ai.finish_reason",
+            "gen_ai.response.finish_reason",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10256,6 +10284,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.request.frequency_penalty",
+            "ai.frequency_penalty",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10273,6 +10305,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.function_call": AttributeMetadata(
         brief="For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.name",
+            "ai.function_call",
+            "mcp.tool.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10288,6 +10325,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.generation_id": AttributeMetadata(
         brief="Unique identifier for the completion.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.id",
+            "ai.generation_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10303,6 +10344,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.input_messages": AttributeMetadata(
         brief="The input messages sent to the model",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.input.messages",
+            "ai.input_messages",
+            "ai.prompt.messages",
+            "ai.texts",
+            "gen_ai.prompt",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10319,6 +10367,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.is_search_required": AttributeMetadata(
         brief="Boolean indicating if the model needs to perform a search.",
         type=AttributeType.BOOLEAN,
+        keys=("ai.is_search_required",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10332,6 +10381,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.metadata": AttributeMetadata(
         brief="Extra metadata passed to an AI pipeline step.",
         type=AttributeType.STRING,
+        keys=("ai.metadata",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10345,6 +10395,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.model.provider": AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.provider.name",
+            "ai.model.provider",
+            "gen_ai.system",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10361,6 +10416,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.model_id": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.request.model",
+            "ai.model_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10377,6 +10436,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.pipeline.name": AttributeMetadata(
         brief="The name of the AI pipeline.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.pipeline.name",
+            "ai.pipeline.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10392,6 +10455,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.preamble": AttributeMetadata(
         brief="For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.system_instructions",
+            "ai.preamble",
+            "gen_ai.system.message",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10408,6 +10476,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.request.presence_penalty",
+            "ai.presence_penalty",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10425,6 +10497,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.prompt.messages": AttributeMetadata(
         brief="The input messages sent to the AI model.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.input.messages",
+            "ai.input_messages",
+            "ai.prompt.messages",
+            "ai.texts",
+            "gen_ai.prompt",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10444,6 +10523,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.prompt_tokens.used": AttributeMetadata(
         brief="The number of tokens used to process just the prompt.",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.input_tokens",
+            "ai.prompt_tokens.used",
+            "gen_ai.usage.prompt_tokens",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10461,6 +10545,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.raw_prompting": AttributeMetadata(
         brief="When enabled, the user’s prompt will be sent to the model without any pre-processing.",
         type=AttributeType.BOOLEAN,
+        keys=("ai.raw_prompting",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10474,6 +10559,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.response.text": AttributeMetadata(
         brief="The text response from the AI model.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.output.messages",
+            "ai.response.text",
+            "ai.response.toolCalls",
+            "ai.responses",
+            "ai.tool_calls",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10493,6 +10585,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.response.toolCalls": AttributeMetadata(
         brief="The tool calls in the AI model response.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.output.messages",
+            "ai.response.text",
+            "ai.response.toolCalls",
+            "ai.responses",
+            "ai.tool_calls",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10512,6 +10611,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.response_format": AttributeMetadata(
         brief="For an AI model call, the format of the response",
         type=AttributeType.STRING,
+        keys=("ai.response_format",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10525,6 +10625,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.responses": AttributeMetadata(
         brief="The response messages sent back by the AI model.",
         type=AttributeType.STRING_ARRAY,
+        keys=(
+            "gen_ai.output.messages",
+            "ai.response.text",
+            "ai.response.toolCalls",
+            "ai.responses",
+            "ai.tool_calls",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10540,6 +10647,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.search_queries": AttributeMetadata(
         brief="Queries used to search for relevant context or documents.",
         type=AttributeType.STRING_ARRAY,
+        keys=("ai.search_queries",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10553,6 +10661,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.search_results": AttributeMetadata(
         brief="Results returned from search queries for context.",
         type=AttributeType.STRING_ARRAY,
+        keys=("ai.search_results",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10566,6 +10675,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.request.seed",
+            "ai.seed",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10581,6 +10694,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.streaming": AttributeMetadata(
         brief="Whether the request was streamed back.",
         type=AttributeType.BOOLEAN,
+        keys=(
+            "gen_ai.response.streaming",
+            "ai.streaming",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10597,6 +10714,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.tags": AttributeMetadata(
         brief="Tags that describe an AI pipeline step.",
         type=AttributeType.STRING,
+        keys=("ai.tags",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10610,6 +10728,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.request.temperature",
+            "ai.temperature",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10626,6 +10748,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.texts": AttributeMetadata(
         brief="Raw text inputs provided to the model.",
         type=AttributeType.STRING_ARRAY,
+        keys=(
+            "gen_ai.input.messages",
+            "ai.input_messages",
+            "ai.prompt.messages",
+            "ai.texts",
+            "gen_ai.prompt",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10642,6 +10771,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.toolCall.args": AttributeMetadata(
         brief="The arguments of the tool call.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.arguments",
+            "ai.toolCall.args",
+            "gen_ai.tool.input",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10661,6 +10795,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.toolCall.result": AttributeMetadata(
         brief="The result of the tool call.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.result",
+            "ai.toolCall.result",
+            "gen_ai.tool.message",
+            "gen_ai.tool.output",
+            "mcp.tool.result.content",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10685,6 +10826,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.tool_calls": AttributeMetadata(
         brief="For an AI model call, the tool calls that were made.",
         type=AttributeType.STRING_ARRAY,
+        keys=(
+            "gen_ai.output.messages",
+            "ai.response.text",
+            "ai.response.toolCalls",
+            "ai.responses",
+            "ai.tool_calls",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10699,6 +10847,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.tools": AttributeMetadata(
         brief="For an AI model call, the functions that are available",
         type=AttributeType.STRING_ARRAY,
+        keys=(
+            "gen_ai.tool.definitions",
+            "ai.tools",
+            "gen_ai.request.available_tools",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10713,6 +10866,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.request.top_k",
+            "ai.top_k",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10729,6 +10886,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.request.top_p",
+            "ai.top_p",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10745,6 +10906,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.total_cost": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.cost.total_tokens",
+            "ai.total_cost",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10763,6 +10928,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.total_tokens.used": AttributeMetadata(
         brief="The total number of tokens used to process the prompt.",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.total_tokens",
+            "ai.total_tokens.used",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10780,6 +10949,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ai.warnings": AttributeMetadata(
         brief="Warning messages generated during model execution.",
         type=AttributeType.STRING_ARRAY,
+        keys=("ai.warnings",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10793,6 +10963,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "angular.version": AttributeMetadata(
         brief="The version of the Angular framework",
         type=AttributeType.STRING,
+        keys=("angular.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10808,6 +10979,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_build": AttributeMetadata(
         brief="Internal build identifier, as it appears on the platform.",
         type=AttributeType.STRING,
+        keys=(
+            "app.build",
+            "app.app_build",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10829,6 +11004,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_identifier": AttributeMetadata(
         brief="Version-independent application identifier, often a dotted bundle ID.",
         type=AttributeType.STRING,
+        keys=(
+            "app.identifier",
+            "app.app_identifier",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10850,6 +11029,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_name": AttributeMetadata(
         brief="Human readable application name, as it appears on the platform.",
         type=AttributeType.STRING,
+        keys=(
+            "app.name",
+            "app.app_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10871,6 +11054,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
+        keys=(
+            "app.start_time",
+            "app.app_start_time",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10892,6 +11079,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.app_version": AttributeMetadata(
         brief="Human readable application version, as it appears on the platform.",
         type=AttributeType.STRING,
+        keys=(
+            "app.version",
+            "app.app_version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10913,6 +11104,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.build": AttributeMetadata(
         brief="Internal build identifier, as it appears on the platform.",
         type=AttributeType.STRING,
+        keys=(
+            "app.build",
+            "app.app_build",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10927,6 +11122,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.identifier": AttributeMetadata(
         brief="Version-independent application identifier, often a dotted bundle ID.",
         type=AttributeType.STRING,
+        keys=(
+            "app.identifier",
+            "app.app_identifier",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10941,6 +11140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.in_foreground": AttributeMetadata(
         brief="Whether the application is currently in the foreground.",
         type=AttributeType.BOOLEAN,
+        keys=("app.in_foreground",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10956,6 +11156,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.name": AttributeMetadata(
         brief="Human readable application name, as it appears on the platform.",
         type=AttributeType.STRING,
+        keys=(
+            "app.name",
+            "app.app_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10970,6 +11174,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.start_time": AttributeMetadata(
         brief="Formatted UTC timestamp when the user started the application.",
         type=AttributeType.STRING,
+        keys=(
+            "app.start_time",
+            "app.app_start_time",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10984,6 +11192,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.version": AttributeMetadata(
         brief="Human readable application version, as it appears on the platform.",
         type=AttributeType.STRING,
+        keys=(
+            "app.version",
+            "app.app_version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -10998,6 +11210,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.delay.value": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.delay.value",
+            "frames.delay",
+            "mobile.frames_delay",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11014,6 +11231,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.frozen.count": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.frozen.count",
+            "frames.frozen",
+            "mobile.frozen_frames",
+            "sentry.frames.frozen",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11035,6 +11258,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.frozen.rate": AttributeMetadata(
         brief="The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.frames.frozen.rate",
+            "frames_frozen_rate",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11051,6 +11278,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.slow.count": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.slow.count",
+            "frames.slow",
+            "mobile.slow_frames",
+            "sentry.frames.slow",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11072,6 +11305,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.slow.rate": AttributeMetadata(
         brief="The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.frames.slow.rate",
+            "frames_slow_rate",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11088,6 +11325,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.frames.total.count": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.total.count",
+            "frames.total",
+            "mobile.total_frames",
+            "sentry.frames.total",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11109,6 +11352,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.stall.duration": AttributeMetadata(
         brief="The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.stall.duration",
+            "stall_total_time",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11125,6 +11372,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.stall.percentage": AttributeMetadata(
         brief="The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.stall.percentage",
+            "stall_percentage",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11141,6 +11392,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.cold.value": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.start.cold.value",
+            "app_start_cold",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11157,6 +11412,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.prewarmed": AttributeMetadata(
         brief="Whether the app start was prewarmed.",
         type=AttributeType.BOOLEAN,
+        keys=("app.vitals.start.prewarmed",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11172,6 +11428,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.reason": AttributeMetadata(
         brief="The reason that triggered the app start.",
         type=AttributeType.STRING,
+        keys=("app.vitals.start.reason",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11187,6 +11444,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.screen": AttributeMetadata(
         brief="The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.",
         type=AttributeType.STRING,
+        keys=("app.vitals.start.screen",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11202,6 +11460,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.type": AttributeMetadata(
         brief="The type of app start, for example `cold` or `warm`",
         type=AttributeType.STRING,
+        keys=(
+            "app.vitals.start.type",
+            "app_start_type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11218,6 +11480,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.warm.value": AttributeMetadata(
         brief="The duration of a warm app start in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.start.warm.value",
+            "app_start_warm",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11234,6 +11500,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.ttfd.value": AttributeMetadata(
         brief="The duration of time to full display in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.ttfd.value",
+            "time_to_full_display",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11250,6 +11520,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.ttid.value": AttributeMetadata(
         brief="The duration of time to initial display in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.ttid.value",
+            "time_to_initial_display",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11266,6 +11540,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app_start_cold": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.start.cold.value",
+            "app_start_cold",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11287,6 +11565,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app_start_type": AttributeMetadata(
         brief="Mobile app start variant. Either cold or warm.",
         type=AttributeType.STRING,
+        keys=(
+            "app.vitals.start.type",
+            "app_start_type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11310,6 +11592,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app_start_warm": AttributeMetadata(
         brief="The duration of a warm app start in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.start.warm.value",
+            "app_start_warm",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11331,6 +11617,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.blocking_count": AttributeMetadata(
         brief="Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime",
         type=AttributeType.INTEGER,
+        keys=("art.gc.blocking_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11346,6 +11633,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.blocking_time": AttributeMetadata(
         brief="Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=("art.gc.blocking_time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11361,6 +11649,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.pre_oome_count": AttributeMetadata(
         brief="Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime",
         type=AttributeType.INTEGER,
+        keys=("art.gc.pre_oome_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11376,6 +11665,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.total_count": AttributeMetadata(
         brief="Total number of garbage collections performed by the Android Runtime",
         type=AttributeType.INTEGER,
+        keys=("art.gc.total_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11391,6 +11681,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.total_time": AttributeMetadata(
         brief="Total time spent in garbage collection by the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=("art.gc.total_time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11406,6 +11697,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.gc.waiting_time": AttributeMetadata(
         brief="Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=("art.gc.waiting_time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11421,6 +11713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free": AttributeMetadata(
         brief="Free memory available to the process as reported by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
+        keys=("art.memory.free",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11436,6 +11729,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free_until_gc": AttributeMetadata(
         brief="Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
+        keys=("art.memory.free_until_gc",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11451,6 +11745,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.free_until_oome": AttributeMetadata(
         brief="Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
+        keys=("art.memory.free_until_oome",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11466,6 +11761,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.max": AttributeMetadata(
         brief="Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
+        keys=("art.memory.max",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11481,6 +11777,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "art.memory.total": AttributeMetadata(
         brief="Total memory currently allocated to the process by the Android Runtime, in bytes",
         type=AttributeType.INTEGER,
+        keys=("art.memory.total",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11496,6 +11793,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.log_group": AttributeMetadata(
         brief="The name of the CloudWatch Logs log group",
         type=AttributeType.STRING,
+        keys=("aws.cloudwatch.logs.log_group",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11511,6 +11809,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.log_stream": AttributeMetadata(
         brief="The name of the CloudWatch Logs log stream",
         type=AttributeType.STRING,
+        keys=("aws.cloudwatch.logs.log_stream",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11526,6 +11825,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.cloudwatch.logs.url": AttributeMetadata(
         brief="The URL to the CloudWatch Logs log group",
         type=AttributeType.STRING,
+        keys=("aws.cloudwatch.logs.url",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11541,6 +11841,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.attribute_definitions": AttributeMetadata(
         brief="The JSON-serialized value of each item in the `AttributeDefinitions` request field.",
         type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.attribute_definitions",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11556,6 +11857,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.consistent_read": AttributeMetadata(
         brief="The value of the `ConsistentRead` request parameter.",
         type=AttributeType.BOOLEAN,
+        keys=("aws.dynamodb.consistent_read",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11571,6 +11873,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.consumed_capacity": AttributeMetadata(
         brief="The JSON-serialized value of each item in the `ConsumedCapacity` response field.",
         type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.consumed_capacity",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11588,6 +11891,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.count": AttributeMetadata(
         brief="The value of the `Count` response parameter.",
         type=AttributeType.INTEGER,
+        keys=("aws.dynamodb.count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11603,6 +11907,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.exclusive_start_table": AttributeMetadata(
         brief="The value of the `ExclusiveStartTableName` request parameter.",
         type=AttributeType.STRING,
+        keys=("aws.dynamodb.exclusive_start_table",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11618,6 +11923,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.global_secondary_index_updates": AttributeMetadata(
         brief="The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.",
         type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.global_secondary_index_updates",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11635,6 +11941,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.global_secondary_indexes": AttributeMetadata(
         brief="The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.",
         type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.global_secondary_indexes",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11652,6 +11959,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.index_name": AttributeMetadata(
         brief="The value of the `IndexName` request parameter.",
         type=AttributeType.STRING,
+        keys=("aws.dynamodb.index_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11667,6 +11975,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.item_collection_metrics": AttributeMetadata(
         brief="The JSON-serialized value of the `ItemCollectionMetrics` response field.",
         type=AttributeType.STRING,
+        keys=("aws.dynamodb.item_collection_metrics",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11682,6 +11991,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.limit": AttributeMetadata(
         brief="The value of the `Limit` request parameter.",
         type=AttributeType.INTEGER,
+        keys=("aws.dynamodb.limit",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11697,6 +12007,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.local_secondary_indexes": AttributeMetadata(
         brief="The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.",
         type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.local_secondary_indexes",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11714,6 +12025,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.projection": AttributeMetadata(
         brief="The value of the `ProjectionExpression` request parameter.",
         type=AttributeType.STRING,
+        keys=("aws.dynamodb.projection",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11729,6 +12041,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.provisioned_read_capacity": AttributeMetadata(
         brief="The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.",
         type=AttributeType.DOUBLE,
+        keys=("aws.dynamodb.provisioned_read_capacity",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11744,6 +12057,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.provisioned_write_capacity": AttributeMetadata(
         brief="The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.",
         type=AttributeType.DOUBLE,
+        keys=("aws.dynamodb.provisioned_write_capacity",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11759,6 +12073,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.scan_forward": AttributeMetadata(
         brief="The value of the `ScanIndexForward` request parameter.",
         type=AttributeType.BOOLEAN,
+        keys=("aws.dynamodb.scan_forward",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11774,6 +12089,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.scanned_count": AttributeMetadata(
         brief="The value of the `ScannedCount` response parameter.",
         type=AttributeType.INTEGER,
+        keys=("aws.dynamodb.scanned_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11789,6 +12105,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.segment": AttributeMetadata(
         brief="The value of the `Segment` request parameter.",
         type=AttributeType.INTEGER,
+        keys=("aws.dynamodb.segment",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11804,6 +12121,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.select": AttributeMetadata(
         brief="The value of the `Select` request parameter.",
         type=AttributeType.STRING,
+        keys=("aws.dynamodb.select",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11819,6 +12137,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.table_count": AttributeMetadata(
         brief="The number of items in the `TableNames` response parameter.",
         type=AttributeType.INTEGER,
+        keys=("aws.dynamodb.table_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11834,6 +12153,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.table_names": AttributeMetadata(
         brief="The keys in the `RequestItems` object field.",
         type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.table_names",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11849,6 +12169,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.dynamodb.total_segments": AttributeMetadata(
         brief="The value of the `TotalSegments` request parameter.",
         type=AttributeType.INTEGER,
+        keys=("aws.dynamodb.total_segments",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11864,6 +12185,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.extended_request_id": AttributeMetadata(
         brief="The AWS extended request ID as returned in the response headers.",
         type=AttributeType.STRING,
+        keys=(
+            "aws.extended_request_id",
+            "aws.request.extended_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11880,6 +12205,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.kinesis.stream.name": AttributeMetadata(
         brief="The name of the AWS Kinesis stream the request refers to.",
         type=AttributeType.STRING,
+        keys=(
+            "aws.kinesis.stream_name",
+            "aws.kinesis.stream.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11901,6 +12230,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.kinesis.stream_name": AttributeMetadata(
         brief="The name of the AWS Kinesis stream the request refers to.",
         type=AttributeType.STRING,
+        keys=(
+            "aws.kinesis.stream_name",
+            "aws.kinesis.stream.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -11917,6 +12250,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.aws_request_id": AttributeMetadata(
         brief="The AWS request ID as received by the Lambda function runtime",
         type=AttributeType.STRING,
+        keys=(
+            "faas.invocation_id",
+            "aws.lambda.aws_request_id",
+            "faas.execution",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11948,6 +12286,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.execution_duration_in_millis": AttributeMetadata(
         brief="The execution duration of the Lambda function invocation in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=("aws.lambda.execution_duration_in_millis",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11963,6 +12302,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_name": AttributeMetadata(
         brief="The name of the Lambda function",
         type=AttributeType.STRING,
+        keys=(
+            "faas.name",
+            "aws.lambda.function_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -11989,6 +12332,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.function_version": AttributeMetadata(
         brief="The version of the Lambda function",
         type=AttributeType.STRING,
+        keys=(
+            "faas.version",
+            "aws.lambda.function_version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12015,6 +12362,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.invoked_arn": AttributeMetadata(
         brief="The full ARN of the Lambda function that was invoked",
         type=AttributeType.STRING,
+        keys=(
+            "aws.lambda.invoked_arn",
+            "aws.lambda.invoked_function_arn",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12027,6 +12378,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.invoked_function_arn": AttributeMetadata(
         brief="The full ARN of the Lambda function that was invoked",
         type=AttributeType.STRING,
+        keys=(
+            "aws.lambda.invoked_arn",
+            "aws.lambda.invoked_function_arn",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12053,6 +12408,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.lambda.remaining_time_in_millis": AttributeMetadata(
         brief="The remaining time in milliseconds before the Lambda function times out",
         type=AttributeType.DOUBLE,
+        keys=("aws.lambda.remaining_time_in_millis",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12068,6 +12424,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.log.group.names": AttributeMetadata(
         brief="The name(s) of the AWS log group(s) an application is writing to.",
         type=AttributeType.STRING_ARRAY,
+        keys=("aws.log.group.names",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12079,6 +12436,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.log.stream.names": AttributeMetadata(
         brief="The name(s) of the AWS log stream(s) an application is writing to.",
         type=AttributeType.STRING_ARRAY,
+        keys=("aws.log.stream.names",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12090,6 +12448,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.operation_name": AttributeMetadata(
         brief="The name of the API operation invoked on an AWS service.",
         type=AttributeType.STRING,
+        keys=(
+            "rpc.method",
+            "aws.operation_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12112,6 +12474,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.request.extended_id": AttributeMetadata(
         brief="The AWS extended request ID as returned in the response headers.",
         type=AttributeType.STRING,
+        keys=(
+            "aws.extended_request_id",
+            "aws.request.extended_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12133,6 +12499,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.request.id": AttributeMetadata(
         brief="The AWS request ID as returned in the response headers.",
         type=AttributeType.STRING,
+        keys=(
+            "aws.request_id",
+            "aws.request.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12154,6 +12524,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.request.url": AttributeMetadata(
         brief="The URL of the AWS API request.",
         type=AttributeType.STRING,
+        keys=(
+            "url.full",
+            "aws.request.url",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12175,6 +12549,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.request_id": AttributeMetadata(
         brief="The AWS request ID as returned in the response headers.",
         type=AttributeType.STRING,
+        keys=(
+            "aws.request_id",
+            "aws.request.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12191,6 +12569,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.s3.bucket": AttributeMetadata(
         brief="The S3 bucket name the request refers to.",
         type=AttributeType.STRING,
+        keys=("aws.s3.bucket",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12204,6 +12583,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.secretsmanager.secret.arn": AttributeMetadata(
         brief="The ARN of the Secret stored in Secrets Manager.",
         type=AttributeType.STRING,
+        keys=("aws.secretsmanager.secret.arn",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12219,6 +12599,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.sns.topic.arn": AttributeMetadata(
         brief="The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.",
         type=AttributeType.STRING,
+        keys=("aws.sns.topic.arn",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12234,6 +12615,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.step_functions.activity.arn": AttributeMetadata(
         brief="The ARN of the AWS Step Functions Activity.",
         type=AttributeType.STRING,
+        keys=("aws.step_functions.activity.arn",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12249,6 +12631,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws.step_functions.state_machine.arn": AttributeMetadata(
         brief="The ARN of the AWS Step Functions State Machine.",
         type=AttributeType.STRING,
+        keys=("aws.step_functions.state_machine.arn",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12264,6 +12647,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "aws_region": AttributeMetadata(
         brief="The geographical region the AWS resource is running",
         type=AttributeType.STRING,
+        keys=(
+            "cloud.region",
+            "aws_region",
+            "gcp_region",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12282,6 +12670,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "blocked_main_thread": AttributeMetadata(
         brief="Whether the main thread was blocked by the span.",
         type=AttributeType.BOOLEAN,
+        keys=("blocked_main_thread",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12293,6 +12682,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.bfcache.frame": AttributeMetadata(
         brief="Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
         type=AttributeType.STRING,
+        keys=("browser.bfcache.frame",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12309,6 +12699,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.bfcache.not_restored_reason_count": AttributeMetadata(
         brief="The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).",
         type=AttributeType.INTEGER,
+        keys=("browser.bfcache.not_restored_reason_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12325,6 +12716,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.bfcache.outcome": AttributeMetadata(
         brief="Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
         type=AttributeType.STRING,
+        keys=("browser.bfcache.outcome",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12341,6 +12733,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.bfcache.reason": AttributeMetadata(
         brief="A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.",
         type=AttributeType.STRING,
+        keys=("browser.bfcache.reason",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12362,6 +12755,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
+        keys=("browser.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12375,6 +12769,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.performance.navigation.activation_start": AttributeMetadata(
         brief="The time between initiating a navigation to a page and the browser activating the page",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.performance.navigation.activation_start",
+            "performance.activationStart",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12391,6 +12789,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.performance.time_origin": AttributeMetadata(
         brief="The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.performance.time_origin",
+            "performance.timeOrigin",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12407,6 +12809,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.report.type": AttributeMetadata(
         brief="A browser report sent via reporting API..",
         type=AttributeType.STRING,
+        keys=("browser.report.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12418,6 +12821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.invoker": AttributeMetadata(
         brief="How a script was called in the browser.",
         type=AttributeType.STRING,
+        keys=("browser.script.invoker",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12430,6 +12834,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.invoker_type": AttributeMetadata(
         brief="Browser script entry point type.",
         type=AttributeType.STRING,
+        keys=("browser.script.invoker_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12442,6 +12847,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.script.source_char_position": AttributeMetadata(
         brief="A number representing the script character position of the script.",
         type=AttributeType.INTEGER,
+        keys=("browser.script.source_char_position",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12454,6 +12860,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
+        keys=("browser.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12466,6 +12873,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.cls.report_event": AttributeMetadata(
         brief="The event that caused the SDK to report CLS (pagehide or navigation)",
         type=AttributeType.STRING,
+        keys=("browser.web_vital.cls.report_event",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12481,6 +12889,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.cls.source.<key>": AttributeMetadata(
         brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
         type=AttributeType.STRING,
+        keys=(
+            "browser.web_vital.cls.source.<key>",
+            "cls.source.<key>",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12494,6 +12906,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.cls.value": AttributeMetadata(
         brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.cls.value",
+            "cls",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12510,6 +12926,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.fcp.value": AttributeMetadata(
         brief="The time it takes for the browser to render the first piece of meaningful content on the screen",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.fcp.value",
+            "fcp",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12522,6 +12942,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.fp.value": AttributeMetadata(
         brief="The time in milliseconds it takes for the browser to render the first pixel on the screen",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.fp.value",
+            "fp",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12534,6 +12958,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.inp.value": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.inp.value",
+            "inp",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12550,6 +12978,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.element": AttributeMetadata(
         brief="The HTML element selector or component name for which LCP was reported",
         type=AttributeType.STRING,
+        keys=(
+            "browser.web_vital.lcp.element",
+            "lcp.element",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12562,6 +12994,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.id": AttributeMetadata(
         brief="The id of the dom element responsible for the largest contentful paint",
         type=AttributeType.STRING,
+        keys=(
+            "browser.web_vital.lcp.id",
+            "lcp.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12574,6 +13010,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.load_time": AttributeMetadata(
         brief="The time it took for the LCP element to be loaded",
         type=AttributeType.INTEGER,
+        keys=(
+            "browser.web_vital.lcp.load_time",
+            "lcp.loadTime",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12586,6 +13026,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.render_time": AttributeMetadata(
         brief="The time it took for the LCP element to be rendered",
         type=AttributeType.INTEGER,
+        keys=(
+            "browser.web_vital.lcp.render_time",
+            "lcp.renderTime",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12598,6 +13042,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.report_event": AttributeMetadata(
         brief="The event that caused the SDK to report LCP (pagehide or navigation)",
         type=AttributeType.STRING,
+        keys=("browser.web_vital.lcp.report_event",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12613,6 +13058,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element",
         type=AttributeType.INTEGER,
+        keys=(
+            "browser.web_vital.lcp.size",
+            "lcp.size",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12625,6 +13074,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.url": AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint",
         type=AttributeType.STRING,
+        keys=(
+            "browser.web_vital.lcp.url",
+            "lcp.url",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12637,6 +13090,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.lcp.value": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.lcp.value",
+            "lcp",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12653,6 +13110,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.ttfb.request_time": AttributeMetadata(
         brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.ttfb.request_time",
+            "ttfb.requestTime",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12665,6 +13126,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "browser.web_vital.ttfb.value": AttributeMetadata(
         brief="The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.ttfb.value",
+            "ttfb",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12677,6 +13142,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.hit": AttributeMetadata(
         brief="If the cache was hit during this span.",
         type=AttributeType.BOOLEAN,
+        keys=("cache.hit",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12688,6 +13154,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
         type=AttributeType.INTEGER,
+        keys=("cache.item_size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12701,6 +13168,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.key": AttributeMetadata(
         brief="The key of the cache accessed.",
         type=AttributeType.STRING_ARRAY,
+        keys=("cache.key",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12712,6 +13180,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.operation": AttributeMetadata(
         brief="The operation being performed on the cache.",
         type=AttributeType.STRING,
+        keys=("cache.operation",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12724,6 +13193,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.ttl": AttributeMetadata(
         brief="The ttl of the cache in seconds",
         type=AttributeType.INTEGER,
+        keys=("cache.ttl",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12736,6 +13206,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cache.write": AttributeMetadata(
         brief="If the cache operation resulted in a write to the cache.",
         type=AttributeType.BOOLEAN,
+        keys=("cache.write",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12747,6 +13218,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "channel": AttributeMetadata(
         brief="The channel name that is being used.",
         type=AttributeType.STRING,
+        keys=("channel",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12759,6 +13231,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "client.address": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("client.address",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12772,6 +13245,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "client.port": AttributeMetadata(
         brief="Client port number.",
         type=AttributeType.INTEGER,
+        keys=("client.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12784,6 +13258,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.account.id": AttributeMetadata(
         brief="The cloud account ID the resource is assigned to",
         type=AttributeType.STRING,
+        keys=("cloud.account.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12799,6 +13274,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.availability_zone": AttributeMetadata(
         brief="Cloud regions often have multiple, isolated locations known as zones to increase availability",
         type=AttributeType.STRING,
+        keys=("cloud.availability_zone",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12814,6 +13290,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.platform": AttributeMetadata(
         brief="The cloud platform in use",
         type=AttributeType.STRING,
+        keys=("cloud.platform",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12827,6 +13304,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.provider": AttributeMetadata(
         brief="Name of the cloud provider",
         type=AttributeType.STRING,
+        keys=("cloud.provider",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12840,6 +13318,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.region": AttributeMetadata(
         brief="The geographical region the resource is running",
         type=AttributeType.STRING,
+        keys=(
+            "cloud.region",
+            "aws_region",
+            "gcp_region",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12859,6 +13342,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloud.resource_id": AttributeMetadata(
         brief="Cloud provider-specific native identifier of the monitored cloud resource",
         type=AttributeType.STRING,
+        keys=(
+            "cloud.resource_id",
+            "faas.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -12877,6 +13364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.duration": AttributeMetadata(
         brief="The duration of a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.d1.duration",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12889,6 +13377,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.query_type": AttributeMetadata(
         brief="The type of query executed in a Cloudflare D1 operation",
         type=AttributeType.STRING,
+        keys=(
+            "db.operation.name",
+            "cloudflare.d1.query_type",
+            "db.operation",
+            "redis.command",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12913,6 +13407,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.rows_read": AttributeMetadata(
         brief="The number of rows read in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.d1.rows_read",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12925,6 +13420,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.d1.rows_written": AttributeMetadata(
         brief="The number of rows written in a Cloudflare D1 operation.",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.d1.rows_written",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12937,6 +13433,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.durable_object.query.bindings": AttributeMetadata(
         brief="The number of bound parameters passed to the SQL exec call.",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.durable_object.query.bindings",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12952,6 +13449,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.durable_object.response.rows_read": AttributeMetadata(
         brief="The number of rows read by a Cloudflare Durable Object SQL operation.",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.durable_object.response.rows_read",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12967,6 +13465,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.durable_object.response.rows_written": AttributeMetadata(
         brief="The number of rows written by a Cloudflare Durable Object SQL operation.",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.durable_object.response.rows_written",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12982,6 +13481,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.bucket": AttributeMetadata(
         brief="The name of the Cloudflare R2 bucket binding",
         type=AttributeType.STRING,
+        keys=("cloudflare.r2.bucket",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -12997,6 +13497,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.operation": AttributeMetadata(
         brief="The R2 API operation being performed",
         type=AttributeType.STRING,
+        keys=("cloudflare.r2.operation",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13012,6 +13513,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.delimiter": AttributeMetadata(
         brief="The delimiter used to group objects in an R2 list operation",
         type=AttributeType.STRING,
+        keys=("cloudflare.r2.request.delimiter",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13027,6 +13529,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.key": AttributeMetadata(
         brief="The object key used in the R2 operation",
         type=AttributeType.STRING,
+        keys=("cloudflare.r2.request.key",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13042,6 +13545,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.part_number": AttributeMetadata(
         brief="The part number in a multipart upload operation",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.r2.request.part_number",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13057,6 +13561,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.r2.request.prefix": AttributeMetadata(
         brief="The prefix used to filter objects in an R2 list operation",
         type=AttributeType.STRING,
+        keys=("cloudflare.r2.request.prefix",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13072,6 +13577,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.attempt": AttributeMetadata(
         brief="The current attempt number for a Cloudflare Workflow step",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.workflow.attempt",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13087,6 +13593,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.backoff": AttributeMetadata(
         brief="The backoff strategy for Cloudflare Workflow step retries",
         type=AttributeType.STRING,
+        keys=("cloudflare.workflow.retries.backoff",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13102,6 +13609,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.delay": AttributeMetadata(
         brief="The delay between Cloudflare Workflow step retries",
         type=AttributeType.STRING,
+        keys=("cloudflare.workflow.retries.delay",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13117,6 +13625,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.retries.limit": AttributeMetadata(
         brief="The maximum number of retries for a Cloudflare Workflow step",
         type=AttributeType.INTEGER,
+        keys=("cloudflare.workflow.retries.limit",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13132,6 +13641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cloudflare.workflow.timeout": AttributeMetadata(
         brief="The timeout duration for a Cloudflare Workflow step",
         type=AttributeType.STRING,
+        keys=("cloudflare.workflow.timeout",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13147,6 +13657,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cls.source.<key>": AttributeMetadata(
         brief="The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N",
         type=AttributeType.STRING,
+        keys=(
+            "browser.web_vital.cls.source.<key>",
+            "cls.source.<key>",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13165,6 +13679,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "cls": AttributeMetadata(
         brief="The value of the recorded Cumulative Layout Shift (CLS) web vital",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.cls.value",
+            "cls",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13186,6 +13704,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.file.path": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
+        keys=("code.file.path",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13198,6 +13717,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.filepath": AttributeMetadata(
         brief="The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).",
         type=AttributeType.STRING,
+        keys=("code.filepath",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13212,6 +13732,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.function": AttributeMetadata(
         brief="The method or function name, or equivalent (usually rightmost part of the code unit's name).",
         type=AttributeType.STRING,
+        keys=(
+            "code.function",
+            "code.function.name",
+            "django.function_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13230,6 +13755,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.function.name": AttributeMetadata(
         brief="The method or function fully-qualified name without arguments.",
         type=AttributeType.STRING,
+        keys=(
+            "code.function.name",
+            "code.function",
+            "django.function_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13248,6 +13778,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.line.number": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
+        keys=("code.line.number",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13261,6 +13792,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.lineno": AttributeMetadata(
         brief="The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function",
         type=AttributeType.INTEGER,
+        keys=("code.lineno",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13276,6 +13808,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code.namespace": AttributeMetadata(
         brief="The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
         type=AttributeType.STRING,
+        keys=("code.namespace",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13288,6 +13821,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "code": AttributeMetadata(
         brief="Status code of the RPC returned by the RPC server or generated by the client.",
         type=AttributeType.STRING,
+        keys=(
+            "rpc.response.status_code",
+            "code",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13306,6 +13843,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "connection.rtt": AttributeMetadata(
         brief="Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
         type=AttributeType.INTEGER,
+        keys=(
+            "network.connection.rtt",
+            "connection.rtt",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13327,6 +13868,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "connectionType": AttributeMetadata(
         brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
         type=AttributeType.STRING,
+        keys=(
+            "network.connection.type",
+            "connectionType",
+            "device.connection_type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13348,6 +13894,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.calendar": AttributeMetadata(
         brief="The calendar system used by the culture.",
         type=AttributeType.STRING,
+        keys=("culture.calendar",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13359,6 +13906,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.display_name": AttributeMetadata(
         brief="Human readable name of the culture.",
         type=AttributeType.STRING,
+        keys=("culture.display_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13370,6 +13918,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.is_24_hour_format": AttributeMetadata(
         brief="Whether the culture uses 24-hour time format.",
         type=AttributeType.BOOLEAN,
+        keys=("culture.is_24_hour_format",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13381,6 +13930,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.locale": AttributeMetadata(
         brief="The locale identifier following RFC 4646.",
         type=AttributeType.STRING,
+        keys=("culture.locale",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13392,6 +13942,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "culture.timezone": AttributeMetadata(
         brief="The timezone of the culture, as a geographic timezone identifier.",
         type=AttributeType.STRING,
+        keys=("culture.timezone",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13403,6 +13954,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.collection.name": AttributeMetadata(
         brief="The name of a collection (table, container) within the database.",
         type=AttributeType.STRING,
+        keys=(
+            "db.collection.name",
+            "db.mongodb.collection",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13421,6 +13976,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.driver.name": AttributeMetadata(
         brief="The name of the driver used for the database connection.",
         type=AttributeType.STRING,
+        keys=("db.driver.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13434,6 +13990,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.mongodb.collection": AttributeMetadata(
         brief="The MongoDB collection being accessed.",
         type=AttributeType.STRING,
+        keys=(
+            "db.collection.name",
+            "db.mongodb.collection",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13455,6 +14015,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.name": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
+        keys=("db.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13469,6 +14030,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.namespace": AttributeMetadata(
         brief="The name of the database being accessed.",
         type=AttributeType.STRING,
+        keys=("db.namespace",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13482,6 +14044,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.operation": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
+        keys=(
+            "db.operation.name",
+            "cloudflare.d1.query_type",
+            "db.operation",
+            "redis.command",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13504,6 +14072,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.operation.batch.size": AttributeMetadata(
         brief="The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.",
         type=AttributeType.INTEGER,
+        keys=("db.operation.batch.size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13519,6 +14088,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
+        keys=(
+            "db.operation.name",
+            "cloudflare.d1.query_type",
+            "db.operation",
+            "redis.command",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13537,6 +14112,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.params": AttributeMetadata(
         brief="The query bindings for a database request.",
         type=AttributeType.STRING,
+        keys=("db.params",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13555,6 +14131,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.parameter.<key>": AttributeMetadata(
         brief="A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.",
         type=AttributeType.STRING,
+        keys=("db.query.parameter.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13567,6 +14144,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.summary": AttributeMetadata(
         brief="A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.",
         type=AttributeType.STRING,
+        keys=("db.query.summary",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13584,6 +14162,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.query.text": AttributeMetadata(
         brief="The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.",
         type=AttributeType.STRING,
+        keys=(
+            "db.query.text",
+            "db.statement",
+            "query",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13601,6 +14184,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.connection": AttributeMetadata(
         brief="The redis connection name.",
         type=AttributeType.STRING,
+        keys=("db.redis.connection",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13613,6 +14197,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.key": AttributeMetadata(
         brief="The key the Redis command is operating on.",
         type=AttributeType.STRING,
+        keys=(
+            "db.redis.key",
+            "redis.key",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13630,6 +14218,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.redis.parameters": AttributeMetadata(
         brief="The array of command parameters given to a redis command.",
         type=AttributeType.STRING_ARRAY,
+        keys=("db.redis.parameters",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13641,6 +14230,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.response.status_code": AttributeMetadata(
         brief="Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.",
         type=AttributeType.STRING,
+        keys=("db.response.status_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13656,6 +14246,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.sql.bindings": AttributeMetadata(
         brief="The array of query bindings.",
         type=AttributeType.STRING_ARRAY,
+        keys=("db.sql.bindings",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13672,6 +14263,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.statement": AttributeMetadata(
         brief="The database statement being executed.",
         type=AttributeType.STRING,
+        keys=(
+            "db.query.text",
+            "db.statement",
+            "query",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13696,6 +14292,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.stored_procedure.name": AttributeMetadata(
         brief="The name of a stored procedure being called.",
         type=AttributeType.STRING,
+        keys=("db.stored_procedure.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13707,6 +14304,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.system": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
+        keys=(
+            "db.system.name",
+            "db.system",
+            "span.system",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13725,6 +14327,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.system.name": AttributeMetadata(
         brief="An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.",
         type=AttributeType.STRING,
+        keys=(
+            "db.system.name",
+            "db.system",
+            "span.system",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13738,6 +14345,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "db.user": AttributeMetadata(
         brief="The database user.",
         type=AttributeType.STRING,
+        keys=("db.user",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13749,6 +14357,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.archs": AttributeMetadata(
         brief="The CPU architectures of the device.",
         type=AttributeType.STRING_ARRAY,
+        keys=("device.archs",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13762,6 +14371,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.battery_level": AttributeMetadata(
         brief="The battery level of the device as a percentage (0-100).",
         type=AttributeType.DOUBLE,
+        keys=("device.battery_level",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13777,6 +14387,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.battery_temperature": AttributeMetadata(
         brief="The battery temperature of the device in Celsius.",
         type=AttributeType.DOUBLE,
+        keys=("device.battery_temperature",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13792,6 +14403,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.boot_time": AttributeMetadata(
         brief="A formatted UTC timestamp when the system was booted.",
         type=AttributeType.STRING,
+        keys=("device.boot_time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13807,6 +14419,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.brand": AttributeMetadata(
         brief="The brand of the device.",
         type=AttributeType.STRING,
+        keys=("device.brand",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13818,6 +14431,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.charging": AttributeMetadata(
         brief="Whether the device was charging or not.",
         type=AttributeType.BOOLEAN,
+        keys=("device.charging",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13833,6 +14447,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.chipset": AttributeMetadata(
         brief="The chipset of the device.",
         type=AttributeType.STRING,
+        keys=("device.chipset",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13846,6 +14461,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.class": AttributeMetadata(
         brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
+        keys=("device.class",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13859,6 +14475,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.connection_type": AttributeMetadata(
         brief="The internet connection type currently being used by the device.",
         type=AttributeType.STRING,
+        keys=(
+            "network.connection.type",
+            "connectionType",
+            "device.connection_type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13880,6 +14501,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.cpu_description": AttributeMetadata(
         brief="A description of the CPU of the device.",
         type=AttributeType.STRING,
+        keys=("device.cpu_description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13895,6 +14517,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.external_free_storage": AttributeMetadata(
         brief="External storage free size in bytes.",
         type=AttributeType.INTEGER,
+        keys=("device.external_free_storage",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13910,6 +14533,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.external_storage_size": AttributeMetadata(
         brief="External storage total size in bytes.",
         type=AttributeType.INTEGER,
+        keys=("device.external_storage_size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13925,6 +14549,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.family": AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
+        keys=("device.family",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13936,6 +14561,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.free_memory": AttributeMetadata(
         brief="Free system memory in bytes.",
         type=AttributeType.INTEGER,
+        keys=("device.free_memory",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13951,6 +14577,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.free_storage": AttributeMetadata(
         brief="Free device storage in bytes.",
         type=AttributeType.INTEGER,
+        keys=("device.free_storage",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13966,6 +14593,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.id": AttributeMetadata(
         brief="Unique device identifier.",
         type=AttributeType.STRING,
+        keys=("device.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -13979,6 +14607,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.locale": AttributeMetadata(
         brief="The locale of the device.",
         type=AttributeType.STRING,
+        keys=("device.locale",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -13992,6 +14621,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.low_memory": AttributeMetadata(
         brief="Whether the device was low on memory.",
         type=AttributeType.BOOLEAN,
+        keys=("device.low_memory",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14007,6 +14637,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.low_power_mode": AttributeMetadata(
         brief="Whether the device is in Low Power Mode.",
         type=AttributeType.BOOLEAN,
+        keys=("device.low_power_mode",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14022,6 +14653,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.manufacturer": AttributeMetadata(
         brief="The manufacturer of the device.",
         type=AttributeType.STRING,
+        keys=("device.manufacturer",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14037,6 +14669,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.memory.estimated_capacity": AttributeMetadata(
         brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB",
         type=AttributeType.INTEGER,
+        keys=(
+            "device.memory.estimated_capacity",
+            "deviceMemory",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14053,6 +14689,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.memory_size": AttributeMetadata(
         brief="Total system memory available in bytes.",
         type=AttributeType.INTEGER,
+        keys=("device.memory_size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14068,6 +14705,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
+        keys=("device.model",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14079,6 +14717,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.model_id": AttributeMetadata(
         brief="An internal hardware revision to identify the device exactly.",
         type=AttributeType.STRING,
+        keys=("device.model_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14094,6 +14733,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.name": AttributeMetadata(
         brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
+        keys=("device.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14107,6 +14747,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.online": AttributeMetadata(
         brief="Whether the device was online or not.",
         type=AttributeType.BOOLEAN,
+        keys=("device.online",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14120,6 +14761,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.orientation": AttributeMetadata(
         brief='The orientation of the device, either "portrait" or "landscape".',
         type=AttributeType.STRING,
+        keys=("device.orientation",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14135,6 +14777,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.processor_count": AttributeMetadata(
         brief='Number of "logical processors".',
         type=AttributeType.INTEGER,
+        keys=(
+            "device.processor_count",
+            "hardwareConcurrency",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14151,6 +14797,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.processor_frequency": AttributeMetadata(
         brief="Processor frequency in MHz.",
         type=AttributeType.DOUBLE,
+        keys=("device.processor_frequency",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14166,6 +14813,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_density": AttributeMetadata(
         brief="The screen density of the device.",
         type=AttributeType.DOUBLE,
+        keys=("device.screen_density",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14181,6 +14829,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_dpi": AttributeMetadata(
         brief="The screen density in dots-per-inch (DPI) of the device.",
         type=AttributeType.INTEGER,
+        keys=("device.screen_dpi",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14196,6 +14845,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_height_pixels": AttributeMetadata(
         brief="The height of the device screen in pixels.",
         type=AttributeType.INTEGER,
+        keys=("device.screen_height_pixels",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14211,6 +14861,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_width_pixels": AttributeMetadata(
         brief="The width of the device screen in pixels.",
         type=AttributeType.INTEGER,
+        keys=("device.screen_width_pixels",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14226,6 +14877,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.simulator": AttributeMetadata(
         brief="Whether the device is a simulator or an actual device.",
         type=AttributeType.BOOLEAN,
+        keys=("device.simulator",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14241,6 +14893,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.storage_size": AttributeMetadata(
         brief="Total device storage in bytes.",
         type=AttributeType.INTEGER,
+        keys=("device.storage_size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14256,6 +14909,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.thermal_state": AttributeMetadata(
         brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
         type=AttributeType.STRING,
+        keys=("device.thermal_state",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14271,6 +14925,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.timezone": AttributeMetadata(
         brief="The timezone of the device.",
         type=AttributeType.STRING,
+        keys=("device.timezone",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14286,6 +14941,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.usable_memory": AttributeMetadata(
         brief="Memory usable for the app in bytes.",
         type=AttributeType.INTEGER,
+        keys=("device.usable_memory",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14301,6 +14957,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "deviceMemory": AttributeMetadata(
         brief="The estimated total memory capacity of the device, only a rough estimation in gigabytes.",
         type=AttributeType.STRING,
+        keys=(
+            "device.memory.estimated_capacity",
+            "deviceMemory",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14322,6 +14982,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "dist": AttributeMetadata(
         brief="The sentry dist.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.dist",
+            "dist",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14341,6 +15005,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "django.function_name": AttributeMetadata(
         brief="The fully qualified name of a function used in a Django context.",
         type=AttributeType.STRING,
+        keys=(
+            "code.function.name",
+            "code.function",
+            "django.function_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14363,6 +15032,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "django.middleware_name": AttributeMetadata(
         brief="The name of the Django middleware.",
         type=AttributeType.STRING,
+        keys=(
+            "middleware.name",
+            "django.middleware_name",
+            "litestar.middleware_name",
+            "starlette.middleware_name",
+            "starlite.middleware_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14385,6 +15061,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
+        keys=(
+            "network.connection.effective_type",
+            "effectiveConnectionType",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14406,6 +15086,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "environment": AttributeMetadata(
         brief="The sentry environment.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.environment",
+            "environment",
+            "resource.deployment.environment",
+            "resource.deployment.environment.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14425,6 +15111,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "error.type": AttributeMetadata(
         brief="Describes a class of error the operation ended with.",
         type=AttributeType.STRING,
+        keys=("error.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14437,6 +15124,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "event.id": AttributeMetadata(
         brief="The unique identifier for this event (log record)",
         type=AttributeType.INTEGER,
+        keys=("event.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14448,6 +15136,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "event.name": AttributeMetadata(
         brief="The name that uniquely identifies this event (log record)",
         type=AttributeType.STRING,
+        keys=("event.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14459,6 +15148,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.escaped": AttributeMetadata(
         brief="SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.",
         type=AttributeType.BOOLEAN,
+        keys=("exception.escaped",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14470,6 +15160,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.message": AttributeMetadata(
         brief="The error message.",
         type=AttributeType.STRING,
+        keys=("exception.message",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14482,6 +15173,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.stacktrace": AttributeMetadata(
         brief="A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.",
         type=AttributeType.STRING,
+        keys=("exception.stacktrace",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14494,6 +15186,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "exception.type": AttributeMetadata(
         brief="The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.",
         type=AttributeType.STRING,
+        keys=("exception.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14506,6 +15199,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.coldstart": AttributeMetadata(
         brief="A boolean that is true if the serverless function is executed for the first time (aka cold-start).",
         type=AttributeType.BOOLEAN,
+        keys=("faas.coldstart",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14517,6 +15211,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.cron": AttributeMetadata(
         brief="A string containing the schedule period as Cron Expression.",
         type=AttributeType.STRING,
+        keys=("faas.cron",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14529,6 +15224,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.duration_in_ms": AttributeMetadata(
         brief="The duration a function took to run, in milliseconds.",
         type=AttributeType.INTEGER,
+        keys=("faas.duration_in_ms",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14540,6 +15236,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.entry_point": AttributeMetadata(
         brief="The code that's run when the cloud provider invokes your function.",
         type=AttributeType.STRING,
+        keys=("faas.entry_point",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14551,6 +15248,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.execution": AttributeMetadata(
         brief="The execution ID of the current function execution.",
         type=AttributeType.STRING,
+        keys=(
+            "faas.invocation_id",
+            "aws.lambda.aws_request_id",
+            "faas.execution",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14572,6 +15274,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.id": AttributeMetadata(
         brief="The unique ID of the single function that this runtime instance executes.",
         type=AttributeType.STRING,
+        keys=(
+            "cloud.resource_id",
+            "faas.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14593,6 +15299,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.identity": AttributeMetadata(
         brief="The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services",
         type=AttributeType.STRING,
+        keys=("faas.identity",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14604,6 +15311,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.invocation_id": AttributeMetadata(
         brief="The invocation ID of the current function invocation.",
         type=AttributeType.STRING,
+        keys=(
+            "faas.invocation_id",
+            "aws.lambda.aws_request_id",
+            "faas.execution",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14621,6 +15333,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.invoked_name": AttributeMetadata(
         brief="The name of the invoked function.",
         type=AttributeType.STRING,
+        keys=("faas.invoked_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14636,6 +15349,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.invoked_provider": AttributeMetadata(
         brief="The cloud provider of the invoked function.",
         type=AttributeType.STRING,
+        keys=("faas.invoked_provider",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14651,6 +15365,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.invoked_region": AttributeMetadata(
         brief="The cloud region of the invoked function.",
         type=AttributeType.STRING,
+        keys=("faas.invoked_region",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14666,6 +15381,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.name": AttributeMetadata(
         brief="The name of the serverless function",
         type=AttributeType.STRING,
+        keys=(
+            "faas.name",
+            "aws.lambda.function_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14678,6 +15397,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.time": AttributeMetadata(
         brief="A string containing the function invocation time in the ISO 8601 format expressed in UTC.",
         type=AttributeType.STRING,
+        keys=("faas.time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14690,6 +15410,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.trigger": AttributeMetadata(
         brief="Type of the trigger which caused this function invocation.",
         type=AttributeType.STRING,
+        keys=("faas.trigger",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14702,6 +15423,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "faas.version": AttributeMetadata(
         brief="The version of the function that was invoked",
         type=AttributeType.STRING,
+        keys=(
+            "faas.version",
+            "aws.lambda.function_version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14714,6 +15439,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "fcp": AttributeMetadata(
         brief="The time it takes for the browser to render the first piece of meaningful content on the screen",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.fcp.value",
+            "fcp",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14731,6 +15460,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "file.path": AttributeMetadata(
         brief="Path to the file.",
         type=AttributeType.STRING,
+        keys=("file.path",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO,
             reason="File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.",
@@ -14747,6 +15477,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "file.size": AttributeMetadata(
         brief="File size in bytes.",
         type=AttributeType.INTEGER,
+        keys=("file.size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -14760,6 +15491,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "flag.evaluation.<key>": AttributeMetadata(
         brief="An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.",
         type=AttributeType.BOOLEAN,
+        keys=("flag.evaluation.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14772,6 +15504,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "fp": AttributeMetadata(
         brief="The time it takes for the browser to render the first pixel on the screen",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.fp.value",
+            "fp",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14789,6 +15525,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.delay": AttributeMetadata(
         brief="The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.delay.value",
+            "frames.delay",
+            "mobile.frames_delay",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14813,6 +15554,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.frozen": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.frozen.count",
+            "frames.frozen",
+            "mobile.frozen_frames",
+            "sentry.frames.frozen",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14842,6 +15589,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.slow.count",
+            "frames.slow",
+            "mobile.slow_frames",
+            "sentry.frames.slow",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14871,6 +15624,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.total.count",
+            "frames.total",
+            "mobile.total_frames",
+            "sentry.frames.total",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14900,6 +15659,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames_frozen_rate": AttributeMetadata(
         brief="The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.frames.frozen.rate",
+            "frames_frozen_rate",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14925,6 +15688,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "frames_slow_rate": AttributeMetadata(
         brief="The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.frames.slow.rate",
+            "frames_slow_rate",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14950,6 +15717,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "fs_error": AttributeMetadata(
         brief="The error message of a file system error.",
         type=AttributeType.STRING,
+        keys=("fs_error",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14966,6 +15734,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.event_id": AttributeMetadata(
         brief="The event ID from the legacy GCP Cloud Function context (1st gen)",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.event_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14981,6 +15750,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.event_type": AttributeMetadata(
         brief="The type of the GCP Cloud Function event",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.event_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -14996,6 +15766,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.id": AttributeMetadata(
         brief="The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15011,6 +15782,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.resource": AttributeMetadata(
         brief="The resource that triggered the GCP Cloud Function event",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.resource",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15026,6 +15798,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.source": AttributeMetadata(
         brief="The source of the GCP Cloud Function event",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15041,6 +15814,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.specversion": AttributeMetadata(
         brief="The CloudEvents specification version of the GCP Cloud Function event",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.specversion",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15056,6 +15830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.time": AttributeMetadata(
         brief="The timestamp of the GCP Cloud Function event",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15071,6 +15846,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.timestamp": AttributeMetadata(
         brief="The legacy timestamp of the GCP Cloud Function event",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.timestamp",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15086,6 +15862,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.function.context.type": AttributeMetadata(
         brief="The type of the GCP Cloud Function event context",
         type=AttributeType.STRING,
+        keys=("gcp.function.context.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15101,6 +15878,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp.project.id": AttributeMetadata(
         brief="The ID of the project in GCP that this resource is associated with",
         type=AttributeType.STRING,
+        keys=("gcp.project.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15112,6 +15890,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gcp_region": AttributeMetadata(
         brief="The geographical region the GCP resource is running",
         type=AttributeType.STRING,
+        keys=(
+            "cloud.region",
+            "aws_region",
+            "gcp_region",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15130,6 +15913,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.agent.name": AttributeMetadata(
         brief="The name of the agent being used.",
         type=AttributeType.STRING,
+        keys=("gen_ai.agent.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15141,6 +15925,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.context.utilization": AttributeMetadata(
         brief="The fraction of the model context window utilized by this generation.",
         type=AttributeType.DOUBLE,
+        keys=("gen_ai.context.utilization",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15156,6 +15941,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.context.window_size": AttributeMetadata(
         brief="The maximum context window size supported by the model for this generation.",
         type=AttributeType.INTEGER,
+        keys=("gen_ai.context.window_size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15171,6 +15957,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.conversation.id": AttributeMetadata(
         brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
         type=AttributeType.STRING,
+        keys=("gen_ai.conversation.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15182,6 +15969,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.cache_creation.input_tokens": AttributeMetadata(
         brief="The cost of input tokens written to cache in USD.",
         type=AttributeType.DOUBLE,
+        keys=("gen_ai.cost.cache_creation.input_tokens",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15201,6 +15989,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.cache_read.input_tokens": AttributeMetadata(
         brief="The cost of cached input tokens in USD.",
         type=AttributeType.DOUBLE,
+        keys=("gen_ai.cost.cache_read.input_tokens",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15220,6 +16009,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.input_tokens": AttributeMetadata(
         brief="The total cost of all input tokens in USD (includes cached and cache creation tokens).",
         type=AttributeType.DOUBLE,
+        keys=("gen_ai.cost.input_tokens",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15240,6 +16030,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.output_tokens": AttributeMetadata(
         brief="The total cost of all output tokens in USD (includes reasoning tokens).",
         type=AttributeType.DOUBLE,
+        keys=("gen_ai.cost.output_tokens",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15260,6 +16051,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.reasoning.output_tokens": AttributeMetadata(
         brief="The cost of reasoning output tokens in USD.",
         type=AttributeType.DOUBLE,
+        keys=("gen_ai.cost.reasoning.output_tokens",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15279,6 +16071,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.cost.total_tokens": AttributeMetadata(
         brief="The total cost for the tokens used.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.cost.total_tokens",
+            "ai.total_cost",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15300,6 +16096,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.embeddings.input": AttributeMetadata(
         brief="The input to the embeddings model.",
         type=AttributeType.STRING,
+        keys=("gen_ai.embeddings.input",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15311,6 +16108,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.function_id": AttributeMetadata(
         brief="Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.",
         type=AttributeType.STRING,
+        keys=("gen_ai.function_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15326,6 +16124,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.input.messages": AttributeMetadata(
         brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.input.messages",
+            "ai.input_messages",
+            "ai.prompt.messages",
+            "ai.texts",
+            "gen_ai.prompt",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15339,6 +16144,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.operation.name": AttributeMetadata(
         brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
         type=AttributeType.STRING,
+        keys=("gen_ai.operation.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15351,6 +16157,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.operation.type": AttributeMetadata(
         brief="The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
         type=AttributeType.STRING,
+        keys=("gen_ai.operation.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15363,6 +16170,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.output.messages": AttributeMetadata(
         brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.output.messages",
+            "ai.response.text",
+            "ai.response.toolCalls",
+            "ai.responses",
+            "ai.tool_calls",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15375,6 +16189,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.pipeline.name": AttributeMetadata(
         brief="Name of the AI pipeline or chain being executed.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.pipeline.name",
+            "ai.pipeline.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15387,6 +16205,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.prompt": AttributeMetadata(
         brief="The input messages sent to the model",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.input.messages",
+            "ai.input_messages",
+            "ai.prompt.messages",
+            "ai.texts",
+            "gen_ai.prompt",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15405,6 +16230,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.prompt.name": AttributeMetadata(
         brief="The name of the prompt that uniquely identifies it.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.prompt.name",
+            "mcp.prompt.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.MANUAL,
             reason="Prompt names may reveal user behavior patterns or sensitive operations",
@@ -15424,6 +16253,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.provider.name": AttributeMetadata(
         brief="The Generative AI provider as identified by the client or server instrumentation.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.provider.name",
+            "ai.model.provider",
+            "gen_ai.system",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15436,6 +16270,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.available_tools": AttributeMetadata(
         brief="The available tools for the model. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.definitions",
+            "ai.tools",
+            "gen_ai.request.available_tools",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15451,6 +16290,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.frequency_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.request.frequency_penalty",
+            "ai.frequency_penalty",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15464,6 +16307,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.max_tokens": AttributeMetadata(
         brief="The maximum number of tokens to generate in the response.",
         type=AttributeType.INTEGER,
+        keys=("gen_ai.request.max_tokens",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15476,6 +16320,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.messages": AttributeMetadata(
         brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
         type=AttributeType.STRING,
+        keys=("gen_ai.request.messages",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15494,6 +16339,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.model": AttributeMetadata(
         brief="The model identifier being used for the request.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.request.model",
+            "ai.model_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15506,6 +16355,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.presence_penalty": AttributeMetadata(
         brief="Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.request.presence_penalty",
+            "ai.presence_penalty",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15519,6 +16372,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.reasoning.level": AttributeMetadata(
         brief="The reasoning or thinking effort level requested for a GenAI model.",
         type=AttributeType.STRING,
+        keys=("gen_ai.request.reasoning.level",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15534,6 +16388,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.seed": AttributeMetadata(
         brief="The seed, ideally models given the same seed and same other parameters will produce the exact same output.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.request.seed",
+            "ai.seed",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15546,6 +16404,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.stop_sequences": AttributeMetadata(
         brief="List of sequences that the model will use to stop generating further tokens.",
         type=AttributeType.STRING_ARRAY,
+        keys=("gen_ai.request.stop_sequences",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15561,6 +16420,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.temperature": AttributeMetadata(
         brief="For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.request.temperature",
+            "ai.temperature",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15574,6 +16437,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.top_k": AttributeMetadata(
         brief="Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.request.top_k",
+            "ai.top_k",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15587,6 +16454,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.request.top_p": AttributeMetadata(
         brief="Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.request.top_p",
+            "ai.top_p",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15600,6 +16471,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.finish_reason": AttributeMetadata(
         brief="The reason why the model stopped generating (singular form).",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.finish_reasons",
+            "ai.finish_reason",
+            "gen_ai.response.finish_reason",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15620,6 +16496,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.finish_reasons": AttributeMetadata(
         brief="The reason why the model stopped generating.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.finish_reasons",
+            "ai.finish_reason",
+            "gen_ai.response.finish_reason",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15632,6 +16513,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.id": AttributeMetadata(
         brief="Unique identifier for the completion.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.id",
+            "ai.generation_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15644,6 +16529,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.model": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
+        keys=("gen_ai.response.model",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15656,6 +16542,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.streaming": AttributeMetadata(
         brief="Whether or not the AI model call's response was streamed back asynchronously",
         type=AttributeType.BOOLEAN,
+        keys=(
+            "gen_ai.response.streaming",
+            "ai.streaming",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15668,6 +16558,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.text": AttributeMetadata(
         brief="The model's response text messages. It has to be a stringified version of an array of response text messages.",
         type=AttributeType.STRING,
+        keys=("gen_ai.response.text",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15685,6 +16576,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.time_to_first_chunk": AttributeMetadata(
         brief="Time in seconds when the first response content chunk arrived in streaming responses.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.response.time_to_first_chunk",
+            "gen_ai.response.time_to_first_token",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15701,6 +16596,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.time_to_first_token": AttributeMetadata(
         brief="Time in seconds when the first response content chunk arrived in streaming responses.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "gen_ai.response.time_to_first_chunk",
+            "gen_ai.response.time_to_first_token",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15722,6 +16621,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.tokens_per_second": AttributeMetadata(
         brief="The total output tokens per seconds throughput",
         type=AttributeType.DOUBLE,
+        keys=("gen_ai.response.tokens_per_second",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15734,6 +16634,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.response.tool_calls": AttributeMetadata(
         brief="The tool calls in the model's response. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
+        keys=("gen_ai.response.tool_calls",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15751,6 +16652,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.system": AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.provider.name",
+            "ai.model.provider",
+            "gen_ai.system",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15767,6 +16673,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.system.message": AttributeMetadata(
         brief="The system instructions passed to the model.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.system_instructions",
+            "ai.preamble",
+            "gen_ai.system.message",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15782,6 +16693,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.system_instructions": AttributeMetadata(
         brief="The system instructions passed to the model.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.system_instructions",
+            "ai.preamble",
+            "gen_ai.system.message",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15795,6 +16711,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.call.arguments": AttributeMetadata(
         brief="The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.arguments",
+            "ai.toolCall.args",
+            "gen_ai.tool.input",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15808,6 +16729,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.call.result": AttributeMetadata(
         brief="The result of the tool call. It has to be a stringified version of the result of the tool.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.result",
+            "ai.toolCall.result",
+            "gen_ai.tool.message",
+            "gen_ai.tool.output",
+            "mcp.tool.result.content",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15826,6 +16754,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.definitions",
+            "ai.tools",
+            "gen_ai.request.available_tools",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15837,6 +16770,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.description": AttributeMetadata(
         brief="The description of the tool being used.",
         type=AttributeType.STRING,
+        keys=("gen_ai.tool.description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15848,6 +16782,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.input": AttributeMetadata(
         brief="The input of the tool being used. It has to be a stringified version of the input to the tool.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.arguments",
+            "ai.toolCall.args",
+            "gen_ai.tool.input",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15864,6 +16803,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.message": AttributeMetadata(
         brief="The response from a tool or function call passed to the model.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.result",
+            "ai.toolCall.result",
+            "gen_ai.tool.message",
+            "gen_ai.tool.output",
+            "mcp.tool.result.content",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15885,6 +16831,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.name": AttributeMetadata(
         brief="Name of the tool utilized by the agent.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.name",
+            "ai.function_call",
+            "mcp.tool.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15897,6 +16848,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.output": AttributeMetadata(
         brief="The output of the tool being used. It has to be a stringified version of the output of the tool.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.result",
+            "ai.toolCall.result",
+            "gen_ai.tool.message",
+            "gen_ai.tool.output",
+            "mcp.tool.result.content",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -15918,6 +16876,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.tool.type": AttributeMetadata(
         brief="The type of tool being used.",
         type=AttributeType.STRING,
+        keys=("gen_ai.tool.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15932,6 +16891,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.cache_creation.input_tokens": AttributeMetadata(
         brief="The number of tokens written to the cache when processing the AI input (prompt).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.input_tokens.cache_write",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15951,6 +16914,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.cache_read.input_tokens": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.input_tokens.cached",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15971,6 +16938,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.completion_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI response (completion).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.output_tokens",
+            "ai.completion_tokens.used",
+            "gen_ai.usage.completion_tokens",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -15994,6 +16966,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.input_tokens": AttributeMetadata(
         brief="The number of tokens used to process the AI input (prompt) including cached input tokens.",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.input_tokens",
+            "ai.prompt_tokens.used",
+            "gen_ai.usage.prompt_tokens",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16021,6 +16998,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.input_tokens.cache_write": AttributeMetadata(
         brief="The number of tokens written to the cache when processing the AI input (prompt).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.input_tokens.cache_write",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16048,6 +17029,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.input_tokens.cached": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.input_tokens.cached",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16077,6 +17062,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.output_tokens": AttributeMetadata(
         brief="The number of tokens used for creating the AI output (including reasoning tokens).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.output_tokens",
+            "ai.completion_tokens.used",
+            "gen_ai.usage.completion_tokens",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16104,6 +17094,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.output_tokens.reasoning": AttributeMetadata(
         brief="The number of tokens used for reasoning to create the AI output.",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.reasoning.output_tokens",
+            "gen_ai.usage.output_tokens.reasoning",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16133,6 +17127,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.prompt_tokens": AttributeMetadata(
         brief="The number of tokens used in the GenAI input (prompt).",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.input_tokens",
+            "ai.prompt_tokens.used",
+            "gen_ai.usage.prompt_tokens",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16156,6 +17155,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.reasoning.output_tokens": AttributeMetadata(
         brief="The number of tokens used for reasoning to create the AI output.",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.reasoning.output_tokens",
+            "gen_ai.usage.output_tokens.reasoning",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16176,6 +17179,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "gen_ai.usage.total_tokens": AttributeMetadata(
         brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
         type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.total_tokens",
+            "ai.total_tokens.used",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16196,6 +17203,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "graphql.document": AttributeMetadata(
         brief="The GraphQL document being executed.",
         type=AttributeType.STRING,
+        keys=("graphql.document",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO,
             reason="The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.",
@@ -16213,6 +17221,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "graphql.operation.name": AttributeMetadata(
         brief="The name of the operation being executed.",
         type=AttributeType.STRING,
+        keys=("graphql.operation.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16225,6 +17234,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "graphql.operation.type": AttributeMetadata(
         brief="The type of the operation being executed.",
         type=AttributeType.STRING,
+        keys=("graphql.operation.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16237,6 +17247,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.bad_request.field_violations": AttributeMetadata(
         brief="The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.",
         type=AttributeType.STRING_ARRAY,
+        keys=("grpc.error.bad_request.field_violations",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16254,6 +17265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.debug_info.detail": AttributeMetadata(
         brief="Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING,
+        keys=("grpc.error.debug_info.detail",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16269,6 +17281,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.debug_info.stack_entries": AttributeMetadata(
         brief="The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING_ARRAY,
+        keys=("grpc.error.debug_info.stack_entries",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16287,6 +17300,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.error_info.domain": AttributeMetadata(
         brief="The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.",
         type=AttributeType.STRING,
+        keys=("grpc.error.error_info.domain",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16302,6 +17316,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.error_info.metadata.<key>": AttributeMetadata(
         brief="Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING,
+        keys=("grpc.error.error_info.metadata.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16318,6 +17333,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.error_info.reason": AttributeMetadata(
         brief="The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.",
         type=AttributeType.STRING,
+        keys=("grpc.error.error_info.reason",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16333,6 +17349,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.precondition_failure.violations": AttributeMetadata(
         brief="The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.",
         type=AttributeType.STRING_ARRAY,
+        keys=("grpc.error.precondition_failure.violations",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16350,6 +17367,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.quota_failure.violations": AttributeMetadata(
         brief="The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.",
         type=AttributeType.STRING_ARRAY,
+        keys=("grpc.error.quota_failure.violations",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16367,6 +17385,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.resource_info.description": AttributeMetadata(
         brief="A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.",
         type=AttributeType.STRING,
+        keys=("grpc.error.resource_info.description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16382,6 +17401,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.resource_info.owner": AttributeMetadata(
         brief="The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING,
+        keys=("grpc.error.resource_info.owner",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16397,6 +17417,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.resource_info.resource_name": AttributeMetadata(
         brief="The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.",
         type=AttributeType.STRING,
+        keys=("grpc.error.resource_info.resource_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16412,6 +17433,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.resource_info.resource_type": AttributeMetadata(
         brief="The type of resource being accessed, from a google.rpc.ResourceInfo error detail.",
         type=AttributeType.STRING,
+        keys=("grpc.error.resource_info.resource_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16427,6 +17449,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "grpc.error.retry_info.retry_delay_ms": AttributeMetadata(
         brief="How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.",
         type=AttributeType.INTEGER,
+        keys=("grpc.error.retry_info.retry_delay_ms",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16442,6 +17465,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "hardwareConcurrency": AttributeMetadata(
         brief="The number of logical CPU cores available.",
         type=AttributeType.STRING,
+        keys=(
+            "device.processor_count",
+            "hardwareConcurrency",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16463,6 +17490,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("http.client_ip",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16477,6 +17505,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.decoded_response_content_length": AttributeMetadata(
         brief="The decoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
+        keys=("http.decoded_response_content_length",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16492,6 +17521,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.flavor": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
+        keys=("http.flavor",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16506,6 +17536,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.",
         type=AttributeType.STRING,
+        keys=("http.fragment",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16517,6 +17548,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.host": AttributeMetadata(
         brief="The domain name.",
         type=AttributeType.STRING,
+        keys=("http.host",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16544,6 +17576,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
+        keys=(
+            "http.request.method",
+            "http.method",
+            "http.request_method",
+            "method",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16560,6 +17598,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.query": AttributeMetadata(
         brief="The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.",
         type=AttributeType.STRING,
+        keys=("http.query",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO,
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
@@ -16574,6 +17613,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.body.data": AttributeMetadata(
         brief="HTTP request body data. Can be given as string or structural data of any format.",
         type=AttributeType.STRING,
+        keys=("http.request.body.data",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16589,6 +17629,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.connect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.connect_start",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16602,6 +17643,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.connection_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.connection_end",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16615,6 +17657,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.domain_lookup_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.domain_lookup_end",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16628,6 +17671,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.domain_lookup_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.domain_lookup_start",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16641,6 +17685,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.fetch_start",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16654,6 +17699,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.header.<key>": AttributeMetadata(
         brief="HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
+        keys=("http.request.header.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16667,6 +17713,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
+        keys=(
+            "http.request.method",
+            "http.method",
+            "http.request_method",
+            "method",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16680,6 +17732,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.redirect_end": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect",
         type=AttributeType.DOUBLE,
+        keys=("http.request.redirect_end",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16692,6 +17745,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.redirect_start": AttributeMetadata(
         brief="The UNIX timestamp representing the start time of the fetch which that initiates the redirect.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.redirect_start",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16705,6 +17759,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.request_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.request_start",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16718,6 +17773,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.resend_count": AttributeMetadata(
         brief="The ordinal number of request resending attempt (for any reason, including redirects).",
         type=AttributeType.INTEGER,
+        keys=("http.request.resend_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16730,6 +17786,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.response_end": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.response_end",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16743,6 +17800,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.response_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.response_start",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16756,6 +17814,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.same_origin": AttributeMetadata(
         brief="Indicates that a URL has the same origin as the current page's origin in the browser.",
         type=AttributeType.BOOLEAN,
+        keys=(
+            "http.request.same_origin",
+            "url.same_origin",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16772,6 +17834,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.secure_connection_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.secure_connection_start",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16785,6 +17848,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.time_to_first_byte": AttributeMetadata(
         brief="The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
         type=AttributeType.DOUBLE,
+        keys=("http.request.time_to_first_byte",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16797,6 +17861,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request.worker_start": AttributeMetadata(
         brief="The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.",
         type=AttributeType.DOUBLE,
+        keys=("http.request.worker_start",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16809,6 +17874,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.request_method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
+        keys=(
+            "http.request.method",
+            "http.method",
+            "http.request_method",
+            "method",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16828,6 +17899,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.body.size": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
+        keys=(
+            "http.response.body.size",
+            "http.response.header.content-length",
+            "http.response_content_length",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16842,6 +17918,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.header.<key>": AttributeMetadata(
         brief="HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
         type=AttributeType.STRING_ARRAY,
+        keys=("http.response.header.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16855,6 +17932,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.header.content-length": AttributeMetadata(
         brief="The size of the message body sent to the recipient (in bytes)",
         type=AttributeType.STRING,
+        keys=(
+            "http.response.header.content-length",
+            "http.response.body.size",
+            "http.response_content_length",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16868,6 +17950,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
         type=AttributeType.INTEGER,
+        keys=(
+            "http.response.size",
+            "http.response_transfer_size",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16881,6 +17967,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
+        keys=(
+            "http.response.status_code",
+            "http.response_status_code",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16895,6 +17985,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
+        keys=(
+            "http.response.body.size",
+            "http.response.header.content-length",
+            "http.response_content_length",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16913,6 +18008,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
         type=AttributeType.INTEGER,
+        keys=(
+            "http.response.size",
+            "http.response_transfer_size",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16931,6 +18030,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework.",
         type=AttributeType.STRING,
+        keys=("http.route",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16954,6 +18054,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
+        keys=("http.scheme",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -16968,6 +18069,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.server.request.time_in_queue": AttributeMetadata(
         brief="The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.",
         type=AttributeType.DOUBLE,
+        keys=("http.server.request.time_in_queue",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -16979,6 +18081,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.server_name": AttributeMetadata(
         brief="The server domain name",
         type=AttributeType.STRING,
+        keys=("http.server_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17002,6 +18105,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.status_code": AttributeMetadata(
         brief="The status code of the HTTP response.",
         type=AttributeType.INTEGER,
+        keys=("http.status_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17017,6 +18121,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.target": AttributeMetadata(
         brief="The pathname and query string of the URL.",
         type=AttributeType.STRING,
+        keys=("http.target",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17033,6 +18138,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
+        keys=("http.url",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17047,6 +18153,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.user_agent": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
+        keys=("http.user_agent",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17061,6 +18168,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "id": AttributeMetadata(
         brief="A unique identifier for the span.",
         type=AttributeType.STRING,
+        keys=("id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17072,6 +18180,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "inp": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.inp.value",
+            "inp",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17093,6 +18205,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jsonrpc.protocol.version": AttributeMetadata(
         brief="The version of the JSON-RPC protocol used.",
         type=AttributeType.STRING,
+        keys=("jsonrpc.protocol.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17108,6 +18221,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jsonrpc.request.id": AttributeMetadata(
         brief="The JSON-RPC request identifier. Unique within the session.",
         type=AttributeType.STRING,
+        keys=(
+            "jsonrpc.request.id",
+            "mcp.request.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17124,6 +18241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.gc.action": AttributeMetadata(
         brief="Name of the garbage collector action.",
         type=AttributeType.STRING,
+        keys=("jvm.gc.action",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17136,6 +18254,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.gc.name": AttributeMetadata(
         brief="Name of the garbage collector.",
         type=AttributeType.STRING,
+        keys=("jvm.gc.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17148,6 +18267,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.memory.pool.name": AttributeMetadata(
         brief="Name of the memory pool.",
         type=AttributeType.STRING,
+        keys=("jvm.memory.pool.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17160,6 +18280,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.memory.type": AttributeMetadata(
         brief="Name of the memory pool.",
         type=AttributeType.STRING,
+        keys=("jvm.memory.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17172,6 +18293,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.thread.daemon": AttributeMetadata(
         brief="Whether the thread is daemon or not.",
         type=AttributeType.BOOLEAN,
+        keys=("jvm.thread.daemon",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17183,6 +18305,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "jvm.thread.state": AttributeMetadata(
         brief="State of the thread.",
         type=AttributeType.STRING,
+        keys=("jvm.thread.state",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17195,6 +18318,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "koa.name": AttributeMetadata(
         brief="The name of the Koa middleware or matched route that handled the request.",
         type=AttributeType.STRING,
+        keys=("koa.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17213,6 +18337,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "koa.type": AttributeMetadata(
         brief="The type of the Koa layer that handled the request.",
         type=AttributeType.STRING,
+        keys=("koa.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17226,6 +18351,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.element": AttributeMetadata(
         brief="The dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
+        keys=(
+            "browser.web_vital.lcp.element",
+            "lcp.element",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17245,6 +18374,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.id": AttributeMetadata(
         brief="The id of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
+        keys=(
+            "browser.web_vital.lcp.id",
+            "lcp.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17264,6 +18397,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.loadTime": AttributeMetadata(
         brief="The time it took for the LCP element to be loaded",
         type=AttributeType.INTEGER,
+        keys=(
+            "browser.web_vital.lcp.load_time",
+            "lcp.loadTime",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17281,6 +18418,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.renderTime": AttributeMetadata(
         brief="The time it took for the LCP element to be rendered",
         type=AttributeType.INTEGER,
+        keys=(
+            "browser.web_vital.lcp.render_time",
+            "lcp.renderTime",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17298,6 +18439,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.size": AttributeMetadata(
         brief="The size of the largest contentful paint element.",
         type=AttributeType.INTEGER,
+        keys=(
+            "browser.web_vital.lcp.size",
+            "lcp.size",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17317,6 +18462,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp.url": AttributeMetadata(
         brief="The url of the dom element responsible for the largest contentful paint.",
         type=AttributeType.STRING,
+        keys=(
+            "browser.web_vital.lcp.url",
+            "lcp.url",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17336,6 +18485,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "lcp": AttributeMetadata(
         brief="The value of the recorded Largest Contentful Paint (LCP) web vital",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.lcp.value",
+            "lcp",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17357,6 +18510,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "litestar.middleware_name": AttributeMetadata(
         brief="The name of the Litestar middleware.",
         type=AttributeType.STRING,
+        keys=(
+            "middleware.name",
+            "django.middleware_name",
+            "litestar.middleware_name",
+            "starlette.middleware_name",
+            "starlite.middleware_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17378,6 +18538,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "logger.name": AttributeMetadata(
         brief="The name of the logger that generated this event.",
         type=AttributeType.STRING,
+        keys=("logger.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17390,6 +18551,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.cancelled.reason": AttributeMetadata(
         brief="Reason for the cancellation of an MCP operation.",
         type=AttributeType.STRING,
+        keys=("mcp.cancelled.reason",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.MANUAL,
             reason="Cancellation reasons may contain user-specific or sensitive information",
@@ -17404,6 +18566,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.cancelled.request_id": AttributeMetadata(
         brief="Request ID of the cancelled MCP operation.",
         type=AttributeType.STRING,
+        keys=("mcp.cancelled.request_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17415,6 +18578,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.client.name": AttributeMetadata(
         brief="Name of the MCP client application.",
         type=AttributeType.STRING,
+        keys=("mcp.client.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17426,6 +18590,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.client.title": AttributeMetadata(
         brief="Display title of the MCP client application.",
         type=AttributeType.STRING,
+        keys=("mcp.client.title",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.MANUAL,
             reason="Client titles may reveal user-specific application configurations or custom setups",
@@ -17440,6 +18605,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.client.version": AttributeMetadata(
         brief="Version of the MCP client application.",
         type=AttributeType.STRING,
+        keys=("mcp.client.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17451,6 +18617,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.lifecycle.phase": AttributeMetadata(
         brief="Lifecycle phase indicator for MCP operations.",
         type=AttributeType.STRING,
+        keys=("mcp.lifecycle.phase",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17462,6 +18629,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.data_type": AttributeMetadata(
         brief="Data type of the logged message content.",
         type=AttributeType.STRING,
+        keys=("mcp.logging.data_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17473,6 +18641,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.level": AttributeMetadata(
         brief="Log level for MCP logging operations.",
         type=AttributeType.STRING,
+        keys=("mcp.logging.level",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17484,6 +18653,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.logger": AttributeMetadata(
         brief="Logger name for MCP logging operations.",
         type=AttributeType.STRING,
+        keys=("mcp.logging.logger",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.MANUAL,
             reason="Logger names may be user-defined and could contain sensitive information",
@@ -17498,6 +18668,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.logging.message": AttributeMetadata(
         brief="Log message content from MCP logging operations.",
         type=AttributeType.STRING,
+        keys=("mcp.logging.message",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO, reason="Log messages can contain user data"
         ),
@@ -17511,6 +18682,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.method.name": AttributeMetadata(
         brief="The name of the MCP request or notification method being called.",
         type=AttributeType.STRING,
+        keys=("mcp.method.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17527,6 +18699,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.current": AttributeMetadata(
         brief="Current progress value of an MCP operation.",
         type=AttributeType.INTEGER,
+        keys=("mcp.progress.current",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17539,6 +18712,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.message": AttributeMetadata(
         brief="Progress message describing the current state of an MCP operation.",
         type=AttributeType.STRING,
+        keys=("mcp.progress.message",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.MANUAL,
             reason="Progress messages may contain user-specific or sensitive information",
@@ -17553,6 +18727,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.percentage": AttributeMetadata(
         brief="Calculated progress percentage of an MCP operation. Computed from current/total * 100.",
         type=AttributeType.DOUBLE,
+        keys=("mcp.progress.percentage",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17565,6 +18740,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.token": AttributeMetadata(
         brief="Token for tracking progress of an MCP operation.",
         type=AttributeType.STRING,
+        keys=("mcp.progress.token",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17576,6 +18752,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.progress.total": AttributeMetadata(
         brief="Total progress target value of an MCP operation.",
         type=AttributeType.INTEGER,
+        keys=("mcp.progress.total",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17588,6 +18765,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.name": AttributeMetadata(
         brief="Name of the MCP prompt template being used.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.prompt.name",
+            "mcp.prompt.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.MANUAL,
             reason="Prompt names may reveal user behavior patterns or sensitive operations",
@@ -17613,6 +18794,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.description": AttributeMetadata(
         brief="Description of the prompt result.",
         type=AttributeType.STRING,
+        keys=("mcp.prompt.result.description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17624,6 +18806,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.message_content": AttributeMetadata(
         brief="Content of the message in the prompt result. Used for single message results only.",
         type=AttributeType.STRING,
+        keys=("mcp.prompt.result.message_content",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17635,6 +18818,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.message_count": AttributeMetadata(
         brief="Number of messages in the prompt result.",
         type=AttributeType.INTEGER,
+        keys=("mcp.prompt.result.message_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17647,6 +18831,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.prompt.result.message_role": AttributeMetadata(
         brief="Role of the message in the prompt result. Used for single message results only.",
         type=AttributeType.STRING,
+        keys=("mcp.prompt.result.message_role",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17658,6 +18843,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.protocol.ready": AttributeMetadata(
         brief="Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
         type=AttributeType.INTEGER,
+        keys=("mcp.protocol.ready",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17670,6 +18856,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.protocol.version": AttributeMetadata(
         brief="MCP protocol version used in the session.",
         type=AttributeType.STRING,
+        keys=("mcp.protocol.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17686,6 +18873,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.argument.<key>": AttributeMetadata(
         brief="MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.",
         type=AttributeType.STRING,
+        keys=("mcp.request.argument.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO, reason="Arguments contain user input"
         ),
@@ -17700,6 +18888,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.argument.name": AttributeMetadata(
         brief="Name argument from prompts/get MCP request.",
         type=AttributeType.STRING,
+        keys=("mcp.request.argument.name",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO, reason="Prompt names can contain user input"
         ),
@@ -17713,6 +18902,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.argument.uri": AttributeMetadata(
         brief="URI argument from resources/read MCP request.",
         type=AttributeType.STRING,
+        keys=("mcp.request.argument.uri",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO, reason="URIs can contain user file paths"
         ),
@@ -17726,6 +18916,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.request.id": AttributeMetadata(
         brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
         type=AttributeType.STRING,
+        keys=(
+            "jsonrpc.request.id",
+            "mcp.request.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17748,6 +18942,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.resource.protocol": AttributeMetadata(
         brief="Protocol of the resource URI being accessed, extracted from the URI.",
         type=AttributeType.STRING,
+        keys=(
+            "network.protocol.name",
+            "mcp.resource.protocol",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17770,6 +18968,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.resource.uri": AttributeMetadata(
         brief="The resource URI being accessed in an MCP operation.",
         type=AttributeType.STRING,
+        keys=("mcp.resource.uri",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO, reason="URIs can contain sensitive file paths"
         ),
@@ -17788,6 +18987,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.server.name": AttributeMetadata(
         brief="Name of the MCP server application.",
         type=AttributeType.STRING,
+        keys=("mcp.server.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17799,6 +18999,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.server.title": AttributeMetadata(
         brief="Display title of the MCP server application.",
         type=AttributeType.STRING,
+        keys=("mcp.server.title",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.MANUAL,
             reason="Server titles may reveal user-specific application configurations or custom setups",
@@ -17813,6 +19014,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.server.version": AttributeMetadata(
         brief="Version of the MCP server application.",
         type=AttributeType.STRING,
+        keys=("mcp.server.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17824,6 +19026,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.session.id": AttributeMetadata(
         brief="Identifier for the MCP session.",
         type=AttributeType.STRING,
+        keys=("mcp.session.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17840,6 +19043,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.name": AttributeMetadata(
         brief="Name of the MCP tool being called.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.name",
+            "ai.function_call",
+            "mcp.tool.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17862,6 +19070,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.result.content": AttributeMetadata(
         brief="The content of the tool result.",
         type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.result",
+            "ai.toolCall.result",
+            "gen_ai.tool.message",
+            "gen_ai.tool.output",
+            "mcp.tool.result.content",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO, reason="Tool results can contain user data"
         ),
@@ -17892,6 +19107,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.result.content_count": AttributeMetadata(
         brief="Number of content items in the tool result.",
         type=AttributeType.INTEGER,
+        keys=("mcp.tool.result.content_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17904,6 +19120,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.tool.result.is_error": AttributeMetadata(
         brief="Whether a tool execution resulted in an error.",
         type=AttributeType.BOOLEAN,
+        keys=("mcp.tool.result.is_error",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17924,6 +19141,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mcp.transport": AttributeMetadata(
         brief="Transport method used for MCP communication.",
         type=AttributeType.STRING,
+        keys=(
+            "network.transport",
+            "mcp.transport",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17946,6 +19167,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "mdc.<key>": AttributeMetadata(
         brief="Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
         type=AttributeType.STRING,
+        keys=("mdc.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17958,6 +19180,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.batch.message_count": AttributeMetadata(
         brief="The number of messages sent, received, or processed in the scope of the batching operation.",
         type=AttributeType.INTEGER,
+        keys=("messaging.batch.message_count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -17973,6 +19196,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.destination": AttributeMetadata(
         brief="The message destination name.",
         type=AttributeType.STRING,
+        keys=(
+            "messaging.destination.name",
+            "messaging.destination",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -17994,6 +19221,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.destination.connection": AttributeMetadata(
         brief="The message destination connection.",
         type=AttributeType.STRING,
+        keys=("messaging.destination.connection",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18006,6 +19234,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.destination.name": AttributeMetadata(
         brief="The message destination name.",
         type=AttributeType.STRING,
+        keys=(
+            "messaging.destination.name",
+            "messaging.destination",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18024,6 +19256,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.destination.partition.id": AttributeMetadata(
         brief="The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.",
         type=AttributeType.STRING,
+        keys=("messaging.destination.partition.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18039,6 +19272,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.destination_kind": AttributeMetadata(
         brief="The kind of message destination.",
         type=AttributeType.STRING,
+        keys=("messaging.destination_kind",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18057,6 +19291,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.kafka.message.key": AttributeMetadata(
         brief="Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
         type=AttributeType.STRING,
+        keys=("messaging.kafka.message.key",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18072,6 +19307,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.kafka.message.tombstone": AttributeMetadata(
         brief="A boolean that is true if the message is a tombstone.",
         type=AttributeType.BOOLEAN,
+        keys=("messaging.kafka.message.tombstone",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18087,6 +19323,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.kafka.offset": AttributeMetadata(
         brief="The offset of a record in the corresponding Kafka partition.",
         type=AttributeType.INTEGER,
+        keys=("messaging.kafka.offset",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18102,6 +19339,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.body.size": AttributeMetadata(
         brief="The size of the message body in bytes.",
         type=AttributeType.INTEGER,
+        keys=("messaging.message.body.size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18115,6 +19353,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.conversation_id": AttributeMetadata(
         brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
         type=AttributeType.STRING,
+        keys=("messaging.message.conversation_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18130,6 +19369,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.envelope.size": AttributeMetadata(
         brief="The size of the message body and metadata in bytes.",
         type=AttributeType.INTEGER,
+        keys=("messaging.message.envelope.size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18142,6 +19382,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.id": AttributeMetadata(
         brief="A value used by the messaging system as an identifier for the message, represented as a string.",
         type=AttributeType.STRING,
+        keys=("messaging.message.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18154,6 +19395,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.receive.latency": AttributeMetadata(
         brief="The latency between when the message was published and received.",
         type=AttributeType.INTEGER,
+        keys=("messaging.message.receive.latency",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18169,6 +19411,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.retry.count": AttributeMetadata(
         brief="The amount of attempts to send the message.",
         type=AttributeType.INTEGER,
+        keys=("messaging.message.retry.count",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18181,6 +19424,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.operation.name": AttributeMetadata(
         brief="The name of the messaging operation being performed",
         type=AttributeType.STRING,
+        keys=("messaging.operation.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18196,6 +19440,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.operation.type": AttributeMetadata(
         brief="A string identifying the type of the messaging operation",
         type=AttributeType.STRING,
+        keys=("messaging.operation.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18207,6 +19452,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.rabbitmq.destination.routing_key": AttributeMetadata(
         brief="RabbitMQ message routing key.",
         type=AttributeType.STRING,
+        keys=("messaging.rabbitmq.destination.routing_key",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18222,6 +19468,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.system": AttributeMetadata(
         brief="The messaging system as identified by the client instrumentation.",
         type=AttributeType.STRING,
+        keys=("messaging.system",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18234,6 +19481,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
+        keys=(
+            "http.request.method",
+            "http.method",
+            "http.request_method",
+            "method",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18253,6 +19506,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "middleware.name": AttributeMetadata(
         brief="The name of the middleware.",
         type=AttributeType.STRING,
+        keys=(
+            "middleware.name",
+            "django.middleware_name",
+            "litestar.middleware_name",
+            "starlette.middleware_name",
+            "starlite.middleware_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18279,6 +19539,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "navigation.origin": AttributeMetadata(
         brief="The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.",
         type=AttributeType.STRING,
+        keys=(
+            "navigation.origin",
+            "sentry.sveltekit.navigation.from",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18295,6 +19559,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "navigation.route.id": AttributeMetadata(
         brief="The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).",
         type=AttributeType.STRING,
+        keys=("navigation.route.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18310,6 +19575,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "navigation.type": AttributeMetadata(
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
+        keys=(
+            "navigation.type",
+            "sentry.sveltekit.navigation.type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18326,6 +19595,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.elapsed_time": AttributeMetadata(
         brief="The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.",
         type=AttributeType.INTEGER,
+        keys=("nel.elapsed_time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18338,6 +19608,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.phase": AttributeMetadata(
         brief='If request failed, the phase of its network error. If request succeeded, "application".',
         type=AttributeType.STRING,
+        keys=("nel.phase",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18349,6 +19620,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.referrer": AttributeMetadata(
         brief="request's referrer, as determined by the referrer policy associated with its client.",
         type=AttributeType.STRING,
+        keys=("nel.referrer",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18360,6 +19632,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.sampling_function": AttributeMetadata(
         brief="The sampling function used to determine if the request should be sampled.",
         type=AttributeType.DOUBLE,
+        keys=("nel.sampling_function",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18372,6 +19645,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "nel.type": AttributeMetadata(
         brief='If request failed, the type of its network error. If request succeeded, "ok".',
         type=AttributeType.STRING,
+        keys=("nel.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18383,6 +19657,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.ip": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("net.host.ip",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18397,6 +19672,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("net.host.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18420,6 +19696,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.host.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
+        keys=("net.host.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18438,6 +19715,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.ip": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("net.peer.ip",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18452,6 +19730,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("net.peer.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18468,6 +19747,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.peer.port": AttributeMetadata(
         brief="Peer port number.",
         type=AttributeType.INTEGER,
+        keys=("net.peer.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18485,6 +19765,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
+        keys=("net.protocol.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18499,6 +19780,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
+        keys=("net.protocol.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18513,6 +19795,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.family": AttributeMetadata(
         brief="OSI transport and network layer",
         type=AttributeType.STRING,
+        keys=("net.sock.family",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18529,6 +19812,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.addr": AttributeMetadata(
         brief="Local address of the network connection mapping to Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("net.sock.host.addr",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18543,6 +19827,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.host.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
+        keys=("net.sock.host.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18558,6 +19843,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.addr": AttributeMetadata(
         brief="Peer address of the network connection - IP address",
         type=AttributeType.STRING,
+        keys=("net.sock.peer.addr",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18572,6 +19858,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.name": AttributeMetadata(
         brief="Peer address of the network connection - Unix domain socket name",
         type=AttributeType.STRING,
+        keys=("net.sock.peer.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18587,6 +19874,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.sock.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
+        keys=("net.sock.peer.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18601,6 +19889,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
+        keys=("net.transport",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18615,6 +19904,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.connection.effective_type": AttributeMetadata(
         brief="Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
+        keys=(
+            "network.connection.effective_type",
+            "effectiveConnectionType",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18631,6 +19924,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.connection.rtt": AttributeMetadata(
         brief="Specifies the estimated effective round-trip time of the current connection, in milliseconds.",
         type=AttributeType.INTEGER,
+        keys=(
+            "network.connection.rtt",
+            "connection.rtt",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18647,6 +19944,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.connection.type": AttributeMetadata(
         brief="Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).",
         type=AttributeType.STRING,
+        keys=(
+            "network.connection.type",
+            "connectionType",
+            "device.connection_type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18663,6 +19965,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.local.address": AttributeMetadata(
         brief="Local address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("network.local.address",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18676,6 +19979,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.local.port": AttributeMetadata(
         brief="Local port number of the network connection.",
         type=AttributeType.INTEGER,
+        keys=("network.local.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18689,6 +19993,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.address": AttributeMetadata(
         brief="Peer address of the network connection - IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("network.peer.address",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18702,6 +20007,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.peer.port": AttributeMetadata(
         brief="Peer port number of the network connection.",
         type=AttributeType.INTEGER,
+        keys=("network.peer.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18714,6 +20020,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.protocol.name": AttributeMetadata(
         brief="OSI application layer or non-OSI equivalent.",
         type=AttributeType.STRING,
+        keys=(
+            "network.protocol.name",
+            "mcp.resource.protocol",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18727,6 +20037,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.protocol.version": AttributeMetadata(
         brief="The actual version of the protocol used for network communication.",
         type=AttributeType.STRING,
+        keys=("network.protocol.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18740,6 +20051,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
+        keys=(
+            "network.transport",
+            "mcp.transport",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18753,6 +20068,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.type": AttributeMetadata(
         brief="OSI network layer or non-OSI equivalent.",
         type=AttributeType.STRING,
+        keys=("network.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18765,6 +20081,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.build": AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
+        keys=(
+            "os.build_id",
+            "os.build",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18784,6 +20104,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.build_id": AttributeMetadata(
         brief="The build ID of the operating system.",
         type=AttributeType.STRING,
+        keys=(
+            "os.build_id",
+            "os.build",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18800,6 +20124,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.description": AttributeMetadata(
         brief="Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.",
         type=AttributeType.STRING,
+        keys=("os.description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18812,6 +20137,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.kernel_version": AttributeMetadata(
         brief="An independent kernel version string. Typically the entire output of the `uname` syscall.",
         type=AttributeType.STRING,
+        keys=("os.kernel_version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18827,6 +20153,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.name": AttributeMetadata(
         brief="Human readable operating system name.",
         type=AttributeType.STRING,
+        keys=("os.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18839,6 +20166,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.raw_description": AttributeMetadata(
         brief="An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.",
         type=AttributeType.STRING,
+        keys=("os.raw_description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18854,6 +20182,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.rooted": AttributeMetadata(
         brief="Whether the operating system has been jailbroken or rooted.",
         type=AttributeType.BOOLEAN,
+        keys=("os.rooted",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18867,6 +20196,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.theme": AttributeMetadata(
         brief="Whether the OS runs in dark mode or light mode.",
         type=AttributeType.STRING,
+        keys=("os.theme",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18880,6 +20210,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.type": AttributeMetadata(
         brief="The operating system type.",
         type=AttributeType.STRING,
+        keys=("os.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18892,6 +20223,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "os.version": AttributeMetadata(
         brief="The version of the operating system.",
         type=AttributeType.STRING,
+        keys=("os.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18904,6 +20236,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.kind": AttributeMetadata(
         brief="The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.kind",
+            "span.kind",
+            "otel.kind",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18923,6 +20260,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.scope.name": AttributeMetadata(
         brief="The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).",
         type=AttributeType.STRING,
+        keys=("otel.scope.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18935,6 +20273,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.scope.version": AttributeMetadata(
         brief="The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).",
         type=AttributeType.STRING,
+        keys=("otel.scope.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18947,6 +20286,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.status_code": AttributeMetadata(
         brief="Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.",
         type=AttributeType.STRING,
+        keys=("otel.status_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18959,6 +20299,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "otel.status_description": AttributeMetadata(
         brief="Description of the Status if it has a value, otherwise not set.",
         type=AttributeType.STRING,
+        keys=("otel.status_description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -18971,6 +20312,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "params.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
+        keys=(
+            "params.<key>",
+            "url.path.parameter.<key>",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -18984,6 +20329,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "performance.activationStart": AttributeMetadata(
         brief="The time between initiating a navigation to a page and the browser activating the page",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.performance.navigation.activation_start",
+            "performance.activationStart",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19005,6 +20354,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "performance.timeOrigin": AttributeMetadata(
         brief="The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.performance.time_origin",
+            "performance.timeOrigin",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19026,6 +20379,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "port": AttributeMetadata(
         brief="The destination port for a TCP connection.",
         type=AttributeType.INTEGER,
+        keys=(
+            "server.port",
+            "port",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19046,6 +20403,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "previous_route": AttributeMetadata(
         brief="Also used by mobile SDKs to indicate the previous route in the application.",
         type=AttributeType.STRING,
+        keys=("previous_route",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19058,6 +20416,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.command_args": AttributeMetadata(
         brief="All the command arguments (including the command/executable itself) as received by the process.",
         type=AttributeType.STRING_ARRAY,
+        keys=("process.command_args",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19073,6 +20432,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.executable.name": AttributeMetadata(
         brief="The name of the executable that started the process.",
         type=AttributeType.STRING,
+        keys=("process.executable.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19085,6 +20445,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.pid": AttributeMetadata(
         brief="The process ID of the running process.",
         type=AttributeType.INTEGER,
+        keys=(
+            "process.pid",
+            "subprocess.pid",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19103,6 +20467,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.description": AttributeMetadata(
         brief="An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.",
         type=AttributeType.STRING,
+        keys=("process.runtime.description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19116,6 +20481,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.engine.name": AttributeMetadata(
         brief="The name of the runtime engine.",
         type=AttributeType.STRING,
+        keys=("process.runtime.engine.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19127,6 +20493,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.engine.version": AttributeMetadata(
         brief="The version of the runtime engine.",
         type=AttributeType.STRING,
+        keys=("process.runtime.engine.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19138,6 +20505,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.name": AttributeMetadata(
         brief="The name of the runtime. Equivalent to `name` in the Sentry runtime context.",
         type=AttributeType.STRING,
+        keys=("process.runtime.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19151,6 +20519,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "process.runtime.version": AttributeMetadata(
         brief="The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.",
         type=AttributeType.STRING,
+        keys=("process.runtime.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19164,6 +20533,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "profile_id": AttributeMetadata(
         brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.profile_id",
+            "profile.id",
+            "profile_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19181,6 +20555,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "query.<key>": AttributeMetadata(
         brief="An item in a query string. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
+        keys=("query.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19197,6 +20572,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "query": AttributeMetadata(
         brief="The database query being executed.",
         type=AttributeType.STRING,
+        keys=(
+            "db.query.text",
+            "db.statement",
+            "query",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19217,6 +20597,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "react.version": AttributeMetadata(
         brief="The version of the React framework",
         type=AttributeType.STRING,
+        keys=("react.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19230,6 +20611,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "redis.command": AttributeMetadata(
         brief="The name of the Redis operation being executed.",
         type=AttributeType.STRING,
+        keys=(
+            "db.operation.name",
+            "cloudflare.d1.query_type",
+            "db.operation",
+            "redis.command",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19248,6 +20635,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "redis.key": AttributeMetadata(
         brief="The key the Redis command is operating on.",
         type=AttributeType.STRING,
+        keys=(
+            "db.redis.key",
+            "redis.key",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19269,6 +20660,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.release",
+            "release",
+            "service.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19288,6 +20684,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "remix.action_form_data.<key>": AttributeMetadata(
         brief="Remix form data, <key> being the form data key, the value being the form data value.",
         type=AttributeType.STRING,
+        keys=("remix.action_form_data.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19300,6 +20697,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.replay_id",
+            "replay.id",
+            "replay_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19319,6 +20721,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "resource.deployment.environment": AttributeMetadata(
         brief="The software deployment environment name.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.environment",
+            "environment",
+            "resource.deployment.environment",
+            "resource.deployment.environment.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19333,6 +20741,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "resource.deployment.environment.name": AttributeMetadata(
         brief="The software deployment environment name.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.environment",
+            "environment",
+            "resource.deployment.environment",
+            "resource.deployment.environment.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19347,6 +20761,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "resource.render_blocking_status": AttributeMetadata(
         brief="The render blocking status of the resource.",
         type=AttributeType.STRING,
+        keys=("resource.render_blocking_status",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19359,6 +20774,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "route": AttributeMetadata(
         brief="The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.",
         type=AttributeType.STRING,
+        keys=("route",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19373,6 +20789,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.grpc.status_code": AttributeMetadata(
         brief="The numeric status code of the gRPC request.",
         type=AttributeType.INTEGER,
+        keys=("rpc.grpc.status_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19395,6 +20812,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.method": AttributeMetadata(
         brief="The fully-qualified logical name of the method from the RPC interface perspective.",
         type=AttributeType.STRING,
+        keys=(
+            "rpc.method",
+            "aws.operation_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19414,6 +20835,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.response.status_code": AttributeMetadata(
         brief="Status code of the RPC returned by the RPC server or generated by the client.",
         type=AttributeType.STRING,
+        keys=(
+            "rpc.response.status_code",
+            "code",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19435,6 +20860,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.service": AttributeMetadata(
         brief="The full (logical) name of the service being called, including its package name, if applicable.",
         type=AttributeType.STRING,
+        keys=("rpc.service",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19447,6 +20873,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.system": AttributeMetadata(
         brief="A string identifying the remoting system.",
         type=AttributeType.STRING,
+        keys=(
+            "rpc.system.name",
+            "rpc.system",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19468,6 +20898,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "rpc.system.name": AttributeMetadata(
         brief="A string identifying the remoting system.",
         type=AttributeType.STRING,
+        keys=(
+            "rpc.system.name",
+            "rpc.system",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -19484,6 +20918,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.build": AttributeMetadata(
         brief="The application build string, when it is separate from the version.",
         type=AttributeType.STRING,
+        keys=("runtime.build",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19502,6 +20937,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.name": AttributeMetadata(
         brief="The name of the runtime. For example node, CPython, or rustc.",
         type=AttributeType.STRING,
+        keys=("runtime.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19522,6 +20958,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.raw_description": AttributeMetadata(
         brief="Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.",
         type=AttributeType.STRING,
+        keys=("runtime.raw_description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19542,6 +20979,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "runtime.version": AttributeMetadata(
         brief="The version of the runtime.",
         type=AttributeType.STRING,
+        keys=("runtime.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19562,6 +21000,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "score.<key>": AttributeMetadata(
         brief="The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.",
         type=AttributeType.DOUBLE,
+        keys=("score.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19576,6 +21015,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "score.ratio.<key>": AttributeMetadata(
         brief="The score for a web vital, normalized to a number between 0 and 1.",
         type=AttributeType.DOUBLE,
+        keys=("score.ratio.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19592,6 +21032,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "score.total": AttributeMetadata(
         brief="The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).",
         type=AttributeType.DOUBLE,
+        keys=("score.total",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19604,6 +21045,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "score.weight.<key>": AttributeMetadata(
         brief="The relative weight of a web vital in a span's performance score.",
         type=AttributeType.DOUBLE,
+        keys=("score.weight.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19620,6 +21062,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.action": AttributeMetadata(
         brief="Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.action",
+            "span.action",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19632,6 +21078,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.browser.name",
+            "browser.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19646,6 +21096,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.browser.version": AttributeMetadata(
         brief="The version of the browser.",
         type=AttributeType.STRING,
+        keys=("sentry.browser.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19659,6 +21110,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.cancellation_reason": AttributeMetadata(
         brief="The reason why a span ended early.",
         type=AttributeType.STRING,
+        keys=("sentry.cancellation_reason",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19670,6 +21122,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.category": AttributeMetadata(
         brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.category",
+            "span.category",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19682,6 +21138,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.client_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in the SDK.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "sentry.client_sample_rate",
+            "client_sample_rate",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19694,6 +21154,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.description": AttributeMetadata(
         brief="The human-readable description of a span.",
         type=AttributeType.STRING,
+        keys=("sentry.description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19705,6 +21166,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dist": AttributeMetadata(
         brief="The sentry dist.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.dist",
+            "dist",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19720,6 +21185,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.domain": AttributeMetadata(
         brief="Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.domain",
+            "span.domain",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19732,6 +21201,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.environment": AttributeMetadata(
         brief="The environment from the dynamic sampling context.",
         type=AttributeType.STRING,
+        keys=("sentry.dsc.environment",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19743,6 +21213,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.project_id": AttributeMetadata(
         brief="The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.",
         type=AttributeType.STRING,
+        keys=("sentry.dsc.project_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19758,6 +21229,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.public_key": AttributeMetadata(
         brief="The public key from the dynamic sampling context.",
         type=AttributeType.STRING,
+        keys=("sentry.dsc.public_key",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19769,6 +21241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.release": AttributeMetadata(
         brief="The release identifier from the dynamic sampling context.",
         type=AttributeType.STRING,
+        keys=("sentry.dsc.release",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19780,6 +21253,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.sample_rate": AttributeMetadata(
         brief="The sample rate from the dynamic sampling context.",
         type=AttributeType.STRING,
+        keys=("sentry.dsc.sample_rate",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19791,6 +21265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.sampled": AttributeMetadata(
         brief="Whether the event was sampled according to the dynamic sampling context.",
         type=AttributeType.BOOLEAN,
+        keys=("sentry.dsc.sampled",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19802,6 +21277,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.trace_id": AttributeMetadata(
         brief="The trace ID from the dynamic sampling context.",
         type=AttributeType.STRING,
+        keys=("sentry.dsc.trace_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19813,6 +21289,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.dsc.transaction": AttributeMetadata(
         brief="The transaction name from the dynamic sampling context.",
         type=AttributeType.STRING,
+        keys=("sentry.dsc.transaction",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19824,6 +21301,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.environment": AttributeMetadata(
         brief="The sentry environment.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.environment",
+            "environment",
+            "resource.deployment.environment",
+            "resource.deployment.environment.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19837,6 +21320,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.event.serialized_breadcrumbs": AttributeMetadata(
         brief="JSON-serialized `breadcrumbs` property from a Sentry event.",
         type=AttributeType.STRING,
+        keys=("sentry.event.serialized_breadcrumbs",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19847,6 +21331,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.event.serialized_contexts": AttributeMetadata(
         brief="JSON-serialized `contexts` property from a Sentry event.",
         type=AttributeType.STRING,
+        keys=("sentry.event.serialized_contexts",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19857,6 +21342,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.event.serialized_extra": AttributeMetadata(
         brief="JSON-serialized `extra` property from a Sentry event.",
         type=AttributeType.STRING,
+        keys=("sentry.event.serialized_extra",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19867,6 +21353,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.event.serialized_meta": AttributeMetadata(
         brief="JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.",
         type=AttributeType.STRING,
+        keys=("sentry.event.serialized_meta",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -19877,6 +21364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.exclusive_time": AttributeMetadata(
         brief="The exclusive time duration of the span in milliseconds.",
         type=AttributeType.DOUBLE,
+        keys=("sentry.exclusive_time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19890,6 +21378,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.frames.frozen": AttributeMetadata(
         brief="The number of frozen frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.frozen.count",
+            "frames.frozen",
+            "mobile.frozen_frames",
+            "sentry.frames.frozen",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19911,6 +21405,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.frames.slow": AttributeMetadata(
         brief="The number of slow frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.slow.count",
+            "frames.slow",
+            "mobile.slow_frames",
+            "sentry.frames.slow",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19932,6 +21432,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.frames.total": AttributeMetadata(
         brief="The number of total frames rendered during the lifetime of the span.",
         type=AttributeType.INTEGER,
+        keys=(
+            "app.vitals.frames.total.count",
+            "frames.total",
+            "mobile.total_frames",
+            "sentry.frames.total",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19953,6 +21459,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.graphql.operation": AttributeMetadata(
         brief="Indicates the type of graphql operation, emitted by the Javascript SDK.",
         type=AttributeType.STRING,
+        keys=("sentry.graphql.operation",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19964,6 +21471,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.group": AttributeMetadata(
         brief="Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.group",
+            "span.group",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19975,6 +21486,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.http.prefetch": AttributeMetadata(
         brief="If an http request was a prefetch request.",
         type=AttributeType.BOOLEAN,
+        keys=("sentry.http.prefetch",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19986,6 +21498,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.idle_span_finish_reason": AttributeMetadata(
         brief="The reason why an idle span ended early.",
         type=AttributeType.STRING,
+        keys=("sentry.idle_span_finish_reason",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -19997,6 +21510,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.is_remote": AttributeMetadata(
         brief="Indicates whether a span's parent is remote.",
         type=AttributeType.BOOLEAN,
+        keys=("sentry.is_remote",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20008,6 +21522,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.kind": AttributeMetadata(
         brief="Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.kind",
+            "span.kind",
+            "otel.kind",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20030,6 +21549,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
+        keys=("sentry.main_thread",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20041,6 +21561,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.message.parameter.<key>": AttributeMetadata(
         brief="A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
         type=AttributeType.STRING,
+        keys=("sentry.message.parameter.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20052,6 +21573,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.message.template": AttributeMetadata(
         brief="The parameterized template string.",
         type=AttributeType.STRING,
+        keys=("sentry.message.template",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20063,6 +21585,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.metric.source": AttributeMetadata(
         brief="The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.",
         type=AttributeType.STRING,
+        keys=("sentry.metric.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20078,6 +21601,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.mobile": AttributeMetadata(
         brief="Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
+        keys=("sentry.mobile",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20089,6 +21613,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.module.<key>": AttributeMetadata(
         brief="A module that was loaded in the process. The key is the name of the module.",
         type=AttributeType.STRING,
+        keys=("sentry.module.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20101,6 +21626,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.nextjs.ssr.function.route": AttributeMetadata(
         brief="A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.",
         type=AttributeType.STRING,
+        keys=("sentry.nextjs.ssr.function.route",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20112,6 +21638,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.nextjs.ssr.function.type": AttributeMetadata(
         brief="A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.",
         type=AttributeType.STRING,
+        keys=("sentry.nextjs.ssr.function.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20123,6 +21650,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.normalized_db_query": AttributeMetadata(
         brief="The normalized version of `db.query.text`.",
         type=AttributeType.STRING,
+        keys=("sentry.normalized_db_query",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20134,6 +21662,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.normalized_db_query.hash": AttributeMetadata(
         brief="The hash of `sentry.normalized_db_query`.",
         type=AttributeType.STRING,
+        keys=("sentry.normalized_db_query.hash",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20144,6 +21673,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.normalized_description": AttributeMetadata(
         brief="Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).",
         type=AttributeType.STRING,
+        keys=("sentry.normalized_description",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20155,6 +21685,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.observed_timestamp_nanos": AttributeMetadata(
         brief="The timestamp at which an envelope was received by Relay, in nanoseconds.",
         type=AttributeType.STRING,
+        keys=("sentry.observed_timestamp_nanos",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20167,6 +21698,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.op": AttributeMetadata(
         brief="The operation of a span.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.op",
+            "span.op",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20179,6 +21714,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.origin": AttributeMetadata(
         brief="The origin of the instrumentation (e.g. span, log, etc.)",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.origin",
+            "origin",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20192,6 +21731,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.pageload.span_id": AttributeMetadata(
         brief="The id of the pageload span, set by web vital spans and metrics",
         type=AttributeType.STRING,
+        keys=("sentry.pageload.span_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20207,6 +21747,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.platform": AttributeMetadata(
         brief="The sdk platform that generated the event.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.platform",
+            "platform",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20219,6 +21763,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.profile_id": AttributeMetadata(
         brief="The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.profile_id",
+            "profile.id",
+            "profile_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20239,6 +21788,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.profiler_id": AttributeMetadata(
         brief="The id of the currently running profiler (continuous profiling)",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.profiler_id",
+            "profiler.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20251,6 +21804,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.relay.ingress": AttributeMetadata(
         brief="How an item (span, log, &c.) entered Relay.",
         type=AttributeType.STRING,
+        keys=("sentry.relay.ingress",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -20266,6 +21820,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.relay.pipeline": AttributeMetadata(
         brief="An internal descriptor of which processing pipeline an item went through in Relay.",
         type=AttributeType.STRING,
+        keys=("sentry.relay.pipeline",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -20281,6 +21836,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.release": AttributeMetadata(
         brief="The sentry release.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.release",
+            "release",
+            "service.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20294,6 +21854,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.replay_id",
+            "replay.id",
+            "replay_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20307,6 +21872,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
         type=AttributeType.BOOLEAN,
+        keys=("sentry.replay_is_buffering",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20318,6 +21884,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.report_event": AttributeMetadata(
         brief="(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)",
         type=AttributeType.STRING,
+        keys=("sentry.report_event",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20336,6 +21903,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sdk.integrations": AttributeMetadata(
         brief="A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.",
         type=AttributeType.STRING_ARRAY,
+        keys=("sentry.sdk.integrations",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20352,6 +21920,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sdk.name": AttributeMetadata(
         brief="The sentry sdk name.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.sdk.name",
+            "sdk.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20364,6 +21936,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sdk.version": AttributeMetadata(
         brief="The sentry sdk version.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.sdk.version",
+            "sdk.version",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20376,6 +21952,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.segment.id": AttributeMetadata(
         brief="The segment ID of a span",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.segment.id",
+            "sentry.segment_id",
+            "transaction.span_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20388,6 +21969,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.segment.name": AttributeMetadata(
         brief="The segment name of a span",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.segment.name",
+            "sentry.transaction",
+            "transaction",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20405,6 +21991,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.segment.name.source": AttributeMetadata(
         brief="The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
         type=AttributeType.STRING,
+        keys=("sentry.segment.name.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
@@ -20425,6 +22012,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.segment_id": AttributeMetadata(
         brief="The segment ID of a span",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.segment.id",
+            "sentry.segment_id",
+            "transaction.span_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20441,6 +22033,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.server_sample_rate": AttributeMetadata(
         brief="Rate at which a span was sampled in Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "sentry.server_sample_rate",
+            "server_sample_rate",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20453,6 +22049,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
         type=AttributeType.STRING,
+        keys=("sentry.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20472,6 +22069,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.span.source": AttributeMetadata(
         brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
         type=AttributeType.STRING,
+        keys=("sentry.span.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20492,6 +22090,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.status": AttributeMetadata(
         brief='The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
         type=AttributeType.STRING,
+        keys=(
+            "sentry.status",
+            "span.status",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20504,6 +22106,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.status.message": AttributeMetadata(
         brief="The from OTLP extracted status message.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.status.message",
+            "span.status.message",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20516,6 +22122,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.status_code": AttributeMetadata(
         brief="The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.",
         type=AttributeType.INTEGER,
+        keys=(
+            "sentry.status_code",
+            "span.status_code",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20528,6 +22138,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sveltekit.navigation.from": AttributeMetadata(
         brief="the navigation origin (sveltekit router)",
         type=AttributeType.STRING,
+        keys=(
+            "navigation.origin",
+            "sentry.sveltekit.navigation.from",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20549,6 +22163,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sveltekit.navigation.to": AttributeMetadata(
         brief="the navigation destination",
         type=AttributeType.STRING,
+        keys=("sentry.sveltekit.navigation.to",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20567,6 +22182,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.sveltekit.navigation.type": AttributeMetadata(
         brief="The type of navigation event emitted from the sveltekit client router",
         type=AttributeType.STRING,
+        keys=(
+            "navigation.type",
+            "sentry.sveltekit.navigation.type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20588,6 +22207,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.thread.id": AttributeMetadata(
         brief='Current "managed" thread ID.',
         type=AttributeType.INTEGER,
+        keys=(
+            "thread.id",
+            "sentry.thread.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20605,6 +22228,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.timestamp.sequence": AttributeMetadata(
         brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
         type=AttributeType.INTEGER,
+        keys=("sentry.timestamp.sequence",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20616,6 +22240,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.trace.parent_span_id": AttributeMetadata(
         brief="The span id of the span that was active when the log was collected. This should not be set if there was no active span.",
         type=AttributeType.STRING,
+        keys=("sentry.trace.parent_span_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20633,6 +22258,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.trace.status": AttributeMetadata(
         brief='The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
         type=AttributeType.STRING,
+        keys=(
+            "sentry.trace.status",
+            "trace.status",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20645,6 +22274,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.trace_lifecycle": AttributeMetadata(
         brief="Indicates the chosen trace lifecycle mode of the SDK (stream or static)",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.trace_lifecycle",
+            "trace_lifecycle",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20661,6 +22294,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.segment.name",
+            "sentry.transaction",
+            "transaction",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20684,6 +22322,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.email": AttributeMetadata(
         brief="User email address.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.user.email",
+            "user.email",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20697,6 +22339,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.geo.city": AttributeMetadata(
         brief="Human readable city name.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.user.geo.city",
+            "user.geo.city",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20710,6 +22356,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.geo.country_code": AttributeMetadata(
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.user.geo.country_code",
+            "user.geo.country_code",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20723,6 +22373,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.geo.region": AttributeMetadata(
         brief="Human readable region name or code.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.user.geo.region",
+            "user.geo.region",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20736,6 +22390,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.geo.subdivision": AttributeMetadata(
         brief="Human readable subdivision name.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.user.geo.subdivision",
+            "user.geo.subdivision",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20749,6 +22407,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.user.id",
+            "user.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20762,6 +22424,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.ip": AttributeMetadata(
         brief="The IP address of the user.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.user.ip",
+            "user.ip",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20775,6 +22441,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.user.username": AttributeMetadata(
         brief="Short name or login/username of the user.",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.user.username",
+            "user.username",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20788,6 +22458,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "server.address": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=(
+            "server.address",
+            "address",
+            "server_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20810,6 +22485,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "server.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
+        keys=(
+            "server.port",
+            "port",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20826,6 +22505,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "server_name": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=(
+            "server.address",
+            "address",
+            "server_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20856,6 +22540,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "service.name": AttributeMetadata(
         brief="Logical name of the service.",
         type=AttributeType.STRING,
+        keys=("service.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20868,6 +22553,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "service.version": AttributeMetadata(
         brief="The version string of the service API or implementation. The format is not defined by these conventions.",
         type=AttributeType.STRING,
+        keys=(
+            "service.version",
+            "sentry.release",
+            "release",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20881,6 +22571,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "session.id": AttributeMetadata(
         brief="A unique id identifying the active session at the time of setting this attribute",
         type=AttributeType.STRING,
+        keys=("session.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -20894,6 +22585,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "stall_percentage": AttributeMetadata(
         brief="The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.stall.percentage",
+            "stall_percentage",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20919,6 +22614,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "stall_total_time": AttributeMetadata(
         brief="The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.stall.duration",
+            "stall_total_time",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20944,6 +22643,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "starlette.middleware_name": AttributeMetadata(
         brief="The name of the Starlette middleware.",
         type=AttributeType.STRING,
+        keys=(
+            "middleware.name",
+            "django.middleware_name",
+            "litestar.middleware_name",
+            "starlette.middleware_name",
+            "starlite.middleware_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20965,6 +22671,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "starlite.middleware_name": AttributeMetadata(
         brief="The name of the Starlite middleware.",
         type=AttributeType.STRING,
+        keys=(
+            "middleware.name",
+            "django.middleware_name",
+            "litestar.middleware_name",
+            "starlette.middleware_name",
+            "starlite.middleware_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -20987,6 +22700,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "state.type": AttributeMetadata(
         brief="The type of state management library",
         type=AttributeType.STRING,
+        keys=("state.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21000,6 +22714,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "subprocess.pid": AttributeMetadata(
         brief="The process ID of a subprocess.",
         type=AttributeType.INTEGER,
+        keys=(
+            "process.pid",
+            "subprocess.pid",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21021,6 +22739,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
+        keys=(
+            "thread.id",
+            "sentry.thread.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21032,6 +22754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.name": AttributeMetadata(
         brief="Current thread name.",
         type=AttributeType.STRING,
+        keys=("thread.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21044,6 +22767,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "timber.tag": AttributeMetadata(
         brief="The log tag provided by the timber logging framework.",
         type=AttributeType.STRING,
+        keys=("timber.tag",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21055,6 +22779,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "time_to_full_display": AttributeMetadata(
         brief="The duration of time to full display in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.ttfd.value",
+            "time_to_full_display",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21076,6 +22804,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "time_to_initial_display": AttributeMetadata(
         brief="The duration of time to initial display in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "app.vitals.ttid.value",
+            "time_to_initial_display",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21097,6 +22829,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
+        keys=(
+            "sentry.segment.name",
+            "sentry.transaction",
+            "transaction",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21123,6 +22860,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "trpc.procedure_path": AttributeMetadata(
         brief="The path of the tRPC procedure being called",
         type=AttributeType.STRING,
+        keys=("trpc.procedure_path",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21138,6 +22876,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "trpc.procedure_type": AttributeMetadata(
         brief="The type of the tRPC procedure",
         type=AttributeType.STRING,
+        keys=("trpc.procedure_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21153,6 +22892,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ttfb.requestTime": AttributeMetadata(
         brief="The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.ttfb.request_time",
+            "ttfb.requestTime",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21170,6 +22913,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ttfb": AttributeMetadata(
         brief="The value of the recorded Time To First Byte (TTFB) web vital in milliseconds",
         type=AttributeType.DOUBLE,
+        keys=(
+            "browser.web_vital.ttfb.value",
+            "ttfb",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21187,6 +22934,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "type": AttributeMetadata(
         brief="More granular type of the operation happening.",
         type=AttributeType.STRING,
+        keys=("type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21198,6 +22946,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.component_name": AttributeMetadata(
         brief="The name of the associated component.",
         type=AttributeType.STRING,
+        keys=("ui.component_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21210,6 +22959,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.contributes_to_ttfd": AttributeMetadata(
         brief="Whether the span execution contributed to the TTFD (time to fully drawn) metric.",
         type=AttributeType.BOOLEAN,
+        keys=("ui.contributes_to_ttfd",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21221,6 +22971,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.contributes_to_ttid": AttributeMetadata(
         brief="Whether the span execution contributed to the TTID (time to initial display) metric.",
         type=AttributeType.BOOLEAN,
+        keys=("ui.contributes_to_ttid",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21232,6 +22983,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.height": AttributeMetadata(
         brief="The height of the UI element (for Html in pixels)",
         type=AttributeType.INTEGER,
+        keys=("ui.element.height",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21247,6 +22999,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.id": AttributeMetadata(
         brief="The id of the UI element",
         type=AttributeType.STRING,
+        keys=("ui.element.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21260,6 +23013,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.identifier": AttributeMetadata(
         brief="The identifier used to measure the UI element timing",
         type=AttributeType.STRING,
+        keys=("ui.element.identifier",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21275,6 +23029,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.load_time": AttributeMetadata(
         brief="The loading time of a UI element (from time origin to finished loading)",
         type=AttributeType.DOUBLE,
+        keys=("ui.element.load_time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21290,6 +23045,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.paint_type": AttributeMetadata(
         brief="The type of element paint. Can either be 'image-paint' or 'text-paint'",
         type=AttributeType.STRING,
+        keys=("ui.element.paint_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21305,6 +23061,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.render_time": AttributeMetadata(
         brief="The rendering time of the UI element (from time origin to finished rendering)",
         type=AttributeType.DOUBLE,
+        keys=("ui.element.render_time",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21320,6 +23077,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.type": AttributeMetadata(
         brief="type of the UI element",
         type=AttributeType.STRING,
+        keys=("ui.element.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21335,6 +23093,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.url": AttributeMetadata(
         brief="The URL of the UI element (e.g. an img src)",
         type=AttributeType.STRING,
+        keys=("ui.element.url",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21348,6 +23107,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "ui.element.width": AttributeMetadata(
         brief="The width of the UI element (for HTML in pixels)",
         type=AttributeType.INTEGER,
+        keys=("ui.element.width",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21363,6 +23123,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.domain": AttributeMetadata(
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
+        keys=("url.domain",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21375,6 +23136,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.fragment": AttributeMetadata(
         brief="The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.",
         type=AttributeType.STRING,
+        keys=("url.fragment",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21386,6 +23148,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.full": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
+        keys=(
+            "url.full",
+            "aws.request.url",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21404,6 +23170,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.path": AttributeMetadata(
         brief="The URI path component.",
         type=AttributeType.STRING,
+        keys=("url.path",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21415,6 +23182,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.path.parameter.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
+        keys=(
+            "url.path.parameter.<key>",
+            "params.<key>",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21428,6 +23199,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
+        keys=("url.port",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21440,6 +23212,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.query": AttributeMetadata(
         brief="The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.",
         type=AttributeType.STRING,
+        keys=("url.query",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO,
             reason="Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information.",
@@ -21454,6 +23227,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.same_origin": AttributeMetadata(
         brief="Indicates that a URL has the same origin as the current page's origin in the browser.",
         type=AttributeType.BOOLEAN,
+        keys=(
+            "http.request.same_origin",
+            "url.same_origin",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21475,6 +23252,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.scheme": AttributeMetadata(
         brief="The URI scheme component identifying the used protocol.",
         type=AttributeType.STRING,
+        keys=("url.scheme",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21488,6 +23266,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url.template": AttributeMetadata(
         brief="The low-cardinality template of an absolute URL path reference.",
         type=AttributeType.STRING,
+        keys=("url.template",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21510,6 +23289,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "url": AttributeMetadata(
         brief="The URL of the resource that was fetched.",
         type=AttributeType.STRING,
+        keys=("url",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21524,6 +23304,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.email": AttributeMetadata(
         brief="User email address.",
         type=AttributeType.STRING,
+        keys=("user.email",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21536,6 +23317,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.full_name": AttributeMetadata(
         brief="User's full name.",
         type=AttributeType.STRING,
+        keys=("user.full_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21547,6 +23329,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.city": AttributeMetadata(
         brief="Human readable city name.",
         type=AttributeType.STRING,
+        keys=("user.geo.city",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21559,6 +23342,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.country_code": AttributeMetadata(
         brief="Two-letter country code (ISO 3166-1 alpha-2).",
         type=AttributeType.STRING,
+        keys=("user.geo.country_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21571,6 +23355,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.region": AttributeMetadata(
         brief="Human readable region name or code.",
         type=AttributeType.STRING,
+        keys=("user.geo.region",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21583,6 +23368,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.geo.subdivision": AttributeMetadata(
         brief="Human readable subdivision name.",
         type=AttributeType.STRING,
+        keys=("user.geo.subdivision",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21595,6 +23381,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.hash": AttributeMetadata(
         brief="Unique user hash to correlate information for a user in anonymized form.",
         type=AttributeType.STRING,
+        keys=("user.hash",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21606,6 +23393,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
+        keys=("user.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21618,6 +23406,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.ip_address": AttributeMetadata(
         brief="The IP address of the user.",
         type=AttributeType.STRING,
+        keys=("user.ip_address",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21630,6 +23419,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.name": AttributeMetadata(
         brief="Short name or login/username of the user.",
         type=AttributeType.STRING,
+        keys=("user.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21642,6 +23432,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user.roles": AttributeMetadata(
         brief="Array of user roles at the time of the event.",
         type=AttributeType.STRING_ARRAY,
+        keys=("user.roles",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21653,6 +23444,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "user_agent.original": AttributeMetadata(
         brief="Value of the HTTP User-Agent header sent by the client.",
         type=AttributeType.STRING,
+        keys=("user_agent.original",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
@@ -21666,6 +23458,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
         type=AttributeType.STRING,
+        keys=("vercel.branch",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21677,6 +23470,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.build_id": AttributeMetadata(
         brief="Identifier for the Vercel build (only present on build logs)",
         type=AttributeType.STRING,
+        keys=("vercel.build_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21688,6 +23482,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.deployment_id": AttributeMetadata(
         brief="Identifier for the Vercel deployment",
         type=AttributeType.STRING,
+        keys=("vercel.deployment_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21699,6 +23494,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.destination": AttributeMetadata(
         brief="Origin of the external content in Vercel (only on external logs)",
         type=AttributeType.STRING,
+        keys=("vercel.destination",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21710,6 +23506,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.edge_type": AttributeMetadata(
         brief="Type of edge runtime in Vercel",
         type=AttributeType.STRING,
+        keys=("vercel.edge_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21721,6 +23518,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.entrypoint": AttributeMetadata(
         brief="Entrypoint for the request in Vercel",
         type=AttributeType.STRING,
+        keys=("vercel.entrypoint",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21732,6 +23530,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.execution_region": AttributeMetadata(
         brief="Region where the request is executed",
         type=AttributeType.STRING,
+        keys=("vercel.execution_region",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21743,6 +23542,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.id": AttributeMetadata(
         brief="Unique identifier for the log entry in Vercel",
         type=AttributeType.STRING,
+        keys=("vercel.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21754,6 +23554,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.ja3_digest": AttributeMetadata(
         brief="JA3 fingerprint digest of Vercel request",
         type=AttributeType.STRING,
+        keys=("vercel.ja3_digest",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21765,6 +23566,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.ja4_digest": AttributeMetadata(
         brief="JA4 fingerprint digest",
         type=AttributeType.STRING,
+        keys=("vercel.ja4_digest",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21776,6 +23578,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.log_type": AttributeMetadata(
         brief="Vercel log output type",
         type=AttributeType.STRING,
+        keys=("vercel.log_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21787,6 +23590,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.path": AttributeMetadata(
         brief="Function or dynamic path of the request in Vercel.",
         type=AttributeType.STRING,
+        keys=("vercel.path",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21800,6 +23604,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.project_id": AttributeMetadata(
         brief="Identifier for the Vercel project",
         type=AttributeType.STRING,
+        keys=("vercel.project_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21811,6 +23616,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.project_name": AttributeMetadata(
         brief="Name of the Vercel project",
         type=AttributeType.STRING,
+        keys=("vercel.project_name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21822,6 +23628,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.cache_id": AttributeMetadata(
         brief="Original request ID when request is served from cache",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.cache_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21833,6 +23640,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.client_ip": AttributeMetadata(
         brief="Client IP address",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.client_ip",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21844,6 +23652,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.host": AttributeMetadata(
         brief="Hostname of the request",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.host",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21855,6 +23664,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.lambda_region": AttributeMetadata(
         brief="Region where lambda function executed",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.lambda_region",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21866,6 +23676,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.method": AttributeMetadata(
         brief="HTTP method of the request",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.method",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21877,6 +23688,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.path": AttributeMetadata(
         brief="Request path with query parameters",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.path",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21888,6 +23700,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.path_type": AttributeMetadata(
         brief="How the request was served based on its path and project configuration",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.path_type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21899,6 +23712,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.path_type_variant": AttributeMetadata(
         brief="Variant of the path type",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.path_type_variant",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21910,6 +23724,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.referer": AttributeMetadata(
         brief="Referer of the request",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.referer",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21921,6 +23736,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.region": AttributeMetadata(
         brief="Region where the request is processed",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.region",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21932,6 +23748,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.response_byte_size": AttributeMetadata(
         brief="Size of the response in bytes",
         type=AttributeType.INTEGER,
+        keys=("vercel.proxy.response_byte_size",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21944,6 +23761,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.scheme": AttributeMetadata(
         brief="Protocol of the request",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.scheme",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21955,6 +23773,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.status_code": AttributeMetadata(
         brief="HTTP status code of the proxy request",
         type=AttributeType.INTEGER,
+        keys=("vercel.proxy.status_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21967,6 +23786,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.timestamp": AttributeMetadata(
         brief="Unix timestamp when the proxy request was made",
         type=AttributeType.INTEGER,
+        keys=("vercel.proxy.timestamp",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21979,6 +23799,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.user_agent": AttributeMetadata(
         brief="User agent strings of the request",
         type=AttributeType.STRING_ARRAY,
+        keys=("vercel.proxy.user_agent",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21990,6 +23811,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.vercel_cache": AttributeMetadata(
         brief="Cache status sent to the browser",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.vercel_cache",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22001,6 +23823,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.vercel_id": AttributeMetadata(
         brief="Vercel-specific identifier",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.vercel_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22012,6 +23835,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.waf_action": AttributeMetadata(
         brief="Action taken by firewall rules",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.waf_action",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22023,6 +23847,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.proxy.waf_rule_id": AttributeMetadata(
         brief="ID of the firewall rule that matched",
         type=AttributeType.STRING,
+        keys=("vercel.proxy.waf_rule_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22034,6 +23859,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.request_id": AttributeMetadata(
         brief="Identifier of the Vercel request",
         type=AttributeType.STRING,
+        keys=("vercel.request_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22045,6 +23871,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.source": AttributeMetadata(
         brief="Origin of the Vercel log (build, edge, lambda, static, external, or firewall)",
         type=AttributeType.STRING,
+        keys=("vercel.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22056,6 +23883,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "vercel.status_code": AttributeMetadata(
         brief="HTTP status code of the request (-1 means no response returned and the lambda crashed)",
         type=AttributeType.INTEGER,
+        keys=("vercel.status_code",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
