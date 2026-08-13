@@ -1186,17 +1186,42 @@ function generateMetadataDict(
 
   metadataDict += '};\n\n';
 
-  metadataDict += 'export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMetadata> = {\n';
+  const searchMetadataByKey = new Map<string, typeof allAttributes>();
 
-  for (const { key, attributeJson } of allAttributes) {
-    const keyChain = attributeKeyChains.get(key);
-    if (!keyChain) {
-      throw new Error(`Attribute key chain for "${key}" does not exist`);
+  for (const attribute of allAttributes) {
+    const searchKey = attribute.attributeJson.search_alias?.name ?? attribute.key;
+    const candidates = searchMetadataByKey.get(searchKey) ?? [];
+    candidates.push(attribute);
+    searchMetadataByKey.set(searchKey, candidates);
+  }
+
+  metadataDict += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
+
+  for (const searchKey of [...searchMetadataByKey.keys()].sort()) {
+    const candidates = searchMetadataByKey.get(searchKey) as typeof allAttributes;
+    candidates.sort((a, b) => {
+      if (a.isDeprecated !== b.isDeprecated) {
+        return a.isDeprecated ? 1 : -1;
+      }
+
+      return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
+    });
+
+    const preferredAttribute = candidates[0];
+    if (!preferredAttribute) {
+      throw new Error(`No attribute found for search metadata key "${searchKey}"`);
     }
 
-    metadataDict += `  ${JSON.stringify(key)}: {\n`;
-    metadataDict += `    type: ${JSON.stringify(attributeJson.search_alias?.type ?? attributeJson.type)},\n`;
-    metadataDict += `    brief: ${JSON.stringify(attributeJson.brief)},\n`;
+    const keyChain = attributeKeyChains.get(preferredAttribute.key);
+    if (!keyChain) {
+      throw new Error(`Attribute key chain for "${preferredAttribute.key}" does not exist`);
+    }
+
+    metadataDict += `  ${JSON.stringify(searchKey)}: {\n`;
+    metadataDict += `    type: ${JSON.stringify(
+      preferredAttribute.attributeJson.search_alias?.type ?? preferredAttribute.attributeJson.type,
+    )},\n`;
+    metadataDict += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
     metadataDict += `    deprecationChain: ${JSON.stringify(keyChain)},\n`;
     metadataDict += '  },\n';
   }

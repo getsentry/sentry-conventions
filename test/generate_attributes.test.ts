@@ -68,7 +68,7 @@ describe('generateAttributes', () => {
     }
   });
 
-  it('generates search metadata for every attribute with its deprecation chain', async () => {
+  it('generates search metadata keyed by search name with its deprecation chain', async () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');
     const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
@@ -96,11 +96,18 @@ describe('generateAttributes', () => {
         brief: 'The deprecated attribute.',
         type: 'double',
         search_alias: {
-          name: 'legacy.search',
+          name: 'shared.name',
           type: 'percentage',
           deprecated_aliases: ['older.name'],
         },
-        deprecation: { replacement: 'current.attribute', _status: 'normalize' },
+        deprecation: { _status: 'normalize' },
+      },
+      {
+        key: 'standalone.deprecated',
+        brief: 'A deprecated attribute with a distinct search name.',
+        type: 'double',
+        search_alias: { name: 'deprecated.search' },
+        deprecation: { _status: 'normalize' },
       },
     ];
 
@@ -129,12 +136,17 @@ describe('generateAttributes', () => {
         '"fallback.attribute": {\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute"],',
       );
       expect(compactMetadata).toContain(
-        '"current.attribute": {\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name","legacy.attribute","legacy.search","older.name"],',
+        '"shared.name": {\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name"],',
       );
       expect(compactMetadata).toContain(
-        '"legacy.attribute": {\n    type: "percentage",\n    brief: "The deprecated attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name","legacy.attribute","legacy.search","older.name"],',
+        '"deprecated.search": {\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',
       );
-      expect(compactMetadata).not.toContain('"shared.name": {');
+      expect(compactMetadata).not.toContain('"current.attribute": {');
+      expect(compactMetadata).not.toContain('"legacy.attribute": {');
+      expect(compactMetadata).not.toContain('type: "percentage"');
+
+      const searchKeys = [...compactMetadata.matchAll(/^  "([^"]+)": \{$/gm)].map((match) => match[1]);
+      expect(searchKeys).toEqual([...searchKeys].sort());
 
       const compactPropertyNames = [...compactMetadata.matchAll(/^    (\w+):/gm)].map((match) => match[1]);
       expect(new Set(compactPropertyNames)).toEqual(new Set(['type', 'brief', 'deprecationChain']));

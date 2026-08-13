@@ -31303,7 +31303,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
 };
 
-export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMetadata> = {
+export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {
   address: {
     type: 'string',
     brief: 'The destination hostname or IP address for a TCP connection.',
@@ -31361,15 +31361,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'Extra metadata passed to an AI pipeline step.',
     deprecationChain: ['ai.metadata'],
   },
-  'ai.model_id': {
-    type: 'string',
-    brief: 'The vendor-specific ID of the model used.',
-    deprecationChain: ['gen_ai.request.model', 'ai.model_id'],
-  },
   'ai.model.provider': {
     type: 'string',
     brief: 'The provider of the model.',
     deprecationChain: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
+  },
+  'ai.model_id': {
+    type: 'string',
+    brief: 'The vendor-specific ID of the model used.',
+    deprecationChain: ['gen_ai.request.model', 'ai.model_id'],
   },
   'ai.pipeline.name': {
     type: 'string',
@@ -31403,22 +31403,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
     deprecationChain: ['ai.raw_prompting'],
   },
-  'ai.responses': {
-    type: 'string[]',
-    brief: 'The response messages sent back by the AI model.',
-    deprecationChain: [
-      'gen_ai.output.messages',
-      'ai.response.text',
-      'ai.response.toolCalls',
-      'ai.responses',
-      'ai.tool_calls',
-    ],
-  },
-  'ai.response_format': {
-    type: 'string',
-    brief: 'For an AI model call, the format of the response',
-    deprecationChain: ['ai.response_format'],
-  },
   'ai.response.text': {
     type: 'string',
     brief: 'The text response from the AI model.',
@@ -31433,6 +31417,22 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
   'ai.response.toolCalls': {
     type: 'string',
     brief: 'The tool calls in the AI model response.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.response_format': {
+    type: 'string',
+    brief: 'For an AI model call, the format of the response',
+    deprecationChain: ['ai.response_format'],
+  },
+  'ai.responses': {
+    type: 'string[]',
+    brief: 'The response messages sent back by the AI model.',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -31493,11 +31493,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'mcp.tool.result.content',
     ],
   },
-  'ai.tools': {
-    type: 'string[]',
-    brief: 'For an AI model call, the functions that are available',
-    deprecationChain: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
-  },
   'ai.tool_calls': {
     type: 'string[]',
     brief: 'For an AI model call, the tool calls that were made.',
@@ -31508,6 +31503,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'ai.responses',
       'ai.tool_calls',
     ],
+  },
+  'ai.tools': {
+    type: 'string[]',
+    brief: 'For an AI model call, the functions that are available',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
   },
   'ai.top_k': {
     type: 'integer',
@@ -31586,25 +31586,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'Human readable application name, as it appears on the platform.',
     deprecationChain: ['app.name', 'app.app_name'],
   },
-  app_start_cold: {
-    type: 'double',
-    brief: 'The duration of a cold app start in milliseconds',
-    deprecationChain: ['app.vitals.start.cold.value', 'app_start_cold'],
-  },
   'app.start_time': {
     type: 'string',
     brief: 'Formatted UTC timestamp when the user started the application.',
     deprecationChain: ['app.start_time', 'app.app_start_time'],
-  },
-  app_start_type: {
-    type: 'string',
-    brief: 'Mobile app start variant. Either cold or warm.',
-    deprecationChain: ['app.vitals.start.type', 'app_start_type'],
-  },
-  app_start_warm: {
-    type: 'double',
-    brief: 'The duration of a warm app start in milliseconds',
-    deprecationChain: ['app.vitals.start.warm.value', 'app_start_warm'],
   },
   'app.version': {
     type: 'string',
@@ -31701,6 +31686,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'double',
     brief: 'The duration of time to initial display in milliseconds',
     deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
+  },
+  app_start_cold: {
+    type: 'double',
+    brief: 'The duration of a cold app start in milliseconds',
+    deprecationChain: ['app.vitals.start.cold.value', 'app_start_cold'],
+  },
+  app_start_type: {
+    type: 'string',
+    brief: 'Mobile app start variant. Either cold or warm.',
+    deprecationChain: ['app.vitals.start.type', 'app_start_type'],
+  },
+  app_start_warm: {
+    type: 'double',
+    brief: 'The duration of a warm app start in milliseconds',
+    deprecationChain: ['app.vitals.start.warm.value', 'app_start_warm'],
   },
   'art.gc.blocking_count': {
     type: 'integer',
@@ -31799,15 +31799,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The value of the `ExclusiveStartTableName` request parameter.',
     deprecationChain: ['aws.dynamodb.exclusive_start_table'],
   },
-  'aws.dynamodb.global_secondary_indexes': {
-    type: 'string[]',
-    brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
-    deprecationChain: ['aws.dynamodb.global_secondary_indexes'],
-  },
   'aws.dynamodb.global_secondary_index_updates': {
     type: 'string[]',
     brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
     deprecationChain: ['aws.dynamodb.global_secondary_index_updates'],
+  },
+  'aws.dynamodb.global_secondary_indexes': {
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
+    deprecationChain: ['aws.dynamodb.global_secondary_indexes'],
   },
   'aws.dynamodb.index_name': {
     type: 'string',
@@ -31844,15 +31844,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
     deprecationChain: ['aws.dynamodb.provisioned_write_capacity'],
   },
-  'aws.dynamodb.scanned_count': {
-    type: 'integer',
-    brief: 'The value of the `ScannedCount` response parameter.',
-    deprecationChain: ['aws.dynamodb.scanned_count'],
-  },
   'aws.dynamodb.scan_forward': {
     type: 'boolean',
     brief: 'The value of the `ScanIndexForward` request parameter.',
     deprecationChain: ['aws.dynamodb.scan_forward'],
+  },
+  'aws.dynamodb.scanned_count': {
+    type: 'integer',
+    brief: 'The value of the `ScannedCount` response parameter.',
+    deprecationChain: ['aws.dynamodb.scanned_count'],
   },
   'aws.dynamodb.segment': {
     type: 'integer',
@@ -31884,12 +31884,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The AWS extended request ID as returned in the response headers.',
     deprecationChain: ['aws.extended_request_id', 'aws.request.extended_id'],
   },
-  'aws.kinesis.stream_name': {
+  'aws.kinesis.stream.name': {
     type: 'string',
     brief: 'The name of the AWS Kinesis stream the request refers to.',
     deprecationChain: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
   },
-  'aws.kinesis.stream.name': {
+  'aws.kinesis.stream_name': {
     type: 'string',
     brief: 'The name of the AWS Kinesis stream the request refers to.',
     deprecationChain: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
@@ -31944,20 +31944,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The name of the API operation invoked on an AWS service.',
     deprecationChain: ['rpc.method', 'aws.operation_name'],
   },
-  aws_region: {
-    type: 'string',
-    brief: 'The geographical region the AWS resource is running',
-    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
-  },
   'aws.request.extended_id': {
     type: 'string',
     brief: 'The AWS extended request ID as returned in the response headers.',
     deprecationChain: ['aws.extended_request_id', 'aws.request.extended_id'],
-  },
-  'aws.request_id': {
-    type: 'string',
-    brief: 'The AWS request ID as returned in the response headers.',
-    deprecationChain: ['aws.request_id', 'aws.request.id'],
   },
   'aws.request.id': {
     type: 'string',
@@ -31968,6 +31958,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'The URL of the AWS API request.',
     deprecationChain: ['url.full', 'aws.request.url'],
+  },
+  'aws.request_id': {
+    type: 'string',
+    brief: 'The AWS request ID as returned in the response headers.',
+    deprecationChain: ['aws.request_id', 'aws.request.id'],
   },
   'aws.s3.bucket': {
     type: 'string',
@@ -31994,6 +31989,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'The ARN of the AWS Step Functions State Machine.',
     deprecationChain: ['aws.step_functions.state_machine.arn'],
+  },
+  aws_region: {
+    type: 'string',
+    brief: 'The geographical region the AWS resource is running',
+    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
   },
   blocked_main_thread: {
     type: 'boolean',
@@ -32191,6 +32191,41 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'Client port number.',
     deprecationChain: ['client.port'],
   },
+  client_sample_rate: {
+    type: 'double',
+    brief: 'Rate at which a span was sampled in the SDK.',
+    deprecationChain: ['sentry.client_sample_rate', 'client_sample_rate'],
+  },
+  'cloud.account.id': {
+    type: 'string',
+    brief: 'The cloud account ID the resource is assigned to',
+    deprecationChain: ['cloud.account.id'],
+  },
+  'cloud.availability_zone': {
+    type: 'string',
+    brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
+    deprecationChain: ['cloud.availability_zone'],
+  },
+  'cloud.platform': {
+    type: 'string',
+    brief: 'The cloud platform in use',
+    deprecationChain: ['cloud.platform'],
+  },
+  'cloud.provider': {
+    type: 'string',
+    brief: 'Name of the cloud provider',
+    deprecationChain: ['cloud.provider'],
+  },
+  'cloud.region': {
+    type: 'string',
+    brief: 'The geographical region the resource is running',
+    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
+  },
+  'cloud.resource_id': {
+    type: 'string',
+    brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
+    deprecationChain: ['cloud.resource_id', 'faas.id'],
+  },
   'cloudflare.d1.duration': {
     type: 'integer',
     brief: 'The duration of a Cloudflare D1 operation.',
@@ -32281,36 +32316,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The timeout duration for a Cloudflare Workflow step',
     deprecationChain: ['cloudflare.workflow.timeout'],
   },
-  'cloud.account.id': {
-    type: 'string',
-    brief: 'The cloud account ID the resource is assigned to',
-    deprecationChain: ['cloud.account.id'],
-  },
-  'cloud.availability_zone': {
-    type: 'string',
-    brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
-    deprecationChain: ['cloud.availability_zone'],
-  },
-  'cloud.platform': {
-    type: 'string',
-    brief: 'The cloud platform in use',
-    deprecationChain: ['cloud.platform'],
-  },
-  'cloud.provider': {
-    type: 'string',
-    brief: 'Name of the cloud provider',
-    deprecationChain: ['cloud.provider'],
-  },
-  'cloud.region': {
-    type: 'string',
-    brief: 'The geographical region the resource is running',
-    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
-  },
-  'cloud.resource_id': {
-    type: 'string',
-    brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
-    deprecationChain: ['cloud.resource_id', 'faas.id'],
-  },
   cls: {
     type: 'double',
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
@@ -32326,17 +32331,17 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
     deprecationChain: ['rpc.response.status_code', 'code'],
   },
-  'code.filepath': {
-    type: 'string',
-    brief:
-      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
-    deprecationChain: ['code.filepath'],
-  },
   'code.file.path': {
     type: 'string',
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     deprecationChain: ['code.file.path'],
+  },
+  'code.filepath': {
+    type: 'string',
+    brief:
+      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
+    deprecationChain: ['code.filepath'],
   },
   'code.function': {
     type: 'string',
@@ -32348,17 +32353,17 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The method or function fully-qualified name without arguments.',
     deprecationChain: ['code.function.name', 'code.function', 'django.function_name'],
   },
-  'code.lineno': {
-    type: 'integer',
-    brief:
-      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
-    deprecationChain: ['code.lineno'],
-  },
   'code.line.number': {
     type: 'integer',
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     deprecationChain: ['code.line.number'],
+  },
+  'code.lineno': {
+    type: 'integer',
+    brief:
+      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
+    deprecationChain: ['code.lineno'],
   },
   'code.namespace': {
     type: 'string',
@@ -32366,15 +32371,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
     deprecationChain: ['code.namespace'],
   },
-  connectionType: {
-    type: 'string',
-    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
-    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
-  },
   'connection.rtt': {
     type: 'integer',
     brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
     deprecationChain: ['network.connection.rtt', 'connection.rtt'],
+  },
+  connectionType: {
+    type: 'string',
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
   },
   'culture.calendar': {
     type: 'string',
@@ -32517,11 +32522,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'The database user.',
     deprecationChain: ['db.user'],
-  },
-  deviceMemory: {
-    type: 'string',
-    brief: 'The estimated total memory capacity of the device, only a rough estimation in gigabytes.',
-    deprecationChain: ['device.memory.estimated_capacity', 'deviceMemory'],
   },
   'device.archs': {
     type: 'string[]',
@@ -32717,6 +32717,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'Memory usable for the app in bytes.',
     deprecationChain: ['device.usable_memory'],
   },
+  deviceMemory: {
+    type: 'string',
+    brief: 'The estimated total memory capacity of the device, only a rough estimation in gigabytes.',
+    deprecationChain: ['device.memory.estimated_capacity', 'deviceMemory'],
+  },
   dist: {
     type: 'string',
     brief: 'The sentry dist.',
@@ -32893,43 +32898,17 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The time it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
   },
-  'frames.delay': {
-    type: 'second',
-    brief:
-      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
-    deprecationChain: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
-  },
-  'frames.frozen': {
-    type: 'integer',
-    brief: 'The number of frozen frames rendered during the lifetime of the span.',
-    deprecationChain: [
-      'app.vitals.frames.frozen.count',
-      'frames.frozen',
-      'mobile.frozen_frames',
-      'sentry.frames.frozen',
-    ],
-  },
   frames_frozen_rate: {
     type: 'double',
     brief:
       'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     deprecationChain: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
   },
-  'frames.slow': {
-    type: 'integer',
-    brief: 'The number of slow frames rendered during the lifetime of the span.',
-    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
-  },
   frames_slow_rate: {
     type: 'double',
     brief:
       'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     deprecationChain: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
-  },
-  'frames.total': {
-    type: 'integer',
-    brief: 'The number of total frames rendered during the lifetime of the span.',
-    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
   },
   fs_error: {
     type: 'string',
@@ -33225,12 +33204,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The provider of the model.',
     deprecationChain: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
   },
-  'gen_ai.system_instructions': {
+  'gen_ai.system.message': {
     type: 'string',
     brief: 'The system instructions passed to the model.',
     deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
   },
-  'gen_ai.system.message': {
+  'gen_ai.system_instructions': {
     type: 'string',
     brief: 'The system instructions passed to the model.',
     deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
@@ -33318,15 +33297,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
     deprecationChain: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
   },
-  'gen_ai.usage.input_tokens.cached': {
-    type: 'integer',
-    brief: 'The number of cached tokens used to process the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
-  },
   'gen_ai.usage.input_tokens.cache_write': {
     type: 'integer',
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+  },
+  'gen_ai.usage.input_tokens.cached': {
+    type: 'integer',
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
   },
   'gen_ai.usage.output_tokens': {
     type: 'integer',
@@ -33492,17 +33471,17 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'HTTP request body data. Can be given as string or structural data of any format.',
     deprecationChain: ['http.request.body.data'],
   },
-  'http.request.connection_end': {
-    type: 'double',
-    brief:
-      'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
-    deprecationChain: ['http.request.connection_end'],
-  },
   'http.request.connect_start': {
     type: 'double',
     brief:
       'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
     deprecationChain: ['http.request.connect_start'],
+  },
+  'http.request.connection_end': {
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
+    deprecationChain: ['http.request.connection_end'],
   },
   'http.request.domain_lookup_end': {
     type: 'double',
@@ -33528,11 +33507,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     deprecationChain: ['http.request.header.<key>'],
   },
   'http.request.method': {
-    type: 'string',
-    brief: 'The HTTP method used.',
-    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
-  },
-  'http.request_method': {
     type: 'string',
     brief: 'The HTTP method used.',
     deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
@@ -33594,6 +33568,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
     deprecationChain: ['http.request.worker_start'],
   },
+  'http.request_method': {
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
   'http.response.body.size': {
     type: 'integer',
     brief: 'The encoded body size of the response (in bytes).',
@@ -33603,14 +33582,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'http.response_content_length',
     ],
   },
-  'http.response_content_length': {
-    type: 'byte',
-    brief: 'The encoded body size of the response (in bytes).',
-    deprecationChain: [
-      'http.response.body.size',
-      'http.response.header.content-length',
-      'http.response_content_length',
-    ],
+  'http.response.header.<key>': {
+    type: 'string[]',
+    brief:
+      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+    deprecationChain: ['http.response.header.<key>'],
   },
   'http.response.header.content-length': {
     type: 'string',
@@ -33621,18 +33597,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'http.response_content_length',
     ],
   },
-  'http.response.header.<key>': {
-    type: 'string[]',
-    brief:
-      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
-    deprecationChain: ['http.response.header.<key>'],
-  },
   'http.response.size': {
     type: 'integer',
     brief: 'The transfer size of the response (in bytes).',
     deprecationChain: ['http.response.size', 'http.response_transfer_size'],
   },
-  'http.response.status_code': {
+  'http.response_content_length': {
+    type: 'byte',
+    brief: 'The encoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.size',
+      'http.response.header.content-length',
+      'http.response_content_length',
+    ],
+  },
+  'http.response_status_code': {
     type: 'integer',
     brief: 'The status code of the HTTP response.',
     deprecationChain: ['http.response.status_code', 'http.response_status_code'],
@@ -33652,16 +33631,16 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The URI scheme component identifying the used protocol.',
     deprecationChain: ['http.scheme'],
   },
-  'http.server_name': {
-    type: 'string',
-    brief: 'The server domain name',
-    deprecationChain: ['http.server_name'],
-  },
   'http.server.request.time_in_queue': {
     type: 'double',
     brief:
       'The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.',
     deprecationChain: ['http.server.request.time_in_queue'],
+  },
+  'http.server_name': {
+    type: 'string',
+    brief: 'The server domain name',
+    deprecationChain: ['http.server_name'],
   },
   'http.status_code': {
     type: 'integer',
@@ -34012,11 +33991,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The message destination connection.',
     deprecationChain: ['messaging.destination.connection'],
   },
-  'messaging.destination_kind': {
-    type: 'string',
-    brief: 'The kind of message destination.',
-    deprecationChain: ['messaging.destination_kind'],
-  },
   'messaging.destination.name': {
     type: 'string',
     brief: 'The message destination name.',
@@ -34027,6 +34001,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief:
       'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
     deprecationChain: ['messaging.destination.partition.id'],
+  },
+  'messaging.destination_kind': {
+    type: 'string',
+    brief: 'The kind of message destination.',
+    deprecationChain: ['messaging.destination_kind'],
   },
   'messaging.kafka.message.key': {
     type: 'string',
@@ -34111,6 +34090,32 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'starlite.middleware_name',
     ],
   },
+  'mobile.frames_delay': {
+    type: 'second',
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    deprecationChain: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
+  },
+  'mobile.frozen_frames': {
+    type: 'integer',
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    deprecationChain: [
+      'app.vitals.frames.frozen.count',
+      'frames.frozen',
+      'mobile.frozen_frames',
+      'sentry.frames.frozen',
+    ],
+  },
+  'mobile.slow_frames': {
+    type: 'integer',
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
+  },
+  'mobile.total_frames': {
+    type: 'integer',
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
+  },
   'navigation.origin': {
     type: 'string',
     brief:
@@ -34153,61 +34158,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
     deprecationChain: ['nel.type'],
-  },
-  'network.connection.effective_type': {
-    type: 'string',
-    brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
-    deprecationChain: ['network.connection.effective_type', 'effectiveConnectionType'],
-  },
-  'network.connection.rtt': {
-    type: 'integer',
-    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
-    deprecationChain: ['network.connection.rtt', 'connection.rtt'],
-  },
-  'network.connection.type': {
-    type: 'string',
-    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
-    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
-  },
-  'network.local.address': {
-    type: 'string',
-    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
-    deprecationChain: ['network.local.address'],
-  },
-  'network.local.port': {
-    type: 'integer',
-    brief: 'Local port number of the network connection.',
-    deprecationChain: ['network.local.port'],
-  },
-  'network.peer.address': {
-    type: 'string',
-    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
-    deprecationChain: ['network.peer.address'],
-  },
-  'network.peer.port': {
-    type: 'integer',
-    brief: 'Peer port number of the network connection.',
-    deprecationChain: ['network.peer.port'],
-  },
-  'network.protocol.name': {
-    type: 'string',
-    brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol'],
-  },
-  'network.protocol.version': {
-    type: 'string',
-    brief: 'The actual version of the protocol used for network communication.',
-    deprecationChain: ['network.protocol.version'],
-  },
-  'network.transport': {
-    type: 'string',
-    brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport'],
-  },
-  'network.type': {
-    type: 'string',
-    brief: 'OSI network layer or non-OSI equivalent.',
-    deprecationChain: ['network.type'],
   },
   'net.host.ip': {
     type: 'string',
@@ -34285,6 +34235,66 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
     deprecationChain: ['net.transport'],
+  },
+  'network.connection.effective_type': {
+    type: 'string',
+    brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    deprecationChain: ['network.connection.effective_type', 'effectiveConnectionType'],
+  },
+  'network.connection.rtt': {
+    type: 'integer',
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    deprecationChain: ['network.connection.rtt', 'connection.rtt'],
+  },
+  'network.connection.type': {
+    type: 'string',
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
+  },
+  'network.local.address': {
+    type: 'string',
+    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['network.local.address'],
+  },
+  'network.local.port': {
+    type: 'integer',
+    brief: 'Local port number of the network connection.',
+    deprecationChain: ['network.local.port'],
+  },
+  'network.peer.address': {
+    type: 'string',
+    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['network.peer.address'],
+  },
+  'network.peer.port': {
+    type: 'integer',
+    brief: 'Peer port number of the network connection.',
+    deprecationChain: ['network.peer.port'],
+  },
+  'network.protocol.name': {
+    type: 'string',
+    brief: 'OSI application layer or non-OSI equivalent.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol'],
+  },
+  'network.protocol.version': {
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['network.protocol.version'],
+  },
+  'network.transport': {
+    type: 'string',
+    brief: 'OSI transport layer or inter-process communication method.',
+    deprecationChain: ['network.transport', 'mcp.transport'],
+  },
+  'network.type': {
+    type: 'string',
+    brief: 'OSI network layer or non-OSI equivalent.',
+    deprecationChain: ['network.type'],
+  },
+  origin: {
+    type: 'string',
+    brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
+    deprecationChain: ['sentry.origin', 'origin'],
   },
   'os.build': {
     type: 'string',
@@ -34380,6 +34390,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
     deprecationChain: ['browser.performance.time_origin', 'performance.timeOrigin'],
   },
+  platform: {
+    type: 'string',
+    brief: 'The sdk platform that generated the event.',
+    deprecationChain: ['sentry.platform', 'platform'],
+  },
   port: {
     type: 'integer',
     brief: 'The destination port for a TCP connection.',
@@ -34432,11 +34447,22 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
     deprecationChain: ['process.runtime.version'],
   },
+  'profile.id': {
+    type: 'string',
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+  },
   profile_id: {
     type: 'string',
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+  },
+  'profiler.id': {
+    type: 'string',
+    brief: 'The id of the currently running profiler (continuous profiling)',
+    deprecationChain: ['sentry.profiler_id', 'profiler.id'],
   },
   query: {
     type: 'string',
@@ -34472,6 +34498,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
     deprecationChain: ['remix.action_form_data.<key>'],
+  },
+  'replay.id': {
+    type: 'string',
+    brief: 'The id of the sentry replay.',
+    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
   },
   replay_id: {
     type: 'string',
@@ -34582,16 +34613,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: "The relative weight of a web vital in a span's performance score.",
     deprecationChain: ['score.weight.<key>'],
   },
-  'sentry.action': {
+  'sdk.name': {
     type: 'string',
-    brief:
-      'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
-    deprecationChain: ['sentry.action', 'span.action'],
+    brief: 'The sentry sdk name.',
+    deprecationChain: ['sentry.sdk.name', 'sdk.name'],
   },
-  'sentry.browser.name': {
+  'sdk.version': {
     type: 'string',
-    brief: 'The name of the browser.',
-    deprecationChain: ['sentry.browser.name', 'browser.name'],
+    brief: 'The sentry sdk version.',
+    deprecationChain: ['sentry.sdk.version', 'sdk.version'],
   },
   'sentry.browser.version': {
     type: 'string',
@@ -34603,17 +34633,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The reason why a span ended early.',
     deprecationChain: ['sentry.cancellation_reason'],
   },
-  'sentry.category': {
-    type: 'string',
-    brief:
-      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
-    deprecationChain: ['sentry.category', 'span.category'],
-  },
-  'sentry.client_sample_rate': {
-    type: 'double',
-    brief: 'Rate at which a span was sampled in the SDK.',
-    deprecationChain: ['sentry.client_sample_rate', 'client_sample_rate'],
-  },
   'sentry.description': {
     type: 'string',
     brief: 'The human-readable description of a span.',
@@ -34623,12 +34642,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'The sentry dist.',
     deprecationChain: ['sentry.dist', 'dist'],
-  },
-  'sentry.domain': {
-    type: 'string',
-    brief:
-      'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
-    deprecationChain: ['sentry.domain', 'span.domain'],
   },
   'sentry.dsc.environment': {
     type: 'string',
@@ -34651,15 +34664,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The release identifier from the dynamic sampling context.',
     deprecationChain: ['sentry.dsc.release'],
   },
-  'sentry.dsc.sampled': {
-    type: 'boolean',
-    brief: 'Whether the event was sampled according to the dynamic sampling context.',
-    deprecationChain: ['sentry.dsc.sampled'],
-  },
   'sentry.dsc.sample_rate': {
     type: 'string',
     brief: 'The sample rate from the dynamic sampling context.',
     deprecationChain: ['sentry.dsc.sample_rate'],
+  },
+  'sentry.dsc.sampled': {
+    type: 'boolean',
+    brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    deprecationChain: ['sentry.dsc.sampled'],
   },
   'sentry.dsc.trace_id': {
     type: 'string',
@@ -34670,16 +34683,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'The transaction name from the dynamic sampling context.',
     deprecationChain: ['sentry.dsc.transaction'],
-  },
-  'sentry.environment': {
-    type: 'string',
-    brief: 'The sentry environment.',
-    deprecationChain: [
-      'sentry.environment',
-      'environment',
-      'resource.deployment.environment',
-      'resource.deployment.environment.name',
-    ],
   },
   'sentry.event.serialized_breadcrumbs': {
     type: 'string',
@@ -34731,12 +34734,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
     deprecationChain: ['sentry.graphql.operation'],
   },
-  'sentry.group': {
-    type: 'string',
-    brief:
-      'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
-    deprecationChain: ['sentry.group', 'span.group'],
-  },
   'sentry.http.prefetch': {
     type: 'boolean',
     brief: 'If an http request was a prefetch request.',
@@ -34751,12 +34748,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'boolean',
     brief: "Indicates whether a span's parent is remote.",
     deprecationChain: ['sentry.is_remote'],
-  },
-  'sentry.kind': {
-    type: 'string',
-    brief:
-      'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
-    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
   },
   'sentry.main_thread': {
     type: 'boolean',
@@ -34823,36 +34814,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     deprecationChain: ['sentry.observed_timestamp_nanos'],
   },
-  'sentry.op': {
-    type: 'string',
-    brief: 'The operation of a span.',
-    deprecationChain: ['sentry.op', 'span.op'],
-  },
-  'sentry.origin': {
-    type: 'string',
-    brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
-    deprecationChain: ['sentry.origin', 'origin'],
-  },
   'sentry.pageload.span_id': {
     type: 'string',
     brief: 'The id of the pageload span, set by web vital spans and metrics',
     deprecationChain: ['sentry.pageload.span_id'],
-  },
-  'sentry.platform': {
-    type: 'string',
-    brief: 'The sdk platform that generated the event.',
-    deprecationChain: ['sentry.platform', 'platform'],
-  },
-  'sentry.profiler_id': {
-    type: 'string',
-    brief: 'The id of the currently running profiler (continuous profiling)',
-    deprecationChain: ['sentry.profiler_id', 'profiler.id'],
-  },
-  'sentry.profile_id': {
-    type: 'string',
-    brief:
-      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
-    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
   },
   'sentry.relay.ingress': {
     type: 'string',
@@ -34863,16 +34828,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
     deprecationChain: ['sentry.relay.pipeline'],
-  },
-  'sentry.release': {
-    type: 'string',
-    brief: 'The sentry release.',
-    deprecationChain: ['sentry.release', 'release', 'service.version'],
-  },
-  'sentry.replay_id': {
-    type: 'string',
-    brief: 'The id of the sentry replay.',
-    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
   },
   'sentry.replay_is_buffering': {
     type: 'boolean',
@@ -34891,22 +34846,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
     deprecationChain: ['sentry.sdk.integrations'],
   },
-  'sentry.sdk.name': {
-    type: 'string',
-    brief: 'The sentry sdk name.',
-    deprecationChain: ['sentry.sdk.name', 'sdk.name'],
-  },
-  'sentry.sdk.version': {
-    type: 'string',
-    brief: 'The sentry sdk version.',
-    deprecationChain: ['sentry.sdk.version', 'sdk.version'],
-  },
   'sentry.segment.id': {
-    type: 'string',
-    brief: 'The segment ID of a span',
-    deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
-  },
-  'sentry.segment_id': {
     type: 'string',
     brief: 'The segment ID of a span',
     deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
@@ -34922,11 +34862,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
     deprecationChain: ['sentry.segment.name.source'],
   },
-  'sentry.server_sample_rate': {
-    type: 'double',
-    brief: 'Rate at which a span was sampled in Relay.',
-    deprecationChain: ['sentry.server_sample_rate', 'server_sample_rate'],
-  },
   'sentry.source': {
     type: 'string',
     brief:
@@ -34938,23 +34873,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief:
       "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     deprecationChain: ['sentry.span.source'],
-  },
-  'sentry.status': {
-    type: 'string',
-    brief:
-      'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
-    deprecationChain: ['sentry.status', 'span.status'],
-  },
-  'sentry.status_code': {
-    type: 'integer',
-    brief:
-      'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
-    deprecationChain: ['sentry.status_code', 'span.status_code'],
-  },
-  'sentry.status.message': {
-    type: 'string',
-    brief: 'The from OTLP extracted status message.',
-    deprecationChain: ['sentry.status.message', 'span.status.message'],
   },
   'sentry.sveltekit.navigation.from': {
     type: 'string',
@@ -34971,21 +34889,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The type of navigation event emitted from the sveltekit client router',
     deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
   },
-  'sentry.thread.id': {
-    type: 'integer',
-    brief: 'Current "managed" thread ID.',
-    deprecationChain: ['thread.id', 'sentry.thread.id'],
-  },
   'sentry.timestamp.sequence': {
     type: 'integer',
     brief:
       'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
     deprecationChain: ['sentry.timestamp.sequence'],
-  },
-  'sentry.trace_lifecycle': {
-    type: 'string',
-    brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
-    deprecationChain: ['sentry.trace_lifecycle', 'trace_lifecycle'],
   },
   'sentry.trace.parent_span_id': {
     type: 'string',
@@ -34993,64 +34901,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
     deprecationChain: ['sentry.trace.parent_span_id'],
   },
-  'sentry.trace.status': {
-    type: 'string',
-    brief:
-      'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
-    deprecationChain: ['sentry.trace.status', 'trace.status'],
-  },
-  'sentry.transaction': {
-    type: 'string',
-    brief: 'The sentry transaction (segment name).',
-    deprecationChain: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
-  },
-  'sentry.user.email': {
-    type: 'string',
-    brief: 'User email address.',
-    deprecationChain: ['sentry.user.email', 'user.email'],
-  },
-  'sentry.user.geo.city': {
-    type: 'string',
-    brief: 'Human readable city name.',
-    deprecationChain: ['sentry.user.geo.city', 'user.geo.city'],
-  },
-  'sentry.user.geo.country_code': {
-    type: 'string',
-    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
-    deprecationChain: ['sentry.user.geo.country_code', 'user.geo.country_code'],
-  },
-  'sentry.user.geo.region': {
-    type: 'string',
-    brief: 'Human readable region name or code.',
-    deprecationChain: ['sentry.user.geo.region', 'user.geo.region'],
-  },
-  'sentry.user.geo.subdivision': {
-    type: 'string',
-    brief: 'Human readable subdivision name.',
-    deprecationChain: ['sentry.user.geo.subdivision', 'user.geo.subdivision'],
-  },
-  'sentry.user.id': {
-    type: 'string',
-    brief: 'Unique identifier of the user.',
-    deprecationChain: ['sentry.user.id', 'user.id'],
-  },
-  'sentry.user.ip': {
-    type: 'string',
-    brief: 'The IP address of the user.',
-    deprecationChain: ['sentry.user.ip', 'user.ip'],
-  },
-  'sentry.user.username': {
-    type: 'string',
-    brief: 'Short name or login/username of the user.',
-    deprecationChain: ['sentry.user.username', 'user.username'],
-  },
   'server.address': {
-    type: 'string',
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'server_name'],
-  },
-  server_name: {
     type: 'string',
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
@@ -35060,6 +34911,17 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'integer',
     brief: 'Server port number.',
     deprecationChain: ['server.port', 'port'],
+  },
+  server_name: {
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['server.address', 'address', 'server_name'],
+  },
+  server_sample_rate: {
+    type: 'double',
+    brief: 'Rate at which a span was sampled in Relay.',
+    deprecationChain: ['sentry.server_sample_rate', 'server_sample_rate'],
   },
   'service.name': {
     type: 'string',
@@ -35075,6 +34937,58 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string',
     brief: 'A unique id identifying the active session at the time of setting this attribute',
     deprecationChain: ['session.id'],
+  },
+  'span.action': {
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
+    deprecationChain: ['sentry.action', 'span.action'],
+  },
+  'span.category': {
+    type: 'string',
+    brief:
+      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+    deprecationChain: ['sentry.category', 'span.category'],
+  },
+  'span.domain': {
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
+    deprecationChain: ['sentry.domain', 'span.domain'],
+  },
+  'span.group': {
+    type: 'string',
+    brief:
+      'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
+    deprecationChain: ['sentry.group', 'span.group'],
+  },
+  'span.kind': {
+    type: 'string',
+    brief:
+      'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
+    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+  },
+  'span.op': {
+    type: 'string',
+    brief: 'The operation of a span.',
+    deprecationChain: ['sentry.op', 'span.op'],
+  },
+  'span.status': {
+    type: 'string',
+    brief:
+      'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+    deprecationChain: ['sentry.status', 'span.status'],
+  },
+  'span.status.message': {
+    type: 'string',
+    brief: 'The from OTLP extracted status message.',
+    deprecationChain: ['sentry.status.message', 'span.status.message'],
+  },
+  'span.status_code': {
+    type: 'integer',
+    brief:
+      'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
+    deprecationChain: ['sentry.status_code', 'span.status_code'],
   },
   stall_percentage: {
     type: 'double',
@@ -35144,10 +35058,26 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The duration of time to initial display in milliseconds',
     deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
   },
+  'trace.status': {
+    type: 'string',
+    brief:
+      'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+    deprecationChain: ['sentry.trace.status', 'trace.status'],
+  },
+  trace_lifecycle: {
+    type: 'string',
+    brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
+    deprecationChain: ['sentry.trace_lifecycle', 'trace_lifecycle'],
+  },
   transaction: {
     type: 'string',
     brief: 'The sentry transaction (segment name).',
     deprecationChain: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
+  },
+  'transaction.span_id': {
+    type: 'string',
+    brief: 'The segment ID of a span',
+    deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
   },
   'trpc.procedure_path': {
     type: 'string',
@@ -35294,11 +35224,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'The low-cardinality template of an absolute URL path reference.',
     deprecationChain: ['url.template'],
   },
-  'user_agent.original': {
-    type: 'string',
-    brief: 'Value of the HTTP User-Agent header sent by the client.',
-    deprecationChain: ['user_agent.original'],
-  },
   'user.email': {
     type: 'string',
     brief: 'User email address.',
@@ -35339,6 +35264,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     brief: 'Unique identifier of the user.',
     deprecationChain: ['user.id'],
   },
+  'user.ip': {
+    type: 'string',
+    brief: 'The IP address of the user.',
+    deprecationChain: ['sentry.user.ip', 'user.ip'],
+  },
   'user.ip_address': {
     type: 'string',
     brief: 'The IP address of the user.',
@@ -35353,6 +35283,16 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<AttributeName, AttributeSearchMet
     type: 'string[]',
     brief: 'Array of user roles at the time of the event.',
     deprecationChain: ['user.roles'],
+  },
+  'user.username': {
+    type: 'string',
+    brief: 'Short name or login/username of the user.',
+    deprecationChain: ['sentry.user.username', 'user.username'],
+  },
+  'user_agent.original': {
+    type: 'string',
+    brief: 'Value of the HTTP User-Agent header sent by the client.',
+    deprecationChain: ['user_agent.original'],
   },
   'vercel.branch': {
     type: 'string',
