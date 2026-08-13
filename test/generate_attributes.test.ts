@@ -136,7 +136,7 @@ describe('generateAttributes', () => {
         '"fallback.attribute": {\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute"],',
       );
       expect(compactMetadata).toContain(
-        '"shared.name": {\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name"],',
+        '"shared.name": {\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["legacy.attribute","current.attribute","shared.name","older.name","old.name"],',
       );
       expect(compactMetadata).toContain(
         '"deprecated.search": {\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',

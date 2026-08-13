@@ -1217,12 +1217,33 @@ function generateMetadataDict(
       throw new Error(`Attribute key chain for "${preferredAttribute.key}" does not exist`);
     }
 
+    const deprecationChain = [...keyChain];
+    if (!preferredAttribute.isDeprecated) {
+      for (const candidate of candidates.filter((candidate) => candidate.isDeprecated)) {
+        const deprecatedKeyChain = attributeKeyChains.get(candidate.key);
+        if (!deprecatedKeyChain) {
+          throw new Error(`Attribute key chain for "${candidate.key}" does not exist`);
+        }
+
+        let insertionIndex = 0;
+        for (const key of deprecatedKeyChain) {
+          const existingIndex = deprecationChain.indexOf(key);
+          if (existingIndex >= 0) {
+            insertionIndex = Math.max(insertionIndex, existingIndex + 1);
+          } else {
+            deprecationChain.splice(insertionIndex, 0, key);
+            insertionIndex += 1;
+          }
+        }
+      }
+    }
+
     metadataDict += `  ${JSON.stringify(searchKey)}: {\n`;
     metadataDict += `    type: ${JSON.stringify(
       preferredAttribute.attributeJson.search_alias?.type ?? preferredAttribute.attributeJson.type,
     )},\n`;
     metadataDict += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
-    metadataDict += `    deprecationChain: ${JSON.stringify(keyChain)},\n`;
+    metadataDict += `    deprecationChain: ${JSON.stringify(deprecationChain)},\n`;
     metadataDict += '  },\n';
   }
 

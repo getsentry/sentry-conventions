@@ -32027,7 +32027,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'browser.name': {
     type: 'string',
     brief: 'The name of the browser.',
-    deprecationChain: ['browser.name'],
+    deprecationChain: ['sentry.browser.name', 'browser.name'],
   },
   'browser.performance.navigation.activation_start': {
     type: 'double',
@@ -35227,7 +35227,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'user.email': {
     type: 'string',
     brief: 'User email address.',
-    deprecationChain: ['user.email'],
+    deprecationChain: ['sentry.user.email', 'user.email'],
   },
   'user.full_name': {
     type: 'string',
@@ -35237,22 +35237,22 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'user.geo.city': {
     type: 'string',
     brief: 'Human readable city name.',
-    deprecationChain: ['user.geo.city'],
+    deprecationChain: ['sentry.user.geo.city', 'user.geo.city'],
   },
   'user.geo.country_code': {
     type: 'string',
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
-    deprecationChain: ['user.geo.country_code'],
+    deprecationChain: ['sentry.user.geo.country_code', 'user.geo.country_code'],
   },
   'user.geo.region': {
     type: 'string',
     brief: 'Human readable region name or code.',
-    deprecationChain: ['user.geo.region'],
+    deprecationChain: ['sentry.user.geo.region', 'user.geo.region'],
   },
   'user.geo.subdivision': {
     type: 'string',
     brief: 'Human readable subdivision name.',
-    deprecationChain: ['user.geo.subdivision'],
+    deprecationChain: ['sentry.user.geo.subdivision', 'user.geo.subdivision'],
   },
   'user.hash': {
     type: 'string',
@@ -35262,7 +35262,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'user.id': {
     type: 'string',
     brief: 'Unique identifier of the user.',
-    deprecationChain: ['user.id'],
+    deprecationChain: ['sentry.user.id', 'user.id'],
   },
   'user.ip': {
     type: 'string',
