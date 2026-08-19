@@ -1,0 +1,23 @@
+{
+  "key": "turbo_module.top_module_duration_ms",
+  "brief": "The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 87.25,
+  "alias": ["turbo_module.top.duration"],
+  "deprecation": {
+    "replacement": "turbo_module.top.duration",
+    "reason": "Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+    "_status": "backfill"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added turbo_module.top_module_duration_ms and deprecated it in favor of turbo_module.top.duration"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "key": "turbo_module.call.distinct_count",
+  "brief": "The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated. Only applies to React Native.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 7,
+  "alias": ["turbo_module.unique_methods", "turbo_modules.unique_methods"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added turbo_module.call.distinct_count attribute"
+    }
+  ]
+}

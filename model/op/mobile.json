@@ -19,6 +19,10 @@
     },
     {
       "name": "http"
+    },
+    {
+      "name": "turbo_module",
+      "description": "A call from JavaScript into a React Native native module, or an aggregate of such calls."
     }
   ]
 }

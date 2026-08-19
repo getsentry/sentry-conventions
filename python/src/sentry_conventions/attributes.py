@@ -366,6 +366,16 @@ class _AttributeNamesMeta(type):
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
+        "TURBO_MODULE_TOP_MODULE",
+        "TURBO_MODULE_TOP_MODULE_DURATION_MS",
+        "TURBO_MODULE_TOTAL_CALL_COUNT",
+        "TURBO_MODULE_TOTAL_DURATION_MS",
+        "TURBO_MODULE_TOTAL_ERROR_COUNT",
+        "TURBO_MODULE_UNIQUE_METHODS",
+        "TURBO_MODULES_TOTAL_CALL_COUNT",
+        "TURBO_MODULES_TOTAL_DURATION_MS",
+        "TURBO_MODULES_TOTAL_ERROR_COUNT",
+        "TURBO_MODULES_UNIQUE_METHODS",
         "URL_SAME_ORIGIN",
         "URL",
     }
@@ -9344,6 +9354,295 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: browser.web_vital.ttfb.value
     DEPRECATED: Use browser.web_vital.ttfb.value instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.value
     Example: 194
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__arch.json
+    TURBO_MODULE_ARCH: Literal["turbo_module.arch"] = "turbo_module.arch"
+    """The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Example: "new"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__call__count.json
+    TURBO_MODULE_CALL_COUNT: Literal["turbo_module.call.count"] = (
+        "turbo_module.call.count"
+    )
+    """The number of native module calls observed during the lifetime of the span. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.total_call_count, turbo_modules.total_call_count
+    Example: 42
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__call__distinct_count.json
+    TURBO_MODULE_CALL_DISTINCT_COUNT: Literal["turbo_module.call.distinct_count"] = (
+        "turbo_module.call.distinct_count"
+    )
+    """The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.unique_methods, turbo_modules.unique_methods
+    Example: 7
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__duration__max.json
+    TURBO_MODULE_DURATION_MAX: Literal["turbo_module.duration.max"] = (
+        "turbo_module.duration.max"
+    )
+    """The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 512.5
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__duration__total.json
+    TURBO_MODULE_DURATION_TOTAL: Literal["turbo_module.duration.total"] = (
+        "turbo_module.duration.total"
+    )
+    """The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.total_duration_ms, turbo_modules.total_duration_ms
+    Example: 128.45
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__error__count.json
+    TURBO_MODULE_ERROR_COUNT: Literal["turbo_module.error.count"] = (
+        "turbo_module.error.count"
+    )
+    """The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.total_error_count, turbo_modules.total_error_count
+    Example: 2
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__kind.json
+    TURBO_MODULE_KIND: Literal["turbo_module.kind"] = "turbo_module.kind"
+    """Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Example: "async"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__method.json
+    TURBO_MODULE_METHOD: Literal["turbo_module.method"] = "turbo_module.method"
+    """The name of the native module method that was called. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Example: "getUniqueId"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__name.json
+    TURBO_MODULE_NAME: Literal["turbo_module.name"] = "turbo_module.name"
+    """The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Example: "RNDeviceInfo"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__top__duration.json
+    TURBO_MODULE_TOP_DURATION: Literal["turbo_module.top.duration"] = (
+        "turbo_module.top.duration"
+    )
+    """The total duration attributed to `turbo_module.top.name`, in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.top_module_duration_ms
+    Example: 87.25
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__top__name.json
+    TURBO_MODULE_TOP_NAME: Literal["turbo_module.top.name"] = "turbo_module.top.name"
+    """The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.top_module
+    Example: "RNDeviceInfo.getUniqueId"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__top_module.json
+    TURBO_MODULE_TOP_MODULE: Literal["turbo_module.top_module"] = (
+        "turbo_module.top_module"
+    )
+    """The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.top.name
+    DEPRECATED: Use turbo_module.top.name instead - Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping
+    Example: "RNDeviceInfo.getUniqueId"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__top_module_duration_ms.json
+    TURBO_MODULE_TOP_MODULE_DURATION_MS: Literal[
+        "turbo_module.top_module_duration_ms"
+    ] = "turbo_module.top_module_duration_ms"
+    """The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.top.duration
+    DEPRECATED: Use turbo_module.top.duration instead - Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping
+    Example: 87.25
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__total_call_count.json
+    TURBO_MODULE_TOTAL_CALL_COUNT: Literal["turbo_module.total_call_count"] = (
+        "turbo_module.total_call_count"
+    )
+    """The number of native module calls observed during the lifetime of the span. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.call.count, turbo_modules.total_call_count
+    DEPRECATED: Use turbo_module.call.count instead - Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping
+    Example: 42
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__total_duration_ms.json
+    TURBO_MODULE_TOTAL_DURATION_MS: Literal["turbo_module.total_duration_ms"] = (
+        "turbo_module.total_duration_ms"
+    )
+    """The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.duration.total, turbo_modules.total_duration_ms
+    DEPRECATED: Use turbo_module.duration.total instead - Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping
+    Example: 128.45
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__total_error_count.json
+    TURBO_MODULE_TOTAL_ERROR_COUNT: Literal["turbo_module.total_error_count"] = (
+        "turbo_module.total_error_count"
+    )
+    """The number of native module calls that failed during the lifetime of the span. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.error.count, turbo_modules.total_error_count
+    DEPRECATED: Use turbo_module.error.count instead - Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping
+    Example: 2
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__unique_methods.json
+    TURBO_MODULE_UNIQUE_METHODS: Literal["turbo_module.unique_methods"] = (
+        "turbo_module.unique_methods"
+    )
+    """The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.call.distinct_count, turbo_modules.unique_methods
+    DEPRECATED: Use turbo_module.call.distinct_count instead - Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping
+    Example: 7
+    """
+
+    # Path: model/attributes/turbo_modules/turbo_modules__total_call_count.json
+    TURBO_MODULES_TOTAL_CALL_COUNT: Literal["turbo_modules.total_call_count"] = (
+        "turbo_modules.total_call_count"
+    )
+    """The number of native module calls in the flushed call aggregate. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.call.count, turbo_module.total_call_count
+    DEPRECATED: Use turbo_module.call.count instead - Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix
+    Example: 42
+    """
+
+    # Path: model/attributes/turbo_modules/turbo_modules__total_duration_ms.json
+    TURBO_MODULES_TOTAL_DURATION_MS: Literal["turbo_modules.total_duration_ms"] = (
+        "turbo_modules.total_duration_ms"
+    )
+    """The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.duration.total, turbo_module.total_duration_ms
+    DEPRECATED: Use turbo_module.duration.total instead - Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix
+    Example: 128.45
+    """
+
+    # Path: model/attributes/turbo_modules/turbo_modules__total_error_count.json
+    TURBO_MODULES_TOTAL_ERROR_COUNT: Literal["turbo_modules.total_error_count"] = (
+        "turbo_modules.total_error_count"
+    )
+    """The number of failed native module calls in the flushed call aggregate. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.error.count, turbo_module.total_error_count
+    DEPRECATED: Use turbo_module.error.count instead - Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix
+    Example: 2
+    """
+
+    # Path: model/attributes/turbo_modules/turbo_modules__unique_methods.json
+    TURBO_MODULES_UNIQUE_METHODS: Literal["turbo_modules.unique_methods"] = (
+        "turbo_modules.unique_methods"
+    )
+    """The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.call.distinct_count, turbo_module.unique_methods
+    DEPRECATED: Use turbo_module.call.distinct_count instead - Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix
+    Example: 7
     """
 
     # Path: model/attributes/type.json
@@ -22931,6 +23230,372 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
+    "turbo_module.arch": AttributeMetadata(
+        brief="The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="new",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.arch attribute"
+            ),
+        ],
+    ),
+    "turbo_module.call.count": AttributeMetadata(
+        brief="The number of native module calls observed during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=42,
+        aliases=["turbo_module.total_call_count", "turbo_modules.total_call_count"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.call.count attribute"
+            ),
+        ],
+    ),
+    "turbo_module.call.distinct_count": AttributeMetadata(
+        brief="The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=7,
+        aliases=["turbo_module.unique_methods", "turbo_modules.unique_methods"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_module.call.distinct_count attribute",
+            ),
+        ],
+    ),
+    "turbo_module.duration.max": AttributeMetadata(
+        brief="The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=512.5,
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.duration.max attribute"
+            ),
+        ],
+    ),
+    "turbo_module.duration.total": AttributeMetadata(
+        brief="The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=128.45,
+        aliases=["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_module.duration.total attribute",
+            ),
+        ],
+    ),
+    "turbo_module.error.count": AttributeMetadata(
+        brief="The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        aliases=["turbo_module.total_error_count", "turbo_modules.total_error_count"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.error.count attribute"
+            ),
+        ],
+    ),
+    "turbo_module.kind": AttributeMetadata(
+        brief="Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`. Only applies to React Native.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="async",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.kind attribute"
+            ),
+        ],
+    ),
+    "turbo_module.method": AttributeMetadata(
+        brief="The name of the native module method that was called. Only applies to React Native.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="getUniqueId",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.method attribute"
+            ),
+        ],
+    ),
+    "turbo_module.name": AttributeMetadata(
+        brief="The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="RNDeviceInfo",
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.name attribute"
+            ),
+        ],
+    ),
+    "turbo_module.top.duration": AttributeMetadata(
+        brief="The total duration attributed to `turbo_module.top.name`, in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=87.25,
+        aliases=["turbo_module.top_module_duration_ms"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.top.duration attribute"
+            ),
+        ],
+    ),
+    "turbo_module.top.name": AttributeMetadata(
+        brief="The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`. Only applies to React Native.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="RNDeviceInfo.getUniqueId",
+        aliases=["turbo_module.top_module"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added turbo_module.top.name attribute"
+            ),
+        ],
+    ),
+    "turbo_module.top_module": AttributeMetadata(
+        brief="The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.STRING,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="RNDeviceInfo.getUniqueId",
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.top.name",
+            reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.top.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_module.top_module and deprecated it in favor of turbo_module.top.name",
+            ),
+        ],
+    ),
+    "turbo_module.top_module_duration_ms": AttributeMetadata(
+        brief="The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=87.25,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.top.duration",
+            reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.top.duration"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_module.top_module_duration_ms and deprecated it in favor of turbo_module.top.duration",
+            ),
+        ],
+    ),
+    "turbo_module.total_call_count": AttributeMetadata(
+        brief="The number of native module calls observed during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=42,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.call.count",
+            reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.call.count", "turbo_modules.total_call_count"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_module.total_call_count and deprecated it in favor of turbo_module.call.count",
+            ),
+        ],
+    ),
+    "turbo_module.total_duration_ms": AttributeMetadata(
+        brief="The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=128.45,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.duration.total",
+            reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.duration.total", "turbo_modules.total_duration_ms"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_module.total_duration_ms and deprecated it in favor of turbo_module.duration.total",
+            ),
+        ],
+    ),
+    "turbo_module.total_error_count": AttributeMetadata(
+        brief="The number of native module calls that failed during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.error.count",
+            reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.error.count", "turbo_modules.total_error_count"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_module.total_error_count and deprecated it in favor of turbo_module.error.count",
+            ),
+        ],
+    ),
+    "turbo_module.unique_methods": AttributeMetadata(
+        brief="The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=7,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.call.distinct_count",
+            reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.call.distinct_count", "turbo_modules.unique_methods"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_module.unique_methods and deprecated it in favor of turbo_module.call.distinct_count",
+            ),
+        ],
+    ),
+    "turbo_modules.total_call_count": AttributeMetadata(
+        brief="The number of native module calls in the flushed call aggregate. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=42,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.call.count",
+            reason="Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.call.count", "turbo_module.total_call_count"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_modules.total_call_count and deprecated it in favor of turbo_module.call.count",
+            ),
+        ],
+    ),
+    "turbo_modules.total_duration_ms": AttributeMetadata(
+        brief="The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=128.45,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.duration.total",
+            reason="Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.duration.total", "turbo_module.total_duration_ms"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_modules.total_duration_ms and deprecated it in favor of turbo_module.duration.total",
+            ),
+        ],
+    ),
+    "turbo_modules.total_error_count": AttributeMetadata(
+        brief="The number of failed native module calls in the flushed call aggregate. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.error.count",
+            reason="Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.error.count", "turbo_module.total_error_count"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_modules.total_error_count and deprecated it in favor of turbo_module.error.count",
+            ),
+        ],
+    ),
+    "turbo_modules.unique_methods": AttributeMetadata(
+        brief="The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=7,
+        deprecation=DeprecationInfo(
+            replacement="turbo_module.call.distinct_count",
+            reason="Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["turbo_module.call.distinct_count", "turbo_module.unique_methods"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added turbo_modules.unique_methods and deprecated it in favor of turbo_module.call.distinct_count",
+            ),
+        ],
+    ),
     "type": AttributeMetadata(
         brief="More granular type of the operation happening.",
         type=AttributeType.STRING,
@@ -24622,6 +25287,27 @@ Attributes = TypedDict(
         "trpc.procedure_type": str,
         "ttfb.requestTime": float,
         "ttfb": float,
+        "turbo_module.arch": str,
+        "turbo_module.call.count": int,
+        "turbo_module.call.distinct_count": int,
+        "turbo_module.duration.max": float,
+        "turbo_module.duration.total": float,
+        "turbo_module.error.count": int,
+        "turbo_module.kind": str,
+        "turbo_module.method": str,
+        "turbo_module.name": str,
+        "turbo_module.top.duration": float,
+        "turbo_module.top.name": str,
+        "turbo_module.top_module": str,
+        "turbo_module.top_module_duration_ms": float,
+        "turbo_module.total_call_count": int,
+        "turbo_module.total_duration_ms": float,
+        "turbo_module.total_error_count": int,
+        "turbo_module.unique_methods": int,
+        "turbo_modules.total_call_count": int,
+        "turbo_modules.total_duration_ms": float,
+        "turbo_modules.total_error_count": int,
+        "turbo_modules.unique_methods": int,
         "type": str,
         "ui.component_name": str,
         "ui.contributes_to_ttfd": bool,

@@ -1,0 +1,23 @@
+{
+  "key": "turbo_module.total_duration_ms",
+  "brief": "The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 128.45,
+  "alias": ["turbo_module.duration.total", "turbo_modules.total_duration_ms"],
+  "deprecation": {
+    "replacement": "turbo_module.duration.total",
+    "reason": "Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+    "_status": "backfill"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added turbo_module.total_duration_ms and deprecated it in favor of turbo_module.duration.total"
+    }
+  ]
+}
