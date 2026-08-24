@@ -9,7 +9,7 @@
   "example": "/app/myapplication/http/handler/server.py",
   "alias": ["code.file.path"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "code.file.path"
   },
   "visibility": "public",

@@ -9,7 +9,7 @@
   "example": "tcp",
   "alias": ["network.transport", "mcp.transport"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "network.transport"
   },
   "visibility": "public",

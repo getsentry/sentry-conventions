@@ -9,7 +9,7 @@
   "alias": ["user.ip_address"],
   "deprecation": {
     "replacement": "user.ip_address",
-    "_status": null
+    "_status": "backfill"
   },
   "visibility": "public",
   "search_alias": {

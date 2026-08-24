@@ -9,7 +9,7 @@
   "example": "192.168.0.1",
   "alias": ["network.local.address", "net.sock.host.addr"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "network.local.address"
   },
   "visibility": "public",

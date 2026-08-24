@@ -9,7 +9,7 @@
   "example": "example.com",
   "alias": ["address", "server.address", "net.host.name", "http.host", "server_name"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "server.address"
   },
   "visibility": "public",
