@@ -38,12 +38,10 @@ def test_chains_only_contain_keys_holding_the_same_value() -> None:
 
 
 def test_non_rewriting_deprecation_chain_holds_only_its_own_names() -> None:
-    # http.url names url.full as its replacement and also lists it under alias, but its value is
-    # never rewritten there, so the chain stops at itself.
-    assert ATTRIBUTE_METADATA["http.url"].keys == ("http.url",)
-    assert "http.url" not in ATTRIBUTE_METADATA["url.full"].keys
-    # http.host aliases both server.address and client.address; neither is a substitute.
+    # http.host names server.address as its replacement and also lists it under alias (next to
+    # client.address), but its value is never rewritten there, so the chain stops at itself.
     assert ATTRIBUTE_METADATA["http.host"].keys == ("http.host",)
+    assert "http.host" not in ATTRIBUTE_METADATA["server.address"].keys
 
 
 def test_family_members_share_one_key_chain() -> None:
@@ -73,10 +71,13 @@ def test_key_chain_includes_deprecated_search_aliases() -> None:
 
 
 def test_key_chain_omits_deprecated_aliases_outside_the_family() -> None:
-    # address aliases several deprecated attributes replaced by other keys; only its own
-    # replacement and its fellow predecessor belong in the chain.
+    # address aliases five deprecated attributes. Its replacement server.address heads the chain and
+    # the other backfilled ones follow as fellow predecessors, but http.host is left out: its value
+    # is never rewritten onto server.address.
     assert ATTRIBUTE_METADATA["address"].keys == (
         "server.address",
         "address",
+        "http.server_name",
+        "net.host.name",
         "server_name",
     )

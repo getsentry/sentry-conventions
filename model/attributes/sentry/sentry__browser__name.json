@@ -9,7 +9,7 @@
   "example": "Chrome",
   "alias": ["browser.name"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "browser.name"
   },
   "visibility": "public",
