@@ -9,7 +9,8 @@
   "visibility": "internal",
   "changelog": [
     {
-      "version": "next"
+      "version": "0.20.0",
+      "prs": [566]
     }
   ]
 }

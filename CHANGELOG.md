@@ -1,3 +1,47 @@
+## 0.20.0
+
+### Breaking Changes 🛠
+
+- (ops) Drop category prefix and `SPAN_OP` suffix from `op` constants by @Lms24 in [#565](https://github.com/getsentry/sentry-conventions/pull/565)
+
+### New Features ✨
+
+#### Attributes
+
+- Add compact search metadata export by @nsdeschenes in [#569](https://github.com/getsentry/sentry-conventions/pull/569)
+- Add search alias metadata by @cleptric in [#492](https://github.com/getsentry/sentry-conventions/pull/492)
+- Add `sentry.event.serialized_meta` by @mjq in [#566](https://github.com/getsentry/sentry-conventions/pull/566)
+- Change `sentry.description` scrubbing policy to `manual` by @Lms24 in [#555](https://github.com/getsentry/sentry-conventions/pull/555)
+
+#### Op
+
+- Add `handler` op by @msonnb in [#554](https://github.com/getsentry/sentry-conventions/pull/554)
+- Add `router` span operation by @msonnb in [#551](https://github.com/getsentry/sentry-conventions/pull/551)
+
+#### Other
+
+- (ops) Add MCP ops by @msonnb in [#558](https://github.com/getsentry/sentry-conventions/pull/558)
+- (packages) Expose attribute key chains on `ATTRIBUTE_METADATA` by @Lms24 in [#508](https://github.com/getsentry/sentry-conventions/pull/508)
+
+### Bug Fixes 🐛
+
+- (attributes) Add status `backfill` to deprecated attributes with renamed replacements by @Lms24 in [#571](https://github.com/getsentry/sentry-conventions/pull/571)
+- (docs) Add missing file and test docs building in CI by @Lms24 in [#568](https://github.com/getsentry/sentry-conventions/pull/568)
+- (ops) Add `http.client.stream` to `http.client` name and description rules by @msonnb in [#553](https://github.com/getsentry/sentry-conventions/pull/553)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump dompurify from 3.4.12 to 3.4.13 by @dependabot in [#559](https://github.com/getsentry/sentry-conventions/pull/559)
+- Bump js-yaml from 4.3.0 to 4.3.1 by @dependabot in [#560](https://github.com/getsentry/sentry-conventions/pull/560)
+
+#### Other
+
+- (docs) Add Sentry Astro SDK by @Lms24 in [#563](https://github.com/getsentry/sentry-conventions/pull/563)
+- Type-check TypeScript sources by @Lms24 in [#567](https://github.com/getsentry/sentry-conventions/pull/567)
+- Unstale yarn.lock by @Lms24 in [#561](https://github.com/getsentry/sentry-conventions/pull/561)
+
 ## 0.19.0
 
 ### Breaking Changes 🛠
