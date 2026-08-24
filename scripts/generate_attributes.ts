@@ -994,6 +994,8 @@ export interface SearchAlias {
 export type AttributeSearchType = AttributeType | SearchAliasType;
 
 export interface AttributeSearchMetadata {
+  /** The original attribute key before it is exposed under its search name */
+  canonicalName: AttributeName;
   /** The type exposed by Sentry search */
   type: AttributeSearchType;
   /** A description of the attribute */
@@ -1231,7 +1233,10 @@ function generateMetadataDict(
       }
     }
 
+    const canonicalName = preferredAttribute.attributeJson.deprecation?.replacement ?? preferredAttribute.key;
+
     metadataDict += `  ${JSON.stringify(searchKey)}: {\n`;
+    metadataDict += `    canonicalName: ${JSON.stringify(canonicalName)},\n`;
     metadataDict += `    type: ${JSON.stringify(
       preferredAttribute.attributeJson.search_alias?.type ?? preferredAttribute.attributeJson.type,
     )},\n`;
