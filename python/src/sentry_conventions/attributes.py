@@ -21557,7 +21557,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.INTERNAL,
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.20.0", prs=[566]),
         ],
     ),
     "sentry.exclusive_time": AttributeMetadata(

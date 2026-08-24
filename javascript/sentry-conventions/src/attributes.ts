@@ -29001,7 +29001,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'internal',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.20.0', prs: [566] }],
   },
   'sentry.exclusive_time': {
     brief: 'The exclusive time duration of the span in milliseconds.',
