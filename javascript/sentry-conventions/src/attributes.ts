@@ -8595,6 +8595,30 @@ export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
  */
 export type GRAPHQL_OPERATION_TYPE_TYPE = string;
 
+// Path: model/attributes/graphql/graphql__processing__type.json
+
+/**
+ * The type of processing represented by this span. `graphql.processing.type`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_PROCESSING_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "parse"
+ * @example "validate"
+ * @example "execute"
+ * @example "resolve"
+ */
+export const GRAPHQL_PROCESSING_TYPE = 'graphql.processing.type';
+
+/**
+ * Type for {@link GRAPHQL_PROCESSING_TYPE} graphql.processing.type
+ */
+export type GRAPHQL_PROCESSING_TYPE_TYPE = string;
+
 // Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
 
 /**
@@ -18064,6 +18088,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'graphql.document': 'string',
   'graphql.operation.name': 'string',
   'graphql.operation.type': 'string',
+  'graphql.processing.type': 'string',
   'grpc.error.bad_request.field_violations': 'string[]',
   'grpc.error.debug_info.detail': 'string',
   'grpc.error.debug_info.stack_entries': 'string[]',
@@ -18858,6 +18883,7 @@ export type AttributeName =
   | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
+  | typeof GRAPHQL_PROCESSING_TYPE
   | typeof GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
   | typeof GRPC_ERROR_DEBUG_INFO_DETAIL
   | typeof GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
@@ -25222,6 +25248,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'query',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'graphql.processing.type': {
+    brief: 'The type of processing represented by this span.',
+    type: 'string',
+    keys: ['graphql.processing.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'parse',
+    examples: ['parse', 'validate', 'execute', 'resolve'],
+    changelog: [{ version: 'next', prs: [572], description: 'Added graphql.processing.type attribute' }],
+    additionalContext: [
+      'Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.',
+      'Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.',
+    ],
   },
   'grpc.error.bad_request.field_violations': {
     brief:
@@ -33769,6 +33812,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The type of the operation being executed.',
     deprecationChain: ['graphql.operation.type'],
   },
+  'graphql.processing.type': {
+    canonicalName: 'graphql.processing.type',
+    type: 'string',
+    brief: 'The type of processing represented by this span.',
+    deprecationChain: ['graphql.processing.type'],
+  },
   'grpc.error.bad_request.field_violations': {
     canonicalName: 'grpc.error.bad_request.field_violations',
     type: 'string[]',
@@ -36684,6 +36733,7 @@ export type Attributes = {
   [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
+  [GRAPHQL_PROCESSING_TYPE]?: GRAPHQL_PROCESSING_TYPE_TYPE;
   [GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS]?: GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE;
   [GRPC_ERROR_DEBUG_INFO_DETAIL]?: GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE;
   [GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES]?: GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE;

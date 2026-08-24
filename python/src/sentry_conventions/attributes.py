@@ -5221,6 +5221,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "query"
     """
 
+    # Path: model/attributes/graphql/graphql__processing__type.json
+    GRAPHQL_PROCESSING_TYPE: Literal["graphql.processing.type"] = (
+        "graphql.processing.type"
+    )
+    """The type of processing represented by this span.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "parse"
+    Example: "validate"
+    Example: "execute"
+    Example: "resolve"
+    """
+
     # Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
     GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS: Literal[
         "grpc.error.bad_request.field_violations"
@@ -17282,6 +17298,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "graphql.processing.type": AttributeMetadata(
+        brief="The type of processing represented by this span.",
+        type=AttributeType.STRING,
+        keys=("graphql.processing.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="parse",
+        examples=["parse", "validate", "execute", "resolve"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[572],
+                description="Added graphql.processing.type attribute",
+            ),
+        ],
+        additional_context=[
+            "Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.",
+            "Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.",
+        ],
+    ),
     "grpc.error.bad_request.field_violations": AttributeMetadata(
         brief="The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.",
         type=AttributeType.STRING_ARRAY,
@@ -24552,6 +24589,7 @@ Attributes = TypedDict(
         "graphql.document": str,
         "graphql.operation.name": str,
         "graphql.operation.type": str,
+        "graphql.processing.type": str,
         "grpc.error.bad_request.field_violations": List[str],
         "grpc.error.debug_info.detail": str,
         "grpc.error.debug_info.stack_entries": List[str],
