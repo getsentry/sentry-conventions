@@ -21,7 +21,7 @@
         "graphql.validate"
       ],
       "templates": ["GraphQL {{graphql.operation.type}}", "GraphQL Operation"],
-      "examples": ["mutation", "query"]
+      "examples": ["GraphQL query", "GraphQL mutation", "GraphQL subscription", "GraphQL Operation"]
     }
   ]
 }
