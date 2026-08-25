@@ -20187,13 +20187,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   app_start_cold: {
     brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
-    keys: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    keys: ['app_start_cold'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20203,11 +20197,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.vitals.start.value',
       reason: 'Replaced by app.vitals.start.value plus app.vitals.start.type',
-      status: 'backfill',
+      status: 'transform',
+      transformation: 'app_vitals_start_cold_warm_to_value',
     },
     aliases: ['app.vitals.start.cold.value'],
     changelog: [
-      { version: 'next', prs: [576], description: 'Retargeted deprecation replacement to app.vitals.start.value' },
+      {
+        version: 'next',
+        prs: [576],
+        description: 'Retargeted deprecation replacement to app.vitals.start.value via transform',
+      },
       { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
     ],
   },
@@ -20250,13 +20249,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   app_start_warm: {
     brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
-    keys: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    keys: ['app_start_warm'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20266,11 +20259,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'app.vitals.start.value',
       reason: 'Replaced by app.vitals.start.value plus app.vitals.start.type',
-      status: 'backfill',
+      status: 'transform',
+      transformation: 'app_vitals_start_cold_warm_to_value',
     },
     aliases: ['app.vitals.start.warm.value'],
     changelog: [
-      { version: 'next', prs: [576], description: 'Retargeted deprecation replacement to app.vitals.start.value' },
+      {
+        version: 'next',
+        prs: [576],
+        description: 'Retargeted deprecation replacement to app.vitals.start.value via transform',
+      },
       { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
     ],
   },
@@ -20410,13 +20408,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
-    keys: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    keys: ['app.vitals.start.cold.value'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20427,14 +20419,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.start.value',
       reason:
         'Replaced by app.vitals.start.value plus app.vitals.start.type. Cold and warm are not aliases of the unified value because they are mutually exclusive type-specific names.',
-      status: 'backfill',
+      status: 'transform',
+      transformation: 'app_vitals_start_cold_warm_to_value',
     },
     aliases: ['app_start_cold'],
     changelog: [
       {
         version: 'next',
         prs: [576],
-        description: 'Deprecated in favor of app.vitals.start.value plus app.vitals.start.type',
+        description: 'Deprecated in favor of app.vitals.start.value plus app.vitals.start.type via transform',
       },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' },
     ],
@@ -20493,13 +20486,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The duration of an app start in milliseconds. Use with app.vitals.start.type to distinguish cold vs warm starts.',
     type: 'double',
-    keys: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    keys: ['app.vitals.start.value'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20511,19 +20498,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'Send this together with app.vitals.start.type (`cold` or `warm`). This replaces app.vitals.start.cold.value and app.vitals.start.warm.value.',
-      'Not aliased to the cold/warm attributes: those names are type-specific, not 1:1 copies of this key. Relay still derives this attribute (and type) from the older names when they are present.',
+      'Not aliased to the cold/warm attributes: those names are type-specific, not 1:1 copies of this key. Ingest derives this attribute (and type) from the older names via the app_vitals_start_cold_warm_to_value transformation.',
     ],
   },
   'app.vitals.start.warm.value': {
     brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
-    keys: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    keys: ['app.vitals.start.warm.value'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20534,14 +20515,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'app.vitals.start.value',
       reason:
         'Replaced by app.vitals.start.value plus app.vitals.start.type. Cold and warm are not aliases of the unified value because they are mutually exclusive type-specific names.',
-      status: 'backfill',
+      status: 'transform',
+      transformation: 'app_vitals_start_cold_warm_to_value',
     },
     aliases: ['app_start_warm'],
     changelog: [
       {
         version: 'next',
         prs: [576],
-        description: 'Deprecated in favor of app.vitals.start.value plus app.vitals.start.type',
+        description: 'Deprecated in favor of app.vitals.start.value plus app.vitals.start.type via transform',
       },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' },
     ],
@@ -31891,13 +31873,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'app.vitals.start.value',
     type: 'double',
     brief: 'The duration of a cold app start in milliseconds',
-    deprecationChain: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    deprecationChain: ['app.vitals.start.cold.value'],
   },
   'app.vitals.start.prewarmed': {
     canonicalName: 'app.vitals.start.prewarmed',
@@ -31929,25 +31905,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief:
       'The duration of an app start in milliseconds. Use with app.vitals.start.type to distinguish cold vs warm starts.',
-    deprecationChain: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    deprecationChain: ['app.vitals.start.value'],
   },
   'app.vitals.start.warm.value': {
     canonicalName: 'app.vitals.start.value',
     type: 'double',
     brief: 'The duration of a warm app start in milliseconds',
-    deprecationChain: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    deprecationChain: ['app.vitals.start.warm.value'],
   },
   'app.vitals.ttfd.value': {
     canonicalName: 'app.vitals.ttfd.value',
@@ -31965,13 +31929,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'app.vitals.start.value',
     type: 'double',
     brief: 'The duration of a cold app start in milliseconds',
-    deprecationChain: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    deprecationChain: ['app_start_cold'],
   },
   app_start_type: {
     canonicalName: 'app.vitals.start.type',
@@ -31983,13 +31941,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'app.vitals.start.value',
     type: 'double',
     brief: 'The duration of a warm app start in milliseconds',
-    deprecationChain: [
-      'app.vitals.start.value',
-      'app.vitals.start.cold.value',
-      'app.vitals.start.warm.value',
-      'app_start_cold',
-      'app_start_warm',
-    ],
+    deprecationChain: ['app_start_warm'],
   },
   'art.gc.blocking_count': {
     canonicalName: 'art.gc.blocking_count',

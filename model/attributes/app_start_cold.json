@@ -11,14 +11,15 @@
   "deprecation": {
     "replacement": "app.vitals.start.value",
     "reason": "Replaced by app.vitals.start.value plus app.vitals.start.type",
-    "_status": "backfill"
+    "_status": "transform",
+    "transformation": "app_vitals_start_cold_warm_to_value"
   },
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
       "prs": [576],
-      "description": "Retargeted deprecation replacement to app.vitals.start.value"
+      "description": "Retargeted deprecation replacement to app.vitals.start.value via transform"
     },
     {
       "version": "0.5.0",

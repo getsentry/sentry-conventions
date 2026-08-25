@@ -11,14 +11,15 @@
   "deprecation": {
     "replacement": "app.vitals.start.value",
     "reason": "Replaced by app.vitals.start.value plus app.vitals.start.type. Cold and warm are not aliases of the unified value because they are mutually exclusive type-specific names.",
-    "_status": "backfill"
+    "_status": "transform",
+    "transformation": "app_vitals_start_cold_warm_to_value"
   },
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
       "prs": [576],
-      "description": "Deprecated in favor of app.vitals.start.value plus app.vitals.start.type"
+      "description": "Deprecated in favor of app.vitals.start.value plus app.vitals.start.type via transform"
     },
     {
       "version": "0.5.0",

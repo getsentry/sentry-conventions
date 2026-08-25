@@ -1,7 +1,7 @@
 {
   "key": "app_start_cold",
   "full_name": "App Start Cold",
-  "brief": "The time it takes for the app to start from a cold state",
+  "brief": "The time it takes for the app to start from a cold state. Corresponds to app.vitals.start.value when app.vitals.start.type is cold.",
   "unit": "millisecond",
   "platform": "mobile",
   "attribute": "app.vitals.start.value"
