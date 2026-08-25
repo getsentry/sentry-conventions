@@ -264,11 +264,15 @@ class _AttributeNamesMeta(type):
         "GEN_AI_USAGE_PROMPT_TOKENS",
         "HARDWARECONCURRENCY",
         "HTTP_CLIENT_IP",
+        "HTTP_DECODED_RESPONSE_CONTENT_LENGTH",
         "HTTP_FLAVOR",
         "HTTP_HOST",
         "HTTP_METHOD",
+        "HTTP_REQUEST_CONTENT_LENGTH",
+        "HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED",
         "_HTTP_REQUEST_METHOD",
         "HTTP_RESPONSE_CONTENT_LENGTH",
+        "HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED",
         "HTTP_RESPONSE_TRANSFER_SIZE",
         "HTTP_SCHEME",
         "HTTP_SERVER_NAME",
@@ -5443,6 +5447,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: http.response.body.decoded_size, http.response_content_length_uncompressed
+    DEPRECATED: Use http.response.body.decoded_size instead
     Example: 456
     """
 
@@ -5516,6 +5522,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
+    """
+
+    # Path: model/attributes/http/http__request__body__decoded_size.json
+    HTTP_REQUEST_BODY_DECODED_SIZE: Literal["http.request.body.decoded_size"] = (
+        "http.request.body.decoded_size"
+    )
+    """The decoded body size of the request (in bytes).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.request_content_length_uncompressed
+    Example: 456
+    """
+
+    # Path: model/attributes/http/http__request__body__size.json
+    HTTP_REQUEST_BODY_SIZE: Literal["http.request.body.size"] = "http.request.body.size"
+    """The encoded body size of the request (in bytes).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: http.request_content_length
+    Example: 123
     """
 
     # Path: model/attributes/http/http__request__connect_start.json
@@ -5740,6 +5772,36 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1732829553.68
     """
 
+    # Path: model/attributes/http/http__request_content_length.json
+    HTTP_REQUEST_CONTENT_LENGTH: Literal["http.request_content_length"] = (
+        "http.request_content_length"
+    )
+    """The encoded body size of the request (in bytes).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: http.request.body.size
+    DEPRECATED: Use http.request.body.size instead
+    Example: 123
+    """
+
+    # Path: model/attributes/http/http__request_content_length_uncompressed.json
+    HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED: Literal[
+        "http.request_content_length_uncompressed"
+    ] = "http.request_content_length_uncompressed"
+    """The decoded body size of the request (in bytes).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: http.request.body.decoded_size
+    DEPRECATED: Use http.request.body.decoded_size instead
+    Example: 456
+    """
+
     # Path: model/attributes/http/http__request_method.json
     _HTTP_REQUEST_METHOD: Literal["http.request_method"] = "http.request_method"
     """The HTTP method used.
@@ -5751,6 +5813,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: method, http.method, http.request.method
     DEPRECATED: Use http.request.method instead
     Example: "GET"
+    """
+
+    # Path: model/attributes/http/http__response__body__decoded_size.json
+    HTTP_RESPONSE_BODY_DECODED_SIZE: Literal["http.response.body.decoded_size"] = (
+        "http.response.body.decoded_size"
+    )
+    """The decoded body size of the response (in bytes).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.decoded_response_content_length, http.response_content_length_uncompressed
+    Example: 456
     """
 
     # Path: model/attributes/http/http__response__body__size.json
@@ -5821,6 +5897,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 404
     """
 
+    # Path: model/attributes/http/http__response__status_text.json
+    HTTP_RESPONSE_STATUS_TEXT: Literal["http.response.status_text"] = (
+        "http.response.status_text"
+    )
+    """The reason phrase of the HTTP response.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.status_text
+    Example: "NOT FOUND"
+    """
+
     # Path: model/attributes/http/http__response_content_length.json
     HTTP_RESPONSE_CONTENT_LENGTH: Literal["http.response_content_length"] = (
         "http.response_content_length"
@@ -5834,6 +5924,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: http.response.body.size, http.response.header.content-length
     DEPRECATED: Use http.response.body.size instead
     Example: 123
+    """
+
+    # Path: model/attributes/http/http__response_content_length_uncompressed.json
+    HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED: Literal[
+        "http.response_content_length_uncompressed"
+    ] = "http.response_content_length_uncompressed"
+    """The decoded body size of the response (in bytes).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Aliases: http.response.body.decoded_size, http.decoded_response_content_length
+    DEPRECATED: Use http.response.body.decoded_size instead
+    Example: 456
     """
 
     # Path: model/attributes/http/http__response_transfer_size.json
@@ -5915,6 +6020,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: http.response.status_code
     DEPRECATED: Use http.response.status_code instead
     Example: 404
+    """
+
+    # Path: model/attributes/http/http__status_text.json
+    HTTP_STATUS_TEXT: Literal["http.status_text"] = "http.status_text"
+    """The reason phrase of the HTTP response
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: http.response.status_text
+    Example: "NOT FOUND"
     """
 
     # Path: model/attributes/http/http__target.json
@@ -17585,12 +17702,29 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "http.decoded_response_content_length": AttributeMetadata(
         brief="The decoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
-        keys=("http.decoded_response_content_length",),
+        keys=(
+            "http.response.body.decoded_size",
+            "http.decoded_response_content_length",
+            "http.response_content_length_uncompressed",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=456,
+        deprecation=DeprecationInfo(
+            replacement="http.response.body.decoded_size",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "http.response.body.decoded_size",
+            "http.response_content_length_uncompressed",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Deprecated in favor of http.response.body.decoded_size",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17710,6 +17844,53 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[336],
                 description="Added http.request.body.data attribute",
             ),
+        ],
+    ),
+    "http.request.body.decoded_size": AttributeMetadata(
+        brief="The decoded body size of the request (in bytes).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "http.request.body.decoded_size",
+            "http.request_content_length_uncompressed",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=456,
+        aliases=["http.request_content_length_uncompressed"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Added http.request.body.decoded_size attribute",
+            ),
+        ],
+        additional_context=[
+            "This is the size after content decoding. Set it only when the decoded size is actually known, for example by measuring a decompressed request stream.",
+            "Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.request.body.size` for that.",
+        ],
+    ),
+    "http.request.body.size": AttributeMetadata(
+        brief="The encoded body size of the request (in bytes).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "http.request.body.size",
+            "http.request_content_length",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=123,
+        aliases=["http.request_content_length"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Added http.request.body.size attribute",
+            ),
+        ],
+        additional_context=[
+            "This is the on-the-wire (encoded) size. The `content-length` header always carries the encoded size, so set this attribute whenever `content-length` is known, regardless of whether `content-encoding` is present."
         ],
     ),
     "http.request.connect_start": AttributeMetadata(
@@ -17957,6 +18138,53 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[130, 134]),
         ],
     ),
+    "http.request_content_length": AttributeMetadata(
+        brief="The encoded body size of the request (in bytes).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "http.request.body.size",
+            "http.request_content_length",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=123,
+        deprecation=DeprecationInfo(
+            replacement="http.request.body.size", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["http.request.body.size"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Added http.request_content_length attribute, deprecated in favor of http.request.body.size",
+            ),
+        ],
+    ),
+    "http.request_content_length_uncompressed": AttributeMetadata(
+        brief="The decoded body size of the request (in bytes).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "http.request.body.decoded_size",
+            "http.request_content_length_uncompressed",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=456,
+        deprecation=DeprecationInfo(
+            replacement="http.request.body.decoded_size",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["http.request.body.decoded_size"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Added http.request_content_length_uncompressed attribute, deprecated in favor of http.request.body.decoded_size",
+            ),
+        ],
+    ),
     "http.request_method": AttributeMetadata(
         brief="The HTTP method used.",
         type=AttributeType.STRING,
@@ -17980,6 +18208,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[343],
                 description="Added http.request_method attribute",
             ),
+        ],
+    ),
+    "http.response.body.decoded_size": AttributeMetadata(
+        brief="The decoded body size of the response (in bytes).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "http.response.body.decoded_size",
+            "http.decoded_response_content_length",
+            "http.response_content_length_uncompressed",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=456,
+        aliases=[
+            "http.decoded_response_content_length",
+            "http.response_content_length_uncompressed",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Added http.response.body.decoded_size attribute",
+            ),
+        ],
+        additional_context=[
+            "This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.",
+            "Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.",
         ],
     ),
     "http.response.body.size": AttributeMetadata(
@@ -18069,6 +18325,29 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="http.response_status_code"),
     ),
+    "http.response.status_text": AttributeMetadata(
+        brief="The reason phrase of the HTTP response.",
+        type=AttributeType.STRING,
+        keys=(
+            "http.response.status_text",
+            "http.status_text",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="NOT FOUND",
+        aliases=["http.status_text"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Added http.response.status_text attribute",
+            ),
+        ],
+        additional_context=[
+            "HTTP/2 and HTTP/3 do not carry a reason phrase. Do not set this attribute when the protocol provides none; use `http.response.status_code` instead."
+        ],
+    ),
     "http.response_content_length": AttributeMetadata(
         brief="The encoded body size of the response (in bytes).",
         type=AttributeType.INTEGER,
@@ -18091,6 +18370,34 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
         search_alias=SearchAlias(name="http.response_content_length", type="byte"),
+    ),
+    "http.response_content_length_uncompressed": AttributeMetadata(
+        brief="The decoded body size of the response (in bytes).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "http.response.body.decoded_size",
+            "http.decoded_response_content_length",
+            "http.response_content_length_uncompressed",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=456,
+        deprecation=DeprecationInfo(
+            replacement="http.response.body.decoded_size",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "http.response.body.decoded_size",
+            "http.decoded_response_content_length",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size",
+            ),
+        ],
     ),
     "http.response_transfer_size": AttributeMetadata(
         brief="The transfer size of the response (in bytes).",
@@ -18222,6 +18529,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "http.status_text": AttributeMetadata(
+        brief="The reason phrase of the HTTP response",
+        type=AttributeType.STRING,
+        keys=(
+            "http.status_text",
+            "http.response.status_text",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="NOT FOUND",
+        examples=["NOT FOUND"],
+        aliases=["http.response.status_text"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[574],
+                description="Added http.status_text attribute",
+            ),
         ],
     ),
     "http.target": AttributeMetadata(
@@ -24612,6 +24940,8 @@ Attributes = TypedDict(
         "http.method": str,
         "http.query": str,
         "http.request.body.data": str,
+        "http.request.body.decoded_size": int,
+        "http.request.body.size": int,
         "http.request.connect_start": float,
         "http.request.connection_end": float,
         "http.request.domain_lookup_end": float,
@@ -24629,19 +24959,25 @@ Attributes = TypedDict(
         "http.request.secure_connection_start": float,
         "http.request.time_to_first_byte": float,
         "http.request.worker_start": float,
+        "http.request_content_length": int,
+        "http.request_content_length_uncompressed": int,
         "http.request_method": str,
+        "http.response.body.decoded_size": int,
         "http.response.body.size": int,
         "http.response.header.<key>": List[str],
         "http.response.header.content-length": str,
         "http.response.size": int,
         "http.response.status_code": int,
+        "http.response.status_text": str,
         "http.response_content_length": int,
+        "http.response_content_length_uncompressed": int,
         "http.response_transfer_size": int,
         "http.route": str,
         "http.scheme": str,
         "http.server.request.time_in_queue": float,
         "http.server_name": str,
         "http.status_code": int,
+        "http.status_text": str,
         "http.target": str,
         "http.url": str,
         "http.user_agent": str,
