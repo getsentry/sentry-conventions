@@ -141,6 +141,33 @@ export function deriveAttributeKeyChains(attributes: AttributeDefinition[]): Map
   return chains;
 }
 
+function assertUniqueSearchAliases(attributes: Array<{ key: string; attributeJson: AttributeJson }>): void {
+  const keysBySearchAlias = new Map<string, string[]>();
+
+  for (const { key, attributeJson } of attributes) {
+    const searchAliasName = attributeJson.search_alias?.name;
+    if (searchAliasName == null) {
+      continue;
+    }
+
+    const keys = keysBySearchAlias.get(searchAliasName) ?? [];
+    keys.push(key);
+    keysBySearchAlias.set(searchAliasName, keys);
+  }
+
+  const duplicates = [...keysBySearchAlias.entries()]
+    .filter(([, keys]) => keys.length > 1)
+    .toSorted(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
+    .map(([searchAliasName, keys]) => {
+      const sortedKeys = [...keys].toSorted();
+      return `  "${searchAliasName}": ${sortedKeys.map((key) => `"${key}"`).join(', ')}`;
+    });
+
+  if (duplicates.length > 0) {
+    throw new Error(`Duplicate search aliases found:\n${duplicates.join('\n')}`);
+  }
+}
+
 export async function generateAttributes(options?: Partial<GenerateAttributesOptions>) {
   const repositoryRoot = path.join(__dirname, '..');
   const attributesDir = options?.attributesDir ?? path.join(repositoryRoot, 'model', 'attributes');
@@ -250,6 +277,7 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
     });
   }
 
+  assertUniqueSearchAliases(allAttributes);
   const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
   let attributeTypeMap = '';
   let individualConstants = '';
@@ -610,6 +638,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
       attributeJson,
     };
   });
+  assertUniqueSearchAliases(allAttributes);
   const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
 
   // First pass: collect deprecated attributes
