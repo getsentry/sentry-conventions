@@ -277,6 +277,7 @@ class _AttributeNamesMeta(type):
         "HTTP_SCHEME",
         "HTTP_SERVER_NAME",
         "HTTP_STATUS_CODE",
+        "HTTP_STATUS_TEXT",
         "HTTP_TARGET",
         "HTTP_URL",
         "HTTP_USER_AGENT",
@@ -6031,6 +6032,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: http.response.status_text
+    DEPRECATED: Use http.response.status_text instead
     Example: "NOT FOUND"
     """
 
@@ -18535,20 +18537,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The reason phrase of the HTTP response",
         type=AttributeType.STRING,
         keys=(
-            "http.status_text",
             "http.response.status_text",
+            "http.status_text",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="NOT FOUND",
         examples=["NOT FOUND"],
+        deprecation=DeprecationInfo(
+            replacement="http.response.status_text", status=DeprecationStatus.BACKFILL
+        ),
         aliases=["http.response.status_text"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[574],
-                description="Added http.status_text attribute",
+                description="Added http.status_text attribute, deprecated in favor of http.response.status_text",
             ),
         ],
     ),

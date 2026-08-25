@@ -9962,6 +9962,7 @@ export type HTTP_STATUS_CODE_TYPE = number;
  *
  * Aliases: {@link HTTP_RESPONSE_STATUS_TEXT} `http.response.status_text`
  *
+ * @deprecated Use {@link HTTP_RESPONSE_STATUS_TEXT} (http.response.status_text) instead
  * @example "NOT FOUND"
  */
 export const HTTP_STATUS_TEXT = 'http.status_text';
@@ -26422,7 +26423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.status_text': {
     brief: 'The reason phrase of the HTTP response',
     type: 'string',
-    keys: ['http.status_text', 'http.response.status_text'],
+    keys: ['http.response.status_text', 'http.status_text'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26430,8 +26431,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'NOT FOUND',
     examples: ['NOT FOUND'],
+    deprecation: {
+      replacement: 'http.response.status_text',
+      status: 'backfill',
+    },
     aliases: ['http.response.status_text'],
-    changelog: [{ version: 'next', prs: [574], description: 'Added http.status_text attribute' }],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description: 'Added http.status_text attribute, deprecated in favor of http.response.status_text',
+      },
+    ],
   },
   'http.target': {
     brief: 'The pathname and query string of the URL.',
@@ -34299,10 +34310,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['client.address', 'http.client_ip'],
   },
   'http.decoded_response_content_length': {
-    canonicalName: 'http.decoded_response_content_length',
+    canonicalName: 'http.response.body.decoded_size',
     type: 'byte',
     brief: 'The decoded body size of the response (in bytes).',
-    deprecationChain: ['http.decoded_response_content_length'],
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
   },
   'http.flavor': {
     canonicalName: 'network.protocol.version',
@@ -34341,6 +34356,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'HTTP request body data. Can be given as string or structural data of any format.',
     deprecationChain: ['http.request.body.data'],
+  },
+  'http.request.body.decoded_size': {
+    canonicalName: 'http.request.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+  },
+  'http.request.body.size': {
+    canonicalName: 'http.request.body.size',
+    type: 'integer',
+    brief: 'The encoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.size', 'http.request_content_length'],
   },
   'http.request.connect_start': {
     canonicalName: 'http.request.connect_start',
@@ -34456,11 +34483,33 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
     deprecationChain: ['http.request.worker_start'],
   },
+  'http.request_content_length': {
+    canonicalName: 'http.request.body.size',
+    type: 'integer',
+    brief: 'The encoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.size', 'http.request_content_length'],
+  },
+  'http.request_content_length_uncompressed': {
+    canonicalName: 'http.request.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+  },
   'http.request_method': {
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
     deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'http.response.body.decoded_size': {
+    canonicalName: 'http.response.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
   },
   'http.response.body.size': {
     canonicalName: 'http.response.body.size',
@@ -34495,6 +34544,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The transfer size of the response (in bytes).',
     deprecationChain: ['http.response.size', 'http.response_transfer_size'],
   },
+  'http.response.status_text': {
+    canonicalName: 'http.response.status_text',
+    type: 'string',
+    brief: 'The reason phrase of the HTTP response.',
+    deprecationChain: ['http.response.status_text', 'http.status_text'],
+  },
   'http.response_content_length': {
     canonicalName: 'http.response.body.size',
     type: 'byte',
@@ -34503,6 +34558,16 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'http.response.body.size',
       'http.response.header.content-length',
       'http.response_content_length',
+    ],
+  },
+  'http.response_content_length_uncompressed': {
+    canonicalName: 'http.response.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
     ],
   },
   'http.response_status_code': {
@@ -34547,6 +34612,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'The status code of the HTTP response.',
     deprecationChain: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
+  },
+  'http.status_text': {
+    canonicalName: 'http.response.status_text',
+    type: 'string',
+    brief: 'The reason phrase of the HTTP response',
+    deprecationChain: ['http.response.status_text', 'http.status_text'],
   },
   'http.target': {
     canonicalName: 'url.path',
