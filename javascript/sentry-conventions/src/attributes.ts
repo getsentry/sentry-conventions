@@ -29901,9 +29901,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
       { version: '0.0.0' },
     ],
-    searchAlias: {
-      name: 'transaction',
-    },
   },
   'sentry.user.email': {
     brief: 'User email address.',
@@ -35656,6 +35653,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
     deprecationChain: ['sentry.trace.parent_span_id'],
+  },
+  'sentry.transaction': {
+    canonicalName: 'sentry.segment.name',
+    type: 'string',
+    brief: 'The sentry transaction (segment name).',
+    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
   },
   'server.address': {
     canonicalName: 'server.address',

@@ -22554,7 +22554,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="transaction"),
     ),
     "sentry.user.email": AttributeMetadata(
         brief="User email address.",
