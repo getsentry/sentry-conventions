@@ -4,5 +4,5 @@
   "brief": "The time it takes for the app to start from a cold state",
   "unit": "millisecond",
   "platform": "mobile",
-  "attribute": "app.vitals.start.cold.value"
+  "attribute": "app.vitals.start.value"
 }

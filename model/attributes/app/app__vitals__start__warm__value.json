@@ -8,8 +8,17 @@
   "is_in_otel": false,
   "example": 1234.56,
   "alias": ["app_start_warm"],
+  "deprecation": {
+    "replacement": "app.vitals.start.value",
+    "reason": "Replaced by app.vitals.start.value plus app.vitals.start.type. Cold and warm are not aliases of the unified value because they are mutually exclusive type-specific names.",
+    "_status": "backfill"
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated in favor of app.vitals.start.value plus app.vitals.start.type"
+    },
     {
       "version": "0.5.0",
       "prs": [313],
