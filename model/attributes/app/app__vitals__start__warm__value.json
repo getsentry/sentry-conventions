@@ -17,6 +17,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [576],
       "description": "Deprecated in favor of app.vitals.start.value plus app.vitals.start.type"
     },
     {

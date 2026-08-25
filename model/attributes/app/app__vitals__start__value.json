@@ -15,6 +15,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [576],
       "description": "Added app.vitals.start.value as the unified app start duration"
     }
   ]

@@ -17,6 +17,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [576],
       "description": "Retargeted deprecation replacement to app.vitals.start.value"
     },
     {

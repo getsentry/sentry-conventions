@@ -20207,7 +20207,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.start.cold.value'],
     changelog: [
-      { version: 'next', description: 'Retargeted deprecation replacement to app.vitals.start.value' },
+      { version: 'next', prs: [576], description: 'Retargeted deprecation replacement to app.vitals.start.value' },
       { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.cold.value' },
     ],
   },
@@ -20270,7 +20270,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.start.warm.value'],
     changelog: [
-      { version: 'next', description: 'Retargeted deprecation replacement to app.vitals.start.value' },
+      { version: 'next', prs: [576], description: 'Retargeted deprecation replacement to app.vitals.start.value' },
       { version: '0.5.0', prs: [323], description: 'Added and deprecated in favor of app.vitals.start.warm.value' },
     ],
   },
@@ -20431,7 +20431,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app_start_cold'],
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of app.vitals.start.value plus app.vitals.start.type' },
+      {
+        version: 'next',
+        prs: [576],
+        description: 'Deprecated in favor of app.vitals.start.value plus app.vitals.start.type',
+      },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.cold.value attribute' },
     ],
   },
@@ -20502,7 +20506,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1234.56,
-    changelog: [{ version: 'next', description: 'Added app.vitals.start.value as the unified app start duration' }],
+    changelog: [
+      { version: 'next', prs: [576], description: 'Added app.vitals.start.value as the unified app start duration' },
+    ],
     additionalContext: [
       'Send this together with app.vitals.start.type (`cold` or `warm`). This replaces app.vitals.start.cold.value and app.vitals.start.warm.value.',
       'Not aliased to the cold/warm attributes: those names are type-specific, not 1:1 copies of this key. Relay still derives this attribute (and type) from the older names when they are present.',
@@ -20532,7 +20538,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app_start_warm'],
     changelog: [
-      { version: 'next', description: 'Deprecated in favor of app.vitals.start.value plus app.vitals.start.type' },
+      {
+        version: 'next',
+        prs: [576],
+        description: 'Deprecated in favor of app.vitals.start.value plus app.vitals.start.type',
+      },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.start.warm.value attribute' },
     ],
   },

@@ -11446,6 +11446,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[576],
                 description="Deprecated in favor of app.vitals.start.value plus app.vitals.start.type",
             ),
             ChangelogEntry(
@@ -11540,6 +11541,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[576],
                 description="Added app.vitals.start.value as the unified app start duration",
             ),
         ],
@@ -11571,6 +11573,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[576],
                 description="Deprecated in favor of app.vitals.start.value plus app.vitals.start.type",
             ),
             ChangelogEntry(
@@ -11643,6 +11646,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[576],
                 description="Retargeted deprecation replacement to app.vitals.start.value",
             ),
             ChangelogEntry(
@@ -11702,6 +11706,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[576],
                 description="Retargeted deprecation replacement to app.vitals.start.value",
             ),
             ChangelogEntry(
