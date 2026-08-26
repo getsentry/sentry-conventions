@@ -92,14 +92,9 @@ describe('generateAttributes', () => {
         },
       },
       {
-        key: 'legacy.attribute',
+        key: 'shared.name',
         brief: 'The deprecated attribute.',
         type: 'double',
-        search_alias: {
-          name: 'shared.name',
-          type: 'percentage',
-          deprecated_aliases: ['older.name'],
-        },
         deprecation: { _status: 'normalize' },
       },
       {
@@ -136,20 +131,49 @@ describe('generateAttributes', () => {
         '"fallback.attribute": {\n    canonicalName: "fallback.attribute",\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute"],',
       );
       expect(compactMetadata).toContain(
-        '"shared.name": {\n    canonicalName: "current.attribute",\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name","legacy.attribute","older.name"],',
+        '"shared.name": {\n    canonicalName: "current.attribute",\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name"],',
       );
       expect(compactMetadata).toContain(
         '"deprecated.search": {\n    canonicalName: "fallback.attribute",\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',
       );
       expect(compactMetadata).not.toContain('"current.attribute": {');
-      expect(compactMetadata).not.toContain('"legacy.attribute": {');
-      expect(compactMetadata).not.toContain('type: "percentage"');
 
       const searchKeys = [...compactMetadata.matchAll(/^  "([^"]+)": \{$/gm)].map((match) => match[1]);
       expect(searchKeys).toEqual([...searchKeys].sort());
 
       const compactPropertyNames = [...compactMetadata.matchAll(/^    (\w+):/gm)].map((match) => match[1]);
       expect(new Set(compactPropertyNames)).toEqual(new Set(['canonicalName', 'type', 'brief', 'deprecationChain']));
+    } finally {
+      fs.rmSync(temporaryDirectory, { recursive: true });
+    }
+  });
+
+  it('throws when two attributes share the same search alias', async () => {
+    const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
+    const attributesDir = path.join(temporaryDirectory, 'attributes');
+    const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
+    const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
+    fs.mkdirSync(attributesDir);
+
+    for (const key of ['first.attribute', 'second.attribute']) {
+      fs.writeFileSync(
+        path.join(attributesDir, `${key.replaceAll('.', '__')}.json`),
+        JSON.stringify({
+          key,
+          brief: `Attribute ${key}`,
+          type: 'string',
+          apply_scrubbing: { key: 'never' },
+          is_in_otel: false,
+          visibility: 'public',
+          search_alias: { name: 'duplicate.alias' },
+        }),
+      );
+    }
+
+    try {
+      await expect(generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath })).rejects.toThrow(
+        'Duplicate search aliases found:\n  "duplicate.alias": "first.attribute", "second.attribute"',
+      );
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true });
     }
