@@ -7,13 +7,17 @@
   },
   "is_in_otel": true,
   "example": "https://example.com/test?foo=bar#buzz",
-  "alias": ["url.full", "url", "aws.request.url"],
+  "alias": ["url.full", "url", "aws.request.url", "messaging.url"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "url.full"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.url as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [61, 108]

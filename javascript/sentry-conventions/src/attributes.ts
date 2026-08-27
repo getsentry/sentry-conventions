@@ -2760,7 +2760,7 @@ export type _AWS_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
  * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
@@ -4653,6 +4653,28 @@ export const DB_COLLECTION_NAME = 'db.collection.name';
  * Type for {@link DB_COLLECTION_NAME} db.collection.name
  */
 export type DB_COLLECTION_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__connection_string.json
+
+/**
+ * The connection string used to connect to the database. `db.connection_string`
+ *
+ * Attribute Value Type: `string` {@link DB_CONNECTION_STRING_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.
+ * @example "redis://localhost:6379"
+ */
+export const DB_CONNECTION_STRING = 'db.connection_string';
+
+/**
+ * Type for {@link DB_CONNECTION_STRING} db.connection_string
+ */
+export type DB_CONNECTION_STRING_TYPE = string;
 
 // Path: model/attributes/db/db__driver__name.json
 
@@ -8980,7 +9002,7 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -9815,7 +9837,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -10914,7 +10936,7 @@ export type MCP_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - OTel uses the generic network.protocol.name attribute
  * @example "file"
@@ -11195,6 +11217,30 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__conversation_id.json
+
+/**
+ * The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID". `messaging.conversation_id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_CONVERSATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_CONVERSATION_ID} `messaging.message.conversation_id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_CONVERSATION_ID} (messaging.message.conversation_id) instead - This attribute is being deprecated in favor of messaging.message.conversation_id.
+ * @example "MyConversationId"
+ */
+export const MESSAGING_CONVERSATION_ID = 'messaging.conversation_id';
+
+/**
+ * Type for {@link MESSAGING_CONVERSATION_ID} messaging.conversation_id
+ */
+export type MESSAGING_CONVERSATION_ID_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination.json
 
 /**
@@ -11402,6 +11448,8 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_CONVERSATION_ID} `messaging.conversation_id`
+ *
  * @example "MyConversationId"
  */
 export const MESSAGING_MESSAGE_CONVERSATION_ID = 'messaging.message.conversation_id';
@@ -11444,6 +11492,8 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`
+ *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
 export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
@@ -11452,6 +11502,30 @@ export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
  * Type for {@link MESSAGING_MESSAGE_ID} messaging.message.id
  */
 export type MESSAGING_MESSAGE_ID_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__message_id.json
+
+/**
+ * A value used by the messaging system as an identifier for the message, represented as a string. `messaging.message_id`
+ *
+ * Attribute Value Type: `string` {@link _MESSAGING_MESSAGE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_ID} (messaging.message.id) instead - This attribute is being deprecated in favor of messaging.message.id.
+ * @example "452a7c7c7c7048c2f887f0e7"
+ */
+export const _MESSAGING_MESSAGE_ID = 'messaging.message_id';
+
+/**
+ * Type for {@link _MESSAGING_MESSAGE_ID} messaging.message_id
+ */
+export type _MESSAGING_MESSAGE_ID_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__message__receive__latency.json
 
@@ -11495,6 +11569,30 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__operation.json
+
+/**
+ * The name of the messaging operation being performed. `messaging.operation`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_OPERATION_NAME} `messaging.operation.name`
+ *
+ * @deprecated Use {@link MESSAGING_OPERATION_NAME} (messaging.operation.name) instead - This attribute is being deprecated in favor of messaging.operation.name.
+ * @example "publish"
+ */
+export const MESSAGING_OPERATION = 'messaging.operation';
+
+/**
+ * Type for {@link MESSAGING_OPERATION} messaging.operation
+ */
+export type MESSAGING_OPERATION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__operation__name.json
 
 /**
@@ -11506,6 +11604,8 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_OPERATION} `messaging.operation`
  *
  * @example "send"
  */
@@ -11537,6 +11637,54 @@ export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
  */
 export type MESSAGING_OPERATION_TYPE_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__protocol.json
+
+/**
+ * OSI application layer or non-OSI equivalent. `messaging.protocol`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_PROTOCOL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - This attribute is being deprecated in favor of network.protocol.name.
+ * @example "AMQP"
+ */
+export const MESSAGING_PROTOCOL = 'messaging.protocol';
+
+/**
+ * Type for {@link MESSAGING_PROTOCOL} messaging.protocol
+ */
+export type MESSAGING_PROTOCOL_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__protocol_version.json
+
+/**
+ * The actual version of the protocol used for network communication. `messaging.protocol_version`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_PROTOCOL_VERSION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead - This attribute is being deprecated in favor of network.protocol.version.
+ * @example "0.9.1"
+ */
+export const MESSAGING_PROTOCOL_VERSION = 'messaging.protocol_version';
+
+/**
+ * Type for {@link MESSAGING_PROTOCOL_VERSION} messaging.protocol_version
+ */
+export type MESSAGING_PROTOCOL_VERSION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
 
 /**
@@ -11549,6 +11697,8 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_RABBITMQ_ROUTING_KEY} `messaging.rabbitmq.routing_key`
+ *
  * @example "myKey"
  */
 export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.destination.routing_key';
@@ -11557,6 +11707,30 @@ export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.de
  * Type for {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} messaging.rabbitmq.destination.routing_key
  */
 export type MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__rabbitmq__routing_key.json
+
+/**
+ * RabbitMQ message routing key. `messaging.rabbitmq.routing_key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_RABBITMQ_ROUTING_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} `messaging.rabbitmq.destination.routing_key`
+ *
+ * @deprecated Use {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} (messaging.rabbitmq.destination.routing_key) instead - This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.
+ * @example "myKey"
+ */
+export const MESSAGING_RABBITMQ_ROUTING_KEY = 'messaging.rabbitmq.routing_key';
+
+/**
+ * Type for {@link MESSAGING_RABBITMQ_ROUTING_KEY} messaging.rabbitmq.routing_key
+ */
+export type MESSAGING_RABBITMQ_ROUTING_KEY_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__system.json
 
@@ -11578,6 +11752,30 @@ export const MESSAGING_SYSTEM = 'messaging.system';
  * Type for {@link MESSAGING_SYSTEM} messaging.system
  */
 export type MESSAGING_SYSTEM_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__url.json
+
+/**
+ * The connection string of the messaging broker. `messaging.url`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full.
+ * @example "amqp://guest:guest@localhost:5672"
+ */
+export const MESSAGING_URL = 'messaging.url';
+
+/**
+ * Type for {@link MESSAGING_URL} messaging.url
+ */
+export type MESSAGING_URL_TYPE = string;
 
 // Path: model/attributes/method.json
 
@@ -11970,7 +12168,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @example "http"
  */
@@ -11993,7 +12191,7 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @example "1.1"
  */
@@ -12200,7 +12398,7 @@ export type NET_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
@@ -12224,7 +12422,7 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -16327,7 +16525,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -16393,7 +16591,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -17910,6 +18108,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'culture.locale': 'string',
   'culture.timezone': 'string',
   'db.collection.name': 'string',
+  'db.connection_string': 'string',
   'db.driver.name': 'string',
   'db.mongodb.collection': 'string',
   'db.name': 'string',
@@ -18205,6 +18404,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.conversation_id': 'string',
   'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
   'messaging.destination_kind': 'string',
@@ -18217,12 +18417,18 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.message.conversation_id': 'string',
   'messaging.message.envelope.size': 'integer',
   'messaging.message.id': 'string',
+  'messaging.message_id': 'string',
   'messaging.message.receive.latency': 'integer',
   'messaging.message.retry.count': 'integer',
+  'messaging.operation': 'string',
   'messaging.operation.name': 'string',
   'messaging.operation.type': 'string',
+  'messaging.protocol': 'string',
+  'messaging.protocol_version': 'string',
   'messaging.rabbitmq.destination.routing_key': 'string',
+  'messaging.rabbitmq.routing_key': 'string',
   'messaging.system': 'string',
+  'messaging.url': 'string',
   method: 'string',
   'middleware.name': 'string',
   'navigation.origin': 'string',
@@ -18705,6 +18911,7 @@ export type AttributeName =
   | typeof CULTURE_LOCALE
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
+  | typeof DB_CONNECTION_STRING
   | typeof DB_DRIVER_NAME
   | typeof DB_MONGODB_COLLECTION
   | typeof DB_NAME
@@ -19000,6 +19207,7 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_CONVERSATION_ID
   | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_KIND
@@ -19012,12 +19220,18 @@ export type AttributeName =
   | typeof MESSAGING_MESSAGE_CONVERSATION_ID
   | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
   | typeof MESSAGING_MESSAGE_ID
+  | typeof _MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION
   | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
+  | typeof MESSAGING_PROTOCOL
+  | typeof MESSAGING_PROTOCOL_VERSION
   | typeof MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY
+  | typeof MESSAGING_RABBITMQ_ROUTING_KEY
   | typeof MESSAGING_SYSTEM
+  | typeof MESSAGING_URL
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_ORIGIN
@@ -21224,7 +21438,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.url': {
     brief: 'The URL of the AWS API request.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21236,8 +21450,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'url'],
+    aliases: ['url.full', 'http.url', 'url', 'messaging.url'],
     changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
       {
         version: '0.19.0',
         prs: [488],
@@ -22412,6 +22627,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [106, 127] },
       { version: '0.0.0' },
     ],
+  },
+  'db.connection_string': {
+    brief: 'The connection string used to connect to the database.',
+    type: 'string',
+    keys: ['db.connection_string'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'redis://localhost:6379',
+    examples: ['redis://localhost:6379'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.',
+    },
+    changelog: [{ version: 'next', prs: [581], description: 'Added db.connection_string attribute' }],
   },
   'db.driver.name': {
     brief: 'The name of the driver used for the database connection.',
@@ -25507,7 +25739,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.flavor': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25518,8 +25750,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.version',
       status: 'backfill',
     },
-    aliases: ['network.protocol.version', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.version', 'net.protocol.version', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.fragment': {
     brief:
@@ -26074,7 +26310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.url': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26085,8 +26321,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       status: 'backfill',
     },
-    aliases: ['url.full', 'url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
+    aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.1.0', prs: [61, 108] },
+      { version: '0.0.0' },
+    ],
   },
   'http.user_agent': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
@@ -26819,7 +27059,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.resource.protocol': {
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26831,8 +27071,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'OTel uses the generic network.protocol.name attribute',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'net.protocol.name'],
+    aliases: ['network.protocol.name', 'net.protocol.name', 'messaging.protocol'],
     changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -27037,6 +27278,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
+  'messaging.conversation_id': {
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    type: 'string',
+    keys: ['messaging.message.conversation_id', 'messaging.conversation_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'MyConversationId',
+    examples: ['MyConversationId'],
+    deprecation: {
+      replacement: 'messaging.message.conversation_id',
+      reason: 'This attribute is being deprecated in favor of messaging.message.conversation_id.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.conversation_id'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.conversation_id attribute' }],
+  },
   'messaging.destination': {
     brief: 'The message destination name.',
     type: 'string',
@@ -27184,14 +27445,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
     type: 'string',
-    keys: ['messaging.message.conversation_id'],
+    keys: ['messaging.message.conversation_id', 'messaging.conversation_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'MyConversationId',
-    changelog: [{ version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
+    aliases: ['messaging.conversation_id'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.conversation_id as an alias' },
+      { version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' },
+    ],
   },
   'messaging.message.envelope.size': {
     brief: 'The size of the message body and metadata in bytes.',
@@ -27208,14 +27473,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message.id': {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
-    keys: ['messaging.message.id'],
+    keys: ['messaging.message.id', 'messaging.message_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['messaging.message_id'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.message_id as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'messaging.message_id': {
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    type: 'string',
+    keys: ['messaging.message.id', 'messaging.message_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '452a7c7c7c7048c2f887f0e7',
+    examples: ['452a7c7c7c7048c2f887f0e7'],
+    deprecation: {
+      replacement: 'messaging.message.id',
+      reason: 'This attribute is being deprecated in favor of messaging.message.id.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.id'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.message_id attribute' }],
   },
   'messaging.message.receive.latency': {
     brief: 'The latency between when the message was published and received.',
@@ -27245,17 +27534,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  'messaging.operation': {
+    brief: 'The name of the messaging operation being performed.',
+    type: 'string',
+    keys: ['messaging.operation.name', 'messaging.operation'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'publish',
+    examples: ['publish'],
+    deprecation: {
+      replacement: 'messaging.operation.name',
+      reason: 'This attribute is being deprecated in favor of messaging.operation.name.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.operation.name'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.operation attribute' }],
+  },
   'messaging.operation.name': {
     brief: 'The name of the messaging operation being performed',
     type: 'string',
-    keys: ['messaging.operation.name'],
+    keys: ['messaging.operation.name', 'messaging.operation'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'send',
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' }],
+    aliases: ['messaging.operation'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.operation as an alias' },
+      { version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' },
+    ],
   },
   'messaging.operation.type': {
     brief: 'A string identifying the type of the messaging operation',
@@ -27269,19 +27581,78 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'create',
     changelog: [{ version: '0.1.0', prs: [51, 127] }],
   },
+  'messaging.protocol': {
+    brief: 'OSI application layer or non-OSI equivalent.',
+    type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AMQP',
+    examples: ['AMQP'],
+    deprecation: {
+      replacement: 'network.protocol.name',
+      reason: 'This attribute is being deprecated in favor of network.protocol.name.',
+      status: 'backfill',
+    },
+    aliases: ['network.protocol.name', 'net.protocol.name', 'mcp.resource.protocol'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.protocol attribute' }],
+  },
+  'messaging.protocol_version': {
+    brief: 'The actual version of the protocol used for network communication.',
+    type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '0.9.1',
+    examples: ['0.9.1'],
+    deprecation: {
+      replacement: 'network.protocol.version',
+      reason: 'This attribute is being deprecated in favor of network.protocol.version.',
+      status: 'backfill',
+    },
+    aliases: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.protocol_version attribute' }],
+  },
   'messaging.rabbitmq.destination.routing_key': {
     brief: 'RabbitMQ message routing key.',
     type: 'string',
-    keys: ['messaging.rabbitmq.destination.routing_key'],
+    keys: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'myKey',
+    aliases: ['messaging.rabbitmq.routing_key'],
     changelog: [
+      { version: 'next', description: 'Added messaging.rabbitmq.routing_key as an alias' },
       { version: '0.16.0', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
     ],
+  },
+  'messaging.rabbitmq.routing_key': {
+    brief: 'RabbitMQ message routing key.',
+    type: 'string',
+    keys: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'myKey',
+    examples: ['myKey'],
+    deprecation: {
+      replacement: 'messaging.rabbitmq.destination.routing_key',
+      reason: 'This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.rabbitmq.destination.routing_key'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.rabbitmq.routing_key attribute' }],
   },
   'messaging.system': {
     brief: 'The messaging system as identified by the client instrumentation.',
@@ -27294,6 +27665,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'activemq',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'messaging.url': {
+    brief: 'The connection string of the messaging broker.',
+    type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'amqp://guest:guest@localhost:5672',
+    examples: ['amqp://guest:guest@localhost:5672'],
+    deprecation: {
+      replacement: 'url.full',
+      reason: 'This attribute is being deprecated in favor of url.full.',
+      status: 'backfill',
+    },
+    aliases: ['url.full', 'http.url', 'url', 'aws.request.url'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.url attribute' }],
   },
   method: {
     brief: 'The HTTP method used.',
@@ -27571,28 +27961,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'http',
-    aliases: ['net.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['net.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '1.1',
-    aliases: ['http.flavor', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['http.flavor', 'net.protocol.version', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
@@ -27733,7 +28131,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27744,13 +28142,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.name',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27761,8 +28163,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.version',
       status: 'backfill',
     },
-    aliases: ['network.protocol.version', 'http.flavor'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.sock.family': {
     brief: 'OSI transport and network layer',
@@ -30612,7 +31018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   url: {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30623,8 +31029,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'url.domain': {
     brief:
@@ -30655,15 +31065,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.full': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url', 'aws.request.url'],
+    aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url'],
     changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
       { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
       { version: '0.0.0' },
@@ -32160,7 +32571,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the AWS API request.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   'aws.request_id': {
     canonicalName: 'aws.request_id',
@@ -32701,6 +33112,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of a collection (table, container) within the database.',
     deprecationChain: ['db.collection.name', 'db.mongodb.collection'],
+  },
+  'db.connection_string': {
+    canonicalName: 'db.connection_string',
+    type: 'string',
+    brief: 'The connection string used to connect to the database.',
+    deprecationChain: ['db.connection_string'],
   },
   'db.driver.name': {
     canonicalName: 'db.driver.name',
@@ -33930,7 +34347,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.version',
     type: 'string',
     brief: 'The actual version of the protocol used for network communication.',
-    deprecationChain: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
   },
   'http.fragment': {
     canonicalName: 'http.fragment',
@@ -34180,7 +34597,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   'http.user_agent': {
     canonicalName: 'user_agent.original',
@@ -34487,7 +34904,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
   },
   'mcp.resource.uri': {
     canonicalName: 'mcp.resource.uri',
@@ -34568,6 +34985,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
     deprecationChain: ['messaging.batch.message_count'],
   },
+  'messaging.conversation_id': {
+    canonicalName: 'messaging.message.conversation_id',
+    type: 'string',
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    deprecationChain: ['messaging.message.conversation_id', 'messaging.conversation_id'],
+  },
   'messaging.destination': {
     canonicalName: 'messaging.destination.name',
     type: 'string',
@@ -34629,7 +35053,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
-    deprecationChain: ['messaging.message.conversation_id'],
+    deprecationChain: ['messaging.message.conversation_id', 'messaging.conversation_id'],
   },
   'messaging.message.envelope.size': {
     canonicalName: 'messaging.message.envelope.size',
@@ -34641,7 +35065,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.message.id',
     type: 'string',
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    deprecationChain: ['messaging.message.id'],
+    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
   },
   'messaging.message.receive.latency': {
     canonicalName: 'messaging.message.receive.latency',
@@ -34655,11 +35079,23 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The amount of attempts to send the message.',
     deprecationChain: ['messaging.message.retry.count'],
   },
+  'messaging.message_id': {
+    canonicalName: 'messaging.message.id',
+    type: 'string',
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+  },
+  'messaging.operation': {
+    canonicalName: 'messaging.operation.name',
+    type: 'string',
+    brief: 'The name of the messaging operation being performed.',
+    deprecationChain: ['messaging.operation.name', 'messaging.operation'],
+  },
   'messaging.operation.name': {
     canonicalName: 'messaging.operation.name',
     type: 'string',
     brief: 'The name of the messaging operation being performed',
-    deprecationChain: ['messaging.operation.name'],
+    deprecationChain: ['messaging.operation.name', 'messaging.operation'],
   },
   'messaging.operation.type': {
     canonicalName: 'messaging.operation.type',
@@ -34667,17 +35103,41 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'A string identifying the type of the messaging operation',
     deprecationChain: ['messaging.operation.type'],
   },
+  'messaging.protocol': {
+    canonicalName: 'network.protocol.name',
+    type: 'string',
+    brief: 'OSI application layer or non-OSI equivalent.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+  },
+  'messaging.protocol_version': {
+    canonicalName: 'network.protocol.version',
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+  },
   'messaging.rabbitmq.destination.routing_key': {
     canonicalName: 'messaging.rabbitmq.destination.routing_key',
     type: 'string',
     brief: 'RabbitMQ message routing key.',
-    deprecationChain: ['messaging.rabbitmq.destination.routing_key'],
+    deprecationChain: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
+  },
+  'messaging.rabbitmq.routing_key': {
+    canonicalName: 'messaging.rabbitmq.destination.routing_key',
+    type: 'string',
+    brief: 'RabbitMQ message routing key.',
+    deprecationChain: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
   },
   'messaging.system': {
     canonicalName: 'messaging.system',
     type: 'string',
     brief: 'The messaging system as identified by the client instrumentation.',
     deprecationChain: ['messaging.system'],
+  },
+  'messaging.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The connection string of the messaging broker.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   method: {
     canonicalName: 'http.request.method',
@@ -34820,13 +35280,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
   },
   'net.protocol.version': {
     canonicalName: 'network.protocol.version',
     type: 'string',
     brief: 'The actual version of the protocol used for network communication.',
-    deprecationChain: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
   },
   'net.sock.family': {
     canonicalName: 'network.transport',
@@ -34916,13 +35376,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
   },
   'network.protocol.version': {
     canonicalName: 'network.protocol.version',
     type: 'string',
     brief: 'The actual version of the protocol used for network communication.',
-    deprecationChain: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
   },
   'network.transport': {
     canonicalName: 'network.transport',
@@ -35976,7 +36436,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   'url.domain': {
     canonicalName: 'url.domain',
@@ -35996,7 +36456,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   'url.path': {
     canonicalName: 'url.path',
@@ -36555,6 +37015,7 @@ export type Attributes = {
   [CULTURE_LOCALE]?: CULTURE_LOCALE_TYPE;
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
+  [DB_CONNECTION_STRING]?: DB_CONNECTION_STRING_TYPE;
   [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
   [DB_MONGODB_COLLECTION]?: DB_MONGODB_COLLECTION_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
@@ -36850,6 +37311,7 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_CONVERSATION_ID]?: MESSAGING_CONVERSATION_ID_TYPE;
   [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_KIND]?: MESSAGING_DESTINATION_KIND_TYPE;
@@ -36862,12 +37324,18 @@ export type Attributes = {
   [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
+  [_MESSAGING_MESSAGE_ID]?: _MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION]?: MESSAGING_OPERATION_TYPE;
   [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
+  [MESSAGING_PROTOCOL]?: MESSAGING_PROTOCOL_TYPE;
+  [MESSAGING_PROTOCOL_VERSION]?: MESSAGING_PROTOCOL_VERSION_TYPE;
   [MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY]?: MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE;
+  [MESSAGING_RABBITMQ_ROUTING_KEY]?: MESSAGING_RABBITMQ_ROUTING_KEY_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
+  [MESSAGING_URL]?: MESSAGING_URL_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;

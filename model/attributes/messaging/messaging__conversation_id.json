@@ -1,0 +1,24 @@
+{
+  "key": "messaging.conversation_id",
+  "brief": "The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called \"Correlation ID\".",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["MyConversationId"],
+  "alias": ["messaging.message.conversation_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "messaging.message.conversation_id",
+    "reason": "This attribute is being deprecated in favor of messaging.message.conversation_id."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [581],
+      "description": "Added messaging.conversation_id attribute"
+    }
+  ]
+}
