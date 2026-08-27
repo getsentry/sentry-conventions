@@ -7,12 +7,17 @@
   },
   "is_in_otel": true,
   "example": 8080,
+  "alias": ["network.peer.port"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "network.peer.port"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added network.peer.port as an alias"
+    },
     {
       "version": "0.4.0",
       "prs": [228]

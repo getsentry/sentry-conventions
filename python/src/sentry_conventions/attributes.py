@@ -415,7 +415,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: server.address, http.server_name, net.host.name, http.host, server_name
+    Aliases: server.address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead - Old namespace-less attribute, to be replaced with server.address for span-first future
     Example: "example.com"
     """
@@ -5676,7 +5676,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name
+    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name, net.peer.name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -6097,7 +6097,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, net.host.name, http.host, server_name
+    Aliases: address, server.address, net.host.name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7356,7 +7356,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, http.host, server_name
+    Aliases: address, server.address, http.server_name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7395,6 +7395,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
     Example: "example.com"
     """
@@ -7508,6 +7509,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: network.peer.port
     DEPRECATED: Use network.peer.port instead
     Example: 8080
     """
@@ -7521,7 +7523,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.transport, mcp.transport
-    DEPRECATED: Use network.transport instead
+    DEPRECATED: Use network.transport instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so it is transformed rather than renamed.
     Example: "tcp"
     """
 
@@ -7610,6 +7612,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: net.sock.peer.port
     Example: 65400
     """
 
@@ -9399,7 +9402,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, http.server_name, net.host.name, http.host, server_name
+    Aliases: address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     Example: "example.com"
     """
 
@@ -9423,7 +9426,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: address, server.address, http.server_name, net.host.name, http.host
+    Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
     DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
     Example: "example.com"
     """
@@ -10535,8 +10538,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "http.host",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address attribute"
             ),
@@ -18351,8 +18358,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -18894,8 +18905,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "http.host",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -19978,7 +19993,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.transport",
             "mcp.transport",
-            "net.transport",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -20750,8 +20764,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "http.host",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -20817,7 +20835,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="server.address",
             reason="Deprecated, use server.address on client spans and client.address on server spans.",
         ),
+        aliases=[
+            "address",
+            "server.address",
+            "http.server_name",
+            "net.host.name",
+            "http.host",
+            "server_name",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added the server.address alias group to net.peer.name",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -21009,7 +21039,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="network.peer.port", status=DeprecationStatus.BACKFILL
         ),
+        aliases=["network.peer.port"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added network.peer.port as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -21018,20 +21052,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        keys=(
-            "network.transport",
-            "mcp.transport",
-            "net.transport",
-        ),
+        keys=("net.transport",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
         deprecation=DeprecationInfo(
-            replacement="network.transport", status=DeprecationStatus.BACKFILL
+            replacement="network.transport",
+            reason="This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so it is transformed rather than renamed.",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="net_transport_to_network_transport",
         ),
         aliases=["network.transport", "mcp.transport"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated net.transport via the net_transport_to_network_transport transformation",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -21162,7 +21199,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=65400,
+        aliases=["net.sock.peer.port"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.sock.peer.port as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -21218,7 +21259,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.transport",
             "mcp.transport",
-            "net.transport",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -23691,8 +23731,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "http.host",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -23746,8 +23790,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),

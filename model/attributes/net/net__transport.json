@@ -9,11 +9,17 @@
   "example": "tcp",
   "alias": ["network.transport", "mcp.transport"],
   "deprecation": {
-    "_status": "backfill",
-    "replacement": "network.transport"
+    "_status": "transform",
+    "replacement": "network.transport",
+    "transformation": "net_transport_to_network_transport",
+    "reason": "This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so it is transformed rather than renamed."
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated net.transport via the net_transport_to_network_transport transformation"
+    },
     {
       "version": "0.1.0",
       "prs": [61, 127]

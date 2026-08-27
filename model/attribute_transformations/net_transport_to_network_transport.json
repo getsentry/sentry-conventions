@@ -1,0 +1,53 @@
+{
+  "id": "net_transport_to_network_transport",
+  "brief": "Rename the deprecated net.transport attribute to network.transport and map the old ip_tcp and ip_udp values to the current tcp and udp values.",
+  "inputs": [
+    {
+      "attribute": "net.transport",
+      "brief": "Deprecated transport attribute, which uses the ip_tcp and ip_udp value spelling."
+    }
+  ],
+  "outputs": [
+    {
+      "attribute": "network.transport",
+      "brief": "Current transport attribute, which uses the tcp and udp value spelling."
+    }
+  ],
+  "actions": [
+    "If network.transport is already present, keep it and do not overwrite it.",
+    "Read the value of net.transport.",
+    "Write tcp to network.transport when the value is ip_tcp.",
+    "Write udp to network.transport when the value is ip_udp.",
+    "Write every other value to network.transport unchanged.",
+    "Remove net.transport once the deprecated attribute is normalized."
+  ],
+  "examples": [
+    {
+      "name": "tcp",
+      "input": {
+        "net.transport": "ip_tcp"
+      },
+      "output": {
+        "network.transport": "tcp"
+      }
+    },
+    {
+      "name": "udp",
+      "input": {
+        "net.transport": "ip_udp"
+      },
+      "output": {
+        "network.transport": "udp"
+      }
+    },
+    {
+      "name": "value that does not change",
+      "input": {
+        "net.transport": "unix"
+      },
+      "output": {
+        "network.transport": "unix"
+      }
+    }
+  ]
+}
