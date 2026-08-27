@@ -7,8 +7,13 @@
   },
   "is_in_otel": true,
   "example": "timeout",
+  "alias": ["fs_error"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added fs_error as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]
