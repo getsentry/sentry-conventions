@@ -1,0 +1,75 @@
+{
+  "id": "http_target_to_url_path_and_query",
+  "brief": "Split the deprecated http.target value into the separate url.path, url.query and url.fragment attributes.",
+  "inputs": [
+    {
+      "attribute": "http.target",
+      "brief": "Deprecated attribute holding the path, the query string and the fragment in one value."
+    }
+  ],
+  "outputs": [
+    {
+      "attribute": "url.path",
+      "brief": "The URI path component of http.target."
+    },
+    {
+      "attribute": "url.query",
+      "brief": "The query string of http.target, without the leading question mark."
+    },
+    {
+      "attribute": "url.fragment",
+      "brief": "The fragment of http.target, without the leading number sign."
+    }
+  ],
+  "actions": [
+    "If url.path, url.query or url.fragment is already present, keep it and do not overwrite it.",
+    "Read http.target as a relative URI reference.",
+    "Split off the fragment at the first number sign. Write the part after it, without the number sign, to url.fragment. Do not set url.fragment when there is no number sign.",
+    "Split the remaining value at the first question mark.",
+    "Write the part before the question mark to url.path.",
+    "Write the part after the question mark, without the question mark, to url.query. Do not set url.query when there is no question mark.",
+    "Remove http.target once the deprecated attribute is normalized."
+  ],
+  "examples": [
+    {
+      "name": "path, query and fragment",
+      "input": {
+        "http.target": "/test?foo=bar#buzz"
+      },
+      "output": {
+        "url.path": "/test",
+        "url.query": "foo=bar",
+        "url.fragment": "buzz"
+      }
+    },
+    {
+      "name": "path only",
+      "input": {
+        "http.target": "/users/42"
+      },
+      "output": {
+        "url.path": "/users/42"
+      }
+    },
+    {
+      "name": "path and query",
+      "input": {
+        "http.target": "/search?q=sentry&page=2"
+      },
+      "output": {
+        "url.path": "/search",
+        "url.query": "q=sentry&page=2"
+      }
+    },
+    {
+      "name": "empty query string",
+      "input": {
+        "http.target": "/health?"
+      },
+      "output": {
+        "url.path": "/health",
+        "url.query": ""
+      }
+    }
+  ]
+}

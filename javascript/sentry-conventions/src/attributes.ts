@@ -10117,7 +10117,7 @@ export type HTTP_STATUS_CODE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path and url.query
+ * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value has to be split, so it is transformed rather than renamed.
  * @example "/test?foo=bar#buzz"
  */
 export const HTTP_TARGET = 'http.target';
@@ -26976,9 +26976,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.path',
-      reason: 'This attribute is being deprecated in favor of url.path and url.query',
+      reason:
+        'This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value has to be split, so it is transformed rather than renamed.',
+      status: 'transform',
+      transformation: 'http_target_to_url_path_and_query',
     },
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Deprecated http.target via the http_target_to_url_path_and_query transformation',
+      },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'http.url': {
     brief: 'The URL of the resource that was fetched.',

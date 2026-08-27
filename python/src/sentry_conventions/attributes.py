@@ -6123,7 +6123,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    DEPRECATED: Use url.path instead - This attribute is being deprecated in favor of url.path and url.query
+    DEPRECATED: Use url.path instead - This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value has to be split, so it is transformed rather than renamed.
     Example: "/test?foo=bar#buzz"
     """
 
@@ -18935,9 +18935,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="/test?foo=bar#buzz",
         deprecation=DeprecationInfo(
             replacement="url.path",
-            reason="This attribute is being deprecated in favor of url.path and url.query",
+            reason="This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value has to be split, so it is transformed rather than renamed.",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="http_target_to_url_path_and_query",
         ),
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Deprecated http.target via the http_target_to_url_path_and_query transformation",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],

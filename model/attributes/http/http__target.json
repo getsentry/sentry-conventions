@@ -8,12 +8,17 @@
   "is_in_otel": true,
   "example": "/test?foo=bar#buzz",
   "deprecation": {
-    "_status": null,
+    "_status": "transform",
     "replacement": "url.path",
-    "reason": "This attribute is being deprecated in favor of url.path and url.query"
+    "transformation": "http_target_to_url_path_and_query",
+    "reason": "This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value has to be split, so it is transformed rather than renamed."
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated http.target via the http_target_to_url_path_and_query transformation"
+    },
     {
       "version": "0.1.0",
       "prs": [61]
