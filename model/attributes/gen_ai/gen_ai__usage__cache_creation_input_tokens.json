@@ -1,0 +1,24 @@
+{
+  "key": "gen_ai.usage.cache_creation_input_tokens",
+  "brief": "The number of tokens written to the cache when processing the AI input (prompt).",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": [100],
+  "alias": ["gen_ai.usage.cache_creation.input_tokens", "gen_ai.usage.input_tokens.cache_write"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.usage.cache_creation.input_tokens",
+    "reason": "This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [582],
+      "description": "Added gen_ai.usage.cache_creation_input_tokens attribute"
+    }
+  ]
+}

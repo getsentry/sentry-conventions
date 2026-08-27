@@ -8308,7 +8308,7 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
  * @example 100
  */
@@ -8318,6 +8318,30 @@ export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_crea
  * Type for {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation.input_tokens
  */
 export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_creation_input_tokens.json
+
+/**
+ * The number of tokens written to the cache when processing the AI input (prompt). `gen_ai.usage.cache_creation_input_tokens`
+ *
+ * Attribute Value Type: `number` {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.
+ * @example 100
+ */
+export const _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation_input_tokens';
+
+/**
+ * Type for {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation_input_tokens
+ */
+export type _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
 
@@ -8331,7 +8355,7 @@ export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`, {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read_input_tokens`
  *
  * @example 50
  */
@@ -8341,6 +8365,30 @@ export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read.inp
  * Type for {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read.input_tokens
  */
 export type GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_read_input_tokens.json
+
+/**
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.cache_read_input_tokens`
+ *
+ * Attribute Value Type: `number` {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.
+ * @example 50
+ */
+export const _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read_input_tokens';
+
+/**
+ * Type for {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read_input_tokens
+ */
+export type _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
@@ -8401,7 +8449,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`, {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read_input_tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead
  * @example 50
@@ -8425,7 +8473,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead
  * @example 100
@@ -18274,7 +18322,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.tool.output': 'string',
   'gen_ai.tool.type': 'string',
   'gen_ai.usage.cache_creation.input_tokens': 'integer',
+  'gen_ai.usage.cache_creation_input_tokens': 'integer',
   'gen_ai.usage.cache_read.input_tokens': 'integer',
+  'gen_ai.usage.cache_read_input_tokens': 'integer',
   'gen_ai.usage.completion_tokens': 'integer',
   'gen_ai.usage.input_tokens': 'integer',
   'gen_ai.usage.input_tokens.cached': 'integer',
@@ -19077,7 +19127,9 @@ export type AttributeName =
   | typeof GEN_AI_TOOL_OUTPUT
   | typeof GEN_AI_TOOL_TYPE
   | typeof GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
+  | typeof _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
   | typeof GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
+  | typeof _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
   | typeof GEN_AI_USAGE_COMPLETION_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHED
@@ -25186,37 +25238,97 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.cache_creation.input_tokens': {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
-    keys: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 100,
-    aliases: ['gen_ai.usage.input_tokens.cache_write'],
+    aliases: ['gen_ai.usage.input_tokens.cache_write', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
+      { version: 'next', description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' },
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
     ],
   },
+  'gen_ai.usage.cache_creation_input_tokens': {
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 100,
+    examples: [100],
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_creation.input_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    changelog: [
+      { version: 'next', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens attribute' },
+    ],
+  },
   'gen_ai.usage.cache_read.input_tokens': {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
-    keys: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 50,
-    aliases: ['gen_ai.usage.input_tokens.cached'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
+    aliases: ['gen_ai.usage.input_tokens.cached', 'gen_ai.usage.cache_read_input_tokens'],
+    changelog: [
+      { version: 'next', description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
     ],
+  },
+  'gen_ai.usage.cache_read_input_tokens': {
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 50,
+    examples: [50],
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_read.input_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    changelog: [{ version: 'next', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens attribute' }],
   },
   'gen_ai.usage.completion_tokens': {
     brief: 'The number of tokens used in the GenAI response (completion).',
@@ -25274,7 +25386,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens.cached': {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
-    keys: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25285,8 +25401,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.cache_read.input_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.cache_read.input_tokens'],
+    aliases: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.cache_read_input_tokens'],
     changelog: [
+      { version: 'next', description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
@@ -25300,7 +25417,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens.cache_write': {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
-    keys: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25311,8 +25432,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.cache_creation.input_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.cache_creation.input_tokens'],
+    aliases: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
+      { version: 'next', description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
@@ -34149,13 +34271,41 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.usage.cache_creation.input_tokens',
     type: 'integer',
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    deprecationChain: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
+  },
+  'gen_ai.usage.cache_creation_input_tokens': {
+    canonicalName: 'gen_ai.usage.cache_creation.input_tokens',
+    type: 'integer',
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    deprecationChain: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
   },
   'gen_ai.usage.cache_read.input_tokens': {
     canonicalName: 'gen_ai.usage.cache_read.input_tokens',
     type: 'integer',
     brief: 'The number of cached tokens used to process the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    deprecationChain: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
+  },
+  'gen_ai.usage.cache_read_input_tokens': {
+    canonicalName: 'gen_ai.usage.cache_read.input_tokens',
+    type: 'integer',
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    deprecationChain: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
   },
   'gen_ai.usage.completion_tokens': {
     canonicalName: 'gen_ai.usage.output_tokens',
@@ -34173,13 +34323,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.usage.cache_creation.input_tokens',
     type: 'integer',
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    deprecationChain: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
   },
   'gen_ai.usage.input_tokens.cached': {
     canonicalName: 'gen_ai.usage.cache_read.input_tokens',
     type: 'integer',
     brief: 'The number of cached tokens used to process the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    deprecationChain: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
   },
   'gen_ai.usage.output_tokens': {
     canonicalName: 'gen_ai.usage.output_tokens',
@@ -37181,7 +37339,9 @@ export type Attributes = {
   [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
   [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
+  [_GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
+  [_GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
