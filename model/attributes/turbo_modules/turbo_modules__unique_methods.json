@@ -1,0 +1,23 @@
+{
+  "key": "turbo_modules.unique_methods",
+  "brief": "The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 7,
+  "alias": ["turbo_module.call.distinct_count", "turbo_module.unique_methods"],
+  "deprecation": {
+    "replacement": "turbo_module.call.distinct_count",
+    "reason": "Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
+    "_status": "backfill"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added turbo_modules.unique_methods and deprecated it in favor of turbo_module.call.distinct_count"
+    }
+  ]
+}

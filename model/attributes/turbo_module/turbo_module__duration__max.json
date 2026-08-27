@@ -1,0 +1,17 @@
+{
+  "key": "turbo_module.duration.max",
+  "brief": "The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds. Only applies to React Native.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 512.5,
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added turbo_module.duration.max attribute"
+    }
+  ]
+}
