@@ -1,0 +1,24 @@
+{
+  "key": "messaging.message_id",
+  "brief": "A value used by the messaging system as an identifier for the message, represented as a string.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["452a7c7c7c7048c2f887f0e7"],
+  "alias": ["messaging.message.id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "messaging.message.id",
+    "reason": "This attribute is being deprecated in favor of messaging.message.id."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [581],
+      "description": "Added messaging.message_id attribute"
+    }
+  ]
+}
