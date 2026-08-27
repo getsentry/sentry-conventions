@@ -257,6 +257,8 @@ class _AttributeNamesMeta(type):
         "GEN_AI_TOOL_MESSAGE",
         "GEN_AI_TOOL_OUTPUT",
         "GEN_AI_TOOL_TYPE",
+        "_GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS",
+        "_GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE",
         "GEN_AI_USAGE_INPUT_TOKENS_CACHED",
@@ -5039,7 +5041,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.usage.input_tokens.cache_write
+    Aliases: gen_ai.usage.input_tokens.cache_write, gen_ai.usage.cache_creation_input_tokens
+    Example: 100
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__usage__cache_creation_input_tokens.json
+    _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS: Literal[
+        "gen_ai.usage.cache_creation_input_tokens"
+    ] = "gen_ai.usage.cache_creation_input_tokens"
+    """The number of tokens written to the cache when processing the AI input (prompt).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.usage.cache_creation.input_tokens, gen_ai.usage.input_tokens.cache_write
+    DEPRECATED: Use gen_ai.usage.cache_creation.input_tokens instead - This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.
     Example: 100
     """
 
@@ -5053,7 +5070,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.usage.input_tokens.cached
+    Aliases: gen_ai.usage.input_tokens.cached, gen_ai.usage.cache_read_input_tokens
+    Example: 50
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__usage__cache_read_input_tokens.json
+    _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS: Literal[
+        "gen_ai.usage.cache_read_input_tokens"
+    ] = "gen_ai.usage.cache_read_input_tokens"
+    """The number of cached tokens used to process the AI input (prompt).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.usage.cache_read.input_tokens, gen_ai.usage.input_tokens.cached
+    DEPRECATED: Use gen_ai.usage.cache_read.input_tokens instead - This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.
     Example: 50
     """
 
@@ -5096,7 +5128,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.usage.cache_creation.input_tokens
+    Aliases: gen_ai.usage.cache_creation.input_tokens, gen_ai.usage.cache_creation_input_tokens
     DEPRECATED: Use gen_ai.usage.cache_creation.input_tokens instead
     Example: 100
     """
@@ -5111,7 +5143,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.usage.cache_read.input_tokens
+    Aliases: gen_ai.usage.cache_read.input_tokens, gen_ai.usage.cache_read_input_tokens
     DEPRECATED: Use gen_ai.usage.cache_read.input_tokens instead
     Example: 50
     """
@@ -16947,14 +16979,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.cache_creation_input_tokens",
             "gen_ai.usage.input_tokens.cache_write",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=100,
-        aliases=["gen_ai.usage.input_tokens.cache_write"],
+        aliases=[
+            "gen_ai.usage.input_tokens.cache_write",
+            "gen_ai.usage.cache_creation_input_tokens",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.cache_creation_input_tokens as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
@@ -16965,19 +17005,57 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
         ],
     ),
+    "gen_ai.usage.cache_creation_input_tokens": AttributeMetadata(
+        brief="The number of tokens written to the cache when processing the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.cache_creation_input_tokens",
+            "gen_ai.usage.input_tokens.cache_write",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        examples=[100],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.cache_creation.input_tokens",
+            reason="This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.input_tokens.cache_write",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[582],
+                description="Added gen_ai.usage.cache_creation_input_tokens attribute",
+            ),
+        ],
+    ),
     "gen_ai.usage.cache_read.input_tokens": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.cache_read_input_tokens",
             "gen_ai.usage.input_tokens.cached",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=50,
-        aliases=["gen_ai.usage.input_tokens.cached"],
+        aliases=[
+            "gen_ai.usage.input_tokens.cached",
+            "gen_ai.usage.cache_read_input_tokens",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.cache_read_input_tokens as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
@@ -16987,6 +17065,36 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
             "This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.",
+        ],
+    ),
+    "gen_ai.usage.cache_read_input_tokens": AttributeMetadata(
+        brief="The number of cached tokens used to process the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.cache_read_input_tokens",
+            "gen_ai.usage.input_tokens.cached",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=50,
+        examples=[50],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.cache_read.input_tokens",
+            reason="This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.input_tokens.cached",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[582],
+                description="Added gen_ai.usage.cache_read_input_tokens attribute",
+            ),
         ],
     ),
     "gen_ai.usage.completion_tokens": AttributeMetadata(
@@ -17054,6 +17162,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.cache_creation_input_tokens",
             "gen_ai.usage.input_tokens.cache_write",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17064,8 +17173,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.usage.cache_creation.input_tokens",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["gen_ai.usage.cache_creation.input_tokens"],
+        aliases=[
+            "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.cache_creation_input_tokens",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.cache_creation_input_tokens as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
@@ -17085,6 +17201,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.cache_read_input_tokens",
             "gen_ai.usage.input_tokens.cached",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17095,8 +17212,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.usage.cache_read.input_tokens",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["gen_ai.usage.cache_read.input_tokens"],
+        aliases=[
+            "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.cache_read_input_tokens",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.usage.cache_read_input_tokens as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
@@ -24576,7 +24700,9 @@ Attributes = TypedDict(
         "gen_ai.tool.output": str,
         "gen_ai.tool.type": str,
         "gen_ai.usage.cache_creation.input_tokens": int,
+        "gen_ai.usage.cache_creation_input_tokens": int,
         "gen_ai.usage.cache_read.input_tokens": int,
+        "gen_ai.usage.cache_read_input_tokens": int,
         "gen_ai.usage.completion_tokens": int,
         "gen_ai.usage.input_tokens": int,
         "gen_ai.usage.input_tokens.cache_write": int,
