@@ -6347,6 +6347,8 @@ export type ENVIRONMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link FS_ERROR} `fs_error`
+ *
  * @example "timeout"
  */
 export const ERROR_TYPE = 'error.type';
@@ -7081,7 +7083,9 @@ export type FRAMES_TOTAL_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
+ * Aliases: {@link ERROR_TYPE} `error.type`
+ *
+ * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.
  * @example "ENOENT: no such file or directory"
  */
 export const FS_ERROR = 'fs_error';
@@ -24445,7 +24449,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'timeout',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['fs_error'],
+    changelog: [
+      { version: 'next', description: 'Added fs_error as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'event.id': {
     brief: 'The unique identifier for this event (log record)',
@@ -24977,9 +24986,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'ENOENT: no such file or directory',
     deprecation: {
       replacement: 'error.type',
-      reason: 'This attribute is not part of the OpenTelemetry specification and error.type fits much better.',
+      reason:
+        'This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['error.type'],
+    changelog: [
+      { version: 'next', description: 'Added error.type as an alias' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'gcp.function.context.event_id': {
     brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
