@@ -6,6 +6,7 @@
     "key": "auto",
     "reason": "Query string values can contain sensitive information. Clients should attempt to scrub parameters that might contain sensitive information."
   },
+  "alias": ["http.query"],
   "is_in_otel": true,
   "example": "foo=bar&bar=baz",
   "visibility": "public",

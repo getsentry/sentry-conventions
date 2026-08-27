@@ -9004,6 +9004,9 @@ export type HTTP_FLAVOR_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link URL_FRAGMENT} `url.fragment`
+ *
+ * @deprecated Use {@link URL_FRAGMENT} (url.fragment) instead - `url.fragment` is supported by OTel and conceptually more fitting.
  * @example "#details"
  */
 export const HTTP_FRAGMENT = 'http.fragment';
@@ -9073,6 +9076,9 @@ export type HTTP_METHOD_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link URL_QUERY} `url.query`
+ *
+ * @deprecated Use {@link URL_QUERY} (url.query) instead - `url.query` is supported by OTel and conceptually more fitting.
  * @example "?foo=bar&bar=baz"
  */
 export const HTTP_QUERY = 'http.query';
@@ -16372,6 +16378,8 @@ export type URL_DOMAIN_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link HTTP_FRAGMENT} `http.fragment`
+ *
  * @example "details"
  */
 export const URL_FRAGMENT = 'url.fragment';
@@ -16487,6 +16495,8 @@ export type URL_PORT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link HTTP_QUERY} `http.query`
  *
  * @example "foo=bar&bar=baz"
  */
@@ -25532,6 +25542,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '#details',
+    deprecation: {
+      replacement: 'url.fragment',
+      reason: '`url.fragment` is supported by OTel and conceptually more fitting.',
+      status: 'backfill',
+    },
+    aliases: ['url.fragment'],
     changelog: [{ version: '0.0.0' }],
   },
   'http.host': {
@@ -25585,6 +25601,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '?foo=bar&bar=baz',
+    deprecation: {
+      replacement: 'url.query',
+      reason: '`url.query` is supported by OTel and conceptually more fitting.',
+      status: 'backfill',
+    },
+    aliases: ['url.query'],
     changelog: [{ version: '0.0.0' }],
   },
   'http.request.body.data': {
@@ -30650,6 +30672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'details',
+    aliases: ['http.fragment'],
     changelog: [{ version: '0.0.0' }],
   },
   'url.full': {
@@ -30721,6 +30744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'foo=bar&bar=baz',
+    aliases: ['http.query'],
     changelog: [{ version: '0.0.0' }],
   },
   'url.same_origin': {

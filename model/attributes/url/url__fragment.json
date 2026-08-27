@@ -5,6 +5,7 @@
   "apply_scrubbing": {
     "key": "auto"
   },
+  "alias": ["http.fragment"],
   "is_in_otel": true,
   "example": "details",
   "visibility": "public",
