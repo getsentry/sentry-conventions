@@ -1,0 +1,17 @@
+{
+  "key": "template.render.context",
+  "brief": "The context data passed to a template for rendering. Can be given as string or structural data of any format.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "examples": ["{\"user\": \"Jane\", \"items\": [\"apple\", \"banana\"]}"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.21.0",
+      "description": "Added template.render.context attribute"
+    }
+  ]
+}
