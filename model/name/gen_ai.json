@@ -31,10 +31,17 @@
       ],
       "templates": [
         "{{gen_ai.operation.name}} {{gen_ai.request.model}}",
+        "{{gen_ai.operation.name}} {{gen_ai.tool.name}}",
         "{{gen_ai.operation.name}}",
         "Generative AI model operation"
       ],
-      "examples": ["text_completion gpt-4", "embeddings huggingface", "chat claude-opus-4", "chat"]
+      "examples": [
+        "text_completion gpt-4",
+        "embeddings huggingface",
+        "chat claude-opus-4",
+        "execute_tool get_weather",
+        "chat"
+      ]
     }
   ]
 }
