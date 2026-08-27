@@ -8842,6 +8842,8 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link GRAPHQL_SOURCE} `graphql.source`
+ *
  * @example "query findBookById { bookById(id: ?) { name } }"
  */
 export const GRAPHQL_DOCUMENT = 'graphql.document';
@@ -8916,6 +8918,30 @@ export const GRAPHQL_PROCESSING_TYPE = 'graphql.processing.type';
  * Type for {@link GRAPHQL_PROCESSING_TYPE} graphql.processing.type
  */
 export type GRAPHQL_PROCESSING_TYPE_TYPE = string;
+
+// Path: model/attributes/graphql/graphql__source.json
+
+/**
+ * The GraphQL document being executed. `graphql.source`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GRAPHQL_DOCUMENT} `graphql.document`
+ *
+ * @deprecated Use {@link GRAPHQL_DOCUMENT} (graphql.document) instead - This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.
+ * @example "query findBookById { bookById(id: ?) { name } }"
+ */
+export const GRAPHQL_SOURCE = 'graphql.source';
+
+/**
+ * Type for {@link GRAPHQL_SOURCE} graphql.source
+ */
+export type GRAPHQL_SOURCE_TYPE = string;
 
 // Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
 
@@ -18576,6 +18602,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'graphql.operation.name': 'string',
   'graphql.operation.type': 'string',
   'graphql.processing.type': 'string',
+  'graphql.source': 'string',
   'grpc.error.bad_request.field_violations': 'string[]',
   'grpc.error.debug_info.detail': 'string',
   'grpc.error.debug_info.stack_entries': 'string[]',
@@ -19391,6 +19418,7 @@ export type AttributeName =
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
   | typeof GRAPHQL_PROCESSING_TYPE
+  | typeof GRAPHQL_SOURCE
   | typeof GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
   | typeof GRPC_ERROR_DEBUG_INFO_DETAIL
   | typeof GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
@@ -26029,7 +26057,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'graphql.document': {
     brief: 'The GraphQL document being executed.',
     type: 'string',
-    keys: ['graphql.document'],
+    keys: ['graphql.document', 'graphql.source'],
     applyScrubbing: {
       key: 'auto',
       reason:
@@ -26038,7 +26066,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'query findBookById { bookById(id: ?) { name } }',
+    aliases: ['graphql.source'],
     changelog: [
+      { version: 'next', description: 'Added graphql.source as an alias' },
       {
         version: '0.7.0',
         description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
@@ -26085,6 +26115,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.',
       'Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.',
     ],
+  },
+  'graphql.source': {
+    brief: 'The GraphQL document being executed.',
+    type: 'string',
+    keys: ['graphql.document', 'graphql.source'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'query findBookById { bookById(id: ?) { name } }',
+    examples: ['query findBookById { bookById(id: ?) { name } }'],
+    deprecation: {
+      replacement: 'graphql.document',
+      reason:
+        'This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.',
+      status: 'backfill',
+    },
+    aliases: ['graphql.document'],
+    changelog: [{ version: 'next', prs: [584], description: 'Added graphql.source attribute' }],
   },
   'grpc.error.bad_request.field_violations': {
     brief:
@@ -34917,7 +34967,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'graphql.document',
     type: 'string',
     brief: 'The GraphQL document being executed.',
-    deprecationChain: ['graphql.document'],
+    deprecationChain: ['graphql.document', 'graphql.source'],
   },
   'graphql.operation.name': {
     canonicalName: 'graphql.operation.name',
@@ -34936,6 +34986,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The type of processing represented by this span.',
     deprecationChain: ['graphql.processing.type'],
+  },
+  'graphql.source': {
+    canonicalName: 'graphql.document',
+    type: 'string',
+    brief: 'The GraphQL document being executed.',
+    deprecationChain: ['graphql.document', 'graphql.source'],
   },
   'grpc.error.bad_request.field_violations': {
     canonicalName: 'grpc.error.bad_request.field_violations',
@@ -37909,6 +37965,7 @@ export type Attributes = {
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [GRAPHQL_PROCESSING_TYPE]?: GRAPHQL_PROCESSING_TYPE_TYPE;
+  [GRAPHQL_SOURCE]?: GRAPHQL_SOURCE_TYPE;
   [GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS]?: GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE;
   [GRPC_ERROR_DEBUG_INFO_DETAIL]?: GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE;
   [GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES]?: GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE;
