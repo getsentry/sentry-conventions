@@ -5,7 +5,7 @@
   "apply_scrubbing": {
     "key": "auto"
   },
-  "is_in_otel": false,
+  "is_in_otel": true,
   "examples": ["redis://localhost:6379"],
   "deprecation": {
     "_status": null,
