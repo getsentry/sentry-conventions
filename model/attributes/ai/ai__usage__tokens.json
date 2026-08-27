@@ -1,0 +1,24 @@
+{
+  "key": "ai.usage.tokens",
+  "brief": "The total number of tokens used for the request and the response.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": [150],
+  "alias": ["gen_ai.usage.total_tokens", "ai.total_tokens.used"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.usage.total_tokens",
+    "reason": "This attribute is being deprecated in favor of gen_ai.usage.total_tokens."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.usage.tokens attribute"
+    }
+  ]
+}
