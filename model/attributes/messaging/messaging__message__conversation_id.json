@@ -6,9 +6,14 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "visibility": "public",
   "example": "MyConversationId",
+  "alias": ["messaging.conversation_id"],
+  "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.conversation_id as an alias"
+    },
     {
       "version": "0.16.0",
       "prs": [468],

@@ -7,9 +7,13 @@
   },
   "is_in_otel": true,
   "example": "https://example.com/test?foo=bar#buzz",
-  "alias": ["http.url", "url", "aws.request.url"],
+  "alias": ["http.url", "url", "aws.request.url", "messaging.url"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.url as an alias"
+    },
     {
       "version": "0.19.0",
       "prs": [488],

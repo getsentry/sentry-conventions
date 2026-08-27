@@ -218,6 +218,7 @@ class _AttributeNamesMeta(type):
         "CODE",
         "CONNECTION_RTT",
         "CONNECTIONTYPE",
+        "DB_CONNECTION_STRING",
         "DB_MONGODB_COLLECTION",
         "DB_NAME",
         "DB_OPERATION",
@@ -298,8 +299,15 @@ class _AttributeNamesMeta(type):
         "MCP_TOOL_RESULT_CONTENT",
         "MCP_TOOL_RESULT_IS_ERROR",
         "MCP_TRANSPORT",
+        "MESSAGING_CONVERSATION_ID",
         "MESSAGING_DESTINATION",
         "MESSAGING_DESTINATION_KIND",
+        "_MESSAGING_MESSAGE_ID",
+        "MESSAGING_OPERATION",
+        "MESSAGING_PROTOCOL",
+        "MESSAGING_PROTOCOL_VERSION",
+        "MESSAGING_RABBITMQ_ROUTING_KEY",
+        "MESSAGING_URL",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -1928,7 +1936,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, url
+    Aliases: url.full, http.url, url, messaging.url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
     Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
     """
@@ -3026,6 +3034,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: db.mongodb.collection
     Example: "users"
+    """
+
+    # Path: model/attributes/db/db__connection_string.json
+    DB_CONNECTION_STRING: Literal["db.connection_string"] = "db.connection_string"
+    """The connection string used to connect to the database.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.
+    Example: "redis://localhost:6379"
     """
 
     # Path: model/attributes/db/db__driver__name.json
@@ -5461,7 +5481,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.version, net.protocol.version
+    Aliases: network.protocol.version, net.protocol.version, messaging.protocol_version
     DEPRECATED: Use network.protocol.version instead
     Example: "1.1"
     """
@@ -6056,7 +6076,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.full, url, aws.request.url
+    Aliases: url.full, url, aws.request.url, messaging.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -6657,7 +6677,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: network.protocol.name, net.protocol.name
+    Aliases: network.protocol.name, net.protocol.name, messaging.protocol
     DEPRECATED: Use network.protocol.name instead - OTel uses the generic network.protocol.name attribute
     Example: "file"
     """
@@ -6810,6 +6830,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 10
     """
 
+    # Path: model/attributes/messaging/messaging__conversation_id.json
+    MESSAGING_CONVERSATION_ID: Literal["messaging.conversation_id"] = (
+        "messaging.conversation_id"
+    )
+    """The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.message.conversation_id
+    DEPRECATED: Use messaging.message.conversation_id instead - This attribute is being deprecated in favor of messaging.message.conversation_id.
+    Example: "MyConversationId"
+    """
+
     # Path: model/attributes/messaging/messaging__destination.json
     MESSAGING_DESTINATION: Literal["messaging.destination"] = "messaging.destination"
     """The message destination name.
@@ -6937,6 +6972,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.conversation_id
     Example: "MyConversationId"
     """
 
@@ -6961,6 +6997,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.message_id
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
 
@@ -6990,6 +7027,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 2
     """
 
+    # Path: model/attributes/messaging/messaging__message_id.json
+    _MESSAGING_MESSAGE_ID: Literal["messaging.message_id"] = "messaging.message_id"
+    """A value used by the messaging system as an identifier for the message, represented as a string.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.message.id
+    DEPRECATED: Use messaging.message.id instead - This attribute is being deprecated in favor of messaging.message.id.
+    Example: "452a7c7c7c7048c2f887f0e7"
+    """
+
+    # Path: model/attributes/messaging/messaging__operation.json
+    MESSAGING_OPERATION: Literal["messaging.operation"] = "messaging.operation"
+    """The name of the messaging operation being performed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.operation.name
+    DEPRECATED: Use messaging.operation.name instead - This attribute is being deprecated in favor of messaging.operation.name.
+    Example: "publish"
+    """
+
     # Path: model/attributes/messaging/messaging__operation__name.json
     MESSAGING_OPERATION_NAME: Literal["messaging.operation.name"] = (
         "messaging.operation.name"
@@ -7000,6 +7063,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.operation
     Example: "send"
     """
 
@@ -7016,6 +7080,34 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "create"
     """
 
+    # Path: model/attributes/messaging/messaging__protocol.json
+    MESSAGING_PROTOCOL: Literal["messaging.protocol"] = "messaging.protocol"
+    """OSI application layer or non-OSI equivalent.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: network.protocol.name, net.protocol.name, mcp.resource.protocol
+    DEPRECATED: Use network.protocol.name instead - This attribute is being deprecated in favor of network.protocol.name.
+    Example: "AMQP"
+    """
+
+    # Path: model/attributes/messaging/messaging__protocol_version.json
+    MESSAGING_PROTOCOL_VERSION: Literal["messaging.protocol_version"] = (
+        "messaging.protocol_version"
+    )
+    """The actual version of the protocol used for network communication.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: network.protocol.version, http.flavor, net.protocol.version
+    DEPRECATED: Use network.protocol.version instead - This attribute is being deprecated in favor of network.protocol.version.
+    Example: "0.9.1"
+    """
+
     # Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
     MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY: Literal[
         "messaging.rabbitmq.destination.routing_key"
@@ -7026,6 +7118,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.rabbitmq.routing_key
+    Example: "myKey"
+    """
+
+    # Path: model/attributes/messaging/messaging__rabbitmq__routing_key.json
+    MESSAGING_RABBITMQ_ROUTING_KEY: Literal["messaging.rabbitmq.routing_key"] = (
+        "messaging.rabbitmq.routing_key"
+    )
+    """RabbitMQ message routing key.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.rabbitmq.destination.routing_key
+    DEPRECATED: Use messaging.rabbitmq.destination.routing_key instead - This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.
     Example: "myKey"
     """
 
@@ -7038,6 +7146,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "activemq"
+    """
+
+    # Path: model/attributes/messaging/messaging__url.json
+    MESSAGING_URL: Literal["messaging.url"] = "messaging.url"
+    """The connection string of the messaging broker.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.full, http.url, url, aws.request.url
+    DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full.
+    Example: "amqp://guest:guest@localhost:5672"
     """
 
     # Path: model/attributes/method.json
@@ -7239,7 +7360,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.name, mcp.resource.protocol
+    Aliases: network.protocol.name, mcp.resource.protocol, messaging.protocol
     DEPRECATED: Use network.protocol.name instead
     Example: "http"
     """
@@ -7252,7 +7373,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.version, http.flavor
+    Aliases: network.protocol.version, http.flavor, messaging.protocol_version
     DEPRECATED: Use network.protocol.version instead
     Example: "1.1"
     """
@@ -7441,7 +7562,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.protocol.name, mcp.resource.protocol
+    Aliases: net.protocol.name, mcp.resource.protocol, messaging.protocol
     Example: "http"
     """
 
@@ -7455,7 +7576,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.flavor, net.protocol.version
+    Aliases: http.flavor, net.protocol.version, messaging.protocol_version
     Example: "1.1"
     """
 
@@ -9655,7 +9776,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.url, url, aws.request.url
+    Aliases: http.url, url, aws.request.url, messaging.url
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
@@ -9753,7 +9874,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, aws.request.url
+    Aliases: url.full, http.url, aws.request.url, messaging.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -12666,6 +12787,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "url.full",
             "aws.request.url",
             "http.url",
+            "messaging.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -12677,8 +12799,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full", "http.url", "url"],
+        aliases=["url.full", "http.url", "url", "messaging.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.url as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[488],
@@ -14136,6 +14261,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "db.connection_string": AttributeMetadata(
+        brief="The connection string used to connect to the database.",
+        type=AttributeType.STRING,
+        keys=("db.connection_string",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="redis://localhost:6379",
+        examples=["redis://localhost:6379"],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added db.connection_string attribute",
+            ),
         ],
     ),
     "db.driver.name": AttributeMetadata(
@@ -17740,6 +17885,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.version",
             "http.flavor",
+            "messaging.protocol_version",
             "net.protocol.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17749,8 +17895,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="network.protocol.version", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["network.protocol.version", "net.protocol.version"],
+        aliases=[
+            "network.protocol.version",
+            "net.protocol.version",
+            "messaging.protocol_version",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.protocol_version as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -18581,6 +18735,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "url.full",
             "aws.request.url",
             "http.url",
+            "messaging.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -18590,8 +18745,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "url", "aws.request.url"],
+        aliases=["url.full", "url", "aws.request.url", "messaging.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.url as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -19396,6 +19554,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.name",
             "mcp.resource.protocol",
+            "messaging.protocol",
             "net.protocol.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -19407,8 +19566,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="OTel uses the generic network.protocol.name attribute",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["network.protocol.name", "net.protocol.name"],
+        aliases=["network.protocol.name", "net.protocol.name", "messaging.protocol"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.protocol as an alias"
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -19646,6 +19808,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "messaging.conversation_id": AttributeMetadata(
+        brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.message.conversation_id",
+            "messaging.conversation_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="MyConversationId",
+        examples=["MyConversationId"],
+        deprecation=DeprecationInfo(
+            replacement="messaging.message.conversation_id",
+            reason="This attribute is being deprecated in favor of messaging.message.conversation_id.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.message.conversation_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.conversation_id attribute",
+            ),
+        ],
+    ),
     "messaging.destination": AttributeMetadata(
         brief="The message destination name.",
         type=AttributeType.STRING,
@@ -19806,12 +19994,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.conversation_id": AttributeMetadata(
         brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
         type=AttributeType.STRING,
-        keys=("messaging.message.conversation_id",),
+        keys=(
+            "messaging.message.conversation_id",
+            "messaging.conversation_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="MyConversationId",
+        aliases=["messaging.conversation_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.conversation_id as an alias",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[468],
@@ -19835,12 +20031,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.id": AttributeMetadata(
         brief="A value used by the messaging system as an identifier for the message, represented as a string.",
         type=AttributeType.STRING,
-        keys=("messaging.message.id",),
+        keys=(
+            "messaging.message.id",
+            "messaging.message_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
+        aliases=["messaging.message_id"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.message_id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -19874,15 +20077,74 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "messaging.message_id": AttributeMetadata(
+        brief="A value used by the messaging system as an identifier for the message, represented as a string.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.message.id",
+            "messaging.message_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="452a7c7c7c7048c2f887f0e7",
+        examples=["452a7c7c7c7048c2f887f0e7"],
+        deprecation=DeprecationInfo(
+            replacement="messaging.message.id",
+            reason="This attribute is being deprecated in favor of messaging.message.id.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.message.id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.message_id attribute",
+            ),
+        ],
+    ),
+    "messaging.operation": AttributeMetadata(
+        brief="The name of the messaging operation being performed.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.operation.name",
+            "messaging.operation",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="publish",
+        examples=["publish"],
+        deprecation=DeprecationInfo(
+            replacement="messaging.operation.name",
+            reason="This attribute is being deprecated in favor of messaging.operation.name.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.operation.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.operation attribute",
+            ),
+        ],
+    ),
     "messaging.operation.name": AttributeMetadata(
         brief="The name of the messaging operation being performed",
         type=AttributeType.STRING,
-        keys=("messaging.operation.name",),
+        keys=(
+            "messaging.operation.name",
+            "messaging.operation",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="send",
+        aliases=["messaging.operation"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.operation as an alias"
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[392],
@@ -19902,19 +20164,109 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[51, 127]),
         ],
     ),
+    "messaging.protocol": AttributeMetadata(
+        brief="OSI application layer or non-OSI equivalent.",
+        type=AttributeType.STRING,
+        keys=(
+            "network.protocol.name",
+            "mcp.resource.protocol",
+            "messaging.protocol",
+            "net.protocol.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AMQP",
+        examples=["AMQP"],
+        deprecation=DeprecationInfo(
+            replacement="network.protocol.name",
+            reason="This attribute is being deprecated in favor of network.protocol.name.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.protocol.name", "net.protocol.name", "mcp.resource.protocol"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.protocol attribute",
+            ),
+        ],
+    ),
+    "messaging.protocol_version": AttributeMetadata(
+        brief="The actual version of the protocol used for network communication.",
+        type=AttributeType.STRING,
+        keys=(
+            "network.protocol.version",
+            "http.flavor",
+            "messaging.protocol_version",
+            "net.protocol.version",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="0.9.1",
+        examples=["0.9.1"],
+        deprecation=DeprecationInfo(
+            replacement="network.protocol.version",
+            reason="This attribute is being deprecated in favor of network.protocol.version.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.protocol.version", "http.flavor", "net.protocol.version"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.protocol_version attribute",
+            ),
+        ],
+    ),
     "messaging.rabbitmq.destination.routing_key": AttributeMetadata(
         brief="RabbitMQ message routing key.",
         type=AttributeType.STRING,
-        keys=("messaging.rabbitmq.destination.routing_key",),
+        keys=(
+            "messaging.rabbitmq.destination.routing_key",
+            "messaging.rabbitmq.routing_key",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="myKey",
+        aliases=["messaging.rabbitmq.routing_key"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.rabbitmq.routing_key as an alias",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[468],
                 description="Added messaging.rabbitmq.destination.routing_key attribute",
+            ),
+        ],
+    ),
+    "messaging.rabbitmq.routing_key": AttributeMetadata(
+        brief="RabbitMQ message routing key.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.rabbitmq.destination.routing_key",
+            "messaging.rabbitmq.routing_key",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="myKey",
+        examples=["myKey"],
+        deprecation=DeprecationInfo(
+            replacement="messaging.rabbitmq.destination.routing_key",
+            reason="This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.rabbitmq.destination.routing_key"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.rabbitmq.routing_key attribute",
             ),
         ],
     ),
@@ -19929,6 +20281,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "messaging.url": AttributeMetadata(
+        brief="The connection string of the messaging broker.",
+        type=AttributeType.STRING,
+        keys=(
+            "url.full",
+            "aws.request.url",
+            "http.url",
+            "messaging.url",
+            "url",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="amqp://guest:guest@localhost:5672",
+        examples=["amqp://guest:guest@localhost:5672"],
+        deprecation=DeprecationInfo(
+            replacement="url.full",
+            reason="This attribute is being deprecated in favor of url.full.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["url.full", "http.url", "url", "aws.request.url"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[581], description="Added messaging.url attribute"
+            ),
         ],
     ),
     "method": AttributeMetadata(
@@ -20247,6 +20626,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.name",
             "mcp.resource.protocol",
+            "messaging.protocol",
             "net.protocol.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -20256,8 +20636,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="network.protocol.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["network.protocol.name", "mcp.resource.protocol"],
+        aliases=[
+            "network.protocol.name",
+            "mcp.resource.protocol",
+            "messaging.protocol",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.protocol as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20268,6 +20655,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.version",
             "http.flavor",
+            "messaging.protocol_version",
             "net.protocol.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -20277,8 +20665,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="network.protocol.version", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["network.protocol.version", "http.flavor"],
+        aliases=[
+            "network.protocol.version",
+            "http.flavor",
+            "messaging.protocol_version",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.protocol_version as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20557,14 +20953,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.name",
             "mcp.resource.protocol",
+            "messaging.protocol",
             "net.protocol.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
-        aliases=["net.protocol.name", "mcp.resource.protocol"],
+        aliases=["net.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.protocol as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20575,14 +20975,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.version",
             "http.flavor",
+            "messaging.protocol_version",
             "net.protocol.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1.1",
-        aliases=["http.flavor", "net.protocol.version"],
+        aliases=["http.flavor", "net.protocol.version", "messaging.protocol_version"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.protocol_version as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -23744,14 +24149,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "url.full",
             "aws.request.url",
             "http.url",
+            "messaging.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url", "url", "aws.request.url"],
+        aliases=["http.url", "url", "aws.request.url", "messaging.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.url as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[488],
@@ -23890,6 +24299,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "url.full",
             "aws.request.url",
             "http.url",
+            "messaging.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -23899,8 +24309,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "http.url", "aws.request.url"],
+        aliases=["url.full", "http.url", "aws.request.url", "messaging.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.url as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -24744,6 +25157,7 @@ Attributes = TypedDict(
         "culture.locale": str,
         "culture.timezone": str,
         "db.collection.name": str,
+        "db.connection_string": str,
         "db.driver.name": str,
         "db.mongodb.collection": str,
         "db.name": str,
@@ -25047,6 +25461,7 @@ Attributes = TypedDict(
         "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.batch.message_count": int,
+        "messaging.conversation_id": str,
         "messaging.destination": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
@@ -25061,10 +25476,16 @@ Attributes = TypedDict(
         "messaging.message.id": str,
         "messaging.message.receive.latency": int,
         "messaging.message.retry.count": int,
+        "messaging.message_id": str,
+        "messaging.operation": str,
         "messaging.operation.name": str,
         "messaging.operation.type": str,
+        "messaging.protocol": str,
+        "messaging.protocol_version": str,
         "messaging.rabbitmq.destination.routing_key": str,
+        "messaging.rabbitmq.routing_key": str,
         "messaging.system": str,
+        "messaging.url": str,
         "method": str,
         "middleware.name": str,
         "navigation.origin": str,

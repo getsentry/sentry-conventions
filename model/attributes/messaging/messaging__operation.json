@@ -1,0 +1,24 @@
+{
+  "key": "messaging.operation",
+  "brief": "The name of the messaging operation being performed.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["publish"],
+  "alias": ["messaging.operation.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "messaging.operation.name",
+    "reason": "This attribute is being deprecated in favor of messaging.operation.name."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [581],
+      "description": "Added messaging.operation attribute"
+    }
+  ]
+}

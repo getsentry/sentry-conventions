@@ -1,0 +1,24 @@
+{
+  "key": "messaging.protocol",
+  "brief": "OSI application layer or non-OSI equivalent.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["AMQP"],
+  "alias": ["network.protocol.name", "net.protocol.name", "mcp.resource.protocol"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "network.protocol.name",
+    "reason": "This attribute is being deprecated in favor of network.protocol.name."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [581],
+      "description": "Added messaging.protocol attribute"
+    }
+  ]
+}

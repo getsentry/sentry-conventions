@@ -7,13 +7,17 @@
   },
   "is_in_otel": true,
   "example": "http",
-  "alias": ["network.protocol.name", "mcp.resource.protocol"],
+  "alias": ["network.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "network.protocol.name"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.protocol as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [61, 127]
