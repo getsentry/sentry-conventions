@@ -1,0 +1,24 @@
+{
+  "key": "graphql.source",
+  "brief": "The GraphQL document being executed.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "examples": ["query findBookById { bookById(id: ?) { name } }"],
+  "alias": ["graphql.document"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "graphql.document",
+    "reason": "This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [584],
+      "description": "Added graphql.source attribute"
+    }
+  ]
+}
