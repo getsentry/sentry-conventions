@@ -1,0 +1,18 @@
+{
+  "key": "service.namespace",
+  "brief": "A namespace for service.name. Distinguishes a group of services, for example the cluster or team name.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["Shop"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [585],
+      "description": "Added service.namespace attribute"
+    }
+  ]
+}

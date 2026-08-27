@@ -16182,6 +16182,27 @@ export const SERVICE_NAME = 'service.name';
  */
 export type SERVICE_NAME_TYPE = string;
 
+// Path: model/attributes/service/service__namespace.json
+
+/**
+ * A namespace for service.name. Distinguishes a group of services, for example the cluster or team name. `service.namespace`
+ *
+ * Attribute Value Type: `string` {@link SERVICE_NAMESPACE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Shop"
+ */
+export const SERVICE_NAMESPACE = 'service.namespace';
+
+/**
+ * Type for {@link SERVICE_NAMESPACE} service.namespace
+ */
+export type SERVICE_NAMESPACE_TYPE = string;
+
 // Path: model/attributes/service/service__version.json
 
 /**
@@ -18975,6 +18996,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   server_name: 'string',
   'server.port': 'integer',
   'service.name': 'string',
+  'service.namespace': 'string',
   'service.version': 'string',
   'session.id': 'string',
   stall_percentage: 'double',
@@ -19793,6 +19815,7 @@ export type AttributeName =
   | typeof SERVER_NAME
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
+  | typeof SERVICE_NAMESPACE
   | typeof SERVICE_VERSION
   | typeof SESSION_ID
   | typeof STALL_PERCENTAGE
@@ -31293,6 +31316,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'omegastar',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'service.namespace': {
+    brief: 'A namespace for service.name. Distinguishes a group of services, for example the cluster or team name.',
+    type: 'string',
+    keys: ['service.namespace'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Shop',
+    examples: ['Shop'],
+    changelog: [{ version: 'next', prs: [585], description: 'Added service.namespace attribute' }],
+  },
   'service.version': {
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
     type: 'string',
@@ -37068,6 +37104,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Logical name of the service.',
     deprecationChain: ['service.name'],
   },
+  'service.namespace': {
+    canonicalName: 'service.namespace',
+    type: 'string',
+    brief: 'A namespace for service.name. Distinguishes a group of services, for example the cluster or team name.',
+    deprecationChain: ['service.namespace'],
+  },
   'service.version': {
     canonicalName: 'service.version',
     type: 'string',
@@ -38448,6 +38490,7 @@ export type Attributes = {
   [SERVER_NAME]?: SERVER_NAME_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
+  [SERVICE_NAMESPACE]?: SERVICE_NAMESPACE_TYPE;
   [SERVICE_VERSION]?: SERVICE_VERSION_TYPE;
   [SESSION_ID]?: SESSION_ID_TYPE;
   [STALL_PERCENTAGE]?: STALL_PERCENTAGE_TYPE;

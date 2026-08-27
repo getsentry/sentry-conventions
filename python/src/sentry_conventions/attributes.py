@@ -9470,6 +9470,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "omegastar"
     """
 
+    # Path: model/attributes/service/service__namespace.json
+    SERVICE_NAMESPACE: Literal["service.namespace"] = "service.namespace"
+    """A namespace for service.name. Distinguishes a group of services, for example the cluster or team name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "Shop"
+    """
+
     # Path: model/attributes/service/service__version.json
     SERVICE_VERSION: Literal["service.version"] = "service.version"
     """The version string of the service API or implementation. The format is not defined by these conventions.
@@ -23870,6 +23881,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "service.namespace": AttributeMetadata(
+        brief="A namespace for service.name. Distinguishes a group of services, for example the cluster or team name.",
+        type=AttributeType.STRING,
+        keys=("service.namespace",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="Shop",
+        examples=["Shop"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[585],
+                description="Added service.namespace attribute",
+            ),
+        ],
+    ),
     "service.version": AttributeMetadata(
         brief="The version string of the service API or implementation. The format is not defined by these conventions.",
         type=AttributeType.STRING,
@@ -25997,6 +26025,7 @@ Attributes = TypedDict(
         "server.port": int,
         "server_name": str,
         "service.name": str,
+        "service.namespace": str,
         "service.version": str,
         "session.id": str,
         "stall_percentage": float,
