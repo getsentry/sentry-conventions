@@ -387,6 +387,7 @@ class _AttributeNamesMeta(type):
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
+        "URL_PATH_PARAMS_KEY",
         "URL_SAME_ORIGIN",
         "URL",
     }
@@ -7842,7 +7843,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
-    Aliases: url.path.parameter.<key>
+    Aliases: url.path.parameter.<key>, url.path.params.<key>
     Example: "params.id='123'"
     """
 
@@ -9860,8 +9861,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
-    Aliases: params.<key>
+    Aliases: params.<key>, url.path.params.<key>
     Example: "url.path.parameter.id='123'"
+    """
+
+    # Path: model/attributes/url/url__path__params__[key].json
+    URL_PATH_PARAMS_KEY: Literal["url.path.params.<key>"] = "url.path.params.<key>"
+    """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Has Dynamic Suffix: true
+    Aliases: url.path.parameter.<key>, params.<key>
+    DEPRECATED: Use url.path.parameter.<key> instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+    Example: "url.path.params.id='123'"
     """
 
     # Path: model/attributes/url/url__port.json
@@ -21459,14 +21474,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "params.<key>",
             "url.path.parameter.<key>",
+            "url.path.params.<key>",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="params.id='123'",
-        aliases=["url.path.parameter.<key>"],
+        aliases=["url.path.parameter.<key>", "url.path.params.<key>"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added url.path.params.<key> as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
@@ -24387,15 +24406,47 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "url.path.parameter.<key>",
             "params.<key>",
+            "url.path.params.<key>",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="url.path.parameter.id='123'",
-        aliases=["params.<key>"],
+        aliases=["params.<key>", "url.path.params.<key>"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added url.path.params.<key> as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
+    ),
+    "url.path.params.<key>": AttributeMetadata(
+        brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
+        type=AttributeType.STRING,
+        keys=(
+            "url.path.parameter.<key>",
+            "params.<key>",
+            "url.path.params.<key>",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        has_dynamic_suffix=True,
+        example="url.path.params.id='123'",
+        examples=["url.path.params.id='123'"],
+        deprecation=DeprecationInfo(
+            replacement="url.path.parameter.<key>",
+            reason="This attribute is being deprecated in favor of url.path.parameter.<key>.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["url.path.parameter.<key>", "params.<key>"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[586],
+                description="Added url.path.params.<key> attribute",
+            ),
         ],
     ),
     "url.port": AttributeMetadata(
@@ -25907,6 +25958,7 @@ Attributes = TypedDict(
         "url.full": str,
         "url.path": str,
         "url.path.parameter.<key>": str,
+        "url.path.params.<key>": str,
         "url.port": int,
         "url.query": str,
         "url.same_origin": bool,
