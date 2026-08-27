@@ -277,6 +277,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_USAGE_INPUT_TOKENS_CACHED",
         "GEN_AI_USAGE_OUTPUT_TOKENS_REASONING",
         "GEN_AI_USAGE_PROMPT_TOKENS",
+        "GRAPHQL_SOURCE",
         "HARDWARECONCURRENCY",
         "HTTP_CLIENT_IP",
         "HTTP_FLAVOR",
@@ -5410,6 +5411,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: graphql.source
     Example: "query findBookById { bookById(id: ?) { name } }"
     """
 
@@ -5449,6 +5451,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "validate"
     Example: "execute"
     Example: "resolve"
+    """
+
+    # Path: model/attributes/graphql/graphql__source.json
+    GRAPHQL_SOURCE: Literal["graphql.source"] = "graphql.source"
+    """The GraphQL document being executed.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: graphql.document
+    DEPRECATED: Use graphql.document instead - This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.
+    Example: "query findBookById { bookById(id: ?) { name } }"
     """
 
     # Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
@@ -18012,7 +18027,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "graphql.document": AttributeMetadata(
         brief="The GraphQL document being executed.",
         type=AttributeType.STRING,
-        keys=("graphql.document",),
+        keys=(
+            "graphql.document",
+            "graphql.source",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO,
             reason="The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.",
@@ -18020,7 +18038,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="query findBookById { bookById(id: ?) { name } }",
+        aliases=["graphql.source"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added graphql.source as an alias"
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 description="Adds the `graphql.document` attribute to track the GraphQL document being executed.",
@@ -18072,6 +18094,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.",
             "Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.",
+        ],
+    ),
+    "graphql.source": AttributeMetadata(
+        brief="The GraphQL document being executed.",
+        type=AttributeType.STRING,
+        keys=(
+            "graphql.document",
+            "graphql.source",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="query findBookById { bookById(id: ?) { name } }",
+        examples=["query findBookById { bookById(id: ?) { name } }"],
+        deprecation=DeprecationInfo(
+            replacement="graphql.document",
+            reason="This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["graphql.document"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[584], description="Added graphql.source attribute"
+            ),
         ],
     ),
     "grpc.error.bad_request.field_violations": AttributeMetadata(
@@ -25628,6 +25674,7 @@ Attributes = TypedDict(
         "graphql.operation.name": str,
         "graphql.operation.type": str,
         "graphql.processing.type": str,
+        "graphql.source": str,
         "grpc.error.bad_request.field_violations": List[str],
         "grpc.error.debug_info.detail": str,
         "grpc.error.debug_info.stack_entries": List[str],
