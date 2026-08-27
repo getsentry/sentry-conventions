@@ -1,0 +1,24 @@
+{
+  "key": "ai.model.id",
+  "brief": "The id of the model used by the Vercel AI SDK.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["gpt-4o"],
+  "alias": ["gen_ai.request.model", "ai.model_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.request.model",
+    "reason": "This attribute is being deprecated in favor of gen_ai.request.model."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.model.id attribute"
+    }
+  ]
+}

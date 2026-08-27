@@ -1,0 +1,23 @@
+{
+  "key": "ai.prompt.tools",
+  "brief": "The tools made available to the model, as an array of stringified tool definitions.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": [["{\"type\":\"function\",\"name\":\"get_weather\"}"]],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.tool.definitions",
+    "reason": "This attribute is being deprecated in favor of gen_ai.tool.definitions."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.prompt.tools attribute"
+    }
+  ]
+}

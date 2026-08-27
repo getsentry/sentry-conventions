@@ -164,18 +164,26 @@ class _AttributeNamesMeta(type):
         "AI_INPUT_MESSAGES",
         "AI_IS_SEARCH_REQUIRED",
         "AI_METADATA",
-        "AI_MODEL_PROVIDER",
         "AI_MODEL_ID",
+        "AI_MODEL_PROVIDER",
+        "_AI_MODEL_ID",
         "AI_PIPELINE_NAME",
         "AI_PREAMBLE",
         "AI_PRESENCE_PENALTY",
+        "AI_PROMPT",
         "AI_PROMPT_MESSAGES",
+        "AI_PROMPT_TOOLS",
         "AI_PROMPT_TOKENS_USED",
         "AI_RAW_PROMPTING",
+        "AI_RESPONSE_ID",
+        "AI_RESPONSE_MODEL",
+        "AI_RESPONSE_OBJECT",
         "AI_RESPONSE_TEXT",
+        "AI_RESPONSE_TIMESTAMP",
         "AI_RESPONSE_TOOLCALLS",
         "AI_RESPONSE_FORMAT",
         "AI_RESPONSES",
+        "AI_SCHEMA",
         "AI_SEARCH_QUERIES",
         "AI_SEARCH_RESULTS",
         "AI_SEED",
@@ -191,6 +199,8 @@ class _AttributeNamesMeta(type):
         "AI_TOP_P",
         "AI_TOTAL_COST",
         "AI_TOTAL_TOKENS_USED",
+        "AI_USAGE_TOKENS",
+        "AI_VALUES",
         "AI_WARNINGS",
         "APP_APP_BUILD",
         "APP_APP_IDENTIFIER",
@@ -248,7 +258,9 @@ class _AttributeNamesMeta(type):
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
+        "GEN_AI_REQUEST_SCHEMA",
         "GEN_AI_RESPONSE_FINISH_REASON",
+        "GEN_AI_RESPONSE_OBJECT",
         "GEN_AI_RESPONSE_TEXT",
         "GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN",
         "GEN_AI_RESPONSE_TOOL_CALLS",
@@ -492,7 +504,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.response.id
+    Aliases: gen_ai.response.id, ai.response.id
     DEPRECATED: Use gen_ai.response.id instead
     Example: "gen_123abc"
     """
@@ -534,6 +546,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "{\"user_id\": 123, \"session_id\": \"abc123\"}"
     """
 
+    # Path: model/attributes/ai/ai__model__id.json
+    AI_MODEL_ID: Literal["ai.model.id"] = "ai.model.id"
+    """The id of the model used by the Vercel AI SDK.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.request.model, ai.model_id
+    DEPRECATED: Use gen_ai.request.model instead - This attribute is being deprecated in favor of gen_ai.request.model.
+    Example: "gpt-4o"
+    """
+
     # Path: model/attributes/ai/ai__model__provider.json
     AI_MODEL_PROVIDER: Literal["ai.model.provider"] = "ai.model.provider"
     """The provider of the model.
@@ -548,14 +573,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__model_id.json
-    AI_MODEL_ID: Literal["ai.model_id"] = "ai.model_id"
+    _AI_MODEL_ID: Literal["ai.model_id"] = "ai.model_id"
     """The vendor-specific ID of the model used.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.request.model
+    Aliases: gen_ai.request.model, ai.model.id
     DEPRECATED: Use gen_ai.request.model instead
     Example: "gpt-4"
     """
@@ -599,6 +624,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
+    # Path: model/attributes/ai/ai__prompt.json
+    AI_PROMPT: Literal["ai.prompt"] = "ai.prompt"
+    """The prompt passed to the Vercel AI SDK, as a stringified object.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages, gen_ai.prompt
+    DEPRECATED: Use gen_ai.input.messages instead - This attribute is being deprecated in favor of gen_ai.input.messages.
+    Example: "{\"prompt\":\"What is the weather in Paris?\"}"
+    """
+
     # Path: model/attributes/ai/ai__prompt__messages.json
     AI_PROMPT_MESSAGES: Literal["ai.prompt.messages"] = "ai.prompt.messages"
     """The input messages sent to the AI model.
@@ -607,9 +645,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.input.messages, ai.texts, gen_ai.prompt
+    Aliases: gen_ai.input.messages, ai.texts, gen_ai.prompt, ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
+    """
+
+    # Path: model/attributes/ai/ai__prompt__tools.json
+    AI_PROMPT_TOOLS: Literal["ai.prompt.tools"] = "ai.prompt.tools"
+    """The tools made available to the model, as an array of stringified tool definitions.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: Use gen_ai.tool.definitions instead - This attribute is being deprecated in favor of gen_ai.tool.definitions.
+    Example: ["{\"type\":\"function\",\"name\":\"get_weather\"}"]
     """
 
     # Path: model/attributes/ai/ai__prompt_tokens__used.json
@@ -637,6 +687,44 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/ai/ai__response__id.json
+    AI_RESPONSE_ID: Literal["ai.response.id"] = "ai.response.id"
+    """The id of the response returned by the model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.response.id, ai.generation_id
+    DEPRECATED: Use gen_ai.response.id instead - This attribute is being deprecated in favor of gen_ai.response.id.
+    Example: "chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY"
+    """
+
+    # Path: model/attributes/ai/ai__response__model.json
+    AI_RESPONSE_MODEL: Literal["ai.response.model"] = "ai.response.model"
+    """The id of the model that produced the response.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.response.model
+    DEPRECATED: Use gen_ai.response.model instead - This attribute is being deprecated in favor of gen_ai.response.model.
+    Example: "gpt-4o-2024-08-06"
+    """
+
+    # Path: model/attributes/ai/ai__response__object.json
+    AI_RESPONSE_OBJECT: Literal["ai.response.object"] = "ai.response.object"
+    """The type of the object returned by the model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.
+    Example: "chat.completion"
+    """
+
     # Path: model/attributes/ai/ai__response__text.json
     AI_RESPONSE_TEXT: Literal["ai.response.text"] = "ai.response.text"
     """The text response from the AI model.
@@ -648,6 +736,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: gen_ai.output.messages, ai.response.toolCalls
     DEPRECATED: Use gen_ai.output.messages instead
     Example: "The weather in Paris is currently rainy."
+    """
+
+    # Path: model/attributes/ai/ai__response__timestamp.json
+    AI_RESPONSE_TIMESTAMP: Literal["ai.response.timestamp"] = "ai.response.timestamp"
+    """The ISO 8601 timestamp at which the response was produced.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The span start and end timestamps carry the same information.
+    Example: "2026-02-19T15:32:11.000Z"
     """
 
     # Path: model/attributes/ai/ai__response__toolCalls.json
@@ -685,6 +785,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
     Example: ["hello","world"]
+    """
+
+    # Path: model/attributes/ai/ai__schema.json
+    AI_SCHEMA: Literal["ai.schema"] = "ai.schema"
+    """The stringified JSON schema the model output must conform to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+    Example: "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
     """
 
     # Path: model/attributes/ai/ai__search_queries.json
@@ -770,7 +882,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt
+    Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt, ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead
     Example: ["Hello, how are you?","What is the capital of France?"]
     """
@@ -872,9 +984,34 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.usage.total_tokens
+    Aliases: gen_ai.usage.total_tokens, ai.usage.tokens
     DEPRECATED: Use gen_ai.usage.total_tokens instead
     Example: 30
+    """
+
+    # Path: model/attributes/ai/ai__usage__tokens.json
+    AI_USAGE_TOKENS: Literal["ai.usage.tokens"] = "ai.usage.tokens"
+    """The total number of tokens used for the request and the response.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.usage.total_tokens, ai.total_tokens.used
+    DEPRECATED: Use gen_ai.usage.total_tokens instead - This attribute is being deprecated in favor of gen_ai.usage.total_tokens.
+    Example: 150
+    """
+
+    # Path: model/attributes/ai/ai__values.json
+    AI_VALUES: Literal["ai.values"] = "ai.values"
+    """The stringified values produced by a Vercel AI SDK object or array generation.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. Use gen_ai.output.messages for model output instead.
+    Example: "[{\"city\":\"Paris\"}]"
     """
 
     # Path: model/attributes/ai/ai__warnings.json
@@ -4514,7 +4651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.texts, ai.prompt.messages, gen_ai.prompt
+    Aliases: ai.texts, ai.prompt.messages, gen_ai.prompt, ai.prompt
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
@@ -4572,7 +4709,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages
+    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages, ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
@@ -4665,7 +4802,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.model_id
+    Aliases: ai.model_id, ai.model.id
     Example: "gpt-4-turbo-preview"
     """
 
@@ -4694,6 +4831,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "high"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__request__schema.json
+    GEN_AI_REQUEST_SCHEMA: Literal["gen_ai.request.schema"] = "gen_ai.request.schema"
+    """The stringified JSON schema the model output must conform to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+    Example: "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__seed.json
@@ -4796,7 +4945,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.generation_id
+    Aliases: ai.generation_id, ai.response.id
     Example: "gen_123abc"
     """
 
@@ -4808,7 +4957,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: ai.response.model
     Example: "gpt-4"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__response__object.json
+    GEN_AI_RESPONSE_OBJECT: Literal["gen_ai.response.object"] = "gen_ai.response.object"
+    """The type of the object returned by the model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.
+    Example: "chat.completion"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__streaming.json
@@ -5204,7 +5366,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: ai.total_tokens.used
+    Aliases: ai.total_tokens.used, ai.usage.tokens
     Example: 20
     """
 
@@ -10468,6 +10630,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.response.id",
             "ai.generation_id",
+            "ai.response.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -10476,8 +10639,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.response.id", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.response.id"],
+        aliases=["gen_ai.response.id", "ai.response.id"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.response.id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
         ],
     ),
@@ -10487,6 +10653,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -10532,6 +10699,31 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
+    "ai.model.id": AttributeMetadata(
+        brief="The id of the model used by the Vercel AI SDK.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.request.model",
+            "ai.model.id",
+            "ai.model_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="gpt-4o",
+        examples=["gpt-4o"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.model",
+            reason="This attribute is being deprecated in favor of gen_ai.request.model.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.request.model", "ai.model_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.model.id attribute"
+            ),
+        ],
+    ),
     "ai.model.provider": AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
@@ -10558,6 +10750,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "gen_ai.request.model",
+            "ai.model.id",
             "ai.model_id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -10567,8 +10760,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.request.model", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.request.model"],
+        aliases=["gen_ai.request.model", "ai.model.id"],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.model.id as an alias"),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10634,12 +10828,46 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
     ),
+    "ai.prompt": AttributeMetadata(
+        brief="The prompt passed to the Vercel AI SDK, as a stringified object.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.input.messages",
+            "ai.input_messages",
+            "ai.prompt",
+            "ai.prompt.messages",
+            "ai.texts",
+            "gen_ai.prompt",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"prompt":"What is the weather in Paris?"}',
+        examples=['{"prompt":"What is the weather in Paris?"}'],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.input.messages",
+            reason="This attribute is being deprecated in favor of gen_ai.input.messages.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "gen_ai.input.messages",
+            "ai.texts",
+            "ai.prompt.messages",
+            "gen_ai.prompt",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.prompt attribute"
+            ),
+        ],
+    ),
     "ai.prompt.messages": AttributeMetadata(
         brief="The input messages sent to the AI model.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -10651,12 +10879,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt"],
+        aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt", "ai.prompt"],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[498],
                 description="Added ai.prompt.messages attribute",
+            ),
+        ],
+    ),
+    "ai.prompt.tools": AttributeMetadata(
+        brief="The tools made available to the model, as an array of stringified tool definitions.",
+        type=AttributeType.STRING_ARRAY,
+        keys=(
+            "gen_ai.tool.definitions",
+            "ai.prompt.tools",
+            "ai.tools",
+            "gen_ai.request.available_tools",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=['{"type":"function","name":"get_weather"}'],
+        examples=[['{"type":"function","name":"get_weather"}']],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.definitions",
+            reason="This attribute is being deprecated in favor of gen_ai.tool.definitions.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.prompt.tools attribute"
             ),
         ],
     ),
@@ -10696,6 +10950,77 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
+    "ai.response.id": AttributeMetadata(
+        brief="The id of the response returned by the model.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.id",
+            "ai.generation_id",
+            "ai.response.id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY",
+        examples=["chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.id",
+            reason="This attribute is being deprecated in favor of gen_ai.response.id.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.response.id", "ai.generation_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.response.id attribute"
+            ),
+        ],
+    ),
+    "ai.response.model": AttributeMetadata(
+        brief="The id of the model that produced the response.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.model",
+            "ai.response.model",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="gpt-4o-2024-08-06",
+        examples=["gpt-4o-2024-08-06"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.model",
+            reason="This attribute is being deprecated in favor of gen_ai.response.model.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.response.model"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added ai.response.model attribute",
+            ),
+        ],
+    ),
+    "ai.response.object": AttributeMetadata(
+        brief="The type of the object returned by the model.",
+        type=AttributeType.STRING,
+        keys=("ai.response.object",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="chat.completion",
+        examples=["chat.completion"],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added ai.response.object attribute",
+            ),
+        ],
+    ),
     "ai.response.text": AttributeMetadata(
         brief="The text response from the AI model.",
         type=AttributeType.STRING,
@@ -10719,6 +11044,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.19.0",
                 prs=[498],
                 description="Added ai.response.text attribute",
+            ),
+        ],
+    ),
+    "ai.response.timestamp": AttributeMetadata(
+        brief="The ISO 8601 timestamp at which the response was produced.",
+        type=AttributeType.STRING,
+        keys=("ai.response.timestamp",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="2026-02-19T15:32:11.000Z",
+        examples=["2026-02-19T15:32:11.000Z"],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The span start and end timestamps carry the same information."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added ai.response.timestamp attribute",
             ),
         ],
     ),
@@ -10782,6 +11127,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[65, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "ai.schema": AttributeMetadata(
+        brief="The stringified JSON schema the model output must conform to.",
+        type=AttributeType.STRING,
+        keys=("ai.schema",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"type":"object","properties":{"city":{"type":"string"}}}',
+        examples=['{"type":"object","properties":{"city":{"type":"string"}}}'],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.schema attribute"
+            ),
         ],
     ),
     "ai.search_queries": AttributeMetadata(
@@ -10891,6 +11254,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -10902,8 +11266,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.input.messages", "ai.prompt.messages", "gen_ai.prompt"],
+        aliases=[
+            "gen_ai.input.messages",
+            "ai.prompt.messages",
+            "gen_ai.prompt",
+            "ai.prompt",
+        ],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
@@ -10989,6 +11359,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         keys=(
             "gen_ai.tool.definitions",
+            "ai.prompt.tools",
             "ai.tools",
             "gen_ai.request.available_tools",
         ),
@@ -11071,6 +11442,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.usage.total_tokens",
             "ai.total_tokens.used",
+            "ai.usage.tokens",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -11079,11 +11451,57 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.usage.total_tokens", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.usage.total_tokens"],
+        aliases=["gen_ai.usage.total_tokens", "ai.usage.tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.usage.tokens as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "ai.usage.tokens": AttributeMetadata(
+        brief="The total number of tokens used for the request and the response.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.total_tokens",
+            "ai.total_tokens.used",
+            "ai.usage.tokens",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=150,
+        examples=[150],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.total_tokens",
+            reason="This attribute is being deprecated in favor of gen_ai.usage.total_tokens.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.usage.total_tokens", "ai.total_tokens.used"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.usage.tokens attribute"
+            ),
+        ],
+    ),
+    "ai.values": AttributeMetadata(
+        brief="The stringified values produced by a Vercel AI SDK object or array generation.",
+        type=AttributeType.STRING,
+        keys=("ai.values",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='[{"city":"Paris"}]',
+        examples=['[{"city":"Paris"}]'],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. Use gen_ai.output.messages for model output instead."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.values attribute"
+            ),
         ],
     ),
     "ai.warnings": AttributeMetadata(
@@ -16326,6 +16744,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -16334,8 +16753,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-        aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt"],
+        aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -16407,6 +16827,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -16420,8 +16841,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["gen_ai.input.messages", "ai.texts", "ai.prompt.messages"],
+        aliases=[
+            "gen_ai.input.messages",
+            "ai.texts",
+            "ai.prompt.messages",
+            "ai.prompt",
+        ],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
             ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16471,6 +16898,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "gen_ai.tool.definitions",
+            "ai.prompt.tools",
             "ai.tools",
             "gen_ai.request.available_tools",
         ),
@@ -16540,14 +16968,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "gen_ai.request.model",
+            "ai.model.id",
             "ai.model_id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4-turbo-preview",
-        aliases=["ai.model_id"],
+        aliases=["ai.model_id", "ai.model.id"],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.model.id as an alias"),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
@@ -16581,6 +17011,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.17.0",
                 prs=[502],
                 description="Added gen_ai.request.reasoning.level attribute",
+            ),
+        ],
+    ),
+    "gen_ai.request.schema": AttributeMetadata(
+        brief="The stringified JSON schema the model output must conform to.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.request.schema",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"type":"object","properties":{"city":{"type":"string"}}}',
+        examples=['{"type":"object","properties":{"city":{"type":"string"}}}'],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added gen_ai.request.schema attribute",
             ),
         ],
     ),
@@ -16715,27 +17165,58 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.response.id",
             "ai.generation_id",
+            "ai.response.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gen_123abc",
-        aliases=["ai.generation_id"],
+        aliases=["ai.generation_id", "ai.response.id"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.response.id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
     ),
     "gen_ai.response.model": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
-        keys=("gen_ai.response.model",),
+        keys=(
+            "gen_ai.response.model",
+            "ai.response.model",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4",
+        aliases=["ai.response.model"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.response.model as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "gen_ai.response.object": AttributeMetadata(
+        brief="The type of the object returned by the model.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.response.object",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="chat.completion",
+        examples=["chat.completion"],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added gen_ai.response.object attribute",
+            ),
         ],
     ),
     "gen_ai.response.streaming": AttributeMetadata(
@@ -16955,6 +17436,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "gen_ai.tool.definitions",
+            "ai.prompt.tools",
             "ai.tools",
             "gen_ai.request.available_tools",
         ),
@@ -17381,13 +17863,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.usage.total_tokens",
             "ai.total_tokens.used",
+            "ai.usage.tokens",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=20,
-        aliases=["ai.total_tokens.used"],
+        aliases=["ai.total_tokens.used", "ai.usage.tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.usage.tokens as an alias"
+            ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
@@ -24627,18 +25113,26 @@ Attributes = TypedDict(
         "ai.input_messages": str,
         "ai.is_search_required": bool,
         "ai.metadata": str,
+        "ai.model.id": str,
         "ai.model.provider": str,
         "ai.model_id": str,
         "ai.pipeline.name": str,
         "ai.preamble": str,
         "ai.presence_penalty": float,
+        "ai.prompt": str,
         "ai.prompt.messages": str,
+        "ai.prompt.tools": List[str],
         "ai.prompt_tokens.used": int,
         "ai.raw_prompting": bool,
+        "ai.response.id": str,
+        "ai.response.model": str,
+        "ai.response.object": str,
         "ai.response.text": str,
+        "ai.response.timestamp": str,
         "ai.response.toolCalls": str,
         "ai.response_format": str,
         "ai.responses": List[str],
+        "ai.schema": str,
         "ai.search_queries": List[str],
         "ai.search_results": List[str],
         "ai.seed": str,
@@ -24654,6 +25148,8 @@ Attributes = TypedDict(
         "ai.top_p": float,
         "ai.total_cost": float,
         "ai.total_tokens.used": int,
+        "ai.usage.tokens": int,
+        "ai.values": str,
         "ai.warnings": List[str],
         "angular.version": str,
         "app.app_build": str,
@@ -24962,6 +25458,7 @@ Attributes = TypedDict(
         "gen_ai.request.model": str,
         "gen_ai.request.presence_penalty": float,
         "gen_ai.request.reasoning.level": str,
+        "gen_ai.request.schema": str,
         "gen_ai.request.seed": str,
         "gen_ai.request.stop_sequences": List[str],
         "gen_ai.request.temperature": float,
@@ -24971,6 +25468,7 @@ Attributes = TypedDict(
         "gen_ai.response.finish_reasons": str,
         "gen_ai.response.id": str,
         "gen_ai.response.model": str,
+        "gen_ai.response.object": str,
         "gen_ai.response.streaming": bool,
         "gen_ai.response.text": str,
         "gen_ai.response.time_to_first_chunk": float,

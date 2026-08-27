@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-  "alias": ["gen_ai.input.messages", "ai.texts", "ai.prompt.messages"],
+  "alias": ["gen_ai.input.messages", "ai.texts", "ai.prompt.messages", "ai.prompt"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.input.messages",
@@ -15,6 +15,10 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added ai.prompt as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [74, 108, 119]
