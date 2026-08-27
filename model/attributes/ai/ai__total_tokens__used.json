@@ -7,13 +7,17 @@
   },
   "is_in_otel": false,
   "example": 30,
-  "alias": ["gen_ai.usage.total_tokens"],
+  "alias": ["gen_ai.usage.total_tokens", "ai.usage.tokens"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.usage.total_tokens"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added ai.usage.tokens as an alias"
+    },
     {
       "version": "0.4.0",
       "prs": [228]
