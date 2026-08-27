@@ -2208,9 +2208,23 @@ export const SEARCH_GEN_AI__TOOL__TYPE = 'gen_ai.tool.type';
 export const SEARCH_GEN_AI__USAGE__CACHE_CREATION__INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
 
 /**
+ * Search name for {@link attributes._GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS}. `gen_ai.usage.cache_creation_input_tokens`
+ *
+ * @deprecated Use {@link SEARCH_GEN_AI__USAGE__CACHE_CREATION__INPUT_TOKENS} (`gen_ai.usage.cache_creation.input_tokens`) instead
+ */
+export const SEARCH_GEN_AI__USAGE__CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation_input_tokens';
+
+/**
  * Search name for {@link attributes.GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS}. `gen_ai.usage.cache_read.input_tokens`
  */
 export const SEARCH_GEN_AI__USAGE__CACHE_READ__INPUT_TOKENS = 'gen_ai.usage.cache_read.input_tokens';
+
+/**
+ * Search name for {@link attributes._GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS}. `gen_ai.usage.cache_read_input_tokens`
+ *
+ * @deprecated Use {@link SEARCH_GEN_AI__USAGE__CACHE_READ__INPUT_TOKENS} (`gen_ai.usage.cache_read.input_tokens`) instead
+ */
+export const SEARCH_GEN_AI__USAGE__CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read_input_tokens';
 
 /**
  * Search name for {@link attributes.GEN_AI_USAGE_COMPLETION_TOKENS}. `gen_ai.usage.completion_tokens`
@@ -5213,7 +5227,9 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__TOOL__OUTPUT
   | typeof SEARCH_GEN_AI__TOOL__TYPE
   | typeof SEARCH_GEN_AI__USAGE__CACHE_CREATION__INPUT_TOKENS
+  | typeof SEARCH_GEN_AI__USAGE__CACHE_CREATION_INPUT_TOKENS
   | typeof SEARCH_GEN_AI__USAGE__CACHE_READ__INPUT_TOKENS
+  | typeof SEARCH_GEN_AI__USAGE__CACHE_READ_INPUT_TOKENS
   | typeof SEARCH_GEN_AI__USAGE__COMPLETION_TOKENS
   | typeof SEARCH_GEN_AI__USAGE__INPUT_TOKENS
   | typeof SEARCH_GEN_AI__USAGE__INPUT_TOKENS__CACHE_WRITE
@@ -8177,13 +8193,41 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.usage.cache_creation.input_tokens',
     type: 'integer',
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    deprecationChain: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
+  },
+  'gen_ai.usage.cache_creation_input_tokens': {
+    canonicalName: 'gen_ai.usage.cache_creation.input_tokens',
+    type: 'integer',
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    deprecationChain: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
   },
   'gen_ai.usage.cache_read.input_tokens': {
     canonicalName: 'gen_ai.usage.cache_read.input_tokens',
     type: 'integer',
     brief: 'The number of cached tokens used to process the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    deprecationChain: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
+  },
+  'gen_ai.usage.cache_read_input_tokens': {
+    canonicalName: 'gen_ai.usage.cache_read.input_tokens',
+    type: 'integer',
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    deprecationChain: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
   },
   'gen_ai.usage.completion_tokens': {
     canonicalName: 'gen_ai.usage.output_tokens',
@@ -8201,13 +8245,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.usage.cache_creation.input_tokens',
     type: 'integer',
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    deprecationChain: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
   },
   'gen_ai.usage.input_tokens.cached': {
     canonicalName: 'gen_ai.usage.cache_read.input_tokens',
     type: 'integer',
     brief: 'The number of cached tokens used to process the AI input (prompt).',
-    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    deprecationChain: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
   },
   'gen_ai.usage.output_tokens': {
     canonicalName: 'gen_ai.usage.output_tokens',
