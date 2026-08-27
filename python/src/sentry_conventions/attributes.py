@@ -660,6 +660,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.tool.definitions, gen_ai.request.available_tools, ai.tools
     DEPRECATED: Use gen_ai.tool.definitions instead - This attribute is being deprecated in favor of gen_ai.tool.definitions.
     Example: ["{\"type\":\"function\",\"name\":\"get_weather\"}"]
     """
@@ -935,6 +936,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.tool.definitions, gen_ai.request.available_tools, ai.prompt.tools
     DEPRECATED: Use gen_ai.tool.definitions instead
     Example: ["function_1","function_2"]
     """
@@ -4750,6 +4752,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.tool.definitions, ai.tools, ai.prompt.tools
     DEPRECATED: Use gen_ai.tool.definitions instead
     Example: "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
     """
@@ -5134,6 +5137,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: gen_ai.request.available_tools, ai.tools, ai.prompt.tools
     Example: "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
     """
 
@@ -10945,9 +10949,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of gen_ai.tool.definitions.",
             status=DeprecationStatus.BACKFILL,
         ),
+        aliases=[
+            "gen_ai.tool.definitions",
+            "gen_ai.request.available_tools",
+            "ai.tools",
+        ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.prompt.tools attribute"
+                version="next",
+                prs=[583, 590],
+                description="Added ai.prompt.tools attribute",
             ),
         ],
     ),
@@ -11407,7 +11418,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.definitions", status=DeprecationStatus.BACKFILL
         ),
+        aliases=[
+            "gen_ai.tool.definitions",
+            "gen_ai.request.available_tools",
+            "ai.prompt.tools",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added the gen_ai.tool.definitions alias group to ai.tools",
+            ),
             ChangelogEntry(version="0.1.0", prs=[55, 65, 127]),
         ],
     ),
@@ -16946,7 +16966,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.definitions", status=DeprecationStatus.NORMALIZE
         ),
+        aliases=["gen_ai.tool.definitions", "ai.tools", "ai.prompt.tools"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.tool.definitions, ai.tools and ai.prompt.tools as aliases",
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 127]),
         ],
@@ -17481,7 +17506,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
+        aliases=["gen_ai.request.available_tools", "ai.tools", "ai.prompt.tools"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.request.available_tools, ai.tools and ai.prompt.tools as aliases",
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
