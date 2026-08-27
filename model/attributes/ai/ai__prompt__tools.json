@@ -7,6 +7,7 @@
   },
   "is_in_otel": false,
   "examples": [["{\"type\":\"function\",\"name\":\"get_weather\"}"]],
+  "alias": ["gen_ai.tool.definitions", "gen_ai.request.available_tools", "ai.tools"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.tool.definitions",
@@ -14,6 +15,10 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added gen_ai.tool.definitions, gen_ai.request.available_tools and ai.tools as aliases"
+    },
     {
       "version": "0.21.0",
       "prs": [583],
