@@ -16008,6 +16008,27 @@ export const SUBPROCESS_PID = 'subprocess.pid';
  */
 export type SUBPROCESS_PID_TYPE = number;
 
+// Path: model/attributes/template/template__render__context.json
+
+/**
+ * The context data passed to a template for rendering. Can be given as string or structural data of any format. `template.render.context`
+ *
+ * Attribute Value Type: `string` {@link TEMPLATE_RENDER_CONTEXT_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "{\"user\": \"Jane\", \"items\": [\"apple\", \"banana\"]}"
+ */
+export const TEMPLATE_RENDER_CONTEXT = 'template.render.context';
+
+/**
+ * Type for {@link TEMPLATE_RENDER_CONTEXT} template.render.context
+ */
+export type TEMPLATE_RENDER_CONTEXT_TYPE = string;
+
 // Path: model/attributes/thread/thread__id.json
 
 /**
@@ -18611,6 +18632,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'starlite.middleware_name': 'string',
   'state.type': 'string',
   'subprocess.pid': 'integer',
+  'template.render.context': 'string',
   'thread.id': 'integer',
   'thread.name': 'string',
   'timber.tag': 'string',
@@ -19414,6 +19436,7 @@ export type AttributeName =
   | typeof STARLITE_MIDDLEWARE_NAME
   | typeof STATE_TYPE
   | typeof SUBPROCESS_PID
+  | typeof TEMPLATE_RENDER_CONTEXT
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
@@ -30677,6 +30700,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  'template.render.context': {
+    brief:
+      'The context data passed to a template for rendering. Can be given as string or structural data of any format.',
+    type: 'string',
+    keys: ['template.render.context'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"user": "Jane", "items": ["apple", "banana"]}',
+    examples: ['{"user": "Jane", "items": ["apple", "banana"]}'],
+    changelog: [{ version: '0.21.0', description: 'Added template.render.context attribute' }],
+  },
   'thread.id': {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
@@ -36263,6 +36300,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The process ID of a subprocess.',
     deprecationChain: ['process.pid', 'subprocess.pid'],
   },
+  'template.render.context': {
+    canonicalName: 'template.render.context',
+    type: 'string',
+    brief:
+      'The context data passed to a template for rendering. Can be given as string or structural data of any format.',
+    deprecationChain: ['template.render.context'],
+  },
   'thread.id': {
     canonicalName: 'thread.id',
     type: 'integer',
@@ -37514,6 +37558,7 @@ export type Attributes = {
   [STARLITE_MIDDLEWARE_NAME]?: STARLITE_MIDDLEWARE_NAME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
   [SUBPROCESS_PID]?: SUBPROCESS_PID_TYPE;
+  [TEMPLATE_RENDER_CONTEXT]?: TEMPLATE_RENDER_CONTEXT_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;

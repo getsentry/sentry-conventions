@@ -9360,6 +9360,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12345
     """
 
+    # Path: model/attributes/template/template__render__context.json
+    TEMPLATE_RENDER_CONTEXT: Literal["template.render.context"] = (
+        "template.render.context"
+    )
+    """The context data passed to a template for rendering. Can be given as string or structural data of any format.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "{\"user\": \"Jane\", \"items\": [\"apple\", \"banana\"]}"
+    """
+
     # Path: model/attributes/thread/thread__id.json
     THREAD_ID: Literal["thread.id"] = "thread.id"
     """Current “managed” thread ID.
@@ -23328,6 +23341,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "template.render.context": AttributeMetadata(
+        brief="The context data passed to a template for rendering. Can be given as string or structural data of any format.",
+        type=AttributeType.STRING,
+        keys=("template.render.context",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"user": "Jane", "items": ["apple", "banana"]}',
+        examples=['{"user": "Jane", "items": ["apple", "banana"]}'],
+        changelog=[
+            ChangelogEntry(
+                version="0.21.0", description="Added template.render.context attribute"
+            ),
+        ],
+    ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -25254,6 +25282,7 @@ Attributes = TypedDict(
         "starlite.middleware_name": str,
         "state.type": str,
         "subprocess.pid": int,
+        "template.render.context": str,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
