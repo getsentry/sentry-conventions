@@ -7,9 +7,13 @@
   },
   "is_in_otel": true,
   "example": "gen_123abc",
-  "alias": ["ai.generation_id"],
+  "alias": ["ai.generation_id", "ai.response.id"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added ai.response.id as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [57, 127]

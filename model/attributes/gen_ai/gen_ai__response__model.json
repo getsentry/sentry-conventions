@@ -7,8 +7,13 @@
   },
   "is_in_otel": true,
   "example": "gpt-4",
+  "alias": ["ai.response.model"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added ai.response.model as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

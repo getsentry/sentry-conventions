@@ -6,14 +6,18 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "visibility": "public",
   "example": "[{\"role\": \"user\", \"message\": \"hello\"}]",
-  "alias": ["gen_ai.input.messages", "ai.texts", "gen_ai.prompt"],
+  "alias": ["gen_ai.input.messages", "ai.texts", "gen_ai.prompt", "ai.prompt"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.input.messages"
   },
+  "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added ai.prompt as an alias"
+    },
     {
       "version": "0.19.0",
       "prs": [498],

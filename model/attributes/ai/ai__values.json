@@ -1,0 +1,22 @@
+{
+  "key": "ai.values",
+  "brief": "The stringified values produced by a Vercel AI SDK object or array generation.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["[{\"city\":\"Paris\"}]"],
+  "deprecation": {
+    "_status": null,
+    "reason": "This attribute is deprecated. Use gen_ai.output.messages for model output instead."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.values attribute"
+    }
+  ]
+}
