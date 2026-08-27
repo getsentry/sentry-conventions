@@ -393,3 +393,41 @@ describe('alias group consistency', async () => {
     }
   });
 });
+
+describe('search alias uniqueness', async () => {
+  const filesIterator = await fs.promises.glob(`${traceFolders}/**/*.json`);
+  const files = await Array.fromAsync(filesIterator);
+
+  const attributes = new Map<string, AttributeJson>();
+  for (const file of files) {
+    const content: AttributeJson = JSON.parse(await fs.promises.readFile(file, 'utf-8'));
+    attributes.set(content.key, content);
+  }
+
+  it('should not have duplicate search aliases', () => {
+    const keysBySearchAlias = new Map<string, string[]>();
+
+    for (const [key, content] of attributes) {
+      const searchAliasName = content.search_alias?.name;
+      if (searchAliasName == null) {
+        continue;
+      }
+
+      const keys = keysBySearchAlias.get(searchAliasName) ?? [];
+      keys.push(key);
+      keysBySearchAlias.set(searchAliasName, keys);
+    }
+
+    const duplicates = [...keysBySearchAlias.entries()]
+      .filter(([, keys]) => keys.length > 1)
+      .toSorted(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
+      .map(([searchAliasName, keys]) => {
+        const sortedKeys = [...keys].toSorted();
+        return `  "${searchAliasName}": ${sortedKeys.map((key) => `"${key}"`).join(', ')}`;
+      });
+
+    if (duplicates.length > 0) {
+      throw new Error(`Duplicate search aliases found:\n${duplicates.join('\n')}`);
+    }
+  });
+});

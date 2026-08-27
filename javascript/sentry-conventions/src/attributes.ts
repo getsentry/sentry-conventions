@@ -29608,7 +29608,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.segment.name': {
     brief: 'The segment name of a span',
     type: 'string',
-    keys: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29620,6 +29620,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
       { version: '0.1.0', prs: [104] },
     ],
+    searchAlias: {
+      name: 'transaction',
+    },
   },
   'sentry.segment.name.source': {
     brief:
@@ -29881,7 +29884,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.transaction': {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
-    keys: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29898,9 +29901,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.6.0', prs: [345], description: 'Deprecated sentry.transaction in favor of sentry.segment.name' },
       { version: '0.0.0' },
     ],
-    searchAlias: {
-      name: 'transaction',
-    },
   },
   'sentry.user.email': {
     brief: 'User email address.',
@@ -30369,7 +30369,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   transaction: {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
-    keys: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -35601,12 +35601,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The segment ID of a span',
     deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
   },
-  'sentry.segment.name': {
-    canonicalName: 'sentry.segment.name',
-    type: 'string',
-    brief: 'The segment name of a span',
-    deprecationChain: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
-  },
   'sentry.segment.name.source': {
     canonicalName: 'sentry.segment.name.source',
     type: 'string',
@@ -35659,6 +35653,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
     deprecationChain: ['sentry.trace.parent_span_id'],
+  },
+  'sentry.transaction': {
+    canonicalName: 'sentry.segment.name',
+    type: 'string',
+    brief: 'The sentry transaction (segment name).',
+    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
   },
   'server.address': {
     canonicalName: 'server.address',
@@ -35860,8 +35860,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   transaction: {
     canonicalName: 'sentry.segment.name',
     type: 'string',
-    brief: 'The sentry transaction (segment name).',
-    deprecationChain: ['sentry.segment.name', 'sentry.transaction', 'transaction'],
+    brief: 'The segment name of a span',
+    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
   },
   'transaction.span_id': {
     canonicalName: 'sentry.segment.id',

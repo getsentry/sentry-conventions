@@ -22207,8 +22207,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "sentry.segment.name",
-            "sentry.transaction",
             "transaction",
+            "sentry.transaction",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -22223,6 +22223,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.1.0", prs=[104]),
         ],
+        search_alias=SearchAlias(name="transaction"),
     ),
     "sentry.segment.name.source": AttributeMetadata(
         brief="The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
@@ -22532,8 +22533,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "sentry.segment.name",
-            "sentry.transaction",
             "transaction",
+            "sentry.transaction",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
@@ -22553,7 +22554,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="transaction"),
     ),
     "sentry.user.email": AttributeMetadata(
         brief="User email address.",
@@ -23090,8 +23090,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "sentry.segment.name",
-            "sentry.transaction",
             "transaction",
+            "sentry.transaction",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
