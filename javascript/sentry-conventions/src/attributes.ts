@@ -10308,7 +10308,7 @@ export type HTTP_STATUS_TEXT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path and url.query
+ * @deprecated  - This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.
  * @example "/test?foo=bar#buzz"
  */
 export const HTTP_TARGET = 'http.target';
@@ -27366,10 +27366,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/test?foo=bar#buzz',
     deprecation: {
-      replacement: 'url.path',
-      reason: 'This attribute is being deprecated in favor of url.path and url.query',
+      reason:
+        'This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.',
     },
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Documented url.path, url.query and url.fragment as the replacements for http.target',
+      },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'http.url': {
     brief: 'The URL of the resource that was fetched.',
@@ -35859,7 +35866,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['http.response.status_text', 'http.status_text'],
   },
   'http.target': {
-    canonicalName: 'url.path',
+    canonicalName: 'http.target',
     type: 'string',
     brief: 'The pathname and query string of the URL.',
     deprecationChain: ['http.target'],
