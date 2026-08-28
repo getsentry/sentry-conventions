@@ -1029,8 +1029,8 @@ export interface AttributeSearchMetadata {
   type: AttributeSearchType;
   /** A description of the attribute */
   brief: string;
-  /** Whether the attribute is public or internal to Sentry */
-  visibility: AttributeVisibility;
+  /** Whether the attribute is internal to Sentry */
+  internal?: true;
   /** Every key under which the attribute's value is readable, preferred key first */
   deprecationChain: readonly string[];
 }
@@ -1265,7 +1265,7 @@ function generateMetadataDict(
     }
 
     const canonicalName = preferredAttribute.attributeJson.deprecation?.replacement ?? preferredAttribute.key;
-    const visibility = getVisibility(preferredAttribute.attributeJson);
+    const isInternal = getVisibility(preferredAttribute.attributeJson) === 'internal';
 
     metadataDict += `  ${JSON.stringify(searchKey)}: {\n`;
     metadataDict += `    canonicalName: ${JSON.stringify(canonicalName)},\n`;
@@ -1273,7 +1273,9 @@ function generateMetadataDict(
       preferredAttribute.attributeJson.search_alias?.type ?? preferredAttribute.attributeJson.type,
     )},\n`;
     metadataDict += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
-    metadataDict += `    visibility: ${JSON.stringify(visibility)},\n`;
+    if (isInternal) {
+      metadataDict += '    internal: true,\n';
+    }
     metadataDict += `    deprecationChain: ${JSON.stringify([...deprecationChain])},\n`;
     metadataDict += '  },\n';
   }
