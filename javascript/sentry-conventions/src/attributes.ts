@@ -17848,6 +17848,8 @@ export interface AttributeSearchMetadata {
   type: AttributeSearchType;
   /** A description of the attribute */
   brief: string;
+  /** Whether the attribute is internal to Sentry */
+  internal?: true;
   /** Every key under which the attribute's value is readable, preferred key first */
   deprecationChain: readonly string[];
 }
@@ -35807,6 +35809,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.dsc.environment',
     type: 'string',
     brief: 'The environment from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.environment'],
   },
   'sentry.dsc.project_id': {
@@ -35814,66 +35817,77 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    internal: true,
     deprecationChain: ['sentry.dsc.project_id'],
   },
   'sentry.dsc.public_key': {
     canonicalName: 'sentry.dsc.public_key',
     type: 'string',
     brief: 'The public key from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.public_key'],
   },
   'sentry.dsc.release': {
     canonicalName: 'sentry.dsc.release',
     type: 'string',
     brief: 'The release identifier from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.release'],
   },
   'sentry.dsc.sample_rate': {
     canonicalName: 'sentry.dsc.sample_rate',
     type: 'string',
     brief: 'The sample rate from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.sample_rate'],
   },
   'sentry.dsc.sampled': {
     canonicalName: 'sentry.dsc.sampled',
     type: 'boolean',
     brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.sampled'],
   },
   'sentry.dsc.trace_id': {
     canonicalName: 'sentry.dsc.trace_id',
     type: 'string',
     brief: 'The trace ID from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.trace_id'],
   },
   'sentry.dsc.transaction': {
     canonicalName: 'sentry.dsc.transaction',
     type: 'string',
     brief: 'The transaction name from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.transaction'],
   },
   'sentry.event.serialized_breadcrumbs': {
     canonicalName: 'sentry.event.serialized_breadcrumbs',
     type: 'string',
     brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_breadcrumbs'],
   },
   'sentry.event.serialized_contexts': {
     canonicalName: 'sentry.event.serialized_contexts',
     type: 'string',
     brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_contexts'],
   },
   'sentry.event.serialized_extra': {
     canonicalName: 'sentry.event.serialized_extra',
     type: 'string',
     brief: 'JSON-serialized `extra` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_extra'],
   },
   'sentry.event.serialized_meta': {
     canonicalName: 'sentry.event.serialized_meta',
     type: 'string',
     brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_meta'],
   },
   'sentry.exclusive_time': {
@@ -36016,12 +36030,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.relay.ingress',
     type: 'string',
     brief: 'How an item (span, log, &c.) entered Relay.',
+    internal: true,
     deprecationChain: ['sentry.relay.ingress'],
   },
   'sentry.relay.pipeline': {
     canonicalName: 'sentry.relay.pipeline',
     type: 'string',
     brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
+    internal: true,
     deprecationChain: ['sentry.relay.pipeline'],
   },
   'sentry.replay_is_buffering': {
@@ -36055,6 +36071,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    internal: true,
     deprecationChain: ['sentry.segment.name.source'],
   },
   'sentry.source': {
