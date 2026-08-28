@@ -1,0 +1,22 @@
+{
+  "key": "http.request.body.size",
+  "brief": "The encoded body size of the request (in bytes).",
+  "additional_context": [
+    "This is the on-the-wire (encoded) size. The `content-length` header always carries the encoded size, so set this attribute whenever `content-length` is known, regardless of whether `content-encoding` is present."
+  ],
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": 123,
+  "alias": ["http.request_content_length"],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [574],
+      "description": "Added http.request.body.size attribute"
+    }
+  ]
+}
