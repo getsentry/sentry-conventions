@@ -6,9 +6,14 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "visibility": "public",
   "example": "myKey",
+  "alias": ["messaging.rabbitmq.routing_key"],
+  "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.rabbitmq.routing_key as an alias"
+    },
     {
       "version": "0.16.0",
       "prs": [468],
