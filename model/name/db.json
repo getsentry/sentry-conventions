@@ -27,6 +27,7 @@
         "{{db.collection.name}}",
         "{{db.stored_procedure.name}}",
         "{{db.namespace}}",
+        "{{db.operation.name}}",
         "{{server.address}}:{{server.port}}",
         "{{db.system.name}}",
         "Database operation"
