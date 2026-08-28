@@ -7,17 +7,17 @@
   },
   "is_in_otel": false,
   "example": "ENOENT: no such file or directory",
-  "alias": ["error.type"],
   "deprecation": {
-    "_status": null,
+    "_status": "transform",
     "replacement": "error.type",
+    "transformation": "fs_error_to_error_type",
     "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over."
   },
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
-      "description": "Added error.type as an alias"
+      "description": "Transform fs_error into error.type"
     },
     {
       "version": "0.1.0",
