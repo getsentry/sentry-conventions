@@ -1,0 +1,23 @@
+{
+  "key": "http.status_text",
+  "brief": "The reason phrase of the HTTP response",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["NOT FOUND"],
+  "alias": ["http.response.status_text"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "http.response.status_text"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [574],
+      "description": "Added http.status_text attribute, deprecated in favor of http.response.status_text"
+    }
+  ]
+}

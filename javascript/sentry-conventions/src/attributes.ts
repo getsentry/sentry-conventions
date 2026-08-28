@@ -8959,6 +8959,9 @@ export type HTTP_CLIENT_IP_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link HTTP_RESPONSE_BODY_DECODED_SIZE} `http.response.body.decoded_size`, {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} `http.response_content_length_uncompressed`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_BODY_DECODED_SIZE} (http.response.body.decoded_size) instead
  * @example 456
  */
 export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_content_length';
@@ -9103,6 +9106,52 @@ export const HTTP_REQUEST_BODY_DATA = 'http.request.body.data';
  */
 export type HTTP_REQUEST_BODY_DATA_TYPE = string;
 
+// Path: model/attributes/http/http__request__body__decoded_size.json
+
+/**
+ * The decoded body size of the request (in bytes). `http.request.body.decoded_size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_BODY_DECODED_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED} `http.request_content_length_uncompressed`
+ *
+ * @example 456
+ */
+export const HTTP_REQUEST_BODY_DECODED_SIZE = 'http.request.body.decoded_size';
+
+/**
+ * Type for {@link HTTP_REQUEST_BODY_DECODED_SIZE} http.request.body.decoded_size
+ */
+export type HTTP_REQUEST_BODY_DECODED_SIZE_TYPE = number;
+
+// Path: model/attributes/http/http__request__body__size.json
+
+/**
+ * The encoded body size of the request (in bytes). `http.request.body.size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_BODY_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_CONTENT_LENGTH} `http.request_content_length`
+ *
+ * @example 123
+ */
+export const HTTP_REQUEST_BODY_SIZE = 'http.request.body.size';
+
+/**
+ * Type for {@link HTTP_REQUEST_BODY_SIZE} http.request.body.size
+ */
+export type HTTP_REQUEST_BODY_SIZE_TYPE = number;
+
 // Path: model/attributes/http/http__request__connection_end.json
 
 /**
@@ -9144,6 +9193,54 @@ export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
  * Type for {@link HTTP_REQUEST_CONNECT_START} http.request.connect_start
  */
 export type HTTP_REQUEST_CONNECT_START_TYPE = number;
+
+// Path: model/attributes/http/http__request_content_length.json
+
+/**
+ * The encoded body size of the request (in bytes). `http.request_content_length`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_CONTENT_LENGTH_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_BODY_SIZE} `http.request.body.size`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_BODY_SIZE} (http.request.body.size) instead
+ * @example 123
+ */
+export const HTTP_REQUEST_CONTENT_LENGTH = 'http.request_content_length';
+
+/**
+ * Type for {@link HTTP_REQUEST_CONTENT_LENGTH} http.request_content_length
+ */
+export type HTTP_REQUEST_CONTENT_LENGTH_TYPE = number;
+
+// Path: model/attributes/http/http__request_content_length_uncompressed.json
+
+/**
+ * The decoded body size of the request (in bytes). `http.request_content_length_uncompressed`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_BODY_DECODED_SIZE} `http.request.body.decoded_size`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_BODY_DECODED_SIZE} (http.request.body.decoded_size) instead
+ * @example 456
+ */
+export const HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED = 'http.request_content_length_uncompressed';
+
+/**
+ * Type for {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED} http.request_content_length_uncompressed
+ */
+export type HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 
 // Path: model/attributes/http/http__request__domain_lookup_end.json
 
@@ -9495,6 +9592,29 @@ export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
  */
 export type HTTP_REQUEST_WORKER_START_TYPE = number;
 
+// Path: model/attributes/http/http__response__body__decoded_size.json
+
+/**
+ * The decoded body size of the response (in bytes). `http.response.body.decoded_size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} `http.decoded_response_content_length`, {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} `http.response_content_length_uncompressed`
+ *
+ * @example 456
+ */
+export const HTTP_RESPONSE_BODY_DECODED_SIZE = 'http.response.body.decoded_size';
+
+/**
+ * Type for {@link HTTP_RESPONSE_BODY_DECODED_SIZE} http.response.body.decoded_size
+ */
+export type HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE = number;
+
 // Path: model/attributes/http/http__response__body__size.json
 
 /**
@@ -9541,6 +9661,30 @@ export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
  * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH} http.response_content_length
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
+
+// Path: model/attributes/http/http__response_content_length_uncompressed.json
+
+/**
+ * The decoded body size of the response (in bytes). `http.response_content_length_uncompressed`
+ *
+ * Attribute Value Type: `number` {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_BODY_DECODED_SIZE} `http.response.body.decoded_size`, {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} `http.decoded_response_content_length`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_BODY_DECODED_SIZE} (http.response.body.decoded_size) instead
+ * @example 456
+ */
+export const HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_length_uncompressed';
+
+/**
+ * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} http.response_content_length_uncompressed
+ */
+export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 
 // Path: model/attributes/http/http__response__header__content-length.json
 
@@ -9638,6 +9782,29 @@ export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
  * Type for {@link HTTP_RESPONSE_STATUS_CODE} http.response.status_code
  */
 export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
+
+// Path: model/attributes/http/http__response__status_text.json
+
+/**
+ * The reason phrase of the HTTP response. `http.response.status_text`
+ *
+ * Attribute Value Type: `string` {@link HTTP_RESPONSE_STATUS_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_STATUS_TEXT} `http.status_text`
+ *
+ * @example "NOT FOUND"
+ */
+export const HTTP_RESPONSE_STATUS_TEXT = 'http.response.status_text';
+
+/**
+ * Type for {@link HTTP_RESPONSE_STATUS_TEXT} http.response.status_text
+ */
+export type HTTP_RESPONSE_STATUS_TEXT_TYPE = string;
 
 // Path: model/attributes/http/http__response_transfer_size.json
 
@@ -9780,6 +9947,30 @@ export const HTTP_STATUS_CODE = 'http.status_code';
  * Type for {@link HTTP_STATUS_CODE} http.status_code
  */
 export type HTTP_STATUS_CODE_TYPE = number;
+
+// Path: model/attributes/http/http__status_text.json
+
+/**
+ * The reason phrase of the HTTP response `http.status_text`
+ *
+ * Attribute Value Type: `string` {@link HTTP_STATUS_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_STATUS_TEXT} `http.response.status_text`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_STATUS_TEXT} (http.response.status_text) instead
+ * @example "NOT FOUND"
+ */
+export const HTTP_STATUS_TEXT = 'http.status_text';
+
+/**
+ * Type for {@link HTTP_STATUS_TEXT} http.status_text
+ */
+export type HTTP_STATUS_TEXT_TYPE = string;
 
 // Path: model/attributes/http/http__target.json
 
@@ -17657,6 +17848,8 @@ export interface AttributeSearchMetadata {
   type: AttributeSearchType;
   /** A description of the attribute */
   brief: string;
+  /** Whether the attribute is internal to Sentry */
+  internal?: true;
   /** Every key under which the attribute's value is readable, preferred key first */
   deprecationChain: readonly string[];
 }
@@ -18111,8 +18304,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.method': 'string',
   'http.query': 'string',
   'http.request.body.data': 'string',
+  'http.request.body.decoded_size': 'integer',
+  'http.request.body.size': 'integer',
   'http.request.connection_end': 'double',
   'http.request.connect_start': 'double',
+  'http.request_content_length': 'integer',
+  'http.request_content_length_uncompressed': 'integer',
   'http.request.domain_lookup_end': 'double',
   'http.request.domain_lookup_start': 'double',
   'http.request.fetch_start': 'double',
@@ -18129,18 +18326,22 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.request.secure_connection_start': 'double',
   'http.request.time_to_first_byte': 'double',
   'http.request.worker_start': 'double',
+  'http.response.body.decoded_size': 'integer',
   'http.response.body.size': 'integer',
   'http.response_content_length': 'integer',
+  'http.response_content_length_uncompressed': 'integer',
   'http.response.header.content-length': 'string',
   'http.response.header.<key>': 'string[]',
   'http.response.size': 'integer',
   'http.response.status_code': 'integer',
+  'http.response.status_text': 'string',
   'http.response_transfer_size': 'integer',
   'http.route': 'string',
   'http.scheme': 'string',
   'http.server_name': 'string',
   'http.server.request.time_in_queue': 'double',
   'http.status_code': 'integer',
+  'http.status_text': 'string',
   'http.target': 'string',
   'http.url': 'string',
   'http.user_agent': 'string',
@@ -18906,8 +19107,12 @@ export type AttributeName =
   | typeof HTTP_METHOD
   | typeof HTTP_QUERY
   | typeof HTTP_REQUEST_BODY_DATA
+  | typeof HTTP_REQUEST_BODY_DECODED_SIZE
+  | typeof HTTP_REQUEST_BODY_SIZE
   | typeof HTTP_REQUEST_CONNECTION_END
   | typeof HTTP_REQUEST_CONNECT_START
+  | typeof HTTP_REQUEST_CONTENT_LENGTH
+  | typeof HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
   | typeof HTTP_REQUEST_FETCH_START
@@ -18924,18 +19129,22 @@ export type AttributeName =
   | typeof HTTP_REQUEST_SECURE_CONNECTION_START
   | typeof HTTP_REQUEST_TIME_TO_FIRST_BYTE
   | typeof HTTP_REQUEST_WORKER_START
+  | typeof HTTP_RESPONSE_BODY_DECODED_SIZE
   | typeof HTTP_RESPONSE_BODY_SIZE
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
+  | typeof HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
   | typeof HTTP_RESPONSE_STATUS_CODE
+  | typeof HTTP_RESPONSE_STATUS_TEXT
   | typeof HTTP_RESPONSE_TRANSFER_SIZE
   | typeof HTTP_ROUTE
   | typeof HTTP_SCHEME
   | typeof HTTP_SERVER_NAME
   | typeof HTTP_SERVER_REQUEST_TIME_IN_QUEUE
   | typeof HTTP_STATUS_CODE
+  | typeof HTTP_STATUS_TEXT
   | typeof HTTP_TARGET
   | typeof HTTP_URL
   | typeof HTTP_USER_AGENT
@@ -25491,14 +25700,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.decoded_response_content_length': {
     brief: 'The decoded body size of the response (in bytes).',
     type: 'integer',
-    keys: ['http.decoded_response_content_length'],
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 456,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'http.response.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.response.body.decoded_size', 'http.response_content_length_uncompressed'],
+    changelog: [
+      { version: 'next', prs: [574], description: 'Deprecated in favor of http.response.body.decoded_size' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
     searchAlias: {
       name: 'http.decoded_response_content_length',
       type: 'byte',
@@ -25599,6 +25821,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"role": "user", "message": "hello"}]',
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
+  'http.request.body.decoded_size': {
+    brief: 'The decoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 456,
+    aliases: ['http.request_content_length_uncompressed'],
+    changelog: [{ version: 'next', prs: [574], description: 'Added http.request.body.decoded_size attribute' }],
+    additionalContext: [
+      'This is the size after content decoding. Set it only when the decoded size is actually known, for example by measuring a decompressed request stream.',
+      'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.request.body.size` for that.',
+    ],
+  },
+  'http.request.body.size': {
+    brief: 'The encoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.size', 'http.request_content_length'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 123,
+    aliases: ['http.request_content_length'],
+    changelog: [{ version: 'next', prs: [574], description: 'Added http.request.body.size attribute' }],
+    additionalContext: [
+      'This is the on-the-wire (encoded) size. The `content-length` header always carries the encoded size, so set this attribute whenever `content-length` is known, regardless of whether `content-encoding` is present.',
+    ],
+  },
   'http.request.connection_end': {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
@@ -25624,6 +25879,53 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1732829555.111,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
+  },
+  'http.request_content_length': {
+    brief: 'The encoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.size', 'http.request_content_length'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 123,
+    deprecation: {
+      replacement: 'http.request.body.size',
+      status: 'backfill',
+    },
+    aliases: ['http.request.body.size'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description: 'Added http.request_content_length attribute, deprecated in favor of http.request.body.size',
+      },
+    ],
+  },
+  'http.request_content_length_uncompressed': {
+    brief: 'The decoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 456,
+    deprecation: {
+      replacement: 'http.request.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.request.body.decoded_size'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description:
+          'Added http.request_content_length_uncompressed attribute, deprecated in favor of http.request.body.decoded_size',
+      },
+    ],
   },
   'http.request.domain_lookup_end': {
     brief:
@@ -25847,6 +26149,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [130, 134] },
     ],
   },
+  'http.response.body.decoded_size': {
+    brief: 'The decoded body size of the response (in bytes).',
+    type: 'integer',
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 456,
+    aliases: ['http.decoded_response_content_length', 'http.response_content_length_uncompressed'],
+    changelog: [{ version: 'next', prs: [574], description: 'Added http.response.body.decoded_size attribute' }],
+    additionalContext: [
+      'This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.',
+      'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.',
+    ],
+  },
   'http.response.body.size': {
     brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
@@ -25880,6 +26203,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       name: 'http.response_content_length',
       type: 'byte',
     },
+  },
+  'http.response_content_length_uncompressed': {
+    brief: 'The decoded body size of the response (in bytes).',
+    type: 'integer',
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 456,
+    deprecation: {
+      replacement: 'http.response.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.response.body.decoded_size', 'http.decoded_response_content_length'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description:
+          'Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size',
+      },
+    ],
   },
   'http.response.header.content-length': {
     brief: 'The size of the message body sent to the recipient (in bytes)',
@@ -25939,6 +26290,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     searchAlias: {
       name: 'http.response_status_code',
     },
+  },
+  'http.response.status_text': {
+    brief: 'The reason phrase of the HTTP response.',
+    type: 'string',
+    keys: ['http.response.status_text', 'http.status_text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'NOT FOUND',
+    aliases: ['http.status_text'],
+    changelog: [{ version: 'next', prs: [574], description: 'Added http.response.status_text attribute' }],
+    additionalContext: [
+      'HTTP/2 and HTTP/3 do not carry a reason phrase. Do not set this attribute when the protocol provides none; use `http.response.status_code` instead.',
+    ],
   },
   'http.response_transfer_size': {
     brief: 'The transfer size of the response (in bytes).',
@@ -26054,6 +26421,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.response.status_code'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+  },
+  'http.status_text': {
+    brief: 'The reason phrase of the HTTP response',
+    type: 'string',
+    keys: ['http.response.status_text', 'http.status_text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'NOT FOUND',
+    examples: ['NOT FOUND'],
+    deprecation: {
+      replacement: 'http.response.status_text',
+      status: 'backfill',
+    },
+    aliases: ['http.response.status_text'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description: 'Added http.status_text attribute, deprecated in favor of http.response.status_text',
+      },
+    ],
   },
   'http.target': {
     brief: 'The pathname and query string of the URL.',
@@ -33921,10 +34312,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['client.address', 'http.client_ip'],
   },
   'http.decoded_response_content_length': {
-    canonicalName: 'http.decoded_response_content_length',
+    canonicalName: 'http.response.body.decoded_size',
     type: 'byte',
     brief: 'The decoded body size of the response (in bytes).',
-    deprecationChain: ['http.decoded_response_content_length'],
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
   },
   'http.flavor': {
     canonicalName: 'network.protocol.version',
@@ -33963,6 +34358,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'HTTP request body data. Can be given as string or structural data of any format.',
     deprecationChain: ['http.request.body.data'],
+  },
+  'http.request.body.decoded_size': {
+    canonicalName: 'http.request.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+  },
+  'http.request.body.size': {
+    canonicalName: 'http.request.body.size',
+    type: 'integer',
+    brief: 'The encoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.size', 'http.request_content_length'],
   },
   'http.request.connect_start': {
     canonicalName: 'http.request.connect_start',
@@ -34078,11 +34485,33 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
     deprecationChain: ['http.request.worker_start'],
   },
+  'http.request_content_length': {
+    canonicalName: 'http.request.body.size',
+    type: 'integer',
+    brief: 'The encoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.size', 'http.request_content_length'],
+  },
+  'http.request_content_length_uncompressed': {
+    canonicalName: 'http.request.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+  },
   'http.request_method': {
     canonicalName: 'http.request.method',
     type: 'string',
     brief: 'The HTTP method used.',
     deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'http.response.body.decoded_size': {
+    canonicalName: 'http.response.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
   },
   'http.response.body.size': {
     canonicalName: 'http.response.body.size',
@@ -34117,6 +34546,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The transfer size of the response (in bytes).',
     deprecationChain: ['http.response.size', 'http.response_transfer_size'],
   },
+  'http.response.status_text': {
+    canonicalName: 'http.response.status_text',
+    type: 'string',
+    brief: 'The reason phrase of the HTTP response.',
+    deprecationChain: ['http.response.status_text', 'http.status_text'],
+  },
   'http.response_content_length': {
     canonicalName: 'http.response.body.size',
     type: 'byte',
@@ -34125,6 +34560,16 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'http.response.body.size',
       'http.response.header.content-length',
       'http.response_content_length',
+    ],
+  },
+  'http.response_content_length_uncompressed': {
+    canonicalName: 'http.response.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
     ],
   },
   'http.response_status_code': {
@@ -34169,6 +34614,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'The status code of the HTTP response.',
     deprecationChain: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
+  },
+  'http.status_text': {
+    canonicalName: 'http.response.status_text',
+    type: 'string',
+    brief: 'The reason phrase of the HTTP response',
+    deprecationChain: ['http.response.status_text', 'http.status_text'],
   },
   'http.target': {
     canonicalName: 'url.path',
@@ -35358,6 +35809,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.dsc.environment',
     type: 'string',
     brief: 'The environment from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.environment'],
   },
   'sentry.dsc.project_id': {
@@ -35365,66 +35817,77 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    internal: true,
     deprecationChain: ['sentry.dsc.project_id'],
   },
   'sentry.dsc.public_key': {
     canonicalName: 'sentry.dsc.public_key',
     type: 'string',
     brief: 'The public key from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.public_key'],
   },
   'sentry.dsc.release': {
     canonicalName: 'sentry.dsc.release',
     type: 'string',
     brief: 'The release identifier from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.release'],
   },
   'sentry.dsc.sample_rate': {
     canonicalName: 'sentry.dsc.sample_rate',
     type: 'string',
     brief: 'The sample rate from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.sample_rate'],
   },
   'sentry.dsc.sampled': {
     canonicalName: 'sentry.dsc.sampled',
     type: 'boolean',
     brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.sampled'],
   },
   'sentry.dsc.trace_id': {
     canonicalName: 'sentry.dsc.trace_id',
     type: 'string',
     brief: 'The trace ID from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.trace_id'],
   },
   'sentry.dsc.transaction': {
     canonicalName: 'sentry.dsc.transaction',
     type: 'string',
     brief: 'The transaction name from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.transaction'],
   },
   'sentry.event.serialized_breadcrumbs': {
     canonicalName: 'sentry.event.serialized_breadcrumbs',
     type: 'string',
     brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_breadcrumbs'],
   },
   'sentry.event.serialized_contexts': {
     canonicalName: 'sentry.event.serialized_contexts',
     type: 'string',
     brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_contexts'],
   },
   'sentry.event.serialized_extra': {
     canonicalName: 'sentry.event.serialized_extra',
     type: 'string',
     brief: 'JSON-serialized `extra` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_extra'],
   },
   'sentry.event.serialized_meta': {
     canonicalName: 'sentry.event.serialized_meta',
     type: 'string',
     brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_meta'],
   },
   'sentry.exclusive_time': {
@@ -35567,12 +36030,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.relay.ingress',
     type: 'string',
     brief: 'How an item (span, log, &c.) entered Relay.',
+    internal: true,
     deprecationChain: ['sentry.relay.ingress'],
   },
   'sentry.relay.pipeline': {
     canonicalName: 'sentry.relay.pipeline',
     type: 'string',
     brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
+    internal: true,
     deprecationChain: ['sentry.relay.pipeline'],
   },
   'sentry.replay_is_buffering': {
@@ -35606,6 +36071,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    internal: true,
     deprecationChain: ['sentry.segment.name.source'],
   },
   'sentry.source': {
@@ -36756,8 +37222,12 @@ export type Attributes = {
   [HTTP_METHOD]?: HTTP_METHOD_TYPE;
   [HTTP_QUERY]?: HTTP_QUERY_TYPE;
   [HTTP_REQUEST_BODY_DATA]?: HTTP_REQUEST_BODY_DATA_TYPE;
+  [HTTP_REQUEST_BODY_DECODED_SIZE]?: HTTP_REQUEST_BODY_DECODED_SIZE_TYPE;
+  [HTTP_REQUEST_BODY_SIZE]?: HTTP_REQUEST_BODY_SIZE_TYPE;
   [HTTP_REQUEST_CONNECTION_END]?: HTTP_REQUEST_CONNECTION_END_TYPE;
   [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
+  [HTTP_REQUEST_CONTENT_LENGTH]?: HTTP_REQUEST_CONTENT_LENGTH_TYPE;
+  [HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
@@ -36774,18 +37244,22 @@ export type Attributes = {
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
   [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
+  [HTTP_RESPONSE_BODY_DECODED_SIZE]?: HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
+  [HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
   [HTTP_RESPONSE_STATUS_CODE]?: HTTP_RESPONSE_STATUS_CODE_TYPE;
+  [HTTP_RESPONSE_STATUS_TEXT]?: HTTP_RESPONSE_STATUS_TEXT_TYPE;
   [HTTP_RESPONSE_TRANSFER_SIZE]?: HTTP_RESPONSE_TRANSFER_SIZE_TYPE;
   [HTTP_ROUTE]?: HTTP_ROUTE_TYPE;
   [HTTP_SCHEME]?: HTTP_SCHEME_TYPE;
   [HTTP_SERVER_NAME]?: HTTP_SERVER_NAME_TYPE;
   [HTTP_SERVER_REQUEST_TIME_IN_QUEUE]?: HTTP_SERVER_REQUEST_TIME_IN_QUEUE_TYPE;
   [HTTP_STATUS_CODE]?: HTTP_STATUS_CODE_TYPE;
+  [HTTP_STATUS_TEXT]?: HTTP_STATUS_TEXT_TYPE;
   [HTTP_TARGET]?: HTTP_TARGET_TYPE;
   [HTTP_URL]?: HTTP_URL_TYPE;
   [HTTP_USER_AGENT]?: HTTP_USER_AGENT_TYPE;
