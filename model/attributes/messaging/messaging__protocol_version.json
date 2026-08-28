@@ -1,0 +1,24 @@
+{
+  "key": "messaging.protocol_version",
+  "brief": "The actual version of the protocol used for network communication.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["0.9.1"],
+  "alias": ["network.protocol.version", "http.flavor", "net.protocol.version"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "network.protocol.version",
+    "reason": "This attribute is being deprecated in favor of network.protocol.version."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [581],
+      "description": "Added messaging.protocol_version attribute"
+    }
+  ]
+}

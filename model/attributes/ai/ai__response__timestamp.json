@@ -1,0 +1,22 @@
+{
+  "key": "ai.response.timestamp",
+  "brief": "The ISO 8601 timestamp at which the response was produced.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["2026-02-19T15:32:11.000Z"],
+  "deprecation": {
+    "_status": null,
+    "reason": "This attribute is deprecated. The span start and end timestamps carry the same information."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.response.timestamp attribute"
+    }
+  ]
+}

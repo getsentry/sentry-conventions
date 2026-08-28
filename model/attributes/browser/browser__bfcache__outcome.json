@@ -1,0 +1,18 @@
+{
+  "key": "browser.bfcache.outcome",
+  "brief": "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["hit", "miss"],
+  "changelog": [
+    {
+      "version": "0.19.0",
+      "prs": [513],
+      "description": "Added browser.bfcache.outcome attribute"
+    }
+  ]
+}

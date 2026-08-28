@@ -7,7 +7,15 @@
   },
   "is_in_otel": true,
   "example": "example.com",
-  "alias": ["server.address", "client.address", "http.server_name", "net.host.name", "server_name"],
+  "alias": [
+    "address",
+    "server.address",
+    "client.address",
+    "http.server_name",
+    "net.host.name",
+    "server_name",
+    "net.peer.name"
+  ],
   "deprecation": {
     "_status": null,
     "replacement": "server.address",
@@ -15,6 +23,15 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added net.peer.name as an alias"
+    },
+    {
+      "version": "0.19.0",
+      "prs": [534],
+      "description": "Added address as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [61, 108, 127]

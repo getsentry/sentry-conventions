@@ -9,10 +9,13 @@
   "example": "Chrome",
   "alias": ["browser.name"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "browser.name"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "browser.name"
+  },
   "changelog": [
     {
       "version": "0.1.0",

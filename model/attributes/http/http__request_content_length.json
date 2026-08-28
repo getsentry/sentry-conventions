@@ -1,0 +1,23 @@
+{
+  "key": "http.request_content_length",
+  "brief": "The encoded body size of the request (in bytes).",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "example": 123,
+  "alias": ["http.request.body.size"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "http.request.body.size"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [574],
+      "description": "Added http.request_content_length attribute, deprecated in favor of http.request.body.size"
+    }
+  ]
+}

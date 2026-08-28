@@ -1,5 +1,7 @@
 {
-  "exclude": ["node_modules"],
+  // `docs` is an Astro project and is type-checked separately via `yarn lint:types:docs`,
+  // because it needs Astro's generated types (`astro sync`) to resolve `astro:*` modules.
+  "exclude": ["node_modules", "docs", "**/dist", ".claude"],
   "compilerOptions": {
     "esModuleInterop": true,
     "skipLibCheck": true,

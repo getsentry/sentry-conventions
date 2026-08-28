@@ -8,7 +8,13 @@
   "is_in_otel": true,
   "example": "us-east-1",
   "visibility": "public",
+  "alias": ["aws_region", "gcp_region"],
   "changelog": [
+    {
+      "version": "0.19.0",
+      "prs": [535, 537],
+      "description": "Added aws_region and gcp_region as aliases"
+    },
     {
       "version": "0.7.0",
       "prs": [364],

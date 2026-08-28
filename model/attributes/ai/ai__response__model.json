@@ -1,0 +1,24 @@
+{
+  "key": "ai.response.model",
+  "brief": "The id of the model that produced the response.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["gpt-4o-2024-08-06"],
+  "alias": ["gen_ai.response.model"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.response.model",
+    "reason": "This attribute is being deprecated in favor of gen_ai.response.model."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.response.model attribute"
+    }
+  ]
+}

@@ -20,8 +20,15 @@
         "graphql.subscription",
         "graphql.validate"
       ],
-      "templates": ["GraphQL {{graphql.operation.type}}", "GraphQL Operation"],
-      "examples": ["mutation", "query"]
+      "templates": ["GraphQL {{graphql.operation.type}}", "GraphQL {{graphql.processing.type}}", "GraphQL Operation"],
+      "examples": [
+        "GraphQL query",
+        "GraphQL mutation",
+        "GraphQL subscription",
+        "GraphQL parse",
+        "GraphQL resolve",
+        "GraphQL Operation"
+      ]
     }
   ]
 }

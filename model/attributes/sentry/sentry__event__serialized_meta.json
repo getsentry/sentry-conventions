@@ -1,0 +1,16 @@
+{
+  "key": "sentry.event.serialized_meta",
+  "brief": "JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "visibility": "internal",
+  "changelog": [
+    {
+      "version": "0.20.0",
+      "prs": [566]
+    }
+  ]
+}

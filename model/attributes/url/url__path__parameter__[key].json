@@ -8,9 +8,13 @@
   },
   "is_in_otel": false,
   "example": "url.path.parameter.id='123'",
-  "alias": ["params.<key>"],
+  "alias": ["params.<key>", "url.path.params.<key>"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added url.path.params.<key> as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [103]

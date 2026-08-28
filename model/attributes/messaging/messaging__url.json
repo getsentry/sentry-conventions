@@ -1,0 +1,24 @@
+{
+  "key": "messaging.url",
+  "brief": "The connection string of the messaging broker.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "examples": ["amqp://guest:guest@localhost:5672"],
+  "alias": ["url.full", "http.url", "url", "aws.request.url"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "url.full",
+    "reason": "This attribute is being deprecated in favor of url.full."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [581],
+      "description": "Added messaging.url attribute"
+    }
+  ]
+}

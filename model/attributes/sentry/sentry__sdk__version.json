@@ -8,6 +8,9 @@
   "is_in_otel": false,
   "example": "7.0.0",
   "visibility": "public",
+  "search_alias": {
+    "name": "sdk.version"
+  },
   "changelog": [
     {
       "version": "0.0.0"

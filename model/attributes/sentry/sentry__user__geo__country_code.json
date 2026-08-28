@@ -9,9 +9,12 @@
   "alias": ["user.geo.country_code"],
   "deprecation": {
     "replacement": "user.geo.country_code",
-    "_status": null
+    "_status": "backfill"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "user.geo.country_code"
+  },
   "changelog": [
     {
       "version": "0.10.0",

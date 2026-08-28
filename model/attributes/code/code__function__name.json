@@ -7,9 +7,14 @@
   },
   "is_in_otel": true,
   "example": "server_request",
-  "alias": ["code.function"],
+  "alias": ["code.function", "django.function_name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.19.0",
+      "prs": [538],
+      "description": "Added django.function_name as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

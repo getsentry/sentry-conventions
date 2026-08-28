@@ -9,11 +9,14 @@
   "example": "/test?foo=bar#buzz",
   "deprecation": {
     "_status": null,
-    "replacement": "url.path",
-    "reason": "This attribute is being deprecated in favor of url.path and url.query"
+    "reason": "This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement."
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Documented url.path, url.query and url.fragment as the replacements for http.target"
+    },
     {
       "version": "0.1.0",
       "prs": [61]

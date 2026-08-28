@@ -1,5 +1,29 @@
 // This is an auto-generated file. Do not edit!
 
+// Path: model/attributes/address.json
+
+/**
+ * The destination hostname or IP address for a TCP connection. `address`
+ *
+ * Attribute Value Type: `string` {@link ADDRESS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ *
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
+ * @example "example.com"
+ */
+export const ADDRESS = 'address';
+
+/**
+ * Type for {@link ADDRESS} address
+ */
+export type ADDRESS_TYPE = string;
+
 // Path: model/attributes/ai/ai__citations.json
 
 /**
@@ -152,7 +176,7 @@ export type AI_FUNCTION_CALL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`
+ * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`, {@link AI_RESPONSE_ID} `ai.response.id`
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead
  * @example "gen_123abc"
@@ -232,10 +256,10 @@ export const AI_METADATA = 'ai.metadata';
  */
 export type AI_METADATA_TYPE = string;
 
-// Path: model/attributes/ai/ai__model_id.json
+// Path: model/attributes/ai/ai__model__id.json
 
 /**
- * The vendor-specific ID of the model used. `ai.model_id`
+ * The id of the model used by the Vercel AI SDK. `ai.model.id`
  *
  * Attribute Value Type: `string` {@link AI_MODEL_ID_TYPE}
  *
@@ -244,17 +268,41 @@ export type AI_METADATA_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`
+ * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`, {@link _AI_MODEL_ID} `ai.model_id`
+ *
+ * @deprecated Use {@link GEN_AI_REQUEST_MODEL} (gen_ai.request.model) instead - This attribute is being deprecated in favor of gen_ai.request.model.
+ * @example "gpt-4o"
+ */
+export const AI_MODEL_ID = 'ai.model.id';
+
+/**
+ * Type for {@link AI_MODEL_ID} ai.model.id
+ */
+export type AI_MODEL_ID_TYPE = string;
+
+// Path: model/attributes/ai/ai__model_id.json
+
+/**
+ * The vendor-specific ID of the model used. `ai.model_id`
+ *
+ * Attribute Value Type: `string` {@link _AI_MODEL_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`, {@link AI_MODEL_ID} `ai.model.id`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_MODEL} (gen_ai.request.model) instead
  * @example "gpt-4"
  */
-export const AI_MODEL_ID = 'ai.model_id';
+export const _AI_MODEL_ID = 'ai.model_id';
 
 /**
- * Type for {@link AI_MODEL_ID} ai.model_id
+ * Type for {@link _AI_MODEL_ID} ai.model_id
  */
-export type AI_MODEL_ID_TYPE = string;
+export type _AI_MODEL_ID_TYPE = string;
 
 // Path: model/attributes/ai/ai__model__provider.json
 
@@ -352,6 +400,30 @@ export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
  */
 export type AI_PRESENCE_PENALTY_TYPE = number;
 
+// Path: model/attributes/ai/ai__prompt.json
+
+/**
+ * The prompt passed to the Vercel AI SDK, as a stringified object. `ai.prompt`
+ *
+ * Attribute Value Type: `string` {@link AI_PROMPT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ *
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead - This attribute is being deprecated in favor of gen_ai.input.messages.
+ * @example "{\"prompt\":\"What is the weather in Paris?\"}"
+ */
+export const AI_PROMPT = 'ai.prompt';
+
+/**
+ * Type for {@link AI_PROMPT} ai.prompt
+ */
+export type AI_PROMPT_TYPE = string;
+
 // Path: model/attributes/ai/ai__prompt__messages.json
 
 /**
@@ -364,7 +436,7 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -399,6 +471,28 @@ export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
  * Type for {@link AI_PROMPT_TOKENS_USED} ai.prompt_tokens.used
  */
 export type AI_PROMPT_TOKENS_USED_TYPE = number;
+
+// Path: model/attributes/ai/ai__prompt__tools.json
+
+/**
+ * The tools made available to the model, as an array of stringified tool definitions. `ai.prompt.tools`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_PROMPT_TOOLS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead - This attribute is being deprecated in favor of gen_ai.tool.definitions.
+ * @example ["{\"type\":\"function\",\"name\":\"get_weather\"}"]
+ */
+export const AI_PROMPT_TOOLS = 'ai.prompt.tools';
+
+/**
+ * Type for {@link AI_PROMPT_TOOLS} ai.prompt.tools
+ */
+export type AI_PROMPT_TOOLS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__raw_prompting.json
 
@@ -466,6 +560,76 @@ export const AI_RESPONSE_FORMAT = 'ai.response_format';
  */
 export type AI_RESPONSE_FORMAT_TYPE = string;
 
+// Path: model/attributes/ai/ai__response__id.json
+
+/**
+ * The id of the response returned by the model. `ai.response.id`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`, {@link AI_GENERATION_ID} `ai.generation_id`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead - This attribute is being deprecated in favor of gen_ai.response.id.
+ * @example "chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY"
+ */
+export const AI_RESPONSE_ID = 'ai.response.id';
+
+/**
+ * Type for {@link AI_RESPONSE_ID} ai.response.id
+ */
+export type AI_RESPONSE_ID_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__model.json
+
+/**
+ * The id of the model that produced the response. `ai.response.model`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_MODEL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_MODEL} `gen_ai.response.model`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead - This attribute is being deprecated in favor of gen_ai.response.model.
+ * @example "gpt-4o-2024-08-06"
+ */
+export const AI_RESPONSE_MODEL = 'ai.response.model';
+
+/**
+ * Type for {@link AI_RESPONSE_MODEL} ai.response.model
+ */
+export type AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__object.json
+
+/**
+ * The type of the object returned by the model. `ai.response.object`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_OBJECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.
+ * @example "chat.completion"
+ */
+export const AI_RESPONSE_OBJECT = 'ai.response.object';
+
+/**
+ * Type for {@link AI_RESPONSE_OBJECT} ai.response.object
+ */
+export type AI_RESPONSE_OBJECT_TYPE = string;
+
 // Path: model/attributes/ai/ai__response__text.json
 
 /**
@@ -490,6 +654,28 @@ export const AI_RESPONSE_TEXT = 'ai.response.text';
  */
 export type AI_RESPONSE_TEXT_TYPE = string;
 
+// Path: model/attributes/ai/ai__response__timestamp.json
+
+/**
+ * The ISO 8601 timestamp at which the response was produced. `ai.response.timestamp`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_TIMESTAMP_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The span start and end timestamps carry the same information.
+ * @example "2026-02-19T15:32:11.000Z"
+ */
+export const AI_RESPONSE_TIMESTAMP = 'ai.response.timestamp';
+
+/**
+ * Type for {@link AI_RESPONSE_TIMESTAMP} ai.response.timestamp
+ */
+export type AI_RESPONSE_TIMESTAMP_TYPE = string;
+
 // Path: model/attributes/ai/ai__response__toolCalls.json
 
 /**
@@ -513,6 +699,28 @@ export const AI_RESPONSE_TOOLCALLS = 'ai.response.toolCalls';
  * Type for {@link AI_RESPONSE_TOOLCALLS} ai.response.toolCalls
  */
 export type AI_RESPONSE_TOOLCALLS_TYPE = string;
+
+// Path: model/attributes/ai/ai__schema.json
+
+/**
+ * The stringified JSON schema the model output must conform to. `ai.schema`
+ *
+ * Attribute Value Type: `string` {@link AI_SCHEMA_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+ * @example "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
+ */
+export const AI_SCHEMA = 'ai.schema';
+
+/**
+ * Type for {@link AI_SCHEMA} ai.schema
+ */
+export type AI_SCHEMA_TYPE = string;
 
 // Path: model/attributes/ai/ai__search_queries.json
 
@@ -664,7 +872,7 @@ export type AI_TEMPERATURE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example ["Hello, how are you?","What is the capital of France?"]
@@ -852,7 +1060,7 @@ export type AI_TOTAL_COST_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`
+ * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead
  * @example 30
@@ -863,6 +1071,52 @@ export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
  * Type for {@link AI_TOTAL_TOKENS_USED} ai.total_tokens.used
  */
 export type AI_TOTAL_TOKENS_USED_TYPE = number;
+
+// Path: model/attributes/ai/ai__usage__tokens.json
+
+/**
+ * The total number of tokens used for the request and the response. `ai.usage.tokens`
+ *
+ * Attribute Value Type: `number` {@link AI_USAGE_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`, {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.total_tokens.
+ * @example 150
+ */
+export const AI_USAGE_TOKENS = 'ai.usage.tokens';
+
+/**
+ * Type for {@link AI_USAGE_TOKENS} ai.usage.tokens
+ */
+export type AI_USAGE_TOKENS_TYPE = number;
+
+// Path: model/attributes/ai/ai__values.json
+
+/**
+ * The stringified values produced by a Vercel AI SDK object or array generation. `ai.values`
+ *
+ * Attribute Value Type: `string` {@link AI_VALUES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. Use gen_ai.output.messages for model output instead.
+ * @example "[{\"city\":\"Paris\"}]"
+ */
+export const AI_VALUES = 'ai.values';
+
+/**
+ * Type for {@link AI_VALUES} ai.values
+ */
+export type AI_VALUES_TYPE = string;
 
 // Path: model/attributes/ai/ai__warnings.json
 
@@ -2605,6 +2859,54 @@ export const AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
  */
 export type AWS_LOG_STREAM_NAMES_TYPE = Array<string>;
 
+// Path: model/attributes/aws/aws__operation_name.json
+
+/**
+ * The name of the API operation invoked on an AWS service. `aws.operation_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_OPERATION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_METHOD} `rpc.method`
+ *
+ * @deprecated Use {@link RPC_METHOD} (rpc.method) instead - This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.
+ * @example "PutObject"
+ */
+export const AWS_OPERATION_NAME = 'aws.operation_name';
+
+/**
+ * Type for {@link AWS_OPERATION_NAME} aws.operation_name
+ */
+export type AWS_OPERATION_NAME_TYPE = string;
+
+// Path: model/attributes/aws_region.json
+
+/**
+ * The geographical region the AWS resource is running `aws_region`
+ *
+ * Attribute Value Type: `string` {@link AWS_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_REGION} `cloud.region`, {@link GCP_REGION} `gcp_region`
+ *
+ * @deprecated Use {@link CLOUD_REGION} (cloud.region) instead
+ * @example "us-east-1"
+ */
+export const AWS_REGION = 'aws_region';
+
+/**
+ * Type for {@link AWS_REGION} aws_region
+ */
+export type AWS_REGION_TYPE = string;
+
 // Path: model/attributes/aws/aws__request__extended_id.json
 
 /**
@@ -2688,7 +2990,7 @@ export type _AWS_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
  * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
@@ -2825,6 +3127,95 @@ export const BLOCKED_MAIN_THREAD = 'blocked_main_thread';
  * Type for {@link BLOCKED_MAIN_THREAD} blocked_main_thread
  */
 export type BLOCKED_MAIN_THREAD_TYPE = boolean;
+
+// Path: model/attributes/browser/browser__bfcache__frame.json
+
+/**
+ * Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame. `browser.bfcache.frame`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_FRAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "top"
+ * @example "child"
+ */
+export const BROWSER_BFCACHE_FRAME = 'browser.bfcache.frame';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_FRAME} browser.bfcache.frame
+ */
+export type BROWSER_BFCACHE_FRAME_TYPE = string;
+
+// Path: model/attributes/browser/browser__bfcache__not_restored_reason_count.json
+
+/**
+ * The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers). `browser.bfcache.not_restored_reason_count`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 2
+ */
+export const BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT = 'browser.bfcache.not_restored_reason_count';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT} browser.bfcache.not_restored_reason_count
+ */
+export type BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE = number;
+
+// Path: model/attributes/browser/browser__bfcache__outcome.json
+
+/**
+ * Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded. `browser.bfcache.outcome`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_OUTCOME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "hit"
+ * @example "miss"
+ */
+export const BROWSER_BFCACHE_OUTCOME = 'browser.bfcache.outcome';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_OUTCOME} browser.bfcache.outcome
+ */
+export type BROWSER_BFCACHE_OUTCOME_TYPE = string;
+
+// Path: model/attributes/browser/browser__bfcache__reason.json
+
+/**
+ * A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only. `browser.bfcache.reason`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_BFCACHE_REASON_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "unload-listener"
+ * @example "websocket"
+ * @example "idbversionchangeevent"
+ * @example "response-cache-control-no-store"
+ */
+export const BROWSER_BFCACHE_REASON = 'browser.bfcache.reason';
+
+/**
+ * Type for {@link BROWSER_BFCACHE_REASON} browser.bfcache.reason
+ */
+export type BROWSER_BFCACHE_REASON_TYPE = string;
 
 // Path: model/attributes/browser/browser__name.json
 
@@ -3597,7 +3988,7 @@ export type CLOUDFLARE_D1_DURATION_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`, {@link REDIS_COMMAND} `redis.command`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "run"
@@ -4041,6 +4432,8 @@ export type CLOUD_PROVIDER_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AWS_REGION} `aws_region`, {@link GCP_REGION} `gcp_region`
+ *
  * @example "us-east-1"
  */
 export const CLOUD_REGION = 'cloud.region';
@@ -4130,6 +4523,30 @@ export const CLS_SOURCE_KEY_BASE = 'cls.source';
  */
 export type CLS_SOURCE_KEY_TYPE = string;
 
+// Path: model/attributes/code.json
+
+/**
+ * Status code of the RPC returned by the RPC server or generated by the client. `code`
+ *
+ * Attribute Value Type: `string` {@link CODE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`, {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
+ *
+ * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead
+ * @example "DEADLINE_EXCEEDED"
+ */
+export const CODE = 'code';
+
+/**
+ * Type for {@link CODE} code
+ */
+export type CODE_TYPE = string;
+
 // Path: model/attributes/code/code__filepath.json
 
 /**
@@ -4189,7 +4606,7 @@ export type CODE_FILE_PATH_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`
+ * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`, {@link DJANGO_FUNCTION_NAME} `django.function_name`
  *
  * @example "server_request"
  */
@@ -4212,7 +4629,7 @@ export type CODE_FUNCTION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FUNCTION} `code.function`
+ * Aliases: {@link CODE_FUNCTION} `code.function`, {@link DJANGO_FUNCTION_NAME} `django.function_name`
  *
  * @example "server_request"
  */
@@ -4467,6 +4884,28 @@ export const DB_COLLECTION_NAME = 'db.collection.name';
  */
 export type DB_COLLECTION_NAME_TYPE = string;
 
+// Path: model/attributes/db/db__connection_string.json
+
+/**
+ * The connection string used to connect to the database. `db.connection_string`
+ *
+ * Attribute Value Type: `string` {@link DB_CONNECTION_STRING_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.
+ * @example "redis://localhost:6379"
+ */
+export const DB_CONNECTION_STRING = 'db.connection_string';
+
+/**
+ * Type for {@link DB_CONNECTION_STRING} db.connection_string
+ */
+export type DB_CONNECTION_STRING_TYPE = string;
+
 // Path: model/attributes/db/db__driver__name.json
 
 /**
@@ -4571,7 +5010,7 @@ export type DB_NAMESPACE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
+ * Aliases: {@link DB_OPERATION_NAME} `db.operation.name`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link REDIS_COMMAND} `redis.command`
  *
  * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
  * @example "SELECT"
@@ -4616,7 +5055,7 @@ export type DB_OPERATION_BATCH_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_OPERATION} `db.operation`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`
+ * Aliases: {@link DB_OPERATION} `db.operation`, {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link REDIS_COMMAND} `redis.command`
  *
  * @example "SELECT"
  */
@@ -4626,6 +5065,28 @@ export const DB_OPERATION_NAME = 'db.operation.name';
  * Type for {@link DB_OPERATION_NAME} db.operation.name
  */
 export type DB_OPERATION_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__params.json
+
+/**
+ * The query bindings for a database request. `db.params`
+ *
+ * Attribute Value Type: `string` {@link DB_PARAMS_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.
+ * @example "[{\"x\": 100}]"
+ */
+export const DB_PARAMS = 'db.params';
+
+/**
+ * Type for {@link DB_PARAMS} db.params
+ */
+export type DB_PARAMS_TYPE = string;
 
 // Path: model/attributes/db/db__query__parameter__[key].json
 
@@ -4689,7 +5150,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_STATEMENT} `db.statement`
+ * Aliases: {@link DB_STATEMENT} `db.statement`, {@link QUERY} `query`
  *
  * @example "SELECT * FROM users WHERE id = $1"
  */
@@ -4820,7 +5281,7 @@ export type DB_SQL_BINDINGS_TYPE = Array<string>;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link DB_QUERY_TEXT} `db.query.text`
+ * Aliases: {@link DB_QUERY_TEXT} `db.query.text`, {@link QUERY} `query`
  *
  * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
  * @example "SELECT * FROM users WHERE id = $1"
@@ -5773,6 +6234,30 @@ export const DIST = 'dist';
  * Type for {@link DIST} dist
  */
 export type DIST_TYPE = string;
+
+// Path: model/attributes/django/django__function_name.json
+
+/**
+ * The fully qualified name of a function used in a Django context. `django.function_name`
+ *
+ * Attribute Value Type: `string` {@link DJANGO_FUNCTION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CODE_FUNCTION_NAME} `code.function.name`, {@link CODE_FUNCTION} `code.function`
+ *
+ * @deprecated Use {@link CODE_FUNCTION_NAME} (code.function.name) instead - This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement.
+ * @example "django.contrib.sessions.middleware.SessionMiddleware"
+ */
+export const DJANGO_FUNCTION_NAME = 'django.function_name';
+
+/**
+ * Type for {@link DJANGO_FUNCTION_NAME} django.function_name
+ */
+export type DJANGO_FUNCTION_NAME_TYPE = string;
 
 // Path: model/attributes/django/django__middleware_name.json
 
@@ -6812,6 +7297,30 @@ export const GCP_PROJECT_ID = 'gcp.project.id';
  */
 export type GCP_PROJECT_ID_TYPE = string;
 
+// Path: model/attributes/gcp_region.json
+
+/**
+ * The geographical region the GCP resource is running `gcp_region`
+ *
+ * Attribute Value Type: `string` {@link GCP_REGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUD_REGION} `cloud.region`, {@link AWS_REGION} `aws_region`
+ *
+ * @deprecated Use {@link CLOUD_REGION} (cloud.region) instead
+ * @example "us-east-1"
+ */
+export const GCP_REGION = 'gcp_region';
+
+/**
+ * Type for {@link GCP_REGION} gcp_region
+ */
+export type GCP_REGION_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__agent__name.json
 
 /**
@@ -7078,7 +7587,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  */
@@ -7189,7 +7698,7 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -7349,7 +7858,7 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_MODEL_ID} `ai.model_id`
+ * Aliases: {@link _AI_MODEL_ID} `ai.model_id`, {@link AI_MODEL_ID} `ai.model.id`
  *
  * @example "gpt-4-turbo-preview"
  */
@@ -7403,6 +7912,28 @@ export const GEN_AI_REQUEST_REASONING_LEVEL = 'gen_ai.request.reasoning.level';
  * Type for {@link GEN_AI_REQUEST_REASONING_LEVEL} gen_ai.request.reasoning.level
  */
 export type GEN_AI_REQUEST_REASONING_LEVEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__request__schema.json
+
+/**
+ * The stringified JSON schema the model output must conform to. `gen_ai.request.schema`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_SCHEMA_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+ * @example "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
+ */
+export const GEN_AI_REQUEST_SCHEMA = 'gen_ai.request.schema';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_SCHEMA} gen_ai.request.schema
+ */
+export type GEN_AI_REQUEST_SCHEMA_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__seed.json
 
@@ -7576,7 +8107,7 @@ export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`
+ * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`, {@link AI_RESPONSE_ID} `ai.response.id`
  *
  * @example "gen_123abc"
  */
@@ -7599,6 +8130,8 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AI_RESPONSE_MODEL} `ai.response.model`
+ *
  * @example "gpt-4"
  */
 export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
@@ -7607,6 +8140,28 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__response__object.json
+
+/**
+ * The type of the object returned by the model. `gen_ai.response.object`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_OBJECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.
+ * @example "chat.completion"
+ */
+export const GEN_AI_RESPONSE_OBJECT = 'gen_ai.response.object';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_OBJECT} gen_ai.response.object
+ */
+export type GEN_AI_RESPONSE_OBJECT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__streaming.json
 
@@ -8264,7 +8819,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
+ * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
  * @example 20
  */
@@ -8286,6 +8841,8 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link GRAPHQL_SOURCE} `graphql.source`
  *
  * @example "query findBookById { bookById(id: ?) { name } }"
  */
@@ -8337,6 +8894,54 @@ export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
  * Type for {@link GRAPHQL_OPERATION_TYPE} graphql.operation.type
  */
 export type GRAPHQL_OPERATION_TYPE_TYPE = string;
+
+// Path: model/attributes/graphql/graphql__processing__type.json
+
+/**
+ * The type of processing represented by this span. `graphql.processing.type`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_PROCESSING_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "parse"
+ * @example "validate"
+ * @example "execute"
+ * @example "resolve"
+ */
+export const GRAPHQL_PROCESSING_TYPE = 'graphql.processing.type';
+
+/**
+ * Type for {@link GRAPHQL_PROCESSING_TYPE} graphql.processing.type
+ */
+export type GRAPHQL_PROCESSING_TYPE_TYPE = string;
+
+// Path: model/attributes/graphql/graphql__source.json
+
+/**
+ * The GraphQL document being executed. `graphql.source`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GRAPHQL_DOCUMENT} `graphql.document`
+ *
+ * @deprecated Use {@link GRAPHQL_DOCUMENT} (graphql.document) instead - This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.
+ * @example "query findBookById { bookById(id: ?) { name } }"
+ */
+export const GRAPHQL_SOURCE = 'graphql.source';
+
+/**
+ * Type for {@link GRAPHQL_SOURCE} graphql.source
+ */
+export type GRAPHQL_SOURCE_TYPE = string;
 
 // Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
 
@@ -8678,6 +9283,9 @@ export type HTTP_CLIENT_IP_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link HTTP_RESPONSE_BODY_DECODED_SIZE} `http.response.body.decoded_size`, {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} `http.response_content_length_uncompressed`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_BODY_DECODED_SIZE} (http.response.body.decoded_size) instead
  * @example 456
  */
 export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_content_length';
@@ -8699,7 +9307,7 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -8744,7 +9352,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -8822,6 +9430,52 @@ export const HTTP_REQUEST_BODY_DATA = 'http.request.body.data';
  */
 export type HTTP_REQUEST_BODY_DATA_TYPE = string;
 
+// Path: model/attributes/http/http__request__body__decoded_size.json
+
+/**
+ * The decoded body size of the request (in bytes). `http.request.body.decoded_size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_BODY_DECODED_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED} `http.request_content_length_uncompressed`
+ *
+ * @example 456
+ */
+export const HTTP_REQUEST_BODY_DECODED_SIZE = 'http.request.body.decoded_size';
+
+/**
+ * Type for {@link HTTP_REQUEST_BODY_DECODED_SIZE} http.request.body.decoded_size
+ */
+export type HTTP_REQUEST_BODY_DECODED_SIZE_TYPE = number;
+
+// Path: model/attributes/http/http__request__body__size.json
+
+/**
+ * The encoded body size of the request (in bytes). `http.request.body.size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_BODY_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_CONTENT_LENGTH} `http.request_content_length`
+ *
+ * @example 123
+ */
+export const HTTP_REQUEST_BODY_SIZE = 'http.request.body.size';
+
+/**
+ * Type for {@link HTTP_REQUEST_BODY_SIZE} http.request.body.size
+ */
+export type HTTP_REQUEST_BODY_SIZE_TYPE = number;
+
 // Path: model/attributes/http/http__request__connection_end.json
 
 /**
@@ -8863,6 +9517,54 @@ export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
  * Type for {@link HTTP_REQUEST_CONNECT_START} http.request.connect_start
  */
 export type HTTP_REQUEST_CONNECT_START_TYPE = number;
+
+// Path: model/attributes/http/http__request_content_length.json
+
+/**
+ * The encoded body size of the request (in bytes). `http.request_content_length`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_CONTENT_LENGTH_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_BODY_SIZE} `http.request.body.size`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_BODY_SIZE} (http.request.body.size) instead
+ * @example 123
+ */
+export const HTTP_REQUEST_CONTENT_LENGTH = 'http.request_content_length';
+
+/**
+ * Type for {@link HTTP_REQUEST_CONTENT_LENGTH} http.request_content_length
+ */
+export type HTTP_REQUEST_CONTENT_LENGTH_TYPE = number;
+
+// Path: model/attributes/http/http__request_content_length_uncompressed.json
+
+/**
+ * The decoded body size of the request (in bytes). `http.request_content_length_uncompressed`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_BODY_DECODED_SIZE} `http.request.body.decoded_size`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_BODY_DECODED_SIZE} (http.request.body.decoded_size) instead
+ * @example 456
+ */
+export const HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED = 'http.request_content_length_uncompressed';
+
+/**
+ * Type for {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED} http.request_content_length_uncompressed
+ */
+export type HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 
 // Path: model/attributes/http/http__request__domain_lookup_end.json
 
@@ -9214,6 +9916,29 @@ export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
  */
 export type HTTP_REQUEST_WORKER_START_TYPE = number;
 
+// Path: model/attributes/http/http__response__body__decoded_size.json
+
+/**
+ * The decoded body size of the response (in bytes). `http.response.body.decoded_size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} `http.decoded_response_content_length`, {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} `http.response_content_length_uncompressed`
+ *
+ * @example 456
+ */
+export const HTTP_RESPONSE_BODY_DECODED_SIZE = 'http.response.body.decoded_size';
+
+/**
+ * Type for {@link HTTP_RESPONSE_BODY_DECODED_SIZE} http.response.body.decoded_size
+ */
+export type HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE = number;
+
 // Path: model/attributes/http/http__response__body__size.json
 
 /**
@@ -9260,6 +9985,30 @@ export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
  * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH} http.response_content_length
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
+
+// Path: model/attributes/http/http__response_content_length_uncompressed.json
+
+/**
+ * The decoded body size of the response (in bytes). `http.response_content_length_uncompressed`
+ *
+ * Attribute Value Type: `number` {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_BODY_DECODED_SIZE} `http.response.body.decoded_size`, {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} `http.decoded_response_content_length`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_BODY_DECODED_SIZE} (http.response.body.decoded_size) instead
+ * @example 456
+ */
+export const HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_length_uncompressed';
+
+/**
+ * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} http.response_content_length_uncompressed
+ */
+export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 
 // Path: model/attributes/http/http__response__header__content-length.json
 
@@ -9358,6 +10107,29 @@ export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
  */
 export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
 
+// Path: model/attributes/http/http__response__status_text.json
+
+/**
+ * The reason phrase of the HTTP response. `http.response.status_text`
+ *
+ * Attribute Value Type: `string` {@link HTTP_RESPONSE_STATUS_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_STATUS_TEXT} `http.status_text`
+ *
+ * @example "NOT FOUND"
+ */
+export const HTTP_RESPONSE_STATUS_TEXT = 'http.response.status_text';
+
+/**
+ * Type for {@link HTTP_RESPONSE_STATUS_TEXT} http.response.status_text
+ */
+export type HTTP_RESPONSE_STATUS_TEXT_TYPE = string;
+
 // Path: model/attributes/http/http__response_transfer_size.json
 
 /**
@@ -9394,7 +10166,7 @@ export type HTTP_RESPONSE_TRANSFER_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_TEMPLATE} `url.template`
+ * Aliases: {@link ROUTE} `route`
  *
  * @example "/users/:id"
  * @example "my-controller/my-action/{id}"
@@ -9443,7 +10215,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -9500,6 +10272,30 @@ export const HTTP_STATUS_CODE = 'http.status_code';
  */
 export type HTTP_STATUS_CODE_TYPE = number;
 
+// Path: model/attributes/http/http__status_text.json
+
+/**
+ * The reason phrase of the HTTP response `http.status_text`
+ *
+ * Attribute Value Type: `string` {@link HTTP_STATUS_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_STATUS_TEXT} `http.response.status_text`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_STATUS_TEXT} (http.response.status_text) instead
+ * @example "NOT FOUND"
+ */
+export const HTTP_STATUS_TEXT = 'http.status_text';
+
+/**
+ * Type for {@link HTTP_STATUS_TEXT} http.status_text
+ */
+export type HTTP_STATUS_TEXT_TYPE = string;
+
 // Path: model/attributes/http/http__target.json
 
 /**
@@ -9512,7 +10308,7 @@ export type HTTP_STATUS_CODE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path and url.query
+ * @deprecated  - This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.
  * @example "/test?foo=bar#buzz"
  */
 export const HTTP_TARGET = 'http.target';
@@ -9534,7 +10330,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -10633,7 +11429,7 @@ export type MCP_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - OTel uses the generic network.protocol.name attribute
  * @example "file"
@@ -10914,6 +11710,30 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__conversation_id.json
+
+/**
+ * The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID". `messaging.conversation_id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_CONVERSATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_CONVERSATION_ID} `messaging.message.conversation_id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_CONVERSATION_ID} (messaging.message.conversation_id) instead - This attribute is being deprecated in favor of messaging.message.conversation_id.
+ * @example "MyConversationId"
+ */
+export const MESSAGING_CONVERSATION_ID = 'messaging.conversation_id';
+
+/**
+ * Type for {@link MESSAGING_CONVERSATION_ID} messaging.conversation_id
+ */
+export type MESSAGING_CONVERSATION_ID_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination.json
 
 /**
@@ -11121,6 +11941,8 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_CONVERSATION_ID} `messaging.conversation_id`
+ *
  * @example "MyConversationId"
  */
 export const MESSAGING_MESSAGE_CONVERSATION_ID = 'messaging.message.conversation_id';
@@ -11163,6 +11985,8 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`
+ *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
 export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
@@ -11171,6 +11995,30 @@ export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
  * Type for {@link MESSAGING_MESSAGE_ID} messaging.message.id
  */
 export type MESSAGING_MESSAGE_ID_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__message_id.json
+
+/**
+ * A value used by the messaging system as an identifier for the message, represented as a string. `messaging.message_id`
+ *
+ * Attribute Value Type: `string` {@link _MESSAGING_MESSAGE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_ID} (messaging.message.id) instead - This attribute is being deprecated in favor of messaging.message.id.
+ * @example "452a7c7c7c7048c2f887f0e7"
+ */
+export const _MESSAGING_MESSAGE_ID = 'messaging.message_id';
+
+/**
+ * Type for {@link _MESSAGING_MESSAGE_ID} messaging.message_id
+ */
+export type _MESSAGING_MESSAGE_ID_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__message__receive__latency.json
 
@@ -11214,6 +12062,30 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__operation.json
+
+/**
+ * The name of the messaging operation being performed. `messaging.operation`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_OPERATION_NAME} `messaging.operation.name`
+ *
+ * @deprecated Use {@link MESSAGING_OPERATION_NAME} (messaging.operation.name) instead - This attribute is being deprecated in favor of messaging.operation.name.
+ * @example "publish"
+ */
+export const MESSAGING_OPERATION = 'messaging.operation';
+
+/**
+ * Type for {@link MESSAGING_OPERATION} messaging.operation
+ */
+export type MESSAGING_OPERATION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__operation__name.json
 
 /**
@@ -11225,6 +12097,8 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_OPERATION} `messaging.operation`
  *
  * @example "send"
  */
@@ -11256,6 +12130,54 @@ export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
  */
 export type MESSAGING_OPERATION_TYPE_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__protocol.json
+
+/**
+ * OSI application layer or non-OSI equivalent. `messaging.protocol`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_PROTOCOL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - This attribute is being deprecated in favor of network.protocol.name.
+ * @example "AMQP"
+ */
+export const MESSAGING_PROTOCOL = 'messaging.protocol';
+
+/**
+ * Type for {@link MESSAGING_PROTOCOL} messaging.protocol
+ */
+export type MESSAGING_PROTOCOL_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__protocol_version.json
+
+/**
+ * The actual version of the protocol used for network communication. `messaging.protocol_version`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_PROTOCOL_VERSION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead - This attribute is being deprecated in favor of network.protocol.version.
+ * @example "0.9.1"
+ */
+export const MESSAGING_PROTOCOL_VERSION = 'messaging.protocol_version';
+
+/**
+ * Type for {@link MESSAGING_PROTOCOL_VERSION} messaging.protocol_version
+ */
+export type MESSAGING_PROTOCOL_VERSION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
 
 /**
@@ -11268,6 +12190,8 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_RABBITMQ_ROUTING_KEY} `messaging.rabbitmq.routing_key`
+ *
  * @example "myKey"
  */
 export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.destination.routing_key';
@@ -11276,6 +12200,30 @@ export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.de
  * Type for {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} messaging.rabbitmq.destination.routing_key
  */
 export type MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__rabbitmq__routing_key.json
+
+/**
+ * RabbitMQ message routing key. `messaging.rabbitmq.routing_key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_RABBITMQ_ROUTING_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} `messaging.rabbitmq.destination.routing_key`
+ *
+ * @deprecated Use {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} (messaging.rabbitmq.destination.routing_key) instead - This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.
+ * @example "myKey"
+ */
+export const MESSAGING_RABBITMQ_ROUTING_KEY = 'messaging.rabbitmq.routing_key';
+
+/**
+ * Type for {@link MESSAGING_RABBITMQ_ROUTING_KEY} messaging.rabbitmq.routing_key
+ */
+export type MESSAGING_RABBITMQ_ROUTING_KEY_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__system.json
 
@@ -11297,6 +12245,30 @@ export const MESSAGING_SYSTEM = 'messaging.system';
  * Type for {@link MESSAGING_SYSTEM} messaging.system
  */
 export type MESSAGING_SYSTEM_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__url.json
+
+/**
+ * The connection string of the messaging broker. `messaging.url`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full.
+ * @example "amqp://guest:guest@localhost:5672"
+ */
+export const MESSAGING_URL = 'messaging.url';
+
+/**
+ * Type for {@link MESSAGING_URL} messaging.url
+ */
+export type MESSAGING_URL_TYPE = string;
 
 // Path: model/attributes/method.json
 
@@ -11601,6 +12573,7 @@ export type NETWORK_CONNECTION_TYPE_TYPE = string;
  * Aliases: {@link NET_HOST_IP} `net.host.ip`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
  *
  * @example "10.1.2.80"
+ * @example "/var/run/my.sock"
  */
 export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
 
@@ -11667,6 +12640,8 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link NET_SOCK_PEER_PORT} `net.sock.peer.port`
+ *
  * @example 65400
  */
 export const NETWORK_PEER_PORT = 'network.peer.port';
@@ -11688,7 +12663,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @example "http"
  */
@@ -11711,7 +12686,7 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @example "1.1"
  */
@@ -11802,7 +12777,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -11826,7 +12801,7 @@ export type NET_HOST_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link SERVER_PORT} `server.port`
+ * Aliases: {@link SERVER_PORT} `server.port`, {@link PORT} `port`
  *
  * @deprecated Use {@link SERVER_PORT} (server.port) instead
  * @example 1337
@@ -11874,6 +12849,8 @@ export type NET_PEER_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
  */
@@ -11918,7 +12895,7 @@ export type NET_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
@@ -11942,7 +12919,7 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -12082,6 +13059,8 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link NETWORK_PEER_PORT} `network.peer.port`
+ *
  * @deprecated Use {@link NETWORK_PEER_PORT} (network.peer.port) instead
  * @example 8080
  */
@@ -12106,7 +13085,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  *
  * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link MCP_TRANSPORT} `mcp.transport`
  *
- * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead
+ * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
  * @example "tcp"
  */
 export const NET_TRANSPORT = 'net.transport';
@@ -12453,7 +13432,7 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`, {@link URL_PATH_PARAMS_KEY} `url.path.params.<key>`
  *
  * @example "params.id='123'"
  */
@@ -12516,6 +13495,30 @@ export const PERFORMANCE_TIMEORIGIN = 'performance.timeOrigin';
  * Type for {@link PERFORMANCE_TIMEORIGIN} performance.timeOrigin
  */
 export type PERFORMANCE_TIMEORIGIN_TYPE = number;
+
+// Path: model/attributes/port.json
+
+/**
+ * The destination port for a TCP connection. `port`
+ *
+ * Attribute Value Type: `number` {@link PORT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_PORT} `server.port`, {@link NET_HOST_PORT} `net.host.port`
+ *
+ * @deprecated Use {@link SERVER_PORT} (server.port) instead - Old namespace-less attribute, to be replaced with server.port for span-first future
+ * @example 1337
+ */
+export const PORT = 'port';
+
+/**
+ * Type for {@link PORT} port
+ */
+export type PORT_TYPE = number;
 
 // Path: model/attributes/previous_route.json
 
@@ -12738,6 +13741,30 @@ export const PROFILE_ID = 'profile_id';
  */
 export type PROFILE_ID_TYPE = string;
 
+// Path: model/attributes/query.json
+
+/**
+ * The database query being executed. `query`
+ *
+ * Attribute Value Type: `string` {@link QUERY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DB_QUERY_TEXT} `db.query.text`, {@link DB_STATEMENT} `db.statement`
+ *
+ * @deprecated Use {@link DB_QUERY_TEXT} (db.query.text) instead - While this attribute never specifically required parameterization, the replacement, db.query.text, does.
+ * @example "SELECT * FROM users WHERE id = $1"
+ */
+export const QUERY = 'query';
+
+/**
+ * Type for {@link QUERY} query
+ */
+export type QUERY_TYPE = string;
+
 // Path: model/attributes/query/query__[key].json
 
 /**
@@ -12789,6 +13816,30 @@ export const REACT_VERSION = 'react.version';
  * Type for {@link REACT_VERSION} react.version
  */
 export type REACT_VERSION_TYPE = string;
+
+// Path: model/attributes/redis/redis__command.json
+
+/**
+ * The name of the Redis operation being executed. `redis.command`
+ *
+ * Attribute Value Type: `string` {@link REDIS_COMMAND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CLOUDFLARE_D1_QUERY_TYPE} `cloudflare.d1.query_type`, {@link DB_OPERATION_NAME} `db.operation.name`, {@link DB_OPERATION} `db.operation`
+ *
+ * @deprecated Use {@link DB_OPERATION_NAME} (db.operation.name) instead
+ * @example "SELECT"
+ */
+export const REDIS_COMMAND = 'redis.command';
+
+/**
+ * Type for {@link REDIS_COMMAND} redis.command
+ */
+export type REDIS_COMMAND_TYPE = string;
 
 // Path: model/attributes/redis/redis__key.json
 
@@ -12991,7 +14042,7 @@ export type ROUTE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
+ * Aliases: {@link CODE} `code`, {@link RPC_RESPONSE_STATUS_CODE} `rpc.response.status_code`
  *
  * @deprecated Use {@link RPC_RESPONSE_STATUS_CODE} (rpc.response.status_code) instead - Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.
  * @example 2
@@ -13015,6 +14066,8 @@ export type RPC_GRPC_STATUS_CODE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AWS_OPERATION_NAME} `aws.operation_name`
+ *
  * @example "com.example.ExampleService/exampleMethod"
  */
 export const RPC_METHOD = 'rpc.method';
@@ -13036,7 +14089,7 @@ export type RPC_METHOD_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`
+ * Aliases: {@link CODE} `code`, {@link RPC_GRPC_STATUS_CODE} `rpc.grpc.status_code`
  *
  * @example "DEADLINE_EXCEEDED"
  */
@@ -13451,7 +14504,7 @@ export type SENTRY_CLIENT_SAMPLE_RATE_TYPE = number;
  *
  * Attribute Value Type: `string` {@link SENTRY_DESCRIPTION_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13699,6 +14752,82 @@ export const SENTRY_ENVIRONMENT = 'sentry.environment';
  * Type for {@link SENTRY_ENVIRONMENT} sentry.environment
  */
 export type SENTRY_ENVIRONMENT_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_breadcrumbs.json
+
+/**
+ * JSON-serialized `breadcrumbs` property from a Sentry event. `sentry.event.serialized_breadcrumbs`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_BREADCRUMBS = 'sentry.event.serialized_breadcrumbs';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_BREADCRUMBS} sentry.event.serialized_breadcrumbs
+ */
+export type SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_contexts.json
+
+/**
+ * JSON-serialized `contexts` property from a Sentry event. `sentry.event.serialized_contexts`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_CONTEXTS = 'sentry.event.serialized_contexts';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_CONTEXTS} sentry.event.serialized_contexts
+ */
+export type SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_extra.json
+
+/**
+ * JSON-serialized `extra` property from a Sentry event. `sentry.event.serialized_extra`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_EXTRA_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_EXTRA = 'sentry.event.serialized_extra';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_EXTRA} sentry.event.serialized_extra
+ */
+export type SENTRY_EVENT_SERIALIZED_EXTRA_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__event__serialized_meta.json
+
+/**
+ * JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event. `sentry.event.serialized_meta`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_EVENT_SERIALIZED_META_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ */
+export const SENTRY_EVENT_SERIALIZED_META = 'sentry.event.serialized_meta';
+
+/**
+ * Type for {@link SENTRY_EVENT_SERIALIZED_META} sentry.event.serialized_meta
+ */
+export type SENTRY_EVENT_SERIALIZED_META_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__exclusive_time.json
 
@@ -14799,7 +15928,7 @@ export type SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE = string;
 // Path: model/attributes/sentry/sentry__thread__id.json
 
 /**
- * Current “managed” thread ID. `sentry.thread.id`
+ * Current "managed" thread ID. `sentry.thread.id`
  *
  * Attribute Value Type: `number` {@link SENTRY_THREAD_ID_TYPE}
  *
@@ -15123,7 +16252,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @example "example.com"
  */
@@ -15146,7 +16275,7 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
  * @example "example.com"
@@ -15170,7 +16299,7 @@ export type SERVER_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_HOST_PORT} `net.host.port`
+ * Aliases: {@link NET_HOST_PORT} `net.host.port`, {@link PORT} `port`
  *
  * @example 1337
  */
@@ -15895,7 +17024,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -15961,7 +17090,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -16007,7 +17136,7 @@ export type URL_PATH_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link PARAMS_KEY} `params.<key>`
+ * Aliases: {@link PARAMS_KEY} `params.<key>`, {@link URL_PATH_PARAMS_KEY} `url.path.params.<key>`
  *
  * @example "url.path.parameter.id='123'"
  */
@@ -16022,6 +17151,39 @@ export const URL_PATH_PARAMETER_KEY_BASE = 'url.path.parameter';
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
  */
 export type URL_PATH_PARAMETER_KEY_TYPE = string;
+
+// Path: model/attributes/url/url__path__params__[key].json
+
+/**
+ * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router. `url.path.params.<key>`
+ *
+ * Attribute Value Type: `string` {@link URL_PATH_PARAMS_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`, {@link PARAMS_KEY} `params.<key>`
+ *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY} (url.path.parameter.<key>) instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+ * @example "url.path.params.id='123'"
+ */
+export const URL_PATH_PARAMS_KEY = 'url.path.params.<key>';
+
+/**
+ * Base key for {@link URL_PATH_PARAMS_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMS_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY_BASE} (url.path.parameter) instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+ */
+export const URL_PATH_PARAMS_KEY_BASE = 'url.path.params';
+
+/**
+ * Type for {@link URL_PATH_PARAMS_KEY} url.path.params.<key>
+ */
+export type URL_PATH_PARAMS_KEY_TYPE = string;
 
 // Path: model/attributes/url/url__port.json
 
@@ -16115,7 +17277,7 @@ export type URL_SCHEME_TYPE = string;
 // Path: model/attributes/url/url__template.json
 
 /**
- * The low-cardinality template of an absolute path reference. `url.template`
+ * The low-cardinality template of an absolute URL path reference. `url.template`
  *
  * Attribute Value Type: `string` {@link URL_TEMPLATE_TYPE}
  *
@@ -16123,8 +17285,6 @@ export type URL_SCHEME_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
- *
- * Aliases: {@link HTTP_ROUTE} `http.route`
  *
  * @example "/users/{id}"
  * @example "/users/:id"
@@ -17207,11 +18367,48 @@ export interface ChangelogEntry {
   description?: string;
 }
 
+export type SearchAliasType = 'byte' | 'currency' | 'millisecond' | 'percentage' | 'second';
+
+export interface SearchAlias {
+  /** The public name exposed in Sentry search */
+  name: string;
+  /** The type exposed by Sentry search. Defaults to the attribute's primary type if omitted */
+  type?: SearchAliasType;
+  /** Deprecated aliases still accepted in search queries */
+  deprecatedAliases?: string[];
+}
+
+export type AttributeSearchType = AttributeType | SearchAliasType;
+
+export interface AttributeSearchMetadata {
+  /** The original attribute key before it is exposed under its search name */
+  canonicalName: AttributeName;
+  /** The type exposed by Sentry search */
+  type: AttributeSearchType;
+  /** A description of the attribute */
+  brief: string;
+  /** Whether the attribute is internal to Sentry */
+  internal?: true;
+  /** Every key under which the attribute's value is readable, preferred key first */
+  deprecationChain: readonly string[];
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
   /** The type of the attribute value */
   type: AttributeType;
+  /**
+   * Every key this attribute's value may be readable under, preferred key first.
+   *
+   * All members of a family read the same set of keys. Mutually aliased attributes each head their
+   * own chain, so those chains agree on membership but differ in which key they prefer. Only
+   * `backfill` and `normalize` deprecations join their replacement's chain,
+   * because only for those is the value rewritten onto the replacement. An attribute with any other
+   * deprecation therefore has a chain of just its own names, and the first key is not guaranteed to
+   * be non-deprecated — check `deprecation` if that matters.
+   */
+  keys: readonly string[];
   /** How PII scrubbing should be applied to the attribute value */
   applyScrubbing: ApplyScrubbingInfo;
   /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
@@ -17232,9 +18429,12 @@ export interface AttributeMetadata {
   changelog?: ChangelogEntry[];
   /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
   additionalContext?: string[];
+  /** How this attribute is exposed in Sentry search */
+  searchAlias?: SearchAlias;
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
+  address: 'string',
   'ai.citations': 'string[]',
   'ai.completion_tokens.used': 'integer',
   'ai.documents': 'string[]',
@@ -17245,18 +18445,26 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.input_messages': 'string',
   'ai.is_search_required': 'boolean',
   'ai.metadata': 'string',
+  'ai.model.id': 'string',
   'ai.model_id': 'string',
   'ai.model.provider': 'string',
   'ai.pipeline.name': 'string',
   'ai.preamble': 'string',
   'ai.presence_penalty': 'double',
+  'ai.prompt': 'string',
   'ai.prompt.messages': 'string',
   'ai.prompt_tokens.used': 'integer',
+  'ai.prompt.tools': 'string[]',
   'ai.raw_prompting': 'boolean',
   'ai.responses': 'string[]',
   'ai.response_format': 'string',
+  'ai.response.id': 'string',
+  'ai.response.model': 'string',
+  'ai.response.object': 'string',
   'ai.response.text': 'string',
+  'ai.response.timestamp': 'string',
   'ai.response.toolCalls': 'string',
+  'ai.schema': 'string',
   'ai.search_queries': 'string[]',
   'ai.search_results': 'string[]',
   'ai.seed': 'string',
@@ -17272,6 +18480,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.top_p': 'double',
   'ai.total_cost': 'double',
   'ai.total_tokens.used': 'integer',
+  'ai.usage.tokens': 'integer',
+  'ai.values': 'string',
   'ai.warnings': 'string[]',
   'angular.version': 'string',
   'app.app_build': 'string',
@@ -17351,6 +18561,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
+  'aws.operation_name': 'string',
+  aws_region: 'string',
   'aws.request.extended_id': 'string',
   'aws.request_id': 'string',
   'aws.request.id': 'string',
@@ -17361,6 +18573,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.step_functions.activity.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
+  'browser.bfcache.frame': 'string',
+  'browser.bfcache.not_restored_reason_count': 'integer',
+  'browser.bfcache.outcome': 'string',
+  'browser.bfcache.reason': 'string',
   'browser.name': 'string',
   'browser.performance.navigation.activation_start': 'double',
   'browser.performance.time_origin': 'double',
@@ -17420,6 +18636,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'cloud.resource_id': 'string',
   cls: 'double',
   'cls.source.<key>': 'string',
+  code: 'string',
   'code.filepath': 'string',
   'code.file.path': 'string',
   'code.function': 'string',
@@ -17435,6 +18652,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'culture.locale': 'string',
   'culture.timezone': 'string',
   'db.collection.name': 'string',
+  'db.connection_string': 'string',
   'db.driver.name': 'string',
   'db.mongodb.collection': 'string',
   'db.name': 'string',
@@ -17442,6 +18660,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'db.operation': 'string',
   'db.operation.batch.size': 'integer',
   'db.operation.name': 'string',
+  'db.params': 'string',
   'db.query.parameter.<key>': 'string',
   'db.query.summary': 'string',
   'db.query.text': 'string',
@@ -17495,6 +18714,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'device.timezone': 'string',
   'device.usable_memory': 'integer',
   dist: 'string',
+  'django.function_name': 'string',
   'django.middleware_name': 'string',
   effectiveConnectionType: 'string',
   environment: 'string',
@@ -17542,6 +18762,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gcp.function.context.timestamp': 'string',
   'gcp.function.context.type': 'string',
   'gcp.project.id': 'string',
+  gcp_region: 'string',
   'gen_ai.agent.name': 'string',
   'gen_ai.context.utilization': 'double',
   'gen_ai.context.window_size': 'integer',
@@ -17569,6 +18790,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.model': 'string',
   'gen_ai.request.presence_penalty': 'double',
   'gen_ai.request.reasoning.level': 'string',
+  'gen_ai.request.schema': 'string',
   'gen_ai.request.seed': 'string',
   'gen_ai.request.stop_sequences': 'string[]',
   'gen_ai.request.temperature': 'double',
@@ -17578,6 +18800,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.response.finish_reasons': 'string',
   'gen_ai.response.id': 'string',
   'gen_ai.response.model': 'string',
+  'gen_ai.response.object': 'string',
   'gen_ai.response.streaming': 'boolean',
   'gen_ai.response.text': 'string',
   'gen_ai.response.time_to_first_chunk': 'double',
@@ -17610,6 +18833,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'graphql.document': 'string',
   'graphql.operation.name': 'string',
   'graphql.operation.type': 'string',
+  'graphql.processing.type': 'string',
+  'graphql.source': 'string',
   'grpc.error.bad_request.field_violations': 'string[]',
   'grpc.error.debug_info.detail': 'string',
   'grpc.error.debug_info.stack_entries': 'string[]',
@@ -17632,8 +18857,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.method': 'string',
   'http.query': 'string',
   'http.request.body.data': 'string',
+  'http.request.body.decoded_size': 'integer',
+  'http.request.body.size': 'integer',
   'http.request.connection_end': 'double',
   'http.request.connect_start': 'double',
+  'http.request_content_length': 'integer',
+  'http.request_content_length_uncompressed': 'integer',
   'http.request.domain_lookup_end': 'double',
   'http.request.domain_lookup_start': 'double',
   'http.request.fetch_start': 'double',
@@ -17650,18 +18879,22 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.request.secure_connection_start': 'double',
   'http.request.time_to_first_byte': 'double',
   'http.request.worker_start': 'double',
+  'http.response.body.decoded_size': 'integer',
   'http.response.body.size': 'integer',
   'http.response_content_length': 'integer',
+  'http.response_content_length_uncompressed': 'integer',
   'http.response.header.content-length': 'string',
   'http.response.header.<key>': 'string[]',
   'http.response.size': 'integer',
   'http.response.status_code': 'integer',
+  'http.response.status_text': 'string',
   'http.response_transfer_size': 'integer',
   'http.route': 'string',
   'http.scheme': 'string',
   'http.server_name': 'string',
   'http.server.request.time_in_queue': 'double',
   'http.status_code': 'integer',
+  'http.status_text': 'string',
   'http.target': 'string',
   'http.url': 'string',
   'http.user_agent': 'string',
@@ -17726,6 +18959,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.conversation_id': 'string',
   'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
   'messaging.destination_kind': 'string',
@@ -17738,12 +18972,18 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.message.conversation_id': 'string',
   'messaging.message.envelope.size': 'integer',
   'messaging.message.id': 'string',
+  'messaging.message_id': 'string',
   'messaging.message.receive.latency': 'integer',
   'messaging.message.retry.count': 'integer',
+  'messaging.operation': 'string',
   'messaging.operation.name': 'string',
   'messaging.operation.type': 'string',
+  'messaging.protocol': 'string',
+  'messaging.protocol_version': 'string',
   'messaging.rabbitmq.destination.routing_key': 'string',
+  'messaging.rabbitmq.routing_key': 'string',
   'messaging.system': 'string',
+  'messaging.url': 'string',
   method: 'string',
   'middleware.name': 'string',
   'navigation.origin': 'string',
@@ -17798,6 +19038,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'params.<key>': 'string',
   'performance.activationStart': 'double',
   'performance.timeOrigin': 'double',
+  port: 'integer',
   previous_route: 'string',
   'process.command_args': 'string[]',
   'process.executable.name': 'string',
@@ -17808,8 +19049,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'process.runtime.name': 'string',
   'process.runtime.version': 'string',
   profile_id: 'string',
+  query: 'string',
   'query.<key>': 'string',
   'react.version': 'string',
+  'redis.command': 'string',
   'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
@@ -17850,6 +19093,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.dsc.trace_id': 'string',
   'sentry.dsc.transaction': 'string',
   'sentry.environment': 'string',
+  'sentry.event.serialized_breadcrumbs': 'string',
+  'sentry.event.serialized_contexts': 'string',
+  'sentry.event.serialized_extra': 'string',
+  'sentry.event.serialized_meta': 'string',
   'sentry.exclusive_time': 'double',
   'sentry.frames.frozen': 'integer',
   'sentry.frames.slow': 'integer',
@@ -17955,6 +19202,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'url.full': 'string',
   'url.path': 'string',
   'url.path.parameter.<key>': 'string',
+  'url.path.params.<key>': 'string',
   'url.port': 'integer',
   'url.query': 'string',
   'url.same_origin': 'boolean',
@@ -18011,6 +19259,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
 };
 
 export type AttributeName =
+  | typeof ADDRESS
   | typeof AI_CITATIONS
   | typeof AI_COMPLETION_TOKENS_USED
   | typeof AI_DOCUMENTS
@@ -18022,17 +19271,25 @@ export type AttributeName =
   | typeof AI_IS_SEARCH_REQUIRED
   | typeof AI_METADATA
   | typeof AI_MODEL_ID
+  | typeof _AI_MODEL_ID
   | typeof AI_MODEL_PROVIDER
   | typeof AI_PIPELINE_NAME
   | typeof AI_PREAMBLE
   | typeof AI_PRESENCE_PENALTY
+  | typeof AI_PROMPT
   | typeof AI_PROMPT_MESSAGES
   | typeof AI_PROMPT_TOKENS_USED
+  | typeof AI_PROMPT_TOOLS
   | typeof AI_RAW_PROMPTING
   | typeof AI_RESPONSES
   | typeof AI_RESPONSE_FORMAT
+  | typeof AI_RESPONSE_ID
+  | typeof AI_RESPONSE_MODEL
+  | typeof AI_RESPONSE_OBJECT
   | typeof AI_RESPONSE_TEXT
+  | typeof AI_RESPONSE_TIMESTAMP
   | typeof AI_RESPONSE_TOOLCALLS
+  | typeof AI_SCHEMA
   | typeof AI_SEARCH_QUERIES
   | typeof AI_SEARCH_RESULTS
   | typeof AI_SEED
@@ -18048,6 +19305,8 @@ export type AttributeName =
   | typeof AI_TOP_P
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
+  | typeof AI_USAGE_TOKENS
+  | typeof AI_VALUES
   | typeof AI_WARNINGS
   | typeof ANGULAR_VERSION
   | typeof APP_APP_BUILD
@@ -18127,6 +19386,8 @@ export type AttributeName =
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
+  | typeof AWS_OPERATION_NAME
+  | typeof AWS_REGION
   | typeof AWS_REQUEST_EXTENDED_ID
   | typeof AWS_REQUEST_ID
   | typeof _AWS_REQUEST_ID
@@ -18137,6 +19398,10 @@ export type AttributeName =
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
+  | typeof BROWSER_BFCACHE_FRAME
+  | typeof BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT
+  | typeof BROWSER_BFCACHE_OUTCOME
+  | typeof BROWSER_BFCACHE_REASON
   | typeof BROWSER_NAME
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
   | typeof BROWSER_PERFORMANCE_TIME_ORIGIN
@@ -18196,6 +19461,7 @@ export type AttributeName =
   | typeof CLOUD_RESOURCE_ID
   | typeof CLS
   | typeof CLS_SOURCE_KEY
+  | typeof CODE
   | typeof CODE_FILEPATH
   | typeof CODE_FILE_PATH
   | typeof CODE_FUNCTION
@@ -18211,6 +19477,7 @@ export type AttributeName =
   | typeof CULTURE_LOCALE
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
+  | typeof DB_CONNECTION_STRING
   | typeof DB_DRIVER_NAME
   | typeof DB_MONGODB_COLLECTION
   | typeof DB_NAME
@@ -18218,6 +19485,7 @@ export type AttributeName =
   | typeof DB_OPERATION
   | typeof DB_OPERATION_BATCH_SIZE
   | typeof DB_OPERATION_NAME
+  | typeof DB_PARAMS
   | typeof DB_QUERY_PARAMETER_KEY
   | typeof DB_QUERY_SUMMARY
   | typeof DB_QUERY_TEXT
@@ -18271,6 +19539,7 @@ export type AttributeName =
   | typeof DEVICE_TIMEZONE
   | typeof DEVICE_USABLE_MEMORY
   | typeof DIST
+  | typeof DJANGO_FUNCTION_NAME
   | typeof DJANGO_MIDDLEWARE_NAME
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
@@ -18318,6 +19587,7 @@ export type AttributeName =
   | typeof GCP_FUNCTION_CONTEXT_TIMESTAMP
   | typeof GCP_FUNCTION_CONTEXT_TYPE
   | typeof GCP_PROJECT_ID
+  | typeof GCP_REGION
   | typeof GEN_AI_AGENT_NAME
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
@@ -18345,6 +19615,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_MODEL
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
   | typeof GEN_AI_REQUEST_REASONING_LEVEL
+  | typeof GEN_AI_REQUEST_SCHEMA
   | typeof GEN_AI_REQUEST_SEED
   | typeof GEN_AI_REQUEST_STOP_SEQUENCES
   | typeof GEN_AI_REQUEST_TEMPERATURE
@@ -18354,6 +19625,7 @@ export type AttributeName =
   | typeof GEN_AI_RESPONSE_FINISH_REASONS
   | typeof GEN_AI_RESPONSE_ID
   | typeof GEN_AI_RESPONSE_MODEL
+  | typeof GEN_AI_RESPONSE_OBJECT
   | typeof GEN_AI_RESPONSE_STREAMING
   | typeof GEN_AI_RESPONSE_TEXT
   | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK
@@ -18386,6 +19658,8 @@ export type AttributeName =
   | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
+  | typeof GRAPHQL_PROCESSING_TYPE
+  | typeof GRAPHQL_SOURCE
   | typeof GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
   | typeof GRPC_ERROR_DEBUG_INFO_DETAIL
   | typeof GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
@@ -18408,8 +19682,12 @@ export type AttributeName =
   | typeof HTTP_METHOD
   | typeof HTTP_QUERY
   | typeof HTTP_REQUEST_BODY_DATA
+  | typeof HTTP_REQUEST_BODY_DECODED_SIZE
+  | typeof HTTP_REQUEST_BODY_SIZE
   | typeof HTTP_REQUEST_CONNECTION_END
   | typeof HTTP_REQUEST_CONNECT_START
+  | typeof HTTP_REQUEST_CONTENT_LENGTH
+  | typeof HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
   | typeof HTTP_REQUEST_FETCH_START
@@ -18426,18 +19704,22 @@ export type AttributeName =
   | typeof HTTP_REQUEST_SECURE_CONNECTION_START
   | typeof HTTP_REQUEST_TIME_TO_FIRST_BYTE
   | typeof HTTP_REQUEST_WORKER_START
+  | typeof HTTP_RESPONSE_BODY_DECODED_SIZE
   | typeof HTTP_RESPONSE_BODY_SIZE
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
+  | typeof HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
   | typeof HTTP_RESPONSE_STATUS_CODE
+  | typeof HTTP_RESPONSE_STATUS_TEXT
   | typeof HTTP_RESPONSE_TRANSFER_SIZE
   | typeof HTTP_ROUTE
   | typeof HTTP_SCHEME
   | typeof HTTP_SERVER_NAME
   | typeof HTTP_SERVER_REQUEST_TIME_IN_QUEUE
   | typeof HTTP_STATUS_CODE
+  | typeof HTTP_STATUS_TEXT
   | typeof HTTP_TARGET
   | typeof HTTP_URL
   | typeof HTTP_USER_AGENT
@@ -18502,6 +19784,7 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_CONVERSATION_ID
   | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_KIND
@@ -18514,12 +19797,18 @@ export type AttributeName =
   | typeof MESSAGING_MESSAGE_CONVERSATION_ID
   | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
   | typeof MESSAGING_MESSAGE_ID
+  | typeof _MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION
   | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
+  | typeof MESSAGING_PROTOCOL
+  | typeof MESSAGING_PROTOCOL_VERSION
   | typeof MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY
+  | typeof MESSAGING_RABBITMQ_ROUTING_KEY
   | typeof MESSAGING_SYSTEM
+  | typeof MESSAGING_URL
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_ORIGIN
@@ -18574,6 +19863,7 @@ export type AttributeName =
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
   | typeof PERFORMANCE_TIMEORIGIN
+  | typeof PORT
   | typeof PREVIOUS_ROUTE
   | typeof PROCESS_COMMAND_ARGS
   | typeof PROCESS_EXECUTABLE_NAME
@@ -18584,8 +19874,10 @@ export type AttributeName =
   | typeof PROCESS_RUNTIME_NAME
   | typeof PROCESS_RUNTIME_VERSION
   | typeof PROFILE_ID
+  | typeof QUERY
   | typeof QUERY_KEY
   | typeof REACT_VERSION
+  | typeof REDIS_COMMAND
   | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
@@ -18626,6 +19918,10 @@ export type AttributeName =
   | typeof SENTRY_DSC_TRACE_ID
   | typeof SENTRY_DSC_TRANSACTION
   | typeof SENTRY_ENVIRONMENT
+  | typeof SENTRY_EVENT_SERIALIZED_BREADCRUMBS
+  | typeof SENTRY_EVENT_SERIALIZED_CONTEXTS
+  | typeof SENTRY_EVENT_SERIALIZED_EXTRA
+  | typeof SENTRY_EVENT_SERIALIZED_META
   | typeof SENTRY_EXCLUSIVE_TIME
   | typeof SENTRY_FRAMES_FROZEN
   | typeof SENTRY_FRAMES_SLOW
@@ -18731,6 +20027,7 @@ export type AttributeName =
   | typeof URL_FULL
   | typeof URL_PATH
   | typeof URL_PATH_PARAMETER_KEY
+  | typeof URL_PATH_PARAMS_KEY
   | typeof URL_PORT
   | typeof URL_QUERY
   | typeof URL_SAME_ORIGIN
@@ -18786,9 +20083,32 @@ export type AttributeName =
   | typeof VERCEL_STATUS_CODE;
 
 export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
+  address: {
+    brief: 'The destination hostname or IP address for a TCP connection.',
+    type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'example.com',
+    examples: ['example.com'],
+    deprecation: {
+      replacement: 'server.address',
+      reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
+      status: 'backfill',
+    },
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address attribute' },
+    ],
+  },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
     type: 'string[]',
+    keys: ['ai.citations'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -18804,6 +20124,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.completion_tokens.used': {
     brief: 'The number of tokens used to respond to the message.',
     type: 'integer',
+    keys: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18820,6 +20141,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.documents': {
     brief: 'Documents or content chunks used as context for the AI model.',
     type: 'string[]',
+    keys: ['ai.documents'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -18835,6 +20157,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.finish_reason': {
     brief: 'The reason why the model stopped generating.',
     type: 'string',
+    keys: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18852,6 +20175,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: 'double',
+    keys: ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18872,6 +20196,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls',
     type: 'string',
+    keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -18888,6 +20213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.generation_id': {
     brief: 'Unique identifier for the completion.',
     type: 'string',
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18898,12 +20224,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.id',
       status: 'backfill',
     },
-    aliases: ['gen_ai.response.id'],
-    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
+    aliases: ['gen_ai.response.id', 'ai.response.id'],
+    changelog: [
+      { version: 'next', description: 'Added ai.response.id as an alias' },
+      { version: '0.1.0', prs: [55, 57, 61, 108, 127] },
+    ],
   },
   'ai.input_messages': {
     brief: 'The input messages sent to the model',
     type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18920,6 +20257,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.is_search_required': {
     brief: 'Boolean indicating if the model needs to perform a search.',
     type: 'boolean',
+    keys: ['ai.is_search_required'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18935,6 +20273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.metadata': {
     brief: 'Extra metadata passed to an AI pipeline step.',
     type: 'string',
+    keys: ['ai.metadata'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18947,9 +20286,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
+  'ai.model.id': {
+    brief: 'The id of the model used by the Vercel AI SDK.',
+    type: 'string',
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'gpt-4o',
+    examples: ['gpt-4o'],
+    deprecation: {
+      replacement: 'gen_ai.request.model',
+      reason: 'This attribute is being deprecated in favor of gen_ai.request.model.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.request.model', 'ai.model_id'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.model.id attribute' }],
+  },
   'ai.model_id': {
     brief: 'The vendor-specific ID of the model used.',
     type: 'string',
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18960,12 +20319,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.model',
       status: 'backfill',
     },
-    aliases: ['gen_ai.request.model'],
-    changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.request.model', 'ai.model.id'],
+    changelog: [
+      { version: 'next', description: 'Added ai.model.id as an alias' },
+      { version: '0.1.0', prs: [57, 61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'ai.model.provider': {
     brief: 'The provider of the model.',
     type: 'string',
+    keys: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -18985,6 +20349,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.pipeline.name': {
     brief: 'The name of the AI pipeline.',
     type: 'string',
+    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19002,6 +20367,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
     type: 'string',
+    keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19022,6 +20388,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: 'double',
+    keys: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19038,9 +20405,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 57, 61, 108] },
     ],
   },
+  'ai.prompt': {
+    brief: 'The prompt passed to the Vercel AI SDK, as a stringified object.',
+    type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"prompt":"What is the weather in Paris?"}',
+    examples: ['{"prompt":"What is the weather in Paris?"}'],
+    deprecation: {
+      replacement: 'gen_ai.input.messages',
+      reason: 'This attribute is being deprecated in favor of gen_ai.input.messages.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.prompt attribute' }],
+  },
   'ai.prompt.messages': {
     brief: 'The input messages sent to the AI model.',
     type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19051,12 +20452,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.prompt.messages attribute' }],
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt', 'ai.prompt'],
+    changelog: [
+      { version: 'next', description: 'Added ai.prompt as an alias' },
+      { version: '0.19.0', prs: [498], description: 'Added ai.prompt.messages attribute' },
+    ],
   },
   'ai.prompt_tokens.used': {
     brief: 'The number of tokens used to process just the prompt.',
     type: 'integer',
+    keys: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19070,9 +20475,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['gen_ai.usage.prompt_tokens', 'gen_ai.usage.input_tokens'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
+  'ai.prompt.tools': {
+    brief: 'The tools made available to the model, as an array of stringified tool definitions.',
+    type: 'string[]',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['{"type":"function","name":"get_weather"}'],
+    examples: [['{"type":"function","name":"get_weather"}']],
+    deprecation: {
+      replacement: 'gen_ai.tool.definitions',
+      reason: 'This attribute is being deprecated in favor of gen_ai.tool.definitions.',
+      status: 'backfill',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.prompt.tools attribute' }],
+  },
   'ai.raw_prompting': {
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
     type: 'boolean',
+    keys: ['ai.raw_prompting'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19088,6 +20512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.responses': {
     brief: 'The response messages sent back by the AI model.',
     type: 'string[]',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19103,6 +20528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.response_format': {
     brief: 'For an AI model call, the format of the response',
     type: 'string',
+    keys: ['ai.response_format'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19115,9 +20541,65 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
+  'ai.response.id': {
+    brief: 'The id of the response returned by the model.',
+    type: 'string',
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY',
+    examples: ['chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY'],
+    deprecation: {
+      replacement: 'gen_ai.response.id',
+      reason: 'This attribute is being deprecated in favor of gen_ai.response.id.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.response.id', 'ai.generation_id'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.id attribute' }],
+  },
+  'ai.response.model': {
+    brief: 'The id of the model that produced the response.',
+    type: 'string',
+    keys: ['gen_ai.response.model', 'ai.response.model'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'gpt-4o-2024-08-06',
+    examples: ['gpt-4o-2024-08-06'],
+    deprecation: {
+      replacement: 'gen_ai.response.model',
+      reason: 'This attribute is being deprecated in favor of gen_ai.response.model.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.response.model'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.model attribute' }],
+  },
+  'ai.response.object': {
+    brief: 'The type of the object returned by the model.',
+    type: 'string',
+    keys: ['ai.response.object'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chat.completion',
+    examples: ['chat.completion'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.object attribute' }],
+  },
   'ai.response.text': {
     brief: 'The text response from the AI model.',
     type: 'string',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19129,11 +20611,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.output.messages', 'ai.response.toolCalls'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.text attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.text attribute' }],
+  },
+  'ai.response.timestamp': {
+    brief: 'The ISO 8601 timestamp at which the response was produced.',
+    type: 'string',
+    keys: ['ai.response.timestamp'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '2026-02-19T15:32:11.000Z',
+    examples: ['2026-02-19T15:32:11.000Z'],
+    deprecation: {
+      reason: 'This attribute is deprecated. The span start and end timestamps carry the same information.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.timestamp attribute' }],
   },
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
     type: 'string',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19145,11 +20644,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.output.messages', 'ai.response.text'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
+  },
+  'ai.schema': {
+    brief: 'The stringified JSON schema the model output must conform to.',
+    type: 'string',
+    keys: ['ai.schema'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"type":"object","properties":{"city":{"type":"string"}}}',
+    examples: ['{"type":"object","properties":{"city":{"type":"string"}}}'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.schema attribute' }],
   },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
     type: 'string[]',
+    keys: ['ai.search_queries'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19165,6 +20682,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.search_results': {
     brief: 'Results returned from search queries for context.',
     type: 'string[]',
+    keys: ['ai.search_results'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19180,6 +20698,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
     type: 'string',
+    keys: ['gen_ai.request.seed', 'ai.seed'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19196,6 +20715,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.streaming': {
     brief: 'Whether the request was streamed back.',
     type: 'boolean',
+    keys: ['gen_ai.response.streaming', 'ai.streaming'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19212,6 +20732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tags': {
     brief: 'Tags that describe an AI pipeline step.',
     type: 'string',
+    keys: ['ai.tags'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19228,6 +20749,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: 'double',
+    keys: ['gen_ai.request.temperature', 'ai.temperature'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19247,6 +20769,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.texts': {
     brief: 'Raw text inputs provided to the model.',
     type: 'string[]',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19257,8 +20787,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt'],
+    aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
+      { version: 'next', description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
@@ -19266,6 +20797,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.toolCall.args': {
     brief: 'The arguments of the tool call.',
     type: 'string',
+    keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19277,11 +20809,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.call.arguments', 'gen_ai.tool.input'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.args attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.toolCall.args attribute' }],
   },
   'ai.toolCall.result': {
     brief: 'The result of the tool call.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19293,11 +20832,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added ai.toolCall.result attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
     brief: 'For an AI model call, the functions that are available',
     type: 'string[]',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19313,6 +20853,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tool_calls': {
     brief: 'For an AI model call, the tool calls that were made.',
     type: 'string[]',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19329,6 +20870,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: 'integer',
+    keys: ['gen_ai.request.top_k', 'ai.top_k'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19349,6 +20891,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: 'double',
+    keys: ['gen_ai.request.top_p', 'ai.top_p'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19368,6 +20911,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.total_cost': {
     brief: 'The total cost for the tokens used.',
     type: 'double',
+    keys: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19384,10 +20928,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [53] },
     ],
+    searchAlias: {
+      name: 'ai.total_cost',
+      type: 'currency',
+    },
   },
   'ai.total_tokens.used': {
     brief: 'The total number of tokens used to process the prompt.',
     type: 'integer',
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19398,12 +20947,53 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.total_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.total_tokens'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.usage.total_tokens', 'ai.usage.tokens'],
+    changelog: [
+      { version: 'next', description: 'Added ai.usage.tokens as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57, 61, 108] },
+      { version: '0.0.0' },
+    ],
+  },
+  'ai.usage.tokens': {
+    brief: 'The total number of tokens used for the request and the response.',
+    type: 'integer',
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 150,
+    examples: [150],
+    deprecation: {
+      replacement: 'gen_ai.usage.total_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.total_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.usage.tokens attribute' }],
+  },
+  'ai.values': {
+    brief: 'The stringified values produced by a Vercel AI SDK object or array generation.',
+    type: 'string',
+    keys: ['ai.values'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"city":"Paris"}]',
+    examples: ['[{"city":"Paris"}]'],
+    deprecation: {
+      reason: 'This attribute is deprecated. Use gen_ai.output.messages for model output instead.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.values attribute' }],
   },
   'ai.warnings': {
     brief: 'Warning messages generated during model execution.',
     type: 'string[]',
+    keys: ['ai.warnings'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19419,6 +21009,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'angular.version': {
     brief: 'The version of the Angular framework',
     type: 'string',
+    keys: ['angular.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19430,6 +21021,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_build': {
     brief: 'Internal build identifier, as it appears on the platform.',
     type: 'string',
+    keys: ['app.build', 'app.app_build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19449,6 +21041,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_identifier': {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
     type: 'string',
+    keys: ['app.identifier', 'app.app_identifier'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19472,6 +21065,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_name': {
     brief: 'Human readable application name, as it appears on the platform.',
     type: 'string',
+    keys: ['app.name', 'app.app_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19491,6 +21085,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_start_time': {
     brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
+    keys: ['app.start_time', 'app.app_start_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19514,6 +21109,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_version': {
     brief: 'Human readable application version, as it appears on the platform.',
     type: 'string',
+    keys: ['app.version', 'app.app_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19533,6 +21129,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.build': {
     brief: 'Internal build identifier, as it appears on the platform.',
     type: 'string',
+    keys: ['app.build', 'app.app_build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19545,6 +21142,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.identifier': {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
     type: 'string',
+    keys: ['app.identifier', 'app.app_identifier'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19557,6 +21155,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.in_foreground': {
     brief: 'Whether the application is currently in the foreground.',
     type: 'boolean',
+    keys: ['app.in_foreground'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19568,6 +21167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.name': {
     brief: 'Human readable application name, as it appears on the platform.',
     type: 'string',
+    keys: ['app.name', 'app.app_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19580,6 +21180,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   app_start_cold: {
     brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
+    keys: ['app.vitals.start.cold.value', 'app_start_cold'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19600,6 +21201,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.start_time': {
     brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
+    keys: ['app.start_time', 'app.app_start_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19612,6 +21214,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   app_start_type: {
     brief: 'Mobile app start variant. Either cold or warm.',
     type: 'string',
+    keys: ['app.vitals.start.type', 'app_start_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19634,6 +21237,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   app_start_warm: {
     brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
+    keys: ['app.vitals.start.warm.value', 'app_start_warm'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19654,6 +21258,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.version': {
     brief: 'Human readable application version, as it appears on the platform.',
     type: 'string',
+    keys: ['app.version', 'app.app_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19667,6 +21272,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     type: 'integer',
+    keys: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19681,6 +21287,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.frames.frozen.count': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.frozen.count', 'frames.frozen', 'mobile.frozen_frames', 'sentry.frames.frozen'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19689,7 +21296,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 3,
     aliases: ['frames.frozen', 'sentry.frames.frozen'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.frozen as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.frozen.count to replace frames.frozen' },
     ],
   },
@@ -19697,6 +21304,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19704,11 +21312,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     aliases: ['frames_frozen_rate'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.frozen.rate attribute' }],
   },
   'app.vitals.frames.slow.count': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19717,7 +21326,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1,
     aliases: ['frames.slow', 'sentry.frames.slow'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.slow as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.slow.count to replace frames.slow' },
     ],
   },
@@ -19725,6 +21334,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19732,11 +21342,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.25,
     aliases: ['frames_slow_rate'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.frames.slow.rate attribute' }],
   },
   'app.vitals.frames.total.count': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19745,7 +21356,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 60,
     aliases: ['frames.total', 'sentry.frames.total'],
     changelog: [
-      { version: 'next', description: 'Added sentry.frames.total as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Added app.vitals.frames.total.count to replace frames.total' },
     ],
   },
@@ -19753,6 +21364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.stall.duration', 'stall_total_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19760,12 +21372,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 4000,
     aliases: ['stall_total_time'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.duration attribute' }],
   },
   'app.vitals.stall.percentage': {
     brief:
       'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.stall.percentage', 'stall_percentage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19773,11 +21386,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.8,
     aliases: ['stall_percentage'],
-    changelog: [{ version: 'next', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
+    changelog: [{ version: '0.19.0', prs: [493], description: 'Added app.vitals.stall.percentage attribute' }],
   },
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
+    keys: ['app.vitals.start.cold.value', 'app_start_cold'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19790,6 +21404,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.prewarmed': {
     brief: 'Whether the app start was prewarmed.',
     type: 'boolean',
+    keys: ['app.vitals.start.prewarmed'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19801,6 +21416,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.reason': {
     brief: 'The reason that triggered the app start.',
     type: 'string',
+    keys: ['app.vitals.start.reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19813,6 +21429,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.',
     type: 'string',
+    keys: ['app.vitals.start.screen'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19824,6 +21441,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.type': {
     brief: 'The type of app start, for example `cold` or `warm`',
     type: 'string',
+    keys: ['app.vitals.start.type', 'app_start_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19836,6 +21454,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.warm.value': {
     brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
+    keys: ['app.vitals.start.warm.value', 'app_start_warm'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19848,6 +21467,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.ttfd.value': {
     brief: 'The duration of time to full display in milliseconds',
     type: 'double',
+    keys: ['app.vitals.ttfd.value', 'time_to_full_display'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19860,6 +21480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.ttid.value': {
     brief: 'The duration of time to initial display in milliseconds',
     type: 'double',
+    keys: ['app.vitals.ttid.value', 'time_to_initial_display'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19872,6 +21493,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.gc.blocking_count': {
     brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
     type: 'integer',
+    keys: ['art.gc.blocking_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19883,6 +21505,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.gc.blocking_time': {
     brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
     type: 'double',
+    keys: ['art.gc.blocking_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19895,6 +21518,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime',
     type: 'integer',
+    keys: ['art.gc.pre_oome_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19906,6 +21530,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.gc.total_count': {
     brief: 'Total number of garbage collections performed by the Android Runtime',
     type: 'integer',
+    keys: ['art.gc.total_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19917,6 +21542,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.gc.total_time': {
     brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
     type: 'double',
+    keys: ['art.gc.total_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19929,6 +21555,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds',
     type: 'double',
+    keys: ['art.gc.waiting_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19940,6 +21567,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.free': {
     brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.free'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19951,6 +21579,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.free_until_gc': {
     brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.free_until_gc'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19962,6 +21591,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.free_until_oome': {
     brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.free_until_oome'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19973,6 +21603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.max': {
     brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.max'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19984,6 +21615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.total': {
     brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19995,6 +21627,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.cloudwatch.logs.log_group': {
     brief: 'The name of the CloudWatch Logs log group',
     type: 'string',
+    keys: ['aws.cloudwatch.logs.log_group'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20006,6 +21639,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.cloudwatch.logs.log_stream': {
     brief: 'The name of the CloudWatch Logs log stream',
     type: 'string',
+    keys: ['aws.cloudwatch.logs.log_stream'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20017,6 +21651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.cloudwatch.logs.url': {
     brief: 'The URL to the CloudWatch Logs log group',
     type: 'string',
+    keys: ['aws.cloudwatch.logs.url'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20028,6 +21663,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.attribute_definitions': {
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.attribute_definitions'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20039,6 +21675,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.consistent_read': {
     brief: 'The value of the `ConsistentRead` request parameter.',
     type: 'boolean',
+    keys: ['aws.dynamodb.consistent_read'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20050,6 +21687,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.consumed_capacity': {
     brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.consumed_capacity'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20063,6 +21701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.count': {
     brief: 'The value of the `Count` response parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20074,6 +21713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.exclusive_start_table': {
     brief: 'The value of the `ExclusiveStartTableName` request parameter.',
     type: 'string',
+    keys: ['aws.dynamodb.exclusive_start_table'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20085,6 +21725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.global_secondary_indexes': {
     brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.global_secondary_indexes'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20100,6 +21741,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.global_secondary_index_updates': {
     brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.global_secondary_index_updates'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20115,6 +21757,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.index_name': {
     brief: 'The value of the `IndexName` request parameter.',
     type: 'string',
+    keys: ['aws.dynamodb.index_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20126,6 +21769,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.item_collection_metrics': {
     brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
     type: 'string',
+    keys: ['aws.dynamodb.item_collection_metrics'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20138,6 +21782,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.limit': {
     brief: 'The value of the `Limit` request parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.limit'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20149,6 +21794,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.local_secondary_indexes': {
     brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.local_secondary_indexes'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20162,6 +21808,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.projection': {
     brief: 'The value of the `ProjectionExpression` request parameter.',
     type: 'string',
+    keys: ['aws.dynamodb.projection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20173,6 +21820,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.provisioned_read_capacity': {
     brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
     type: 'double',
+    keys: ['aws.dynamodb.provisioned_read_capacity'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20186,6 +21834,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.provisioned_write_capacity': {
     brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
     type: 'double',
+    keys: ['aws.dynamodb.provisioned_write_capacity'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20199,6 +21848,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.scanned_count': {
     brief: 'The value of the `ScannedCount` response parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.scanned_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20210,6 +21860,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.scan_forward': {
     brief: 'The value of the `ScanIndexForward` request parameter.',
     type: 'boolean',
+    keys: ['aws.dynamodb.scan_forward'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20221,6 +21872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.segment': {
     brief: 'The value of the `Segment` request parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.segment'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20232,6 +21884,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.select': {
     brief: 'The value of the `Select` request parameter.',
     type: 'string',
+    keys: ['aws.dynamodb.select'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20243,6 +21896,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.table_count': {
     brief: 'The number of items in the `TableNames` response parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.table_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20254,6 +21908,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.table_names': {
     brief: 'The keys in the `RequestItems` object field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.table_names'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20265,6 +21920,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.total_segments': {
     brief: 'The value of the `TotalSegments` request parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.total_segments'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20276,6 +21932,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.extended_request_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
+    keys: ['aws.extended_request_id', 'aws.request.extended_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20288,6 +21945,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.kinesis.stream_name': {
     brief: 'The name of the AWS Kinesis stream the request refers to.',
     type: 'string',
+    keys: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20300,6 +21958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.kinesis.stream.name': {
     brief: 'The name of the AWS Kinesis stream the request refers to.',
     type: 'string',
+    keys: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20324,6 +21983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.aws_request_id': {
     brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
+    keys: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20349,6 +22009,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.execution_duration_in_millis': {
     brief: 'The execution duration of the Lambda function invocation in milliseconds',
     type: 'double',
+    keys: ['aws.lambda.execution_duration_in_millis'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20362,6 +22023,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.function_name': {
     brief: 'The name of the Lambda function',
     type: 'string',
+    keys: ['faas.name', 'aws.lambda.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20382,6 +22044,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.function_version': {
     brief: 'The version of the Lambda function',
     type: 'string',
+    keys: ['faas.version', 'aws.lambda.function_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20406,6 +22069,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.invoked_arn': {
     brief: 'The full ARN of the Lambda function that was invoked',
     type: 'string',
+    keys: ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20418,6 +22082,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.invoked_function_arn': {
     brief: 'The full ARN of the Lambda function that was invoked',
     type: 'string',
+    keys: ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20442,6 +22107,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.remaining_time_in_millis': {
     brief: 'The remaining time in milliseconds before the Lambda function times out',
     type: 'double',
+    keys: ['aws.lambda.remaining_time_in_millis'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20453,6 +22119,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
     type: 'string[]',
+    keys: ['aws.log.group.names'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20464,6 +22131,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.log.stream.names': {
     brief: 'The name(s) of the AWS log stream(s) an application is writing to.',
     type: 'string[]',
+    keys: ['aws.log.stream.names'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20472,9 +22140,47 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['logs/main/10838bed-421f-43ef-870a-f43feacbbb5b'],
     changelog: [{ version: '0.11.1', prs: [414] }],
   },
+  'aws.operation_name': {
+    brief: 'The name of the API operation invoked on an AWS service.',
+    type: 'string',
+    keys: ['rpc.method', 'aws.operation_name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'PutObject',
+    examples: ['PutObject'],
+    deprecation: {
+      replacement: 'rpc.method',
+      reason: 'This attribute is being deprecated in favor of rpc.method, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['rpc.method'],
+    changelog: [{ version: '0.19.0', prs: [536], description: 'Added aws.operation_name attribute' }],
+  },
+  aws_region: {
+    brief: 'The geographical region the AWS resource is running',
+    type: 'string',
+    keys: ['cloud.region', 'aws_region', 'gcp_region'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'us-east-1',
+    examples: ['us-east-1'],
+    deprecation: {
+      replacement: 'cloud.region',
+      status: 'backfill',
+    },
+    aliases: ['cloud.region', 'gcp_region'],
+    changelog: [{ version: '0.19.0', prs: [537], description: 'Added aws_region attribute' }],
+  },
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
+    keys: ['aws.extended_request_id', 'aws.request.extended_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20499,6 +22205,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request_id': {
     brief: 'The AWS request ID as returned in the response headers.',
     type: 'string',
+    keys: ['aws.request_id', 'aws.request.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20511,6 +22218,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.id': {
     brief: 'The AWS request ID as returned in the response headers.',
     type: 'string',
+    keys: ['aws.request_id', 'aws.request.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20534,6 +22242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.url': {
     brief: 'The URL of the AWS API request.',
     type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20545,12 +22254,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'url'],
-    changelog: [{ version: 'next', description: 'Added aws.request.url attribute, deprecated in favor of url.full' }],
+    aliases: ['url.full', 'http.url', 'url', 'messaging.url'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
+      {
+        version: '0.19.0',
+        prs: [488],
+        description: 'Added aws.request.url attribute, deprecated in favor of url.full',
+      },
+    ],
   },
   'aws.s3.bucket': {
     brief: 'The S3 bucket name the request refers to.',
     type: 'string',
+    keys: ['aws.s3.bucket'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20562,6 +22279,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
     type: 'string',
+    keys: ['aws.secretsmanager.secret.arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20574,6 +22292,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
     type: 'string',
+    keys: ['aws.sns.topic.arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20585,6 +22304,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
     type: 'string',
+    keys: ['aws.step_functions.activity.arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20596,6 +22316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',
     type: 'string',
+    keys: ['aws.step_functions.state_machine.arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20607,6 +22328,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
     type: 'boolean',
+    keys: ['blocked_main_thread'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20615,9 +22337,68 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
+  'browser.bfcache.frame': {
+    brief:
+      "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
+    type: 'string',
+    keys: ['browser.bfcache.frame'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'top',
+    examples: ['top', 'child'],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.frame attribute' }],
+  },
+  'browser.bfcache.not_restored_reason_count': {
+    brief:
+      'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).',
+    type: 'integer',
+    keys: ['browser.bfcache.not_restored_reason_count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2,
+    examples: [2],
+    changelog: [
+      { version: '0.19.0', prs: [513], description: 'Added browser.bfcache.not_restored_reason_count attribute' },
+    ],
+  },
+  'browser.bfcache.outcome': {
+    brief:
+      "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
+    type: 'string',
+    keys: ['browser.bfcache.outcome'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'hit',
+    examples: ['hit', 'miss'],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.outcome attribute' }],
+  },
+  'browser.bfcache.reason': {
+    brief:
+      'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
+    type: 'string',
+    keys: ['browser.bfcache.reason'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'unload-listener',
+    examples: ['unload-listener', 'websocket', 'idbversionchangeevent', 'response-cache-control-no-store'],
+    changelog: [{ version: '0.19.0', prs: [513], description: 'Added browser.bfcache.reason attribute' }],
+  },
   'browser.name': {
     brief: 'The name of the browser.',
     type: 'string',
+    keys: ['browser.name', 'sentry.browser.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20630,6 +22411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.performance.navigation.activation_start': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
     type: 'double',
+    keys: ['browser.performance.navigation.activation_start', 'performance.activationStart'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20644,6 +22426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.performance.time_origin': {
     brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
     type: 'double',
+    keys: ['browser.performance.time_origin', 'performance.timeOrigin'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20658,6 +22441,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.report.type': {
     brief: 'A browser report sent via reporting API..',
     type: 'string',
+    keys: ['browser.report.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20669,6 +22453,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.script.invoker': {
     brief: 'How a script was called in the browser.',
     type: 'string',
+    keys: ['browser.script.invoker'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20680,6 +22465,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.script.invoker_type': {
     brief: 'Browser script entry point type.',
     type: 'string',
+    keys: ['browser.script.invoker_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20691,6 +22477,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.script.source_char_position': {
     brief: 'A number representing the script character position of the script.',
     type: 'integer',
+    keys: ['browser.script.source_char_position'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20702,6 +22489,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.version': {
     brief: 'The version of the browser.',
     type: 'string',
+    keys: ['browser.version', 'sentry.browser.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20714,6 +22502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.cls.report_event': {
     brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
     type: 'string',
+    keys: ['browser.web_vital.cls.report_event'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20725,6 +22514,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.cls.source.<key>': {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
+    keys: ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20738,6 +22528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.cls.value': {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
+    keys: ['browser.web_vital.cls.value', 'cls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20750,6 +22541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.fcp.value': {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     type: 'double',
+    keys: ['browser.web_vital.fcp.value', 'fcp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20762,6 +22554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.fp.value': {
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     type: 'double',
+    keys: ['browser.web_vital.fp.value', 'fp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20774,6 +22567,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.inp.value': {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
+    keys: ['browser.web_vital.inp.value', 'inp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20786,6 +22580,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.element': {
     brief: 'The HTML element selector or component name for which LCP was reported',
     type: 'string',
+    keys: ['browser.web_vital.lcp.element', 'lcp.element'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20798,6 +22593,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.id': {
     brief: 'The id of the dom element responsible for the largest contentful paint',
     type: 'string',
+    keys: ['browser.web_vital.lcp.id', 'lcp.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20810,6 +22606,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.load_time': {
     brief: 'The time it took for the LCP element to be loaded',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.load_time', 'lcp.loadTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20822,6 +22619,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.render_time': {
     brief: 'The time it took for the LCP element to be rendered',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.render_time', 'lcp.renderTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20834,6 +22632,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.report_event': {
     brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
     type: 'string',
+    keys: ['browser.web_vital.lcp.report_event'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20845,6 +22644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.size': {
     brief: 'The size of the largest contentful paint element',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.size', 'lcp.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20857,6 +22657,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.url': {
     brief: 'The url of the dom element responsible for the largest contentful paint',
     type: 'string',
+    keys: ['browser.web_vital.lcp.url', 'lcp.url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20869,6 +22670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.value': {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
+    keys: ['browser.web_vital.lcp.value', 'lcp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20882,6 +22684,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
     type: 'double',
+    keys: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20894,6 +22697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.ttfb.value': {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
     type: 'double',
+    keys: ['browser.web_vital.ttfb.value', 'ttfb'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20906,6 +22710,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cache.hit': {
     brief: 'If the cache was hit during this span.',
     type: 'boolean',
+    keys: ['cache.hit'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20917,6 +22722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cache.item_size': {
     brief: 'The size of the requested item in the cache. In bytes.',
     type: 'integer',
+    keys: ['cache.item_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20924,10 +22730,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 58,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'cache.item_size',
+      type: 'byte',
+    },
   },
   'cache.key': {
     brief: 'The key of the cache accessed.',
     type: 'string[]',
+    keys: ['cache.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20939,6 +22750,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cache.operation': {
     brief: 'The operation being performed on the cache.',
     type: 'string',
+    keys: ['cache.operation'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20950,6 +22762,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cache.ttl': {
     brief: 'The ttl of the cache in seconds',
     type: 'integer',
+    keys: ['cache.ttl'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20961,6 +22774,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cache.write': {
     brief: 'If the cache operation resulted in a write to the cache.',
     type: 'boolean',
+    keys: ['cache.write'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20972,6 +22786,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   channel: {
     brief: 'The channel name that is being used.',
     type: 'string',
+    keys: ['channel'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20984,6 +22799,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['client.address', 'http.client_ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20996,6 +22812,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'client.port': {
     brief: 'Client port number.',
     type: 'integer',
+    keys: ['client.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21007,6 +22824,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.d1.duration': {
     brief: 'The duration of a Cloudflare D1 operation.',
     type: 'integer',
+    keys: ['cloudflare.d1.duration'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21018,6 +22836,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.d1.query_type': {
     brief: 'The type of query executed in a Cloudflare D1 operation',
     type: 'string',
+    keys: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21028,12 +22847,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.operation.name',
       status: 'backfill',
     },
-    aliases: ['db.operation.name', 'db.operation'],
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' }],
+    aliases: ['db.operation.name', 'db.operation', 'redis.command'],
+    changelog: [
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
+      { version: '0.11.0', prs: [392], description: 'Added cloudflare.d1.query_type attribute' },
+    ],
   },
   'cloudflare.d1.rows_read': {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
     type: 'integer',
+    keys: ['cloudflare.d1.rows_read'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21045,6 +22868,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.d1.rows_written': {
     brief: 'The number of rows written in a Cloudflare D1 operation.',
     type: 'integer',
+    keys: ['cloudflare.d1.rows_written'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21056,6 +22880,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.durable_object.query.bindings': {
     brief: 'The number of bound parameters passed to the SQL exec call.',
     type: 'integer',
+    keys: ['cloudflare.durable_object.query.bindings'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21069,6 +22894,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.durable_object.response.rows_read': {
     brief: 'The number of rows read by a Cloudflare Durable Object SQL operation.',
     type: 'integer',
+    keys: ['cloudflare.durable_object.response.rows_read'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21082,6 +22908,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.durable_object.response.rows_written': {
     brief: 'The number of rows written by a Cloudflare Durable Object SQL operation.',
     type: 'integer',
+    keys: ['cloudflare.durable_object.response.rows_written'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21095,6 +22922,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.bucket': {
     brief: 'The name of the Cloudflare R2 bucket binding',
     type: 'string',
+    keys: ['cloudflare.r2.bucket'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21106,6 +22934,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.operation': {
     brief: 'The R2 API operation being performed',
     type: 'string',
+    keys: ['cloudflare.r2.operation'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21117,6 +22946,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.request.delimiter': {
     brief: 'The delimiter used to group objects in an R2 list operation',
     type: 'string',
+    keys: ['cloudflare.r2.request.delimiter'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21128,6 +22958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.request.key': {
     brief: 'The object key used in the R2 operation',
     type: 'string',
+    keys: ['cloudflare.r2.request.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21139,6 +22970,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.request.part_number': {
     brief: 'The part number in a multipart upload operation',
     type: 'integer',
+    keys: ['cloudflare.r2.request.part_number'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21150,6 +22982,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.request.prefix': {
     brief: 'The prefix used to filter objects in an R2 list operation',
     type: 'string',
+    keys: ['cloudflare.r2.request.prefix'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21161,6 +22994,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.attempt': {
     brief: 'The current attempt number for a Cloudflare Workflow step',
     type: 'integer',
+    keys: ['cloudflare.workflow.attempt'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21172,6 +23006,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.retries.backoff': {
     brief: 'The backoff strategy for Cloudflare Workflow step retries',
     type: 'string',
+    keys: ['cloudflare.workflow.retries.backoff'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21183,6 +23018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.retries.delay': {
     brief: 'The delay between Cloudflare Workflow step retries',
     type: 'string',
+    keys: ['cloudflare.workflow.retries.delay'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21194,6 +23030,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.retries.limit': {
     brief: 'The maximum number of retries for a Cloudflare Workflow step',
     type: 'integer',
+    keys: ['cloudflare.workflow.retries.limit'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21205,6 +23042,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.timeout': {
     brief: 'The timeout duration for a Cloudflare Workflow step',
     type: 'string',
+    keys: ['cloudflare.workflow.timeout'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21216,6 +23054,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.account.id': {
     brief: 'The cloud account ID the resource is assigned to',
     type: 'string',
+    keys: ['cloud.account.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21227,6 +23066,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.availability_zone': {
     brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
     type: 'string',
+    keys: ['cloud.availability_zone'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21238,6 +23078,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.platform': {
     brief: 'The cloud platform in use',
     type: 'string',
+    keys: ['cloud.platform'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21249,6 +23090,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.provider': {
     brief: 'Name of the cloud provider',
     type: 'string',
+    keys: ['cloud.provider'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21260,17 +23102,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.region': {
     brief: 'The geographical region the resource is running',
     type: 'string',
+    keys: ['cloud.region', 'aws_region', 'gcp_region'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'us-east-1',
-    changelog: [{ version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' }],
+    aliases: ['aws_region', 'gcp_region'],
+    changelog: [
+      { version: '0.19.0', prs: [535, 537], description: 'Added aws_region and gcp_region as aliases' },
+      { version: '0.7.0', prs: [364], description: 'Added cloud.region attribute' },
+    ],
   },
   'cloud.resource_id': {
     brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
     type: 'string',
+    keys: ['cloud.resource_id', 'faas.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21289,6 +23137,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   cls: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
+    keys: ['browser.web_vital.cls.value', 'cls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21312,6 +23161,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cls.source.<key>': {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
+    keys: ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21327,10 +23177,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['browser.web_vital.cls.source.<key>'],
     changelog: [{ version: '0.5.0', prs: [234] }],
   },
+  code: {
+    brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
+    type: 'string',
+    keys: ['rpc.response.status_code', 'code'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'DEADLINE_EXCEEDED',
+    examples: ['DEADLINE_EXCEEDED'],
+    deprecation: {
+      replacement: 'rpc.response.status_code',
+      status: 'backfill',
+    },
+    aliases: ['rpc.grpc.status_code', 'rpc.response.status_code'],
+    changelog: [{ version: '0.19.0', prs: [533], description: 'Added code attribute' }],
+  },
   'code.filepath': {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
+    keys: ['code.file.path', 'code.filepath'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21339,6 +23208,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/app/myapplication/http/handler/server.py',
     deprecation: {
       replacement: 'code.file.path',
+      status: 'backfill',
     },
     aliases: ['code.file.path'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -21347,6 +23217,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
+    keys: ['code.file.path', 'code.filepath'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21359,31 +23230,42 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'code.function': {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
     type: 'string',
+    keys: ['code.function', 'code.function.name', 'django.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'server_request',
-    aliases: ['code.function.name'],
-    changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
+    aliases: ['code.function.name', 'django.function_name'],
+    changelog: [
+      { version: '0.19.0', prs: [538], description: 'Added django.function_name as an alias' },
+      { version: '0.1.0', prs: [61, 74] },
+      { version: '0.0.0' },
+    ],
   },
   'code.function.name': {
     brief: 'The method or function fully-qualified name without arguments.',
     type: 'string',
+    keys: ['code.function.name', 'code.function', 'django.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'server_request',
-    aliases: ['code.function'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['code.function', 'django.function_name'],
+    changelog: [
+      { version: '0.19.0', prs: [538], description: 'Added django.function_name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'code.lineno': {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
+    keys: ['code.line.number', 'code.lineno'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21392,6 +23274,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 42,
     deprecation: {
       replacement: 'code.line.number',
+      status: 'backfill',
     },
     aliases: ['code.line.number'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
@@ -21400,6 +23283,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
+    keys: ['code.line.number', 'code.lineno'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21413,6 +23297,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
     type: 'string',
+    keys: ['code.namespace'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21424,6 +23309,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   connectionType: {
     brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     type: 'string',
+    keys: ['network.connection.type', 'connectionType', 'device.connection_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21447,6 +23333,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'connection.rtt': {
     brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
     type: 'integer',
+    keys: ['network.connection.rtt', 'connection.rtt'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21471,6 +23358,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.calendar': {
     brief: 'The calendar system used by the culture.',
     type: 'string',
+    keys: ['culture.calendar'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21482,6 +23370,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.display_name': {
     brief: 'Human readable name of the culture.',
     type: 'string',
+    keys: ['culture.display_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21493,6 +23382,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.is_24_hour_format': {
     brief: 'Whether the culture uses 24-hour time format.',
     type: 'boolean',
+    keys: ['culture.is_24_hour_format'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21504,6 +23394,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.locale': {
     brief: 'The locale identifier following RFC 4646.',
     type: 'string',
+    keys: ['culture.locale'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21515,6 +23406,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.timezone': {
     brief: 'The timezone of the culture, as a geographic timezone identifier.',
     type: 'string',
+    keys: ['culture.timezone'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21526,6 +23418,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.collection.name': {
     brief: 'The name of a collection (table, container) within the database.',
     type: 'string',
+    keys: ['db.collection.name', 'db.mongodb.collection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21534,14 +23427,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'users',
     aliases: ['db.mongodb.collection'],
     changelog: [
-      { version: 'next', description: 'Added db.mongodb.collection as an alias' },
+      { version: '0.19.0', prs: [483], description: 'Added db.mongodb.collection as an alias' },
       { version: '0.1.0', prs: [106, 127] },
       { version: '0.0.0' },
     ],
   },
+  'db.connection_string': {
+    brief: 'The connection string used to connect to the database.',
+    type: 'string',
+    keys: ['db.connection_string'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'redis://localhost:6379',
+    examples: ['redis://localhost:6379'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.',
+    },
+    changelog: [{ version: 'next', prs: [581], description: 'Added db.connection_string attribute' }],
+  },
   'db.driver.name': {
     brief: 'The name of the driver used for the database connection.',
     type: 'string',
+    keys: ['db.driver.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21553,6 +23464,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.mongodb.collection': {
     brief: 'The MongoDB collection being accessed.',
     type: 'string',
+    keys: ['db.collection.name', 'db.mongodb.collection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21568,7 +23480,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['db.collection.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [483],
         description: 'Added db.mongodb.collection attribute, deprecated in favor of db.collection.name',
       },
     ],
@@ -21576,6 +23489,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.name': {
     brief: 'The name of the database being accessed.',
     type: 'string',
+    keys: ['db.namespace', 'db.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21584,6 +23498,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'customers',
     deprecation: {
       replacement: 'db.namespace',
+      status: 'backfill',
     },
     aliases: ['db.namespace'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -21591,6 +23506,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.namespace': {
     brief: 'The name of the database being accessed.',
     type: 'string',
+    keys: ['db.namespace', 'db.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21603,6 +23519,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.operation': {
     brief: 'The name of the operation being executed.',
     type: 'string',
+    keys: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21613,13 +23530,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'db.operation.name',
       status: 'normalize',
     },
-    aliases: ['db.operation.name', 'cloudflare.d1.query_type'],
-    changelog: [{ version: '0.4.0', prs: [199] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['db.operation.name', 'cloudflare.d1.query_type', 'redis.command'],
+    changelog: [
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
+      { version: '0.4.0', prs: [199] },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.operation.batch.size': {
     brief:
       'The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.',
     type: 'integer',
+    keys: ['db.operation.batch.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21631,19 +23554,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.operation.name': {
     brief: 'The name of the operation being executed.',
     type: 'string',
+    keys: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT',
-    aliases: ['db.operation', 'cloudflare.d1.query_type'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['db.operation', 'cloudflare.d1.query_type', 'redis.command'],
+    changelog: [
+      { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'db.params': {
+    brief: 'The query bindings for a database request.',
+    type: 'string',
+    keys: ['db.params'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"x": 100}]',
+    examples: ['[{"x": 100}]'],
+    deprecation: {
+      replacement: 'db.query.parameter.<key>',
+      reason:
+        'Instead of adding every binding in the db.params attribute, add them as individual entries with db.query.parameter.<key>.',
+    },
+    changelog: [{ version: '0.19.0', prs: [529], description: 'Added db.params attribute' }],
   },
   'db.query.parameter.<key>': {
     brief:
       'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
     type: 'string',
+    keys: ['db.query.parameter.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21657,6 +23604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.',
     type: 'string',
+    keys: ['db.query.summary'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21665,7 +23613,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT users',
     examples: ['SELECT users', 'INSERT products; UPDATE orders'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      { version: '0.19.0', prs: [505], description: 'Added multiple examples' },
       { version: '0.4.0', prs: [208] },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -21675,18 +23623,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
     type: 'string',
+    keys: ['db.query.text', 'db.statement', 'query'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'SELECT * FROM users WHERE id = $1',
-    aliases: ['db.statement'],
-    changelog: [{ version: '0.4.0', prs: [208] }, { version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['db.statement', 'query'],
+    changelog: [
+      { version: '0.19.0', prs: [530], description: 'Added query as an alias' },
+      { version: '0.4.0', prs: [208] },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'db.redis.connection': {
     brief: 'The redis connection name.',
     type: 'string',
+    keys: ['db.redis.connection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21698,6 +23653,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.redis.key': {
     brief: 'The key the Redis command is operating on.',
     type: 'string',
+    keys: ['db.redis.key', 'redis.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21706,13 +23662,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'user:2047:city',
     aliases: ['redis.key'],
     changelog: [
-      { version: 'next', description: 'Added redis.key as an alias' },
+      { version: '0.19.0', prs: [484], description: 'Added redis.key as an alias' },
       { version: '0.6.0', prs: [326], description: 'Added db.redis.key attribute' },
     ],
   },
   'db.redis.parameters': {
     brief: 'The array of command parameters given to a redis command.',
     type: 'string[]',
+    keys: ['db.redis.parameters'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21725,6 +23682,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
     type: 'string',
+    keys: ['db.response.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21736,6 +23694,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.sql.bindings': {
     brief: 'The array of query bindings.',
     type: 'string[]',
+    keys: ['db.sql.bindings'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21752,6 +23711,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.statement': {
     brief: 'The database statement being executed.',
     type: 'string',
+    keys: ['db.query.text', 'db.statement', 'query'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21764,9 +23724,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
       status: 'normalize',
     },
-    aliases: ['db.query.text'],
+    aliases: ['db.query.text', 'query'],
     changelog: [
-      { version: 'next', prs: [501], description: 'Improved example and added deprecation reason' },
+      {
+        version: '0.19.0',
+        prs: [501],
+        description: 'Improved example, added deprecation reason, and added query as an alias',
+      },
       { version: '0.4.0', prs: [199] },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -21775,6 +23739,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.stored_procedure.name': {
     brief: 'The name of a stored procedure being called.',
     type: 'string',
+    keys: ['db.stored_procedure.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21787,6 +23752,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
     type: 'string',
+    keys: ['db.system.name', 'db.system', 'span.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21799,11 +23765,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['db.system.name'],
     changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'db.system',
+      deprecatedAliases: ['span.system'],
+    },
   },
   'db.system.name': {
     brief:
       'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
     type: 'string',
+    keys: ['db.system.name', 'db.system', 'span.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21816,6 +23787,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.user': {
     brief: 'The database user.',
     type: 'string',
+    keys: ['db.user'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21827,6 +23799,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   deviceMemory: {
     brief: 'The estimated total memory capacity of the device, only a rough estimation in gigabytes.',
     type: 'string',
+    keys: ['device.memory.estimated_capacity', 'deviceMemory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21851,6 +23824,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.archs': {
     brief: 'The CPU architectures of the device.',
     type: 'string[]',
+    keys: ['device.archs'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21862,6 +23836,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.battery_level': {
     brief: 'The battery level of the device as a percentage (0-100).',
     type: 'double',
+    keys: ['device.battery_level'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21873,6 +23848,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.battery_temperature': {
     brief: 'The battery temperature of the device in Celsius.',
     type: 'double',
+    keys: ['device.battery_temperature'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21884,6 +23860,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.boot_time': {
     brief: 'A formatted UTC timestamp when the system was booted.',
     type: 'string',
+    keys: ['device.boot_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21895,6 +23872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.brand': {
     brief: 'The brand of the device.',
     type: 'string',
+    keys: ['device.brand'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21906,6 +23884,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.charging': {
     brief: 'Whether the device was charging or not.',
     type: 'boolean',
+    keys: ['device.charging'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21917,6 +23896,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.chipset': {
     brief: 'The chipset of the device.',
     type: 'string',
+    keys: ['device.chipset'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21929,6 +23909,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
+    keys: ['device.class'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21940,6 +23921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.connection_type': {
     brief: 'The internet connection type currently being used by the device.',
     type: 'string',
+    keys: ['network.connection.type', 'connectionType', 'device.connection_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21963,6 +23945,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.cpu_description': {
     brief: 'A description of the CPU of the device.',
     type: 'string',
+    keys: ['device.cpu_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21974,6 +23957,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.external_free_storage': {
     brief: 'External storage free size in bytes.',
     type: 'integer',
+    keys: ['device.external_free_storage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21985,6 +23969,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.external_storage_size': {
     brief: 'External storage total size in bytes.',
     type: 'integer',
+    keys: ['device.external_storage_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21996,6 +23981,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.family': {
     brief: 'The family of the device.',
     type: 'string',
+    keys: ['device.family'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22007,6 +23993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.free_memory': {
     brief: 'Free system memory in bytes.',
     type: 'integer',
+    keys: ['device.free_memory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22018,6 +24005,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.free_storage': {
     brief: 'Free device storage in bytes.',
     type: 'integer',
+    keys: ['device.free_storage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22029,6 +24017,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.id': {
     brief: 'Unique device identifier.',
     type: 'string',
+    keys: ['device.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22040,6 +24029,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.locale': {
     brief: 'The locale of the device.',
     type: 'string',
+    keys: ['device.locale'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22051,6 +24041,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.low_memory': {
     brief: 'Whether the device was low on memory.',
     type: 'boolean',
+    keys: ['device.low_memory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22062,6 +24053,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.low_power_mode': {
     brief: 'Whether the device is in Low Power Mode.',
     type: 'boolean',
+    keys: ['device.low_power_mode'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22073,6 +24065,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.manufacturer': {
     brief: 'The manufacturer of the device.',
     type: 'string',
+    keys: ['device.manufacturer'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22085,6 +24078,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB',
     type: 'integer',
+    keys: ['device.memory.estimated_capacity', 'deviceMemory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22103,6 +24097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.memory_size': {
     brief: 'Total system memory available in bytes.',
     type: 'integer',
+    keys: ['device.memory_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22114,6 +24109,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.model': {
     brief: 'The model of the device.',
     type: 'string',
+    keys: ['device.model'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22125,6 +24121,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.model_id': {
     brief: 'An internal hardware revision to identify the device exactly.',
     type: 'string',
+    keys: ['device.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22137,6 +24134,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
     type: 'string',
+    keys: ['device.name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22148,6 +24146,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.online': {
     brief: 'Whether the device was online or not.',
     type: 'boolean',
+    keys: ['device.online'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22159,6 +24158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.orientation': {
     brief: 'The orientation of the device, either "portrait" or "landscape".',
     type: 'string',
+    keys: ['device.orientation'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22170,6 +24170,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.processor_count': {
     brief: 'Number of "logical processors".',
     type: 'integer',
+    keys: ['device.processor_count', 'hardwareConcurrency'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22188,6 +24189,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.processor_frequency': {
     brief: 'Processor frequency in MHz.',
     type: 'double',
+    keys: ['device.processor_frequency'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22199,6 +24201,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_density': {
     brief: 'The screen density of the device.',
     type: 'double',
+    keys: ['device.screen_density'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22210,6 +24213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_dpi': {
     brief: 'The screen density in dots-per-inch (DPI) of the device.',
     type: 'integer',
+    keys: ['device.screen_dpi'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22221,6 +24225,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_height_pixels': {
     brief: 'The height of the device screen in pixels.',
     type: 'integer',
+    keys: ['device.screen_height_pixels'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22232,6 +24237,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_width_pixels': {
     brief: 'The width of the device screen in pixels.',
     type: 'integer',
+    keys: ['device.screen_width_pixels'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22243,6 +24249,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.simulator': {
     brief: 'Whether the device is a simulator or an actual device.',
     type: 'boolean',
+    keys: ['device.simulator'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22254,6 +24261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.storage_size': {
     brief: 'Total device storage in bytes.',
     type: 'integer',
+    keys: ['device.storage_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22266,6 +24274,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
     type: 'string',
+    keys: ['device.thermal_state'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22277,6 +24286,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.timezone': {
     brief: 'The timezone of the device.',
     type: 'string',
+    keys: ['device.timezone'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22288,6 +24298,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.usable_memory': {
     brief: 'Memory usable for the app in bytes.',
     type: 'integer',
+    keys: ['device.usable_memory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22299,6 +24310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   dist: {
     brief: 'The sentry dist.',
     type: 'string',
+    keys: ['sentry.dist', 'dist'],
     applyScrubbing: {
       key: 'never',
     },
@@ -22313,9 +24325,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.dist'],
     changelog: [{ version: '0.16.0', prs: [489], description: 'Added dist attribute' }],
   },
+  'django.function_name': {
+    brief: 'The fully qualified name of a function used in a Django context.',
+    type: 'string',
+    keys: ['code.function.name', 'code.function', 'django.function_name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'django.contrib.sessions.middleware.SessionMiddleware',
+    examples: ['django.contrib.sessions.middleware.SessionMiddleware'],
+    deprecation: {
+      replacement: 'code.function.name',
+      reason:
+        'This attribute is being deprecated in favor of code.function.name, which is the framework-agnostic replacement.',
+      status: 'backfill',
+    },
+    aliases: ['code.function.name', 'code.function'],
+    changelog: [{ version: '0.19.0', prs: [538], description: 'Added django.function_name attribute' }],
+  },
   'django.middleware_name': {
     brief: 'The name of the Django middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22330,11 +24369,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['middleware.name'],
-    changelog: [{ version: 'next', prs: [520], description: 'Added django.middleware_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [520], description: 'Added django.middleware_name attribute' }],
   },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
+    keys: ['network.connection.effective_type', 'effectiveConnectionType'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22359,6 +24399,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   environment: {
     brief: 'The sentry environment.',
     type: 'string',
+    keys: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22371,7 +24417,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.environment'],
     changelog: [
-      { version: 'next', prs: [427], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [427], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -22379,6 +24425,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'error.type': {
     brief: 'Describes a class of error the operation ended with.',
     type: 'string',
+    keys: ['error.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22390,6 +24437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'event.id': {
     brief: 'The unique identifier for this event (log record)',
     type: 'integer',
+    keys: ['event.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22401,6 +24449,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'event.name': {
     brief: 'The name that uniquely identifies this event (log record)',
     type: 'string',
+    keys: ['event.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22413,6 +24462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
     type: 'boolean',
+    keys: ['exception.escaped'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22424,6 +24474,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'exception.message': {
     brief: 'The error message.',
     type: 'string',
+    keys: ['exception.message'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22436,6 +24487,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
     type: 'string',
+    keys: ['exception.stacktrace'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22449,6 +24501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
     type: 'string',
+    keys: ['exception.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22460,6 +24513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.coldstart': {
     brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
     type: 'boolean',
+    keys: ['faas.coldstart'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22471,6 +24525,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.cron': {
     brief: 'A string containing the schedule period as Cron Expression.',
     type: 'string',
+    keys: ['faas.cron'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22482,6 +24537,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.duration_in_ms': {
     brief: 'The duration a function took to run, in milliseconds.',
     type: 'integer',
+    keys: ['faas.duration_in_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22493,6 +24549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.entry_point': {
     brief: "The code that's run when the cloud provider invokes your function.",
     type: 'string',
+    keys: ['faas.entry_point'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22504,6 +24561,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.execution': {
     brief: 'The execution ID of the current function execution.',
     type: 'string',
+    keys: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22528,6 +24586,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.id': {
     brief: 'The unique ID of the single function that this runtime instance executes.',
     type: 'string',
+    keys: ['cloud.resource_id', 'faas.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22553,6 +24612,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
     type: 'string',
+    keys: ['faas.identity'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22565,6 +24625,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.invocation_id': {
     brief: 'The invocation ID of the current function invocation.',
     type: 'string',
+    keys: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22580,6 +24641,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.invoked_name': {
     brief: 'The name of the invoked function.',
     type: 'string',
+    keys: ['faas.invoked_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22591,6 +24653,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.invoked_provider': {
     brief: 'The cloud provider of the invoked function.',
     type: 'string',
+    keys: ['faas.invoked_provider'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22602,6 +24665,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.invoked_region': {
     brief: 'The cloud region of the invoked function.',
     type: 'string',
+    keys: ['faas.invoked_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22613,6 +24677,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.name': {
     brief: 'The name of the serverless function',
     type: 'string',
+    keys: ['faas.name', 'aws.lambda.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22625,6 +24690,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.time': {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
     type: 'string',
+    keys: ['faas.time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22636,6 +24702,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.trigger': {
     brief: 'Type of the trigger which caused this function invocation.',
     type: 'string',
+    keys: ['faas.trigger'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22647,6 +24714,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.version': {
     brief: 'The version of the function that was invoked',
     type: 'string',
+    keys: ['faas.version', 'aws.lambda.function_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22659,6 +24727,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   fcp: {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     type: 'double',
+    keys: ['browser.web_vital.fcp.value', 'fcp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22676,6 +24745,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'file.path': {
     brief: 'Path to the file.',
     type: 'string',
+    keys: ['file.path'],
     applyScrubbing: {
       key: 'auto',
       reason: 'File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.',
@@ -22688,6 +24758,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'file.size': {
     brief: 'File size in bytes.',
     type: 'integer',
+    keys: ['file.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22700,6 +24771,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
     type: 'boolean',
+    keys: ['flag.evaluation.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22712,6 +24784,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   fp: {
     brief: 'The time it takes for the browser to render the first pixel on the screen',
     type: 'double',
+    keys: ['browser.web_vital.fp.value', 'fp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22730,6 +24803,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     type: 'integer',
+    keys: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22748,10 +24822,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    searchAlias: {
+      name: 'mobile.frames_delay',
+      type: 'second',
+    },
   },
   'frames.frozen': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.frozen.count', 'frames.frozen', 'mobile.frozen_frames', 'sentry.frames.frozen'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22766,16 +24845,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.frozen.count', 'sentry.frames.frozen'],
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.frozen.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    searchAlias: {
+      name: 'mobile.frozen_frames',
+    },
   },
   frames_frozen_rate: {
     brief:
       'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22789,13 +24872,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.frozen.rate'],
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.frames.frozen.rate' },
       { version: '0.7.0', prs: [362], description: 'Added frames_frozen_rate attribute' },
     ],
   },
   'frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22810,16 +24894,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.slow.count', 'sentry.frames.slow'],
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.slow as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.slow.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    searchAlias: {
+      name: 'mobile.slow_frames',
+    },
   },
   frames_slow_rate: {
     brief:
       'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22833,13 +24921,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.slow.rate'],
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.frames.slow.rate' },
       { version: '0.7.0', prs: [362], description: 'Added frames_slow_rate attribute' },
     ],
   },
   'frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22854,15 +24943,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.frames.total.count', 'sentry.frames.total'],
     changelog: [
-      { version: 'next', prs: [500], description: 'Added sentry.frames.total as an alias' },
+      { version: '0.19.0', prs: [500], description: 'Added sentry.frames.total as an alias' },
       { version: '0.5.0', prs: [313], description: 'Deprecated in favor of app.vitals.frames.total.count' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    searchAlias: {
+      name: 'mobile.total_frames',
+    },
   },
   fs_error: {
     brief: 'The error message of a file system error.',
     type: 'string',
+    keys: ['fs_error'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22878,6 +24971,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.event_id': {
     brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
     type: 'string',
+    keys: ['gcp.function.context.event_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22889,6 +24983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.event_type': {
     brief: 'The type of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.event_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22900,6 +24995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.id': {
     brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
     type: 'string',
+    keys: ['gcp.function.context.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22911,6 +25007,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.resource': {
     brief: 'The resource that triggered the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.resource'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22922,6 +25019,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.source': {
     brief: 'The source of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.source'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22933,6 +25031,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.specversion': {
     brief: 'The CloudEvents specification version of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.specversion'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22944,6 +25043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.time': {
     brief: 'The timestamp of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22955,6 +25055,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.timestamp': {
     brief: 'The legacy timestamp of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.timestamp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22966,6 +25067,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.type': {
     brief: 'The type of the GCP Cloud Function event context',
     type: 'string',
+    keys: ['gcp.function.context.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22977,6 +25079,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.project.id': {
     brief: 'The ID of the project in GCP that this resource is associated with',
     type: 'string',
+    keys: ['gcp.project.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22985,9 +25088,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'my-project-123',
     changelog: [{ version: '0.11.0', prs: [403] }],
   },
+  gcp_region: {
+    brief: 'The geographical region the GCP resource is running',
+    type: 'string',
+    keys: ['cloud.region', 'aws_region', 'gcp_region'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'us-east-1',
+    examples: ['us-east-1'],
+    deprecation: {
+      replacement: 'cloud.region',
+      status: 'backfill',
+    },
+    aliases: ['cloud.region', 'aws_region'],
+    changelog: [{ version: '0.19.0', prs: [535], description: 'Added gcp_region attribute' }],
+  },
   'gen_ai.agent.name': {
     brief: 'The name of the agent being used.',
     type: 'string',
+    keys: ['gen_ai.agent.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22999,6 +25121,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.context.utilization': {
     brief: 'The fraction of the model context window utilized by this generation.',
     type: 'double',
+    keys: ['gen_ai.context.utilization'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23010,6 +25133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.context.window_size': {
     brief: 'The maximum context window size supported by the model for this generation.',
     type: 'integer',
+    keys: ['gen_ai.context.window_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23022,6 +25146,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.',
     type: 'string',
+    keys: ['gen_ai.conversation.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23033,6 +25158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.cache_creation.input_tokens': {
     brief: 'The cost of input tokens written to cache in USD.',
     type: 'double',
+    keys: ['gen_ai.cost.cache_creation.input_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23049,6 +25175,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.cache_read.input_tokens': {
     brief: 'The cost of cached input tokens in USD.',
     type: 'double',
+    keys: ['gen_ai.cost.cache_read.input_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23065,6 +25192,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.input_tokens': {
     brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
     type: 'double',
+    keys: ['gen_ai.cost.input_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23085,6 +25213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.output_tokens': {
     brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
     type: 'double',
+    keys: ['gen_ai.cost.output_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23105,6 +25234,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.reasoning.output_tokens': {
     brief: 'The cost of reasoning output tokens in USD.',
     type: 'double',
+    keys: ['gen_ai.cost.reasoning.output_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23121,6 +25251,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.total_tokens': {
     brief: 'The total cost for the tokens used.',
     type: 'double',
+    keys: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23142,6 +25273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.embeddings.input': {
     brief: 'The input to the embeddings model.',
     type: 'string',
+    keys: ['gen_ai.embeddings.input'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23154,6 +25286,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
     type: 'string',
+    keys: ['gen_ai.function_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23166,6 +25299,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23173,8 +25314,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-    aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
+    aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
+      { version: 'next', description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
@@ -23183,6 +25325,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
     type: 'string',
+    keys: ['gen_ai.operation.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23198,6 +25341,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
     type: 'string',
+    keys: ['gen_ai.operation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23213,6 +25357,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
     type: 'string',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23226,6 +25371,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.pipeline.name': {
     brief: 'Name of the AI pipeline or chain being executed.',
     type: 'string',
+    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23238,6 +25384,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.prompt': {
     brief: 'The input messages sent to the model',
     type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23249,12 +25403,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages'],
-    changelog: [{ version: '0.1.0', prs: [74, 108, 119] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages', 'ai.prompt'],
+    changelog: [
+      { version: 'next', description: 'Added ai.prompt as an alias' },
+      { version: '0.1.0', prs: [74, 108, 119] },
+      { version: '0.0.0' },
+    ],
   },
   'gen_ai.prompt.name': {
     brief: 'The name of the prompt that uniquely identifies it.',
     type: 'string',
+    keys: ['gen_ai.prompt.name', 'mcp.prompt.name'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
@@ -23268,6 +25427,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.provider.name': {
     brief: 'The Generative AI provider as identified by the client or server instrumentation.',
     type: 'string',
+    keys: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23280,6 +25440,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.available_tools': {
     brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
     type: 'string',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23300,6 +25461,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: 'double',
+    keys: ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23315,6 +25477,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.max_tokens': {
     brief: 'The maximum number of tokens to generate in the response.',
     type: 'integer',
+    keys: ['gen_ai.request.max_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23330,6 +25493,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
+    keys: ['gen_ai.request.messages'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23351,19 +25515,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.model': {
     brief: 'The model identifier being used for the request.',
     type: 'string',
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4-turbo-preview',
-    aliases: ['ai.model_id'],
-    changelog: [{ version: '0.1.0', prs: [62, 127] }],
+    aliases: ['ai.model_id', 'ai.model.id'],
+    changelog: [
+      { version: 'next', description: 'Added ai.model.id as an alias' },
+      { version: '0.1.0', prs: [62, 127] },
+    ],
   },
   'gen_ai.request.presence_penalty': {
     brief:
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: 'double',
+    keys: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23379,6 +25548,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.reasoning.level': {
     brief: 'The reasoning or thinking effort level requested for a GenAI model.',
     type: 'string',
+    keys: ['gen_ai.request.reasoning.level'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23387,9 +25557,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'high',
     changelog: [{ version: '0.17.0', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
   },
+  'gen_ai.request.schema': {
+    brief: 'The stringified JSON schema the model output must conform to.',
+    type: 'string',
+    keys: ['gen_ai.request.schema'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"type":"object","properties":{"city":{"type":"string"}}}',
+    examples: ['{"type":"object","properties":{"city":{"type":"string"}}}'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added gen_ai.request.schema attribute' }],
+  },
   'gen_ai.request.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
     type: 'string',
+    keys: ['gen_ai.request.seed', 'ai.seed'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23402,6 +25590,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.stop_sequences': {
     brief: 'List of sequences that the model will use to stop generating further tokens.',
     type: 'string[]',
+    keys: ['gen_ai.request.stop_sequences'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23414,6 +25603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: 'double',
+    keys: ['gen_ai.request.temperature', 'ai.temperature'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23430,6 +25620,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: 'integer',
+    keys: ['gen_ai.request.top_k', 'ai.top_k'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23446,6 +25637,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: 'double',
+    keys: ['gen_ai.request.top_p', 'ai.top_p'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23461,6 +25653,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.finish_reason': {
     brief: 'The reason why the model stopped generating (singular form).',
     type: 'string',
+    keys: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23472,11 +25665,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'normalize',
     },
     aliases: ['gen_ai.response.finish_reasons'],
-    changelog: [{ version: 'next', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
+    changelog: [{ version: '0.19.0', prs: [498], description: 'Added gen_ai.response.finish_reason attribute' }],
   },
   'gen_ai.response.finish_reasons': {
     brief: 'The reason why the model stopped generating.',
     type: 'string',
+    keys: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23489,29 +25683,57 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.id': {
     brief: 'Unique identifier for the completion.',
     type: 'string',
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gen_123abc',
-    aliases: ['ai.generation_id'],
-    changelog: [{ version: '0.1.0', prs: [57, 127] }],
+    aliases: ['ai.generation_id', 'ai.response.id'],
+    changelog: [
+      { version: 'next', description: 'Added ai.response.id as an alias' },
+      { version: '0.1.0', prs: [57, 127] },
+    ],
   },
   'gen_ai.response.model': {
     brief: 'The vendor-specific ID of the model used.',
     type: 'string',
+    keys: ['gen_ai.response.model', 'ai.response.model'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['ai.response.model'],
+    changelog: [
+      { version: 'next', description: 'Added ai.response.model as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'gen_ai.response.object': {
+    brief: 'The type of the object returned by the model.',
+    type: 'string',
+    keys: ['gen_ai.response.object'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chat.completion',
+    examples: ['chat.completion'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added gen_ai.response.object attribute' }],
   },
   'gen_ai.response.streaming': {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
     type: 'boolean',
+    keys: ['gen_ai.response.streaming', 'ai.streaming'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23525,6 +25747,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The model's response text messages. It has to be a stringified version of an array of response text messages.",
     type: 'string',
+    keys: ['gen_ai.response.text'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23545,6 +25768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.time_to_first_chunk': {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
+    keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23557,6 +25781,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.time_to_first_token': {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
+    keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23576,6 +25801,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.tokens_per_second': {
     brief: 'The total output tokens per seconds throughput',
     type: 'double',
+    keys: ['gen_ai.response.tokens_per_second'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23590,6 +25816,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.tool_calls': {
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
     type: 'string',
+    keys: ['gen_ai.response.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23609,6 +25836,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.system': {
     brief: 'The provider of the model.',
     type: 'string',
+    keys: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23628,6 +25856,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.system_instructions': {
     brief: 'The system instructions passed to the model.',
     type: 'string',
+    keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23643,6 +25872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.system.message': {
     brief: 'The system instructions passed to the model.',
     type: 'string',
+    keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -23661,6 +25891,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.call.arguments': {
     brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
     type: 'string',
+    keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23676,6 +25907,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.call.result': {
     brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23691,6 +25929,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.definitions': {
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
     type: 'string',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23703,6 +25942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.description': {
     brief: 'The description of the tool being used.',
     type: 'string',
+    keys: ['gen_ai.tool.description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23714,6 +25954,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.input': {
     brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
     type: 'string',
+    keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23733,6 +25974,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.message': {
     brief: 'The response from a tool or function call passed to the model.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'auto',
     },
@@ -23752,6 +26000,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.name': {
     brief: 'Name of the tool utilized by the agent.',
     type: 'string',
+    keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23764,6 +26013,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.output': {
     brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23783,6 +26039,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.type': {
     brief: 'The type of tool being used.',
     type: 'string',
+    keys: ['gen_ai.tool.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23797,6 +26054,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.cache_creation.input_tokens': {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
+    keys: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23814,6 +26072,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.cache_read.input_tokens': {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
+    keys: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23830,6 +26089,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.completion_tokens': {
     brief: 'The number of tokens used in the GenAI response (completion).',
     type: 'integer',
+    keys: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23854,6 +26114,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens': {
     brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
     type: 'integer',
+    keys: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23881,6 +26142,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens.cached': {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
+    keys: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23906,6 +26168,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens.cache_write': {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
+    keys: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23929,6 +26192,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.output_tokens': {
     brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
     type: 'integer',
+    keys: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23956,6 +26220,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.output_tokens.reasoning': {
     brief: 'The number of tokens used for reasoning to create the AI output.',
     type: 'integer',
+    keys: ['gen_ai.usage.reasoning.output_tokens', 'gen_ai.usage.output_tokens.reasoning'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23981,6 +26246,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.prompt_tokens': {
     brief: 'The number of tokens used in the GenAI input (prompt).',
     type: 'integer',
+    keys: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24005,6 +26271,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.reasoning.output_tokens': {
     brief: 'The number of tokens used for reasoning to create the AI output.',
     type: 'integer',
+    keys: ['gen_ai.usage.reasoning.output_tokens', 'gen_ai.usage.output_tokens.reasoning'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24021,14 +26288,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.total_tokens': {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
     type: 'integer',
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 20,
-    aliases: ['ai.total_tokens.used'],
+    aliases: ['ai.total_tokens.used', 'ai.usage.tokens'],
     changelog: [
+      { version: 'next', description: 'Added ai.usage.tokens as an alias' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
@@ -24041,6 +26310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'graphql.document': {
     brief: 'The GraphQL document being executed.',
     type: 'string',
+    keys: ['graphql.document', 'graphql.source'],
     applyScrubbing: {
       key: 'auto',
       reason:
@@ -24049,7 +26319,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'query findBookById { bookById(id: ?) { name } }',
+    aliases: ['graphql.source'],
     changelog: [
+      { version: 'next', description: 'Added graphql.source as an alias' },
       {
         version: '0.7.0',
         description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
@@ -24059,6 +26331,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'graphql.operation.name': {
     brief: 'The name of the operation being executed.',
     type: 'string',
+    keys: ['graphql.operation.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24070,6 +26343,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'graphql.operation.type': {
     brief: 'The type of the operation being executed.',
     type: 'string',
+    keys: ['graphql.operation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24078,10 +26352,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'query',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'graphql.processing.type': {
+    brief: 'The type of processing represented by this span.',
+    type: 'string',
+    keys: ['graphql.processing.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'parse',
+    examples: ['parse', 'validate', 'execute', 'resolve'],
+    changelog: [{ version: 'next', prs: [572], description: 'Added graphql.processing.type attribute' }],
+    additionalContext: [
+      'Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.',
+      'Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.',
+    ],
+  },
+  'graphql.source': {
+    brief: 'The GraphQL document being executed.',
+    type: 'string',
+    keys: ['graphql.document', 'graphql.source'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'query findBookById { bookById(id: ?) { name } }',
+    examples: ['query findBookById { bookById(id: ?) { name } }'],
+    deprecation: {
+      replacement: 'graphql.document',
+      reason:
+        'This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.',
+      status: 'backfill',
+    },
+    aliases: ['graphql.document'],
+    changelog: [{ version: 'next', prs: [584], description: 'Added graphql.source attribute' }],
+  },
   'grpc.error.bad_request.field_violations': {
     brief:
       'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.',
     type: 'string[]',
+    keys: ['grpc.error.bad_request.field_violations'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24098,6 +26410,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
+    keys: ['grpc.error.debug_info.detail'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24110,6 +26423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string[]',
+    keys: ['grpc.error.debug_info.stack_entries'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24121,6 +26435,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'grpc.error.error_info.domain': {
     brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
     type: 'string',
+    keys: ['grpc.error.error_info.domain'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24133,6 +26448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
+    keys: ['grpc.error.error_info.metadata.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24146,6 +26462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.',
     type: 'string',
+    keys: ['grpc.error.error_info.reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24158,6 +26475,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
     type: 'string[]',
+    keys: ['grpc.error.precondition_failure.violations'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24172,6 +26490,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
     type: 'string[]',
+    keys: ['grpc.error.quota_failure.violations'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24186,6 +26505,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.',
     type: 'string',
+    keys: ['grpc.error.resource_info.description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24198,6 +26518,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
+    keys: ['grpc.error.resource_info.owner'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24210,6 +26531,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
+    keys: ['grpc.error.resource_info.resource_name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24223,6 +26545,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'grpc.error.resource_info.resource_type': {
     brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
     type: 'string',
+    keys: ['grpc.error.resource_info.resource_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24237,6 +26560,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
     type: 'integer',
+    keys: ['grpc.error.retry_info.retry_delay_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24248,6 +26572,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
     type: 'string',
+    keys: ['device.processor_count', 'hardwareConcurrency'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24272,6 +26597,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['client.address', 'http.client_ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24280,6 +26606,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'client.address',
+      status: 'backfill',
     },
     aliases: ['client.address'],
     changelog: [{ version: '0.1.0', prs: [61, 106, 127] }, { version: '0.0.0' }],
@@ -24287,17 +26614,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.decoded_response_content_length': {
     brief: 'The decoded body size of the response (in bytes).',
     type: 'integer',
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 456,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'http.response.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.response.body.decoded_size', 'http.response_content_length_uncompressed'],
+    changelog: [
+      { version: 'next', prs: [574], description: 'Deprecated in favor of http.response.body.decoded_size' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
+    searchAlias: {
+      name: 'http.decoded_response_content_length',
+      type: 'byte',
+    },
   },
   'http.flavor': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24306,14 +26652,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
+      status: 'backfill',
     },
-    aliases: ['network.protocol.version', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.version', 'net.protocol.version', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.fragment': {
     brief:
       'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
     type: 'string',
+    keys: ['http.fragment'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24325,6 +26677,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.host': {
     brief: 'The domain name.',
     type: 'string',
+    keys: ['http.host'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24335,12 +26688,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: [
+      'address',
+      'server.address',
+      'client.address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'net.peer.name',
+    ],
+    changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.method': {
     brief: 'The HTTP method used.',
     type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24358,6 +26725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
     type: 'string',
+    keys: ['http.query'],
     applyScrubbing: {
       key: 'auto',
       reason:
@@ -24371,6 +26739,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.body.data': {
     brief: 'HTTP request body data. Can be given as string or structural data of any format.',
     type: 'string',
+    keys: ['http.request.body.data'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24379,10 +26748,44 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"role": "user", "message": "hello"}]',
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
+  'http.request.body.decoded_size': {
+    brief: 'The decoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 456,
+    aliases: ['http.request_content_length_uncompressed'],
+    changelog: [{ version: 'next', prs: [574], description: 'Added http.request.body.decoded_size attribute' }],
+    additionalContext: [
+      'This is the size after content decoding. Set it only when the decoded size is actually known, for example by measuring a decompressed request stream.',
+      'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.request.body.size` for that.',
+    ],
+  },
+  'http.request.body.size': {
+    brief: 'The encoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.size', 'http.request_content_length'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 123,
+    aliases: ['http.request_content_length'],
+    changelog: [{ version: 'next', prs: [574], description: 'Added http.request.body.size attribute' }],
+    additionalContext: [
+      'This is the on-the-wire (encoded) size. The `content-length` header always carries the encoded size, so set this attribute whenever `content-length` is known, regardless of whether `content-encoding` is present.',
+    ],
+  },
   'http.request.connection_end': {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
     type: 'double',
+    keys: ['http.request.connection_end'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24395,6 +26798,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
     type: 'double',
+    keys: ['http.request.connect_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24403,10 +26807,58 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.111,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
+  'http.request_content_length': {
+    brief: 'The encoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.size', 'http.request_content_length'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 123,
+    deprecation: {
+      replacement: 'http.request.body.size',
+      status: 'backfill',
+    },
+    aliases: ['http.request.body.size'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description: 'Added http.request_content_length attribute, deprecated in favor of http.request.body.size',
+      },
+    ],
+  },
+  'http.request_content_length_uncompressed': {
+    brief: 'The decoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 456,
+    deprecation: {
+      replacement: 'http.request.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.request.body.decoded_size'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description:
+          'Added http.request_content_length_uncompressed attribute, deprecated in favor of http.request.body.decoded_size',
+      },
+    ],
+  },
   'http.request.domain_lookup_end': {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
     type: 'double',
+    keys: ['http.request.domain_lookup_end'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24419,6 +26871,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
     type: 'double',
+    keys: ['http.request.domain_lookup_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24430,6 +26883,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.fetch_start': {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
     type: 'double',
+    keys: ['http.request.fetch_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24442,6 +26896,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: 'string[]',
+    keys: ['http.request.header.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24457,6 +26912,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.method': {
     brief: 'The HTTP method used.',
     type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24469,6 +26925,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request_method': {
     brief: 'The HTTP method used.',
     type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24486,6 +26943,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
     type: 'double',
+    keys: ['http.request.redirect_end'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24500,6 +26958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.redirect_start': {
     brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
     type: 'double',
+    keys: ['http.request.redirect_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24512,6 +26971,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: 'double',
+    keys: ['http.request.request_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24523,6 +26983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.resend_count': {
     brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
     type: 'integer',
+    keys: ['http.request.resend_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24535,6 +26996,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
     type: 'double',
+    keys: ['http.request.response_end'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24547,6 +27009,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: 'double',
+    keys: ['http.request.response_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24558,6 +27021,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.same_origin': {
     brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
     type: 'boolean',
+    keys: ['http.request.same_origin', 'url.same_origin'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24571,6 +27035,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
     type: 'double',
+    keys: ['http.request.secure_connection_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24583,6 +27048,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
     type: 'double',
+    keys: ['http.request.time_to_first_byte'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24598,6 +27064,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
     type: 'double',
+    keys: ['http.request.worker_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24609,9 +27076,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [130, 134] },
     ],
   },
+  'http.response.body.decoded_size': {
+    brief: 'The decoded body size of the response (in bytes).',
+    type: 'integer',
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 456,
+    aliases: ['http.decoded_response_content_length', 'http.response_content_length_uncompressed'],
+    changelog: [{ version: 'next', prs: [574], description: 'Added http.response.body.decoded_size attribute' }],
+    additionalContext: [
+      'This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.',
+      'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.',
+    ],
+  },
   'http.response.body.size': {
     brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
+    keys: ['http.response.body.size', 'http.response.header.content-length', 'http.response_content_length'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24624,6 +27113,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.response_content_length': {
     brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
+    keys: ['http.response.body.size', 'http.response.header.content-length', 'http.response_content_length'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24636,10 +27126,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.response.body.size', 'http.response.header.content-length'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 106] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.response_content_length',
+      type: 'byte',
+    },
+  },
+  'http.response_content_length_uncompressed': {
+    brief: 'The decoded body size of the response (in bytes).',
+    type: 'integer',
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 456,
+    deprecation: {
+      replacement: 'http.response.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.response.body.decoded_size', 'http.decoded_response_content_length'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description:
+          'Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size',
+      },
+    ],
   },
   'http.response.header.content-length': {
     brief: 'The size of the message body sent to the recipient (in bytes)',
     type: 'string',
+    keys: ['http.response.header.content-length', 'http.response.body.size', 'http.response_content_length'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24653,6 +27176,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
     type: 'string[]',
+    keys: ['http.response.header.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24668,6 +27192,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.response.size': {
     brief: 'The transfer size of the response (in bytes).',
     type: 'integer',
+    keys: ['http.response.size', 'http.response_transfer_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24680,6 +27205,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.response.status_code': {
     brief: 'The status code of the HTTP response.',
     type: 'integer',
+    keys: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24688,10 +27214,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 404,
     aliases: ['http.status_code'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.response_status_code',
+    },
+  },
+  'http.response.status_text': {
+    brief: 'The reason phrase of the HTTP response.',
+    type: 'string',
+    keys: ['http.response.status_text', 'http.status_text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'NOT FOUND',
+    aliases: ['http.status_text'],
+    changelog: [{ version: 'next', prs: [574], description: 'Added http.response.status_text attribute' }],
+    additionalContext: [
+      'HTTP/2 and HTTP/3 do not carry a reason phrase. Do not set this attribute when the protocol provides none; use `http.response.status_code` instead.',
+    ],
   },
   'http.response_transfer_size': {
     brief: 'The transfer size of the response (in bytes).',
     type: 'integer',
+    keys: ['http.response.size', 'http.response_transfer_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24704,10 +27250,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.response.size'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.response_transfer_size',
+      type: 'byte',
+    },
   },
   'http.route': {
     brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
     type: 'string',
+    keys: ['http.route'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24715,16 +27266,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/:id',
     examples: ['/users/:id', 'my-controller/my-action/{id}', '/posts'],
-    aliases: ['url.template'],
+    aliases: ['route'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      {
+        version: '0.19.0',
+        prs: [505, 521],
+        description: 'Added multiple examples, removed alias to `url.template`, added additional context',
+      },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute should primarily be set by server-side instrumentation that captures the framework route of an incoming request.',
+      'For `http.client` spans and client-side routing, use `url.template` instead.',
     ],
   },
   'http.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
+    keys: ['url.scheme', 'http.scheme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24733,6 +27293,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https',
     deprecation: {
       replacement: 'url.scheme',
+      status: 'backfill',
     },
     aliases: ['url.scheme'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -24740,6 +27301,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.server_name': {
     brief: 'The server domain name',
     type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24748,14 +27310,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
+      status: 'backfill',
     },
-    aliases: ['server.address', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.server.request.time_in_queue': {
     brief:
       'The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.',
     type: 'double',
+    keys: ['http.server.request.time_in_queue'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24767,6 +27336,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.status_code': {
     brief: 'The status code of the HTTP response.',
     type: 'integer',
+    keys: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24775,13 +27345,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 404,
     deprecation: {
       replacement: 'http.response.status_code',
+      status: 'backfill',
     },
     aliases: ['http.response.status_code'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
+  'http.status_text': {
+    brief: 'The reason phrase of the HTTP response',
+    type: 'string',
+    keys: ['http.response.status_text', 'http.status_text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'NOT FOUND',
+    examples: ['NOT FOUND'],
+    deprecation: {
+      replacement: 'http.response.status_text',
+      status: 'backfill',
+    },
+    aliases: ['http.response.status_text'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [574],
+        description: 'Added http.status_text attribute, deprecated in favor of http.response.status_text',
+      },
+    ],
+  },
   'http.target': {
     brief: 'The pathname and query string of the URL.',
     type: 'string',
+    keys: ['http.target'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24789,14 +27385,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/test?foo=bar#buzz',
     deprecation: {
-      replacement: 'url.path',
-      reason: 'This attribute is being deprecated in favor of url.path and url.query',
+      reason:
+        'This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.',
     },
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Documented url.path, url.query and url.fragment as the replacements for http.target',
+      },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'http.url': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24805,13 +27409,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
+      status: 'backfill',
     },
-    aliases: ['url.full', 'url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
+    aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.1.0', prs: [61, 108] },
+      { version: '0.0.0' },
+    ],
   },
   'http.user_agent': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
+    keys: ['user_agent.original', 'http.user_agent'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24821,6 +27431,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     deprecation: {
       replacement: 'user_agent.original',
+      status: 'backfill',
     },
     aliases: ['user_agent.original'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -24828,6 +27439,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   id: {
     brief: 'A unique identifier for the span.',
     type: 'string',
+    keys: ['id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -24839,6 +27451,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   inp: {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
+    keys: ['browser.web_vital.inp.value', 'inp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24862,6 +27475,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jsonrpc.protocol.version': {
     brief: 'The version of the JSON-RPC protocol used.',
     type: 'string',
+    keys: ['jsonrpc.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24873,6 +27487,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jsonrpc.request.id': {
     brief: 'The JSON-RPC request identifier. Unique within the session.',
     type: 'string',
+    keys: ['jsonrpc.request.id', 'mcp.request.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24885,6 +27500,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.gc.action': {
     brief: 'Name of the garbage collector action.',
     type: 'string',
+    keys: ['jvm.gc.action'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24896,6 +27512,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.gc.name': {
     brief: 'Name of the garbage collector.',
     type: 'string',
+    keys: ['jvm.gc.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24907,6 +27524,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.memory.pool.name': {
     brief: 'Name of the memory pool.',
     type: 'string',
+    keys: ['jvm.memory.pool.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24918,6 +27536,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.memory.type': {
     brief: 'Name of the memory pool.',
     type: 'string',
+    keys: ['jvm.memory.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24929,6 +27548,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.thread.daemon': {
     brief: 'Whether the thread is daemon or not.',
     type: 'boolean',
+    keys: ['jvm.thread.daemon'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24940,6 +27560,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.thread.state': {
     brief: 'State of the thread.',
     type: 'string',
+    keys: ['jvm.thread.state'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24951,6 +27572,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'koa.name': {
     brief: 'The name of the Koa middleware or matched route that handled the request.',
     type: 'string',
+    keys: ['koa.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24966,6 +27588,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'koa.type': {
     brief: 'The type of the Koa layer that handled the request.',
     type: 'string',
+    keys: ['koa.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24977,6 +27600,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
+    keys: ['browser.web_vital.lcp.value', 'lcp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25000,6 +27624,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.element': {
     brief: 'The dom element responsible for the largest contentful paint.',
     type: 'string',
+    keys: ['browser.web_vital.lcp.element', 'lcp.element'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25017,6 +27642,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.id': {
     brief: 'The id of the dom element responsible for the largest contentful paint.',
     type: 'string',
+    keys: ['browser.web_vital.lcp.id', 'lcp.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25034,6 +27660,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.loadTime': {
     brief: 'The time it took for the LCP element to be loaded',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.load_time', 'lcp.loadTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25051,6 +27678,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.renderTime': {
     brief: 'The time it took for the LCP element to be rendered',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.render_time', 'lcp.renderTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25068,6 +27696,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.size': {
     brief: 'The size of the largest contentful paint element.',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.size', 'lcp.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25085,6 +27714,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.url': {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
     type: 'string',
+    keys: ['browser.web_vital.lcp.url', 'lcp.url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25102,6 +27732,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'litestar.middleware_name': {
     brief: 'The name of the Litestar middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25117,7 +27754,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['middleware.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [486],
         description: 'Added litestar.middleware_name attribute, deprecated in favor of middleware.name',
       },
     ],
@@ -25125,6 +27763,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'logger.name': {
     brief: 'The name of the logger that generated this event.',
     type: 'string',
+    keys: ['logger.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25136,6 +27775,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.cancelled.reason': {
     brief: 'Reason for the cancellation of an MCP operation.',
     type: 'string',
+    keys: ['mcp.cancelled.reason'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Cancellation reasons may contain user-specific or sensitive information',
@@ -25148,6 +27788,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.cancelled.request_id': {
     brief: 'Request ID of the cancelled MCP operation.',
     type: 'string',
+    keys: ['mcp.cancelled.request_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25159,6 +27800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.client.name': {
     brief: 'Name of the MCP client application.',
     type: 'string',
+    keys: ['mcp.client.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25170,6 +27812,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.client.title': {
     brief: 'Display title of the MCP client application.',
     type: 'string',
+    keys: ['mcp.client.title'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Client titles may reveal user-specific application configurations or custom setups',
@@ -25182,6 +27825,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.client.version': {
     brief: 'Version of the MCP client application.',
     type: 'string',
+    keys: ['mcp.client.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25193,6 +27837,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.lifecycle.phase': {
     brief: 'Lifecycle phase indicator for MCP operations.',
     type: 'string',
+    keys: ['mcp.lifecycle.phase'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25204,6 +27849,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.logging.data_type': {
     brief: 'Data type of the logged message content.',
     type: 'string',
+    keys: ['mcp.logging.data_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25215,6 +27861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.logging.level': {
     brief: 'Log level for MCP logging operations.',
     type: 'string',
+    keys: ['mcp.logging.level'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25226,6 +27873,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.logging.logger': {
     brief: 'Logger name for MCP logging operations.',
     type: 'string',
+    keys: ['mcp.logging.logger'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Logger names may be user-defined and could contain sensitive information',
@@ -25238,6 +27886,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.logging.message': {
     brief: 'Log message content from MCP logging operations.',
     type: 'string',
+    keys: ['mcp.logging.message'],
     applyScrubbing: {
       key: 'auto',
       reason: 'Log messages can contain user data',
@@ -25250,6 +27899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.method.name': {
     brief: 'The name of the MCP request or notification method being called.',
     type: 'string',
+    keys: ['mcp.method.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25264,6 +27914,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.current': {
     brief: 'Current progress value of an MCP operation.',
     type: 'integer',
+    keys: ['mcp.progress.current'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25278,6 +27929,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.message': {
     brief: 'Progress message describing the current state of an MCP operation.',
     type: 'string',
+    keys: ['mcp.progress.message'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Progress messages may contain user-specific or sensitive information',
@@ -25290,6 +27942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.percentage': {
     brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
     type: 'double',
+    keys: ['mcp.progress.percentage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25304,6 +27957,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.token': {
     brief: 'Token for tracking progress of an MCP operation.',
     type: 'string',
+    keys: ['mcp.progress.token'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25315,6 +27969,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.total': {
     brief: 'Total progress target value of an MCP operation.',
     type: 'integer',
+    keys: ['mcp.progress.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25329,6 +27984,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.name': {
     brief: 'Name of the MCP prompt template being used.',
     type: 'string',
+    keys: ['gen_ai.prompt.name', 'mcp.prompt.name'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
@@ -25350,6 +28006,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.result.description': {
     brief: 'Description of the prompt result.',
     type: 'string',
+    keys: ['mcp.prompt.result.description'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25361,6 +28018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.result.message_content': {
     brief: 'Content of the message in the prompt result. Used for single message results only.',
     type: 'string',
+    keys: ['mcp.prompt.result.message_content'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25372,6 +28030,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.result.message_count': {
     brief: 'Number of messages in the prompt result.',
     type: 'integer',
+    keys: ['mcp.prompt.result.message_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25386,6 +28045,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.result.message_role': {
     brief: 'Role of the message in the prompt result. Used for single message results only.',
     type: 'string',
+    keys: ['mcp.prompt.result.message_role'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25397,6 +28057,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.protocol.ready': {
     brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
     type: 'integer',
+    keys: ['mcp.protocol.ready'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25411,6 +28072,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.protocol.version': {
     brief: 'MCP protocol version used in the session.',
     type: 'string',
+    keys: ['mcp.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25426,6 +28088,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.',
     type: 'string',
+    keys: ['mcp.request.argument.<key>'],
     applyScrubbing: {
       key: 'auto',
       reason: 'Arguments contain user input',
@@ -25439,6 +28102,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.request.argument.name': {
     brief: 'Name argument from prompts/get MCP request.',
     type: 'string',
+    keys: ['mcp.request.argument.name'],
     applyScrubbing: {
       key: 'auto',
       reason: 'Prompt names can contain user input',
@@ -25451,6 +28115,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.request.argument.uri': {
     brief: 'URI argument from resources/read MCP request.',
     type: 'string',
+    keys: ['mcp.request.argument.uri'],
     applyScrubbing: {
       key: 'auto',
       reason: 'URIs can contain user file paths',
@@ -25463,6 +28128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.request.id': {
     brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
     type: 'string',
+    keys: ['jsonrpc.request.id', 'mcp.request.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25483,6 +28149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.resource.protocol': {
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
     type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25494,8 +28161,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'OTel uses the generic network.protocol.name attribute',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'net.protocol.name'],
+    aliases: ['network.protocol.name', 'net.protocol.name', 'messaging.protocol'],
     changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -25503,6 +28171,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.resource.uri': {
     brief: 'The resource URI being accessed in an MCP operation.',
     type: 'string',
+    keys: ['mcp.resource.uri'],
     applyScrubbing: {
       key: 'auto',
       reason: 'URIs can contain sensitive file paths',
@@ -25518,6 +28187,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.server.name': {
     brief: 'Name of the MCP server application.',
     type: 'string',
+    keys: ['mcp.server.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25529,6 +28199,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.server.title': {
     brief: 'Display title of the MCP server application.',
     type: 'string',
+    keys: ['mcp.server.title'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Server titles may reveal user-specific application configurations or custom setups',
@@ -25541,6 +28212,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.server.version': {
     brief: 'Version of the MCP server application.',
     type: 'string',
+    keys: ['mcp.server.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25552,6 +28224,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.session.id': {
     brief: 'Identifier for the MCP session.',
     type: 'string',
+    keys: ['mcp.session.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25566,6 +28239,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.tool.name': {
     brief: 'Name of the MCP tool being called.',
     type: 'string',
+    keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25586,6 +28260,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.tool.result.content': {
     brief: 'The content of the tool result.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'auto',
       reason: 'Tool results can contain user data',
@@ -25608,6 +28289,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.tool.result.content_count': {
     brief: 'Number of content items in the tool result.',
     type: 'integer',
+    keys: ['mcp.tool.result.content_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25622,6 +28304,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.tool.result.is_error': {
     brief: 'Whether a tool execution resulted in an error.',
     type: 'boolean',
+    keys: ['mcp.tool.result.is_error'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25641,6 +28324,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.transport': {
     brief: 'Transport method used for MCP communication.',
     type: 'string',
+    keys: ['network.transport', 'mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25662,6 +28346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
     type: 'string',
+    keys: ['mdc.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25674,6 +28359,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.batch.message_count': {
     brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
     type: 'integer',
+    keys: ['messaging.batch.message_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25682,9 +28368,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
+  'messaging.conversation_id': {
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    type: 'string',
+    keys: ['messaging.message.conversation_id', 'messaging.conversation_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'MyConversationId',
+    examples: ['MyConversationId'],
+    deprecation: {
+      replacement: 'messaging.message.conversation_id',
+      reason: 'This attribute is being deprecated in favor of messaging.message.conversation_id.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.conversation_id'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.conversation_id attribute' }],
+  },
   'messaging.destination': {
     brief: 'The message destination name.',
     type: 'string',
+    keys: ['messaging.destination.name', 'messaging.destination'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25709,6 +28416,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination.connection': {
     brief: 'The message destination connection.',
     type: 'string',
+    keys: ['messaging.destination.connection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25720,6 +28428,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination_kind': {
     brief: 'The kind of message destination.',
     type: 'string',
+    keys: ['messaging.destination_kind'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25732,7 +28441,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [509],
         description:
           'Added deprecated messaging.destination_kind attribute for parity with legacy OTel instrumentations.',
       },
@@ -25741,6 +28451,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination.name': {
     brief: 'The message destination name.',
     type: 'string',
+    keys: ['messaging.destination.name', 'messaging.destination'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25758,51 +28469,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
     type: 'string',
+    keys: ['messaging.destination.partition.id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '1',
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.destination.partition.id attribute' }],
   },
   'messaging.kafka.message.key': {
     brief:
       "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
     type: 'string',
+    keys: ['messaging.kafka.message.key'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'myKey',
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.message.key attribute' }],
   },
   'messaging.kafka.message.tombstone': {
     brief: 'A boolean that is true if the message is a tombstone.',
     type: 'boolean',
+    keys: ['messaging.kafka.message.tombstone'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: true,
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.message.tombstone attribute' }],
   },
   'messaging.kafka.offset': {
     brief: 'The offset of a record in the corresponding Kafka partition.',
     type: 'integer',
+    keys: ['messaging.kafka.offset'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 42,
-    changelog: [{ version: 'next', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
+    changelog: [{ version: '0.19.0', prs: [474], description: 'Added messaging.kafka.offset attribute' }],
   },
   'messaging.message.body.size': {
     brief: 'The size of the message body in bytes.',
     type: 'integer',
+    keys: ['messaging.message.body.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25810,22 +28526,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 839,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'messaging.message.body.size',
+      type: 'byte',
+    },
   },
   'messaging.message.conversation_id': {
     brief:
       'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
     type: 'string',
+    keys: ['messaging.message.conversation_id', 'messaging.conversation_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'MyConversationId',
-    changelog: [{ version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
+    aliases: ['messaging.conversation_id'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.conversation_id as an alias' },
+      { version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' },
+    ],
   },
   'messaging.message.envelope.size': {
     brief: 'The size of the message body and metadata in bytes.',
     type: 'integer',
+    keys: ['messaging.message.envelope.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25837,17 +28563,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message.id': {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
+    keys: ['messaging.message.id', 'messaging.message_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['messaging.message_id'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.message_id as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'messaging.message_id': {
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    type: 'string',
+    keys: ['messaging.message.id', 'messaging.message_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '452a7c7c7c7048c2f887f0e7',
+    examples: ['452a7c7c7c7048c2f887f0e7'],
+    deprecation: {
+      replacement: 'messaging.message.id',
+      reason: 'This attribute is being deprecated in favor of messaging.message.id.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.id'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.message_id attribute' }],
   },
   'messaging.message.receive.latency': {
     brief: 'The latency between when the message was published and received.',
     type: 'integer',
+    keys: ['messaging.message.receive.latency'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25855,10 +28607,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1732847252,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'messaging.message.receive.latency',
+      type: 'millisecond',
+    },
   },
   'messaging.message.retry.count': {
     brief: 'The amount of attempts to send the message.',
     type: 'integer',
+    keys: ['messaging.message.retry.count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25867,20 +28624,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  'messaging.operation': {
+    brief: 'The name of the messaging operation being performed.',
+    type: 'string',
+    keys: ['messaging.operation.name', 'messaging.operation'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'publish',
+    examples: ['publish'],
+    deprecation: {
+      replacement: 'messaging.operation.name',
+      reason: 'This attribute is being deprecated in favor of messaging.operation.name.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.operation.name'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.operation attribute' }],
+  },
   'messaging.operation.name': {
     brief: 'The name of the messaging operation being performed',
     type: 'string',
+    keys: ['messaging.operation.name', 'messaging.operation'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'send',
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' }],
+    aliases: ['messaging.operation'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.operation as an alias' },
+      { version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' },
+    ],
   },
   'messaging.operation.type': {
     brief: 'A string identifying the type of the messaging operation',
     type: 'string',
+    keys: ['messaging.operation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25889,22 +28671,83 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'create',
     changelog: [{ version: '0.1.0', prs: [51, 127] }],
   },
+  'messaging.protocol': {
+    brief: 'OSI application layer or non-OSI equivalent.',
+    type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AMQP',
+    examples: ['AMQP'],
+    deprecation: {
+      replacement: 'network.protocol.name',
+      reason: 'This attribute is being deprecated in favor of network.protocol.name.',
+      status: 'backfill',
+    },
+    aliases: ['network.protocol.name', 'net.protocol.name', 'mcp.resource.protocol'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.protocol attribute' }],
+  },
+  'messaging.protocol_version': {
+    brief: 'The actual version of the protocol used for network communication.',
+    type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '0.9.1',
+    examples: ['0.9.1'],
+    deprecation: {
+      replacement: 'network.protocol.version',
+      reason: 'This attribute is being deprecated in favor of network.protocol.version.',
+      status: 'backfill',
+    },
+    aliases: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.protocol_version attribute' }],
+  },
   'messaging.rabbitmq.destination.routing_key': {
     brief: 'RabbitMQ message routing key.',
     type: 'string',
+    keys: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'myKey',
+    aliases: ['messaging.rabbitmq.routing_key'],
     changelog: [
+      { version: 'next', description: 'Added messaging.rabbitmq.routing_key as an alias' },
       { version: '0.16.0', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
     ],
+  },
+  'messaging.rabbitmq.routing_key': {
+    brief: 'RabbitMQ message routing key.',
+    type: 'string',
+    keys: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'myKey',
+    examples: ['myKey'],
+    deprecation: {
+      replacement: 'messaging.rabbitmq.destination.routing_key',
+      reason: 'This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.rabbitmq.destination.routing_key'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.rabbitmq.routing_key attribute' }],
   },
   'messaging.system': {
     brief: 'The messaging system as identified by the client instrumentation.',
     type: 'string',
+    keys: ['messaging.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25913,9 +28756,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'activemq',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'messaging.url': {
+    brief: 'The connection string of the messaging broker.',
+    type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'amqp://guest:guest@localhost:5672',
+    examples: ['amqp://guest:guest@localhost:5672'],
+    deprecation: {
+      replacement: 'url.full',
+      reason: 'This attribute is being deprecated in favor of url.full.',
+      status: 'backfill',
+    },
+    aliases: ['url.full', 'http.url', 'url', 'aws.request.url'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.url attribute' }],
+  },
   method: {
     brief: 'The HTTP method used.',
     type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25928,7 +28791,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.request.method', 'http.request_method', 'http.method'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -25936,6 +28799,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'middleware.name': {
     brief: 'The name of the middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25950,7 +28820,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [485, 486, 519, 520],
         description:
           'Added django.middleware_name, starlite.middleware_name, litestar.middleware_name and starlette.middleware_name as aliases',
       },
@@ -25961,6 +28832,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
     type: 'string',
+    keys: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25974,6 +28846,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
     type: 'string',
+    keys: ['navigation.route.id'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25985,6 +28858,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
+    keys: ['navigation.type', 'sentry.sveltekit.navigation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26002,6 +28876,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
     type: 'integer',
+    keys: ['nel.elapsed_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26016,6 +28891,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'nel.phase': {
     brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
     type: 'string',
+    keys: ['nel.phase'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26027,6 +28903,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'nel.referrer': {
     brief: "request's referrer, as determined by the referrer policy associated with its client.",
     type: 'string',
+    keys: ['nel.referrer'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26038,6 +28915,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'nel.sampling_function': {
     brief: 'The sampling function used to determine if the request should be sampled.',
     type: 'double',
+    keys: ['nel.sampling_function'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26052,6 +28930,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'nel.type': {
     brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
     type: 'string',
+    keys: ['nel.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26063,6 +28942,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.connection.effective_type': {
     brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
+    keys: ['network.connection.effective_type', 'effectiveConnectionType'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26081,6 +28961,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.connection.rtt': {
     brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
     type: 'integer',
+    keys: ['network.connection.rtt', 'connection.rtt'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26099,6 +28980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.connection.type': {
     brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     type: 'string',
+    keys: ['network.connection.type', 'connectionType', 'device.connection_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26117,18 +28999,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.local.address': {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '10.1.2.80',
+    examples: ['10.1.2.80', '/var/run/my.sock'],
     aliases: ['net.host.ip', 'net.sock.host.addr'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'network.local.port': {
     brief: 'Local port number of the network connection.',
     type: 'integer',
+    keys: ['network.local.port', 'net.sock.host.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26141,6 +29026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.peer.address': {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26153,41 +29039,58 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.peer.port': {
     brief: 'Peer port number of the network connection.',
     type: 'integer',
+    keys: ['network.peer.port', 'net.sock.peer.port'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 65400,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    aliases: ['net.sock.peer.port'],
+    changelog: [
+      { version: 'next', description: 'Added net.sock.peer.port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'network.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'http',
-    aliases: ['net.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['net.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '1.1',
-    aliases: ['http.flavor', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['http.flavor', 'net.protocol.version', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
+    keys: ['network.transport', 'mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26200,6 +29103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.type': {
     brief: 'OSI network layer or non-OSI equivalent.',
     type: 'string',
+    keys: ['network.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26211,6 +29115,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.host.ip': {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26219,6 +29124,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.local.address',
+      status: 'backfill',
     },
     aliases: ['network.local.address', 'net.sock.host.addr'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -26227,6 +29133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26235,13 +29142,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
+      status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name', 'net.peer.name'],
+    changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.host.port': {
     brief: 'Server port number.',
     type: 'integer',
+    keys: ['server.port', 'net.host.port', 'port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26250,13 +29164,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1337,
     deprecation: {
       replacement: 'server.port',
+      status: 'backfill',
     },
-    aliases: ['server.port'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['server.port', 'port'],
+    changelog: [
+      { version: '0.19.0', prs: [532], description: 'Added port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'net.peer.ip': {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26265,6 +29186,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
+      status: 'backfill',
     },
     aliases: ['network.peer.address', 'net.sock.peer.addr'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -26273,6 +29195,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['net.peer.name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26283,11 +29206,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added the server.address alias group to net.peer.name' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.peer.port': {
     brief: 'Peer port number.',
     type: 'integer',
+    keys: ['net.peer.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26303,6 +29232,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26311,13 +29241,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'http',
     deprecation: {
       replacement: 'network.protocol.name',
+      status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26326,13 +29262,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
+      status: 'backfill',
     },
-    aliases: ['network.protocol.version', 'http.flavor'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.sock.family': {
     brief: 'OSI transport and network layer',
     type: 'string',
+    keys: ['net.sock.family'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26348,6 +29290,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.host.addr': {
     brief: 'Local address of the network connection mapping to Unix domain socket name.',
     type: 'string',
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26356,6 +29299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/var/my.sock',
     deprecation: {
       replacement: 'network.local.address',
+      status: 'backfill',
     },
     aliases: ['network.local.address', 'net.host.ip'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -26363,6 +29307,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.host.port': {
     brief: 'Local port number of the network connection.',
     type: 'integer',
+    keys: ['network.local.port', 'net.sock.host.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26371,6 +29316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8080,
     deprecation: {
       replacement: 'network.local.port',
+      status: 'backfill',
     },
     aliases: ['network.local.port'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -26378,6 +29324,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.peer.addr': {
     brief: 'Peer address of the network connection - IP address',
     type: 'string',
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26386,6 +29333,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
+      status: 'backfill',
     },
     aliases: ['network.peer.address', 'net.peer.ip'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -26393,6 +29341,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.peer.name': {
     brief: 'Peer address of the network connection - Unix domain socket name',
     type: 'string',
+    keys: ['net.sock.peer.name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26407,6 +29356,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.peer.port': {
     brief: 'Peer port number of the network connection.',
     type: 'integer',
+    keys: ['network.peer.port', 'net.sock.peer.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26415,12 +29365,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8080,
     deprecation: {
       replacement: 'network.peer.port',
+      status: 'backfill',
     },
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['network.peer.port'],
+    changelog: [
+      { version: 'next', description: 'Added network.peer.port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'net.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
+    keys: ['net.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26429,13 +29387,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'tcp',
     deprecation: {
       replacement: 'network.transport',
+      reason:
+        'This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.',
     },
     aliases: ['network.transport', 'mcp.transport'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Set net.transport to _status null, because its values change on the replacement',
+      },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'os.build': {
     brief: 'The build ID of the operating system.',
     type: 'string',
+    keys: ['os.build_id', 'os.build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26454,6 +29422,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.build_id': {
     brief: 'The build ID of the operating system.',
     type: 'string',
+    keys: ['os.build_id', 'os.build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26471,6 +29440,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.',
     type: 'string',
+    keys: ['os.description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26482,6 +29452,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.kernel_version': {
     brief: 'An independent kernel version string. Typically the entire output of the `uname` syscall.',
     type: 'string',
+    keys: ['os.kernel_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26493,6 +29464,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.name': {
     brief: 'Human readable operating system name.',
     type: 'string',
+    keys: ['os.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26505,6 +29477,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.',
     type: 'string',
+    keys: ['os.raw_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26516,6 +29489,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.rooted': {
     brief: 'Whether the operating system has been jailbroken or rooted.',
     type: 'boolean',
+    keys: ['os.rooted'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26527,6 +29501,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.theme': {
     brief: 'Whether the OS runs in dark mode or light mode.',
     type: 'string',
+    keys: ['os.theme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26538,6 +29513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.type': {
     brief: 'The operating system type.',
     type: 'string',
+    keys: ['os.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26549,6 +29525,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.version': {
     brief: 'The version of the operating system.',
     type: 'string',
+    keys: ['os.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26561,6 +29538,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
     type: 'string',
+    keys: ['sentry.kind', 'span.kind', 'otel.kind'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26578,6 +29556,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'otel.scope.name': {
     brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
     type: 'string',
+    keys: ['otel.scope.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26589,6 +29568,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'otel.scope.version': {
     brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
     type: 'string',
+    keys: ['otel.scope.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26600,6 +29580,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'otel.status_code': {
     brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
     type: 'string',
+    keys: ['otel.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26611,6 +29592,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'otel.status_description': {
     brief: 'Description of the Status if it has a value, otherwise not set.',
     type: 'string',
+    keys: ['otel.status_description'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26623,6 +29605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
+    keys: ['params.<key>', 'url.path.parameter.<key>', 'url.path.params.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26630,12 +29613,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "params.id='123'",
-    aliases: ['url.path.parameter.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
+    aliases: ['url.path.parameter.<key>', 'url.path.params.<key>'],
+    changelog: [
+      { version: 'next', description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.1.0', prs: [103] },
+    ],
   },
   'performance.activationStart': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
     type: 'double',
+    keys: ['browser.performance.navigation.activation_start', 'performance.activationStart'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26653,6 +29640,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'performance.timeOrigin': {
     brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
     type: 'double',
+    keys: ['browser.performance.time_origin', 'performance.timeOrigin'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26667,9 +29655,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['browser.performance.time_origin'],
     changelog: [{ version: '0.5.0', prs: [321], description: 'Added performance.timeOrigin attribute' }],
   },
+  port: {
+    brief: 'The destination port for a TCP connection.',
+    type: 'integer',
+    keys: ['server.port', 'net.host.port', 'port'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1337,
+    examples: [1337],
+    deprecation: {
+      replacement: 'server.port',
+      reason: 'Old namespace-less attribute, to be replaced with server.port for span-first future',
+      status: 'backfill',
+    },
+    aliases: ['server.port', 'net.host.port'],
+    changelog: [{ version: '0.19.0', prs: [532], description: 'Added port attribute' }],
+  },
   previous_route: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
     type: 'string',
+    keys: ['previous_route'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26681,6 +29689,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.command_args': {
     brief: 'All the command arguments (including the command/executable itself) as received by the process.',
     type: 'string[]',
+    keys: ['process.command_args'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26692,6 +29701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.executable.name': {
     brief: 'The name of the executable that started the process.',
     type: 'string',
+    keys: ['process.executable.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26703,6 +29713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.pid': {
     brief: 'The process ID of the running process.',
     type: 'integer',
+    keys: ['process.pid', 'subprocess.pid'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26711,7 +29722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 12345,
     aliases: ['subprocess.pid'],
     changelog: [
-      { version: 'next', description: 'Added subprocess.pid as an alias' },
+      { version: '0.19.0', prs: [487], description: 'Added subprocess.pid as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -26720,6 +29731,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
     type: 'string',
+    keys: ['process.runtime.description', 'runtime.raw_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26732,6 +29744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.engine.name': {
     brief: 'The name of the runtime engine.',
     type: 'string',
+    keys: ['process.runtime.engine.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26743,6 +29756,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.engine.version': {
     brief: 'The version of the runtime engine.',
     type: 'string',
+    keys: ['process.runtime.engine.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26754,6 +29768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.name': {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: 'string',
+    keys: ['process.runtime.name', 'runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26767,6 +29782,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
     type: 'string',
+    keys: ['process.runtime.version', 'runtime.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26780,6 +29796,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     type: 'string',
+    keys: ['sentry.profile_id', 'profile.id', 'profile_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -26791,11 +29808,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'normalize',
     },
     aliases: ['sentry.profile_id'],
-    changelog: [{ version: 'next', prs: [497], description: 'Added profile_id attribute' }],
+    changelog: [{ version: '0.19.0', prs: [497], description: 'Added profile_id attribute' }],
+  },
+  query: {
+    brief: 'The database query being executed.',
+    type: 'string',
+    keys: ['db.query.text', 'db.statement', 'query'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'SELECT * FROM users WHERE id = $1',
+    examples: ['SELECT * FROM users WHERE id = $1'],
+    deprecation: {
+      replacement: 'db.query.text',
+      reason:
+        'While this attribute never specifically required parameterization, the replacement, db.query.text, does.',
+      status: 'backfill',
+    },
+    aliases: ['db.query.text', 'db.statement'],
+    changelog: [{ version: '0.19.0', prs: [530], description: 'Added query attribute' }],
   },
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
+    keys: ['query.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26812,6 +29850,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'react.version': {
     brief: 'The version of the React framework',
     type: 'string',
+    keys: ['react.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26820,9 +29859,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '18.2.0',
     changelog: [{ version: '0.7.0', prs: [368], description: 'Added react.version attribute' }],
   },
+  'redis.command': {
+    brief: 'The name of the Redis operation being executed.',
+    type: 'string',
+    keys: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'SELECT',
+    examples: ['SELECT'],
+    deprecation: {
+      replacement: 'db.operation.name',
+      status: 'backfill',
+    },
+    aliases: ['cloudflare.d1.query_type', 'db.operation.name', 'db.operation'],
+    changelog: [{ version: '0.19.0', prs: [531], description: 'Added redis.command attribute' }],
+  },
   'redis.key': {
     brief: 'The key the Redis command is operating on.',
     type: 'string',
+    keys: ['db.redis.key', 'redis.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26835,11 +29893,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['db.redis.key'],
-    changelog: [{ version: 'next', description: 'Added redis.key attribute, deprecated in favor of db.redis.key' }],
+    changelog: [
+      { version: '0.19.0', prs: [484], description: 'Added redis.key attribute, deprecated in favor of db.redis.key' },
+    ],
   },
   release: {
     brief: 'The sentry release.',
     type: 'string',
+    keys: ['sentry.release', 'release', 'service.version'],
     applyScrubbing: {
       key: 'never',
     },
@@ -26852,7 +29913,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.release'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -26860,6 +29921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'remix.action_form_data.<key>': {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
     type: 'string',
+    keys: ['remix.action_form_data.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26872,6 +29934,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   replay_id: {
     brief: 'The id of the sentry replay.',
     type: 'string',
+    keys: ['sentry.replay_id', 'replay.id', 'replay_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -26884,7 +29947,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.replay_id'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Configured normalization' },
+      { version: '0.19.0', prs: [497], description: 'Configured normalization' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
     ],
@@ -26892,6 +29955,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'resource.deployment.environment': {
     brief: 'The software deployment environment name.',
     type: 'string',
+    keys: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26907,6 +29976,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'resource.deployment.environment.name': {
     brief: 'The software deployment environment name.',
     type: 'string',
+    keys: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26922,6 +29997,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'resource.render_blocking_status': {
     brief: 'The render blocking status of the resource.',
     type: 'string',
+    keys: ['resource.render_blocking_status'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26934,6 +30010,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
     type: 'string',
+    keys: ['route'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26949,6 +30026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.grpc.status_code': {
     brief: 'The numeric status code of the gRPC request.',
     type: 'integer',
+    keys: ['rpc.grpc.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26960,9 +30038,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'Cannot be automatically backfilled due to type mismatch (integer vs string); rpc.grpc.status_code is a numeric gRPC status code while rpc.response.status_code is the string status name.',
     },
-    aliases: ['rpc.response.status_code'],
+    aliases: ['code', 'rpc.response.status_code'],
     changelog: [
-      { version: 'next', description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code' },
+      {
+        version: '0.19.0',
+        prs: [494, 533],
+        description: 'Deprecated rpc.grpc.status_code in favor of rpc.response.status_code',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -26970,32 +30052,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.method': {
     brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
     type: 'string',
+    keys: ['rpc.method', 'aws.operation_name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'com.example.ExampleService/exampleMethod',
-    changelog: [{ version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' }],
+    aliases: ['aws.operation_name'],
+    changelog: [
+      { version: '0.19.0', prs: [536], description: 'Added aws.operation_name as an alias' },
+      { version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' },
+    ],
   },
   'rpc.response.status_code': {
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
     type: 'string',
+    keys: ['rpc.response.status_code', 'code'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'DEADLINE_EXCEEDED',
-    aliases: ['rpc.grpc.status_code'],
+    aliases: ['code', 'rpc.grpc.status_code'],
     changelog: [
-      { version: 'next', description: 'Added rpc.grpc.status_code as an alias' },
+      { version: '0.19.0', prs: [494, 533], description: 'Added code and rpc.grpc.status_code as aliases' },
       { version: '0.7.0', prs: [352], description: 'Added rpc.response.status_code attribute' },
     ],
   },
   'rpc.service': {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
     type: 'string',
+    keys: ['rpc.service'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27007,6 +30096,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.system': {
     brief: 'A string identifying the remoting system.',
     type: 'string',
+    keys: ['rpc.system.name', 'rpc.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27030,6 +30120,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.system.name': {
     brief: 'A string identifying the remoting system.',
     type: 'string',
+    keys: ['rpc.system.name', 'rpc.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27042,6 +30133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.build': {
     brief: 'The application build string, when it is separate from the version.',
     type: 'string',
+    keys: ['runtime.build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27057,6 +30149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.name': {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
     type: 'string',
+    keys: ['process.runtime.name', 'runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27066,6 +30159,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.name',
       reason: 'Prefer OTel-aligned process.runtime.name',
+      status: 'backfill',
     },
     aliases: ['process.runtime.name'],
     changelog: [
@@ -27080,6 +30174,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.',
     type: 'string',
+    keys: ['process.runtime.description', 'runtime.raw_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27089,6 +30184,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.description',
       reason: 'Prefer OTel-aligned process.runtime.description',
+      status: 'backfill',
     },
     aliases: ['process.runtime.description'],
     changelog: [
@@ -27102,6 +30198,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.version': {
     brief: 'The version of the runtime.',
     type: 'string',
+    keys: ['process.runtime.version', 'runtime.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27111,6 +30208,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.version',
       reason: 'Prefer OTel-aligned process.runtime.version',
+      status: 'backfill',
     },
     aliases: ['process.runtime.version'],
     changelog: [
@@ -27125,6 +30223,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.',
     type: 'double',
+    keys: ['score.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27137,6 +30236,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'score.ratio.<key>': {
     brief: 'The score for a web vital, normalized to a number between 0 and 1.',
     type: 'double',
+    keys: ['score.ratio.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27150,6 +30250,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).',
     type: 'double',
+    keys: ['score.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27160,6 +30261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'score.weight.<key>': {
     brief: "The relative weight of a web vital in a span's performance score.",
     type: 'double',
+    keys: ['score.weight.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27173,6 +30275,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
     type: 'string',
+    keys: ['sentry.action', 'span.action'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27180,10 +30283,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'SELECT',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    searchAlias: {
+      name: 'span.action',
+    },
   },
   'sentry.browser.name': {
     brief: 'The name of the browser.',
     type: 'string',
+    keys: ['browser.name', 'sentry.browser.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27192,13 +30299,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     deprecation: {
       replacement: 'browser.name',
+      status: 'backfill',
     },
     aliases: ['browser.name'],
     changelog: [{ version: '0.1.0', prs: [139] }],
+    searchAlias: {
+      name: 'browser.name',
+    },
   },
   'sentry.browser.version': {
     brief: 'The version of the browser.',
     type: 'string',
+    keys: ['browser.version', 'sentry.browser.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27207,6 +30319,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '120.0.6099.130',
     deprecation: {
       replacement: 'browser.version',
+      status: 'backfill',
     },
     aliases: ['browser.version'],
     changelog: [{ version: '0.1.0', prs: [139] }],
@@ -27214,6 +30327,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.cancellation_reason': {
     brief: 'The reason why a span ended early.',
     type: 'string',
+    keys: ['sentry.cancellation_reason'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27226,6 +30340,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
     type: 'string',
+    keys: ['sentry.category', 'span.category'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27233,10 +30348,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'db',
     changelog: [{ version: '0.4.0', prs: [218] }],
+    searchAlias: {
+      name: 'span.category',
+    },
   },
   'sentry.client_sample_rate': {
     brief: 'Rate at which a span was sampled in the SDK.',
     type: 'double',
+    keys: ['sentry.client_sample_rate', 'client_sample_rate'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27244,12 +30363,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
+    searchAlias: {
+      name: 'client_sample_rate',
+    },
   },
   'sentry.description': {
     brief: 'The human-readable description of a span.',
     type: 'string',
+    keys: ['sentry.description'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -27259,6 +30382,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dist': {
     brief: 'The sentry dist.',
     type: 'string',
+    keys: ['sentry.dist', 'dist'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27272,6 +30396,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
     type: 'string',
+    keys: ['sentry.domain', 'span.domain'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27279,10 +30404,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'example.com',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    searchAlias: {
+      name: 'span.domain',
+    },
   },
   'sentry.dsc.environment': {
     brief: 'The environment from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.environment'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27295,6 +30424,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
     type: 'string',
+    keys: ['sentry.dsc.project_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27306,6 +30436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.public_key': {
     brief: 'The public key from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.public_key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27317,6 +30448,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.release': {
     brief: 'The release identifier from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.release'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27328,6 +30460,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.sampled': {
     brief: 'Whether the event was sampled according to the dynamic sampling context.',
     type: 'boolean',
+    keys: ['sentry.dsc.sampled'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27339,6 +30472,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.sample_rate': {
     brief: 'The sample rate from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.sample_rate'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27350,6 +30484,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.trace_id': {
     brief: 'The trace ID from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.trace_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27361,6 +30496,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.transaction': {
     brief: 'The transaction name from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.transaction'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27372,6 +30508,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.environment': {
     brief: 'The sentry environment.',
     type: 'string',
+    keys: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
     applyScrubbing: {
       key: 'never',
     },
@@ -27380,10 +30522,58 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     aliases: ['environment'],
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'environment',
+    },
+  },
+  'sentry.event.serialized_breadcrumbs': {
+    brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    type: 'string',
+    keys: ['sentry.event.serialized_breadcrumbs'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: '0.19.0', prs: [556] }],
+  },
+  'sentry.event.serialized_contexts': {
+    brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    type: 'string',
+    keys: ['sentry.event.serialized_contexts'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: '0.19.0', prs: [556] }],
+  },
+  'sentry.event.serialized_extra': {
+    brief: 'JSON-serialized `extra` property from a Sentry event.',
+    type: 'string',
+    keys: ['sentry.event.serialized_extra'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: '0.19.0', prs: [556] }],
+  },
+  'sentry.event.serialized_meta': {
+    brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
+    type: 'string',
+    keys: ['sentry.event.serialized_meta'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    changelog: [{ version: '0.20.0', prs: [566] }],
   },
   'sentry.exclusive_time': {
     brief: 'The exclusive time duration of the span in milliseconds.',
     type: 'double',
+    keys: ['sentry.exclusive_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27395,6 +30585,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.frames.frozen': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.frozen.count', 'frames.frozen', 'mobile.frozen_frames', 'sentry.frames.frozen'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27408,11 +30599,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.frozen.count', 'frames.frozen'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.frozen attribute' }],
   },
   'sentry.frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27426,11 +30618,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.slow.count', 'frames.slow'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.slow attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.slow attribute' }],
   },
   'sentry.frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27444,11 +30637,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['app.vitals.frames.total.count', 'frames.total'],
-    changelog: [{ version: 'next', prs: [500], description: 'Added sentry.frames.total attribute' }],
+    changelog: [{ version: '0.19.0', prs: [500], description: 'Added sentry.frames.total attribute' }],
   },
   'sentry.graphql.operation': {
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
     type: 'string',
+    keys: ['sentry.graphql.operation'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27461,16 +30655,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
     type: 'string',
+    keys: ['sentry.group', 'span.group'],
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    searchAlias: {
+      name: 'span.group',
+    },
   },
   'sentry.http.prefetch': {
     brief: 'If an http request was a prefetch request.',
     type: 'boolean',
+    keys: ['sentry.http.prefetch'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27482,6 +30681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.idle_span_finish_reason': {
     brief: 'The reason why an idle span ended early.',
     type: 'string',
+    keys: ['sentry.idle_span_finish_reason'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27493,6 +30693,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.is_remote': {
     brief: "Indicates whether a span's parent is remote.",
     type: 'boolean',
+    keys: ['sentry.is_remote'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27505,6 +30706,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
     type: 'string',
+    keys: ['sentry.kind', 'span.kind', 'otel.kind'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27514,14 +30716,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['client', 'server', 'producer', 'consumer', 'internal'],
     aliases: ['otel.kind'],
     changelog: [
-      { version: 'next', prs: [517], description: 'Added more examples and additional_context to the attribute' },
+      { version: '0.19.0', prs: [517], description: 'Added more examples and additional_context to the attribute' },
       { version: '0.3.1', prs: [190] },
     ],
     additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
+    searchAlias: {
+      name: 'span.kind',
+    },
   },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
+    keys: ['sentry.main_thread'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27534,6 +30740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
     type: 'string',
+    keys: ['sentry.message.parameter.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27545,6 +30752,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.message.template': {
     brief: 'The parameterized template string.',
     type: 'string',
+    keys: ['sentry.message.template'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27557,6 +30765,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.',
     type: 'string',
+    keys: ['sentry.metric.source'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27568,6 +30777,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.mobile': {
     brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
+    keys: ['sentry.mobile'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27579,6 +30789,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.module.<key>': {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
     type: 'string',
+    keys: ['sentry.module.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27592,6 +30803,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
     type: 'string',
+    keys: ['sentry.nextjs.ssr.function.route'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27604,6 +30816,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
     type: 'string',
+    keys: ['sentry.nextjs.ssr.function.type'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27615,6 +30828,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.normalized_db_query': {
     brief: 'The normalized version of `db.query.text`.',
     type: 'string',
+    keys: ['sentry.normalized_db_query'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27626,6 +30840,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.normalized_db_query.hash': {
     brief: 'The hash of `sentry.normalized_db_query`.',
     type: 'string',
+    keys: ['sentry.normalized_db_query.hash'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27637,6 +30852,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
     type: 'string',
+    keys: ['sentry.normalized_description'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27648,6 +30864,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.observed_timestamp_nanos': {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     type: 'string',
+    keys: ['sentry.observed_timestamp_nanos'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27662,6 +30879,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.op': {
     brief: 'The operation of a span.',
     type: 'string',
+    keys: ['sentry.op', 'span.op'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27669,10 +30887,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'http.client',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'span.op',
+    },
   },
   'sentry.origin': {
     brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
     type: 'string',
+    keys: ['sentry.origin', 'origin'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27680,10 +30902,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'auto.http.otel.fastify',
     changelog: [{ version: '0.1.0', prs: [68] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'origin',
+    },
   },
   'sentry.pageload.span_id': {
     brief: 'The id of the pageload span, set by web vital spans and metrics',
     type: 'string',
+    keys: ['sentry.pageload.span_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27695,6 +30921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.platform': {
     brief: 'The sdk platform that generated the event.',
     type: 'string',
+    keys: ['sentry.platform', 'platform'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27702,10 +30929,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'php',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'platform',
+    },
   },
   'sentry.profiler_id': {
     brief: 'The id of the currently running profiler (continuous profiling)',
     type: 'string',
+    keys: ['sentry.profiler_id', 'profiler.id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27713,11 +30944,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
     changelog: [{ version: '0.4.0', prs: [242] }],
+    searchAlias: {
+      name: 'profiler.id',
+    },
   },
   'sentry.profile_id': {
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     type: 'string',
+    keys: ['sentry.profile_id', 'profile.id', 'profile_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27726,13 +30961,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     aliases: ['profile_id'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Added profile_id as an alias' },
+      { version: '0.19.0', prs: [497], description: 'Added profile_id as an alias' },
       { version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' },
     ],
+    searchAlias: {
+      name: 'profile.id',
+    },
   },
   'sentry.relay.ingress': {
     brief: 'How an item (span, log, &c.) entered Relay.',
     type: 'string',
+    keys: ['sentry.relay.ingress'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27744,6 +30983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.relay.pipeline': {
     brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
     type: 'string',
+    keys: ['sentry.relay.pipeline'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27755,6 +30995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.release': {
     brief: 'The sentry release.',
     type: 'string',
+    keys: ['sentry.release', 'release', 'service.version'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27763,10 +31004,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '7.0.0',
     aliases: ['service.version', 'release'],
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'release',
+    },
   },
   'sentry.replay_id': {
     brief: 'The id of the sentry replay.',
     type: 'string',
+    keys: ['sentry.replay_id', 'replay.id', 'replay_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27775,11 +31020,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '123e4567e89b12d3a456426614174000',
     aliases: ['replay_id'],
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'replay.id',
+    },
   },
   'sentry.replay_is_buffering': {
     brief:
       'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
     type: 'boolean',
+    keys: ['sentry.replay_is_buffering'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27791,6 +31040,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.report_event': {
     brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
     type: 'string',
+    keys: ['sentry.report_event'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27807,6 +31057,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
     type: 'string[]',
+    keys: ['sentry.sdk.integrations'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27818,6 +31069,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.sdk.name': {
     brief: 'The sentry sdk name.',
     type: 'string',
+    keys: ['sentry.sdk.name', 'sdk.name'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27825,10 +31077,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '@sentry/react',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'sdk.name',
+    },
   },
   'sentry.sdk.version': {
     brief: 'The sentry sdk version.',
     type: 'string',
+    keys: ['sentry.sdk.version', 'sdk.version'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27836,10 +31092,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '7.0.0',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'sdk.version',
+    },
   },
   'sentry.segment.id': {
     brief: 'The segment ID of a span',
     type: 'string',
+    keys: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27852,6 +31112,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.segment_id': {
     brief: 'The segment ID of a span',
     type: 'string',
+    keys: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27864,10 +31125,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.id'],
     changelog: [{ version: '0.1.0', prs: [124] }],
+    searchAlias: {
+      name: 'transaction.span_id',
+    },
   },
   'sentry.segment.name': {
     brief: 'The segment name of a span',
     type: 'string',
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27879,11 +31144,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
       { version: '0.1.0', prs: [104] },
     ],
+    searchAlias: {
+      name: 'transaction',
+    },
   },
   'sentry.segment.name.source': {
     brief:
       "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
     type: 'string',
+    keys: ['sentry.segment.name.source'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27891,7 +31160,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'internal',
     example: 'route',
     examples: ['route', 'component', 'view', 'task', 'custom', 'url'],
-    changelog: [{ version: 'next', prs: [466], description: 'Added sentry.segment.name.source' }],
+    changelog: [{ version: '0.19.0', prs: [466], description: 'Added sentry.segment.name.source' }],
     additionalContext: [
       'This attribute is the replacement for `transaction_info.source` on transactions.',
       'Should we bring back clustering for segment names (like we do for transaction names), this attribute will be used to determine if a segment name should be clustered.',
@@ -27900,6 +31169,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.server_sample_rate': {
     brief: 'Rate at which a span was sampled in Relay.',
     type: 'double',
+    keys: ['sentry.server_sample_rate', 'server_sample_rate'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27907,27 +31177,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
+    searchAlias: {
+      name: 'server_sample_rate',
+    },
   },
   'sentry.source': {
     brief:
       "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     type: 'string',
-    applyScrubbing: {
-      key: 'never',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: 'route',
-    deprecation: {
-      reason:
-        'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
-    },
-    changelog: [{ version: 'next', description: 'Removed the sentry.span.source replacement' }, { version: '0.5.0' }],
-  },
-  'sentry.span.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
-    type: 'string',
+    keys: ['sentry.source'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27939,7 +31197,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
     },
     changelog: [
-      { version: 'next', description: 'Deprecated; superseded by sentry.segment.name.source on segment spans' },
+      { version: '0.19.0', prs: [510], description: 'Removed the sentry.span.source replacement' },
+      { version: '0.5.0' },
+    ],
+  },
+  'sentry.span.source': {
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    type: 'string',
+    keys: ['sentry.span.source'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'route',
+    deprecation: {
+      reason:
+        'This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.',
+    },
+    changelog: [
+      {
+        version: '0.19.0',
+        prs: [510],
+        description: 'Deprecated; superseded by sentry.segment.name.source on segment spans',
+      },
       { version: '0.4.0', prs: [214] },
       { version: '0.0.0' },
     ],
@@ -27948,6 +31230,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
     type: 'string',
+    keys: ['sentry.status', 'span.status'],
     applyScrubbing: {
       key: 'never',
     },
@@ -27955,11 +31238,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ok',
     changelog: [{ version: '0.14.0', prs: [453] }],
+    searchAlias: {
+      name: 'span.status',
+    },
   },
   'sentry.status_code': {
     brief:
       'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
     type: 'integer',
+    keys: ['sentry.status_code', 'span.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27967,10 +31254,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 200,
     changelog: [{ version: '0.4.0', prs: [223, 228] }],
+    searchAlias: {
+      name: 'span.status_code',
+    },
   },
   'sentry.status.message': {
     brief: 'The from OTLP extracted status message.',
     type: 'string',
+    keys: ['sentry.status.message', 'span.status.message'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27978,10 +31269,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
+    searchAlias: {
+      name: 'span.status.message',
+    },
   },
   'sentry.sveltekit.navigation.from': {
     brief: 'the navigation origin (sveltekit router)',
     type: 'string',
+    keys: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27999,6 +31294,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.sveltekit.navigation.to': {
     brief: 'the navigation destination',
     type: 'string',
+    keys: ['sentry.sveltekit.navigation.to'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28013,6 +31309,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.sveltekit.navigation.type': {
     brief: 'The type of navigation event emitted from the sveltekit client router',
     type: 'string',
+    keys: ['navigation.type', 'sentry.sveltekit.navigation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28028,8 +31325,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
   },
   'sentry.thread.id': {
-    brief: 'Current “managed” thread ID.',
+    brief: 'Current "managed" thread ID.',
     type: 'integer',
+    keys: ['thread.id', 'sentry.thread.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28042,11 +31340,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     changelog: [{ version: '0.13.0', prs: [451] }],
+    searchAlias: {
+      name: 'thread.id',
+    },
   },
   'sentry.timestamp.sequence': {
     brief:
       'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
     type: 'integer',
+    keys: ['sentry.timestamp.sequence'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28058,6 +31360,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.trace_lifecycle': {
     brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
     type: 'string',
+    keys: ['sentry.trace_lifecycle', 'trace_lifecycle'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28065,11 +31368,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'stream',
     changelog: [{ version: '0.13.0', prs: [442], description: 'Added sentry.trace_lifecycle attribute' }],
+    searchAlias: {
+      name: 'trace_lifecycle',
+    },
   },
   'sentry.trace.parent_span_id': {
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
     type: 'string',
+    keys: ['sentry.trace.parent_span_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28086,6 +31393,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
     type: 'string',
+    keys: ['sentry.trace.status', 'trace.status'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28093,10 +31401,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ok',
     changelog: [{ version: '0.14.0', prs: [453] }],
+    searchAlias: {
+      name: 'trace.status',
+    },
   },
   'sentry.transaction': {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28117,6 +31429,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.email': {
     brief: 'User email address.',
     type: 'string',
+    keys: ['user.email', 'sentry.user.email'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28124,13 +31437,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.email',
+      status: 'backfill',
     },
     aliases: ['user.email'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.email',
+    },
   },
   'sentry.user.geo.city': {
     brief: 'Human readable city name.',
     type: 'string',
+    keys: ['user.geo.city', 'sentry.user.geo.city'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28138,13 +31456,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.city',
+      status: 'backfill',
     },
     aliases: ['user.geo.city'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.geo.city',
+    },
   },
   'sentry.user.geo.country_code': {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: 'string',
+    keys: ['user.geo.country_code', 'sentry.user.geo.country_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28152,13 +31475,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.country_code',
+      status: 'backfill',
     },
     aliases: ['user.geo.country_code'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.geo.country_code',
+    },
   },
   'sentry.user.geo.region': {
     brief: 'Human readable region name or code.',
     type: 'string',
+    keys: ['user.geo.region', 'sentry.user.geo.region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28166,13 +31494,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.region',
+      status: 'backfill',
     },
     aliases: ['user.geo.region'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.geo.region',
+    },
   },
   'sentry.user.geo.subdivision': {
     brief: 'Human readable subdivision name.',
     type: 'string',
+    keys: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28180,13 +31513,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.subdivision',
+      status: 'backfill',
     },
     aliases: ['user.geo.subdivision'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.geo.subdivision',
+    },
   },
   'sentry.user.id': {
     brief: 'Unique identifier of the user.',
     type: 'string',
+    keys: ['user.id', 'sentry.user.id'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28194,13 +31532,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.id',
+      status: 'backfill',
     },
     aliases: ['user.id'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.id',
+    },
   },
   'sentry.user.ip': {
     brief: 'The IP address of the user.',
     type: 'string',
+    keys: ['user.ip_address', 'sentry.user.ip', 'user.ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28208,13 +31551,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.ip_address',
+      status: 'backfill',
     },
     aliases: ['user.ip_address'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.ip',
+    },
   },
   'sentry.user.username': {
     brief: 'Short name or login/username of the user.',
     type: 'string',
+    keys: ['user.name', 'sentry.user.username', 'user.username'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28222,27 +31570,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.name',
+      status: 'backfill',
     },
     aliases: ['user.name'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.username',
+    },
   },
   'server.address': {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.1.0', prs: [108, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
+      { version: '0.1.0', prs: [108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   server_name: {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28254,8 +31613,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
         prs: [477],
@@ -28266,18 +31627,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'server.port': {
     brief: 'Server port number.',
     type: 'integer',
+    keys: ['server.port', 'net.host.port', 'port'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 1337,
-    aliases: ['net.host.port'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    aliases: ['net.host.port', 'port'],
+    changelog: [
+      { version: '0.19.0', prs: [532], description: 'Added port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'service.name': {
     brief: 'Logical name of the service.',
     type: 'string',
+    keys: ['service.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28289,6 +31656,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'service.version': {
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
     type: 'string',
+    keys: ['service.version', 'sentry.release', 'release'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28301,6 +31669,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'session.id': {
     brief: 'A unique id identifying the active session at the time of setting this attribute',
     type: 'string',
+    keys: ['session.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28312,6 +31681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   stall_percentage: {
     brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.stall.percentage', 'stall_percentage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28325,7 +31695,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.stall.percentage'],
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.stall.percentage' },
       { version: '0.7.0', prs: [362], description: 'Added stall_percentage attribute' },
     ],
   },
@@ -28333,6 +31703,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.stall.duration', 'stall_total_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28346,13 +31717,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['app.vitals.stall.duration'],
     changelog: [
-      { version: 'next', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
+      { version: '0.19.0', prs: [493], description: 'Deprecated in favor of app.vitals.stall.duration' },
       { version: '0.7.0', prs: [362], description: 'Added stall_total_time attribute' },
     ],
   },
   'starlette.middleware_name': {
     brief: 'The name of the Starlette middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28368,7 +31746,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['middleware.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.19.0',
+        prs: [485],
         description: 'Added starlette.middleware_name attribute, deprecated in favor of middleware.name',
       },
     ],
@@ -28376,6 +31755,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'starlite.middleware_name': {
     brief: 'The name of the Starlite middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28390,11 +31776,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['middleware.name'],
-    changelog: [{ version: 'next', prs: [519], description: 'Added starlite.middleware_name attribute' }],
+    changelog: [{ version: '0.19.0', prs: [519], description: 'Added starlite.middleware_name attribute' }],
   },
   'state.type': {
     brief: 'The type of state management library',
     type: 'string',
+    keys: ['state.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28406,6 +31793,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'subprocess.pid': {
     brief: 'The process ID of a subprocess.',
     type: 'integer',
+    keys: ['process.pid', 'subprocess.pid'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28418,11 +31806,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['process.pid'],
-    changelog: [{ version: 'next', description: 'Added subprocess.pid attribute, deprecated in favor of process.pid' }],
+    changelog: [
+      {
+        version: '0.19.0',
+        prs: [487],
+        description: 'Added subprocess.pid attribute, deprecated in favor of process.pid',
+      },
+    ],
   },
   'thread.id': {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
+    keys: ['thread.id', 'sentry.thread.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28434,6 +31829,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'thread.name': {
     brief: 'Current thread name.',
     type: 'string',
+    keys: ['thread.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28445,6 +31841,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'timber.tag': {
     brief: 'The log tag provided by the timber logging framework.',
     type: 'string',
+    keys: ['timber.tag'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28456,6 +31853,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   time_to_full_display: {
     brief: 'The duration of time to full display in milliseconds',
     type: 'double',
+    keys: ['app.vitals.ttfd.value', 'time_to_full_display'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28476,6 +31874,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   time_to_initial_display: {
     brief: 'The duration of time to initial display in milliseconds',
     type: 'double',
+    keys: ['app.vitals.ttid.value', 'time_to_initial_display'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28496,6 +31895,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   transaction: {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28508,7 +31908,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.name', 'sentry.transaction'],
     changelog: [
-      { version: 'next', prs: [497], description: 'Change deprecation from backfill to normalize' },
+      { version: '0.19.0', prs: [497], description: 'Change deprecation from backfill to normalize' },
       {
         version: '0.6.0',
         prs: [345],
@@ -28521,6 +31921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'trpc.procedure_path': {
     brief: 'The path of the tRPC procedure being called',
     type: 'string',
+    keys: ['trpc.procedure_path'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28532,6 +31933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'trpc.procedure_type': {
     brief: 'The type of the tRPC procedure',
     type: 'string',
+    keys: ['trpc.procedure_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28543,6 +31945,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   ttfb: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
     type: 'double',
+    keys: ['browser.web_vital.ttfb.value', 'ttfb'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28561,6 +31964,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
     type: 'double',
+    keys: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28578,6 +31982,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   type: {
     brief: 'More granular type of the operation happening.',
     type: 'string',
+    keys: ['type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28589,6 +31994,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.component_name': {
     brief: 'The name of the associated component.',
     type: 'string',
+    keys: ['ui.component_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28600,6 +32006,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.contributes_to_ttfd': {
     brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
     type: 'boolean',
+    keys: ['ui.contributes_to_ttfd'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28611,6 +32018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.contributes_to_ttid': {
     brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
     type: 'boolean',
+    keys: ['ui.contributes_to_ttid'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28622,6 +32030,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.height': {
     brief: 'The height of the UI element (for Html in pixels)',
     type: 'integer',
+    keys: ['ui.element.height'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28633,6 +32042,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.id': {
     brief: 'The id of the UI element',
     type: 'string',
+    keys: ['ui.element.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28644,6 +32054,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.identifier': {
     brief: 'The identifier used to measure the UI element timing',
     type: 'string',
+    keys: ['ui.element.identifier'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28655,6 +32066,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.load_time': {
     brief: 'The loading time of a UI element (from time origin to finished loading)',
     type: 'double',
+    keys: ['ui.element.load_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28666,6 +32078,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.paint_type': {
     brief: "The type of element paint. Can either be 'image-paint' or 'text-paint'",
     type: 'string',
+    keys: ['ui.element.paint_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28677,6 +32090,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.render_time': {
     brief: 'The rendering time of the UI element (from time origin to finished rendering)',
     type: 'double',
+    keys: ['ui.element.render_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28688,6 +32102,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.type': {
     brief: 'type of the UI element',
     type: 'string',
+    keys: ['ui.element.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28699,6 +32114,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.url': {
     brief: 'The URL of the UI element (e.g. an img src)',
     type: 'string',
+    keys: ['ui.element.url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28710,6 +32126,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.width': {
     brief: 'The width of the UI element (for HTML in pixels)',
     type: 'integer',
+    keys: ['ui.element.width'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28721,6 +32138,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   url: {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28729,14 +32147,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
+      status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'url.domain': {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['url.domain'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28749,6 +32173,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
     type: 'string',
+    keys: ['url.fragment'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28760,15 +32185,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.full': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url', 'aws.request.url'],
+    aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url'],
     changelog: [
-      { version: 'next', description: 'Added aws.request.url as an alias' },
+      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
       { version: '0.0.0' },
     ],
@@ -28776,6 +32203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.path': {
     brief: 'The URI path component.',
     type: 'string',
+    keys: ['url.path'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28788,6 +32216,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
+    keys: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28795,12 +32224,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "url.path.parameter.id='123'",
-    aliases: ['params.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
+    aliases: ['params.<key>', 'url.path.params.<key>'],
+    changelog: [
+      { version: 'next', description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.1.0', prs: [103] },
+    ],
+  },
+  'url.path.params.<key>': {
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    type: 'string',
+    keys: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "url.path.params.id='123'",
+    examples: ["url.path.params.id='123'"],
+    deprecation: {
+      replacement: 'url.path.parameter.<key>',
+      reason: 'This attribute is being deprecated in favor of url.path.parameter.<key>.',
+      status: 'backfill',
+    },
+    aliases: ['url.path.parameter.<key>', 'params.<key>'],
+    changelog: [{ version: 'next', prs: [586], description: 'Added url.path.params.<key> attribute' }],
   },
   'url.port': {
     brief: 'Server port number.',
     type: 'integer',
+    keys: ['url.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28813,6 +32267,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
     type: 'string',
+    keys: ['url.query'],
     applyScrubbing: {
       key: 'auto',
       reason:
@@ -28826,6 +32281,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.same_origin': {
     brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
     type: 'boolean',
+    keys: ['http.request.same_origin', 'url.same_origin'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28849,6 +32305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
+    keys: ['url.scheme', 'http.scheme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28859,8 +32316,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'url.template': {
-    brief: 'The low-cardinality template of an absolute path reference.',
+    brief: 'The low-cardinality template of an absolute URL path reference.',
     type: 'string',
+    keys: ['url.template'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28868,16 +32326,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/users/{id}',
     examples: ['/users/{id}', '/users/:id', '/about'],
-    aliases: ['http.route'],
     changelog: [
-      { version: 'next', prs: [505], description: 'Added multiple examples' },
+      {
+        version: '0.19.0',
+        prs: [505, 521],
+        description: 'Added multiple examples, removed alias to `http.route`, added additional context',
+      },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'This attribute should primarily be set by client-side routing instrumentation, or `http.client` spans (if applicable).',
+      'Use `http.route` for server-side instrumentation that captures the framework route of an incoming request.',
     ],
   },
   'user_agent.original': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
+    keys: ['user_agent.original', 'http.user_agent'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28891,6 +32357,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.email': {
     brief: 'User email address.',
     type: 'string',
+    keys: ['user.email', 'sentry.user.email'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28903,6 +32370,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.full_name': {
     brief: "User's full name.",
     type: 'string',
+    keys: ['user.full_name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28914,6 +32382,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.city': {
     brief: 'Human readable city name.',
     type: 'string',
+    keys: ['user.geo.city', 'sentry.user.geo.city'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28926,6 +32395,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.country_code': {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: 'string',
+    keys: ['user.geo.country_code', 'sentry.user.geo.country_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28938,6 +32408,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.region': {
     brief: 'Human readable region name or code.',
     type: 'string',
+    keys: ['user.geo.region', 'sentry.user.geo.region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28950,6 +32421,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.subdivision': {
     brief: 'Human readable subdivision name.',
     type: 'string',
+    keys: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28962,6 +32434,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.hash': {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
     type: 'string',
+    keys: ['user.hash'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28973,6 +32446,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.id': {
     brief: 'Unique identifier of the user.',
     type: 'string',
+    keys: ['user.id', 'sentry.user.id'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28985,6 +32459,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.ip_address': {
     brief: 'The IP address of the user.',
     type: 'string',
+    keys: ['user.ip_address', 'sentry.user.ip', 'user.ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28997,6 +32472,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.name': {
     brief: 'Short name or login/username of the user.',
     type: 'string',
+    keys: ['user.name', 'sentry.user.username', 'user.username'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29009,6 +32485,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.roles': {
     brief: 'Array of user roles at the time of the event.',
     type: 'string[]',
+    keys: ['user.roles'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29020,6 +32497,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.branch': {
     brief: 'Git branch name for Vercel project',
     type: 'string',
+    keys: ['vercel.branch'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29031,6 +32509,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.build_id': {
     brief: 'Identifier for the Vercel build (only present on build logs)',
     type: 'string',
+    keys: ['vercel.build_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29042,6 +32521,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.deployment_id': {
     brief: 'Identifier for the Vercel deployment',
     type: 'string',
+    keys: ['vercel.deployment_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29053,6 +32533,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.destination': {
     brief: 'Origin of the external content in Vercel (only on external logs)',
     type: 'string',
+    keys: ['vercel.destination'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29064,6 +32545,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.edge_type': {
     brief: 'Type of edge runtime in Vercel',
     type: 'string',
+    keys: ['vercel.edge_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29075,6 +32557,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.entrypoint': {
     brief: 'Entrypoint for the request in Vercel',
     type: 'string',
+    keys: ['vercel.entrypoint'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29086,6 +32569,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.execution_region': {
     brief: 'Region where the request is executed',
     type: 'string',
+    keys: ['vercel.execution_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29097,6 +32581,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.id': {
     brief: 'Unique identifier for the log entry in Vercel',
     type: 'string',
+    keys: ['vercel.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29108,6 +32593,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.ja3_digest': {
     brief: 'JA3 fingerprint digest of Vercel request',
     type: 'string',
+    keys: ['vercel.ja3_digest'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29119,6 +32605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.ja4_digest': {
     brief: 'JA4 fingerprint digest',
     type: 'string',
+    keys: ['vercel.ja4_digest'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29130,6 +32617,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.log_type': {
     brief: 'Vercel log output type',
     type: 'string',
+    keys: ['vercel.log_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29141,6 +32629,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.path': {
     brief: 'Function or dynamic path of the request in Vercel.',
     type: 'string',
+    keys: ['vercel.path'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29152,6 +32641,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.project_id': {
     brief: 'Identifier for the Vercel project',
     type: 'string',
+    keys: ['vercel.project_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29163,6 +32653,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.project_name': {
     brief: 'Name of the Vercel project',
     type: 'string',
+    keys: ['vercel.project_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29174,6 +32665,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.cache_id': {
     brief: 'Original request ID when request is served from cache',
     type: 'string',
+    keys: ['vercel.proxy.cache_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29185,6 +32677,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.client_ip': {
     brief: 'Client IP address',
     type: 'string',
+    keys: ['vercel.proxy.client_ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29196,6 +32689,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.host': {
     brief: 'Hostname of the request',
     type: 'string',
+    keys: ['vercel.proxy.host'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29207,6 +32701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.lambda_region': {
     brief: 'Region where lambda function executed',
     type: 'string',
+    keys: ['vercel.proxy.lambda_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29218,6 +32713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.method': {
     brief: 'HTTP method of the request',
     type: 'string',
+    keys: ['vercel.proxy.method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29229,6 +32725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.path': {
     brief: 'Request path with query parameters',
     type: 'string',
+    keys: ['vercel.proxy.path'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29240,6 +32737,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.path_type': {
     brief: 'How the request was served based on its path and project configuration',
     type: 'string',
+    keys: ['vercel.proxy.path_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29251,6 +32749,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.path_type_variant': {
     brief: 'Variant of the path type',
     type: 'string',
+    keys: ['vercel.proxy.path_type_variant'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29262,6 +32761,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.referer': {
     brief: 'Referer of the request',
     type: 'string',
+    keys: ['vercel.proxy.referer'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29273,6 +32773,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.region': {
     brief: 'Region where the request is processed',
     type: 'string',
+    keys: ['vercel.proxy.region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29284,6 +32785,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.response_byte_size': {
     brief: 'Size of the response in bytes',
     type: 'integer',
+    keys: ['vercel.proxy.response_byte_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29298,6 +32800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.scheme': {
     brief: 'Protocol of the request',
     type: 'string',
+    keys: ['vercel.proxy.scheme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29309,6 +32812,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.status_code': {
     brief: 'HTTP status code of the proxy request',
     type: 'integer',
+    keys: ['vercel.proxy.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29323,6 +32827,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.timestamp': {
     brief: 'Unix timestamp when the proxy request was made',
     type: 'integer',
+    keys: ['vercel.proxy.timestamp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29337,6 +32842,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.user_agent': {
     brief: 'User agent strings of the request',
     type: 'string[]',
+    keys: ['vercel.proxy.user_agent'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29348,6 +32854,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.vercel_cache': {
     brief: 'Cache status sent to the browser',
     type: 'string',
+    keys: ['vercel.proxy.vercel_cache'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29359,6 +32866,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.vercel_id': {
     brief: 'Vercel-specific identifier',
     type: 'string',
+    keys: ['vercel.proxy.vercel_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29370,6 +32878,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.waf_action': {
     brief: 'Action taken by firewall rules',
     type: 'string',
+    keys: ['vercel.proxy.waf_action'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29381,6 +32890,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.waf_rule_id': {
     brief: 'ID of the firewall rule that matched',
     type: 'string',
+    keys: ['vercel.proxy.waf_rule_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29392,6 +32902,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.request_id': {
     brief: 'Identifier of the Vercel request',
     type: 'string',
+    keys: ['vercel.request_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29403,6 +32914,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.source': {
     brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
     type: 'string',
+    keys: ['vercel.source'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29414,6 +32926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.status_code': {
     brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
     type: 'integer',
+    keys: ['vercel.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29427,9 +32940,5220 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
 };
 
+export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {
+  address: {
+    canonicalName: 'server.address',
+    type: 'string',
+    brief: 'The destination hostname or IP address for a TCP connection.',
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+  },
+  'ai.citations': {
+    canonicalName: 'ai.citations',
+    type: 'string[]',
+    brief: 'References or sources cited by the AI model in its response.',
+    deprecationChain: ['ai.citations'],
+  },
+  'ai.completion_tokens.used': {
+    canonicalName: 'gen_ai.usage.output_tokens',
+    type: 'integer',
+    brief: 'The number of tokens used to respond to the message.',
+    deprecationChain: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
+  },
+  'ai.documents': {
+    canonicalName: 'ai.documents',
+    type: 'string[]',
+    brief: 'Documents or content chunks used as context for the AI model.',
+    deprecationChain: ['ai.documents'],
+  },
+  'ai.finish_reason': {
+    canonicalName: 'gen_ai.response.finish_reasons',
+    type: 'string',
+    brief: 'The reason why the model stopped generating.',
+    deprecationChain: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
+  },
+  'ai.frequency_penalty': {
+    canonicalName: 'gen_ai.request.frequency_penalty',
+    type: 'double',
+    brief:
+      'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
+    deprecationChain: ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'],
+  },
+  'ai.function_call': {
+    canonicalName: 'gen_ai.tool.name',
+    type: 'string',
+    brief:
+      'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls',
+    deprecationChain: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
+  },
+  'ai.generation_id': {
+    canonicalName: 'gen_ai.response.id',
+    type: 'string',
+    brief: 'Unique identifier for the completion.',
+    deprecationChain: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
+  },
+  'ai.input_messages': {
+    canonicalName: 'gen_ai.input.messages',
+    type: 'string',
+    brief: 'The input messages sent to the model',
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+  },
+  'ai.is_search_required': {
+    canonicalName: 'ai.is_search_required',
+    type: 'boolean',
+    brief: 'Boolean indicating if the model needs to perform a search.',
+    deprecationChain: ['ai.is_search_required'],
+  },
+  'ai.metadata': {
+    canonicalName: 'ai.metadata',
+    type: 'string',
+    brief: 'Extra metadata passed to an AI pipeline step.',
+    deprecationChain: ['ai.metadata'],
+  },
+  'ai.model.id': {
+    canonicalName: 'gen_ai.request.model',
+    type: 'string',
+    brief: 'The id of the model used by the Vercel AI SDK.',
+    deprecationChain: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
+  },
+  'ai.model.provider': {
+    canonicalName: 'gen_ai.provider.name',
+    type: 'string',
+    brief: 'The provider of the model.',
+    deprecationChain: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
+  },
+  'ai.model_id': {
+    canonicalName: 'gen_ai.request.model',
+    type: 'string',
+    brief: 'The vendor-specific ID of the model used.',
+    deprecationChain: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
+  },
+  'ai.pipeline.name': {
+    canonicalName: 'gen_ai.pipeline.name',
+    type: 'string',
+    brief: 'The name of the AI pipeline.',
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+  },
+  'ai.preamble': {
+    canonicalName: 'gen_ai.system_instructions',
+    type: 'string',
+    brief:
+      "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
+    deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
+  },
+  'ai.presence_penalty': {
+    canonicalName: 'gen_ai.request.presence_penalty',
+    type: 'double',
+    brief:
+      'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
+    deprecationChain: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
+  },
+  'ai.prompt': {
+    canonicalName: 'gen_ai.input.messages',
+    type: 'string',
+    brief: 'The prompt passed to the Vercel AI SDK, as a stringified object.',
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+  },
+  'ai.prompt.messages': {
+    canonicalName: 'gen_ai.input.messages',
+    type: 'string',
+    brief: 'The input messages sent to the AI model.',
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+  },
+  'ai.prompt.tools': {
+    canonicalName: 'gen_ai.tool.definitions',
+    type: 'string[]',
+    brief: 'The tools made available to the model, as an array of stringified tool definitions.',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
+  },
+  'ai.prompt_tokens.used': {
+    canonicalName: 'gen_ai.usage.input_tokens',
+    type: 'integer',
+    brief: 'The number of tokens used to process just the prompt.',
+    deprecationChain: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
+  },
+  'ai.raw_prompting': {
+    canonicalName: 'ai.raw_prompting',
+    type: 'boolean',
+    brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
+    deprecationChain: ['ai.raw_prompting'],
+  },
+  'ai.response.id': {
+    canonicalName: 'gen_ai.response.id',
+    type: 'string',
+    brief: 'The id of the response returned by the model.',
+    deprecationChain: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
+  },
+  'ai.response.model': {
+    canonicalName: 'gen_ai.response.model',
+    type: 'string',
+    brief: 'The id of the model that produced the response.',
+    deprecationChain: ['gen_ai.response.model', 'ai.response.model'],
+  },
+  'ai.response.object': {
+    canonicalName: 'ai.response.object',
+    type: 'string',
+    brief: 'The type of the object returned by the model.',
+    deprecationChain: ['ai.response.object'],
+  },
+  'ai.response.text': {
+    canonicalName: 'gen_ai.output.messages',
+    type: 'string',
+    brief: 'The text response from the AI model.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.response.timestamp': {
+    canonicalName: 'ai.response.timestamp',
+    type: 'string',
+    brief: 'The ISO 8601 timestamp at which the response was produced.',
+    deprecationChain: ['ai.response.timestamp'],
+  },
+  'ai.response.toolCalls': {
+    canonicalName: 'gen_ai.output.messages',
+    type: 'string',
+    brief: 'The tool calls in the AI model response.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.response_format': {
+    canonicalName: 'ai.response_format',
+    type: 'string',
+    brief: 'For an AI model call, the format of the response',
+    deprecationChain: ['ai.response_format'],
+  },
+  'ai.responses': {
+    canonicalName: 'gen_ai.output.messages',
+    type: 'string[]',
+    brief: 'The response messages sent back by the AI model.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.schema': {
+    canonicalName: 'ai.schema',
+    type: 'string',
+    brief: 'The stringified JSON schema the model output must conform to.',
+    deprecationChain: ['ai.schema'],
+  },
+  'ai.search_queries': {
+    canonicalName: 'ai.search_queries',
+    type: 'string[]',
+    brief: 'Queries used to search for relevant context or documents.',
+    deprecationChain: ['ai.search_queries'],
+  },
+  'ai.search_results': {
+    canonicalName: 'ai.search_results',
+    type: 'string[]',
+    brief: 'Results returned from search queries for context.',
+    deprecationChain: ['ai.search_results'],
+  },
+  'ai.seed': {
+    canonicalName: 'gen_ai.request.seed',
+    type: 'string',
+    brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
+    deprecationChain: ['gen_ai.request.seed', 'ai.seed'],
+  },
+  'ai.streaming': {
+    canonicalName: 'gen_ai.response.streaming',
+    type: 'boolean',
+    brief: 'Whether the request was streamed back.',
+    deprecationChain: ['gen_ai.response.streaming', 'ai.streaming'],
+  },
+  'ai.tags': {
+    canonicalName: 'ai.tags',
+    type: 'string',
+    brief: 'Tags that describe an AI pipeline step.',
+    deprecationChain: ['ai.tags'],
+  },
+  'ai.temperature': {
+    canonicalName: 'gen_ai.request.temperature',
+    type: 'double',
+    brief:
+      'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
+    deprecationChain: ['gen_ai.request.temperature', 'ai.temperature'],
+  },
+  'ai.texts': {
+    canonicalName: 'gen_ai.input.messages',
+    type: 'string[]',
+    brief: 'Raw text inputs provided to the model.',
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+  },
+  'ai.toolCall.args': {
+    canonicalName: 'gen_ai.tool.call.arguments',
+    type: 'string',
+    brief: 'The arguments of the tool call.',
+    deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
+  },
+  'ai.toolCall.result': {
+    canonicalName: 'gen_ai.tool.call.result',
+    type: 'string',
+    brief: 'The result of the tool call.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'ai.tool_calls': {
+    canonicalName: 'gen_ai.output.messages',
+    type: 'string[]',
+    brief: 'For an AI model call, the tool calls that were made.',
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'ai.tools': {
+    canonicalName: 'gen_ai.tool.definitions',
+    type: 'string[]',
+    brief: 'For an AI model call, the functions that are available',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
+  },
+  'ai.top_k': {
+    canonicalName: 'gen_ai.request.top_k',
+    type: 'integer',
+    brief:
+      'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
+    deprecationChain: ['gen_ai.request.top_k', 'ai.top_k'],
+  },
+  'ai.top_p': {
+    canonicalName: 'gen_ai.request.top_p',
+    type: 'double',
+    brief:
+      'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
+    deprecationChain: ['gen_ai.request.top_p', 'ai.top_p'],
+  },
+  'ai.total_cost': {
+    canonicalName: 'gen_ai.cost.total_tokens',
+    type: 'currency',
+    brief: 'The total cost for the tokens used.',
+    deprecationChain: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
+  },
+  'ai.total_tokens.used': {
+    canonicalName: 'gen_ai.usage.total_tokens',
+    type: 'integer',
+    brief: 'The total number of tokens used to process the prompt.',
+    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
+  },
+  'ai.usage.tokens': {
+    canonicalName: 'gen_ai.usage.total_tokens',
+    type: 'integer',
+    brief: 'The total number of tokens used for the request and the response.',
+    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
+  },
+  'ai.values': {
+    canonicalName: 'ai.values',
+    type: 'string',
+    brief: 'The stringified values produced by a Vercel AI SDK object or array generation.',
+    deprecationChain: ['ai.values'],
+  },
+  'ai.warnings': {
+    canonicalName: 'ai.warnings',
+    type: 'string[]',
+    brief: 'Warning messages generated during model execution.',
+    deprecationChain: ['ai.warnings'],
+  },
+  'angular.version': {
+    canonicalName: 'angular.version',
+    type: 'string',
+    brief: 'The version of the Angular framework',
+    deprecationChain: ['angular.version'],
+  },
+  'app.app_build': {
+    canonicalName: 'app.build',
+    type: 'string',
+    brief: 'Internal build identifier, as it appears on the platform.',
+    deprecationChain: ['app.build', 'app.app_build'],
+  },
+  'app.app_identifier': {
+    canonicalName: 'app.identifier',
+    type: 'string',
+    brief: 'Version-independent application identifier, often a dotted bundle ID.',
+    deprecationChain: ['app.identifier', 'app.app_identifier'],
+  },
+  'app.app_name': {
+    canonicalName: 'app.name',
+    type: 'string',
+    brief: 'Human readable application name, as it appears on the platform.',
+    deprecationChain: ['app.name', 'app.app_name'],
+  },
+  'app.app_start_time': {
+    canonicalName: 'app.start_time',
+    type: 'string',
+    brief: 'Formatted UTC timestamp when the user started the application.',
+    deprecationChain: ['app.start_time', 'app.app_start_time'],
+  },
+  'app.app_version': {
+    canonicalName: 'app.version',
+    type: 'string',
+    brief: 'Human readable application version, as it appears on the platform.',
+    deprecationChain: ['app.version', 'app.app_version'],
+  },
+  'app.build': {
+    canonicalName: 'app.build',
+    type: 'string',
+    brief: 'Internal build identifier, as it appears on the platform.',
+    deprecationChain: ['app.build', 'app.app_build'],
+  },
+  'app.identifier': {
+    canonicalName: 'app.identifier',
+    type: 'string',
+    brief: 'Version-independent application identifier, often a dotted bundle ID.',
+    deprecationChain: ['app.identifier', 'app.app_identifier'],
+  },
+  'app.in_foreground': {
+    canonicalName: 'app.in_foreground',
+    type: 'boolean',
+    brief: 'Whether the application is currently in the foreground.',
+    deprecationChain: ['app.in_foreground'],
+  },
+  'app.name': {
+    canonicalName: 'app.name',
+    type: 'string',
+    brief: 'Human readable application name, as it appears on the platform.',
+    deprecationChain: ['app.name', 'app.app_name'],
+  },
+  'app.start_time': {
+    canonicalName: 'app.start_time',
+    type: 'string',
+    brief: 'Formatted UTC timestamp when the user started the application.',
+    deprecationChain: ['app.start_time', 'app.app_start_time'],
+  },
+  'app.version': {
+    canonicalName: 'app.version',
+    type: 'string',
+    brief: 'Human readable application version, as it appears on the platform.',
+    deprecationChain: ['app.version', 'app.app_version'],
+  },
+  'app.vitals.frames.delay.value': {
+    canonicalName: 'app.vitals.frames.delay.value',
+    type: 'integer',
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    deprecationChain: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
+  },
+  'app.vitals.frames.frozen.count': {
+    canonicalName: 'app.vitals.frames.frozen.count',
+    type: 'integer',
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    deprecationChain: [
+      'app.vitals.frames.frozen.count',
+      'frames.frozen',
+      'mobile.frozen_frames',
+      'sentry.frames.frozen',
+    ],
+  },
+  'app.vitals.frames.frozen.rate': {
+    canonicalName: 'app.vitals.frames.frozen.rate',
+    type: 'double',
+    brief:
+      'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    deprecationChain: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
+  },
+  'app.vitals.frames.slow.count': {
+    canonicalName: 'app.vitals.frames.slow.count',
+    type: 'integer',
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
+  },
+  'app.vitals.frames.slow.rate': {
+    canonicalName: 'app.vitals.frames.slow.rate',
+    type: 'double',
+    brief:
+      'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    deprecationChain: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
+  },
+  'app.vitals.frames.total.count': {
+    canonicalName: 'app.vitals.frames.total.count',
+    type: 'integer',
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
+  },
+  'app.vitals.stall.duration': {
+    canonicalName: 'app.vitals.stall.duration',
+    type: 'double',
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
+    deprecationChain: ['app.vitals.stall.duration', 'stall_total_time'],
+  },
+  'app.vitals.stall.percentage': {
+    canonicalName: 'app.vitals.stall.percentage',
+    type: 'double',
+    brief:
+      'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
+    deprecationChain: ['app.vitals.stall.percentage', 'stall_percentage'],
+  },
+  'app.vitals.start.cold.value': {
+    canonicalName: 'app.vitals.start.cold.value',
+    type: 'double',
+    brief: 'The duration of a cold app start in milliseconds',
+    deprecationChain: ['app.vitals.start.cold.value', 'app_start_cold'],
+  },
+  'app.vitals.start.prewarmed': {
+    canonicalName: 'app.vitals.start.prewarmed',
+    type: 'boolean',
+    brief: 'Whether the app start was prewarmed.',
+    deprecationChain: ['app.vitals.start.prewarmed'],
+  },
+  'app.vitals.start.reason': {
+    canonicalName: 'app.vitals.start.reason',
+    type: 'string',
+    brief: 'The reason that triggered the app start.',
+    deprecationChain: ['app.vitals.start.reason'],
+  },
+  'app.vitals.start.screen': {
+    canonicalName: 'app.vitals.start.screen',
+    type: 'string',
+    brief:
+      'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.',
+    deprecationChain: ['app.vitals.start.screen'],
+  },
+  'app.vitals.start.type': {
+    canonicalName: 'app.vitals.start.type',
+    type: 'string',
+    brief: 'The type of app start, for example `cold` or `warm`',
+    deprecationChain: ['app.vitals.start.type', 'app_start_type'],
+  },
+  'app.vitals.start.warm.value': {
+    canonicalName: 'app.vitals.start.warm.value',
+    type: 'double',
+    brief: 'The duration of a warm app start in milliseconds',
+    deprecationChain: ['app.vitals.start.warm.value', 'app_start_warm'],
+  },
+  'app.vitals.ttfd.value': {
+    canonicalName: 'app.vitals.ttfd.value',
+    type: 'double',
+    brief: 'The duration of time to full display in milliseconds',
+    deprecationChain: ['app.vitals.ttfd.value', 'time_to_full_display'],
+  },
+  'app.vitals.ttid.value': {
+    canonicalName: 'app.vitals.ttid.value',
+    type: 'double',
+    brief: 'The duration of time to initial display in milliseconds',
+    deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
+  },
+  app_start_cold: {
+    canonicalName: 'app.vitals.start.cold.value',
+    type: 'double',
+    brief: 'The duration of a cold app start in milliseconds',
+    deprecationChain: ['app.vitals.start.cold.value', 'app_start_cold'],
+  },
+  app_start_type: {
+    canonicalName: 'app.vitals.start.type',
+    type: 'string',
+    brief: 'Mobile app start variant. Either cold or warm.',
+    deprecationChain: ['app.vitals.start.type', 'app_start_type'],
+  },
+  app_start_warm: {
+    canonicalName: 'app.vitals.start.warm.value',
+    type: 'double',
+    brief: 'The duration of a warm app start in milliseconds',
+    deprecationChain: ['app.vitals.start.warm.value', 'app_start_warm'],
+  },
+  'art.gc.blocking_count': {
+    canonicalName: 'art.gc.blocking_count',
+    type: 'integer',
+    brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
+    deprecationChain: ['art.gc.blocking_count'],
+  },
+  'art.gc.blocking_time': {
+    canonicalName: 'art.gc.blocking_time',
+    type: 'double',
+    brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
+    deprecationChain: ['art.gc.blocking_time'],
+  },
+  'art.gc.pre_oome_count': {
+    canonicalName: 'art.gc.pre_oome_count',
+    type: 'integer',
+    brief:
+      'Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime',
+    deprecationChain: ['art.gc.pre_oome_count'],
+  },
+  'art.gc.total_count': {
+    canonicalName: 'art.gc.total_count',
+    type: 'integer',
+    brief: 'Total number of garbage collections performed by the Android Runtime',
+    deprecationChain: ['art.gc.total_count'],
+  },
+  'art.gc.total_time': {
+    canonicalName: 'art.gc.total_time',
+    type: 'double',
+    brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
+    deprecationChain: ['art.gc.total_time'],
+  },
+  'art.gc.waiting_time': {
+    canonicalName: 'art.gc.waiting_time',
+    type: 'double',
+    brief:
+      'Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds',
+    deprecationChain: ['art.gc.waiting_time'],
+  },
+  'art.memory.free': {
+    canonicalName: 'art.memory.free',
+    type: 'integer',
+    brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.free'],
+  },
+  'art.memory.free_until_gc': {
+    canonicalName: 'art.memory.free_until_gc',
+    type: 'integer',
+    brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.free_until_gc'],
+  },
+  'art.memory.free_until_oome': {
+    canonicalName: 'art.memory.free_until_oome',
+    type: 'integer',
+    brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.free_until_oome'],
+  },
+  'art.memory.max': {
+    canonicalName: 'art.memory.max',
+    type: 'integer',
+    brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.max'],
+  },
+  'art.memory.total': {
+    canonicalName: 'art.memory.total',
+    type: 'integer',
+    brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
+    deprecationChain: ['art.memory.total'],
+  },
+  'aws.cloudwatch.logs.log_group': {
+    canonicalName: 'aws.cloudwatch.logs.log_group',
+    type: 'string',
+    brief: 'The name of the CloudWatch Logs log group',
+    deprecationChain: ['aws.cloudwatch.logs.log_group'],
+  },
+  'aws.cloudwatch.logs.log_stream': {
+    canonicalName: 'aws.cloudwatch.logs.log_stream',
+    type: 'string',
+    brief: 'The name of the CloudWatch Logs log stream',
+    deprecationChain: ['aws.cloudwatch.logs.log_stream'],
+  },
+  'aws.cloudwatch.logs.url': {
+    canonicalName: 'aws.cloudwatch.logs.url',
+    type: 'string',
+    brief: 'The URL to the CloudWatch Logs log group',
+    deprecationChain: ['aws.cloudwatch.logs.url'],
+  },
+  'aws.dynamodb.attribute_definitions': {
+    canonicalName: 'aws.dynamodb.attribute_definitions',
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
+    deprecationChain: ['aws.dynamodb.attribute_definitions'],
+  },
+  'aws.dynamodb.consistent_read': {
+    canonicalName: 'aws.dynamodb.consistent_read',
+    type: 'boolean',
+    brief: 'The value of the `ConsistentRead` request parameter.',
+    deprecationChain: ['aws.dynamodb.consistent_read'],
+  },
+  'aws.dynamodb.consumed_capacity': {
+    canonicalName: 'aws.dynamodb.consumed_capacity',
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
+    deprecationChain: ['aws.dynamodb.consumed_capacity'],
+  },
+  'aws.dynamodb.count': {
+    canonicalName: 'aws.dynamodb.count',
+    type: 'integer',
+    brief: 'The value of the `Count` response parameter.',
+    deprecationChain: ['aws.dynamodb.count'],
+  },
+  'aws.dynamodb.exclusive_start_table': {
+    canonicalName: 'aws.dynamodb.exclusive_start_table',
+    type: 'string',
+    brief: 'The value of the `ExclusiveStartTableName` request parameter.',
+    deprecationChain: ['aws.dynamodb.exclusive_start_table'],
+  },
+  'aws.dynamodb.global_secondary_index_updates': {
+    canonicalName: 'aws.dynamodb.global_secondary_index_updates',
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
+    deprecationChain: ['aws.dynamodb.global_secondary_index_updates'],
+  },
+  'aws.dynamodb.global_secondary_indexes': {
+    canonicalName: 'aws.dynamodb.global_secondary_indexes',
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
+    deprecationChain: ['aws.dynamodb.global_secondary_indexes'],
+  },
+  'aws.dynamodb.index_name': {
+    canonicalName: 'aws.dynamodb.index_name',
+    type: 'string',
+    brief: 'The value of the `IndexName` request parameter.',
+    deprecationChain: ['aws.dynamodb.index_name'],
+  },
+  'aws.dynamodb.item_collection_metrics': {
+    canonicalName: 'aws.dynamodb.item_collection_metrics',
+    type: 'string',
+    brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
+    deprecationChain: ['aws.dynamodb.item_collection_metrics'],
+  },
+  'aws.dynamodb.limit': {
+    canonicalName: 'aws.dynamodb.limit',
+    type: 'integer',
+    brief: 'The value of the `Limit` request parameter.',
+    deprecationChain: ['aws.dynamodb.limit'],
+  },
+  'aws.dynamodb.local_secondary_indexes': {
+    canonicalName: 'aws.dynamodb.local_secondary_indexes',
+    type: 'string[]',
+    brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
+    deprecationChain: ['aws.dynamodb.local_secondary_indexes'],
+  },
+  'aws.dynamodb.projection': {
+    canonicalName: 'aws.dynamodb.projection',
+    type: 'string',
+    brief: 'The value of the `ProjectionExpression` request parameter.',
+    deprecationChain: ['aws.dynamodb.projection'],
+  },
+  'aws.dynamodb.provisioned_read_capacity': {
+    canonicalName: 'aws.dynamodb.provisioned_read_capacity',
+    type: 'double',
+    brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
+    deprecationChain: ['aws.dynamodb.provisioned_read_capacity'],
+  },
+  'aws.dynamodb.provisioned_write_capacity': {
+    canonicalName: 'aws.dynamodb.provisioned_write_capacity',
+    type: 'double',
+    brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
+    deprecationChain: ['aws.dynamodb.provisioned_write_capacity'],
+  },
+  'aws.dynamodb.scan_forward': {
+    canonicalName: 'aws.dynamodb.scan_forward',
+    type: 'boolean',
+    brief: 'The value of the `ScanIndexForward` request parameter.',
+    deprecationChain: ['aws.dynamodb.scan_forward'],
+  },
+  'aws.dynamodb.scanned_count': {
+    canonicalName: 'aws.dynamodb.scanned_count',
+    type: 'integer',
+    brief: 'The value of the `ScannedCount` response parameter.',
+    deprecationChain: ['aws.dynamodb.scanned_count'],
+  },
+  'aws.dynamodb.segment': {
+    canonicalName: 'aws.dynamodb.segment',
+    type: 'integer',
+    brief: 'The value of the `Segment` request parameter.',
+    deprecationChain: ['aws.dynamodb.segment'],
+  },
+  'aws.dynamodb.select': {
+    canonicalName: 'aws.dynamodb.select',
+    type: 'string',
+    brief: 'The value of the `Select` request parameter.',
+    deprecationChain: ['aws.dynamodb.select'],
+  },
+  'aws.dynamodb.table_count': {
+    canonicalName: 'aws.dynamodb.table_count',
+    type: 'integer',
+    brief: 'The number of items in the `TableNames` response parameter.',
+    deprecationChain: ['aws.dynamodb.table_count'],
+  },
+  'aws.dynamodb.table_names': {
+    canonicalName: 'aws.dynamodb.table_names',
+    type: 'string[]',
+    brief: 'The keys in the `RequestItems` object field.',
+    deprecationChain: ['aws.dynamodb.table_names'],
+  },
+  'aws.dynamodb.total_segments': {
+    canonicalName: 'aws.dynamodb.total_segments',
+    type: 'integer',
+    brief: 'The value of the `TotalSegments` request parameter.',
+    deprecationChain: ['aws.dynamodb.total_segments'],
+  },
+  'aws.extended_request_id': {
+    canonicalName: 'aws.extended_request_id',
+    type: 'string',
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    deprecationChain: ['aws.extended_request_id', 'aws.request.extended_id'],
+  },
+  'aws.kinesis.stream.name': {
+    canonicalName: 'aws.kinesis.stream_name',
+    type: 'string',
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    deprecationChain: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
+  },
+  'aws.kinesis.stream_name': {
+    canonicalName: 'aws.kinesis.stream_name',
+    type: 'string',
+    brief: 'The name of the AWS Kinesis stream the request refers to.',
+    deprecationChain: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
+  },
+  'aws.lambda.aws_request_id': {
+    canonicalName: 'faas.invocation_id',
+    type: 'string',
+    brief: 'The AWS request ID as received by the Lambda function runtime',
+    deprecationChain: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
+  },
+  'aws.lambda.execution_duration_in_millis': {
+    canonicalName: 'aws.lambda.execution_duration_in_millis',
+    type: 'double',
+    brief: 'The execution duration of the Lambda function invocation in milliseconds',
+    deprecationChain: ['aws.lambda.execution_duration_in_millis'],
+  },
+  'aws.lambda.function_name': {
+    canonicalName: 'faas.name',
+    type: 'string',
+    brief: 'The name of the Lambda function',
+    deprecationChain: ['faas.name', 'aws.lambda.function_name'],
+  },
+  'aws.lambda.function_version': {
+    canonicalName: 'faas.version',
+    type: 'string',
+    brief: 'The version of the Lambda function',
+    deprecationChain: ['faas.version', 'aws.lambda.function_version'],
+  },
+  'aws.lambda.invoked_arn': {
+    canonicalName: 'aws.lambda.invoked_arn',
+    type: 'string',
+    brief: 'The full ARN of the Lambda function that was invoked',
+    deprecationChain: ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'],
+  },
+  'aws.lambda.invoked_function_arn': {
+    canonicalName: 'aws.lambda.invoked_arn',
+    type: 'string',
+    brief: 'The full ARN of the Lambda function that was invoked',
+    deprecationChain: ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'],
+  },
+  'aws.lambda.remaining_time_in_millis': {
+    canonicalName: 'aws.lambda.remaining_time_in_millis',
+    type: 'double',
+    brief: 'The remaining time in milliseconds before the Lambda function times out',
+    deprecationChain: ['aws.lambda.remaining_time_in_millis'],
+  },
+  'aws.log.group.names': {
+    canonicalName: 'aws.log.group.names',
+    type: 'string[]',
+    brief: 'The name(s) of the AWS log group(s) an application is writing to.',
+    deprecationChain: ['aws.log.group.names'],
+  },
+  'aws.log.stream.names': {
+    canonicalName: 'aws.log.stream.names',
+    type: 'string[]',
+    brief: 'The name(s) of the AWS log stream(s) an application is writing to.',
+    deprecationChain: ['aws.log.stream.names'],
+  },
+  'aws.operation_name': {
+    canonicalName: 'rpc.method',
+    type: 'string',
+    brief: 'The name of the API operation invoked on an AWS service.',
+    deprecationChain: ['rpc.method', 'aws.operation_name'],
+  },
+  'aws.request.extended_id': {
+    canonicalName: 'aws.extended_request_id',
+    type: 'string',
+    brief: 'The AWS extended request ID as returned in the response headers.',
+    deprecationChain: ['aws.extended_request_id', 'aws.request.extended_id'],
+  },
+  'aws.request.id': {
+    canonicalName: 'aws.request_id',
+    type: 'string',
+    brief: 'The AWS request ID as returned in the response headers.',
+    deprecationChain: ['aws.request_id', 'aws.request.id'],
+  },
+  'aws.request.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The URL of the AWS API request.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+  },
+  'aws.request_id': {
+    canonicalName: 'aws.request_id',
+    type: 'string',
+    brief: 'The AWS request ID as returned in the response headers.',
+    deprecationChain: ['aws.request_id', 'aws.request.id'],
+  },
+  'aws.s3.bucket': {
+    canonicalName: 'aws.s3.bucket',
+    type: 'string',
+    brief: 'The S3 bucket name the request refers to.',
+    deprecationChain: ['aws.s3.bucket'],
+  },
+  'aws.secretsmanager.secret.arn': {
+    canonicalName: 'aws.secretsmanager.secret.arn',
+    type: 'string',
+    brief: 'The ARN of the Secret stored in Secrets Manager.',
+    deprecationChain: ['aws.secretsmanager.secret.arn'],
+  },
+  'aws.sns.topic.arn': {
+    canonicalName: 'aws.sns.topic.arn',
+    type: 'string',
+    brief:
+      'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
+    deprecationChain: ['aws.sns.topic.arn'],
+  },
+  'aws.step_functions.activity.arn': {
+    canonicalName: 'aws.step_functions.activity.arn',
+    type: 'string',
+    brief: 'The ARN of the AWS Step Functions Activity.',
+    deprecationChain: ['aws.step_functions.activity.arn'],
+  },
+  'aws.step_functions.state_machine.arn': {
+    canonicalName: 'aws.step_functions.state_machine.arn',
+    type: 'string',
+    brief: 'The ARN of the AWS Step Functions State Machine.',
+    deprecationChain: ['aws.step_functions.state_machine.arn'],
+  },
+  aws_region: {
+    canonicalName: 'cloud.region',
+    type: 'string',
+    brief: 'The geographical region the AWS resource is running',
+    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
+  },
+  blocked_main_thread: {
+    canonicalName: 'blocked_main_thread',
+    type: 'boolean',
+    brief: 'Whether the main thread was blocked by the span.',
+    deprecationChain: ['blocked_main_thread'],
+  },
+  'browser.bfcache.frame': {
+    canonicalName: 'browser.bfcache.frame',
+    type: 'string',
+    brief:
+      "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
+    deprecationChain: ['browser.bfcache.frame'],
+  },
+  'browser.bfcache.not_restored_reason_count': {
+    canonicalName: 'browser.bfcache.not_restored_reason_count',
+    type: 'integer',
+    brief:
+      'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).',
+    deprecationChain: ['browser.bfcache.not_restored_reason_count'],
+  },
+  'browser.bfcache.outcome': {
+    canonicalName: 'browser.bfcache.outcome',
+    type: 'string',
+    brief:
+      "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
+    deprecationChain: ['browser.bfcache.outcome'],
+  },
+  'browser.bfcache.reason': {
+    canonicalName: 'browser.bfcache.reason',
+    type: 'string',
+    brief:
+      'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
+    deprecationChain: ['browser.bfcache.reason'],
+  },
+  'browser.name': {
+    canonicalName: 'browser.name',
+    type: 'string',
+    brief: 'The name of the browser.',
+    deprecationChain: ['browser.name', 'sentry.browser.name'],
+  },
+  'browser.performance.navigation.activation_start': {
+    canonicalName: 'browser.performance.navigation.activation_start',
+    type: 'double',
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    deprecationChain: ['browser.performance.navigation.activation_start', 'performance.activationStart'],
+  },
+  'browser.performance.time_origin': {
+    canonicalName: 'browser.performance.time_origin',
+    type: 'double',
+    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    deprecationChain: ['browser.performance.time_origin', 'performance.timeOrigin'],
+  },
+  'browser.report.type': {
+    canonicalName: 'browser.report.type',
+    type: 'string',
+    brief: 'A browser report sent via reporting API..',
+    deprecationChain: ['browser.report.type'],
+  },
+  'browser.script.invoker': {
+    canonicalName: 'browser.script.invoker',
+    type: 'string',
+    brief: 'How a script was called in the browser.',
+    deprecationChain: ['browser.script.invoker'],
+  },
+  'browser.script.invoker_type': {
+    canonicalName: 'browser.script.invoker_type',
+    type: 'string',
+    brief: 'Browser script entry point type.',
+    deprecationChain: ['browser.script.invoker_type'],
+  },
+  'browser.script.source_char_position': {
+    canonicalName: 'browser.script.source_char_position',
+    type: 'integer',
+    brief: 'A number representing the script character position of the script.',
+    deprecationChain: ['browser.script.source_char_position'],
+  },
+  'browser.version': {
+    canonicalName: 'browser.version',
+    type: 'string',
+    brief: 'The version of the browser.',
+    deprecationChain: ['browser.version', 'sentry.browser.version'],
+  },
+  'browser.web_vital.cls.report_event': {
+    canonicalName: 'browser.web_vital.cls.report_event',
+    type: 'string',
+    brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
+    deprecationChain: ['browser.web_vital.cls.report_event'],
+  },
+  'browser.web_vital.cls.source.<key>': {
+    canonicalName: 'browser.web_vital.cls.source.<key>',
+    type: 'string',
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    deprecationChain: ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'],
+  },
+  'browser.web_vital.cls.value': {
+    canonicalName: 'browser.web_vital.cls.value',
+    type: 'double',
+    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
+    deprecationChain: ['browser.web_vital.cls.value', 'cls'],
+  },
+  'browser.web_vital.fcp.value': {
+    canonicalName: 'browser.web_vital.fcp.value',
+    type: 'double',
+    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
+    deprecationChain: ['browser.web_vital.fcp.value', 'fcp'],
+  },
+  'browser.web_vital.fp.value': {
+    canonicalName: 'browser.web_vital.fp.value',
+    type: 'double',
+    brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
+    deprecationChain: ['browser.web_vital.fp.value', 'fp'],
+  },
+  'browser.web_vital.inp.value': {
+    canonicalName: 'browser.web_vital.inp.value',
+    type: 'double',
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    deprecationChain: ['browser.web_vital.inp.value', 'inp'],
+  },
+  'browser.web_vital.lcp.element': {
+    canonicalName: 'browser.web_vital.lcp.element',
+    type: 'string',
+    brief: 'The HTML element selector or component name for which LCP was reported',
+    deprecationChain: ['browser.web_vital.lcp.element', 'lcp.element'],
+  },
+  'browser.web_vital.lcp.id': {
+    canonicalName: 'browser.web_vital.lcp.id',
+    type: 'string',
+    brief: 'The id of the dom element responsible for the largest contentful paint',
+    deprecationChain: ['browser.web_vital.lcp.id', 'lcp.id'],
+  },
+  'browser.web_vital.lcp.load_time': {
+    canonicalName: 'browser.web_vital.lcp.load_time',
+    type: 'integer',
+    brief: 'The time it took for the LCP element to be loaded',
+    deprecationChain: ['browser.web_vital.lcp.load_time', 'lcp.loadTime'],
+  },
+  'browser.web_vital.lcp.render_time': {
+    canonicalName: 'browser.web_vital.lcp.render_time',
+    type: 'integer',
+    brief: 'The time it took for the LCP element to be rendered',
+    deprecationChain: ['browser.web_vital.lcp.render_time', 'lcp.renderTime'],
+  },
+  'browser.web_vital.lcp.report_event': {
+    canonicalName: 'browser.web_vital.lcp.report_event',
+    type: 'string',
+    brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
+    deprecationChain: ['browser.web_vital.lcp.report_event'],
+  },
+  'browser.web_vital.lcp.size': {
+    canonicalName: 'browser.web_vital.lcp.size',
+    type: 'integer',
+    brief: 'The size of the largest contentful paint element',
+    deprecationChain: ['browser.web_vital.lcp.size', 'lcp.size'],
+  },
+  'browser.web_vital.lcp.url': {
+    canonicalName: 'browser.web_vital.lcp.url',
+    type: 'string',
+    brief: 'The url of the dom element responsible for the largest contentful paint',
+    deprecationChain: ['browser.web_vital.lcp.url', 'lcp.url'],
+  },
+  'browser.web_vital.lcp.value': {
+    canonicalName: 'browser.web_vital.lcp.value',
+    type: 'double',
+    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
+    deprecationChain: ['browser.web_vital.lcp.value', 'lcp'],
+  },
+  'browser.web_vital.ttfb.request_time': {
+    canonicalName: 'browser.web_vital.ttfb.request_time',
+    type: 'double',
+    brief:
+      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+    deprecationChain: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
+  },
+  'browser.web_vital.ttfb.value': {
+    canonicalName: 'browser.web_vital.ttfb.value',
+    type: 'double',
+    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
+    deprecationChain: ['browser.web_vital.ttfb.value', 'ttfb'],
+  },
+  'cache.hit': {
+    canonicalName: 'cache.hit',
+    type: 'boolean',
+    brief: 'If the cache was hit during this span.',
+    deprecationChain: ['cache.hit'],
+  },
+  'cache.item_size': {
+    canonicalName: 'cache.item_size',
+    type: 'byte',
+    brief: 'The size of the requested item in the cache. In bytes.',
+    deprecationChain: ['cache.item_size'],
+  },
+  'cache.key': {
+    canonicalName: 'cache.key',
+    type: 'string[]',
+    brief: 'The key of the cache accessed.',
+    deprecationChain: ['cache.key'],
+  },
+  'cache.operation': {
+    canonicalName: 'cache.operation',
+    type: 'string',
+    brief: 'The operation being performed on the cache.',
+    deprecationChain: ['cache.operation'],
+  },
+  'cache.ttl': {
+    canonicalName: 'cache.ttl',
+    type: 'integer',
+    brief: 'The ttl of the cache in seconds',
+    deprecationChain: ['cache.ttl'],
+  },
+  'cache.write': {
+    canonicalName: 'cache.write',
+    type: 'boolean',
+    brief: 'If the cache operation resulted in a write to the cache.',
+    deprecationChain: ['cache.write'],
+  },
+  channel: {
+    canonicalName: 'channel',
+    type: 'string',
+    brief: 'The channel name that is being used.',
+    deprecationChain: ['channel'],
+  },
+  'client.address': {
+    canonicalName: 'client.address',
+    type: 'string',
+    brief:
+      'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['client.address', 'http.client_ip'],
+  },
+  'client.port': {
+    canonicalName: 'client.port',
+    type: 'integer',
+    brief: 'Client port number.',
+    deprecationChain: ['client.port'],
+  },
+  client_sample_rate: {
+    canonicalName: 'sentry.client_sample_rate',
+    type: 'double',
+    brief: 'Rate at which a span was sampled in the SDK.',
+    deprecationChain: ['sentry.client_sample_rate', 'client_sample_rate'],
+  },
+  'cloud.account.id': {
+    canonicalName: 'cloud.account.id',
+    type: 'string',
+    brief: 'The cloud account ID the resource is assigned to',
+    deprecationChain: ['cloud.account.id'],
+  },
+  'cloud.availability_zone': {
+    canonicalName: 'cloud.availability_zone',
+    type: 'string',
+    brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
+    deprecationChain: ['cloud.availability_zone'],
+  },
+  'cloud.platform': {
+    canonicalName: 'cloud.platform',
+    type: 'string',
+    brief: 'The cloud platform in use',
+    deprecationChain: ['cloud.platform'],
+  },
+  'cloud.provider': {
+    canonicalName: 'cloud.provider',
+    type: 'string',
+    brief: 'Name of the cloud provider',
+    deprecationChain: ['cloud.provider'],
+  },
+  'cloud.region': {
+    canonicalName: 'cloud.region',
+    type: 'string',
+    brief: 'The geographical region the resource is running',
+    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
+  },
+  'cloud.resource_id': {
+    canonicalName: 'cloud.resource_id',
+    type: 'string',
+    brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
+    deprecationChain: ['cloud.resource_id', 'faas.id'],
+  },
+  'cloudflare.d1.duration': {
+    canonicalName: 'cloudflare.d1.duration',
+    type: 'integer',
+    brief: 'The duration of a Cloudflare D1 operation.',
+    deprecationChain: ['cloudflare.d1.duration'],
+  },
+  'cloudflare.d1.query_type': {
+    canonicalName: 'db.operation.name',
+    type: 'string',
+    brief: 'The type of query executed in a Cloudflare D1 operation',
+    deprecationChain: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+  },
+  'cloudflare.d1.rows_read': {
+    canonicalName: 'cloudflare.d1.rows_read',
+    type: 'integer',
+    brief: 'The number of rows read in a Cloudflare D1 operation.',
+    deprecationChain: ['cloudflare.d1.rows_read'],
+  },
+  'cloudflare.d1.rows_written': {
+    canonicalName: 'cloudflare.d1.rows_written',
+    type: 'integer',
+    brief: 'The number of rows written in a Cloudflare D1 operation.',
+    deprecationChain: ['cloudflare.d1.rows_written'],
+  },
+  'cloudflare.durable_object.query.bindings': {
+    canonicalName: 'cloudflare.durable_object.query.bindings',
+    type: 'integer',
+    brief: 'The number of bound parameters passed to the SQL exec call.',
+    deprecationChain: ['cloudflare.durable_object.query.bindings'],
+  },
+  'cloudflare.durable_object.response.rows_read': {
+    canonicalName: 'cloudflare.durable_object.response.rows_read',
+    type: 'integer',
+    brief: 'The number of rows read by a Cloudflare Durable Object SQL operation.',
+    deprecationChain: ['cloudflare.durable_object.response.rows_read'],
+  },
+  'cloudflare.durable_object.response.rows_written': {
+    canonicalName: 'cloudflare.durable_object.response.rows_written',
+    type: 'integer',
+    brief: 'The number of rows written by a Cloudflare Durable Object SQL operation.',
+    deprecationChain: ['cloudflare.durable_object.response.rows_written'],
+  },
+  'cloudflare.r2.bucket': {
+    canonicalName: 'cloudflare.r2.bucket',
+    type: 'string',
+    brief: 'The name of the Cloudflare R2 bucket binding',
+    deprecationChain: ['cloudflare.r2.bucket'],
+  },
+  'cloudflare.r2.operation': {
+    canonicalName: 'cloudflare.r2.operation',
+    type: 'string',
+    brief: 'The R2 API operation being performed',
+    deprecationChain: ['cloudflare.r2.operation'],
+  },
+  'cloudflare.r2.request.delimiter': {
+    canonicalName: 'cloudflare.r2.request.delimiter',
+    type: 'string',
+    brief: 'The delimiter used to group objects in an R2 list operation',
+    deprecationChain: ['cloudflare.r2.request.delimiter'],
+  },
+  'cloudflare.r2.request.key': {
+    canonicalName: 'cloudflare.r2.request.key',
+    type: 'string',
+    brief: 'The object key used in the R2 operation',
+    deprecationChain: ['cloudflare.r2.request.key'],
+  },
+  'cloudflare.r2.request.part_number': {
+    canonicalName: 'cloudflare.r2.request.part_number',
+    type: 'integer',
+    brief: 'The part number in a multipart upload operation',
+    deprecationChain: ['cloudflare.r2.request.part_number'],
+  },
+  'cloudflare.r2.request.prefix': {
+    canonicalName: 'cloudflare.r2.request.prefix',
+    type: 'string',
+    brief: 'The prefix used to filter objects in an R2 list operation',
+    deprecationChain: ['cloudflare.r2.request.prefix'],
+  },
+  'cloudflare.workflow.attempt': {
+    canonicalName: 'cloudflare.workflow.attempt',
+    type: 'integer',
+    brief: 'The current attempt number for a Cloudflare Workflow step',
+    deprecationChain: ['cloudflare.workflow.attempt'],
+  },
+  'cloudflare.workflow.retries.backoff': {
+    canonicalName: 'cloudflare.workflow.retries.backoff',
+    type: 'string',
+    brief: 'The backoff strategy for Cloudflare Workflow step retries',
+    deprecationChain: ['cloudflare.workflow.retries.backoff'],
+  },
+  'cloudflare.workflow.retries.delay': {
+    canonicalName: 'cloudflare.workflow.retries.delay',
+    type: 'string',
+    brief: 'The delay between Cloudflare Workflow step retries',
+    deprecationChain: ['cloudflare.workflow.retries.delay'],
+  },
+  'cloudflare.workflow.retries.limit': {
+    canonicalName: 'cloudflare.workflow.retries.limit',
+    type: 'integer',
+    brief: 'The maximum number of retries for a Cloudflare Workflow step',
+    deprecationChain: ['cloudflare.workflow.retries.limit'],
+  },
+  'cloudflare.workflow.timeout': {
+    canonicalName: 'cloudflare.workflow.timeout',
+    type: 'string',
+    brief: 'The timeout duration for a Cloudflare Workflow step',
+    deprecationChain: ['cloudflare.workflow.timeout'],
+  },
+  cls: {
+    canonicalName: 'browser.web_vital.cls.value',
+    type: 'double',
+    brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
+    deprecationChain: ['browser.web_vital.cls.value', 'cls'],
+  },
+  'cls.source.<key>': {
+    canonicalName: 'browser.web_vital.cls.source.<key>',
+    type: 'string',
+    brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
+    deprecationChain: ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'],
+  },
+  code: {
+    canonicalName: 'rpc.response.status_code',
+    type: 'string',
+    brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
+    deprecationChain: ['rpc.response.status_code', 'code'],
+  },
+  'code.file.path': {
+    canonicalName: 'code.file.path',
+    type: 'string',
+    brief:
+      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
+    deprecationChain: ['code.file.path', 'code.filepath'],
+  },
+  'code.filepath': {
+    canonicalName: 'code.file.path',
+    type: 'string',
+    brief:
+      'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
+    deprecationChain: ['code.file.path', 'code.filepath'],
+  },
+  'code.function': {
+    canonicalName: 'code.function',
+    type: 'string',
+    brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
+    deprecationChain: ['code.function', 'code.function.name', 'django.function_name'],
+  },
+  'code.function.name': {
+    canonicalName: 'code.function.name',
+    type: 'string',
+    brief: 'The method or function fully-qualified name without arguments.',
+    deprecationChain: ['code.function.name', 'code.function', 'django.function_name'],
+  },
+  'code.line.number': {
+    canonicalName: 'code.line.number',
+    type: 'integer',
+    brief:
+      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
+    deprecationChain: ['code.line.number', 'code.lineno'],
+  },
+  'code.lineno': {
+    canonicalName: 'code.line.number',
+    type: 'integer',
+    brief:
+      'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
+    deprecationChain: ['code.line.number', 'code.lineno'],
+  },
+  'code.namespace': {
+    canonicalName: 'code.namespace',
+    type: 'string',
+    brief:
+      "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
+    deprecationChain: ['code.namespace'],
+  },
+  'connection.rtt': {
+    canonicalName: 'network.connection.rtt',
+    type: 'integer',
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    deprecationChain: ['network.connection.rtt', 'connection.rtt'],
+  },
+  connectionType: {
+    canonicalName: 'network.connection.type',
+    type: 'string',
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
+  },
+  'culture.calendar': {
+    canonicalName: 'culture.calendar',
+    type: 'string',
+    brief: 'The calendar system used by the culture.',
+    deprecationChain: ['culture.calendar'],
+  },
+  'culture.display_name': {
+    canonicalName: 'culture.display_name',
+    type: 'string',
+    brief: 'Human readable name of the culture.',
+    deprecationChain: ['culture.display_name'],
+  },
+  'culture.is_24_hour_format': {
+    canonicalName: 'culture.is_24_hour_format',
+    type: 'boolean',
+    brief: 'Whether the culture uses 24-hour time format.',
+    deprecationChain: ['culture.is_24_hour_format'],
+  },
+  'culture.locale': {
+    canonicalName: 'culture.locale',
+    type: 'string',
+    brief: 'The locale identifier following RFC 4646.',
+    deprecationChain: ['culture.locale'],
+  },
+  'culture.timezone': {
+    canonicalName: 'culture.timezone',
+    type: 'string',
+    brief: 'The timezone of the culture, as a geographic timezone identifier.',
+    deprecationChain: ['culture.timezone'],
+  },
+  'db.collection.name': {
+    canonicalName: 'db.collection.name',
+    type: 'string',
+    brief: 'The name of a collection (table, container) within the database.',
+    deprecationChain: ['db.collection.name', 'db.mongodb.collection'],
+  },
+  'db.connection_string': {
+    canonicalName: 'db.connection_string',
+    type: 'string',
+    brief: 'The connection string used to connect to the database.',
+    deprecationChain: ['db.connection_string'],
+  },
+  'db.driver.name': {
+    canonicalName: 'db.driver.name',
+    type: 'string',
+    brief: 'The name of the driver used for the database connection.',
+    deprecationChain: ['db.driver.name'],
+  },
+  'db.mongodb.collection': {
+    canonicalName: 'db.collection.name',
+    type: 'string',
+    brief: 'The MongoDB collection being accessed.',
+    deprecationChain: ['db.collection.name', 'db.mongodb.collection'],
+  },
+  'db.name': {
+    canonicalName: 'db.namespace',
+    type: 'string',
+    brief: 'The name of the database being accessed.',
+    deprecationChain: ['db.namespace', 'db.name'],
+  },
+  'db.namespace': {
+    canonicalName: 'db.namespace',
+    type: 'string',
+    brief: 'The name of the database being accessed.',
+    deprecationChain: ['db.namespace', 'db.name'],
+  },
+  'db.operation': {
+    canonicalName: 'db.operation.name',
+    type: 'string',
+    brief: 'The name of the operation being executed.',
+    deprecationChain: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+  },
+  'db.operation.batch.size': {
+    canonicalName: 'db.operation.batch.size',
+    type: 'integer',
+    brief:
+      'The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.',
+    deprecationChain: ['db.operation.batch.size'],
+  },
+  'db.operation.name': {
+    canonicalName: 'db.operation.name',
+    type: 'string',
+    brief: 'The name of the operation being executed.',
+    deprecationChain: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+  },
+  'db.params': {
+    canonicalName: 'db.query.parameter.<key>',
+    type: 'string',
+    brief: 'The query bindings for a database request.',
+    deprecationChain: ['db.params'],
+  },
+  'db.query.parameter.<key>': {
+    canonicalName: 'db.query.parameter.<key>',
+    type: 'string',
+    brief:
+      'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
+    deprecationChain: ['db.query.parameter.<key>'],
+  },
+  'db.query.summary': {
+    canonicalName: 'db.query.summary',
+    type: 'string',
+    brief:
+      'A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.',
+    deprecationChain: ['db.query.summary'],
+  },
+  'db.query.text': {
+    canonicalName: 'db.query.text',
+    type: 'string',
+    brief:
+      'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
+    deprecationChain: ['db.query.text', 'db.statement', 'query'],
+  },
+  'db.redis.connection': {
+    canonicalName: 'db.redis.connection',
+    type: 'string',
+    brief: 'The redis connection name.',
+    deprecationChain: ['db.redis.connection'],
+  },
+  'db.redis.key': {
+    canonicalName: 'db.redis.key',
+    type: 'string',
+    brief: 'The key the Redis command is operating on.',
+    deprecationChain: ['db.redis.key', 'redis.key'],
+  },
+  'db.redis.parameters': {
+    canonicalName: 'db.redis.parameters',
+    type: 'string[]',
+    brief: 'The array of command parameters given to a redis command.',
+    deprecationChain: ['db.redis.parameters'],
+  },
+  'db.response.status_code': {
+    canonicalName: 'db.response.status_code',
+    type: 'string',
+    brief:
+      'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
+    deprecationChain: ['db.response.status_code'],
+  },
+  'db.sql.bindings': {
+    canonicalName: 'db.query.parameter.<key>',
+    type: 'string[]',
+    brief: 'The array of query bindings.',
+    deprecationChain: ['db.sql.bindings'],
+  },
+  'db.statement': {
+    canonicalName: 'db.query.text',
+    type: 'string',
+    brief: 'The database statement being executed.',
+    deprecationChain: ['db.query.text', 'db.statement', 'query'],
+  },
+  'db.stored_procedure.name': {
+    canonicalName: 'db.stored_procedure.name',
+    type: 'string',
+    brief: 'The name of a stored procedure being called.',
+    deprecationChain: ['db.stored_procedure.name'],
+  },
+  'db.system': {
+    canonicalName: 'db.system.name',
+    type: 'string',
+    brief:
+      'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
+    deprecationChain: ['db.system.name', 'db.system', 'span.system'],
+  },
+  'db.system.name': {
+    canonicalName: 'db.system.name',
+    type: 'string',
+    brief:
+      'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
+    deprecationChain: ['db.system.name', 'db.system', 'span.system'],
+  },
+  'db.user': {
+    canonicalName: 'db.user',
+    type: 'string',
+    brief: 'The database user.',
+    deprecationChain: ['db.user'],
+  },
+  'device.archs': {
+    canonicalName: 'device.archs',
+    type: 'string[]',
+    brief: 'The CPU architectures of the device.',
+    deprecationChain: ['device.archs'],
+  },
+  'device.battery_level': {
+    canonicalName: 'device.battery_level',
+    type: 'double',
+    brief: 'The battery level of the device as a percentage (0-100).',
+    deprecationChain: ['device.battery_level'],
+  },
+  'device.battery_temperature': {
+    canonicalName: 'device.battery_temperature',
+    type: 'double',
+    brief: 'The battery temperature of the device in Celsius.',
+    deprecationChain: ['device.battery_temperature'],
+  },
+  'device.boot_time': {
+    canonicalName: 'device.boot_time',
+    type: 'string',
+    brief: 'A formatted UTC timestamp when the system was booted.',
+    deprecationChain: ['device.boot_time'],
+  },
+  'device.brand': {
+    canonicalName: 'device.brand',
+    type: 'string',
+    brief: 'The brand of the device.',
+    deprecationChain: ['device.brand'],
+  },
+  'device.charging': {
+    canonicalName: 'device.charging',
+    type: 'boolean',
+    brief: 'Whether the device was charging or not.',
+    deprecationChain: ['device.charging'],
+  },
+  'device.chipset': {
+    canonicalName: 'device.chipset',
+    type: 'string',
+    brief: 'The chipset of the device.',
+    deprecationChain: ['device.chipset'],
+  },
+  'device.class': {
+    canonicalName: 'device.class',
+    type: 'string',
+    brief:
+      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    deprecationChain: ['device.class'],
+  },
+  'device.connection_type': {
+    canonicalName: 'network.connection.type',
+    type: 'string',
+    brief: 'The internet connection type currently being used by the device.',
+    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
+  },
+  'device.cpu_description': {
+    canonicalName: 'device.cpu_description',
+    type: 'string',
+    brief: 'A description of the CPU of the device.',
+    deprecationChain: ['device.cpu_description'],
+  },
+  'device.external_free_storage': {
+    canonicalName: 'device.external_free_storage',
+    type: 'integer',
+    brief: 'External storage free size in bytes.',
+    deprecationChain: ['device.external_free_storage'],
+  },
+  'device.external_storage_size': {
+    canonicalName: 'device.external_storage_size',
+    type: 'integer',
+    brief: 'External storage total size in bytes.',
+    deprecationChain: ['device.external_storage_size'],
+  },
+  'device.family': {
+    canonicalName: 'device.family',
+    type: 'string',
+    brief: 'The family of the device.',
+    deprecationChain: ['device.family'],
+  },
+  'device.free_memory': {
+    canonicalName: 'device.free_memory',
+    type: 'integer',
+    brief: 'Free system memory in bytes.',
+    deprecationChain: ['device.free_memory'],
+  },
+  'device.free_storage': {
+    canonicalName: 'device.free_storage',
+    type: 'integer',
+    brief: 'Free device storage in bytes.',
+    deprecationChain: ['device.free_storage'],
+  },
+  'device.id': {
+    canonicalName: 'device.id',
+    type: 'string',
+    brief: 'Unique device identifier.',
+    deprecationChain: ['device.id'],
+  },
+  'device.locale': {
+    canonicalName: 'device.locale',
+    type: 'string',
+    brief: 'The locale of the device.',
+    deprecationChain: ['device.locale'],
+  },
+  'device.low_memory': {
+    canonicalName: 'device.low_memory',
+    type: 'boolean',
+    brief: 'Whether the device was low on memory.',
+    deprecationChain: ['device.low_memory'],
+  },
+  'device.low_power_mode': {
+    canonicalName: 'device.low_power_mode',
+    type: 'boolean',
+    brief: 'Whether the device is in Low Power Mode.',
+    deprecationChain: ['device.low_power_mode'],
+  },
+  'device.manufacturer': {
+    canonicalName: 'device.manufacturer',
+    type: 'string',
+    brief: 'The manufacturer of the device.',
+    deprecationChain: ['device.manufacturer'],
+  },
+  'device.memory.estimated_capacity': {
+    canonicalName: 'device.memory.estimated_capacity',
+    type: 'integer',
+    brief:
+      'The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB',
+    deprecationChain: ['device.memory.estimated_capacity', 'deviceMemory'],
+  },
+  'device.memory_size': {
+    canonicalName: 'device.memory_size',
+    type: 'integer',
+    brief: 'Total system memory available in bytes.',
+    deprecationChain: ['device.memory_size'],
+  },
+  'device.model': {
+    canonicalName: 'device.model',
+    type: 'string',
+    brief: 'The model of the device.',
+    deprecationChain: ['device.model'],
+  },
+  'device.model_id': {
+    canonicalName: 'device.model_id',
+    type: 'string',
+    brief: 'An internal hardware revision to identify the device exactly.',
+    deprecationChain: ['device.model_id'],
+  },
+  'device.name': {
+    canonicalName: 'device.name',
+    type: 'string',
+    brief:
+      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    deprecationChain: ['device.name'],
+  },
+  'device.online': {
+    canonicalName: 'device.online',
+    type: 'boolean',
+    brief: 'Whether the device was online or not.',
+    deprecationChain: ['device.online'],
+  },
+  'device.orientation': {
+    canonicalName: 'device.orientation',
+    type: 'string',
+    brief: 'The orientation of the device, either "portrait" or "landscape".',
+    deprecationChain: ['device.orientation'],
+  },
+  'device.processor_count': {
+    canonicalName: 'device.processor_count',
+    type: 'integer',
+    brief: 'Number of "logical processors".',
+    deprecationChain: ['device.processor_count', 'hardwareConcurrency'],
+  },
+  'device.processor_frequency': {
+    canonicalName: 'device.processor_frequency',
+    type: 'double',
+    brief: 'Processor frequency in MHz.',
+    deprecationChain: ['device.processor_frequency'],
+  },
+  'device.screen_density': {
+    canonicalName: 'device.screen_density',
+    type: 'double',
+    brief: 'The screen density of the device.',
+    deprecationChain: ['device.screen_density'],
+  },
+  'device.screen_dpi': {
+    canonicalName: 'device.screen_dpi',
+    type: 'integer',
+    brief: 'The screen density in dots-per-inch (DPI) of the device.',
+    deprecationChain: ['device.screen_dpi'],
+  },
+  'device.screen_height_pixels': {
+    canonicalName: 'device.screen_height_pixels',
+    type: 'integer',
+    brief: 'The height of the device screen in pixels.',
+    deprecationChain: ['device.screen_height_pixels'],
+  },
+  'device.screen_width_pixels': {
+    canonicalName: 'device.screen_width_pixels',
+    type: 'integer',
+    brief: 'The width of the device screen in pixels.',
+    deprecationChain: ['device.screen_width_pixels'],
+  },
+  'device.simulator': {
+    canonicalName: 'device.simulator',
+    type: 'boolean',
+    brief: 'Whether the device is a simulator or an actual device.',
+    deprecationChain: ['device.simulator'],
+  },
+  'device.storage_size': {
+    canonicalName: 'device.storage_size',
+    type: 'integer',
+    brief: 'Total device storage in bytes.',
+    deprecationChain: ['device.storage_size'],
+  },
+  'device.thermal_state': {
+    canonicalName: 'device.thermal_state',
+    type: 'string',
+    brief:
+      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    deprecationChain: ['device.thermal_state'],
+  },
+  'device.timezone': {
+    canonicalName: 'device.timezone',
+    type: 'string',
+    brief: 'The timezone of the device.',
+    deprecationChain: ['device.timezone'],
+  },
+  'device.usable_memory': {
+    canonicalName: 'device.usable_memory',
+    type: 'integer',
+    brief: 'Memory usable for the app in bytes.',
+    deprecationChain: ['device.usable_memory'],
+  },
+  deviceMemory: {
+    canonicalName: 'device.memory.estimated_capacity',
+    type: 'string',
+    brief: 'The estimated total memory capacity of the device, only a rough estimation in gigabytes.',
+    deprecationChain: ['device.memory.estimated_capacity', 'deviceMemory'],
+  },
+  dist: {
+    canonicalName: 'sentry.dist',
+    type: 'string',
+    brief: 'The sentry dist.',
+    deprecationChain: ['sentry.dist', 'dist'],
+  },
+  'django.function_name': {
+    canonicalName: 'code.function.name',
+    type: 'string',
+    brief: 'The fully qualified name of a function used in a Django context.',
+    deprecationChain: ['code.function.name', 'code.function', 'django.function_name'],
+  },
+  'django.middleware_name': {
+    canonicalName: 'middleware.name',
+    type: 'string',
+    brief: 'The name of the Django middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  effectiveConnectionType: {
+    canonicalName: 'network.connection.effective_type',
+    type: 'string',
+    brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    deprecationChain: ['network.connection.effective_type', 'effectiveConnectionType'],
+  },
+  environment: {
+    canonicalName: 'sentry.environment',
+    type: 'string',
+    brief: 'The sentry environment.',
+    deprecationChain: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
+  },
+  'error.type': {
+    canonicalName: 'error.type',
+    type: 'string',
+    brief: 'Describes a class of error the operation ended with.',
+    deprecationChain: ['error.type'],
+  },
+  'event.id': {
+    canonicalName: 'event.id',
+    type: 'integer',
+    brief: 'The unique identifier for this event (log record)',
+    deprecationChain: ['event.id'],
+  },
+  'event.name': {
+    canonicalName: 'event.name',
+    type: 'string',
+    brief: 'The name that uniquely identifies this event (log record)',
+    deprecationChain: ['event.name'],
+  },
+  'exception.escaped': {
+    canonicalName: 'exception.escaped',
+    type: 'boolean',
+    brief:
+      'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
+    deprecationChain: ['exception.escaped'],
+  },
+  'exception.message': {
+    canonicalName: 'exception.message',
+    type: 'string',
+    brief: 'The error message.',
+    deprecationChain: ['exception.message'],
+  },
+  'exception.stacktrace': {
+    canonicalName: 'exception.stacktrace',
+    type: 'string',
+    brief:
+      'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
+    deprecationChain: ['exception.stacktrace'],
+  },
+  'exception.type': {
+    canonicalName: 'exception.type',
+    type: 'string',
+    brief:
+      'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
+    deprecationChain: ['exception.type'],
+  },
+  'faas.coldstart': {
+    canonicalName: 'faas.coldstart',
+    type: 'boolean',
+    brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
+    deprecationChain: ['faas.coldstart'],
+  },
+  'faas.cron': {
+    canonicalName: 'faas.cron',
+    type: 'string',
+    brief: 'A string containing the schedule period as Cron Expression.',
+    deprecationChain: ['faas.cron'],
+  },
+  'faas.duration_in_ms': {
+    canonicalName: 'faas.duration_in_ms',
+    type: 'integer',
+    brief: 'The duration a function took to run, in milliseconds.',
+    deprecationChain: ['faas.duration_in_ms'],
+  },
+  'faas.entry_point': {
+    canonicalName: 'faas.entry_point',
+    type: 'string',
+    brief: "The code that's run when the cloud provider invokes your function.",
+    deprecationChain: ['faas.entry_point'],
+  },
+  'faas.execution': {
+    canonicalName: 'faas.invocation_id',
+    type: 'string',
+    brief: 'The execution ID of the current function execution.',
+    deprecationChain: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
+  },
+  'faas.id': {
+    canonicalName: 'cloud.resource_id',
+    type: 'string',
+    brief: 'The unique ID of the single function that this runtime instance executes.',
+    deprecationChain: ['cloud.resource_id', 'faas.id'],
+  },
+  'faas.identity': {
+    canonicalName: 'faas.identity',
+    type: 'string',
+    brief:
+      'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
+    deprecationChain: ['faas.identity'],
+  },
+  'faas.invocation_id': {
+    canonicalName: 'faas.invocation_id',
+    type: 'string',
+    brief: 'The invocation ID of the current function invocation.',
+    deprecationChain: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
+  },
+  'faas.invoked_name': {
+    canonicalName: 'faas.invoked_name',
+    type: 'string',
+    brief: 'The name of the invoked function.',
+    deprecationChain: ['faas.invoked_name'],
+  },
+  'faas.invoked_provider': {
+    canonicalName: 'faas.invoked_provider',
+    type: 'string',
+    brief: 'The cloud provider of the invoked function.',
+    deprecationChain: ['faas.invoked_provider'],
+  },
+  'faas.invoked_region': {
+    canonicalName: 'faas.invoked_region',
+    type: 'string',
+    brief: 'The cloud region of the invoked function.',
+    deprecationChain: ['faas.invoked_region'],
+  },
+  'faas.name': {
+    canonicalName: 'faas.name',
+    type: 'string',
+    brief: 'The name of the serverless function',
+    deprecationChain: ['faas.name', 'aws.lambda.function_name'],
+  },
+  'faas.time': {
+    canonicalName: 'faas.time',
+    type: 'string',
+    brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
+    deprecationChain: ['faas.time'],
+  },
+  'faas.trigger': {
+    canonicalName: 'faas.trigger',
+    type: 'string',
+    brief: 'Type of the trigger which caused this function invocation.',
+    deprecationChain: ['faas.trigger'],
+  },
+  'faas.version': {
+    canonicalName: 'faas.version',
+    type: 'string',
+    brief: 'The version of the function that was invoked',
+    deprecationChain: ['faas.version', 'aws.lambda.function_version'],
+  },
+  fcp: {
+    canonicalName: 'browser.web_vital.fcp.value',
+    type: 'double',
+    brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
+    deprecationChain: ['browser.web_vital.fcp.value', 'fcp'],
+  },
+  'file.path': {
+    canonicalName: 'file.path',
+    type: 'string',
+    brief: 'Path to the file.',
+    deprecationChain: ['file.path'],
+  },
+  'file.size': {
+    canonicalName: 'file.size',
+    type: 'integer',
+    brief: 'File size in bytes.',
+    deprecationChain: ['file.size'],
+  },
+  'flag.evaluation.<key>': {
+    canonicalName: 'flag.evaluation.<key>',
+    type: 'boolean',
+    brief:
+      'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
+    deprecationChain: ['flag.evaluation.<key>'],
+  },
+  fp: {
+    canonicalName: 'browser.web_vital.fp.value',
+    type: 'double',
+    brief: 'The time it takes for the browser to render the first pixel on the screen',
+    deprecationChain: ['browser.web_vital.fp.value', 'fp'],
+  },
+  frames_frozen_rate: {
+    canonicalName: 'app.vitals.frames.frozen.rate',
+    type: 'double',
+    brief:
+      'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    deprecationChain: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
+  },
+  frames_slow_rate: {
+    canonicalName: 'app.vitals.frames.slow.rate',
+    type: 'double',
+    brief:
+      'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
+    deprecationChain: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
+  },
+  fs_error: {
+    canonicalName: 'error.type',
+    type: 'string',
+    brief: 'The error message of a file system error.',
+    deprecationChain: ['fs_error'],
+  },
+  'gcp.function.context.event_id': {
+    canonicalName: 'gcp.function.context.event_id',
+    type: 'string',
+    brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
+    deprecationChain: ['gcp.function.context.event_id'],
+  },
+  'gcp.function.context.event_type': {
+    canonicalName: 'gcp.function.context.event_type',
+    type: 'string',
+    brief: 'The type of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.event_type'],
+  },
+  'gcp.function.context.id': {
+    canonicalName: 'gcp.function.context.id',
+    type: 'string',
+    brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
+    deprecationChain: ['gcp.function.context.id'],
+  },
+  'gcp.function.context.resource': {
+    canonicalName: 'gcp.function.context.resource',
+    type: 'string',
+    brief: 'The resource that triggered the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.resource'],
+  },
+  'gcp.function.context.source': {
+    canonicalName: 'gcp.function.context.source',
+    type: 'string',
+    brief: 'The source of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.source'],
+  },
+  'gcp.function.context.specversion': {
+    canonicalName: 'gcp.function.context.specversion',
+    type: 'string',
+    brief: 'The CloudEvents specification version of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.specversion'],
+  },
+  'gcp.function.context.time': {
+    canonicalName: 'gcp.function.context.time',
+    type: 'string',
+    brief: 'The timestamp of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.time'],
+  },
+  'gcp.function.context.timestamp': {
+    canonicalName: 'gcp.function.context.timestamp',
+    type: 'string',
+    brief: 'The legacy timestamp of the GCP Cloud Function event',
+    deprecationChain: ['gcp.function.context.timestamp'],
+  },
+  'gcp.function.context.type': {
+    canonicalName: 'gcp.function.context.type',
+    type: 'string',
+    brief: 'The type of the GCP Cloud Function event context',
+    deprecationChain: ['gcp.function.context.type'],
+  },
+  'gcp.project.id': {
+    canonicalName: 'gcp.project.id',
+    type: 'string',
+    brief: 'The ID of the project in GCP that this resource is associated with',
+    deprecationChain: ['gcp.project.id'],
+  },
+  gcp_region: {
+    canonicalName: 'cloud.region',
+    type: 'string',
+    brief: 'The geographical region the GCP resource is running',
+    deprecationChain: ['cloud.region', 'aws_region', 'gcp_region'],
+  },
+  'gen_ai.agent.name': {
+    canonicalName: 'gen_ai.agent.name',
+    type: 'string',
+    brief: 'The name of the agent being used.',
+    deprecationChain: ['gen_ai.agent.name'],
+  },
+  'gen_ai.context.utilization': {
+    canonicalName: 'gen_ai.context.utilization',
+    type: 'double',
+    brief: 'The fraction of the model context window utilized by this generation.',
+    deprecationChain: ['gen_ai.context.utilization'],
+  },
+  'gen_ai.context.window_size': {
+    canonicalName: 'gen_ai.context.window_size',
+    type: 'integer',
+    brief: 'The maximum context window size supported by the model for this generation.',
+    deprecationChain: ['gen_ai.context.window_size'],
+  },
+  'gen_ai.conversation.id': {
+    canonicalName: 'gen_ai.conversation.id',
+    type: 'string',
+    brief:
+      'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.',
+    deprecationChain: ['gen_ai.conversation.id'],
+  },
+  'gen_ai.cost.cache_creation.input_tokens': {
+    canonicalName: 'gen_ai.cost.cache_creation.input_tokens',
+    type: 'double',
+    brief: 'The cost of input tokens written to cache in USD.',
+    deprecationChain: ['gen_ai.cost.cache_creation.input_tokens'],
+  },
+  'gen_ai.cost.cache_read.input_tokens': {
+    canonicalName: 'gen_ai.cost.cache_read.input_tokens',
+    type: 'double',
+    brief: 'The cost of cached input tokens in USD.',
+    deprecationChain: ['gen_ai.cost.cache_read.input_tokens'],
+  },
+  'gen_ai.cost.input_tokens': {
+    canonicalName: 'gen_ai.cost.input_tokens',
+    type: 'double',
+    brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
+    deprecationChain: ['gen_ai.cost.input_tokens'],
+  },
+  'gen_ai.cost.output_tokens': {
+    canonicalName: 'gen_ai.cost.output_tokens',
+    type: 'double',
+    brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
+    deprecationChain: ['gen_ai.cost.output_tokens'],
+  },
+  'gen_ai.cost.reasoning.output_tokens': {
+    canonicalName: 'gen_ai.cost.reasoning.output_tokens',
+    type: 'double',
+    brief: 'The cost of reasoning output tokens in USD.',
+    deprecationChain: ['gen_ai.cost.reasoning.output_tokens'],
+  },
+  'gen_ai.cost.total_tokens': {
+    canonicalName: 'gen_ai.cost.total_tokens',
+    type: 'double',
+    brief: 'The total cost for the tokens used.',
+    deprecationChain: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
+  },
+  'gen_ai.embeddings.input': {
+    canonicalName: 'gen_ai.embeddings.input',
+    type: 'string',
+    brief: 'The input to the embeddings model.',
+    deprecationChain: ['gen_ai.embeddings.input'],
+  },
+  'gen_ai.function_id': {
+    canonicalName: 'gen_ai.function_id',
+    type: 'string',
+    brief:
+      'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
+    deprecationChain: ['gen_ai.function_id'],
+  },
+  'gen_ai.input.messages': {
+    canonicalName: 'gen_ai.input.messages',
+    type: 'string',
+    brief:
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+  },
+  'gen_ai.operation.name': {
+    canonicalName: 'gen_ai.operation.name',
+    type: 'string',
+    brief:
+      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+    deprecationChain: ['gen_ai.operation.name'],
+  },
+  'gen_ai.operation.type': {
+    canonicalName: 'gen_ai.operation.type',
+    type: 'string',
+    brief:
+      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+    deprecationChain: ['gen_ai.operation.type'],
+  },
+  'gen_ai.output.messages': {
+    canonicalName: 'gen_ai.output.messages',
+    type: 'string',
+    brief:
+      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+    ],
+  },
+  'gen_ai.pipeline.name': {
+    canonicalName: 'gen_ai.pipeline.name',
+    type: 'string',
+    brief: 'Name of the AI pipeline or chain being executed.',
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+  },
+  'gen_ai.prompt': {
+    canonicalName: 'gen_ai.input.messages',
+    type: 'string',
+    brief: 'The input messages sent to the model',
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+  },
+  'gen_ai.prompt.name': {
+    canonicalName: 'gen_ai.prompt.name',
+    type: 'string',
+    brief: 'The name of the prompt that uniquely identifies it.',
+    deprecationChain: ['gen_ai.prompt.name', 'mcp.prompt.name'],
+  },
+  'gen_ai.provider.name': {
+    canonicalName: 'gen_ai.provider.name',
+    type: 'string',
+    brief: 'The Generative AI provider as identified by the client or server instrumentation.',
+    deprecationChain: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
+  },
+  'gen_ai.request.available_tools': {
+    canonicalName: 'gen_ai.tool.definitions',
+    type: 'string',
+    brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
+  },
+  'gen_ai.request.frequency_penalty': {
+    canonicalName: 'gen_ai.request.frequency_penalty',
+    type: 'double',
+    brief:
+      'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
+    deprecationChain: ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'],
+  },
+  'gen_ai.request.max_tokens': {
+    canonicalName: 'gen_ai.request.max_tokens',
+    type: 'integer',
+    brief: 'The maximum number of tokens to generate in the response.',
+    deprecationChain: ['gen_ai.request.max_tokens'],
+  },
+  'gen_ai.request.messages': {
+    canonicalName: 'gen_ai.input.messages',
+    type: 'string',
+    brief:
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+    deprecationChain: ['gen_ai.request.messages'],
+  },
+  'gen_ai.request.model': {
+    canonicalName: 'gen_ai.request.model',
+    type: 'string',
+    brief: 'The model identifier being used for the request.',
+    deprecationChain: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
+  },
+  'gen_ai.request.presence_penalty': {
+    canonicalName: 'gen_ai.request.presence_penalty',
+    type: 'double',
+    brief:
+      'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
+    deprecationChain: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
+  },
+  'gen_ai.request.reasoning.level': {
+    canonicalName: 'gen_ai.request.reasoning.level',
+    type: 'string',
+    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
+    deprecationChain: ['gen_ai.request.reasoning.level'],
+  },
+  'gen_ai.request.schema': {
+    canonicalName: 'gen_ai.request.schema',
+    type: 'string',
+    brief: 'The stringified JSON schema the model output must conform to.',
+    deprecationChain: ['gen_ai.request.schema'],
+  },
+  'gen_ai.request.seed': {
+    canonicalName: 'gen_ai.request.seed',
+    type: 'string',
+    brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
+    deprecationChain: ['gen_ai.request.seed', 'ai.seed'],
+  },
+  'gen_ai.request.stop_sequences': {
+    canonicalName: 'gen_ai.request.stop_sequences',
+    type: 'string[]',
+    brief: 'List of sequences that the model will use to stop generating further tokens.',
+    deprecationChain: ['gen_ai.request.stop_sequences'],
+  },
+  'gen_ai.request.temperature': {
+    canonicalName: 'gen_ai.request.temperature',
+    type: 'double',
+    brief:
+      'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
+    deprecationChain: ['gen_ai.request.temperature', 'ai.temperature'],
+  },
+  'gen_ai.request.top_k': {
+    canonicalName: 'gen_ai.request.top_k',
+    type: 'integer',
+    brief:
+      'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
+    deprecationChain: ['gen_ai.request.top_k', 'ai.top_k'],
+  },
+  'gen_ai.request.top_p': {
+    canonicalName: 'gen_ai.request.top_p',
+    type: 'double',
+    brief:
+      'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
+    deprecationChain: ['gen_ai.request.top_p', 'ai.top_p'],
+  },
+  'gen_ai.response.finish_reason': {
+    canonicalName: 'gen_ai.response.finish_reasons',
+    type: 'string',
+    brief: 'The reason why the model stopped generating (singular form).',
+    deprecationChain: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
+  },
+  'gen_ai.response.finish_reasons': {
+    canonicalName: 'gen_ai.response.finish_reasons',
+    type: 'string',
+    brief: 'The reason why the model stopped generating.',
+    deprecationChain: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
+  },
+  'gen_ai.response.id': {
+    canonicalName: 'gen_ai.response.id',
+    type: 'string',
+    brief: 'Unique identifier for the completion.',
+    deprecationChain: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
+  },
+  'gen_ai.response.model': {
+    canonicalName: 'gen_ai.response.model',
+    type: 'string',
+    brief: 'The vendor-specific ID of the model used.',
+    deprecationChain: ['gen_ai.response.model', 'ai.response.model'],
+  },
+  'gen_ai.response.object': {
+    canonicalName: 'gen_ai.response.object',
+    type: 'string',
+    brief: 'The type of the object returned by the model.',
+    deprecationChain: ['gen_ai.response.object'],
+  },
+  'gen_ai.response.streaming': {
+    canonicalName: 'gen_ai.response.streaming',
+    type: 'boolean',
+    brief: "Whether or not the AI model call's response was streamed back asynchronously",
+    deprecationChain: ['gen_ai.response.streaming', 'ai.streaming'],
+  },
+  'gen_ai.response.text': {
+    canonicalName: 'gen_ai.output.messages',
+    type: 'string',
+    brief:
+      "The model's response text messages. It has to be a stringified version of an array of response text messages.",
+    deprecationChain: ['gen_ai.response.text'],
+  },
+  'gen_ai.response.time_to_first_chunk': {
+    canonicalName: 'gen_ai.response.time_to_first_chunk',
+    type: 'double',
+    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
+  },
+  'gen_ai.response.time_to_first_token': {
+    canonicalName: 'gen_ai.response.time_to_first_chunk',
+    type: 'double',
+    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    deprecationChain: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
+  },
+  'gen_ai.response.tokens_per_second': {
+    canonicalName: 'gen_ai.response.tokens_per_second',
+    type: 'double',
+    brief: 'The total output tokens per seconds throughput',
+    deprecationChain: ['gen_ai.response.tokens_per_second'],
+  },
+  'gen_ai.response.tool_calls': {
+    canonicalName: 'gen_ai.output.messages',
+    type: 'string',
+    brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
+    deprecationChain: ['gen_ai.response.tool_calls'],
+  },
+  'gen_ai.system': {
+    canonicalName: 'gen_ai.provider.name',
+    type: 'string',
+    brief: 'The provider of the model.',
+    deprecationChain: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
+  },
+  'gen_ai.system.message': {
+    canonicalName: 'gen_ai.system_instructions',
+    type: 'string',
+    brief: 'The system instructions passed to the model.',
+    deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
+  },
+  'gen_ai.system_instructions': {
+    canonicalName: 'gen_ai.system_instructions',
+    type: 'string',
+    brief: 'The system instructions passed to the model.',
+    deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
+  },
+  'gen_ai.tool.call.arguments': {
+    canonicalName: 'gen_ai.tool.call.arguments',
+    type: 'string',
+    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
+  },
+  'gen_ai.tool.call.result': {
+    canonicalName: 'gen_ai.tool.call.result',
+    type: 'string',
+    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'gen_ai.tool.definitions': {
+    canonicalName: 'gen_ai.tool.definitions',
+    type: 'string',
+    brief: 'The list of source system tool definitions available to the GenAI agent or model.',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
+  },
+  'gen_ai.tool.description': {
+    canonicalName: 'gen_ai.tool.description',
+    type: 'string',
+    brief: 'The description of the tool being used.',
+    deprecationChain: ['gen_ai.tool.description'],
+  },
+  'gen_ai.tool.input': {
+    canonicalName: 'gen_ai.tool.call.arguments',
+    type: 'string',
+    brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
+    deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
+  },
+  'gen_ai.tool.message': {
+    canonicalName: 'gen_ai.tool.call.result',
+    type: 'string',
+    brief: 'The response from a tool or function call passed to the model.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'gen_ai.tool.name': {
+    canonicalName: 'gen_ai.tool.name',
+    type: 'string',
+    brief: 'Name of the tool utilized by the agent.',
+    deprecationChain: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
+  },
+  'gen_ai.tool.output': {
+    canonicalName: 'gen_ai.tool.call.result',
+    type: 'string',
+    brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'gen_ai.tool.type': {
+    canonicalName: 'gen_ai.tool.type',
+    type: 'string',
+    brief: 'The type of tool being used.',
+    deprecationChain: ['gen_ai.tool.type'],
+  },
+  'gen_ai.usage.cache_creation.input_tokens': {
+    canonicalName: 'gen_ai.usage.cache_creation.input_tokens',
+    type: 'integer',
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+  },
+  'gen_ai.usage.cache_read.input_tokens': {
+    canonicalName: 'gen_ai.usage.cache_read.input_tokens',
+    type: 'integer',
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+  },
+  'gen_ai.usage.completion_tokens': {
+    canonicalName: 'gen_ai.usage.output_tokens',
+    type: 'integer',
+    brief: 'The number of tokens used in the GenAI response (completion).',
+    deprecationChain: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
+  },
+  'gen_ai.usage.input_tokens': {
+    canonicalName: 'gen_ai.usage.input_tokens',
+    type: 'integer',
+    brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
+    deprecationChain: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
+  },
+  'gen_ai.usage.input_tokens.cache_write': {
+    canonicalName: 'gen_ai.usage.cache_creation.input_tokens',
+    type: 'integer',
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+  },
+  'gen_ai.usage.input_tokens.cached': {
+    canonicalName: 'gen_ai.usage.cache_read.input_tokens',
+    type: 'integer',
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    deprecationChain: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+  },
+  'gen_ai.usage.output_tokens': {
+    canonicalName: 'gen_ai.usage.output_tokens',
+    type: 'integer',
+    brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
+    deprecationChain: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
+  },
+  'gen_ai.usage.output_tokens.reasoning': {
+    canonicalName: 'gen_ai.usage.reasoning.output_tokens',
+    type: 'integer',
+    brief: 'The number of tokens used for reasoning to create the AI output.',
+    deprecationChain: ['gen_ai.usage.reasoning.output_tokens', 'gen_ai.usage.output_tokens.reasoning'],
+  },
+  'gen_ai.usage.prompt_tokens': {
+    canonicalName: 'gen_ai.usage.input_tokens',
+    type: 'integer',
+    brief: 'The number of tokens used in the GenAI input (prompt).',
+    deprecationChain: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
+  },
+  'gen_ai.usage.reasoning.output_tokens': {
+    canonicalName: 'gen_ai.usage.reasoning.output_tokens',
+    type: 'integer',
+    brief: 'The number of tokens used for reasoning to create the AI output.',
+    deprecationChain: ['gen_ai.usage.reasoning.output_tokens', 'gen_ai.usage.output_tokens.reasoning'],
+  },
+  'gen_ai.usage.total_tokens': {
+    canonicalName: 'gen_ai.usage.total_tokens',
+    type: 'integer',
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
+  },
+  'graphql.document': {
+    canonicalName: 'graphql.document',
+    type: 'string',
+    brief: 'The GraphQL document being executed.',
+    deprecationChain: ['graphql.document', 'graphql.source'],
+  },
+  'graphql.operation.name': {
+    canonicalName: 'graphql.operation.name',
+    type: 'string',
+    brief: 'The name of the operation being executed.',
+    deprecationChain: ['graphql.operation.name'],
+  },
+  'graphql.operation.type': {
+    canonicalName: 'graphql.operation.type',
+    type: 'string',
+    brief: 'The type of the operation being executed.',
+    deprecationChain: ['graphql.operation.type'],
+  },
+  'graphql.processing.type': {
+    canonicalName: 'graphql.processing.type',
+    type: 'string',
+    brief: 'The type of processing represented by this span.',
+    deprecationChain: ['graphql.processing.type'],
+  },
+  'graphql.source': {
+    canonicalName: 'graphql.document',
+    type: 'string',
+    brief: 'The GraphQL document being executed.',
+    deprecationChain: ['graphql.document', 'graphql.source'],
+  },
+  'grpc.error.bad_request.field_violations': {
+    canonicalName: 'grpc.error.bad_request.field_violations',
+    type: 'string[]',
+    brief:
+      'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.',
+    deprecationChain: ['grpc.error.bad_request.field_violations'],
+  },
+  'grpc.error.debug_info.detail': {
+    canonicalName: 'grpc.error.debug_info.detail',
+    type: 'string',
+    brief:
+      'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.debug_info.detail'],
+  },
+  'grpc.error.debug_info.stack_entries': {
+    canonicalName: 'grpc.error.debug_info.stack_entries',
+    type: 'string[]',
+    brief:
+      'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.debug_info.stack_entries'],
+  },
+  'grpc.error.error_info.domain': {
+    canonicalName: 'grpc.error.error_info.domain',
+    type: 'string',
+    brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
+    deprecationChain: ['grpc.error.error_info.domain'],
+  },
+  'grpc.error.error_info.metadata.<key>': {
+    canonicalName: 'grpc.error.error_info.metadata.<key>',
+    type: 'string',
+    brief:
+      'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.error_info.metadata.<key>'],
+  },
+  'grpc.error.error_info.reason': {
+    canonicalName: 'grpc.error.error_info.reason',
+    type: 'string',
+    brief:
+      'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.',
+    deprecationChain: ['grpc.error.error_info.reason'],
+  },
+  'grpc.error.precondition_failure.violations': {
+    canonicalName: 'grpc.error.precondition_failure.violations',
+    type: 'string[]',
+    brief:
+      'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
+    deprecationChain: ['grpc.error.precondition_failure.violations'],
+  },
+  'grpc.error.quota_failure.violations': {
+    canonicalName: 'grpc.error.quota_failure.violations',
+    type: 'string[]',
+    brief:
+      'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
+    deprecationChain: ['grpc.error.quota_failure.violations'],
+  },
+  'grpc.error.resource_info.description': {
+    canonicalName: 'grpc.error.resource_info.description',
+    type: 'string',
+    brief:
+      'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.',
+    deprecationChain: ['grpc.error.resource_info.description'],
+  },
+  'grpc.error.resource_info.owner': {
+    canonicalName: 'grpc.error.resource_info.owner',
+    type: 'string',
+    brief:
+      'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.resource_info.owner'],
+  },
+  'grpc.error.resource_info.resource_name': {
+    canonicalName: 'grpc.error.resource_info.resource_name',
+    type: 'string',
+    brief:
+      'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
+    deprecationChain: ['grpc.error.resource_info.resource_name'],
+  },
+  'grpc.error.resource_info.resource_type': {
+    canonicalName: 'grpc.error.resource_info.resource_type',
+    type: 'string',
+    brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
+    deprecationChain: ['grpc.error.resource_info.resource_type'],
+  },
+  'grpc.error.retry_info.retry_delay_ms': {
+    canonicalName: 'grpc.error.retry_info.retry_delay_ms',
+    type: 'integer',
+    brief:
+      'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
+    deprecationChain: ['grpc.error.retry_info.retry_delay_ms'],
+  },
+  hardwareConcurrency: {
+    canonicalName: 'device.processor_count',
+    type: 'string',
+    brief: 'The number of logical CPU cores available.',
+    deprecationChain: ['device.processor_count', 'hardwareConcurrency'],
+  },
+  'http.client_ip': {
+    canonicalName: 'client.address',
+    type: 'string',
+    brief:
+      'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['client.address', 'http.client_ip'],
+  },
+  'http.decoded_response_content_length': {
+    canonicalName: 'http.response.body.decoded_size',
+    type: 'byte',
+    brief: 'The decoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+  },
+  'http.flavor': {
+    canonicalName: 'network.protocol.version',
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+  },
+  'http.fragment': {
+    canonicalName: 'http.fragment',
+    type: 'string',
+    brief:
+      'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
+    deprecationChain: ['http.fragment'],
+  },
+  'http.host': {
+    canonicalName: 'server.address',
+    type: 'string',
+    brief: 'The domain name.',
+    deprecationChain: ['http.host'],
+  },
+  'http.method': {
+    canonicalName: 'http.request.method',
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'http.query': {
+    canonicalName: 'http.query',
+    type: 'string',
+    brief:
+      'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
+    deprecationChain: ['http.query'],
+  },
+  'http.request.body.data': {
+    canonicalName: 'http.request.body.data',
+    type: 'string',
+    brief: 'HTTP request body data. Can be given as string or structural data of any format.',
+    deprecationChain: ['http.request.body.data'],
+  },
+  'http.request.body.decoded_size': {
+    canonicalName: 'http.request.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+  },
+  'http.request.body.size': {
+    canonicalName: 'http.request.body.size',
+    type: 'integer',
+    brief: 'The encoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.size', 'http.request_content_length'],
+  },
+  'http.request.connect_start': {
+    canonicalName: 'http.request.connect_start',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
+    deprecationChain: ['http.request.connect_start'],
+  },
+  'http.request.connection_end': {
+    canonicalName: 'http.request.connection_end',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
+    deprecationChain: ['http.request.connection_end'],
+  },
+  'http.request.domain_lookup_end': {
+    canonicalName: 'http.request.domain_lookup_end',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
+    deprecationChain: ['http.request.domain_lookup_end'],
+  },
+  'http.request.domain_lookup_start': {
+    canonicalName: 'http.request.domain_lookup_start',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
+    deprecationChain: ['http.request.domain_lookup_start'],
+  },
+  'http.request.fetch_start': {
+    canonicalName: 'http.request.fetch_start',
+    type: 'double',
+    brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
+    deprecationChain: ['http.request.fetch_start'],
+  },
+  'http.request.header.<key>': {
+    canonicalName: 'http.request.header.<key>',
+    type: 'string[]',
+    brief:
+      'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+    deprecationChain: ['http.request.header.<key>'],
+  },
+  'http.request.method': {
+    canonicalName: 'http.request.method',
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'http.request.redirect_end': {
+    canonicalName: 'http.request.redirect_end',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
+    deprecationChain: ['http.request.redirect_end'],
+  },
+  'http.request.redirect_start': {
+    canonicalName: 'http.request.redirect_start',
+    type: 'double',
+    brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
+    deprecationChain: ['http.request.redirect_start'],
+  },
+  'http.request.request_start': {
+    canonicalName: 'http.request.request_start',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
+    deprecationChain: ['http.request.request_start'],
+  },
+  'http.request.resend_count': {
+    canonicalName: 'http.request.resend_count',
+    type: 'integer',
+    brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
+    deprecationChain: ['http.request.resend_count'],
+  },
+  'http.request.response_end': {
+    canonicalName: 'http.request.response_end',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
+    deprecationChain: ['http.request.response_end'],
+  },
+  'http.request.response_start': {
+    canonicalName: 'http.request.response_start',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
+    deprecationChain: ['http.request.response_start'],
+  },
+  'http.request.same_origin': {
+    canonicalName: 'http.request.same_origin',
+    type: 'boolean',
+    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
+    deprecationChain: ['http.request.same_origin', 'url.same_origin'],
+  },
+  'http.request.secure_connection_start': {
+    canonicalName: 'http.request.secure_connection_start',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
+    deprecationChain: ['http.request.secure_connection_start'],
+  },
+  'http.request.time_to_first_byte': {
+    canonicalName: 'http.request.time_to_first_byte',
+    type: 'double',
+    brief:
+      "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
+    deprecationChain: ['http.request.time_to_first_byte'],
+  },
+  'http.request.worker_start': {
+    canonicalName: 'http.request.worker_start',
+    type: 'double',
+    brief:
+      'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
+    deprecationChain: ['http.request.worker_start'],
+  },
+  'http.request_content_length': {
+    canonicalName: 'http.request.body.size',
+    type: 'integer',
+    brief: 'The encoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.size', 'http.request_content_length'],
+  },
+  'http.request_content_length_uncompressed': {
+    canonicalName: 'http.request.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the request (in bytes).',
+    deprecationChain: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+  },
+  'http.request_method': {
+    canonicalName: 'http.request.method',
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'http.response.body.decoded_size': {
+    canonicalName: 'http.response.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+  },
+  'http.response.body.size': {
+    canonicalName: 'http.response.body.size',
+    type: 'integer',
+    brief: 'The encoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.size',
+      'http.response.header.content-length',
+      'http.response_content_length',
+    ],
+  },
+  'http.response.header.<key>': {
+    canonicalName: 'http.response.header.<key>',
+    type: 'string[]',
+    brief:
+      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+    deprecationChain: ['http.response.header.<key>'],
+  },
+  'http.response.header.content-length': {
+    canonicalName: 'http.response.header.content-length',
+    type: 'string',
+    brief: 'The size of the message body sent to the recipient (in bytes)',
+    deprecationChain: [
+      'http.response.header.content-length',
+      'http.response.body.size',
+      'http.response_content_length',
+    ],
+  },
+  'http.response.size': {
+    canonicalName: 'http.response.size',
+    type: 'integer',
+    brief: 'The transfer size of the response (in bytes).',
+    deprecationChain: ['http.response.size', 'http.response_transfer_size'],
+  },
+  'http.response.status_text': {
+    canonicalName: 'http.response.status_text',
+    type: 'string',
+    brief: 'The reason phrase of the HTTP response.',
+    deprecationChain: ['http.response.status_text', 'http.status_text'],
+  },
+  'http.response_content_length': {
+    canonicalName: 'http.response.body.size',
+    type: 'byte',
+    brief: 'The encoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.size',
+      'http.response.header.content-length',
+      'http.response_content_length',
+    ],
+  },
+  'http.response_content_length_uncompressed': {
+    canonicalName: 'http.response.body.decoded_size',
+    type: 'integer',
+    brief: 'The decoded body size of the response (in bytes).',
+    deprecationChain: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+  },
+  'http.response_status_code': {
+    canonicalName: 'http.response.status_code',
+    type: 'integer',
+    brief: 'The status code of the HTTP response.',
+    deprecationChain: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
+  },
+  'http.response_transfer_size': {
+    canonicalName: 'http.response.size',
+    type: 'byte',
+    brief: 'The transfer size of the response (in bytes).',
+    deprecationChain: ['http.response.size', 'http.response_transfer_size'],
+  },
+  'http.route': {
+    canonicalName: 'http.route',
+    type: 'string',
+    brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
+    deprecationChain: ['http.route'],
+  },
+  'http.scheme': {
+    canonicalName: 'url.scheme',
+    type: 'string',
+    brief: 'The URI scheme component identifying the used protocol.',
+    deprecationChain: ['url.scheme', 'http.scheme'],
+  },
+  'http.server.request.time_in_queue': {
+    canonicalName: 'http.server.request.time_in_queue',
+    type: 'double',
+    brief:
+      'The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.',
+    deprecationChain: ['http.server.request.time_in_queue'],
+  },
+  'http.server_name': {
+    canonicalName: 'server.address',
+    type: 'string',
+    brief: 'The server domain name',
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+  },
+  'http.status_code': {
+    canonicalName: 'http.response.status_code',
+    type: 'integer',
+    brief: 'The status code of the HTTP response.',
+    deprecationChain: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
+  },
+  'http.status_text': {
+    canonicalName: 'http.response.status_text',
+    type: 'string',
+    brief: 'The reason phrase of the HTTP response',
+    deprecationChain: ['http.response.status_text', 'http.status_text'],
+  },
+  'http.target': {
+    canonicalName: 'http.target',
+    type: 'string',
+    brief: 'The pathname and query string of the URL.',
+    deprecationChain: ['http.target'],
+  },
+  'http.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+  },
+  'http.user_agent': {
+    canonicalName: 'user_agent.original',
+    type: 'string',
+    brief: 'Value of the HTTP User-Agent header sent by the client.',
+    deprecationChain: ['user_agent.original', 'http.user_agent'],
+  },
+  id: {
+    canonicalName: 'id',
+    type: 'string',
+    brief: 'A unique identifier for the span.',
+    deprecationChain: ['id'],
+  },
+  inp: {
+    canonicalName: 'browser.web_vital.inp.value',
+    type: 'double',
+    brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
+    deprecationChain: ['browser.web_vital.inp.value', 'inp'],
+  },
+  'jsonrpc.protocol.version': {
+    canonicalName: 'jsonrpc.protocol.version',
+    type: 'string',
+    brief: 'The version of the JSON-RPC protocol used.',
+    deprecationChain: ['jsonrpc.protocol.version'],
+  },
+  'jsonrpc.request.id': {
+    canonicalName: 'jsonrpc.request.id',
+    type: 'string',
+    brief: 'The JSON-RPC request identifier. Unique within the session.',
+    deprecationChain: ['jsonrpc.request.id', 'mcp.request.id'],
+  },
+  'jvm.gc.action': {
+    canonicalName: 'jvm.gc.action',
+    type: 'string',
+    brief: 'Name of the garbage collector action.',
+    deprecationChain: ['jvm.gc.action'],
+  },
+  'jvm.gc.name': {
+    canonicalName: 'jvm.gc.name',
+    type: 'string',
+    brief: 'Name of the garbage collector.',
+    deprecationChain: ['jvm.gc.name'],
+  },
+  'jvm.memory.pool.name': {
+    canonicalName: 'jvm.memory.pool.name',
+    type: 'string',
+    brief: 'Name of the memory pool.',
+    deprecationChain: ['jvm.memory.pool.name'],
+  },
+  'jvm.memory.type': {
+    canonicalName: 'jvm.memory.type',
+    type: 'string',
+    brief: 'Name of the memory pool.',
+    deprecationChain: ['jvm.memory.type'],
+  },
+  'jvm.thread.daemon': {
+    canonicalName: 'jvm.thread.daemon',
+    type: 'boolean',
+    brief: 'Whether the thread is daemon or not.',
+    deprecationChain: ['jvm.thread.daemon'],
+  },
+  'jvm.thread.state': {
+    canonicalName: 'jvm.thread.state',
+    type: 'string',
+    brief: 'State of the thread.',
+    deprecationChain: ['jvm.thread.state'],
+  },
+  'koa.name': {
+    canonicalName: 'koa.name',
+    type: 'string',
+    brief: 'The name of the Koa middleware or matched route that handled the request.',
+    deprecationChain: ['koa.name'],
+  },
+  'koa.type': {
+    canonicalName: 'koa.type',
+    type: 'string',
+    brief: 'The type of the Koa layer that handled the request.',
+    deprecationChain: ['koa.type'],
+  },
+  lcp: {
+    canonicalName: 'browser.web_vital.lcp.value',
+    type: 'double',
+    brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
+    deprecationChain: ['browser.web_vital.lcp.value', 'lcp'],
+  },
+  'lcp.element': {
+    canonicalName: 'browser.web_vital.lcp.element',
+    type: 'string',
+    brief: 'The dom element responsible for the largest contentful paint.',
+    deprecationChain: ['browser.web_vital.lcp.element', 'lcp.element'],
+  },
+  'lcp.id': {
+    canonicalName: 'browser.web_vital.lcp.id',
+    type: 'string',
+    brief: 'The id of the dom element responsible for the largest contentful paint.',
+    deprecationChain: ['browser.web_vital.lcp.id', 'lcp.id'],
+  },
+  'lcp.loadTime': {
+    canonicalName: 'browser.web_vital.lcp.load_time',
+    type: 'integer',
+    brief: 'The time it took for the LCP element to be loaded',
+    deprecationChain: ['browser.web_vital.lcp.load_time', 'lcp.loadTime'],
+  },
+  'lcp.renderTime': {
+    canonicalName: 'browser.web_vital.lcp.render_time',
+    type: 'integer',
+    brief: 'The time it took for the LCP element to be rendered',
+    deprecationChain: ['browser.web_vital.lcp.render_time', 'lcp.renderTime'],
+  },
+  'lcp.size': {
+    canonicalName: 'browser.web_vital.lcp.size',
+    type: 'integer',
+    brief: 'The size of the largest contentful paint element.',
+    deprecationChain: ['browser.web_vital.lcp.size', 'lcp.size'],
+  },
+  'lcp.url': {
+    canonicalName: 'browser.web_vital.lcp.url',
+    type: 'string',
+    brief: 'The url of the dom element responsible for the largest contentful paint.',
+    deprecationChain: ['browser.web_vital.lcp.url', 'lcp.url'],
+  },
+  'litestar.middleware_name': {
+    canonicalName: 'middleware.name',
+    type: 'string',
+    brief: 'The name of the Litestar middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  'logger.name': {
+    canonicalName: 'logger.name',
+    type: 'string',
+    brief: 'The name of the logger that generated this event.',
+    deprecationChain: ['logger.name'],
+  },
+  'mcp.cancelled.reason': {
+    canonicalName: 'mcp.cancelled.reason',
+    type: 'string',
+    brief: 'Reason for the cancellation of an MCP operation.',
+    deprecationChain: ['mcp.cancelled.reason'],
+  },
+  'mcp.cancelled.request_id': {
+    canonicalName: 'mcp.cancelled.request_id',
+    type: 'string',
+    brief: 'Request ID of the cancelled MCP operation.',
+    deprecationChain: ['mcp.cancelled.request_id'],
+  },
+  'mcp.client.name': {
+    canonicalName: 'mcp.client.name',
+    type: 'string',
+    brief: 'Name of the MCP client application.',
+    deprecationChain: ['mcp.client.name'],
+  },
+  'mcp.client.title': {
+    canonicalName: 'mcp.client.title',
+    type: 'string',
+    brief: 'Display title of the MCP client application.',
+    deprecationChain: ['mcp.client.title'],
+  },
+  'mcp.client.version': {
+    canonicalName: 'mcp.client.version',
+    type: 'string',
+    brief: 'Version of the MCP client application.',
+    deprecationChain: ['mcp.client.version'],
+  },
+  'mcp.lifecycle.phase': {
+    canonicalName: 'mcp.lifecycle.phase',
+    type: 'string',
+    brief: 'Lifecycle phase indicator for MCP operations.',
+    deprecationChain: ['mcp.lifecycle.phase'],
+  },
+  'mcp.logging.data_type': {
+    canonicalName: 'mcp.logging.data_type',
+    type: 'string',
+    brief: 'Data type of the logged message content.',
+    deprecationChain: ['mcp.logging.data_type'],
+  },
+  'mcp.logging.level': {
+    canonicalName: 'mcp.logging.level',
+    type: 'string',
+    brief: 'Log level for MCP logging operations.',
+    deprecationChain: ['mcp.logging.level'],
+  },
+  'mcp.logging.logger': {
+    canonicalName: 'mcp.logging.logger',
+    type: 'string',
+    brief: 'Logger name for MCP logging operations.',
+    deprecationChain: ['mcp.logging.logger'],
+  },
+  'mcp.logging.message': {
+    canonicalName: 'mcp.logging.message',
+    type: 'string',
+    brief: 'Log message content from MCP logging operations.',
+    deprecationChain: ['mcp.logging.message'],
+  },
+  'mcp.method.name': {
+    canonicalName: 'mcp.method.name',
+    type: 'string',
+    brief: 'The name of the MCP request or notification method being called.',
+    deprecationChain: ['mcp.method.name'],
+  },
+  'mcp.progress.current': {
+    canonicalName: 'mcp.progress.current',
+    type: 'integer',
+    brief: 'Current progress value of an MCP operation.',
+    deprecationChain: ['mcp.progress.current'],
+  },
+  'mcp.progress.message': {
+    canonicalName: 'mcp.progress.message',
+    type: 'string',
+    brief: 'Progress message describing the current state of an MCP operation.',
+    deprecationChain: ['mcp.progress.message'],
+  },
+  'mcp.progress.percentage': {
+    canonicalName: 'mcp.progress.percentage',
+    type: 'double',
+    brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
+    deprecationChain: ['mcp.progress.percentage'],
+  },
+  'mcp.progress.token': {
+    canonicalName: 'mcp.progress.token',
+    type: 'string',
+    brief: 'Token for tracking progress of an MCP operation.',
+    deprecationChain: ['mcp.progress.token'],
+  },
+  'mcp.progress.total': {
+    canonicalName: 'mcp.progress.total',
+    type: 'integer',
+    brief: 'Total progress target value of an MCP operation.',
+    deprecationChain: ['mcp.progress.total'],
+  },
+  'mcp.prompt.name': {
+    canonicalName: 'gen_ai.prompt.name',
+    type: 'string',
+    brief: 'Name of the MCP prompt template being used.',
+    deprecationChain: ['gen_ai.prompt.name', 'mcp.prompt.name'],
+  },
+  'mcp.prompt.result.description': {
+    canonicalName: 'mcp.prompt.result.description',
+    type: 'string',
+    brief: 'Description of the prompt result.',
+    deprecationChain: ['mcp.prompt.result.description'],
+  },
+  'mcp.prompt.result.message_content': {
+    canonicalName: 'mcp.prompt.result.message_content',
+    type: 'string',
+    brief: 'Content of the message in the prompt result. Used for single message results only.',
+    deprecationChain: ['mcp.prompt.result.message_content'],
+  },
+  'mcp.prompt.result.message_count': {
+    canonicalName: 'mcp.prompt.result.message_count',
+    type: 'integer',
+    brief: 'Number of messages in the prompt result.',
+    deprecationChain: ['mcp.prompt.result.message_count'],
+  },
+  'mcp.prompt.result.message_role': {
+    canonicalName: 'mcp.prompt.result.message_role',
+    type: 'string',
+    brief: 'Role of the message in the prompt result. Used for single message results only.',
+    deprecationChain: ['mcp.prompt.result.message_role'],
+  },
+  'mcp.protocol.ready': {
+    canonicalName: 'mcp.protocol.ready',
+    type: 'integer',
+    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
+    deprecationChain: ['mcp.protocol.ready'],
+  },
+  'mcp.protocol.version': {
+    canonicalName: 'mcp.protocol.version',
+    type: 'string',
+    brief: 'MCP protocol version used in the session.',
+    deprecationChain: ['mcp.protocol.version'],
+  },
+  'mcp.request.argument.<key>': {
+    canonicalName: 'mcp.request.argument.<key>',
+    type: 'string',
+    brief:
+      'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.',
+    deprecationChain: ['mcp.request.argument.<key>'],
+  },
+  'mcp.request.argument.name': {
+    canonicalName: 'mcp.request.argument.name',
+    type: 'string',
+    brief: 'Name argument from prompts/get MCP request.',
+    deprecationChain: ['mcp.request.argument.name'],
+  },
+  'mcp.request.argument.uri': {
+    canonicalName: 'mcp.request.argument.uri',
+    type: 'string',
+    brief: 'URI argument from resources/read MCP request.',
+    deprecationChain: ['mcp.request.argument.uri'],
+  },
+  'mcp.request.id': {
+    canonicalName: 'jsonrpc.request.id',
+    type: 'string',
+    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
+    deprecationChain: ['jsonrpc.request.id', 'mcp.request.id'],
+  },
+  'mcp.resource.protocol': {
+    canonicalName: 'network.protocol.name',
+    type: 'string',
+    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+  },
+  'mcp.resource.uri': {
+    canonicalName: 'mcp.resource.uri',
+    type: 'string',
+    brief: 'The resource URI being accessed in an MCP operation.',
+    deprecationChain: ['mcp.resource.uri'],
+  },
+  'mcp.server.name': {
+    canonicalName: 'mcp.server.name',
+    type: 'string',
+    brief: 'Name of the MCP server application.',
+    deprecationChain: ['mcp.server.name'],
+  },
+  'mcp.server.title': {
+    canonicalName: 'mcp.server.title',
+    type: 'string',
+    brief: 'Display title of the MCP server application.',
+    deprecationChain: ['mcp.server.title'],
+  },
+  'mcp.server.version': {
+    canonicalName: 'mcp.server.version',
+    type: 'string',
+    brief: 'Version of the MCP server application.',
+    deprecationChain: ['mcp.server.version'],
+  },
+  'mcp.session.id': {
+    canonicalName: 'mcp.session.id',
+    type: 'string',
+    brief: 'Identifier for the MCP session.',
+    deprecationChain: ['mcp.session.id'],
+  },
+  'mcp.tool.name': {
+    canonicalName: 'gen_ai.tool.name',
+    type: 'string',
+    brief: 'Name of the MCP tool being called.',
+    deprecationChain: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
+  },
+  'mcp.tool.result.content': {
+    canonicalName: 'gen_ai.tool.call.result',
+    type: 'string',
+    brief: 'The content of the tool result.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+  },
+  'mcp.tool.result.content_count': {
+    canonicalName: 'mcp.tool.result.content_count',
+    type: 'integer',
+    brief: 'Number of content items in the tool result.',
+    deprecationChain: ['mcp.tool.result.content_count'],
+  },
+  'mcp.tool.result.is_error': {
+    canonicalName: 'error.type',
+    type: 'boolean',
+    brief: 'Whether a tool execution resulted in an error.',
+    deprecationChain: ['mcp.tool.result.is_error'],
+  },
+  'mcp.transport': {
+    canonicalName: 'network.transport',
+    type: 'string',
+    brief: 'Transport method used for MCP communication.',
+    deprecationChain: ['network.transport', 'mcp.transport'],
+  },
+  'mdc.<key>': {
+    canonicalName: 'mdc.<key>',
+    type: 'string',
+    brief:
+      "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
+    deprecationChain: ['mdc.<key>'],
+  },
+  'messaging.batch.message_count': {
+    canonicalName: 'messaging.batch.message_count',
+    type: 'integer',
+    brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
+    deprecationChain: ['messaging.batch.message_count'],
+  },
+  'messaging.conversation_id': {
+    canonicalName: 'messaging.message.conversation_id',
+    type: 'string',
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    deprecationChain: ['messaging.message.conversation_id', 'messaging.conversation_id'],
+  },
+  'messaging.destination': {
+    canonicalName: 'messaging.destination.name',
+    type: 'string',
+    brief: 'The message destination name.',
+    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+  },
+  'messaging.destination.connection': {
+    canonicalName: 'messaging.destination.connection',
+    type: 'string',
+    brief: 'The message destination connection.',
+    deprecationChain: ['messaging.destination.connection'],
+  },
+  'messaging.destination.name': {
+    canonicalName: 'messaging.destination.name',
+    type: 'string',
+    brief: 'The message destination name.',
+    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+  },
+  'messaging.destination.partition.id': {
+    canonicalName: 'messaging.destination.partition.id',
+    type: 'string',
+    brief:
+      'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
+    deprecationChain: ['messaging.destination.partition.id'],
+  },
+  'messaging.destination_kind': {
+    canonicalName: 'messaging.destination_kind',
+    type: 'string',
+    brief: 'The kind of message destination.',
+    deprecationChain: ['messaging.destination_kind'],
+  },
+  'messaging.kafka.message.key': {
+    canonicalName: 'messaging.kafka.message.key',
+    type: 'string',
+    brief:
+      "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
+    deprecationChain: ['messaging.kafka.message.key'],
+  },
+  'messaging.kafka.message.tombstone': {
+    canonicalName: 'messaging.kafka.message.tombstone',
+    type: 'boolean',
+    brief: 'A boolean that is true if the message is a tombstone.',
+    deprecationChain: ['messaging.kafka.message.tombstone'],
+  },
+  'messaging.kafka.offset': {
+    canonicalName: 'messaging.kafka.offset',
+    type: 'integer',
+    brief: 'The offset of a record in the corresponding Kafka partition.',
+    deprecationChain: ['messaging.kafka.offset'],
+  },
+  'messaging.message.body.size': {
+    canonicalName: 'messaging.message.body.size',
+    type: 'byte',
+    brief: 'The size of the message body in bytes.',
+    deprecationChain: ['messaging.message.body.size'],
+  },
+  'messaging.message.conversation_id': {
+    canonicalName: 'messaging.message.conversation_id',
+    type: 'string',
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    deprecationChain: ['messaging.message.conversation_id', 'messaging.conversation_id'],
+  },
+  'messaging.message.envelope.size': {
+    canonicalName: 'messaging.message.envelope.size',
+    type: 'integer',
+    brief: 'The size of the message body and metadata in bytes.',
+    deprecationChain: ['messaging.message.envelope.size'],
+  },
+  'messaging.message.id': {
+    canonicalName: 'messaging.message.id',
+    type: 'string',
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+  },
+  'messaging.message.receive.latency': {
+    canonicalName: 'messaging.message.receive.latency',
+    type: 'millisecond',
+    brief: 'The latency between when the message was published and received.',
+    deprecationChain: ['messaging.message.receive.latency'],
+  },
+  'messaging.message.retry.count': {
+    canonicalName: 'messaging.message.retry.count',
+    type: 'integer',
+    brief: 'The amount of attempts to send the message.',
+    deprecationChain: ['messaging.message.retry.count'],
+  },
+  'messaging.message_id': {
+    canonicalName: 'messaging.message.id',
+    type: 'string',
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+  },
+  'messaging.operation': {
+    canonicalName: 'messaging.operation.name',
+    type: 'string',
+    brief: 'The name of the messaging operation being performed.',
+    deprecationChain: ['messaging.operation.name', 'messaging.operation'],
+  },
+  'messaging.operation.name': {
+    canonicalName: 'messaging.operation.name',
+    type: 'string',
+    brief: 'The name of the messaging operation being performed',
+    deprecationChain: ['messaging.operation.name', 'messaging.operation'],
+  },
+  'messaging.operation.type': {
+    canonicalName: 'messaging.operation.type',
+    type: 'string',
+    brief: 'A string identifying the type of the messaging operation',
+    deprecationChain: ['messaging.operation.type'],
+  },
+  'messaging.protocol': {
+    canonicalName: 'network.protocol.name',
+    type: 'string',
+    brief: 'OSI application layer or non-OSI equivalent.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+  },
+  'messaging.protocol_version': {
+    canonicalName: 'network.protocol.version',
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+  },
+  'messaging.rabbitmq.destination.routing_key': {
+    canonicalName: 'messaging.rabbitmq.destination.routing_key',
+    type: 'string',
+    brief: 'RabbitMQ message routing key.',
+    deprecationChain: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
+  },
+  'messaging.rabbitmq.routing_key': {
+    canonicalName: 'messaging.rabbitmq.destination.routing_key',
+    type: 'string',
+    brief: 'RabbitMQ message routing key.',
+    deprecationChain: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
+  },
+  'messaging.system': {
+    canonicalName: 'messaging.system',
+    type: 'string',
+    brief: 'The messaging system as identified by the client instrumentation.',
+    deprecationChain: ['messaging.system'],
+  },
+  'messaging.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The connection string of the messaging broker.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+  },
+  method: {
+    canonicalName: 'http.request.method',
+    type: 'string',
+    brief: 'The HTTP method used.',
+    deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
+  },
+  'middleware.name': {
+    canonicalName: 'middleware.name',
+    type: 'string',
+    brief: 'The name of the middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  'mobile.frames_delay': {
+    canonicalName: 'app.vitals.frames.delay.value',
+    type: 'second',
+    brief:
+      'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
+    deprecationChain: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
+  },
+  'mobile.frozen_frames': {
+    canonicalName: 'app.vitals.frames.frozen.count',
+    type: 'integer',
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    deprecationChain: [
+      'app.vitals.frames.frozen.count',
+      'frames.frozen',
+      'mobile.frozen_frames',
+      'sentry.frames.frozen',
+    ],
+  },
+  'mobile.slow_frames': {
+    canonicalName: 'app.vitals.frames.slow.count',
+    type: 'integer',
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
+  },
+  'mobile.total_frames': {
+    canonicalName: 'app.vitals.frames.total.count',
+    type: 'integer',
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
+  },
+  'navigation.origin': {
+    canonicalName: 'navigation.origin',
+    type: 'string',
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+    deprecationChain: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+  },
+  'navigation.route.id': {
+    canonicalName: 'navigation.route.id',
+    type: 'string',
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    deprecationChain: ['navigation.route.id'],
+  },
+  'navigation.type': {
+    canonicalName: 'navigation.type',
+    type: 'string',
+    brief: 'The type of navigation done by a client-side router.',
+    deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
+  'nel.elapsed_time': {
+    canonicalName: 'nel.elapsed_time',
+    type: 'integer',
+    brief:
+      'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
+    deprecationChain: ['nel.elapsed_time'],
+  },
+  'nel.phase': {
+    canonicalName: 'nel.phase',
+    type: 'string',
+    brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
+    deprecationChain: ['nel.phase'],
+  },
+  'nel.referrer': {
+    canonicalName: 'nel.referrer',
+    type: 'string',
+    brief: "request's referrer, as determined by the referrer policy associated with its client.",
+    deprecationChain: ['nel.referrer'],
+  },
+  'nel.sampling_function': {
+    canonicalName: 'nel.sampling_function',
+    type: 'double',
+    brief: 'The sampling function used to determine if the request should be sampled.',
+    deprecationChain: ['nel.sampling_function'],
+  },
+  'nel.type': {
+    canonicalName: 'nel.type',
+    type: 'string',
+    brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
+    deprecationChain: ['nel.type'],
+  },
+  'net.host.ip': {
+    canonicalName: 'network.local.address',
+    type: 'string',
+    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
+  },
+  'net.host.name': {
+    canonicalName: 'server.address',
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+  },
+  'net.host.port': {
+    canonicalName: 'server.port',
+    type: 'integer',
+    brief: 'Server port number.',
+    deprecationChain: ['server.port', 'net.host.port', 'port'],
+  },
+  'net.peer.ip': {
+    canonicalName: 'network.peer.address',
+    type: 'string',
+    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
+  },
+  'net.peer.name': {
+    canonicalName: 'server.address',
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['net.peer.name'],
+  },
+  'net.peer.port': {
+    canonicalName: 'server.port',
+    type: 'integer',
+    brief: 'Peer port number.',
+    deprecationChain: ['net.peer.port'],
+  },
+  'net.protocol.name': {
+    canonicalName: 'network.protocol.name',
+    type: 'string',
+    brief: 'OSI application layer or non-OSI equivalent.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+  },
+  'net.protocol.version': {
+    canonicalName: 'network.protocol.version',
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+  },
+  'net.sock.family': {
+    canonicalName: 'network.transport',
+    type: 'string',
+    brief: 'OSI transport and network layer',
+    deprecationChain: ['net.sock.family'],
+  },
+  'net.sock.host.addr': {
+    canonicalName: 'network.local.address',
+    type: 'string',
+    brief: 'Local address of the network connection mapping to Unix domain socket name.',
+    deprecationChain: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
+  },
+  'net.sock.host.port': {
+    canonicalName: 'network.local.port',
+    type: 'integer',
+    brief: 'Local port number of the network connection.',
+    deprecationChain: ['network.local.port', 'net.sock.host.port'],
+  },
+  'net.sock.peer.addr': {
+    canonicalName: 'network.peer.address',
+    type: 'string',
+    brief: 'Peer address of the network connection - IP address',
+    deprecationChain: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
+  },
+  'net.sock.peer.name': {
+    canonicalName: 'net.sock.peer.name',
+    type: 'string',
+    brief: 'Peer address of the network connection - Unix domain socket name',
+    deprecationChain: ['net.sock.peer.name'],
+  },
+  'net.sock.peer.port': {
+    canonicalName: 'network.peer.port',
+    type: 'integer',
+    brief: 'Peer port number of the network connection.',
+    deprecationChain: ['network.peer.port', 'net.sock.peer.port'],
+  },
+  'net.transport': {
+    canonicalName: 'network.transport',
+    type: 'string',
+    brief: 'OSI transport layer or inter-process communication method.',
+    deprecationChain: ['net.transport'],
+  },
+  'network.connection.effective_type': {
+    canonicalName: 'network.connection.effective_type',
+    type: 'string',
+    brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
+    deprecationChain: ['network.connection.effective_type', 'effectiveConnectionType'],
+  },
+  'network.connection.rtt': {
+    canonicalName: 'network.connection.rtt',
+    type: 'integer',
+    brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
+    deprecationChain: ['network.connection.rtt', 'connection.rtt'],
+  },
+  'network.connection.type': {
+    canonicalName: 'network.connection.type',
+    type: 'string',
+    brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
+    deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
+  },
+  'network.local.address': {
+    canonicalName: 'network.local.address',
+    type: 'string',
+    brief: 'Local address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
+  },
+  'network.local.port': {
+    canonicalName: 'network.local.port',
+    type: 'integer',
+    brief: 'Local port number of the network connection.',
+    deprecationChain: ['network.local.port', 'net.sock.host.port'],
+  },
+  'network.peer.address': {
+    canonicalName: 'network.peer.address',
+    type: 'string',
+    brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
+    deprecationChain: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
+  },
+  'network.peer.port': {
+    canonicalName: 'network.peer.port',
+    type: 'integer',
+    brief: 'Peer port number of the network connection.',
+    deprecationChain: ['network.peer.port', 'net.sock.peer.port'],
+  },
+  'network.protocol.name': {
+    canonicalName: 'network.protocol.name',
+    type: 'string',
+    brief: 'OSI application layer or non-OSI equivalent.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+  },
+  'network.protocol.version': {
+    canonicalName: 'network.protocol.version',
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+  },
+  'network.transport': {
+    canonicalName: 'network.transport',
+    type: 'string',
+    brief: 'OSI transport layer or inter-process communication method.',
+    deprecationChain: ['network.transport', 'mcp.transport'],
+  },
+  'network.type': {
+    canonicalName: 'network.type',
+    type: 'string',
+    brief: 'OSI network layer or non-OSI equivalent.',
+    deprecationChain: ['network.type'],
+  },
+  origin: {
+    canonicalName: 'sentry.origin',
+    type: 'string',
+    brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
+    deprecationChain: ['sentry.origin', 'origin'],
+  },
+  'os.build': {
+    canonicalName: 'os.build_id',
+    type: 'string',
+    brief: 'The build ID of the operating system.',
+    deprecationChain: ['os.build_id', 'os.build'],
+  },
+  'os.build_id': {
+    canonicalName: 'os.build_id',
+    type: 'string',
+    brief: 'The build ID of the operating system.',
+    deprecationChain: ['os.build_id', 'os.build'],
+  },
+  'os.description': {
+    canonicalName: 'os.description',
+    type: 'string',
+    brief:
+      'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.',
+    deprecationChain: ['os.description'],
+  },
+  'os.kernel_version': {
+    canonicalName: 'os.kernel_version',
+    type: 'string',
+    brief: 'An independent kernel version string. Typically the entire output of the `uname` syscall.',
+    deprecationChain: ['os.kernel_version'],
+  },
+  'os.name': {
+    canonicalName: 'os.name',
+    type: 'string',
+    brief: 'Human readable operating system name.',
+    deprecationChain: ['os.name'],
+  },
+  'os.raw_description': {
+    canonicalName: 'os.raw_description',
+    type: 'string',
+    brief:
+      'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.',
+    deprecationChain: ['os.raw_description'],
+  },
+  'os.rooted': {
+    canonicalName: 'os.rooted',
+    type: 'boolean',
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    deprecationChain: ['os.rooted'],
+  },
+  'os.theme': {
+    canonicalName: 'os.theme',
+    type: 'string',
+    brief: 'Whether the OS runs in dark mode or light mode.',
+    deprecationChain: ['os.theme'],
+  },
+  'os.type': {
+    canonicalName: 'os.type',
+    type: 'string',
+    brief: 'The operating system type.',
+    deprecationChain: ['os.type'],
+  },
+  'os.version': {
+    canonicalName: 'os.version',
+    type: 'string',
+    brief: 'The version of the operating system.',
+    deprecationChain: ['os.version'],
+  },
+  'otel.kind': {
+    canonicalName: 'sentry.kind',
+    type: 'string',
+    brief:
+      'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
+    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+  },
+  'otel.scope.name': {
+    canonicalName: 'otel.scope.name',
+    type: 'string',
+    brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
+    deprecationChain: ['otel.scope.name'],
+  },
+  'otel.scope.version': {
+    canonicalName: 'otel.scope.version',
+    type: 'string',
+    brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
+    deprecationChain: ['otel.scope.version'],
+  },
+  'otel.status_code': {
+    canonicalName: 'otel.status_code',
+    type: 'string',
+    brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
+    deprecationChain: ['otel.status_code'],
+  },
+  'otel.status_description': {
+    canonicalName: 'otel.status_description',
+    type: 'string',
+    brief: 'Description of the Status if it has a value, otherwise not set.',
+    deprecationChain: ['otel.status_description'],
+  },
+  'params.<key>': {
+    canonicalName: 'params.<key>',
+    type: 'string',
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['params.<key>', 'url.path.parameter.<key>', 'url.path.params.<key>'],
+  },
+  'performance.activationStart': {
+    canonicalName: 'browser.performance.navigation.activation_start',
+    type: 'double',
+    brief: 'The time between initiating a navigation to a page and the browser activating the page',
+    deprecationChain: ['browser.performance.navigation.activation_start', 'performance.activationStart'],
+  },
+  'performance.timeOrigin': {
+    canonicalName: 'browser.performance.time_origin',
+    type: 'double',
+    brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
+    deprecationChain: ['browser.performance.time_origin', 'performance.timeOrigin'],
+  },
+  platform: {
+    canonicalName: 'sentry.platform',
+    type: 'string',
+    brief: 'The sdk platform that generated the event.',
+    deprecationChain: ['sentry.platform', 'platform'],
+  },
+  port: {
+    canonicalName: 'server.port',
+    type: 'integer',
+    brief: 'The destination port for a TCP connection.',
+    deprecationChain: ['server.port', 'net.host.port', 'port'],
+  },
+  previous_route: {
+    canonicalName: 'previous_route',
+    type: 'string',
+    brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
+    deprecationChain: ['previous_route'],
+  },
+  'process.command_args': {
+    canonicalName: 'process.command_args',
+    type: 'string[]',
+    brief: 'All the command arguments (including the command/executable itself) as received by the process.',
+    deprecationChain: ['process.command_args'],
+  },
+  'process.executable.name': {
+    canonicalName: 'process.executable.name',
+    type: 'string',
+    brief: 'The name of the executable that started the process.',
+    deprecationChain: ['process.executable.name'],
+  },
+  'process.pid': {
+    canonicalName: 'process.pid',
+    type: 'integer',
+    brief: 'The process ID of the running process.',
+    deprecationChain: ['process.pid', 'subprocess.pid'],
+  },
+  'process.runtime.description': {
+    canonicalName: 'process.runtime.description',
+    type: 'string',
+    brief:
+      'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.description', 'runtime.raw_description'],
+  },
+  'process.runtime.engine.name': {
+    canonicalName: 'process.runtime.engine.name',
+    type: 'string',
+    brief: 'The name of the runtime engine.',
+    deprecationChain: ['process.runtime.engine.name'],
+  },
+  'process.runtime.engine.version': {
+    canonicalName: 'process.runtime.engine.version',
+    type: 'string',
+    brief: 'The version of the runtime engine.',
+    deprecationChain: ['process.runtime.engine.version'],
+  },
+  'process.runtime.name': {
+    canonicalName: 'process.runtime.name',
+    type: 'string',
+    brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.name', 'runtime.name'],
+  },
+  'process.runtime.version': {
+    canonicalName: 'process.runtime.version',
+    type: 'string',
+    brief:
+      'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
+    deprecationChain: ['process.runtime.version', 'runtime.version'],
+  },
+  'profile.id': {
+    canonicalName: 'sentry.profile_id',
+    type: 'string',
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+  },
+  profile_id: {
+    canonicalName: 'sentry.profile_id',
+    type: 'string',
+    brief:
+      'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
+    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+  },
+  'profiler.id': {
+    canonicalName: 'sentry.profiler_id',
+    type: 'string',
+    brief: 'The id of the currently running profiler (continuous profiling)',
+    deprecationChain: ['sentry.profiler_id', 'profiler.id'],
+  },
+  query: {
+    canonicalName: 'db.query.text',
+    type: 'string',
+    brief: 'The database query being executed.',
+    deprecationChain: ['db.query.text', 'db.statement', 'query'],
+  },
+  'query.<key>': {
+    canonicalName: 'url.query',
+    type: 'string',
+    brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['query.<key>'],
+  },
+  'react.version': {
+    canonicalName: 'react.version',
+    type: 'string',
+    brief: 'The version of the React framework',
+    deprecationChain: ['react.version'],
+  },
+  'redis.command': {
+    canonicalName: 'db.operation.name',
+    type: 'string',
+    brief: 'The name of the Redis operation being executed.',
+    deprecationChain: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
+  },
+  'redis.key': {
+    canonicalName: 'db.redis.key',
+    type: 'string',
+    brief: 'The key the Redis command is operating on.',
+    deprecationChain: ['db.redis.key', 'redis.key'],
+  },
+  release: {
+    canonicalName: 'sentry.release',
+    type: 'string',
+    brief: 'The sentry release.',
+    deprecationChain: ['sentry.release', 'release', 'service.version'],
+  },
+  'remix.action_form_data.<key>': {
+    canonicalName: 'remix.action_form_data.<key>',
+    type: 'string',
+    brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
+    deprecationChain: ['remix.action_form_data.<key>'],
+  },
+  'replay.id': {
+    canonicalName: 'sentry.replay_id',
+    type: 'string',
+    brief: 'The id of the sentry replay.',
+    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
+  },
+  replay_id: {
+    canonicalName: 'sentry.replay_id',
+    type: 'string',
+    brief: 'The id of the sentry replay.',
+    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
+  },
+  'resource.deployment.environment': {
+    canonicalName: 'sentry.environment',
+    type: 'string',
+    brief: 'The software deployment environment name.',
+    deprecationChain: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
+  },
+  'resource.deployment.environment.name': {
+    canonicalName: 'sentry.environment',
+    type: 'string',
+    brief: 'The software deployment environment name.',
+    deprecationChain: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
+  },
+  'resource.render_blocking_status': {
+    canonicalName: 'resource.render_blocking_status',
+    type: 'string',
+    brief: 'The render blocking status of the resource.',
+    deprecationChain: ['resource.render_blocking_status'],
+  },
+  route: {
+    canonicalName: 'http.route',
+    type: 'string',
+    brief:
+      'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
+    deprecationChain: ['route'],
+  },
+  'rpc.grpc.status_code': {
+    canonicalName: 'rpc.response.status_code',
+    type: 'integer',
+    brief: 'The numeric status code of the gRPC request.',
+    deprecationChain: ['rpc.grpc.status_code'],
+  },
+  'rpc.method': {
+    canonicalName: 'rpc.method',
+    type: 'string',
+    brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
+    deprecationChain: ['rpc.method', 'aws.operation_name'],
+  },
+  'rpc.response.status_code': {
+    canonicalName: 'rpc.response.status_code',
+    type: 'string',
+    brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
+    deprecationChain: ['rpc.response.status_code', 'code'],
+  },
+  'rpc.service': {
+    canonicalName: 'rpc.service',
+    type: 'string',
+    brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
+    deprecationChain: ['rpc.service'],
+  },
+  'rpc.system': {
+    canonicalName: 'rpc.system.name',
+    type: 'string',
+    brief: 'A string identifying the remoting system.',
+    deprecationChain: ['rpc.system.name', 'rpc.system'],
+  },
+  'rpc.system.name': {
+    canonicalName: 'rpc.system.name',
+    type: 'string',
+    brief: 'A string identifying the remoting system.',
+    deprecationChain: ['rpc.system.name', 'rpc.system'],
+  },
+  'runtime.build': {
+    canonicalName: 'runtime.build',
+    type: 'string',
+    brief: 'The application build string, when it is separate from the version.',
+    deprecationChain: ['runtime.build'],
+  },
+  'runtime.name': {
+    canonicalName: 'process.runtime.name',
+    type: 'string',
+    brief: 'The name of the runtime. For example node, CPython, or rustc.',
+    deprecationChain: ['process.runtime.name', 'runtime.name'],
+  },
+  'runtime.raw_description': {
+    canonicalName: 'process.runtime.description',
+    type: 'string',
+    brief:
+      'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.',
+    deprecationChain: ['process.runtime.description', 'runtime.raw_description'],
+  },
+  'runtime.version': {
+    canonicalName: 'process.runtime.version',
+    type: 'string',
+    brief: 'The version of the runtime.',
+    deprecationChain: ['process.runtime.version', 'runtime.version'],
+  },
+  'score.<key>': {
+    canonicalName: 'score.<key>',
+    type: 'double',
+    brief:
+      'The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.',
+    deprecationChain: ['score.<key>'],
+  },
+  'score.ratio.<key>': {
+    canonicalName: 'score.ratio.<key>',
+    type: 'double',
+    brief: 'The score for a web vital, normalized to a number between 0 and 1.',
+    deprecationChain: ['score.ratio.<key>'],
+  },
+  'score.total': {
+    canonicalName: 'score.total',
+    type: 'double',
+    brief:
+      'The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).',
+    deprecationChain: ['score.total'],
+  },
+  'score.weight.<key>': {
+    canonicalName: 'score.weight.<key>',
+    type: 'double',
+    brief: "The relative weight of a web vital in a span's performance score.",
+    deprecationChain: ['score.weight.<key>'],
+  },
+  'sdk.name': {
+    canonicalName: 'sentry.sdk.name',
+    type: 'string',
+    brief: 'The sentry sdk name.',
+    deprecationChain: ['sentry.sdk.name', 'sdk.name'],
+  },
+  'sdk.version': {
+    canonicalName: 'sentry.sdk.version',
+    type: 'string',
+    brief: 'The sentry sdk version.',
+    deprecationChain: ['sentry.sdk.version', 'sdk.version'],
+  },
+  'sentry.browser.version': {
+    canonicalName: 'browser.version',
+    type: 'string',
+    brief: 'The version of the browser.',
+    deprecationChain: ['browser.version', 'sentry.browser.version'],
+  },
+  'sentry.cancellation_reason': {
+    canonicalName: 'sentry.cancellation_reason',
+    type: 'string',
+    brief: 'The reason why a span ended early.',
+    deprecationChain: ['sentry.cancellation_reason'],
+  },
+  'sentry.description': {
+    canonicalName: 'sentry.description',
+    type: 'string',
+    brief: 'The human-readable description of a span.',
+    deprecationChain: ['sentry.description'],
+  },
+  'sentry.dist': {
+    canonicalName: 'sentry.dist',
+    type: 'string',
+    brief: 'The sentry dist.',
+    deprecationChain: ['sentry.dist', 'dist'],
+  },
+  'sentry.dsc.environment': {
+    canonicalName: 'sentry.dsc.environment',
+    type: 'string',
+    brief: 'The environment from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.environment'],
+  },
+  'sentry.dsc.project_id': {
+    canonicalName: 'sentry.dsc.project_id',
+    type: 'string',
+    brief:
+      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.project_id'],
+  },
+  'sentry.dsc.public_key': {
+    canonicalName: 'sentry.dsc.public_key',
+    type: 'string',
+    brief: 'The public key from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.public_key'],
+  },
+  'sentry.dsc.release': {
+    canonicalName: 'sentry.dsc.release',
+    type: 'string',
+    brief: 'The release identifier from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.release'],
+  },
+  'sentry.dsc.sample_rate': {
+    canonicalName: 'sentry.dsc.sample_rate',
+    type: 'string',
+    brief: 'The sample rate from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.sample_rate'],
+  },
+  'sentry.dsc.sampled': {
+    canonicalName: 'sentry.dsc.sampled',
+    type: 'boolean',
+    brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.sampled'],
+  },
+  'sentry.dsc.trace_id': {
+    canonicalName: 'sentry.dsc.trace_id',
+    type: 'string',
+    brief: 'The trace ID from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.trace_id'],
+  },
+  'sentry.dsc.transaction': {
+    canonicalName: 'sentry.dsc.transaction',
+    type: 'string',
+    brief: 'The transaction name from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.transaction'],
+  },
+  'sentry.event.serialized_breadcrumbs': {
+    canonicalName: 'sentry.event.serialized_breadcrumbs',
+    type: 'string',
+    brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    internal: true,
+    deprecationChain: ['sentry.event.serialized_breadcrumbs'],
+  },
+  'sentry.event.serialized_contexts': {
+    canonicalName: 'sentry.event.serialized_contexts',
+    type: 'string',
+    brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    internal: true,
+    deprecationChain: ['sentry.event.serialized_contexts'],
+  },
+  'sentry.event.serialized_extra': {
+    canonicalName: 'sentry.event.serialized_extra',
+    type: 'string',
+    brief: 'JSON-serialized `extra` property from a Sentry event.',
+    internal: true,
+    deprecationChain: ['sentry.event.serialized_extra'],
+  },
+  'sentry.event.serialized_meta': {
+    canonicalName: 'sentry.event.serialized_meta',
+    type: 'string',
+    brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
+    internal: true,
+    deprecationChain: ['sentry.event.serialized_meta'],
+  },
+  'sentry.exclusive_time': {
+    canonicalName: 'sentry.exclusive_time',
+    type: 'double',
+    brief: 'The exclusive time duration of the span in milliseconds.',
+    deprecationChain: ['sentry.exclusive_time'],
+  },
+  'sentry.frames.frozen': {
+    canonicalName: 'app.vitals.frames.frozen.count',
+    type: 'integer',
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    deprecationChain: [
+      'app.vitals.frames.frozen.count',
+      'frames.frozen',
+      'mobile.frozen_frames',
+      'sentry.frames.frozen',
+    ],
+  },
+  'sentry.frames.slow': {
+    canonicalName: 'app.vitals.frames.slow.count',
+    type: 'integer',
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
+  },
+  'sentry.frames.total': {
+    canonicalName: 'app.vitals.frames.total.count',
+    type: 'integer',
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
+  },
+  'sentry.graphql.operation': {
+    canonicalName: 'sentry.graphql.operation',
+    type: 'string',
+    brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
+    deprecationChain: ['sentry.graphql.operation'],
+  },
+  'sentry.http.prefetch': {
+    canonicalName: 'sentry.http.prefetch',
+    type: 'boolean',
+    brief: 'If an http request was a prefetch request.',
+    deprecationChain: ['sentry.http.prefetch'],
+  },
+  'sentry.idle_span_finish_reason': {
+    canonicalName: 'sentry.idle_span_finish_reason',
+    type: 'string',
+    brief: 'The reason why an idle span ended early.',
+    deprecationChain: ['sentry.idle_span_finish_reason'],
+  },
+  'sentry.is_remote': {
+    canonicalName: 'sentry.is_remote',
+    type: 'boolean',
+    brief: "Indicates whether a span's parent is remote.",
+    deprecationChain: ['sentry.is_remote'],
+  },
+  'sentry.main_thread': {
+    canonicalName: 'sentry.main_thread',
+    type: 'boolean',
+    brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
+    deprecationChain: ['sentry.main_thread'],
+  },
+  'sentry.message.parameter.<key>': {
+    canonicalName: 'sentry.message.parameter.<key>',
+    type: 'string',
+    brief:
+      "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
+    deprecationChain: ['sentry.message.parameter.<key>'],
+  },
+  'sentry.message.template': {
+    canonicalName: 'sentry.message.template',
+    type: 'string',
+    brief: 'The parameterized template string.',
+    deprecationChain: ['sentry.message.template'],
+  },
+  'sentry.metric.source': {
+    canonicalName: 'sentry.metric.source',
+    type: 'string',
+    brief:
+      'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.',
+    deprecationChain: ['sentry.metric.source'],
+  },
+  'sentry.mobile': {
+    canonicalName: 'sentry.mobile',
+    type: 'boolean',
+    brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
+    deprecationChain: ['sentry.mobile'],
+  },
+  'sentry.module.<key>': {
+    canonicalName: 'sentry.module.<key>',
+    type: 'string',
+    brief: 'A module that was loaded in the process. The key is the name of the module.',
+    deprecationChain: ['sentry.module.<key>'],
+  },
+  'sentry.nextjs.ssr.function.route': {
+    canonicalName: 'sentry.nextjs.ssr.function.route',
+    type: 'string',
+    brief:
+      'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
+    deprecationChain: ['sentry.nextjs.ssr.function.route'],
+  },
+  'sentry.nextjs.ssr.function.type': {
+    canonicalName: 'sentry.nextjs.ssr.function.type',
+    type: 'string',
+    brief:
+      'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
+    deprecationChain: ['sentry.nextjs.ssr.function.type'],
+  },
+  'sentry.normalized_db_query': {
+    canonicalName: 'sentry.normalized_db_query',
+    type: 'string',
+    brief: 'The normalized version of `db.query.text`.',
+    deprecationChain: ['sentry.normalized_db_query'],
+  },
+  'sentry.normalized_db_query.hash': {
+    canonicalName: 'sentry.normalized_db_query.hash',
+    type: 'string',
+    brief: 'The hash of `sentry.normalized_db_query`.',
+    deprecationChain: ['sentry.normalized_db_query.hash'],
+  },
+  'sentry.normalized_description': {
+    canonicalName: 'sentry.normalized_description',
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
+    deprecationChain: ['sentry.normalized_description'],
+  },
+  'sentry.observed_timestamp_nanos': {
+    canonicalName: 'sentry.observed_timestamp_nanos',
+    type: 'string',
+    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
+    deprecationChain: ['sentry.observed_timestamp_nanos'],
+  },
+  'sentry.pageload.span_id': {
+    canonicalName: 'sentry.pageload.span_id',
+    type: 'string',
+    brief: 'The id of the pageload span, set by web vital spans and metrics',
+    deprecationChain: ['sentry.pageload.span_id'],
+  },
+  'sentry.relay.ingress': {
+    canonicalName: 'sentry.relay.ingress',
+    type: 'string',
+    brief: 'How an item (span, log, &c.) entered Relay.',
+    internal: true,
+    deprecationChain: ['sentry.relay.ingress'],
+  },
+  'sentry.relay.pipeline': {
+    canonicalName: 'sentry.relay.pipeline',
+    type: 'string',
+    brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
+    internal: true,
+    deprecationChain: ['sentry.relay.pipeline'],
+  },
+  'sentry.replay_is_buffering': {
+    canonicalName: 'sentry.replay_is_buffering',
+    type: 'boolean',
+    brief:
+      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
+    deprecationChain: ['sentry.replay_is_buffering'],
+  },
+  'sentry.report_event': {
+    canonicalName: 'sentry.report_event',
+    type: 'string',
+    brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
+    deprecationChain: ['sentry.report_event'],
+  },
+  'sentry.sdk.integrations': {
+    canonicalName: 'sentry.sdk.integrations',
+    type: 'string[]',
+    brief:
+      'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
+    deprecationChain: ['sentry.sdk.integrations'],
+  },
+  'sentry.segment.id': {
+    canonicalName: 'sentry.segment.id',
+    type: 'string',
+    brief: 'The segment ID of a span',
+    deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
+  },
+  'sentry.segment.name.source': {
+    canonicalName: 'sentry.segment.name.source',
+    type: 'string',
+    brief:
+      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    internal: true,
+    deprecationChain: ['sentry.segment.name.source'],
+  },
+  'sentry.source': {
+    canonicalName: 'sentry.source',
+    type: 'string',
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    deprecationChain: ['sentry.source'],
+  },
+  'sentry.span.source': {
+    canonicalName: 'sentry.span.source',
+    type: 'string',
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    deprecationChain: ['sentry.span.source'],
+  },
+  'sentry.sveltekit.navigation.from': {
+    canonicalName: 'navigation.origin',
+    type: 'string',
+    brief: 'the navigation origin (sveltekit router)',
+    deprecationChain: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+  },
+  'sentry.sveltekit.navigation.to': {
+    canonicalName: 'sentry.sveltekit.navigation.to',
+    type: 'string',
+    brief: 'the navigation destination',
+    deprecationChain: ['sentry.sveltekit.navigation.to'],
+  },
+  'sentry.sveltekit.navigation.type': {
+    canonicalName: 'navigation.type',
+    type: 'string',
+    brief: 'The type of navigation event emitted from the sveltekit client router',
+    deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
+  'sentry.timestamp.sequence': {
+    canonicalName: 'sentry.timestamp.sequence',
+    type: 'integer',
+    brief:
+      'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
+    deprecationChain: ['sentry.timestamp.sequence'],
+  },
+  'sentry.trace.parent_span_id': {
+    canonicalName: 'sentry.trace.parent_span_id',
+    type: 'string',
+    brief:
+      'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
+    deprecationChain: ['sentry.trace.parent_span_id'],
+  },
+  'sentry.transaction': {
+    canonicalName: 'sentry.segment.name',
+    type: 'string',
+    brief: 'The sentry transaction (segment name).',
+    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
+  },
+  'server.address': {
+    canonicalName: 'server.address',
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+  },
+  'server.port': {
+    canonicalName: 'server.port',
+    type: 'integer',
+    brief: 'Server port number.',
+    deprecationChain: ['server.port', 'net.host.port', 'port'],
+  },
+  server_name: {
+    canonicalName: 'server.address',
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+  },
+  server_sample_rate: {
+    canonicalName: 'sentry.server_sample_rate',
+    type: 'double',
+    brief: 'Rate at which a span was sampled in Relay.',
+    deprecationChain: ['sentry.server_sample_rate', 'server_sample_rate'],
+  },
+  'service.name': {
+    canonicalName: 'service.name',
+    type: 'string',
+    brief: 'Logical name of the service.',
+    deprecationChain: ['service.name'],
+  },
+  'service.version': {
+    canonicalName: 'service.version',
+    type: 'string',
+    brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
+    deprecationChain: ['service.version', 'sentry.release', 'release'],
+  },
+  'session.id': {
+    canonicalName: 'session.id',
+    type: 'string',
+    brief: 'A unique id identifying the active session at the time of setting this attribute',
+    deprecationChain: ['session.id'],
+  },
+  'span.action': {
+    canonicalName: 'sentry.action',
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
+    deprecationChain: ['sentry.action', 'span.action'],
+  },
+  'span.category': {
+    canonicalName: 'sentry.category',
+    type: 'string',
+    brief:
+      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+    deprecationChain: ['sentry.category', 'span.category'],
+  },
+  'span.domain': {
+    canonicalName: 'sentry.domain',
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
+    deprecationChain: ['sentry.domain', 'span.domain'],
+  },
+  'span.group': {
+    canonicalName: 'sentry.group',
+    type: 'string',
+    brief:
+      'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
+    deprecationChain: ['sentry.group', 'span.group'],
+  },
+  'span.kind': {
+    canonicalName: 'sentry.kind',
+    type: 'string',
+    brief:
+      'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
+    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+  },
+  'span.op': {
+    canonicalName: 'sentry.op',
+    type: 'string',
+    brief: 'The operation of a span.',
+    deprecationChain: ['sentry.op', 'span.op'],
+  },
+  'span.status': {
+    canonicalName: 'sentry.status',
+    type: 'string',
+    brief:
+      'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+    deprecationChain: ['sentry.status', 'span.status'],
+  },
+  'span.status.message': {
+    canonicalName: 'sentry.status.message',
+    type: 'string',
+    brief: 'The from OTLP extracted status message.',
+    deprecationChain: ['sentry.status.message', 'span.status.message'],
+  },
+  'span.status_code': {
+    canonicalName: 'sentry.status_code',
+    type: 'integer',
+    brief:
+      'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
+    deprecationChain: ['sentry.status_code', 'span.status_code'],
+  },
+  stall_percentage: {
+    canonicalName: 'app.vitals.stall.percentage',
+    type: 'double',
+    brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
+    deprecationChain: ['app.vitals.stall.percentage', 'stall_percentage'],
+  },
+  stall_total_time: {
+    canonicalName: 'app.vitals.stall.duration',
+    type: 'double',
+    brief:
+      'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
+    deprecationChain: ['app.vitals.stall.duration', 'stall_total_time'],
+  },
+  'starlette.middleware_name': {
+    canonicalName: 'middleware.name',
+    type: 'string',
+    brief: 'The name of the Starlette middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  'starlite.middleware_name': {
+    canonicalName: 'middleware.name',
+    type: 'string',
+    brief: 'The name of the Starlite middleware.',
+    deprecationChain: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
+  },
+  'state.type': {
+    canonicalName: 'state.type',
+    type: 'string',
+    brief: 'The type of state management library',
+    deprecationChain: ['state.type'],
+  },
+  'subprocess.pid': {
+    canonicalName: 'process.pid',
+    type: 'integer',
+    brief: 'The process ID of a subprocess.',
+    deprecationChain: ['process.pid', 'subprocess.pid'],
+  },
+  'thread.id': {
+    canonicalName: 'thread.id',
+    type: 'integer',
+    brief: 'Current “managed” thread ID.',
+    deprecationChain: ['thread.id', 'sentry.thread.id'],
+  },
+  'thread.name': {
+    canonicalName: 'thread.name',
+    type: 'string',
+    brief: 'Current thread name.',
+    deprecationChain: ['thread.name'],
+  },
+  'timber.tag': {
+    canonicalName: 'timber.tag',
+    type: 'string',
+    brief: 'The log tag provided by the timber logging framework.',
+    deprecationChain: ['timber.tag'],
+  },
+  time_to_full_display: {
+    canonicalName: 'app.vitals.ttfd.value',
+    type: 'double',
+    brief: 'The duration of time to full display in milliseconds',
+    deprecationChain: ['app.vitals.ttfd.value', 'time_to_full_display'],
+  },
+  time_to_initial_display: {
+    canonicalName: 'app.vitals.ttid.value',
+    type: 'double',
+    brief: 'The duration of time to initial display in milliseconds',
+    deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
+  },
+  'trace.status': {
+    canonicalName: 'sentry.trace.status',
+    type: 'string',
+    brief:
+      'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
+    deprecationChain: ['sentry.trace.status', 'trace.status'],
+  },
+  trace_lifecycle: {
+    canonicalName: 'sentry.trace_lifecycle',
+    type: 'string',
+    brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
+    deprecationChain: ['sentry.trace_lifecycle', 'trace_lifecycle'],
+  },
+  transaction: {
+    canonicalName: 'sentry.segment.name',
+    type: 'string',
+    brief: 'The segment name of a span',
+    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
+  },
+  'transaction.span_id': {
+    canonicalName: 'sentry.segment.id',
+    type: 'string',
+    brief: 'The segment ID of a span',
+    deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
+  },
+  'trpc.procedure_path': {
+    canonicalName: 'trpc.procedure_path',
+    type: 'string',
+    brief: 'The path of the tRPC procedure being called',
+    deprecationChain: ['trpc.procedure_path'],
+  },
+  'trpc.procedure_type': {
+    canonicalName: 'trpc.procedure_type',
+    type: 'string',
+    brief: 'The type of the tRPC procedure',
+    deprecationChain: ['trpc.procedure_type'],
+  },
+  ttfb: {
+    canonicalName: 'browser.web_vital.ttfb.value',
+    type: 'double',
+    brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
+    deprecationChain: ['browser.web_vital.ttfb.value', 'ttfb'],
+  },
+  'ttfb.requestTime': {
+    canonicalName: 'browser.web_vital.ttfb.request_time',
+    type: 'double',
+    brief:
+      "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
+    deprecationChain: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
+  },
+  type: {
+    canonicalName: 'type',
+    type: 'string',
+    brief: 'More granular type of the operation happening.',
+    deprecationChain: ['type'],
+  },
+  'ui.component_name': {
+    canonicalName: 'ui.component_name',
+    type: 'string',
+    brief: 'The name of the associated component.',
+    deprecationChain: ['ui.component_name'],
+  },
+  'ui.contributes_to_ttfd': {
+    canonicalName: 'ui.contributes_to_ttfd',
+    type: 'boolean',
+    brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
+    deprecationChain: ['ui.contributes_to_ttfd'],
+  },
+  'ui.contributes_to_ttid': {
+    canonicalName: 'ui.contributes_to_ttid',
+    type: 'boolean',
+    brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
+    deprecationChain: ['ui.contributes_to_ttid'],
+  },
+  'ui.element.height': {
+    canonicalName: 'ui.element.height',
+    type: 'integer',
+    brief: 'The height of the UI element (for Html in pixels)',
+    deprecationChain: ['ui.element.height'],
+  },
+  'ui.element.id': {
+    canonicalName: 'ui.element.id',
+    type: 'string',
+    brief: 'The id of the UI element',
+    deprecationChain: ['ui.element.id'],
+  },
+  'ui.element.identifier': {
+    canonicalName: 'ui.element.identifier',
+    type: 'string',
+    brief: 'The identifier used to measure the UI element timing',
+    deprecationChain: ['ui.element.identifier'],
+  },
+  'ui.element.load_time': {
+    canonicalName: 'ui.element.load_time',
+    type: 'double',
+    brief: 'The loading time of a UI element (from time origin to finished loading)',
+    deprecationChain: ['ui.element.load_time'],
+  },
+  'ui.element.paint_type': {
+    canonicalName: 'ui.element.paint_type',
+    type: 'string',
+    brief: "The type of element paint. Can either be 'image-paint' or 'text-paint'",
+    deprecationChain: ['ui.element.paint_type'],
+  },
+  'ui.element.render_time': {
+    canonicalName: 'ui.element.render_time',
+    type: 'double',
+    brief: 'The rendering time of the UI element (from time origin to finished rendering)',
+    deprecationChain: ['ui.element.render_time'],
+  },
+  'ui.element.type': {
+    canonicalName: 'ui.element.type',
+    type: 'string',
+    brief: 'type of the UI element',
+    deprecationChain: ['ui.element.type'],
+  },
+  'ui.element.url': {
+    canonicalName: 'ui.element.url',
+    type: 'string',
+    brief: 'The URL of the UI element (e.g. an img src)',
+    deprecationChain: ['ui.element.url'],
+  },
+  'ui.element.width': {
+    canonicalName: 'ui.element.width',
+    type: 'integer',
+    brief: 'The width of the UI element (for HTML in pixels)',
+    deprecationChain: ['ui.element.width'],
+  },
+  url: {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+  },
+  'url.domain': {
+    canonicalName: 'url.domain',
+    type: 'string',
+    brief:
+      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    deprecationChain: ['url.domain'],
+  },
+  'url.fragment': {
+    canonicalName: 'url.fragment',
+    type: 'string',
+    brief:
+      'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
+    deprecationChain: ['url.fragment'],
+  },
+  'url.full': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The URL of the resource that was fetched.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+  },
+  'url.path': {
+    canonicalName: 'url.path',
+    type: 'string',
+    brief: 'The URI path component.',
+    deprecationChain: ['url.path'],
+  },
+  'url.path.parameter.<key>': {
+    canonicalName: 'url.path.parameter.<key>',
+    type: 'string',
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
+  },
+  'url.path.params.<key>': {
+    canonicalName: 'url.path.parameter.<key>',
+    type: 'string',
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
+  },
+  'url.port': {
+    canonicalName: 'url.port',
+    type: 'integer',
+    brief: 'Server port number.',
+    deprecationChain: ['url.port'],
+  },
+  'url.query': {
+    canonicalName: 'url.query',
+    type: 'string',
+    brief:
+      'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
+    deprecationChain: ['url.query'],
+  },
+  'url.same_origin': {
+    canonicalName: 'http.request.same_origin',
+    type: 'boolean',
+    brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
+    deprecationChain: ['http.request.same_origin', 'url.same_origin'],
+  },
+  'url.scheme': {
+    canonicalName: 'url.scheme',
+    type: 'string',
+    brief: 'The URI scheme component identifying the used protocol.',
+    deprecationChain: ['url.scheme', 'http.scheme'],
+  },
+  'url.template': {
+    canonicalName: 'url.template',
+    type: 'string',
+    brief: 'The low-cardinality template of an absolute URL path reference.',
+    deprecationChain: ['url.template'],
+  },
+  'user.email': {
+    canonicalName: 'user.email',
+    type: 'string',
+    brief: 'User email address.',
+    deprecationChain: ['user.email', 'sentry.user.email'],
+  },
+  'user.full_name': {
+    canonicalName: 'user.full_name',
+    type: 'string',
+    brief: "User's full name.",
+    deprecationChain: ['user.full_name'],
+  },
+  'user.geo.city': {
+    canonicalName: 'user.geo.city',
+    type: 'string',
+    brief: 'Human readable city name.',
+    deprecationChain: ['user.geo.city', 'sentry.user.geo.city'],
+  },
+  'user.geo.country_code': {
+    canonicalName: 'user.geo.country_code',
+    type: 'string',
+    brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
+    deprecationChain: ['user.geo.country_code', 'sentry.user.geo.country_code'],
+  },
+  'user.geo.region': {
+    canonicalName: 'user.geo.region',
+    type: 'string',
+    brief: 'Human readable region name or code.',
+    deprecationChain: ['user.geo.region', 'sentry.user.geo.region'],
+  },
+  'user.geo.subdivision': {
+    canonicalName: 'user.geo.subdivision',
+    type: 'string',
+    brief: 'Human readable subdivision name.',
+    deprecationChain: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
+  },
+  'user.hash': {
+    canonicalName: 'user.hash',
+    type: 'string',
+    brief: 'Unique user hash to correlate information for a user in anonymized form.',
+    deprecationChain: ['user.hash'],
+  },
+  'user.id': {
+    canonicalName: 'user.id',
+    type: 'string',
+    brief: 'Unique identifier of the user.',
+    deprecationChain: ['user.id', 'sentry.user.id'],
+  },
+  'user.ip': {
+    canonicalName: 'user.ip_address',
+    type: 'string',
+    brief: 'The IP address of the user.',
+    deprecationChain: ['user.ip_address', 'sentry.user.ip', 'user.ip'],
+  },
+  'user.ip_address': {
+    canonicalName: 'user.ip_address',
+    type: 'string',
+    brief: 'The IP address of the user.',
+    deprecationChain: ['user.ip_address', 'sentry.user.ip', 'user.ip'],
+  },
+  'user.name': {
+    canonicalName: 'user.name',
+    type: 'string',
+    brief: 'Short name or login/username of the user.',
+    deprecationChain: ['user.name', 'sentry.user.username', 'user.username'],
+  },
+  'user.roles': {
+    canonicalName: 'user.roles',
+    type: 'string[]',
+    brief: 'Array of user roles at the time of the event.',
+    deprecationChain: ['user.roles'],
+  },
+  'user.username': {
+    canonicalName: 'user.name',
+    type: 'string',
+    brief: 'Short name or login/username of the user.',
+    deprecationChain: ['user.name', 'sentry.user.username', 'user.username'],
+  },
+  'user_agent.original': {
+    canonicalName: 'user_agent.original',
+    type: 'string',
+    brief: 'Value of the HTTP User-Agent header sent by the client.',
+    deprecationChain: ['user_agent.original', 'http.user_agent'],
+  },
+  'vercel.branch': {
+    canonicalName: 'vercel.branch',
+    type: 'string',
+    brief: 'Git branch name for Vercel project',
+    deprecationChain: ['vercel.branch'],
+  },
+  'vercel.build_id': {
+    canonicalName: 'vercel.build_id',
+    type: 'string',
+    brief: 'Identifier for the Vercel build (only present on build logs)',
+    deprecationChain: ['vercel.build_id'],
+  },
+  'vercel.deployment_id': {
+    canonicalName: 'vercel.deployment_id',
+    type: 'string',
+    brief: 'Identifier for the Vercel deployment',
+    deprecationChain: ['vercel.deployment_id'],
+  },
+  'vercel.destination': {
+    canonicalName: 'vercel.destination',
+    type: 'string',
+    brief: 'Origin of the external content in Vercel (only on external logs)',
+    deprecationChain: ['vercel.destination'],
+  },
+  'vercel.edge_type': {
+    canonicalName: 'vercel.edge_type',
+    type: 'string',
+    brief: 'Type of edge runtime in Vercel',
+    deprecationChain: ['vercel.edge_type'],
+  },
+  'vercel.entrypoint': {
+    canonicalName: 'vercel.entrypoint',
+    type: 'string',
+    brief: 'Entrypoint for the request in Vercel',
+    deprecationChain: ['vercel.entrypoint'],
+  },
+  'vercel.execution_region': {
+    canonicalName: 'vercel.execution_region',
+    type: 'string',
+    brief: 'Region where the request is executed',
+    deprecationChain: ['vercel.execution_region'],
+  },
+  'vercel.id': {
+    canonicalName: 'vercel.id',
+    type: 'string',
+    brief: 'Unique identifier for the log entry in Vercel',
+    deprecationChain: ['vercel.id'],
+  },
+  'vercel.ja3_digest': {
+    canonicalName: 'vercel.ja3_digest',
+    type: 'string',
+    brief: 'JA3 fingerprint digest of Vercel request',
+    deprecationChain: ['vercel.ja3_digest'],
+  },
+  'vercel.ja4_digest': {
+    canonicalName: 'vercel.ja4_digest',
+    type: 'string',
+    brief: 'JA4 fingerprint digest',
+    deprecationChain: ['vercel.ja4_digest'],
+  },
+  'vercel.log_type': {
+    canonicalName: 'vercel.log_type',
+    type: 'string',
+    brief: 'Vercel log output type',
+    deprecationChain: ['vercel.log_type'],
+  },
+  'vercel.path': {
+    canonicalName: 'vercel.path',
+    type: 'string',
+    brief: 'Function or dynamic path of the request in Vercel.',
+    deprecationChain: ['vercel.path'],
+  },
+  'vercel.project_id': {
+    canonicalName: 'vercel.project_id',
+    type: 'string',
+    brief: 'Identifier for the Vercel project',
+    deprecationChain: ['vercel.project_id'],
+  },
+  'vercel.project_name': {
+    canonicalName: 'vercel.project_name',
+    type: 'string',
+    brief: 'Name of the Vercel project',
+    deprecationChain: ['vercel.project_name'],
+  },
+  'vercel.proxy.cache_id': {
+    canonicalName: 'vercel.proxy.cache_id',
+    type: 'string',
+    brief: 'Original request ID when request is served from cache',
+    deprecationChain: ['vercel.proxy.cache_id'],
+  },
+  'vercel.proxy.client_ip': {
+    canonicalName: 'vercel.proxy.client_ip',
+    type: 'string',
+    brief: 'Client IP address',
+    deprecationChain: ['vercel.proxy.client_ip'],
+  },
+  'vercel.proxy.host': {
+    canonicalName: 'vercel.proxy.host',
+    type: 'string',
+    brief: 'Hostname of the request',
+    deprecationChain: ['vercel.proxy.host'],
+  },
+  'vercel.proxy.lambda_region': {
+    canonicalName: 'vercel.proxy.lambda_region',
+    type: 'string',
+    brief: 'Region where lambda function executed',
+    deprecationChain: ['vercel.proxy.lambda_region'],
+  },
+  'vercel.proxy.method': {
+    canonicalName: 'vercel.proxy.method',
+    type: 'string',
+    brief: 'HTTP method of the request',
+    deprecationChain: ['vercel.proxy.method'],
+  },
+  'vercel.proxy.path': {
+    canonicalName: 'vercel.proxy.path',
+    type: 'string',
+    brief: 'Request path with query parameters',
+    deprecationChain: ['vercel.proxy.path'],
+  },
+  'vercel.proxy.path_type': {
+    canonicalName: 'vercel.proxy.path_type',
+    type: 'string',
+    brief: 'How the request was served based on its path and project configuration',
+    deprecationChain: ['vercel.proxy.path_type'],
+  },
+  'vercel.proxy.path_type_variant': {
+    canonicalName: 'vercel.proxy.path_type_variant',
+    type: 'string',
+    brief: 'Variant of the path type',
+    deprecationChain: ['vercel.proxy.path_type_variant'],
+  },
+  'vercel.proxy.referer': {
+    canonicalName: 'vercel.proxy.referer',
+    type: 'string',
+    brief: 'Referer of the request',
+    deprecationChain: ['vercel.proxy.referer'],
+  },
+  'vercel.proxy.region': {
+    canonicalName: 'vercel.proxy.region',
+    type: 'string',
+    brief: 'Region where the request is processed',
+    deprecationChain: ['vercel.proxy.region'],
+  },
+  'vercel.proxy.response_byte_size': {
+    canonicalName: 'vercel.proxy.response_byte_size',
+    type: 'integer',
+    brief: 'Size of the response in bytes',
+    deprecationChain: ['vercel.proxy.response_byte_size'],
+  },
+  'vercel.proxy.scheme': {
+    canonicalName: 'vercel.proxy.scheme',
+    type: 'string',
+    brief: 'Protocol of the request',
+    deprecationChain: ['vercel.proxy.scheme'],
+  },
+  'vercel.proxy.status_code': {
+    canonicalName: 'vercel.proxy.status_code',
+    type: 'integer',
+    brief: 'HTTP status code of the proxy request',
+    deprecationChain: ['vercel.proxy.status_code'],
+  },
+  'vercel.proxy.timestamp': {
+    canonicalName: 'vercel.proxy.timestamp',
+    type: 'integer',
+    brief: 'Unix timestamp when the proxy request was made',
+    deprecationChain: ['vercel.proxy.timestamp'],
+  },
+  'vercel.proxy.user_agent': {
+    canonicalName: 'vercel.proxy.user_agent',
+    type: 'string[]',
+    brief: 'User agent strings of the request',
+    deprecationChain: ['vercel.proxy.user_agent'],
+  },
+  'vercel.proxy.vercel_cache': {
+    canonicalName: 'vercel.proxy.vercel_cache',
+    type: 'string',
+    brief: 'Cache status sent to the browser',
+    deprecationChain: ['vercel.proxy.vercel_cache'],
+  },
+  'vercel.proxy.vercel_id': {
+    canonicalName: 'vercel.proxy.vercel_id',
+    type: 'string',
+    brief: 'Vercel-specific identifier',
+    deprecationChain: ['vercel.proxy.vercel_id'],
+  },
+  'vercel.proxy.waf_action': {
+    canonicalName: 'vercel.proxy.waf_action',
+    type: 'string',
+    brief: 'Action taken by firewall rules',
+    deprecationChain: ['vercel.proxy.waf_action'],
+  },
+  'vercel.proxy.waf_rule_id': {
+    canonicalName: 'vercel.proxy.waf_rule_id',
+    type: 'string',
+    brief: 'ID of the firewall rule that matched',
+    deprecationChain: ['vercel.proxy.waf_rule_id'],
+  },
+  'vercel.request_id': {
+    canonicalName: 'vercel.request_id',
+    type: 'string',
+    brief: 'Identifier of the Vercel request',
+    deprecationChain: ['vercel.request_id'],
+  },
+  'vercel.source': {
+    canonicalName: 'vercel.source',
+    type: 'string',
+    brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
+    deprecationChain: ['vercel.source'],
+  },
+  'vercel.status_code': {
+    canonicalName: 'vercel.status_code',
+    type: 'integer',
+    brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
+    deprecationChain: ['vercel.status_code'],
+  },
+};
+
 export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;
 
 export type Attributes = {
+  [ADDRESS]?: ADDRESS_TYPE;
   [AI_CITATIONS]?: AI_CITATIONS_TYPE;
   [AI_COMPLETION_TOKENS_USED]?: AI_COMPLETION_TOKENS_USED_TYPE;
   [AI_DOCUMENTS]?: AI_DOCUMENTS_TYPE;
@@ -29441,17 +38165,25 @@ export type Attributes = {
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
+  [_AI_MODEL_ID]?: _AI_MODEL_ID_TYPE;
   [AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
+  [AI_PROMPT]?: AI_PROMPT_TYPE;
   [AI_PROMPT_MESSAGES]?: AI_PROMPT_MESSAGES_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
+  [AI_PROMPT_TOOLS]?: AI_PROMPT_TOOLS_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
+  [AI_RESPONSE_ID]?: AI_RESPONSE_ID_TYPE;
+  [AI_RESPONSE_MODEL]?: AI_RESPONSE_MODEL_TYPE;
+  [AI_RESPONSE_OBJECT]?: AI_RESPONSE_OBJECT_TYPE;
   [AI_RESPONSE_TEXT]?: AI_RESPONSE_TEXT_TYPE;
+  [AI_RESPONSE_TIMESTAMP]?: AI_RESPONSE_TIMESTAMP_TYPE;
   [AI_RESPONSE_TOOLCALLS]?: AI_RESPONSE_TOOLCALLS_TYPE;
+  [AI_SCHEMA]?: AI_SCHEMA_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
   [AI_SEED]?: AI_SEED_TYPE;
@@ -29467,6 +38199,8 @@ export type Attributes = {
   [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
+  [AI_USAGE_TOKENS]?: AI_USAGE_TOKENS_TYPE;
+  [AI_VALUES]?: AI_VALUES_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [ANGULAR_VERSION]?: ANGULAR_VERSION_TYPE;
   [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
@@ -29546,6 +38280,8 @@ export type Attributes = {
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
+  [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;
+  [AWS_REGION]?: AWS_REGION_TYPE;
   [AWS_REQUEST_EXTENDED_ID]?: AWS_REQUEST_EXTENDED_ID_TYPE;
   [AWS_REQUEST_ID]?: AWS_REQUEST_ID_TYPE;
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
@@ -29556,6 +38292,10 @@ export type Attributes = {
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
+  [BROWSER_BFCACHE_FRAME]?: BROWSER_BFCACHE_FRAME_TYPE;
+  [BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT]?: BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE;
+  [BROWSER_BFCACHE_OUTCOME]?: BROWSER_BFCACHE_OUTCOME_TYPE;
+  [BROWSER_BFCACHE_REASON]?: BROWSER_BFCACHE_REASON_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
   [BROWSER_PERFORMANCE_TIME_ORIGIN]?: BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE;
@@ -29615,6 +38355,7 @@ export type Attributes = {
   [CLOUD_RESOURCE_ID]?: CLOUD_RESOURCE_ID_TYPE;
   [CLS]?: CLS_TYPE;
   [CLS_SOURCE_KEY]?: CLS_SOURCE_KEY_TYPE;
+  [CODE]?: CODE_TYPE;
   [CODE_FILEPATH]?: CODE_FILEPATH_TYPE;
   [CODE_FILE_PATH]?: CODE_FILE_PATH_TYPE;
   [CODE_FUNCTION]?: CODE_FUNCTION_TYPE;
@@ -29630,6 +38371,7 @@ export type Attributes = {
   [CULTURE_LOCALE]?: CULTURE_LOCALE_TYPE;
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
+  [DB_CONNECTION_STRING]?: DB_CONNECTION_STRING_TYPE;
   [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
   [DB_MONGODB_COLLECTION]?: DB_MONGODB_COLLECTION_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
@@ -29637,6 +38379,7 @@ export type Attributes = {
   [DB_OPERATION]?: DB_OPERATION_TYPE;
   [DB_OPERATION_BATCH_SIZE]?: DB_OPERATION_BATCH_SIZE_TYPE;
   [DB_OPERATION_NAME]?: DB_OPERATION_NAME_TYPE;
+  [DB_PARAMS]?: DB_PARAMS_TYPE;
   [DB_QUERY_PARAMETER_KEY]?: DB_QUERY_PARAMETER_KEY_TYPE;
   [DB_QUERY_SUMMARY]?: DB_QUERY_SUMMARY_TYPE;
   [DB_QUERY_TEXT]?: DB_QUERY_TEXT_TYPE;
@@ -29690,6 +38433,7 @@ export type Attributes = {
   [DEVICE_TIMEZONE]?: DEVICE_TIMEZONE_TYPE;
   [DEVICE_USABLE_MEMORY]?: DEVICE_USABLE_MEMORY_TYPE;
   [DIST]?: DIST_TYPE;
+  [DJANGO_FUNCTION_NAME]?: DJANGO_FUNCTION_NAME_TYPE;
   [DJANGO_MIDDLEWARE_NAME]?: DJANGO_MIDDLEWARE_NAME_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
@@ -29737,6 +38481,7 @@ export type Attributes = {
   [GCP_FUNCTION_CONTEXT_TIMESTAMP]?: GCP_FUNCTION_CONTEXT_TIMESTAMP_TYPE;
   [GCP_FUNCTION_CONTEXT_TYPE]?: GCP_FUNCTION_CONTEXT_TYPE_TYPE;
   [GCP_PROJECT_ID]?: GCP_PROJECT_ID_TYPE;
+  [GCP_REGION]?: GCP_REGION_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
@@ -29764,6 +38509,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_REASONING_LEVEL]?: GEN_AI_REQUEST_REASONING_LEVEL_TYPE;
+  [GEN_AI_REQUEST_SCHEMA]?: GEN_AI_REQUEST_SCHEMA_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_STOP_SEQUENCES]?: GEN_AI_REQUEST_STOP_SEQUENCES_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
@@ -29773,6 +38519,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_OBJECT]?: GEN_AI_RESPONSE_OBJECT_TYPE;
   [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
   [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]?: GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE;
@@ -29805,6 +38552,8 @@ export type Attributes = {
   [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
+  [GRAPHQL_PROCESSING_TYPE]?: GRAPHQL_PROCESSING_TYPE_TYPE;
+  [GRAPHQL_SOURCE]?: GRAPHQL_SOURCE_TYPE;
   [GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS]?: GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE;
   [GRPC_ERROR_DEBUG_INFO_DETAIL]?: GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE;
   [GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES]?: GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE;
@@ -29827,8 +38576,12 @@ export type Attributes = {
   [HTTP_METHOD]?: HTTP_METHOD_TYPE;
   [HTTP_QUERY]?: HTTP_QUERY_TYPE;
   [HTTP_REQUEST_BODY_DATA]?: HTTP_REQUEST_BODY_DATA_TYPE;
+  [HTTP_REQUEST_BODY_DECODED_SIZE]?: HTTP_REQUEST_BODY_DECODED_SIZE_TYPE;
+  [HTTP_REQUEST_BODY_SIZE]?: HTTP_REQUEST_BODY_SIZE_TYPE;
   [HTTP_REQUEST_CONNECTION_END]?: HTTP_REQUEST_CONNECTION_END_TYPE;
   [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
+  [HTTP_REQUEST_CONTENT_LENGTH]?: HTTP_REQUEST_CONTENT_LENGTH_TYPE;
+  [HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
@@ -29845,18 +38598,22 @@ export type Attributes = {
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
   [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
+  [HTTP_RESPONSE_BODY_DECODED_SIZE]?: HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
+  [HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
   [HTTP_RESPONSE_STATUS_CODE]?: HTTP_RESPONSE_STATUS_CODE_TYPE;
+  [HTTP_RESPONSE_STATUS_TEXT]?: HTTP_RESPONSE_STATUS_TEXT_TYPE;
   [HTTP_RESPONSE_TRANSFER_SIZE]?: HTTP_RESPONSE_TRANSFER_SIZE_TYPE;
   [HTTP_ROUTE]?: HTTP_ROUTE_TYPE;
   [HTTP_SCHEME]?: HTTP_SCHEME_TYPE;
   [HTTP_SERVER_NAME]?: HTTP_SERVER_NAME_TYPE;
   [HTTP_SERVER_REQUEST_TIME_IN_QUEUE]?: HTTP_SERVER_REQUEST_TIME_IN_QUEUE_TYPE;
   [HTTP_STATUS_CODE]?: HTTP_STATUS_CODE_TYPE;
+  [HTTP_STATUS_TEXT]?: HTTP_STATUS_TEXT_TYPE;
   [HTTP_TARGET]?: HTTP_TARGET_TYPE;
   [HTTP_URL]?: HTTP_URL_TYPE;
   [HTTP_USER_AGENT]?: HTTP_USER_AGENT_TYPE;
@@ -29921,6 +38678,7 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_CONVERSATION_ID]?: MESSAGING_CONVERSATION_ID_TYPE;
   [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_KIND]?: MESSAGING_DESTINATION_KIND_TYPE;
@@ -29933,12 +38691,18 @@ export type Attributes = {
   [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
+  [_MESSAGING_MESSAGE_ID]?: _MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION]?: MESSAGING_OPERATION_TYPE;
   [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
+  [MESSAGING_PROTOCOL]?: MESSAGING_PROTOCOL_TYPE;
+  [MESSAGING_PROTOCOL_VERSION]?: MESSAGING_PROTOCOL_VERSION_TYPE;
   [MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY]?: MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE;
+  [MESSAGING_RABBITMQ_ROUTING_KEY]?: MESSAGING_RABBITMQ_ROUTING_KEY_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
+  [MESSAGING_URL]?: MESSAGING_URL_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
@@ -29993,6 +38757,7 @@ export type Attributes = {
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
   [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
+  [PORT]?: PORT_TYPE;
   [PREVIOUS_ROUTE]?: PREVIOUS_ROUTE_TYPE;
   [PROCESS_COMMAND_ARGS]?: PROCESS_COMMAND_ARGS_TYPE;
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
@@ -30003,8 +38768,10 @@ export type Attributes = {
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
   [PROCESS_RUNTIME_VERSION]?: PROCESS_RUNTIME_VERSION_TYPE;
   [PROFILE_ID]?: PROFILE_ID_TYPE;
+  [QUERY]?: QUERY_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
+  [REDIS_COMMAND]?: REDIS_COMMAND_TYPE;
   [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
@@ -30045,6 +38812,10 @@ export type Attributes = {
   [SENTRY_DSC_TRACE_ID]?: SENTRY_DSC_TRACE_ID_TYPE;
   [SENTRY_DSC_TRANSACTION]?: SENTRY_DSC_TRANSACTION_TYPE;
   [SENTRY_ENVIRONMENT]?: SENTRY_ENVIRONMENT_TYPE;
+  [SENTRY_EVENT_SERIALIZED_BREADCRUMBS]?: SENTRY_EVENT_SERIALIZED_BREADCRUMBS_TYPE;
+  [SENTRY_EVENT_SERIALIZED_CONTEXTS]?: SENTRY_EVENT_SERIALIZED_CONTEXTS_TYPE;
+  [SENTRY_EVENT_SERIALIZED_EXTRA]?: SENTRY_EVENT_SERIALIZED_EXTRA_TYPE;
+  [SENTRY_EVENT_SERIALIZED_META]?: SENTRY_EVENT_SERIALIZED_META_TYPE;
   [SENTRY_EXCLUSIVE_TIME]?: SENTRY_EXCLUSIVE_TIME_TYPE;
   [SENTRY_FRAMES_FROZEN]?: SENTRY_FRAMES_FROZEN_TYPE;
   [SENTRY_FRAMES_SLOW]?: SENTRY_FRAMES_SLOW_TYPE;
@@ -30150,6 +38921,7 @@ export type Attributes = {
   [URL_FULL]?: URL_FULL_TYPE;
   [URL_PATH]?: URL_PATH_TYPE;
   [URL_PATH_PARAMETER_KEY]?: URL_PATH_PARAMETER_KEY_TYPE;
+  [URL_PATH_PARAMS_KEY]?: URL_PATH_PARAMS_KEY_TYPE;
   [URL_PORT]?: URL_PORT_TYPE;
   [URL_QUERY]?: URL_QUERY_TYPE;
   [URL_SAME_ORIGIN]?: URL_SAME_ORIGIN_TYPE;

@@ -9,9 +9,12 @@
   "alias": ["user.geo.city"],
   "deprecation": {
     "replacement": "user.geo.city",
-    "_status": null
+    "_status": "backfill"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "user.geo.city"
+  },
   "changelog": [
     {
       "version": "0.10.0",

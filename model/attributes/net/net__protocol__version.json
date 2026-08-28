@@ -7,13 +7,17 @@
   },
   "is_in_otel": true,
   "example": "1.1",
-  "alias": ["network.protocol.version", "http.flavor"],
+  "alias": ["network.protocol.version", "http.flavor", "messaging.protocol_version"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "network.protocol.version"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.protocol_version as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [61, 108, 127]

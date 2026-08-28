@@ -11,6 +11,10 @@
       "description": "Client-side browser history change in a web application."
     },
     {
+      "name": "navigation.redirect",
+      "description": "A client-side automatic redirect navigation (e.g. from framework router redirects) triggerign a browser history change."
+    },
+    {
       "name": "resource",
       "description": "Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified."
     },
@@ -39,11 +43,75 @@
       "name": "resource.other"
     },
     {
+      "name": "resource.worker",
+      "description": "Loading of a resource initiated by a worker (e.g. Web Worker or Service Worker)."
+    },
+    {
+      "name": "resource.icon",
+      "description": "Loading of an icon resource."
+    },
+    {
+      "name": "resource.frame",
+      "description": "Loading of a resource initiated by a frame."
+    },
+    {
+      "name": "resource.object",
+      "description": "Loading of a resource initiated by an `<object>` element."
+    },
+    {
+      "name": "resource.ping",
+      "description": "A hyperlink auditing ping request."
+    },
+    {
+      "name": "resource.track",
+      "description": "Loading of a `<track>` element resource (e.g. subtitles or captions)."
+    },
+    {
       "name": "browser",
       "description": "Usage of browser APIs or functionality"
     },
     {
       "name": "browser.paint"
+    },
+    {
+      "name": "browser.unload_event",
+      "description": "The unload event phase of a browser navigation."
+    },
+    {
+      "name": "browser.redirect",
+      "description": "The redirect phase of a browser navigation."
+    },
+    {
+      "name": "browser.dom_content_loaded_event",
+      "description": "The DOMContentLoaded event phase of a browser navigation."
+    },
+    {
+      "name": "browser.load_event",
+      "description": "The load event phase of a browser navigation."
+    },
+    {
+      "name": "browser.connect",
+      "description": "The connection phase of a browser navigation."
+    },
+    {
+      "name": "browser.tls_ssl",
+      "description": "The secure connection (TLS/SSL) phase of a browser navigation."
+    },
+    {
+      "name": "browser.cache",
+      "description": "The cache lookup / fetch start phase of a browser navigation."
+    },
+    {
+      "name": "browser.dns",
+      "description": "The DNS domain lookup phase of a browser navigation."
+    },
+    {
+      "name": "browser.request",
+      "description": "The request phase of a browser navigation."
+    },
+    {
+      "name": "browser.response",
+      "description": "The response phase of a browser navigation."
     },
     {
       "name": "ui",
@@ -55,6 +123,50 @@
     },
     {
       "name": "ui.render"
+    },
+    {
+      "name": "ui.mount",
+      "description": "Mounting of a UI component or application (e.g. initial render/bootstrap)."
+    },
+    {
+      "name": "ui.update",
+      "description": "Updating of an already-mounted UI component."
+    },
+    {
+      "name": "ui.unmount",
+      "description": "Unmounting/teardown of a UI component."
+    },
+    {
+      "name": "ui.long_task",
+      "description": "A long task on the main UI thread, as reported by the Long Tasks API."
+    },
+    {
+      "name": "ui.long_animation_frame",
+      "description": "A long animation frame, as reported by the Long Animation Frames API."
+    },
+    {
+      "name": "ui.interaction.click",
+      "description": "A click interaction measured via Interaction to Next Paint (INP)."
+    },
+    {
+      "name": "ui.interaction.hover",
+      "description": "A hover interaction measured via Interaction to Next Paint (INP)."
+    },
+    {
+      "name": "ui.interaction.drag",
+      "description": "A drag interaction measured via Interaction to Next Paint (INP)."
+    },
+    {
+      "name": "ui.interaction.press",
+      "description": "A key press interaction measured via Interaction to Next Paint (INP)."
+    },
+    {
+      "name": "ui.webvital.lcp",
+      "description": "A Largest Contentful Paint (LCP) web vital measurement."
+    },
+    {
+      "name": "ui.webvital.cls",
+      "description": "A Cumulative Layout Shift (CLS) web vital measurement."
     },
     {
       "name": "ui.action"

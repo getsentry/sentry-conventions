@@ -7,8 +7,22 @@
   },
   "is_in_otel": false,
   "example": 456,
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "http.response.body.decoded_size"
+  },
+  "alias": ["http.response.body.decoded_size", "http.response_content_length_uncompressed"],
   "visibility": "public",
+  "search_alias": {
+    "name": "http.decoded_response_content_length",
+    "type": "byte"
+  },
   "changelog": [
+    {
+      "version": "next",
+      "prs": [574],
+      "description": "Deprecated in favor of http.response.body.decoded_size"
+    },
     {
       "version": "0.4.0",
       "prs": [228]

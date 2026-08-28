@@ -7,9 +7,14 @@
   },
   "is_in_otel": true,
   "example": 1337,
-  "alias": ["net.host.port"],
+  "alias": ["net.host.port", "port"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.19.0",
+      "prs": [532],
+      "description": "Added port as an alias"
+    },
     {
       "version": "0.4.0",
       "prs": [228]

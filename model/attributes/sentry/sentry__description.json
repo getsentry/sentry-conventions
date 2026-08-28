@@ -3,7 +3,7 @@
   "brief": "The human-readable description of a span.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "auto"
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "index view query",

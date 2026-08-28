@@ -6,14 +6,15 @@
       "brief": "Operations that represent outgoing HTTP requests.",
       "is_in_otel": true,
       "otel_notes": "",
-      "ops": ["http.client"],
+      "ops": ["http.client", "http.client.stream"],
       "templates": [
         "{{http.request.method}} {{http.route}}",
         "{{http.request.method}} {{url.template}}",
+        "{{http.request.method}} {{url.domain}}",
         "{{http.request.method}}",
         "HTTP"
       ],
-      "examples": ["GET /users/:id", "GET"]
+      "examples": ["GET /users/:id", "GET api.mydomain.com", "GET", "HTTP"]
     },
     {
       "name": "Server",
@@ -27,7 +28,7 @@
         "{{http.request.method}}",
         "HTTP"
       ],
-      "examples": ["GET /users/:id", "GET"]
+      "examples": ["GET /users/:id", "GET", "HTTP"]
     }
   ]
 }

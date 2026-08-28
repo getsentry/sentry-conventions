@@ -10,6 +10,10 @@
       "name": "http.client"
     },
     {
+      "name": "http.client.stream",
+      "description": "Consumption of a streaming HTTP client response body"
+    },
+    {
       "name": "http.server"
     },
     {
@@ -29,6 +33,10 @@
     },
     {
       "name": "middleware"
+    },
+    {
+      "name": "handler",
+      "description": "Handling of an incoming request by a web server route handler"
     },
     {
       "name": "view"

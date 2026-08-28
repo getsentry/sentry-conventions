@@ -8,6 +8,10 @@
   "is_in_otel": true,
   "example": 839,
   "visibility": "public",
+  "search_alias": {
+    "name": "messaging.message.body.size",
+    "type": "byte"
+  },
   "changelog": [
     {
       "version": "0.4.0",

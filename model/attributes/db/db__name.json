@@ -9,7 +9,7 @@
   "example": "customers",
   "alias": ["db.namespace"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "db.namespace"
   },
   "visibility": "public",

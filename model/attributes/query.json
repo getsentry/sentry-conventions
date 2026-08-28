@@ -1,0 +1,24 @@
+{
+  "key": "query",
+  "brief": "The database query being executed.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["SELECT * FROM users WHERE id = $1"],
+  "alias": ["db.query.text", "db.statement"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "db.query.text",
+    "reason": "While this attribute never specifically required parameterization, the replacement, db.query.text, does."
+  },
+  "changelog": [
+    {
+      "version": "0.19.0",
+      "prs": [530],
+      "description": "Added query attribute"
+    }
+  ]
+}

@@ -67,4 +67,120 @@ describe('generateAttributes', () => {
       fs.rmSync(temporaryDirectory, { recursive: true });
     }
   });
+
+  it('generates search metadata keyed by search name with its deprecation chain', async () => {
+    const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
+    const attributesDir = path.join(temporaryDirectory, 'attributes');
+    const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
+    const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
+    fs.mkdirSync(attributesDir);
+
+    const attributes = [
+      {
+        key: 'fallback.attribute',
+        brief: 'An attribute without explicit search metadata.',
+        type: 'boolean',
+      },
+      {
+        key: 'current.attribute',
+        brief: 'The preferred attribute.',
+        type: 'integer',
+        search_alias: {
+          name: 'shared.name',
+          type: 'byte',
+          deprecated_aliases: ['old.name', 'current.attribute'],
+        },
+      },
+      {
+        key: 'shared.name',
+        brief: 'The deprecated attribute.',
+        type: 'double',
+        deprecation: { _status: 'normalize' },
+      },
+      {
+        key: 'standalone.deprecated',
+        brief: 'A deprecated attribute with a distinct search name.',
+        type: 'double',
+        visibility: 'internal',
+        search_alias: { name: 'deprecated.search' },
+        deprecation: { replacement: 'fallback.attribute', _status: null },
+      },
+    ];
+
+    for (const attribute of attributes) {
+      fs.writeFileSync(
+        path.join(attributesDir, `${attribute.key.replaceAll('.', '__')}.json`),
+        JSON.stringify({
+          apply_scrubbing: { key: 'never' },
+          is_in_otel: false,
+          visibility: 'public',
+          ...attribute,
+        }),
+      );
+    }
+
+    try {
+      await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath });
+
+      const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
+      const compactMetadataStart = javascript.indexOf('export const ATTRIBUTE_SEARCH_METADATA');
+      const compactMetadataEnd = javascript.indexOf('\n};', compactMetadataStart);
+      const compactMetadata = javascript.slice(compactMetadataStart, compactMetadataEnd);
+
+      expect(javascript).toContain('export type AttributeSearchType = AttributeType | SearchAliasType;');
+      expect(javascript).toContain('internal?: true;');
+      expect(compactMetadata).toContain(
+        '"fallback.attribute": {\n    canonicalName: "fallback.attribute",\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute"],',
+      );
+      expect(compactMetadata).toContain(
+        '"shared.name": {\n    canonicalName: "current.attribute",\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name"],',
+      );
+      expect(compactMetadata).toContain(
+        '"deprecated.search": {\n    canonicalName: "fallback.attribute",\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    internal: true,\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',
+      );
+      expect(compactMetadata).not.toContain('"current.attribute": {');
+      expect(compactMetadata).not.toContain('visibility:');
+
+      const searchKeys = [...compactMetadata.matchAll(/^  "([^"]+)": \{$/gm)].map((match) => match[1]);
+      expect(searchKeys).toEqual([...searchKeys].sort());
+
+      const compactPropertyNames = [...compactMetadata.matchAll(/^    (\w+):/gm)].map((match) => match[1]);
+      expect(new Set(compactPropertyNames)).toEqual(
+        new Set(['canonicalName', 'type', 'brief', 'internal', 'deprecationChain']),
+      );
+    } finally {
+      fs.rmSync(temporaryDirectory, { recursive: true });
+    }
+  });
+
+  it('throws when two attributes share the same search alias', async () => {
+    const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
+    const attributesDir = path.join(temporaryDirectory, 'attributes');
+    const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
+    const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
+    fs.mkdirSync(attributesDir);
+
+    for (const key of ['first.attribute', 'second.attribute']) {
+      fs.writeFileSync(
+        path.join(attributesDir, `${key.replaceAll('.', '__')}.json`),
+        JSON.stringify({
+          key,
+          brief: `Attribute ${key}`,
+          type: 'string',
+          apply_scrubbing: { key: 'never' },
+          is_in_otel: false,
+          visibility: 'public',
+          search_alias: { name: 'duplicate.alias' },
+        }),
+      );
+    }
+
+    try {
+      await expect(generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath })).rejects.toThrow(
+        'Duplicate search aliases found:\n  "duplicate.alias": "first.attribute", "second.attribute"',
+      );
+    } finally {
+      fs.rmSync(temporaryDirectory, { recursive: true });
+    }
+  });
 });

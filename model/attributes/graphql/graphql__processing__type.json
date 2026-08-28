@@ -1,0 +1,22 @@
+{
+  "key": "graphql.processing.type",
+  "brief": "The type of processing represented by this span.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["parse", "validate", "execute", "resolve"],
+  "additional_context": [
+    "Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.",
+    "Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [572],
+      "description": "Added graphql.processing.type attribute"
+    }
+  ]
+}

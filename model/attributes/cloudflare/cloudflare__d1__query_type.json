@@ -7,13 +7,18 @@
   },
   "is_in_otel": false,
   "example": "run",
-  "alias": ["db.operation.name", "db.operation"],
+  "alias": ["db.operation.name", "db.operation", "redis.command"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "db.operation.name"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.19.0",
+      "prs": [531],
+      "description": "Added redis.command as an alias"
+    },
     {
       "version": "0.11.0",
       "prs": [392],
