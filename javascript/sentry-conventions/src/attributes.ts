@@ -12,7 +12,7 @@
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
  * @example "example.com"
@@ -9352,7 +9352,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -10215,7 +10215,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12640,6 +12640,8 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link NET_SOCK_PEER_PORT} `net.sock.peer.port`
+ *
  * @example 65400
  */
 export const NETWORK_PEER_PORT = 'network.peer.port';
@@ -12775,7 +12777,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12846,6 +12848,8 @@ export type NET_PEER_IP_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
@@ -13055,6 +13059,8 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link NETWORK_PEER_PORT} `network.peer.port`
+ *
  * @deprecated Use {@link NETWORK_PEER_PORT} (network.peer.port) instead
  * @example 8080
  */
@@ -13079,7 +13085,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  *
  * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link MCP_TRANSPORT} `mcp.transport`
  *
- * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead
+ * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
  * @example "tcp"
  */
 export const NET_TRANSPORT = 'net.transport';
@@ -16246,7 +16252,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @example "example.com"
  */
@@ -16269,7 +16275,7 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
  * @example "example.com"
@@ -20093,8 +20099,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.19.0', prs: [534], description: 'Added address attribute' }],
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address attribute' },
+    ],
   },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
@@ -26679,8 +26688,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
+    aliases: [
+      'address',
+      'server.address',
+      'client.address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'net.peer.name',
+    ],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -27294,8 +27312,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -28305,7 +28324,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.transport': {
     brief: 'Transport method used for MCP communication.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport', 'net.transport'],
+    keys: ['network.transport', 'mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29027,7 +29046,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 65400,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    aliases: ['net.sock.peer.port'],
+    changelog: [
+      { version: 'next', description: 'Added net.sock.peer.port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'network.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
@@ -29066,7 +29090,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport', 'net.transport'],
+    keys: ['network.transport', 'mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29120,8 +29144,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -29181,7 +29206,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added the server.address alias group to net.peer.name' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.peer.port': {
     brief: 'Peer port number.',
@@ -29337,12 +29367,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.peer.port',
       status: 'backfill',
     },
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['network.peer.port'],
+    changelog: [
+      { version: 'next', description: 'Added network.peer.port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'net.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport', 'net.transport'],
+    keys: ['net.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29351,10 +29387,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'tcp',
     deprecation: {
       replacement: 'network.transport',
-      status: 'backfill',
+      reason:
+        'This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.',
     },
     aliases: ['network.transport', 'mcp.transport'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Set net.transport to _status null, because its values change on the replacement',
+      },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'os.build': {
     brief: 'The build ID of the operating system.',
@@ -31545,8 +31589,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
       { version: '0.0.0' },
@@ -31568,8 +31613,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
@@ -36248,7 +36294,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'Transport method used for MCP communication.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.transport'],
+    deprecationChain: ['network.transport', 'mcp.transport'],
   },
   'mdc.<key>': {
     canonicalName: 'mdc.<key>',
@@ -36606,7 +36652,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.transport'],
+    deprecationChain: ['net.transport'],
   },
   'network.connection.effective_type': {
     canonicalName: 'network.connection.effective_type',
@@ -36666,7 +36712,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.transport'],
+    deprecationChain: ['network.transport', 'mcp.transport'],
   },
   'network.type': {
     canonicalName: 'network.type',
