@@ -7,7 +7,6 @@
   },
   "is_in_otel": false,
   "examples": [["{\"type\":\"function\",\"name\":\"get_weather\"}"]],
-  "alias": ["gen_ai.tool.definitions", "gen_ai.request.available_tools", "ai.tools"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.tool.definitions",

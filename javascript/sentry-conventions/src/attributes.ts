@@ -484,8 +484,6 @@ export type AI_PROMPT_TOKENS_USED_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_DEFINITIONS} `gen_ai.tool.definitions`, {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} `gen_ai.request.available_tools`, {@link AI_TOOLS} `ai.tools`
- *
  * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead - This attribute is being deprecated in favor of gen_ai.tool.definitions.
  * @example ["{\"type\":\"function\",\"name\":\"get_weather\"}"]
  */
@@ -945,8 +943,6 @@ export type AI_TOOLCALL_RESULT_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
- *
- * Aliases: {@link GEN_AI_TOOL_DEFINITIONS} `gen_ai.tool.definitions`, {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} `gen_ai.request.available_tools`, {@link AI_PROMPT_TOOLS} `ai.prompt.tools`
  *
  * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead
  * @example ["function_1","function_2"]
@@ -7772,7 +7768,7 @@ export type GEN_AI_PROVIDER_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_DEFINITIONS} `gen_ai.tool.definitions`, {@link AI_TOOLS} `ai.tools`, {@link AI_PROMPT_TOOLS} `ai.prompt.tools`
+ * Aliases: {@link GEN_AI_TOOL_DEFINITIONS} `gen_ai.tool.definitions`
  *
  * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead
  * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
@@ -8431,7 +8427,7 @@ export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} `gen_ai.request.available_tools`, {@link AI_TOOLS} `ai.tools`, {@link AI_PROMPT_TOOLS} `ai.prompt.tools`
+ * Aliases: {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} `gen_ai.request.available_tools`
  *
  * @example "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
  */
@@ -20499,7 +20495,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of gen_ai.tool.definitions.',
       status: 'backfill',
     },
-    aliases: ['gen_ai.tool.definitions', 'gen_ai.request.available_tools', 'ai.tools'],
     changelog: [{ version: 'next', prs: [583, 595], description: 'Added ai.prompt.tools attribute' }],
   },
   'ai.raw_prompting': {
@@ -20857,11 +20852,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.definitions',
       status: 'backfill',
     },
-    aliases: ['gen_ai.tool.definitions', 'gen_ai.request.available_tools', 'ai.prompt.tools'],
-    changelog: [
-      { version: 'next', description: 'Added the gen_ai.tool.definitions alias group to ai.tools' },
-      { version: '0.1.0', prs: [55, 65, 127] },
-    ],
+    changelog: [{ version: '0.1.0', prs: [55, 65, 127] }],
   },
   'ai.tool_calls': {
     brief: 'For an AI model call, the tool calls that were made.',
@@ -25465,9 +25456,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.definitions',
       status: 'normalize',
     },
-    aliases: ['gen_ai.tool.definitions', 'ai.tools', 'ai.prompt.tools'],
+    aliases: ['gen_ai.tool.definitions'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.tool.definitions, ai.tools and ai.prompt.tools as aliases' },
+      { version: 'next', description: 'Added gen_ai.tool.definitions as an alias' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 127] },
     ],
@@ -25952,9 +25943,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
-    aliases: ['gen_ai.request.available_tools', 'ai.tools', 'ai.prompt.tools'],
+    aliases: ['gen_ai.request.available_tools'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.request.available_tools, ai.tools and ai.prompt.tools as aliases' },
+      { version: 'next', description: 'Added gen_ai.request.available_tools as an alias' },
       { version: '0.4.0', prs: [221] },
     ],
   },
