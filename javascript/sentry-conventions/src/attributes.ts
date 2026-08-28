@@ -13426,7 +13426,7 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`, {@link URL_PATH_PARAMS_KEY} `url.path.params.<key>`
  *
  * @example "params.id='123'"
  */
@@ -17130,7 +17130,7 @@ export type URL_PATH_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link PARAMS_KEY} `params.<key>`
+ * Aliases: {@link PARAMS_KEY} `params.<key>`, {@link URL_PATH_PARAMS_KEY} `url.path.params.<key>`
  *
  * @example "url.path.parameter.id='123'"
  */
@@ -17145,6 +17145,39 @@ export const URL_PATH_PARAMETER_KEY_BASE = 'url.path.parameter';
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
  */
 export type URL_PATH_PARAMETER_KEY_TYPE = string;
+
+// Path: model/attributes/url/url__path__params__[key].json
+
+/**
+ * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router. `url.path.params.<key>`
+ *
+ * Attribute Value Type: `string` {@link URL_PATH_PARAMS_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`, {@link PARAMS_KEY} `params.<key>`
+ *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY} (url.path.parameter.<key>) instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+ * @example "url.path.params.id='123'"
+ */
+export const URL_PATH_PARAMS_KEY = 'url.path.params.<key>';
+
+/**
+ * Base key for {@link URL_PATH_PARAMS_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMS_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY_BASE} (url.path.parameter) instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+ */
+export const URL_PATH_PARAMS_KEY_BASE = 'url.path.params';
+
+/**
+ * Type for {@link URL_PATH_PARAMS_KEY} url.path.params.<key>
+ */
+export type URL_PATH_PARAMS_KEY_TYPE = string;
 
 // Path: model/attributes/url/url__port.json
 
@@ -19163,6 +19196,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'url.full': 'string',
   'url.path': 'string',
   'url.path.parameter.<key>': 'string',
+  'url.path.params.<key>': 'string',
   'url.port': 'integer',
   'url.query': 'string',
   'url.same_origin': 'boolean',
@@ -19987,6 +20021,7 @@ export type AttributeName =
   | typeof URL_FULL
   | typeof URL_PATH
   | typeof URL_PATH_PARAMETER_KEY
+  | typeof URL_PATH_PARAMS_KEY
   | typeof URL_PORT
   | typeof URL_QUERY
   | typeof URL_SAME_ORIGIN
@@ -29519,7 +29554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
-    keys: ['params.<key>', 'url.path.parameter.<key>'],
+    keys: ['params.<key>', 'url.path.parameter.<key>', 'url.path.params.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29527,8 +29562,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "params.id='123'",
-    aliases: ['url.path.parameter.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
+    aliases: ['url.path.parameter.<key>', 'url.path.params.<key>'],
+    changelog: [
+      { version: 'next', description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.1.0', prs: [103] },
+    ],
   },
   'performance.activationStart': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
@@ -32125,7 +32163,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
-    keys: ['url.path.parameter.<key>', 'params.<key>'],
+    keys: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -32133,8 +32171,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "url.path.parameter.id='123'",
-    aliases: ['params.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
+    aliases: ['params.<key>', 'url.path.params.<key>'],
+    changelog: [
+      { version: 'next', description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.1.0', prs: [103] },
+    ],
+  },
+  'url.path.params.<key>': {
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    type: 'string',
+    keys: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "url.path.params.id='123'",
+    examples: ["url.path.params.id='123'"],
+    deprecation: {
+      replacement: 'url.path.parameter.<key>',
+      reason: 'This attribute is being deprecated in favor of url.path.parameter.<key>.',
+      status: 'backfill',
+    },
+    aliases: ['url.path.parameter.<key>', 'params.<key>'],
+    changelog: [{ version: 'next', prs: [586], description: 'Added url.path.params.<key> attribute' }],
   },
   'url.port': {
     brief: 'Server port number.',
@@ -36709,7 +36771,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
-    deprecationChain: ['params.<key>', 'url.path.parameter.<key>'],
+    deprecationChain: ['params.<key>', 'url.path.parameter.<key>', 'url.path.params.<key>'],
   },
   'performance.activationStart': {
     canonicalName: 'browser.performance.navigation.activation_start',
@@ -37693,7 +37755,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
-    deprecationChain: ['url.path.parameter.<key>', 'params.<key>'],
+    deprecationChain: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
+  },
+  'url.path.params.<key>': {
+    canonicalName: 'url.path.parameter.<key>',
+    type: 'string',
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
   },
   'url.port': {
     canonicalName: 'url.port',
@@ -38799,6 +38868,7 @@ export type Attributes = {
   [URL_FULL]?: URL_FULL_TYPE;
   [URL_PATH]?: URL_PATH_TYPE;
   [URL_PATH_PARAMETER_KEY]?: URL_PATH_PARAMETER_KEY_TYPE;
+  [URL_PATH_PARAMS_KEY]?: URL_PATH_PARAMS_KEY_TYPE;
   [URL_PORT]?: URL_PORT_TYPE;
   [URL_QUERY]?: URL_QUERY_TYPE;
   [URL_SAME_ORIGIN]?: URL_SAME_ORIGIN_TYPE;
