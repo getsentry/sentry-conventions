@@ -7,9 +7,13 @@
   },
   "is_in_otel": false,
   "example": "Autofix Pipeline",
-  "alias": ["ai.pipeline.name"],
+  "alias": ["ai.pipeline.name", "langchain.chain.name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added langchain.chain.name as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [76, 127]
