@@ -1,0 +1,24 @@
+{
+  "key": "ai.response.id",
+  "brief": "The id of the response returned by the model.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY"],
+  "alias": ["gen_ai.response.id", "ai.generation_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.response.id",
+    "reason": "This attribute is being deprecated in favor of gen_ai.response.id."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.response.id attribute"
+    }
+  ]
+}

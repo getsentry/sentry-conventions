@@ -1,0 +1,22 @@
+{
+  "key": "gen_ai.request.schema",
+  "brief": "The stringified JSON schema the model output must conform to.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"],
+  "deprecation": {
+    "_status": null,
+    "reason": "This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added gen_ai.request.schema attribute"
+    }
+  ]
+}
