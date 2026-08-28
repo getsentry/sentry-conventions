@@ -4663,7 +4663,7 @@ export type DB_COLLECTION_NAME_TYPE = string;
  *
  * Apply Scrubbing: auto
  *
- * Attribute defined in OTEL: No
+ * Attribute defined in OTEL: Yes
  * Visibility: public
  *
  * @deprecated  - This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.
@@ -22844,7 +22844,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     applyScrubbing: {
       key: 'auto',
     },
-    isInOtel: false,
+    isInOtel: true,
     visibility: 'public',
     example: 'redis://localhost:6379',
     examples: ['redis://localhost:6379'],

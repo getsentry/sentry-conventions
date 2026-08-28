@@ -3042,7 +3042,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     Type: str
     Apply Scrubbing: auto
-    Defined in OTEL: No
+    Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: No replacement at this time - This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.
     Example: "redis://localhost:6379"
@@ -14268,7 +14268,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=("db.connection_string",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
-        is_in_otel=False,
+        is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="redis://localhost:6379",
         examples=["redis://localhost:6379"],
