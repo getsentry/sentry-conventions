@@ -1,0 +1,24 @@
+{
+  "key": "ai.prompt",
+  "brief": "The prompt passed to the Vercel AI SDK, as a stringified object.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["{\"prompt\":\"What is the weather in Paris?\"}"],
+  "alias": ["gen_ai.input.messages", "ai.texts", "ai.prompt.messages", "gen_ai.prompt"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.input.messages",
+    "reason": "This attribute is being deprecated in favor of gen_ai.input.messages."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.prompt attribute"
+    }
+  ]
+}

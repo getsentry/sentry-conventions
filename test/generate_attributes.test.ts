@@ -101,6 +101,7 @@ describe('generateAttributes', () => {
         key: 'standalone.deprecated',
         brief: 'A deprecated attribute with a distinct search name.',
         type: 'double',
+        visibility: 'internal',
         search_alias: { name: 'deprecated.search' },
         deprecation: { replacement: 'fallback.attribute', _status: null },
       },
@@ -127,6 +128,7 @@ describe('generateAttributes', () => {
       const compactMetadata = javascript.slice(compactMetadataStart, compactMetadataEnd);
 
       expect(javascript).toContain('export type AttributeSearchType = AttributeType | SearchAliasType;');
+      expect(javascript).toContain('internal?: true;');
       expect(compactMetadata).toContain(
         '"fallback.attribute": {\n    canonicalName: "fallback.attribute",\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute"],',
       );
@@ -134,15 +136,18 @@ describe('generateAttributes', () => {
         '"shared.name": {\n    canonicalName: "current.attribute",\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name"],',
       );
       expect(compactMetadata).toContain(
-        '"deprecated.search": {\n    canonicalName: "fallback.attribute",\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',
+        '"deprecated.search": {\n    canonicalName: "fallback.attribute",\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    internal: true,\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',
       );
       expect(compactMetadata).not.toContain('"current.attribute": {');
+      expect(compactMetadata).not.toContain('visibility:');
 
       const searchKeys = [...compactMetadata.matchAll(/^  "([^"]+)": \{$/gm)].map((match) => match[1]);
       expect(searchKeys).toEqual([...searchKeys].sort());
 
       const compactPropertyNames = [...compactMetadata.matchAll(/^    (\w+):/gm)].map((match) => match[1]);
-      expect(new Set(compactPropertyNames)).toEqual(new Set(['canonicalName', 'type', 'brief', 'deprecationChain']));
+      expect(new Set(compactPropertyNames)).toEqual(
+        new Set(['canonicalName', 'type', 'brief', 'internal', 'deprecationChain']),
+      );
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true });
     }

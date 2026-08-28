@@ -1,0 +1,24 @@
+{
+  "key": "messaging.rabbitmq.routing_key",
+  "brief": "RabbitMQ message routing key.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["myKey"],
+  "alias": ["messaging.rabbitmq.destination.routing_key"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "messaging.rabbitmq.destination.routing_key",
+    "reason": "This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [581],
+      "description": "Added messaging.rabbitmq.routing_key attribute"
+    }
+  ]
+}

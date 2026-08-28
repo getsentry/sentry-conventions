@@ -7,13 +7,17 @@
   },
   "is_in_otel": false,
   "example": "gpt-4",
-  "alias": ["gen_ai.request.model"],
+  "alias": ["gen_ai.request.model", "ai.model.id"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.request.model"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added ai.model.id as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [57, 61, 127]

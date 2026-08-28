@@ -1,0 +1,22 @@
+{
+  "key": "db.connection_string",
+  "brief": "The connection string used to connect to the database.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": true,
+  "examples": ["redis://localhost:6379"],
+  "deprecation": {
+    "_status": null,
+    "reason": "This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [581],
+      "description": "Added db.connection_string attribute"
+    }
+  ]
+}

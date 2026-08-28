@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
-  "alias": ["url.full", "http.url", "url"],
+  "alias": ["url.full", "http.url", "url", "messaging.url"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "url.full",
@@ -15,6 +15,10 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.url as an alias"
+    },
     {
       "version": "0.19.0",
       "prs": [488],
