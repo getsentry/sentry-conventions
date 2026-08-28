@@ -7,17 +7,12 @@
   },
   "is_in_otel": false,
   "example": ["function_1", "function_2"],
-  "alias": ["gen_ai.tool.definitions", "gen_ai.request.available_tools", "ai.prompt.tools"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.tool.definitions"
   },
   "visibility": "public",
   "changelog": [
-    {
-      "version": "next",
-      "description": "Added the gen_ai.tool.definitions alias group to ai.tools"
-    },
     {
       "version": "0.1.0",
       "prs": [55, 65, 127]
