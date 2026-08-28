@@ -13,7 +13,7 @@ Repository = "https://github.com/getsentry/sentry-conventions.git"
 Issues = "https://github.com/getsentry/sentry-conventions/issues"
 
 [[tool.uv.index]]
-url = "https://pypi.org/simple"
+url = "https://sfw.security.sentry.io/pypi/simple"
 default = true
 
 [dependency-groups]
