@@ -17,6 +17,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [599],
       "description": "Added langchain.chain.name attribute"
     }
   ]

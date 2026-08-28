@@ -20389,7 +20389,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.pipeline.name', 'langchain.chain.name'],
     changelog: [
-      { version: 'next', description: 'Added langchain.chain.name as an alias' },
+      { version: 'next', prs: [599], description: 'Added langchain.chain.name as an alias' },
       { version: '0.1.0', prs: [53, 76, 108, 127] },
     ],
   },
@@ -25410,7 +25410,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Autofix Pipeline',
     aliases: ['ai.pipeline.name', 'langchain.chain.name'],
     changelog: [
-      { version: 'next', description: 'Added langchain.chain.name as an alias' },
+      { version: 'next', prs: [599], description: 'Added langchain.chain.name as an alias' },
       { version: '0.1.0', prs: [76, 127] },
     ],
   },
@@ -27648,7 +27648,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
-    changelog: [{ version: 'next', description: 'Added langchain.chain.name attribute' }],
+    changelog: [{ version: 'next', prs: [599], description: 'Added langchain.chain.name attribute' }],
   },
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',

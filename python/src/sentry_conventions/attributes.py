@@ -10956,7 +10956,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.pipeline.name", "langchain.chain.name"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added langchain.chain.name as an alias"
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[53, 76, 108, 127]),
         ],
@@ -16995,7 +16997,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.pipeline.name", "langchain.chain.name"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added langchain.chain.name as an alias"
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[76, 127]),
         ],
@@ -19566,7 +19570,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.pipeline.name", "ai.pipeline.name"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added langchain.chain.name attribute"
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name attribute",
             ),
         ],
     ),
