@@ -16268,7 +16268,7 @@ export type SERVER_ADDRESS_TYPE = string;
 // Path: model/attributes/server_name.json
 
 /**
- * The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname. `server_name`
+ * The name of the device. On servers and desktops, this is typically the hostname. `server_name`
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
@@ -31593,8 +31593,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   server_name: {
-    brief:
-      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
     type: 'string',
     keys: ['device.name', 'server_name'],
     applyScrubbing: {
@@ -31610,10 +31609,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['device.name'],
     changelog: [
-      {
-        version: 'next',
-        description: 'Deprecated server_name in favor of device.name, removed from server.address alias group',
-      },
+      { version: 'next', description: 'Alias device.name instead of the server.address alias group' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
@@ -37473,8 +37469,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   server_name: {
     canonicalName: 'device.name',
     type: 'string',
-    brief:
-      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
     deprecationChain: ['device.name', 'server_name'],
   },
   server_sample_rate: {

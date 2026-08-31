@@ -9540,7 +9540,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/server_name.json
     SERVER_NAME: Literal["server_name"] = "server_name"
-    """The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.
+    """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
     Apply Scrubbing: manual
@@ -24089,7 +24089,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "server_name": AttributeMetadata(
-        brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
+        brief="The name of the device. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
         keys=(
             "device.name",
@@ -24108,7 +24108,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Deprecated server_name in favor of device.name, removed from server.address alias group",
+                description="Alias device.name instead of the server.address alias group",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
