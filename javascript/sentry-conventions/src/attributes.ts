@@ -16272,7 +16272,7 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -31600,7 +31600,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['device.name', 'server_name'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
