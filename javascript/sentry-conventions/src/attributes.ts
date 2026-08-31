@@ -12,7 +12,7 @@
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
  * @example "example.com"
@@ -5927,6 +5927,8 @@ export type DEVICE_MODEL_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SERVER_NAME} `server_name`
+ *
  * @example "localhost"
  */
 export const DEVICE_NAME = 'device.name';
@@ -9352,7 +9354,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -10215,7 +10217,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12777,7 +12779,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12849,7 +12851,7 @@ export type NET_PEER_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
@@ -16252,7 +16254,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @example "example.com"
  */
@@ -16266,7 +16268,7 @@ export type SERVER_ADDRESS_TYPE = string;
 // Path: model/attributes/server_name.json
 
 /**
- * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server_name`
+ * The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname. `server_name`
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
@@ -16275,9 +16277,9 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link DEVICE_NAME} `device.name`
  *
- * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+ * @deprecated Use {@link DEVICE_NAME} (device.name) instead - This attribute is being deprecated in favor of device.name.
  * @example "example.com"
  */
 export const SERVER_NAME = 'server_name';
@@ -20086,7 +20088,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   address: {
     brief: 'The destination hostname or IP address for a TCP connection.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20099,7 +20101,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
       { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address attribute' },
@@ -24134,13 +24136,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
     type: 'string',
-    keys: ['device.name'],
+    keys: ['device.name', 'server_name'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'localhost',
+    aliases: ['server_name'],
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.name attribute' }],
   },
   'device.online': {
@@ -26688,15 +26691,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: [
-      'address',
-      'server.address',
-      'client.address',
-      'http.server_name',
-      'net.host.name',
-      'server_name',
-      'net.peer.name',
-    ],
+    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'net.peer.name'],
     changelog: [
       { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
@@ -27301,7 +27296,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.server_name': {
     brief: 'The server domain name',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27312,7 +27307,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
       { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
@@ -29133,7 +29128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29144,7 +29139,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name', 'net.peer.name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'net.peer.name'],
     changelog: [
       { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
@@ -29206,7 +29201,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
     changelog: [
       { version: 'next', description: 'Added the server.address alias group to net.peer.name' },
       { version: '0.1.0', prs: [61, 127] },
@@ -31582,14 +31577,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
       { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
@@ -31599,9 +31594,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   server_name: {
     brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['device.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31609,13 +31604,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'example.com',
     deprecation: {
-      replacement: 'server.address',
-      reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
+      replacement: 'device.name',
+      reason: 'This attribute is being deprecated in favor of device.name.',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
+    aliases: ['device.name'],
     changelog: [
-      { version: 'next', description: 'Added net.peer.name as an alias' },
+      {
+        version: 'next',
+        description: 'Deprecated server_name in favor of device.name, removed from server.address alias group',
+      },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
@@ -32945,7 +32943,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The destination hostname or IP address for a TCP connection.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'ai.citations': {
     canonicalName: 'ai.citations',
@@ -34635,7 +34633,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
-    deprecationChain: ['device.name'],
+    deprecationChain: ['device.name', 'server_name'],
   },
   'device.online': {
     canonicalName: 'device.online',
@@ -35897,7 +35895,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The server domain name',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'http.status_code': {
     canonicalName: 'http.response.status_code',
@@ -36573,7 +36571,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'net.host.port': {
     canonicalName: 'server.port',
@@ -37464,7 +37462,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'server.port': {
     canonicalName: 'server.port',
@@ -37473,11 +37471,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['server.port', 'net.host.port', 'port'],
   },
   server_name: {
-    canonicalName: 'server.address',
+    canonicalName: 'device.name',
     type: 'string',
     brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    deprecationChain: ['device.name', 'server_name'],
   },
   server_sample_rate: {
     canonicalName: 'sentry.server_sample_rate',

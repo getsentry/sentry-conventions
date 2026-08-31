@@ -7,7 +7,7 @@
   },
   "is_in_otel": true,
   "example": "example.com",
-  "alias": ["address", "http.server_name", "net.host.name", "http.host", "server_name", "net.peer.name"],
+  "alias": ["address", "http.server_name", "net.host.name", "http.host", "net.peer.name"],
   "visibility": "public",
   "changelog": [
     {
