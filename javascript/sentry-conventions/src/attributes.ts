@@ -12,7 +12,7 @@
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
  * @example "example.com"
@@ -5927,6 +5927,8 @@ export type DEVICE_MODEL_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link SERVER_NAME} `server_name`
+ *
  * @example "localhost"
  */
 export const DEVICE_NAME = 'device.name';
@@ -9352,7 +9354,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -10215,7 +10217,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12777,7 +12779,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12849,7 +12851,7 @@ export type NET_PEER_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
@@ -16252,7 +16254,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @example "example.com"
  */
@@ -16266,18 +16268,18 @@ export type SERVER_ADDRESS_TYPE = string;
 // Path: model/attributes/server_name.json
 
 /**
- * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server_name`
+ * The name of the device. On servers and desktops, this is typically the hostname. `server_name`
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link DEVICE_NAME} `device.name`
  *
- * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+ * @deprecated Use {@link DEVICE_NAME} (device.name) instead - This attribute is being deprecated in favor of device.name.
  * @example "example.com"
  */
 export const SERVER_NAME = 'server_name';
@@ -20086,7 +20088,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   address: {
     brief: 'The destination hostname or IP address for a TCP connection.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20099,9 +20101,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
-      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address attribute' },
     ],
   },
@@ -20226,7 +20228,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.response.id', 'ai.response.id'],
     changelog: [
-      { version: 'next', description: 'Added ai.response.id as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.response.id as an alias' },
       { version: '0.1.0', prs: [55, 57, 61, 108, 127] },
     ],
   },
@@ -20303,7 +20305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.request.model', 'ai.model_id'],
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.model.id attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.model.id attribute' }],
   },
   'ai.model_id': {
     brief: 'The vendor-specific ID of the model used.',
@@ -20321,7 +20323,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.request.model', 'ai.model.id'],
     changelog: [
-      { version: 'next', description: 'Added ai.model.id as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.model.id as an alias' },
       { version: '0.1.0', prs: [57, 61, 127] },
       { version: '0.0.0' },
     ],
@@ -20429,7 +20431,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.prompt attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.prompt attribute' }],
   },
   'ai.prompt.messages': {
     brief: 'The input messages sent to the AI model.',
@@ -20454,7 +20456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
-      { version: 'next', description: 'Added ai.prompt as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.19.0', prs: [498], description: 'Added ai.prompt.messages attribute' },
     ],
   },
@@ -20491,7 +20493,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of gen_ai.tool.definitions.',
       status: 'backfill',
     },
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.prompt.tools attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.prompt.tools attribute' }],
   },
   'ai.raw_prompting': {
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
@@ -20558,7 +20560,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.response.id', 'ai.generation_id'],
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.id attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.response.id attribute' }],
   },
   'ai.response.model': {
     brief: 'The id of the model that produced the response.',
@@ -20577,7 +20579,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.response.model'],
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.model attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.response.model attribute' }],
   },
   'ai.response.object': {
     brief: 'The type of the object returned by the model.',
@@ -20594,7 +20596,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.',
     },
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.object attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.response.object attribute' }],
   },
   'ai.response.text': {
     brief: 'The text response from the AI model.',
@@ -20627,7 +20629,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       reason: 'This attribute is deprecated. The span start and end timestamps carry the same information.',
     },
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.timestamp attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.response.timestamp attribute' }],
   },
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
@@ -20661,7 +20663,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.',
     },
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.schema attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.schema attribute' }],
   },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
@@ -20789,7 +20791,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
-      { version: 'next', description: 'Added ai.prompt as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
@@ -20949,7 +20951,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.usage.total_tokens', 'ai.usage.tokens'],
     changelog: [
-      { version: 'next', description: 'Added ai.usage.tokens as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57, 61, 108] },
       { version: '0.0.0' },
@@ -20972,7 +20974,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.usage.tokens attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens attribute' }],
   },
   'ai.values': {
     brief: 'The stringified values produced by a Vercel AI SDK object or array generation.',
@@ -20988,7 +20990,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       reason: 'This attribute is deprecated. Use gen_ai.output.messages for model output instead.',
     },
-    changelog: [{ version: 'next', prs: [583], description: 'Added ai.values attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.values attribute' }],
   },
   'ai.warnings': {
     brief: 'Warning messages generated during model execution.',
@@ -22256,7 +22258,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['url.full', 'http.url', 'url', 'messaging.url'],
     changelog: [
-      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       {
         version: '0.19.0',
         prs: [488],
@@ -23447,7 +23449,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.',
     },
-    changelog: [{ version: 'next', prs: [581], description: 'Added db.connection_string attribute' }],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added db.connection_string attribute' }],
   },
   'db.driver.name': {
     brief: 'The name of the driver used for the database connection.',
@@ -24134,14 +24136,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
     type: 'string',
-    keys: ['device.name'],
+    keys: ['device.name', 'server_name'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'localhost',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.name attribute' }],
+    aliases: ['server_name'],
+    changelog: [
+      { version: '0.21.0', prs: [602], description: 'Added server_name as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.name attribute' },
+    ],
   },
   'device.online': {
     brief: 'Whether the device was online or not.',
@@ -25316,7 +25322,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
-      { version: 'next', description: 'Added ai.prompt as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
@@ -25405,7 +25411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages', 'ai.prompt'],
     changelog: [
-      { version: 'next', description: 'Added ai.prompt as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.1.0', prs: [74, 108, 119] },
       { version: '0.0.0' },
     ],
@@ -25524,7 +25530,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'gpt-4-turbo-preview',
     aliases: ['ai.model_id', 'ai.model.id'],
     changelog: [
-      { version: 'next', description: 'Added ai.model.id as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.model.id as an alias' },
       { version: '0.1.0', prs: [62, 127] },
     ],
   },
@@ -25572,7 +25578,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.',
     },
-    changelog: [{ version: 'next', prs: [583], description: 'Added gen_ai.request.schema attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added gen_ai.request.schema attribute' }],
   },
   'gen_ai.request.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -25692,7 +25698,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'gen_123abc',
     aliases: ['ai.generation_id', 'ai.response.id'],
     changelog: [
-      { version: 'next', description: 'Added ai.response.id as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.response.id as an alias' },
       { version: '0.1.0', prs: [57, 127] },
     ],
   },
@@ -25708,7 +25714,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'gpt-4',
     aliases: ['ai.response.model'],
     changelog: [
-      { version: 'next', description: 'Added ai.response.model as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.response.model as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -25728,7 +25734,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason:
         'This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.',
     },
-    changelog: [{ version: 'next', prs: [583], description: 'Added gen_ai.response.object attribute' }],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added gen_ai.response.object attribute' }],
   },
   'gen_ai.response.streaming': {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
@@ -26297,7 +26303,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 20,
     aliases: ['ai.total_tokens.used', 'ai.usage.tokens'],
     changelog: [
-      { version: 'next', description: 'Added ai.usage.tokens as an alias' },
+      { version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens as an alias' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
@@ -26321,7 +26327,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'query findBookById { bookById(id: ?) { name } }',
     aliases: ['graphql.source'],
     changelog: [
-      { version: 'next', description: 'Added graphql.source as an alias' },
+      { version: '0.21.0', prs: [584], description: 'Added graphql.source as an alias' },
       {
         version: '0.7.0',
         description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
@@ -26363,7 +26369,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'parse',
     examples: ['parse', 'validate', 'execute', 'resolve'],
-    changelog: [{ version: 'next', prs: [572], description: 'Added graphql.processing.type attribute' }],
+    changelog: [{ version: '0.21.0', prs: [572], description: 'Added graphql.processing.type attribute' }],
     additionalContext: [
       'Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.',
       'Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.',
@@ -26387,7 +26393,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['graphql.document'],
-    changelog: [{ version: 'next', prs: [584], description: 'Added graphql.source attribute' }],
+    changelog: [{ version: '0.21.0', prs: [584], description: 'Added graphql.source attribute' }],
   },
   'grpc.error.bad_request.field_violations': {
     brief:
@@ -26631,7 +26637,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.response.body.decoded_size', 'http.response_content_length_uncompressed'],
     changelog: [
-      { version: 'next', prs: [574], description: 'Deprecated in favor of http.response.body.decoded_size' },
+      { version: '0.21.0', prs: [574], description: 'Deprecated in favor of http.response.body.decoded_size' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -26656,7 +26662,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['network.protocol.version', 'net.protocol.version', 'messaging.protocol_version'],
     changelog: [
-      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol_version as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
     ],
@@ -26688,17 +26694,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: [
-      'address',
-      'server.address',
-      'client.address',
-      'http.server_name',
-      'net.host.name',
-      'server_name',
-      'net.peer.name',
-    ],
+    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'net.peer.name'],
     changelog: [
-      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -26759,7 +26757,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 456,
     aliases: ['http.request_content_length_uncompressed'],
-    changelog: [{ version: 'next', prs: [574], description: 'Added http.request.body.decoded_size attribute' }],
+    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.request.body.decoded_size attribute' }],
     additionalContext: [
       'This is the size after content decoding. Set it only when the decoded size is actually known, for example by measuring a decompressed request stream.',
       'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.request.body.size` for that.',
@@ -26776,7 +26774,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 123,
     aliases: ['http.request_content_length'],
-    changelog: [{ version: 'next', prs: [574], description: 'Added http.request.body.size attribute' }],
+    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.request.body.size attribute' }],
     additionalContext: [
       'This is the on-the-wire (encoded) size. The `content-length` header always carries the encoded size, so set this attribute whenever `content-length` is known, regardless of whether `content-encoding` is present.',
     ],
@@ -26824,7 +26822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.request.body.size'],
     changelog: [
       {
-        version: 'next',
+        version: '0.21.0',
         prs: [574],
         description: 'Added http.request_content_length attribute, deprecated in favor of http.request.body.size',
       },
@@ -26847,7 +26845,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.request.body.decoded_size'],
     changelog: [
       {
-        version: 'next',
+        version: '0.21.0',
         prs: [574],
         description:
           'Added http.request_content_length_uncompressed attribute, deprecated in favor of http.request.body.decoded_size',
@@ -27091,7 +27089,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 456,
     aliases: ['http.decoded_response_content_length', 'http.response_content_length_uncompressed'],
-    changelog: [{ version: 'next', prs: [574], description: 'Added http.response.body.decoded_size attribute' }],
+    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.response.body.decoded_size attribute' }],
     additionalContext: [
       'This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.',
       'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.',
@@ -27152,7 +27150,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.response.body.decoded_size', 'http.decoded_response_content_length'],
     changelog: [
       {
-        version: 'next',
+        version: '0.21.0',
         prs: [574],
         description:
           'Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size',
@@ -27229,7 +27227,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'NOT FOUND',
     aliases: ['http.status_text'],
-    changelog: [{ version: 'next', prs: [574], description: 'Added http.response.status_text attribute' }],
+    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.response.status_text attribute' }],
     additionalContext: [
       'HTTP/2 and HTTP/3 do not carry a reason phrase. Do not set this attribute when the protocol provides none; use `http.response.status_code` instead.',
     ],
@@ -27301,7 +27299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.server_name': {
     brief: 'The server domain name',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27312,9 +27310,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
-      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -27368,7 +27366,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.response.status_text'],
     changelog: [
       {
-        version: 'next',
+        version: '0.21.0',
         prs: [574],
         description: 'Added http.status_text attribute, deprecated in favor of http.response.status_text',
       },
@@ -27390,7 +27388,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.21.0',
+        prs: [587],
         description: 'Documented url.path, url.query and url.fragment as the replacements for http.target',
       },
       { version: '0.1.0', prs: [61] },
@@ -27413,7 +27412,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url'],
     changelog: [
-      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.1.0', prs: [61, 108] },
       { version: '0.0.0' },
     ],
@@ -28163,7 +28162,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['network.protocol.name', 'net.protocol.name', 'messaging.protocol'],
     changelog: [
-      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -28386,7 +28385,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['messaging.message.conversation_id'],
-    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.conversation_id attribute' }],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.conversation_id attribute' }],
   },
   'messaging.destination': {
     brief: 'The message destination name.',
@@ -28544,7 +28543,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'MyConversationId',
     aliases: ['messaging.conversation_id'],
     changelog: [
-      { version: 'next', description: 'Added messaging.conversation_id as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.conversation_id as an alias' },
       { version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' },
     ],
   },
@@ -28572,7 +28571,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     aliases: ['messaging.message_id'],
     changelog: [
-      { version: 'next', description: 'Added messaging.message_id as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.message_id as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -28594,7 +28593,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['messaging.message.id'],
-    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.message_id attribute' }],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.message_id attribute' }],
   },
   'messaging.message.receive.latency': {
     brief: 'The latency between when the message was published and received.',
@@ -28641,7 +28640,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['messaging.operation.name'],
-    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.operation attribute' }],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.operation attribute' }],
   },
   'messaging.operation.name': {
     brief: 'The name of the messaging operation being performed',
@@ -28655,7 +28654,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'send',
     aliases: ['messaging.operation'],
     changelog: [
-      { version: 'next', description: 'Added messaging.operation as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.operation as an alias' },
       { version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' },
     ],
   },
@@ -28688,7 +28687,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['network.protocol.name', 'net.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.protocol attribute' }],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.protocol attribute' }],
   },
   'messaging.protocol_version': {
     brief: 'The actual version of the protocol used for network communication.',
@@ -28707,7 +28706,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
-    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.protocol_version attribute' }],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.protocol_version attribute' }],
   },
   'messaging.rabbitmq.destination.routing_key': {
     brief: 'RabbitMQ message routing key.',
@@ -28721,7 +28720,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myKey',
     aliases: ['messaging.rabbitmq.routing_key'],
     changelog: [
-      { version: 'next', description: 'Added messaging.rabbitmq.routing_key as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.rabbitmq.routing_key as an alias' },
       { version: '0.16.0', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
     ],
   },
@@ -28742,7 +28741,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['messaging.rabbitmq.destination.routing_key'],
-    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.rabbitmq.routing_key attribute' }],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.rabbitmq.routing_key attribute' }],
   },
   'messaging.system': {
     brief: 'The messaging system as identified by the client instrumentation.',
@@ -28773,7 +28772,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['url.full', 'http.url', 'url', 'aws.request.url'],
-    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.url attribute' }],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.url attribute' }],
   },
   method: {
     brief: 'The HTTP method used.',
@@ -29048,7 +29047,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 65400,
     aliases: ['net.sock.peer.port'],
     changelog: [
-      { version: 'next', description: 'Added net.sock.peer.port as an alias' },
+      { version: '0.21.0', prs: [588], description: 'Added net.sock.peer.port as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
@@ -29065,7 +29064,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'http',
     aliases: ['net.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
     changelog: [
-      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -29082,7 +29081,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     aliases: ['http.flavor', 'net.protocol.version', 'messaging.protocol_version'],
     changelog: [
-      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol_version as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -29133,7 +29132,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29144,9 +29143,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name', 'net.peer.name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'net.peer.name'],
     changelog: [
-      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -29206,9 +29205,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
     changelog: [
-      { version: 'next', description: 'Added the server.address alias group to net.peer.name' },
+      { version: '0.21.0', prs: [588, 602], description: 'Added the server.address alias group to net.peer.name' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -29245,7 +29244,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
     changelog: [
-      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -29266,7 +29265,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version'],
     changelog: [
-      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol_version as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
     ],
@@ -29369,7 +29368,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['network.peer.port'],
     changelog: [
-      { version: 'next', description: 'Added network.peer.port as an alias' },
+      { version: '0.21.0', prs: [588], description: 'Added network.peer.port as an alias' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
@@ -29393,7 +29392,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['network.transport', 'mcp.transport'],
     changelog: [
       {
-        version: 'next',
+        version: '0.21.0',
+        prs: [588],
         description: 'Set net.transport to _status null, because its values change on the replacement',
       },
       { version: '0.1.0', prs: [61, 127] },
@@ -29615,7 +29615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "params.id='123'",
     aliases: ['url.path.parameter.<key>', 'url.path.params.<key>'],
     changelog: [
-      { version: 'next', description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.21.0', prs: [586], description: 'Added url.path.params.<key> as an alias' },
       { version: '0.1.0', prs: [103] },
     ],
   },
@@ -31582,40 +31582,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
-      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
       { version: '0.0.0' },
     ],
   },
   server_name: {
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    keys: ['device.name', 'server_name'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'example.com',
     deprecation: {
-      replacement: 'server.address',
-      reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
+      replacement: 'device.name',
+      reason: 'This attribute is being deprecated in favor of device.name.',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
+    aliases: ['device.name'],
     changelog: [
-      { version: 'next', description: 'Added net.peer.name as an alias' },
+      {
+        version: '0.21.0',
+        prs: [588, 602],
+        description: 'Alias device.name instead of the server.address alias group',
+      },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
@@ -32151,7 +32154,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url'],
     changelog: [
-      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
     ],
@@ -32194,7 +32197,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url'],
     changelog: [
-      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
       { version: '0.0.0' },
@@ -32226,7 +32229,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "url.path.parameter.id='123'",
     aliases: ['params.<key>', 'url.path.params.<key>'],
     changelog: [
-      { version: 'next', description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.21.0', prs: [586], description: 'Added url.path.params.<key> as an alias' },
       { version: '0.1.0', prs: [103] },
     ],
   },
@@ -32249,7 +32252,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['url.path.parameter.<key>', 'params.<key>'],
-    changelog: [{ version: 'next', prs: [586], description: 'Added url.path.params.<key> attribute' }],
+    changelog: [{ version: '0.21.0', prs: [586], description: 'Added url.path.params.<key> attribute' }],
   },
   'url.port': {
     brief: 'Server port number.',
@@ -32945,7 +32948,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The destination hostname or IP address for a TCP connection.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'ai.citations': {
     canonicalName: 'ai.citations',
@@ -34635,7 +34638,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
-    deprecationChain: ['device.name'],
+    deprecationChain: ['device.name', 'server_name'],
   },
   'device.online': {
     canonicalName: 'device.online',
@@ -35897,7 +35900,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The server domain name',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'http.status_code': {
     canonicalName: 'http.response.status_code',
@@ -36573,7 +36576,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'net.host.port': {
     canonicalName: 'server.port',
@@ -37464,7 +37467,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'server.port': {
     canonicalName: 'server.port',
@@ -37473,11 +37476,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['server.port', 'net.host.port', 'port'],
   },
   server_name: {
-    canonicalName: 'server.address',
+    canonicalName: 'device.name',
     type: 'string',
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
+    deprecationChain: ['device.name', 'server_name'],
   },
   server_sample_rate: {
     canonicalName: 'sentry.server_sample_rate',

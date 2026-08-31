@@ -16,7 +16,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.21.0",
       "prs": [581],
       "description": "Added messaging.url attribute"
     }

@@ -79,5 +79,4 @@ def test_key_chain_omits_deprecated_aliases_outside_the_family() -> None:
         "address",
         "http.server_name",
         "net.host.name",
-        "server_name",
     )

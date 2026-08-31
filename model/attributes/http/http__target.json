@@ -14,7 +14,8 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.21.0",
+      "prs": [587],
       "description": "Documented url.path, url.query and url.fragment as the replacements for http.target"
     },
     {

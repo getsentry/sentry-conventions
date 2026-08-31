@@ -550,7 +550,7 @@
   integrity sha512-fO9PLmHdVURcSPUpWCItWAtgKiMwGdJHbovoSEyLplX5sxs2ugvI4CBPTrkkgqhObnZOD0CnWBKDzSVQYBKEyQ==
 
 "@sentry/conventions@file:/home/runner/work/sentry-conventions/sentry-conventions/javascript/sentry-conventions":
-  version "0.20.0"
+  version "0.21.0"
   resolved "file:javascript/sentry-conventions"
 
 "@sentry/core@11.0.0-alpha.0":
