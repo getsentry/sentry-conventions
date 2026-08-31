@@ -3969,6 +3969,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: fs_error
     Example: "timeout"
     """
 
@@ -4354,7 +4355,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
+    Aliases: error.type
+    DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.
     Example: "ENOENT: no such file or directory"
     """
 
@@ -15893,7 +15895,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="timeout",
+        aliases=["fs_error"],
         changelog=[
+            ChangelogEntry(version="next", description="Added fs_error as an alias"),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16501,9 +16505,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ENOENT: no such file or directory",
         deprecation=DeprecationInfo(
             replacement="error.type",
-            reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better.",
+            reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.",
         ),
+        aliases=["error.type"],
         changelog=[
+            ChangelogEntry(version="next", description="Added error.type as an alias"),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
