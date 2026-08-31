@@ -360,6 +360,7 @@ class _AttributeNamesMeta(type):
         "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_DEVICE_CLASS",
         "SENTRY_FRAMES_FROZEN",
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
@@ -3532,7 +3533,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Example: "medium"
+    Aliases: sentry.device.class
+    Example: "1"
+    Example: "2"
+    Example: "3"
     """
 
     # Path: model/attributes/device/device__connection_type.json
@@ -8551,6 +8555,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "index view query"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__class.json
+    SENTRY_DEVICE_CLASS: Literal["sentry.device.class"] = "sentry.device.class"
+    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.class
+    DEPRECATED: Use device.class instead - Deprecated in favor of device.class
+    Example: "1"
+    Example: "2"
+    Example: "3"
     """
 
     # Path: model/attributes/sentry/sentry__dist.json
@@ -15253,15 +15272,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.class": AttributeMetadata(
         brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
-        keys=("device.class",),
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="medium",
+        example="1",
+        examples=["1", "2", "3"],
+        aliases=["sentry.device.class"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[604],
+                description="Added sentry.device.class as a deprecated alias and documented Relay's stringified numeric class codes",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[300], description="Added device.class attribute"
             ),
+        ],
+        additional_context=[
+            'Relay currently writes this as a stringified numeric class code: `"1"` (low), `"2"` (medium), or `"3"` (high), not the labels `low`, `medium`, or `high`.'
         ],
     ),
     "device.connection_type": AttributeMetadata(
@@ -22797,6 +22829,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[135]),
         ],
     ),
+    "sentry.device.class": AttributeMetadata(
+        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="1",
+        examples=["1", "2", "3"],
+        deprecation=DeprecationInfo(
+            replacement="device.class",
+            reason="Deprecated in favor of device.class",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["device.class"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[604],
+                description="Added and deprecated sentry.device.class in favor of device.class",
+            ),
+        ],
+        additional_context=[
+            'Relay currently writes this as a stringified numeric class code: `"1"` (low), `"2"` (medium), or `"3"` (high), not the labels `low`, `medium`, or `high`.'
+        ],
+    ),
     "sentry.dist": AttributeMetadata(
         brief="The sentry dist.",
         type=AttributeType.STRING,
@@ -26295,6 +26356,7 @@ Attributes = TypedDict(
         "sentry.category": str,
         "sentry.client_sample_rate": float,
         "sentry.description": str,
+        "sentry.device.class": str,
         "sentry.dist": str,
         "sentry.domain": str,
         "sentry.dsc.environment": str,

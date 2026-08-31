@@ -1,5 +1,5 @@
 {
-  "key": "device.class",
+  "key": "sentry.device.class",
   "brief": "The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
   "type": "string",
   "apply_scrubbing": {
@@ -10,18 +10,18 @@
   "additional_context": [
     "Relay currently writes this as a stringified numeric class code: `\"1\"` (low), `\"2\"` (medium), or `\"3\"` (high), not the labels `low`, `medium`, or `high`."
   ],
-  "alias": ["sentry.device.class"],
+  "alias": ["device.class"],
+  "deprecation": {
+    "replacement": "device.class",
+    "reason": "Deprecated in favor of device.class",
+    "_status": "backfill"
+  },
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
       "prs": [604],
-      "description": "Added sentry.device.class as a deprecated alias and documented Relay's stringified numeric class codes"
-    },
-    {
-      "version": "0.5.0",
-      "prs": [300],
-      "description": "Added device.class attribute"
+      "description": "Added and deprecated sentry.device.class in favor of device.class"
     }
   ]
 }
