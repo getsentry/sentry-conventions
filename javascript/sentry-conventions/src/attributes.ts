@@ -24144,7 +24144,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'localhost',
     aliases: ['server_name'],
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.name attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added server_name as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.name attribute' },
+    ],
   },
   'device.online': {
     brief: 'Whether the device was online or not.',

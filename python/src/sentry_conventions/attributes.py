@@ -15515,6 +15515,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="localhost",
         aliases=["server_name"],
         changelog=[
+            ChangelogEntry(version="next", description="Added server_name as an alias"),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.name attribute"
             ),

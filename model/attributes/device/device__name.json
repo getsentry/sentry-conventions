@@ -11,6 +11,10 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "description": "Added server_name as an alias"
+    },
+    {
       "version": "0.5.0",
       "prs": [303],
       "description": "Added device.name attribute"
