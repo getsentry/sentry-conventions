@@ -5556,7 +5556,7 @@ export type DEVICE_CHIPSET_TYPE = string;
 // Path: model/attributes/device/device__class.json
 
 /**
- * The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly. `device.class`
+ * The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly. `device.class`
  *
  * Attribute Value Type: `string` {@link DEVICE_CLASS_TYPE}
  *
@@ -14527,7 +14527,7 @@ export type SENTRY_DESCRIPTION_TYPE = string;
 // Path: model/attributes/sentry/sentry__device__class.json
 
 /**
- * The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly. `sentry.device.class`
+ * The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly. `sentry.device.class`
  *
  * Attribute Value Type: `string` {@link SENTRY_DEVICE_CLASS_TYPE}
  *
@@ -23941,7 +23941,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'device.class': {
     brief:
-      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+      'The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
     keys: ['device.class', 'sentry.device.class'],
     applyScrubbing: {
@@ -23956,13 +23956,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       {
         version: 'next',
         prs: [604],
-        description:
-          "Added sentry.device.class as a deprecated alias and documented Relay's stringified numeric class codes",
+        description: 'Added sentry.device.class as a deprecated alias and documented class codes 1/2/3',
       },
       { version: '0.5.0', prs: [300], description: 'Added device.class attribute' },
     ],
     additionalContext: [
-      'Relay currently writes this as a stringified numeric class code: `"1"` (low), `"2"` (medium), or `"3"` (high), not the labels `low`, `medium`, or `high`.',
+      'The product maps these stringified numeric class codes to `low` (`"1"`), `medium` (`"2"`), and `high` (`"3"`).',
     ],
   },
   'device.connection_type': {
@@ -30426,7 +30425,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'sentry.device.class': {
     brief:
-      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+      'The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
     keys: ['device.class', 'sentry.device.class'],
     applyScrubbing: {
@@ -30446,7 +30445,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: 'next', prs: [604], description: 'Added and deprecated sentry.device.class in favor of device.class' },
     ],
     additionalContext: [
-      'Relay currently writes this as a stringified numeric class code: `"1"` (low), `"2"` (medium), or `"3"` (high), not the labels `low`, `medium`, or `high`.',
+      'The product maps these stringified numeric class codes to `low` (`"1"`), `medium` (`"2"`), and `high` (`"3"`).',
     ],
   },
   'sentry.dist': {
@@ -34603,7 +34602,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.class',
     type: 'string',
     brief:
-      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+      'The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     deprecationChain: ['device.class', 'sentry.device.class'],
   },
   'device.connection_type': {
@@ -37209,7 +37208,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.class',
     type: 'string',
     brief:
-      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+      'The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     deprecationChain: ['device.class', 'sentry.device.class'],
   },
   'sentry.dist': {

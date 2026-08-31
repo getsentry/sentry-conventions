@@ -3527,7 +3527,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/device/device__class.json
     DEVICE_CLASS: Literal["device.class"] = "device.class"
-    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
+    """The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
     Type: str
     Apply Scrubbing: manual
@@ -8559,7 +8559,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__device__class.json
     SENTRY_DEVICE_CLASS: Literal["sentry.device.class"] = "sentry.device.class"
-    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
+    """The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
     Type: str
     Apply Scrubbing: manual
@@ -15270,7 +15270,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "device.class": AttributeMetadata(
-        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        brief="The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
         keys=(
             "device.class",
@@ -15286,14 +15286,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[604],
-                description="Added sentry.device.class as a deprecated alias and documented Relay's stringified numeric class codes",
+                description="Added sentry.device.class as a deprecated alias and documented class codes 1/2/3",
             ),
             ChangelogEntry(
                 version="0.5.0", prs=[300], description="Added device.class attribute"
             ),
         ],
         additional_context=[
-            'Relay currently writes this as a stringified numeric class code: `"1"` (low), `"2"` (medium), or `"3"` (high), not the labels `low`, `medium`, or `high`.'
+            'The product maps these stringified numeric class codes to `low` (`"1"`), `medium` (`"2"`), and `high` (`"3"`).'
         ],
     ),
     "device.connection_type": AttributeMetadata(
@@ -22830,7 +22830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.device.class": AttributeMetadata(
-        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        brief="The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
         keys=(
             "device.class",
@@ -22855,7 +22855,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
         additional_context=[
-            'Relay currently writes this as a stringified numeric class code: `"1"` (low), `"2"` (medium), or `"3"` (high), not the labels `low`, `medium`, or `high`.'
+            'The product maps these stringified numeric class codes to `low` (`"1"`), `medium` (`"2"`), and `high` (`"3"`).'
         ],
     ),
     "sentry.dist": AttributeMetadata(

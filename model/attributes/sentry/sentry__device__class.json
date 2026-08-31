@@ -1,6 +1,6 @@
 {
   "key": "sentry.device.class",
-  "brief": "The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+  "brief": "The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "examples": ["1", "2", "3"],
   "additional_context": [
-    "Relay currently writes this as a stringified numeric class code: `\"1\"` (low), `\"2\"` (medium), or `\"3\"` (high), not the labels `low`, `medium`, or `high`."
+    "The product maps these stringified numeric class codes to `low` (`\"1\"`), `medium` (`\"2\"`), and `high` (`\"3\"`)."
   ],
   "alias": ["device.class"],
   "deprecation": {
