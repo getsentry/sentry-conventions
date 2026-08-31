@@ -12,7 +12,7 @@
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
  * @example "example.com"
@@ -176,7 +176,7 @@ export type AI_FUNCTION_CALL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`
+ * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`, {@link AI_RESPONSE_ID} `ai.response.id`
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead
  * @example "gen_123abc"
@@ -256,10 +256,10 @@ export const AI_METADATA = 'ai.metadata';
  */
 export type AI_METADATA_TYPE = string;
 
-// Path: model/attributes/ai/ai__model_id.json
+// Path: model/attributes/ai/ai__model__id.json
 
 /**
- * The vendor-specific ID of the model used. `ai.model_id`
+ * The id of the model used by the Vercel AI SDK. `ai.model.id`
  *
  * Attribute Value Type: `string` {@link AI_MODEL_ID_TYPE}
  *
@@ -268,17 +268,41 @@ export type AI_METADATA_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`
+ * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`, {@link _AI_MODEL_ID} `ai.model_id`
+ *
+ * @deprecated Use {@link GEN_AI_REQUEST_MODEL} (gen_ai.request.model) instead - This attribute is being deprecated in favor of gen_ai.request.model.
+ * @example "gpt-4o"
+ */
+export const AI_MODEL_ID = 'ai.model.id';
+
+/**
+ * Type for {@link AI_MODEL_ID} ai.model.id
+ */
+export type AI_MODEL_ID_TYPE = string;
+
+// Path: model/attributes/ai/ai__model_id.json
+
+/**
+ * The vendor-specific ID of the model used. `ai.model_id`
+ *
+ * Attribute Value Type: `string` {@link _AI_MODEL_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`, {@link AI_MODEL_ID} `ai.model.id`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_MODEL} (gen_ai.request.model) instead
  * @example "gpt-4"
  */
-export const AI_MODEL_ID = 'ai.model_id';
+export const _AI_MODEL_ID = 'ai.model_id';
 
 /**
- * Type for {@link AI_MODEL_ID} ai.model_id
+ * Type for {@link _AI_MODEL_ID} ai.model_id
  */
-export type AI_MODEL_ID_TYPE = string;
+export type _AI_MODEL_ID_TYPE = string;
 
 // Path: model/attributes/ai/ai__model__provider.json
 
@@ -376,6 +400,30 @@ export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
  */
 export type AI_PRESENCE_PENALTY_TYPE = number;
 
+// Path: model/attributes/ai/ai__prompt.json
+
+/**
+ * The prompt passed to the Vercel AI SDK, as a stringified object. `ai.prompt`
+ *
+ * Attribute Value Type: `string` {@link AI_PROMPT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ *
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead - This attribute is being deprecated in favor of gen_ai.input.messages.
+ * @example "{\"prompt\":\"What is the weather in Paris?\"}"
+ */
+export const AI_PROMPT = 'ai.prompt';
+
+/**
+ * Type for {@link AI_PROMPT} ai.prompt
+ */
+export type AI_PROMPT_TYPE = string;
+
 // Path: model/attributes/ai/ai__prompt__messages.json
 
 /**
@@ -388,7 +436,7 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -423,6 +471,28 @@ export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
  * Type for {@link AI_PROMPT_TOKENS_USED} ai.prompt_tokens.used
  */
 export type AI_PROMPT_TOKENS_USED_TYPE = number;
+
+// Path: model/attributes/ai/ai__prompt__tools.json
+
+/**
+ * The tools made available to the model, as an array of stringified tool definitions. `ai.prompt.tools`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_PROMPT_TOOLS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead - This attribute is being deprecated in favor of gen_ai.tool.definitions.
+ * @example ["{\"type\":\"function\",\"name\":\"get_weather\"}"]
+ */
+export const AI_PROMPT_TOOLS = 'ai.prompt.tools';
+
+/**
+ * Type for {@link AI_PROMPT_TOOLS} ai.prompt.tools
+ */
+export type AI_PROMPT_TOOLS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__raw_prompting.json
 
@@ -490,6 +560,76 @@ export const AI_RESPONSE_FORMAT = 'ai.response_format';
  */
 export type AI_RESPONSE_FORMAT_TYPE = string;
 
+// Path: model/attributes/ai/ai__response__id.json
+
+/**
+ * The id of the response returned by the model. `ai.response.id`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`, {@link AI_GENERATION_ID} `ai.generation_id`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead - This attribute is being deprecated in favor of gen_ai.response.id.
+ * @example "chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY"
+ */
+export const AI_RESPONSE_ID = 'ai.response.id';
+
+/**
+ * Type for {@link AI_RESPONSE_ID} ai.response.id
+ */
+export type AI_RESPONSE_ID_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__model.json
+
+/**
+ * The id of the model that produced the response. `ai.response.model`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_MODEL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_MODEL} `gen_ai.response.model`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead - This attribute is being deprecated in favor of gen_ai.response.model.
+ * @example "gpt-4o-2024-08-06"
+ */
+export const AI_RESPONSE_MODEL = 'ai.response.model';
+
+/**
+ * Type for {@link AI_RESPONSE_MODEL} ai.response.model
+ */
+export type AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__object.json
+
+/**
+ * The type of the object returned by the model. `ai.response.object`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_OBJECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.
+ * @example "chat.completion"
+ */
+export const AI_RESPONSE_OBJECT = 'ai.response.object';
+
+/**
+ * Type for {@link AI_RESPONSE_OBJECT} ai.response.object
+ */
+export type AI_RESPONSE_OBJECT_TYPE = string;
+
 // Path: model/attributes/ai/ai__response__text.json
 
 /**
@@ -514,6 +654,28 @@ export const AI_RESPONSE_TEXT = 'ai.response.text';
  */
 export type AI_RESPONSE_TEXT_TYPE = string;
 
+// Path: model/attributes/ai/ai__response__timestamp.json
+
+/**
+ * The ISO 8601 timestamp at which the response was produced. `ai.response.timestamp`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_TIMESTAMP_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The span start and end timestamps carry the same information.
+ * @example "2026-02-19T15:32:11.000Z"
+ */
+export const AI_RESPONSE_TIMESTAMP = 'ai.response.timestamp';
+
+/**
+ * Type for {@link AI_RESPONSE_TIMESTAMP} ai.response.timestamp
+ */
+export type AI_RESPONSE_TIMESTAMP_TYPE = string;
+
 // Path: model/attributes/ai/ai__response__toolCalls.json
 
 /**
@@ -537,6 +699,28 @@ export const AI_RESPONSE_TOOLCALLS = 'ai.response.toolCalls';
  * Type for {@link AI_RESPONSE_TOOLCALLS} ai.response.toolCalls
  */
 export type AI_RESPONSE_TOOLCALLS_TYPE = string;
+
+// Path: model/attributes/ai/ai__schema.json
+
+/**
+ * The stringified JSON schema the model output must conform to. `ai.schema`
+ *
+ * Attribute Value Type: `string` {@link AI_SCHEMA_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+ * @example "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
+ */
+export const AI_SCHEMA = 'ai.schema';
+
+/**
+ * Type for {@link AI_SCHEMA} ai.schema
+ */
+export type AI_SCHEMA_TYPE = string;
 
 // Path: model/attributes/ai/ai__search_queries.json
 
@@ -688,7 +872,7 @@ export type AI_TEMPERATURE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example ["Hello, how are you?","What is the capital of France?"]
@@ -876,7 +1060,7 @@ export type AI_TOTAL_COST_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`
+ * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead
  * @example 30
@@ -887,6 +1071,52 @@ export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
  * Type for {@link AI_TOTAL_TOKENS_USED} ai.total_tokens.used
  */
 export type AI_TOTAL_TOKENS_USED_TYPE = number;
+
+// Path: model/attributes/ai/ai__usage__tokens.json
+
+/**
+ * The total number of tokens used for the request and the response. `ai.usage.tokens`
+ *
+ * Attribute Value Type: `number` {@link AI_USAGE_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`, {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.total_tokens.
+ * @example 150
+ */
+export const AI_USAGE_TOKENS = 'ai.usage.tokens';
+
+/**
+ * Type for {@link AI_USAGE_TOKENS} ai.usage.tokens
+ */
+export type AI_USAGE_TOKENS_TYPE = number;
+
+// Path: model/attributes/ai/ai__values.json
+
+/**
+ * The stringified values produced by a Vercel AI SDK object or array generation. `ai.values`
+ *
+ * Attribute Value Type: `string` {@link AI_VALUES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. Use gen_ai.output.messages for model output instead.
+ * @example "[{\"city\":\"Paris\"}]"
+ */
+export const AI_VALUES = 'ai.values';
+
+/**
+ * Type for {@link AI_VALUES} ai.values
+ */
+export type AI_VALUES_TYPE = string;
 
 // Path: model/attributes/ai/ai__warnings.json
 
@@ -2760,7 +2990,7 @@ export type _AWS_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
  * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
@@ -4653,6 +4883,28 @@ export const DB_COLLECTION_NAME = 'db.collection.name';
  * Type for {@link DB_COLLECTION_NAME} db.collection.name
  */
 export type DB_COLLECTION_NAME_TYPE = string;
+
+// Path: model/attributes/db/db__connection_string.json
+
+/**
+ * The connection string used to connect to the database. `db.connection_string`
+ *
+ * Attribute Value Type: `string` {@link DB_CONNECTION_STRING_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.
+ * @example "redis://localhost:6379"
+ */
+export const DB_CONNECTION_STRING = 'db.connection_string';
+
+/**
+ * Type for {@link DB_CONNECTION_STRING} db.connection_string
+ */
+export type DB_CONNECTION_STRING_TYPE = string;
 
 // Path: model/attributes/db/db__driver__name.json
 
@@ -7335,7 +7587,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  */
@@ -7446,7 +7698,7 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -7606,7 +7858,7 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_MODEL_ID} `ai.model_id`
+ * Aliases: {@link _AI_MODEL_ID} `ai.model_id`, {@link AI_MODEL_ID} `ai.model.id`
  *
  * @example "gpt-4-turbo-preview"
  */
@@ -7660,6 +7912,28 @@ export const GEN_AI_REQUEST_REASONING_LEVEL = 'gen_ai.request.reasoning.level';
  * Type for {@link GEN_AI_REQUEST_REASONING_LEVEL} gen_ai.request.reasoning.level
  */
 export type GEN_AI_REQUEST_REASONING_LEVEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__request__schema.json
+
+/**
+ * The stringified JSON schema the model output must conform to. `gen_ai.request.schema`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_SCHEMA_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+ * @example "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
+ */
+export const GEN_AI_REQUEST_SCHEMA = 'gen_ai.request.schema';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_SCHEMA} gen_ai.request.schema
+ */
+export type GEN_AI_REQUEST_SCHEMA_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__seed.json
 
@@ -7833,7 +8107,7 @@ export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`
+ * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`, {@link AI_RESPONSE_ID} `ai.response.id`
  *
  * @example "gen_123abc"
  */
@@ -7856,6 +8130,8 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AI_RESPONSE_MODEL} `ai.response.model`
+ *
  * @example "gpt-4"
  */
 export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
@@ -7864,6 +8140,28 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__response__object.json
+
+/**
+ * The type of the object returned by the model. `gen_ai.response.object`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_OBJECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.
+ * @example "chat.completion"
+ */
+export const GEN_AI_RESPONSE_OBJECT = 'gen_ai.response.object';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_OBJECT} gen_ai.response.object
+ */
+export type GEN_AI_RESPONSE_OBJECT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__streaming.json
 
@@ -8521,7 +8819,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
+ * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
  * @example 20
  */
@@ -8543,6 +8841,8 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link GRAPHQL_SOURCE} `graphql.source`
  *
  * @example "query findBookById { bookById(id: ?) { name } }"
  */
@@ -8618,6 +8918,30 @@ export const GRAPHQL_PROCESSING_TYPE = 'graphql.processing.type';
  * Type for {@link GRAPHQL_PROCESSING_TYPE} graphql.processing.type
  */
 export type GRAPHQL_PROCESSING_TYPE_TYPE = string;
+
+// Path: model/attributes/graphql/graphql__source.json
+
+/**
+ * The GraphQL document being executed. `graphql.source`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GRAPHQL_DOCUMENT} `graphql.document`
+ *
+ * @deprecated Use {@link GRAPHQL_DOCUMENT} (graphql.document) instead - This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.
+ * @example "query findBookById { bookById(id: ?) { name } }"
+ */
+export const GRAPHQL_SOURCE = 'graphql.source';
+
+/**
+ * Type for {@link GRAPHQL_SOURCE} graphql.source
+ */
+export type GRAPHQL_SOURCE_TYPE = string;
 
 // Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
 
@@ -8983,7 +9307,7 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -9028,7 +9352,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -9891,7 +10215,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -9984,7 +10308,7 @@ export type HTTP_STATUS_TEXT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path and url.query
+ * @deprecated  - This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.
  * @example "/test?foo=bar#buzz"
  */
 export const HTTP_TARGET = 'http.target';
@@ -10006,7 +10330,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -11105,7 +11429,7 @@ export type MCP_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - OTel uses the generic network.protocol.name attribute
  * @example "file"
@@ -11386,6 +11710,30 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__conversation_id.json
+
+/**
+ * The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID". `messaging.conversation_id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_CONVERSATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_CONVERSATION_ID} `messaging.message.conversation_id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_CONVERSATION_ID} (messaging.message.conversation_id) instead - This attribute is being deprecated in favor of messaging.message.conversation_id.
+ * @example "MyConversationId"
+ */
+export const MESSAGING_CONVERSATION_ID = 'messaging.conversation_id';
+
+/**
+ * Type for {@link MESSAGING_CONVERSATION_ID} messaging.conversation_id
+ */
+export type MESSAGING_CONVERSATION_ID_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination.json
 
 /**
@@ -11593,6 +11941,8 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_CONVERSATION_ID} `messaging.conversation_id`
+ *
  * @example "MyConversationId"
  */
 export const MESSAGING_MESSAGE_CONVERSATION_ID = 'messaging.message.conversation_id';
@@ -11635,6 +11985,8 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`
+ *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
 export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
@@ -11643,6 +11995,30 @@ export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
  * Type for {@link MESSAGING_MESSAGE_ID} messaging.message.id
  */
 export type MESSAGING_MESSAGE_ID_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__message_id.json
+
+/**
+ * A value used by the messaging system as an identifier for the message, represented as a string. `messaging.message_id`
+ *
+ * Attribute Value Type: `string` {@link _MESSAGING_MESSAGE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_ID} (messaging.message.id) instead - This attribute is being deprecated in favor of messaging.message.id.
+ * @example "452a7c7c7c7048c2f887f0e7"
+ */
+export const _MESSAGING_MESSAGE_ID = 'messaging.message_id';
+
+/**
+ * Type for {@link _MESSAGING_MESSAGE_ID} messaging.message_id
+ */
+export type _MESSAGING_MESSAGE_ID_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__message__receive__latency.json
 
@@ -11686,6 +12062,30 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__operation.json
+
+/**
+ * The name of the messaging operation being performed. `messaging.operation`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_OPERATION_NAME} `messaging.operation.name`
+ *
+ * @deprecated Use {@link MESSAGING_OPERATION_NAME} (messaging.operation.name) instead - This attribute is being deprecated in favor of messaging.operation.name.
+ * @example "publish"
+ */
+export const MESSAGING_OPERATION = 'messaging.operation';
+
+/**
+ * Type for {@link MESSAGING_OPERATION} messaging.operation
+ */
+export type MESSAGING_OPERATION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__operation__name.json
 
 /**
@@ -11697,6 +12097,8 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_OPERATION} `messaging.operation`
  *
  * @example "send"
  */
@@ -11728,6 +12130,54 @@ export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
  */
 export type MESSAGING_OPERATION_TYPE_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__protocol.json
+
+/**
+ * OSI application layer or non-OSI equivalent. `messaging.protocol`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_PROTOCOL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - This attribute is being deprecated in favor of network.protocol.name.
+ * @example "AMQP"
+ */
+export const MESSAGING_PROTOCOL = 'messaging.protocol';
+
+/**
+ * Type for {@link MESSAGING_PROTOCOL} messaging.protocol
+ */
+export type MESSAGING_PROTOCOL_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__protocol_version.json
+
+/**
+ * The actual version of the protocol used for network communication. `messaging.protocol_version`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_PROTOCOL_VERSION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead - This attribute is being deprecated in favor of network.protocol.version.
+ * @example "0.9.1"
+ */
+export const MESSAGING_PROTOCOL_VERSION = 'messaging.protocol_version';
+
+/**
+ * Type for {@link MESSAGING_PROTOCOL_VERSION} messaging.protocol_version
+ */
+export type MESSAGING_PROTOCOL_VERSION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
 
 /**
@@ -11740,6 +12190,8 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_RABBITMQ_ROUTING_KEY} `messaging.rabbitmq.routing_key`
+ *
  * @example "myKey"
  */
 export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.destination.routing_key';
@@ -11748,6 +12200,30 @@ export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.de
  * Type for {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} messaging.rabbitmq.destination.routing_key
  */
 export type MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__rabbitmq__routing_key.json
+
+/**
+ * RabbitMQ message routing key. `messaging.rabbitmq.routing_key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_RABBITMQ_ROUTING_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} `messaging.rabbitmq.destination.routing_key`
+ *
+ * @deprecated Use {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} (messaging.rabbitmq.destination.routing_key) instead - This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.
+ * @example "myKey"
+ */
+export const MESSAGING_RABBITMQ_ROUTING_KEY = 'messaging.rabbitmq.routing_key';
+
+/**
+ * Type for {@link MESSAGING_RABBITMQ_ROUTING_KEY} messaging.rabbitmq.routing_key
+ */
+export type MESSAGING_RABBITMQ_ROUTING_KEY_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__system.json
 
@@ -11769,6 +12245,30 @@ export const MESSAGING_SYSTEM = 'messaging.system';
  * Type for {@link MESSAGING_SYSTEM} messaging.system
  */
 export type MESSAGING_SYSTEM_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__url.json
+
+/**
+ * The connection string of the messaging broker. `messaging.url`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full.
+ * @example "amqp://guest:guest@localhost:5672"
+ */
+export const MESSAGING_URL = 'messaging.url';
+
+/**
+ * Type for {@link MESSAGING_URL} messaging.url
+ */
+export type MESSAGING_URL_TYPE = string;
 
 // Path: model/attributes/method.json
 
@@ -12140,6 +12640,8 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link NET_SOCK_PEER_PORT} `net.sock.peer.port`
+ *
  * @example 65400
  */
 export const NETWORK_PEER_PORT = 'network.peer.port';
@@ -12161,7 +12663,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @example "http"
  */
@@ -12184,7 +12686,7 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @example "1.1"
  */
@@ -12275,7 +12777,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12347,6 +12849,8 @@ export type NET_PEER_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
  */
@@ -12391,7 +12895,7 @@ export type NET_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
@@ -12415,7 +12919,7 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -12555,6 +13059,8 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link NETWORK_PEER_PORT} `network.peer.port`
+ *
  * @deprecated Use {@link NETWORK_PEER_PORT} (network.peer.port) instead
  * @example 8080
  */
@@ -12579,7 +13085,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  *
  * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link MCP_TRANSPORT} `mcp.transport`
  *
- * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead
+ * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
  * @example "tcp"
  */
 export const NET_TRANSPORT = 'net.transport';
@@ -12926,7 +13432,7 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`, {@link URL_PATH_PARAMS_KEY} `url.path.params.<key>`
  *
  * @example "params.id='123'"
  */
@@ -15746,7 +16252,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @example "example.com"
  */
@@ -15769,7 +16275,7 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
  * @example "example.com"
@@ -16518,7 +17024,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -16584,7 +17090,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -16630,7 +17136,7 @@ export type URL_PATH_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link PARAMS_KEY} `params.<key>`
+ * Aliases: {@link PARAMS_KEY} `params.<key>`, {@link URL_PATH_PARAMS_KEY} `url.path.params.<key>`
  *
  * @example "url.path.parameter.id='123'"
  */
@@ -16645,6 +17151,39 @@ export const URL_PATH_PARAMETER_KEY_BASE = 'url.path.parameter';
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
  */
 export type URL_PATH_PARAMETER_KEY_TYPE = string;
+
+// Path: model/attributes/url/url__path__params__[key].json
+
+/**
+ * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router. `url.path.params.<key>`
+ *
+ * Attribute Value Type: `string` {@link URL_PATH_PARAMS_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`, {@link PARAMS_KEY} `params.<key>`
+ *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY} (url.path.parameter.<key>) instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+ * @example "url.path.params.id='123'"
+ */
+export const URL_PATH_PARAMS_KEY = 'url.path.params.<key>';
+
+/**
+ * Base key for {@link URL_PATH_PARAMS_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMS_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY_BASE} (url.path.parameter) instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+ */
+export const URL_PATH_PARAMS_KEY_BASE = 'url.path.params';
+
+/**
+ * Type for {@link URL_PATH_PARAMS_KEY} url.path.params.<key>
+ */
+export type URL_PATH_PARAMS_KEY_TYPE = string;
 
 // Path: model/attributes/url/url__port.json
 
@@ -17848,6 +18387,8 @@ export interface AttributeSearchMetadata {
   type: AttributeSearchType;
   /** A description of the attribute */
   brief: string;
+  /** Whether the attribute is internal to Sentry */
+  internal?: true;
   /** Every key under which the attribute's value is readable, preferred key first */
   deprecationChain: readonly string[];
 }
@@ -17904,18 +18445,26 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.input_messages': 'string',
   'ai.is_search_required': 'boolean',
   'ai.metadata': 'string',
+  'ai.model.id': 'string',
   'ai.model_id': 'string',
   'ai.model.provider': 'string',
   'ai.pipeline.name': 'string',
   'ai.preamble': 'string',
   'ai.presence_penalty': 'double',
+  'ai.prompt': 'string',
   'ai.prompt.messages': 'string',
   'ai.prompt_tokens.used': 'integer',
+  'ai.prompt.tools': 'string[]',
   'ai.raw_prompting': 'boolean',
   'ai.responses': 'string[]',
   'ai.response_format': 'string',
+  'ai.response.id': 'string',
+  'ai.response.model': 'string',
+  'ai.response.object': 'string',
   'ai.response.text': 'string',
+  'ai.response.timestamp': 'string',
   'ai.response.toolCalls': 'string',
+  'ai.schema': 'string',
   'ai.search_queries': 'string[]',
   'ai.search_results': 'string[]',
   'ai.seed': 'string',
@@ -17931,6 +18480,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.top_p': 'double',
   'ai.total_cost': 'double',
   'ai.total_tokens.used': 'integer',
+  'ai.usage.tokens': 'integer',
+  'ai.values': 'string',
   'ai.warnings': 'string[]',
   'angular.version': 'string',
   'app.app_build': 'string',
@@ -18101,6 +18652,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'culture.locale': 'string',
   'culture.timezone': 'string',
   'db.collection.name': 'string',
+  'db.connection_string': 'string',
   'db.driver.name': 'string',
   'db.mongodb.collection': 'string',
   'db.name': 'string',
@@ -18238,6 +18790,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.model': 'string',
   'gen_ai.request.presence_penalty': 'double',
   'gen_ai.request.reasoning.level': 'string',
+  'gen_ai.request.schema': 'string',
   'gen_ai.request.seed': 'string',
   'gen_ai.request.stop_sequences': 'string[]',
   'gen_ai.request.temperature': 'double',
@@ -18247,6 +18800,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.response.finish_reasons': 'string',
   'gen_ai.response.id': 'string',
   'gen_ai.response.model': 'string',
+  'gen_ai.response.object': 'string',
   'gen_ai.response.streaming': 'boolean',
   'gen_ai.response.text': 'string',
   'gen_ai.response.time_to_first_chunk': 'double',
@@ -18280,6 +18834,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'graphql.operation.name': 'string',
   'graphql.operation.type': 'string',
   'graphql.processing.type': 'string',
+  'graphql.source': 'string',
   'grpc.error.bad_request.field_violations': 'string[]',
   'grpc.error.debug_info.detail': 'string',
   'grpc.error.debug_info.stack_entries': 'string[]',
@@ -18404,6 +18959,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.conversation_id': 'string',
   'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
   'messaging.destination_kind': 'string',
@@ -18416,12 +18972,18 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.message.conversation_id': 'string',
   'messaging.message.envelope.size': 'integer',
   'messaging.message.id': 'string',
+  'messaging.message_id': 'string',
   'messaging.message.receive.latency': 'integer',
   'messaging.message.retry.count': 'integer',
+  'messaging.operation': 'string',
   'messaging.operation.name': 'string',
   'messaging.operation.type': 'string',
+  'messaging.protocol': 'string',
+  'messaging.protocol_version': 'string',
   'messaging.rabbitmq.destination.routing_key': 'string',
+  'messaging.rabbitmq.routing_key': 'string',
   'messaging.system': 'string',
+  'messaging.url': 'string',
   method: 'string',
   'middleware.name': 'string',
   'navigation.origin': 'string',
@@ -18640,6 +19202,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'url.full': 'string',
   'url.path': 'string',
   'url.path.parameter.<key>': 'string',
+  'url.path.params.<key>': 'string',
   'url.port': 'integer',
   'url.query': 'string',
   'url.same_origin': 'boolean',
@@ -18708,17 +19271,25 @@ export type AttributeName =
   | typeof AI_IS_SEARCH_REQUIRED
   | typeof AI_METADATA
   | typeof AI_MODEL_ID
+  | typeof _AI_MODEL_ID
   | typeof AI_MODEL_PROVIDER
   | typeof AI_PIPELINE_NAME
   | typeof AI_PREAMBLE
   | typeof AI_PRESENCE_PENALTY
+  | typeof AI_PROMPT
   | typeof AI_PROMPT_MESSAGES
   | typeof AI_PROMPT_TOKENS_USED
+  | typeof AI_PROMPT_TOOLS
   | typeof AI_RAW_PROMPTING
   | typeof AI_RESPONSES
   | typeof AI_RESPONSE_FORMAT
+  | typeof AI_RESPONSE_ID
+  | typeof AI_RESPONSE_MODEL
+  | typeof AI_RESPONSE_OBJECT
   | typeof AI_RESPONSE_TEXT
+  | typeof AI_RESPONSE_TIMESTAMP
   | typeof AI_RESPONSE_TOOLCALLS
+  | typeof AI_SCHEMA
   | typeof AI_SEARCH_QUERIES
   | typeof AI_SEARCH_RESULTS
   | typeof AI_SEED
@@ -18734,6 +19305,8 @@ export type AttributeName =
   | typeof AI_TOP_P
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
+  | typeof AI_USAGE_TOKENS
+  | typeof AI_VALUES
   | typeof AI_WARNINGS
   | typeof ANGULAR_VERSION
   | typeof APP_APP_BUILD
@@ -18904,6 +19477,7 @@ export type AttributeName =
   | typeof CULTURE_LOCALE
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
+  | typeof DB_CONNECTION_STRING
   | typeof DB_DRIVER_NAME
   | typeof DB_MONGODB_COLLECTION
   | typeof DB_NAME
@@ -19041,6 +19615,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_MODEL
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
   | typeof GEN_AI_REQUEST_REASONING_LEVEL
+  | typeof GEN_AI_REQUEST_SCHEMA
   | typeof GEN_AI_REQUEST_SEED
   | typeof GEN_AI_REQUEST_STOP_SEQUENCES
   | typeof GEN_AI_REQUEST_TEMPERATURE
@@ -19050,6 +19625,7 @@ export type AttributeName =
   | typeof GEN_AI_RESPONSE_FINISH_REASONS
   | typeof GEN_AI_RESPONSE_ID
   | typeof GEN_AI_RESPONSE_MODEL
+  | typeof GEN_AI_RESPONSE_OBJECT
   | typeof GEN_AI_RESPONSE_STREAMING
   | typeof GEN_AI_RESPONSE_TEXT
   | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK
@@ -19083,6 +19659,7 @@ export type AttributeName =
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
   | typeof GRAPHQL_PROCESSING_TYPE
+  | typeof GRAPHQL_SOURCE
   | typeof GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
   | typeof GRPC_ERROR_DEBUG_INFO_DETAIL
   | typeof GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
@@ -19207,6 +19784,7 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_CONVERSATION_ID
   | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_KIND
@@ -19219,12 +19797,18 @@ export type AttributeName =
   | typeof MESSAGING_MESSAGE_CONVERSATION_ID
   | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
   | typeof MESSAGING_MESSAGE_ID
+  | typeof _MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION
   | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
+  | typeof MESSAGING_PROTOCOL
+  | typeof MESSAGING_PROTOCOL_VERSION
   | typeof MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY
+  | typeof MESSAGING_RABBITMQ_ROUTING_KEY
   | typeof MESSAGING_SYSTEM
+  | typeof MESSAGING_URL
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_ORIGIN
@@ -19443,6 +20027,7 @@ export type AttributeName =
   | typeof URL_FULL
   | typeof URL_PATH
   | typeof URL_PATH_PARAMETER_KEY
+  | typeof URL_PATH_PARAMS_KEY
   | typeof URL_PORT
   | typeof URL_QUERY
   | typeof URL_SAME_ORIGIN
@@ -19514,8 +20099,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.19.0', prs: [534], description: 'Added address attribute' }],
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
+    changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address attribute' },
+    ],
   },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
@@ -19625,7 +20213,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.generation_id': {
     brief: 'Unique identifier for the completion.',
     type: 'string',
-    keys: ['gen_ai.response.id', 'ai.generation_id'],
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19636,13 +20224,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.id',
       status: 'backfill',
     },
-    aliases: ['gen_ai.response.id'],
-    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
+    aliases: ['gen_ai.response.id', 'ai.response.id'],
+    changelog: [
+      { version: 'next', description: 'Added ai.response.id as an alias' },
+      { version: '0.1.0', prs: [55, 57, 61, 108, 127] },
+    ],
   },
   'ai.input_messages': {
     brief: 'The input messages sent to the model',
     type: 'string',
-    keys: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19688,10 +20286,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
+  'ai.model.id': {
+    brief: 'The id of the model used by the Vercel AI SDK.',
+    type: 'string',
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'gpt-4o',
+    examples: ['gpt-4o'],
+    deprecation: {
+      replacement: 'gen_ai.request.model',
+      reason: 'This attribute is being deprecated in favor of gen_ai.request.model.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.request.model', 'ai.model_id'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.model.id attribute' }],
+  },
   'ai.model_id': {
     brief: 'The vendor-specific ID of the model used.',
     type: 'string',
-    keys: ['gen_ai.request.model', 'ai.model_id'],
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19702,8 +20319,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.model',
       status: 'backfill',
     },
-    aliases: ['gen_ai.request.model'],
-    changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.request.model', 'ai.model.id'],
+    changelog: [
+      { version: 'next', description: 'Added ai.model.id as an alias' },
+      { version: '0.1.0', prs: [57, 61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'ai.model.provider': {
     brief: 'The provider of the model.',
@@ -19784,10 +20405,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 57, 61, 108] },
     ],
   },
+  'ai.prompt': {
+    brief: 'The prompt passed to the Vercel AI SDK, as a stringified object.',
+    type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"prompt":"What is the weather in Paris?"}',
+    examples: ['{"prompt":"What is the weather in Paris?"}'],
+    deprecation: {
+      replacement: 'gen_ai.input.messages',
+      reason: 'This attribute is being deprecated in favor of gen_ai.input.messages.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.prompt attribute' }],
+  },
   'ai.prompt.messages': {
     brief: 'The input messages sent to the AI model.',
     type: 'string',
-    keys: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19798,8 +20452,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt'],
-    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.prompt.messages attribute' }],
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt', 'ai.prompt'],
+    changelog: [
+      { version: 'next', description: 'Added ai.prompt as an alias' },
+      { version: '0.19.0', prs: [498], description: 'Added ai.prompt.messages attribute' },
+    ],
   },
   'ai.prompt_tokens.used': {
     brief: 'The number of tokens used to process just the prompt.',
@@ -19817,6 +20474,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.usage.prompt_tokens', 'gen_ai.usage.input_tokens'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
+  },
+  'ai.prompt.tools': {
+    brief: 'The tools made available to the model, as an array of stringified tool definitions.',
+    type: 'string[]',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['{"type":"function","name":"get_weather"}'],
+    examples: [['{"type":"function","name":"get_weather"}']],
+    deprecation: {
+      replacement: 'gen_ai.tool.definitions',
+      reason: 'This attribute is being deprecated in favor of gen_ai.tool.definitions.',
+      status: 'backfill',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.prompt.tools attribute' }],
   },
   'ai.raw_prompting': {
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
@@ -19866,6 +20541,61 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
+  'ai.response.id': {
+    brief: 'The id of the response returned by the model.',
+    type: 'string',
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY',
+    examples: ['chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY'],
+    deprecation: {
+      replacement: 'gen_ai.response.id',
+      reason: 'This attribute is being deprecated in favor of gen_ai.response.id.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.response.id', 'ai.generation_id'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.id attribute' }],
+  },
+  'ai.response.model': {
+    brief: 'The id of the model that produced the response.',
+    type: 'string',
+    keys: ['gen_ai.response.model', 'ai.response.model'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'gpt-4o-2024-08-06',
+    examples: ['gpt-4o-2024-08-06'],
+    deprecation: {
+      replacement: 'gen_ai.response.model',
+      reason: 'This attribute is being deprecated in favor of gen_ai.response.model.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.response.model'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.model attribute' }],
+  },
+  'ai.response.object': {
+    brief: 'The type of the object returned by the model.',
+    type: 'string',
+    keys: ['ai.response.object'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chat.completion',
+    examples: ['chat.completion'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.object attribute' }],
+  },
   'ai.response.text': {
     brief: 'The text response from the AI model.',
     type: 'string',
@@ -19883,6 +20613,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['gen_ai.output.messages', 'ai.response.toolCalls'],
     changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.text attribute' }],
   },
+  'ai.response.timestamp': {
+    brief: 'The ISO 8601 timestamp at which the response was produced.',
+    type: 'string',
+    keys: ['ai.response.timestamp'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '2026-02-19T15:32:11.000Z',
+    examples: ['2026-02-19T15:32:11.000Z'],
+    deprecation: {
+      reason: 'This attribute is deprecated. The span start and end timestamps carry the same information.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.response.timestamp attribute' }],
+  },
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
     type: 'string',
@@ -19899,6 +20645,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.output.messages', 'ai.response.text'],
     changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
+  },
+  'ai.schema': {
+    brief: 'The stringified JSON schema the model output must conform to.',
+    type: 'string',
+    keys: ['ai.schema'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"type":"object","properties":{"city":{"type":"string"}}}',
+    examples: ['{"type":"object","properties":{"city":{"type":"string"}}}'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.schema attribute' }],
   },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
@@ -20006,7 +20769,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.texts': {
     brief: 'Raw text inputs provided to the model.',
     type: 'string[]',
-    keys: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20017,8 +20787,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt'],
+    aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
+      { version: 'next', description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
@@ -20066,7 +20837,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tools': {
     brief: 'For an AI model call, the functions that are available',
     type: 'string[]',
-    keys: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20165,7 +20936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.total_tokens.used': {
     brief: 'The total number of tokens used to process the prompt.',
     type: 'integer',
-    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20176,8 +20947,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.total_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.total_tokens'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.usage.total_tokens', 'ai.usage.tokens'],
+    changelog: [
+      { version: 'next', description: 'Added ai.usage.tokens as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57, 61, 108] },
+      { version: '0.0.0' },
+    ],
+  },
+  'ai.usage.tokens': {
+    brief: 'The total number of tokens used for the request and the response.',
+    type: 'integer',
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 150,
+    examples: [150],
+    deprecation: {
+      replacement: 'gen_ai.usage.total_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.total_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.usage.tokens attribute' }],
+  },
+  'ai.values': {
+    brief: 'The stringified values produced by a Vercel AI SDK object or array generation.',
+    type: 'string',
+    keys: ['ai.values'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"city":"Paris"}]',
+    examples: ['[{"city":"Paris"}]'],
+    deprecation: {
+      reason: 'This attribute is deprecated. Use gen_ai.output.messages for model output instead.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added ai.values attribute' }],
   },
   'ai.warnings': {
     brief: 'Warning messages generated during model execution.',
@@ -21431,7 +22242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.url': {
     brief: 'The URL of the AWS API request.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21443,8 +22254,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'url'],
+    aliases: ['url.full', 'http.url', 'url', 'messaging.url'],
     changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
       {
         version: '0.19.0',
         prs: [488],
@@ -22619,6 +23431,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [106, 127] },
       { version: '0.0.0' },
     ],
+  },
+  'db.connection_string': {
+    brief: 'The connection string used to connect to the database.',
+    type: 'string',
+    keys: ['db.connection_string'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'redis://localhost:6379',
+    examples: ['redis://localhost:6379'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.',
+    },
+    changelog: [{ version: 'next', prs: [581], description: 'Added db.connection_string attribute' }],
   },
   'db.driver.name': {
     brief: 'The name of the driver used for the database connection.',
@@ -24470,7 +25299,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
-    keys: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24478,8 +25314,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-    aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
+    aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
+      { version: 'next', description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
@@ -24547,7 +25384,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.prompt': {
     brief: 'The input messages sent to the model',
     type: 'string',
-    keys: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24559,8 +25403,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages'],
-    changelog: [{ version: '0.1.0', prs: [74, 108, 119] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages', 'ai.prompt'],
+    changelog: [
+      { version: 'next', description: 'Added ai.prompt as an alias' },
+      { version: '0.1.0', prs: [74, 108, 119] },
+      { version: '0.0.0' },
+    ],
   },
   'gen_ai.prompt.name': {
     brief: 'The name of the prompt that uniquely identifies it.',
@@ -24592,7 +25440,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.available_tools': {
     brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
     type: 'string',
-    keys: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24667,15 +25515,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.model': {
     brief: 'The model identifier being used for the request.',
     type: 'string',
-    keys: ['gen_ai.request.model', 'ai.model_id'],
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4-turbo-preview',
-    aliases: ['ai.model_id'],
-    changelog: [{ version: '0.1.0', prs: [62, 127] }],
+    aliases: ['ai.model_id', 'ai.model.id'],
+    changelog: [
+      { version: 'next', description: 'Added ai.model.id as an alias' },
+      { version: '0.1.0', prs: [62, 127] },
+    ],
   },
   'gen_ai.request.presence_penalty': {
     brief:
@@ -24705,6 +25556,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'high',
     changelog: [{ version: '0.17.0', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
+  },
+  'gen_ai.request.schema': {
+    brief: 'The stringified JSON schema the model output must conform to.',
+    type: 'string',
+    keys: ['gen_ai.request.schema'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"type":"object","properties":{"city":{"type":"string"}}}',
+    examples: ['{"type":"object","properties":{"city":{"type":"string"}}}'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added gen_ai.request.schema attribute' }],
   },
   'gen_ai.request.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
@@ -24815,27 +25683,52 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.id': {
     brief: 'Unique identifier for the completion.',
     type: 'string',
-    keys: ['gen_ai.response.id', 'ai.generation_id'],
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gen_123abc',
-    aliases: ['ai.generation_id'],
-    changelog: [{ version: '0.1.0', prs: [57, 127] }],
+    aliases: ['ai.generation_id', 'ai.response.id'],
+    changelog: [
+      { version: 'next', description: 'Added ai.response.id as an alias' },
+      { version: '0.1.0', prs: [57, 127] },
+    ],
   },
   'gen_ai.response.model': {
     brief: 'The vendor-specific ID of the model used.',
     type: 'string',
-    keys: ['gen_ai.response.model'],
+    keys: ['gen_ai.response.model', 'ai.response.model'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['ai.response.model'],
+    changelog: [
+      { version: 'next', description: 'Added ai.response.model as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'gen_ai.response.object': {
+    brief: 'The type of the object returned by the model.',
+    type: 'string',
+    keys: ['gen_ai.response.object'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chat.completion',
+    examples: ['chat.completion'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.',
+    },
+    changelog: [{ version: 'next', prs: [583], description: 'Added gen_ai.response.object attribute' }],
   },
   'gen_ai.response.streaming': {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
@@ -25036,7 +25929,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.definitions': {
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
     type: 'string',
-    keys: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25395,15 +26288,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.total_tokens': {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
     type: 'integer',
-    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 20,
-    aliases: ['ai.total_tokens.used'],
+    aliases: ['ai.total_tokens.used', 'ai.usage.tokens'],
     changelog: [
+      { version: 'next', description: 'Added ai.usage.tokens as an alias' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
@@ -25416,7 +26310,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'graphql.document': {
     brief: 'The GraphQL document being executed.',
     type: 'string',
-    keys: ['graphql.document'],
+    keys: ['graphql.document', 'graphql.source'],
     applyScrubbing: {
       key: 'auto',
       reason:
@@ -25425,7 +26319,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'query findBookById { bookById(id: ?) { name } }',
+    aliases: ['graphql.source'],
     changelog: [
+      { version: 'next', description: 'Added graphql.source as an alias' },
       {
         version: '0.7.0',
         description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
@@ -25472,6 +26368,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.',
       'Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.',
     ],
+  },
+  'graphql.source': {
+    brief: 'The GraphQL document being executed.',
+    type: 'string',
+    keys: ['graphql.document', 'graphql.source'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'query findBookById { bookById(id: ?) { name } }',
+    examples: ['query findBookById { bookById(id: ?) { name } }'],
+    deprecation: {
+      replacement: 'graphql.document',
+      reason:
+        'This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.',
+      status: 'backfill',
+    },
+    aliases: ['graphql.document'],
+    changelog: [{ version: 'next', prs: [584], description: 'Added graphql.source attribute' }],
   },
   'grpc.error.bad_request.field_violations': {
     brief:
@@ -25727,7 +26643,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.flavor': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25738,8 +26654,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.version',
       status: 'backfill',
     },
-    aliases: ['network.protocol.version', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.version', 'net.protocol.version', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.fragment': {
     brief:
@@ -25768,8 +26688,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
+    aliases: [
+      'address',
+      'server.address',
+      'client.address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'net.peer.name',
+    ],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -26383,8 +27312,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -26455,15 +27385,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/test?foo=bar#buzz',
     deprecation: {
-      replacement: 'url.path',
-      reason: 'This attribute is being deprecated in favor of url.path and url.query',
+      reason:
+        'This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.',
     },
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Documented url.path, url.query and url.fragment as the replacements for http.target',
+      },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'http.url': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26474,8 +27411,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       status: 'backfill',
     },
-    aliases: ['url.full', 'url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
+    aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.1.0', prs: [61, 108] },
+      { version: '0.0.0' },
+    ],
   },
   'http.user_agent': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
@@ -27208,7 +28149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.resource.protocol': {
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27220,8 +28161,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'OTel uses the generic network.protocol.name attribute',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'net.protocol.name'],
+    aliases: ['network.protocol.name', 'net.protocol.name', 'messaging.protocol'],
     changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -27382,7 +28324,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.transport': {
     brief: 'Transport method used for MCP communication.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport', 'net.transport'],
+    keys: ['network.transport', 'mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27425,6 +28367,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
+  },
+  'messaging.conversation_id': {
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    type: 'string',
+    keys: ['messaging.message.conversation_id', 'messaging.conversation_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'MyConversationId',
+    examples: ['MyConversationId'],
+    deprecation: {
+      replacement: 'messaging.message.conversation_id',
+      reason: 'This attribute is being deprecated in favor of messaging.message.conversation_id.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.conversation_id'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.conversation_id attribute' }],
   },
   'messaging.destination': {
     brief: 'The message destination name.',
@@ -27573,14 +28535,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
     type: 'string',
-    keys: ['messaging.message.conversation_id'],
+    keys: ['messaging.message.conversation_id', 'messaging.conversation_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'MyConversationId',
-    changelog: [{ version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
+    aliases: ['messaging.conversation_id'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.conversation_id as an alias' },
+      { version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' },
+    ],
   },
   'messaging.message.envelope.size': {
     brief: 'The size of the message body and metadata in bytes.',
@@ -27597,14 +28563,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message.id': {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
-    keys: ['messaging.message.id'],
+    keys: ['messaging.message.id', 'messaging.message_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['messaging.message_id'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.message_id as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'messaging.message_id': {
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    type: 'string',
+    keys: ['messaging.message.id', 'messaging.message_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '452a7c7c7c7048c2f887f0e7',
+    examples: ['452a7c7c7c7048c2f887f0e7'],
+    deprecation: {
+      replacement: 'messaging.message.id',
+      reason: 'This attribute is being deprecated in favor of messaging.message.id.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.id'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.message_id attribute' }],
   },
   'messaging.message.receive.latency': {
     brief: 'The latency between when the message was published and received.',
@@ -27634,17 +28624,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  'messaging.operation': {
+    brief: 'The name of the messaging operation being performed.',
+    type: 'string',
+    keys: ['messaging.operation.name', 'messaging.operation'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'publish',
+    examples: ['publish'],
+    deprecation: {
+      replacement: 'messaging.operation.name',
+      reason: 'This attribute is being deprecated in favor of messaging.operation.name.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.operation.name'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.operation attribute' }],
+  },
   'messaging.operation.name': {
     brief: 'The name of the messaging operation being performed',
     type: 'string',
-    keys: ['messaging.operation.name'],
+    keys: ['messaging.operation.name', 'messaging.operation'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'send',
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' }],
+    aliases: ['messaging.operation'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.operation as an alias' },
+      { version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' },
+    ],
   },
   'messaging.operation.type': {
     brief: 'A string identifying the type of the messaging operation',
@@ -27658,19 +28671,78 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'create',
     changelog: [{ version: '0.1.0', prs: [51, 127] }],
   },
+  'messaging.protocol': {
+    brief: 'OSI application layer or non-OSI equivalent.',
+    type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AMQP',
+    examples: ['AMQP'],
+    deprecation: {
+      replacement: 'network.protocol.name',
+      reason: 'This attribute is being deprecated in favor of network.protocol.name.',
+      status: 'backfill',
+    },
+    aliases: ['network.protocol.name', 'net.protocol.name', 'mcp.resource.protocol'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.protocol attribute' }],
+  },
+  'messaging.protocol_version': {
+    brief: 'The actual version of the protocol used for network communication.',
+    type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '0.9.1',
+    examples: ['0.9.1'],
+    deprecation: {
+      replacement: 'network.protocol.version',
+      reason: 'This attribute is being deprecated in favor of network.protocol.version.',
+      status: 'backfill',
+    },
+    aliases: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.protocol_version attribute' }],
+  },
   'messaging.rabbitmq.destination.routing_key': {
     brief: 'RabbitMQ message routing key.',
     type: 'string',
-    keys: ['messaging.rabbitmq.destination.routing_key'],
+    keys: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'myKey',
+    aliases: ['messaging.rabbitmq.routing_key'],
     changelog: [
+      { version: 'next', description: 'Added messaging.rabbitmq.routing_key as an alias' },
       { version: '0.16.0', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
     ],
+  },
+  'messaging.rabbitmq.routing_key': {
+    brief: 'RabbitMQ message routing key.',
+    type: 'string',
+    keys: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'myKey',
+    examples: ['myKey'],
+    deprecation: {
+      replacement: 'messaging.rabbitmq.destination.routing_key',
+      reason: 'This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.rabbitmq.destination.routing_key'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.rabbitmq.routing_key attribute' }],
   },
   'messaging.system': {
     brief: 'The messaging system as identified by the client instrumentation.',
@@ -27683,6 +28755,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'activemq',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'messaging.url': {
+    brief: 'The connection string of the messaging broker.',
+    type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'amqp://guest:guest@localhost:5672',
+    examples: ['amqp://guest:guest@localhost:5672'],
+    deprecation: {
+      replacement: 'url.full',
+      reason: 'This attribute is being deprecated in favor of url.full.',
+      status: 'backfill',
+    },
+    aliases: ['url.full', 'http.url', 'url', 'aws.request.url'],
+    changelog: [{ version: 'next', prs: [581], description: 'Added messaging.url attribute' }],
   },
   method: {
     brief: 'The HTTP method used.',
@@ -27955,38 +29046,51 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 65400,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    aliases: ['net.sock.peer.port'],
+    changelog: [
+      { version: 'next', description: 'Added net.sock.peer.port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'network.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'http',
-    aliases: ['net.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['net.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '1.1',
-    aliases: ['http.flavor', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['http.flavor', 'net.protocol.version', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport', 'net.transport'],
+    keys: ['network.transport', 'mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28040,8 +29144,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -28101,7 +29206,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    changelog: [
+      { version: 'next', description: 'Added the server.address alias group to net.peer.name' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.peer.port': {
     brief: 'Peer port number.',
@@ -28122,7 +29232,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28133,13 +29243,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.name',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol as an alias' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
-    keys: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28150,8 +29264,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.protocol.version',
       status: 'backfill',
     },
-    aliases: ['network.protocol.version', 'http.flavor'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.sock.family': {
     brief: 'OSI transport and network layer',
@@ -28249,12 +29367,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'network.peer.port',
       status: 'backfill',
     },
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['network.peer.port'],
+    changelog: [
+      { version: 'next', description: 'Added network.peer.port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'net.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport', 'net.transport'],
+    keys: ['net.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28263,10 +29387,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'tcp',
     deprecation: {
       replacement: 'network.transport',
-      status: 'backfill',
+      reason:
+        'This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.',
     },
     aliases: ['network.transport', 'mcp.transport'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Set net.transport to _status null, because its values change on the replacement',
+      },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'os.build': {
     brief: 'The build ID of the operating system.',
@@ -28473,7 +29605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
-    keys: ['params.<key>', 'url.path.parameter.<key>'],
+    keys: ['params.<key>', 'url.path.parameter.<key>', 'url.path.params.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28481,8 +29613,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "params.id='123'",
-    aliases: ['url.path.parameter.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
+    aliases: ['url.path.parameter.<key>', 'url.path.params.<key>'],
+    changelog: [
+      { version: 'next', description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.1.0', prs: [103] },
+    ],
   },
   'performance.activationStart': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
@@ -30454,8 +31589,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
       { version: '0.0.0' },
@@ -30477,8 +31613,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: 'next', description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
@@ -31001,7 +32138,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   url: {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -31012,8 +32149,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'url.full',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'url.domain': {
     brief:
@@ -31044,15 +32185,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.full': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
-    keys: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url', 'aws.request.url'],
+    aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url'],
     changelog: [
+      { version: 'next', description: 'Added messaging.url as an alias' },
       { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
       { version: '0.0.0' },
@@ -31074,7 +32216,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
-    keys: ['url.path.parameter.<key>', 'params.<key>'],
+    keys: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -31082,8 +32224,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "url.path.parameter.id='123'",
-    aliases: ['params.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
+    aliases: ['params.<key>', 'url.path.params.<key>'],
+    changelog: [
+      { version: 'next', description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.1.0', prs: [103] },
+    ],
+  },
+  'url.path.params.<key>': {
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    type: 'string',
+    keys: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "url.path.params.id='123'",
+    examples: ["url.path.params.id='123'"],
+    deprecation: {
+      replacement: 'url.path.parameter.<key>',
+      reason: 'This attribute is being deprecated in favor of url.path.parameter.<key>.',
+      status: 'backfill',
+    },
+    aliases: ['url.path.parameter.<key>', 'params.<key>'],
+    changelog: [{ version: 'next', prs: [586], description: 'Added url.path.params.<key> attribute' }],
   },
   'url.port': {
     brief: 'Server port number.',
@@ -31823,13 +32989,20 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.response.id',
     type: 'string',
     brief: 'Unique identifier for the completion.',
-    deprecationChain: ['gen_ai.response.id', 'ai.generation_id'],
+    deprecationChain: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
   },
   'ai.input_messages': {
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief: 'The input messages sent to the model',
-    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
   },
   'ai.is_search_required': {
     canonicalName: 'ai.is_search_required',
@@ -31843,6 +33016,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Extra metadata passed to an AI pipeline step.',
     deprecationChain: ['ai.metadata'],
   },
+  'ai.model.id': {
+    canonicalName: 'gen_ai.request.model',
+    type: 'string',
+    brief: 'The id of the model used by the Vercel AI SDK.',
+    deprecationChain: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
+  },
   'ai.model.provider': {
     canonicalName: 'gen_ai.provider.name',
     type: 'string',
@@ -31853,7 +33032,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.request.model',
     type: 'string',
     brief: 'The vendor-specific ID of the model used.',
-    deprecationChain: ['gen_ai.request.model', 'ai.model_id'],
+    deprecationChain: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
   },
   'ai.pipeline.name': {
     canonicalName: 'gen_ai.pipeline.name',
@@ -31875,11 +33054,37 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     deprecationChain: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
   },
+  'ai.prompt': {
+    canonicalName: 'gen_ai.input.messages',
+    type: 'string',
+    brief: 'The prompt passed to the Vercel AI SDK, as a stringified object.',
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+  },
   'ai.prompt.messages': {
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief: 'The input messages sent to the AI model.',
-    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+  },
+  'ai.prompt.tools': {
+    canonicalName: 'gen_ai.tool.definitions',
+    type: 'string[]',
+    brief: 'The tools made available to the model, as an array of stringified tool definitions.',
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
   },
   'ai.prompt_tokens.used': {
     canonicalName: 'gen_ai.usage.input_tokens',
@@ -31893,6 +33098,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
     deprecationChain: ['ai.raw_prompting'],
   },
+  'ai.response.id': {
+    canonicalName: 'gen_ai.response.id',
+    type: 'string',
+    brief: 'The id of the response returned by the model.',
+    deprecationChain: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
+  },
+  'ai.response.model': {
+    canonicalName: 'gen_ai.response.model',
+    type: 'string',
+    brief: 'The id of the model that produced the response.',
+    deprecationChain: ['gen_ai.response.model', 'ai.response.model'],
+  },
+  'ai.response.object': {
+    canonicalName: 'ai.response.object',
+    type: 'string',
+    brief: 'The type of the object returned by the model.',
+    deprecationChain: ['ai.response.object'],
+  },
   'ai.response.text': {
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
@@ -31904,6 +33127,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.responses',
       'ai.tool_calls',
     ],
+  },
+  'ai.response.timestamp': {
+    canonicalName: 'ai.response.timestamp',
+    type: 'string',
+    brief: 'The ISO 8601 timestamp at which the response was produced.',
+    deprecationChain: ['ai.response.timestamp'],
   },
   'ai.response.toolCalls': {
     canonicalName: 'gen_ai.output.messages',
@@ -31934,6 +33163,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.responses',
       'ai.tool_calls',
     ],
+  },
+  'ai.schema': {
+    canonicalName: 'ai.schema',
+    type: 'string',
+    brief: 'The stringified JSON schema the model output must conform to.',
+    deprecationChain: ['ai.schema'],
   },
   'ai.search_queries': {
     canonicalName: 'ai.search_queries',
@@ -31976,7 +33211,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.input.messages',
     type: 'string[]',
     brief: 'Raw text inputs provided to the model.',
-    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
   },
   'ai.toolCall.args': {
     canonicalName: 'gen_ai.tool.call.arguments',
@@ -32012,7 +33254,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.tool.definitions',
     type: 'string[]',
     brief: 'For an AI model call, the functions that are available',
-    deprecationChain: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
   },
   'ai.top_k': {
     canonicalName: 'gen_ai.request.top_k',
@@ -32038,7 +33280,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.usage.total_tokens',
     type: 'integer',
     brief: 'The total number of tokens used to process the prompt.',
-    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
+  },
+  'ai.usage.tokens': {
+    canonicalName: 'gen_ai.usage.total_tokens',
+    type: 'integer',
+    brief: 'The total number of tokens used for the request and the response.',
+    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
+  },
+  'ai.values': {
+    canonicalName: 'ai.values',
+    type: 'string',
+    brief: 'The stringified values produced by a Vercel AI SDK object or array generation.',
+    deprecationChain: ['ai.values'],
   },
   'ai.warnings': {
     canonicalName: 'ai.warnings',
@@ -32549,7 +33803,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the AWS API request.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   'aws.request_id': {
     canonicalName: 'aws.request_id',
@@ -33090,6 +34344,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of a collection (table, container) within the database.',
     deprecationChain: ['db.collection.name', 'db.mongodb.collection'],
+  },
+  'db.connection_string': {
+    canonicalName: 'db.connection_string',
+    type: 'string',
+    brief: 'The connection string used to connect to the database.',
+    deprecationChain: ['db.connection_string'],
   },
   'db.driver.name': {
     canonicalName: 'db.driver.name',
@@ -33835,7 +35095,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
-    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
   },
   'gen_ai.operation.name': {
     canonicalName: 'gen_ai.operation.name',
@@ -33874,7 +35141,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief: 'The input messages sent to the model',
-    deprecationChain: ['gen_ai.input.messages', 'ai.input_messages', 'ai.prompt.messages', 'ai.texts', 'gen_ai.prompt'],
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
   },
   'gen_ai.prompt.name': {
     canonicalName: 'gen_ai.prompt.name',
@@ -33892,7 +35166,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.tool.definitions',
     type: 'string',
     brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
-    deprecationChain: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
   },
   'gen_ai.request.frequency_penalty': {
     canonicalName: 'gen_ai.request.frequency_penalty',
@@ -33918,7 +35192,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.request.model',
     type: 'string',
     brief: 'The model identifier being used for the request.',
-    deprecationChain: ['gen_ai.request.model', 'ai.model_id'],
+    deprecationChain: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
   },
   'gen_ai.request.presence_penalty': {
     canonicalName: 'gen_ai.request.presence_penalty',
@@ -33932,6 +35206,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The reasoning or thinking effort level requested for a GenAI model.',
     deprecationChain: ['gen_ai.request.reasoning.level'],
+  },
+  'gen_ai.request.schema': {
+    canonicalName: 'gen_ai.request.schema',
+    type: 'string',
+    brief: 'The stringified JSON schema the model output must conform to.',
+    deprecationChain: ['gen_ai.request.schema'],
   },
   'gen_ai.request.seed': {
     canonicalName: 'gen_ai.request.seed',
@@ -33982,13 +35262,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.response.id',
     type: 'string',
     brief: 'Unique identifier for the completion.',
-    deprecationChain: ['gen_ai.response.id', 'ai.generation_id'],
+    deprecationChain: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
   },
   'gen_ai.response.model': {
     canonicalName: 'gen_ai.response.model',
     type: 'string',
     brief: 'The vendor-specific ID of the model used.',
-    deprecationChain: ['gen_ai.response.model'],
+    deprecationChain: ['gen_ai.response.model', 'ai.response.model'],
+  },
+  'gen_ai.response.object': {
+    canonicalName: 'gen_ai.response.object',
+    type: 'string',
+    brief: 'The type of the object returned by the model.',
+    deprecationChain: ['gen_ai.response.object'],
   },
   'gen_ai.response.streaming': {
     canonicalName: 'gen_ai.response.streaming',
@@ -34067,7 +35353,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.tool.definitions',
     type: 'string',
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
-    deprecationChain: ['gen_ai.tool.definitions', 'ai.tools', 'gen_ai.request.available_tools'],
+    deprecationChain: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
   },
   'gen_ai.tool.description': {
     canonicalName: 'gen_ai.tool.description',
@@ -34181,13 +35467,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.usage.total_tokens',
     type: 'integer',
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
-    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+    deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
   },
   'graphql.document': {
     canonicalName: 'graphql.document',
     type: 'string',
     brief: 'The GraphQL document being executed.',
-    deprecationChain: ['graphql.document'],
+    deprecationChain: ['graphql.document', 'graphql.source'],
   },
   'graphql.operation.name': {
     canonicalName: 'graphql.operation.name',
@@ -34206,6 +35492,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The type of processing represented by this span.',
     deprecationChain: ['graphql.processing.type'],
+  },
+  'graphql.source': {
+    canonicalName: 'graphql.document',
+    type: 'string',
+    brief: 'The GraphQL document being executed.',
+    deprecationChain: ['graphql.document', 'graphql.source'],
   },
   'grpc.error.bad_request.field_violations': {
     canonicalName: 'grpc.error.bad_request.field_violations',
@@ -34323,7 +35615,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.version',
     type: 'string',
     brief: 'The actual version of the protocol used for network communication.',
-    deprecationChain: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
   },
   'http.fragment': {
     canonicalName: 'http.fragment',
@@ -34620,7 +35912,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['http.response.status_text', 'http.status_text'],
   },
   'http.target': {
-    canonicalName: 'url.path',
+    canonicalName: 'http.target',
     type: 'string',
     brief: 'The pathname and query string of the URL.',
     deprecationChain: ['http.target'],
@@ -34629,7 +35921,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   'http.user_agent': {
     canonicalName: 'user_agent.original',
@@ -34936,7 +36228,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
   },
   'mcp.resource.uri': {
     canonicalName: 'mcp.resource.uri',
@@ -35002,7 +36294,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'Transport method used for MCP communication.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.transport'],
+    deprecationChain: ['network.transport', 'mcp.transport'],
   },
   'mdc.<key>': {
     canonicalName: 'mdc.<key>',
@@ -35016,6 +36308,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
     deprecationChain: ['messaging.batch.message_count'],
+  },
+  'messaging.conversation_id': {
+    canonicalName: 'messaging.message.conversation_id',
+    type: 'string',
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    deprecationChain: ['messaging.message.conversation_id', 'messaging.conversation_id'],
   },
   'messaging.destination': {
     canonicalName: 'messaging.destination.name',
@@ -35078,7 +36377,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
-    deprecationChain: ['messaging.message.conversation_id'],
+    deprecationChain: ['messaging.message.conversation_id', 'messaging.conversation_id'],
   },
   'messaging.message.envelope.size': {
     canonicalName: 'messaging.message.envelope.size',
@@ -35090,7 +36389,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.message.id',
     type: 'string',
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
-    deprecationChain: ['messaging.message.id'],
+    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
   },
   'messaging.message.receive.latency': {
     canonicalName: 'messaging.message.receive.latency',
@@ -35104,11 +36403,23 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The amount of attempts to send the message.',
     deprecationChain: ['messaging.message.retry.count'],
   },
+  'messaging.message_id': {
+    canonicalName: 'messaging.message.id',
+    type: 'string',
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    deprecationChain: ['messaging.message.id', 'messaging.message_id'],
+  },
+  'messaging.operation': {
+    canonicalName: 'messaging.operation.name',
+    type: 'string',
+    brief: 'The name of the messaging operation being performed.',
+    deprecationChain: ['messaging.operation.name', 'messaging.operation'],
+  },
   'messaging.operation.name': {
     canonicalName: 'messaging.operation.name',
     type: 'string',
     brief: 'The name of the messaging operation being performed',
-    deprecationChain: ['messaging.operation.name'],
+    deprecationChain: ['messaging.operation.name', 'messaging.operation'],
   },
   'messaging.operation.type': {
     canonicalName: 'messaging.operation.type',
@@ -35116,17 +36427,41 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'A string identifying the type of the messaging operation',
     deprecationChain: ['messaging.operation.type'],
   },
+  'messaging.protocol': {
+    canonicalName: 'network.protocol.name',
+    type: 'string',
+    brief: 'OSI application layer or non-OSI equivalent.',
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+  },
+  'messaging.protocol_version': {
+    canonicalName: 'network.protocol.version',
+    type: 'string',
+    brief: 'The actual version of the protocol used for network communication.',
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+  },
   'messaging.rabbitmq.destination.routing_key': {
     canonicalName: 'messaging.rabbitmq.destination.routing_key',
     type: 'string',
     brief: 'RabbitMQ message routing key.',
-    deprecationChain: ['messaging.rabbitmq.destination.routing_key'],
+    deprecationChain: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
+  },
+  'messaging.rabbitmq.routing_key': {
+    canonicalName: 'messaging.rabbitmq.destination.routing_key',
+    type: 'string',
+    brief: 'RabbitMQ message routing key.',
+    deprecationChain: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
   },
   'messaging.system': {
     canonicalName: 'messaging.system',
     type: 'string',
     brief: 'The messaging system as identified by the client instrumentation.',
     deprecationChain: ['messaging.system'],
+  },
+  'messaging.url': {
+    canonicalName: 'url.full',
+    type: 'string',
+    brief: 'The connection string of the messaging broker.',
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   method: {
     canonicalName: 'http.request.method',
@@ -35269,13 +36604,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
   },
   'net.protocol.version': {
     canonicalName: 'network.protocol.version',
     type: 'string',
     brief: 'The actual version of the protocol used for network communication.',
-    deprecationChain: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
   },
   'net.sock.family': {
     canonicalName: 'network.transport',
@@ -35317,7 +36652,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.transport'],
+    deprecationChain: ['net.transport'],
   },
   'network.connection.effective_type': {
     canonicalName: 'network.connection.effective_type',
@@ -35365,19 +36700,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
   },
   'network.protocol.version': {
     canonicalName: 'network.protocol.version',
     type: 'string',
     brief: 'The actual version of the protocol used for network communication.',
-    deprecationChain: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    deprecationChain: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
   },
   'network.transport': {
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.transport'],
+    deprecationChain: ['network.transport', 'mcp.transport'],
   },
   'network.type': {
     canonicalName: 'network.type',
@@ -35489,7 +36824,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
-    deprecationChain: ['params.<key>', 'url.path.parameter.<key>'],
+    deprecationChain: ['params.<key>', 'url.path.parameter.<key>', 'url.path.params.<key>'],
   },
   'performance.activationStart': {
     canonicalName: 'browser.performance.navigation.activation_start',
@@ -35807,6 +37142,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.dsc.environment',
     type: 'string',
     brief: 'The environment from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.environment'],
   },
   'sentry.dsc.project_id': {
@@ -35814,66 +37150,77 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    internal: true,
     deprecationChain: ['sentry.dsc.project_id'],
   },
   'sentry.dsc.public_key': {
     canonicalName: 'sentry.dsc.public_key',
     type: 'string',
     brief: 'The public key from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.public_key'],
   },
   'sentry.dsc.release': {
     canonicalName: 'sentry.dsc.release',
     type: 'string',
     brief: 'The release identifier from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.release'],
   },
   'sentry.dsc.sample_rate': {
     canonicalName: 'sentry.dsc.sample_rate',
     type: 'string',
     brief: 'The sample rate from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.sample_rate'],
   },
   'sentry.dsc.sampled': {
     canonicalName: 'sentry.dsc.sampled',
     type: 'boolean',
     brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.sampled'],
   },
   'sentry.dsc.trace_id': {
     canonicalName: 'sentry.dsc.trace_id',
     type: 'string',
     brief: 'The trace ID from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.trace_id'],
   },
   'sentry.dsc.transaction': {
     canonicalName: 'sentry.dsc.transaction',
     type: 'string',
     brief: 'The transaction name from the dynamic sampling context.',
+    internal: true,
     deprecationChain: ['sentry.dsc.transaction'],
   },
   'sentry.event.serialized_breadcrumbs': {
     canonicalName: 'sentry.event.serialized_breadcrumbs',
     type: 'string',
     brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_breadcrumbs'],
   },
   'sentry.event.serialized_contexts': {
     canonicalName: 'sentry.event.serialized_contexts',
     type: 'string',
     brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_contexts'],
   },
   'sentry.event.serialized_extra': {
     canonicalName: 'sentry.event.serialized_extra',
     type: 'string',
     brief: 'JSON-serialized `extra` property from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_extra'],
   },
   'sentry.event.serialized_meta': {
     canonicalName: 'sentry.event.serialized_meta',
     type: 'string',
     brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
+    internal: true,
     deprecationChain: ['sentry.event.serialized_meta'],
   },
   'sentry.exclusive_time': {
@@ -36016,12 +37363,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.relay.ingress',
     type: 'string',
     brief: 'How an item (span, log, &c.) entered Relay.',
+    internal: true,
     deprecationChain: ['sentry.relay.ingress'],
   },
   'sentry.relay.pipeline': {
     canonicalName: 'sentry.relay.pipeline',
     type: 'string',
     brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
+    internal: true,
     deprecationChain: ['sentry.relay.pipeline'],
   },
   'sentry.replay_is_buffering': {
@@ -36055,6 +37404,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    internal: true,
     deprecationChain: ['sentry.segment.name.source'],
   },
   'sentry.source': {
@@ -36425,7 +37775,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   'url.domain': {
     canonicalName: 'url.domain',
@@ -36445,7 +37795,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.full',
     type: 'string',
     brief: 'The URL of the resource that was fetched.',
-    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'url'],
+    deprecationChain: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
   },
   'url.path': {
     canonicalName: 'url.path',
@@ -36458,7 +37808,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
-    deprecationChain: ['url.path.parameter.<key>', 'params.<key>'],
+    deprecationChain: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
+  },
+  'url.path.params.<key>': {
+    canonicalName: 'url.path.parameter.<key>',
+    type: 'string',
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    deprecationChain: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
   },
   'url.port': {
     canonicalName: 'url.port',
@@ -36808,17 +38165,25 @@ export type Attributes = {
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
+  [_AI_MODEL_ID]?: _AI_MODEL_ID_TYPE;
   [AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
+  [AI_PROMPT]?: AI_PROMPT_TYPE;
   [AI_PROMPT_MESSAGES]?: AI_PROMPT_MESSAGES_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
+  [AI_PROMPT_TOOLS]?: AI_PROMPT_TOOLS_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
+  [AI_RESPONSE_ID]?: AI_RESPONSE_ID_TYPE;
+  [AI_RESPONSE_MODEL]?: AI_RESPONSE_MODEL_TYPE;
+  [AI_RESPONSE_OBJECT]?: AI_RESPONSE_OBJECT_TYPE;
   [AI_RESPONSE_TEXT]?: AI_RESPONSE_TEXT_TYPE;
+  [AI_RESPONSE_TIMESTAMP]?: AI_RESPONSE_TIMESTAMP_TYPE;
   [AI_RESPONSE_TOOLCALLS]?: AI_RESPONSE_TOOLCALLS_TYPE;
+  [AI_SCHEMA]?: AI_SCHEMA_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
   [AI_SEED]?: AI_SEED_TYPE;
@@ -36834,6 +38199,8 @@ export type Attributes = {
   [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
+  [AI_USAGE_TOKENS]?: AI_USAGE_TOKENS_TYPE;
+  [AI_VALUES]?: AI_VALUES_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [ANGULAR_VERSION]?: ANGULAR_VERSION_TYPE;
   [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
@@ -37004,6 +38371,7 @@ export type Attributes = {
   [CULTURE_LOCALE]?: CULTURE_LOCALE_TYPE;
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
+  [DB_CONNECTION_STRING]?: DB_CONNECTION_STRING_TYPE;
   [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
   [DB_MONGODB_COLLECTION]?: DB_MONGODB_COLLECTION_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
@@ -37141,6 +38509,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_REASONING_LEVEL]?: GEN_AI_REQUEST_REASONING_LEVEL_TYPE;
+  [GEN_AI_REQUEST_SCHEMA]?: GEN_AI_REQUEST_SCHEMA_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_STOP_SEQUENCES]?: GEN_AI_REQUEST_STOP_SEQUENCES_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
@@ -37150,6 +38519,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_OBJECT]?: GEN_AI_RESPONSE_OBJECT_TYPE;
   [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
   [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]?: GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE;
@@ -37183,6 +38553,7 @@ export type Attributes = {
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
   [GRAPHQL_PROCESSING_TYPE]?: GRAPHQL_PROCESSING_TYPE_TYPE;
+  [GRAPHQL_SOURCE]?: GRAPHQL_SOURCE_TYPE;
   [GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS]?: GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE;
   [GRPC_ERROR_DEBUG_INFO_DETAIL]?: GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE;
   [GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES]?: GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE;
@@ -37307,6 +38678,7 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_CONVERSATION_ID]?: MESSAGING_CONVERSATION_ID_TYPE;
   [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_KIND]?: MESSAGING_DESTINATION_KIND_TYPE;
@@ -37319,12 +38691,18 @@ export type Attributes = {
   [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
+  [_MESSAGING_MESSAGE_ID]?: _MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION]?: MESSAGING_OPERATION_TYPE;
   [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
+  [MESSAGING_PROTOCOL]?: MESSAGING_PROTOCOL_TYPE;
+  [MESSAGING_PROTOCOL_VERSION]?: MESSAGING_PROTOCOL_VERSION_TYPE;
   [MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY]?: MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE;
+  [MESSAGING_RABBITMQ_ROUTING_KEY]?: MESSAGING_RABBITMQ_ROUTING_KEY_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
+  [MESSAGING_URL]?: MESSAGING_URL_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
@@ -37543,6 +38921,7 @@ export type Attributes = {
   [URL_FULL]?: URL_FULL_TYPE;
   [URL_PATH]?: URL_PATH_TYPE;
   [URL_PATH_PARAMETER_KEY]?: URL_PATH_PARAMETER_KEY_TYPE;
+  [URL_PATH_PARAMS_KEY]?: URL_PATH_PARAMS_KEY_TYPE;
   [URL_PORT]?: URL_PORT_TYPE;
   [URL_QUERY]?: URL_QUERY_TYPE;
   [URL_SAME_ORIGIN]?: URL_SAME_ORIGIN_TYPE;

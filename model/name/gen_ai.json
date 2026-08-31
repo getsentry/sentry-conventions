@@ -9,10 +9,18 @@
       "ops": ["gen_ai.create_agent", "gen_ai.handoff", "gen_ai.invoke_agent"],
       "templates": [
         "{{gen_ai.operation.name}} {{gen_ai.agent.name}}",
+        "{{gen_ai.operation.name}} {{gen_ai.pipeline.name}}",
+        "{{gen_ai.operation.name}} {{gen_ai.function_id}}",
         "{{gen_ai.operation.name}}",
         "Generative AI agent operation"
       ],
-      "examples": ["text_completion Zed", "text_completion Claude Code", "embeddings"]
+      "examples": [
+        "text_completion Zed",
+        "text_completion Claude Code",
+        "invoke_agent format_prompt",
+        "invoke_agent weather_agent",
+        "embeddings"
+      ]
     },
     {
       "name": "Inference",

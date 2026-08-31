@@ -164,18 +164,26 @@ class _AttributeNamesMeta(type):
         "AI_INPUT_MESSAGES",
         "AI_IS_SEARCH_REQUIRED",
         "AI_METADATA",
-        "AI_MODEL_PROVIDER",
         "AI_MODEL_ID",
+        "AI_MODEL_PROVIDER",
+        "_AI_MODEL_ID",
         "AI_PIPELINE_NAME",
         "AI_PREAMBLE",
         "AI_PRESENCE_PENALTY",
+        "AI_PROMPT",
         "AI_PROMPT_MESSAGES",
+        "AI_PROMPT_TOOLS",
         "AI_PROMPT_TOKENS_USED",
         "AI_RAW_PROMPTING",
+        "AI_RESPONSE_ID",
+        "AI_RESPONSE_MODEL",
+        "AI_RESPONSE_OBJECT",
         "AI_RESPONSE_TEXT",
+        "AI_RESPONSE_TIMESTAMP",
         "AI_RESPONSE_TOOLCALLS",
         "AI_RESPONSE_FORMAT",
         "AI_RESPONSES",
+        "AI_SCHEMA",
         "AI_SEARCH_QUERIES",
         "AI_SEARCH_RESULTS",
         "AI_SEED",
@@ -191,6 +199,8 @@ class _AttributeNamesMeta(type):
         "AI_TOP_P",
         "AI_TOTAL_COST",
         "AI_TOTAL_TOKENS_USED",
+        "AI_USAGE_TOKENS",
+        "AI_VALUES",
         "AI_WARNINGS",
         "APP_APP_BUILD",
         "APP_APP_IDENTIFIER",
@@ -218,6 +228,7 @@ class _AttributeNamesMeta(type):
         "CODE",
         "CONNECTION_RTT",
         "CONNECTIONTYPE",
+        "DB_CONNECTION_STRING",
         "DB_MONGODB_COLLECTION",
         "DB_NAME",
         "DB_OPERATION",
@@ -247,7 +258,9 @@ class _AttributeNamesMeta(type):
         "GEN_AI_PROMPT",
         "GEN_AI_REQUEST_AVAILABLE_TOOLS",
         "GEN_AI_REQUEST_MESSAGES",
+        "GEN_AI_REQUEST_SCHEMA",
         "GEN_AI_RESPONSE_FINISH_REASON",
+        "GEN_AI_RESPONSE_OBJECT",
         "GEN_AI_RESPONSE_TEXT",
         "GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN",
         "GEN_AI_RESPONSE_TOOL_CALLS",
@@ -262,6 +275,7 @@ class _AttributeNamesMeta(type):
         "GEN_AI_USAGE_INPUT_TOKENS_CACHED",
         "GEN_AI_USAGE_OUTPUT_TOKENS_REASONING",
         "GEN_AI_USAGE_PROMPT_TOKENS",
+        "GRAPHQL_SOURCE",
         "HARDWARECONCURRENCY",
         "HTTP_CLIENT_IP",
         "HTTP_DECODED_RESPONSE_CONTENT_LENGTH",
@@ -298,8 +312,15 @@ class _AttributeNamesMeta(type):
         "MCP_TOOL_RESULT_CONTENT",
         "MCP_TOOL_RESULT_IS_ERROR",
         "MCP_TRANSPORT",
+        "MESSAGING_CONVERSATION_ID",
         "MESSAGING_DESTINATION",
         "MESSAGING_DESTINATION_KIND",
+        "_MESSAGING_MESSAGE_ID",
+        "MESSAGING_OPERATION",
+        "MESSAGING_PROTOCOL",
+        "MESSAGING_PROTOCOL_VERSION",
+        "MESSAGING_RABBITMQ_ROUTING_KEY",
+        "MESSAGING_URL",
         "METHOD",
         "NET_HOST_IP",
         "NET_HOST_NAME",
@@ -371,6 +392,7 @@ class _AttributeNamesMeta(type):
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
+        "URL_PATH_PARAMS_KEY",
         "URL_SAME_ORIGIN",
         "URL",
     }
@@ -398,7 +420,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: server.address, http.server_name, net.host.name, http.host, server_name
+    Aliases: server.address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead - Old namespace-less attribute, to be replaced with server.address for span-first future
     Example: "example.com"
     """
@@ -489,7 +511,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.response.id
+    Aliases: gen_ai.response.id, ai.response.id
     DEPRECATED: Use gen_ai.response.id instead
     Example: "gen_123abc"
     """
@@ -531,6 +553,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "{\"user_id\": 123, \"session_id\": \"abc123\"}"
     """
 
+    # Path: model/attributes/ai/ai__model__id.json
+    AI_MODEL_ID: Literal["ai.model.id"] = "ai.model.id"
+    """The id of the model used by the Vercel AI SDK.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.request.model, ai.model_id
+    DEPRECATED: Use gen_ai.request.model instead - This attribute is being deprecated in favor of gen_ai.request.model.
+    Example: "gpt-4o"
+    """
+
     # Path: model/attributes/ai/ai__model__provider.json
     AI_MODEL_PROVIDER: Literal["ai.model.provider"] = "ai.model.provider"
     """The provider of the model.
@@ -545,14 +580,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """
 
     # Path: model/attributes/ai/ai__model_id.json
-    AI_MODEL_ID: Literal["ai.model_id"] = "ai.model_id"
+    _AI_MODEL_ID: Literal["ai.model_id"] = "ai.model_id"
     """The vendor-specific ID of the model used.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.request.model
+    Aliases: gen_ai.request.model, ai.model.id
     DEPRECATED: Use gen_ai.request.model instead
     Example: "gpt-4"
     """
@@ -596,6 +631,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 0.5
     """
 
+    # Path: model/attributes/ai/ai__prompt.json
+    AI_PROMPT: Literal["ai.prompt"] = "ai.prompt"
+    """The prompt passed to the Vercel AI SDK, as a stringified object.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages, gen_ai.prompt
+    DEPRECATED: Use gen_ai.input.messages instead - This attribute is being deprecated in favor of gen_ai.input.messages.
+    Example: "{\"prompt\":\"What is the weather in Paris?\"}"
+    """
+
     # Path: model/attributes/ai/ai__prompt__messages.json
     AI_PROMPT_MESSAGES: Literal["ai.prompt.messages"] = "ai.prompt.messages"
     """The input messages sent to the AI model.
@@ -604,9 +652,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.input.messages, ai.texts, gen_ai.prompt
+    Aliases: gen_ai.input.messages, ai.texts, gen_ai.prompt, ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
+    """
+
+    # Path: model/attributes/ai/ai__prompt__tools.json
+    AI_PROMPT_TOOLS: Literal["ai.prompt.tools"] = "ai.prompt.tools"
+    """The tools made available to the model, as an array of stringified tool definitions.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: Use gen_ai.tool.definitions instead - This attribute is being deprecated in favor of gen_ai.tool.definitions.
+    Example: ["{\"type\":\"function\",\"name\":\"get_weather\"}"]
     """
 
     # Path: model/attributes/ai/ai__prompt_tokens__used.json
@@ -634,6 +694,44 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/ai/ai__response__id.json
+    AI_RESPONSE_ID: Literal["ai.response.id"] = "ai.response.id"
+    """The id of the response returned by the model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.response.id, ai.generation_id
+    DEPRECATED: Use gen_ai.response.id instead - This attribute is being deprecated in favor of gen_ai.response.id.
+    Example: "chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY"
+    """
+
+    # Path: model/attributes/ai/ai__response__model.json
+    AI_RESPONSE_MODEL: Literal["ai.response.model"] = "ai.response.model"
+    """The id of the model that produced the response.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.response.model
+    DEPRECATED: Use gen_ai.response.model instead - This attribute is being deprecated in favor of gen_ai.response.model.
+    Example: "gpt-4o-2024-08-06"
+    """
+
+    # Path: model/attributes/ai/ai__response__object.json
+    AI_RESPONSE_OBJECT: Literal["ai.response.object"] = "ai.response.object"
+    """The type of the object returned by the model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.
+    Example: "chat.completion"
+    """
+
     # Path: model/attributes/ai/ai__response__text.json
     AI_RESPONSE_TEXT: Literal["ai.response.text"] = "ai.response.text"
     """The text response from the AI model.
@@ -645,6 +743,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: gen_ai.output.messages, ai.response.toolCalls
     DEPRECATED: Use gen_ai.output.messages instead
     Example: "The weather in Paris is currently rainy."
+    """
+
+    # Path: model/attributes/ai/ai__response__timestamp.json
+    AI_RESPONSE_TIMESTAMP: Literal["ai.response.timestamp"] = "ai.response.timestamp"
+    """The ISO 8601 timestamp at which the response was produced.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The span start and end timestamps carry the same information.
+    Example: "2026-02-19T15:32:11.000Z"
     """
 
     # Path: model/attributes/ai/ai__response__toolCalls.json
@@ -682,6 +792,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
     Example: ["hello","world"]
+    """
+
+    # Path: model/attributes/ai/ai__schema.json
+    AI_SCHEMA: Literal["ai.schema"] = "ai.schema"
+    """The stringified JSON schema the model output must conform to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+    Example: "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
     """
 
     # Path: model/attributes/ai/ai__search_queries.json
@@ -767,7 +889,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt
+    Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt, ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead
     Example: ["Hello, how are you?","What is the capital of France?"]
     """
@@ -869,9 +991,34 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.usage.total_tokens
+    Aliases: gen_ai.usage.total_tokens, ai.usage.tokens
     DEPRECATED: Use gen_ai.usage.total_tokens instead
     Example: 30
+    """
+
+    # Path: model/attributes/ai/ai__usage__tokens.json
+    AI_USAGE_TOKENS: Literal["ai.usage.tokens"] = "ai.usage.tokens"
+    """The total number of tokens used for the request and the response.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.usage.total_tokens, ai.total_tokens.used
+    DEPRECATED: Use gen_ai.usage.total_tokens instead - This attribute is being deprecated in favor of gen_ai.usage.total_tokens.
+    Example: 150
+    """
+
+    # Path: model/attributes/ai/ai__values.json
+    AI_VALUES: Literal["ai.values"] = "ai.values"
+    """The stringified values produced by a Vercel AI SDK object or array generation.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. Use gen_ai.output.messages for model output instead.
+    Example: "[{\"city\":\"Paris\"}]"
     """
 
     # Path: model/attributes/ai/ai__warnings.json
@@ -1928,7 +2075,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, url
+    Aliases: url.full, http.url, url, messaging.url
     DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
     Example: "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
     """
@@ -3026,6 +3173,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: db.mongodb.collection
     Example: "users"
+    """
+
+    # Path: model/attributes/db/db__connection_string.json
+    DB_CONNECTION_STRING: Literal["db.connection_string"] = "db.connection_string"
+    """The connection string used to connect to the database.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: Yes
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.
+    Example: "redis://localhost:6379"
     """
 
     # Path: model/attributes/db/db__driver__name.json
@@ -4499,7 +4658,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.texts, ai.prompt.messages, gen_ai.prompt
+    Aliases: ai.texts, ai.prompt.messages, gen_ai.prompt, ai.prompt
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
@@ -4557,7 +4716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages
+    Aliases: gen_ai.input.messages, ai.texts, ai.prompt.messages, ai.prompt
     DEPRECATED: Use gen_ai.input.messages instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
     Example: "[{\"role\": \"user\", \"message\": \"hello\"}]"
     """
@@ -4650,7 +4809,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.model_id
+    Aliases: ai.model_id, ai.model.id
     Example: "gpt-4-turbo-preview"
     """
 
@@ -4679,6 +4838,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "high"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__request__schema.json
+    GEN_AI_REQUEST_SCHEMA: Literal["gen_ai.request.schema"] = "gen_ai.request.schema"
+    """The stringified JSON schema the model output must conform to.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+    Example: "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__request__seed.json
@@ -4781,7 +4952,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: ai.generation_id
+    Aliases: ai.generation_id, ai.response.id
     Example: "gen_123abc"
     """
 
@@ -4793,7 +4964,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: ai.response.model
     Example: "gpt-4"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__response__object.json
+    GEN_AI_RESPONSE_OBJECT: Literal["gen_ai.response.object"] = "gen_ai.response.object"
+    """The type of the object returned by the model.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.
+    Example: "chat.completion"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__response__streaming.json
@@ -5189,7 +5373,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: ai.total_tokens.used
+    Aliases: ai.total_tokens.used, ai.usage.tokens
     Example: 20
     """
 
@@ -5201,6 +5385,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: graphql.source
     Example: "query findBookById { bookById(id: ?) { name } }"
     """
 
@@ -5240,6 +5425,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "validate"
     Example: "execute"
     Example: "resolve"
+    """
+
+    # Path: model/attributes/graphql/graphql__source.json
+    GRAPHQL_SOURCE: Literal["graphql.source"] = "graphql.source"
+    """The GraphQL document being executed.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: graphql.document
+    DEPRECATED: Use graphql.document instead - This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.
+    Example: "query findBookById { bookById(id: ?) { name } }"
     """
 
     # Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
@@ -5461,7 +5659,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.version, net.protocol.version
+    Aliases: network.protocol.version, net.protocol.version, messaging.protocol_version
     DEPRECATED: Use network.protocol.version instead
     Example: "1.1"
     """
@@ -5485,7 +5683,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name
+    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name, net.peer.name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -6005,7 +6203,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, net.host.name, http.host, server_name
+    Aliases: address, server.address, net.host.name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -6044,7 +6242,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    DEPRECATED: Use url.path instead - This attribute is being deprecated in favor of url.path and url.query
+    DEPRECATED: No replacement at this time - This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.
     Example: "/test?foo=bar#buzz"
     """
 
@@ -6056,7 +6254,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: url.full, url, aws.request.url
+    Aliases: url.full, url, aws.request.url, messaging.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -6657,7 +6855,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: network.protocol.name, net.protocol.name
+    Aliases: network.protocol.name, net.protocol.name, messaging.protocol
     DEPRECATED: Use network.protocol.name instead - OTel uses the generic network.protocol.name attribute
     Example: "file"
     """
@@ -6810,6 +7008,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 10
     """
 
+    # Path: model/attributes/messaging/messaging__conversation_id.json
+    MESSAGING_CONVERSATION_ID: Literal["messaging.conversation_id"] = (
+        "messaging.conversation_id"
+    )
+    """The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.message.conversation_id
+    DEPRECATED: Use messaging.message.conversation_id instead - This attribute is being deprecated in favor of messaging.message.conversation_id.
+    Example: "MyConversationId"
+    """
+
     # Path: model/attributes/messaging/messaging__destination.json
     MESSAGING_DESTINATION: Literal["messaging.destination"] = "messaging.destination"
     """The message destination name.
@@ -6937,6 +7150,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.conversation_id
     Example: "MyConversationId"
     """
 
@@ -6961,6 +7175,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.message_id
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
 
@@ -6990,6 +7205,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 2
     """
 
+    # Path: model/attributes/messaging/messaging__message_id.json
+    _MESSAGING_MESSAGE_ID: Literal["messaging.message_id"] = "messaging.message_id"
+    """A value used by the messaging system as an identifier for the message, represented as a string.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.message.id
+    DEPRECATED: Use messaging.message.id instead - This attribute is being deprecated in favor of messaging.message.id.
+    Example: "452a7c7c7c7048c2f887f0e7"
+    """
+
+    # Path: model/attributes/messaging/messaging__operation.json
+    MESSAGING_OPERATION: Literal["messaging.operation"] = "messaging.operation"
+    """The name of the messaging operation being performed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.operation.name
+    DEPRECATED: Use messaging.operation.name instead - This attribute is being deprecated in favor of messaging.operation.name.
+    Example: "publish"
+    """
+
     # Path: model/attributes/messaging/messaging__operation__name.json
     MESSAGING_OPERATION_NAME: Literal["messaging.operation.name"] = (
         "messaging.operation.name"
@@ -7000,6 +7241,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.operation
     Example: "send"
     """
 
@@ -7016,6 +7258,34 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "create"
     """
 
+    # Path: model/attributes/messaging/messaging__protocol.json
+    MESSAGING_PROTOCOL: Literal["messaging.protocol"] = "messaging.protocol"
+    """OSI application layer or non-OSI equivalent.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: network.protocol.name, net.protocol.name, mcp.resource.protocol
+    DEPRECATED: Use network.protocol.name instead - This attribute is being deprecated in favor of network.protocol.name.
+    Example: "AMQP"
+    """
+
+    # Path: model/attributes/messaging/messaging__protocol_version.json
+    MESSAGING_PROTOCOL_VERSION: Literal["messaging.protocol_version"] = (
+        "messaging.protocol_version"
+    )
+    """The actual version of the protocol used for network communication.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: network.protocol.version, http.flavor, net.protocol.version
+    DEPRECATED: Use network.protocol.version instead - This attribute is being deprecated in favor of network.protocol.version.
+    Example: "0.9.1"
+    """
+
     # Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
     MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY: Literal[
         "messaging.rabbitmq.destination.routing_key"
@@ -7026,6 +7296,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: messaging.rabbitmq.routing_key
+    Example: "myKey"
+    """
+
+    # Path: model/attributes/messaging/messaging__rabbitmq__routing_key.json
+    MESSAGING_RABBITMQ_ROUTING_KEY: Literal["messaging.rabbitmq.routing_key"] = (
+        "messaging.rabbitmq.routing_key"
+    )
+    """RabbitMQ message routing key.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.rabbitmq.destination.routing_key
+    DEPRECATED: Use messaging.rabbitmq.destination.routing_key instead - This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.
     Example: "myKey"
     """
 
@@ -7038,6 +7324,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "activemq"
+    """
+
+    # Path: model/attributes/messaging/messaging__url.json
+    MESSAGING_URL: Literal["messaging.url"] = "messaging.url"
+    """The connection string of the messaging broker.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: url.full, http.url, url, aws.request.url
+    DEPRECATED: Use url.full instead - This attribute is being deprecated in favor of url.full.
+    Example: "amqp://guest:guest@localhost:5672"
     """
 
     # Path: model/attributes/method.json
@@ -7176,7 +7475,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, http.host, server_name
+    Aliases: address, server.address, http.server_name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7215,6 +7514,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
     Example: "example.com"
     """
@@ -7239,7 +7539,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.name, mcp.resource.protocol
+    Aliases: network.protocol.name, mcp.resource.protocol, messaging.protocol
     DEPRECATED: Use network.protocol.name instead
     Example: "http"
     """
@@ -7252,7 +7552,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.version, http.flavor
+    Aliases: network.protocol.version, http.flavor, messaging.protocol_version
     DEPRECATED: Use network.protocol.version instead
     Example: "1.1"
     """
@@ -7328,6 +7628,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: network.peer.port
     DEPRECATED: Use network.peer.port instead
     Example: 8080
     """
@@ -7341,7 +7642,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: network.transport, mcp.transport
-    DEPRECATED: Use network.transport instead
+    DEPRECATED: Use network.transport instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
     Example: "tcp"
     """
 
@@ -7430,6 +7731,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: net.sock.peer.port
     Example: 65400
     """
 
@@ -7441,7 +7743,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.protocol.name, mcp.resource.protocol
+    Aliases: net.protocol.name, mcp.resource.protocol, messaging.protocol
     Example: "http"
     """
 
@@ -7455,7 +7757,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.flavor, net.protocol.version
+    Aliases: http.flavor, net.protocol.version, messaging.protocol_version
     Example: "1.1"
     """
 
@@ -7663,7 +7965,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
-    Aliases: url.path.parameter.<key>
+    Aliases: url.path.parameter.<key>, url.path.params.<key>
     Example: "params.id='123'"
     """
 
@@ -9219,7 +9521,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, http.server_name, net.host.name, http.host, server_name
+    Aliases: address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     Example: "example.com"
     """
 
@@ -9243,7 +9545,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: address, server.address, http.server_name, net.host.name, http.host
+    Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
     DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
     Example: "example.com"
     """
@@ -9655,7 +9957,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: http.url, url, aws.request.url
+    Aliases: http.url, url, aws.request.url, messaging.url
     Example: "https://example.com/test?foo=bar#buzz"
     """
 
@@ -9681,8 +9983,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Has Dynamic Suffix: true
-    Aliases: params.<key>
+    Aliases: params.<key>, url.path.params.<key>
     Example: "url.path.parameter.id='123'"
+    """
+
+    # Path: model/attributes/url/url__path__params__[key].json
+    URL_PATH_PARAMS_KEY: Literal["url.path.params.<key>"] = "url.path.params.<key>"
+    """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Has Dynamic Suffix: true
+    Aliases: url.path.parameter.<key>, params.<key>
+    DEPRECATED: Use url.path.parameter.<key> instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+    Example: "url.path.params.id='123'"
     """
 
     # Path: model/attributes/url/url__port.json
@@ -9753,7 +10069,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: url.full, http.url, aws.request.url
+    Aliases: url.full, http.url, aws.request.url, messaging.url
     DEPRECATED: Use url.full instead
     Example: "https://example.com/test?foo=bar#buzz"
     """
@@ -10341,8 +10657,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "http.host",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address attribute"
             ),
@@ -10466,6 +10786,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.response.id",
             "ai.generation_id",
+            "ai.response.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -10474,8 +10795,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.response.id", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.response.id"],
+        aliases=["gen_ai.response.id", "ai.response.id"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.response.id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
         ],
     ),
@@ -10485,6 +10809,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -10530,6 +10855,31 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55, 127]),
         ],
     ),
+    "ai.model.id": AttributeMetadata(
+        brief="The id of the model used by the Vercel AI SDK.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.request.model",
+            "ai.model.id",
+            "ai.model_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="gpt-4o",
+        examples=["gpt-4o"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.request.model",
+            reason="This attribute is being deprecated in favor of gen_ai.request.model.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.request.model", "ai.model_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.model.id attribute"
+            ),
+        ],
+    ),
     "ai.model.provider": AttributeMetadata(
         brief="The provider of the model.",
         type=AttributeType.STRING,
@@ -10556,6 +10906,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "gen_ai.request.model",
+            "ai.model.id",
             "ai.model_id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -10565,8 +10916,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.request.model", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.request.model"],
+        aliases=["gen_ai.request.model", "ai.model.id"],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.model.id as an alias"),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10632,12 +10984,46 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108]),
         ],
     ),
+    "ai.prompt": AttributeMetadata(
+        brief="The prompt passed to the Vercel AI SDK, as a stringified object.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.input.messages",
+            "ai.input_messages",
+            "ai.prompt",
+            "ai.prompt.messages",
+            "ai.texts",
+            "gen_ai.prompt",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"prompt":"What is the weather in Paris?"}',
+        examples=['{"prompt":"What is the weather in Paris?"}'],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.input.messages",
+            reason="This attribute is being deprecated in favor of gen_ai.input.messages.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "gen_ai.input.messages",
+            "ai.texts",
+            "ai.prompt.messages",
+            "gen_ai.prompt",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.prompt attribute"
+            ),
+        ],
+    ),
     "ai.prompt.messages": AttributeMetadata(
         brief="The input messages sent to the AI model.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -10649,12 +11035,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt"],
+        aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt", "ai.prompt"],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[498],
                 description="Added ai.prompt.messages attribute",
+            ),
+        ],
+    ),
+    "ai.prompt.tools": AttributeMetadata(
+        brief="The tools made available to the model, as an array of stringified tool definitions.",
+        type=AttributeType.STRING_ARRAY,
+        keys=(
+            "gen_ai.tool.definitions",
+            "ai.prompt.tools",
+            "ai.tools",
+            "gen_ai.request.available_tools",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=['{"type":"function","name":"get_weather"}'],
+        examples=[['{"type":"function","name":"get_weather"}']],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.definitions",
+            reason="This attribute is being deprecated in favor of gen_ai.tool.definitions.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.prompt.tools attribute"
             ),
         ],
     ),
@@ -10694,6 +11106,77 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
     ),
+    "ai.response.id": AttributeMetadata(
+        brief="The id of the response returned by the model.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.id",
+            "ai.generation_id",
+            "ai.response.id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY",
+        examples=["chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.id",
+            reason="This attribute is being deprecated in favor of gen_ai.response.id.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.response.id", "ai.generation_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.response.id attribute"
+            ),
+        ],
+    ),
+    "ai.response.model": AttributeMetadata(
+        brief="The id of the model that produced the response.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.response.model",
+            "ai.response.model",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="gpt-4o-2024-08-06",
+        examples=["gpt-4o-2024-08-06"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.response.model",
+            reason="This attribute is being deprecated in favor of gen_ai.response.model.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.response.model"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added ai.response.model attribute",
+            ),
+        ],
+    ),
+    "ai.response.object": AttributeMetadata(
+        brief="The type of the object returned by the model.",
+        type=AttributeType.STRING,
+        keys=("ai.response.object",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="chat.completion",
+        examples=["chat.completion"],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added ai.response.object attribute",
+            ),
+        ],
+    ),
     "ai.response.text": AttributeMetadata(
         brief="The text response from the AI model.",
         type=AttributeType.STRING,
@@ -10717,6 +11200,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.19.0",
                 prs=[498],
                 description="Added ai.response.text attribute",
+            ),
+        ],
+    ),
+    "ai.response.timestamp": AttributeMetadata(
+        brief="The ISO 8601 timestamp at which the response was produced.",
+        type=AttributeType.STRING,
+        keys=("ai.response.timestamp",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="2026-02-19T15:32:11.000Z",
+        examples=["2026-02-19T15:32:11.000Z"],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The span start and end timestamps carry the same information."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added ai.response.timestamp attribute",
             ),
         ],
     ),
@@ -10780,6 +11283,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[65, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "ai.schema": AttributeMetadata(
+        brief="The stringified JSON schema the model output must conform to.",
+        type=AttributeType.STRING,
+        keys=("ai.schema",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"type":"object","properties":{"city":{"type":"string"}}}',
+        examples=['{"type":"object","properties":{"city":{"type":"string"}}}'],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.schema attribute"
+            ),
         ],
     ),
     "ai.search_queries": AttributeMetadata(
@@ -10889,6 +11410,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -10900,8 +11422,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.input.messages", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.input.messages", "ai.prompt.messages", "gen_ai.prompt"],
+        aliases=[
+            "gen_ai.input.messages",
+            "ai.prompt.messages",
+            "gen_ai.prompt",
+            "ai.prompt",
+        ],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
@@ -10987,6 +11515,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING_ARRAY,
         keys=(
             "gen_ai.tool.definitions",
+            "ai.prompt.tools",
             "ai.tools",
             "gen_ai.request.available_tools",
         ),
@@ -11069,6 +11598,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.usage.total_tokens",
             "ai.total_tokens.used",
+            "ai.usage.tokens",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -11077,11 +11607,57 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.usage.total_tokens", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.usage.total_tokens"],
+        aliases=["gen_ai.usage.total_tokens", "ai.usage.tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.usage.tokens as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "ai.usage.tokens": AttributeMetadata(
+        brief="The total number of tokens used for the request and the response.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.total_tokens",
+            "ai.total_tokens.used",
+            "ai.usage.tokens",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=150,
+        examples=[150],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.total_tokens",
+            reason="This attribute is being deprecated in favor of gen_ai.usage.total_tokens.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.usage.total_tokens", "ai.total_tokens.used"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.usage.tokens attribute"
+            ),
+        ],
+    ),
+    "ai.values": AttributeMetadata(
+        brief="The stringified values produced by a Vercel AI SDK object or array generation.",
+        type=AttributeType.STRING,
+        keys=("ai.values",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='[{"city":"Paris"}]',
+        examples=['[{"city":"Paris"}]'],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. Use gen_ai.output.messages for model output instead."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[583], description="Added ai.values attribute"
+            ),
         ],
     ),
     "ai.warnings": AttributeMetadata(
@@ -12666,6 +13242,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "url.full",
             "aws.request.url",
             "http.url",
+            "messaging.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -12677,8 +13254,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["url.full", "http.url", "url"],
+        aliases=["url.full", "http.url", "url", "messaging.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.url as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[488],
@@ -14136,6 +14716,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "db.connection_string": AttributeMetadata(
+        brief="The connection string used to connect to the database.",
+        type=AttributeType.STRING,
+        keys=("db.connection_string",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="redis://localhost:6379",
+        examples=["redis://localhost:6379"],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added db.connection_string attribute",
+            ),
         ],
     ),
     "db.driver.name": AttributeMetadata(
@@ -16300,6 +16900,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -16308,8 +16909,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-        aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt"],
+        aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -16381,6 +16983,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.input.messages",
             "ai.input_messages",
+            "ai.prompt",
             "ai.prompt.messages",
             "ai.texts",
             "gen_ai.prompt",
@@ -16394,8 +16997,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="Deprecated from OTEL, use gen_ai.input.messages with the new format instead.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["gen_ai.input.messages", "ai.texts", "ai.prompt.messages"],
+        aliases=[
+            "gen_ai.input.messages",
+            "ai.texts",
+            "ai.prompt.messages",
+            "ai.prompt",
+        ],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
             ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -16445,6 +17054,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "gen_ai.tool.definitions",
+            "ai.prompt.tools",
             "ai.tools",
             "gen_ai.request.available_tools",
         ),
@@ -16514,14 +17124,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "gen_ai.request.model",
+            "ai.model.id",
             "ai.model_id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4-turbo-preview",
-        aliases=["ai.model_id"],
+        aliases=["ai.model_id", "ai.model.id"],
         changelog=[
+            ChangelogEntry(version="next", description="Added ai.model.id as an alias"),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
@@ -16555,6 +17167,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.17.0",
                 prs=[502],
                 description="Added gen_ai.request.reasoning.level attribute",
+            ),
+        ],
+    ),
+    "gen_ai.request.schema": AttributeMetadata(
+        brief="The stringified JSON schema the model output must conform to.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.request.schema",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example='{"type":"object","properties":{"city":{"type":"string"}}}',
+        examples=['{"type":"object","properties":{"city":{"type":"string"}}}'],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added gen_ai.request.schema attribute",
             ),
         ],
     ),
@@ -16689,27 +17321,58 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.response.id",
             "ai.generation_id",
+            "ai.response.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gen_123abc",
-        aliases=["ai.generation_id"],
+        aliases=["ai.generation_id", "ai.response.id"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.response.id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
     ),
     "gen_ai.response.model": AttributeMetadata(
         brief="The vendor-specific ID of the model used.",
         type=AttributeType.STRING,
-        keys=("gen_ai.response.model",),
+        keys=(
+            "gen_ai.response.model",
+            "ai.response.model",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="gpt-4",
+        aliases=["ai.response.model"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.response.model as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "gen_ai.response.object": AttributeMetadata(
+        brief="The type of the object returned by the model.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.response.object",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="chat.completion",
+        examples=["chat.completion"],
+        deprecation=DeprecationInfo(
+            reason="This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[583],
+                description="Added gen_ai.response.object attribute",
+            ),
         ],
     ),
     "gen_ai.response.streaming": AttributeMetadata(
@@ -16929,6 +17592,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "gen_ai.tool.definitions",
+            "ai.prompt.tools",
             "ai.tools",
             "gen_ai.request.available_tools",
         ),
@@ -17355,13 +18019,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.usage.total_tokens",
             "ai.total_tokens.used",
+            "ai.usage.tokens",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=20,
-        aliases=["ai.total_tokens.used"],
+        aliases=["ai.total_tokens.used", "ai.usage.tokens"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added ai.usage.tokens as an alias"
+            ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
             ),
@@ -17376,7 +18044,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "graphql.document": AttributeMetadata(
         brief="The GraphQL document being executed.",
         type=AttributeType.STRING,
-        keys=("graphql.document",),
+        keys=(
+            "graphql.document",
+            "graphql.source",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO,
             reason="The document may contain sensitive information in arguments or variables. Instrumentation should redact sensitive information when possible.",
@@ -17384,7 +18055,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="query findBookById { bookById(id: ?) { name } }",
+        aliases=["graphql.source"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added graphql.source as an alias"
+            ),
             ChangelogEntry(
                 version="0.7.0",
                 description="Adds the `graphql.document` attribute to track the GraphQL document being executed.",
@@ -17436,6 +18111,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.",
             "Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.",
+        ],
+    ),
+    "graphql.source": AttributeMetadata(
+        brief="The GraphQL document being executed.",
+        type=AttributeType.STRING,
+        keys=(
+            "graphql.document",
+            "graphql.source",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="query findBookById { bookById(id: ?) { name } }",
+        examples=["query findBookById { bookById(id: ?) { name } }"],
+        deprecation=DeprecationInfo(
+            replacement="graphql.document",
+            reason="This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["graphql.document"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[584], description="Added graphql.source attribute"
+            ),
         ],
     ),
     "grpc.error.bad_request.field_violations": AttributeMetadata(
@@ -17740,6 +18439,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.version",
             "http.flavor",
+            "messaging.protocol_version",
             "net.protocol.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17749,8 +18449,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="network.protocol.version", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["network.protocol.version", "net.protocol.version"],
+        aliases=[
+            "network.protocol.version",
+            "net.protocol.version",
+            "messaging.protocol_version",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.protocol_version as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17786,8 +18494,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -18502,8 +19214,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "http.host",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -18566,10 +19282,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="/test?foo=bar#buzz",
         deprecation=DeprecationInfo(
-            replacement="url.path",
-            reason="This attribute is being deprecated in favor of url.path and url.query",
+            reason="This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement."
         ),
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Documented url.path, url.query and url.fragment as the replacements for http.target",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -18581,6 +19300,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "url.full",
             "aws.request.url",
             "http.url",
+            "messaging.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -18590,8 +19310,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "url", "aws.request.url"],
+        aliases=["url.full", "url", "aws.request.url", "messaging.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.url as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -19396,6 +20119,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.name",
             "mcp.resource.protocol",
+            "messaging.protocol",
             "net.protocol.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -19407,8 +20131,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="OTel uses the generic network.protocol.name attribute",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["network.protocol.name", "net.protocol.name"],
+        aliases=["network.protocol.name", "net.protocol.name", "messaging.protocol"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.protocol as an alias"
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -19596,7 +20323,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.transport",
             "mcp.transport",
-            "net.transport",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -19643,6 +20369,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.6.0",
                 prs=[341],
                 description="Added messaging.batch.message_count attribute",
+            ),
+        ],
+    ),
+    "messaging.conversation_id": AttributeMetadata(
+        brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.message.conversation_id",
+            "messaging.conversation_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="MyConversationId",
+        examples=["MyConversationId"],
+        deprecation=DeprecationInfo(
+            replacement="messaging.message.conversation_id",
+            reason="This attribute is being deprecated in favor of messaging.message.conversation_id.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.message.conversation_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.conversation_id attribute",
             ),
         ],
     ),
@@ -19806,12 +20558,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.conversation_id": AttributeMetadata(
         brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
         type=AttributeType.STRING,
-        keys=("messaging.message.conversation_id",),
+        keys=(
+            "messaging.message.conversation_id",
+            "messaging.conversation_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="MyConversationId",
+        aliases=["messaging.conversation_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.conversation_id as an alias",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[468],
@@ -19835,12 +20595,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "messaging.message.id": AttributeMetadata(
         brief="A value used by the messaging system as an identifier for the message, represented as a string.",
         type=AttributeType.STRING,
-        keys=("messaging.message.id",),
+        keys=(
+            "messaging.message.id",
+            "messaging.message_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
+        aliases=["messaging.message_id"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.message_id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -19874,15 +20641,74 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "messaging.message_id": AttributeMetadata(
+        brief="A value used by the messaging system as an identifier for the message, represented as a string.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.message.id",
+            "messaging.message_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="452a7c7c7c7048c2f887f0e7",
+        examples=["452a7c7c7c7048c2f887f0e7"],
+        deprecation=DeprecationInfo(
+            replacement="messaging.message.id",
+            reason="This attribute is being deprecated in favor of messaging.message.id.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.message.id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.message_id attribute",
+            ),
+        ],
+    ),
+    "messaging.operation": AttributeMetadata(
+        brief="The name of the messaging operation being performed.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.operation.name",
+            "messaging.operation",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="publish",
+        examples=["publish"],
+        deprecation=DeprecationInfo(
+            replacement="messaging.operation.name",
+            reason="This attribute is being deprecated in favor of messaging.operation.name.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.operation.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.operation attribute",
+            ),
+        ],
+    ),
     "messaging.operation.name": AttributeMetadata(
         brief="The name of the messaging operation being performed",
         type=AttributeType.STRING,
-        keys=("messaging.operation.name",),
+        keys=(
+            "messaging.operation.name",
+            "messaging.operation",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="send",
+        aliases=["messaging.operation"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.operation as an alias"
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[392],
@@ -19902,19 +20728,109 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[51, 127]),
         ],
     ),
+    "messaging.protocol": AttributeMetadata(
+        brief="OSI application layer or non-OSI equivalent.",
+        type=AttributeType.STRING,
+        keys=(
+            "network.protocol.name",
+            "mcp.resource.protocol",
+            "messaging.protocol",
+            "net.protocol.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AMQP",
+        examples=["AMQP"],
+        deprecation=DeprecationInfo(
+            replacement="network.protocol.name",
+            reason="This attribute is being deprecated in favor of network.protocol.name.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.protocol.name", "net.protocol.name", "mcp.resource.protocol"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.protocol attribute",
+            ),
+        ],
+    ),
+    "messaging.protocol_version": AttributeMetadata(
+        brief="The actual version of the protocol used for network communication.",
+        type=AttributeType.STRING,
+        keys=(
+            "network.protocol.version",
+            "http.flavor",
+            "messaging.protocol_version",
+            "net.protocol.version",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="0.9.1",
+        examples=["0.9.1"],
+        deprecation=DeprecationInfo(
+            replacement="network.protocol.version",
+            reason="This attribute is being deprecated in favor of network.protocol.version.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["network.protocol.version", "http.flavor", "net.protocol.version"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.protocol_version attribute",
+            ),
+        ],
+    ),
     "messaging.rabbitmq.destination.routing_key": AttributeMetadata(
         brief="RabbitMQ message routing key.",
         type=AttributeType.STRING,
-        keys=("messaging.rabbitmq.destination.routing_key",),
+        keys=(
+            "messaging.rabbitmq.destination.routing_key",
+            "messaging.rabbitmq.routing_key",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="myKey",
+        aliases=["messaging.rabbitmq.routing_key"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.rabbitmq.routing_key as an alias",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[468],
                 description="Added messaging.rabbitmq.destination.routing_key attribute",
+            ),
+        ],
+    ),
+    "messaging.rabbitmq.routing_key": AttributeMetadata(
+        brief="RabbitMQ message routing key.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.rabbitmq.destination.routing_key",
+            "messaging.rabbitmq.routing_key",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="myKey",
+        examples=["myKey"],
+        deprecation=DeprecationInfo(
+            replacement="messaging.rabbitmq.destination.routing_key",
+            reason="This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["messaging.rabbitmq.destination.routing_key"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[581],
+                description="Added messaging.rabbitmq.routing_key attribute",
             ),
         ],
     ),
@@ -19929,6 +20845,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "messaging.url": AttributeMetadata(
+        brief="The connection string of the messaging broker.",
+        type=AttributeType.STRING,
+        keys=(
+            "url.full",
+            "aws.request.url",
+            "http.url",
+            "messaging.url",
+            "url",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="amqp://guest:guest@localhost:5672",
+        examples=["amqp://guest:guest@localhost:5672"],
+        deprecation=DeprecationInfo(
+            replacement="url.full",
+            reason="This attribute is being deprecated in favor of url.full.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["url.full", "http.url", "url", "aws.request.url"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[581], description="Added messaging.url attribute"
+            ),
         ],
     ),
     "method": AttributeMetadata(
@@ -20151,8 +21094,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "http.host",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -20218,7 +21165,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="server.address",
             reason="Deprecated, use server.address on client spans and client.address on server spans.",
         ),
+        aliases=[
+            "address",
+            "server.address",
+            "http.server_name",
+            "net.host.name",
+            "http.host",
+            "server_name",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added the server.address alias group to net.peer.name",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20247,6 +21206,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.name",
             "mcp.resource.protocol",
+            "messaging.protocol",
             "net.protocol.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -20256,8 +21216,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="network.protocol.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["network.protocol.name", "mcp.resource.protocol"],
+        aliases=[
+            "network.protocol.name",
+            "mcp.resource.protocol",
+            "messaging.protocol",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.protocol as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20268,6 +21235,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.version",
             "http.flavor",
+            "messaging.protocol_version",
             "net.protocol.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -20277,8 +21245,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="network.protocol.version", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["network.protocol.version", "http.flavor"],
+        aliases=[
+            "network.protocol.version",
+            "http.flavor",
+            "messaging.protocol_version",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.protocol_version as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20393,7 +21369,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="network.peer.port", status=DeprecationStatus.BACKFILL
         ),
+        aliases=["network.peer.port"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added network.peer.port as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -20402,20 +21382,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "net.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        keys=(
-            "network.transport",
-            "mcp.transport",
-            "net.transport",
-        ),
+        keys=("net.transport",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
         deprecation=DeprecationInfo(
-            replacement="network.transport", status=DeprecationStatus.BACKFILL
+            replacement="network.transport",
+            reason="This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.",
         ),
         aliases=["network.transport", "mcp.transport"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Set net.transport to _status null, because its values change on the replacement",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20546,7 +21527,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=65400,
+        aliases=["net.sock.peer.port"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.sock.peer.port as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20557,14 +21542,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.name",
             "mcp.resource.protocol",
+            "messaging.protocol",
             "net.protocol.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
-        aliases=["net.protocol.name", "mcp.resource.protocol"],
+        aliases=["net.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.protocol as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20575,14 +21564,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.protocol.version",
             "http.flavor",
+            "messaging.protocol_version",
             "net.protocol.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1.1",
-        aliases=["http.flavor", "net.protocol.version"],
+        aliases=["http.flavor", "net.protocol.version", "messaging.protocol_version"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added messaging.protocol_version as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -20593,7 +21587,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "network.transport",
             "mcp.transport",
-            "net.transport",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -20855,14 +21848,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "params.<key>",
             "url.path.parameter.<key>",
+            "url.path.params.<key>",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="params.id='123'",
-        aliases=["url.path.parameter.<key>"],
+        aliases=["url.path.parameter.<key>", "url.path.params.<key>"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added url.path.params.<key> as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
     ),
@@ -23062,8 +24059,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "http.host",
             "server_name",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -23117,8 +24118,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
+            "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added net.peer.name as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
             ),
@@ -23744,14 +24749,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "url.full",
             "aws.request.url",
             "http.url",
+            "messaging.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
-        aliases=["http.url", "url", "aws.request.url"],
+        aliases=["http.url", "url", "aws.request.url", "messaging.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.url as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[488],
@@ -23779,15 +24788,47 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "url.path.parameter.<key>",
             "params.<key>",
+            "url.path.params.<key>",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="url.path.parameter.id='123'",
-        aliases=["params.<key>"],
+        aliases=["params.<key>", "url.path.params.<key>"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added url.path.params.<key> as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
+    ),
+    "url.path.params.<key>": AttributeMetadata(
+        brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
+        type=AttributeType.STRING,
+        keys=(
+            "url.path.parameter.<key>",
+            "params.<key>",
+            "url.path.params.<key>",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        has_dynamic_suffix=True,
+        example="url.path.params.id='123'",
+        examples=["url.path.params.id='123'"],
+        deprecation=DeprecationInfo(
+            replacement="url.path.parameter.<key>",
+            reason="This attribute is being deprecated in favor of url.path.parameter.<key>.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["url.path.parameter.<key>", "params.<key>"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[586],
+                description="Added url.path.params.<key> attribute",
+            ),
         ],
     ),
     "url.port": AttributeMetadata(
@@ -23890,6 +24931,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "url.full",
             "aws.request.url",
             "http.url",
+            "messaging.url",
             "url",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -23899,8 +24941,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="url.full", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["url.full", "http.url", "aws.request.url"],
+        aliases=["url.full", "http.url", "aws.request.url", "messaging.url"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added messaging.url as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -24547,18 +25592,26 @@ Attributes = TypedDict(
         "ai.input_messages": str,
         "ai.is_search_required": bool,
         "ai.metadata": str,
+        "ai.model.id": str,
         "ai.model.provider": str,
         "ai.model_id": str,
         "ai.pipeline.name": str,
         "ai.preamble": str,
         "ai.presence_penalty": float,
+        "ai.prompt": str,
         "ai.prompt.messages": str,
+        "ai.prompt.tools": List[str],
         "ai.prompt_tokens.used": int,
         "ai.raw_prompting": bool,
+        "ai.response.id": str,
+        "ai.response.model": str,
+        "ai.response.object": str,
         "ai.response.text": str,
+        "ai.response.timestamp": str,
         "ai.response.toolCalls": str,
         "ai.response_format": str,
         "ai.responses": List[str],
+        "ai.schema": str,
         "ai.search_queries": List[str],
         "ai.search_results": List[str],
         "ai.seed": str,
@@ -24574,6 +25627,8 @@ Attributes = TypedDict(
         "ai.top_p": float,
         "ai.total_cost": float,
         "ai.total_tokens.used": int,
+        "ai.usage.tokens": int,
+        "ai.values": str,
         "ai.warnings": List[str],
         "angular.version": str,
         "app.app_build": str,
@@ -24744,6 +25799,7 @@ Attributes = TypedDict(
         "culture.locale": str,
         "culture.timezone": str,
         "db.collection.name": str,
+        "db.connection_string": str,
         "db.driver.name": str,
         "db.mongodb.collection": str,
         "db.name": str,
@@ -24881,6 +25937,7 @@ Attributes = TypedDict(
         "gen_ai.request.model": str,
         "gen_ai.request.presence_penalty": float,
         "gen_ai.request.reasoning.level": str,
+        "gen_ai.request.schema": str,
         "gen_ai.request.seed": str,
         "gen_ai.request.stop_sequences": List[str],
         "gen_ai.request.temperature": float,
@@ -24890,6 +25947,7 @@ Attributes = TypedDict(
         "gen_ai.response.finish_reasons": str,
         "gen_ai.response.id": str,
         "gen_ai.response.model": str,
+        "gen_ai.response.object": str,
         "gen_ai.response.streaming": bool,
         "gen_ai.response.text": str,
         "gen_ai.response.time_to_first_chunk": float,
@@ -24923,6 +25981,7 @@ Attributes = TypedDict(
         "graphql.operation.name": str,
         "graphql.operation.type": str,
         "graphql.processing.type": str,
+        "graphql.source": str,
         "grpc.error.bad_request.field_violations": List[str],
         "grpc.error.debug_info.detail": str,
         "grpc.error.debug_info.stack_entries": List[str],
@@ -25047,6 +26106,7 @@ Attributes = TypedDict(
         "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.batch.message_count": int,
+        "messaging.conversation_id": str,
         "messaging.destination": str,
         "messaging.destination.connection": str,
         "messaging.destination.name": str,
@@ -25061,10 +26121,16 @@ Attributes = TypedDict(
         "messaging.message.id": str,
         "messaging.message.receive.latency": int,
         "messaging.message.retry.count": int,
+        "messaging.message_id": str,
+        "messaging.operation": str,
         "messaging.operation.name": str,
         "messaging.operation.type": str,
+        "messaging.protocol": str,
+        "messaging.protocol_version": str,
         "messaging.rabbitmq.destination.routing_key": str,
+        "messaging.rabbitmq.routing_key": str,
         "messaging.system": str,
+        "messaging.url": str,
         "method": str,
         "middleware.name": str,
         "navigation.origin": str,
@@ -25282,6 +26348,7 @@ Attributes = TypedDict(
         "url.full": str,
         "url.path": str,
         "url.path.parameter.<key>": str,
+        "url.path.params.<key>": str,
         "url.port": int,
         "url.query": str,
         "url.same_origin": bool,

@@ -7,8 +7,13 @@
   },
   "is_in_otel": true,
   "example": "f47ac10b58cc4372a5670e02b2c3d479",
+  "alias": ["messaging.message_id"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added messaging.message_id as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]

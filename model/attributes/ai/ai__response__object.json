@@ -1,0 +1,22 @@
+{
+  "key": "ai.response.object",
+  "brief": "The type of the object returned by the model.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["chat.completion"],
+  "deprecation": {
+    "_status": null,
+    "reason": "This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [583],
+      "description": "Added ai.response.object attribute"
+    }
+  ]
+}
