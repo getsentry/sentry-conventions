@@ -1,0 +1,14 @@
+{
+  "brief": "Cache",
+  "operations": [
+    {
+      "name": "Cache operations",
+      "brief": "Operations that interact with a cache, such as reading or writing cached values.",
+      "is_in_otel": false,
+      "otel_notes": "Cache conventions proposal pending: https://github.com/open-telemetry/semantic-conventions/issues/1747",
+      "ops": ["cache", "cache.get", "cache.put", "cache.remove"],
+      "templates": ["{{cache.operation}}", "Cache operation"],
+      "examples": ["get", "put", "remove"]
+    }
+  ]
+}
