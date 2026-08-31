@@ -7,13 +7,17 @@
   },
   "is_in_otel": false,
   "example": "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]",
-  "alias": [],
+  "alias": ["gen_ai.tool.definitions"],
   "deprecation": {
     "_status": "normalize",
     "replacement": "gen_ai.tool.definitions"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added gen_ai.tool.definitions as an alias"
+    },
     {
       "version": "0.4.0",
       "prs": [221]

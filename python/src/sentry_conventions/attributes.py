@@ -4755,6 +4755,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.tool.definitions
     DEPRECATED: Use gen_ai.tool.definitions instead
     Example: "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
     """
@@ -5139,6 +5140,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: gen_ai.request.available_tools
     Example: "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
     """
 
@@ -11066,7 +11068,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.prompt.tools attribute"
+                version="next",
+                prs=[583, 595],
+                description="Added ai.prompt.tools attribute",
             ),
         ],
     ),
@@ -17065,7 +17069,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.definitions", status=DeprecationStatus.NORMALIZE
         ),
+        aliases=["gen_ai.tool.definitions"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added gen_ai.tool.definitions as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 127]),
         ],
@@ -17600,7 +17608,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
+        aliases=["gen_ai.request.available_tools"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.request.available_tools as an alias",
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),

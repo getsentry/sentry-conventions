@@ -16,7 +16,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [583],
+      "prs": [583, 595],
       "description": "Added ai.prompt.tools attribute"
     }
   ]
