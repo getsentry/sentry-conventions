@@ -7,8 +7,8 @@
       "is_in_otel": false,
       "otel_notes": "Cache conventions proposal pending: https://github.com/open-telemetry/semantic-conventions/issues/1747",
       "ops": ["cache", "cache.get", "cache.put", "cache.remove"],
-      "templates": ["{{cache.operation}}", "Cache operation"],
-      "examples": ["get", "put", "remove"]
+      "templates": ["cache.{{cache.operation}}", "Cache operation"],
+      "examples": ["cache.get", "cache.put", "cache.remove", "Cache operation"]
     }
   ]
 }
