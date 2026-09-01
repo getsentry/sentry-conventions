@@ -14,6 +14,31 @@
       "ops": ["navigation", "navigation.redirect"],
       "templates": ["{{navigation.route.id}}", "{{url.template}}", "{{url.path}}", "{{url.full}}"],
       "examples": ["UserProfile", "/users/:id", "/users/123", "http://example.com/users/123"]
+    },
+    {
+      "name": "Navigation timing",
+      "brief": "A phase of the browser's navigation timing for a document load.",
+      "ops": [
+        "browser.cache",
+        "browser.dns",
+        "browser.connect",
+        "browser.tls_ssl",
+        "browser.redirect",
+        "browser.request",
+        "browser.response",
+        "browser.unload_event",
+        "browser.dom_content_loaded_event",
+        "browser.load_event"
+      ],
+      "templates": ["{{url.full}}", "{{url.path}}"],
+      "examples": ["http://example.com/users/123", "/users/123"]
+    },
+    {
+      "name": "Paint",
+      "brief": "A paint timing entry reported by the browser.",
+      "ops": ["browser.paint"],
+      "templates": ["{{browser.paint.type}}"],
+      "examples": ["first-paint", "first-contentful-paint"]
     }
   ]
 }
