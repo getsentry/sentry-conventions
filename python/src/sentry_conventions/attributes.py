@@ -2242,6 +2242,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Chrome"
     """
 
+    # Path: model/attributes/browser/browser__paint__type.json
+    BROWSER_PAINT_TYPE: Literal["browser.paint.type"] = "browser.paint.type"
+    """The type of paint timing entry reported by the browser.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "first-paint"
+    Example: "first-contentful-paint"
+    """
+
     # Path: model/attributes/browser/browser__performance__navigation__activation_start.json
     BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START: Literal[
         "browser.performance.navigation.activation_start"
@@ -13508,6 +13520,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127, 139]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "browser.paint.type": AttributeMetadata(
+        brief="The type of paint timing entry reported by the browser.",
+        type=AttributeType.STRING,
+        keys=("browser.paint.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="first-paint",
+        examples=["first-paint", "first-contentful-paint"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[606],
+                description="Added browser.paint.type attribute",
+            ),
         ],
     ),
     "browser.performance.navigation.activation_start": AttributeMetadata(
@@ -25794,6 +25823,7 @@ Attributes = TypedDict(
         "browser.bfcache.outcome": str,
         "browser.bfcache.reason": str,
         "browser.name": str,
+        "browser.paint.type": str,
         "browser.performance.navigation.activation_start": float,
         "browser.performance.time_origin": float,
         "browser.report.type": str,
