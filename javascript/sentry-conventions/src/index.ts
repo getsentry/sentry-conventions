@@ -8,6 +8,7 @@ export type {
   DeprecationInfo,
   AttributeMetadata,
   AttributeSearchMetadata,
+  AttributeSearchName,
   AttributeSearchType,
 } from './attributes';
 

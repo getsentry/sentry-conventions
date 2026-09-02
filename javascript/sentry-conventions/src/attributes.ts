@@ -32943,6 +32943,5156 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
 };
 
+/**
+ * Search name for {@link ADDRESS}. `address`
+ */
+export const SEARCH_ADDRESS = 'address';
+
+/**
+ * Search name for {@link AI_CITATIONS}. `ai.citations`
+ */
+export const SEARCH_AI_CITATIONS = 'ai.citations';
+
+/**
+ * Search name for {@link AI_COMPLETION_TOKENS_USED}. `ai.completion_tokens.used`
+ */
+export const SEARCH_AI_COMPLETION_TOKENS_USED = 'ai.completion_tokens.used';
+
+/**
+ * Search name for {@link AI_DOCUMENTS}. `ai.documents`
+ */
+export const SEARCH_AI_DOCUMENTS = 'ai.documents';
+
+/**
+ * Search name for {@link AI_FINISH_REASON}. `ai.finish_reason`
+ */
+export const SEARCH_AI_FINISH_REASON = 'ai.finish_reason';
+
+/**
+ * Search name for {@link AI_FREQUENCY_PENALTY}. `ai.frequency_penalty`
+ */
+export const SEARCH_AI_FREQUENCY_PENALTY = 'ai.frequency_penalty';
+
+/**
+ * Search name for {@link AI_FUNCTION_CALL}. `ai.function_call`
+ */
+export const SEARCH_AI_FUNCTION_CALL = 'ai.function_call';
+
+/**
+ * Search name for {@link AI_GENERATION_ID}. `ai.generation_id`
+ */
+export const SEARCH_AI_GENERATION_ID = 'ai.generation_id';
+
+/**
+ * Search name for {@link AI_INPUT_MESSAGES}. `ai.input_messages`
+ */
+export const SEARCH_AI_INPUT_MESSAGES = 'ai.input_messages';
+
+/**
+ * Search name for {@link AI_IS_SEARCH_REQUIRED}. `ai.is_search_required`
+ */
+export const SEARCH_AI_IS_SEARCH_REQUIRED = 'ai.is_search_required';
+
+/**
+ * Search name for {@link AI_METADATA}. `ai.metadata`
+ */
+export const SEARCH_AI_METADATA = 'ai.metadata';
+
+/**
+ * Search name for {@link AI_MODEL_ID}. `ai.model.id`
+ */
+export const SEARCH_AI_MODEL_ID = 'ai.model.id';
+
+/**
+ * Search name for {@link AI_MODEL_PROVIDER}. `ai.model.provider`
+ */
+export const SEARCH_AI_MODEL_PROVIDER = 'ai.model.provider';
+
+/**
+ * Search name for {@link _AI_MODEL_ID}. `ai.model_id`
+ */
+export const _SEARCH_AI_MODEL_ID = 'ai.model_id';
+
+/**
+ * Search name for {@link AI_PIPELINE_NAME}. `ai.pipeline.name`
+ */
+export const SEARCH_AI_PIPELINE_NAME = 'ai.pipeline.name';
+
+/**
+ * Search name for {@link AI_PREAMBLE}. `ai.preamble`
+ */
+export const SEARCH_AI_PREAMBLE = 'ai.preamble';
+
+/**
+ * Search name for {@link AI_PRESENCE_PENALTY}. `ai.presence_penalty`
+ */
+export const SEARCH_AI_PRESENCE_PENALTY = 'ai.presence_penalty';
+
+/**
+ * Search name for {@link AI_PROMPT}. `ai.prompt`
+ */
+export const SEARCH_AI_PROMPT = 'ai.prompt';
+
+/**
+ * Search name for {@link AI_PROMPT_MESSAGES}. `ai.prompt.messages`
+ */
+export const SEARCH_AI_PROMPT_MESSAGES = 'ai.prompt.messages';
+
+/**
+ * Search name for {@link AI_PROMPT_TOOLS}. `ai.prompt.tools`
+ */
+export const SEARCH_AI_PROMPT_TOOLS = 'ai.prompt.tools';
+
+/**
+ * Search name for {@link AI_PROMPT_TOKENS_USED}. `ai.prompt_tokens.used`
+ */
+export const SEARCH_AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
+
+/**
+ * Search name for {@link AI_RAW_PROMPTING}. `ai.raw_prompting`
+ */
+export const SEARCH_AI_RAW_PROMPTING = 'ai.raw_prompting';
+
+/**
+ * Search name for {@link AI_RESPONSE_ID}. `ai.response.id`
+ */
+export const SEARCH_AI_RESPONSE_ID = 'ai.response.id';
+
+/**
+ * Search name for {@link AI_RESPONSE_MODEL}. `ai.response.model`
+ */
+export const SEARCH_AI_RESPONSE_MODEL = 'ai.response.model';
+
+/**
+ * Search name for {@link AI_RESPONSE_OBJECT}. `ai.response.object`
+ */
+export const SEARCH_AI_RESPONSE_OBJECT = 'ai.response.object';
+
+/**
+ * Search name for {@link AI_RESPONSE_TEXT}. `ai.response.text`
+ */
+export const SEARCH_AI_RESPONSE_TEXT = 'ai.response.text';
+
+/**
+ * Search name for {@link AI_RESPONSE_TIMESTAMP}. `ai.response.timestamp`
+ */
+export const SEARCH_AI_RESPONSE_TIMESTAMP = 'ai.response.timestamp';
+
+/**
+ * Search name for {@link AI_RESPONSE_TOOLCALLS}. `ai.response.toolCalls`
+ */
+export const SEARCH_AI_RESPONSE_TOOLCALLS = 'ai.response.toolCalls';
+
+/**
+ * Search name for {@link AI_RESPONSE_FORMAT}. `ai.response_format`
+ */
+export const SEARCH_AI_RESPONSE_FORMAT = 'ai.response_format';
+
+/**
+ * Search name for {@link AI_RESPONSES}. `ai.responses`
+ */
+export const SEARCH_AI_RESPONSES = 'ai.responses';
+
+/**
+ * Search name for {@link AI_SCHEMA}. `ai.schema`
+ */
+export const SEARCH_AI_SCHEMA = 'ai.schema';
+
+/**
+ * Search name for {@link AI_SEARCH_QUERIES}. `ai.search_queries`
+ */
+export const SEARCH_AI_SEARCH_QUERIES = 'ai.search_queries';
+
+/**
+ * Search name for {@link AI_SEARCH_RESULTS}. `ai.search_results`
+ */
+export const SEARCH_AI_SEARCH_RESULTS = 'ai.search_results';
+
+/**
+ * Search name for {@link AI_SEED}. `ai.seed`
+ */
+export const SEARCH_AI_SEED = 'ai.seed';
+
+/**
+ * Search name for {@link AI_STREAMING}. `ai.streaming`
+ */
+export const SEARCH_AI_STREAMING = 'ai.streaming';
+
+/**
+ * Search name for {@link AI_TAGS}. `ai.tags`
+ */
+export const SEARCH_AI_TAGS = 'ai.tags';
+
+/**
+ * Search name for {@link AI_TEMPERATURE}. `ai.temperature`
+ */
+export const SEARCH_AI_TEMPERATURE = 'ai.temperature';
+
+/**
+ * Search name for {@link AI_TEXTS}. `ai.texts`
+ */
+export const SEARCH_AI_TEXTS = 'ai.texts';
+
+/**
+ * Search name for {@link AI_TOOLCALL_ARGS}. `ai.toolCall.args`
+ */
+export const SEARCH_AI_TOOLCALL_ARGS = 'ai.toolCall.args';
+
+/**
+ * Search name for {@link AI_TOOLCALL_RESULT}. `ai.toolCall.result`
+ */
+export const SEARCH_AI_TOOLCALL_RESULT = 'ai.toolCall.result';
+
+/**
+ * Search name for {@link AI_TOOL_CALLS}. `ai.tool_calls`
+ */
+export const SEARCH_AI_TOOL_CALLS = 'ai.tool_calls';
+
+/**
+ * Search name for {@link AI_TOOLS}. `ai.tools`
+ */
+export const SEARCH_AI_TOOLS = 'ai.tools';
+
+/**
+ * Search name for {@link AI_TOP_K}. `ai.top_k`
+ */
+export const SEARCH_AI_TOP_K = 'ai.top_k';
+
+/**
+ * Search name for {@link AI_TOP_P}. `ai.top_p`
+ */
+export const SEARCH_AI_TOP_P = 'ai.top_p';
+
+/**
+ * Search name for {@link AI_TOTAL_COST}. `ai.total_cost`
+ */
+export const SEARCH_AI_TOTAL_COST = 'ai.total_cost';
+
+/**
+ * Search name for {@link AI_TOTAL_TOKENS_USED}. `ai.total_tokens.used`
+ */
+export const SEARCH_AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
+
+/**
+ * Search name for {@link AI_USAGE_TOKENS}. `ai.usage.tokens`
+ */
+export const SEARCH_AI_USAGE_TOKENS = 'ai.usage.tokens';
+
+/**
+ * Search name for {@link AI_VALUES}. `ai.values`
+ */
+export const SEARCH_AI_VALUES = 'ai.values';
+
+/**
+ * Search name for {@link AI_WARNINGS}. `ai.warnings`
+ */
+export const SEARCH_AI_WARNINGS = 'ai.warnings';
+
+/**
+ * Search name for {@link ANGULAR_VERSION}. `angular.version`
+ */
+export const SEARCH_ANGULAR_VERSION = 'angular.version';
+
+/**
+ * Search name for {@link APP_APP_BUILD}. `app.app_build`
+ */
+export const SEARCH_APP_APP_BUILD = 'app.app_build';
+
+/**
+ * Search name for {@link APP_APP_IDENTIFIER}. `app.app_identifier`
+ */
+export const SEARCH_APP_APP_IDENTIFIER = 'app.app_identifier';
+
+/**
+ * Search name for {@link APP_APP_NAME}. `app.app_name`
+ */
+export const SEARCH_APP_APP_NAME = 'app.app_name';
+
+/**
+ * Search name for {@link APP_APP_START_TIME}. `app.app_start_time`
+ */
+export const SEARCH_APP_APP_START_TIME = 'app.app_start_time';
+
+/**
+ * Search name for {@link APP_APP_VERSION}. `app.app_version`
+ */
+export const SEARCH_APP_APP_VERSION = 'app.app_version';
+
+/**
+ * Search name for {@link APP_BUILD}. `app.build`
+ */
+export const SEARCH_APP_BUILD = 'app.build';
+
+/**
+ * Search name for {@link APP_IDENTIFIER}. `app.identifier`
+ */
+export const SEARCH_APP_IDENTIFIER = 'app.identifier';
+
+/**
+ * Search name for {@link APP_IN_FOREGROUND}. `app.in_foreground`
+ */
+export const SEARCH_APP_IN_FOREGROUND = 'app.in_foreground';
+
+/**
+ * Search name for {@link APP_NAME}. `app.name`
+ */
+export const SEARCH_APP_NAME = 'app.name';
+
+/**
+ * Search name for {@link APP_START_TIME}. `app.start_time`
+ */
+export const SEARCH_APP_START_TIME = 'app.start_time';
+
+/**
+ * Search name for {@link APP_VERSION}. `app.version`
+ */
+export const SEARCH_APP_VERSION = 'app.version';
+
+/**
+ * Search name for {@link APP_VITALS_FRAMES_DELAY_VALUE}. `app.vitals.frames.delay.value`
+ */
+export const SEARCH_APP_VITALS_FRAMES_DELAY_VALUE = 'app.vitals.frames.delay.value';
+
+/**
+ * Search name for {@link APP_VITALS_FRAMES_FROZEN_COUNT}. `app.vitals.frames.frozen.count`
+ */
+export const SEARCH_APP_VITALS_FRAMES_FROZEN_COUNT = 'app.vitals.frames.frozen.count';
+
+/**
+ * Search name for {@link APP_VITALS_FRAMES_FROZEN_RATE}. `app.vitals.frames.frozen.rate`
+ */
+export const SEARCH_APP_VITALS_FRAMES_FROZEN_RATE = 'app.vitals.frames.frozen.rate';
+
+/**
+ * Search name for {@link APP_VITALS_FRAMES_SLOW_COUNT}. `app.vitals.frames.slow.count`
+ */
+export const SEARCH_APP_VITALS_FRAMES_SLOW_COUNT = 'app.vitals.frames.slow.count';
+
+/**
+ * Search name for {@link APP_VITALS_FRAMES_SLOW_RATE}. `app.vitals.frames.slow.rate`
+ */
+export const SEARCH_APP_VITALS_FRAMES_SLOW_RATE = 'app.vitals.frames.slow.rate';
+
+/**
+ * Search name for {@link APP_VITALS_FRAMES_TOTAL_COUNT}. `app.vitals.frames.total.count`
+ */
+export const SEARCH_APP_VITALS_FRAMES_TOTAL_COUNT = 'app.vitals.frames.total.count';
+
+/**
+ * Search name for {@link APP_VITALS_STALL_DURATION}. `app.vitals.stall.duration`
+ */
+export const SEARCH_APP_VITALS_STALL_DURATION = 'app.vitals.stall.duration';
+
+/**
+ * Search name for {@link APP_VITALS_STALL_PERCENTAGE}. `app.vitals.stall.percentage`
+ */
+export const SEARCH_APP_VITALS_STALL_PERCENTAGE = 'app.vitals.stall.percentage';
+
+/**
+ * Search name for {@link APP_VITALS_START_COLD_VALUE}. `app.vitals.start.cold.value`
+ */
+export const SEARCH_APP_VITALS_START_COLD_VALUE = 'app.vitals.start.cold.value';
+
+/**
+ * Search name for {@link APP_VITALS_START_PREWARMED}. `app.vitals.start.prewarmed`
+ */
+export const SEARCH_APP_VITALS_START_PREWARMED = 'app.vitals.start.prewarmed';
+
+/**
+ * Search name for {@link APP_VITALS_START_REASON}. `app.vitals.start.reason`
+ */
+export const SEARCH_APP_VITALS_START_REASON = 'app.vitals.start.reason';
+
+/**
+ * Search name for {@link APP_VITALS_START_SCREEN}. `app.vitals.start.screen`
+ */
+export const SEARCH_APP_VITALS_START_SCREEN = 'app.vitals.start.screen';
+
+/**
+ * Search name for {@link APP_VITALS_START_TYPE}. `app.vitals.start.type`
+ */
+export const SEARCH_APP_VITALS_START_TYPE = 'app.vitals.start.type';
+
+/**
+ * Search name for {@link APP_VITALS_START_WARM_VALUE}. `app.vitals.start.warm.value`
+ */
+export const SEARCH_APP_VITALS_START_WARM_VALUE = 'app.vitals.start.warm.value';
+
+/**
+ * Search name for {@link APP_VITALS_TTFD_VALUE}. `app.vitals.ttfd.value`
+ */
+export const SEARCH_APP_VITALS_TTFD_VALUE = 'app.vitals.ttfd.value';
+
+/**
+ * Search name for {@link APP_VITALS_TTID_VALUE}. `app.vitals.ttid.value`
+ */
+export const SEARCH_APP_VITALS_TTID_VALUE = 'app.vitals.ttid.value';
+
+/**
+ * Search name for {@link APP_START_COLD}. `app_start_cold`
+ */
+export const SEARCH_APP_START_COLD = 'app_start_cold';
+
+/**
+ * Search name for {@link APP_START_TYPE}. `app_start_type`
+ */
+export const SEARCH_APP_START_TYPE = 'app_start_type';
+
+/**
+ * Search name for {@link APP_START_WARM}. `app_start_warm`
+ */
+export const SEARCH_APP_START_WARM = 'app_start_warm';
+
+/**
+ * Search name for {@link ART_GC_BLOCKING_COUNT}. `art.gc.blocking_count`
+ */
+export const SEARCH_ART_GC_BLOCKING_COUNT = 'art.gc.blocking_count';
+
+/**
+ * Search name for {@link ART_GC_BLOCKING_TIME}. `art.gc.blocking_time`
+ */
+export const SEARCH_ART_GC_BLOCKING_TIME = 'art.gc.blocking_time';
+
+/**
+ * Search name for {@link ART_GC_PRE_OOME_COUNT}. `art.gc.pre_oome_count`
+ */
+export const SEARCH_ART_GC_PRE_OOME_COUNT = 'art.gc.pre_oome_count';
+
+/**
+ * Search name for {@link ART_GC_TOTAL_COUNT}. `art.gc.total_count`
+ */
+export const SEARCH_ART_GC_TOTAL_COUNT = 'art.gc.total_count';
+
+/**
+ * Search name for {@link ART_GC_TOTAL_TIME}. `art.gc.total_time`
+ */
+export const SEARCH_ART_GC_TOTAL_TIME = 'art.gc.total_time';
+
+/**
+ * Search name for {@link ART_GC_WAITING_TIME}. `art.gc.waiting_time`
+ */
+export const SEARCH_ART_GC_WAITING_TIME = 'art.gc.waiting_time';
+
+/**
+ * Search name for {@link ART_MEMORY_FREE}. `art.memory.free`
+ */
+export const SEARCH_ART_MEMORY_FREE = 'art.memory.free';
+
+/**
+ * Search name for {@link ART_MEMORY_FREE_UNTIL_GC}. `art.memory.free_until_gc`
+ */
+export const SEARCH_ART_MEMORY_FREE_UNTIL_GC = 'art.memory.free_until_gc';
+
+/**
+ * Search name for {@link ART_MEMORY_FREE_UNTIL_OOME}. `art.memory.free_until_oome`
+ */
+export const SEARCH_ART_MEMORY_FREE_UNTIL_OOME = 'art.memory.free_until_oome';
+
+/**
+ * Search name for {@link ART_MEMORY_MAX}. `art.memory.max`
+ */
+export const SEARCH_ART_MEMORY_MAX = 'art.memory.max';
+
+/**
+ * Search name for {@link ART_MEMORY_TOTAL}. `art.memory.total`
+ */
+export const SEARCH_ART_MEMORY_TOTAL = 'art.memory.total';
+
+/**
+ * Search name for {@link AWS_CLOUDWATCH_LOGS_LOG_GROUP}. `aws.cloudwatch.logs.log_group`
+ */
+export const SEARCH_AWS_CLOUDWATCH_LOGS_LOG_GROUP = 'aws.cloudwatch.logs.log_group';
+
+/**
+ * Search name for {@link AWS_CLOUDWATCH_LOGS_LOG_STREAM}. `aws.cloudwatch.logs.log_stream`
+ */
+export const SEARCH_AWS_CLOUDWATCH_LOGS_LOG_STREAM = 'aws.cloudwatch.logs.log_stream';
+
+/**
+ * Search name for {@link AWS_CLOUDWATCH_LOGS_URL}. `aws.cloudwatch.logs.url`
+ */
+export const SEARCH_AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS}. `aws.dynamodb.attribute_definitions`
+ */
+export const SEARCH_AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS = 'aws.dynamodb.attribute_definitions';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_CONSISTENT_READ}. `aws.dynamodb.consistent_read`
+ */
+export const SEARCH_AWS_DYNAMODB_CONSISTENT_READ = 'aws.dynamodb.consistent_read';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_CONSUMED_CAPACITY}. `aws.dynamodb.consumed_capacity`
+ */
+export const SEARCH_AWS_DYNAMODB_CONSUMED_CAPACITY = 'aws.dynamodb.consumed_capacity';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_COUNT}. `aws.dynamodb.count`
+ */
+export const SEARCH_AWS_DYNAMODB_COUNT = 'aws.dynamodb.count';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_EXCLUSIVE_START_TABLE}. `aws.dynamodb.exclusive_start_table`
+ */
+export const SEARCH_AWS_DYNAMODB_EXCLUSIVE_START_TABLE = 'aws.dynamodb.exclusive_start_table';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES}. `aws.dynamodb.global_secondary_index_updates`
+ */
+export const SEARCH_AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES = 'aws.dynamodb.global_secondary_index_updates';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES}. `aws.dynamodb.global_secondary_indexes`
+ */
+export const SEARCH_AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES = 'aws.dynamodb.global_secondary_indexes';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_INDEX_NAME}. `aws.dynamodb.index_name`
+ */
+export const SEARCH_AWS_DYNAMODB_INDEX_NAME = 'aws.dynamodb.index_name';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_ITEM_COLLECTION_METRICS}. `aws.dynamodb.item_collection_metrics`
+ */
+export const SEARCH_AWS_DYNAMODB_ITEM_COLLECTION_METRICS = 'aws.dynamodb.item_collection_metrics';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_LIMIT}. `aws.dynamodb.limit`
+ */
+export const SEARCH_AWS_DYNAMODB_LIMIT = 'aws.dynamodb.limit';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES}. `aws.dynamodb.local_secondary_indexes`
+ */
+export const SEARCH_AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES = 'aws.dynamodb.local_secondary_indexes';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_PROJECTION}. `aws.dynamodb.projection`
+ */
+export const SEARCH_AWS_DYNAMODB_PROJECTION = 'aws.dynamodb.projection';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_PROVISIONED_READ_CAPACITY}. `aws.dynamodb.provisioned_read_capacity`
+ */
+export const SEARCH_AWS_DYNAMODB_PROVISIONED_READ_CAPACITY = 'aws.dynamodb.provisioned_read_capacity';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY}. `aws.dynamodb.provisioned_write_capacity`
+ */
+export const SEARCH_AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY = 'aws.dynamodb.provisioned_write_capacity';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_SCAN_FORWARD}. `aws.dynamodb.scan_forward`
+ */
+export const SEARCH_AWS_DYNAMODB_SCAN_FORWARD = 'aws.dynamodb.scan_forward';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_SCANNED_COUNT}. `aws.dynamodb.scanned_count`
+ */
+export const SEARCH_AWS_DYNAMODB_SCANNED_COUNT = 'aws.dynamodb.scanned_count';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_SEGMENT}. `aws.dynamodb.segment`
+ */
+export const SEARCH_AWS_DYNAMODB_SEGMENT = 'aws.dynamodb.segment';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_SELECT}. `aws.dynamodb.select`
+ */
+export const SEARCH_AWS_DYNAMODB_SELECT = 'aws.dynamodb.select';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_TABLE_COUNT}. `aws.dynamodb.table_count`
+ */
+export const SEARCH_AWS_DYNAMODB_TABLE_COUNT = 'aws.dynamodb.table_count';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_TABLE_NAMES}. `aws.dynamodb.table_names`
+ */
+export const SEARCH_AWS_DYNAMODB_TABLE_NAMES = 'aws.dynamodb.table_names';
+
+/**
+ * Search name for {@link AWS_DYNAMODB_TOTAL_SEGMENTS}. `aws.dynamodb.total_segments`
+ */
+export const SEARCH_AWS_DYNAMODB_TOTAL_SEGMENTS = 'aws.dynamodb.total_segments';
+
+/**
+ * Search name for {@link AWS_EXTENDED_REQUEST_ID}. `aws.extended_request_id`
+ */
+export const SEARCH_AWS_EXTENDED_REQUEST_ID = 'aws.extended_request_id';
+
+/**
+ * Search name for {@link _AWS_KINESIS_STREAM_NAME}. `aws.kinesis.stream.name`
+ */
+export const SEARCH_AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream.name';
+
+/**
+ * Search name for {@link AWS_KINESIS_STREAM_NAME}. `aws.kinesis.stream_name`
+ */
+export const _SEARCH_AWS_KINESIS_STREAM_NAME = 'aws.kinesis.stream_name';
+
+/**
+ * Search name for {@link AWS_LAMBDA_AWS_REQUEST_ID}. `aws.lambda.aws_request_id`
+ */
+export const SEARCH_AWS_LAMBDA_AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
+
+/**
+ * Search name for {@link AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS}. `aws.lambda.execution_duration_in_millis`
+ */
+export const SEARCH_AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS = 'aws.lambda.execution_duration_in_millis';
+
+/**
+ * Search name for {@link AWS_LAMBDA_FUNCTION_NAME}. `aws.lambda.function_name`
+ */
+export const SEARCH_AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
+
+/**
+ * Search name for {@link AWS_LAMBDA_FUNCTION_VERSION}. `aws.lambda.function_version`
+ */
+export const SEARCH_AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
+
+/**
+ * Search name for {@link AWS_LAMBDA_INVOKED_ARN}. `aws.lambda.invoked_arn`
+ */
+export const SEARCH_AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked_arn';
+
+/**
+ * Search name for {@link AWS_LAMBDA_INVOKED_FUNCTION_ARN}. `aws.lambda.invoked_function_arn`
+ */
+export const SEARCH_AWS_LAMBDA_INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_function_arn';
+
+/**
+ * Search name for {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS}. `aws.lambda.remaining_time_in_millis`
+ */
+export const SEARCH_AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
+
+/**
+ * Search name for {@link AWS_LOG_GROUP_NAMES}. `aws.log.group.names`
+ */
+export const SEARCH_AWS_LOG_GROUP_NAMES = 'aws.log.group.names';
+
+/**
+ * Search name for {@link AWS_LOG_STREAM_NAMES}. `aws.log.stream.names`
+ */
+export const SEARCH_AWS_LOG_STREAM_NAMES = 'aws.log.stream.names';
+
+/**
+ * Search name for {@link AWS_OPERATION_NAME}. `aws.operation_name`
+ */
+export const SEARCH_AWS_OPERATION_NAME = 'aws.operation_name';
+
+/**
+ * Search name for {@link AWS_REQUEST_EXTENDED_ID}. `aws.request.extended_id`
+ */
+export const SEARCH_AWS_REQUEST_EXTENDED_ID = 'aws.request.extended_id';
+
+/**
+ * Search name for {@link _AWS_REQUEST_ID}. `aws.request.id`
+ */
+export const SEARCH_AWS_REQUEST_ID = 'aws.request.id';
+
+/**
+ * Search name for {@link AWS_REQUEST_URL}. `aws.request.url`
+ */
+export const SEARCH_AWS_REQUEST_URL = 'aws.request.url';
+
+/**
+ * Search name for {@link AWS_REQUEST_ID}. `aws.request_id`
+ */
+export const _SEARCH_AWS_REQUEST_ID = 'aws.request_id';
+
+/**
+ * Search name for {@link AWS_S3_BUCKET}. `aws.s3.bucket`
+ */
+export const SEARCH_AWS_S3_BUCKET = 'aws.s3.bucket';
+
+/**
+ * Search name for {@link AWS_SECRETSMANAGER_SECRET_ARN}. `aws.secretsmanager.secret.arn`
+ */
+export const SEARCH_AWS_SECRETSMANAGER_SECRET_ARN = 'aws.secretsmanager.secret.arn';
+
+/**
+ * Search name for {@link AWS_SNS_TOPIC_ARN}. `aws.sns.topic.arn`
+ */
+export const SEARCH_AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
+
+/**
+ * Search name for {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN}. `aws.step_functions.activity.arn`
+ */
+export const SEARCH_AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn';
+
+/**
+ * Search name for {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN}. `aws.step_functions.state_machine.arn`
+ */
+export const SEARCH_AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN = 'aws.step_functions.state_machine.arn';
+
+/**
+ * Search name for {@link AWS_REGION}. `aws_region`
+ */
+export const SEARCH_AWS_REGION = 'aws_region';
+
+/**
+ * Search name for {@link BLOCKED_MAIN_THREAD}. `blocked_main_thread`
+ */
+export const SEARCH_BLOCKED_MAIN_THREAD = 'blocked_main_thread';
+
+/**
+ * Search name for {@link BROWSER_BFCACHE_FRAME}. `browser.bfcache.frame`
+ */
+export const SEARCH_BROWSER_BFCACHE_FRAME = 'browser.bfcache.frame';
+
+/**
+ * Search name for {@link BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT}. `browser.bfcache.not_restored_reason_count`
+ */
+export const SEARCH_BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT = 'browser.bfcache.not_restored_reason_count';
+
+/**
+ * Search name for {@link BROWSER_BFCACHE_OUTCOME}. `browser.bfcache.outcome`
+ */
+export const SEARCH_BROWSER_BFCACHE_OUTCOME = 'browser.bfcache.outcome';
+
+/**
+ * Search name for {@link BROWSER_BFCACHE_REASON}. `browser.bfcache.reason`
+ */
+export const SEARCH_BROWSER_BFCACHE_REASON = 'browser.bfcache.reason';
+
+/**
+ * Search name for {@link BROWSER_NAME}. `browser.name`
+ */
+export const SEARCH_BROWSER_NAME = 'browser.name';
+
+/**
+ * Search name for {@link BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START}. `browser.performance.navigation.activation_start`
+ */
+export const SEARCH_BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START = 'browser.performance.navigation.activation_start';
+
+/**
+ * Search name for {@link BROWSER_PERFORMANCE_TIME_ORIGIN}. `browser.performance.time_origin`
+ */
+export const SEARCH_BROWSER_PERFORMANCE_TIME_ORIGIN = 'browser.performance.time_origin';
+
+/**
+ * Search name for {@link BROWSER_REPORT_TYPE}. `browser.report.type`
+ */
+export const SEARCH_BROWSER_REPORT_TYPE = 'browser.report.type';
+
+/**
+ * Search name for {@link BROWSER_SCRIPT_INVOKER}. `browser.script.invoker`
+ */
+export const SEARCH_BROWSER_SCRIPT_INVOKER = 'browser.script.invoker';
+
+/**
+ * Search name for {@link BROWSER_SCRIPT_INVOKER_TYPE}. `browser.script.invoker_type`
+ */
+export const SEARCH_BROWSER_SCRIPT_INVOKER_TYPE = 'browser.script.invoker_type';
+
+/**
+ * Search name for {@link BROWSER_SCRIPT_SOURCE_CHAR_POSITION}. `browser.script.source_char_position`
+ */
+export const SEARCH_BROWSER_SCRIPT_SOURCE_CHAR_POSITION = 'browser.script.source_char_position';
+
+/**
+ * Search name for {@link BROWSER_VERSION}. `browser.version`
+ */
+export const SEARCH_BROWSER_VERSION = 'browser.version';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_CLS_REPORT_EVENT}. `browser.web_vital.cls.report_event`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_CLS_REPORT_EVENT = 'browser.web_vital.cls.report_event';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_CLS_SOURCE_KEY}. `browser.web_vital.cls.source.<key>`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_CLS_SOURCE_KEY = 'browser.web_vital.cls.source.<key>';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_CLS_VALUE}. `browser.web_vital.cls.value`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_CLS_VALUE = 'browser.web_vital.cls.value';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_FCP_VALUE}. `browser.web_vital.fcp.value`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_FCP_VALUE = 'browser.web_vital.fcp.value';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_FP_VALUE}. `browser.web_vital.fp.value`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_INP_VALUE}. `browser.web_vital.inp.value`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_INP_VALUE = 'browser.web_vital.inp.value';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_LCP_ELEMENT}. `browser.web_vital.lcp.element`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_LCP_ELEMENT = 'browser.web_vital.lcp.element';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_LCP_ID}. `browser.web_vital.lcp.id`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_LCP_ID = 'browser.web_vital.lcp.id';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_LCP_LOAD_TIME}. `browser.web_vital.lcp.load_time`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_LCP_LOAD_TIME = 'browser.web_vital.lcp.load_time';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_LCP_RENDER_TIME}. `browser.web_vital.lcp.render_time`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_LCP_RENDER_TIME = 'browser.web_vital.lcp.render_time';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT}. `browser.web_vital.lcp.report_event`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_event';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_LCP_SIZE}. `browser.web_vital.lcp.size`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_LCP_SIZE = 'browser.web_vital.lcp.size';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_LCP_URL}. `browser.web_vital.lcp.url`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_LCP_URL = 'browser.web_vital.lcp.url';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_LCP_VALUE}. `browser.web_vital.lcp.value`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_LCP_VALUE = 'browser.web_vital.lcp.value';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_TTFB_REQUEST_TIME}. `browser.web_vital.ttfb.request_time`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_TTFB_REQUEST_TIME = 'browser.web_vital.ttfb.request_time';
+
+/**
+ * Search name for {@link BROWSER_WEB_VITAL_TTFB_VALUE}. `browser.web_vital.ttfb.value`
+ */
+export const SEARCH_BROWSER_WEB_VITAL_TTFB_VALUE = 'browser.web_vital.ttfb.value';
+
+/**
+ * Search name for {@link CACHE_HIT}. `cache.hit`
+ */
+export const SEARCH_CACHE_HIT = 'cache.hit';
+
+/**
+ * Search name for {@link CACHE_ITEM_SIZE}. `cache.item_size`
+ */
+export const SEARCH_CACHE_ITEM_SIZE = 'cache.item_size';
+
+/**
+ * Search name for {@link CACHE_KEY}. `cache.key`
+ */
+export const SEARCH_CACHE_KEY = 'cache.key';
+
+/**
+ * Search name for {@link CACHE_OPERATION}. `cache.operation`
+ */
+export const SEARCH_CACHE_OPERATION = 'cache.operation';
+
+/**
+ * Search name for {@link CACHE_TTL}. `cache.ttl`
+ */
+export const SEARCH_CACHE_TTL = 'cache.ttl';
+
+/**
+ * Search name for {@link CACHE_WRITE}. `cache.write`
+ */
+export const SEARCH_CACHE_WRITE = 'cache.write';
+
+/**
+ * Search name for {@link CHANNEL}. `channel`
+ */
+export const SEARCH_CHANNEL = 'channel';
+
+/**
+ * Search name for {@link CLIENT_ADDRESS}. `client.address`
+ */
+export const SEARCH_CLIENT_ADDRESS = 'client.address';
+
+/**
+ * Search name for {@link CLIENT_PORT}. `client.port`
+ */
+export const SEARCH_CLIENT_PORT = 'client.port';
+
+/**
+ * Search name for {@link SENTRY_CLIENT_SAMPLE_RATE}. `client_sample_rate`
+ */
+export const SEARCH_CLIENT_SAMPLE_RATE = 'client_sample_rate';
+
+/**
+ * Search name for {@link CLOUD_ACCOUNT_ID}. `cloud.account.id`
+ */
+export const SEARCH_CLOUD_ACCOUNT_ID = 'cloud.account.id';
+
+/**
+ * Search name for {@link CLOUD_AVAILABILITY_ZONE}. `cloud.availability_zone`
+ */
+export const SEARCH_CLOUD_AVAILABILITY_ZONE = 'cloud.availability_zone';
+
+/**
+ * Search name for {@link CLOUD_PLATFORM}. `cloud.platform`
+ */
+export const SEARCH_CLOUD_PLATFORM = 'cloud.platform';
+
+/**
+ * Search name for {@link CLOUD_PROVIDER}. `cloud.provider`
+ */
+export const SEARCH_CLOUD_PROVIDER = 'cloud.provider';
+
+/**
+ * Search name for {@link CLOUD_REGION}. `cloud.region`
+ */
+export const SEARCH_CLOUD_REGION = 'cloud.region';
+
+/**
+ * Search name for {@link CLOUD_RESOURCE_ID}. `cloud.resource_id`
+ */
+export const SEARCH_CLOUD_RESOURCE_ID = 'cloud.resource_id';
+
+/**
+ * Search name for {@link CLOUDFLARE_D1_DURATION}. `cloudflare.d1.duration`
+ */
+export const SEARCH_CLOUDFLARE_D1_DURATION = 'cloudflare.d1.duration';
+
+/**
+ * Search name for {@link CLOUDFLARE_D1_QUERY_TYPE}. `cloudflare.d1.query_type`
+ */
+export const SEARCH_CLOUDFLARE_D1_QUERY_TYPE = 'cloudflare.d1.query_type';
+
+/**
+ * Search name for {@link CLOUDFLARE_D1_ROWS_READ}. `cloudflare.d1.rows_read`
+ */
+export const SEARCH_CLOUDFLARE_D1_ROWS_READ = 'cloudflare.d1.rows_read';
+
+/**
+ * Search name for {@link CLOUDFLARE_D1_ROWS_WRITTEN}. `cloudflare.d1.rows_written`
+ */
+export const SEARCH_CLOUDFLARE_D1_ROWS_WRITTEN = 'cloudflare.d1.rows_written';
+
+/**
+ * Search name for {@link CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS}. `cloudflare.durable_object.query.bindings`
+ */
+export const SEARCH_CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS = 'cloudflare.durable_object.query.bindings';
+
+/**
+ * Search name for {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ}. `cloudflare.durable_object.response.rows_read`
+ */
+export const SEARCH_CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ = 'cloudflare.durable_object.response.rows_read';
+
+/**
+ * Search name for {@link CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN}. `cloudflare.durable_object.response.rows_written`
+ */
+export const SEARCH_CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN = 'cloudflare.durable_object.response.rows_written';
+
+/**
+ * Search name for {@link CLOUDFLARE_R2_BUCKET}. `cloudflare.r2.bucket`
+ */
+export const SEARCH_CLOUDFLARE_R2_BUCKET = 'cloudflare.r2.bucket';
+
+/**
+ * Search name for {@link CLOUDFLARE_R2_OPERATION}. `cloudflare.r2.operation`
+ */
+export const SEARCH_CLOUDFLARE_R2_OPERATION = 'cloudflare.r2.operation';
+
+/**
+ * Search name for {@link CLOUDFLARE_R2_REQUEST_DELIMITER}. `cloudflare.r2.request.delimiter`
+ */
+export const SEARCH_CLOUDFLARE_R2_REQUEST_DELIMITER = 'cloudflare.r2.request.delimiter';
+
+/**
+ * Search name for {@link CLOUDFLARE_R2_REQUEST_KEY}. `cloudflare.r2.request.key`
+ */
+export const SEARCH_CLOUDFLARE_R2_REQUEST_KEY = 'cloudflare.r2.request.key';
+
+/**
+ * Search name for {@link CLOUDFLARE_R2_REQUEST_PART_NUMBER}. `cloudflare.r2.request.part_number`
+ */
+export const SEARCH_CLOUDFLARE_R2_REQUEST_PART_NUMBER = 'cloudflare.r2.request.part_number';
+
+/**
+ * Search name for {@link CLOUDFLARE_R2_REQUEST_PREFIX}. `cloudflare.r2.request.prefix`
+ */
+export const SEARCH_CLOUDFLARE_R2_REQUEST_PREFIX = 'cloudflare.r2.request.prefix';
+
+/**
+ * Search name for {@link CLOUDFLARE_WORKFLOW_ATTEMPT}. `cloudflare.workflow.attempt`
+ */
+export const SEARCH_CLOUDFLARE_WORKFLOW_ATTEMPT = 'cloudflare.workflow.attempt';
+
+/**
+ * Search name for {@link CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF}. `cloudflare.workflow.retries.backoff`
+ */
+export const SEARCH_CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF = 'cloudflare.workflow.retries.backoff';
+
+/**
+ * Search name for {@link CLOUDFLARE_WORKFLOW_RETRIES_DELAY}. `cloudflare.workflow.retries.delay`
+ */
+export const SEARCH_CLOUDFLARE_WORKFLOW_RETRIES_DELAY = 'cloudflare.workflow.retries.delay';
+
+/**
+ * Search name for {@link CLOUDFLARE_WORKFLOW_RETRIES_LIMIT}. `cloudflare.workflow.retries.limit`
+ */
+export const SEARCH_CLOUDFLARE_WORKFLOW_RETRIES_LIMIT = 'cloudflare.workflow.retries.limit';
+
+/**
+ * Search name for {@link CLOUDFLARE_WORKFLOW_TIMEOUT}. `cloudflare.workflow.timeout`
+ */
+export const SEARCH_CLOUDFLARE_WORKFLOW_TIMEOUT = 'cloudflare.workflow.timeout';
+
+/**
+ * Search name for {@link CLS}. `cls`
+ */
+export const SEARCH_CLS = 'cls';
+
+/**
+ * Search name for {@link CLS_SOURCE_KEY}. `cls.source.<key>`
+ */
+export const SEARCH_CLS_SOURCE_KEY = 'cls.source.<key>';
+
+/**
+ * Search name for {@link CODE}. `code`
+ */
+export const SEARCH_CODE = 'code';
+
+/**
+ * Search name for {@link CODE_FILE_PATH}. `code.file.path`
+ */
+export const SEARCH_CODE_FILE_PATH = 'code.file.path';
+
+/**
+ * Search name for {@link CODE_FILEPATH}. `code.filepath`
+ */
+export const SEARCH_CODE_FILEPATH = 'code.filepath';
+
+/**
+ * Search name for {@link CODE_FUNCTION}. `code.function`
+ */
+export const SEARCH_CODE_FUNCTION = 'code.function';
+
+/**
+ * Search name for {@link CODE_FUNCTION_NAME}. `code.function.name`
+ */
+export const SEARCH_CODE_FUNCTION_NAME = 'code.function.name';
+
+/**
+ * Search name for {@link CODE_LINE_NUMBER}. `code.line.number`
+ */
+export const SEARCH_CODE_LINE_NUMBER = 'code.line.number';
+
+/**
+ * Search name for {@link CODE_LINENO}. `code.lineno`
+ */
+export const SEARCH_CODE_LINENO = 'code.lineno';
+
+/**
+ * Search name for {@link CODE_NAMESPACE}. `code.namespace`
+ */
+export const SEARCH_CODE_NAMESPACE = 'code.namespace';
+
+/**
+ * Search name for {@link CONNECTION_RTT}. `connection.rtt`
+ */
+export const SEARCH_CONNECTION_RTT = 'connection.rtt';
+
+/**
+ * Search name for {@link CONNECTIONTYPE}. `connectionType`
+ */
+export const SEARCH_CONNECTIONTYPE = 'connectionType';
+
+/**
+ * Search name for {@link CULTURE_CALENDAR}. `culture.calendar`
+ */
+export const SEARCH_CULTURE_CALENDAR = 'culture.calendar';
+
+/**
+ * Search name for {@link CULTURE_DISPLAY_NAME}. `culture.display_name`
+ */
+export const SEARCH_CULTURE_DISPLAY_NAME = 'culture.display_name';
+
+/**
+ * Search name for {@link CULTURE_IS_24_HOUR_FORMAT}. `culture.is_24_hour_format`
+ */
+export const SEARCH_CULTURE_IS_24_HOUR_FORMAT = 'culture.is_24_hour_format';
+
+/**
+ * Search name for {@link CULTURE_LOCALE}. `culture.locale`
+ */
+export const SEARCH_CULTURE_LOCALE = 'culture.locale';
+
+/**
+ * Search name for {@link CULTURE_TIMEZONE}. `culture.timezone`
+ */
+export const SEARCH_CULTURE_TIMEZONE = 'culture.timezone';
+
+/**
+ * Search name for {@link DB_COLLECTION_NAME}. `db.collection.name`
+ */
+export const SEARCH_DB_COLLECTION_NAME = 'db.collection.name';
+
+/**
+ * Search name for {@link DB_CONNECTION_STRING}. `db.connection_string`
+ */
+export const SEARCH_DB_CONNECTION_STRING = 'db.connection_string';
+
+/**
+ * Search name for {@link DB_DRIVER_NAME}. `db.driver.name`
+ */
+export const SEARCH_DB_DRIVER_NAME = 'db.driver.name';
+
+/**
+ * Search name for {@link DB_MONGODB_COLLECTION}. `db.mongodb.collection`
+ */
+export const SEARCH_DB_MONGODB_COLLECTION = 'db.mongodb.collection';
+
+/**
+ * Search name for {@link DB_NAME}. `db.name`
+ */
+export const SEARCH_DB_NAME = 'db.name';
+
+/**
+ * Search name for {@link DB_NAMESPACE}. `db.namespace`
+ */
+export const SEARCH_DB_NAMESPACE = 'db.namespace';
+
+/**
+ * Search name for {@link DB_OPERATION}. `db.operation`
+ */
+export const SEARCH_DB_OPERATION = 'db.operation';
+
+/**
+ * Search name for {@link DB_OPERATION_BATCH_SIZE}. `db.operation.batch.size`
+ */
+export const SEARCH_DB_OPERATION_BATCH_SIZE = 'db.operation.batch.size';
+
+/**
+ * Search name for {@link DB_OPERATION_NAME}. `db.operation.name`
+ */
+export const SEARCH_DB_OPERATION_NAME = 'db.operation.name';
+
+/**
+ * Search name for {@link DB_PARAMS}. `db.params`
+ */
+export const SEARCH_DB_PARAMS = 'db.params';
+
+/**
+ * Search name for {@link DB_QUERY_PARAMETER_KEY}. `db.query.parameter.<key>`
+ */
+export const SEARCH_DB_QUERY_PARAMETER_KEY = 'db.query.parameter.<key>';
+
+/**
+ * Search name for {@link DB_QUERY_SUMMARY}. `db.query.summary`
+ */
+export const SEARCH_DB_QUERY_SUMMARY = 'db.query.summary';
+
+/**
+ * Search name for {@link DB_QUERY_TEXT}. `db.query.text`
+ */
+export const SEARCH_DB_QUERY_TEXT = 'db.query.text';
+
+/**
+ * Search name for {@link DB_REDIS_CONNECTION}. `db.redis.connection`
+ */
+export const SEARCH_DB_REDIS_CONNECTION = 'db.redis.connection';
+
+/**
+ * Search name for {@link DB_REDIS_KEY}. `db.redis.key`
+ */
+export const SEARCH_DB_REDIS_KEY = 'db.redis.key';
+
+/**
+ * Search name for {@link DB_REDIS_PARAMETERS}. `db.redis.parameters`
+ */
+export const SEARCH_DB_REDIS_PARAMETERS = 'db.redis.parameters';
+
+/**
+ * Search name for {@link DB_RESPONSE_STATUS_CODE}. `db.response.status_code`
+ */
+export const SEARCH_DB_RESPONSE_STATUS_CODE = 'db.response.status_code';
+
+/**
+ * Search name for {@link DB_SQL_BINDINGS}. `db.sql.bindings`
+ */
+export const SEARCH_DB_SQL_BINDINGS = 'db.sql.bindings';
+
+/**
+ * Search name for {@link DB_STATEMENT}. `db.statement`
+ */
+export const SEARCH_DB_STATEMENT = 'db.statement';
+
+/**
+ * Search name for {@link DB_STORED_PROCEDURE_NAME}. `db.stored_procedure.name`
+ */
+export const SEARCH_DB_STORED_PROCEDURE_NAME = 'db.stored_procedure.name';
+
+/**
+ * Search name for {@link DB_SYSTEM}. `db.system`
+ */
+export const SEARCH_DB_SYSTEM = 'db.system';
+
+/**
+ * Search name for {@link DB_SYSTEM_NAME}. `db.system.name`
+ */
+export const SEARCH_DB_SYSTEM_NAME = 'db.system.name';
+
+/**
+ * Search name for {@link DB_USER}. `db.user`
+ */
+export const SEARCH_DB_USER = 'db.user';
+
+/**
+ * Search name for {@link DEVICE_ARCHS}. `device.archs`
+ */
+export const SEARCH_DEVICE_ARCHS = 'device.archs';
+
+/**
+ * Search name for {@link DEVICE_BATTERY_LEVEL}. `device.battery_level`
+ */
+export const SEARCH_DEVICE_BATTERY_LEVEL = 'device.battery_level';
+
+/**
+ * Search name for {@link DEVICE_BATTERY_TEMPERATURE}. `device.battery_temperature`
+ */
+export const SEARCH_DEVICE_BATTERY_TEMPERATURE = 'device.battery_temperature';
+
+/**
+ * Search name for {@link DEVICE_BOOT_TIME}. `device.boot_time`
+ */
+export const SEARCH_DEVICE_BOOT_TIME = 'device.boot_time';
+
+/**
+ * Search name for {@link DEVICE_BRAND}. `device.brand`
+ */
+export const SEARCH_DEVICE_BRAND = 'device.brand';
+
+/**
+ * Search name for {@link DEVICE_CHARGING}. `device.charging`
+ */
+export const SEARCH_DEVICE_CHARGING = 'device.charging';
+
+/**
+ * Search name for {@link DEVICE_CHIPSET}. `device.chipset`
+ */
+export const SEARCH_DEVICE_CHIPSET = 'device.chipset';
+
+/**
+ * Search name for {@link DEVICE_CLASS}. `device.class`
+ */
+export const SEARCH_DEVICE_CLASS = 'device.class';
+
+/**
+ * Search name for {@link DEVICE_CONNECTION_TYPE}. `device.connection_type`
+ */
+export const SEARCH_DEVICE_CONNECTION_TYPE = 'device.connection_type';
+
+/**
+ * Search name for {@link DEVICE_CPU_DESCRIPTION}. `device.cpu_description`
+ */
+export const SEARCH_DEVICE_CPU_DESCRIPTION = 'device.cpu_description';
+
+/**
+ * Search name for {@link DEVICE_EXTERNAL_FREE_STORAGE}. `device.external_free_storage`
+ */
+export const SEARCH_DEVICE_EXTERNAL_FREE_STORAGE = 'device.external_free_storage';
+
+/**
+ * Search name for {@link DEVICE_EXTERNAL_STORAGE_SIZE}. `device.external_storage_size`
+ */
+export const SEARCH_DEVICE_EXTERNAL_STORAGE_SIZE = 'device.external_storage_size';
+
+/**
+ * Search name for {@link DEVICE_FAMILY}. `device.family`
+ */
+export const SEARCH_DEVICE_FAMILY = 'device.family';
+
+/**
+ * Search name for {@link DEVICE_FREE_MEMORY}. `device.free_memory`
+ */
+export const SEARCH_DEVICE_FREE_MEMORY = 'device.free_memory';
+
+/**
+ * Search name for {@link DEVICE_FREE_STORAGE}. `device.free_storage`
+ */
+export const SEARCH_DEVICE_FREE_STORAGE = 'device.free_storage';
+
+/**
+ * Search name for {@link DEVICE_ID}. `device.id`
+ */
+export const SEARCH_DEVICE_ID = 'device.id';
+
+/**
+ * Search name for {@link DEVICE_LOCALE}. `device.locale`
+ */
+export const SEARCH_DEVICE_LOCALE = 'device.locale';
+
+/**
+ * Search name for {@link DEVICE_LOW_MEMORY}. `device.low_memory`
+ */
+export const SEARCH_DEVICE_LOW_MEMORY = 'device.low_memory';
+
+/**
+ * Search name for {@link DEVICE_LOW_POWER_MODE}. `device.low_power_mode`
+ */
+export const SEARCH_DEVICE_LOW_POWER_MODE = 'device.low_power_mode';
+
+/**
+ * Search name for {@link DEVICE_MANUFACTURER}. `device.manufacturer`
+ */
+export const SEARCH_DEVICE_MANUFACTURER = 'device.manufacturer';
+
+/**
+ * Search name for {@link DEVICE_MEMORY_ESTIMATED_CAPACITY}. `device.memory.estimated_capacity`
+ */
+export const SEARCH_DEVICE_MEMORY_ESTIMATED_CAPACITY = 'device.memory.estimated_capacity';
+
+/**
+ * Search name for {@link DEVICE_MEMORY_SIZE}. `device.memory_size`
+ */
+export const SEARCH_DEVICE_MEMORY_SIZE = 'device.memory_size';
+
+/**
+ * Search name for {@link DEVICE_MODEL}. `device.model`
+ */
+export const SEARCH_DEVICE_MODEL = 'device.model';
+
+/**
+ * Search name for {@link DEVICE_MODEL_ID}. `device.model_id`
+ */
+export const SEARCH_DEVICE_MODEL_ID = 'device.model_id';
+
+/**
+ * Search name for {@link DEVICE_NAME}. `device.name`
+ */
+export const SEARCH_DEVICE_NAME = 'device.name';
+
+/**
+ * Search name for {@link DEVICE_ONLINE}. `device.online`
+ */
+export const SEARCH_DEVICE_ONLINE = 'device.online';
+
+/**
+ * Search name for {@link DEVICE_ORIENTATION}. `device.orientation`
+ */
+export const SEARCH_DEVICE_ORIENTATION = 'device.orientation';
+
+/**
+ * Search name for {@link DEVICE_PROCESSOR_COUNT}. `device.processor_count`
+ */
+export const SEARCH_DEVICE_PROCESSOR_COUNT = 'device.processor_count';
+
+/**
+ * Search name for {@link DEVICE_PROCESSOR_FREQUENCY}. `device.processor_frequency`
+ */
+export const SEARCH_DEVICE_PROCESSOR_FREQUENCY = 'device.processor_frequency';
+
+/**
+ * Search name for {@link DEVICE_SCREEN_DENSITY}. `device.screen_density`
+ */
+export const SEARCH_DEVICE_SCREEN_DENSITY = 'device.screen_density';
+
+/**
+ * Search name for {@link DEVICE_SCREEN_DPI}. `device.screen_dpi`
+ */
+export const SEARCH_DEVICE_SCREEN_DPI = 'device.screen_dpi';
+
+/**
+ * Search name for {@link DEVICE_SCREEN_HEIGHT_PIXELS}. `device.screen_height_pixels`
+ */
+export const SEARCH_DEVICE_SCREEN_HEIGHT_PIXELS = 'device.screen_height_pixels';
+
+/**
+ * Search name for {@link DEVICE_SCREEN_WIDTH_PIXELS}. `device.screen_width_pixels`
+ */
+export const SEARCH_DEVICE_SCREEN_WIDTH_PIXELS = 'device.screen_width_pixels';
+
+/**
+ * Search name for {@link DEVICE_SIMULATOR}. `device.simulator`
+ */
+export const SEARCH_DEVICE_SIMULATOR = 'device.simulator';
+
+/**
+ * Search name for {@link DEVICE_STORAGE_SIZE}. `device.storage_size`
+ */
+export const SEARCH_DEVICE_STORAGE_SIZE = 'device.storage_size';
+
+/**
+ * Search name for {@link DEVICE_THERMAL_STATE}. `device.thermal_state`
+ */
+export const SEARCH_DEVICE_THERMAL_STATE = 'device.thermal_state';
+
+/**
+ * Search name for {@link DEVICE_TIMEZONE}. `device.timezone`
+ */
+export const SEARCH_DEVICE_TIMEZONE = 'device.timezone';
+
+/**
+ * Search name for {@link DEVICE_USABLE_MEMORY}. `device.usable_memory`
+ */
+export const SEARCH_DEVICE_USABLE_MEMORY = 'device.usable_memory';
+
+/**
+ * Search name for {@link DEVICEMEMORY}. `deviceMemory`
+ */
+export const SEARCH_DEVICEMEMORY = 'deviceMemory';
+
+/**
+ * Search name for {@link DIST}. `dist`
+ */
+export const SEARCH_DIST = 'dist';
+
+/**
+ * Search name for {@link DJANGO_FUNCTION_NAME}. `django.function_name`
+ */
+export const SEARCH_DJANGO_FUNCTION_NAME = 'django.function_name';
+
+/**
+ * Search name for {@link DJANGO_MIDDLEWARE_NAME}. `django.middleware_name`
+ */
+export const SEARCH_DJANGO_MIDDLEWARE_NAME = 'django.middleware_name';
+
+/**
+ * Search name for {@link EFFECTIVECONNECTIONTYPE}. `effectiveConnectionType`
+ */
+export const SEARCH_EFFECTIVECONNECTIONTYPE = 'effectiveConnectionType';
+
+/**
+ * Search name for {@link SENTRY_ENVIRONMENT}. `environment`
+ */
+export const SEARCH_ENVIRONMENT = 'environment';
+
+/**
+ * Search name for {@link ERROR_TYPE}. `error.type`
+ */
+export const SEARCH_ERROR_TYPE = 'error.type';
+
+/**
+ * Search name for {@link EVENT_ID}. `event.id`
+ */
+export const SEARCH_EVENT_ID = 'event.id';
+
+/**
+ * Search name for {@link EVENT_NAME}. `event.name`
+ */
+export const SEARCH_EVENT_NAME = 'event.name';
+
+/**
+ * Search name for {@link EXCEPTION_ESCAPED}. `exception.escaped`
+ */
+export const SEARCH_EXCEPTION_ESCAPED = 'exception.escaped';
+
+/**
+ * Search name for {@link EXCEPTION_MESSAGE}. `exception.message`
+ */
+export const SEARCH_EXCEPTION_MESSAGE = 'exception.message';
+
+/**
+ * Search name for {@link EXCEPTION_STACKTRACE}. `exception.stacktrace`
+ */
+export const SEARCH_EXCEPTION_STACKTRACE = 'exception.stacktrace';
+
+/**
+ * Search name for {@link EXCEPTION_TYPE}. `exception.type`
+ */
+export const SEARCH_EXCEPTION_TYPE = 'exception.type';
+
+/**
+ * Search name for {@link FAAS_COLDSTART}. `faas.coldstart`
+ */
+export const SEARCH_FAAS_COLDSTART = 'faas.coldstart';
+
+/**
+ * Search name for {@link FAAS_CRON}. `faas.cron`
+ */
+export const SEARCH_FAAS_CRON = 'faas.cron';
+
+/**
+ * Search name for {@link FAAS_DURATION_IN_MS}. `faas.duration_in_ms`
+ */
+export const SEARCH_FAAS_DURATION_IN_MS = 'faas.duration_in_ms';
+
+/**
+ * Search name for {@link FAAS_ENTRY_POINT}. `faas.entry_point`
+ */
+export const SEARCH_FAAS_ENTRY_POINT = 'faas.entry_point';
+
+/**
+ * Search name for {@link FAAS_EXECUTION}. `faas.execution`
+ */
+export const SEARCH_FAAS_EXECUTION = 'faas.execution';
+
+/**
+ * Search name for {@link FAAS_ID}. `faas.id`
+ */
+export const SEARCH_FAAS_ID = 'faas.id';
+
+/**
+ * Search name for {@link FAAS_IDENTITY}. `faas.identity`
+ */
+export const SEARCH_FAAS_IDENTITY = 'faas.identity';
+
+/**
+ * Search name for {@link FAAS_INVOCATION_ID}. `faas.invocation_id`
+ */
+export const SEARCH_FAAS_INVOCATION_ID = 'faas.invocation_id';
+
+/**
+ * Search name for {@link FAAS_INVOKED_NAME}. `faas.invoked_name`
+ */
+export const SEARCH_FAAS_INVOKED_NAME = 'faas.invoked_name';
+
+/**
+ * Search name for {@link FAAS_INVOKED_PROVIDER}. `faas.invoked_provider`
+ */
+export const SEARCH_FAAS_INVOKED_PROVIDER = 'faas.invoked_provider';
+
+/**
+ * Search name for {@link FAAS_INVOKED_REGION}. `faas.invoked_region`
+ */
+export const SEARCH_FAAS_INVOKED_REGION = 'faas.invoked_region';
+
+/**
+ * Search name for {@link FAAS_NAME}. `faas.name`
+ */
+export const SEARCH_FAAS_NAME = 'faas.name';
+
+/**
+ * Search name for {@link FAAS_TIME}. `faas.time`
+ */
+export const SEARCH_FAAS_TIME = 'faas.time';
+
+/**
+ * Search name for {@link FAAS_TRIGGER}. `faas.trigger`
+ */
+export const SEARCH_FAAS_TRIGGER = 'faas.trigger';
+
+/**
+ * Search name for {@link FAAS_VERSION}. `faas.version`
+ */
+export const SEARCH_FAAS_VERSION = 'faas.version';
+
+/**
+ * Search name for {@link FCP}. `fcp`
+ */
+export const SEARCH_FCP = 'fcp';
+
+/**
+ * Search name for {@link FILE_PATH}. `file.path`
+ */
+export const SEARCH_FILE_PATH = 'file.path';
+
+/**
+ * Search name for {@link FILE_SIZE}. `file.size`
+ */
+export const SEARCH_FILE_SIZE = 'file.size';
+
+/**
+ * Search name for {@link FLAG_EVALUATION_KEY}. `flag.evaluation.<key>`
+ */
+export const SEARCH_FLAG_EVALUATION_KEY = 'flag.evaluation.<key>';
+
+/**
+ * Search name for {@link FP}. `fp`
+ */
+export const SEARCH_FP = 'fp';
+
+/**
+ * Search name for {@link FRAMES_DELAY}. `frames.delay`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE_FRAMES_DELAY} (`mobile.frames_delay`) instead
+ */
+export const SEARCH_FRAMES_DELAY = 'frames.delay';
+
+/**
+ * Search name for {@link FRAMES_FROZEN}. `frames.frozen`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE_FROZEN_FRAMES} (`mobile.frozen_frames`) instead
+ */
+export const SEARCH_FRAMES_FROZEN = 'frames.frozen';
+
+/**
+ * Search name for {@link FRAMES_SLOW}. `frames.slow`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE_SLOW_FRAMES} (`mobile.slow_frames`) instead
+ */
+export const SEARCH_FRAMES_SLOW = 'frames.slow';
+
+/**
+ * Search name for {@link FRAMES_TOTAL}. `frames.total`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE_TOTAL_FRAMES} (`mobile.total_frames`) instead
+ */
+export const SEARCH_FRAMES_TOTAL = 'frames.total';
+
+/**
+ * Search name for {@link FRAMES_FROZEN_RATE}. `frames_frozen_rate`
+ */
+export const SEARCH_FRAMES_FROZEN_RATE = 'frames_frozen_rate';
+
+/**
+ * Search name for {@link FRAMES_SLOW_RATE}. `frames_slow_rate`
+ */
+export const SEARCH_FRAMES_SLOW_RATE = 'frames_slow_rate';
+
+/**
+ * Search name for {@link FS_ERROR}. `fs_error`
+ */
+export const SEARCH_FS_ERROR = 'fs_error';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_EVENT_ID}. `gcp.function.context.event_id`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_EVENT_ID = 'gcp.function.context.event_id';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_EVENT_TYPE}. `gcp.function.context.event_type`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_EVENT_TYPE = 'gcp.function.context.event_type';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_ID}. `gcp.function.context.id`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_ID = 'gcp.function.context.id';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_RESOURCE}. `gcp.function.context.resource`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_RESOURCE = 'gcp.function.context.resource';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_SOURCE}. `gcp.function.context.source`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_SOURCE = 'gcp.function.context.source';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_SPECVERSION}. `gcp.function.context.specversion`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_SPECVERSION = 'gcp.function.context.specversion';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_TIME}. `gcp.function.context.time`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_TIME = 'gcp.function.context.time';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_TIMESTAMP}. `gcp.function.context.timestamp`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_TIMESTAMP = 'gcp.function.context.timestamp';
+
+/**
+ * Search name for {@link GCP_FUNCTION_CONTEXT_TYPE}. `gcp.function.context.type`
+ */
+export const SEARCH_GCP_FUNCTION_CONTEXT_TYPE = 'gcp.function.context.type';
+
+/**
+ * Search name for {@link GCP_PROJECT_ID}. `gcp.project.id`
+ */
+export const SEARCH_GCP_PROJECT_ID = 'gcp.project.id';
+
+/**
+ * Search name for {@link GCP_REGION}. `gcp_region`
+ */
+export const SEARCH_GCP_REGION = 'gcp_region';
+
+/**
+ * Search name for {@link GEN_AI_AGENT_NAME}. `gen_ai.agent.name`
+ */
+export const SEARCH_GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
+
+/**
+ * Search name for {@link GEN_AI_CONTEXT_UTILIZATION}. `gen_ai.context.utilization`
+ */
+export const SEARCH_GEN_AI_CONTEXT_UTILIZATION = 'gen_ai.context.utilization';
+
+/**
+ * Search name for {@link GEN_AI_CONTEXT_WINDOW_SIZE}. `gen_ai.context.window_size`
+ */
+export const SEARCH_GEN_AI_CONTEXT_WINDOW_SIZE = 'gen_ai.context.window_size';
+
+/**
+ * Search name for {@link GEN_AI_CONVERSATION_ID}. `gen_ai.conversation.id`
+ */
+export const SEARCH_GEN_AI_CONVERSATION_ID = 'gen_ai.conversation.id';
+
+/**
+ * Search name for {@link GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS}. `gen_ai.cost.cache_creation.input_tokens`
+ */
+export const SEARCH_GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.cost.cache_creation.input_tokens';
+
+/**
+ * Search name for {@link GEN_AI_COST_CACHE_READ_INPUT_TOKENS}. `gen_ai.cost.cache_read.input_tokens`
+ */
+export const SEARCH_GEN_AI_COST_CACHE_READ_INPUT_TOKENS = 'gen_ai.cost.cache_read.input_tokens';
+
+/**
+ * Search name for {@link GEN_AI_COST_INPUT_TOKENS}. `gen_ai.cost.input_tokens`
+ */
+export const SEARCH_GEN_AI_COST_INPUT_TOKENS = 'gen_ai.cost.input_tokens';
+
+/**
+ * Search name for {@link GEN_AI_COST_OUTPUT_TOKENS}. `gen_ai.cost.output_tokens`
+ */
+export const SEARCH_GEN_AI_COST_OUTPUT_TOKENS = 'gen_ai.cost.output_tokens';
+
+/**
+ * Search name for {@link GEN_AI_COST_REASONING_OUTPUT_TOKENS}. `gen_ai.cost.reasoning.output_tokens`
+ */
+export const SEARCH_GEN_AI_COST_REASONING_OUTPUT_TOKENS = 'gen_ai.cost.reasoning.output_tokens';
+
+/**
+ * Search name for {@link GEN_AI_COST_TOTAL_TOKENS}. `gen_ai.cost.total_tokens`
+ */
+export const SEARCH_GEN_AI_COST_TOTAL_TOKENS = 'gen_ai.cost.total_tokens';
+
+/**
+ * Search name for {@link GEN_AI_EMBEDDINGS_INPUT}. `gen_ai.embeddings.input`
+ */
+export const SEARCH_GEN_AI_EMBEDDINGS_INPUT = 'gen_ai.embeddings.input';
+
+/**
+ * Search name for {@link GEN_AI_FUNCTION_ID}. `gen_ai.function_id`
+ */
+export const SEARCH_GEN_AI_FUNCTION_ID = 'gen_ai.function_id';
+
+/**
+ * Search name for {@link GEN_AI_INPUT_MESSAGES}. `gen_ai.input.messages`
+ */
+export const SEARCH_GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
+
+/**
+ * Search name for {@link GEN_AI_OPERATION_NAME}. `gen_ai.operation.name`
+ */
+export const SEARCH_GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
+
+/**
+ * Search name for {@link GEN_AI_OPERATION_TYPE}. `gen_ai.operation.type`
+ */
+export const SEARCH_GEN_AI_OPERATION_TYPE = 'gen_ai.operation.type';
+
+/**
+ * Search name for {@link GEN_AI_OUTPUT_MESSAGES}. `gen_ai.output.messages`
+ */
+export const SEARCH_GEN_AI_OUTPUT_MESSAGES = 'gen_ai.output.messages';
+
+/**
+ * Search name for {@link GEN_AI_PIPELINE_NAME}. `gen_ai.pipeline.name`
+ */
+export const SEARCH_GEN_AI_PIPELINE_NAME = 'gen_ai.pipeline.name';
+
+/**
+ * Search name for {@link GEN_AI_PROMPT}. `gen_ai.prompt`
+ */
+export const SEARCH_GEN_AI_PROMPT = 'gen_ai.prompt';
+
+/**
+ * Search name for {@link GEN_AI_PROMPT_NAME}. `gen_ai.prompt.name`
+ */
+export const SEARCH_GEN_AI_PROMPT_NAME = 'gen_ai.prompt.name';
+
+/**
+ * Search name for {@link GEN_AI_PROVIDER_NAME}. `gen_ai.provider.name`
+ */
+export const SEARCH_GEN_AI_PROVIDER_NAME = 'gen_ai.provider.name';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_AVAILABLE_TOOLS}. `gen_ai.request.available_tools`
+ */
+export const SEARCH_GEN_AI_REQUEST_AVAILABLE_TOOLS = 'gen_ai.request.available_tools';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_FREQUENCY_PENALTY}. `gen_ai.request.frequency_penalty`
+ */
+export const SEARCH_GEN_AI_REQUEST_FREQUENCY_PENALTY = 'gen_ai.request.frequency_penalty';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_MAX_TOKENS}. `gen_ai.request.max_tokens`
+ */
+export const SEARCH_GEN_AI_REQUEST_MAX_TOKENS = 'gen_ai.request.max_tokens';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_MESSAGES}. `gen_ai.request.messages`
+ */
+export const SEARCH_GEN_AI_REQUEST_MESSAGES = 'gen_ai.request.messages';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_MODEL}. `gen_ai.request.model`
+ */
+export const SEARCH_GEN_AI_REQUEST_MODEL = 'gen_ai.request.model';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_PRESENCE_PENALTY}. `gen_ai.request.presence_penalty`
+ */
+export const SEARCH_GEN_AI_REQUEST_PRESENCE_PENALTY = 'gen_ai.request.presence_penalty';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_REASONING_LEVEL}. `gen_ai.request.reasoning.level`
+ */
+export const SEARCH_GEN_AI_REQUEST_REASONING_LEVEL = 'gen_ai.request.reasoning.level';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_SCHEMA}. `gen_ai.request.schema`
+ */
+export const SEARCH_GEN_AI_REQUEST_SCHEMA = 'gen_ai.request.schema';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_SEED}. `gen_ai.request.seed`
+ */
+export const SEARCH_GEN_AI_REQUEST_SEED = 'gen_ai.request.seed';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_STOP_SEQUENCES}. `gen_ai.request.stop_sequences`
+ */
+export const SEARCH_GEN_AI_REQUEST_STOP_SEQUENCES = 'gen_ai.request.stop_sequences';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_TEMPERATURE}. `gen_ai.request.temperature`
+ */
+export const SEARCH_GEN_AI_REQUEST_TEMPERATURE = 'gen_ai.request.temperature';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_TOP_K}. `gen_ai.request.top_k`
+ */
+export const SEARCH_GEN_AI_REQUEST_TOP_K = 'gen_ai.request.top_k';
+
+/**
+ * Search name for {@link GEN_AI_REQUEST_TOP_P}. `gen_ai.request.top_p`
+ */
+export const SEARCH_GEN_AI_REQUEST_TOP_P = 'gen_ai.request.top_p';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_FINISH_REASON}. `gen_ai.response.finish_reason`
+ */
+export const SEARCH_GEN_AI_RESPONSE_FINISH_REASON = 'gen_ai.response.finish_reason';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_FINISH_REASONS}. `gen_ai.response.finish_reasons`
+ */
+export const SEARCH_GEN_AI_RESPONSE_FINISH_REASONS = 'gen_ai.response.finish_reasons';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_ID}. `gen_ai.response.id`
+ */
+export const SEARCH_GEN_AI_RESPONSE_ID = 'gen_ai.response.id';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_MODEL}. `gen_ai.response.model`
+ */
+export const SEARCH_GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_OBJECT}. `gen_ai.response.object`
+ */
+export const SEARCH_GEN_AI_RESPONSE_OBJECT = 'gen_ai.response.object';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_STREAMING}. `gen_ai.response.streaming`
+ */
+export const SEARCH_GEN_AI_RESPONSE_STREAMING = 'gen_ai.response.streaming';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_TEXT}. `gen_ai.response.text`
+ */
+export const SEARCH_GEN_AI_RESPONSE_TEXT = 'gen_ai.response.text';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK}. `gen_ai.response.time_to_first_chunk`
+ */
+export const SEARCH_GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK = 'gen_ai.response.time_to_first_chunk';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN}. `gen_ai.response.time_to_first_token`
+ */
+export const SEARCH_GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN = 'gen_ai.response.time_to_first_token';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_TOKENS_PER_SECOND}. `gen_ai.response.tokens_per_second`
+ */
+export const SEARCH_GEN_AI_RESPONSE_TOKENS_PER_SECOND = 'gen_ai.response.tokens_per_second';
+
+/**
+ * Search name for {@link GEN_AI_RESPONSE_TOOL_CALLS}. `gen_ai.response.tool_calls`
+ */
+export const SEARCH_GEN_AI_RESPONSE_TOOL_CALLS = 'gen_ai.response.tool_calls';
+
+/**
+ * Search name for {@link GEN_AI_SYSTEM}. `gen_ai.system`
+ */
+export const SEARCH_GEN_AI_SYSTEM = 'gen_ai.system';
+
+/**
+ * Search name for {@link GEN_AI_SYSTEM_MESSAGE}. `gen_ai.system.message`
+ */
+export const SEARCH_GEN_AI_SYSTEM_MESSAGE = 'gen_ai.system.message';
+
+/**
+ * Search name for {@link GEN_AI_SYSTEM_INSTRUCTIONS}. `gen_ai.system_instructions`
+ */
+export const SEARCH_GEN_AI_SYSTEM_INSTRUCTIONS = 'gen_ai.system_instructions';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_CALL_ARGUMENTS}. `gen_ai.tool.call.arguments`
+ */
+export const SEARCH_GEN_AI_TOOL_CALL_ARGUMENTS = 'gen_ai.tool.call.arguments';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_CALL_RESULT}. `gen_ai.tool.call.result`
+ */
+export const SEARCH_GEN_AI_TOOL_CALL_RESULT = 'gen_ai.tool.call.result';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_DEFINITIONS}. `gen_ai.tool.definitions`
+ */
+export const SEARCH_GEN_AI_TOOL_DEFINITIONS = 'gen_ai.tool.definitions';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_DESCRIPTION}. `gen_ai.tool.description`
+ */
+export const SEARCH_GEN_AI_TOOL_DESCRIPTION = 'gen_ai.tool.description';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_INPUT}. `gen_ai.tool.input`
+ */
+export const SEARCH_GEN_AI_TOOL_INPUT = 'gen_ai.tool.input';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_MESSAGE}. `gen_ai.tool.message`
+ */
+export const SEARCH_GEN_AI_TOOL_MESSAGE = 'gen_ai.tool.message';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_NAME}. `gen_ai.tool.name`
+ */
+export const SEARCH_GEN_AI_TOOL_NAME = 'gen_ai.tool.name';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_OUTPUT}. `gen_ai.tool.output`
+ */
+export const SEARCH_GEN_AI_TOOL_OUTPUT = 'gen_ai.tool.output';
+
+/**
+ * Search name for {@link GEN_AI_TOOL_TYPE}. `gen_ai.tool.type`
+ */
+export const SEARCH_GEN_AI_TOOL_TYPE = 'gen_ai.tool.type';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS}. `gen_ai.usage.cache_creation.input_tokens`
+ */
+export const SEARCH_GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS}. `gen_ai.usage.cache_read.input_tokens`
+ */
+export const SEARCH_GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read.input_tokens';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_COMPLETION_TOKENS}. `gen_ai.usage.completion_tokens`
+ */
+export const SEARCH_GEN_AI_USAGE_COMPLETION_TOKENS = 'gen_ai.usage.completion_tokens';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_INPUT_TOKENS}. `gen_ai.usage.input_tokens`
+ */
+export const SEARCH_GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE}. `gen_ai.usage.input_tokens.cache_write`
+ */
+export const SEARCH_GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE = 'gen_ai.usage.input_tokens.cache_write';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED}. `gen_ai.usage.input_tokens.cached`
+ */
+export const SEARCH_GEN_AI_USAGE_INPUT_TOKENS_CACHED = 'gen_ai.usage.input_tokens.cached';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_OUTPUT_TOKENS}. `gen_ai.usage.output_tokens`
+ */
+export const SEARCH_GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING}. `gen_ai.usage.output_tokens.reasoning`
+ */
+export const SEARCH_GEN_AI_USAGE_OUTPUT_TOKENS_REASONING = 'gen_ai.usage.output_tokens.reasoning';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_PROMPT_TOKENS}. `gen_ai.usage.prompt_tokens`
+ */
+export const SEARCH_GEN_AI_USAGE_PROMPT_TOKENS = 'gen_ai.usage.prompt_tokens';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_REASONING_OUTPUT_TOKENS}. `gen_ai.usage.reasoning.output_tokens`
+ */
+export const SEARCH_GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = 'gen_ai.usage.reasoning.output_tokens';
+
+/**
+ * Search name for {@link GEN_AI_USAGE_TOTAL_TOKENS}. `gen_ai.usage.total_tokens`
+ */
+export const SEARCH_GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
+
+/**
+ * Search name for {@link GRAPHQL_DOCUMENT}. `graphql.document`
+ */
+export const SEARCH_GRAPHQL_DOCUMENT = 'graphql.document';
+
+/**
+ * Search name for {@link GRAPHQL_OPERATION_NAME}. `graphql.operation.name`
+ */
+export const SEARCH_GRAPHQL_OPERATION_NAME = 'graphql.operation.name';
+
+/**
+ * Search name for {@link GRAPHQL_OPERATION_TYPE}. `graphql.operation.type`
+ */
+export const SEARCH_GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
+
+/**
+ * Search name for {@link GRAPHQL_PROCESSING_TYPE}. `graphql.processing.type`
+ */
+export const SEARCH_GRAPHQL_PROCESSING_TYPE = 'graphql.processing.type';
+
+/**
+ * Search name for {@link GRAPHQL_SOURCE}. `graphql.source`
+ */
+export const SEARCH_GRAPHQL_SOURCE = 'graphql.source';
+
+/**
+ * Search name for {@link GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS}. `grpc.error.bad_request.field_violations`
+ */
+export const SEARCH_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS = 'grpc.error.bad_request.field_violations';
+
+/**
+ * Search name for {@link GRPC_ERROR_DEBUG_INFO_DETAIL}. `grpc.error.debug_info.detail`
+ */
+export const SEARCH_GRPC_ERROR_DEBUG_INFO_DETAIL = 'grpc.error.debug_info.detail';
+
+/**
+ * Search name for {@link GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES}. `grpc.error.debug_info.stack_entries`
+ */
+export const SEARCH_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES = 'grpc.error.debug_info.stack_entries';
+
+/**
+ * Search name for {@link GRPC_ERROR_ERROR_INFO_DOMAIN}. `grpc.error.error_info.domain`
+ */
+export const SEARCH_GRPC_ERROR_ERROR_INFO_DOMAIN = 'grpc.error.error_info.domain';
+
+/**
+ * Search name for {@link GRPC_ERROR_ERROR_INFO_METADATA_KEY}. `grpc.error.error_info.metadata.<key>`
+ */
+export const SEARCH_GRPC_ERROR_ERROR_INFO_METADATA_KEY = 'grpc.error.error_info.metadata.<key>';
+
+/**
+ * Search name for {@link GRPC_ERROR_ERROR_INFO_REASON}. `grpc.error.error_info.reason`
+ */
+export const SEARCH_GRPC_ERROR_ERROR_INFO_REASON = 'grpc.error.error_info.reason';
+
+/**
+ * Search name for {@link GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS}. `grpc.error.precondition_failure.violations`
+ */
+export const SEARCH_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS = 'grpc.error.precondition_failure.violations';
+
+/**
+ * Search name for {@link GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS}. `grpc.error.quota_failure.violations`
+ */
+export const SEARCH_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS = 'grpc.error.quota_failure.violations';
+
+/**
+ * Search name for {@link GRPC_ERROR_RESOURCE_INFO_DESCRIPTION}. `grpc.error.resource_info.description`
+ */
+export const SEARCH_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION = 'grpc.error.resource_info.description';
+
+/**
+ * Search name for {@link GRPC_ERROR_RESOURCE_INFO_OWNER}. `grpc.error.resource_info.owner`
+ */
+export const SEARCH_GRPC_ERROR_RESOURCE_INFO_OWNER = 'grpc.error.resource_info.owner';
+
+/**
+ * Search name for {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME}. `grpc.error.resource_info.resource_name`
+ */
+export const SEARCH_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME = 'grpc.error.resource_info.resource_name';
+
+/**
+ * Search name for {@link GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE}. `grpc.error.resource_info.resource_type`
+ */
+export const SEARCH_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE = 'grpc.error.resource_info.resource_type';
+
+/**
+ * Search name for {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS}. `grpc.error.retry_info.retry_delay_ms`
+ */
+export const SEARCH_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS = 'grpc.error.retry_info.retry_delay_ms';
+
+/**
+ * Search name for {@link HARDWARECONCURRENCY}. `hardwareConcurrency`
+ */
+export const SEARCH_HARDWARECONCURRENCY = 'hardwareConcurrency';
+
+/**
+ * Search name for {@link HTTP_CLIENT_IP}. `http.client_ip`
+ */
+export const SEARCH_HTTP_CLIENT_IP = 'http.client_ip';
+
+/**
+ * Search name for {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH}. `http.decoded_response_content_length`
+ */
+export const SEARCH_HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_content_length';
+
+/**
+ * Search name for {@link HTTP_FLAVOR}. `http.flavor`
+ */
+export const SEARCH_HTTP_FLAVOR = 'http.flavor';
+
+/**
+ * Search name for {@link HTTP_FRAGMENT}. `http.fragment`
+ */
+export const SEARCH_HTTP_FRAGMENT = 'http.fragment';
+
+/**
+ * Search name for {@link HTTP_HOST}. `http.host`
+ */
+export const SEARCH_HTTP_HOST = 'http.host';
+
+/**
+ * Search name for {@link HTTP_METHOD}. `http.method`
+ */
+export const SEARCH_HTTP_METHOD = 'http.method';
+
+/**
+ * Search name for {@link HTTP_QUERY}. `http.query`
+ */
+export const SEARCH_HTTP_QUERY = 'http.query';
+
+/**
+ * Search name for {@link HTTP_REQUEST_BODY_DATA}. `http.request.body.data`
+ */
+export const SEARCH_HTTP_REQUEST_BODY_DATA = 'http.request.body.data';
+
+/**
+ * Search name for {@link HTTP_REQUEST_BODY_DECODED_SIZE}. `http.request.body.decoded_size`
+ */
+export const SEARCH_HTTP_REQUEST_BODY_DECODED_SIZE = 'http.request.body.decoded_size';
+
+/**
+ * Search name for {@link HTTP_REQUEST_BODY_SIZE}. `http.request.body.size`
+ */
+export const SEARCH_HTTP_REQUEST_BODY_SIZE = 'http.request.body.size';
+
+/**
+ * Search name for {@link HTTP_REQUEST_CONNECT_START}. `http.request.connect_start`
+ */
+export const SEARCH_HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
+
+/**
+ * Search name for {@link HTTP_REQUEST_CONNECTION_END}. `http.request.connection_end`
+ */
+export const SEARCH_HTTP_REQUEST_CONNECTION_END = 'http.request.connection_end';
+
+/**
+ * Search name for {@link HTTP_REQUEST_DOMAIN_LOOKUP_END}. `http.request.domain_lookup_end`
+ */
+export const SEARCH_HTTP_REQUEST_DOMAIN_LOOKUP_END = 'http.request.domain_lookup_end';
+
+/**
+ * Search name for {@link HTTP_REQUEST_DOMAIN_LOOKUP_START}. `http.request.domain_lookup_start`
+ */
+export const SEARCH_HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
+
+/**
+ * Search name for {@link HTTP_REQUEST_FETCH_START}. `http.request.fetch_start`
+ */
+export const SEARCH_HTTP_REQUEST_FETCH_START = 'http.request.fetch_start';
+
+/**
+ * Search name for {@link HTTP_REQUEST_HEADER_KEY}. `http.request.header.<key>`
+ */
+export const SEARCH_HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
+
+/**
+ * Search name for {@link HTTP_REQUEST_METHOD}. `http.request.method`
+ */
+export const SEARCH_HTTP_REQUEST_METHOD = 'http.request.method';
+
+/**
+ * Search name for {@link HTTP_REQUEST_REDIRECT_END}. `http.request.redirect_end`
+ */
+export const SEARCH_HTTP_REQUEST_REDIRECT_END = 'http.request.redirect_end';
+
+/**
+ * Search name for {@link HTTP_REQUEST_REDIRECT_START}. `http.request.redirect_start`
+ */
+export const SEARCH_HTTP_REQUEST_REDIRECT_START = 'http.request.redirect_start';
+
+/**
+ * Search name for {@link HTTP_REQUEST_REQUEST_START}. `http.request.request_start`
+ */
+export const SEARCH_HTTP_REQUEST_REQUEST_START = 'http.request.request_start';
+
+/**
+ * Search name for {@link HTTP_REQUEST_RESEND_COUNT}. `http.request.resend_count`
+ */
+export const SEARCH_HTTP_REQUEST_RESEND_COUNT = 'http.request.resend_count';
+
+/**
+ * Search name for {@link HTTP_REQUEST_RESPONSE_END}. `http.request.response_end`
+ */
+export const SEARCH_HTTP_REQUEST_RESPONSE_END = 'http.request.response_end';
+
+/**
+ * Search name for {@link HTTP_REQUEST_RESPONSE_START}. `http.request.response_start`
+ */
+export const SEARCH_HTTP_REQUEST_RESPONSE_START = 'http.request.response_start';
+
+/**
+ * Search name for {@link HTTP_REQUEST_SAME_ORIGIN}. `http.request.same_origin`
+ */
+export const SEARCH_HTTP_REQUEST_SAME_ORIGIN = 'http.request.same_origin';
+
+/**
+ * Search name for {@link HTTP_REQUEST_SECURE_CONNECTION_START}. `http.request.secure_connection_start`
+ */
+export const SEARCH_HTTP_REQUEST_SECURE_CONNECTION_START = 'http.request.secure_connection_start';
+
+/**
+ * Search name for {@link HTTP_REQUEST_TIME_TO_FIRST_BYTE}. `http.request.time_to_first_byte`
+ */
+export const SEARCH_HTTP_REQUEST_TIME_TO_FIRST_BYTE = 'http.request.time_to_first_byte';
+
+/**
+ * Search name for {@link HTTP_REQUEST_WORKER_START}. `http.request.worker_start`
+ */
+export const SEARCH_HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
+
+/**
+ * Search name for {@link HTTP_REQUEST_CONTENT_LENGTH}. `http.request_content_length`
+ */
+export const SEARCH_HTTP_REQUEST_CONTENT_LENGTH = 'http.request_content_length';
+
+/**
+ * Search name for {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED}. `http.request_content_length_uncompressed`
+ */
+export const SEARCH_HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED = 'http.request_content_length_uncompressed';
+
+/**
+ * Search name for {@link _HTTP_REQUEST_METHOD}. `http.request_method`
+ */
+export const _SEARCH_HTTP_REQUEST_METHOD = 'http.request_method';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_BODY_DECODED_SIZE}. `http.response.body.decoded_size`
+ */
+export const SEARCH_HTTP_RESPONSE_BODY_DECODED_SIZE = 'http.response.body.decoded_size';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_BODY_SIZE}. `http.response.body.size`
+ */
+export const SEARCH_HTTP_RESPONSE_BODY_SIZE = 'http.response.body.size';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_HEADER_KEY}. `http.response.header.<key>`
+ */
+export const SEARCH_HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_CONTENT_LENGTH}. `http.response.header.content-length`
+ *
+ * @deprecated Use {@link SEARCH_HTTP_RESPONSE_CONTENT_LENGTH} (`http.response_content_length`) instead
+ */
+export const SEARCH_HTTP_RESPONSE_HEADER_CONTENT_LENGTH = 'http.response.header.content-length';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_SIZE}. `http.response.size`
+ */
+export const SEARCH_HTTP_RESPONSE_SIZE = 'http.response.size';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_STATUS_CODE}. `http.response.status_code`
+ *
+ * @deprecated Use {@link SEARCH_HTTP_RESPONSE_STATUS_CODE} (`http.response_status_code`) instead
+ */
+export const _SEARCH_HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_STATUS_TEXT}. `http.response.status_text`
+ */
+export const SEARCH_HTTP_RESPONSE_STATUS_TEXT = 'http.response.status_text';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_CONTENT_LENGTH}. `http.response_content_length`
+ */
+export const SEARCH_HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
+
+/**
+ * Search name for {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH}. `http.response_content_length_uncompressed`
+ *
+ * @deprecated Use {@link SEARCH_HTTP_DECODED_RESPONSE_CONTENT_LENGTH} (`http.decoded_response_content_length`) instead
+ */
+export const SEARCH_HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_length_uncompressed';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_STATUS_CODE}. `http.response_status_code`
+ */
+export const SEARCH_HTTP_RESPONSE_STATUS_CODE = 'http.response_status_code';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_TRANSFER_SIZE}. `http.response_transfer_size`
+ */
+export const SEARCH_HTTP_RESPONSE_TRANSFER_SIZE = 'http.response_transfer_size';
+
+/**
+ * Search name for {@link HTTP_ROUTE}. `http.route`
+ */
+export const SEARCH_HTTP_ROUTE = 'http.route';
+
+/**
+ * Search name for {@link HTTP_SCHEME}. `http.scheme`
+ */
+export const SEARCH_HTTP_SCHEME = 'http.scheme';
+
+/**
+ * Search name for {@link HTTP_SERVER_REQUEST_TIME_IN_QUEUE}. `http.server.request.time_in_queue`
+ */
+export const SEARCH_HTTP_SERVER_REQUEST_TIME_IN_QUEUE = 'http.server.request.time_in_queue';
+
+/**
+ * Search name for {@link HTTP_SERVER_NAME}. `http.server_name`
+ */
+export const SEARCH_HTTP_SERVER_NAME = 'http.server_name';
+
+/**
+ * Search name for {@link HTTP_RESPONSE_STATUS_CODE}. `http.status_code`
+ *
+ * @deprecated Use {@link SEARCH_HTTP_RESPONSE_STATUS_CODE} (`http.response_status_code`) instead
+ */
+export const SEARCH_HTTP_STATUS_CODE = 'http.status_code';
+
+/**
+ * Search name for {@link HTTP_STATUS_TEXT}. `http.status_text`
+ */
+export const SEARCH_HTTP_STATUS_TEXT = 'http.status_text';
+
+/**
+ * Search name for {@link HTTP_TARGET}. `http.target`
+ */
+export const SEARCH_HTTP_TARGET = 'http.target';
+
+/**
+ * Search name for {@link HTTP_URL}. `http.url`
+ */
+export const SEARCH_HTTP_URL = 'http.url';
+
+/**
+ * Search name for {@link HTTP_USER_AGENT}. `http.user_agent`
+ */
+export const SEARCH_HTTP_USER_AGENT = 'http.user_agent';
+
+/**
+ * Search name for {@link ID}. `id`
+ */
+export const SEARCH_ID = 'id';
+
+/**
+ * Search name for {@link INP}. `inp`
+ */
+export const SEARCH_INP = 'inp';
+
+/**
+ * Search name for {@link JSONRPC_PROTOCOL_VERSION}. `jsonrpc.protocol.version`
+ */
+export const SEARCH_JSONRPC_PROTOCOL_VERSION = 'jsonrpc.protocol.version';
+
+/**
+ * Search name for {@link JSONRPC_REQUEST_ID}. `jsonrpc.request.id`
+ */
+export const SEARCH_JSONRPC_REQUEST_ID = 'jsonrpc.request.id';
+
+/**
+ * Search name for {@link JVM_GC_ACTION}. `jvm.gc.action`
+ */
+export const SEARCH_JVM_GC_ACTION = 'jvm.gc.action';
+
+/**
+ * Search name for {@link JVM_GC_NAME}. `jvm.gc.name`
+ */
+export const SEARCH_JVM_GC_NAME = 'jvm.gc.name';
+
+/**
+ * Search name for {@link JVM_MEMORY_POOL_NAME}. `jvm.memory.pool.name`
+ */
+export const SEARCH_JVM_MEMORY_POOL_NAME = 'jvm.memory.pool.name';
+
+/**
+ * Search name for {@link JVM_MEMORY_TYPE}. `jvm.memory.type`
+ */
+export const SEARCH_JVM_MEMORY_TYPE = 'jvm.memory.type';
+
+/**
+ * Search name for {@link JVM_THREAD_DAEMON}. `jvm.thread.daemon`
+ */
+export const SEARCH_JVM_THREAD_DAEMON = 'jvm.thread.daemon';
+
+/**
+ * Search name for {@link JVM_THREAD_STATE}. `jvm.thread.state`
+ */
+export const SEARCH_JVM_THREAD_STATE = 'jvm.thread.state';
+
+/**
+ * Search name for {@link KOA_NAME}. `koa.name`
+ */
+export const SEARCH_KOA_NAME = 'koa.name';
+
+/**
+ * Search name for {@link KOA_TYPE}. `koa.type`
+ */
+export const SEARCH_KOA_TYPE = 'koa.type';
+
+/**
+ * Search name for {@link LCP}. `lcp`
+ */
+export const SEARCH_LCP = 'lcp';
+
+/**
+ * Search name for {@link LCP_ELEMENT}. `lcp.element`
+ */
+export const SEARCH_LCP_ELEMENT = 'lcp.element';
+
+/**
+ * Search name for {@link LCP_ID}. `lcp.id`
+ */
+export const SEARCH_LCP_ID = 'lcp.id';
+
+/**
+ * Search name for {@link LCP_LOADTIME}. `lcp.loadTime`
+ */
+export const SEARCH_LCP_LOADTIME = 'lcp.loadTime';
+
+/**
+ * Search name for {@link LCP_RENDERTIME}. `lcp.renderTime`
+ */
+export const SEARCH_LCP_RENDERTIME = 'lcp.renderTime';
+
+/**
+ * Search name for {@link LCP_SIZE}. `lcp.size`
+ */
+export const SEARCH_LCP_SIZE = 'lcp.size';
+
+/**
+ * Search name for {@link LCP_URL}. `lcp.url`
+ */
+export const SEARCH_LCP_URL = 'lcp.url';
+
+/**
+ * Search name for {@link LITESTAR_MIDDLEWARE_NAME}. `litestar.middleware_name`
+ */
+export const SEARCH_LITESTAR_MIDDLEWARE_NAME = 'litestar.middleware_name';
+
+/**
+ * Search name for {@link LOGGER_NAME}. `logger.name`
+ */
+export const SEARCH_LOGGER_NAME = 'logger.name';
+
+/**
+ * Search name for {@link MCP_CANCELLED_REASON}. `mcp.cancelled.reason`
+ */
+export const SEARCH_MCP_CANCELLED_REASON = 'mcp.cancelled.reason';
+
+/**
+ * Search name for {@link MCP_CANCELLED_REQUEST_ID}. `mcp.cancelled.request_id`
+ */
+export const SEARCH_MCP_CANCELLED_REQUEST_ID = 'mcp.cancelled.request_id';
+
+/**
+ * Search name for {@link MCP_CLIENT_NAME}. `mcp.client.name`
+ */
+export const SEARCH_MCP_CLIENT_NAME = 'mcp.client.name';
+
+/**
+ * Search name for {@link MCP_CLIENT_TITLE}. `mcp.client.title`
+ */
+export const SEARCH_MCP_CLIENT_TITLE = 'mcp.client.title';
+
+/**
+ * Search name for {@link MCP_CLIENT_VERSION}. `mcp.client.version`
+ */
+export const SEARCH_MCP_CLIENT_VERSION = 'mcp.client.version';
+
+/**
+ * Search name for {@link MCP_LIFECYCLE_PHASE}. `mcp.lifecycle.phase`
+ */
+export const SEARCH_MCP_LIFECYCLE_PHASE = 'mcp.lifecycle.phase';
+
+/**
+ * Search name for {@link MCP_LOGGING_DATA_TYPE}. `mcp.logging.data_type`
+ */
+export const SEARCH_MCP_LOGGING_DATA_TYPE = 'mcp.logging.data_type';
+
+/**
+ * Search name for {@link MCP_LOGGING_LEVEL}. `mcp.logging.level`
+ */
+export const SEARCH_MCP_LOGGING_LEVEL = 'mcp.logging.level';
+
+/**
+ * Search name for {@link MCP_LOGGING_LOGGER}. `mcp.logging.logger`
+ */
+export const SEARCH_MCP_LOGGING_LOGGER = 'mcp.logging.logger';
+
+/**
+ * Search name for {@link MCP_LOGGING_MESSAGE}. `mcp.logging.message`
+ */
+export const SEARCH_MCP_LOGGING_MESSAGE = 'mcp.logging.message';
+
+/**
+ * Search name for {@link MCP_METHOD_NAME}. `mcp.method.name`
+ */
+export const SEARCH_MCP_METHOD_NAME = 'mcp.method.name';
+
+/**
+ * Search name for {@link MCP_PROGRESS_CURRENT}. `mcp.progress.current`
+ */
+export const SEARCH_MCP_PROGRESS_CURRENT = 'mcp.progress.current';
+
+/**
+ * Search name for {@link MCP_PROGRESS_MESSAGE}. `mcp.progress.message`
+ */
+export const SEARCH_MCP_PROGRESS_MESSAGE = 'mcp.progress.message';
+
+/**
+ * Search name for {@link MCP_PROGRESS_PERCENTAGE}. `mcp.progress.percentage`
+ */
+export const SEARCH_MCP_PROGRESS_PERCENTAGE = 'mcp.progress.percentage';
+
+/**
+ * Search name for {@link MCP_PROGRESS_TOKEN}. `mcp.progress.token`
+ */
+export const SEARCH_MCP_PROGRESS_TOKEN = 'mcp.progress.token';
+
+/**
+ * Search name for {@link MCP_PROGRESS_TOTAL}. `mcp.progress.total`
+ */
+export const SEARCH_MCP_PROGRESS_TOTAL = 'mcp.progress.total';
+
+/**
+ * Search name for {@link MCP_PROMPT_NAME}. `mcp.prompt.name`
+ */
+export const SEARCH_MCP_PROMPT_NAME = 'mcp.prompt.name';
+
+/**
+ * Search name for {@link MCP_PROMPT_RESULT_DESCRIPTION}. `mcp.prompt.result.description`
+ */
+export const SEARCH_MCP_PROMPT_RESULT_DESCRIPTION = 'mcp.prompt.result.description';
+
+/**
+ * Search name for {@link MCP_PROMPT_RESULT_MESSAGE_CONTENT}. `mcp.prompt.result.message_content`
+ */
+export const SEARCH_MCP_PROMPT_RESULT_MESSAGE_CONTENT = 'mcp.prompt.result.message_content';
+
+/**
+ * Search name for {@link MCP_PROMPT_RESULT_MESSAGE_COUNT}. `mcp.prompt.result.message_count`
+ */
+export const SEARCH_MCP_PROMPT_RESULT_MESSAGE_COUNT = 'mcp.prompt.result.message_count';
+
+/**
+ * Search name for {@link MCP_PROMPT_RESULT_MESSAGE_ROLE}. `mcp.prompt.result.message_role`
+ */
+export const SEARCH_MCP_PROMPT_RESULT_MESSAGE_ROLE = 'mcp.prompt.result.message_role';
+
+/**
+ * Search name for {@link MCP_PROTOCOL_READY}. `mcp.protocol.ready`
+ */
+export const SEARCH_MCP_PROTOCOL_READY = 'mcp.protocol.ready';
+
+/**
+ * Search name for {@link MCP_PROTOCOL_VERSION}. `mcp.protocol.version`
+ */
+export const SEARCH_MCP_PROTOCOL_VERSION = 'mcp.protocol.version';
+
+/**
+ * Search name for {@link MCP_REQUEST_ARGUMENT_KEY}. `mcp.request.argument.<key>`
+ */
+export const SEARCH_MCP_REQUEST_ARGUMENT_KEY = 'mcp.request.argument.<key>';
+
+/**
+ * Search name for {@link MCP_REQUEST_ARGUMENT_NAME}. `mcp.request.argument.name`
+ */
+export const SEARCH_MCP_REQUEST_ARGUMENT_NAME = 'mcp.request.argument.name';
+
+/**
+ * Search name for {@link MCP_REQUEST_ARGUMENT_URI}. `mcp.request.argument.uri`
+ */
+export const SEARCH_MCP_REQUEST_ARGUMENT_URI = 'mcp.request.argument.uri';
+
+/**
+ * Search name for {@link MCP_REQUEST_ID}. `mcp.request.id`
+ */
+export const SEARCH_MCP_REQUEST_ID = 'mcp.request.id';
+
+/**
+ * Search name for {@link MCP_RESOURCE_PROTOCOL}. `mcp.resource.protocol`
+ */
+export const SEARCH_MCP_RESOURCE_PROTOCOL = 'mcp.resource.protocol';
+
+/**
+ * Search name for {@link MCP_RESOURCE_URI}. `mcp.resource.uri`
+ */
+export const SEARCH_MCP_RESOURCE_URI = 'mcp.resource.uri';
+
+/**
+ * Search name for {@link MCP_SERVER_NAME}. `mcp.server.name`
+ */
+export const SEARCH_MCP_SERVER_NAME = 'mcp.server.name';
+
+/**
+ * Search name for {@link MCP_SERVER_TITLE}. `mcp.server.title`
+ */
+export const SEARCH_MCP_SERVER_TITLE = 'mcp.server.title';
+
+/**
+ * Search name for {@link MCP_SERVER_VERSION}. `mcp.server.version`
+ */
+export const SEARCH_MCP_SERVER_VERSION = 'mcp.server.version';
+
+/**
+ * Search name for {@link MCP_SESSION_ID}. `mcp.session.id`
+ */
+export const SEARCH_MCP_SESSION_ID = 'mcp.session.id';
+
+/**
+ * Search name for {@link MCP_TOOL_NAME}. `mcp.tool.name`
+ */
+export const SEARCH_MCP_TOOL_NAME = 'mcp.tool.name';
+
+/**
+ * Search name for {@link MCP_TOOL_RESULT_CONTENT}. `mcp.tool.result.content`
+ */
+export const SEARCH_MCP_TOOL_RESULT_CONTENT = 'mcp.tool.result.content';
+
+/**
+ * Search name for {@link MCP_TOOL_RESULT_CONTENT_COUNT}. `mcp.tool.result.content_count`
+ */
+export const SEARCH_MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
+
+/**
+ * Search name for {@link MCP_TOOL_RESULT_IS_ERROR}. `mcp.tool.result.is_error`
+ */
+export const SEARCH_MCP_TOOL_RESULT_IS_ERROR = 'mcp.tool.result.is_error';
+
+/**
+ * Search name for {@link MCP_TRANSPORT}. `mcp.transport`
+ */
+export const SEARCH_MCP_TRANSPORT = 'mcp.transport';
+
+/**
+ * Search name for {@link MDC_KEY}. `mdc.<key>`
+ */
+export const SEARCH_MDC_KEY = 'mdc.<key>';
+
+/**
+ * Search name for {@link MESSAGING_BATCH_MESSAGE_COUNT}. `messaging.batch.message_count`
+ */
+export const SEARCH_MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
+
+/**
+ * Search name for {@link MESSAGING_CONVERSATION_ID}. `messaging.conversation_id`
+ */
+export const SEARCH_MESSAGING_CONVERSATION_ID = 'messaging.conversation_id';
+
+/**
+ * Search name for {@link MESSAGING_DESTINATION}. `messaging.destination`
+ */
+export const SEARCH_MESSAGING_DESTINATION = 'messaging.destination';
+
+/**
+ * Search name for {@link MESSAGING_DESTINATION_CONNECTION}. `messaging.destination.connection`
+ */
+export const SEARCH_MESSAGING_DESTINATION_CONNECTION = 'messaging.destination.connection';
+
+/**
+ * Search name for {@link MESSAGING_DESTINATION_NAME}. `messaging.destination.name`
+ */
+export const SEARCH_MESSAGING_DESTINATION_NAME = 'messaging.destination.name';
+
+/**
+ * Search name for {@link MESSAGING_DESTINATION_PARTITION_ID}. `messaging.destination.partition.id`
+ */
+export const SEARCH_MESSAGING_DESTINATION_PARTITION_ID = 'messaging.destination.partition.id';
+
+/**
+ * Search name for {@link MESSAGING_DESTINATION_KIND}. `messaging.destination_kind`
+ */
+export const SEARCH_MESSAGING_DESTINATION_KIND = 'messaging.destination_kind';
+
+/**
+ * Search name for {@link MESSAGING_KAFKA_MESSAGE_KEY}. `messaging.kafka.message.key`
+ */
+export const SEARCH_MESSAGING_KAFKA_MESSAGE_KEY = 'messaging.kafka.message.key';
+
+/**
+ * Search name for {@link MESSAGING_KAFKA_MESSAGE_TOMBSTONE}. `messaging.kafka.message.tombstone`
+ */
+export const SEARCH_MESSAGING_KAFKA_MESSAGE_TOMBSTONE = 'messaging.kafka.message.tombstone';
+
+/**
+ * Search name for {@link MESSAGING_KAFKA_OFFSET}. `messaging.kafka.offset`
+ */
+export const SEARCH_MESSAGING_KAFKA_OFFSET = 'messaging.kafka.offset';
+
+/**
+ * Search name for {@link MESSAGING_MESSAGE_BODY_SIZE}. `messaging.message.body.size`
+ */
+export const SEARCH_MESSAGING_MESSAGE_BODY_SIZE = 'messaging.message.body.size';
+
+/**
+ * Search name for {@link MESSAGING_MESSAGE_CONVERSATION_ID}. `messaging.message.conversation_id`
+ */
+export const SEARCH_MESSAGING_MESSAGE_CONVERSATION_ID = 'messaging.message.conversation_id';
+
+/**
+ * Search name for {@link MESSAGING_MESSAGE_ENVELOPE_SIZE}. `messaging.message.envelope.size`
+ */
+export const SEARCH_MESSAGING_MESSAGE_ENVELOPE_SIZE = 'messaging.message.envelope.size';
+
+/**
+ * Search name for {@link MESSAGING_MESSAGE_ID}. `messaging.message.id`
+ */
+export const SEARCH_MESSAGING_MESSAGE_ID = 'messaging.message.id';
+
+/**
+ * Search name for {@link MESSAGING_MESSAGE_RECEIVE_LATENCY}. `messaging.message.receive.latency`
+ */
+export const SEARCH_MESSAGING_MESSAGE_RECEIVE_LATENCY = 'messaging.message.receive.latency';
+
+/**
+ * Search name for {@link MESSAGING_MESSAGE_RETRY_COUNT}. `messaging.message.retry.count`
+ */
+export const SEARCH_MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
+
+/**
+ * Search name for {@link _MESSAGING_MESSAGE_ID}. `messaging.message_id`
+ */
+export const _SEARCH_MESSAGING_MESSAGE_ID = 'messaging.message_id';
+
+/**
+ * Search name for {@link MESSAGING_OPERATION}. `messaging.operation`
+ */
+export const SEARCH_MESSAGING_OPERATION = 'messaging.operation';
+
+/**
+ * Search name for {@link MESSAGING_OPERATION_NAME}. `messaging.operation.name`
+ */
+export const SEARCH_MESSAGING_OPERATION_NAME = 'messaging.operation.name';
+
+/**
+ * Search name for {@link MESSAGING_OPERATION_TYPE}. `messaging.operation.type`
+ */
+export const SEARCH_MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
+
+/**
+ * Search name for {@link MESSAGING_PROTOCOL}. `messaging.protocol`
+ */
+export const SEARCH_MESSAGING_PROTOCOL = 'messaging.protocol';
+
+/**
+ * Search name for {@link MESSAGING_PROTOCOL_VERSION}. `messaging.protocol_version`
+ */
+export const SEARCH_MESSAGING_PROTOCOL_VERSION = 'messaging.protocol_version';
+
+/**
+ * Search name for {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY}. `messaging.rabbitmq.destination.routing_key`
+ */
+export const SEARCH_MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.destination.routing_key';
+
+/**
+ * Search name for {@link MESSAGING_RABBITMQ_ROUTING_KEY}. `messaging.rabbitmq.routing_key`
+ */
+export const SEARCH_MESSAGING_RABBITMQ_ROUTING_KEY = 'messaging.rabbitmq.routing_key';
+
+/**
+ * Search name for {@link MESSAGING_SYSTEM}. `messaging.system`
+ */
+export const SEARCH_MESSAGING_SYSTEM = 'messaging.system';
+
+/**
+ * Search name for {@link MESSAGING_URL}. `messaging.url`
+ */
+export const SEARCH_MESSAGING_URL = 'messaging.url';
+
+/**
+ * Search name for {@link METHOD}. `method`
+ */
+export const SEARCH_METHOD = 'method';
+
+/**
+ * Search name for {@link MIDDLEWARE_NAME}. `middleware.name`
+ */
+export const SEARCH_MIDDLEWARE_NAME = 'middleware.name';
+
+/**
+ * Search name for {@link FRAMES_DELAY}. `mobile.frames_delay`
+ */
+export const SEARCH_MOBILE_FRAMES_DELAY = 'mobile.frames_delay';
+
+/**
+ * Search name for {@link FRAMES_FROZEN}. `mobile.frozen_frames`
+ */
+export const SEARCH_MOBILE_FROZEN_FRAMES = 'mobile.frozen_frames';
+
+/**
+ * Search name for {@link FRAMES_SLOW}. `mobile.slow_frames`
+ */
+export const SEARCH_MOBILE_SLOW_FRAMES = 'mobile.slow_frames';
+
+/**
+ * Search name for {@link FRAMES_TOTAL}. `mobile.total_frames`
+ */
+export const SEARCH_MOBILE_TOTAL_FRAMES = 'mobile.total_frames';
+
+/**
+ * Search name for {@link NAVIGATION_ORIGIN}. `navigation.origin`
+ */
+export const SEARCH_NAVIGATION_ORIGIN = 'navigation.origin';
+
+/**
+ * Search name for {@link NAVIGATION_ROUTE_ID}. `navigation.route.id`
+ */
+export const SEARCH_NAVIGATION_ROUTE_ID = 'navigation.route.id';
+
+/**
+ * Search name for {@link NAVIGATION_TYPE}. `navigation.type`
+ */
+export const SEARCH_NAVIGATION_TYPE = 'navigation.type';
+
+/**
+ * Search name for {@link NEL_ELAPSED_TIME}. `nel.elapsed_time`
+ */
+export const SEARCH_NEL_ELAPSED_TIME = 'nel.elapsed_time';
+
+/**
+ * Search name for {@link NEL_PHASE}. `nel.phase`
+ */
+export const SEARCH_NEL_PHASE = 'nel.phase';
+
+/**
+ * Search name for {@link NEL_REFERRER}. `nel.referrer`
+ */
+export const SEARCH_NEL_REFERRER = 'nel.referrer';
+
+/**
+ * Search name for {@link NEL_SAMPLING_FUNCTION}. `nel.sampling_function`
+ */
+export const SEARCH_NEL_SAMPLING_FUNCTION = 'nel.sampling_function';
+
+/**
+ * Search name for {@link NEL_TYPE}. `nel.type`
+ */
+export const SEARCH_NEL_TYPE = 'nel.type';
+
+/**
+ * Search name for {@link NET_HOST_IP}. `net.host.ip`
+ */
+export const SEARCH_NET_HOST_IP = 'net.host.ip';
+
+/**
+ * Search name for {@link NET_HOST_NAME}. `net.host.name`
+ */
+export const SEARCH_NET_HOST_NAME = 'net.host.name';
+
+/**
+ * Search name for {@link NET_HOST_PORT}. `net.host.port`
+ */
+export const SEARCH_NET_HOST_PORT = 'net.host.port';
+
+/**
+ * Search name for {@link NET_PEER_IP}. `net.peer.ip`
+ */
+export const SEARCH_NET_PEER_IP = 'net.peer.ip';
+
+/**
+ * Search name for {@link NET_PEER_NAME}. `net.peer.name`
+ */
+export const SEARCH_NET_PEER_NAME = 'net.peer.name';
+
+/**
+ * Search name for {@link NET_PEER_PORT}. `net.peer.port`
+ */
+export const SEARCH_NET_PEER_PORT = 'net.peer.port';
+
+/**
+ * Search name for {@link NET_PROTOCOL_NAME}. `net.protocol.name`
+ */
+export const SEARCH_NET_PROTOCOL_NAME = 'net.protocol.name';
+
+/**
+ * Search name for {@link NET_PROTOCOL_VERSION}. `net.protocol.version`
+ */
+export const SEARCH_NET_PROTOCOL_VERSION = 'net.protocol.version';
+
+/**
+ * Search name for {@link NET_SOCK_FAMILY}. `net.sock.family`
+ */
+export const SEARCH_NET_SOCK_FAMILY = 'net.sock.family';
+
+/**
+ * Search name for {@link NET_SOCK_HOST_ADDR}. `net.sock.host.addr`
+ */
+export const SEARCH_NET_SOCK_HOST_ADDR = 'net.sock.host.addr';
+
+/**
+ * Search name for {@link NET_SOCK_HOST_PORT}. `net.sock.host.port`
+ */
+export const SEARCH_NET_SOCK_HOST_PORT = 'net.sock.host.port';
+
+/**
+ * Search name for {@link NET_SOCK_PEER_ADDR}. `net.sock.peer.addr`
+ */
+export const SEARCH_NET_SOCK_PEER_ADDR = 'net.sock.peer.addr';
+
+/**
+ * Search name for {@link NET_SOCK_PEER_NAME}. `net.sock.peer.name`
+ */
+export const SEARCH_NET_SOCK_PEER_NAME = 'net.sock.peer.name';
+
+/**
+ * Search name for {@link NET_SOCK_PEER_PORT}. `net.sock.peer.port`
+ */
+export const SEARCH_NET_SOCK_PEER_PORT = 'net.sock.peer.port';
+
+/**
+ * Search name for {@link NET_TRANSPORT}. `net.transport`
+ */
+export const SEARCH_NET_TRANSPORT = 'net.transport';
+
+/**
+ * Search name for {@link NETWORK_CONNECTION_EFFECTIVE_TYPE}. `network.connection.effective_type`
+ */
+export const SEARCH_NETWORK_CONNECTION_EFFECTIVE_TYPE = 'network.connection.effective_type';
+
+/**
+ * Search name for {@link NETWORK_CONNECTION_RTT}. `network.connection.rtt`
+ */
+export const SEARCH_NETWORK_CONNECTION_RTT = 'network.connection.rtt';
+
+/**
+ * Search name for {@link NETWORK_CONNECTION_TYPE}. `network.connection.type`
+ */
+export const SEARCH_NETWORK_CONNECTION_TYPE = 'network.connection.type';
+
+/**
+ * Search name for {@link NETWORK_LOCAL_ADDRESS}. `network.local.address`
+ */
+export const SEARCH_NETWORK_LOCAL_ADDRESS = 'network.local.address';
+
+/**
+ * Search name for {@link NETWORK_LOCAL_PORT}. `network.local.port`
+ */
+export const SEARCH_NETWORK_LOCAL_PORT = 'network.local.port';
+
+/**
+ * Search name for {@link NETWORK_PEER_ADDRESS}. `network.peer.address`
+ */
+export const SEARCH_NETWORK_PEER_ADDRESS = 'network.peer.address';
+
+/**
+ * Search name for {@link NETWORK_PEER_PORT}. `network.peer.port`
+ */
+export const SEARCH_NETWORK_PEER_PORT = 'network.peer.port';
+
+/**
+ * Search name for {@link NETWORK_PROTOCOL_NAME}. `network.protocol.name`
+ */
+export const SEARCH_NETWORK_PROTOCOL_NAME = 'network.protocol.name';
+
+/**
+ * Search name for {@link NETWORK_PROTOCOL_VERSION}. `network.protocol.version`
+ */
+export const SEARCH_NETWORK_PROTOCOL_VERSION = 'network.protocol.version';
+
+/**
+ * Search name for {@link NETWORK_TRANSPORT}. `network.transport`
+ */
+export const SEARCH_NETWORK_TRANSPORT = 'network.transport';
+
+/**
+ * Search name for {@link NETWORK_TYPE}. `network.type`
+ */
+export const SEARCH_NETWORK_TYPE = 'network.type';
+
+/**
+ * Search name for {@link SENTRY_ORIGIN}. `origin`
+ */
+export const SEARCH_ORIGIN = 'origin';
+
+/**
+ * Search name for {@link OS_BUILD}. `os.build`
+ */
+export const SEARCH_OS_BUILD = 'os.build';
+
+/**
+ * Search name for {@link OS_BUILD_ID}. `os.build_id`
+ */
+export const SEARCH_OS_BUILD_ID = 'os.build_id';
+
+/**
+ * Search name for {@link OS_DESCRIPTION}. `os.description`
+ */
+export const SEARCH_OS_DESCRIPTION = 'os.description';
+
+/**
+ * Search name for {@link OS_KERNEL_VERSION}. `os.kernel_version`
+ */
+export const SEARCH_OS_KERNEL_VERSION = 'os.kernel_version';
+
+/**
+ * Search name for {@link OS_NAME}. `os.name`
+ */
+export const SEARCH_OS_NAME = 'os.name';
+
+/**
+ * Search name for {@link OS_RAW_DESCRIPTION}. `os.raw_description`
+ */
+export const SEARCH_OS_RAW_DESCRIPTION = 'os.raw_description';
+
+/**
+ * Search name for {@link OS_ROOTED}. `os.rooted`
+ */
+export const SEARCH_OS_ROOTED = 'os.rooted';
+
+/**
+ * Search name for {@link OS_THEME}. `os.theme`
+ */
+export const SEARCH_OS_THEME = 'os.theme';
+
+/**
+ * Search name for {@link OS_TYPE}. `os.type`
+ */
+export const SEARCH_OS_TYPE = 'os.type';
+
+/**
+ * Search name for {@link OS_VERSION}. `os.version`
+ */
+export const SEARCH_OS_VERSION = 'os.version';
+
+/**
+ * Search name for {@link SENTRY_KIND}. `otel.kind`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_KIND} (`span.kind`) instead
+ */
+export const SEARCH_OTEL_KIND = 'otel.kind';
+
+/**
+ * Search name for {@link OTEL_SCOPE_NAME}. `otel.scope.name`
+ */
+export const SEARCH_OTEL_SCOPE_NAME = 'otel.scope.name';
+
+/**
+ * Search name for {@link OTEL_SCOPE_VERSION}. `otel.scope.version`
+ */
+export const SEARCH_OTEL_SCOPE_VERSION = 'otel.scope.version';
+
+/**
+ * Search name for {@link OTEL_STATUS_CODE}. `otel.status_code`
+ */
+export const SEARCH_OTEL_STATUS_CODE = 'otel.status_code';
+
+/**
+ * Search name for {@link OTEL_STATUS_DESCRIPTION}. `otel.status_description`
+ */
+export const SEARCH_OTEL_STATUS_DESCRIPTION = 'otel.status_description';
+
+/**
+ * Search name for {@link PARAMS_KEY}. `params.<key>`
+ */
+export const SEARCH_PARAMS_KEY = 'params.<key>';
+
+/**
+ * Search name for {@link PERFORMANCE_ACTIVATIONSTART}. `performance.activationStart`
+ */
+export const SEARCH_PERFORMANCE_ACTIVATIONSTART = 'performance.activationStart';
+
+/**
+ * Search name for {@link PERFORMANCE_TIMEORIGIN}. `performance.timeOrigin`
+ */
+export const SEARCH_PERFORMANCE_TIMEORIGIN = 'performance.timeOrigin';
+
+/**
+ * Search name for {@link SENTRY_PLATFORM}. `platform`
+ */
+export const SEARCH_PLATFORM = 'platform';
+
+/**
+ * Search name for {@link PORT}. `port`
+ */
+export const SEARCH_PORT = 'port';
+
+/**
+ * Search name for {@link PREVIOUS_ROUTE}. `previous_route`
+ */
+export const SEARCH_PREVIOUS_ROUTE = 'previous_route';
+
+/**
+ * Search name for {@link PROCESS_COMMAND_ARGS}. `process.command_args`
+ */
+export const SEARCH_PROCESS_COMMAND_ARGS = 'process.command_args';
+
+/**
+ * Search name for {@link PROCESS_EXECUTABLE_NAME}. `process.executable.name`
+ */
+export const SEARCH_PROCESS_EXECUTABLE_NAME = 'process.executable.name';
+
+/**
+ * Search name for {@link PROCESS_PID}. `process.pid`
+ */
+export const SEARCH_PROCESS_PID = 'process.pid';
+
+/**
+ * Search name for {@link PROCESS_RUNTIME_DESCRIPTION}. `process.runtime.description`
+ */
+export const SEARCH_PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
+
+/**
+ * Search name for {@link PROCESS_RUNTIME_ENGINE_NAME}. `process.runtime.engine.name`
+ */
+export const SEARCH_PROCESS_RUNTIME_ENGINE_NAME = 'process.runtime.engine.name';
+
+/**
+ * Search name for {@link PROCESS_RUNTIME_ENGINE_VERSION}. `process.runtime.engine.version`
+ */
+export const SEARCH_PROCESS_RUNTIME_ENGINE_VERSION = 'process.runtime.engine.version';
+
+/**
+ * Search name for {@link PROCESS_RUNTIME_NAME}. `process.runtime.name`
+ */
+export const SEARCH_PROCESS_RUNTIME_NAME = 'process.runtime.name';
+
+/**
+ * Search name for {@link PROCESS_RUNTIME_VERSION}. `process.runtime.version`
+ */
+export const SEARCH_PROCESS_RUNTIME_VERSION = 'process.runtime.version';
+
+/**
+ * Search name for {@link SENTRY_PROFILE_ID}. `profile.id`
+ */
+export const SEARCH_PROFILE_ID = 'profile.id';
+
+/**
+ * Search name for {@link SENTRY_PROFILE_ID}. `profile_id`
+ *
+ * @deprecated Use {@link SEARCH_PROFILE_ID} (`profile.id`) instead
+ */
+export const _SEARCH_PROFILE_ID = 'profile_id';
+
+/**
+ * Search name for {@link SENTRY_PROFILER_ID}. `profiler.id`
+ */
+export const SEARCH_PROFILER_ID = 'profiler.id';
+
+/**
+ * Search name for {@link QUERY}. `query`
+ */
+export const SEARCH_QUERY = 'query';
+
+/**
+ * Search name for {@link QUERY_KEY}. `query.<key>`
+ */
+export const SEARCH_QUERY_KEY = 'query.<key>';
+
+/**
+ * Search name for {@link REACT_VERSION}. `react.version`
+ */
+export const SEARCH_REACT_VERSION = 'react.version';
+
+/**
+ * Search name for {@link REDIS_COMMAND}. `redis.command`
+ */
+export const SEARCH_REDIS_COMMAND = 'redis.command';
+
+/**
+ * Search name for {@link REDIS_KEY}. `redis.key`
+ */
+export const SEARCH_REDIS_KEY = 'redis.key';
+
+/**
+ * Search name for {@link SENTRY_RELEASE}. `release`
+ */
+export const SEARCH_RELEASE = 'release';
+
+/**
+ * Search name for {@link REMIX_ACTION_FORM_DATA_KEY}. `remix.action_form_data.<key>`
+ */
+export const SEARCH_REMIX_ACTION_FORM_DATA_KEY = 'remix.action_form_data.<key>';
+
+/**
+ * Search name for {@link SENTRY_REPLAY_ID}. `replay.id`
+ */
+export const SEARCH_REPLAY_ID = 'replay.id';
+
+/**
+ * Search name for {@link SENTRY_REPLAY_ID}. `replay_id`
+ *
+ * @deprecated Use {@link SEARCH_REPLAY_ID} (`replay.id`) instead
+ */
+export const _SEARCH_REPLAY_ID = 'replay_id';
+
+/**
+ * Search name for {@link SENTRY_ENVIRONMENT}. `resource.deployment.environment`
+ *
+ * @deprecated Use {@link SEARCH_ENVIRONMENT} (`environment`) instead
+ */
+export const SEARCH_RESOURCE_DEPLOYMENT_ENVIRONMENT = 'resource.deployment.environment';
+
+/**
+ * Search name for {@link SENTRY_ENVIRONMENT}. `resource.deployment.environment.name`
+ *
+ * @deprecated Use {@link SEARCH_ENVIRONMENT} (`environment`) instead
+ */
+export const SEARCH_RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME = 'resource.deployment.environment.name';
+
+/**
+ * Search name for {@link RESOURCE_RENDER_BLOCKING_STATUS}. `resource.render_blocking_status`
+ */
+export const SEARCH_RESOURCE_RENDER_BLOCKING_STATUS = 'resource.render_blocking_status';
+
+/**
+ * Search name for {@link ROUTE}. `route`
+ */
+export const SEARCH_ROUTE = 'route';
+
+/**
+ * Search name for {@link RPC_GRPC_STATUS_CODE}. `rpc.grpc.status_code`
+ */
+export const SEARCH_RPC_GRPC_STATUS_CODE = 'rpc.grpc.status_code';
+
+/**
+ * Search name for {@link RPC_METHOD}. `rpc.method`
+ */
+export const SEARCH_RPC_METHOD = 'rpc.method';
+
+/**
+ * Search name for {@link RPC_RESPONSE_STATUS_CODE}. `rpc.response.status_code`
+ */
+export const SEARCH_RPC_RESPONSE_STATUS_CODE = 'rpc.response.status_code';
+
+/**
+ * Search name for {@link RPC_SERVICE}. `rpc.service`
+ */
+export const SEARCH_RPC_SERVICE = 'rpc.service';
+
+/**
+ * Search name for {@link RPC_SYSTEM}. `rpc.system`
+ */
+export const SEARCH_RPC_SYSTEM = 'rpc.system';
+
+/**
+ * Search name for {@link RPC_SYSTEM_NAME}. `rpc.system.name`
+ */
+export const SEARCH_RPC_SYSTEM_NAME = 'rpc.system.name';
+
+/**
+ * Search name for {@link RUNTIME_BUILD}. `runtime.build`
+ */
+export const SEARCH_RUNTIME_BUILD = 'runtime.build';
+
+/**
+ * Search name for {@link RUNTIME_NAME}. `runtime.name`
+ */
+export const SEARCH_RUNTIME_NAME = 'runtime.name';
+
+/**
+ * Search name for {@link RUNTIME_RAW_DESCRIPTION}. `runtime.raw_description`
+ */
+export const SEARCH_RUNTIME_RAW_DESCRIPTION = 'runtime.raw_description';
+
+/**
+ * Search name for {@link RUNTIME_VERSION}. `runtime.version`
+ */
+export const SEARCH_RUNTIME_VERSION = 'runtime.version';
+
+/**
+ * Search name for {@link SCORE_KEY}. `score.<key>`
+ */
+export const SEARCH_SCORE_KEY = 'score.<key>';
+
+/**
+ * Search name for {@link SCORE_RATIO_KEY}. `score.ratio.<key>`
+ */
+export const SEARCH_SCORE_RATIO_KEY = 'score.ratio.<key>';
+
+/**
+ * Search name for {@link SCORE_TOTAL}. `score.total`
+ */
+export const SEARCH_SCORE_TOTAL = 'score.total';
+
+/**
+ * Search name for {@link SCORE_WEIGHT_KEY}. `score.weight.<key>`
+ */
+export const SEARCH_SCORE_WEIGHT_KEY = 'score.weight.<key>';
+
+/**
+ * Search name for {@link SENTRY_SDK_NAME}. `sdk.name`
+ */
+export const SEARCH_SDK_NAME = 'sdk.name';
+
+/**
+ * Search name for {@link SENTRY_SDK_VERSION}. `sdk.version`
+ */
+export const SEARCH_SDK_VERSION = 'sdk.version';
+
+/**
+ * Search name for {@link SENTRY_ACTION}. `sentry.action`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_ACTION} (`span.action`) instead
+ */
+export const SEARCH_ACTION = 'sentry.action';
+
+/**
+ * Search name for {@link SENTRY_BROWSER_VERSION}. `sentry.browser.version`
+ */
+export const _SEARCH_BROWSER_VERSION = 'sentry.browser.version';
+
+/**
+ * Search name for {@link SENTRY_CANCELLATION_REASON}. `sentry.cancellation_reason`
+ */
+export const SEARCH_CANCELLATION_REASON = 'sentry.cancellation_reason';
+
+/**
+ * Search name for {@link SENTRY_CATEGORY}. `sentry.category`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_CATEGORY} (`span.category`) instead
+ */
+export const SEARCH_CATEGORY = 'sentry.category';
+
+/**
+ * Search name for {@link SENTRY_CLIENT_SAMPLE_RATE}. `sentry.client_sample_rate`
+ *
+ * @deprecated Use {@link SEARCH_CLIENT_SAMPLE_RATE} (`client_sample_rate`) instead
+ */
+export const _SEARCH_CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
+
+/**
+ * Search name for {@link SENTRY_DESCRIPTION}. `sentry.description`
+ */
+export const SEARCH_DESCRIPTION = 'sentry.description';
+
+/**
+ * Search name for {@link SENTRY_DIST}. `sentry.dist`
+ */
+export const _SEARCH_DIST = 'sentry.dist';
+
+/**
+ * Search name for {@link SENTRY_DOMAIN}. `sentry.domain`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_DOMAIN} (`span.domain`) instead
+ */
+export const SEARCH_DOMAIN = 'sentry.domain';
+
+/**
+ * Search name for {@link SENTRY_DSC_ENVIRONMENT}. `sentry.dsc.environment`
+ */
+export const SEARCH_DSC_ENVIRONMENT = 'sentry.dsc.environment';
+
+/**
+ * Search name for {@link SENTRY_DSC_PROJECT_ID}. `sentry.dsc.project_id`
+ */
+export const SEARCH_DSC_PROJECT_ID = 'sentry.dsc.project_id';
+
+/**
+ * Search name for {@link SENTRY_DSC_PUBLIC_KEY}. `sentry.dsc.public_key`
+ */
+export const SEARCH_DSC_PUBLIC_KEY = 'sentry.dsc.public_key';
+
+/**
+ * Search name for {@link SENTRY_DSC_RELEASE}. `sentry.dsc.release`
+ */
+export const SEARCH_DSC_RELEASE = 'sentry.dsc.release';
+
+/**
+ * Search name for {@link SENTRY_DSC_SAMPLE_RATE}. `sentry.dsc.sample_rate`
+ */
+export const SEARCH_DSC_SAMPLE_RATE = 'sentry.dsc.sample_rate';
+
+/**
+ * Search name for {@link SENTRY_DSC_SAMPLED}. `sentry.dsc.sampled`
+ */
+export const SEARCH_DSC_SAMPLED = 'sentry.dsc.sampled';
+
+/**
+ * Search name for {@link SENTRY_DSC_TRACE_ID}. `sentry.dsc.trace_id`
+ */
+export const SEARCH_DSC_TRACE_ID = 'sentry.dsc.trace_id';
+
+/**
+ * Search name for {@link SENTRY_DSC_TRANSACTION}. `sentry.dsc.transaction`
+ */
+export const SEARCH_DSC_TRANSACTION = 'sentry.dsc.transaction';
+
+/**
+ * Search name for {@link SENTRY_ENVIRONMENT}. `sentry.environment`
+ *
+ * @deprecated Use {@link SEARCH_ENVIRONMENT} (`environment`) instead
+ */
+export const _SEARCH_ENVIRONMENT = 'sentry.environment';
+
+/**
+ * Search name for {@link SENTRY_EVENT_SERIALIZED_BREADCRUMBS}. `sentry.event.serialized_breadcrumbs`
+ */
+export const SEARCH_EVENT_SERIALIZED_BREADCRUMBS = 'sentry.event.serialized_breadcrumbs';
+
+/**
+ * Search name for {@link SENTRY_EVENT_SERIALIZED_CONTEXTS}. `sentry.event.serialized_contexts`
+ */
+export const SEARCH_EVENT_SERIALIZED_CONTEXTS = 'sentry.event.serialized_contexts';
+
+/**
+ * Search name for {@link SENTRY_EVENT_SERIALIZED_EXTRA}. `sentry.event.serialized_extra`
+ */
+export const SEARCH_EVENT_SERIALIZED_EXTRA = 'sentry.event.serialized_extra';
+
+/**
+ * Search name for {@link SENTRY_EVENT_SERIALIZED_META}. `sentry.event.serialized_meta`
+ */
+export const SEARCH_EVENT_SERIALIZED_META = 'sentry.event.serialized_meta';
+
+/**
+ * Search name for {@link SENTRY_EXCLUSIVE_TIME}. `sentry.exclusive_time`
+ */
+export const SEARCH_EXCLUSIVE_TIME = 'sentry.exclusive_time';
+
+/**
+ * Search name for {@link FRAMES_FROZEN}. `sentry.frames.frozen`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE_FROZEN_FRAMES} (`mobile.frozen_frames`) instead
+ */
+export const _SEARCH_FRAMES_FROZEN = 'sentry.frames.frozen';
+
+/**
+ * Search name for {@link FRAMES_SLOW}. `sentry.frames.slow`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE_SLOW_FRAMES} (`mobile.slow_frames`) instead
+ */
+export const _SEARCH_FRAMES_SLOW = 'sentry.frames.slow';
+
+/**
+ * Search name for {@link FRAMES_TOTAL}. `sentry.frames.total`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE_TOTAL_FRAMES} (`mobile.total_frames`) instead
+ */
+export const _SEARCH_FRAMES_TOTAL = 'sentry.frames.total';
+
+/**
+ * Search name for {@link SENTRY_GRAPHQL_OPERATION}. `sentry.graphql.operation`
+ */
+export const SEARCH_GRAPHQL_OPERATION = 'sentry.graphql.operation';
+
+/**
+ * Search name for {@link SENTRY_GROUP}. `sentry.group`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_GROUP} (`span.group`) instead
+ */
+export const SEARCH_GROUP = 'sentry.group';
+
+/**
+ * Search name for {@link SENTRY_HTTP_PREFETCH}. `sentry.http.prefetch`
+ */
+export const SEARCH_HTTP_PREFETCH = 'sentry.http.prefetch';
+
+/**
+ * Search name for {@link SENTRY_IDLE_SPAN_FINISH_REASON}. `sentry.idle_span_finish_reason`
+ */
+export const SEARCH_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
+
+/**
+ * Search name for {@link SENTRY_IS_REMOTE}. `sentry.is_remote`
+ */
+export const SEARCH_IS_REMOTE = 'sentry.is_remote';
+
+/**
+ * Search name for {@link SENTRY_KIND}. `sentry.kind`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_KIND} (`span.kind`) instead
+ */
+export const SEARCH_KIND = 'sentry.kind';
+
+/**
+ * Search name for {@link SENTRY_MAIN_THREAD}. `sentry.main_thread`
+ */
+export const SEARCH_MAIN_THREAD = 'sentry.main_thread';
+
+/**
+ * Search name for {@link SENTRY_MESSAGE_PARAMETER_KEY}. `sentry.message.parameter.<key>`
+ */
+export const SEARCH_MESSAGE_PARAMETER_KEY = 'sentry.message.parameter.<key>';
+
+/**
+ * Search name for {@link SENTRY_MESSAGE_TEMPLATE}. `sentry.message.template`
+ */
+export const SEARCH_MESSAGE_TEMPLATE = 'sentry.message.template';
+
+/**
+ * Search name for {@link SENTRY_METRIC_SOURCE}. `sentry.metric.source`
+ */
+export const SEARCH_METRIC_SOURCE = 'sentry.metric.source';
+
+/**
+ * Search name for {@link SENTRY_MOBILE}. `sentry.mobile`
+ */
+export const SEARCH_MOBILE = 'sentry.mobile';
+
+/**
+ * Search name for {@link SENTRY_MODULE_KEY}. `sentry.module.<key>`
+ */
+export const SEARCH_MODULE_KEY = 'sentry.module.<key>';
+
+/**
+ * Search name for {@link SENTRY_NEXTJS_SSR_FUNCTION_ROUTE}. `sentry.nextjs.ssr.function.route`
+ */
+export const SEARCH_NEXTJS_SSR_FUNCTION_ROUTE = 'sentry.nextjs.ssr.function.route';
+
+/**
+ * Search name for {@link SENTRY_NEXTJS_SSR_FUNCTION_TYPE}. `sentry.nextjs.ssr.function.type`
+ */
+export const SEARCH_NEXTJS_SSR_FUNCTION_TYPE = 'sentry.nextjs.ssr.function.type';
+
+/**
+ * Search name for {@link SENTRY_NORMALIZED_DB_QUERY}. `sentry.normalized_db_query`
+ */
+export const SEARCH_NORMALIZED_DB_QUERY = 'sentry.normalized_db_query';
+
+/**
+ * Search name for {@link SENTRY_NORMALIZED_DB_QUERY_HASH}. `sentry.normalized_db_query.hash`
+ */
+export const SEARCH_NORMALIZED_DB_QUERY_HASH = 'sentry.normalized_db_query.hash';
+
+/**
+ * Search name for {@link SENTRY_NORMALIZED_DESCRIPTION}. `sentry.normalized_description`
+ */
+export const SEARCH_NORMALIZED_DESCRIPTION = 'sentry.normalized_description';
+
+/**
+ * Search name for {@link SENTRY_OBSERVED_TIMESTAMP_NANOS}. `sentry.observed_timestamp_nanos`
+ */
+export const SEARCH_OBSERVED_TIMESTAMP_NANOS = 'sentry.observed_timestamp_nanos';
+
+/**
+ * Search name for {@link SENTRY_OP}. `sentry.op`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_OP} (`span.op`) instead
+ */
+export const SEARCH_OP = 'sentry.op';
+
+/**
+ * Search name for {@link SENTRY_ORIGIN}. `sentry.origin`
+ *
+ * @deprecated Use {@link SEARCH_ORIGIN} (`origin`) instead
+ */
+export const _SEARCH_ORIGIN = 'sentry.origin';
+
+/**
+ * Search name for {@link SENTRY_PAGELOAD_SPAN_ID}. `sentry.pageload.span_id`
+ */
+export const SEARCH_PAGELOAD_SPAN_ID = 'sentry.pageload.span_id';
+
+/**
+ * Search name for {@link SENTRY_PLATFORM}. `sentry.platform`
+ *
+ * @deprecated Use {@link SEARCH_PLATFORM} (`platform`) instead
+ */
+export const _SEARCH_PLATFORM = 'sentry.platform';
+
+/**
+ * Search name for {@link SENTRY_PROFILE_ID}. `sentry.profile_id`
+ *
+ * @deprecated Use {@link SEARCH_PROFILE_ID} (`profile.id`) instead
+ */
+export const __SEARCH_PROFILE_ID = 'sentry.profile_id';
+
+/**
+ * Search name for {@link SENTRY_PROFILER_ID}. `sentry.profiler_id`
+ *
+ * @deprecated Use {@link SEARCH_PROFILER_ID} (`profiler.id`) instead
+ */
+export const _SEARCH_PROFILER_ID = 'sentry.profiler_id';
+
+/**
+ * Search name for {@link SENTRY_RELAY_INGRESS}. `sentry.relay.ingress`
+ */
+export const SEARCH_RELAY_INGRESS = 'sentry.relay.ingress';
+
+/**
+ * Search name for {@link SENTRY_RELAY_PIPELINE}. `sentry.relay.pipeline`
+ */
+export const SEARCH_RELAY_PIPELINE = 'sentry.relay.pipeline';
+
+/**
+ * Search name for {@link SENTRY_RELEASE}. `sentry.release`
+ *
+ * @deprecated Use {@link SEARCH_RELEASE} (`release`) instead
+ */
+export const _SEARCH_RELEASE = 'sentry.release';
+
+/**
+ * Search name for {@link SENTRY_REPLAY_ID}. `sentry.replay_id`
+ *
+ * @deprecated Use {@link SEARCH_REPLAY_ID} (`replay.id`) instead
+ */
+export const __SEARCH_REPLAY_ID = 'sentry.replay_id';
+
+/**
+ * Search name for {@link SENTRY_REPLAY_IS_BUFFERING}. `sentry.replay_is_buffering`
+ */
+export const SEARCH_REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
+
+/**
+ * Search name for {@link SENTRY_REPORT_EVENT}. `sentry.report_event`
+ */
+export const SEARCH_REPORT_EVENT = 'sentry.report_event';
+
+/**
+ * Search name for {@link SENTRY_SDK_INTEGRATIONS}. `sentry.sdk.integrations`
+ */
+export const SEARCH_SDK_INTEGRATIONS = 'sentry.sdk.integrations';
+
+/**
+ * Search name for {@link SENTRY_SDK_NAME}. `sentry.sdk.name`
+ *
+ * @deprecated Use {@link SEARCH_SDK_NAME} (`sdk.name`) instead
+ */
+export const _SEARCH_SDK_NAME = 'sentry.sdk.name';
+
+/**
+ * Search name for {@link SENTRY_SDK_VERSION}. `sentry.sdk.version`
+ *
+ * @deprecated Use {@link SEARCH_SDK_VERSION} (`sdk.version`) instead
+ */
+export const _SEARCH_SDK_VERSION = 'sentry.sdk.version';
+
+/**
+ * Search name for {@link SENTRY_SEGMENT_ID}. `sentry.segment.id`
+ */
+export const SEARCH_SEGMENT_ID = 'sentry.segment.id';
+
+/**
+ * Search name for {@link SENTRY_SEGMENT_NAME}. `sentry.segment.name`
+ *
+ * @deprecated Use {@link SEARCH_TRANSACTION} (`transaction`) instead
+ */
+export const SEARCH_SEGMENT_NAME = 'sentry.segment.name';
+
+/**
+ * Search name for {@link SENTRY_SEGMENT_NAME_SOURCE}. `sentry.segment.name.source`
+ */
+export const SEARCH_SEGMENT_NAME_SOURCE = 'sentry.segment.name.source';
+
+/**
+ * Search name for {@link _SENTRY_SEGMENT_ID}. `sentry.segment_id`
+ *
+ * @deprecated Use {@link SEARCH_TRANSACTION_SPAN_ID} (`transaction.span_id`) instead
+ */
+export const _SEARCH_SEGMENT_ID = 'sentry.segment_id';
+
+/**
+ * Search name for {@link SENTRY_SERVER_SAMPLE_RATE}. `sentry.server_sample_rate`
+ *
+ * @deprecated Use {@link SEARCH_SERVER_SAMPLE_RATE} (`server_sample_rate`) instead
+ */
+export const _SEARCH_SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
+
+/**
+ * Search name for {@link SENTRY_SOURCE}. `sentry.source`
+ */
+export const SEARCH_SOURCE = 'sentry.source';
+
+/**
+ * Search name for {@link SENTRY_SPAN_SOURCE}. `sentry.span.source`
+ */
+export const SEARCH_SPAN_SOURCE = 'sentry.span.source';
+
+/**
+ * Search name for {@link SENTRY_STATUS}. `sentry.status`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_STATUS} (`span.status`) instead
+ */
+export const SEARCH_STATUS = 'sentry.status';
+
+/**
+ * Search name for {@link SENTRY_STATUS_MESSAGE}. `sentry.status.message`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_STATUS_MESSAGE} (`span.status.message`) instead
+ */
+export const SEARCH_STATUS_MESSAGE = 'sentry.status.message';
+
+/**
+ * Search name for {@link SENTRY_STATUS_CODE}. `sentry.status_code`
+ *
+ * @deprecated Use {@link SEARCH_SPAN_STATUS_CODE} (`span.status_code`) instead
+ */
+export const SEARCH_STATUS_CODE = 'sentry.status_code';
+
+/**
+ * Search name for {@link SENTRY_SVELTEKIT_NAVIGATION_FROM}. `sentry.sveltekit.navigation.from`
+ */
+export const SEARCH_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
+
+/**
+ * Search name for {@link SENTRY_SVELTEKIT_NAVIGATION_TO}. `sentry.sveltekit.navigation.to`
+ */
+export const SEARCH_SVELTEKIT_NAVIGATION_TO = 'sentry.sveltekit.navigation.to';
+
+/**
+ * Search name for {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE}. `sentry.sveltekit.navigation.type`
+ */
+export const SEARCH_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
+
+/**
+ * Search name for {@link SENTRY_TIMESTAMP_SEQUENCE}. `sentry.timestamp.sequence`
+ */
+export const SEARCH_TIMESTAMP_SEQUENCE = 'sentry.timestamp.sequence';
+
+/**
+ * Search name for {@link SENTRY_TRACE_PARENT_SPAN_ID}. `sentry.trace.parent_span_id`
+ */
+export const SEARCH_TRACE_PARENT_SPAN_ID = 'sentry.trace.parent_span_id';
+
+/**
+ * Search name for {@link SENTRY_TRACE_STATUS}. `sentry.trace.status`
+ *
+ * @deprecated Use {@link SEARCH_TRACE_STATUS} (`trace.status`) instead
+ */
+export const _SEARCH_TRACE_STATUS = 'sentry.trace.status';
+
+/**
+ * Search name for {@link SENTRY_TRACE_LIFECYCLE}. `sentry.trace_lifecycle`
+ *
+ * @deprecated Use {@link SEARCH_TRACE_LIFECYCLE} (`trace_lifecycle`) instead
+ */
+export const _SEARCH_TRACE_LIFECYCLE = 'sentry.trace_lifecycle';
+
+/**
+ * Search name for {@link SENTRY_SEGMENT_NAME}. `sentry.transaction`
+ *
+ * @deprecated Use {@link SEARCH_TRANSACTION} (`transaction`) instead
+ */
+export const _SEARCH_TRANSACTION = 'sentry.transaction';
+
+/**
+ * Search name for {@link SENTRY_USER_IP}. `sentry.user.ip`
+ *
+ * @deprecated Use {@link SEARCH_USER_IP} (`user.ip`) instead
+ */
+export const _SEARCH_USER_IP = 'sentry.user.ip';
+
+/**
+ * Search name for {@link SENTRY_USER_USERNAME}. `sentry.user.username`
+ *
+ * @deprecated Use {@link SEARCH_USER_USERNAME} (`user.username`) instead
+ */
+export const _SEARCH_USER_USERNAME = 'sentry.user.username';
+
+/**
+ * Search name for {@link SERVER_ADDRESS}. `server.address`
+ */
+export const SEARCH_SERVER_ADDRESS = 'server.address';
+
+/**
+ * Search name for {@link SERVER_PORT}. `server.port`
+ */
+export const SEARCH_SERVER_PORT = 'server.port';
+
+/**
+ * Search name for {@link SERVER_NAME}. `server_name`
+ */
+export const SEARCH_SERVER_NAME = 'server_name';
+
+/**
+ * Search name for {@link SENTRY_SERVER_SAMPLE_RATE}. `server_sample_rate`
+ */
+export const SEARCH_SERVER_SAMPLE_RATE = 'server_sample_rate';
+
+/**
+ * Search name for {@link SERVICE_NAME}. `service.name`
+ */
+export const SEARCH_SERVICE_NAME = 'service.name';
+
+/**
+ * Search name for {@link SENTRY_RELEASE}. `service.version`
+ *
+ * @deprecated Use {@link SEARCH_RELEASE} (`release`) instead
+ */
+export const SEARCH_SERVICE_VERSION = 'service.version';
+
+/**
+ * Search name for {@link SESSION_ID}. `session.id`
+ */
+export const SEARCH_SESSION_ID = 'session.id';
+
+/**
+ * Search name for {@link SENTRY_ACTION}. `span.action`
+ */
+export const SEARCH_SPAN_ACTION = 'span.action';
+
+/**
+ * Search name for {@link SENTRY_CATEGORY}. `span.category`
+ */
+export const SEARCH_SPAN_CATEGORY = 'span.category';
+
+/**
+ * Search name for {@link SENTRY_DOMAIN}. `span.domain`
+ */
+export const SEARCH_SPAN_DOMAIN = 'span.domain';
+
+/**
+ * Search name for {@link SENTRY_GROUP}. `span.group`
+ */
+export const SEARCH_SPAN_GROUP = 'span.group';
+
+/**
+ * Search name for {@link SENTRY_KIND}. `span.kind`
+ */
+export const SEARCH_SPAN_KIND = 'span.kind';
+
+/**
+ * Search name for {@link SENTRY_OP}. `span.op`
+ */
+export const SEARCH_SPAN_OP = 'span.op';
+
+/**
+ * Search name for {@link SENTRY_STATUS}. `span.status`
+ */
+export const SEARCH_SPAN_STATUS = 'span.status';
+
+/**
+ * Search name for {@link SENTRY_STATUS_MESSAGE}. `span.status.message`
+ */
+export const SEARCH_SPAN_STATUS_MESSAGE = 'span.status.message';
+
+/**
+ * Search name for {@link SENTRY_STATUS_CODE}. `span.status_code`
+ */
+export const SEARCH_SPAN_STATUS_CODE = 'span.status_code';
+
+/**
+ * Search name for {@link DB_SYSTEM}. `span.system`
+ *
+ * @deprecated Use {@link SEARCH_DB_SYSTEM} (`db.system`) instead
+ */
+export const SEARCH_SPAN_SYSTEM = 'span.system';
+
+/**
+ * Search name for {@link STALL_PERCENTAGE}. `stall_percentage`
+ */
+export const SEARCH_STALL_PERCENTAGE = 'stall_percentage';
+
+/**
+ * Search name for {@link STALL_TOTAL_TIME}. `stall_total_time`
+ */
+export const SEARCH_STALL_TOTAL_TIME = 'stall_total_time';
+
+/**
+ * Search name for {@link STARLETTE_MIDDLEWARE_NAME}. `starlette.middleware_name`
+ */
+export const SEARCH_STARLETTE_MIDDLEWARE_NAME = 'starlette.middleware_name';
+
+/**
+ * Search name for {@link STARLITE_MIDDLEWARE_NAME}. `starlite.middleware_name`
+ */
+export const SEARCH_STARLITE_MIDDLEWARE_NAME = 'starlite.middleware_name';
+
+/**
+ * Search name for {@link STATE_TYPE}. `state.type`
+ */
+export const SEARCH_STATE_TYPE = 'state.type';
+
+/**
+ * Search name for {@link SUBPROCESS_PID}. `subprocess.pid`
+ */
+export const SEARCH_SUBPROCESS_PID = 'subprocess.pid';
+
+/**
+ * Search name for {@link THREAD_ID}. `thread.id`
+ */
+export const SEARCH_THREAD_ID = 'thread.id';
+
+/**
+ * Search name for {@link THREAD_NAME}. `thread.name`
+ */
+export const SEARCH_THREAD_NAME = 'thread.name';
+
+/**
+ * Search name for {@link TIMBER_TAG}. `timber.tag`
+ */
+export const SEARCH_TIMBER_TAG = 'timber.tag';
+
+/**
+ * Search name for {@link TIME_TO_FULL_DISPLAY}. `time_to_full_display`
+ */
+export const SEARCH_TIME_TO_FULL_DISPLAY = 'time_to_full_display';
+
+/**
+ * Search name for {@link TIME_TO_INITIAL_DISPLAY}. `time_to_initial_display`
+ */
+export const SEARCH_TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
+
+/**
+ * Search name for {@link SENTRY_TRACE_STATUS}. `trace.status`
+ */
+export const SEARCH_TRACE_STATUS = 'trace.status';
+
+/**
+ * Search name for {@link SENTRY_TRACE_LIFECYCLE}. `trace_lifecycle`
+ */
+export const SEARCH_TRACE_LIFECYCLE = 'trace_lifecycle';
+
+/**
+ * Search name for {@link SENTRY_SEGMENT_NAME}. `transaction`
+ */
+export const SEARCH_TRANSACTION = 'transaction';
+
+/**
+ * Search name for {@link _SENTRY_SEGMENT_ID}. `transaction.span_id`
+ */
+export const SEARCH_TRANSACTION_SPAN_ID = 'transaction.span_id';
+
+/**
+ * Search name for {@link TRPC_PROCEDURE_PATH}. `trpc.procedure_path`
+ */
+export const SEARCH_TRPC_PROCEDURE_PATH = 'trpc.procedure_path';
+
+/**
+ * Search name for {@link TRPC_PROCEDURE_TYPE}. `trpc.procedure_type`
+ */
+export const SEARCH_TRPC_PROCEDURE_TYPE = 'trpc.procedure_type';
+
+/**
+ * Search name for {@link TTFB}. `ttfb`
+ */
+export const SEARCH_TTFB = 'ttfb';
+
+/**
+ * Search name for {@link TTFB_REQUESTTIME}. `ttfb.requestTime`
+ */
+export const SEARCH_TTFB_REQUESTTIME = 'ttfb.requestTime';
+
+/**
+ * Search name for {@link TYPE}. `type`
+ */
+export const SEARCH_TYPE = 'type';
+
+/**
+ * Search name for {@link UI_COMPONENT_NAME}. `ui.component_name`
+ */
+export const SEARCH_UI_COMPONENT_NAME = 'ui.component_name';
+
+/**
+ * Search name for {@link UI_CONTRIBUTES_TO_TTFD}. `ui.contributes_to_ttfd`
+ */
+export const SEARCH_UI_CONTRIBUTES_TO_TTFD = 'ui.contributes_to_ttfd';
+
+/**
+ * Search name for {@link UI_CONTRIBUTES_TO_TTID}. `ui.contributes_to_ttid`
+ */
+export const SEARCH_UI_CONTRIBUTES_TO_TTID = 'ui.contributes_to_ttid';
+
+/**
+ * Search name for {@link UI_ELEMENT_HEIGHT}. `ui.element.height`
+ */
+export const SEARCH_UI_ELEMENT_HEIGHT = 'ui.element.height';
+
+/**
+ * Search name for {@link UI_ELEMENT_ID}. `ui.element.id`
+ */
+export const SEARCH_UI_ELEMENT_ID = 'ui.element.id';
+
+/**
+ * Search name for {@link UI_ELEMENT_IDENTIFIER}. `ui.element.identifier`
+ */
+export const SEARCH_UI_ELEMENT_IDENTIFIER = 'ui.element.identifier';
+
+/**
+ * Search name for {@link UI_ELEMENT_LOAD_TIME}. `ui.element.load_time`
+ */
+export const SEARCH_UI_ELEMENT_LOAD_TIME = 'ui.element.load_time';
+
+/**
+ * Search name for {@link UI_ELEMENT_PAINT_TYPE}. `ui.element.paint_type`
+ */
+export const SEARCH_UI_ELEMENT_PAINT_TYPE = 'ui.element.paint_type';
+
+/**
+ * Search name for {@link UI_ELEMENT_RENDER_TIME}. `ui.element.render_time`
+ */
+export const SEARCH_UI_ELEMENT_RENDER_TIME = 'ui.element.render_time';
+
+/**
+ * Search name for {@link UI_ELEMENT_TYPE}. `ui.element.type`
+ */
+export const SEARCH_UI_ELEMENT_TYPE = 'ui.element.type';
+
+/**
+ * Search name for {@link UI_ELEMENT_URL}. `ui.element.url`
+ */
+export const SEARCH_UI_ELEMENT_URL = 'ui.element.url';
+
+/**
+ * Search name for {@link UI_ELEMENT_WIDTH}. `ui.element.width`
+ */
+export const SEARCH_UI_ELEMENT_WIDTH = 'ui.element.width';
+
+/**
+ * Search name for {@link URL}. `url`
+ */
+export const SEARCH_URL = 'url';
+
+/**
+ * Search name for {@link URL_DOMAIN}. `url.domain`
+ */
+export const SEARCH_URL_DOMAIN = 'url.domain';
+
+/**
+ * Search name for {@link URL_FRAGMENT}. `url.fragment`
+ */
+export const SEARCH_URL_FRAGMENT = 'url.fragment';
+
+/**
+ * Search name for {@link URL_FULL}. `url.full`
+ */
+export const SEARCH_URL_FULL = 'url.full';
+
+/**
+ * Search name for {@link URL_PATH}. `url.path`
+ */
+export const SEARCH_URL_PATH = 'url.path';
+
+/**
+ * Search name for {@link URL_PATH_PARAMETER_KEY}. `url.path.parameter.<key>`
+ */
+export const SEARCH_URL_PATH_PARAMETER_KEY = 'url.path.parameter.<key>';
+
+/**
+ * Search name for {@link URL_PATH_PARAMS_KEY}. `url.path.params.<key>`
+ */
+export const SEARCH_URL_PATH_PARAMS_KEY = 'url.path.params.<key>';
+
+/**
+ * Search name for {@link URL_PORT}. `url.port`
+ */
+export const SEARCH_URL_PORT = 'url.port';
+
+/**
+ * Search name for {@link URL_QUERY}. `url.query`
+ */
+export const SEARCH_URL_QUERY = 'url.query';
+
+/**
+ * Search name for {@link URL_SAME_ORIGIN}. `url.same_origin`
+ */
+export const SEARCH_URL_SAME_ORIGIN = 'url.same_origin';
+
+/**
+ * Search name for {@link URL_SCHEME}. `url.scheme`
+ */
+export const SEARCH_URL_SCHEME = 'url.scheme';
+
+/**
+ * Search name for {@link URL_TEMPLATE}. `url.template`
+ */
+export const SEARCH_URL_TEMPLATE = 'url.template';
+
+/**
+ * Search name for {@link USER_EMAIL}. `user.email`
+ */
+export const SEARCH_USER_EMAIL = 'user.email';
+
+/**
+ * Search name for {@link USER_FULL_NAME}. `user.full_name`
+ */
+export const SEARCH_USER_FULL_NAME = 'user.full_name';
+
+/**
+ * Search name for {@link USER_GEO_CITY}. `user.geo.city`
+ */
+export const SEARCH_USER_GEO_CITY = 'user.geo.city';
+
+/**
+ * Search name for {@link USER_GEO_COUNTRY_CODE}. `user.geo.country_code`
+ */
+export const SEARCH_USER_GEO_COUNTRY_CODE = 'user.geo.country_code';
+
+/**
+ * Search name for {@link USER_GEO_REGION}. `user.geo.region`
+ */
+export const SEARCH_USER_GEO_REGION = 'user.geo.region';
+
+/**
+ * Search name for {@link USER_GEO_SUBDIVISION}. `user.geo.subdivision`
+ */
+export const SEARCH_USER_GEO_SUBDIVISION = 'user.geo.subdivision';
+
+/**
+ * Search name for {@link USER_HASH}. `user.hash`
+ */
+export const SEARCH_USER_HASH = 'user.hash';
+
+/**
+ * Search name for {@link USER_ID}. `user.id`
+ */
+export const SEARCH_USER_ID = 'user.id';
+
+/**
+ * Search name for {@link SENTRY_USER_IP}. `user.ip`
+ */
+export const SEARCH_USER_IP = 'user.ip';
+
+/**
+ * Search name for {@link USER_IP_ADDRESS}. `user.ip_address`
+ */
+export const SEARCH_USER_IP_ADDRESS = 'user.ip_address';
+
+/**
+ * Search name for {@link USER_NAME}. `user.name`
+ */
+export const SEARCH_USER_NAME = 'user.name';
+
+/**
+ * Search name for {@link USER_ROLES}. `user.roles`
+ */
+export const SEARCH_USER_ROLES = 'user.roles';
+
+/**
+ * Search name for {@link SENTRY_USER_USERNAME}. `user.username`
+ */
+export const SEARCH_USER_USERNAME = 'user.username';
+
+/**
+ * Search name for {@link USER_AGENT_ORIGINAL}. `user_agent.original`
+ */
+export const SEARCH_USER_AGENT_ORIGINAL = 'user_agent.original';
+
+/**
+ * Search name for {@link VERCEL_BRANCH}. `vercel.branch`
+ */
+export const SEARCH_VERCEL_BRANCH = 'vercel.branch';
+
+/**
+ * Search name for {@link VERCEL_BUILD_ID}. `vercel.build_id`
+ */
+export const SEARCH_VERCEL_BUILD_ID = 'vercel.build_id';
+
+/**
+ * Search name for {@link VERCEL_DEPLOYMENT_ID}. `vercel.deployment_id`
+ */
+export const SEARCH_VERCEL_DEPLOYMENT_ID = 'vercel.deployment_id';
+
+/**
+ * Search name for {@link VERCEL_DESTINATION}. `vercel.destination`
+ */
+export const SEARCH_VERCEL_DESTINATION = 'vercel.destination';
+
+/**
+ * Search name for {@link VERCEL_EDGE_TYPE}. `vercel.edge_type`
+ */
+export const SEARCH_VERCEL_EDGE_TYPE = 'vercel.edge_type';
+
+/**
+ * Search name for {@link VERCEL_ENTRYPOINT}. `vercel.entrypoint`
+ */
+export const SEARCH_VERCEL_ENTRYPOINT = 'vercel.entrypoint';
+
+/**
+ * Search name for {@link VERCEL_EXECUTION_REGION}. `vercel.execution_region`
+ */
+export const SEARCH_VERCEL_EXECUTION_REGION = 'vercel.execution_region';
+
+/**
+ * Search name for {@link VERCEL_ID}. `vercel.id`
+ */
+export const SEARCH_VERCEL_ID = 'vercel.id';
+
+/**
+ * Search name for {@link VERCEL_JA3_DIGEST}. `vercel.ja3_digest`
+ */
+export const SEARCH_VERCEL_JA3_DIGEST = 'vercel.ja3_digest';
+
+/**
+ * Search name for {@link VERCEL_JA4_DIGEST}. `vercel.ja4_digest`
+ */
+export const SEARCH_VERCEL_JA4_DIGEST = 'vercel.ja4_digest';
+
+/**
+ * Search name for {@link VERCEL_LOG_TYPE}. `vercel.log_type`
+ */
+export const SEARCH_VERCEL_LOG_TYPE = 'vercel.log_type';
+
+/**
+ * Search name for {@link VERCEL_PATH}. `vercel.path`
+ */
+export const SEARCH_VERCEL_PATH = 'vercel.path';
+
+/**
+ * Search name for {@link VERCEL_PROJECT_ID}. `vercel.project_id`
+ */
+export const SEARCH_VERCEL_PROJECT_ID = 'vercel.project_id';
+
+/**
+ * Search name for {@link VERCEL_PROJECT_NAME}. `vercel.project_name`
+ */
+export const SEARCH_VERCEL_PROJECT_NAME = 'vercel.project_name';
+
+/**
+ * Search name for {@link VERCEL_PROXY_CACHE_ID}. `vercel.proxy.cache_id`
+ */
+export const SEARCH_VERCEL_PROXY_CACHE_ID = 'vercel.proxy.cache_id';
+
+/**
+ * Search name for {@link VERCEL_PROXY_CLIENT_IP}. `vercel.proxy.client_ip`
+ */
+export const SEARCH_VERCEL_PROXY_CLIENT_IP = 'vercel.proxy.client_ip';
+
+/**
+ * Search name for {@link VERCEL_PROXY_HOST}. `vercel.proxy.host`
+ */
+export const SEARCH_VERCEL_PROXY_HOST = 'vercel.proxy.host';
+
+/**
+ * Search name for {@link VERCEL_PROXY_LAMBDA_REGION}. `vercel.proxy.lambda_region`
+ */
+export const SEARCH_VERCEL_PROXY_LAMBDA_REGION = 'vercel.proxy.lambda_region';
+
+/**
+ * Search name for {@link VERCEL_PROXY_METHOD}. `vercel.proxy.method`
+ */
+export const SEARCH_VERCEL_PROXY_METHOD = 'vercel.proxy.method';
+
+/**
+ * Search name for {@link VERCEL_PROXY_PATH}. `vercel.proxy.path`
+ */
+export const SEARCH_VERCEL_PROXY_PATH = 'vercel.proxy.path';
+
+/**
+ * Search name for {@link VERCEL_PROXY_PATH_TYPE}. `vercel.proxy.path_type`
+ */
+export const SEARCH_VERCEL_PROXY_PATH_TYPE = 'vercel.proxy.path_type';
+
+/**
+ * Search name for {@link VERCEL_PROXY_PATH_TYPE_VARIANT}. `vercel.proxy.path_type_variant`
+ */
+export const SEARCH_VERCEL_PROXY_PATH_TYPE_VARIANT = 'vercel.proxy.path_type_variant';
+
+/**
+ * Search name for {@link VERCEL_PROXY_REFERER}. `vercel.proxy.referer`
+ */
+export const SEARCH_VERCEL_PROXY_REFERER = 'vercel.proxy.referer';
+
+/**
+ * Search name for {@link VERCEL_PROXY_REGION}. `vercel.proxy.region`
+ */
+export const SEARCH_VERCEL_PROXY_REGION = 'vercel.proxy.region';
+
+/**
+ * Search name for {@link VERCEL_PROXY_RESPONSE_BYTE_SIZE}. `vercel.proxy.response_byte_size`
+ */
+export const SEARCH_VERCEL_PROXY_RESPONSE_BYTE_SIZE = 'vercel.proxy.response_byte_size';
+
+/**
+ * Search name for {@link VERCEL_PROXY_SCHEME}. `vercel.proxy.scheme`
+ */
+export const SEARCH_VERCEL_PROXY_SCHEME = 'vercel.proxy.scheme';
+
+/**
+ * Search name for {@link VERCEL_PROXY_STATUS_CODE}. `vercel.proxy.status_code`
+ */
+export const SEARCH_VERCEL_PROXY_STATUS_CODE = 'vercel.proxy.status_code';
+
+/**
+ * Search name for {@link VERCEL_PROXY_TIMESTAMP}. `vercel.proxy.timestamp`
+ */
+export const SEARCH_VERCEL_PROXY_TIMESTAMP = 'vercel.proxy.timestamp';
+
+/**
+ * Search name for {@link VERCEL_PROXY_USER_AGENT}. `vercel.proxy.user_agent`
+ */
+export const SEARCH_VERCEL_PROXY_USER_AGENT = 'vercel.proxy.user_agent';
+
+/**
+ * Search name for {@link VERCEL_PROXY_VERCEL_CACHE}. `vercel.proxy.vercel_cache`
+ */
+export const SEARCH_VERCEL_PROXY_VERCEL_CACHE = 'vercel.proxy.vercel_cache';
+
+/**
+ * Search name for {@link VERCEL_PROXY_VERCEL_ID}. `vercel.proxy.vercel_id`
+ */
+export const SEARCH_VERCEL_PROXY_VERCEL_ID = 'vercel.proxy.vercel_id';
+
+/**
+ * Search name for {@link VERCEL_PROXY_WAF_ACTION}. `vercel.proxy.waf_action`
+ */
+export const SEARCH_VERCEL_PROXY_WAF_ACTION = 'vercel.proxy.waf_action';
+
+/**
+ * Search name for {@link VERCEL_PROXY_WAF_RULE_ID}. `vercel.proxy.waf_rule_id`
+ */
+export const SEARCH_VERCEL_PROXY_WAF_RULE_ID = 'vercel.proxy.waf_rule_id';
+
+/**
+ * Search name for {@link VERCEL_REQUEST_ID}. `vercel.request_id`
+ */
+export const SEARCH_VERCEL_REQUEST_ID = 'vercel.request_id';
+
+/**
+ * Search name for {@link VERCEL_SOURCE}. `vercel.source`
+ */
+export const SEARCH_VERCEL_SOURCE = 'vercel.source';
+
+/**
+ * Search name for {@link VERCEL_STATUS_CODE}. `vercel.status_code`
+ */
+export const SEARCH_VERCEL_STATUS_CODE = 'vercel.status_code';
+
+export type AttributeSearchName =
+  | typeof SEARCH_ADDRESS
+  | typeof SEARCH_AI_CITATIONS
+  | typeof SEARCH_AI_COMPLETION_TOKENS_USED
+  | typeof SEARCH_AI_DOCUMENTS
+  | typeof SEARCH_AI_FINISH_REASON
+  | typeof SEARCH_AI_FREQUENCY_PENALTY
+  | typeof SEARCH_AI_FUNCTION_CALL
+  | typeof SEARCH_AI_GENERATION_ID
+  | typeof SEARCH_AI_INPUT_MESSAGES
+  | typeof SEARCH_AI_IS_SEARCH_REQUIRED
+  | typeof SEARCH_AI_METADATA
+  | typeof SEARCH_AI_MODEL_ID
+  | typeof SEARCH_AI_MODEL_PROVIDER
+  | typeof _SEARCH_AI_MODEL_ID
+  | typeof SEARCH_AI_PIPELINE_NAME
+  | typeof SEARCH_AI_PREAMBLE
+  | typeof SEARCH_AI_PRESENCE_PENALTY
+  | typeof SEARCH_AI_PROMPT
+  | typeof SEARCH_AI_PROMPT_MESSAGES
+  | typeof SEARCH_AI_PROMPT_TOOLS
+  | typeof SEARCH_AI_PROMPT_TOKENS_USED
+  | typeof SEARCH_AI_RAW_PROMPTING
+  | typeof SEARCH_AI_RESPONSE_ID
+  | typeof SEARCH_AI_RESPONSE_MODEL
+  | typeof SEARCH_AI_RESPONSE_OBJECT
+  | typeof SEARCH_AI_RESPONSE_TEXT
+  | typeof SEARCH_AI_RESPONSE_TIMESTAMP
+  | typeof SEARCH_AI_RESPONSE_TOOLCALLS
+  | typeof SEARCH_AI_RESPONSE_FORMAT
+  | typeof SEARCH_AI_RESPONSES
+  | typeof SEARCH_AI_SCHEMA
+  | typeof SEARCH_AI_SEARCH_QUERIES
+  | typeof SEARCH_AI_SEARCH_RESULTS
+  | typeof SEARCH_AI_SEED
+  | typeof SEARCH_AI_STREAMING
+  | typeof SEARCH_AI_TAGS
+  | typeof SEARCH_AI_TEMPERATURE
+  | typeof SEARCH_AI_TEXTS
+  | typeof SEARCH_AI_TOOLCALL_ARGS
+  | typeof SEARCH_AI_TOOLCALL_RESULT
+  | typeof SEARCH_AI_TOOL_CALLS
+  | typeof SEARCH_AI_TOOLS
+  | typeof SEARCH_AI_TOP_K
+  | typeof SEARCH_AI_TOP_P
+  | typeof SEARCH_AI_TOTAL_COST
+  | typeof SEARCH_AI_TOTAL_TOKENS_USED
+  | typeof SEARCH_AI_USAGE_TOKENS
+  | typeof SEARCH_AI_VALUES
+  | typeof SEARCH_AI_WARNINGS
+  | typeof SEARCH_ANGULAR_VERSION
+  | typeof SEARCH_APP_APP_BUILD
+  | typeof SEARCH_APP_APP_IDENTIFIER
+  | typeof SEARCH_APP_APP_NAME
+  | typeof SEARCH_APP_APP_START_TIME
+  | typeof SEARCH_APP_APP_VERSION
+  | typeof SEARCH_APP_BUILD
+  | typeof SEARCH_APP_IDENTIFIER
+  | typeof SEARCH_APP_IN_FOREGROUND
+  | typeof SEARCH_APP_NAME
+  | typeof SEARCH_APP_START_TIME
+  | typeof SEARCH_APP_VERSION
+  | typeof SEARCH_APP_VITALS_FRAMES_DELAY_VALUE
+  | typeof SEARCH_APP_VITALS_FRAMES_FROZEN_COUNT
+  | typeof SEARCH_APP_VITALS_FRAMES_FROZEN_RATE
+  | typeof SEARCH_APP_VITALS_FRAMES_SLOW_COUNT
+  | typeof SEARCH_APP_VITALS_FRAMES_SLOW_RATE
+  | typeof SEARCH_APP_VITALS_FRAMES_TOTAL_COUNT
+  | typeof SEARCH_APP_VITALS_STALL_DURATION
+  | typeof SEARCH_APP_VITALS_STALL_PERCENTAGE
+  | typeof SEARCH_APP_VITALS_START_COLD_VALUE
+  | typeof SEARCH_APP_VITALS_START_PREWARMED
+  | typeof SEARCH_APP_VITALS_START_REASON
+  | typeof SEARCH_APP_VITALS_START_SCREEN
+  | typeof SEARCH_APP_VITALS_START_TYPE
+  | typeof SEARCH_APP_VITALS_START_WARM_VALUE
+  | typeof SEARCH_APP_VITALS_TTFD_VALUE
+  | typeof SEARCH_APP_VITALS_TTID_VALUE
+  | typeof SEARCH_APP_START_COLD
+  | typeof SEARCH_APP_START_TYPE
+  | typeof SEARCH_APP_START_WARM
+  | typeof SEARCH_ART_GC_BLOCKING_COUNT
+  | typeof SEARCH_ART_GC_BLOCKING_TIME
+  | typeof SEARCH_ART_GC_PRE_OOME_COUNT
+  | typeof SEARCH_ART_GC_TOTAL_COUNT
+  | typeof SEARCH_ART_GC_TOTAL_TIME
+  | typeof SEARCH_ART_GC_WAITING_TIME
+  | typeof SEARCH_ART_MEMORY_FREE
+  | typeof SEARCH_ART_MEMORY_FREE_UNTIL_GC
+  | typeof SEARCH_ART_MEMORY_FREE_UNTIL_OOME
+  | typeof SEARCH_ART_MEMORY_MAX
+  | typeof SEARCH_ART_MEMORY_TOTAL
+  | typeof SEARCH_AWS_CLOUDWATCH_LOGS_LOG_GROUP
+  | typeof SEARCH_AWS_CLOUDWATCH_LOGS_LOG_STREAM
+  | typeof SEARCH_AWS_CLOUDWATCH_LOGS_URL
+  | typeof SEARCH_AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS
+  | typeof SEARCH_AWS_DYNAMODB_CONSISTENT_READ
+  | typeof SEARCH_AWS_DYNAMODB_CONSUMED_CAPACITY
+  | typeof SEARCH_AWS_DYNAMODB_COUNT
+  | typeof SEARCH_AWS_DYNAMODB_EXCLUSIVE_START_TABLE
+  | typeof SEARCH_AWS_DYNAMODB_GLOBAL_SECONDARY_INDEX_UPDATES
+  | typeof SEARCH_AWS_DYNAMODB_GLOBAL_SECONDARY_INDEXES
+  | typeof SEARCH_AWS_DYNAMODB_INDEX_NAME
+  | typeof SEARCH_AWS_DYNAMODB_ITEM_COLLECTION_METRICS
+  | typeof SEARCH_AWS_DYNAMODB_LIMIT
+  | typeof SEARCH_AWS_DYNAMODB_LOCAL_SECONDARY_INDEXES
+  | typeof SEARCH_AWS_DYNAMODB_PROJECTION
+  | typeof SEARCH_AWS_DYNAMODB_PROVISIONED_READ_CAPACITY
+  | typeof SEARCH_AWS_DYNAMODB_PROVISIONED_WRITE_CAPACITY
+  | typeof SEARCH_AWS_DYNAMODB_SCAN_FORWARD
+  | typeof SEARCH_AWS_DYNAMODB_SCANNED_COUNT
+  | typeof SEARCH_AWS_DYNAMODB_SEGMENT
+  | typeof SEARCH_AWS_DYNAMODB_SELECT
+  | typeof SEARCH_AWS_DYNAMODB_TABLE_COUNT
+  | typeof SEARCH_AWS_DYNAMODB_TABLE_NAMES
+  | typeof SEARCH_AWS_DYNAMODB_TOTAL_SEGMENTS
+  | typeof SEARCH_AWS_EXTENDED_REQUEST_ID
+  | typeof SEARCH_AWS_KINESIS_STREAM_NAME
+  | typeof _SEARCH_AWS_KINESIS_STREAM_NAME
+  | typeof SEARCH_AWS_LAMBDA_AWS_REQUEST_ID
+  | typeof SEARCH_AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
+  | typeof SEARCH_AWS_LAMBDA_FUNCTION_NAME
+  | typeof SEARCH_AWS_LAMBDA_FUNCTION_VERSION
+  | typeof SEARCH_AWS_LAMBDA_INVOKED_ARN
+  | typeof SEARCH_AWS_LAMBDA_INVOKED_FUNCTION_ARN
+  | typeof SEARCH_AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
+  | typeof SEARCH_AWS_LOG_GROUP_NAMES
+  | typeof SEARCH_AWS_LOG_STREAM_NAMES
+  | typeof SEARCH_AWS_OPERATION_NAME
+  | typeof SEARCH_AWS_REQUEST_EXTENDED_ID
+  | typeof SEARCH_AWS_REQUEST_ID
+  | typeof SEARCH_AWS_REQUEST_URL
+  | typeof _SEARCH_AWS_REQUEST_ID
+  | typeof SEARCH_AWS_S3_BUCKET
+  | typeof SEARCH_AWS_SECRETSMANAGER_SECRET_ARN
+  | typeof SEARCH_AWS_SNS_TOPIC_ARN
+  | typeof SEARCH_AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof SEARCH_AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
+  | typeof SEARCH_AWS_REGION
+  | typeof SEARCH_BLOCKED_MAIN_THREAD
+  | typeof SEARCH_BROWSER_BFCACHE_FRAME
+  | typeof SEARCH_BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT
+  | typeof SEARCH_BROWSER_BFCACHE_OUTCOME
+  | typeof SEARCH_BROWSER_BFCACHE_REASON
+  | typeof SEARCH_BROWSER_NAME
+  | typeof SEARCH_BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
+  | typeof SEARCH_BROWSER_PERFORMANCE_TIME_ORIGIN
+  | typeof SEARCH_BROWSER_REPORT_TYPE
+  | typeof SEARCH_BROWSER_SCRIPT_INVOKER
+  | typeof SEARCH_BROWSER_SCRIPT_INVOKER_TYPE
+  | typeof SEARCH_BROWSER_SCRIPT_SOURCE_CHAR_POSITION
+  | typeof SEARCH_BROWSER_VERSION
+  | typeof SEARCH_BROWSER_WEB_VITAL_CLS_REPORT_EVENT
+  | typeof SEARCH_BROWSER_WEB_VITAL_CLS_SOURCE_KEY
+  | typeof SEARCH_BROWSER_WEB_VITAL_CLS_VALUE
+  | typeof SEARCH_BROWSER_WEB_VITAL_FCP_VALUE
+  | typeof SEARCH_BROWSER_WEB_VITAL_FP_VALUE
+  | typeof SEARCH_BROWSER_WEB_VITAL_INP_VALUE
+  | typeof SEARCH_BROWSER_WEB_VITAL_LCP_ELEMENT
+  | typeof SEARCH_BROWSER_WEB_VITAL_LCP_ID
+  | typeof SEARCH_BROWSER_WEB_VITAL_LCP_LOAD_TIME
+  | typeof SEARCH_BROWSER_WEB_VITAL_LCP_RENDER_TIME
+  | typeof SEARCH_BROWSER_WEB_VITAL_LCP_REPORT_EVENT
+  | typeof SEARCH_BROWSER_WEB_VITAL_LCP_SIZE
+  | typeof SEARCH_BROWSER_WEB_VITAL_LCP_URL
+  | typeof SEARCH_BROWSER_WEB_VITAL_LCP_VALUE
+  | typeof SEARCH_BROWSER_WEB_VITAL_TTFB_REQUEST_TIME
+  | typeof SEARCH_BROWSER_WEB_VITAL_TTFB_VALUE
+  | typeof SEARCH_CACHE_HIT
+  | typeof SEARCH_CACHE_ITEM_SIZE
+  | typeof SEARCH_CACHE_KEY
+  | typeof SEARCH_CACHE_OPERATION
+  | typeof SEARCH_CACHE_TTL
+  | typeof SEARCH_CACHE_WRITE
+  | typeof SEARCH_CHANNEL
+  | typeof SEARCH_CLIENT_ADDRESS
+  | typeof SEARCH_CLIENT_PORT
+  | typeof SEARCH_CLIENT_SAMPLE_RATE
+  | typeof SEARCH_CLOUD_ACCOUNT_ID
+  | typeof SEARCH_CLOUD_AVAILABILITY_ZONE
+  | typeof SEARCH_CLOUD_PLATFORM
+  | typeof SEARCH_CLOUD_PROVIDER
+  | typeof SEARCH_CLOUD_REGION
+  | typeof SEARCH_CLOUD_RESOURCE_ID
+  | typeof SEARCH_CLOUDFLARE_D1_DURATION
+  | typeof SEARCH_CLOUDFLARE_D1_QUERY_TYPE
+  | typeof SEARCH_CLOUDFLARE_D1_ROWS_READ
+  | typeof SEARCH_CLOUDFLARE_D1_ROWS_WRITTEN
+  | typeof SEARCH_CLOUDFLARE_DURABLE_OBJECT_QUERY_BINDINGS
+  | typeof SEARCH_CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_READ
+  | typeof SEARCH_CLOUDFLARE_DURABLE_OBJECT_RESPONSE_ROWS_WRITTEN
+  | typeof SEARCH_CLOUDFLARE_R2_BUCKET
+  | typeof SEARCH_CLOUDFLARE_R2_OPERATION
+  | typeof SEARCH_CLOUDFLARE_R2_REQUEST_DELIMITER
+  | typeof SEARCH_CLOUDFLARE_R2_REQUEST_KEY
+  | typeof SEARCH_CLOUDFLARE_R2_REQUEST_PART_NUMBER
+  | typeof SEARCH_CLOUDFLARE_R2_REQUEST_PREFIX
+  | typeof SEARCH_CLOUDFLARE_WORKFLOW_ATTEMPT
+  | typeof SEARCH_CLOUDFLARE_WORKFLOW_RETRIES_BACKOFF
+  | typeof SEARCH_CLOUDFLARE_WORKFLOW_RETRIES_DELAY
+  | typeof SEARCH_CLOUDFLARE_WORKFLOW_RETRIES_LIMIT
+  | typeof SEARCH_CLOUDFLARE_WORKFLOW_TIMEOUT
+  | typeof SEARCH_CLS
+  | typeof SEARCH_CLS_SOURCE_KEY
+  | typeof SEARCH_CODE
+  | typeof SEARCH_CODE_FILE_PATH
+  | typeof SEARCH_CODE_FILEPATH
+  | typeof SEARCH_CODE_FUNCTION
+  | typeof SEARCH_CODE_FUNCTION_NAME
+  | typeof SEARCH_CODE_LINE_NUMBER
+  | typeof SEARCH_CODE_LINENO
+  | typeof SEARCH_CODE_NAMESPACE
+  | typeof SEARCH_CONNECTION_RTT
+  | typeof SEARCH_CONNECTIONTYPE
+  | typeof SEARCH_CULTURE_CALENDAR
+  | typeof SEARCH_CULTURE_DISPLAY_NAME
+  | typeof SEARCH_CULTURE_IS_24_HOUR_FORMAT
+  | typeof SEARCH_CULTURE_LOCALE
+  | typeof SEARCH_CULTURE_TIMEZONE
+  | typeof SEARCH_DB_COLLECTION_NAME
+  | typeof SEARCH_DB_CONNECTION_STRING
+  | typeof SEARCH_DB_DRIVER_NAME
+  | typeof SEARCH_DB_MONGODB_COLLECTION
+  | typeof SEARCH_DB_NAME
+  | typeof SEARCH_DB_NAMESPACE
+  | typeof SEARCH_DB_OPERATION
+  | typeof SEARCH_DB_OPERATION_BATCH_SIZE
+  | typeof SEARCH_DB_OPERATION_NAME
+  | typeof SEARCH_DB_PARAMS
+  | typeof SEARCH_DB_QUERY_PARAMETER_KEY
+  | typeof SEARCH_DB_QUERY_SUMMARY
+  | typeof SEARCH_DB_QUERY_TEXT
+  | typeof SEARCH_DB_REDIS_CONNECTION
+  | typeof SEARCH_DB_REDIS_KEY
+  | typeof SEARCH_DB_REDIS_PARAMETERS
+  | typeof SEARCH_DB_RESPONSE_STATUS_CODE
+  | typeof SEARCH_DB_SQL_BINDINGS
+  | typeof SEARCH_DB_STATEMENT
+  | typeof SEARCH_DB_STORED_PROCEDURE_NAME
+  | typeof SEARCH_DB_SYSTEM
+  | typeof SEARCH_DB_SYSTEM_NAME
+  | typeof SEARCH_DB_USER
+  | typeof SEARCH_DEVICE_ARCHS
+  | typeof SEARCH_DEVICE_BATTERY_LEVEL
+  | typeof SEARCH_DEVICE_BATTERY_TEMPERATURE
+  | typeof SEARCH_DEVICE_BOOT_TIME
+  | typeof SEARCH_DEVICE_BRAND
+  | typeof SEARCH_DEVICE_CHARGING
+  | typeof SEARCH_DEVICE_CHIPSET
+  | typeof SEARCH_DEVICE_CLASS
+  | typeof SEARCH_DEVICE_CONNECTION_TYPE
+  | typeof SEARCH_DEVICE_CPU_DESCRIPTION
+  | typeof SEARCH_DEVICE_EXTERNAL_FREE_STORAGE
+  | typeof SEARCH_DEVICE_EXTERNAL_STORAGE_SIZE
+  | typeof SEARCH_DEVICE_FAMILY
+  | typeof SEARCH_DEVICE_FREE_MEMORY
+  | typeof SEARCH_DEVICE_FREE_STORAGE
+  | typeof SEARCH_DEVICE_ID
+  | typeof SEARCH_DEVICE_LOCALE
+  | typeof SEARCH_DEVICE_LOW_MEMORY
+  | typeof SEARCH_DEVICE_LOW_POWER_MODE
+  | typeof SEARCH_DEVICE_MANUFACTURER
+  | typeof SEARCH_DEVICE_MEMORY_ESTIMATED_CAPACITY
+  | typeof SEARCH_DEVICE_MEMORY_SIZE
+  | typeof SEARCH_DEVICE_MODEL
+  | typeof SEARCH_DEVICE_MODEL_ID
+  | typeof SEARCH_DEVICE_NAME
+  | typeof SEARCH_DEVICE_ONLINE
+  | typeof SEARCH_DEVICE_ORIENTATION
+  | typeof SEARCH_DEVICE_PROCESSOR_COUNT
+  | typeof SEARCH_DEVICE_PROCESSOR_FREQUENCY
+  | typeof SEARCH_DEVICE_SCREEN_DENSITY
+  | typeof SEARCH_DEVICE_SCREEN_DPI
+  | typeof SEARCH_DEVICE_SCREEN_HEIGHT_PIXELS
+  | typeof SEARCH_DEVICE_SCREEN_WIDTH_PIXELS
+  | typeof SEARCH_DEVICE_SIMULATOR
+  | typeof SEARCH_DEVICE_STORAGE_SIZE
+  | typeof SEARCH_DEVICE_THERMAL_STATE
+  | typeof SEARCH_DEVICE_TIMEZONE
+  | typeof SEARCH_DEVICE_USABLE_MEMORY
+  | typeof SEARCH_DEVICEMEMORY
+  | typeof SEARCH_DIST
+  | typeof SEARCH_DJANGO_FUNCTION_NAME
+  | typeof SEARCH_DJANGO_MIDDLEWARE_NAME
+  | typeof SEARCH_EFFECTIVECONNECTIONTYPE
+  | typeof SEARCH_ENVIRONMENT
+  | typeof SEARCH_ERROR_TYPE
+  | typeof SEARCH_EVENT_ID
+  | typeof SEARCH_EVENT_NAME
+  | typeof SEARCH_EXCEPTION_ESCAPED
+  | typeof SEARCH_EXCEPTION_MESSAGE
+  | typeof SEARCH_EXCEPTION_STACKTRACE
+  | typeof SEARCH_EXCEPTION_TYPE
+  | typeof SEARCH_FAAS_COLDSTART
+  | typeof SEARCH_FAAS_CRON
+  | typeof SEARCH_FAAS_DURATION_IN_MS
+  | typeof SEARCH_FAAS_ENTRY_POINT
+  | typeof SEARCH_FAAS_EXECUTION
+  | typeof SEARCH_FAAS_ID
+  | typeof SEARCH_FAAS_IDENTITY
+  | typeof SEARCH_FAAS_INVOCATION_ID
+  | typeof SEARCH_FAAS_INVOKED_NAME
+  | typeof SEARCH_FAAS_INVOKED_PROVIDER
+  | typeof SEARCH_FAAS_INVOKED_REGION
+  | typeof SEARCH_FAAS_NAME
+  | typeof SEARCH_FAAS_TIME
+  | typeof SEARCH_FAAS_TRIGGER
+  | typeof SEARCH_FAAS_VERSION
+  | typeof SEARCH_FCP
+  | typeof SEARCH_FILE_PATH
+  | typeof SEARCH_FILE_SIZE
+  | typeof SEARCH_FLAG_EVALUATION_KEY
+  | typeof SEARCH_FP
+  | typeof SEARCH_FRAMES_DELAY
+  | typeof SEARCH_FRAMES_FROZEN
+  | typeof SEARCH_FRAMES_SLOW
+  | typeof SEARCH_FRAMES_TOTAL
+  | typeof SEARCH_FRAMES_FROZEN_RATE
+  | typeof SEARCH_FRAMES_SLOW_RATE
+  | typeof SEARCH_FS_ERROR
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_EVENT_ID
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_EVENT_TYPE
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_ID
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_RESOURCE
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_SOURCE
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_SPECVERSION
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_TIME
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_TIMESTAMP
+  | typeof SEARCH_GCP_FUNCTION_CONTEXT_TYPE
+  | typeof SEARCH_GCP_PROJECT_ID
+  | typeof SEARCH_GCP_REGION
+  | typeof SEARCH_GEN_AI_AGENT_NAME
+  | typeof SEARCH_GEN_AI_CONTEXT_UTILIZATION
+  | typeof SEARCH_GEN_AI_CONTEXT_WINDOW_SIZE
+  | typeof SEARCH_GEN_AI_CONVERSATION_ID
+  | typeof SEARCH_GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS
+  | typeof SEARCH_GEN_AI_COST_CACHE_READ_INPUT_TOKENS
+  | typeof SEARCH_GEN_AI_COST_INPUT_TOKENS
+  | typeof SEARCH_GEN_AI_COST_OUTPUT_TOKENS
+  | typeof SEARCH_GEN_AI_COST_REASONING_OUTPUT_TOKENS
+  | typeof SEARCH_GEN_AI_COST_TOTAL_TOKENS
+  | typeof SEARCH_GEN_AI_EMBEDDINGS_INPUT
+  | typeof SEARCH_GEN_AI_FUNCTION_ID
+  | typeof SEARCH_GEN_AI_INPUT_MESSAGES
+  | typeof SEARCH_GEN_AI_OPERATION_NAME
+  | typeof SEARCH_GEN_AI_OPERATION_TYPE
+  | typeof SEARCH_GEN_AI_OUTPUT_MESSAGES
+  | typeof SEARCH_GEN_AI_PIPELINE_NAME
+  | typeof SEARCH_GEN_AI_PROMPT
+  | typeof SEARCH_GEN_AI_PROMPT_NAME
+  | typeof SEARCH_GEN_AI_PROVIDER_NAME
+  | typeof SEARCH_GEN_AI_REQUEST_AVAILABLE_TOOLS
+  | typeof SEARCH_GEN_AI_REQUEST_FREQUENCY_PENALTY
+  | typeof SEARCH_GEN_AI_REQUEST_MAX_TOKENS
+  | typeof SEARCH_GEN_AI_REQUEST_MESSAGES
+  | typeof SEARCH_GEN_AI_REQUEST_MODEL
+  | typeof SEARCH_GEN_AI_REQUEST_PRESENCE_PENALTY
+  | typeof SEARCH_GEN_AI_REQUEST_REASONING_LEVEL
+  | typeof SEARCH_GEN_AI_REQUEST_SCHEMA
+  | typeof SEARCH_GEN_AI_REQUEST_SEED
+  | typeof SEARCH_GEN_AI_REQUEST_STOP_SEQUENCES
+  | typeof SEARCH_GEN_AI_REQUEST_TEMPERATURE
+  | typeof SEARCH_GEN_AI_REQUEST_TOP_K
+  | typeof SEARCH_GEN_AI_REQUEST_TOP_P
+  | typeof SEARCH_GEN_AI_RESPONSE_FINISH_REASON
+  | typeof SEARCH_GEN_AI_RESPONSE_FINISH_REASONS
+  | typeof SEARCH_GEN_AI_RESPONSE_ID
+  | typeof SEARCH_GEN_AI_RESPONSE_MODEL
+  | typeof SEARCH_GEN_AI_RESPONSE_OBJECT
+  | typeof SEARCH_GEN_AI_RESPONSE_STREAMING
+  | typeof SEARCH_GEN_AI_RESPONSE_TEXT
+  | typeof SEARCH_GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK
+  | typeof SEARCH_GEN_AI_RESPONSE_TIME_TO_FIRST_TOKEN
+  | typeof SEARCH_GEN_AI_RESPONSE_TOKENS_PER_SECOND
+  | typeof SEARCH_GEN_AI_RESPONSE_TOOL_CALLS
+  | typeof SEARCH_GEN_AI_SYSTEM
+  | typeof SEARCH_GEN_AI_SYSTEM_MESSAGE
+  | typeof SEARCH_GEN_AI_SYSTEM_INSTRUCTIONS
+  | typeof SEARCH_GEN_AI_TOOL_CALL_ARGUMENTS
+  | typeof SEARCH_GEN_AI_TOOL_CALL_RESULT
+  | typeof SEARCH_GEN_AI_TOOL_DEFINITIONS
+  | typeof SEARCH_GEN_AI_TOOL_DESCRIPTION
+  | typeof SEARCH_GEN_AI_TOOL_INPUT
+  | typeof SEARCH_GEN_AI_TOOL_MESSAGE
+  | typeof SEARCH_GEN_AI_TOOL_NAME
+  | typeof SEARCH_GEN_AI_TOOL_OUTPUT
+  | typeof SEARCH_GEN_AI_TOOL_TYPE
+  | typeof SEARCH_GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
+  | typeof SEARCH_GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
+  | typeof SEARCH_GEN_AI_USAGE_COMPLETION_TOKENS
+  | typeof SEARCH_GEN_AI_USAGE_INPUT_TOKENS
+  | typeof SEARCH_GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE
+  | typeof SEARCH_GEN_AI_USAGE_INPUT_TOKENS_CACHED
+  | typeof SEARCH_GEN_AI_USAGE_OUTPUT_TOKENS
+  | typeof SEARCH_GEN_AI_USAGE_OUTPUT_TOKENS_REASONING
+  | typeof SEARCH_GEN_AI_USAGE_PROMPT_TOKENS
+  | typeof SEARCH_GEN_AI_USAGE_REASONING_OUTPUT_TOKENS
+  | typeof SEARCH_GEN_AI_USAGE_TOTAL_TOKENS
+  | typeof SEARCH_GRAPHQL_DOCUMENT
+  | typeof SEARCH_GRAPHQL_OPERATION_NAME
+  | typeof SEARCH_GRAPHQL_OPERATION_TYPE
+  | typeof SEARCH_GRAPHQL_PROCESSING_TYPE
+  | typeof SEARCH_GRAPHQL_SOURCE
+  | typeof SEARCH_GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
+  | typeof SEARCH_GRPC_ERROR_DEBUG_INFO_DETAIL
+  | typeof SEARCH_GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
+  | typeof SEARCH_GRPC_ERROR_ERROR_INFO_DOMAIN
+  | typeof SEARCH_GRPC_ERROR_ERROR_INFO_METADATA_KEY
+  | typeof SEARCH_GRPC_ERROR_ERROR_INFO_REASON
+  | typeof SEARCH_GRPC_ERROR_PRECONDITION_FAILURE_VIOLATIONS
+  | typeof SEARCH_GRPC_ERROR_QUOTA_FAILURE_VIOLATIONS
+  | typeof SEARCH_GRPC_ERROR_RESOURCE_INFO_DESCRIPTION
+  | typeof SEARCH_GRPC_ERROR_RESOURCE_INFO_OWNER
+  | typeof SEARCH_GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME
+  | typeof SEARCH_GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE
+  | typeof SEARCH_GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS
+  | typeof SEARCH_HARDWARECONCURRENCY
+  | typeof SEARCH_HTTP_CLIENT_IP
+  | typeof SEARCH_HTTP_DECODED_RESPONSE_CONTENT_LENGTH
+  | typeof SEARCH_HTTP_FLAVOR
+  | typeof SEARCH_HTTP_FRAGMENT
+  | typeof SEARCH_HTTP_HOST
+  | typeof SEARCH_HTTP_METHOD
+  | typeof SEARCH_HTTP_QUERY
+  | typeof SEARCH_HTTP_REQUEST_BODY_DATA
+  | typeof SEARCH_HTTP_REQUEST_BODY_DECODED_SIZE
+  | typeof SEARCH_HTTP_REQUEST_BODY_SIZE
+  | typeof SEARCH_HTTP_REQUEST_CONNECT_START
+  | typeof SEARCH_HTTP_REQUEST_CONNECTION_END
+  | typeof SEARCH_HTTP_REQUEST_DOMAIN_LOOKUP_END
+  | typeof SEARCH_HTTP_REQUEST_DOMAIN_LOOKUP_START
+  | typeof SEARCH_HTTP_REQUEST_FETCH_START
+  | typeof SEARCH_HTTP_REQUEST_HEADER_KEY
+  | typeof SEARCH_HTTP_REQUEST_METHOD
+  | typeof SEARCH_HTTP_REQUEST_REDIRECT_END
+  | typeof SEARCH_HTTP_REQUEST_REDIRECT_START
+  | typeof SEARCH_HTTP_REQUEST_REQUEST_START
+  | typeof SEARCH_HTTP_REQUEST_RESEND_COUNT
+  | typeof SEARCH_HTTP_REQUEST_RESPONSE_END
+  | typeof SEARCH_HTTP_REQUEST_RESPONSE_START
+  | typeof SEARCH_HTTP_REQUEST_SAME_ORIGIN
+  | typeof SEARCH_HTTP_REQUEST_SECURE_CONNECTION_START
+  | typeof SEARCH_HTTP_REQUEST_TIME_TO_FIRST_BYTE
+  | typeof SEARCH_HTTP_REQUEST_WORKER_START
+  | typeof SEARCH_HTTP_REQUEST_CONTENT_LENGTH
+  | typeof SEARCH_HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED
+  | typeof _SEARCH_HTTP_REQUEST_METHOD
+  | typeof SEARCH_HTTP_RESPONSE_BODY_DECODED_SIZE
+  | typeof SEARCH_HTTP_RESPONSE_BODY_SIZE
+  | typeof SEARCH_HTTP_RESPONSE_HEADER_KEY
+  | typeof SEARCH_HTTP_RESPONSE_HEADER_CONTENT_LENGTH
+  | typeof SEARCH_HTTP_RESPONSE_SIZE
+  | typeof _SEARCH_HTTP_RESPONSE_STATUS_CODE
+  | typeof SEARCH_HTTP_RESPONSE_STATUS_TEXT
+  | typeof SEARCH_HTTP_RESPONSE_CONTENT_LENGTH
+  | typeof SEARCH_HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
+  | typeof SEARCH_HTTP_RESPONSE_STATUS_CODE
+  | typeof SEARCH_HTTP_RESPONSE_TRANSFER_SIZE
+  | typeof SEARCH_HTTP_ROUTE
+  | typeof SEARCH_HTTP_SCHEME
+  | typeof SEARCH_HTTP_SERVER_REQUEST_TIME_IN_QUEUE
+  | typeof SEARCH_HTTP_SERVER_NAME
+  | typeof SEARCH_HTTP_STATUS_CODE
+  | typeof SEARCH_HTTP_STATUS_TEXT
+  | typeof SEARCH_HTTP_TARGET
+  | typeof SEARCH_HTTP_URL
+  | typeof SEARCH_HTTP_USER_AGENT
+  | typeof SEARCH_ID
+  | typeof SEARCH_INP
+  | typeof SEARCH_JSONRPC_PROTOCOL_VERSION
+  | typeof SEARCH_JSONRPC_REQUEST_ID
+  | typeof SEARCH_JVM_GC_ACTION
+  | typeof SEARCH_JVM_GC_NAME
+  | typeof SEARCH_JVM_MEMORY_POOL_NAME
+  | typeof SEARCH_JVM_MEMORY_TYPE
+  | typeof SEARCH_JVM_THREAD_DAEMON
+  | typeof SEARCH_JVM_THREAD_STATE
+  | typeof SEARCH_KOA_NAME
+  | typeof SEARCH_KOA_TYPE
+  | typeof SEARCH_LCP
+  | typeof SEARCH_LCP_ELEMENT
+  | typeof SEARCH_LCP_ID
+  | typeof SEARCH_LCP_LOADTIME
+  | typeof SEARCH_LCP_RENDERTIME
+  | typeof SEARCH_LCP_SIZE
+  | typeof SEARCH_LCP_URL
+  | typeof SEARCH_LITESTAR_MIDDLEWARE_NAME
+  | typeof SEARCH_LOGGER_NAME
+  | typeof SEARCH_MCP_CANCELLED_REASON
+  | typeof SEARCH_MCP_CANCELLED_REQUEST_ID
+  | typeof SEARCH_MCP_CLIENT_NAME
+  | typeof SEARCH_MCP_CLIENT_TITLE
+  | typeof SEARCH_MCP_CLIENT_VERSION
+  | typeof SEARCH_MCP_LIFECYCLE_PHASE
+  | typeof SEARCH_MCP_LOGGING_DATA_TYPE
+  | typeof SEARCH_MCP_LOGGING_LEVEL
+  | typeof SEARCH_MCP_LOGGING_LOGGER
+  | typeof SEARCH_MCP_LOGGING_MESSAGE
+  | typeof SEARCH_MCP_METHOD_NAME
+  | typeof SEARCH_MCP_PROGRESS_CURRENT
+  | typeof SEARCH_MCP_PROGRESS_MESSAGE
+  | typeof SEARCH_MCP_PROGRESS_PERCENTAGE
+  | typeof SEARCH_MCP_PROGRESS_TOKEN
+  | typeof SEARCH_MCP_PROGRESS_TOTAL
+  | typeof SEARCH_MCP_PROMPT_NAME
+  | typeof SEARCH_MCP_PROMPT_RESULT_DESCRIPTION
+  | typeof SEARCH_MCP_PROMPT_RESULT_MESSAGE_CONTENT
+  | typeof SEARCH_MCP_PROMPT_RESULT_MESSAGE_COUNT
+  | typeof SEARCH_MCP_PROMPT_RESULT_MESSAGE_ROLE
+  | typeof SEARCH_MCP_PROTOCOL_READY
+  | typeof SEARCH_MCP_PROTOCOL_VERSION
+  | typeof SEARCH_MCP_REQUEST_ARGUMENT_KEY
+  | typeof SEARCH_MCP_REQUEST_ARGUMENT_NAME
+  | typeof SEARCH_MCP_REQUEST_ARGUMENT_URI
+  | typeof SEARCH_MCP_REQUEST_ID
+  | typeof SEARCH_MCP_RESOURCE_PROTOCOL
+  | typeof SEARCH_MCP_RESOURCE_URI
+  | typeof SEARCH_MCP_SERVER_NAME
+  | typeof SEARCH_MCP_SERVER_TITLE
+  | typeof SEARCH_MCP_SERVER_VERSION
+  | typeof SEARCH_MCP_SESSION_ID
+  | typeof SEARCH_MCP_TOOL_NAME
+  | typeof SEARCH_MCP_TOOL_RESULT_CONTENT
+  | typeof SEARCH_MCP_TOOL_RESULT_CONTENT_COUNT
+  | typeof SEARCH_MCP_TOOL_RESULT_IS_ERROR
+  | typeof SEARCH_MCP_TRANSPORT
+  | typeof SEARCH_MDC_KEY
+  | typeof SEARCH_MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof SEARCH_MESSAGING_CONVERSATION_ID
+  | typeof SEARCH_MESSAGING_DESTINATION
+  | typeof SEARCH_MESSAGING_DESTINATION_CONNECTION
+  | typeof SEARCH_MESSAGING_DESTINATION_NAME
+  | typeof SEARCH_MESSAGING_DESTINATION_PARTITION_ID
+  | typeof SEARCH_MESSAGING_DESTINATION_KIND
+  | typeof SEARCH_MESSAGING_KAFKA_MESSAGE_KEY
+  | typeof SEARCH_MESSAGING_KAFKA_MESSAGE_TOMBSTONE
+  | typeof SEARCH_MESSAGING_KAFKA_OFFSET
+  | typeof SEARCH_MESSAGING_MESSAGE_BODY_SIZE
+  | typeof SEARCH_MESSAGING_MESSAGE_CONVERSATION_ID
+  | typeof SEARCH_MESSAGING_MESSAGE_ENVELOPE_SIZE
+  | typeof SEARCH_MESSAGING_MESSAGE_ID
+  | typeof SEARCH_MESSAGING_MESSAGE_RECEIVE_LATENCY
+  | typeof SEARCH_MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof _SEARCH_MESSAGING_MESSAGE_ID
+  | typeof SEARCH_MESSAGING_OPERATION
+  | typeof SEARCH_MESSAGING_OPERATION_NAME
+  | typeof SEARCH_MESSAGING_OPERATION_TYPE
+  | typeof SEARCH_MESSAGING_PROTOCOL
+  | typeof SEARCH_MESSAGING_PROTOCOL_VERSION
+  | typeof SEARCH_MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY
+  | typeof SEARCH_MESSAGING_RABBITMQ_ROUTING_KEY
+  | typeof SEARCH_MESSAGING_SYSTEM
+  | typeof SEARCH_MESSAGING_URL
+  | typeof SEARCH_METHOD
+  | typeof SEARCH_MIDDLEWARE_NAME
+  | typeof SEARCH_MOBILE_FRAMES_DELAY
+  | typeof SEARCH_MOBILE_FROZEN_FRAMES
+  | typeof SEARCH_MOBILE_SLOW_FRAMES
+  | typeof SEARCH_MOBILE_TOTAL_FRAMES
+  | typeof SEARCH_NAVIGATION_ORIGIN
+  | typeof SEARCH_NAVIGATION_ROUTE_ID
+  | typeof SEARCH_NAVIGATION_TYPE
+  | typeof SEARCH_NEL_ELAPSED_TIME
+  | typeof SEARCH_NEL_PHASE
+  | typeof SEARCH_NEL_REFERRER
+  | typeof SEARCH_NEL_SAMPLING_FUNCTION
+  | typeof SEARCH_NEL_TYPE
+  | typeof SEARCH_NET_HOST_IP
+  | typeof SEARCH_NET_HOST_NAME
+  | typeof SEARCH_NET_HOST_PORT
+  | typeof SEARCH_NET_PEER_IP
+  | typeof SEARCH_NET_PEER_NAME
+  | typeof SEARCH_NET_PEER_PORT
+  | typeof SEARCH_NET_PROTOCOL_NAME
+  | typeof SEARCH_NET_PROTOCOL_VERSION
+  | typeof SEARCH_NET_SOCK_FAMILY
+  | typeof SEARCH_NET_SOCK_HOST_ADDR
+  | typeof SEARCH_NET_SOCK_HOST_PORT
+  | typeof SEARCH_NET_SOCK_PEER_ADDR
+  | typeof SEARCH_NET_SOCK_PEER_NAME
+  | typeof SEARCH_NET_SOCK_PEER_PORT
+  | typeof SEARCH_NET_TRANSPORT
+  | typeof SEARCH_NETWORK_CONNECTION_EFFECTIVE_TYPE
+  | typeof SEARCH_NETWORK_CONNECTION_RTT
+  | typeof SEARCH_NETWORK_CONNECTION_TYPE
+  | typeof SEARCH_NETWORK_LOCAL_ADDRESS
+  | typeof SEARCH_NETWORK_LOCAL_PORT
+  | typeof SEARCH_NETWORK_PEER_ADDRESS
+  | typeof SEARCH_NETWORK_PEER_PORT
+  | typeof SEARCH_NETWORK_PROTOCOL_NAME
+  | typeof SEARCH_NETWORK_PROTOCOL_VERSION
+  | typeof SEARCH_NETWORK_TRANSPORT
+  | typeof SEARCH_NETWORK_TYPE
+  | typeof SEARCH_ORIGIN
+  | typeof SEARCH_OS_BUILD
+  | typeof SEARCH_OS_BUILD_ID
+  | typeof SEARCH_OS_DESCRIPTION
+  | typeof SEARCH_OS_KERNEL_VERSION
+  | typeof SEARCH_OS_NAME
+  | typeof SEARCH_OS_RAW_DESCRIPTION
+  | typeof SEARCH_OS_ROOTED
+  | typeof SEARCH_OS_THEME
+  | typeof SEARCH_OS_TYPE
+  | typeof SEARCH_OS_VERSION
+  | typeof SEARCH_OTEL_KIND
+  | typeof SEARCH_OTEL_SCOPE_NAME
+  | typeof SEARCH_OTEL_SCOPE_VERSION
+  | typeof SEARCH_OTEL_STATUS_CODE
+  | typeof SEARCH_OTEL_STATUS_DESCRIPTION
+  | typeof SEARCH_PARAMS_KEY
+  | typeof SEARCH_PERFORMANCE_ACTIVATIONSTART
+  | typeof SEARCH_PERFORMANCE_TIMEORIGIN
+  | typeof SEARCH_PLATFORM
+  | typeof SEARCH_PORT
+  | typeof SEARCH_PREVIOUS_ROUTE
+  | typeof SEARCH_PROCESS_COMMAND_ARGS
+  | typeof SEARCH_PROCESS_EXECUTABLE_NAME
+  | typeof SEARCH_PROCESS_PID
+  | typeof SEARCH_PROCESS_RUNTIME_DESCRIPTION
+  | typeof SEARCH_PROCESS_RUNTIME_ENGINE_NAME
+  | typeof SEARCH_PROCESS_RUNTIME_ENGINE_VERSION
+  | typeof SEARCH_PROCESS_RUNTIME_NAME
+  | typeof SEARCH_PROCESS_RUNTIME_VERSION
+  | typeof SEARCH_PROFILE_ID
+  | typeof _SEARCH_PROFILE_ID
+  | typeof SEARCH_PROFILER_ID
+  | typeof SEARCH_QUERY
+  | typeof SEARCH_QUERY_KEY
+  | typeof SEARCH_REACT_VERSION
+  | typeof SEARCH_REDIS_COMMAND
+  | typeof SEARCH_REDIS_KEY
+  | typeof SEARCH_RELEASE
+  | typeof SEARCH_REMIX_ACTION_FORM_DATA_KEY
+  | typeof SEARCH_REPLAY_ID
+  | typeof _SEARCH_REPLAY_ID
+  | typeof SEARCH_RESOURCE_DEPLOYMENT_ENVIRONMENT
+  | typeof SEARCH_RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
+  | typeof SEARCH_RESOURCE_RENDER_BLOCKING_STATUS
+  | typeof SEARCH_ROUTE
+  | typeof SEARCH_RPC_GRPC_STATUS_CODE
+  | typeof SEARCH_RPC_METHOD
+  | typeof SEARCH_RPC_RESPONSE_STATUS_CODE
+  | typeof SEARCH_RPC_SERVICE
+  | typeof SEARCH_RPC_SYSTEM
+  | typeof SEARCH_RPC_SYSTEM_NAME
+  | typeof SEARCH_RUNTIME_BUILD
+  | typeof SEARCH_RUNTIME_NAME
+  | typeof SEARCH_RUNTIME_RAW_DESCRIPTION
+  | typeof SEARCH_RUNTIME_VERSION
+  | typeof SEARCH_SCORE_KEY
+  | typeof SEARCH_SCORE_RATIO_KEY
+  | typeof SEARCH_SCORE_TOTAL
+  | typeof SEARCH_SCORE_WEIGHT_KEY
+  | typeof SEARCH_SDK_NAME
+  | typeof SEARCH_SDK_VERSION
+  | typeof SEARCH_ACTION
+  | typeof _SEARCH_BROWSER_VERSION
+  | typeof SEARCH_CANCELLATION_REASON
+  | typeof SEARCH_CATEGORY
+  | typeof _SEARCH_CLIENT_SAMPLE_RATE
+  | typeof SEARCH_DESCRIPTION
+  | typeof _SEARCH_DIST
+  | typeof SEARCH_DOMAIN
+  | typeof SEARCH_DSC_ENVIRONMENT
+  | typeof SEARCH_DSC_PROJECT_ID
+  | typeof SEARCH_DSC_PUBLIC_KEY
+  | typeof SEARCH_DSC_RELEASE
+  | typeof SEARCH_DSC_SAMPLE_RATE
+  | typeof SEARCH_DSC_SAMPLED
+  | typeof SEARCH_DSC_TRACE_ID
+  | typeof SEARCH_DSC_TRANSACTION
+  | typeof _SEARCH_ENVIRONMENT
+  | typeof SEARCH_EVENT_SERIALIZED_BREADCRUMBS
+  | typeof SEARCH_EVENT_SERIALIZED_CONTEXTS
+  | typeof SEARCH_EVENT_SERIALIZED_EXTRA
+  | typeof SEARCH_EVENT_SERIALIZED_META
+  | typeof SEARCH_EXCLUSIVE_TIME
+  | typeof _SEARCH_FRAMES_FROZEN
+  | typeof _SEARCH_FRAMES_SLOW
+  | typeof _SEARCH_FRAMES_TOTAL
+  | typeof SEARCH_GRAPHQL_OPERATION
+  | typeof SEARCH_GROUP
+  | typeof SEARCH_HTTP_PREFETCH
+  | typeof SEARCH_IDLE_SPAN_FINISH_REASON
+  | typeof SEARCH_IS_REMOTE
+  | typeof SEARCH_KIND
+  | typeof SEARCH_MAIN_THREAD
+  | typeof SEARCH_MESSAGE_PARAMETER_KEY
+  | typeof SEARCH_MESSAGE_TEMPLATE
+  | typeof SEARCH_METRIC_SOURCE
+  | typeof SEARCH_MOBILE
+  | typeof SEARCH_MODULE_KEY
+  | typeof SEARCH_NEXTJS_SSR_FUNCTION_ROUTE
+  | typeof SEARCH_NEXTJS_SSR_FUNCTION_TYPE
+  | typeof SEARCH_NORMALIZED_DB_QUERY
+  | typeof SEARCH_NORMALIZED_DB_QUERY_HASH
+  | typeof SEARCH_NORMALIZED_DESCRIPTION
+  | typeof SEARCH_OBSERVED_TIMESTAMP_NANOS
+  | typeof SEARCH_OP
+  | typeof _SEARCH_ORIGIN
+  | typeof SEARCH_PAGELOAD_SPAN_ID
+  | typeof _SEARCH_PLATFORM
+  | typeof __SEARCH_PROFILE_ID
+  | typeof _SEARCH_PROFILER_ID
+  | typeof SEARCH_RELAY_INGRESS
+  | typeof SEARCH_RELAY_PIPELINE
+  | typeof _SEARCH_RELEASE
+  | typeof __SEARCH_REPLAY_ID
+  | typeof SEARCH_REPLAY_IS_BUFFERING
+  | typeof SEARCH_REPORT_EVENT
+  | typeof SEARCH_SDK_INTEGRATIONS
+  | typeof _SEARCH_SDK_NAME
+  | typeof _SEARCH_SDK_VERSION
+  | typeof SEARCH_SEGMENT_ID
+  | typeof SEARCH_SEGMENT_NAME
+  | typeof SEARCH_SEGMENT_NAME_SOURCE
+  | typeof _SEARCH_SEGMENT_ID
+  | typeof _SEARCH_SERVER_SAMPLE_RATE
+  | typeof SEARCH_SOURCE
+  | typeof SEARCH_SPAN_SOURCE
+  | typeof SEARCH_STATUS
+  | typeof SEARCH_STATUS_MESSAGE
+  | typeof SEARCH_STATUS_CODE
+  | typeof SEARCH_SVELTEKIT_NAVIGATION_FROM
+  | typeof SEARCH_SVELTEKIT_NAVIGATION_TO
+  | typeof SEARCH_SVELTEKIT_NAVIGATION_TYPE
+  | typeof SEARCH_TIMESTAMP_SEQUENCE
+  | typeof SEARCH_TRACE_PARENT_SPAN_ID
+  | typeof _SEARCH_TRACE_STATUS
+  | typeof _SEARCH_TRACE_LIFECYCLE
+  | typeof _SEARCH_TRANSACTION
+  | typeof _SEARCH_USER_IP
+  | typeof _SEARCH_USER_USERNAME
+  | typeof SEARCH_SERVER_ADDRESS
+  | typeof SEARCH_SERVER_PORT
+  | typeof SEARCH_SERVER_NAME
+  | typeof SEARCH_SERVER_SAMPLE_RATE
+  | typeof SEARCH_SERVICE_NAME
+  | typeof SEARCH_SERVICE_VERSION
+  | typeof SEARCH_SESSION_ID
+  | typeof SEARCH_SPAN_ACTION
+  | typeof SEARCH_SPAN_CATEGORY
+  | typeof SEARCH_SPAN_DOMAIN
+  | typeof SEARCH_SPAN_GROUP
+  | typeof SEARCH_SPAN_KIND
+  | typeof SEARCH_SPAN_OP
+  | typeof SEARCH_SPAN_STATUS
+  | typeof SEARCH_SPAN_STATUS_MESSAGE
+  | typeof SEARCH_SPAN_STATUS_CODE
+  | typeof SEARCH_SPAN_SYSTEM
+  | typeof SEARCH_STALL_PERCENTAGE
+  | typeof SEARCH_STALL_TOTAL_TIME
+  | typeof SEARCH_STARLETTE_MIDDLEWARE_NAME
+  | typeof SEARCH_STARLITE_MIDDLEWARE_NAME
+  | typeof SEARCH_STATE_TYPE
+  | typeof SEARCH_SUBPROCESS_PID
+  | typeof SEARCH_THREAD_ID
+  | typeof SEARCH_THREAD_NAME
+  | typeof SEARCH_TIMBER_TAG
+  | typeof SEARCH_TIME_TO_FULL_DISPLAY
+  | typeof SEARCH_TIME_TO_INITIAL_DISPLAY
+  | typeof SEARCH_TRACE_STATUS
+  | typeof SEARCH_TRACE_LIFECYCLE
+  | typeof SEARCH_TRANSACTION
+  | typeof SEARCH_TRANSACTION_SPAN_ID
+  | typeof SEARCH_TRPC_PROCEDURE_PATH
+  | typeof SEARCH_TRPC_PROCEDURE_TYPE
+  | typeof SEARCH_TTFB
+  | typeof SEARCH_TTFB_REQUESTTIME
+  | typeof SEARCH_TYPE
+  | typeof SEARCH_UI_COMPONENT_NAME
+  | typeof SEARCH_UI_CONTRIBUTES_TO_TTFD
+  | typeof SEARCH_UI_CONTRIBUTES_TO_TTID
+  | typeof SEARCH_UI_ELEMENT_HEIGHT
+  | typeof SEARCH_UI_ELEMENT_ID
+  | typeof SEARCH_UI_ELEMENT_IDENTIFIER
+  | typeof SEARCH_UI_ELEMENT_LOAD_TIME
+  | typeof SEARCH_UI_ELEMENT_PAINT_TYPE
+  | typeof SEARCH_UI_ELEMENT_RENDER_TIME
+  | typeof SEARCH_UI_ELEMENT_TYPE
+  | typeof SEARCH_UI_ELEMENT_URL
+  | typeof SEARCH_UI_ELEMENT_WIDTH
+  | typeof SEARCH_URL
+  | typeof SEARCH_URL_DOMAIN
+  | typeof SEARCH_URL_FRAGMENT
+  | typeof SEARCH_URL_FULL
+  | typeof SEARCH_URL_PATH
+  | typeof SEARCH_URL_PATH_PARAMETER_KEY
+  | typeof SEARCH_URL_PATH_PARAMS_KEY
+  | typeof SEARCH_URL_PORT
+  | typeof SEARCH_URL_QUERY
+  | typeof SEARCH_URL_SAME_ORIGIN
+  | typeof SEARCH_URL_SCHEME
+  | typeof SEARCH_URL_TEMPLATE
+  | typeof SEARCH_USER_EMAIL
+  | typeof SEARCH_USER_FULL_NAME
+  | typeof SEARCH_USER_GEO_CITY
+  | typeof SEARCH_USER_GEO_COUNTRY_CODE
+  | typeof SEARCH_USER_GEO_REGION
+  | typeof SEARCH_USER_GEO_SUBDIVISION
+  | typeof SEARCH_USER_HASH
+  | typeof SEARCH_USER_ID
+  | typeof SEARCH_USER_IP
+  | typeof SEARCH_USER_IP_ADDRESS
+  | typeof SEARCH_USER_NAME
+  | typeof SEARCH_USER_ROLES
+  | typeof SEARCH_USER_USERNAME
+  | typeof SEARCH_USER_AGENT_ORIGINAL
+  | typeof SEARCH_VERCEL_BRANCH
+  | typeof SEARCH_VERCEL_BUILD_ID
+  | typeof SEARCH_VERCEL_DEPLOYMENT_ID
+  | typeof SEARCH_VERCEL_DESTINATION
+  | typeof SEARCH_VERCEL_EDGE_TYPE
+  | typeof SEARCH_VERCEL_ENTRYPOINT
+  | typeof SEARCH_VERCEL_EXECUTION_REGION
+  | typeof SEARCH_VERCEL_ID
+  | typeof SEARCH_VERCEL_JA3_DIGEST
+  | typeof SEARCH_VERCEL_JA4_DIGEST
+  | typeof SEARCH_VERCEL_LOG_TYPE
+  | typeof SEARCH_VERCEL_PATH
+  | typeof SEARCH_VERCEL_PROJECT_ID
+  | typeof SEARCH_VERCEL_PROJECT_NAME
+  | typeof SEARCH_VERCEL_PROXY_CACHE_ID
+  | typeof SEARCH_VERCEL_PROXY_CLIENT_IP
+  | typeof SEARCH_VERCEL_PROXY_HOST
+  | typeof SEARCH_VERCEL_PROXY_LAMBDA_REGION
+  | typeof SEARCH_VERCEL_PROXY_METHOD
+  | typeof SEARCH_VERCEL_PROXY_PATH
+  | typeof SEARCH_VERCEL_PROXY_PATH_TYPE
+  | typeof SEARCH_VERCEL_PROXY_PATH_TYPE_VARIANT
+  | typeof SEARCH_VERCEL_PROXY_REFERER
+  | typeof SEARCH_VERCEL_PROXY_REGION
+  | typeof SEARCH_VERCEL_PROXY_RESPONSE_BYTE_SIZE
+  | typeof SEARCH_VERCEL_PROXY_SCHEME
+  | typeof SEARCH_VERCEL_PROXY_STATUS_CODE
+  | typeof SEARCH_VERCEL_PROXY_TIMESTAMP
+  | typeof SEARCH_VERCEL_PROXY_USER_AGENT
+  | typeof SEARCH_VERCEL_PROXY_VERCEL_CACHE
+  | typeof SEARCH_VERCEL_PROXY_VERCEL_ID
+  | typeof SEARCH_VERCEL_PROXY_WAF_ACTION
+  | typeof SEARCH_VERCEL_PROXY_WAF_RULE_ID
+  | typeof SEARCH_VERCEL_REQUEST_ID
+  | typeof SEARCH_VERCEL_SOURCE
+  | typeof SEARCH_VERCEL_STATUS_CODE;
+
 export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {
   address: {
     canonicalName: 'server.address',
