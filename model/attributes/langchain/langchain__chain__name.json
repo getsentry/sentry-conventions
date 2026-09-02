@@ -1,0 +1,24 @@
+{
+  "key": "langchain.chain.name",
+  "brief": "The name of the LangChain chain being executed.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["format_prompt", "RunnableSequence"],
+  "alias": ["gen_ai.pipeline.name", "ai.pipeline.name"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.pipeline.name",
+    "reason": "This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed."
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [599],
+      "description": "Added langchain.chain.name attribute"
+    }
+  ]
+}

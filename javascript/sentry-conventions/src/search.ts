@@ -870,6 +870,16 @@ export const SEARCH_BROWSER_BFCACHE_REASON = 'browser.bfcache.reason';
 export const SEARCH_BROWSER_NAME = 'browser.name';
 
 /**
+ * Search name for {@link attributes.BROWSER_NAVIGATION_TYPE}. `browser.navigation.type`
+ */
+export const SEARCH_BROWSER_NAVIGATION_TYPE = 'browser.navigation.type';
+
+/**
+ * Search name for {@link attributes.BROWSER_PAINT_TYPE}. `browser.paint.type`
+ */
+export const SEARCH_BROWSER_PAINT_TYPE = 'browser.paint.type';
+
+/**
  * Search name for {@link attributes.BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START}. `browser.performance.navigation.activation_start`
  */
 export const SEARCH_BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION__START =
@@ -2690,6 +2700,13 @@ export const SEARCH_KOA_NAME = 'koa.name';
 export const SEARCH_KOA_TYPE = 'koa.type';
 
 /**
+ * Search name for {@link attributes.LANGCHAIN_CHAIN_NAME}. `langchain.chain.name`
+ *
+ * @deprecated Use {@link SEARCH_GEN__AI_PIPELINE_NAME} (`gen_ai.pipeline.name`) instead
+ */
+export const SEARCH_LANGCHAIN_CHAIN_NAME = 'langchain.chain.name';
+
+/**
  * Search name for {@link attributes.LCP}. `lcp`
  *
  * @deprecated Use {@link SEARCH_BROWSER_WEB__VITAL_LCP_VALUE} (`browser.web_vital.lcp.value`) instead
@@ -3141,16 +3158,22 @@ export const SEARCH_MOBILE_TOTAL__FRAMES = 'mobile.total_frames';
 
 /**
  * Search name for {@link attributes.NAVIGATION_ORIGIN}. `navigation.origin`
+ *
+ * @deprecated Use {@link SEARCH_ROUTER_NAVIGATION_ORIGIN} (`router.navigation.origin`) instead
  */
 export const SEARCH_NAVIGATION_ORIGIN = 'navigation.origin';
 
 /**
  * Search name for {@link attributes.NAVIGATION_ROUTE_ID}. `navigation.route.id`
+ *
+ * @deprecated Use {@link SEARCH_ROUTER_NAVIGATION_ROUTE_ID} (`router.navigation.route.id`) instead
  */
 export const SEARCH_NAVIGATION_ROUTE_ID = 'navigation.route.id';
 
 /**
  * Search name for {@link attributes.NAVIGATION_TYPE}. `navigation.type`
+ *
+ * @deprecated Use {@link SEARCH_ROUTER_NAVIGATION_TYPE} (`router.navigation.type`) instead
  */
 export const SEARCH_NAVIGATION_TYPE = 'navigation.type';
 
@@ -3596,6 +3619,21 @@ export const SEARCH_RESOURCE_RENDER__BLOCKING__STATUS = 'resource.render_blockin
  * @deprecated Use {@link SEARCH_HTTP_ROUTE} (`http.route`) instead
  */
 export const SEARCH_ROUTE = 'route';
+
+/**
+ * Search name for {@link attributes.ROUTER_NAVIGATION_ORIGIN}. `router.navigation.origin`
+ */
+export const SEARCH_ROUTER_NAVIGATION_ORIGIN = 'router.navigation.origin';
+
+/**
+ * Search name for {@link attributes.ROUTER_NAVIGATION_ROUTE_ID}. `router.navigation.route.id`
+ */
+export const SEARCH_ROUTER_NAVIGATION_ROUTE_ID = 'router.navigation.route.id';
+
+/**
+ * Search name for {@link attributes.ROUTER_NAVIGATION_TYPE}. `router.navigation.type`
+ */
+export const SEARCH_ROUTER_NAVIGATION_TYPE = 'router.navigation.type';
 
 /**
  * Search name for {@link attributes.RPC_GRPC_STATUS_CODE}. `rpc.grpc.status_code`
@@ -4090,7 +4128,7 @@ export const SEARCH_STATUS__CODE = 'sentry.status_code';
 /**
  * Search name for {@link attributes.SENTRY_SVELTEKIT_NAVIGATION_FROM}. `sentry.sveltekit.navigation.from`
  *
- * @deprecated Use {@link SEARCH_NAVIGATION_ORIGIN} (`navigation.origin`) instead
+ * @deprecated Use {@link SEARCH_ROUTER_NAVIGATION_ORIGIN} (`router.navigation.origin`) instead
  */
 export const SEARCH_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
 
@@ -4104,7 +4142,7 @@ export const SEARCH_SVELTEKIT_NAVIGATION_TO = 'sentry.sveltekit.navigation.to';
 /**
  * Search name for {@link attributes.SENTRY_SVELTEKIT_NAVIGATION_TYPE}. `sentry.sveltekit.navigation.type`
  *
- * @deprecated Use {@link SEARCH_NAVIGATION_TYPE} (`navigation.type`) instead
+ * @deprecated Use {@link SEARCH_ROUTER_NAVIGATION_TYPE} (`router.navigation.type`) instead
  */
 export const SEARCH_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
 
@@ -4885,6 +4923,8 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER_BFCACHE_OUTCOME
   | typeof SEARCH_BROWSER_BFCACHE_REASON
   | typeof SEARCH_BROWSER_NAME
+  | typeof SEARCH_BROWSER_NAVIGATION_TYPE
+  | typeof SEARCH_BROWSER_PAINT_TYPE
   | typeof SEARCH_BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION__START
   | typeof SEARCH_BROWSER_PERFORMANCE_TIME__ORIGIN
   | typeof SEARCH_BROWSER_REPORT_TYPE
@@ -5219,6 +5259,7 @@ export type AttributeSearchName =
   | typeof SEARCH_JVM_THREAD_STATE
   | typeof SEARCH_KOA_NAME
   | typeof SEARCH_KOA_TYPE
+  | typeof SEARCH_LANGCHAIN_CHAIN_NAME
   | typeof SEARCH_LCP
   | typeof SEARCH_LCP_ELEMENT
   | typeof SEARCH_LCP_ID
@@ -5379,6 +5420,9 @@ export type AttributeSearchName =
   | typeof SEARCH_RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
   | typeof SEARCH_RESOURCE_RENDER__BLOCKING__STATUS
   | typeof SEARCH_ROUTE
+  | typeof SEARCH_ROUTER_NAVIGATION_ORIGIN
+  | typeof SEARCH_ROUTER_NAVIGATION_ROUTE_ID
+  | typeof SEARCH_ROUTER_NAVIGATION_TYPE
   | typeof SEARCH_RPC_GRPC_STATUS__CODE
   | typeof SEARCH_RPC_METHOD
   | typeof SEARCH_RPC_RESPONSE_STATUS__CODE
@@ -5683,7 +5727,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.pipeline.name',
     type: 'string',
     brief: 'The name of the AI pipeline.',
-    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
   },
   'ai.preamble': {
     canonicalName: 'gen_ai.system_instructions',
@@ -6532,6 +6576,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of the browser.',
     deprecationChain: ['browser.name', 'sentry.browser.name'],
+  },
+  'browser.navigation.type': {
+    canonicalName: 'browser.navigation.type',
+    type: 'string',
+    brief: 'The type of navigation the browser performed to arrive at the page the metrics were measured on.',
+    deprecationChain: ['browser.navigation.type'],
+  },
+  'browser.paint.type': {
+    canonicalName: 'browser.paint.type',
+    type: 'string',
+    brief: 'The type of paint timing entry reported by the browser.',
+    deprecationChain: ['browser.paint.type'],
   },
   'browser.performance.navigation.activation_start': {
     canonicalName: 'browser.performance.navigation.activation_start',
@@ -7780,7 +7836,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.pipeline.name',
     type: 'string',
     brief: 'Name of the AI pipeline or chain being executed.',
-    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
   },
   'gen_ai.prompt': {
     canonicalName: 'gen_ai.input.messages',
@@ -8646,6 +8702,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The type of the Koa layer that handled the request.',
     deprecationChain: ['koa.type'],
   },
+  'langchain.chain.name': {
+    canonicalName: 'gen_ai.pipeline.name',
+    type: 'string',
+    brief: 'The name of the LangChain chain being executed.',
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
+  },
   lcp: {
     canonicalName: 'browser.web_vital.lcp.value',
     type: 'double',
@@ -9157,24 +9219,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
   },
   'navigation.origin': {
-    canonicalName: 'navigation.origin',
+    canonicalName: 'router.navigation.origin',
     type: 'string',
     brief:
       'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
-    deprecationChain: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+    deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
   },
   'navigation.route.id': {
-    canonicalName: 'navigation.route.id',
+    canonicalName: 'router.navigation.route.id',
     type: 'string',
     brief:
       'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
-    deprecationChain: ['navigation.route.id'],
+    deprecationChain: ['router.navigation.route.id', 'navigation.route.id'],
   },
   'navigation.type': {
-    canonicalName: 'navigation.type',
+    canonicalName: 'router.navigation.type',
     type: 'string',
     brief: 'The type of navigation done by a client-side router.',
-    deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+    deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
   },
   'nel.elapsed_time': {
     canonicalName: 'nel.elapsed_time',
@@ -9660,6 +9722,26 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
     deprecationChain: ['route'],
   },
+  'router.navigation.origin': {
+    canonicalName: 'router.navigation.origin',
+    type: 'string',
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.',
+    deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
+  },
+  'router.navigation.route.id': {
+    canonicalName: 'router.navigation.route.id',
+    type: 'string',
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    deprecationChain: ['router.navigation.route.id', 'navigation.route.id'],
+  },
+  'router.navigation.type': {
+    canonicalName: 'router.navigation.type',
+    type: 'string',
+    brief: 'The type of navigation done by a client-side router.',
+    deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
   'rpc.grpc.status_code': {
     canonicalName: 'rpc.response.status_code',
     type: 'integer',
@@ -10067,10 +10149,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['sentry.span.source'],
   },
   'sentry.sveltekit.navigation.from': {
-    canonicalName: 'navigation.origin',
+    canonicalName: 'router.navigation.origin',
     type: 'string',
     brief: 'the navigation origin (sveltekit router)',
-    deprecationChain: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+    deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
   },
   'sentry.sveltekit.navigation.to': {
     canonicalName: 'sentry.sveltekit.navigation.to',
@@ -10079,10 +10161,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['sentry.sveltekit.navigation.to'],
   },
   'sentry.sveltekit.navigation.type': {
-    canonicalName: 'navigation.type',
+    canonicalName: 'router.navigation.type',
     type: 'string',
     brief: 'The type of navigation event emitted from the sveltekit client router',
-    deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+    deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
   },
   'sentry.timestamp.sequence': {
     canonicalName: 'sentry.timestamp.sequence',

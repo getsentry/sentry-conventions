@@ -8,7 +8,18 @@
   "is_in_otel": false,
   "example": "AboutView",
   "visibility": "public",
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "router.navigation.route.id",
+    "reason": "Moved to the router.* namespace to separate client-side router navigations from browser navigations."
+  },
+  "alias": ["router.navigation.route.id"],
   "changelog": [
+    {
+      "version": "next",
+      "prs": [600],
+      "description": "Deprecated in favor of router.navigation.route.id"
+    },
     {
       "version": "0.16.0",
       "prs": [468],

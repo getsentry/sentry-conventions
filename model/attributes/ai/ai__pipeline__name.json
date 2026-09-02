@@ -7,13 +7,18 @@
   },
   "is_in_otel": false,
   "example": "Autofix Pipeline",
-  "alias": ["gen_ai.pipeline.name"],
+  "alias": ["gen_ai.pipeline.name", "langchain.chain.name"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.pipeline.name"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [599],
+      "description": "Added langchain.chain.name as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [53, 76, 108, 127]
