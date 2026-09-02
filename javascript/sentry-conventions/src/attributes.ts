@@ -3240,6 +3240,31 @@ export const BROWSER_NAME = 'browser.name';
  */
 export type BROWSER_NAME_TYPE = string;
 
+// Path: model/attributes/browser/browser__navigation__type.json
+
+/**
+ * The type of navigation the browser performed to arrive at the page the metrics were measured on. `browser.navigation.type`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_NAVIGATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "navigate"
+ * @example "reload"
+ * @example "prerender"
+ * @example "bfcache"
+ * @example "soft-navigation"
+ */
+export const BROWSER_NAVIGATION_TYPE = 'browser.navigation.type';
+
+/**
+ * Type for {@link BROWSER_NAVIGATION_TYPE} browser.navigation.type
+ */
+export type BROWSER_NAVIGATION_TYPE_TYPE = string;
+
 // Path: model/attributes/browser/browser__paint__type.json
 
 /**
@@ -12380,8 +12405,9 @@ export type MIDDLEWARE_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
+ * Aliases: {@link ROUTER_NAVIGATION_ORIGIN} `router.navigation.origin`, {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
  *
+ * @deprecated Use {@link ROUTER_NAVIGATION_ORIGIN} (router.navigation.origin) instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
  * @example "/users/:id"
  */
 export const NAVIGATION_ORIGIN = 'navigation.origin';
@@ -12403,6 +12429,9 @@ export type NAVIGATION_ORIGIN_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link ROUTER_NAVIGATION_ROUTE_ID} `router.navigation.route.id`
+ *
+ * @deprecated Use {@link ROUTER_NAVIGATION_ROUTE_ID} (router.navigation.route.id) instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
  * @example "AboutView"
  */
 export const NAVIGATION_ROUTE_ID = 'navigation.route.id';
@@ -12424,8 +12453,9 @@ export type NAVIGATION_ROUTE_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
+ * Aliases: {@link ROUTER_NAVIGATION_TYPE} `router.navigation.type`, {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
  *
+ * @deprecated Use {@link ROUTER_NAVIGATION_TYPE} (router.navigation.type) instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
  * @example "router.push"
  */
 export const NAVIGATION_TYPE = 'navigation.type';
@@ -14080,6 +14110,75 @@ export const ROUTE = 'route';
  * Type for {@link ROUTE} route
  */
 export type ROUTE_TYPE = string;
+
+// Path: model/attributes/router/router__navigation__origin.json
+
+/**
+ * The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise. `router.navigation.origin`
+ *
+ * Attribute Value Type: `string` {@link ROUTER_NAVIGATION_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`, {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
+ *
+ * @example "/users/:id"
+ */
+export const ROUTER_NAVIGATION_ORIGIN = 'router.navigation.origin';
+
+/**
+ * Type for {@link ROUTER_NAVIGATION_ORIGIN} router.navigation.origin
+ */
+export type ROUTER_NAVIGATION_ORIGIN_TYPE = string;
+
+// Path: model/attributes/router/router__navigation__route__id.json
+
+/**
+ * The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id). `router.navigation.route.id`
+ *
+ * Attribute Value Type: `string` {@link ROUTER_NAVIGATION_ROUTE_ID_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_ROUTE_ID} `navigation.route.id`
+ *
+ * @example "AboutView"
+ */
+export const ROUTER_NAVIGATION_ROUTE_ID = 'router.navigation.route.id';
+
+/**
+ * Type for {@link ROUTER_NAVIGATION_ROUTE_ID} router.navigation.route.id
+ */
+export type ROUTER_NAVIGATION_ROUTE_ID_TYPE = string;
+
+// Path: model/attributes/router/router__navigation__type.json
+
+/**
+ * The type of navigation done by a client-side router. `router.navigation.type`
+ *
+ * Attribute Value Type: `string` {@link ROUTER_NAVIGATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_TYPE} `navigation.type`, {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
+ *
+ * @example "router.push"
+ */
+export const ROUTER_NAVIGATION_TYPE = 'router.navigation.type';
+
+/**
+ * Type for {@link ROUTER_NAVIGATION_TYPE} router.navigation.type
+ */
+export type ROUTER_NAVIGATION_TYPE_TYPE = string;
 
 // Path: model/attributes/rpc/rpc__grpc__status_code.json
 
@@ -15918,9 +16017,9 @@ export type SENTRY_STATUS_MESSAGE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`
+ * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`, {@link ROUTER_NAVIGATION_ORIGIN} `router.navigation.origin`
  *
- * @deprecated Use {@link NAVIGATION_ORIGIN} (navigation.origin) instead - Use the more generic attribute instead
+ * @deprecated Use {@link ROUTER_NAVIGATION_ORIGIN} (router.navigation.origin) instead - Use the more generic attribute instead
  * @example "/home"
  */
 export const SENTRY_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
@@ -15964,9 +16063,9 @@ export type SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NAVIGATION_TYPE} `navigation.type`
+ * Aliases: {@link NAVIGATION_TYPE} `navigation.type`, {@link ROUTER_NAVIGATION_TYPE} `router.navigation.type`
  *
- * @deprecated Use {@link NAVIGATION_TYPE} (navigation.type) instead - Use the more generic attribute instead
+ * @deprecated Use {@link ROUTER_NAVIGATION_TYPE} (router.navigation.type) instead - Use the more generic attribute instead
  * @example "link"
  */
 export const SENTRY_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
@@ -18629,6 +18728,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.bfcache.outcome': 'string',
   'browser.bfcache.reason': 'string',
   'browser.name': 'string',
+  'browser.navigation.type': 'string',
   'browser.paint.type': 'string',
   'browser.performance.navigation.activation_start': 'double',
   'browser.performance.time_origin': 'double',
@@ -19114,6 +19214,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'resource.deployment.environment.name': 'string',
   'resource.render_blocking_status': 'string',
   route: 'string',
+  'router.navigation.origin': 'string',
+  'router.navigation.route.id': 'string',
+  'router.navigation.type': 'string',
   'rpc.grpc.status_code': 'integer',
   'rpc.method': 'string',
   'rpc.response.status_code': 'string',
@@ -19456,6 +19559,7 @@ export type AttributeName =
   | typeof BROWSER_BFCACHE_OUTCOME
   | typeof BROWSER_BFCACHE_REASON
   | typeof BROWSER_NAME
+  | typeof BROWSER_NAVIGATION_TYPE
   | typeof BROWSER_PAINT_TYPE
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
   | typeof BROWSER_PERFORMANCE_TIME_ORIGIN
@@ -19941,6 +20045,9 @@ export type AttributeName =
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
   | typeof RESOURCE_RENDER_BLOCKING_STATUS
   | typeof ROUTE
+  | typeof ROUTER_NAVIGATION_ORIGIN
+  | typeof ROUTER_NAVIGATION_ROUTE_ID
+  | typeof ROUTER_NAVIGATION_TYPE
   | typeof RPC_GRPC_STATUS_CODE
   | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
@@ -22465,6 +22572,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     aliases: ['sentry.browser.name'],
     changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
+  },
+  'browser.navigation.type': {
+    brief: 'The type of navigation the browser performed to arrive at the page the metrics were measured on.',
+    type: 'string',
+    keys: ['browser.navigation.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'navigate',
+    examples: ['navigate', 'reload', 'prerender', 'bfcache', 'soft-navigation'],
+    changelog: [{ version: 'next', prs: [600], description: 'Added browser.navigation.type attribute' }],
+    additionalContext: [
+      'Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.',
+      '`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.',
+      '`prerender` pages finish painting before activation, so their paint timings are offset by `browser.performance.navigation.activation_start`. Keep them separate when aggregating web vitals.',
+      "Not to be confused with `router.navigation.type`, which holds the client-side router's own vocabulary (`link`, `goto`, `router.push`). The two are independent and can both be set on the same span.",
+    ],
   },
   'browser.paint.type': {
     brief: 'The type of paint timing entry reported by the browser.',
@@ -28924,41 +29050,64 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
     type: 'string',
-    keys: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+    keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: '/users/:id',
-    aliases: ['sentry.sveltekit.navigation.from'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' }],
+    deprecation: {
+      replacement: 'router.navigation.origin',
+      reason: 'Moved to the router.* namespace to separate client-side router navigations from browser navigations.',
+      status: 'backfill',
+    },
+    aliases: ['router.navigation.origin', 'sentry.sveltekit.navigation.from'],
+    changelog: [
+      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.origin' },
+      { version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' },
+    ],
   },
   'navigation.route.id': {
     brief:
       'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
     type: 'string',
-    keys: ['navigation.route.id'],
+    keys: ['router.navigation.route.id', 'navigation.route.id'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'AboutView',
-    changelog: [{ version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' }],
+    deprecation: {
+      replacement: 'router.navigation.route.id',
+      reason: 'Moved to the router.* namespace to separate client-side router navigations from browser navigations.',
+      status: 'backfill',
+    },
+    aliases: ['router.navigation.route.id'],
+    changelog: [
+      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.route.id' },
+      { version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' },
+    ],
   },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
-    keys: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+    keys: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'router.push',
-    aliases: ['sentry.sveltekit.navigation.type'],
+    deprecation: {
+      replacement: 'router.navigation.type',
+      reason: 'Moved to the router.* namespace to separate client-side router navigations from browser navigations.',
+      status: 'backfill',
+    },
+    aliases: ['router.navigation.type', 'sentry.sveltekit.navigation.type'],
     changelog: [
+      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.type' },
       { version: '0.16.0', prs: [467], description: 'Added new deprecated alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -30115,6 +30264,61 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.route'],
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
+  },
+  'router.navigation.origin': {
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.',
+    type: 'string',
+    keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    aliases: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [600],
+        description: 'Added router.navigation.origin attribute, replacing navigation.origin',
+      },
+    ],
+  },
+  'router.navigation.route.id': {
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    type: 'string',
+    keys: ['router.navigation.route.id', 'navigation.route.id'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AboutView',
+    aliases: ['navigation.route.id'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [600],
+        description: 'Added router.navigation.route.id attribute, replacing navigation.route.id',
+      },
+    ],
+  },
+  'router.navigation.type': {
+    brief: 'The type of navigation done by a client-side router.',
+    type: 'string',
+    keys: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'router.push',
+    aliases: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+    changelog: [
+      { version: 'next', prs: [600], description: 'Added router.navigation.type attribute, replacing navigation.type' },
+    ],
   },
   'rpc.grpc.status_code': {
     brief: 'The numeric status code of the gRPC request.',
@@ -31369,7 +31573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.sveltekit.navigation.from': {
     brief: 'the navigation origin (sveltekit router)',
     type: 'string',
-    keys: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+    keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -31377,12 +31581,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/home',
     deprecation: {
-      replacement: 'navigation.origin',
+      replacement: 'router.navigation.origin',
       reason: 'Use the more generic attribute instead',
       status: 'backfill',
     },
-    aliases: ['navigation.origin'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
+    aliases: ['navigation.origin', 'router.navigation.origin'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [600],
+        description: 'Re-pointed deprecation from navigation.origin to router.navigation.origin',
+      },
+      { version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' },
+    ],
   },
   'sentry.sveltekit.navigation.to': {
     brief: 'the navigation destination',
@@ -31402,7 +31613,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.sveltekit.navigation.type': {
     brief: 'The type of navigation event emitted from the sveltekit client router',
     type: 'string',
-    keys: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+    keys: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31410,12 +31621,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'link',
     deprecation: {
-      replacement: 'navigation.type',
+      replacement: 'router.navigation.type',
       reason: 'Use the more generic attribute instead',
       status: 'backfill',
     },
-    aliases: ['navigation.type'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
+    aliases: ['navigation.type', 'router.navigation.type'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [600],
+        description: 'Re-pointed deprecation from navigation.type to router.navigation.type',
+      },
+      { version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' },
+    ],
   },
   'sentry.thread.id': {
     brief: 'Current "managed" thread ID.',
@@ -33983,6 +34201,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of the browser.',
     deprecationChain: ['browser.name', 'sentry.browser.name'],
+  },
+  'browser.navigation.type': {
+    canonicalName: 'browser.navigation.type',
+    type: 'string',
+    brief: 'The type of navigation the browser performed to arrive at the page the metrics were measured on.',
+    deprecationChain: ['browser.navigation.type'],
   },
   'browser.paint.type': {
     canonicalName: 'browser.paint.type',
@@ -36620,24 +36844,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
   },
   'navigation.origin': {
-    canonicalName: 'navigation.origin',
+    canonicalName: 'router.navigation.origin',
     type: 'string',
     brief:
       'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
-    deprecationChain: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+    deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
   },
   'navigation.route.id': {
-    canonicalName: 'navigation.route.id',
+    canonicalName: 'router.navigation.route.id',
     type: 'string',
     brief:
       'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
-    deprecationChain: ['navigation.route.id'],
+    deprecationChain: ['router.navigation.route.id', 'navigation.route.id'],
   },
   'navigation.type': {
-    canonicalName: 'navigation.type',
+    canonicalName: 'router.navigation.type',
     type: 'string',
     brief: 'The type of navigation done by a client-side router.',
-    deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+    deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
   },
   'nel.elapsed_time': {
     canonicalName: 'nel.elapsed_time',
@@ -37123,6 +37347,26 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
     deprecationChain: ['route'],
   },
+  'router.navigation.origin': {
+    canonicalName: 'router.navigation.origin',
+    type: 'string',
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.',
+    deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
+  },
+  'router.navigation.route.id': {
+    canonicalName: 'router.navigation.route.id',
+    type: 'string',
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    deprecationChain: ['router.navigation.route.id', 'navigation.route.id'],
+  },
+  'router.navigation.type': {
+    canonicalName: 'router.navigation.type',
+    type: 'string',
+    brief: 'The type of navigation done by a client-side router.',
+    deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
   'rpc.grpc.status_code': {
     canonicalName: 'rpc.response.status_code',
     type: 'integer',
@@ -37530,10 +37774,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['sentry.span.source'],
   },
   'sentry.sveltekit.navigation.from': {
-    canonicalName: 'navigation.origin',
+    canonicalName: 'router.navigation.origin',
     type: 'string',
     brief: 'the navigation origin (sveltekit router)',
-    deprecationChain: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+    deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
   },
   'sentry.sveltekit.navigation.to': {
     canonicalName: 'sentry.sveltekit.navigation.to',
@@ -37542,10 +37786,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['sentry.sveltekit.navigation.to'],
   },
   'sentry.sveltekit.navigation.type': {
-    canonicalName: 'navigation.type',
+    canonicalName: 'router.navigation.type',
     type: 'string',
     brief: 'The type of navigation event emitted from the sveltekit client router',
-    deprecationChain: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+    deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
   },
   'sentry.timestamp.sequence': {
     canonicalName: 'sentry.timestamp.sequence',
@@ -38404,6 +38648,7 @@ export type Attributes = {
   [BROWSER_BFCACHE_OUTCOME]?: BROWSER_BFCACHE_OUTCOME_TYPE;
   [BROWSER_BFCACHE_REASON]?: BROWSER_BFCACHE_REASON_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_NAVIGATION_TYPE]?: BROWSER_NAVIGATION_TYPE_TYPE;
   [BROWSER_PAINT_TYPE]?: BROWSER_PAINT_TYPE_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
   [BROWSER_PERFORMANCE_TIME_ORIGIN]?: BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE;
@@ -38889,6 +39134,9 @@ export type Attributes = {
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE;
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [ROUTE]?: ROUTE_TYPE;
+  [ROUTER_NAVIGATION_ORIGIN]?: ROUTER_NAVIGATION_ORIGIN_TYPE;
+  [ROUTER_NAVIGATION_ROUTE_ID]?: ROUTER_NAVIGATION_ROUTE_ID_TYPE;
+  [ROUTER_NAVIGATION_TYPE]?: ROUTER_NAVIGATION_TYPE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
