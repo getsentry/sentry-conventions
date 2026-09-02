@@ -226,7 +226,6 @@ function writeToJs(
   constantNameMemo.clear();
   constantNameInnerMemo.clear();
   usedConstantNames.clear();
-  usedSearchConstantNames.clear();
   searchConstantNameMemo.clear();
 
   // First pass: collect all attributes
@@ -409,7 +408,6 @@ function writeToJs(
 const constantNameMemo = new Map<string, string>();
 const constantNameInnerMemo = new Map<string, string>();
 const usedConstantNames = new Set<string>();
-const usedSearchConstantNames = new Set<string>();
 const searchConstantNameMemo = new Map<string, string>();
 
 function getDynamicSuffixBase(key: string): string {
@@ -500,13 +498,9 @@ function getSearchConstantName(searchKey: string): string {
     return cachedName;
   }
 
-  let constantName = `SEARCH_${getSearchConstantNameInner(searchKey)}`;
-  while (usedSearchConstantNames.has(constantName) || usedConstantNames.has(constantName)) {
-    constantName = `_${constantName}`;
-  }
+  const constantName = `SEARCH_${getSearchConstantNameInner(searchKey)}`;
 
   searchConstantNameMemo.set(searchKey, constantName);
-  usedSearchConstantNames.add(constantName);
   return constantName;
 }
 
@@ -1283,7 +1277,7 @@ function generateMetadata(
   const searchMetadataByKey = new Map<string, typeof allAttributes>();
 
   for (const attribute of allAttributes) {
-    const searchKey = attribute.attributeJson.search_alias?.name ?? attribute.key;
+    const searchKey = stripSentrySearchPrefix(attribute.attributeJson.search_alias?.name ?? attribute.key);
     const candidates = searchMetadataByKey.get(searchKey) ?? [];
     candidates.push(attribute);
     searchMetadataByKey.set(searchKey, candidates);
@@ -1383,23 +1377,28 @@ function generateMetadata(
       continue;
     }
 
-    addSearchNameConstant(searchAlias.name, false, preferredAttribute, searchAlias.name);
+    const currentSearchName = stripSentrySearchPrefix(searchAlias.name);
+    addSearchNameConstant(currentSearchName, false, preferredAttribute, currentSearchName);
 
-    const deprecatedAliases = new Set(searchAlias.deprecated_aliases ?? []);
-    for (const name of deprecationChain) {
-      if (name === searchAlias.name) {
+    const deprecatedAliases = new Set((searchAlias.deprecated_aliases ?? []).map(stripSentrySearchPrefix));
+    for (const key of deprecationChain) {
+      const searchName = stripSentrySearchPrefix(key);
+      if (searchName === currentSearchName) {
         continue;
       }
       // Replacement storage keys belong to their own entry; don't mark them deprecated here.
-      if (name === canonicalName && name !== preferredAttribute.key && !deprecatedAliases.has(name)) {
+      if (
+        searchName === stripSentrySearchPrefix(canonicalName) &&
+        searchName !== stripSentrySearchPrefix(preferredAttribute.key) &&
+        !deprecatedAliases.has(searchName)
+      ) {
         continue;
       }
-      addSearchNameConstant(name, true, preferredAttribute, searchAlias.name);
+      addSearchNameConstant(searchName, true, preferredAttribute, currentSearchName);
     }
   }
 
   // Keys without a search alias still get a const; aliases and chain names already claimed win.
-  // Deprecated attributes are marked deprecated so a colliding live key keeps the unprefixed name.
   for (const { searchKey, preferredAttribute } of searchEntries) {
     if (preferredAttribute.attributeJson.search_alias) {
       continue;
@@ -1412,7 +1411,7 @@ function generateMetadata(
       searchKey,
       preferredAttribute.isDeprecated,
       preferredAttribute,
-      preferredAttribute.isDeprecated && replacement ? replacement : searchKey,
+      preferredAttribute.isDeprecated && replacement ? stripSentrySearchPrefix(replacement) : searchKey,
     );
   }
 
@@ -1420,7 +1419,6 @@ function generateMetadata(
     left.searchName < right.searchName ? -1 : left.searchName > right.searchName ? 1 : 0,
   );
 
-  // Current names (aliases, then leftover keys) claim the unprefixed constant; deprecated chain names take leftovers.
   const searchConstantNameBySearchName = new Map<string, string>();
   for (const constant of searchNameConstants.filter((constant) => !constant.isDeprecated)) {
     searchConstantNameBySearchName.set(constant.searchName, getSearchConstantName(constant.searchName));

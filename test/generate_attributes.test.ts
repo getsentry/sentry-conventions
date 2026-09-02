@@ -166,8 +166,9 @@ describe('generateAttributes', () => {
       expect(search).toContain("export const SEARCH_LIVE_SEARCH = 'live.search';");
       expect(search).toContain("export const SEARCH_LIVE_ATTRIBUTE = 'live.attribute';");
       expect(search).toContain("export const SEARCH_ITEM_SEARCH = 'item.search';");
-      expect(search).toContain("export const SEARCH_ITEM = 'sentry.item';");
+      expect(search).toContain("export const SEARCH_ITEM = 'item';");
       expect(search).not.toContain('export const SEARCH_SENTRY_ITEM');
+      expect(search).not.toMatch(/export const \w+ = 'sentry\./);
       expect(search).toContain("export const SEARCH_AWS_REQUEST__ID = 'aws.request_id';");
       expect(search).toContain("export const SEARCH_AWS_REQUEST_ID = 'aws.request.id';");
       expect(search).not.toContain('export const __SEARCH_AWS_REQUEST_ID');
@@ -196,7 +197,7 @@ describe('generateAttributes', () => {
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_ITEM_SEARCH/);
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_AWS_REQUEST__ID/);
       expect(search).toContain(
-        'export type AttributeSearchName = typeof SEARCH_AWS_REQUEST_ID | typeof SEARCH_AWS_REQUEST__ID | typeof SEARCH_CURRENT_ATTRIBUTE | typeof SEARCH_DEPRECATED_SEARCH | typeof SEARCH_FALLBACK_ATTRIBUTE | typeof SEARCH_ITEM_SEARCH | typeof SEARCH_LIVE_ATTRIBUTE | typeof SEARCH_LIVE_SEARCH | typeof SEARCH_OLD_NAME | typeof SEARCH_ITEM | typeof SEARCH_SHARED_NAME | typeof SEARCH_STANDALONE_DEPRECATED;',
+        'export type AttributeSearchName = typeof SEARCH_AWS_REQUEST_ID | typeof SEARCH_AWS_REQUEST__ID | typeof SEARCH_CURRENT_ATTRIBUTE | typeof SEARCH_DEPRECATED_SEARCH | typeof SEARCH_FALLBACK_ATTRIBUTE | typeof SEARCH_ITEM | typeof SEARCH_ITEM_SEARCH | typeof SEARCH_LIVE_ATTRIBUTE | typeof SEARCH_LIVE_SEARCH | typeof SEARCH_OLD_NAME | typeof SEARCH_SHARED_NAME | typeof SEARCH_STANDALONE_DEPRECATED;',
       );
       expect(search).toContain('export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata>');
       expect(compactMetadata).toContain(
