@@ -157,47 +157,46 @@ describe('generateAttributes', () => {
         'export type AttributeSearchType = attributes.AttributeType | attributes.SearchAliasType;',
       );
       expect(search).toContain('internal?: true;');
-      expect(search).toContain("export const SEARCH_SHARED_NAME = 'shared.name';");
-      expect(search).toContain("export const SEARCH_DEPRECATED_SEARCH = 'deprecated.search';");
-      expect(search).toContain("export const SEARCH_OLD_NAME = 'old.name';");
-      expect(search).toContain("export const SEARCH_CURRENT_ATTRIBUTE = 'current.attribute';");
-      expect(search).toContain("export const SEARCH_STANDALONE_DEPRECATED = 'standalone.deprecated';");
-      expect(search).toContain("export const SEARCH_FALLBACK_ATTRIBUTE = 'fallback.attribute';");
-      expect(search).toContain("export const SEARCH_LIVE_SEARCH = 'live.search';");
-      expect(search).toContain("export const SEARCH_LIVE_ATTRIBUTE = 'live.attribute';");
-      expect(search).toContain("export const SEARCH_ITEM_SEARCH = 'item.search';");
+      expect(search).toContain("export const SEARCH_SHARED__NAME = 'shared.name';");
+      expect(search).toContain("export const SEARCH_DEPRECATED__SEARCH = 'deprecated.search';");
+      expect(search).toContain("export const SEARCH_OLD__NAME = 'old.name';");
+      expect(search).toContain("export const SEARCH_CURRENT__ATTRIBUTE = 'current.attribute';");
+      expect(search).toContain("export const SEARCH_STANDALONE__DEPRECATED = 'standalone.deprecated';");
+      expect(search).toContain("export const SEARCH_FALLBACK__ATTRIBUTE = 'fallback.attribute';");
+      expect(search).toContain("export const SEARCH_LIVE__SEARCH = 'live.search';");
+      expect(search).toContain("export const SEARCH_LIVE__ATTRIBUTE = 'live.attribute';");
+      expect(search).toContain("export const SEARCH_ITEM__SEARCH = 'item.search';");
       expect(search).toContain("export const SEARCH_ITEM = 'item';");
       expect(search).not.toContain('export const SEARCH_SENTRY_ITEM');
       expect(search).not.toMatch(/export const \w+ = 'sentry\./);
-      expect(search).toContain("export const SEARCH_AWS_REQUEST__ID = 'aws.request_id';");
-      expect(search).toContain("export const SEARCH_AWS_REQUEST_ID = 'aws.request.id';");
-      expect(search).not.toContain('export const __SEARCH_AWS_REQUEST_ID');
+      expect(search).toContain("export const SEARCH_AWS__REQUEST_ID = 'aws.request_id';");
+      expect(search).toContain("export const SEARCH_AWS__REQUEST__ID = 'aws.request.id';");
       expect(search).toContain(
-        ' * @deprecated Use {@link SEARCH_SHARED_NAME} (`shared.name`) instead\n */\nexport const SEARCH_OLD_NAME',
+        ' * @deprecated Use {@link SEARCH_SHARED__NAME} (`shared.name`) instead\n */\nexport const SEARCH_OLD__NAME',
       );
       expect(search).toContain(
-        ' * @deprecated Use {@link SEARCH_SHARED_NAME} (`shared.name`) instead\n */\nexport const SEARCH_CURRENT_ATTRIBUTE',
+        ' * @deprecated Use {@link SEARCH_SHARED__NAME} (`shared.name`) instead\n */\nexport const SEARCH_CURRENT__ATTRIBUTE',
       );
       expect(search).toContain(
-        ' * @deprecated Use {@link SEARCH_DEPRECATED_SEARCH} (`deprecated.search`) instead\n */\nexport const SEARCH_STANDALONE_DEPRECATED',
+        ' * @deprecated Use {@link SEARCH_DEPRECATED__SEARCH} (`deprecated.search`) instead\n */\nexport const SEARCH_STANDALONE__DEPRECATED',
       );
       expect(search).toContain(
-        ' * @deprecated Use {@link SEARCH_LIVE_SEARCH} (`live.search`) instead\n */\nexport const SEARCH_LIVE_ATTRIBUTE',
+        ' * @deprecated Use {@link SEARCH_LIVE__SEARCH} (`live.search`) instead\n */\nexport const SEARCH_LIVE__ATTRIBUTE',
       );
       expect(search).toContain(
-        ' * @deprecated Use {@link SEARCH_ITEM_SEARCH} (`item.search`) instead\n */\nexport const SEARCH_ITEM =',
+        ' * @deprecated Use {@link SEARCH_ITEM__SEARCH} (`item.search`) instead\n */\nexport const SEARCH_ITEM =',
       );
       expect(search).toContain(
-        ' * @deprecated Use {@link SEARCH_AWS_REQUEST__ID} (`aws.request_id`) instead\n */\nexport const SEARCH_AWS_REQUEST_ID',
+        ' * @deprecated Use {@link SEARCH_AWS__REQUEST_ID} (`aws.request_id`) instead\n */\nexport const SEARCH_AWS__REQUEST__ID',
       );
-      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_SHARED_NAME/);
-      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_DEPRECATED_SEARCH/);
-      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_FALLBACK_ATTRIBUTE/);
-      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_LIVE_SEARCH/);
-      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_ITEM_SEARCH/);
-      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_AWS_REQUEST__ID/);
+      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_SHARED__NAME/);
+      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_DEPRECATED__SEARCH/);
+      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_FALLBACK__ATTRIBUTE/);
+      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_LIVE__SEARCH/);
+      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_ITEM__SEARCH/);
+      expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_AWS__REQUEST_ID/);
       expect(search).toContain(
-        'export type AttributeSearchName = typeof SEARCH_AWS_REQUEST_ID | typeof SEARCH_AWS_REQUEST__ID | typeof SEARCH_CURRENT_ATTRIBUTE | typeof SEARCH_DEPRECATED_SEARCH | typeof SEARCH_FALLBACK_ATTRIBUTE | typeof SEARCH_ITEM | typeof SEARCH_ITEM_SEARCH | typeof SEARCH_LIVE_ATTRIBUTE | typeof SEARCH_LIVE_SEARCH | typeof SEARCH_OLD_NAME | typeof SEARCH_SHARED_NAME | typeof SEARCH_STANDALONE_DEPRECATED;',
+        'export type AttributeSearchName = typeof SEARCH_AWS__REQUEST__ID | typeof SEARCH_AWS__REQUEST_ID | typeof SEARCH_CURRENT__ATTRIBUTE | typeof SEARCH_DEPRECATED__SEARCH | typeof SEARCH_FALLBACK__ATTRIBUTE | typeof SEARCH_ITEM | typeof SEARCH_ITEM__SEARCH | typeof SEARCH_LIVE__ATTRIBUTE | typeof SEARCH_LIVE__SEARCH | typeof SEARCH_OLD__NAME | typeof SEARCH_SHARED__NAME | typeof SEARCH_STANDALONE__DEPRECATED;',
       );
       expect(search).toContain('export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata>');
       expect(compactMetadata).toContain(

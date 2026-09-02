@@ -481,13 +481,13 @@ function stripSentrySearchPrefix(searchKey: string): string {
 }
 
 function getSearchConstantNameInner(searchKey: string): string {
-  // Original `_` becomes `__` first so `ai.model_id` → `SEARCH_AI_MODEL__ID` and
-  // does not collide with `ai.model.id` → `SEARCH_AI_MODEL_ID`.
+  // Dots separate namespace levels, while underscores separate words within a level.
+  // For example, `aws.step_functions.activity.arn` becomes
+  // `SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN`.
   return stripSentrySearchPrefix(searchKey)
     .replaceAll('<', '')
     .replaceAll('>', '')
-    .replaceAll('_', '__')
-    .replaceAll('.', '_')
+    .replaceAll('.', '__')
     .replaceAll('-', '_')
     .toUpperCase();
 }
