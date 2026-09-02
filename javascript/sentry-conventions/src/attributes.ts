@@ -3840,6 +3840,8 @@ export type CACHE_KEY_TYPE = Array<string>;
  * Visibility: public
  *
  * @example "get"
+ * @example "put"
+ * @example "remove"
  */
 export const CACHE_OPERATION = 'cache.operation';
 
@@ -22759,6 +22761,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'get',
+    examples: ['get', 'put', 'remove'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'cache.ttl': {

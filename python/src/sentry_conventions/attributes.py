@@ -2595,6 +2595,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "get"
+    Example: "put"
+    Example: "remove"
     """
 
     # Path: model/attributes/cache/cache__ttl.json
@@ -13930,6 +13932,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="get",
+        examples=["get", "put", "remove"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
