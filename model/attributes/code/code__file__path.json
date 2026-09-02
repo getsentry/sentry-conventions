@@ -7,9 +7,14 @@
   },
   "is_in_otel": true,
   "example": "/app/myapplication/http/handler/server.py",
-  "alias": ["code.filepath"],
+  "alias": ["code.filepath", "sveltekit.load.node_id"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [611],
+      "description": "Added sveltekit.load.node_id as an alias"
+    },
     {
       "version": "0.0.0"
     }

@@ -4608,7 +4608,7 @@ export type CODE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FILE_PATH} `code.file.path`
+ * Aliases: {@link CODE_FILE_PATH} `code.file.path`, {@link SVELTEKIT_LOAD_NODE_ID} `sveltekit.load.node_id`
  *
  * @deprecated Use {@link CODE_FILE_PATH} (code.file.path) instead
  * @example "/app/myapplication/http/handler/server.py"
@@ -4632,7 +4632,7 @@ export type CODE_FILEPATH_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FILEPATH} `code.filepath`
+ * Aliases: {@link CODE_FILEPATH} `code.filepath`, {@link SVELTEKIT_LOAD_NODE_ID} `sveltekit.load.node_id`
  *
  * @example "/app/myapplication/http/handler/server.py"
  */
@@ -16664,6 +16664,74 @@ export const SUBPROCESS_PID = 'subprocess.pid';
  */
 export type SUBPROCESS_PID_TYPE = number;
 
+// Path: model/attributes/sveltekit/sveltekit__load__environment.json
+
+/**
+ * The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`. `sveltekit.load.environment`
+ *
+ * Attribute Value Type: `string` {@link SVELTEKIT_LOAD_ENVIRONMENT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "server"
+ * @example "client"
+ */
+export const SVELTEKIT_LOAD_ENVIRONMENT = 'sveltekit.load.environment';
+
+/**
+ * Type for {@link SVELTEKIT_LOAD_ENVIRONMENT} sveltekit.load.environment
+ */
+export type SVELTEKIT_LOAD_ENVIRONMENT_TYPE = string;
+
+// Path: model/attributes/sveltekit/sveltekit__load__node_id.json
+
+/**
+ * The path to the SvelteKit load function. `sveltekit.load.node_id`
+ *
+ * Attribute Value Type: `string` {@link SVELTEKIT_LOAD_NODE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CODE_FILE_PATH} `code.file.path`, {@link CODE_FILEPATH} `code.filepath`
+ *
+ * @example "src/routes/users/:id/+page.server.ts"
+ */
+export const SVELTEKIT_LOAD_NODE_ID = 'sveltekit.load.node_id';
+
+/**
+ * Type for {@link SVELTEKIT_LOAD_NODE_ID} sveltekit.load.node_id
+ */
+export type SVELTEKIT_LOAD_NODE_ID_TYPE = string;
+
+// Path: model/attributes/sveltekit/sveltekit__load__node_type.json
+
+/**
+ * The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions. `sveltekit.load.node_type`
+ *
+ * Attribute Value Type: `string` {@link SVELTEKIT_LOAD_NODE_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "+page.server"
+ * @example "+layout"
+ * @example "+layout.server"
+ */
+export const SVELTEKIT_LOAD_NODE_TYPE = 'sveltekit.load.node_type';
+
+/**
+ * Type for {@link SVELTEKIT_LOAD_NODE_TYPE} sveltekit.load.node_type
+ */
+export type SVELTEKIT_LOAD_NODE_TYPE_TYPE = string;
+
 // Path: model/attributes/sveltekit/sveltekit__tracing__original_name.json
 
 /**
@@ -19350,6 +19418,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'starlite.middleware_name': 'string',
   'state.type': 'string',
   'subprocess.pid': 'integer',
+  'sveltekit.load.environment': 'string',
+  'sveltekit.load.node_id': 'string',
+  'sveltekit.load.node_type': 'string',
   'sveltekit.tracing.original_name': 'string',
   'thread.id': 'integer',
   'thread.name': 'string',
@@ -20182,6 +20253,9 @@ export type AttributeName =
   | typeof STARLITE_MIDDLEWARE_NAME
   | typeof STATE_TYPE
   | typeof SUBPROCESS_PID
+  | typeof SVELTEKIT_LOAD_ENVIRONMENT
+  | typeof SVELTEKIT_LOAD_NODE_ID
+  | typeof SVELTEKIT_LOAD_NODE_TYPE
   | typeof SVELTEKIT_TRACING_ORIGINAL_NAME
   | typeof THREAD_ID
   | typeof THREAD_NAME
@@ -23420,7 +23494,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
-    keys: ['code.file.path', 'code.filepath'],
+    keys: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23431,22 +23505,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'code.file.path',
       status: 'backfill',
     },
-    aliases: ['code.file.path'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['code.file.path', 'sveltekit.load.node_id'],
+    changelog: [
+      { version: 'next', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'code.file.path': {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
-    keys: ['code.file.path', 'code.filepath'],
+    keys: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '/app/myapplication/http/handler/server.py',
-    aliases: ['code.filepath'],
-    changelog: [{ version: '0.0.0' }],
+    aliases: ['code.filepath', 'sveltekit.load.node_id'],
+    changelog: [
+      { version: 'next', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
+      { version: '0.0.0' },
+    ],
   },
   'code.function': {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
@@ -32151,6 +32232,57 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  'sveltekit.load.environment': {
+    brief:
+      "The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.",
+    type: 'string',
+    keys: ['sveltekit.load.environment'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'server',
+    examples: ['server', 'client'],
+    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.environment attribute' }],
+    additionalContext: [
+      'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
+    ],
+  },
+  'sveltekit.load.node_id': {
+    brief: 'The path to the SvelteKit load function.',
+    type: 'string',
+    keys: ['sveltekit.load.node_id', 'code.file.path', 'code.filepath'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'src/routes/users/:id/+page.server.ts',
+    examples: ['src/routes/users/:id/+page.server.ts'],
+    aliases: ['code.file.path', 'code.filepath'],
+    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.node_id attribute' }],
+    additionalContext: [
+      'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
+    ],
+  },
+  'sveltekit.load.node_type': {
+    brief:
+      'The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.',
+    type: 'string',
+    keys: ['sveltekit.load.node_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '+page.server',
+    examples: ['+page.server', '+layout', '+layout.server'],
+    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.node_type attribute' }],
+    additionalContext: [
+      'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
+    ],
+  },
   'sveltekit.tracing.original_name': {
     brief: 'The original span name as emitted by SvelteKit.',
     type: 'string',
@@ -34620,14 +34752,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
-    deprecationChain: ['code.file.path', 'code.filepath'],
+    deprecationChain: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
   },
   'code.filepath': {
     canonicalName: 'code.file.path',
     type: 'string',
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
-    deprecationChain: ['code.file.path', 'code.filepath'],
+    deprecationChain: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
   },
   'code.function': {
     canonicalName: 'code.function',
@@ -38003,6 +38135,26 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The process ID of a subprocess.',
     deprecationChain: ['process.pid', 'subprocess.pid'],
   },
+  'sveltekit.load.environment': {
+    canonicalName: 'sveltekit.load.environment',
+    type: 'string',
+    brief:
+      "The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.",
+    deprecationChain: ['sveltekit.load.environment'],
+  },
+  'sveltekit.load.node_id': {
+    canonicalName: 'sveltekit.load.node_id',
+    type: 'string',
+    brief: 'The path to the SvelteKit load function.',
+    deprecationChain: ['sveltekit.load.node_id', 'code.file.path', 'code.filepath'],
+  },
+  'sveltekit.load.node_type': {
+    canonicalName: 'sveltekit.load.node_type',
+    type: 'string',
+    brief:
+      'The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.',
+    deprecationChain: ['sveltekit.load.node_type'],
+  },
   'sveltekit.tracing.original_name': {
     canonicalName: 'sveltekit.tracing.original_name',
     type: 'string',
@@ -39294,6 +39446,9 @@ export type Attributes = {
   [STARLITE_MIDDLEWARE_NAME]?: STARLITE_MIDDLEWARE_NAME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
   [SUBPROCESS_PID]?: SUBPROCESS_PID_TYPE;
+  [SVELTEKIT_LOAD_ENVIRONMENT]?: SVELTEKIT_LOAD_ENVIRONMENT_TYPE;
+  [SVELTEKIT_LOAD_NODE_ID]?: SVELTEKIT_LOAD_NODE_ID_TYPE;
+  [SVELTEKIT_LOAD_NODE_TYPE]?: SVELTEKIT_LOAD_NODE_TYPE_TYPE;
   [SVELTEKIT_TRACING_ORIGINAL_NAME]?: SVELTEKIT_TRACING_ORIGINAL_NAME_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
