@@ -19,7 +19,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.21.0",
       "prs": [574],
       "description": "Deprecated in favor of http.response.body.decoded_size"
     },

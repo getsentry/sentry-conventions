@@ -421,7 +421,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: server.address, http.server_name, net.host.name, http.host, server_name, net.peer.name
+    Aliases: server.address, http.server_name, net.host.name, http.host, net.peer.name
     DEPRECATED: Use server.address instead - Old namespace-less attribute, to be replaced with server.address for span-first future
     Example: "example.com"
     """
@@ -2243,6 +2243,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Chrome"
     """
 
+    # Path: model/attributes/browser/browser__paint__type.json
+    BROWSER_PAINT_TYPE: Literal["browser.paint.type"] = "browser.paint.type"
+    """The type of paint timing entry reported by the browser.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "first-paint"
+    Example: "first-contentful-paint"
+    """
+
     # Path: model/attributes/browser/browser__performance__navigation__activation_start.json
     BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START: Literal[
         "browser.performance.navigation.activation_start"
@@ -2596,6 +2608,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "get"
+    Example: "put"
+    Example: "remove"
     """
 
     # Path: model/attributes/cache/cache__ttl.json
@@ -3729,6 +3743,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
+    Aliases: server_name
     Example: "localhost"
     """
 
@@ -5684,7 +5699,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name, net.peer.name
+    Aliases: address, server.address, client.address, http.server_name, net.host.name, net.peer.name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -6204,7 +6219,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, net.host.name, http.host, server_name, net.peer.name
+    Aliases: address, server.address, net.host.name, http.host, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7490,7 +7505,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, http.host, server_name, net.peer.name
+    Aliases: address, server.address, http.server_name, http.host, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7529,7 +7544,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
+    Aliases: address, server.address, http.server_name, net.host.name, http.host
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
     Example: "example.com"
     """
@@ -9536,7 +9551,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, http.server_name, net.host.name, http.host, server_name, net.peer.name
+    Aliases: address, http.server_name, net.host.name, http.host, net.peer.name
     Example: "example.com"
     """
 
@@ -9554,14 +9569,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/server_name.json
     SERVER_NAME: Literal["server_name"] = "server_name"
-    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+    """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
-    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+    Aliases: device.name
+    DEPRECATED: Use device.name instead - This attribute is being deprecated in favor of device.name.
     Example: "example.com"
     """
 
@@ -10654,7 +10669,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
-            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -10671,12 +10685,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address attribute"
@@ -10813,7 +10828,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.id", "ai.response.id"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.response.id as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.response.id as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
         ],
@@ -10891,7 +10908,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.request.model", "ai.model_id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.model.id attribute"
+                version="0.21.0", prs=[583], description="Added ai.model.id attribute"
             ),
         ],
     ),
@@ -10933,7 +10950,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["gen_ai.request.model", "ai.model.id"],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.model.id as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.model.id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -11034,7 +11053,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.prompt attribute"
+                version="0.21.0", prs=[583], description="Added ai.prompt attribute"
             ),
         ],
     ),
@@ -11058,7 +11077,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt", "ai.prompt"],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[498],
@@ -11087,7 +11108,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.prompt.tools attribute"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.prompt.tools attribute",
             ),
         ],
     ),
@@ -11148,7 +11171,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.id", "ai.generation_id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.response.id attribute"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.response.id attribute",
             ),
         ],
     ),
@@ -11172,7 +11197,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.model"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added ai.response.model attribute",
             ),
@@ -11192,7 +11217,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added ai.response.object attribute",
             ),
@@ -11238,7 +11263,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added ai.response.timestamp attribute",
             ),
@@ -11320,7 +11345,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.schema attribute"
+                version="0.21.0", prs=[583], description="Added ai.schema attribute"
             ),
         ],
     ),
@@ -11450,7 +11475,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.prompt",
         ],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
@@ -11631,7 +11658,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.total_tokens", "ai.usage.tokens"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.usage.tokens as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.usage.tokens as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
@@ -11659,7 +11688,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.total_tokens", "ai.total_tokens.used"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.usage.tokens attribute"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.usage.tokens attribute",
             ),
         ],
     ),
@@ -11677,7 +11708,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.values attribute"
+                version="0.21.0", prs=[583], description="Added ai.values attribute"
             ),
         ],
     ),
@@ -13278,7 +13309,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url", "url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.url as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.url as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -13508,6 +13541,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127, 139]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "browser.paint.type": AttributeMetadata(
+        brief="The type of paint timing entry reported by the browser.",
+        type=AttributeType.STRING,
+        keys=("browser.paint.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="first-paint",
+        examples=["first-paint", "first-contentful-paint"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[606],
+                description="Added browser.paint.type attribute",
+            ),
         ],
     ),
     "browser.performance.navigation.activation_start": AttributeMetadata(
@@ -13932,6 +13982,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="get",
+        examples=["get", "put", "remove"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14753,7 +14804,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added db.connection_string attribute",
             ),
@@ -15527,12 +15578,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.name": AttributeMetadata(
         brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
-        keys=("device.name",),
+        keys=(
+            "device.name",
+            "server_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
+        aliases=["server_name"],
         changelog=[
+            ChangelogEntry(
+                version="0.21.0", prs=[602], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.name attribute"
             ),
@@ -16932,7 +16990,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -17031,7 +17091,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.prompt",
         ],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17160,7 +17222,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="gpt-4-turbo-preview",
         aliases=["ai.model_id", "ai.model.id"],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.model.id as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.model.id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
@@ -17211,7 +17275,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added gen_ai.request.schema attribute",
             ),
@@ -17357,7 +17421,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.generation_id", "ai.response.id"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.response.id as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.response.id as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
@@ -17376,7 +17442,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.model"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.response.model as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.response.model as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -17396,7 +17464,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added gen_ai.response.object attribute",
             ),
@@ -18055,7 +18123,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.total_tokens.used", "ai.usage.tokens"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.usage.tokens as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.usage.tokens as an alias",
             ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
@@ -18085,7 +18155,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["graphql.source"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added graphql.source as an alias"
+                version="0.21.0",
+                prs=[584],
+                description="Added graphql.source as an alias",
             ),
             ChangelogEntry(
                 version="0.7.0",
@@ -18130,7 +18202,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["parse", "validate", "execute", "resolve"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[572],
                 description="Added graphql.processing.type attribute",
             ),
@@ -18160,7 +18232,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["graphql.document"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[584], description="Added graphql.source attribute"
+                version="0.21.0",
+                prs=[584],
+                description="Added graphql.source attribute",
             ),
         ],
     ),
@@ -18449,7 +18523,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Deprecated in favor of http.response.body.decoded_size",
             ),
@@ -18483,7 +18557,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.protocol_version as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -18520,12 +18595,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "client.address",
             "http.server_name",
             "net.host.name",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -18601,7 +18677,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request_content_length_uncompressed"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.request.body.decoded_size attribute",
             ),
@@ -18625,7 +18701,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request_content_length"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.request.body.size attribute",
             ),
@@ -18896,7 +18972,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request.body.size"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.request_content_length attribute, deprecated in favor of http.request.body.size",
             ),
@@ -18920,7 +18996,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request.body.decoded_size"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.request_content_length_uncompressed attribute, deprecated in favor of http.request.body.decoded_size",
             ),
@@ -18969,7 +19045,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.response.body.decoded_size attribute",
             ),
@@ -19080,7 +19156,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.status_text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.response.status_text attribute",
             ),
@@ -19134,7 +19210,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size",
             ),
@@ -19226,7 +19302,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
-            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -19240,12 +19315,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server.address",
             "net.host.name",
             "http.host",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -19294,7 +19370,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.response.status_text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.status_text attribute, deprecated in favor of http.response.status_text",
             ),
@@ -19313,7 +19389,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[587],
                 description="Documented url.path, url.query and url.fragment as the replacements for http.target",
             ),
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -19340,7 +19417,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "url", "aws.request.url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.url as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.url as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
@@ -20188,7 +20267,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.name", "net.protocol.name", "messaging.protocol"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.protocol as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.protocol as an alias",
             ),
             ChangelogEntry(
                 version="0.12.0",
@@ -20446,7 +20527,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message.conversation_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.conversation_id attribute",
             ),
@@ -20623,7 +20704,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.conversation_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.conversation_id as an alias",
             ),
             ChangelogEntry(
@@ -20660,7 +20742,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message_id"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.message_id as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.message_id as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -20715,7 +20799,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.message_id attribute",
             ),
@@ -20741,7 +20825,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.operation.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.operation attribute",
             ),
@@ -20761,7 +20845,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.operation"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.operation as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.operation as an alias",
             ),
             ChangelogEntry(
                 version="0.11.0",
@@ -20804,7 +20890,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.name", "net.protocol.name", "mcp.resource.protocol"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.protocol attribute",
             ),
@@ -20832,7 +20918,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.version", "http.flavor", "net.protocol.version"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.protocol_version attribute",
             ),
@@ -20852,7 +20938,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.rabbitmq.routing_key"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.rabbitmq.routing_key as an alias",
             ),
             ChangelogEntry(
@@ -20882,7 +20969,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.rabbitmq.destination.routing_key"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.rabbitmq.routing_key attribute",
             ),
@@ -20924,7 +21011,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url", "url", "aws.request.url"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[581], description="Added messaging.url attribute"
+                version="0.21.0", prs=[581], description="Added messaging.url attribute"
             ),
         ],
     ),
@@ -21133,7 +21220,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
-            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -21147,12 +21233,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server.address",
             "http.server_name",
             "http.host",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -21225,11 +21312,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
-            "server_name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[588, 602],
                 description="Added the server.address alias group to net.peer.name",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -21277,7 +21364,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.protocol as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.protocol as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -21306,7 +21395,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.protocol_version as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -21426,7 +21516,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.peer.port"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added network.peer.port as an alias"
+                version="0.21.0",
+                prs=[588],
+                description="Added network.peer.port as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -21448,7 +21540,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.transport", "mcp.transport"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[588],
                 description="Set net.transport to _status null, because its values change on the replacement",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -21584,7 +21677,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["net.sock.peer.port"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.sock.peer.port as an alias"
+                version="0.21.0",
+                prs=[588],
+                description="Added net.sock.peer.port as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -21606,7 +21701,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["net.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.protocol as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.protocol as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -21628,7 +21725,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.flavor", "net.protocol.version", "messaging.protocol_version"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.protocol_version as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -21912,7 +22010,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.path.parameter.<key>", "url.path.params.<key>"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added url.path.params.<key> as an alias"
+                version="0.21.0",
+                prs=[586],
+                description="Added url.path.params.<key> as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
@@ -24101,7 +24201,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
-            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -24112,12 +24211,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -24148,35 +24248,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "server_name": AttributeMetadata(
-        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+        brief="The name of the device. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
         keys=(
-            "server.address",
-            "address",
-            "http.server_name",
-            "net.host.name",
+            "device.name",
             "server_name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
-            replacement="server.address",
-            reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
+            replacement="device.name",
+            reason="This attribute is being deprecated in favor of device.name.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=[
-            "address",
-            "server.address",
-            "http.server_name",
-            "net.host.name",
-            "http.host",
-            "net.peer.name",
-        ],
+        aliases=["device.name"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Alias device.name instead of the server.address alias group",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -24813,7 +24905,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.url", "url", "aws.request.url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.url as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.url as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -24852,7 +24946,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["params.<key>", "url.path.params.<key>"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added url.path.params.<key> as an alias"
+                version="0.21.0",
+                prs=[586],
+                description="Added url.path.params.<key> as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
@@ -24879,7 +24975,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.path.parameter.<key>", "params.<key>"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[586],
                 description="Added url.path.params.<key> attribute",
             ),
@@ -24998,7 +25094,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url", "aws.request.url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.url as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.url as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -25779,6 +25877,7 @@ Attributes = TypedDict(
         "browser.bfcache.outcome": str,
         "browser.bfcache.reason": str,
         "browser.name": str,
+        "browser.paint.type": str,
         "browser.performance.navigation.activation_start": float,
         "browser.performance.time_origin": float,
         "browser.report.type": str,

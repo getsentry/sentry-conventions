@@ -314,7 +314,6 @@ describe('generated attribute key chains', () => {
       'address',
       'http.server_name',
       'net.host.name',
-      'server_name',
     ]);
   });
 });
