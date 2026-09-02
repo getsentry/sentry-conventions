@@ -94,6 +94,17 @@ describe('generateAttributes', () => {
         search_alias: { name: 'item.search' },
       },
       {
+        key: 'aws.request_id',
+        brief: 'The live AWS request id.',
+        type: 'string',
+      },
+      {
+        key: 'aws.request.id',
+        brief: 'The deprecated dotted AWS request id.',
+        type: 'string',
+        deprecation: { replacement: 'aws.request_id', _status: 'backfill' },
+      },
+      {
         key: 'current.attribute',
         brief: 'The preferred attribute.',
         type: 'integer',
@@ -152,6 +163,9 @@ describe('generateAttributes', () => {
       expect(javascript).toContain("export const SEARCH_ITEM_SEARCH = 'item.search';");
       expect(javascript).toContain("export const SEARCH_ITEM = 'sentry.item';");
       expect(javascript).not.toContain('export const SEARCH_SENTRY_ITEM');
+      expect(javascript).toContain("export const SEARCH_AWS_REQUEST__ID = 'aws.request_id';");
+      expect(javascript).toContain("export const SEARCH_AWS_REQUEST_ID = 'aws.request.id';");
+      expect(javascript).not.toContain('export const __SEARCH_AWS_REQUEST_ID');
       expect(javascript).toContain(
         ' * @deprecated Use {@link SEARCH_SHARED_NAME} (`shared.name`) instead\n */\nexport const SEARCH_OLD_NAME',
       );
@@ -167,13 +181,17 @@ describe('generateAttributes', () => {
       expect(javascript).toContain(
         ' * @deprecated Use {@link SEARCH_ITEM_SEARCH} (`item.search`) instead\n */\nexport const SEARCH_ITEM =',
       );
+      expect(javascript).toContain(
+        ' * @deprecated Use {@link SEARCH_AWS_REQUEST__ID} (`aws.request_id`) instead\n */\nexport const SEARCH_AWS_REQUEST_ID',
+      );
       expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_SHARED_NAME/);
       expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_DEPRECATED_SEARCH/);
       expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_FALLBACK_ATTRIBUTE/);
       expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_LIVE_SEARCH/);
       expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_ITEM_SEARCH/);
+      expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_AWS_REQUEST__ID/);
       expect(javascript).toContain(
-        'export type AttributeSearchName = typeof SEARCH_CURRENT_ATTRIBUTE | typeof SEARCH_DEPRECATED_SEARCH | typeof SEARCH_FALLBACK_ATTRIBUTE | typeof SEARCH_ITEM_SEARCH | typeof SEARCH_LIVE_ATTRIBUTE | typeof SEARCH_LIVE_SEARCH | typeof SEARCH_OLD_NAME | typeof SEARCH_ITEM | typeof SEARCH_SHARED_NAME | typeof SEARCH_STANDALONE_DEPRECATED;',
+        'export type AttributeSearchName = typeof SEARCH_AWS_REQUEST_ID | typeof SEARCH_AWS_REQUEST__ID | typeof SEARCH_CURRENT_ATTRIBUTE | typeof SEARCH_DEPRECATED_SEARCH | typeof SEARCH_FALLBACK_ATTRIBUTE | typeof SEARCH_ITEM_SEARCH | typeof SEARCH_LIVE_ATTRIBUTE | typeof SEARCH_LIVE_SEARCH | typeof SEARCH_OLD_NAME | typeof SEARCH_ITEM | typeof SEARCH_SHARED_NAME | typeof SEARCH_STANDALONE_DEPRECATED;',
       );
       expect(javascript).toContain('export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata>');
       expect(compactMetadata).toContain(

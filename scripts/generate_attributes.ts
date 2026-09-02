@@ -464,13 +464,25 @@ function stripSentrySearchPrefix(searchKey: string): string {
   return searchKey.startsWith(prefix) ? searchKey.slice(prefix.length) : searchKey;
 }
 
+function getSearchConstantNameInner(searchKey: string): string {
+  // Original `_` becomes `__` first so `ai.model_id` → `SEARCH_AI_MODEL__ID` and
+  // does not collide with `ai.model.id` → `SEARCH_AI_MODEL_ID`.
+  return stripSentrySearchPrefix(searchKey)
+    .replaceAll('<', '')
+    .replaceAll('>', '')
+    .replaceAll('_', '__')
+    .replaceAll('.', '_')
+    .replaceAll('-', '_')
+    .toUpperCase();
+}
+
 function getSearchConstantName(searchKey: string): string {
   const cachedName = searchConstantNameMemo.get(searchKey);
   if (cachedName) {
     return cachedName;
   }
 
-  let constantName = `SEARCH_${getConstantNameInner(stripSentrySearchPrefix(searchKey))}`;
+  let constantName = `SEARCH_${getSearchConstantNameInner(searchKey)}`;
   while (usedSearchConstantNames.has(constantName) || usedConstantNames.has(constantName)) {
     constantName = `_${constantName}`;
   }
@@ -1363,6 +1375,7 @@ function generateMetadataDict(
   }
 
   // Keys without a search alias still get a const; aliases and chain names already claimed win.
+  // Deprecated attributes are marked deprecated so a colliding live key keeps the unprefixed name.
   for (const { searchKey, preferredAttribute } of searchEntries) {
     if (preferredAttribute.attributeJson.search_alias) {
       continue;
@@ -1370,7 +1383,13 @@ function generateMetadataDict(
     if (searchNameConstantsByName.has(searchKey)) {
       continue;
     }
-    addSearchNameConstant(searchKey, false, preferredAttribute, searchKey);
+    const replacement = preferredAttribute.attributeJson.deprecation?.replacement;
+    addSearchNameConstant(
+      searchKey,
+      preferredAttribute.isDeprecated,
+      preferredAttribute,
+      preferredAttribute.isDeprecated && replacement ? replacement : searchKey,
+    );
   }
 
   const searchNameConstants = [...searchNameConstantsByName.values()].toSorted((left, right) =>
@@ -1396,9 +1415,10 @@ function generateMetadataDict(
     metadataDict += ` * Search name for {@link ${preferredAttribute.constantName}}. \`${searchName}\`\n`;
     if (isDeprecated) {
       const currentSearchConstantName = searchConstantNameBySearchName.get(currentSearchName);
-      const replacement = currentSearchConstantName
-        ? `Use {@link ${currentSearchConstantName}} (\`${currentSearchName}\`) instead`
-        : '';
+      const replacement =
+        currentSearchConstantName && currentSearchName !== searchName
+          ? `Use {@link ${currentSearchConstantName}} (\`${currentSearchName}\`) instead`
+          : '';
       metadataDict += ` *\n * @deprecated ${replacement}\n`;
     }
     metadataDict += ' */\n';
