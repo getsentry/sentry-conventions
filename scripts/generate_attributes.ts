@@ -6,6 +6,7 @@ import type { AttributeJson, AttributeValue } from './types';
 interface GenerateAttributesOptions {
   attributesDir: string;
   jsOutputFilePath: string;
+  jsSearchOutputFilePath: string;
   pythonOutputFilePath: string;
 }
 
@@ -173,6 +174,11 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
   const attributesDir = options?.attributesDir ?? path.join(repositoryRoot, 'model', 'attributes');
   const jsOutputFilePath =
     options?.jsOutputFilePath ?? path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'attributes.ts');
+  const jsSearchOutputFilePath =
+    options?.jsSearchOutputFilePath ??
+    (options?.jsOutputFilePath
+      ? path.join(path.dirname(options.jsOutputFilePath), 'search.ts')
+      : path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'search.ts'));
   const pythonOutputFilePath =
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
 
@@ -180,7 +186,7 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
   const attributeFiles = await getAllJsonFiles(attributesDir);
 
   // Generate and write JavaScript code
-  writeToJs(attributesDir, attributeFiles, jsOutputFilePath);
+  writeToJs(attributesDir, attributeFiles, jsOutputFilePath, jsSearchOutputFilePath);
 
   // Generate and write Python code
   writeToPython(attributesDir, attributeFiles, pythonOutputFilePath);
@@ -208,13 +214,19 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
   return allFiles;
 }
 
-function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePath: string) {
+function writeToJs(
+  attributesDir: string,
+  attributeFiles: string[],
+  outputFilePath: string,
+  searchOutputFilePath: string,
+) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
   // Reset memoization for fresh calculation
   constantNameMemo.clear();
   constantNameInnerMemo.clear();
   usedConstantNames.clear();
+  searchConstantNameMemo.clear();
 
   // First pass: collect all attributes
   const allAttributesPartial: Array<{
@@ -371,8 +383,9 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   // Generate metadata types and interfaces
   attributesContent += generateMetadataTypes();
 
-  // Generate metadata dictionary
-  attributesContent += generateMetadataDict(allAttributes, attributeKeyChains);
+  // Generate metadata dictionaries
+  const { attributeMetadata, searchMetadata } = generateMetadata(allAttributes, attributeKeyChains);
+  attributesContent += attributeMetadata;
 
   attributesContent +=
     'export type AttributeValue = string | number | boolean | Array<string> | Array<number> | Array<boolean>;\n\n';
@@ -382,13 +395,20 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
 
   // Write the generated content to the file
   fs.writeFileSync(outputFilePath, attributesContent);
+  fs.mkdirSync(path.dirname(searchOutputFilePath), { recursive: true });
+  fs.writeFileSync(
+    searchOutputFilePath,
+    `// This is an auto-generated file. Do not edit!\n\nimport type * as attributes from './attributes';\n\n${searchMetadata}`,
+  );
 
   console.log(`Generated attributes file at: ${outputFilePath}`);
+  console.log(`Generated attribute search file at: ${searchOutputFilePath}`);
 }
 
 const constantNameMemo = new Map<string, string>();
 const constantNameInnerMemo = new Map<string, string>();
 const usedConstantNames = new Set<string>();
+const searchConstantNameMemo = new Map<string, string>();
 
 function getDynamicSuffixBase(key: string): string {
   const suffix = '.<key>';
@@ -452,6 +472,35 @@ function getConstantName(key: string, isDeprecated: boolean): string {
 
   constantNameMemo.set(key, constantName);
   usedConstantNames.add(constantName);
+  return constantName;
+}
+
+function stripSentrySearchPrefix(searchKey: string): string {
+  const prefix = 'sentry.';
+  return searchKey.startsWith(prefix) ? searchKey.slice(prefix.length) : searchKey;
+}
+
+function getSearchConstantNameInner(searchKey: string): string {
+  // Original `_` becomes `__` first so `ai.model_id` → `SEARCH_AI_MODEL__ID` and
+  // does not collide with `ai.model.id` → `SEARCH_AI_MODEL_ID`.
+  return stripSentrySearchPrefix(searchKey)
+    .replaceAll('<', '')
+    .replaceAll('>', '')
+    .replaceAll('_', '__')
+    .replaceAll('.', '_')
+    .replaceAll('-', '_')
+    .toUpperCase();
+}
+
+function getSearchConstantName(searchKey: string): string {
+  const cachedName = searchConstantNameMemo.get(searchKey);
+  if (cachedName) {
+    return cachedName;
+  }
+
+  const constantName = `SEARCH_${getSearchConstantNameInner(searchKey)}`;
+
+  searchConstantNameMemo.set(searchKey, constantName);
   return constantName;
 }
 
@@ -1020,21 +1069,6 @@ export interface SearchAlias {
   deprecatedAliases?: string[];
 }
 
-export type AttributeSearchType = AttributeType | SearchAliasType;
-
-export interface AttributeSearchMetadata {
-  /** The original attribute key before it is exposed under its search name */
-  canonicalName: AttributeName;
-  /** The type exposed by Sentry search */
-  type: AttributeSearchType;
-  /** A description of the attribute */
-  brief: string;
-  /** Whether the attribute is internal to Sentry */
-  internal?: true;
-  /** Every key under which the attribute's value is readable, preferred key first */
-  deprecationChain: readonly string[];
-}
-
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
@@ -1078,7 +1112,26 @@ export interface AttributeMetadata {
 `;
 }
 
-function generateMetadataDict(
+function generateSearchMetadataTypes(): string {
+  return `export type AttributeSearchType = attributes.AttributeType | attributes.SearchAliasType;
+
+export interface AttributeSearchMetadata {
+  /** The original attribute key before it is exposed under its search name */
+  canonicalName: attributes.AttributeName;
+  /** The type exposed by Sentry search */
+  type: AttributeSearchType;
+  /** A description of the attribute */
+  brief: string;
+  /** Whether the attribute is internal to Sentry */
+  internal?: true;
+  /** Every key under which the attribute's value is readable, preferred key first */
+  deprecationChain: readonly string[];
+}
+
+`;
+}
+
+function generateMetadata(
   allAttributes: Array<{
     file: string;
     key: string;
@@ -1087,7 +1140,7 @@ function generateMetadataDict(
     isDeprecated: boolean;
   }>,
   attributeKeyChains: Map<string, string[]>,
-): string {
+): { attributeMetadata: string; searchMetadata: string } {
   // Use string literal keys so bundlers can tree-shake unused attribute constants.
   let attributeTypeMap = 'export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {\n';
 
@@ -1219,16 +1272,24 @@ function generateMetadataDict(
 
   metadataDict += '};\n\n';
 
+  let searchMetadata = generateSearchMetadataTypes();
+
   const searchMetadataByKey = new Map<string, typeof allAttributes>();
 
   for (const attribute of allAttributes) {
-    const searchKey = attribute.attributeJson.search_alias?.name ?? attribute.key;
+    const searchKey = stripSentrySearchPrefix(attribute.attributeJson.search_alias?.name ?? attribute.key);
     const candidates = searchMetadataByKey.get(searchKey) ?? [];
     candidates.push(attribute);
     searchMetadataByKey.set(searchKey, candidates);
   }
 
-  metadataDict += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
+  const searchEntries: Array<{
+    searchKey: string;
+    preferredAttribute: (typeof allAttributes)[number];
+    deprecationChain: string[];
+    canonicalName: string;
+    isInternal: boolean;
+  }> = [];
 
   for (const searchKey of [...searchMetadataByKey.keys()].sort()) {
     const candidates = searchMetadataByKey.get(searchKey) as typeof allAttributes;
@@ -1264,23 +1325,152 @@ function generateMetadataDict(
       }
     }
 
-    const canonicalName = preferredAttribute.attributeJson.deprecation?.replacement ?? preferredAttribute.key;
-    const isInternal = getVisibility(preferredAttribute.attributeJson) === 'internal';
-
-    metadataDict += `  ${JSON.stringify(searchKey)}: {\n`;
-    metadataDict += `    canonicalName: ${JSON.stringify(canonicalName)},\n`;
-    metadataDict += `    type: ${JSON.stringify(
-      preferredAttribute.attributeJson.search_alias?.type ?? preferredAttribute.attributeJson.type,
-    )},\n`;
-    metadataDict += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
-    if (isInternal) {
-      metadataDict += '    internal: true,\n';
-    }
-    metadataDict += `    deprecationChain: ${JSON.stringify([...deprecationChain])},\n`;
-    metadataDict += '  },\n';
+    searchEntries.push({
+      searchKey,
+      preferredAttribute,
+      deprecationChain: [...deprecationChain],
+      canonicalName: preferredAttribute.attributeJson.deprecation?.replacement ?? preferredAttribute.key,
+      isInternal: getVisibility(preferredAttribute.attributeJson) === 'internal',
+    });
   }
 
-  metadataDict += '};\n\n';
+  const searchNameConstantsByName = new Map<
+    string,
+    {
+      searchName: string;
+      isDeprecated: boolean;
+      preferredAttribute: (typeof allAttributes)[number];
+      currentSearchName: string;
+    }
+  >();
 
-  return metadataDict;
+  const addSearchNameConstant = (
+    searchName: string,
+    isDeprecated: boolean,
+    preferredAttribute: (typeof allAttributes)[number],
+    currentSearchName: string,
+  ) => {
+    const existing = searchNameConstantsByName.get(searchName);
+    if (existing) {
+      if (existing.isDeprecated && !isDeprecated) {
+        searchNameConstantsByName.set(searchName, {
+          searchName,
+          isDeprecated,
+          preferredAttribute,
+          currentSearchName,
+        });
+      }
+      return;
+    }
+
+    searchNameConstantsByName.set(searchName, {
+      searchName,
+      isDeprecated,
+      preferredAttribute,
+      currentSearchName,
+    });
+  };
+
+  for (const { preferredAttribute, deprecationChain, canonicalName } of searchEntries) {
+    const searchAlias = preferredAttribute.attributeJson.search_alias;
+    if (!searchAlias) {
+      continue;
+    }
+
+    const currentSearchName = stripSentrySearchPrefix(searchAlias.name);
+    addSearchNameConstant(currentSearchName, false, preferredAttribute, currentSearchName);
+
+    const deprecatedAliases = new Set((searchAlias.deprecated_aliases ?? []).map(stripSentrySearchPrefix));
+    for (const key of deprecationChain) {
+      const searchName = stripSentrySearchPrefix(key);
+      if (searchName === currentSearchName) {
+        continue;
+      }
+      // Replacement storage keys belong to their own entry; don't mark them deprecated here.
+      if (
+        searchName === stripSentrySearchPrefix(canonicalName) &&
+        searchName !== stripSentrySearchPrefix(preferredAttribute.key) &&
+        !deprecatedAliases.has(searchName)
+      ) {
+        continue;
+      }
+      addSearchNameConstant(searchName, true, preferredAttribute, currentSearchName);
+    }
+  }
+
+  // Keys without a search alias still get a const; aliases and chain names already claimed win.
+  for (const { searchKey, preferredAttribute } of searchEntries) {
+    if (preferredAttribute.attributeJson.search_alias) {
+      continue;
+    }
+    if (searchNameConstantsByName.has(searchKey)) {
+      continue;
+    }
+    const replacement = preferredAttribute.attributeJson.deprecation?.replacement;
+    addSearchNameConstant(
+      searchKey,
+      preferredAttribute.isDeprecated,
+      preferredAttribute,
+      preferredAttribute.isDeprecated && replacement ? stripSentrySearchPrefix(replacement) : searchKey,
+    );
+  }
+
+  const searchNameConstants = [...searchNameConstantsByName.values()].toSorted((left, right) =>
+    left.searchName < right.searchName ? -1 : left.searchName > right.searchName ? 1 : 0,
+  );
+
+  const searchConstantNameBySearchName = new Map<string, string>();
+  for (const constant of searchNameConstants.filter((constant) => !constant.isDeprecated)) {
+    searchConstantNameBySearchName.set(constant.searchName, getSearchConstantName(constant.searchName));
+  }
+  for (const constant of searchNameConstants.filter((constant) => constant.isDeprecated)) {
+    searchConstantNameBySearchName.set(constant.searchName, getSearchConstantName(constant.searchName));
+  }
+
+  for (const { searchName, isDeprecated, preferredAttribute, currentSearchName } of searchNameConstants) {
+    const constantName = searchConstantNameBySearchName.get(searchName);
+    if (!constantName) {
+      throw new Error(`Search constant name for "${searchName}" does not exist`);
+    }
+
+    searchMetadata += '/**\n';
+    searchMetadata += ` * Search name for {@link attributes.${preferredAttribute.constantName}}. \`${searchName}\`\n`;
+    if (isDeprecated) {
+      const currentSearchConstantName = searchConstantNameBySearchName.get(currentSearchName);
+      const replacement =
+        currentSearchConstantName && currentSearchName !== searchName
+          ? `Use {@link ${currentSearchConstantName}} (\`${currentSearchName}\`) instead`
+          : '';
+      searchMetadata += ` *\n * @deprecated ${replacement}\n`;
+    }
+    searchMetadata += ' */\n';
+    searchMetadata += `export const ${constantName} = '${searchName}';\n\n`;
+  }
+
+  searchMetadata +=
+    searchNameConstants.length === 0
+      ? 'export type AttributeSearchName = never;\n\n'
+      : `export type AttributeSearchName = ${searchNameConstants
+          .map((constant) => `typeof ${searchConstantNameBySearchName.get(constant.searchName)}`)
+          .join(' | ')};\n\n`;
+
+  searchMetadata += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
+
+  for (const { searchKey, preferredAttribute, deprecationChain, canonicalName, isInternal } of searchEntries) {
+    searchMetadata += `  ${JSON.stringify(searchKey)}: {\n`;
+    searchMetadata += `    canonicalName: ${JSON.stringify(canonicalName)},\n`;
+    searchMetadata += `    type: ${JSON.stringify(
+      preferredAttribute.attributeJson.search_alias?.type ?? preferredAttribute.attributeJson.type,
+    )},\n`;
+    searchMetadata += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
+    if (isInternal) {
+      searchMetadata += '    internal: true,\n';
+    }
+    searchMetadata += `    deprecationChain: ${JSON.stringify(deprecationChain)},\n`;
+    searchMetadata += '  },\n';
+  }
+
+  searchMetadata += '};\n\n';
+
+  return { attributeMetadata: metadataDict, searchMetadata };
 }
