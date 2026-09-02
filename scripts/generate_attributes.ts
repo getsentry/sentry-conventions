@@ -215,6 +215,8 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
   constantNameMemo.clear();
   constantNameInnerMemo.clear();
   usedConstantNames.clear();
+  usedSearchConstantNames.clear();
+  searchConstantNameMemo.clear();
 
   // First pass: collect all attributes
   const allAttributesPartial: Array<{
@@ -389,6 +391,8 @@ function writeToJs(attributesDir: string, attributeFiles: string[], outputFilePa
 const constantNameMemo = new Map<string, string>();
 const constantNameInnerMemo = new Map<string, string>();
 const usedConstantNames = new Set<string>();
+const usedSearchConstantNames = new Set<string>();
+const searchConstantNameMemo = new Map<string, string>();
 
 function getDynamicSuffixBase(key: string): string {
   const suffix = '.<key>';
@@ -452,6 +456,27 @@ function getConstantName(key: string, isDeprecated: boolean): string {
 
   constantNameMemo.set(key, constantName);
   usedConstantNames.add(constantName);
+  return constantName;
+}
+
+function stripSentrySearchPrefix(searchKey: string): string {
+  const prefix = 'sentry.';
+  return searchKey.startsWith(prefix) ? searchKey.slice(prefix.length) : searchKey;
+}
+
+function getSearchConstantName(searchKey: string): string {
+  const cachedName = searchConstantNameMemo.get(searchKey);
+  if (cachedName) {
+    return cachedName;
+  }
+
+  let constantName = `SEARCH_${getConstantNameInner(stripSentrySearchPrefix(searchKey))}`;
+  while (usedSearchConstantNames.has(constantName) || usedConstantNames.has(constantName)) {
+    constantName = `_${constantName}`;
+  }
+
+  searchConstantNameMemo.set(searchKey, constantName);
+  usedSearchConstantNames.add(constantName);
   return constantName;
 }
 
@@ -1228,7 +1253,13 @@ function generateMetadataDict(
     searchMetadataByKey.set(searchKey, candidates);
   }
 
-  metadataDict += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
+  const searchEntries: Array<{
+    searchKey: string;
+    preferredAttribute: (typeof allAttributes)[number];
+    deprecationChain: string[];
+    canonicalName: string;
+    isInternal: boolean;
+  }> = [];
 
   for (const searchKey of [...searchMetadataByKey.keys()].sort()) {
     const candidates = searchMetadataByKey.get(searchKey) as typeof allAttributes;
@@ -1264,9 +1295,126 @@ function generateMetadataDict(
       }
     }
 
-    const canonicalName = preferredAttribute.attributeJson.deprecation?.replacement ?? preferredAttribute.key;
-    const isInternal = getVisibility(preferredAttribute.attributeJson) === 'internal';
+    searchEntries.push({
+      searchKey,
+      preferredAttribute,
+      deprecationChain: [...deprecationChain],
+      canonicalName: preferredAttribute.attributeJson.deprecation?.replacement ?? preferredAttribute.key,
+      isInternal: getVisibility(preferredAttribute.attributeJson) === 'internal',
+    });
+  }
 
+  const searchNameConstantsByName = new Map<
+    string,
+    {
+      searchName: string;
+      isDeprecated: boolean;
+      preferredAttribute: (typeof allAttributes)[number];
+      currentSearchName: string;
+    }
+  >();
+
+  const addSearchNameConstant = (
+    searchName: string,
+    isDeprecated: boolean,
+    preferredAttribute: (typeof allAttributes)[number],
+    currentSearchName: string,
+  ) => {
+    const existing = searchNameConstantsByName.get(searchName);
+    if (existing) {
+      if (existing.isDeprecated && !isDeprecated) {
+        searchNameConstantsByName.set(searchName, {
+          searchName,
+          isDeprecated,
+          preferredAttribute,
+          currentSearchName,
+        });
+      }
+      return;
+    }
+
+    searchNameConstantsByName.set(searchName, {
+      searchName,
+      isDeprecated,
+      preferredAttribute,
+      currentSearchName,
+    });
+  };
+
+  for (const { preferredAttribute, deprecationChain, canonicalName } of searchEntries) {
+    const searchAlias = preferredAttribute.attributeJson.search_alias;
+    if (!searchAlias) {
+      continue;
+    }
+
+    addSearchNameConstant(searchAlias.name, false, preferredAttribute, searchAlias.name);
+
+    const deprecatedAliases = new Set(searchAlias.deprecated_aliases ?? []);
+    for (const name of deprecationChain) {
+      if (name === searchAlias.name) {
+        continue;
+      }
+      // Replacement storage keys belong to their own entry; don't mark them deprecated here.
+      if (name === canonicalName && name !== preferredAttribute.key && !deprecatedAliases.has(name)) {
+        continue;
+      }
+      addSearchNameConstant(name, true, preferredAttribute, searchAlias.name);
+    }
+  }
+
+  // Keys without a search alias still get a const; aliases and chain names already claimed win.
+  for (const { searchKey, preferredAttribute } of searchEntries) {
+    if (preferredAttribute.attributeJson.search_alias) {
+      continue;
+    }
+    if (searchNameConstantsByName.has(searchKey)) {
+      continue;
+    }
+    addSearchNameConstant(searchKey, false, preferredAttribute, searchKey);
+  }
+
+  const searchNameConstants = [...searchNameConstantsByName.values()].toSorted((left, right) =>
+    left.searchName < right.searchName ? -1 : left.searchName > right.searchName ? 1 : 0,
+  );
+
+  // Current names (aliases, then leftover keys) claim the unprefixed constant; deprecated chain names take leftovers.
+  const searchConstantNameBySearchName = new Map<string, string>();
+  for (const constant of searchNameConstants.filter((constant) => !constant.isDeprecated)) {
+    searchConstantNameBySearchName.set(constant.searchName, getSearchConstantName(constant.searchName));
+  }
+  for (const constant of searchNameConstants.filter((constant) => constant.isDeprecated)) {
+    searchConstantNameBySearchName.set(constant.searchName, getSearchConstantName(constant.searchName));
+  }
+
+  for (const { searchName, isDeprecated, preferredAttribute, currentSearchName } of searchNameConstants) {
+    const constantName = searchConstantNameBySearchName.get(searchName);
+    if (!constantName) {
+      throw new Error(`Search constant name for "${searchName}" does not exist`);
+    }
+
+    metadataDict += '/**\n';
+    metadataDict += ` * Search name for {@link ${preferredAttribute.constantName}}. \`${searchName}\`\n`;
+    if (isDeprecated) {
+      const currentSearchConstantName = searchConstantNameBySearchName.get(currentSearchName);
+      const replacement = currentSearchConstantName
+        ? `Use {@link ${currentSearchConstantName}} (\`${currentSearchName}\`) instead`
+        : '';
+      metadataDict += ` *\n * @deprecated ${replacement}\n`;
+    }
+    metadataDict += ' */\n';
+    metadataDict += `export const ${constantName} = '${searchName}';\n\n`;
+  }
+
+  metadataDict +=
+    searchNameConstants.length === 0
+      ? 'export type AttributeSearchName = never;\n\n'
+      : `export type AttributeSearchName = ${searchNameConstants
+          .map((constant) => `typeof ${searchConstantNameBySearchName.get(constant.searchName)}`)
+          .join(' | ')};\n\n`;
+
+  metadataDict += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
+
+  for (const { searchKey, preferredAttribute, deprecationChain, canonicalName, isInternal } of searchEntries) {
     metadataDict += `  ${JSON.stringify(searchKey)}: {\n`;
     metadataDict += `    canonicalName: ${JSON.stringify(canonicalName)},\n`;
     metadataDict += `    type: ${JSON.stringify(
@@ -1276,7 +1424,7 @@ function generateMetadataDict(
     if (isInternal) {
       metadataDict += '    internal: true,\n';
     }
-    metadataDict += `    deprecationChain: ${JSON.stringify([...deprecationChain])},\n`;
+    metadataDict += `    deprecationChain: ${JSON.stringify(deprecationChain)},\n`;
     metadataDict += '  },\n';
   }
 

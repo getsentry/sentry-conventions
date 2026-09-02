@@ -82,6 +82,18 @@ describe('generateAttributes', () => {
         type: 'boolean',
       },
       {
+        key: 'live.attribute',
+        brief: 'A live attribute whose search alias differs from its key.',
+        type: 'string',
+        search_alias: { name: 'live.search' },
+      },
+      {
+        key: 'sentry.item',
+        brief: 'A sentry-prefixed attribute with a distinct search alias.',
+        type: 'string',
+        search_alias: { name: 'item.search' },
+      },
+      {
         key: 'current.attribute',
         brief: 'The preferred attribute.',
         type: 'integer',
@@ -129,6 +141,41 @@ describe('generateAttributes', () => {
 
       expect(javascript).toContain('export type AttributeSearchType = AttributeType | SearchAliasType;');
       expect(javascript).toContain('internal?: true;');
+      expect(javascript).toContain("export const SEARCH_SHARED_NAME = 'shared.name';");
+      expect(javascript).toContain("export const SEARCH_DEPRECATED_SEARCH = 'deprecated.search';");
+      expect(javascript).toContain("export const SEARCH_OLD_NAME = 'old.name';");
+      expect(javascript).toContain("export const SEARCH_CURRENT_ATTRIBUTE = 'current.attribute';");
+      expect(javascript).toContain("export const SEARCH_STANDALONE_DEPRECATED = 'standalone.deprecated';");
+      expect(javascript).toContain("export const SEARCH_FALLBACK_ATTRIBUTE = 'fallback.attribute';");
+      expect(javascript).toContain("export const SEARCH_LIVE_SEARCH = 'live.search';");
+      expect(javascript).toContain("export const SEARCH_LIVE_ATTRIBUTE = 'live.attribute';");
+      expect(javascript).toContain("export const SEARCH_ITEM_SEARCH = 'item.search';");
+      expect(javascript).toContain("export const SEARCH_ITEM = 'sentry.item';");
+      expect(javascript).not.toContain('export const SEARCH_SENTRY_ITEM');
+      expect(javascript).toContain(
+        ' * @deprecated Use {@link SEARCH_SHARED_NAME} (`shared.name`) instead\n */\nexport const SEARCH_OLD_NAME',
+      );
+      expect(javascript).toContain(
+        ' * @deprecated Use {@link SEARCH_SHARED_NAME} (`shared.name`) instead\n */\nexport const SEARCH_CURRENT_ATTRIBUTE',
+      );
+      expect(javascript).toContain(
+        ' * @deprecated Use {@link SEARCH_DEPRECATED_SEARCH} (`deprecated.search`) instead\n */\nexport const SEARCH_STANDALONE_DEPRECATED',
+      );
+      expect(javascript).toContain(
+        ' * @deprecated Use {@link SEARCH_LIVE_SEARCH} (`live.search`) instead\n */\nexport const SEARCH_LIVE_ATTRIBUTE',
+      );
+      expect(javascript).toContain(
+        ' * @deprecated Use {@link SEARCH_ITEM_SEARCH} (`item.search`) instead\n */\nexport const SEARCH_ITEM =',
+      );
+      expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_SHARED_NAME/);
+      expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_DEPRECATED_SEARCH/);
+      expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_FALLBACK_ATTRIBUTE/);
+      expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_LIVE_SEARCH/);
+      expect(javascript).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_ITEM_SEARCH/);
+      expect(javascript).toContain(
+        'export type AttributeSearchName = typeof SEARCH_CURRENT_ATTRIBUTE | typeof SEARCH_DEPRECATED_SEARCH | typeof SEARCH_FALLBACK_ATTRIBUTE | typeof SEARCH_ITEM_SEARCH | typeof SEARCH_LIVE_ATTRIBUTE | typeof SEARCH_LIVE_SEARCH | typeof SEARCH_OLD_NAME | typeof SEARCH_ITEM | typeof SEARCH_SHARED_NAME | typeof SEARCH_STANDALONE_DEPRECATED;',
+      );
+      expect(javascript).toContain('export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata>');
       expect(compactMetadata).toContain(
         '"fallback.attribute": {\n    canonicalName: "fallback.attribute",\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute"],',
       );
