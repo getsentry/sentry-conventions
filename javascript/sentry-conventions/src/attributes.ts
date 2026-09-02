@@ -3240,6 +3240,28 @@ export const BROWSER_NAME = 'browser.name';
  */
 export type BROWSER_NAME_TYPE = string;
 
+// Path: model/attributes/browser/browser__paint__type.json
+
+/**
+ * The type of paint timing entry reported by the browser. `browser.paint.type`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_PAINT_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "first-paint"
+ * @example "first-contentful-paint"
+ */
+export const BROWSER_PAINT_TYPE = 'browser.paint.type';
+
+/**
+ * Type for {@link BROWSER_PAINT_TYPE} browser.paint.type
+ */
+export type BROWSER_PAINT_TYPE_TYPE = string;
+
 // Path: model/attributes/browser/browser__performance__navigation__activation_start.json
 
 /**
@@ -18582,6 +18604,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.bfcache.outcome': 'string',
   'browser.bfcache.reason': 'string',
   'browser.name': 'string',
+  'browser.paint.type': 'string',
   'browser.performance.navigation.activation_start': 'double',
   'browser.performance.time_origin': 'double',
   'browser.report.type': 'string',
@@ -19407,6 +19430,7 @@ export type AttributeName =
   | typeof BROWSER_BFCACHE_OUTCOME
   | typeof BROWSER_BFCACHE_REASON
   | typeof BROWSER_NAME
+  | typeof BROWSER_PAINT_TYPE
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
   | typeof BROWSER_PERFORMANCE_TIME_ORIGIN
   | typeof BROWSER_REPORT_TYPE
@@ -22411,6 +22435,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     aliases: ['sentry.browser.name'],
     changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
+  },
+  'browser.paint.type': {
+    brief: 'The type of paint timing entry reported by the browser.',
+    type: 'string',
+    keys: ['browser.paint.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'first-paint',
+    examples: ['first-paint', 'first-contentful-paint'],
+    changelog: [{ version: 'next', prs: [606], description: 'Added browser.paint.type attribute' }],
   },
   'browser.performance.navigation.activation_start': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
@@ -33894,6 +33931,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name of the browser.',
     deprecationChain: ['browser.name', 'sentry.browser.name'],
   },
+  'browser.paint.type': {
+    canonicalName: 'browser.paint.type',
+    type: 'string',
+    brief: 'The type of paint timing entry reported by the browser.',
+    deprecationChain: ['browser.paint.type'],
+  },
   'browser.performance.navigation.activation_start': {
     canonicalName: 'browser.performance.navigation.activation_start',
     type: 'double',
@@ -38302,6 +38345,7 @@ export type Attributes = {
   [BROWSER_BFCACHE_OUTCOME]?: BROWSER_BFCACHE_OUTCOME_TYPE;
   [BROWSER_BFCACHE_REASON]?: BROWSER_BFCACHE_REASON_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_PAINT_TYPE]?: BROWSER_PAINT_TYPE_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
   [BROWSER_PERFORMANCE_TIME_ORIGIN]?: BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE;
   [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
