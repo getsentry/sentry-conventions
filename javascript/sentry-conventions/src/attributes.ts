@@ -16664,6 +16664,27 @@ export const SUBPROCESS_PID = 'subprocess.pid';
  */
 export type SUBPROCESS_PID_TYPE = number;
 
+// Path: model/attributes/sveltekit/sveltekit__tracing__original_name.json
+
+/**
+ * The original span name as emitted by SvelteKit. `sveltekit.tracing.original_name`
+ *
+ * Attribute Value Type: `string` {@link SVELTEKIT_TRACING_ORIGINAL_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "sveltekit.handle.root"
+ */
+export const SVELTEKIT_TRACING_ORIGINAL_NAME = 'sveltekit.tracing.original_name';
+
+/**
+ * Type for {@link SVELTEKIT_TRACING_ORIGINAL_NAME} sveltekit.tracing.original_name
+ */
+export type SVELTEKIT_TRACING_ORIGINAL_NAME_TYPE = string;
+
 // Path: model/attributes/thread/thread__id.json
 
 /**
@@ -19329,6 +19350,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'starlite.middleware_name': 'string',
   'state.type': 'string',
   'subprocess.pid': 'integer',
+  'sveltekit.tracing.original_name': 'string',
   'thread.id': 'integer',
   'thread.name': 'string',
   'timber.tag': 'string',
@@ -20160,6 +20182,7 @@ export type AttributeName =
   | typeof STARLITE_MIDDLEWARE_NAME
   | typeof STATE_TYPE
   | typeof SUBPROCESS_PID
+  | typeof SVELTEKIT_TRACING_ORIGINAL_NAME
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
@@ -32128,6 +32151,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  'sveltekit.tracing.original_name': {
+    brief: 'The original span name as emitted by SvelteKit.',
+    type: 'string',
+    keys: ['sveltekit.tracing.original_name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'sveltekit.handle.root',
+    examples: ['sveltekit.handle.root'],
+    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.tracing.original_name attribute' }],
+    additionalContext: [
+      "The Sentry SDK renames SvelteKit-emitted spans to match Sentry's span name semantics, and preserves the name SvelteKit originally set in this attribute.",
+    ],
+  },
   'thread.id': {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
@@ -37964,6 +38003,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The process ID of a subprocess.',
     deprecationChain: ['process.pid', 'subprocess.pid'],
   },
+  'sveltekit.tracing.original_name': {
+    canonicalName: 'sveltekit.tracing.original_name',
+    type: 'string',
+    brief: 'The original span name as emitted by SvelteKit.',
+    deprecationChain: ['sveltekit.tracing.original_name'],
+  },
   'thread.id': {
     canonicalName: 'thread.id',
     type: 'integer',
@@ -39249,6 +39294,7 @@ export type Attributes = {
   [STARLITE_MIDDLEWARE_NAME]?: STARLITE_MIDDLEWARE_NAME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
   [SUBPROCESS_PID]?: SUBPROCESS_PID_TYPE;
+  [SVELTEKIT_TRACING_ORIGINAL_NAME]?: SVELTEKIT_TRACING_ORIGINAL_NAME_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;

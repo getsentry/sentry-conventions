@@ -1,0 +1,21 @@
+{
+  "key": "sveltekit.tracing.original_name",
+  "brief": "The original span name as emitted by SvelteKit.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["sveltekit.handle.root"],
+  "additional_context": [
+    "The Sentry SDK renames SvelteKit-emitted spans to match Sentry's span name semantics, and preserves the name SvelteKit originally set in this attribute."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [611],
+      "description": "Added sveltekit.tracing.original_name attribute"
+    }
+  ]
+}

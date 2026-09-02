@@ -9756,6 +9756,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12345
     """
 
+    # Path: model/attributes/sveltekit/sveltekit__tracing__original_name.json
+    SVELTEKIT_TRACING_ORIGINAL_NAME: Literal["sveltekit.tracing.original_name"] = (
+        "sveltekit.tracing.original_name"
+    )
+    """The original span name as emitted by SvelteKit.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "sveltekit.handle.root"
+    """
+
     # Path: model/attributes/thread/thread__id.json
     THREAD_ID: Literal["thread.id"] = "thread.id"
     """Current “managed” thread ID.
@@ -24676,6 +24689,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "sveltekit.tracing.original_name": AttributeMetadata(
+        brief="The original span name as emitted by SvelteKit.",
+        type=AttributeType.STRING,
+        keys=("sveltekit.tracing.original_name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="sveltekit.handle.root",
+        examples=["sveltekit.handle.root"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.tracing.original_name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK renames SvelteKit-emitted spans to match Sentry's span name semantics, and preserves the name SvelteKit originally set in this attribute."
+        ],
+    ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -26675,6 +26708,7 @@ Attributes = TypedDict(
         "starlite.middleware_name": str,
         "state.type": str,
         "subprocess.pid": int,
+        "sveltekit.tracing.original_name": str,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
