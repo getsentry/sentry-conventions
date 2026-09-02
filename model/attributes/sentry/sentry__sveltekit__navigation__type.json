@@ -8,13 +8,18 @@
   "is_in_otel": false,
   "visibility": "public",
   "example": "link",
-  "alias": ["navigation.type"],
+  "alias": ["navigation.type", "router.navigation.type"],
   "deprecation": {
-    "replacement": "navigation.type",
+    "replacement": "router.navigation.type",
     "reason": "Use the more generic attribute instead",
     "_status": "backfill"
   },
   "changelog": [
+    {
+      "version": "next",
+      "prs": [600],
+      "description": "Re-pointed deprecation from navigation.type to router.navigation.type"
+    },
     {
       "version": "0.16.0",
       "prs": [467],

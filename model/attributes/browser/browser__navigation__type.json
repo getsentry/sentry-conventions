@@ -1,0 +1,24 @@
+{
+  "key": "browser.navigation.type",
+  "brief": "The type of navigation the browser performed to arrive at the page the metrics were measured on.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["navigate", "reload", "prerender", "bfcache", "soft-navigation"],
+  "additional_context": [
+    "Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.",
+    "`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.",
+    "`prerender` pages finish painting before activation, so their paint timings are offset by `browser.performance.navigation.activation_start`. Keep them separate when aggregating web vitals.",
+    "Not to be confused with `router.navigation.type`, which holds the client-side router's own vocabulary (`link`, `goto`, `router.push`). The two are independent and can both be set on the same span."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [600],
+      "description": "Added browser.navigation.type attribute"
+    }
+  ]
+}
