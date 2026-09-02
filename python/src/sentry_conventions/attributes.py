@@ -297,6 +297,7 @@ class _AttributeNamesMeta(type):
         "HTTP_USER_AGENT",
         "INP",
         "KOA_NAME",
+        "LANGCHAIN_CHAIN_NAME",
         "LCP_ELEMENT",
         "LCP_ID",
         "LCP_LOADTIME",
@@ -600,7 +601,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.pipeline.name
+    Aliases: gen_ai.pipeline.name, langchain.chain.name
     DEPRECATED: Use gen_ai.pipeline.name instead
     Example: "Autofix Pipeline"
     """
@@ -4719,7 +4720,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: ai.pipeline.name
+    Aliases: ai.pipeline.name, langchain.chain.name
     Example: "Autofix Pipeline"
     """
 
@@ -6423,6 +6424,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "router"
+    """
+
+    # Path: model/attributes/langchain/langchain__chain__name.json
+    LANGCHAIN_CHAIN_NAME: Literal["langchain.chain.name"] = "langchain.chain.name"
+    """The name of the LangChain chain being executed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.pipeline.name, ai.pipeline.name
+    DEPRECATED: Use gen_ai.pipeline.name instead - This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed.
+    Example: "format_prompt"
+    Example: "RunnableSequence"
     """
 
     # Path: model/attributes/lcp/lcp__element.json
@@ -10948,6 +10963,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.pipeline.name",
             "ai.pipeline.name",
+            "langchain.chain.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -10956,8 +10972,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.pipeline.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.pipeline.name"],
+        aliases=["gen_ai.pipeline.name", "langchain.chain.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[53, 76, 108, 127]),
         ],
     ),
@@ -17027,13 +17048,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.pipeline.name",
             "ai.pipeline.name",
+            "langchain.chain.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Autofix Pipeline",
-        aliases=["ai.pipeline.name"],
+        aliases=["ai.pipeline.name", "langchain.chain.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[76, 127]),
         ],
     ),
@@ -19598,6 +19625,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.16.0", prs=[471], description="Added koa.type attribute"
+            ),
+        ],
+    ),
+    "langchain.chain.name": AttributeMetadata(
+        brief="The name of the LangChain chain being executed.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.pipeline.name",
+            "ai.pipeline.name",
+            "langchain.chain.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="format_prompt",
+        examples=["format_prompt", "RunnableSequence"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.pipeline.name",
+            reason="This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.pipeline.name", "ai.pipeline.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name attribute",
             ),
         ],
     ),
@@ -26156,6 +26210,7 @@ Attributes = TypedDict(
         "jvm.thread.state": str,
         "koa.name": str,
         "koa.type": str,
+        "langchain.chain.name": str,
         "lcp.element": str,
         "lcp.id": str,
         "lcp.loadTime": int,

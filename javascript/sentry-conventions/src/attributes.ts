@@ -340,7 +340,7 @@ export type AI_MODEL_PROVIDER_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_PIPELINE_NAME} `gen_ai.pipeline.name`
+ * Aliases: {@link GEN_AI_PIPELINE_NAME} `gen_ai.pipeline.name`, {@link LANGCHAIN_CHAIN_NAME} `langchain.chain.name`
  *
  * @deprecated Use {@link GEN_AI_PIPELINE_NAME} (gen_ai.pipeline.name) instead
  * @example "Autofix Pipeline"
@@ -7701,7 +7701,7 @@ export type GEN_AI_OUTPUT_MESSAGES_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link AI_PIPELINE_NAME} `ai.pipeline.name`
+ * Aliases: {@link AI_PIPELINE_NAME} `ai.pipeline.name`, {@link LANGCHAIN_CHAIN_NAME} `langchain.chain.name`
  *
  * @example "Autofix Pipeline"
  */
@@ -10649,6 +10649,31 @@ export const KOA_TYPE = 'koa.type';
  * Type for {@link KOA_TYPE} koa.type
  */
 export type KOA_TYPE_TYPE = string;
+
+// Path: model/attributes/langchain/langchain__chain__name.json
+
+/**
+ * The name of the LangChain chain being executed. `langchain.chain.name`
+ *
+ * Attribute Value Type: `string` {@link LANGCHAIN_CHAIN_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_PIPELINE_NAME} `gen_ai.pipeline.name`, {@link AI_PIPELINE_NAME} `ai.pipeline.name`
+ *
+ * @deprecated Use {@link GEN_AI_PIPELINE_NAME} (gen_ai.pipeline.name) instead - This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed.
+ * @example "format_prompt"
+ * @example "RunnableSequence"
+ */
+export const LANGCHAIN_CHAIN_NAME = 'langchain.chain.name';
+
+/**
+ * Type for {@link LANGCHAIN_CHAIN_NAME} langchain.chain.name
+ */
+export type LANGCHAIN_CHAIN_NAME_TYPE = string;
 
 // Path: model/attributes/lcp.json
 
@@ -18937,6 +18962,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'jvm.thread.state': 'string',
   'koa.name': 'string',
   'koa.type': 'string',
+  'langchain.chain.name': 'string',
   lcp: 'double',
   'lcp.element': 'string',
   'lcp.id': 'string',
@@ -19763,6 +19789,7 @@ export type AttributeName =
   | typeof JVM_THREAD_STATE
   | typeof KOA_NAME
   | typeof KOA_TYPE
+  | typeof LANGCHAIN_CHAIN_NAME
   | typeof LCP
   | typeof LCP_ELEMENT
   | typeof LCP_ID
@@ -20377,7 +20404,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.pipeline.name': {
     brief: 'The name of the AI pipeline.',
     type: 'string',
-    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20388,8 +20415,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.pipeline.name',
       status: 'backfill',
     },
-    aliases: ['gen_ai.pipeline.name'],
-    changelog: [{ version: '0.1.0', prs: [53, 76, 108, 127] }],
+    aliases: ['gen_ai.pipeline.name', 'langchain.chain.name'],
+    changelog: [
+      { version: 'next', prs: [599], description: 'Added langchain.chain.name as an alias' },
+      { version: '0.1.0', prs: [53, 76, 108, 127] },
+    ],
   },
   'ai.preamble': {
     brief:
@@ -25417,15 +25447,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.pipeline.name': {
     brief: 'Name of the AI pipeline or chain being executed.',
     type: 'string',
-    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'Autofix Pipeline',
-    aliases: ['ai.pipeline.name'],
-    changelog: [{ version: '0.1.0', prs: [76, 127] }],
+    aliases: ['ai.pipeline.name', 'langchain.chain.name'],
+    changelog: [
+      { version: 'next', prs: [599], description: 'Added langchain.chain.name as an alias' },
+      { version: '0.1.0', prs: [76, 127] },
+    ],
   },
   'gen_ai.prompt': {
     brief: 'The input messages sent to the model',
@@ -27635,6 +27668,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'router',
     changelog: [{ version: '0.16.0', prs: [471], description: 'Added koa.type attribute' }],
+  },
+  'langchain.chain.name': {
+    brief: 'The name of the LangChain chain being executed.',
+    type: 'string',
+    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'format_prompt',
+    examples: ['format_prompt', 'RunnableSequence'],
+    deprecation: {
+      replacement: 'gen_ai.pipeline.name',
+      reason:
+        'This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+    changelog: [{ version: 'next', prs: [599], description: 'Added langchain.chain.name attribute' }],
   },
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -33081,7 +33134,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.pipeline.name',
     type: 'string',
     brief: 'The name of the AI pipeline.',
-    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
   },
   'ai.preamble': {
     canonicalName: 'gen_ai.system_instructions',
@@ -35184,7 +35237,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.pipeline.name',
     type: 'string',
     brief: 'Name of the AI pipeline or chain being executed.',
-    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
   },
   'gen_ai.prompt': {
     canonicalName: 'gen_ai.input.messages',
@@ -36049,6 +36102,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The type of the Koa layer that handled the request.',
     deprecationChain: ['koa.type'],
+  },
+  'langchain.chain.name': {
+    canonicalName: 'gen_ai.pipeline.name',
+    type: 'string',
+    brief: 'The name of the LangChain chain being executed.',
+    deprecationChain: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
   },
   lcp: {
     canonicalName: 'browser.web_vital.lcp.value',
@@ -38678,6 +38737,7 @@ export type Attributes = {
   [JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
   [KOA_NAME]?: KOA_NAME_TYPE;
   [KOA_TYPE]?: KOA_TYPE_TYPE;
+  [LANGCHAIN_CHAIN_NAME]?: LANGCHAIN_CHAIN_NAME_TYPE;
   [LCP]?: LCP_TYPE;
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
   [LCP_ID]?: LCP_ID_TYPE;
