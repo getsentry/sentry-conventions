@@ -9,7 +9,7 @@
   "example": "https",
   "alias": ["url.scheme"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "url.scheme"
   },
   "visibility": "public",

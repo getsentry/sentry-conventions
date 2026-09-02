@@ -11,7 +11,7 @@
   "deprecation": {
     "replacement": "process.runtime.name",
     "reason": "Prefer OTel-aligned process.runtime.name",
-    "_status": "backfill"
+    "_status": "normalize"
   },
   "alias": ["process.runtime.name"],
   "changelog": [

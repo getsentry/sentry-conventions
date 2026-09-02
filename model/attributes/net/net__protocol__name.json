@@ -9,7 +9,7 @@
   "example": "http",
   "alias": ["network.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "network.protocol.name"
   },
   "visibility": "public",

@@ -9,7 +9,7 @@
   "alias": ["user.geo.region"],
   "deprecation": {
     "replacement": "user.geo.region",
-    "_status": "backfill"
+    "_status": "normalize"
   },
   "visibility": "public",
   "search_alias": {

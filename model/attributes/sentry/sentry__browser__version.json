@@ -9,7 +9,7 @@
   "example": "120.0.6099.130",
   "alias": ["browser.version"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "browser.version"
   },
   "visibility": "public",

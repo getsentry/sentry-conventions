@@ -9,7 +9,7 @@
   "alias": ["user.geo.subdivision"],
   "deprecation": {
     "replacement": "user.geo.subdivision",
-    "_status": "backfill"
+    "_status": "normalize"
   },
   "visibility": "public",
   "search_alias": {

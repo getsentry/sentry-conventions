@@ -9,7 +9,7 @@
   "example": 1337,
   "alias": ["server.port", "port"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "server.port"
   },
   "visibility": "public",

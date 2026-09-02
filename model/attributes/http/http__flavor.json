@@ -9,7 +9,7 @@
   "example": "1.1",
   "alias": ["network.protocol.version", "net.protocol.version", "messaging.protocol_version"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "network.protocol.version"
   },
   "visibility": "public",

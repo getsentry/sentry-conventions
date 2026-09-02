@@ -9,7 +9,7 @@
   "example": "example.com",
   "alias": ["client.address"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "client.address"
   },
   "visibility": "public",

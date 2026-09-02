@@ -9,7 +9,7 @@
   "example": 8080,
   "alias": ["network.local.port"],
   "deprecation": {
-    "_status": "backfill",
+    "_status": "normalize",
     "replacement": "network.local.port"
   },
   "visibility": "public",

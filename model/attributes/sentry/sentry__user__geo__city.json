@@ -9,7 +9,7 @@
   "alias": ["user.geo.city"],
   "deprecation": {
     "replacement": "user.geo.city",
-    "_status": "backfill"
+    "_status": "normalize"
   },
   "visibility": "public",
   "search_alias": {

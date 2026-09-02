@@ -14477,7 +14477,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="/app/myapplication/http/handler/server.py",
         deprecation=DeprecationInfo(
-            replacement="code.file.path", status=DeprecationStatus.BACKFILL
+            replacement="code.file.path", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["code.file.path"],
         changelog=[
@@ -14560,7 +14560,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=42,
         deprecation=DeprecationInfo(
-            replacement="code.line.number", status=DeprecationStatus.BACKFILL
+            replacement="code.line.number", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["code.line.number"],
         changelog=[
@@ -14808,7 +14808,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="customers",
         deprecation=DeprecationInfo(
-            replacement="db.namespace", status=DeprecationStatus.BACKFILL
+            replacement="db.namespace", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["db.namespace"],
         changelog=[
@@ -18434,7 +18434,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
-            replacement="client.address", status=DeprecationStatus.BACKFILL
+            replacement="client.address", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["client.address"],
         changelog=[
@@ -18489,7 +18489,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="1.1",
         deprecation=DeprecationInfo(
-            replacement="network.protocol.version", status=DeprecationStatus.BACKFILL
+            replacement="network.protocol.version", status=DeprecationStatus.NORMALIZE
         ),
         aliases=[
             "network.protocol.version",
@@ -19215,7 +19215,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https",
         deprecation=DeprecationInfo(
-            replacement="url.scheme", status=DeprecationStatus.BACKFILL
+            replacement="url.scheme", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["url.scheme"],
         changelog=[
@@ -19249,7 +19249,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
-            replacement="server.address", status=DeprecationStatus.BACKFILL
+            replacement="server.address", status=DeprecationStatus.NORMALIZE
         ),
         aliases=[
             "address",
@@ -19284,7 +19284,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=404,
         deprecation=DeprecationInfo(
-            replacement="http.response.status_code", status=DeprecationStatus.BACKFILL
+            replacement="http.response.status_code", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["http.response.status_code"],
         changelog=[
@@ -19353,7 +19353,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(
-            replacement="url.full", status=DeprecationStatus.BACKFILL
+            replacement="url.full", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["url.full", "url", "aws.request.url", "messaging.url"],
         changelog=[
@@ -19378,7 +19378,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
         deprecation=DeprecationInfo(
-            replacement="user_agent.original", status=DeprecationStatus.BACKFILL
+            replacement="user_agent.original", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user_agent.original"],
         changelog=[
@@ -21118,7 +21118,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
         deprecation=DeprecationInfo(
-            replacement="network.local.address", status=DeprecationStatus.BACKFILL
+            replacement="network.local.address", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["network.local.address", "net.sock.host.addr"],
         changelog=[
@@ -21140,7 +21140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
-            replacement="server.address", status=DeprecationStatus.BACKFILL
+            replacement="server.address", status=DeprecationStatus.NORMALIZE
         ),
         aliases=[
             "address",
@@ -21175,7 +21175,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1337,
         deprecation=DeprecationInfo(
-            replacement="server.port", status=DeprecationStatus.BACKFILL
+            replacement="server.port", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["server.port", "port"],
         changelog=[
@@ -21200,7 +21200,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
         deprecation=DeprecationInfo(
-            replacement="network.peer.address", status=DeprecationStatus.BACKFILL
+            replacement="network.peer.address", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["network.peer.address", "net.sock.peer.addr"],
         changelog=[
@@ -21269,7 +21269,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="http",
         deprecation=DeprecationInfo(
-            replacement="network.protocol.name", status=DeprecationStatus.BACKFILL
+            replacement="network.protocol.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=[
             "network.protocol.name",
@@ -21300,7 +21300,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="1.1",
         deprecation=DeprecationInfo(
-            replacement="network.protocol.version", status=DeprecationStatus.BACKFILL
+            replacement="network.protocol.version", status=DeprecationStatus.NORMALIZE
         ),
         aliases=[
             "network.protocol.version",
@@ -21347,7 +21347,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="/var/my.sock",
         deprecation=DeprecationInfo(
-            replacement="network.local.address", status=DeprecationStatus.BACKFILL
+            replacement="network.local.address", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["network.local.address", "net.host.ip"],
         changelog=[
@@ -21367,7 +21367,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=8080,
         deprecation=DeprecationInfo(
-            replacement="network.local.port", status=DeprecationStatus.BACKFILL
+            replacement="network.local.port", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["network.local.port"],
         changelog=[
@@ -21389,7 +21389,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="192.168.0.1",
         deprecation=DeprecationInfo(
-            replacement="network.peer.address", status=DeprecationStatus.BACKFILL
+            replacement="network.peer.address", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["network.peer.address", "net.peer.ip"],
         changelog=[
@@ -21425,7 +21425,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=8080,
         deprecation=DeprecationInfo(
-            replacement="network.peer.port", status=DeprecationStatus.BACKFILL
+            replacement="network.peer.port", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["network.peer.port"],
         changelog=[
@@ -22563,7 +22563,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="process.runtime.name",
             reason="Prefer OTel-aligned process.runtime.name",
-            status=DeprecationStatus.BACKFILL,
+            status=DeprecationStatus.NORMALIZE,
         ),
         aliases=["process.runtime.name"],
         changelog=[
@@ -22588,7 +22588,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="process.runtime.description",
             reason="Prefer OTel-aligned process.runtime.description",
-            status=DeprecationStatus.BACKFILL,
+            status=DeprecationStatus.NORMALIZE,
         ),
         aliases=["process.runtime.description"],
         changelog=[
@@ -22613,7 +22613,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="process.runtime.version",
             reason="Prefer OTel-aligned process.runtime.version",
-            status=DeprecationStatus.BACKFILL,
+            status=DeprecationStatus.NORMALIZE,
         ),
         aliases=["process.runtime.version"],
         changelog=[
@@ -22714,7 +22714,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="Chrome",
         deprecation=DeprecationInfo(
-            replacement="browser.name", status=DeprecationStatus.BACKFILL
+            replacement="browser.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["browser.name"],
         changelog=[
@@ -22734,7 +22734,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="120.0.6099.130",
         deprecation=DeprecationInfo(
-            replacement="browser.version", status=DeprecationStatus.BACKFILL
+            replacement="browser.version", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["browser.version"],
         changelog=[
@@ -23964,7 +23964,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(
-            replacement="user.email", status=DeprecationStatus.BACKFILL
+            replacement="user.email", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user.email"],
         changelog=[
@@ -23983,7 +23983,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(
-            replacement="user.geo.city", status=DeprecationStatus.BACKFILL
+            replacement="user.geo.city", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user.geo.city"],
         changelog=[
@@ -24002,7 +24002,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(
-            replacement="user.geo.country_code", status=DeprecationStatus.BACKFILL
+            replacement="user.geo.country_code", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user.geo.country_code"],
         changelog=[
@@ -24021,7 +24021,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(
-            replacement="user.geo.region", status=DeprecationStatus.BACKFILL
+            replacement="user.geo.region", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user.geo.region"],
         changelog=[
@@ -24040,7 +24040,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(
-            replacement="user.geo.subdivision", status=DeprecationStatus.BACKFILL
+            replacement="user.geo.subdivision", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user.geo.subdivision"],
         changelog=[
@@ -24059,7 +24059,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(
-            replacement="user.id", status=DeprecationStatus.BACKFILL
+            replacement="user.id", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user.id"],
         changelog=[
@@ -24079,7 +24079,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(
-            replacement="user.ip_address", status=DeprecationStatus.BACKFILL
+            replacement="user.ip_address", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user.ip_address"],
         changelog=[
@@ -24099,7 +24099,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         deprecation=DeprecationInfo(
-            replacement="user.name", status=DeprecationStatus.BACKFILL
+            replacement="user.name", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["user.name"],
         changelog=[
@@ -25003,7 +25003,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/test?foo=bar#buzz",
         deprecation=DeprecationInfo(
-            replacement="url.full", status=DeprecationStatus.BACKFILL
+            replacement="url.full", status=DeprecationStatus.NORMALIZE
         ),
         aliases=["url.full", "http.url", "aws.request.url", "messaging.url"],
         changelog=[

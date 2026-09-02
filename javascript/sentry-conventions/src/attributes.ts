@@ -23210,7 +23210,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/app/myapplication/http/handler/server.py',
     deprecation: {
       replacement: 'code.file.path',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['code.file.path'],
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -23276,7 +23276,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 42,
     deprecation: {
       replacement: 'code.line.number',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['code.line.number'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
@@ -23500,7 +23500,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'customers',
     deprecation: {
       replacement: 'db.namespace',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['db.namespace'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -26612,7 +26612,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'client.address',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['client.address'],
     changelog: [{ version: '0.1.0', prs: [61, 106, 127] }, { version: '0.0.0' }],
@@ -26658,7 +26658,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.protocol.version', 'net.protocol.version', 'messaging.protocol_version'],
     changelog: [
@@ -27291,7 +27291,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https',
     deprecation: {
       replacement: 'url.scheme',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['url.scheme'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -27308,7 +27308,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
@@ -27343,7 +27343,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 404,
     deprecation: {
       replacement: 'http.response.status_code',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['http.response.status_code'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -27408,7 +27408,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url'],
     changelog: [
@@ -27430,7 +27430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     deprecation: {
       replacement: 'user_agent.original',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user_agent.original'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -29123,7 +29123,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.local.address',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.local.address', 'net.sock.host.addr'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -29141,7 +29141,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'net.peer.name'],
     changelog: [
@@ -29163,7 +29163,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1337,
     deprecation: {
       replacement: 'server.port',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['server.port', 'port'],
     changelog: [
@@ -29185,7 +29185,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.peer.address', 'net.sock.peer.addr'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -29240,7 +29240,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'http',
     deprecation: {
       replacement: 'network.protocol.name',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
     changelog: [
@@ -29261,7 +29261,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version'],
     changelog: [
@@ -29298,7 +29298,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/var/my.sock',
     deprecation: {
       replacement: 'network.local.address',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.local.address', 'net.host.ip'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -29315,7 +29315,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8080,
     deprecation: {
       replacement: 'network.local.port',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.local.port'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -29332,7 +29332,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.peer.address', 'net.peer.ip'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -29364,7 +29364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8080,
     deprecation: {
       replacement: 'network.peer.port',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['network.peer.port'],
     changelog: [
@@ -30159,7 +30159,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.name',
       reason: 'Prefer OTel-aligned process.runtime.name',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['process.runtime.name'],
     changelog: [
@@ -30184,7 +30184,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.description',
       reason: 'Prefer OTel-aligned process.runtime.description',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['process.runtime.description'],
     changelog: [
@@ -30208,7 +30208,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.version',
       reason: 'Prefer OTel-aligned process.runtime.version',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['process.runtime.version'],
     changelog: [
@@ -30299,7 +30299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     deprecation: {
       replacement: 'browser.name',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['browser.name'],
     changelog: [{ version: '0.1.0', prs: [139] }],
@@ -30319,7 +30319,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '120.0.6099.130',
     deprecation: {
       replacement: 'browser.version',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['browser.version'],
     changelog: [{ version: '0.1.0', prs: [139] }],
@@ -31437,7 +31437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.email',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user.email'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -31456,7 +31456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.city',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user.geo.city'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -31475,7 +31475,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.country_code',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user.geo.country_code'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -31494,7 +31494,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.region',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user.geo.region'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -31513,7 +31513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.subdivision',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user.geo.subdivision'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -31532,7 +31532,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.id',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user.id'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -31551,7 +31551,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.ip_address',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user.ip_address'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -31570,7 +31570,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.name',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['user.name'],
     changelog: [{ version: '0.10.0', prs: [406] }],
@@ -32150,7 +32150,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
-      status: 'backfill',
+      status: 'normalize',
     },
     aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url'],
     changelog: [

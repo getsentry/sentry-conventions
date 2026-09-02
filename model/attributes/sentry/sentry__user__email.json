@@ -9,7 +9,7 @@
   "alias": ["user.email"],
   "deprecation": {
     "replacement": "user.email",
-    "_status": "backfill"
+    "_status": "normalize"
   },
   "visibility": "public",
   "search_alias": {

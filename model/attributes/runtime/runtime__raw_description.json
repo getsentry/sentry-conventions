@@ -11,7 +11,7 @@
   "deprecation": {
     "replacement": "process.runtime.description",
     "reason": "Prefer OTel-aligned process.runtime.description",
-    "_status": "backfill"
+    "_status": "normalize"
   },
   "alias": ["process.runtime.description"],
   "changelog": [
