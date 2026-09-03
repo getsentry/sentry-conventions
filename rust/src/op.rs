@@ -129,22 +129,31 @@ pub const UI_ACTION: &str = "ui.action";
 
 pub const UI_ACTION_CLICK: &str = "ui.action.click";
 
+#[deprecated(note = "Use `UI` (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_REACT: &str = "ui.react";
 
+#[deprecated(note = "Use `UI_MOUNT` (ui.mount) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_REACT_MOUNT: &str = "ui.react.mount";
 
+#[deprecated(note = "Use `UI_RENDER` (ui.render) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_REACT_RENDER: &str = "ui.react.render";
 
+#[deprecated(note = "Use `UI_UPDATE` (ui.update) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_REACT_UPDATE: &str = "ui.react.update";
 
+#[deprecated(note = "Use `UI` (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_VUE: &str = "ui.vue";
 
+#[deprecated(note = "Use `UI` (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_SVELTE: &str = "ui.svelte";
 
+#[deprecated(note = "Use `UI` (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_ANGULAR: &str = "ui.angular";
 
+#[deprecated(note = "Use `UI` (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_EMBER: &str = "ui.ember";
 
+#[deprecated(note = "Use `UI` (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_LIVEWIRE: &str = "ui.livewire";
 
 // Path: model/op/database.json
