@@ -7,6 +7,7 @@
       "ops": ["http.client", "http.client.stream"],
       "templates": [
         "{{http.request.method}} {{url.full}} ({{graphql.operation.type}} {{graphql.operation.name}})",
+        "{{http.request.method}} {{url.full}} ({{graphql.operation.type}})",
         "{{http.request.method}} {{url.full}}"
       ],
       "examples": [
