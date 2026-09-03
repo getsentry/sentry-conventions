@@ -1,0 +1,13 @@
+{
+  "brief": "Serverless (FAAS)",
+  "operations": [
+    {
+      "name": "Serverless function execution",
+      "brief": "The invocation of a serverless function on a cloud provider.",
+      "is_in_otel": false,
+      "ops": ["function.aws", "function.gcp", "function.azure"],
+      "templates": ["{{faas.name}}", "Serverless function execution"],
+      "examples": ["my_function", "process-upload", "Serverless function execution"]
+    }
+  ]
+}
