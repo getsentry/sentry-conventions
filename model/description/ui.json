@@ -1,0 +1,40 @@
+{
+  "brief": "UI",
+  "operations": [
+    {
+      "name": "Component lifecycle",
+      "brief": "Mounting, updating, rendering or unmounting of a UI component.",
+      "ops": ["ui.mount", "ui.update", "ui.render", "ui.unmount"],
+      "templates": ["{{ui.component_name}}"],
+      "examples": ["HomeButton"]
+    },
+    {
+      "name": "Long animation frame",
+      "brief": "A long animation frame, as reported by the Long Animation Frames API.",
+      "ops": ["ui.long_animation_frame"],
+      "templates": ["{{browser.script.invoker}}", "{{code.function.name}}", "{{code.file.path}}"],
+      "examples": ["Window.requestAnimationFrame", "IMG#hero.onload", "onScroll", "https://example.com/static/app.js"]
+    },
+    {
+      "name": "User action",
+      "brief": "A user action and everything it triggers.",
+      "ops": ["ui.action", "ui.action.click"],
+      "templates": ["{{router.navigation.route.id}}", "{{url.template}}", "{{url.path}}"],
+      "examples": ["UserProfile", "/users/:id", "/users/123"]
+    },
+    {
+      "name": "Interaction",
+      "brief": "An interaction measured via Interaction to Next Paint (INP).",
+      "ops": ["ui.interaction.click", "ui.interaction.hover", "ui.interaction.drag", "ui.interaction.press"],
+      "templates": ["{{ui.element.selector}}", "{{ui.component_name}}"],
+      "examples": ["body > div#app > div#container > button.submit", "HomeButton"]
+    },
+    {
+      "name": "Largest Contentful Paint",
+      "brief": "A Largest Contentful Paint (LCP) web vital measurement.",
+      "ops": ["ui.webvital.lcp"],
+      "templates": ["{{browser.web_vital.lcp.element}}", "{{browser.web_vital.lcp.url}}"],
+      "examples": ["body > div#app > div#container > img", "https://assets.example.com/hero.png"]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "key": "ui.element.selector",
+  "brief": "The HTML element selector or component name of the UI element a span refers to, for example the element a user interacted with.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["body > div#app > div#container > button.submit", "HomeButton"],
+  "additional_context": [
+    "Typically a CSS-like path built from the DOM tree of the element. Web vital spans use the vital-specific `browser.web_vital.*` attributes (e.g. `browser.web_vital.lcp.element`) instead."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [620],
+      "description": "Added ui.element.selector attribute"
+    }
+  ]
+}

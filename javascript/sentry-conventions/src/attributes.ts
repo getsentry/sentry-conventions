@@ -17188,6 +17188,28 @@ export const UI_ELEMENT_RENDER_TIME = 'ui.element.render_time';
  */
 export type UI_ELEMENT_RENDER_TIME_TYPE = number;
 
+// Path: model/attributes/ui/ui__element__selector.json
+
+/**
+ * The HTML element selector or component name of the UI element a span refers to, for example the element a user interacted with. `ui.element.selector`
+ *
+ * Attribute Value Type: `string` {@link UI_ELEMENT_SELECTOR_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "body > div#app > div#container > button.submit"
+ * @example "HomeButton"
+ */
+export const UI_ELEMENT_SELECTOR = 'ui.element.selector';
+
+/**
+ * Type for {@link UI_ELEMENT_SELECTOR} ui.element.selector
+ */
+export type UI_ELEMENT_SELECTOR_TYPE = string;
+
 // Path: model/attributes/ui/ui__element__type.json
 
 /**
@@ -19442,6 +19464,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ui.element.load_time': 'double',
   'ui.element.paint_type': 'string',
   'ui.element.render_time': 'double',
+  'ui.element.selector': 'string',
   'ui.element.type': 'string',
   'ui.element.url': 'string',
   'ui.element.width': 'integer',
@@ -20277,6 +20300,7 @@ export type AttributeName =
   | typeof UI_ELEMENT_LOAD_TIME
   | typeof UI_ELEMENT_PAINT_TYPE
   | typeof UI_ELEMENT_RENDER_TIME
+  | typeof UI_ELEMENT_SELECTOR
   | typeof UI_ELEMENT_TYPE
   | typeof UI_ELEMENT_URL
   | typeof UI_ELEMENT_WIDTH
@@ -32584,6 +32608,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1023.1124,
     changelog: [{ version: '0.5.0', prs: [284], description: 'Added ui.element.render_time attribute' }],
   },
+  'ui.element.selector': {
+    brief:
+      'The HTML element selector or component name of the UI element a span refers to, for example the element a user interacted with.',
+    type: 'string',
+    keys: ['ui.element.selector'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'body > div#app > div#container > button.submit',
+    examples: ['body > div#app > div#container > button.submit', 'HomeButton'],
+    changelog: [{ version: 'next', prs: [620], description: 'Added ui.element.selector attribute' }],
+    additionalContext: [
+      'Typically a CSS-like path built from the DOM tree of the element. Web vital spans use the vital-specific `browser.web_vital.*` attributes (e.g. `browser.web_vital.lcp.element`) instead.',
+    ],
+  },
   'ui.element.type': {
     brief: 'type of the UI element',
     type: 'string',
@@ -38301,6 +38342,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The rendering time of the UI element (from time origin to finished rendering)',
     deprecationChain: ['ui.element.render_time'],
   },
+  'ui.element.selector': {
+    canonicalName: 'ui.element.selector',
+    type: 'string',
+    brief:
+      'The HTML element selector or component name of the UI element a span refers to, for example the element a user interacted with.',
+    deprecationChain: ['ui.element.selector'],
+  },
   'ui.element.type': {
     canonicalName: 'ui.element.type',
     type: 'string',
@@ -39470,6 +39518,7 @@ export type Attributes = {
   [UI_ELEMENT_LOAD_TIME]?: UI_ELEMENT_LOAD_TIME_TYPE;
   [UI_ELEMENT_PAINT_TYPE]?: UI_ELEMENT_PAINT_TYPE_TYPE;
   [UI_ELEMENT_RENDER_TIME]?: UI_ELEMENT_RENDER_TIME_TYPE;
+  [UI_ELEMENT_SELECTOR]?: UI_ELEMENT_SELECTOR_TYPE;
   [UI_ELEMENT_TYPE]?: UI_ELEMENT_TYPE_TYPE;
   [UI_ELEMENT_URL]?: UI_ELEMENT_URL_TYPE;
   [UI_ELEMENT_WIDTH]?: UI_ELEMENT_WIDTH_TYPE;
