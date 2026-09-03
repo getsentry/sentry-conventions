@@ -366,8 +366,10 @@ pub const VIEW: &str = "view";
 
 pub const TEMPLATE: &str = "template";
 
+#[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
 pub const FUNCTION_REMIX: &str = "function.remix";
 
+#[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
 pub const FUNCTION_NEXTJS: &str = "function.nextjs";
 
 pub const CONSOLE: &str = "console";

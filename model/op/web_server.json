@@ -48,10 +48,18 @@
       "name": "function"
     },
     {
-      "name": "function.remix"
+      "name": "function.remix",
+      "deprecation": {
+        "replacement": "function",
+        "reason": "Framework-specific function ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "function.nextjs"
+      "name": "function.nextjs",
+      "deprecation": {
+        "replacement": "function",
+        "reason": "Framework-specific function ops are replaced by framework-agnostic ones."
+      }
     },
     {
       "name": "serialize"

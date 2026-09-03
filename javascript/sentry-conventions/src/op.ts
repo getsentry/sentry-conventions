@@ -545,8 +545,14 @@ export const VIEW = 'view';
 
 export const TEMPLATE = 'template';
 
+/**
+ * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.
+ */
 export const FUNCTION_REMIX = 'function.remix';
 
+/**
+ * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.
+ */
 export const FUNCTION_NEXTJS = 'function.nextjs';
 
 export const CONSOLE = 'console';
