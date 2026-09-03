@@ -125,6 +125,16 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
   - If the value cannot be copied directly to the replacement attribute, use `_status: "transform"` and reference an attribute transformation with `deprecation.transformation`.
 - Prefer keeping names stable. Renames require deprecation cycles across all SDKs that adopted the attribute!
 
+### Span operations
+
+Span ops live in `model/op/` and are shipped to SDKs as generated constants, so they can't just be removed.
+
+- Deprecate an op instead of deleting it, by adding a `deprecation` object to its field in `model/op/<category>.json`.
+- Point at the successor with `deprecation.replacement` whenever there is one. It MUST be an existing, non-deprecated op.
+- Add a `deprecation.reason` if the replacement alone doesn't explain the change.
+- If the op is listed in more than one category, all of its definitions MUST declare the same `deprecation`, because they share a single generated constant.
+- Run `yarn run generate` afterwards. Deprecated ops keep their constant, marked with a JSDoc `@deprecated` tag in JavaScript and `#[deprecated]` in Rust.
+
 ## Testing
 
 This repo uses [Vitest](https://vitest.dev/) for testing. To run the tests, run `yarn test`.

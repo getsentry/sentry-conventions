@@ -53,6 +53,21 @@ export interface DescriptionJson {
   }[];
 }
 
+export interface OpFieldJson {
+  name: string;
+  description?: string;
+  deprecation?: {
+    replacement?: string;
+    reason?: string;
+  };
+}
+
+export interface OpJson {
+  name: string;
+  description?: string;
+  fields: OpFieldJson[];
+}
+
 export interface AttributeTransformationJson {
   id: string;
   brief: string;

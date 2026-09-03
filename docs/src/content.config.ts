@@ -109,6 +109,12 @@ const descriptions = defineCollection({
 const opFieldSchema = z.object({
   name: z.string(),
   description: z.string().optional(),
+  deprecation: z
+    .object({
+      replacement: z.string().optional(),
+      reason: z.string().optional(),
+    })
+    .optional(),
 });
 
 const opSchema = z.object({
