@@ -1,0 +1,21 @@
+{
+  "key": "sveltekit.load.environment",
+  "brief": "The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["server", "client"],
+  "additional_context": [
+    "Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [611],
+      "description": "Added sveltekit.load.environment attribute"
+    }
+  ]
+}
