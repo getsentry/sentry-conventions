@@ -197,22 +197,49 @@ export const UI_ACTION = 'ui.action';
 
 export const UI_ACTION_CLICK = 'ui.action.click';
 
+/**
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_REACT = 'ui.react';
 
+/**
+ * @deprecated Use {@link UI_MOUNT} (ui.mount) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_REACT_MOUNT = 'ui.react.mount';
 
+/**
+ * @deprecated Use {@link UI_RENDER} (ui.render) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_REACT_RENDER = 'ui.react.render';
 
+/**
+ * @deprecated Use {@link UI_UPDATE} (ui.update) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_REACT_UPDATE = 'ui.react.update';
 
+/**
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_VUE = 'ui.vue';
 
+/**
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_SVELTE = 'ui.svelte';
 
+/**
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_ANGULAR = 'ui.angular';
 
+/**
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_EMBER = 'ui.ember';
 
+/**
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ */
 export const UI_LIVEWIRE = 'ui.livewire';
 
 // Path: model/op/database.json
@@ -518,8 +545,14 @@ export const VIEW = 'view';
 
 export const TEMPLATE = 'template';
 
+/**
+ * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.
+ */
 export const FUNCTION_REMIX = 'function.remix';
 
+/**
+ * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.
+ */
 export const FUNCTION_NEXTJS = 'function.nextjs';
 
 export const CONSOLE = 'console';
