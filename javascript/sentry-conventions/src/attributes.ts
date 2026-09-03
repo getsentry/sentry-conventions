@@ -5605,7 +5605,7 @@ export type DEVICE_CHIPSET_TYPE = string;
 // Path: model/attributes/device/device__class.json
 
 /**
- * The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly. `device.class`
+ * The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly. `device.class`
  *
  * Attribute Value Type: `string` {@link DEVICE_CLASS_TYPE}
  *
@@ -5614,7 +5614,11 @@ export type DEVICE_CHIPSET_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "medium"
+ * Aliases: {@link SENTRY_DEVICE_CLASS} `sentry.device.class`
+ *
+ * @example "1"
+ * @example "2"
+ * @example "3"
  */
 export const DEVICE_CLASS = 'device.class';
 
@@ -14668,6 +14672,32 @@ export const SENTRY_DESCRIPTION = 'sentry.description';
  */
 export type SENTRY_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__device__class.json
+
+/**
+ * The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly. `sentry.device.class`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_DEVICE_CLASS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link DEVICE_CLASS} `device.class`
+ *
+ * @deprecated Use {@link DEVICE_CLASS} (device.class) instead - Deprecated in favor of device.class
+ * @example "1"
+ * @example "2"
+ * @example "3"
+ */
+export const SENTRY_DEVICE_CLASS = 'sentry.device.class';
+
+/**
+ * Type for {@link SENTRY_DEVICE_CLASS} sentry.device.class
+ */
+export type SENTRY_DEVICE_CLASS_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__dist.json
 
 /**
@@ -19327,6 +19357,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.category': 'string',
   'sentry.client_sample_rate': 'double',
   'sentry.description': 'string',
+  'sentry.device.class': 'string',
   'sentry.dist': 'string',
   'sentry.domain': 'string',
   'sentry.dsc.environment': 'string',
@@ -20162,6 +20193,7 @@ export type AttributeName =
   | typeof SENTRY_CATEGORY
   | typeof SENTRY_CLIENT_SAMPLE_RATE
   | typeof SENTRY_DESCRIPTION
+  | typeof SENTRY_DEVICE_CLASS
   | typeof SENTRY_DIST
   | typeof SENTRY_DOMAIN
   | typeof SENTRY_DSC_ENVIRONMENT
@@ -24209,16 +24241,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'device.class': {
     brief:
-      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+      'The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
-    keys: ['device.class'],
+    keys: ['device.class', 'sentry.device.class'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'medium',
-    changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.class attribute' }],
+    example: '1',
+    examples: ['1', '2', '3'],
+    aliases: ['sentry.device.class'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [604],
+        description: 'Added sentry.device.class as a deprecated alias and documented class codes 1/2/3',
+      },
+      { version: '0.5.0', prs: [300], description: 'Added device.class attribute' },
+    ],
+    additionalContext: [
+      'The product maps these stringified numeric class codes to `low` (`"1"`), `medium` (`"2"`), and `high` (`"3"`).',
+    ],
   },
   'device.connection_type': {
     brief: 'The internet connection type currently being used by the device.',
@@ -30780,6 +30824,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'index view query',
     changelog: [{ version: '0.1.0', prs: [135] }],
   },
+  'sentry.device.class': {
+    brief:
+      'The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    type: 'string',
+    keys: ['device.class', 'sentry.device.class'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '1',
+    examples: ['1', '2', '3'],
+    deprecation: {
+      replacement: 'device.class',
+      reason: 'Deprecated in favor of device.class',
+      status: 'backfill',
+    },
+    aliases: ['device.class'],
+    changelog: [
+      { version: 'next', prs: [604], description: 'Added and deprecated sentry.device.class in favor of device.class' },
+    ],
+    additionalContext: [
+      'The product maps these stringified numeric class codes to `low` (`"1"`), `medium` (`"2"`), and `high` (`"3"`).',
+    ],
+  },
   'sentry.dist': {
     brief: 'The sentry dist.',
     type: 'string',
@@ -35027,8 +35096,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'device.class',
     type: 'string',
     brief:
-      'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
-    deprecationChain: ['device.class'],
+      'The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    deprecationChain: ['device.class', 'sentry.device.class'],
   },
   'device.connection_type': {
     canonicalName: 'network.connection.type',
@@ -37655,6 +37724,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The human-readable description of a span.',
     deprecationChain: ['sentry.description'],
   },
+  'sentry.device.class': {
+    canonicalName: 'device.class',
+    type: 'string',
+    brief:
+      'The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
+    deprecationChain: ['device.class', 'sentry.device.class'],
+  },
   'sentry.dist': {
     canonicalName: 'sentry.dist',
     type: 'string',
@@ -39355,6 +39431,7 @@ export type Attributes = {
   [SENTRY_CATEGORY]?: SENTRY_CATEGORY_TYPE;
   [SENTRY_CLIENT_SAMPLE_RATE]?: SENTRY_CLIENT_SAMPLE_RATE_TYPE;
   [SENTRY_DESCRIPTION]?: SENTRY_DESCRIPTION_TYPE;
+  [SENTRY_DEVICE_CLASS]?: SENTRY_DEVICE_CLASS_TYPE;
   [SENTRY_DIST]?: SENTRY_DIST_TYPE;
   [SENTRY_DOMAIN]?: SENTRY_DOMAIN_TYPE;
   [SENTRY_DSC_ENVIRONMENT]?: SENTRY_DSC_ENVIRONMENT_TYPE;
