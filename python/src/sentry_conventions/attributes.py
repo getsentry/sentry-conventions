@@ -10042,6 +10042,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1023.1124
     """
 
+    # Path: model/attributes/ui/ui__element__selector.json
+    UI_ELEMENT_SELECTOR: Literal["ui.element.selector"] = "ui.element.selector"
+    """The HTML element selector or component name of the UI element a span refers to, for example the element a user interacted with.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "body > div#app > div#container > button.submit"
+    Example: "HomeButton"
+    """
+
     # Path: model/attributes/ui/ui__element__type.json
     UI_ELEMENT_TYPE: Literal["ui.element.type"] = "ui.element.type"
     """type of the UI element
@@ -25165,6 +25177,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "ui.element.selector": AttributeMetadata(
+        brief="The HTML element selector or component name of the UI element a span refers to, for example the element a user interacted with.",
+        type=AttributeType.STRING,
+        keys=("ui.element.selector",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="body > div#app > div#container > button.submit",
+        examples=["body > div#app > div#container > button.submit", "HomeButton"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[620],
+                description="Added ui.element.selector attribute",
+            ),
+        ],
+        additional_context=[
+            "Typically a CSS-like path built from the DOM tree of the element. Web vital spans use the vital-specific `browser.web_vital.*` attributes (e.g. `browser.web_vital.lcp.element`) instead."
+        ],
+    ),
     "ui.element.type": AttributeMetadata(
         brief="type of the UI element",
         type=AttributeType.STRING,
@@ -26850,6 +26882,7 @@ Attributes = TypedDict(
         "ui.element.load_time": float,
         "ui.element.paint_type": str,
         "ui.element.render_time": float,
+        "ui.element.selector": str,
         "ui.element.type": str,
         "ui.element.url": str,
         "ui.element.width": int,
