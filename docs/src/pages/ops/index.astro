@@ -90,13 +90,32 @@ const totalOps = allOps.reduce((acc, op) => acc + op.data.fields.length, 0);
             </thead>
             <tbody>
               {op.data.fields.map(field => (
-                <tr>
-                  <td class="whitespace-nowrap align-top"><code class="text-xs">{field.name}</code></td>
+                <tr class:list={[{ 'opacity-70': !!field.deprecation }]}>
+                  <td class="whitespace-nowrap align-top">
+                    <code class:list={['text-xs', { 'line-through': !!field.deprecation }]}>{field.name}</code>
+                    {field.deprecation && (
+                      <span class="badge badge-deprecated ml-2">Deprecated</span>
+                    )}
+                  </td>
                   <td class="text-text-secondary">
                     {field.description ? (
                       <span set:html={renderMarkdownLinks(field.description)} />
-                    ) : (
+                    ) : !field.deprecation ? (
                       <span class="text-text-muted">—</span>
+                    ) : null}
+                    {field.deprecation && (
+                      <div class:list={['p-3 bg-error-soft rounded-md border-l-[3px] border-error', { 'mt-3': !!field.description }]}>
+                        <p class="text-sm m-0">
+                          {field.deprecation.replacement ? (
+                            <Fragment>Use <code class="text-xs">{field.deprecation.replacement}</code> instead.</Fragment>
+                          ) : (
+                            'No replacement available at this time.'
+                          )}
+                        </p>
+                        {field.deprecation.reason && (
+                          <p class="mt-2 text-text-muted text-sm m-0">{field.deprecation.reason}</p>
+                        )}
+                      </div>
                     )}
                   </td>
                 </tr>
