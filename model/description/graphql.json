@@ -1,0 +1,29 @@
+{
+  "brief": "GraphQL",
+  "operations": [
+    {
+      "name": "GraphQL",
+      "brief": "Any and all operations that fall under GraphQL",
+      "ops": [
+        "http.graphql",
+        "http.graphql.query",
+        "http.graphql.mutation",
+        "http.graphql.subscription",
+        "graphql.execute",
+        "graphql.parse",
+        "graphql.resolve",
+        "graphql.request",
+        "graphql.query",
+        "graphql.mutation",
+        "graphql.subscription",
+        "graphql.validate"
+      ],
+      "templates": [
+        "{{graphql.document}}",
+        "{{graphql.operation.type}} {{graphql.operation.name}}",
+        "{{graphql.operation.type}}"
+      ],
+      "examples": ["query findBookById { bookById(id: ?) { name } }", "query findBookById", "query"]
+    }
+  ]
+}
