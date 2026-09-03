@@ -9,12 +9,18 @@
   "example": 1234.56,
   "alias": ["app.vitals.start.cold.value"],
   "deprecation": {
-    "replacement": "app.vitals.start.cold.value",
-    "reason": "Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes",
-    "_status": "backfill"
+    "replacement": "app.vitals.start.value",
+    "reason": "Replaced by app.vitals.start.value plus app.vitals.start.type",
+    "_status": "transform",
+    "transformation": "app_vitals_start_cold_warm_to_value"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [576],
+      "description": "Retargeted deprecation replacement to app.vitals.start.value via transform"
+    },
     {
       "version": "0.5.0",
       "prs": [323],
