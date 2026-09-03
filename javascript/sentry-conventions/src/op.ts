@@ -213,46 +213,64 @@ export const UI_ACTION_CLICK = 'ui.action.click';
 
 /**
  * Legacy React UI operation. Prefer ui.mount, ui.render, and ui.update.
+ *
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_REACT = 'ui.react';
 
 /**
  * Legacy React component mount. Prefer ui.mount.
+ *
+ * @deprecated Use {@link UI_MOUNT} (ui.mount) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_REACT_MOUNT = 'ui.react.mount';
 
 /**
  * Legacy React component render. Prefer ui.render.
+ *
+ * @deprecated Use {@link UI_RENDER} (ui.render) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_REACT_RENDER = 'ui.react.render';
 
 /**
  * Legacy React component update. Prefer ui.update.
+ *
+ * @deprecated Use {@link UI_UPDATE} (ui.update) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_REACT_UPDATE = 'ui.react.update';
 
 /**
  * Legacy Vue UI operation. Prefer ui.mount, ui.render, ui.update, and ui.unmount.
+ *
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_VUE = 'ui.vue';
 
 /**
  * Legacy Svelte UI operation. Prefer ui.mount and ui.update.
+ *
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_SVELTE = 'ui.svelte';
 
 /**
  * Legacy Angular UI operation. Prefer ui.mount.
+ *
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_ANGULAR = 'ui.angular';
 
 /**
  * Legacy Ember UI operation. Prefer ui.mount, ui.render, ui.task, and ui.resolve.
+ *
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_EMBER = 'ui.ember';
 
 /**
  * Legacy Livewire UI operation. Prefer ui.mount, ui.render, and ui.update.
+ *
+ * @deprecated Use {@link UI} (ui) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_LIVEWIRE = 'ui.livewire';
 
