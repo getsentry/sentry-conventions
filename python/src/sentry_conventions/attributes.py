@@ -3352,7 +3352,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.statement, query
@@ -15165,7 +15165,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "db.statement",
             "query",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT * FROM users WHERE id = $1",
