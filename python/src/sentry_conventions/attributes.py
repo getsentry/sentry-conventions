@@ -364,6 +364,7 @@ class _AttributeNamesMeta(type):
         "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_DEVICE_CLASS",
         "SENTRY_FRAMES_FROZEN",
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
@@ -3561,13 +3562,16 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/device/device__class.json
     DEVICE_CLASS: Literal["device.class"] = "device.class"
-    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
+    """The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Example: "medium"
+    Aliases: sentry.device.class
+    Example: "1"
+    Example: "2"
+    Example: "3"
     """
 
     # Path: model/attributes/device/device__connection_type.json
@@ -8644,6 +8648,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "index view query"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__class.json
+    SENTRY_DEVICE_CLASS: Literal["sentry.device.class"] = "sentry.device.class"
+    """The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.class
+    DEPRECATED: Use device.class instead - Deprecated in favor of device.class
+    Example: "1"
+    Example: "2"
+    Example: "3"
     """
 
     # Path: model/attributes/sentry/sentry__dist.json
@@ -15457,17 +15476,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "device.class": AttributeMetadata(
-        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        brief="The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
-        keys=("device.class",),
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="medium",
+        example="1",
+        examples=["1", "2", "3"],
+        aliases=["sentry.device.class"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[604],
+                description="Added sentry.device.class as a deprecated alias and documented class codes 1/2/3",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[300], description="Added device.class attribute"
             ),
+        ],
+        additional_context=[
+            'The product maps these stringified numeric class codes to `low` (`"1"`), `medium` (`"2"`), and `high` (`"3"`).'
         ],
     ),
     "device.connection_type": AttributeMetadata(
@@ -23134,6 +23166,35 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[135]),
         ],
     ),
+    "sentry.device.class": AttributeMetadata(
+        brief="The classification of the device. For example, `1`, `2`, or `3`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="1",
+        examples=["1", "2", "3"],
+        deprecation=DeprecationInfo(
+            replacement="device.class",
+            reason="Deprecated in favor of device.class",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["device.class"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[604],
+                description="Added and deprecated sentry.device.class in favor of device.class",
+            ),
+        ],
+        additional_context=[
+            'The product maps these stringified numeric class codes to `low` (`"1"`), `medium` (`"2"`), and `high` (`"3"`).'
+        ],
+    ),
     "sentry.dist": AttributeMetadata(
         brief="The sentry dist.",
         type=AttributeType.STRING,
@@ -26735,6 +26796,7 @@ Attributes = TypedDict(
         "sentry.category": str,
         "sentry.client_sample_rate": float,
         "sentry.description": str,
+        "sentry.device.class": str,
         "sentry.dist": str,
         "sentry.domain": str,
         "sentry.dsc.environment": str,
