@@ -1,0 +1,22 @@
+{
+  "key": "app.vitals.start.value",
+  "brief": "The duration of an app start in milliseconds. Use with app.vitals.start.type to distinguish cold vs warm starts.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": 1234.56,
+  "visibility": "public",
+  "additional_context": [
+    "Send this together with app.vitals.start.type (`cold` or `warm`). This replaces app.vitals.start.cold.value and app.vitals.start.warm.value.",
+    "Not aliased to the cold/warm attributes: those names are type-specific, not 1:1 copies of this key. Ingest derives this attribute (and type) from the older names via the app_vitals_start_cold_warm_to_value transformation."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [576],
+      "description": "Added app.vitals.start.value as the unified app start duration"
+    }
+  ]
+}

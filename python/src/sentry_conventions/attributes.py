@@ -207,6 +207,8 @@ class _AttributeNamesMeta(type):
         "APP_APP_NAME",
         "APP_APP_START_TIME",
         "APP_APP_VERSION",
+        "APP_VITALS_START_COLD_VALUE",
+        "APP_VITALS_START_WARM_VALUE",
         "APP_START_COLD",
         "APP_START_TYPE",
         "APP_START_WARM",
@@ -1307,6 +1309,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: app_start_cold
+    DEPRECATED: Use app.vitals.start.value instead - Replaced by app.vitals.start.value plus app.vitals.start.type. Cold and warm are not aliases of the unified value because they are mutually exclusive type-specific names.
     Example: 1234.56
     """
 
@@ -1361,6 +1364,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "cold"
     """
 
+    # Path: model/attributes/app/app__vitals__start__value.json
+    APP_VITALS_START_VALUE: Literal["app.vitals.start.value"] = "app.vitals.start.value"
+    """The duration of an app start in milliseconds. Use with app.vitals.start.type to distinguish cold vs warm starts.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1234.56
+    """
+
     # Path: model/attributes/app/app__vitals__start__warm__value.json
     APP_VITALS_START_WARM_VALUE: Literal["app.vitals.start.warm.value"] = (
         "app.vitals.start.warm.value"
@@ -1372,6 +1386,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: app_start_warm
+    DEPRECATED: Use app.vitals.start.value instead - Replaced by app.vitals.start.value plus app.vitals.start.type. Cold and warm are not aliases of the unified value because they are mutually exclusive type-specific names.
     Example: 1234.56
     """
 
@@ -1408,7 +1423,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.start.cold.value
-    DEPRECATED: Use app.vitals.start.cold.value instead - Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes
+    DEPRECATED: Use app.vitals.start.value instead - Replaced by app.vitals.start.value plus app.vitals.start.type
     Example: 1234.56
     """
 
@@ -1434,7 +1449,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: app.vitals.start.warm.value
-    DEPRECATED: Use app.vitals.start.warm.value instead - Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes
+    DEPRECATED: Use app.vitals.start.value instead - Replaced by app.vitals.start.value plus app.vitals.start.type
     Example: 1234.56
     """
 
@@ -12276,16 +12291,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app.vitals.start.cold.value": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
         type=AttributeType.DOUBLE,
-        keys=(
-            "app.vitals.start.cold.value",
-            "app_start_cold",
-        ),
+        keys=("app.vitals.start.cold.value",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.start.value",
+            reason="Replaced by app.vitals.start.value plus app.vitals.start.type. Cold and warm are not aliases of the unified value because they are mutually exclusive type-specific names.",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="app_vitals_start_cold_warm_to_value",
+        ),
         aliases=["app_start_cold"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[576],
+                description="Deprecated in favor of app.vitals.start.value plus app.vitals.start.type via transform",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -12361,19 +12384,47 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "app.vitals.start.warm.value": AttributeMetadata(
-        brief="The duration of a warm app start in milliseconds",
+    "app.vitals.start.value": AttributeMetadata(
+        brief="The duration of an app start in milliseconds. Use with app.vitals.start.type to distinguish cold vs warm starts.",
         type=AttributeType.DOUBLE,
-        keys=(
-            "app.vitals.start.warm.value",
-            "app_start_warm",
-        ),
+        keys=("app.vitals.start.value",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[576],
+                description="Added app.vitals.start.value as the unified app start duration",
+            ),
+        ],
+        additional_context=[
+            "Send this together with app.vitals.start.type (`cold` or `warm`). This replaces app.vitals.start.cold.value and app.vitals.start.warm.value.",
+            "Not aliased to the cold/warm attributes: those names are type-specific, not 1:1 copies of this key. Ingest derives this attribute (and type) from the older names via the app_vitals_start_cold_warm_to_value transformation.",
+        ],
+    ),
+    "app.vitals.start.warm.value": AttributeMetadata(
+        brief="The duration of a warm app start in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("app.vitals.start.warm.value",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1234.56,
+        deprecation=DeprecationInfo(
+            replacement="app.vitals.start.value",
+            reason="Replaced by app.vitals.start.value plus app.vitals.start.type. Cold and warm are not aliases of the unified value because they are mutually exclusive type-specific names.",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="app_vitals_start_cold_warm_to_value",
+        ),
         aliases=["app_start_warm"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[576],
+                description="Deprecated in favor of app.vitals.start.value plus app.vitals.start.type via transform",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[313],
@@ -12424,21 +12475,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app_start_cold": AttributeMetadata(
         brief="The duration of a cold app start in milliseconds",
         type=AttributeType.DOUBLE,
-        keys=(
-            "app.vitals.start.cold.value",
-            "app_start_cold",
-        ),
+        keys=("app_start_cold",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
         deprecation=DeprecationInfo(
-            replacement="app.vitals.start.cold.value",
-            reason="Replaced by app.vitals.start.cold.value to align with the app.vitals.* namespace for mobile performance attributes",
-            status=DeprecationStatus.BACKFILL,
+            replacement="app.vitals.start.value",
+            reason="Replaced by app.vitals.start.value plus app.vitals.start.type",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="app_vitals_start_cold_warm_to_value",
         ),
         aliases=["app.vitals.start.cold.value"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[576],
+                description="Retargeted deprecation replacement to app.vitals.start.value via transform",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[323],
@@ -12476,21 +12530,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "app_start_warm": AttributeMetadata(
         brief="The duration of a warm app start in milliseconds",
         type=AttributeType.DOUBLE,
-        keys=(
-            "app.vitals.start.warm.value",
-            "app_start_warm",
-        ),
+        keys=("app_start_warm",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1234.56,
         deprecation=DeprecationInfo(
-            replacement="app.vitals.start.warm.value",
-            reason="Replaced by app.vitals.start.warm.value to align with the app.vitals.* namespace for mobile performance attributes",
-            status=DeprecationStatus.BACKFILL,
+            replacement="app.vitals.start.value",
+            reason="Replaced by app.vitals.start.value plus app.vitals.start.type",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="app_vitals_start_cold_warm_to_value",
         ),
         aliases=["app.vitals.start.warm.value"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[576],
+                description="Retargeted deprecation replacement to app.vitals.start.value via transform",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[323],
@@ -26155,6 +26212,7 @@ Attributes = TypedDict(
         "app.vitals.start.reason": str,
         "app.vitals.start.screen": str,
         "app.vitals.start.type": str,
+        "app.vitals.start.value": float,
         "app.vitals.start.warm.value": float,
         "app.vitals.ttfd.value": float,
         "app.vitals.ttid.value": float,

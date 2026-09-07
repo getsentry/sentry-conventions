@@ -1,0 +1,82 @@
+{
+  "id": "app_vitals_start_cold_warm_to_value",
+  "brief": "Derive unified app.vitals.start.value and app.vitals.start.type from the type-specific cold and warm duration attributes. Cold and warm are mutually exclusive, so they are not 1:1 aliases of the unified key.",
+  "inputs": [
+    {
+      "attribute": "app.vitals.start.cold.value",
+      "brief": "Deprecated cold app start duration."
+    },
+    {
+      "attribute": "app.vitals.start.warm.value",
+      "brief": "Deprecated warm app start duration."
+    },
+    {
+      "attribute": "app_start_cold",
+      "brief": "Legacy cold app start duration."
+    },
+    {
+      "attribute": "app_start_warm",
+      "brief": "Legacy warm app start duration."
+    }
+  ],
+  "outputs": [
+    {
+      "attribute": "app.vitals.start.value",
+      "brief": "Unified app start duration in milliseconds."
+    },
+    {
+      "attribute": "app.vitals.start.type",
+      "brief": "App start type, cold or warm."
+    }
+  ],
+  "actions": [
+    "If app.vitals.start.value is already present, keep it and do not overwrite it.",
+    "Prefer app.vitals.start.cold.value over app_start_cold, and app.vitals.start.warm.value over app_start_warm, when both a namespaced and a legacy name are present.",
+    "If a cold duration is present and app.vitals.start.value is missing, copy that duration to app.vitals.start.value and set app.vitals.start.type to \"cold\" when type is missing.",
+    "Otherwise, if a warm duration is present and app.vitals.start.value is missing, copy that duration to app.vitals.start.value and set app.vitals.start.type to \"warm\" when type is missing.",
+    "Do not copy a source duration that exceeds 180000 milliseconds.",
+    "Leave the source cold and warm attributes in place. Do not treat cold and warm as interchangeable copies of the unified key."
+  ],
+  "examples": [
+    {
+      "name": "cold namespaced duration",
+      "input": {
+        "app.vitals.start.cold.value": 1234.0
+      },
+      "output": {
+        "app.vitals.start.value": 1234.0,
+        "app.vitals.start.type": "cold"
+      }
+    },
+    {
+      "name": "warm namespaced duration",
+      "input": {
+        "app.vitals.start.warm.value": 567.0
+      },
+      "output": {
+        "app.vitals.start.value": 567.0,
+        "app.vitals.start.type": "warm"
+      }
+    },
+    {
+      "name": "legacy cold duration",
+      "input": {
+        "app_start_cold": 1234.0
+      },
+      "output": {
+        "app.vitals.start.value": 1234.0,
+        "app.vitals.start.type": "cold"
+      }
+    },
+    {
+      "name": "legacy warm duration",
+      "input": {
+        "app_start_warm": 567.0
+      },
+      "output": {
+        "app.vitals.start.value": 567.0,
+        "app.vitals.start.type": "warm"
+      }
+    }
+  ]
+}
