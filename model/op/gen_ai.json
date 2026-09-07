@@ -29,6 +29,18 @@
     {
       "name": "gen_ai.rerank",
       "description": "Reranking of documents or results by a generative AI model"
+    },
+    {
+      "name": "gen_ai.create_agent",
+      "description": "Creation of an AI agent that can later be invoked to perform a task"
+    },
+    {
+      "name": "gen_ai.responses",
+      "description": "An interaction with a generative AI model through a responses API"
+    },
+    {
+      "name": "gen_ai.text_completion",
+      "description": "A text completion request to a generative AI model"
     }
   ]
 }

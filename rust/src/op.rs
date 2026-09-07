@@ -200,6 +200,15 @@ pub const GEN_AI_GENERATE_CONTENT: &str = "gen_ai.generate_content";
 /// Reranking of documents or results by a generative AI model
 pub const GEN_AI_RERANK: &str = "gen_ai.rerank";
 
+/// Creation of an AI agent that can later be invoked to perform a task
+pub const GEN_AI_CREATE_AGENT: &str = "gen_ai.create_agent";
+
+/// An interaction with a generative AI model through a responses API
+pub const GEN_AI_RESPONSES: &str = "gen_ai.responses";
+
+/// A text completion request to a generative AI model
+pub const GEN_AI_TEXT_COMPLETION: &str = "gen_ai.text_completion";
+
 // Path: model/op/general.json
 // Name: general
 

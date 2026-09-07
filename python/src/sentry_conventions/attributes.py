@@ -297,6 +297,7 @@ class _AttributeNamesMeta(type):
         "HTTP_USER_AGENT",
         "INP",
         "KOA_NAME",
+        "LANGCHAIN_CHAIN_NAME",
         "LCP_ELEMENT",
         "LCP_ID",
         "LCP_LOADTIME",
@@ -322,6 +323,9 @@ class _AttributeNamesMeta(type):
         "MESSAGING_RABBITMQ_ROUTING_KEY",
         "MESSAGING_URL",
         "METHOD",
+        "NAVIGATION_ORIGIN",
+        "NAVIGATION_ROUTE_ID",
+        "NAVIGATION_TYPE",
         "NET_HOST_IP",
         "NET_HOST_NAME",
         "NET_HOST_PORT",
@@ -420,7 +424,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: server.address, http.server_name, net.host.name, http.host, server_name, net.peer.name
+    Aliases: server.address, http.server_name, net.host.name, http.host, net.peer.name
     DEPRECATED: Use server.address instead - Old namespace-less attribute, to be replaced with server.address for span-first future
     Example: "example.com"
     """
@@ -600,7 +604,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.pipeline.name
+    Aliases: gen_ai.pipeline.name, langchain.chain.name
     DEPRECATED: Use gen_ai.pipeline.name instead
     Example: "Autofix Pipeline"
     """
@@ -2242,6 +2246,35 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Chrome"
     """
 
+    # Path: model/attributes/browser/browser__navigation__type.json
+    BROWSER_NAVIGATION_TYPE: Literal["browser.navigation.type"] = (
+        "browser.navigation.type"
+    )
+    """The type of navigation the browser performed to arrive at the page the metrics were measured on.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "navigate"
+    Example: "reload"
+    Example: "prerender"
+    Example: "bfcache"
+    Example: "soft-navigation"
+    """
+
+    # Path: model/attributes/browser/browser__paint__type.json
+    BROWSER_PAINT_TYPE: Literal["browser.paint.type"] = "browser.paint.type"
+    """The type of paint timing entry reported by the browser.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "first-paint"
+    Example: "first-contentful-paint"
+    """
+
     # Path: model/attributes/browser/browser__performance__navigation__activation_start.json
     BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START: Literal[
         "browser.performance.navigation.activation_start"
@@ -2595,6 +2628,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "get"
+    Example: "put"
+    Example: "remove"
     """
 
     # Path: model/attributes/cache/cache__ttl.json
@@ -2990,7 +3025,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: code.filepath
+    Aliases: code.filepath, sveltekit.load.node_id
     Example: "/app/myapplication/http/handler/server.py"
     """
 
@@ -3002,7 +3037,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: code.file.path
+    Aliases: code.file.path, sveltekit.load.node_id
     DEPRECATED: Use code.file.path instead
     Example: "/app/myapplication/http/handler/server.py"
     """
@@ -3728,6 +3763,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
+    Aliases: server_name
     Example: "localhost"
     """
 
@@ -4704,7 +4740,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: ai.pipeline.name
+    Aliases: ai.pipeline.name, langchain.chain.name
     Example: "Autofix Pipeline"
     """
 
@@ -5683,7 +5719,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name, net.peer.name
+    Aliases: address, server.address, client.address, http.server_name, net.host.name, net.peer.name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -6203,7 +6239,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, net.host.name, http.host, server_name, net.peer.name
+    Aliases: address, server.address, net.host.name, http.host, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -6408,6 +6444,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "router"
+    """
+
+    # Path: model/attributes/langchain/langchain__chain__name.json
+    LANGCHAIN_CHAIN_NAME: Literal["langchain.chain.name"] = "langchain.chain.name"
+    """The name of the LangChain chain being executed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.pipeline.name, ai.pipeline.name
+    DEPRECATED: Use gen_ai.pipeline.name instead - This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed.
+    Example: "format_prompt"
+    Example: "RunnableSequence"
     """
 
     # Path: model/attributes/lcp/lcp__element.json
@@ -7372,7 +7422,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: sentry.sveltekit.navigation.from
+    Aliases: router.navigation.origin, sentry.sveltekit.navigation.from
+    DEPRECATED: Use router.navigation.origin instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
     Example: "/users/:id"
     """
 
@@ -7384,6 +7435,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
+    Aliases: router.navigation.route.id
+    DEPRECATED: Use router.navigation.route.id instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
     Example: "AboutView"
     """
 
@@ -7395,7 +7448,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: sentry.sveltekit.navigation.type
+    Aliases: router.navigation.type, sentry.sveltekit.navigation.type
+    DEPRECATED: Use router.navigation.type instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
     Example: "router.push"
     """
 
@@ -7475,7 +7529,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, http.host, server_name, net.peer.name
+    Aliases: address, server.address, http.server_name, http.host, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7514,7 +7568,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
+    Aliases: address, server.address, http.server_name, net.host.name, http.host
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
     Example: "example.com"
     """
@@ -8291,6 +8345,46 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: http.route
     DEPRECATED: Use http.route instead
     Example: "App\\Controller::indexAction"
+    """
+
+    # Path: model/attributes/router/router__navigation__origin.json
+    ROUTER_NAVIGATION_ORIGIN: Literal["router.navigation.origin"] = (
+        "router.navigation.origin"
+    )
+    """The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: navigation.origin, sentry.sveltekit.navigation.from
+    Example: "/users/:id"
+    """
+
+    # Path: model/attributes/router/router__navigation__route__id.json
+    ROUTER_NAVIGATION_ROUTE_ID: Literal["router.navigation.route.id"] = (
+        "router.navigation.route.id"
+    )
+    """The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: navigation.route.id
+    Example: "AboutView"
+    """
+
+    # Path: model/attributes/router/router__navigation__type.json
+    ROUTER_NAVIGATION_TYPE: Literal["router.navigation.type"] = "router.navigation.type"
+    """The type of navigation done by a client-side router.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: navigation.type, sentry.sveltekit.navigation.type
+    Example: "router.push"
     """
 
     # Path: model/attributes/rpc/rpc__grpc__status_code.json
@@ -9305,8 +9399,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: navigation.origin
-    DEPRECATED: Use navigation.origin instead - Use the more generic attribute instead
+    Aliases: navigation.origin, router.navigation.origin
+    DEPRECATED: Use router.navigation.origin instead - Use the more generic attribute instead
     Example: "/home"
     """
 
@@ -9334,8 +9428,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: navigation.type
-    DEPRECATED: Use navigation.type instead - Use the more generic attribute instead
+    Aliases: navigation.type, router.navigation.type
+    DEPRECATED: Use router.navigation.type instead - Use the more generic attribute instead
     Example: "link"
     """
 
@@ -9521,7 +9615,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, http.server_name, net.host.name, http.host, server_name, net.peer.name
+    Aliases: address, http.server_name, net.host.name, http.host, net.peer.name
     Example: "example.com"
     """
 
@@ -9539,14 +9633,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/server_name.json
     SERVER_NAME: Literal["server_name"] = "server_name"
-    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+    """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
-    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+    Aliases: device.name
+    DEPRECATED: Use device.name instead - This attribute is being deprecated in favor of device.name.
     Example: "example.com"
     """
 
@@ -9660,6 +9754,60 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: process.pid
     DEPRECATED: Use process.pid instead - This attribute is being deprecated in favor of process.pid, which is the OTel-aligned replacement.
     Example: 12345
+    """
+
+    # Path: model/attributes/sveltekit/sveltekit__load__environment.json
+    SVELTEKIT_LOAD_ENVIRONMENT: Literal["sveltekit.load.environment"] = (
+        "sveltekit.load.environment"
+    )
+    """The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "server"
+    Example: "client"
+    """
+
+    # Path: model/attributes/sveltekit/sveltekit__load__node_id.json
+    SVELTEKIT_LOAD_NODE_ID: Literal["sveltekit.load.node_id"] = "sveltekit.load.node_id"
+    """The path to the SvelteKit load function.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: code.file.path, code.filepath
+    Example: "src/routes/users/:id/+page.server.ts"
+    """
+
+    # Path: model/attributes/sveltekit/sveltekit__load__node_type.json
+    SVELTEKIT_LOAD_NODE_TYPE: Literal["sveltekit.load.node_type"] = (
+        "sveltekit.load.node_type"
+    )
+    """The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "+page.server"
+    Example: "+layout"
+    Example: "+layout.server"
+    """
+
+    # Path: model/attributes/sveltekit/sveltekit__tracing__original_name.json
+    SVELTEKIT_TRACING_ORIGINAL_NAME: Literal["sveltekit.tracing.original_name"] = (
+        "sveltekit.tracing.original_name"
+    )
+    """The original span name as emitted by SvelteKit.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "sveltekit.handle.root"
     """
 
     # Path: model/attributes/thread/thread__id.json
@@ -10639,7 +10787,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
-            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -10656,12 +10803,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address attribute"
@@ -10798,7 +10946,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.id", "ai.response.id"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.response.id as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.response.id as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[55, 57, 61, 108, 127]),
         ],
@@ -10876,7 +11026,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.request.model", "ai.model_id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.model.id attribute"
+                version="0.21.0", prs=[583], description="Added ai.model.id attribute"
             ),
         ],
     ),
@@ -10918,7 +11068,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["gen_ai.request.model", "ai.model.id"],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.model.id as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.model.id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -10929,6 +11081,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.pipeline.name",
             "ai.pipeline.name",
+            "langchain.chain.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -10937,8 +11090,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.pipeline.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["gen_ai.pipeline.name"],
+        aliases=["gen_ai.pipeline.name", "langchain.chain.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[53, 76, 108, 127]),
         ],
     ),
@@ -11013,7 +11171,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.prompt attribute"
+                version="0.21.0", prs=[583], description="Added ai.prompt attribute"
             ),
         ],
     ),
@@ -11037,7 +11195,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["gen_ai.input.messages", "ai.texts", "gen_ai.prompt", "ai.prompt"],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[498],
@@ -11066,7 +11226,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.prompt.tools attribute"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.prompt.tools attribute",
             ),
         ],
     ),
@@ -11127,7 +11289,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.id", "ai.generation_id"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.response.id attribute"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.response.id attribute",
             ),
         ],
     ),
@@ -11151,7 +11315,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.model"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added ai.response.model attribute",
             ),
@@ -11171,7 +11335,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added ai.response.object attribute",
             ),
@@ -11217,7 +11381,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added ai.response.timestamp attribute",
             ),
@@ -11299,7 +11463,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.schema attribute"
+                version="0.21.0", prs=[583], description="Added ai.schema attribute"
             ),
         ],
     ),
@@ -11429,7 +11593,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.prompt",
         ],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.1.0", prs=[55]),
         ],
@@ -11610,7 +11776,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.total_tokens", "ai.usage.tokens"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.usage.tokens as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.usage.tokens as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[57, 61, 108]),
@@ -11638,7 +11806,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.usage.total_tokens", "ai.total_tokens.used"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.usage.tokens attribute"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.usage.tokens attribute",
             ),
         ],
     ),
@@ -11656,7 +11826,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", prs=[583], description="Added ai.values attribute"
+                version="0.21.0", prs=[583], description="Added ai.values attribute"
             ),
         ],
     ),
@@ -13257,7 +13427,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url", "url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.url as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.url as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -13487,6 +13659,46 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127, 139]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "browser.navigation.type": AttributeMetadata(
+        brief="The type of navigation the browser performed to arrive at the page the metrics were measured on.",
+        type=AttributeType.STRING,
+        keys=("browser.navigation.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="navigate",
+        examples=["navigate", "reload", "prerender", "bfcache", "soft-navigation"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Added browser.navigation.type attribute",
+            ),
+        ],
+        additional_context=[
+            "Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.",
+            "`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.",
+            "`prerender` pages finish painting before activation, so their paint timings are offset by `browser.performance.navigation.activation_start`. Keep them separate when aggregating web vitals.",
+            "Not to be confused with `router.navigation.type`, which holds the client-side router's own vocabulary (`link`, `goto`, `router.push`). The two are independent and can both be set on the same span.",
+        ],
+    ),
+    "browser.paint.type": AttributeMetadata(
+        brief="The type of paint timing entry reported by the browser.",
+        type=AttributeType.STRING,
+        keys=("browser.paint.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="first-paint",
+        examples=["first-paint", "first-contentful-paint"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[606],
+                description="Added browser.paint.type attribute",
+            ),
         ],
     ),
     "browser.performance.navigation.activation_start": AttributeMetadata(
@@ -13911,6 +14123,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="get",
+        examples=["get", "put", "remove"],
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -14435,14 +14648,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "code.file.path",
+            "sveltekit.load.node_id",
             "code.filepath",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/app/myapplication/http/handler/server.py",
-        aliases=["code.filepath"],
+        aliases=["code.filepath", "sveltekit.load.node_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.node_id as an alias",
+            ),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -14451,6 +14670,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "code.file.path",
+            "sveltekit.load.node_id",
             "code.filepath",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -14460,8 +14680,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="code.file.path", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["code.file.path"],
+        aliases=["code.file.path", "sveltekit.load.node_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.node_id as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -14732,7 +14957,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added db.connection_string attribute",
             ),
@@ -15506,12 +15731,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.name": AttributeMetadata(
         brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
-        keys=("device.name",),
+        keys=(
+            "device.name",
+            "server_name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
+        aliases=["server_name"],
         changelog=[
+            ChangelogEntry(
+                version="0.21.0", prs=[602], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.name attribute"
             ),
@@ -16911,7 +17143,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -16967,13 +17201,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.pipeline.name",
             "ai.pipeline.name",
+            "langchain.chain.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Autofix Pipeline",
-        aliases=["ai.pipeline.name"],
+        aliases=["ai.pipeline.name", "langchain.chain.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[76, 127]),
         ],
     ),
@@ -17004,7 +17244,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.prompt",
         ],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.prompt as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[74, 108, 119]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17133,7 +17375,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="gpt-4-turbo-preview",
         aliases=["ai.model_id", "ai.model.id"],
         changelog=[
-            ChangelogEntry(version="next", description="Added ai.model.id as an alias"),
+            ChangelogEntry(
+                version="0.21.0", prs=[583], description="Added ai.model.id as an alias"
+            ),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
@@ -17184,7 +17428,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added gen_ai.request.schema attribute",
             ),
@@ -17330,7 +17574,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.generation_id", "ai.response.id"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.response.id as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.response.id as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[57, 127]),
         ],
@@ -17349,7 +17595,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.model"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.response.model as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.response.model as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -17369,7 +17617,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[583],
                 description="Added gen_ai.response.object attribute",
             ),
@@ -18028,7 +18276,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.total_tokens.used", "ai.usage.tokens"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added ai.usage.tokens as an alias"
+                version="0.21.0",
+                prs=[583],
+                description="Added ai.usage.tokens as an alias",
             ),
             ChangelogEntry(
                 version="0.9.0", prs=[397], description="Add additional_context"
@@ -18058,7 +18308,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["graphql.source"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added graphql.source as an alias"
+                version="0.21.0",
+                prs=[584],
+                description="Added graphql.source as an alias",
             ),
             ChangelogEntry(
                 version="0.7.0",
@@ -18103,7 +18355,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["parse", "validate", "execute", "resolve"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[572],
                 description="Added graphql.processing.type attribute",
             ),
@@ -18133,7 +18385,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["graphql.document"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[584], description="Added graphql.source attribute"
+                version="0.21.0",
+                prs=[584],
+                description="Added graphql.source attribute",
             ),
         ],
     ),
@@ -18422,7 +18676,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Deprecated in favor of http.response.body.decoded_size",
             ),
@@ -18456,7 +18710,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.protocol_version as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -18493,12 +18748,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "client.address",
             "http.server_name",
             "net.host.name",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -18574,7 +18830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request_content_length_uncompressed"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.request.body.decoded_size attribute",
             ),
@@ -18598,7 +18854,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request_content_length"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.request.body.size attribute",
             ),
@@ -18869,7 +19125,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request.body.size"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.request_content_length attribute, deprecated in favor of http.request.body.size",
             ),
@@ -18893,7 +19149,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.request.body.decoded_size"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.request_content_length_uncompressed attribute, deprecated in favor of http.request.body.decoded_size",
             ),
@@ -18942,7 +19198,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.response.body.decoded_size attribute",
             ),
@@ -19053,7 +19309,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.status_text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.response.status_text attribute",
             ),
@@ -19107,7 +19363,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size",
             ),
@@ -19199,7 +19455,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
-            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -19213,12 +19468,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server.address",
             "net.host.name",
             "http.host",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -19267,7 +19523,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.response.status_text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[574],
                 description="Added http.status_text attribute, deprecated in favor of http.response.status_text",
             ),
@@ -19286,7 +19542,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[587],
                 description="Documented url.path, url.query and url.fragment as the replacements for http.target",
             ),
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -19313,7 +19570,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "url", "aws.request.url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.url as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.url as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 108]),
             ChangelogEntry(version="0.0.0"),
@@ -19519,6 +19778,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="0.16.0", prs=[471], description="Added koa.type attribute"
+            ),
+        ],
+    ),
+    "langchain.chain.name": AttributeMetadata(
+        brief="The name of the LangChain chain being executed.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.pipeline.name",
+            "ai.pipeline.name",
+            "langchain.chain.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="format_prompt",
+        examples=["format_prompt", "RunnableSequence"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.pipeline.name",
+            reason="This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["gen_ai.pipeline.name", "ai.pipeline.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[599],
+                description="Added langchain.chain.name attribute",
             ),
         ],
     ),
@@ -20134,7 +20420,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.name", "net.protocol.name", "messaging.protocol"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.protocol as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.protocol as an alias",
             ),
             ChangelogEntry(
                 version="0.12.0",
@@ -20392,7 +20680,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message.conversation_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.conversation_id attribute",
             ),
@@ -20569,7 +20857,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.conversation_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.conversation_id as an alias",
             ),
             ChangelogEntry(
@@ -20606,7 +20895,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message_id"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.message_id as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.message_id as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -20661,7 +20952,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.message.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.message_id attribute",
             ),
@@ -20687,7 +20978,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.operation.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.operation attribute",
             ),
@@ -20707,7 +20998,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.operation"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.operation as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.operation as an alias",
             ),
             ChangelogEntry(
                 version="0.11.0",
@@ -20750,7 +21043,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.name", "net.protocol.name", "mcp.resource.protocol"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.protocol attribute",
             ),
@@ -20778,7 +21071,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.version", "http.flavor", "net.protocol.version"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.protocol_version attribute",
             ),
@@ -20798,7 +21091,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.rabbitmq.routing_key"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.rabbitmq.routing_key as an alias",
             ),
             ChangelogEntry(
@@ -20828,7 +21122,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["messaging.rabbitmq.destination.routing_key"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[581],
                 description="Added messaging.rabbitmq.routing_key attribute",
             ),
@@ -20870,7 +21164,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url", "url", "aws.request.url"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[581], description="Added messaging.url attribute"
+                version="0.21.0", prs=[581], description="Added messaging.url attribute"
             ),
         ],
     ),
@@ -20936,6 +21230,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.",
         type=AttributeType.STRING,
         keys=(
+            "router.navigation.origin",
             "navigation.origin",
             "sentry.sveltekit.navigation.from",
         ),
@@ -20943,8 +21238,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="/users/:id",
-        aliases=["sentry.sveltekit.navigation.from"],
+        deprecation=DeprecationInfo(
+            replacement="router.navigation.origin",
+            reason="Moved to the router.* namespace to separate client-side router navigations from browser navigations.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["router.navigation.origin", "sentry.sveltekit.navigation.from"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Deprecated in favor of router.navigation.origin",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[467],
@@ -20955,12 +21260,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "navigation.route.id": AttributeMetadata(
         brief="The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).",
         type=AttributeType.STRING,
-        keys=("navigation.route.id",),
+        keys=(
+            "router.navigation.route.id",
+            "navigation.route.id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="AboutView",
+        deprecation=DeprecationInfo(
+            replacement="router.navigation.route.id",
+            reason="Moved to the router.* namespace to separate client-side router navigations from browser navigations.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["router.navigation.route.id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Deprecated in favor of router.navigation.route.id",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[468],
@@ -20972,6 +21291,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The type of navigation done by a client-side router.",
         type=AttributeType.STRING,
         keys=(
+            "router.navigation.type",
             "navigation.type",
             "sentry.sveltekit.navigation.type",
         ),
@@ -20979,8 +21299,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="router.push",
-        aliases=["sentry.sveltekit.navigation.type"],
+        deprecation=DeprecationInfo(
+            replacement="router.navigation.type",
+            reason="Moved to the router.* namespace to separate client-side router navigations from browser navigations.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["router.navigation.type", "sentry.sveltekit.navigation.type"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Deprecated in favor of router.navigation.type",
+            ),
             ChangelogEntry(
                 version="0.16.0", prs=[467], description="Added new deprecated alias"
             ),
@@ -21079,7 +21409,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
-            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -21093,12 +21422,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server.address",
             "http.server_name",
             "http.host",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -21171,11 +21501,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
-            "server_name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[588, 602],
                 description="Added the server.address alias group to net.peer.name",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -21223,7 +21553,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.protocol as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.protocol as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -21252,7 +21584,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.protocol_version as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 108, 127]),
@@ -21372,7 +21705,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.peer.port"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added network.peer.port as an alias"
+                version="0.21.0",
+                prs=[588],
+                description="Added network.peer.port as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -21394,7 +21729,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.transport", "mcp.transport"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[588],
                 description="Set net.transport to _status null, because its values change on the replacement",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
@@ -21530,7 +21866,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["net.sock.peer.port"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.sock.peer.port as an alias"
+                version="0.21.0",
+                prs=[588],
+                description="Added net.sock.peer.port as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
@@ -21552,7 +21890,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["net.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.protocol as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.protocol as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
@@ -21574,7 +21914,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.flavor", "net.protocol.version", "messaging.protocol_version"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
+                prs=[581],
                 description="Added messaging.protocol_version as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
@@ -21858,7 +22199,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.path.parameter.<key>", "url.path.params.<key>"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added url.path.params.<key> as an alias"
+                version="0.21.0",
+                prs=[586],
+                description="Added url.path.params.<key> as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
@@ -22331,6 +22674,68 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61, 74]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "router.navigation.origin": AttributeMetadata(
+        brief="The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.",
+        type=AttributeType.STRING,
+        keys=(
+            "router.navigation.origin",
+            "navigation.origin",
+            "sentry.sveltekit.navigation.from",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/users/:id",
+        aliases=["navigation.origin", "sentry.sveltekit.navigation.from"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Added router.navigation.origin attribute, replacing navigation.origin",
+            ),
+        ],
+    ),
+    "router.navigation.route.id": AttributeMetadata(
+        brief="The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).",
+        type=AttributeType.STRING,
+        keys=(
+            "router.navigation.route.id",
+            "navigation.route.id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="AboutView",
+        aliases=["navigation.route.id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Added router.navigation.route.id attribute, replacing navigation.route.id",
+            ),
+        ],
+    ),
+    "router.navigation.type": AttributeMetadata(
+        brief="The type of navigation done by a client-side router.",
+        type=AttributeType.STRING,
+        keys=(
+            "router.navigation.type",
+            "navigation.type",
+            "sentry.sveltekit.navigation.type",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="router.push",
+        aliases=["navigation.type", "sentry.sveltekit.navigation.type"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Added router.navigation.type attribute, replacing navigation.type",
+            ),
         ],
     ),
     "rpc.grpc.status_code": AttributeMetadata(
@@ -23706,6 +24111,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="the navigation origin (sveltekit router)",
         type=AttributeType.STRING,
         keys=(
+            "router.navigation.origin",
             "navigation.origin",
             "sentry.sveltekit.navigation.from",
         ),
@@ -23714,12 +24120,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="/home",
         deprecation=DeprecationInfo(
-            replacement="navigation.origin",
+            replacement="router.navigation.origin",
             reason="Use the more generic attribute instead",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["navigation.origin"],
+        aliases=["navigation.origin", "router.navigation.origin"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Re-pointed deprecation from navigation.origin to router.navigation.origin",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[467],
@@ -23750,6 +24161,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The type of navigation event emitted from the sveltekit client router",
         type=AttributeType.STRING,
         keys=(
+            "router.navigation.type",
             "navigation.type",
             "sentry.sveltekit.navigation.type",
         ),
@@ -23758,12 +24170,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="link",
         deprecation=DeprecationInfo(
-            replacement="navigation.type",
+            replacement="router.navigation.type",
             reason="Use the more generic attribute instead",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["navigation.type"],
+        aliases=["navigation.type", "router.navigation.type"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[600],
+                description="Re-pointed deprecation from navigation.type to router.navigation.type",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[467],
@@ -24047,7 +24464,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
-            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -24058,12 +24474,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
-            "server_name",
             "net.peer.name",
         ],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Added net.peer.name as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -24094,35 +24511,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "server_name": AttributeMetadata(
-        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+        brief="The name of the device. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
         keys=(
-            "server.address",
-            "address",
-            "http.server_name",
-            "net.host.name",
+            "device.name",
             "server_name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
-            replacement="server.address",
-            reason="This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.",
+            replacement="device.name",
+            reason="This attribute is being deprecated in favor of device.name.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=[
-            "address",
-            "server.address",
-            "http.server_name",
-            "net.host.name",
-            "http.host",
-            "net.peer.name",
-        ],
+        aliases=["device.name"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added net.peer.name as an alias"
+                version="0.21.0",
+                prs=[588, 602],
+                description="Alias device.name instead of the server.address alias group",
             ),
             ChangelogEntry(
                 version="0.19.0", prs=[534], description="Added address as an alias"
@@ -24331,6 +24740,91 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[487],
                 description="Added subprocess.pid attribute, deprecated in favor of process.pid",
             ),
+        ],
+    ),
+    "sveltekit.load.environment": AttributeMetadata(
+        brief="The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.",
+        type=AttributeType.STRING,
+        keys=("sveltekit.load.environment",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="server",
+        examples=["server", "client"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.environment attribute",
+            ),
+        ],
+        additional_context=[
+            "Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry."
+        ],
+    ),
+    "sveltekit.load.node_id": AttributeMetadata(
+        brief="The path to the SvelteKit load function.",
+        type=AttributeType.STRING,
+        keys=(
+            "sveltekit.load.node_id",
+            "code.file.path",
+            "code.filepath",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="src/routes/users/:id/+page.server.ts",
+        examples=["src/routes/users/:id/+page.server.ts"],
+        aliases=["code.file.path", "code.filepath"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.node_id attribute",
+            ),
+        ],
+        additional_context=[
+            "Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry."
+        ],
+    ),
+    "sveltekit.load.node_type": AttributeMetadata(
+        brief="The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.",
+        type=AttributeType.STRING,
+        keys=("sveltekit.load.node_type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="+page.server",
+        examples=["+page.server", "+layout", "+layout.server"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.node_type attribute",
+            ),
+        ],
+        additional_context=[
+            "Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry."
+        ],
+    ),
+    "sveltekit.tracing.original_name": AttributeMetadata(
+        brief="The original span name as emitted by SvelteKit.",
+        type=AttributeType.STRING,
+        keys=("sveltekit.tracing.original_name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="sveltekit.handle.root",
+        examples=["sveltekit.handle.root"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.tracing.original_name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK renames SvelteKit-emitted spans to match Sentry's span name semantics, and preserves the name SvelteKit originally set in this attribute."
         ],
     ),
     "thread.id": AttributeMetadata(
@@ -24759,7 +25253,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["http.url", "url", "aws.request.url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.url as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.url as an alias",
             ),
             ChangelogEntry(
                 version="0.19.0",
@@ -24798,7 +25294,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["params.<key>", "url.path.params.<key>"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added url.path.params.<key> as an alias"
+                version="0.21.0",
+                prs=[586],
+                description="Added url.path.params.<key> as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[103]),
         ],
@@ -24825,7 +25323,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.path.parameter.<key>", "params.<key>"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.21.0",
                 prs=[586],
                 description="Added url.path.params.<key> attribute",
             ),
@@ -24944,7 +25442,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["url.full", "http.url", "aws.request.url", "messaging.url"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added messaging.url as an alias"
+                version="0.21.0",
+                prs=[581],
+                description="Added messaging.url as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
@@ -25725,6 +26225,8 @@ Attributes = TypedDict(
         "browser.bfcache.outcome": str,
         "browser.bfcache.reason": str,
         "browser.name": str,
+        "browser.navigation.type": str,
+        "browser.paint.type": str,
         "browser.performance.navigation.activation_start": float,
         "browser.performance.time_origin": float,
         "browser.report.type": str,
@@ -26057,6 +26559,7 @@ Attributes = TypedDict(
         "jvm.thread.state": str,
         "koa.name": str,
         "koa.type": str,
+        "langchain.chain.name": str,
         "lcp.element": str,
         "lcp.id": str,
         "lcp.loadTime": int,
@@ -26208,6 +26711,9 @@ Attributes = TypedDict(
         "resource.deployment.environment.name": str,
         "resource.render_blocking_status": str,
         "route": str,
+        "router.navigation.origin": str,
+        "router.navigation.route.id": str,
+        "router.navigation.type": str,
         "rpc.grpc.status_code": int,
         "rpc.method": str,
         "rpc.response.status_code": str,
@@ -26320,6 +26826,10 @@ Attributes = TypedDict(
         "starlite.middleware_name": str,
         "state.type": str,
         "subprocess.pid": int,
+        "sveltekit.load.environment": str,
+        "sveltekit.load.node_id": str,
+        "sveltekit.load.node_type": str,
+        "sveltekit.tracing.original_name": str,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,

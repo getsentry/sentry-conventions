@@ -285,6 +285,21 @@ export const GEN_AI_GENERATE_CONTENT = 'gen_ai.generate_content';
  */
 export const GEN_AI_RERANK = 'gen_ai.rerank';
 
+/**
+ * Creation of an AI agent that can later be invoked to perform a task
+ */
+export const GEN_AI_CREATE_AGENT = 'gen_ai.create_agent';
+
+/**
+ * An interaction with a generative AI model through a responses API
+ */
+export const GEN_AI_RESPONSES = 'gen_ai.responses';
+
+/**
+ * A text completion request to a generative AI model
+ */
+export const GEN_AI_TEXT_COMPLETION = 'gen_ai.text_completion';
+
 // Path: model/op/general.json
 // Name: general
 

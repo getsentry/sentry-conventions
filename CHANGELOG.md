@@ -1,3 +1,42 @@
+## 0.21.0
+
+### New Features ✨
+
+#### Attributes
+
+- Complete `net.*` aliases and transform `net.transport` by @JPeer264 in [#588](https://github.com/getsentry/sentry-conventions/pull/588)
+- Name the replacements for the deprecated `http.target` by @JPeer264 in [#587](https://github.com/getsentry/sentry-conventions/pull/587)
+- Add `url.path.params.<key>` (deprecated) in favor of `url.path.parameter.<key>` by @JPeer264 in [#586](https://github.com/getsentry/sentry-conventions/pull/586)
+- Add `graphql.source` (deprecated) in favor of `graphql.document` by @JPeer264 in [#584](https://github.com/getsentry/sentry-conventions/pull/584)
+- Add legacy Vercel AI span attributes (deprecated) by @JPeer264 in [#583](https://github.com/getsentry/sentry-conventions/pull/583)
+- Add legacy AMQP and Redis span attributes (deprecated) by @JPeer264 in [#581](https://github.com/getsentry/sentry-conventions/pull/581)
+- Add HTTP body size and status text attributes by @msonnb in [#574](https://github.com/getsentry/sentry-conventions/pull/574)
+- Add graphql.processing.type by @andreiborza in [#572](https://github.com/getsentry/sentry-conventions/pull/572)
+
+#### Other
+
+- (descriptions) Add `gen_ai` span description inference rules by @Lms24 in [#578](https://github.com/getsentry/sentry-conventions/pull/578)
+- (span-names) Add `url.domain`rule for `http.client` spans by @Lms24 in [#575](https://github.com/getsentry/sentry-conventions/pull/575)
+
+### Bug Fixes 🐛
+
+#### Names
+
+- Add `gen_ai.function_id` and `gen_ai.pipeline.name` to agent span name templates by @RulaKhaled in [#593](https://github.com/getsentry/sentry-conventions/pull/593)
+- Add missing `gen_ai` ops to span name rules by @Lms24 in [#579](https://github.com/getsentry/sentry-conventions/pull/579)
+- Include tool name in `gen_ai.execute_tool` span names by @Lms24 in [#580](https://github.com/getsentry/sentry-conventions/pull/580)
+- Correct graphql span name examples by @andreiborza in [#573](https://github.com/getsentry/sentry-conventions/pull/573)
+
+#### Other
+
+- Alias `server_name` to `device.name` instead of `server.address` by @alexander-alderman-webb in [#602](https://github.com/getsentry/sentry-conventions/pull/602)
+- Force use of Socket PyPI by @sentrivana in [#598](https://github.com/getsentry/sentry-conventions/pull/598)
+
+### Internal Changes 🔧
+
+- (attributes) Add search alias for segment name by @nsdeschenes in [#577](https://github.com/getsentry/sentry-conventions/pull/577)
+- (search-metadata) Add visibility field by @nsdeschenes in [#597](https://github.com/getsentry/sentry-conventions/pull/597)
+
 ## 0.20.0
 
 ### Breaking Changes 🛠

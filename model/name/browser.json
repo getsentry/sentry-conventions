@@ -16,6 +16,94 @@
       "ops": ["navigation", "navigation.redirect"],
       "templates": ["{{url.template}}", "Navigation"],
       "examples": ["/users/:id", "/home", "Navigation"]
+    },
+    {
+      "name": "Cache lookup",
+      "brief": "The cache lookup / fetch start phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.cache"],
+      "templates": ["Cache lookup"],
+      "examples": ["Cache lookup"]
+    },
+    {
+      "name": "DNS lookup",
+      "brief": "The DNS domain lookup phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.dns"],
+      "templates": ["DNS lookup"],
+      "examples": ["DNS lookup"]
+    },
+    {
+      "name": "Connect",
+      "brief": "The connection phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.connect"],
+      "templates": ["Connect"],
+      "examples": ["Connect"]
+    },
+    {
+      "name": "TLS handshake",
+      "brief": "The secure connection (TLS/SSL) phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.tls_ssl"],
+      "templates": ["TLS handshake"],
+      "examples": ["TLS handshake"]
+    },
+    {
+      "name": "Redirect",
+      "brief": "The redirect phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.redirect"],
+      "templates": ["Redirect"],
+      "examples": ["Redirect"]
+    },
+    {
+      "name": "Request",
+      "brief": "The request phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.request"],
+      "templates": ["Request"],
+      "examples": ["Request"]
+    },
+    {
+      "name": "Response",
+      "brief": "The response phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.response"],
+      "templates": ["Response"],
+      "examples": ["Response"]
+    },
+    {
+      "name": "Unload event",
+      "brief": "The unload event phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.unload_event"],
+      "templates": ["Unload event"],
+      "examples": ["Unload event"]
+    },
+    {
+      "name": "DOMContentLoaded event",
+      "brief": "The DOMContentLoaded event phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.dom_content_loaded_event"],
+      "templates": ["DOMContentLoaded event"],
+      "examples": ["DOMContentLoaded event"]
+    },
+    {
+      "name": "Load event",
+      "brief": "The load event phase of a browser navigation.",
+      "is_in_otel": false,
+      "ops": ["browser.load_event"],
+      "templates": ["Load event"],
+      "examples": ["Load event"]
+    },
+    {
+      "name": "Paint",
+      "brief": "A paint timing entry reported by the browser.",
+      "is_in_otel": false,
+      "ops": ["browser.paint"],
+      "templates": ["{{browser.paint.type}}", "Paint"],
+      "examples": ["first-paint", "first-contentful-paint", "Paint"]
     }
   ]
 }

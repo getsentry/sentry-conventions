@@ -8,7 +8,17 @@
   "is_in_otel": false,
   "example": "router.push",
   "visibility": "public",
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "router.navigation.type",
+    "reason": "Moved to the router.* namespace to separate client-side router navigations from browser navigations."
+  },
   "changelog": [
+    {
+      "version": "next",
+      "prs": [600],
+      "description": "Deprecated in favor of router.navigation.type"
+    },
     {
       "version": "0.16.0",
       "prs": [467],
@@ -22,5 +32,5 @@
       "version": "0.0.0"
     }
   ],
-  "alias": ["sentry.sveltekit.navigation.type"]
+  "alias": ["router.navigation.type", "sentry.sveltekit.navigation.type"]
 }

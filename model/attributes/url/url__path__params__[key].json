@@ -17,7 +17,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.21.0",
       "prs": [586],
       "description": "Added url.path.params.<key> attribute"
     }

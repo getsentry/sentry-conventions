@@ -8,8 +8,18 @@
   "is_in_otel": false,
   "visibility": "public",
   "example": "/users/:id",
-  "alias": ["sentry.sveltekit.navigation.from"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "router.navigation.origin",
+    "reason": "Moved to the router.* namespace to separate client-side router navigations from browser navigations."
+  },
+  "alias": ["router.navigation.origin", "sentry.sveltekit.navigation.from"],
   "changelog": [
+    {
+      "version": "next",
+      "prs": [600],
+      "description": "Deprecated in favor of router.navigation.origin"
+    },
     {
       "version": "0.16.0",
       "prs": [467],

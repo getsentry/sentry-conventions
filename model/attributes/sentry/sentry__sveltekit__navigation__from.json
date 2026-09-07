@@ -9,12 +9,17 @@
   "visibility": "public",
   "example": "/home",
   "deprecation": {
-    "replacement": "navigation.origin",
+    "replacement": "router.navigation.origin",
     "_status": "backfill",
     "reason": "Use the more generic attribute instead"
   },
-  "alias": ["navigation.origin"],
+  "alias": ["navigation.origin", "router.navigation.origin"],
   "changelog": [
+    {
+      "version": "next",
+      "prs": [600],
+      "description": "Re-pointed deprecation from navigation.origin to router.navigation.origin"
+    },
     {
       "version": "0.16.0",
       "prs": [467],
