@@ -1,22 +1,26 @@
 {
   "key": "gen_ai.usage.input_tokens.cache_write",
   "brief": "The number of tokens written to the cache when processing the AI input (prompt).",
+  "additional_context": [
+    "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
+  ],
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
   "example": 100,
-  "visibility": "public",
-  "additional_context": [
-    "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
-  ],
-  "alias": ["gen_ai.usage.cache_creation.input_tokens"],
+  "alias": ["gen_ai.usage.cache_creation.input_tokens", "gen_ai.usage.cache_creation_input_tokens"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.usage.cache_creation.input_tokens"
   },
+  "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added gen_ai.usage.cache_creation_input_tokens as an alias"
+    },
     {
       "version": "0.11.0",
       "prs": [418],
