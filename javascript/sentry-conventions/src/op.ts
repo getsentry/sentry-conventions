@@ -418,6 +418,16 @@ export const QUEUE_TASK_RQ = 'queue.task.rq';
 
 export const APP = 'app';
 
+/**
+ * The time it takes to check for an available over-the-air (OTA) update.
+ */
+export const APP_UPDATE_CHECK = 'app.update.check';
+
+/**
+ * The time it takes to download an over-the-air (OTA) update.
+ */
+export const APP_UPDATE_DOWNLOAD = 'app.update.download';
+
 export const FILE = 'file';
 
 export const SERIALIZE = 'serialize';
