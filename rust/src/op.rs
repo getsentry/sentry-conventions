@@ -286,12 +286,10 @@ pub const QUEUE_TASK_RQ: &str = "queue.task.rq";
 pub const APP: &str = "app";
 
 /// The time it takes to check for an available over-the-air (OTA) update.
-pub const MOBILE_APP_UPDATE_CHECK_SPAN_OP: &str = "app.update.check";
+pub const APP_UPDATE_CHECK: &str = "app.update.check";
 
 /// The time it takes to download an over-the-air (OTA) update.
-pub const MOBILE_APP_UPDATE_DOWNLOAD_SPAN_OP: &str = "app.update.download";
-
-pub const MOBILE_UI_SPAN_OP: &str = "ui";
+pub const APP_UPDATE_DOWNLOAD: &str = "app.update.download";
 
 pub const FILE: &str = "file";
 
