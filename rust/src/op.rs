@@ -285,6 +285,12 @@ pub const QUEUE_TASK_RQ: &str = "queue.task.rq";
 
 pub const APP: &str = "app";
 
+/// The time it takes to check for an available over-the-air (OTA) update.
+pub const APP_UPDATE_CHECK: &str = "app.update.check";
+
+/// The time it takes to download an over-the-air (OTA) update.
+pub const APP_UPDATE_DOWNLOAD: &str = "app.update.download";
+
 pub const FILE: &str = "file";
 
 pub const SERIALIZE: &str = "serialize";

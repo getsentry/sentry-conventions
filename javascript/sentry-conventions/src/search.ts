@@ -4325,6 +4325,26 @@ export const SEARCH_STATE__TYPE = 'state.type';
 export const SEARCH_SUBPROCESS__PID = 'subprocess.pid';
 
 /**
+ * Search name for {@link attributes.SVELTEKIT_LOAD_ENVIRONMENT}. `sveltekit.load.environment`
+ */
+export const SEARCH_SVELTEKIT__LOAD__ENVIRONMENT = 'sveltekit.load.environment';
+
+/**
+ * Search name for {@link attributes.SVELTEKIT_LOAD_NODE_ID}. `sveltekit.load.node_id`
+ */
+export const SEARCH_SVELTEKIT__LOAD__NODE_ID = 'sveltekit.load.node_id';
+
+/**
+ * Search name for {@link attributes.SVELTEKIT_LOAD_NODE_TYPE}. `sveltekit.load.node_type`
+ */
+export const SEARCH_SVELTEKIT__LOAD__NODE_TYPE = 'sveltekit.load.node_type';
+
+/**
+ * Search name for {@link attributes.SVELTEKIT_TRACING_ORIGINAL_NAME}. `sveltekit.tracing.original_name`
+ */
+export const SEARCH_SVELTEKIT__TRACING__ORIGINAL_NAME = 'sveltekit.tracing.original_name';
+
+/**
  * Search name for {@link attributes.THREAD_ID}. `thread.id`
  */
 export const SEARCH_THREAD__ID = 'thread.id';
@@ -5540,6 +5560,10 @@ export type AttributeSearchName =
   | typeof SEARCH_STARLITE__MIDDLEWARE_NAME
   | typeof SEARCH_STATE__TYPE
   | typeof SEARCH_SUBPROCESS__PID
+  | typeof SEARCH_SVELTEKIT__LOAD__ENVIRONMENT
+  | typeof SEARCH_SVELTEKIT__LOAD__NODE_ID
+  | typeof SEARCH_SVELTEKIT__LOAD__NODE_TYPE
+  | typeof SEARCH_SVELTEKIT__TRACING__ORIGINAL_NAME
   | typeof SEARCH_THREAD__ID
   | typeof SEARCH_THREAD__NAME
   | typeof SEARCH_TIMBER__TAG
@@ -6956,14 +6980,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
-    deprecationChain: ['code.file.path', 'code.filepath'],
+    deprecationChain: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
   },
   'code.filepath': {
     canonicalName: 'code.file.path',
     type: 'string',
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
-    deprecationChain: ['code.file.path', 'code.filepath'],
+    deprecationChain: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
   },
   'code.function': {
     canonicalName: 'code.function',
@@ -10338,6 +10362,32 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'The process ID of a subprocess.',
     deprecationChain: ['process.pid', 'subprocess.pid'],
+  },
+  'sveltekit.load.environment': {
+    canonicalName: 'sveltekit.load.environment',
+    type: 'string',
+    brief:
+      "The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.",
+    deprecationChain: ['sveltekit.load.environment'],
+  },
+  'sveltekit.load.node_id': {
+    canonicalName: 'sveltekit.load.node_id',
+    type: 'string',
+    brief: 'The path to the SvelteKit load function.',
+    deprecationChain: ['sveltekit.load.node_id', 'code.file.path', 'code.filepath'],
+  },
+  'sveltekit.load.node_type': {
+    canonicalName: 'sveltekit.load.node_type',
+    type: 'string',
+    brief:
+      'The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.',
+    deprecationChain: ['sveltekit.load.node_type'],
+  },
+  'sveltekit.tracing.original_name': {
+    canonicalName: 'sveltekit.tracing.original_name',
+    type: 'string',
+    brief: 'The original span name as emitted by SvelteKit.',
+    deprecationChain: ['sveltekit.tracing.original_name'],
   },
   'thread.id': {
     canonicalName: 'thread.id',

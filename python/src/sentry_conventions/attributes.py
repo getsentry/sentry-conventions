@@ -3025,7 +3025,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: code.filepath
+    Aliases: code.filepath, sveltekit.load.node_id
     Example: "/app/myapplication/http/handler/server.py"
     """
 
@@ -3037,7 +3037,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: code.file.path
+    Aliases: code.file.path, sveltekit.load.node_id
     DEPRECATED: Use code.file.path instead
     Example: "/app/myapplication/http/handler/server.py"
     """
@@ -9756,6 +9756,60 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 12345
     """
 
+    # Path: model/attributes/sveltekit/sveltekit__load__environment.json
+    SVELTEKIT_LOAD_ENVIRONMENT: Literal["sveltekit.load.environment"] = (
+        "sveltekit.load.environment"
+    )
+    """The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "server"
+    Example: "client"
+    """
+
+    # Path: model/attributes/sveltekit/sveltekit__load__node_id.json
+    SVELTEKIT_LOAD_NODE_ID: Literal["sveltekit.load.node_id"] = "sveltekit.load.node_id"
+    """The path to the SvelteKit load function.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: code.file.path, code.filepath
+    Example: "src/routes/users/:id/+page.server.ts"
+    """
+
+    # Path: model/attributes/sveltekit/sveltekit__load__node_type.json
+    SVELTEKIT_LOAD_NODE_TYPE: Literal["sveltekit.load.node_type"] = (
+        "sveltekit.load.node_type"
+    )
+    """The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "+page.server"
+    Example: "+layout"
+    Example: "+layout.server"
+    """
+
+    # Path: model/attributes/sveltekit/sveltekit__tracing__original_name.json
+    SVELTEKIT_TRACING_ORIGINAL_NAME: Literal["sveltekit.tracing.original_name"] = (
+        "sveltekit.tracing.original_name"
+    )
+    """The original span name as emitted by SvelteKit.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "sveltekit.handle.root"
+    """
+
     # Path: model/attributes/thread/thread__id.json
     THREAD_ID: Literal["thread.id"] = "thread.id"
     """Current “managed” thread ID.
@@ -14594,14 +14648,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "code.file.path",
+            "sveltekit.load.node_id",
             "code.filepath",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="/app/myapplication/http/handler/server.py",
-        aliases=["code.filepath"],
+        aliases=["code.filepath", "sveltekit.load.node_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.node_id as an alias",
+            ),
             ChangelogEntry(version="0.0.0"),
         ],
     ),
@@ -14610,6 +14670,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "code.file.path",
+            "sveltekit.load.node_id",
             "code.filepath",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -14619,8 +14680,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="code.file.path", status=DeprecationStatus.BACKFILL
         ),
-        aliases=["code.file.path"],
+        aliases=["code.file.path", "sveltekit.load.node_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.node_id as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[61]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -24676,6 +24742,91 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "sveltekit.load.environment": AttributeMetadata(
+        brief="The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.",
+        type=AttributeType.STRING,
+        keys=("sveltekit.load.environment",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="server",
+        examples=["server", "client"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.environment attribute",
+            ),
+        ],
+        additional_context=[
+            "Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry."
+        ],
+    ),
+    "sveltekit.load.node_id": AttributeMetadata(
+        brief="The path to the SvelteKit load function.",
+        type=AttributeType.STRING,
+        keys=(
+            "sveltekit.load.node_id",
+            "code.file.path",
+            "code.filepath",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="src/routes/users/:id/+page.server.ts",
+        examples=["src/routes/users/:id/+page.server.ts"],
+        aliases=["code.file.path", "code.filepath"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.node_id attribute",
+            ),
+        ],
+        additional_context=[
+            "Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry."
+        ],
+    ),
+    "sveltekit.load.node_type": AttributeMetadata(
+        brief="The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.",
+        type=AttributeType.STRING,
+        keys=("sveltekit.load.node_type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="+page.server",
+        examples=["+page.server", "+layout", "+layout.server"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.load.node_type attribute",
+            ),
+        ],
+        additional_context=[
+            "Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry."
+        ],
+    ),
+    "sveltekit.tracing.original_name": AttributeMetadata(
+        brief="The original span name as emitted by SvelteKit.",
+        type=AttributeType.STRING,
+        keys=("sveltekit.tracing.original_name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="sveltekit.handle.root",
+        examples=["sveltekit.handle.root"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[611],
+                description="Added sveltekit.tracing.original_name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK renames SvelteKit-emitted spans to match Sentry's span name semantics, and preserves the name SvelteKit originally set in this attribute."
+        ],
+    ),
     "thread.id": AttributeMetadata(
         brief="Current “managed” thread ID.",
         type=AttributeType.INTEGER,
@@ -26675,6 +26826,10 @@ Attributes = TypedDict(
         "starlite.middleware_name": str,
         "state.type": str,
         "subprocess.pid": int,
+        "sveltekit.load.environment": str,
+        "sveltekit.load.node_id": str,
+        "sveltekit.load.node_type": str,
+        "sveltekit.tracing.original_name": str,
         "thread.id": int,
         "thread.name": str,
         "timber.tag": str,
