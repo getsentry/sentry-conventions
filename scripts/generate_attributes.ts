@@ -475,21 +475,11 @@ function getConstantName(key: string, isDeprecated: boolean): string {
   return constantName;
 }
 
-function stripSentrySearchPrefix(searchKey: string): string {
-  const prefix = 'sentry.';
-  return searchKey.startsWith(prefix) ? searchKey.slice(prefix.length) : searchKey;
-}
-
 function getSearchConstantNameInner(searchKey: string): string {
   // Dots separate namespace levels, while underscores separate words within a level.
   // For example, `aws.step_functions.activity.arn` becomes
   // `SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN`.
-  return stripSentrySearchPrefix(searchKey)
-    .replaceAll('<', '')
-    .replaceAll('>', '')
-    .replaceAll('.', '__')
-    .replaceAll('-', '_')
-    .toUpperCase();
+  return searchKey.replaceAll('<', '').replaceAll('>', '').replaceAll('.', '__').replaceAll('-', '_').toUpperCase();
 }
 
 function getSearchConstantName(searchKey: string): string {
@@ -1277,7 +1267,7 @@ function generateMetadata(
   const searchMetadataByKey = new Map<string, typeof allAttributes>();
 
   for (const attribute of allAttributes) {
-    const searchKey = stripSentrySearchPrefix(attribute.attributeJson.search_alias?.name ?? attribute.key);
+    const searchKey = attribute.attributeJson.search_alias?.name ?? attribute.key;
     const candidates = searchMetadataByKey.get(searchKey) ?? [];
     candidates.push(attribute);
     searchMetadataByKey.set(searchKey, candidates);
@@ -1377,21 +1367,16 @@ function generateMetadata(
       continue;
     }
 
-    const currentSearchName = stripSentrySearchPrefix(searchAlias.name);
+    const currentSearchName = searchAlias.name;
     addSearchNameConstant(currentSearchName, false, preferredAttribute, currentSearchName);
 
-    const deprecatedAliases = new Set((searchAlias.deprecated_aliases ?? []).map(stripSentrySearchPrefix));
-    for (const key of deprecationChain) {
-      const searchName = stripSentrySearchPrefix(key);
+    const deprecatedAliases = new Set(searchAlias.deprecated_aliases ?? []);
+    for (const searchName of deprecationChain) {
       if (searchName === currentSearchName) {
         continue;
       }
       // Replacement storage keys belong to their own entry; don't mark them deprecated here.
-      if (
-        searchName === stripSentrySearchPrefix(canonicalName) &&
-        searchName !== stripSentrySearchPrefix(preferredAttribute.key) &&
-        !deprecatedAliases.has(searchName)
-      ) {
+      if (searchName === canonicalName && searchName !== preferredAttribute.key && !deprecatedAliases.has(searchName)) {
         continue;
       }
       addSearchNameConstant(searchName, true, preferredAttribute, currentSearchName);
@@ -1411,7 +1396,7 @@ function generateMetadata(
       searchKey,
       preferredAttribute.isDeprecated,
       preferredAttribute,
-      preferredAttribute.isDeprecated && replacement ? stripSentrySearchPrefix(replacement) : searchKey,
+      preferredAttribute.isDeprecated && replacement ? replacement : searchKey,
     );
   }
 

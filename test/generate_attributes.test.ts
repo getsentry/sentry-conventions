@@ -94,6 +94,11 @@ describe('generateAttributes', () => {
         search_alias: { name: 'item.search' },
       },
       {
+        key: 'sentry.plain',
+        brief: 'A sentry-prefixed attribute without a search alias.',
+        type: 'string',
+      },
+      {
         key: 'aws.request_id',
         brief: 'The live AWS request id.',
         type: 'string',
@@ -166,9 +171,8 @@ describe('generateAttributes', () => {
       expect(search).toContain("export const SEARCH_LIVE__SEARCH = 'live.search';");
       expect(search).toContain("export const SEARCH_LIVE__ATTRIBUTE = 'live.attribute';");
       expect(search).toContain("export const SEARCH_ITEM__SEARCH = 'item.search';");
-      expect(search).toContain("export const SEARCH_ITEM = 'item';");
-      expect(search).not.toContain('export const SEARCH_SENTRY_ITEM');
-      expect(search).not.toMatch(/export const \w+ = 'sentry\./);
+      expect(search).toContain("export const SEARCH_SENTRY__ITEM = 'sentry.item';");
+      expect(search).toContain("export const SEARCH_SENTRY__PLAIN = 'sentry.plain';");
       expect(search).toContain("export const SEARCH_AWS__REQUEST_ID = 'aws.request_id';");
       expect(search).toContain("export const SEARCH_AWS__REQUEST__ID = 'aws.request.id';");
       expect(search).toContain(
@@ -184,7 +188,7 @@ describe('generateAttributes', () => {
         ' * @deprecated Use {@link SEARCH_LIVE__SEARCH} (`live.search`) instead\n */\nexport const SEARCH_LIVE__ATTRIBUTE',
       );
       expect(search).toContain(
-        ' * @deprecated Use {@link SEARCH_ITEM__SEARCH} (`item.search`) instead\n */\nexport const SEARCH_ITEM =',
+        ' * @deprecated Use {@link SEARCH_ITEM__SEARCH} (`item.search`) instead\n */\nexport const SEARCH_SENTRY__ITEM =',
       );
       expect(search).toContain(
         ' * @deprecated Use {@link SEARCH_AWS__REQUEST_ID} (`aws.request_id`) instead\n */\nexport const SEARCH_AWS__REQUEST__ID',
@@ -196,7 +200,7 @@ describe('generateAttributes', () => {
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_ITEM__SEARCH/);
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_AWS__REQUEST_ID/);
       expect(search).toContain(
-        'export type AttributeSearchName = typeof SEARCH_AWS__REQUEST__ID | typeof SEARCH_AWS__REQUEST_ID | typeof SEARCH_CURRENT__ATTRIBUTE | typeof SEARCH_DEPRECATED__SEARCH | typeof SEARCH_FALLBACK__ATTRIBUTE | typeof SEARCH_ITEM | typeof SEARCH_ITEM__SEARCH | typeof SEARCH_LIVE__ATTRIBUTE | typeof SEARCH_LIVE__SEARCH | typeof SEARCH_OLD__NAME | typeof SEARCH_SHARED__NAME | typeof SEARCH_STANDALONE__DEPRECATED;',
+        'export type AttributeSearchName = typeof SEARCH_AWS__REQUEST__ID | typeof SEARCH_AWS__REQUEST_ID | typeof SEARCH_CURRENT__ATTRIBUTE | typeof SEARCH_DEPRECATED__SEARCH | typeof SEARCH_FALLBACK__ATTRIBUTE | typeof SEARCH_ITEM__SEARCH | typeof SEARCH_LIVE__ATTRIBUTE | typeof SEARCH_LIVE__SEARCH | typeof SEARCH_OLD__NAME | typeof SEARCH_SENTRY__ITEM | typeof SEARCH_SENTRY__PLAIN | typeof SEARCH_SHARED__NAME | typeof SEARCH_STANDALONE__DEPRECATED;',
       );
       expect(search).toContain('export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata>');
       expect(compactMetadata).toContain(
@@ -207,6 +211,9 @@ describe('generateAttributes', () => {
       );
       expect(compactMetadata).toContain(
         '"deprecated.search": {\n    canonicalName: "fallback.attribute",\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    internal: true,\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',
+      );
+      expect(compactMetadata).toContain(
+        '"sentry.plain": {\n    canonicalName: "sentry.plain",\n    type: "string",\n    brief: "A sentry-prefixed attribute without a search alias.",\n    deprecationChain: ["sentry.plain"],',
       );
       expect(compactMetadata).not.toContain('"current.attribute": {');
       expect(compactMetadata).not.toContain('visibility:');

@@ -18,13 +18,6 @@ export interface AttributeSearchMetadata {
 }
 
 /**
- * Search name for {@link attributes.SENTRY_ACTION}. `action`
- *
- * @deprecated Use {@link SEARCH_SPAN__ACTION} (`span.action`) instead
- */
-export const SEARCH_ACTION = 'action';
-
-/**
  * Search name for {@link attributes.ADDRESS}. `address`
  *
  * @deprecated Use {@link SEARCH_SERVER__ADDRESS} (`server.address`) instead
@@ -1033,18 +1026,6 @@ export const SEARCH_CACHE__TTL = 'cache.ttl';
 export const SEARCH_CACHE__WRITE = 'cache.write';
 
 /**
- * Search name for {@link attributes.SENTRY_CANCELLATION_REASON}. `cancellation_reason`
- */
-export const SEARCH_CANCELLATION_REASON = 'cancellation_reason';
-
-/**
- * Search name for {@link attributes.SENTRY_CATEGORY}. `category`
- *
- * @deprecated Use {@link SEARCH_SPAN__CATEGORY} (`span.category`) instead
- */
-export const SEARCH_CATEGORY = 'category';
-
-/**
  * Search name for {@link attributes.CHANNEL}. `channel`
  */
 export const SEARCH_CHANNEL = 'channel';
@@ -1416,11 +1397,6 @@ export const SEARCH_DB__SYSTEM__NAME = 'db.system.name';
 export const SEARCH_DB__USER = 'db.user';
 
 /**
- * Search name for {@link attributes.SENTRY_DESCRIPTION}. `description`
- */
-export const SEARCH_DESCRIPTION = 'description';
-
-/**
  * Search name for {@link attributes.DEVICE_ARCHS}. `device.archs`
  */
 export const SEARCH_DEVICE__ARCHS = 'device.archs';
@@ -1620,7 +1596,9 @@ export const SEARCH_DEVICE__USABLE_MEMORY = 'device.usable_memory';
 export const SEARCH_DEVICEMEMORY = 'deviceMemory';
 
 /**
- * Search name for {@link attributes.SENTRY_DIST}. `dist`
+ * Search name for {@link attributes.DIST}. `dist`
+ *
+ * @deprecated Use {@link SEARCH_SENTRY__DIST} (`sentry.dist`) instead
  */
 export const SEARCH_DIST = 'dist';
 
@@ -1637,53 +1615,6 @@ export const SEARCH_DJANGO__FUNCTION_NAME = 'django.function_name';
  * @deprecated Use {@link SEARCH_MIDDLEWARE__NAME} (`middleware.name`) instead
  */
 export const SEARCH_DJANGO__MIDDLEWARE_NAME = 'django.middleware_name';
-
-/**
- * Search name for {@link attributes.SENTRY_DOMAIN}. `domain`
- *
- * @deprecated Use {@link SEARCH_SPAN__DOMAIN} (`span.domain`) instead
- */
-export const SEARCH_DOMAIN = 'domain';
-
-/**
- * Search name for {@link attributes.SENTRY_DSC_ENVIRONMENT}. `dsc.environment`
- */
-export const SEARCH_DSC__ENVIRONMENT = 'dsc.environment';
-
-/**
- * Search name for {@link attributes.SENTRY_DSC_PROJECT_ID}. `dsc.project_id`
- */
-export const SEARCH_DSC__PROJECT_ID = 'dsc.project_id';
-
-/**
- * Search name for {@link attributes.SENTRY_DSC_PUBLIC_KEY}. `dsc.public_key`
- */
-export const SEARCH_DSC__PUBLIC_KEY = 'dsc.public_key';
-
-/**
- * Search name for {@link attributes.SENTRY_DSC_RELEASE}. `dsc.release`
- */
-export const SEARCH_DSC__RELEASE = 'dsc.release';
-
-/**
- * Search name for {@link attributes.SENTRY_DSC_SAMPLE_RATE}. `dsc.sample_rate`
- */
-export const SEARCH_DSC__SAMPLE_RATE = 'dsc.sample_rate';
-
-/**
- * Search name for {@link attributes.SENTRY_DSC_SAMPLED}. `dsc.sampled`
- */
-export const SEARCH_DSC__SAMPLED = 'dsc.sampled';
-
-/**
- * Search name for {@link attributes.SENTRY_DSC_TRACE_ID}. `dsc.trace_id`
- */
-export const SEARCH_DSC__TRACE_ID = 'dsc.trace_id';
-
-/**
- * Search name for {@link attributes.SENTRY_DSC_TRANSACTION}. `dsc.transaction`
- */
-export const SEARCH_DSC__TRANSACTION = 'dsc.transaction';
 
 /**
  * Search name for {@link attributes.EFFECTIVECONNECTIONTYPE}. `effectiveConnectionType`
@@ -1713,26 +1644,6 @@ export const SEARCH_EVENT__ID = 'event.id';
 export const SEARCH_EVENT__NAME = 'event.name';
 
 /**
- * Search name for {@link attributes.SENTRY_EVENT_SERIALIZED_BREADCRUMBS}. `event.serialized_breadcrumbs`
- */
-export const SEARCH_EVENT__SERIALIZED_BREADCRUMBS = 'event.serialized_breadcrumbs';
-
-/**
- * Search name for {@link attributes.SENTRY_EVENT_SERIALIZED_CONTEXTS}. `event.serialized_contexts`
- */
-export const SEARCH_EVENT__SERIALIZED_CONTEXTS = 'event.serialized_contexts';
-
-/**
- * Search name for {@link attributes.SENTRY_EVENT_SERIALIZED_EXTRA}. `event.serialized_extra`
- */
-export const SEARCH_EVENT__SERIALIZED_EXTRA = 'event.serialized_extra';
-
-/**
- * Search name for {@link attributes.SENTRY_EVENT_SERIALIZED_META}. `event.serialized_meta`
- */
-export const SEARCH_EVENT__SERIALIZED_META = 'event.serialized_meta';
-
-/**
  * Search name for {@link attributes.EXCEPTION_ESCAPED}. `exception.escaped`
  */
 export const SEARCH_EXCEPTION__ESCAPED = 'exception.escaped';
@@ -1751,11 +1662,6 @@ export const SEARCH_EXCEPTION__STACKTRACE = 'exception.stacktrace';
  * Search name for {@link attributes.EXCEPTION_TYPE}. `exception.type`
  */
 export const SEARCH_EXCEPTION__TYPE = 'exception.type';
-
-/**
- * Search name for {@link attributes.SENTRY_EXCLUSIVE_TIME}. `exclusive_time`
- */
-export const SEARCH_EXCLUSIVE_TIME = 'exclusive_time';
 
 /**
  * Search name for {@link attributes.FAAS_COLDSTART}. `faas.coldstart`
@@ -2352,11 +2258,6 @@ export const SEARCH_GEN_AI__USAGE__TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
 export const SEARCH_GRAPHQL__DOCUMENT = 'graphql.document';
 
 /**
- * Search name for {@link attributes.SENTRY_GRAPHQL_OPERATION}. `graphql.operation`
- */
-export const SEARCH_GRAPHQL__OPERATION = 'graphql.operation';
-
-/**
  * Search name for {@link attributes.GRAPHQL_OPERATION_NAME}. `graphql.operation.name`
  */
 export const SEARCH_GRAPHQL__OPERATION__NAME = 'graphql.operation.name';
@@ -2377,13 +2278,6 @@ export const SEARCH_GRAPHQL__PROCESSING__TYPE = 'graphql.processing.type';
  * @deprecated Use {@link SEARCH_GRAPHQL__DOCUMENT} (`graphql.document`) instead
  */
 export const SEARCH_GRAPHQL__SOURCE = 'graphql.source';
-
-/**
- * Search name for {@link attributes.SENTRY_GROUP}. `group`
- *
- * @deprecated Use {@link SEARCH_SPAN__GROUP} (`span.group`) instead
- */
-export const SEARCH_GROUP = 'group';
 
 /**
  * Search name for {@link attributes.GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS}. `grpc.error.bad_request.field_violations`
@@ -2494,11 +2388,6 @@ export const SEARCH_HTTP__HOST = 'http.host';
  * @deprecated Use {@link SEARCH_HTTP__REQUEST__METHOD} (`http.request.method`) instead
  */
 export const SEARCH_HTTP__METHOD = 'http.method';
-
-/**
- * Search name for {@link attributes.SENTRY_HTTP_PREFETCH}. `http.prefetch`
- */
-export const SEARCH_HTTP__PREFETCH = 'http.prefetch';
 
 /**
  * Search name for {@link attributes.HTTP_QUERY}. `http.query`
@@ -2752,21 +2641,11 @@ export const SEARCH_HTTP__USER_AGENT = 'http.user_agent';
 export const SEARCH_ID = 'id';
 
 /**
- * Search name for {@link attributes.SENTRY_IDLE_SPAN_FINISH_REASON}. `idle_span_finish_reason`
- */
-export const SEARCH_IDLE_SPAN_FINISH_REASON = 'idle_span_finish_reason';
-
-/**
  * Search name for {@link attributes.INP}. `inp`
  *
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__INP__VALUE} (`browser.web_vital.inp.value`) instead
  */
 export const SEARCH_INP = 'inp';
-
-/**
- * Search name for {@link attributes.SENTRY_IS_REMOTE}. `is_remote`
- */
-export const SEARCH_IS_REMOTE = 'is_remote';
 
 /**
  * Search name for {@link attributes.JSONRPC_PROTOCOL_VERSION}. `jsonrpc.protocol.version`
@@ -2807,13 +2686,6 @@ export const SEARCH_JVM__THREAD__DAEMON = 'jvm.thread.daemon';
  * Search name for {@link attributes.JVM_THREAD_STATE}. `jvm.thread.state`
  */
 export const SEARCH_JVM__THREAD__STATE = 'jvm.thread.state';
-
-/**
- * Search name for {@link attributes.SENTRY_KIND}. `kind`
- *
- * @deprecated Use {@link SEARCH_SPAN__KIND} (`span.kind`) instead
- */
-export const SEARCH_KIND = 'kind';
 
 /**
  * Search name for {@link attributes.KOA_NAME}. `koa.name`
@@ -2894,11 +2766,6 @@ export const SEARCH_LITESTAR__MIDDLEWARE_NAME = 'litestar.middleware_name';
  * Search name for {@link attributes.LOGGER_NAME}. `logger.name`
  */
 export const SEARCH_LOGGER__NAME = 'logger.name';
-
-/**
- * Search name for {@link attributes.SENTRY_MAIN_THREAD}. `main_thread`
- */
-export const SEARCH_MAIN_THREAD = 'main_thread';
 
 /**
  * Search name for {@link attributes.MCP_CANCELLED_REASON}. `mcp.cancelled.reason`
@@ -3110,16 +2977,6 @@ export const SEARCH_MCP__TRANSPORT = 'mcp.transport';
 export const SEARCH_MDC__KEY = 'mdc.<key>';
 
 /**
- * Search name for {@link attributes.SENTRY_MESSAGE_PARAMETER_KEY}. `message.parameter.<key>`
- */
-export const SEARCH_MESSAGE__PARAMETER__KEY = 'message.parameter.<key>';
-
-/**
- * Search name for {@link attributes.SENTRY_MESSAGE_TEMPLATE}. `message.template`
- */
-export const SEARCH_MESSAGE__TEMPLATE = 'message.template';
-
-/**
  * Search name for {@link attributes.MESSAGING_BATCH_MESSAGE_COUNT}. `messaging.batch.message_count`
  */
 export const SEARCH_MESSAGING__BATCH__MESSAGE_COUNT = 'messaging.batch.message_count';
@@ -3275,19 +3132,9 @@ export const SEARCH_MESSAGING__URL = 'messaging.url';
 export const SEARCH_METHOD = 'method';
 
 /**
- * Search name for {@link attributes.SENTRY_METRIC_SOURCE}. `metric.source`
- */
-export const SEARCH_METRIC__SOURCE = 'metric.source';
-
-/**
  * Search name for {@link attributes.MIDDLEWARE_NAME}. `middleware.name`
  */
 export const SEARCH_MIDDLEWARE__NAME = 'middleware.name';
-
-/**
- * Search name for {@link attributes.SENTRY_MOBILE}. `mobile`
- */
-export const SEARCH_MOBILE = 'mobile';
 
 /**
  * Search name for {@link attributes.FRAMES_DELAY}. `mobile.frames_delay`
@@ -3308,11 +3155,6 @@ export const SEARCH_MOBILE__SLOW_FRAMES = 'mobile.slow_frames';
  * Search name for {@link attributes.FRAMES_TOTAL}. `mobile.total_frames`
  */
 export const SEARCH_MOBILE__TOTAL_FRAMES = 'mobile.total_frames';
-
-/**
- * Search name for {@link attributes.SENTRY_MODULE_KEY}. `module.<key>`
- */
-export const SEARCH_MODULE__KEY = 'module.<key>';
 
 /**
  * Search name for {@link attributes.NAVIGATION_ORIGIN}. `navigation.origin`
@@ -3521,43 +3363,6 @@ export const SEARCH_NETWORK__TRANSPORT = 'network.transport';
 export const SEARCH_NETWORK__TYPE = 'network.type';
 
 /**
- * Search name for {@link attributes.SENTRY_NEXTJS_SSR_FUNCTION_ROUTE}. `nextjs.ssr.function.route`
- */
-export const SEARCH_NEXTJS__SSR__FUNCTION__ROUTE = 'nextjs.ssr.function.route';
-
-/**
- * Search name for {@link attributes.SENTRY_NEXTJS_SSR_FUNCTION_TYPE}. `nextjs.ssr.function.type`
- */
-export const SEARCH_NEXTJS__SSR__FUNCTION__TYPE = 'nextjs.ssr.function.type';
-
-/**
- * Search name for {@link attributes.SENTRY_NORMALIZED_DB_QUERY}. `normalized_db_query`
- */
-export const SEARCH_NORMALIZED_DB_QUERY = 'normalized_db_query';
-
-/**
- * Search name for {@link attributes.SENTRY_NORMALIZED_DB_QUERY_HASH}. `normalized_db_query.hash`
- */
-export const SEARCH_NORMALIZED_DB_QUERY__HASH = 'normalized_db_query.hash';
-
-/**
- * Search name for {@link attributes.SENTRY_NORMALIZED_DESCRIPTION}. `normalized_description`
- */
-export const SEARCH_NORMALIZED_DESCRIPTION = 'normalized_description';
-
-/**
- * Search name for {@link attributes.SENTRY_OBSERVED_TIMESTAMP_NANOS}. `observed_timestamp_nanos`
- */
-export const SEARCH_OBSERVED_TIMESTAMP_NANOS = 'observed_timestamp_nanos';
-
-/**
- * Search name for {@link attributes.SENTRY_OP}. `op`
- *
- * @deprecated Use {@link SEARCH_SPAN__OP} (`span.op`) instead
- */
-export const SEARCH_OP = 'op';
-
-/**
  * Search name for {@link attributes.SENTRY_ORIGIN}. `origin`
  */
 export const SEARCH_ORIGIN = 'origin';
@@ -3640,11 +3445,6 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
  * Search name for {@link attributes.OTEL_STATUS_DESCRIPTION}. `otel.status_description`
  */
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
-
-/**
- * Search name for {@link attributes.SENTRY_PAGELOAD_SPAN_ID}. `pageload.span_id`
- */
-export const SEARCH_PAGELOAD__SPAN_ID = 'pageload.span_id';
 
 /**
  * Search name for {@link attributes.PARAMS_KEY}. `params.<key>`
@@ -3740,13 +3540,6 @@ export const SEARCH_PROFILE_ID = 'profile_id';
 export const SEARCH_PROFILER__ID = 'profiler.id';
 
 /**
- * Search name for {@link attributes.SENTRY_PROFILER_ID}. `profiler_id`
- *
- * @deprecated Use {@link SEARCH_PROFILER__ID} (`profiler.id`) instead
- */
-export const SEARCH_PROFILER_ID = 'profiler_id';
-
-/**
  * Search name for {@link attributes.QUERY}. `query`
  *
  * @deprecated Use {@link SEARCH_DB__QUERY__TEXT} (`db.query.text`) instead
@@ -3780,16 +3573,6 @@ export const SEARCH_REDIS__COMMAND = 'redis.command';
 export const SEARCH_REDIS__KEY = 'redis.key';
 
 /**
- * Search name for {@link attributes.SENTRY_RELAY_INGRESS}. `relay.ingress`
- */
-export const SEARCH_RELAY__INGRESS = 'relay.ingress';
-
-/**
- * Search name for {@link attributes.SENTRY_RELAY_PIPELINE}. `relay.pipeline`
- */
-export const SEARCH_RELAY__PIPELINE = 'relay.pipeline';
-
-/**
  * Search name for {@link attributes.SENTRY_RELEASE}. `release`
  */
 export const SEARCH_RELEASE = 'release';
@@ -3810,18 +3593,6 @@ export const SEARCH_REPLAY__ID = 'replay.id';
  * @deprecated Use {@link SEARCH_REPLAY__ID} (`replay.id`) instead
  */
 export const SEARCH_REPLAY_ID = 'replay_id';
-
-/**
- * Search name for {@link attributes.SENTRY_REPLAY_IS_BUFFERING}. `replay_is_buffering`
- */
-export const SEARCH_REPLAY_IS_BUFFERING = 'replay_is_buffering';
-
-/**
- * Search name for {@link attributes.SENTRY_REPORT_EVENT}. `report_event`
- *
- * @deprecated
- */
-export const SEARCH_REPORT_EVENT = 'report_event';
 
 /**
  * Search name for {@link attributes.SENTRY_ENVIRONMENT}. `resource.deployment.environment`
@@ -3947,11 +3718,6 @@ export const SEARCH_SCORE__TOTAL = 'score.total';
 export const SEARCH_SCORE__WEIGHT__KEY = 'score.weight.<key>';
 
 /**
- * Search name for {@link attributes.SENTRY_SDK_INTEGRATIONS}. `sdk.integrations`
- */
-export const SEARCH_SDK__INTEGRATIONS = 'sdk.integrations';
-
-/**
  * Search name for {@link attributes.SENTRY_SDK_NAME}. `sdk.name`
  */
 export const SEARCH_SDK__NAME = 'sdk.name';
@@ -3962,28 +3728,470 @@ export const SEARCH_SDK__NAME = 'sdk.name';
 export const SEARCH_SDK__VERSION = 'sdk.version';
 
 /**
- * Search name for {@link attributes.SENTRY_SEGMENT_ID}. `segment.id`
+ * Search name for {@link attributes.SENTRY_ACTION}. `sentry.action`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__ACTION} (`span.action`) instead
  */
-export const SEARCH_SEGMENT__ID = 'segment.id';
+export const SEARCH_SENTRY__ACTION = 'sentry.action';
 
 /**
- * Search name for {@link attributes.SENTRY_SEGMENT_NAME}. `segment.name`
+ * Search name for {@link attributes.SENTRY_BROWSER_VERSION}. `sentry.browser.version`
+ *
+ * @deprecated Use {@link SEARCH_BROWSER__VERSION} (`browser.version`) instead
+ */
+export const SEARCH_SENTRY__BROWSER__VERSION = 'sentry.browser.version';
+
+/**
+ * Search name for {@link attributes.SENTRY_CANCELLATION_REASON}. `sentry.cancellation_reason`
+ */
+export const SEARCH_SENTRY__CANCELLATION_REASON = 'sentry.cancellation_reason';
+
+/**
+ * Search name for {@link attributes.SENTRY_CATEGORY}. `sentry.category`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__CATEGORY} (`span.category`) instead
+ */
+export const SEARCH_SENTRY__CATEGORY = 'sentry.category';
+
+/**
+ * Search name for {@link attributes.SENTRY_CLIENT_SAMPLE_RATE}. `sentry.client_sample_rate`
+ *
+ * @deprecated Use {@link SEARCH_CLIENT_SAMPLE_RATE} (`client_sample_rate`) instead
+ */
+export const SEARCH_SENTRY__CLIENT_SAMPLE_RATE = 'sentry.client_sample_rate';
+
+/**
+ * Search name for {@link attributes.SENTRY_DESCRIPTION}. `sentry.description`
+ */
+export const SEARCH_SENTRY__DESCRIPTION = 'sentry.description';
+
+/**
+ * Search name for {@link attributes.SENTRY_DIST}. `sentry.dist`
+ */
+export const SEARCH_SENTRY__DIST = 'sentry.dist';
+
+/**
+ * Search name for {@link attributes.SENTRY_DOMAIN}. `sentry.domain`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__DOMAIN} (`span.domain`) instead
+ */
+export const SEARCH_SENTRY__DOMAIN = 'sentry.domain';
+
+/**
+ * Search name for {@link attributes.SENTRY_DSC_ENVIRONMENT}. `sentry.dsc.environment`
+ */
+export const SEARCH_SENTRY__DSC__ENVIRONMENT = 'sentry.dsc.environment';
+
+/**
+ * Search name for {@link attributes.SENTRY_DSC_PROJECT_ID}. `sentry.dsc.project_id`
+ */
+export const SEARCH_SENTRY__DSC__PROJECT_ID = 'sentry.dsc.project_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_DSC_PUBLIC_KEY}. `sentry.dsc.public_key`
+ */
+export const SEARCH_SENTRY__DSC__PUBLIC_KEY = 'sentry.dsc.public_key';
+
+/**
+ * Search name for {@link attributes.SENTRY_DSC_RELEASE}. `sentry.dsc.release`
+ */
+export const SEARCH_SENTRY__DSC__RELEASE = 'sentry.dsc.release';
+
+/**
+ * Search name for {@link attributes.SENTRY_DSC_SAMPLE_RATE}. `sentry.dsc.sample_rate`
+ */
+export const SEARCH_SENTRY__DSC__SAMPLE_RATE = 'sentry.dsc.sample_rate';
+
+/**
+ * Search name for {@link attributes.SENTRY_DSC_SAMPLED}. `sentry.dsc.sampled`
+ */
+export const SEARCH_SENTRY__DSC__SAMPLED = 'sentry.dsc.sampled';
+
+/**
+ * Search name for {@link attributes.SENTRY_DSC_TRACE_ID}. `sentry.dsc.trace_id`
+ */
+export const SEARCH_SENTRY__DSC__TRACE_ID = 'sentry.dsc.trace_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_DSC_TRANSACTION}. `sentry.dsc.transaction`
+ */
+export const SEARCH_SENTRY__DSC__TRANSACTION = 'sentry.dsc.transaction';
+
+/**
+ * Search name for {@link attributes.SENTRY_ENVIRONMENT}. `sentry.environment`
+ *
+ * @deprecated Use {@link SEARCH_ENVIRONMENT} (`environment`) instead
+ */
+export const SEARCH_SENTRY__ENVIRONMENT = 'sentry.environment';
+
+/**
+ * Search name for {@link attributes.SENTRY_EVENT_SERIALIZED_BREADCRUMBS}. `sentry.event.serialized_breadcrumbs`
+ */
+export const SEARCH_SENTRY__EVENT__SERIALIZED_BREADCRUMBS = 'sentry.event.serialized_breadcrumbs';
+
+/**
+ * Search name for {@link attributes.SENTRY_EVENT_SERIALIZED_CONTEXTS}. `sentry.event.serialized_contexts`
+ */
+export const SEARCH_SENTRY__EVENT__SERIALIZED_CONTEXTS = 'sentry.event.serialized_contexts';
+
+/**
+ * Search name for {@link attributes.SENTRY_EVENT_SERIALIZED_EXTRA}. `sentry.event.serialized_extra`
+ */
+export const SEARCH_SENTRY__EVENT__SERIALIZED_EXTRA = 'sentry.event.serialized_extra';
+
+/**
+ * Search name for {@link attributes.SENTRY_EVENT_SERIALIZED_META}. `sentry.event.serialized_meta`
+ */
+export const SEARCH_SENTRY__EVENT__SERIALIZED_META = 'sentry.event.serialized_meta';
+
+/**
+ * Search name for {@link attributes.SENTRY_EXCLUSIVE_TIME}. `sentry.exclusive_time`
+ */
+export const SEARCH_SENTRY__EXCLUSIVE_TIME = 'sentry.exclusive_time';
+
+/**
+ * Search name for {@link attributes.FRAMES_FROZEN}. `sentry.frames.frozen`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE__FROZEN_FRAMES} (`mobile.frozen_frames`) instead
+ */
+export const SEARCH_SENTRY__FRAMES__FROZEN = 'sentry.frames.frozen';
+
+/**
+ * Search name for {@link attributes.FRAMES_SLOW}. `sentry.frames.slow`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE__SLOW_FRAMES} (`mobile.slow_frames`) instead
+ */
+export const SEARCH_SENTRY__FRAMES__SLOW = 'sentry.frames.slow';
+
+/**
+ * Search name for {@link attributes.FRAMES_TOTAL}. `sentry.frames.total`
+ *
+ * @deprecated Use {@link SEARCH_MOBILE__TOTAL_FRAMES} (`mobile.total_frames`) instead
+ */
+export const SEARCH_SENTRY__FRAMES__TOTAL = 'sentry.frames.total';
+
+/**
+ * Search name for {@link attributes.SENTRY_GRAPHQL_OPERATION}. `sentry.graphql.operation`
+ */
+export const SEARCH_SENTRY__GRAPHQL__OPERATION = 'sentry.graphql.operation';
+
+/**
+ * Search name for {@link attributes.SENTRY_GROUP}. `sentry.group`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__GROUP} (`span.group`) instead
+ */
+export const SEARCH_SENTRY__GROUP = 'sentry.group';
+
+/**
+ * Search name for {@link attributes.SENTRY_HTTP_PREFETCH}. `sentry.http.prefetch`
+ */
+export const SEARCH_SENTRY__HTTP__PREFETCH = 'sentry.http.prefetch';
+
+/**
+ * Search name for {@link attributes.SENTRY_IDLE_SPAN_FINISH_REASON}. `sentry.idle_span_finish_reason`
+ */
+export const SEARCH_SENTRY__IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
+
+/**
+ * Search name for {@link attributes.SENTRY_IS_REMOTE}. `sentry.is_remote`
+ */
+export const SEARCH_SENTRY__IS_REMOTE = 'sentry.is_remote';
+
+/**
+ * Search name for {@link attributes.SENTRY_KIND}. `sentry.kind`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__KIND} (`span.kind`) instead
+ */
+export const SEARCH_SENTRY__KIND = 'sentry.kind';
+
+/**
+ * Search name for {@link attributes.SENTRY_MAIN_THREAD}. `sentry.main_thread`
+ */
+export const SEARCH_SENTRY__MAIN_THREAD = 'sentry.main_thread';
+
+/**
+ * Search name for {@link attributes.SENTRY_MESSAGE_PARAMETER_KEY}. `sentry.message.parameter.<key>`
+ */
+export const SEARCH_SENTRY__MESSAGE__PARAMETER__KEY = 'sentry.message.parameter.<key>';
+
+/**
+ * Search name for {@link attributes.SENTRY_MESSAGE_TEMPLATE}. `sentry.message.template`
+ */
+export const SEARCH_SENTRY__MESSAGE__TEMPLATE = 'sentry.message.template';
+
+/**
+ * Search name for {@link attributes.SENTRY_METRIC_SOURCE}. `sentry.metric.source`
+ */
+export const SEARCH_SENTRY__METRIC__SOURCE = 'sentry.metric.source';
+
+/**
+ * Search name for {@link attributes.SENTRY_MOBILE}. `sentry.mobile`
+ */
+export const SEARCH_SENTRY__MOBILE = 'sentry.mobile';
+
+/**
+ * Search name for {@link attributes.SENTRY_MODULE_KEY}. `sentry.module.<key>`
+ */
+export const SEARCH_SENTRY__MODULE__KEY = 'sentry.module.<key>';
+
+/**
+ * Search name for {@link attributes.SENTRY_NEXTJS_SSR_FUNCTION_ROUTE}. `sentry.nextjs.ssr.function.route`
+ */
+export const SEARCH_SENTRY__NEXTJS__SSR__FUNCTION__ROUTE = 'sentry.nextjs.ssr.function.route';
+
+/**
+ * Search name for {@link attributes.SENTRY_NEXTJS_SSR_FUNCTION_TYPE}. `sentry.nextjs.ssr.function.type`
+ */
+export const SEARCH_SENTRY__NEXTJS__SSR__FUNCTION__TYPE = 'sentry.nextjs.ssr.function.type';
+
+/**
+ * Search name for {@link attributes.SENTRY_NORMALIZED_DB_QUERY}. `sentry.normalized_db_query`
+ */
+export const SEARCH_SENTRY__NORMALIZED_DB_QUERY = 'sentry.normalized_db_query';
+
+/**
+ * Search name for {@link attributes.SENTRY_NORMALIZED_DB_QUERY_HASH}. `sentry.normalized_db_query.hash`
+ */
+export const SEARCH_SENTRY__NORMALIZED_DB_QUERY__HASH = 'sentry.normalized_db_query.hash';
+
+/**
+ * Search name for {@link attributes.SENTRY_NORMALIZED_DESCRIPTION}. `sentry.normalized_description`
+ */
+export const SEARCH_SENTRY__NORMALIZED_DESCRIPTION = 'sentry.normalized_description';
+
+/**
+ * Search name for {@link attributes.SENTRY_OBSERVED_TIMESTAMP_NANOS}. `sentry.observed_timestamp_nanos`
+ */
+export const SEARCH_SENTRY__OBSERVED_TIMESTAMP_NANOS = 'sentry.observed_timestamp_nanos';
+
+/**
+ * Search name for {@link attributes.SENTRY_OP}. `sentry.op`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__OP} (`span.op`) instead
+ */
+export const SEARCH_SENTRY__OP = 'sentry.op';
+
+/**
+ * Search name for {@link attributes.SENTRY_ORIGIN}. `sentry.origin`
+ *
+ * @deprecated Use {@link SEARCH_ORIGIN} (`origin`) instead
+ */
+export const SEARCH_SENTRY__ORIGIN = 'sentry.origin';
+
+/**
+ * Search name for {@link attributes.SENTRY_PAGELOAD_SPAN_ID}. `sentry.pageload.span_id`
+ */
+export const SEARCH_SENTRY__PAGELOAD__SPAN_ID = 'sentry.pageload.span_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_PLATFORM}. `sentry.platform`
+ *
+ * @deprecated Use {@link SEARCH_PLATFORM} (`platform`) instead
+ */
+export const SEARCH_SENTRY__PLATFORM = 'sentry.platform';
+
+/**
+ * Search name for {@link attributes.SENTRY_PROFILE_ID}. `sentry.profile_id`
+ *
+ * @deprecated Use {@link SEARCH_PROFILE__ID} (`profile.id`) instead
+ */
+export const SEARCH_SENTRY__PROFILE_ID = 'sentry.profile_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_PROFILER_ID}. `sentry.profiler_id`
+ *
+ * @deprecated Use {@link SEARCH_PROFILER__ID} (`profiler.id`) instead
+ */
+export const SEARCH_SENTRY__PROFILER_ID = 'sentry.profiler_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_RELAY_INGRESS}. `sentry.relay.ingress`
+ */
+export const SEARCH_SENTRY__RELAY__INGRESS = 'sentry.relay.ingress';
+
+/**
+ * Search name for {@link attributes.SENTRY_RELAY_PIPELINE}. `sentry.relay.pipeline`
+ */
+export const SEARCH_SENTRY__RELAY__PIPELINE = 'sentry.relay.pipeline';
+
+/**
+ * Search name for {@link attributes.SENTRY_RELEASE}. `sentry.release`
+ *
+ * @deprecated Use {@link SEARCH_RELEASE} (`release`) instead
+ */
+export const SEARCH_SENTRY__RELEASE = 'sentry.release';
+
+/**
+ * Search name for {@link attributes.SENTRY_REPLAY_ID}. `sentry.replay_id`
+ *
+ * @deprecated Use {@link SEARCH_REPLAY__ID} (`replay.id`) instead
+ */
+export const SEARCH_SENTRY__REPLAY_ID = 'sentry.replay_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_REPLAY_IS_BUFFERING}. `sentry.replay_is_buffering`
+ */
+export const SEARCH_SENTRY__REPLAY_IS_BUFFERING = 'sentry.replay_is_buffering';
+
+/**
+ * Search name for {@link attributes.SENTRY_REPORT_EVENT}. `sentry.report_event`
+ *
+ * @deprecated
+ */
+export const SEARCH_SENTRY__REPORT_EVENT = 'sentry.report_event';
+
+/**
+ * Search name for {@link attributes.SENTRY_SDK_INTEGRATIONS}. `sentry.sdk.integrations`
+ */
+export const SEARCH_SENTRY__SDK__INTEGRATIONS = 'sentry.sdk.integrations';
+
+/**
+ * Search name for {@link attributes.SENTRY_SDK_NAME}. `sentry.sdk.name`
+ *
+ * @deprecated Use {@link SEARCH_SDK__NAME} (`sdk.name`) instead
+ */
+export const SEARCH_SENTRY__SDK__NAME = 'sentry.sdk.name';
+
+/**
+ * Search name for {@link attributes.SENTRY_SDK_VERSION}. `sentry.sdk.version`
+ *
+ * @deprecated Use {@link SEARCH_SDK__VERSION} (`sdk.version`) instead
+ */
+export const SEARCH_SENTRY__SDK__VERSION = 'sentry.sdk.version';
+
+/**
+ * Search name for {@link attributes.SENTRY_SEGMENT_ID}. `sentry.segment.id`
+ */
+export const SEARCH_SENTRY__SEGMENT__ID = 'sentry.segment.id';
+
+/**
+ * Search name for {@link attributes.SENTRY_SEGMENT_NAME}. `sentry.segment.name`
  *
  * @deprecated Use {@link SEARCH_TRANSACTION} (`transaction`) instead
  */
-export const SEARCH_SEGMENT__NAME = 'segment.name';
+export const SEARCH_SENTRY__SEGMENT__NAME = 'sentry.segment.name';
 
 /**
- * Search name for {@link attributes.SENTRY_SEGMENT_NAME_SOURCE}. `segment.name.source`
+ * Search name for {@link attributes.SENTRY_SEGMENT_NAME_SOURCE}. `sentry.segment.name.source`
  */
-export const SEARCH_SEGMENT__NAME__SOURCE = 'segment.name.source';
+export const SEARCH_SENTRY__SEGMENT__NAME__SOURCE = 'sentry.segment.name.source';
 
 /**
- * Search name for {@link attributes._SENTRY_SEGMENT_ID}. `segment_id`
+ * Search name for {@link attributes._SENTRY_SEGMENT_ID}. `sentry.segment_id`
  *
  * @deprecated Use {@link SEARCH_TRANSACTION__SPAN_ID} (`transaction.span_id`) instead
  */
-export const SEARCH_SEGMENT_ID = 'segment_id';
+export const SEARCH_SENTRY__SEGMENT_ID = 'sentry.segment_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_SERVER_SAMPLE_RATE}. `sentry.server_sample_rate`
+ *
+ * @deprecated Use {@link SEARCH_SERVER_SAMPLE_RATE} (`server_sample_rate`) instead
+ */
+export const SEARCH_SENTRY__SERVER_SAMPLE_RATE = 'sentry.server_sample_rate';
+
+/**
+ * Search name for {@link attributes.SENTRY_SOURCE}. `sentry.source`
+ *
+ * @deprecated
+ */
+export const SEARCH_SENTRY__SOURCE = 'sentry.source';
+
+/**
+ * Search name for {@link attributes.SENTRY_SPAN_SOURCE}. `sentry.span.source`
+ *
+ * @deprecated
+ */
+export const SEARCH_SENTRY__SPAN__SOURCE = 'sentry.span.source';
+
+/**
+ * Search name for {@link attributes.SENTRY_STATUS}. `sentry.status`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__STATUS} (`span.status`) instead
+ */
+export const SEARCH_SENTRY__STATUS = 'sentry.status';
+
+/**
+ * Search name for {@link attributes.SENTRY_STATUS_MESSAGE}. `sentry.status.message`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__STATUS__MESSAGE} (`span.status.message`) instead
+ */
+export const SEARCH_SENTRY__STATUS__MESSAGE = 'sentry.status.message';
+
+/**
+ * Search name for {@link attributes.SENTRY_STATUS_CODE}. `sentry.status_code`
+ *
+ * @deprecated Use {@link SEARCH_SPAN__STATUS_CODE} (`span.status_code`) instead
+ */
+export const SEARCH_SENTRY__STATUS_CODE = 'sentry.status_code';
+
+/**
+ * Search name for {@link attributes.SENTRY_SVELTEKIT_NAVIGATION_FROM}. `sentry.sveltekit.navigation.from`
+ *
+ * @deprecated Use {@link SEARCH_ROUTER__NAVIGATION__ORIGIN} (`router.navigation.origin`) instead
+ */
+export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__FROM = 'sentry.sveltekit.navigation.from';
+
+/**
+ * Search name for {@link attributes.SENTRY_SVELTEKIT_NAVIGATION_TO}. `sentry.sveltekit.navigation.to`
+ *
+ * @deprecated
+ */
+export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO = 'sentry.sveltekit.navigation.to';
+
+/**
+ * Search name for {@link attributes.SENTRY_SVELTEKIT_NAVIGATION_TYPE}. `sentry.sveltekit.navigation.type`
+ *
+ * @deprecated Use {@link SEARCH_ROUTER__NAVIGATION__TYPE} (`router.navigation.type`) instead
+ */
+export const SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE = 'sentry.sveltekit.navigation.type';
+
+/**
+ * Search name for {@link attributes.SENTRY_TIMESTAMP_SEQUENCE}. `sentry.timestamp.sequence`
+ */
+export const SEARCH_SENTRY__TIMESTAMP__SEQUENCE = 'sentry.timestamp.sequence';
+
+/**
+ * Search name for {@link attributes.SENTRY_TRACE_PARENT_SPAN_ID}. `sentry.trace.parent_span_id`
+ *
+ * @deprecated
+ */
+export const SEARCH_SENTRY__TRACE__PARENT_SPAN_ID = 'sentry.trace.parent_span_id';
+
+/**
+ * Search name for {@link attributes.SENTRY_TRACE_STATUS}. `sentry.trace.status`
+ *
+ * @deprecated Use {@link SEARCH_TRACE__STATUS} (`trace.status`) instead
+ */
+export const SEARCH_SENTRY__TRACE__STATUS = 'sentry.trace.status';
+
+/**
+ * Search name for {@link attributes.SENTRY_TRACE_LIFECYCLE}. `sentry.trace_lifecycle`
+ *
+ * @deprecated Use {@link SEARCH_TRACE_LIFECYCLE} (`trace_lifecycle`) instead
+ */
+export const SEARCH_SENTRY__TRACE_LIFECYCLE = 'sentry.trace_lifecycle';
+
+/**
+ * Search name for {@link attributes.SENTRY_SEGMENT_NAME}. `sentry.transaction`
+ *
+ * @deprecated Use {@link SEARCH_TRANSACTION} (`transaction`) instead
+ */
+export const SEARCH_SENTRY__TRANSACTION = 'sentry.transaction';
+
+/**
+ * Search name for {@link attributes.SENTRY_USER_IP}. `sentry.user.ip`
+ *
+ * @deprecated Use {@link SEARCH_USER__IP} (`user.ip`) instead
+ */
+export const SEARCH_SENTRY__USER__IP = 'sentry.user.ip';
+
+/**
+ * Search name for {@link attributes.SENTRY_USER_USERNAME}. `sentry.user.username`
+ *
+ * @deprecated Use {@link SEARCH_USER__USERNAME} (`user.username`) instead
+ */
+export const SEARCH_SENTRY__USER__USERNAME = 'sentry.user.username';
 
 /**
  * Search name for {@link attributes.SERVER_ADDRESS}. `server.address`
@@ -4025,13 +4233,6 @@ export const SEARCH_SERVICE__VERSION = 'service.version';
 export const SEARCH_SESSION__ID = 'session.id';
 
 /**
- * Search name for {@link attributes.SENTRY_SOURCE}. `source`
- *
- * @deprecated
- */
-export const SEARCH_SOURCE = 'source';
-
-/**
  * Search name for {@link attributes.SENTRY_ACTION}. `span.action`
  */
 export const SEARCH_SPAN__ACTION = 'span.action';
@@ -4060,13 +4261,6 @@ export const SEARCH_SPAN__KIND = 'span.kind';
  * Search name for {@link attributes.SENTRY_OP}. `span.op`
  */
 export const SEARCH_SPAN__OP = 'span.op';
-
-/**
- * Search name for {@link attributes.SENTRY_SPAN_SOURCE}. `span.source`
- *
- * @deprecated
- */
-export const SEARCH_SPAN__SOURCE = 'span.source';
 
 /**
  * Search name for {@link attributes.SENTRY_STATUS}. `span.status`
@@ -4124,53 +4318,11 @@ export const SEARCH_STARLITE__MIDDLEWARE_NAME = 'starlite.middleware_name';
 export const SEARCH_STATE__TYPE = 'state.type';
 
 /**
- * Search name for {@link attributes.SENTRY_STATUS}. `status`
- *
- * @deprecated Use {@link SEARCH_SPAN__STATUS} (`span.status`) instead
- */
-export const SEARCH_STATUS = 'status';
-
-/**
- * Search name for {@link attributes.SENTRY_STATUS_MESSAGE}. `status.message`
- *
- * @deprecated Use {@link SEARCH_SPAN__STATUS__MESSAGE} (`span.status.message`) instead
- */
-export const SEARCH_STATUS__MESSAGE = 'status.message';
-
-/**
- * Search name for {@link attributes.SENTRY_STATUS_CODE}. `status_code`
- *
- * @deprecated Use {@link SEARCH_SPAN__STATUS_CODE} (`span.status_code`) instead
- */
-export const SEARCH_STATUS_CODE = 'status_code';
-
-/**
  * Search name for {@link attributes.SUBPROCESS_PID}. `subprocess.pid`
  *
  * @deprecated Use {@link SEARCH_PROCESS__PID} (`process.pid`) instead
  */
 export const SEARCH_SUBPROCESS__PID = 'subprocess.pid';
-
-/**
- * Search name for {@link attributes.SENTRY_SVELTEKIT_NAVIGATION_FROM}. `sveltekit.navigation.from`
- *
- * @deprecated Use {@link SEARCH_ROUTER__NAVIGATION__ORIGIN} (`router.navigation.origin`) instead
- */
-export const SEARCH_SVELTEKIT__NAVIGATION__FROM = 'sveltekit.navigation.from';
-
-/**
- * Search name for {@link attributes.SENTRY_SVELTEKIT_NAVIGATION_TO}. `sveltekit.navigation.to`
- *
- * @deprecated
- */
-export const SEARCH_SVELTEKIT__NAVIGATION__TO = 'sveltekit.navigation.to';
-
-/**
- * Search name for {@link attributes.SENTRY_SVELTEKIT_NAVIGATION_TYPE}. `sveltekit.navigation.type`
- *
- * @deprecated Use {@link SEARCH_ROUTER__NAVIGATION__TYPE} (`router.navigation.type`) instead
- */
-export const SEARCH_SVELTEKIT__NAVIGATION__TYPE = 'sveltekit.navigation.type';
 
 /**
  * Search name for {@link attributes.THREAD_ID}. `thread.id`
@@ -4200,18 +4352,6 @@ export const SEARCH_TIME_TO_FULL_DISPLAY = 'time_to_full_display';
  * @deprecated Use {@link SEARCH_APP__VITALS__TTID__VALUE} (`app.vitals.ttid.value`) instead
  */
 export const SEARCH_TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
-
-/**
- * Search name for {@link attributes.SENTRY_TIMESTAMP_SEQUENCE}. `timestamp.sequence`
- */
-export const SEARCH_TIMESTAMP__SEQUENCE = 'timestamp.sequence';
-
-/**
- * Search name for {@link attributes.SENTRY_TRACE_PARENT_SPAN_ID}. `trace.parent_span_id`
- *
- * @deprecated
- */
-export const SEARCH_TRACE__PARENT_SPAN_ID = 'trace.parent_span_id';
 
 /**
  * Search name for {@link attributes.SENTRY_TRACE_STATUS}. `trace.status`
@@ -4639,7 +4779,6 @@ export const SEARCH_VERCEL__SOURCE = 'vercel.source';
 export const SEARCH_VERCEL__STATUS_CODE = 'vercel.status_code';
 
 export type AttributeSearchName =
-  | typeof SEARCH_ACTION
   | typeof SEARCH_ADDRESS
   | typeof SEARCH_AI__CITATIONS
   | typeof SEARCH_AI__COMPLETION_TOKENS__USED
@@ -4815,8 +4954,6 @@ export type AttributeSearchName =
   | typeof SEARCH_CACHE__OPERATION
   | typeof SEARCH_CACHE__TTL
   | typeof SEARCH_CACHE__WRITE
-  | typeof SEARCH_CANCELLATION_REASON
-  | typeof SEARCH_CATEGORY
   | typeof SEARCH_CHANNEL
   | typeof SEARCH_CLIENT__ADDRESS
   | typeof SEARCH_CLIENT__PORT
@@ -4885,7 +5022,6 @@ export type AttributeSearchName =
   | typeof SEARCH_DB__SYSTEM
   | typeof SEARCH_DB__SYSTEM__NAME
   | typeof SEARCH_DB__USER
-  | typeof SEARCH_DESCRIPTION
   | typeof SEARCH_DEVICE__ARCHS
   | typeof SEARCH_DEVICE__BATTERY_LEVEL
   | typeof SEARCH_DEVICE__BATTERY_TEMPERATURE
@@ -4928,29 +5064,15 @@ export type AttributeSearchName =
   | typeof SEARCH_DIST
   | typeof SEARCH_DJANGO__FUNCTION_NAME
   | typeof SEARCH_DJANGO__MIDDLEWARE_NAME
-  | typeof SEARCH_DOMAIN
-  | typeof SEARCH_DSC__ENVIRONMENT
-  | typeof SEARCH_DSC__PROJECT_ID
-  | typeof SEARCH_DSC__PUBLIC_KEY
-  | typeof SEARCH_DSC__RELEASE
-  | typeof SEARCH_DSC__SAMPLE_RATE
-  | typeof SEARCH_DSC__SAMPLED
-  | typeof SEARCH_DSC__TRACE_ID
-  | typeof SEARCH_DSC__TRANSACTION
   | typeof SEARCH_EFFECTIVECONNECTIONTYPE
   | typeof SEARCH_ENVIRONMENT
   | typeof SEARCH_ERROR__TYPE
   | typeof SEARCH_EVENT__ID
   | typeof SEARCH_EVENT__NAME
-  | typeof SEARCH_EVENT__SERIALIZED_BREADCRUMBS
-  | typeof SEARCH_EVENT__SERIALIZED_CONTEXTS
-  | typeof SEARCH_EVENT__SERIALIZED_EXTRA
-  | typeof SEARCH_EVENT__SERIALIZED_META
   | typeof SEARCH_EXCEPTION__ESCAPED
   | typeof SEARCH_EXCEPTION__MESSAGE
   | typeof SEARCH_EXCEPTION__STACKTRACE
   | typeof SEARCH_EXCEPTION__TYPE
-  | typeof SEARCH_EXCLUSIVE_TIME
   | typeof SEARCH_FAAS__COLDSTART
   | typeof SEARCH_FAAS__CRON
   | typeof SEARCH_FAAS__DURATION_IN_MS
@@ -5057,12 +5179,10 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__USAGE__REASONING__OUTPUT_TOKENS
   | typeof SEARCH_GEN_AI__USAGE__TOTAL_TOKENS
   | typeof SEARCH_GRAPHQL__DOCUMENT
-  | typeof SEARCH_GRAPHQL__OPERATION
   | typeof SEARCH_GRAPHQL__OPERATION__NAME
   | typeof SEARCH_GRAPHQL__OPERATION__TYPE
   | typeof SEARCH_GRAPHQL__PROCESSING__TYPE
   | typeof SEARCH_GRAPHQL__SOURCE
-  | typeof SEARCH_GROUP
   | typeof SEARCH_GRPC__ERROR__BAD_REQUEST__FIELD_VIOLATIONS
   | typeof SEARCH_GRPC__ERROR__DEBUG_INFO__DETAIL
   | typeof SEARCH_GRPC__ERROR__DEBUG_INFO__STACK_ENTRIES
@@ -5083,7 +5203,6 @@ export type AttributeSearchName =
   | typeof SEARCH_HTTP__FRAGMENT
   | typeof SEARCH_HTTP__HOST
   | typeof SEARCH_HTTP__METHOD
-  | typeof SEARCH_HTTP__PREFETCH
   | typeof SEARCH_HTTP__QUERY
   | typeof SEARCH_HTTP__REQUEST__BODY__DATA
   | typeof SEARCH_HTTP__REQUEST__BODY__DECODED_SIZE
@@ -5129,9 +5248,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HTTP__URL
   | typeof SEARCH_HTTP__USER_AGENT
   | typeof SEARCH_ID
-  | typeof SEARCH_IDLE_SPAN_FINISH_REASON
   | typeof SEARCH_INP
-  | typeof SEARCH_IS_REMOTE
   | typeof SEARCH_JSONRPC__PROTOCOL__VERSION
   | typeof SEARCH_JSONRPC__REQUEST__ID
   | typeof SEARCH_JVM__GC__ACTION
@@ -5140,7 +5257,6 @@ export type AttributeSearchName =
   | typeof SEARCH_JVM__MEMORY__TYPE
   | typeof SEARCH_JVM__THREAD__DAEMON
   | typeof SEARCH_JVM__THREAD__STATE
-  | typeof SEARCH_KIND
   | typeof SEARCH_KOA__NAME
   | typeof SEARCH_KOA__TYPE
   | typeof SEARCH_LANGCHAIN__CHAIN__NAME
@@ -5153,7 +5269,6 @@ export type AttributeSearchName =
   | typeof SEARCH_LCP__URL
   | typeof SEARCH_LITESTAR__MIDDLEWARE_NAME
   | typeof SEARCH_LOGGER__NAME
-  | typeof SEARCH_MAIN_THREAD
   | typeof SEARCH_MCP__CANCELLED__REASON
   | typeof SEARCH_MCP__CANCELLED__REQUEST_ID
   | typeof SEARCH_MCP__CLIENT__NAME
@@ -5193,8 +5308,6 @@ export type AttributeSearchName =
   | typeof SEARCH_MCP__TOOL__RESULT__IS_ERROR
   | typeof SEARCH_MCP__TRANSPORT
   | typeof SEARCH_MDC__KEY
-  | typeof SEARCH_MESSAGE__PARAMETER__KEY
-  | typeof SEARCH_MESSAGE__TEMPLATE
   | typeof SEARCH_MESSAGING__BATCH__MESSAGE_COUNT
   | typeof SEARCH_MESSAGING__CONVERSATION_ID
   | typeof SEARCH_MESSAGING__DESTINATION
@@ -5222,14 +5335,11 @@ export type AttributeSearchName =
   | typeof SEARCH_MESSAGING__SYSTEM
   | typeof SEARCH_MESSAGING__URL
   | typeof SEARCH_METHOD
-  | typeof SEARCH_METRIC__SOURCE
   | typeof SEARCH_MIDDLEWARE__NAME
-  | typeof SEARCH_MOBILE
   | typeof SEARCH_MOBILE__FRAMES_DELAY
   | typeof SEARCH_MOBILE__FROZEN_FRAMES
   | typeof SEARCH_MOBILE__SLOW_FRAMES
   | typeof SEARCH_MOBILE__TOTAL_FRAMES
-  | typeof SEARCH_MODULE__KEY
   | typeof SEARCH_NAVIGATION__ORIGIN
   | typeof SEARCH_NAVIGATION__ROUTE__ID
   | typeof SEARCH_NAVIGATION__TYPE
@@ -5264,13 +5374,6 @@ export type AttributeSearchName =
   | typeof SEARCH_NETWORK__PROTOCOL__VERSION
   | typeof SEARCH_NETWORK__TRANSPORT
   | typeof SEARCH_NETWORK__TYPE
-  | typeof SEARCH_NEXTJS__SSR__FUNCTION__ROUTE
-  | typeof SEARCH_NEXTJS__SSR__FUNCTION__TYPE
-  | typeof SEARCH_NORMALIZED_DB_QUERY
-  | typeof SEARCH_NORMALIZED_DB_QUERY__HASH
-  | typeof SEARCH_NORMALIZED_DESCRIPTION
-  | typeof SEARCH_OBSERVED_TIMESTAMP_NANOS
-  | typeof SEARCH_OP
   | typeof SEARCH_ORIGIN
   | typeof SEARCH_OS__BUILD
   | typeof SEARCH_OS__BUILD_ID
@@ -5287,7 +5390,6 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
-  | typeof SEARCH_PAGELOAD__SPAN_ID
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
   | typeof SEARCH_PERFORMANCE__TIMEORIGIN
@@ -5305,20 +5407,15 @@ export type AttributeSearchName =
   | typeof SEARCH_PROFILE__ID
   | typeof SEARCH_PROFILE_ID
   | typeof SEARCH_PROFILER__ID
-  | typeof SEARCH_PROFILER_ID
   | typeof SEARCH_QUERY
   | typeof SEARCH_QUERY__KEY
   | typeof SEARCH_REACT__VERSION
   | typeof SEARCH_REDIS__COMMAND
   | typeof SEARCH_REDIS__KEY
-  | typeof SEARCH_RELAY__INGRESS
-  | typeof SEARCH_RELAY__PIPELINE
   | typeof SEARCH_RELEASE
   | typeof SEARCH_REMIX__ACTION_FORM_DATA__KEY
   | typeof SEARCH_REPLAY__ID
   | typeof SEARCH_REPLAY_ID
-  | typeof SEARCH_REPLAY_IS_BUFFERING
-  | typeof SEARCH_REPORT_EVENT
   | typeof SEARCH_RESOURCE__DEPLOYMENT__ENVIRONMENT
   | typeof SEARCH_RESOURCE__DEPLOYMENT__ENVIRONMENT__NAME
   | typeof SEARCH_RESOURCE__RENDER_BLOCKING_STATUS
@@ -5340,13 +5437,86 @@ export type AttributeSearchName =
   | typeof SEARCH_SCORE__RATIO__KEY
   | typeof SEARCH_SCORE__TOTAL
   | typeof SEARCH_SCORE__WEIGHT__KEY
-  | typeof SEARCH_SDK__INTEGRATIONS
   | typeof SEARCH_SDK__NAME
   | typeof SEARCH_SDK__VERSION
-  | typeof SEARCH_SEGMENT__ID
-  | typeof SEARCH_SEGMENT__NAME
-  | typeof SEARCH_SEGMENT__NAME__SOURCE
-  | typeof SEARCH_SEGMENT_ID
+  | typeof SEARCH_SENTRY__ACTION
+  | typeof SEARCH_SENTRY__BROWSER__VERSION
+  | typeof SEARCH_SENTRY__CANCELLATION_REASON
+  | typeof SEARCH_SENTRY__CATEGORY
+  | typeof SEARCH_SENTRY__CLIENT_SAMPLE_RATE
+  | typeof SEARCH_SENTRY__DESCRIPTION
+  | typeof SEARCH_SENTRY__DIST
+  | typeof SEARCH_SENTRY__DOMAIN
+  | typeof SEARCH_SENTRY__DSC__ENVIRONMENT
+  | typeof SEARCH_SENTRY__DSC__PROJECT_ID
+  | typeof SEARCH_SENTRY__DSC__PUBLIC_KEY
+  | typeof SEARCH_SENTRY__DSC__RELEASE
+  | typeof SEARCH_SENTRY__DSC__SAMPLE_RATE
+  | typeof SEARCH_SENTRY__DSC__SAMPLED
+  | typeof SEARCH_SENTRY__DSC__TRACE_ID
+  | typeof SEARCH_SENTRY__DSC__TRANSACTION
+  | typeof SEARCH_SENTRY__ENVIRONMENT
+  | typeof SEARCH_SENTRY__EVENT__SERIALIZED_BREADCRUMBS
+  | typeof SEARCH_SENTRY__EVENT__SERIALIZED_CONTEXTS
+  | typeof SEARCH_SENTRY__EVENT__SERIALIZED_EXTRA
+  | typeof SEARCH_SENTRY__EVENT__SERIALIZED_META
+  | typeof SEARCH_SENTRY__EXCLUSIVE_TIME
+  | typeof SEARCH_SENTRY__FRAMES__FROZEN
+  | typeof SEARCH_SENTRY__FRAMES__SLOW
+  | typeof SEARCH_SENTRY__FRAMES__TOTAL
+  | typeof SEARCH_SENTRY__GRAPHQL__OPERATION
+  | typeof SEARCH_SENTRY__GROUP
+  | typeof SEARCH_SENTRY__HTTP__PREFETCH
+  | typeof SEARCH_SENTRY__IDLE_SPAN_FINISH_REASON
+  | typeof SEARCH_SENTRY__IS_REMOTE
+  | typeof SEARCH_SENTRY__KIND
+  | typeof SEARCH_SENTRY__MAIN_THREAD
+  | typeof SEARCH_SENTRY__MESSAGE__PARAMETER__KEY
+  | typeof SEARCH_SENTRY__MESSAGE__TEMPLATE
+  | typeof SEARCH_SENTRY__METRIC__SOURCE
+  | typeof SEARCH_SENTRY__MOBILE
+  | typeof SEARCH_SENTRY__MODULE__KEY
+  | typeof SEARCH_SENTRY__NEXTJS__SSR__FUNCTION__ROUTE
+  | typeof SEARCH_SENTRY__NEXTJS__SSR__FUNCTION__TYPE
+  | typeof SEARCH_SENTRY__NORMALIZED_DB_QUERY
+  | typeof SEARCH_SENTRY__NORMALIZED_DB_QUERY__HASH
+  | typeof SEARCH_SENTRY__NORMALIZED_DESCRIPTION
+  | typeof SEARCH_SENTRY__OBSERVED_TIMESTAMP_NANOS
+  | typeof SEARCH_SENTRY__OP
+  | typeof SEARCH_SENTRY__ORIGIN
+  | typeof SEARCH_SENTRY__PAGELOAD__SPAN_ID
+  | typeof SEARCH_SENTRY__PLATFORM
+  | typeof SEARCH_SENTRY__PROFILE_ID
+  | typeof SEARCH_SENTRY__PROFILER_ID
+  | typeof SEARCH_SENTRY__RELAY__INGRESS
+  | typeof SEARCH_SENTRY__RELAY__PIPELINE
+  | typeof SEARCH_SENTRY__RELEASE
+  | typeof SEARCH_SENTRY__REPLAY_ID
+  | typeof SEARCH_SENTRY__REPLAY_IS_BUFFERING
+  | typeof SEARCH_SENTRY__REPORT_EVENT
+  | typeof SEARCH_SENTRY__SDK__INTEGRATIONS
+  | typeof SEARCH_SENTRY__SDK__NAME
+  | typeof SEARCH_SENTRY__SDK__VERSION
+  | typeof SEARCH_SENTRY__SEGMENT__ID
+  | typeof SEARCH_SENTRY__SEGMENT__NAME
+  | typeof SEARCH_SENTRY__SEGMENT__NAME__SOURCE
+  | typeof SEARCH_SENTRY__SEGMENT_ID
+  | typeof SEARCH_SENTRY__SERVER_SAMPLE_RATE
+  | typeof SEARCH_SENTRY__SOURCE
+  | typeof SEARCH_SENTRY__SPAN__SOURCE
+  | typeof SEARCH_SENTRY__STATUS
+  | typeof SEARCH_SENTRY__STATUS__MESSAGE
+  | typeof SEARCH_SENTRY__STATUS_CODE
+  | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__FROM
+  | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TO
+  | typeof SEARCH_SENTRY__SVELTEKIT__NAVIGATION__TYPE
+  | typeof SEARCH_SENTRY__TIMESTAMP__SEQUENCE
+  | typeof SEARCH_SENTRY__TRACE__PARENT_SPAN_ID
+  | typeof SEARCH_SENTRY__TRACE__STATUS
+  | typeof SEARCH_SENTRY__TRACE_LIFECYCLE
+  | typeof SEARCH_SENTRY__TRANSACTION
+  | typeof SEARCH_SENTRY__USER__IP
+  | typeof SEARCH_SENTRY__USER__USERNAME
   | typeof SEARCH_SERVER__ADDRESS
   | typeof SEARCH_SERVER__PORT
   | typeof SEARCH_SERVER_NAME
@@ -5354,14 +5524,12 @@ export type AttributeSearchName =
   | typeof SEARCH_SERVICE__NAME
   | typeof SEARCH_SERVICE__VERSION
   | typeof SEARCH_SESSION__ID
-  | typeof SEARCH_SOURCE
   | typeof SEARCH_SPAN__ACTION
   | typeof SEARCH_SPAN__CATEGORY
   | typeof SEARCH_SPAN__DOMAIN
   | typeof SEARCH_SPAN__GROUP
   | typeof SEARCH_SPAN__KIND
   | typeof SEARCH_SPAN__OP
-  | typeof SEARCH_SPAN__SOURCE
   | typeof SEARCH_SPAN__STATUS
   | typeof SEARCH_SPAN__STATUS__MESSAGE
   | typeof SEARCH_SPAN__STATUS_CODE
@@ -5371,20 +5539,12 @@ export type AttributeSearchName =
   | typeof SEARCH_STARLETTE__MIDDLEWARE_NAME
   | typeof SEARCH_STARLITE__MIDDLEWARE_NAME
   | typeof SEARCH_STATE__TYPE
-  | typeof SEARCH_STATUS
-  | typeof SEARCH_STATUS__MESSAGE
-  | typeof SEARCH_STATUS_CODE
   | typeof SEARCH_SUBPROCESS__PID
-  | typeof SEARCH_SVELTEKIT__NAVIGATION__FROM
-  | typeof SEARCH_SVELTEKIT__NAVIGATION__TO
-  | typeof SEARCH_SVELTEKIT__NAVIGATION__TYPE
   | typeof SEARCH_THREAD__ID
   | typeof SEARCH_THREAD__NAME
   | typeof SEARCH_TIMBER__TAG
   | typeof SEARCH_TIME_TO_FULL_DISPLAY
   | typeof SEARCH_TIME_TO_INITIAL_DISPLAY
-  | typeof SEARCH_TIMESTAMP__SEQUENCE
-  | typeof SEARCH_TRACE__PARENT_SPAN_ID
   | typeof SEARCH_TRACE__STATUS
   | typeof SEARCH_TRACE_LIFECYCLE
   | typeof SEARCH_TRANSACTION
@@ -6604,12 +6764,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'If the cache operation resulted in a write to the cache.',
     deprecationChain: ['cache.write'],
   },
-  cancellation_reason: {
-    canonicalName: 'sentry.cancellation_reason',
-    type: 'string',
-    brief: 'The reason why a span ended early.',
-    deprecationChain: ['sentry.cancellation_reason'],
-  },
   channel: {
     canonicalName: 'channel',
     type: 'string',
@@ -7031,12 +7185,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The database user.',
     deprecationChain: ['db.user'],
   },
-  description: {
-    canonicalName: 'sentry.description',
-    type: 'string',
-    brief: 'The human-readable description of a span.',
-    deprecationChain: ['sentry.description'],
-  },
   'device.archs': {
     canonicalName: 'device.archs',
     type: 'string[]',
@@ -7299,63 +7447,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'starlite.middleware_name',
     ],
   },
-  'dsc.environment': {
-    canonicalName: 'sentry.dsc.environment',
-    type: 'string',
-    brief: 'The environment from the dynamic sampling context.',
-    internal: true,
-    deprecationChain: ['sentry.dsc.environment'],
-  },
-  'dsc.project_id': {
-    canonicalName: 'sentry.dsc.project_id',
-    type: 'string',
-    brief:
-      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
-    internal: true,
-    deprecationChain: ['sentry.dsc.project_id'],
-  },
-  'dsc.public_key': {
-    canonicalName: 'sentry.dsc.public_key',
-    type: 'string',
-    brief: 'The public key from the dynamic sampling context.',
-    internal: true,
-    deprecationChain: ['sentry.dsc.public_key'],
-  },
-  'dsc.release': {
-    canonicalName: 'sentry.dsc.release',
-    type: 'string',
-    brief: 'The release identifier from the dynamic sampling context.',
-    internal: true,
-    deprecationChain: ['sentry.dsc.release'],
-  },
-  'dsc.sample_rate': {
-    canonicalName: 'sentry.dsc.sample_rate',
-    type: 'string',
-    brief: 'The sample rate from the dynamic sampling context.',
-    internal: true,
-    deprecationChain: ['sentry.dsc.sample_rate'],
-  },
-  'dsc.sampled': {
-    canonicalName: 'sentry.dsc.sampled',
-    type: 'boolean',
-    brief: 'Whether the event was sampled according to the dynamic sampling context.',
-    internal: true,
-    deprecationChain: ['sentry.dsc.sampled'],
-  },
-  'dsc.trace_id': {
-    canonicalName: 'sentry.dsc.trace_id',
-    type: 'string',
-    brief: 'The trace ID from the dynamic sampling context.',
-    internal: true,
-    deprecationChain: ['sentry.dsc.trace_id'],
-  },
-  'dsc.transaction': {
-    canonicalName: 'sentry.dsc.transaction',
-    type: 'string',
-    brief: 'The transaction name from the dynamic sampling context.',
-    internal: true,
-    deprecationChain: ['sentry.dsc.transaction'],
-  },
   effectiveConnectionType: {
     canonicalName: 'network.connection.effective_type',
     type: 'string',
@@ -7391,34 +7482,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name that uniquely identifies this event (log record)',
     deprecationChain: ['event.name'],
   },
-  'event.serialized_breadcrumbs': {
-    canonicalName: 'sentry.event.serialized_breadcrumbs',
-    type: 'string',
-    brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
-    internal: true,
-    deprecationChain: ['sentry.event.serialized_breadcrumbs'],
-  },
-  'event.serialized_contexts': {
-    canonicalName: 'sentry.event.serialized_contexts',
-    type: 'string',
-    brief: 'JSON-serialized `contexts` property from a Sentry event.',
-    internal: true,
-    deprecationChain: ['sentry.event.serialized_contexts'],
-  },
-  'event.serialized_extra': {
-    canonicalName: 'sentry.event.serialized_extra',
-    type: 'string',
-    brief: 'JSON-serialized `extra` property from a Sentry event.',
-    internal: true,
-    deprecationChain: ['sentry.event.serialized_extra'],
-  },
-  'event.serialized_meta': {
-    canonicalName: 'sentry.event.serialized_meta',
-    type: 'string',
-    brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
-    internal: true,
-    deprecationChain: ['sentry.event.serialized_meta'],
-  },
   'exception.escaped': {
     canonicalName: 'exception.escaped',
     type: 'boolean',
@@ -7445,12 +7508,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
     deprecationChain: ['exception.type'],
-  },
-  exclusive_time: {
-    canonicalName: 'sentry.exclusive_time',
-    type: 'double',
-    brief: 'The exclusive time duration of the span in milliseconds.',
-    deprecationChain: ['sentry.exclusive_time'],
   },
   'faas.coldstart': {
     canonicalName: 'faas.coldstart',
@@ -7573,29 +7630,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The time it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
-  },
-  'frames.frozen': {
-    canonicalName: 'app.vitals.frames.frozen.count',
-    type: 'integer',
-    brief: 'The number of frozen frames rendered during the lifetime of the span.',
-    deprecationChain: [
-      'app.vitals.frames.frozen.count',
-      'frames.frozen',
-      'mobile.frozen_frames',
-      'sentry.frames.frozen',
-    ],
-  },
-  'frames.slow': {
-    canonicalName: 'app.vitals.frames.slow.count',
-    type: 'integer',
-    brief: 'The number of slow frames rendered during the lifetime of the span.',
-    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
-  },
-  'frames.total': {
-    canonicalName: 'app.vitals.frames.total.count',
-    type: 'integer',
-    brief: 'The number of total frames rendered during the lifetime of the span.',
-    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
   },
   frames_frozen_rate: {
     canonicalName: 'app.vitals.frames.frozen.rate',
@@ -8142,12 +8176,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The GraphQL document being executed.',
     deprecationChain: ['graphql.document', 'graphql.source'],
   },
-  'graphql.operation': {
-    canonicalName: 'sentry.graphql.operation',
-    type: 'string',
-    brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
-    deprecationChain: ['sentry.graphql.operation'],
-  },
   'graphql.operation.name': {
     canonicalName: 'graphql.operation.name',
     type: 'string',
@@ -8308,12 +8336,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The HTTP method used.',
     deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
-  },
-  'http.prefetch': {
-    canonicalName: 'sentry.http.prefetch',
-    type: 'boolean',
-    brief: 'If an http request was a prefetch request.',
-    deprecationChain: ['sentry.http.prefetch'],
   },
   'http.query': {
     canonicalName: 'http.query',
@@ -8614,23 +8636,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'A unique identifier for the span.',
     deprecationChain: ['id'],
   },
-  idle_span_finish_reason: {
-    canonicalName: 'sentry.idle_span_finish_reason',
-    type: 'string',
-    brief: 'The reason why an idle span ended early.',
-    deprecationChain: ['sentry.idle_span_finish_reason'],
-  },
   inp: {
     canonicalName: 'browser.web_vital.inp.value',
     type: 'double',
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     deprecationChain: ['browser.web_vital.inp.value', 'inp'],
-  },
-  is_remote: {
-    canonicalName: 'sentry.is_remote',
-    type: 'boolean',
-    brief: "Indicates whether a span's parent is remote.",
-    deprecationChain: ['sentry.is_remote'],
   },
   'jsonrpc.protocol.version': {
     canonicalName: 'jsonrpc.protocol.version',
@@ -8757,12 +8767,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of the logger that generated this event.',
     deprecationChain: ['logger.name'],
-  },
-  main_thread: {
-    canonicalName: 'sentry.main_thread',
-    type: 'boolean',
-    brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
-    deprecationChain: ['sentry.main_thread'],
   },
   'mcp.cancelled.reason': {
     canonicalName: 'mcp.cancelled.reason',
@@ -9006,19 +9010,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
     deprecationChain: ['mdc.<key>'],
   },
-  'message.parameter.<key>': {
-    canonicalName: 'sentry.message.parameter.<key>',
-    type: 'string',
-    brief:
-      "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
-    deprecationChain: ['sentry.message.parameter.<key>'],
-  },
-  'message.template': {
-    canonicalName: 'sentry.message.template',
-    type: 'string',
-    brief: 'The parameterized template string.',
-    deprecationChain: ['sentry.message.template'],
-  },
   'messaging.batch.message_count': {
     canonicalName: 'messaging.batch.message_count',
     type: 'integer',
@@ -9185,13 +9176,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The HTTP method used.',
     deprecationChain: ['http.request.method', 'http.method', 'http.request_method', 'method'],
   },
-  'metric.source': {
-    canonicalName: 'sentry.metric.source',
-    type: 'string',
-    brief:
-      'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.',
-    deprecationChain: ['sentry.metric.source'],
-  },
   'middleware.name': {
     canonicalName: 'middleware.name',
     type: 'string',
@@ -9203,12 +9187,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'starlette.middleware_name',
       'starlite.middleware_name',
     ],
-  },
-  mobile: {
-    canonicalName: 'sentry.mobile',
-    type: 'boolean',
-    brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
-    deprecationChain: ['sentry.mobile'],
   },
   'mobile.frames_delay': {
     canonicalName: 'app.vitals.frames.delay.value',
@@ -9239,12 +9217,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'The number of total frames rendered during the lifetime of the span.',
     deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
-  },
-  'module.<key>': {
-    canonicalName: 'sentry.module.<key>',
-    type: 'string',
-    brief: 'A module that was loaded in the process. The key is the name of the module.',
-    deprecationChain: ['sentry.module.<key>'],
   },
   'navigation.origin': {
     canonicalName: 'router.navigation.origin',
@@ -9455,45 +9427,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'OSI network layer or non-OSI equivalent.',
     deprecationChain: ['network.type'],
   },
-  'nextjs.ssr.function.route': {
-    canonicalName: 'sentry.nextjs.ssr.function.route',
-    type: 'string',
-    brief:
-      'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
-    deprecationChain: ['sentry.nextjs.ssr.function.route'],
-  },
-  'nextjs.ssr.function.type': {
-    canonicalName: 'sentry.nextjs.ssr.function.type',
-    type: 'string',
-    brief:
-      'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
-    deprecationChain: ['sentry.nextjs.ssr.function.type'],
-  },
-  normalized_db_query: {
-    canonicalName: 'sentry.normalized_db_query',
-    type: 'string',
-    brief: 'The normalized version of `db.query.text`.',
-    deprecationChain: ['sentry.normalized_db_query'],
-  },
-  'normalized_db_query.hash': {
-    canonicalName: 'sentry.normalized_db_query.hash',
-    type: 'string',
-    brief: 'The hash of `sentry.normalized_db_query`.',
-    deprecationChain: ['sentry.normalized_db_query.hash'],
-  },
-  normalized_description: {
-    canonicalName: 'sentry.normalized_description',
-    type: 'string',
-    brief:
-      'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
-    deprecationChain: ['sentry.normalized_description'],
-  },
-  observed_timestamp_nanos: {
-    canonicalName: 'sentry.observed_timestamp_nanos',
-    type: 'string',
-    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
-    deprecationChain: ['sentry.observed_timestamp_nanos'],
-  },
   origin: {
     canonicalName: 'sentry.origin',
     type: 'string',
@@ -9592,12 +9525,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
-  },
-  'pageload.span_id': {
-    canonicalName: 'sentry.pageload.span_id',
-    type: 'string',
-    brief: 'The id of the pageload span, set by web vital spans and metrics',
-    deprecationChain: ['sentry.pageload.span_id'],
   },
   'params.<key>': {
     canonicalName: 'params.<key>',
@@ -9736,20 +9663,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The key the Redis command is operating on.',
     deprecationChain: ['db.redis.key', 'redis.key'],
   },
-  'relay.ingress': {
-    canonicalName: 'sentry.relay.ingress',
-    type: 'string',
-    brief: 'How an item (span, log, &c.) entered Relay.',
-    internal: true,
-    deprecationChain: ['sentry.relay.ingress'],
-  },
-  'relay.pipeline': {
-    canonicalName: 'sentry.relay.pipeline',
-    type: 'string',
-    brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
-    internal: true,
-    deprecationChain: ['sentry.relay.pipeline'],
-  },
   release: {
     canonicalName: 'sentry.release',
     type: 'string',
@@ -9773,19 +9686,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The id of the sentry replay.',
     deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
-  },
-  replay_is_buffering: {
-    canonicalName: 'sentry.replay_is_buffering',
-    type: 'boolean',
-    brief:
-      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
-    deprecationChain: ['sentry.replay_is_buffering'],
-  },
-  report_event: {
-    canonicalName: 'sentry.report_event',
-    type: 'string',
-    brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
-    deprecationChain: ['sentry.report_event'],
   },
   'resource.deployment.environment': {
     canonicalName: 'sentry.environment',
@@ -9929,13 +9829,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: "The relative weight of a web vital in a span's performance score.",
     deprecationChain: ['score.weight.<key>'],
   },
-  'sdk.integrations': {
-    canonicalName: 'sentry.sdk.integrations',
-    type: 'string[]',
-    brief:
-      'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
-    deprecationChain: ['sentry.sdk.integrations'],
-  },
   'sdk.name': {
     canonicalName: 'sentry.sdk.name',
     type: 'string',
@@ -9948,19 +9841,350 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The sentry sdk version.',
     deprecationChain: ['sentry.sdk.version', 'sdk.version'],
   },
-  'segment.id': {
+  'sentry.browser.version': {
+    canonicalName: 'browser.version',
+    type: 'string',
+    brief: 'The version of the browser.',
+    deprecationChain: ['browser.version', 'sentry.browser.version'],
+  },
+  'sentry.cancellation_reason': {
+    canonicalName: 'sentry.cancellation_reason',
+    type: 'string',
+    brief: 'The reason why a span ended early.',
+    deprecationChain: ['sentry.cancellation_reason'],
+  },
+  'sentry.description': {
+    canonicalName: 'sentry.description',
+    type: 'string',
+    brief: 'The human-readable description of a span.',
+    deprecationChain: ['sentry.description'],
+  },
+  'sentry.dist': {
+    canonicalName: 'sentry.dist',
+    type: 'string',
+    brief: 'The sentry dist.',
+    deprecationChain: ['sentry.dist', 'dist'],
+  },
+  'sentry.dsc.environment': {
+    canonicalName: 'sentry.dsc.environment',
+    type: 'string',
+    brief: 'The environment from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.environment'],
+  },
+  'sentry.dsc.project_id': {
+    canonicalName: 'sentry.dsc.project_id',
+    type: 'string',
+    brief:
+      'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.project_id'],
+  },
+  'sentry.dsc.public_key': {
+    canonicalName: 'sentry.dsc.public_key',
+    type: 'string',
+    brief: 'The public key from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.public_key'],
+  },
+  'sentry.dsc.release': {
+    canonicalName: 'sentry.dsc.release',
+    type: 'string',
+    brief: 'The release identifier from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.release'],
+  },
+  'sentry.dsc.sample_rate': {
+    canonicalName: 'sentry.dsc.sample_rate',
+    type: 'string',
+    brief: 'The sample rate from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.sample_rate'],
+  },
+  'sentry.dsc.sampled': {
+    canonicalName: 'sentry.dsc.sampled',
+    type: 'boolean',
+    brief: 'Whether the event was sampled according to the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.sampled'],
+  },
+  'sentry.dsc.trace_id': {
+    canonicalName: 'sentry.dsc.trace_id',
+    type: 'string',
+    brief: 'The trace ID from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.trace_id'],
+  },
+  'sentry.dsc.transaction': {
+    canonicalName: 'sentry.dsc.transaction',
+    type: 'string',
+    brief: 'The transaction name from the dynamic sampling context.',
+    internal: true,
+    deprecationChain: ['sentry.dsc.transaction'],
+  },
+  'sentry.event.serialized_breadcrumbs': {
+    canonicalName: 'sentry.event.serialized_breadcrumbs',
+    type: 'string',
+    brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
+    internal: true,
+    deprecationChain: ['sentry.event.serialized_breadcrumbs'],
+  },
+  'sentry.event.serialized_contexts': {
+    canonicalName: 'sentry.event.serialized_contexts',
+    type: 'string',
+    brief: 'JSON-serialized `contexts` property from a Sentry event.',
+    internal: true,
+    deprecationChain: ['sentry.event.serialized_contexts'],
+  },
+  'sentry.event.serialized_extra': {
+    canonicalName: 'sentry.event.serialized_extra',
+    type: 'string',
+    brief: 'JSON-serialized `extra` property from a Sentry event.',
+    internal: true,
+    deprecationChain: ['sentry.event.serialized_extra'],
+  },
+  'sentry.event.serialized_meta': {
+    canonicalName: 'sentry.event.serialized_meta',
+    type: 'string',
+    brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
+    internal: true,
+    deprecationChain: ['sentry.event.serialized_meta'],
+  },
+  'sentry.exclusive_time': {
+    canonicalName: 'sentry.exclusive_time',
+    type: 'double',
+    brief: 'The exclusive time duration of the span in milliseconds.',
+    deprecationChain: ['sentry.exclusive_time'],
+  },
+  'sentry.frames.frozen': {
+    canonicalName: 'app.vitals.frames.frozen.count',
+    type: 'integer',
+    brief: 'The number of frozen frames rendered during the lifetime of the span.',
+    deprecationChain: [
+      'app.vitals.frames.frozen.count',
+      'frames.frozen',
+      'mobile.frozen_frames',
+      'sentry.frames.frozen',
+    ],
+  },
+  'sentry.frames.slow': {
+    canonicalName: 'app.vitals.frames.slow.count',
+    type: 'integer',
+    brief: 'The number of slow frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
+  },
+  'sentry.frames.total': {
+    canonicalName: 'app.vitals.frames.total.count',
+    type: 'integer',
+    brief: 'The number of total frames rendered during the lifetime of the span.',
+    deprecationChain: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
+  },
+  'sentry.graphql.operation': {
+    canonicalName: 'sentry.graphql.operation',
+    type: 'string',
+    brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
+    deprecationChain: ['sentry.graphql.operation'],
+  },
+  'sentry.http.prefetch': {
+    canonicalName: 'sentry.http.prefetch',
+    type: 'boolean',
+    brief: 'If an http request was a prefetch request.',
+    deprecationChain: ['sentry.http.prefetch'],
+  },
+  'sentry.idle_span_finish_reason': {
+    canonicalName: 'sentry.idle_span_finish_reason',
+    type: 'string',
+    brief: 'The reason why an idle span ended early.',
+    deprecationChain: ['sentry.idle_span_finish_reason'],
+  },
+  'sentry.is_remote': {
+    canonicalName: 'sentry.is_remote',
+    type: 'boolean',
+    brief: "Indicates whether a span's parent is remote.",
+    deprecationChain: ['sentry.is_remote'],
+  },
+  'sentry.main_thread': {
+    canonicalName: 'sentry.main_thread',
+    type: 'boolean',
+    brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
+    deprecationChain: ['sentry.main_thread'],
+  },
+  'sentry.message.parameter.<key>': {
+    canonicalName: 'sentry.message.parameter.<key>',
+    type: 'string',
+    brief:
+      "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
+    deprecationChain: ['sentry.message.parameter.<key>'],
+  },
+  'sentry.message.template': {
+    canonicalName: 'sentry.message.template',
+    type: 'string',
+    brief: 'The parameterized template string.',
+    deprecationChain: ['sentry.message.template'],
+  },
+  'sentry.metric.source': {
+    canonicalName: 'sentry.metric.source',
+    type: 'string',
+    brief:
+      'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.',
+    deprecationChain: ['sentry.metric.source'],
+  },
+  'sentry.mobile': {
+    canonicalName: 'sentry.mobile',
+    type: 'boolean',
+    brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
+    deprecationChain: ['sentry.mobile'],
+  },
+  'sentry.module.<key>': {
+    canonicalName: 'sentry.module.<key>',
+    type: 'string',
+    brief: 'A module that was loaded in the process. The key is the name of the module.',
+    deprecationChain: ['sentry.module.<key>'],
+  },
+  'sentry.nextjs.ssr.function.route': {
+    canonicalName: 'sentry.nextjs.ssr.function.route',
+    type: 'string',
+    brief:
+      'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
+    deprecationChain: ['sentry.nextjs.ssr.function.route'],
+  },
+  'sentry.nextjs.ssr.function.type': {
+    canonicalName: 'sentry.nextjs.ssr.function.type',
+    type: 'string',
+    brief:
+      'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
+    deprecationChain: ['sentry.nextjs.ssr.function.type'],
+  },
+  'sentry.normalized_db_query': {
+    canonicalName: 'sentry.normalized_db_query',
+    type: 'string',
+    brief: 'The normalized version of `db.query.text`.',
+    deprecationChain: ['sentry.normalized_db_query'],
+  },
+  'sentry.normalized_db_query.hash': {
+    canonicalName: 'sentry.normalized_db_query.hash',
+    type: 'string',
+    brief: 'The hash of `sentry.normalized_db_query`.',
+    deprecationChain: ['sentry.normalized_db_query.hash'],
+  },
+  'sentry.normalized_description': {
+    canonicalName: 'sentry.normalized_description',
+    type: 'string',
+    brief:
+      'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
+    deprecationChain: ['sentry.normalized_description'],
+  },
+  'sentry.observed_timestamp_nanos': {
+    canonicalName: 'sentry.observed_timestamp_nanos',
+    type: 'string',
+    brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
+    deprecationChain: ['sentry.observed_timestamp_nanos'],
+  },
+  'sentry.pageload.span_id': {
+    canonicalName: 'sentry.pageload.span_id',
+    type: 'string',
+    brief: 'The id of the pageload span, set by web vital spans and metrics',
+    deprecationChain: ['sentry.pageload.span_id'],
+  },
+  'sentry.relay.ingress': {
+    canonicalName: 'sentry.relay.ingress',
+    type: 'string',
+    brief: 'How an item (span, log, &c.) entered Relay.',
+    internal: true,
+    deprecationChain: ['sentry.relay.ingress'],
+  },
+  'sentry.relay.pipeline': {
+    canonicalName: 'sentry.relay.pipeline',
+    type: 'string',
+    brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
+    internal: true,
+    deprecationChain: ['sentry.relay.pipeline'],
+  },
+  'sentry.replay_is_buffering': {
+    canonicalName: 'sentry.replay_is_buffering',
+    type: 'boolean',
+    brief:
+      'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
+    deprecationChain: ['sentry.replay_is_buffering'],
+  },
+  'sentry.report_event': {
+    canonicalName: 'sentry.report_event',
+    type: 'string',
+    brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
+    deprecationChain: ['sentry.report_event'],
+  },
+  'sentry.sdk.integrations': {
+    canonicalName: 'sentry.sdk.integrations',
+    type: 'string[]',
+    brief:
+      'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
+    deprecationChain: ['sentry.sdk.integrations'],
+  },
+  'sentry.segment.id': {
     canonicalName: 'sentry.segment.id',
     type: 'string',
     brief: 'The segment ID of a span',
     deprecationChain: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
   },
-  'segment.name.source': {
+  'sentry.segment.name.source': {
     canonicalName: 'sentry.segment.name.source',
     type: 'string',
     brief:
       "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
     internal: true,
     deprecationChain: ['sentry.segment.name.source'],
+  },
+  'sentry.source': {
+    canonicalName: 'sentry.source',
+    type: 'string',
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    deprecationChain: ['sentry.source'],
+  },
+  'sentry.span.source': {
+    canonicalName: 'sentry.span.source',
+    type: 'string',
+    brief:
+      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    deprecationChain: ['sentry.span.source'],
+  },
+  'sentry.sveltekit.navigation.from': {
+    canonicalName: 'router.navigation.origin',
+    type: 'string',
+    brief: 'the navigation origin (sveltekit router)',
+    deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
+  },
+  'sentry.sveltekit.navigation.to': {
+    canonicalName: 'sentry.sveltekit.navigation.to',
+    type: 'string',
+    brief: 'the navigation destination',
+    deprecationChain: ['sentry.sveltekit.navigation.to'],
+  },
+  'sentry.sveltekit.navigation.type': {
+    canonicalName: 'router.navigation.type',
+    type: 'string',
+    brief: 'The type of navigation event emitted from the sveltekit client router',
+    deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
+  },
+  'sentry.timestamp.sequence': {
+    canonicalName: 'sentry.timestamp.sequence',
+    type: 'integer',
+    brief:
+      'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
+    deprecationChain: ['sentry.timestamp.sequence'],
+  },
+  'sentry.trace.parent_span_id': {
+    canonicalName: 'sentry.trace.parent_span_id',
+    type: 'string',
+    brief:
+      'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
+    deprecationChain: ['sentry.trace.parent_span_id'],
+  },
+  'sentry.transaction': {
+    canonicalName: 'sentry.segment.name',
+    type: 'string',
+    brief: 'The sentry transaction (segment name).',
+    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
   },
   'server.address': {
     canonicalName: 'server.address',
@@ -10005,13 +10229,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'A unique id identifying the active session at the time of setting this attribute',
     deprecationChain: ['session.id'],
   },
-  source: {
-    canonicalName: 'sentry.source',
-    type: 'string',
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
-    deprecationChain: ['sentry.source'],
-  },
   'span.action': {
     canonicalName: 'sentry.action',
     type: 'string',
@@ -10052,13 +10269,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The operation of a span.',
     deprecationChain: ['sentry.op', 'span.op'],
-  },
-  'span.source': {
-    canonicalName: 'sentry.span.source',
-    type: 'string',
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
-    deprecationChain: ['sentry.span.source'],
   },
   'span.status': {
     canonicalName: 'sentry.status',
@@ -10129,24 +10339,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The process ID of a subprocess.',
     deprecationChain: ['process.pid', 'subprocess.pid'],
   },
-  'sveltekit.navigation.from': {
-    canonicalName: 'router.navigation.origin',
-    type: 'string',
-    brief: 'the navigation origin (sveltekit router)',
-    deprecationChain: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
-  },
-  'sveltekit.navigation.to': {
-    canonicalName: 'sentry.sveltekit.navigation.to',
-    type: 'string',
-    brief: 'the navigation destination',
-    deprecationChain: ['sentry.sveltekit.navigation.to'],
-  },
-  'sveltekit.navigation.type': {
-    canonicalName: 'router.navigation.type',
-    type: 'string',
-    brief: 'The type of navigation event emitted from the sveltekit client router',
-    deprecationChain: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
-  },
   'thread.id': {
     canonicalName: 'thread.id',
     type: 'integer',
@@ -10176,20 +10368,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The duration of time to initial display in milliseconds',
     deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
-  },
-  'timestamp.sequence': {
-    canonicalName: 'sentry.timestamp.sequence',
-    type: 'integer',
-    brief:
-      'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
-    deprecationChain: ['sentry.timestamp.sequence'],
-  },
-  'trace.parent_span_id': {
-    canonicalName: 'sentry.trace.parent_span_id',
-    type: 'string',
-    brief:
-      'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
-    deprecationChain: ['sentry.trace.parent_span_id'],
   },
   'trace.status': {
     canonicalName: 'sentry.trace.status',
