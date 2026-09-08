@@ -24,6 +24,7 @@ The package exports:
 
 - `attributes`: contains constants for all attribute names and their types, as defined in the Sentry semantic conventions
 - `attributes.ATTRIBUTE_METADATA`: provides metadata about attributes, such as their type, scrubbing definition, deprecation info, and lookup keys
+- `@sentry/conventions/attributes/search`: contains constants and metadata for the names exposed in Sentry search
 - `attributes.Attributes`: represents a bag of typed attributes
 - `op`: contains constants for span operations used in Sentry
 
