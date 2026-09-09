@@ -90,6 +90,9 @@ pub const UI: &str = "ui";
 /// A task that is taken on the main UI thread. Typically used to indicate to users about things like the [Long Tasks API](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming).
 pub const UI_TASK: &str = "ui.task";
 
+/// Resolution of a UI component reference into the implementation that will render it. Use this for frameworks that look components up through a registry or resolver at render time, rather than binding them at module load. Examples are Ember/Glimmer's component resolver, Vue's `resolveComponent` for globally registered or async components, or Angular's dynamic component resolution. The render that follows is a separate `ui.render` span.
+pub const UI_RESOLVE: &str = "ui.resolve";
+
 pub const UI_RENDER: &str = "ui.render";
 
 /// Mounting of a UI component or application (e.g. initial render/bootstrap).

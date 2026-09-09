@@ -136,6 +136,11 @@ export const UI = 'ui';
  */
 export const UI_TASK = 'ui.task';
 
+/**
+ * Resolution of a UI component reference into the implementation that will render it. Use this for frameworks that look components up through a registry or resolver at render time, rather than binding them at module load. Examples are Ember/Glimmer's component resolver, Vue's `resolveComponent` for globally registered or async components, or Angular's dynamic component resolution. The render that follows is a separate `ui.render` span.
+ */
+export const UI_RESOLVE = 'ui.resolve';
+
 export const UI_RENDER = 'ui.render';
 
 /**
