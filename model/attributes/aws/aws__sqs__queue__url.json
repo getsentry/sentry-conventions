@@ -1,0 +1,18 @@
+{
+  "key": "aws.sqs.queue.url",
+  "brief": "The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [628],
+      "description": "Added aws.sqs.queue.url attribute"
+    }
+  ]
+}

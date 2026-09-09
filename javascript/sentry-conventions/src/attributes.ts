@@ -3065,6 +3065,27 @@ export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
  */
 export type AWS_SNS_TOPIC_ARN_TYPE = string;
 
+// Path: model/attributes/aws/aws__sqs__queue__url.json
+
+/**
+ * The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it. `aws.sqs.queue.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_SQS_QUEUE_URL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
+ */
+export const AWS_SQS_QUEUE_URL = 'aws.sqs.queue.url';
+
+/**
+ * Type for {@link AWS_SQS_QUEUE_URL} aws.sqs.queue.url
+ */
+export type AWS_SQS_QUEUE_URL_TYPE = string;
+
 // Path: model/attributes/aws/aws__step_functions__activity__arn.json
 
 /**
@@ -18794,6 +18815,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.s3.bucket': 'string',
   'aws.secretsmanager.secret.arn': 'string',
   'aws.sns.topic.arn': 'string',
+  'aws.sqs.queue.url': 'string',
   'aws.step_functions.activity.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
@@ -19629,6 +19651,7 @@ export type AttributeName =
   | typeof AWS_S3_BUCKET
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
+  | typeof AWS_SQS_QUEUE_URL
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
@@ -22547,6 +22570,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
+  },
+  'aws.sqs.queue.url': {
+    brief:
+      'The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.',
+    type: 'string',
+    keys: ['aws.sqs.queue.url'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue',
+    examples: ['https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue'],
+    changelog: [{ version: 'next', prs: [628], description: 'Added aws.sqs.queue.url attribute' }],
   },
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
@@ -33549,6 +33586,7 @@ export type Attributes = {
   [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
+  [AWS_SQS_QUEUE_URL]?: AWS_SQS_QUEUE_URL_TYPE;
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;

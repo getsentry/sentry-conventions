@@ -823,6 +823,11 @@ export const SEARCH_AWS__SECRETSMANAGER__SECRET__ARN = 'aws.secretsmanager.secre
 export const SEARCH_AWS__SNS__TOPIC__ARN = 'aws.sns.topic.arn';
 
 /**
+ * Search name for {@link attributes.AWS_SQS_QUEUE_URL}. `aws.sqs.queue.url`
+ */
+export const SEARCH_AWS__SQS__QUEUE__URL = 'aws.sqs.queue.url';
+
+/**
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_ACTIVITY_ARN}. `aws.step_functions.activity.arn`
  */
 export const SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN = 'aws.step_functions.activity.arn';
@@ -4934,6 +4939,7 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__S3__BUCKET
   | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__ARN
   | typeof SEARCH_AWS__SNS__TOPIC__ARN
+  | typeof SEARCH_AWS__SQS__QUEUE__URL
   | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN
   | typeof SEARCH_AWS_REGION
@@ -6542,6 +6548,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
     deprecationChain: ['aws.sns.topic.arn'],
+  },
+  'aws.sqs.queue.url': {
+    canonicalName: 'aws.sqs.queue.url',
+    type: 'string',
+    brief:
+      'The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.',
+    deprecationChain: ['aws.sqs.queue.url'],
   },
   'aws.step_functions.activity.arn': {
     canonicalName: 'aws.step_functions.activity.arn',

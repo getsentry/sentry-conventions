@@ -2131,6 +2131,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
     """
 
+    # Path: model/attributes/aws/aws__sqs__queue__url.json
+    AWS_SQS_QUEUE_URL: Literal["aws.sqs.queue.url"] = "aws.sqs.queue.url"
+    """The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
+    """
+
     # Path: model/attributes/aws/aws__step_functions__activity__arn.json
     AWS_STEP_FUNCTIONS_ACTIVITY_ARN: Literal["aws.step_functions.activity.arn"] = (
         "aws.step_functions.activity.arn"
@@ -13501,6 +13512,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0",
                 prs=[480],
                 description="Added aws.sns.topic.arn attribute",
+            ),
+        ],
+    ),
+    "aws.sqs.queue.url": AttributeMetadata(
+        brief="The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+        type=AttributeType.STRING,
+        keys=("aws.sqs.queue.url",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue",
+        examples=["https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[628],
+                description="Added aws.sqs.queue.url attribute",
             ),
         ],
     ),
@@ -26216,6 +26244,7 @@ Attributes = TypedDict(
         "aws.s3.bucket": str,
         "aws.secretsmanager.secret.arn": str,
         "aws.sns.topic.arn": str,
+        "aws.sqs.queue.url": str,
         "aws.step_functions.activity.arn": str,
         "aws.step_functions.state_machine.arn": str,
         "aws_region": str,
