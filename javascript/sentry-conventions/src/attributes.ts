@@ -7819,6 +7819,8 @@ export type GEN_AI_PROVIDER_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_TOOL_DEFINITIONS} `gen_ai.tool.definitions`
+ *
  * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead
  * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
  */
@@ -8475,6 +8477,8 @@ export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} `gen_ai.request.available_tools`
  *
  * @example "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
  */
@@ -25748,7 +25752,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.definitions',
       status: 'normalize',
     },
+    aliases: ['gen_ai.tool.definitions'],
     changelog: [
+      { version: 'next', description: 'Added gen_ai.tool.definitions as an alias' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 127] },
     ],
@@ -26233,7 +26239,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
-    changelog: [{ version: '0.4.0', prs: [221] }],
+    aliases: ['gen_ai.request.available_tools'],
+    changelog: [
+      { version: 'next', description: 'Added gen_ai.request.available_tools as an alias' },
+      { version: '0.4.0', prs: [221] },
+    ],
   },
   'gen_ai.tool.description': {
     brief: 'The description of the tool being used.',
