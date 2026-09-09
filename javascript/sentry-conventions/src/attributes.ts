@@ -3240,6 +3240,28 @@ export const BROWSER_NAME = 'browser.name';
  */
 export type BROWSER_NAME_TYPE = string;
 
+// Path: model/attributes/browser/browser__navigation__id.json
+
+/**
+ * The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime. `browser.navigation.id`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_NAVIGATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ * @example 3
+ */
+export const BROWSER_NAVIGATION_ID = 'browser.navigation.id';
+
+/**
+ * Type for {@link BROWSER_NAVIGATION_ID} browser.navigation.id
+ */
+export type BROWSER_NAVIGATION_ID_TYPE = number;
+
 // Path: model/attributes/browser/browser__navigation__type.json
 
 /**
@@ -18808,6 +18830,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.bfcache.outcome': 'string',
   'browser.bfcache.reason': 'string',
   'browser.name': 'string',
+  'browser.navigation.id': 'integer',
   'browser.navigation.type': 'string',
   'browser.paint.type': 'string',
   'browser.performance.navigation.activation_start': 'double',
@@ -19643,6 +19666,7 @@ export type AttributeName =
   | typeof BROWSER_BFCACHE_OUTCOME
   | typeof BROWSER_BFCACHE_REASON
   | typeof BROWSER_NAME
+  | typeof BROWSER_NAVIGATION_ID
   | typeof BROWSER_NAVIGATION_TYPE
   | typeof BROWSER_PAINT_TYPE
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -22660,6 +22684,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     aliases: ['sentry.browser.name'],
     changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
+  },
+  'browser.navigation.id': {
+    brief:
+      "The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.",
+    type: 'integer',
+    keys: ['browser.navigation.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    examples: [1, 3],
+    changelog: [{ version: 'next', prs: [634], description: 'Added browser.navigation.id attribute' }],
+    additionalContext: [
+      'Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.',
+      'The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.',
+      'Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.',
+      "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
+      "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
+    ],
   },
   'browser.navigation.type': {
     brief: 'The type of navigation the browser performed to arrive at the page the metrics were measured on.',
@@ -33578,6 +33623,7 @@ export type Attributes = {
   [BROWSER_BFCACHE_OUTCOME]?: BROWSER_BFCACHE_OUTCOME_TYPE;
   [BROWSER_BFCACHE_REASON]?: BROWSER_BFCACHE_REASON_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_NAVIGATION_ID]?: BROWSER_NAVIGATION_ID_TYPE;
   [BROWSER_NAVIGATION_TYPE]?: BROWSER_NAVIGATION_TYPE_TYPE;
   [BROWSER_PAINT_TYPE]?: BROWSER_PAINT_TYPE_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;

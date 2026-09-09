@@ -870,6 +870,11 @@ export const SEARCH_BROWSER__BFCACHE__REASON = 'browser.bfcache.reason';
 export const SEARCH_BROWSER__NAME = 'browser.name';
 
 /**
+ * Search name for {@link attributes.BROWSER_NAVIGATION_ID}. `browser.navigation.id`
+ */
+export const SEARCH_BROWSER__NAVIGATION__ID = 'browser.navigation.id';
+
+/**
  * Search name for {@link attributes.BROWSER_NAVIGATION_TYPE}. `browser.navigation.type`
  */
 export const SEARCH_BROWSER__NAVIGATION__TYPE = 'browser.navigation.type';
@@ -4943,6 +4948,7 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__BFCACHE__OUTCOME
   | typeof SEARCH_BROWSER__BFCACHE__REASON
   | typeof SEARCH_BROWSER__NAME
+  | typeof SEARCH_BROWSER__NAVIGATION__ID
   | typeof SEARCH_BROWSER__NAVIGATION__TYPE
   | typeof SEARCH_BROWSER__PAINT__TYPE
   | typeof SEARCH_BROWSER__PERFORMANCE__NAVIGATION__ACTIVATION_START
@@ -6600,6 +6606,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of the browser.',
     deprecationChain: ['browser.name', 'sentry.browser.name'],
+  },
+  'browser.navigation.id': {
+    canonicalName: 'browser.navigation.id',
+    type: 'integer',
+    brief:
+      "The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.",
+    deprecationChain: ['browser.navigation.id'],
   },
   'browser.navigation.type': {
     canonicalName: 'browser.navigation.type',
