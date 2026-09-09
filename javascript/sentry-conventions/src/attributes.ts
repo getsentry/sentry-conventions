@@ -7128,7 +7128,7 @@ export type FRAMES_TOTAL_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
+ * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.
  * @example "ENOENT: no such file or directory"
  */
 export const FS_ERROR = 'fs_error';
@@ -25261,9 +25261,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'ENOENT: no such file or directory',
     deprecation: {
       replacement: 'error.type',
-      reason: 'This attribute is not part of the OpenTelemetry specification and error.type fits much better.',
+      reason:
+        'This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.',
+      status: 'transform',
+      transformation: 'fs_error_to_error_type',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', description: 'Transform fs_error into error.type' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'gcp.function.context.event_id': {
     brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',

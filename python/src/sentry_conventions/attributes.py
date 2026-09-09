@@ -4390,7 +4390,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
+    DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.
     Example: "ENOENT: no such file or directory"
     """
 
@@ -16733,9 +16733,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ENOENT: no such file or directory",
         deprecation=DeprecationInfo(
             replacement="error.type",
-            reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better.",
+            reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="fs_error_to_error_type",
         ),
         changelog=[
+            ChangelogEntry(
+                version="next", description="Transform fs_error into error.type"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
