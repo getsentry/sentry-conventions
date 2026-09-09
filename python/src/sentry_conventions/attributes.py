@@ -5854,7 +5854,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     HTTP_REQUEST_HEADER_KEY: Literal["http.request.header.<key>"] = (
         "http.request.header.<key>"
     )
-    """HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
+    """HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.
 
     Type: List[str]
     Apply Scrubbing: auto
@@ -5862,6 +5862,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Has Dynamic Suffix: true
     Example: "http.request.header.custom-header=['foo', 'bar']"
+    Example: "http.request.header.content-length=['123']"
     """
 
     # Path: model/attributes/http/http__request__method.json
@@ -6082,7 +6083,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     HTTP_RESPONSE_HEADER_KEY: Literal["http.response.header.<key>"] = (
         "http.response.header.<key>"
     )
-    """HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
+    """HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.
 
     Type: List[str]
     Apply Scrubbing: auto
@@ -6090,6 +6091,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Has Dynamic Suffix: true
     Example: "http.response.header.custom-header=['foo', 'bar']"
+    Example: "http.response.header.content-length=['123']"
     """
 
     # Path: model/attributes/http/http__response__header__content-length.json
@@ -18934,7 +18936,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "http.request.header.<key>": AttributeMetadata(
-        brief="HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
+        brief="HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
         type=AttributeType.STRING_ARRAY,
         keys=("http.request.header.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -18942,6 +18944,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="http.request.header.custom-header=['foo', 'bar']",
+        examples=[
+            "http.request.header.custom-header=['foo', 'bar']",
+            "http.request.header.content-length=['123']",
+        ],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[201, 204]),
             ChangelogEntry(version="0.1.0", prs=[103]),
@@ -19228,7 +19234,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "http.response.header.<key>": AttributeMetadata(
-        brief="HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
+        brief="HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
         type=AttributeType.STRING_ARRAY,
         keys=("http.response.header.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -19236,6 +19242,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="http.response.header.custom-header=['foo', 'bar']",
+        examples=[
+            "http.response.header.custom-header=['foo', 'bar']",
+            "http.response.header.content-length=['123']",
+        ],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[201, 204]),
             ChangelogEntry(version="0.1.0", prs=[103]),

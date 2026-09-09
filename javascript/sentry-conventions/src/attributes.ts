@@ -9683,7 +9683,7 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
 // Path: model/attributes/http/http__request__header__[key].json
 
 /**
- * HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.request.header.<key>`
+ * HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values. `http.request.header.<key>`
  *
  * Attribute Value Type: `Array<string>` {@link HTTP_REQUEST_HEADER_KEY_TYPE}
  *
@@ -9695,6 +9695,7 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  * Has Dynamic Suffix: true
  *
  * @example "http.request.header.custom-header=['foo', 'bar']"
+ * @example "http.request.header.content-length=['123']"
  */
 export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
 
@@ -10087,7 +10088,7 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
 // Path: model/attributes/http/http__response__header__[key].json
 
 /**
- * HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.response.header.<key>`
+ * HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values. `http.response.header.<key>`
  *
  * Attribute Value Type: `Array<string>` {@link HTTP_RESPONSE_HEADER_KEY_TYPE}
  *
@@ -10099,6 +10100,7 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  * Has Dynamic Suffix: true
  *
  * @example "http.response.header.custom-header=['foo', 'bar']"
+ * @example "http.response.header.content-length=['123']"
  */
 export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
 
@@ -27180,7 +27182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'http.request.header.<key>': {
     brief:
-      'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+      'HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.',
     type: 'string[]',
     keys: ['http.request.header.<key>'],
     applyScrubbing: {
@@ -27190,6 +27192,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.request.header.custom-header=['foo', 'bar']",
+    examples: ["http.request.header.custom-header=['foo', 'bar']", "http.request.header.content-length=['123']"],
     changelog: [
       { version: '0.4.0', prs: [201, 204] },
       { version: '0.1.0', prs: [103] },
@@ -27460,7 +27463,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'http.response.header.<key>': {
     brief:
-      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+      'HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.',
     type: 'string[]',
     keys: ['http.response.header.<key>'],
     applyScrubbing: {
@@ -27470,6 +27473,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
+    examples: ["http.response.header.custom-header=['foo', 'bar']", "http.response.header.content-length=['123']"],
     changelog: [
       { version: '0.4.0', prs: [201, 204] },
       { version: '0.1.0', prs: [103] },
