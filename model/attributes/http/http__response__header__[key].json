@@ -1,13 +1,13 @@
 {
   "key": "http.response.header.<key>",
-  "brief": "HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
+  "brief": "HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
   "has_dynamic_suffix": true,
   "type": "string[]",
   "apply_scrubbing": {
     "key": "auto"
   },
   "is_in_otel": true,
-  "example": "http.response.header.custom-header=['foo', 'bar']",
+  "examples": ["http.response.header.custom-header=['foo', 'bar']", "http.response.header.content-length=['123']"],
   "visibility": "public",
   "changelog": [
     {

@@ -116,7 +116,7 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
 - The attribute MUST be namespaced. Example: `nextjs.function_id`, not `function_id`.
 - Use dots as separators for namespaces and logical grouoing, not underscores (`http.request.method`, not `http_request_method`)
 - Use `snake_case` for multi-word names (`browser.web_vital.ttfb.request_time`, not `browser.webVital.ttfb.request-time`)
-- Namespace first (`db.system`, not `system.db`)
+  - Exception: For names where the separating delimiter is already established in the ecosystem, do not convert them to snake_case. For example, http headers like `user-agent` SHOULD keep the separating `-` to retain integrity of the value. Other examples are parameter names (URL, Routing, DB query parameters, etc).
 - The `apply_scrubbing` field in the attribute definition MUST be `manual` or `auto` (if the attribute can contain sensitive data). It SHOULD be `never` only if scrubbing the attribute value for PII would potentially break product features. For example, `sentry.replay_id` should have `apply_scrubbing` set to `never`.
 - When an attribute is added that deprecates an old one:
   - The old one should be marked as deprecated, and it MUST point to the new one using the `deprecation.replacement` field.
