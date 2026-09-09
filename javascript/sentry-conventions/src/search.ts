@@ -8424,7 +8424,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.request.header.<key>',
     type: 'string[]',
     brief:
-      'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+      'HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.',
     deprecationChain: ['http.request.header.<key>'],
   },
   'http.request.method': {
@@ -8542,7 +8542,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.response.header.<key>',
     type: 'string[]',
     brief:
-      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+      'HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.',
     deprecationChain: ['http.response.header.<key>'],
   },
   'http.response.header.content-length': {
