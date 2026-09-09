@@ -2,9 +2,27 @@
   "brief": "Serverless (FAAS)",
   "operations": [
     {
+      "name": "GCP Serverless function execution",
+      "brief": "The invocation of a GCP serverless function.",
+      "ops": ["function.gcp"],
+      "templates": [
+        "{{gcp.function.context.type}}",
+        "{{gcp.function.context.event_type}}",
+        "{{http.request.method}} {{url.path}}",
+        "{{faas.name}}"
+      ],
+      "examples": [
+        "google.cloud.pubsub.topic.v1.messagePublished",
+        "providers/cloud.firestore/eventTypes/document.write",
+        "POST /path",
+        "my_function",
+        "process-upload"
+      ]
+    },
+    {
       "name": "Serverless function execution",
       "brief": "The invocation of a serverless function on a cloud provider.",
-      "ops": ["function.aws", "function.gcp", "function.azure"],
+      "ops": ["function.aws", "function.azure"],
       "templates": ["{{faas.name}}"],
       "examples": ["my_function", "process-upload"]
     }
