@@ -20636,7 +20636,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.pipeline.name', 'langchain.chain.name'],
     changelog: [
-      { version: 'next', prs: [599], description: 'Added langchain.chain.name as an alias' },
+      { version: '0.22.0', prs: [599], description: 'Added langchain.chain.name as an alias' },
       { version: '0.1.0', prs: [53, 76, 108, 127] },
     ],
   },
@@ -22697,7 +22697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1,
     examples: [1, 3],
-    changelog: [{ version: 'next', prs: [634], description: 'Added browser.navigation.id attribute' }],
+    changelog: [{ version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' }],
     additionalContext: [
       'Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.',
       'The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.',
@@ -22717,7 +22717,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'navigate',
     examples: ['navigate', 'reload', 'prerender', 'bfcache', 'soft-navigation'],
-    changelog: [{ version: 'next', prs: [600], description: 'Added browser.navigation.type attribute' }],
+    changelog: [{ version: '0.22.0', prs: [600], description: 'Added browser.navigation.type attribute' }],
     additionalContext: [
       'Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.',
       '`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.',
@@ -22736,7 +22736,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'first-paint',
     examples: ['first-paint', 'first-contentful-paint'],
-    changelog: [{ version: 'next', prs: [606], description: 'Added browser.paint.type attribute' }],
+    changelog: [{ version: '0.22.0', prs: [606], description: 'Added browser.paint.type attribute' }],
   },
   'browser.performance.navigation.activation_start': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
@@ -23543,7 +23543,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['code.file.path', 'sveltekit.load.node_id'],
     changelog: [
-      { version: 'next', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
+      { version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
     ],
@@ -23561,7 +23561,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/app/myapplication/http/handler/server.py',
     aliases: ['code.filepath', 'sveltekit.load.node_id'],
     changelog: [
-      { version: 'next', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
+      { version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
       { version: '0.0.0' },
     ],
   },
@@ -25312,7 +25312,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       transformation: 'fs_error_to_error_type',
     },
     changelog: [
-      { version: 'next', description: 'Transform fs_error into error.type' },
+      { version: '0.22.0', prs: [589], description: 'Transform fs_error into error.type' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -25729,7 +25729,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Autofix Pipeline',
     aliases: ['ai.pipeline.name', 'langchain.chain.name'],
     changelog: [
-      { version: 'next', prs: [599], description: 'Added langchain.chain.name as an alias' },
+      { version: '0.22.0', prs: [599], description: 'Added langchain.chain.name as an alias' },
       { version: '0.1.0', prs: [76, 127] },
     ],
   },
@@ -25806,7 +25806,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.tool.definitions'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.tool.definitions as an alias' },
+      { version: '0.22.0', prs: [595], description: 'Added gen_ai.tool.definitions as an alias' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 127] },
     ],
@@ -26293,7 +26293,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
     aliases: ['gen_ai.request.available_tools'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.request.available_tools as an alias' },
+      { version: '0.22.0', prs: [595], description: 'Added gen_ai.request.available_tools as an alias' },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -27968,7 +27968,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
-    changelog: [{ version: 'next', prs: [599], description: 'Added langchain.chain.name attribute' }],
+    changelog: [{ version: '0.22.0', prs: [599], description: 'Added langchain.chain.name attribute' }],
   },
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -29219,7 +29219,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['router.navigation.origin', 'sentry.sveltekit.navigation.from'],
     changelog: [
-      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.origin' },
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.origin' },
       { version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' },
     ],
   },
@@ -29241,7 +29241,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['router.navigation.route.id'],
     changelog: [
-      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.route.id' },
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.route.id' },
       { version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' },
     ],
   },
@@ -29262,7 +29262,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['router.navigation.type', 'sentry.sveltekit.navigation.type'],
     changelog: [
-      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.type' },
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.type' },
       { version: '0.16.0', prs: [467], description: 'Added new deprecated alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -30434,7 +30434,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
     changelog: [
       {
-        version: 'next',
+        version: '0.22.0',
         prs: [600],
         description: 'Added router.navigation.origin attribute, replacing navigation.origin',
       },
@@ -30454,7 +30454,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['navigation.route.id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.22.0',
         prs: [600],
         description: 'Added router.navigation.route.id attribute, replacing navigation.route.id',
       },
@@ -30472,7 +30472,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'router.push',
     aliases: ['navigation.type', 'sentry.sveltekit.navigation.type'],
     changelog: [
-      { version: 'next', prs: [600], description: 'Added router.navigation.type attribute, replacing navigation.type' },
+      {
+        version: '0.22.0',
+        prs: [600],
+        description: 'Added router.navigation.type attribute, replacing navigation.type',
+      },
     ],
   },
   'rpc.grpc.status_code': {
@@ -31743,7 +31747,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['navigation.origin', 'router.navigation.origin'],
     changelog: [
       {
-        version: 'next',
+        version: '0.22.0',
         prs: [600],
         description: 'Re-pointed deprecation from navigation.origin to router.navigation.origin',
       },
@@ -31783,7 +31787,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['navigation.type', 'router.navigation.type'],
     changelog: [
       {
-        version: 'next',
+        version: '0.22.0',
         prs: [600],
         description: 'Re-pointed deprecation from navigation.type to router.navigation.type',
       },
@@ -32295,7 +32299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'server',
     examples: ['server', 'client'],
-    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.environment attribute' }],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.environment attribute' }],
     additionalContext: [
       'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
     ],
@@ -32312,7 +32316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'src/routes/users/:id/+page.server.ts',
     examples: ['src/routes/users/:id/+page.server.ts'],
     aliases: ['code.file.path', 'code.filepath'],
-    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.node_id attribute' }],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id attribute' }],
     additionalContext: [
       'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
     ],
@@ -32329,7 +32333,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '+page.server',
     examples: ['+page.server', '+layout', '+layout.server'],
-    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.node_type attribute' }],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_type attribute' }],
     additionalContext: [
       'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
     ],
@@ -32345,7 +32349,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'sveltekit.handle.root',
     examples: ['sveltekit.handle.root'],
-    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.tracing.original_name attribute' }],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.tracing.original_name attribute' }],
     additionalContext: [
       "The Sentry SDK renames SvelteKit-emitted spans to match Sentry's span name semantics, and preserves the name SvelteKit originally set in this attribute.",
     ],

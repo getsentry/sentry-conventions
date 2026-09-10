@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [600],
       "description": "Re-pointed deprecation from navigation.type to router.navigation.type"
     },

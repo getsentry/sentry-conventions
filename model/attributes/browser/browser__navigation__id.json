@@ -17,7 +17,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [634],
       "description": "Added browser.navigation.id attribute"
     }
