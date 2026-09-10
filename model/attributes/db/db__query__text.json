@@ -3,7 +3,7 @@
   "brief": "The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "auto"
   },
   "is_in_otel": true,
   "example": "SELECT * FROM users WHERE id = $1",
