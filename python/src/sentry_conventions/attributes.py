@@ -8588,6 +8588,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "SELECT"
     """
 
+    # Path: model/attributes/sentry/sentry__app__url__domain.json
+    SENTRY_APP_URL_DOMAIN: Literal["sentry.app.url.domain"] = "sentry.app.url.domain"
+    """The domain the instrumented app is running on. For browsers, that's the current window's url. For server-side applications, the domain the application is deployed on. Importantly, this attribute MUST NOT be used to describe urls of outgoing requests.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "localhost"
+    Example: "api.project.com"
+    Example: "127.0.01"
+    Example: "::1"
+    """
+
     # Path: model/attributes/sentry/sentry__browser__name.json
     SENTRY_BROWSER_NAME: Literal["sentry.browser.name"] = "sentry.browser.name"
     """The name of the browser.
@@ -23101,6 +23115,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="span.action"),
     ),
+    "sentry.app.url.domain": AttributeMetadata(
+        brief="The domain the instrumented app is running on. For browsers, that's the current window's url. For server-side applications, the domain the application is deployed on. Importantly, this attribute MUST NOT be used to describe urls of outgoing requests.",
+        type=AttributeType.STRING,
+        keys=("sentry.app.url.domain",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="localhost",
+        examples=["localhost", "api.project.com", "127.0.01", "::1"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[635],
+                description="Added sentry.app.url.domain attribute",
+            ),
+        ],
+    ),
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
         type=AttributeType.STRING,
@@ -26792,6 +26823,7 @@ Attributes = TypedDict(
         "score.total": float,
         "score.weight.<key>": float,
         "sentry.action": str,
+        "sentry.app.url.domain": str,
         "sentry.browser.name": str,
         "sentry.browser.version": str,
         "sentry.cancellation_reason": str,

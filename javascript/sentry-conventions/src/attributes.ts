@@ -14564,6 +14564,30 @@ export const SENTRY_ACTION = 'sentry.action';
  */
 export type SENTRY_ACTION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__app__url__domain.json
+
+/**
+ * The domain the instrumented app is running on. For browsers, that's the current window's url. For server-side applications, the domain the application is deployed on. Importantly, this attribute MUST NOT be used to describe urls of outgoing requests. `sentry.app.url.domain`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_APP_URL_DOMAIN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "localhost"
+ * @example "api.project.com"
+ * @example "127.0.01"
+ * @example "::1"
+ */
+export const SENTRY_APP_URL_DOMAIN = 'sentry.app.url.domain';
+
+/**
+ * Type for {@link SENTRY_APP_URL_DOMAIN} sentry.app.url.domain
+ */
+export type SENTRY_APP_URL_DOMAIN_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__browser__name.json
 
 /**
@@ -19335,6 +19359,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'score.total': 'double',
   'score.weight.<key>': 'double',
   'sentry.action': 'string',
+  'sentry.app.url.domain': 'string',
   'sentry.browser.name': 'string',
   'sentry.browser.version': 'string',
   'sentry.cancellation_reason': 'string',
@@ -20171,6 +20196,7 @@ export type AttributeName =
   | typeof SCORE_TOTAL
   | typeof SCORE_WEIGHT_KEY
   | typeof SENTRY_ACTION
+  | typeof SENTRY_APP_URL_DOMAIN
   | typeof SENTRY_BROWSER_NAME
   | typeof SENTRY_BROWSER_VERSION
   | typeof SENTRY_CANCELLATION_REASON
@@ -30739,6 +30765,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       name: 'span.action',
     },
   },
+  'sentry.app.url.domain': {
+    brief:
+      "The domain the instrumented app is running on. For browsers, that's the current window's url. For server-side applications, the domain the application is deployed on. Importantly, this attribute MUST NOT be used to describe urls of outgoing requests.",
+    type: 'string',
+    keys: ['sentry.app.url.domain'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'localhost',
+    examples: ['localhost', 'api.project.com', '127.0.01', '::1'],
+    changelog: [{ version: 'next', prs: [635], description: 'Added sentry.app.url.domain attribute' }],
+  },
   'sentry.browser.name': {
     brief: 'The name of the browser.',
     type: 'string',
@@ -34128,6 +34168,7 @@ export type Attributes = {
   [SCORE_TOTAL]?: SCORE_TOTAL_TYPE;
   [SCORE_WEIGHT_KEY]?: SCORE_WEIGHT_KEY_TYPE;
   [SENTRY_ACTION]?: SENTRY_ACTION_TYPE;
+  [SENTRY_APP_URL_DOMAIN]?: SENTRY_APP_URL_DOMAIN_TYPE;
   [SENTRY_BROWSER_NAME]?: SENTRY_BROWSER_NAME_TYPE;
   [SENTRY_BROWSER_VERSION]?: SENTRY_BROWSER_VERSION_TYPE;
   [SENTRY_CANCELLATION_REASON]?: SENTRY_CANCELLATION_REASON_TYPE;
