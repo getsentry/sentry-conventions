@@ -4390,7 +4390,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
+    DEPRECATED: Use error.type instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.
     Example: "ENOENT: no such file or directory"
     """
 
@@ -4791,6 +4791,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: gen_ai.tool.definitions
     DEPRECATED: Use gen_ai.tool.definitions instead
     Example: "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
     """
@@ -5175,6 +5176,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: gen_ai.request.available_tools
     Example: "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
     """
 
@@ -5854,7 +5856,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     HTTP_REQUEST_HEADER_KEY: Literal["http.request.header.<key>"] = (
         "http.request.header.<key>"
     )
-    """HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
+    """HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.
 
     Type: List[str]
     Apply Scrubbing: auto
@@ -5862,6 +5864,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Has Dynamic Suffix: true
     Example: "http.request.header.custom-header=['foo', 'bar']"
+    Example: "http.request.header.content-length=['123']"
     """
 
     # Path: model/attributes/http/http__request__method.json
@@ -6082,7 +6085,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     HTTP_RESPONSE_HEADER_KEY: Literal["http.response.header.<key>"] = (
         "http.response.header.<key>"
     )
-    """HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.
+    """HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.
 
     Type: List[str]
     Apply Scrubbing: auto
@@ -6090,6 +6093,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Has Dynamic Suffix: true
     Example: "http.response.header.custom-header=['foo', 'bar']"
+    Example: "http.response.header.content-length=['123']"
     """
 
     # Path: model/attributes/http/http__response__header__content-length.json
@@ -16729,9 +16733,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="ENOENT: no such file or directory",
         deprecation=DeprecationInfo(
             replacement="error.type",
-            reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better.",
+            reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.",
+            status=DeprecationStatus.TRANSFORM,
+            transformation="fs_error_to_error_type",
         ),
         changelog=[
+            ChangelogEntry(
+                version="next", description="Transform fs_error into error.type"
+            ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -17307,7 +17316,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="gen_ai.tool.definitions", status=DeprecationStatus.NORMALIZE
         ),
+        aliases=["gen_ai.tool.definitions"],
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added gen_ai.tool.definitions as an alias"
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 127]),
         ],
@@ -17848,7 +17861,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
+        aliases=["gen_ai.request.available_tools"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.request.available_tools as an alias",
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -18934,7 +18952,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "http.request.header.<key>": AttributeMetadata(
-        brief="HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
+        brief="HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
         type=AttributeType.STRING_ARRAY,
         keys=("http.request.header.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -18942,6 +18960,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="http.request.header.custom-header=['foo', 'bar']",
+        examples=[
+            "http.request.header.custom-header=['foo', 'bar']",
+            "http.request.header.content-length=['123']",
+        ],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[201, 204]),
             ChangelogEntry(version="0.1.0", prs=[103]),
@@ -19228,7 +19250,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "http.response.header.<key>": AttributeMetadata(
-        brief="HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.",
+        brief="HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.",
         type=AttributeType.STRING_ARRAY,
         keys=("http.response.header.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -19236,6 +19258,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         has_dynamic_suffix=True,
         example="http.response.header.custom-header=['foo', 'bar']",
+        examples=[
+            "http.response.header.custom-header=['foo', 'bar']",
+            "http.response.header.content-length=['123']",
+        ],
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[201, 204]),
             ChangelogEntry(version="0.1.0", prs=[103]),

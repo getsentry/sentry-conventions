@@ -15,7 +15,7 @@
     "@astrojs/svelte": "9.0.1",
     "@sentry/astro": "^11.0.0-alpha.0",
     "@tailwindcss/vite": "^4.3.1",
-    "astro": "7.1.0",
+    "astro": "7.2.8",
     "dompurify": "^3.4.13",
     "svelte": "^5.56.3",
     "tailwindcss": "^4.3.1"
@@ -24,7 +24,7 @@
     "pagefind": "^1.5.2"
   },
   "volta": {
-    "node": "22.15.0",
+    "node": "22.23.2",
     "yarn": "1.22.22"
   }
 }
