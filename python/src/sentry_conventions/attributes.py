@@ -16839,10 +16839,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="error.type",
             reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.",
-            status=DeprecationStatus.TRANSFORM,
-            transformation="fs_error_to_error_type",
         ),
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[638],
+                description="Remove unnecessary transformation and change deprecation status to null.",
+            ),
             ChangelogEntry(
                 version="0.22.0",
                 prs=[589],
