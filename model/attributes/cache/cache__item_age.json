@@ -19,7 +19,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.23.0",
       "prs": [637],
       "description": "Added cache.item_age attribute"
     }

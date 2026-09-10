@@ -23108,7 +23108,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5,
     examples: [5, 3600],
-    changelog: [{ version: 'next', prs: [637], description: 'Added cache.item_age attribute' }],
+    changelog: [{ version: '0.23.0', prs: [637], description: 'Added cache.item_age attribute' }],
     additionalContext: [
       'Set on reads that return an entry. Absent on a miss, or when the cache does not report a write time.',
       "Clamped to 0. On a shared cache, the writer's clock and the reader's clock can drift far enough to make the age negative.",
@@ -23172,7 +23172,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['blog-posts', 'post-42'],
     examples: [['blog-posts', 'post-42'], ['products']],
-    changelog: [{ version: 'next', prs: [637], description: 'Added cache.tags attribute' }],
+    changelog: [{ version: '0.23.0', prs: [637], description: 'Added cache.tags attribute' }],
     additionalContext: [
       'Cache library examples that support tags: Next.js `cacheTag()`, Symfony `ItemInterface::tag()`, Laravel `Cache::tags()`.',
       'HTTP caches take tags from a response header. Cloudflare reads `Cache-Tag`, Fastly reads `Surrogate-Key`.',
@@ -25401,7 +25401,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.23.0',
         prs: [638],
         description: 'Remove unnecessary transformation and change deprecation status to null.',
       },

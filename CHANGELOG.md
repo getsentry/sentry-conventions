@@ -1,3 +1,13 @@
+## 0.23.0
+
+### New Features ✨
+
+- (attributes) Add `cache.item_age` and `cache.tags` by @s1gr1d in [#637](https://github.com/getsentry/sentry-conventions/pull/637)
+
+### Bug Fixes 🐛
+
+- (attributes) Remove accidentally merged attribute transformation by @Lms24 in [#638](https://github.com/getsentry/sentry-conventions/pull/638)
+
 ## 0.22.0
 
 ### New Features ✨
