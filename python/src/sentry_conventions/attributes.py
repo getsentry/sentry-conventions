@@ -16774,7 +16774,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[127],
+                prs=[638],
                 description="Remove unnecessary transformation and change deprecation status to null.",
             ),
             ChangelogEntry(

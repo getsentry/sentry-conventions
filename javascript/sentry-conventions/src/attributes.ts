@@ -25312,7 +25312,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
-        prs: [127],
+        prs: [638],
         description: 'Remove unnecessary transformation and change deprecation status to null.',
       },
       { version: '0.22.0', prs: [589], description: 'Transform fs_error into error.type' },
