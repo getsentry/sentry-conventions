@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [599],
       "description": "Added langchain.chain.name attribute"
     }

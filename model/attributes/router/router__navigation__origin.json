@@ -11,7 +11,7 @@
   "alias": ["navigation.origin", "sentry.sveltekit.navigation.from"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [600],
       "description": "Added router.navigation.origin attribute, replacing navigation.origin"
     }

@@ -10,7 +10,7 @@
   "examples": ["first-paint", "first-contentful-paint"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [606],
       "description": "Added browser.paint.type attribute"
     }

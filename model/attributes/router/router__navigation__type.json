@@ -11,7 +11,7 @@
   "alias": ["navigation.type", "sentry.sveltekit.navigation.type"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [600],
       "description": "Added router.navigation.type attribute, replacing navigation.type"
     }

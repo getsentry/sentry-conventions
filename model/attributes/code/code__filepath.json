@@ -15,7 +15,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [611],
       "description": "Added sveltekit.load.node_id as an alias"
     },

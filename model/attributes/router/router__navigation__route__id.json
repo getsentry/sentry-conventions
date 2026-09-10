@@ -11,7 +11,7 @@
   "alias": ["navigation.route.id"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [600],
       "description": "Added router.navigation.route.id attribute, replacing navigation.route.id"
     }

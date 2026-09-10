@@ -11109,7 +11109,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.pipeline.name", "langchain.chain.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[599],
                 description="Added langchain.chain.name as an alias",
             ),
@@ -13688,7 +13688,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[1, 3],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[634],
                 description="Added browser.navigation.id attribute",
             ),
@@ -13712,7 +13712,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["navigate", "reload", "prerender", "bfcache", "soft-navigation"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Added browser.navigation.type attribute",
             ),
@@ -13735,7 +13735,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["first-paint", "first-contentful-paint"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[606],
                 description="Added browser.paint.type attribute",
             ),
@@ -14698,7 +14698,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["code.filepath", "sveltekit.load.node_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.node_id as an alias",
             ),
@@ -14723,7 +14723,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["code.file.path", "sveltekit.load.node_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.node_id as an alias",
             ),
@@ -16775,7 +16775,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next", description="Transform fs_error into error.type"
+                version="0.22.0",
+                prs=[589],
+                description="Transform fs_error into error.type",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -17255,7 +17257,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.pipeline.name", "langchain.chain.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[599],
                 description="Added langchain.chain.name as an alias",
             ),
@@ -17355,7 +17357,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.tool.definitions"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added gen_ai.tool.definitions as an alias"
+                version="0.22.0",
+                prs=[595],
+                description="Added gen_ai.tool.definitions as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 127]),
@@ -17900,7 +17904,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.request.available_tools"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
+                prs=[595],
                 description="Added gen_ai.request.available_tools as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -19864,7 +19869,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.pipeline.name", "ai.pipeline.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[599],
                 description="Added langchain.chain.name attribute",
             ),
@@ -21308,7 +21313,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["router.navigation.origin", "sentry.sveltekit.navigation.from"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Deprecated in favor of router.navigation.origin",
             ),
@@ -21338,7 +21343,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["router.navigation.route.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Deprecated in favor of router.navigation.route.id",
             ),
@@ -21369,7 +21374,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["router.navigation.type", "sentry.sveltekit.navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Deprecated in favor of router.navigation.type",
             ),
@@ -22753,7 +22758,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.origin", "sentry.sveltekit.navigation.from"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Added router.navigation.origin attribute, replacing navigation.origin",
             ),
@@ -22773,7 +22778,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.route.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Added router.navigation.route.id attribute, replacing navigation.route.id",
             ),
@@ -22794,7 +22799,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.type", "sentry.sveltekit.navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Added router.navigation.type attribute, replacing navigation.type",
             ),
@@ -24189,7 +24194,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.origin", "router.navigation.origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Re-pointed deprecation from navigation.origin to router.navigation.origin",
             ),
@@ -24239,7 +24244,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.type", "router.navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Re-pointed deprecation from navigation.type to router.navigation.type",
             ),
@@ -24815,7 +24820,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["server", "client"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.environment attribute",
             ),
@@ -24840,7 +24845,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["code.file.path", "code.filepath"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.node_id attribute",
             ),
@@ -24860,7 +24865,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["+page.server", "+layout", "+layout.server"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.node_type attribute",
             ),
@@ -24880,7 +24885,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["sveltekit.handle.root"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.tracing.original_name attribute",
             ),

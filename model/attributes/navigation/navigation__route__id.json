@@ -16,7 +16,7 @@
   "alias": ["router.navigation.route.id"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [600],
       "description": "Deprecated in favor of router.navigation.route.id"
     },
