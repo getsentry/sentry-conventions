@@ -3854,6 +3854,28 @@ export const CACHE_HIT = 'cache.hit';
  */
 export type CACHE_HIT_TYPE = boolean;
 
+// Path: model/attributes/cache/cache__item_age.json
+
+/**
+ * The age of the cache entry in seconds, measured at read time. `cache.item_age`
+ *
+ * Attribute Value Type: `number` {@link CACHE_ITEM_AGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5
+ * @example 3600
+ */
+export const CACHE_ITEM_AGE = 'cache.item_age';
+
+/**
+ * Type for {@link CACHE_ITEM_AGE} cache.item_age
+ */
+export type CACHE_ITEM_AGE_TYPE = number;
+
 // Path: model/attributes/cache/cache__item_size.json
 
 /**
@@ -3918,6 +3940,28 @@ export const CACHE_OPERATION = 'cache.operation';
  * Type for {@link CACHE_OPERATION} cache.operation
  */
 export type CACHE_OPERATION_TYPE = string;
+
+// Path: model/attributes/cache/cache__tags.json
+
+/**
+ * The tags attached to the cache entry. Tags group entries so a cache can invalidate them together. `cache.tags`
+ *
+ * Attribute Value Type: `Array<string>` {@link CACHE_TAGS_TYPE}
+ *
+ * Apply Scrubbing: auto - Applications pick tag values freely and often build them from record identifiers such as a user id.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["blog-posts","post-42"]
+ * @example ["products"]
+ */
+export const CACHE_TAGS = 'cache.tags';
+
+/**
+ * Type for {@link CACHE_TAGS} cache.tags
+ */
+export type CACHE_TAGS_TYPE = Array<string>;
 
 // Path: model/attributes/cache/cache__ttl.json
 
@@ -18857,9 +18901,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.web_vital.ttfb.request_time': 'double',
   'browser.web_vital.ttfb.value': 'double',
   'cache.hit': 'boolean',
+  'cache.item_age': 'integer',
   'cache.item_size': 'integer',
   'cache.key': 'string[]',
   'cache.operation': 'string',
+  'cache.tags': 'string[]',
   'cache.ttl': 'integer',
   'cache.write': 'boolean',
   channel: 'string',
@@ -19693,9 +19739,11 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_TTFB_REQUEST_TIME
   | typeof BROWSER_WEB_VITAL_TTFB_VALUE
   | typeof CACHE_HIT
+  | typeof CACHE_ITEM_AGE
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
   | typeof CACHE_OPERATION
+  | typeof CACHE_TAGS
   | typeof CACHE_TTL
   | typeof CACHE_WRITE
   | typeof CHANNEL
@@ -23049,6 +23097,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
+  'cache.item_age': {
+    brief: 'The age of the cache entry in seconds, measured at read time.',
+    type: 'integer',
+    keys: ['cache.item_age'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5,
+    examples: [5, 3600],
+    changelog: [{ version: 'next', prs: [637], description: 'Added cache.item_age attribute' }],
+    additionalContext: [
+      'Set on reads that return an entry. Absent on a miss, or when the cache does not report a write time.',
+      "Clamped to 0. On a shared cache, the writer's clock and the reader's clock can drift far enough to make the age negative.",
+      'Can exceed `cache.ttl`. A cache that discards an expired entry on read still reports the age of that entry, with `cache.hit: false`.',
+    ],
+    searchAlias: {
+      name: 'cache.item_age',
+      type: 'second',
+    },
+  },
   'cache.item_size': {
     brief: 'The size of the requested item in the cache. In bytes.',
     type: 'integer',
@@ -23089,6 +23159,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'get',
     examples: ['get', 'put', 'remove'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'cache.tags': {
+    brief: 'The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.',
+    type: 'string[]',
+    keys: ['cache.tags'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Applications pick tag values freely and often build them from record identifiers such as a user id.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['blog-posts', 'post-42'],
+    examples: [['blog-posts', 'post-42'], ['products']],
+    changelog: [{ version: 'next', prs: [637], description: 'Added cache.tags attribute' }],
+    additionalContext: [
+      'Cache library examples that support tags: Next.js `cacheTag()`, Symfony `ItemInterface::tag()`, Laravel `Cache::tags()`.',
+      'HTTP caches take tags from a response header. Cloudflare reads `Cache-Tag`, Fastly reads `Surrogate-Key`.',
+      'Record only the tags the application declared. Leave out implicit tags that the framework adds itself, for example one tag per route.',
+      'The tags describe the entry, not the operation. Take them from the entry the cache returned or stored.',
+    ],
   },
   'cache.ttl': {
     brief: 'The ttl of the cache in seconds',
@@ -33654,9 +33744,11 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]?: BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE;
   [BROWSER_WEB_VITAL_TTFB_VALUE]?: BROWSER_WEB_VITAL_TTFB_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
+  [CACHE_ITEM_AGE]?: CACHE_ITEM_AGE_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
   [CACHE_OPERATION]?: CACHE_OPERATION_TYPE;
+  [CACHE_TAGS]?: CACHE_TAGS_TYPE;
   [CACHE_TTL]?: CACHE_TTL_TYPE;
   [CACHE_WRITE]?: CACHE_WRITE_TYPE;
   [CHANNEL]?: CHANNEL_TYPE;
