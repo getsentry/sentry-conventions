@@ -25308,10 +25308,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'error.type',
       reason:
         'This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.',
-      status: 'transform',
-      transformation: 'fs_error_to_error_type',
     },
     changelog: [
+      {
+        version: 'next',
+        prs: [127],
+        description: 'Remove unnecessary transformation and change deprecation status to null.',
+      },
       { version: '0.22.0', prs: [589], description: 'Transform fs_error into error.type' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
