@@ -2246,6 +2246,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Chrome"
     """
 
+    # Path: model/attributes/browser/browser__navigation__id.json
+    BROWSER_NAVIGATION_ID: Literal["browser.navigation.id"] = "browser.navigation.id"
+    """The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1
+    Example: 3
+    """
+
     # Path: model/attributes/browser/browser__navigation__type.json
     BROWSER_NAVIGATION_TYPE: Literal["browser.navigation.type"] = (
         "browser.navigation.type"
@@ -13663,6 +13675,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127, 139]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "browser.navigation.id": AttributeMetadata(
+        brief="The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.",
+        type=AttributeType.INTEGER,
+        keys=("browser.navigation.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1,
+        examples=[1, 3],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[634],
+                description="Added browser.navigation.id attribute",
+            ),
+        ],
+        additional_context=[
+            "Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.",
+            "The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.",
+            "Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.",
+            "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
+            "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
         ],
     ),
     "browser.navigation.type": AttributeMetadata(
@@ -26251,6 +26287,7 @@ Attributes = TypedDict(
         "browser.bfcache.outcome": str,
         "browser.bfcache.reason": str,
         "browser.name": str,
+        "browser.navigation.id": int,
         "browser.navigation.type": str,
         "browser.paint.type": str,
         "browser.performance.navigation.activation_start": float,
