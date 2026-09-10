@@ -1,7 +1,7 @@
 {
   "key": "sentry.app.url.domain",
   "brief": "The domain the instrumented app is running on. For browsers, that's the current window's url. For server-side applications, the domain the application is deployed on. Importantly, this attribute MUST NOT be used to describe urls of outgoing requests.",
-  "aditional_context": [
+  "additional_context": [
     "This attribute exists to enable sending the app's domain on every span, regardless of span kind. Other, existing URL attributes are ambiguous and serve different purposes for spans describing incoming or outgoing requests.",
     "This attribute is used for Sentry's Inbound filters, for example, to filter out telemetry emitted from localhost",
     "The attribute MAY carry an IP address, if a resolved domain name is not available.",

@@ -23131,6 +23131,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added sentry.app.url.domain attribute",
             ),
         ],
+        additional_context=[
+            "This attribute exists to enable sending the app's domain on every span, regardless of span kind. Other, existing URL attributes are ambiguous and serve different purposes for spans describing incoming or outgoing requests.",
+            "This attribute is used for Sentry's Inbound filters, for example, to filter out telemetry emitted from localhost",
+            "The attribute MAY carry an IP address, if a resolved domain name is not available.",
+            "To avoid conflicts with OTel's definition of the `app` namespace, this attribute is prefixed with `sentry.`",
+        ],
     ),
     "sentry.browser.name": AttributeMetadata(
         brief="The name of the browser.",
