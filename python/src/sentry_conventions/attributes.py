@@ -14164,7 +14164,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[5, 3600],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[637], description="Added cache.item_age attribute"
+                version="0.23.0",
+                prs=[637],
+                description="Added cache.item_age attribute",
             ),
         ],
         additional_context=[
@@ -14228,7 +14230,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[["blog-posts", "post-42"], ["products"]],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[637], description="Added cache.tags attribute"
+                version="0.23.0", prs=[637], description="Added cache.tags attribute"
             ),
         ],
         additional_context=[
@@ -16842,7 +16844,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.23.0",
                 prs=[638],
                 description="Remove unnecessary transformation and change deprecation status to null.",
             ),
