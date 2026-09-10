@@ -2609,6 +2609,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/cache/cache__item_age.json
+    CACHE_ITEM_AGE: Literal["cache.item_age"] = "cache.item_age"
+    """The age of the cache entry in seconds, measured at read time.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5
+    Example: 3600
+    """
+
     # Path: model/attributes/cache/cache__item_size.json
     CACHE_ITEM_SIZE: Literal["cache.item_size"] = "cache.item_size"
     """The size of the requested item in the cache. In bytes.
@@ -2642,6 +2654,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "get"
     Example: "put"
     Example: "remove"
+    """
+
+    # Path: model/attributes/cache/cache__tags.json
+    CACHE_TAGS: Literal["cache.tags"] = "cache.tags"
+    """The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.
+
+    Type: List[str]
+    Apply Scrubbing: auto - Applications pick tag values freely and often build them from record identifiers such as a user id.
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["blog-posts","post-42"]
+    Example: ["products"]
     """
 
     # Path: model/attributes/cache/cache__ttl.json
@@ -14129,6 +14153,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cache.item_age": AttributeMetadata(
+        brief="The age of the cache entry in seconds, measured at read time.",
+        type=AttributeType.INTEGER,
+        keys=("cache.item_age",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5,
+        examples=[5, 3600],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[637], description="Added cache.item_age attribute"
+            ),
+        ],
+        additional_context=[
+            "Set on reads that return an entry. Absent on a miss, or when the cache does not report a write time.",
+            "Clamped to 0. On a shared cache, the writer's clock and the reader's clock can drift far enough to make the age negative.",
+            "Can exceed `cache.ttl`. A cache that discards an expired entry on read still reports the age of that entry, with `cache.hit: false`.",
+        ],
+        search_alias=SearchAlias(name="cache.item_age", type="second"),
+    ),
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
         type=AttributeType.INTEGER,
@@ -14167,6 +14212,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "cache.tags": AttributeMetadata(
+        brief="The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("cache.tags",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Applications pick tag values freely and often build them from record identifiers such as a user id.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["blog-posts", "post-42"],
+        examples=[["blog-posts", "post-42"], ["products"]],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[637], description="Added cache.tags attribute"
+            ),
+        ],
+        additional_context=[
+            "Cache library examples that support tags: Next.js `cacheTag()`, Symfony `ItemInterface::tag()`, Laravel `Cache::tags()`.",
+            "HTTP caches take tags from a response header. Cloudflare reads `Cache-Tag`, Fastly reads `Surrogate-Key`.",
+            "Record only the tags the application declared. Leave out implicit tags that the framework adds itself, for example one tag per route.",
+            "The tags describe the entry, not the operation. Take them from the entry the cache returned or stored.",
         ],
     ),
     "cache.ttl": AttributeMetadata(
@@ -26322,9 +26391,11 @@ Attributes = TypedDict(
         "browser.web_vital.ttfb.request_time": float,
         "browser.web_vital.ttfb.value": float,
         "cache.hit": bool,
+        "cache.item_age": int,
         "cache.item_size": int,
         "cache.key": List[str],
         "cache.operation": str,
+        "cache.tags": List[str],
         "cache.ttl": int,
         "cache.write": bool,
         "channel": str,
