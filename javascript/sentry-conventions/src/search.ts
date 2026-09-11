@@ -3603,6 +3603,13 @@ export const SEARCH_REMIX__ACTION_FORM_DATA__KEY = 'remix.action_form_data.<key>
 export const SEARCH_REPLAY__ID = 'replay.id';
 
 /**
+ * Search name for {@link attributes.REPLAYID}. `replayId`
+ *
+ * @deprecated Use {@link SEARCH_SENTRY__REPLAY_ID} (`sentry.replay_id`) instead
+ */
+export const SEARCH_REPLAYID = 'replayId';
+
+/**
  * Search name for {@link attributes.SENTRY_REPLAY_ID}. `replay_id`
  *
  * @deprecated Use {@link SEARCH_REPLAY__ID} (`replay.id`) instead
@@ -5453,6 +5460,7 @@ export type AttributeSearchName =
   | typeof SEARCH_RELEASE
   | typeof SEARCH_REMIX__ACTION_FORM_DATA__KEY
   | typeof SEARCH_REPLAY__ID
+  | typeof SEARCH_REPLAYID
   | typeof SEARCH_REPLAY_ID
   | typeof SEARCH_RESOURCE__DEPLOYMENT__ENVIRONMENT
   | typeof SEARCH_RESOURCE__DEPLOYMENT__ENVIRONMENT__NAME
@@ -9741,6 +9749,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The id of the sentry replay.',
     deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
+  },
+  replayId: {
+    canonicalName: 'sentry.replay_id',
+    type: 'string',
+    brief: 'The id of the sentry replay.',
+    deprecationChain: ['replayId'],
   },
   replay_id: {
     canonicalName: 'sentry.replay_id',

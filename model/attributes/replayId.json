@@ -1,5 +1,5 @@
 {
-  "key": "sentry.replay_id",
+  "key": "replayId",
   "brief": "The id of the sentry replay.",
   "type": "string",
   "apply_scrubbing": {
@@ -7,14 +7,15 @@
   },
   "is_in_otel": false,
   "example": "123e4567e89b12d3a456426614174000",
-  "alias": ["replay_id", "replayId"],
-  "visibility": "public",
-  "search_alias": {
-    "name": "replay.id"
+  "alias": ["sentry.replay_id"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "sentry.replay_id"
   },
+  "visibility": "public",
   "changelog": [
     {
-      "version": "0.0.0"
+      "version": "next"
     }
   ]
 }
