@@ -1,0 +1,18 @@
+{
+  "key": "aws.s3.upload_id",
+  "brief": "Upload ID that identifies the multipart upload.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [639],
+      "description": "Added aws.s3.upload_id attribute"
+    }
+  ]
+}

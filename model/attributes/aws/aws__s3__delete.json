@@ -1,0 +1,18 @@
+{
+  "key": "aws.s3.delete",
+  "brief": "The delete request container that specifies the objects to be deleted.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [639],
+      "description": "Added aws.s3.delete attribute"
+    }
+  ]
+}

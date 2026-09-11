@@ -1,0 +1,18 @@
+{
+  "key": "aws.s3.copy_source",
+  "brief": "The source object (in the form `bucket`/`key`) for the copy operation.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["someFile.yml"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [639],
+      "description": "Added aws.s3.copy_source attribute"
+    }
+  ]
+}

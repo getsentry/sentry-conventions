@@ -2098,13 +2098,68 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/aws/aws__s3__bucket.json
     AWS_S3_BUCKET: Literal["aws.s3.bucket"] = "aws.s3.bucket"
-    """The S3 bucket name the request refers to.
+    """The S3 bucket name the request refers to. Corresponds to the `--bucket` parameter of the S3 API operations.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Example: "ot-demo-test"
+    Example: "some-bucket-name"
+    """
+
+    # Path: model/attributes/aws/aws__s3__copy_source.json
+    AWS_S3_COPY_SOURCE: Literal["aws.s3.copy_source"] = "aws.s3.copy_source"
+    """The source object (in the form `bucket`/`key`) for the copy operation.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "someFile.yml"
+    """
+
+    # Path: model/attributes/aws/aws__s3__delete.json
+    AWS_S3_DELETE: Literal["aws.s3.delete"] = "aws.s3.delete"
+    """The delete request container that specifies the objects to be deleted.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+    """
+
+    # Path: model/attributes/aws/aws__s3__key.json
+    AWS_S3_KEY: Literal["aws.s3.key"] = "aws.s3.key"
+    """The S3 object key the request refers to. Corresponds to the `--key` parameter of the S3 API operations.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "someFile.yml"
+    """
+
+    # Path: model/attributes/aws/aws__s3__part_number.json
+    AWS_S3_PART_NUMBER: Literal["aws.s3.part_number"] = "aws.s3.part_number"
+    """The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 3456
+    """
+
+    # Path: model/attributes/aws/aws__s3__upload_id.json
+    AWS_S3_UPLOAD_ID: Literal["aws.s3.upload_id"] = "aws.s3.upload_id"
+    """Upload ID that identifies the multipart upload.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"
     """
 
     # Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
@@ -13499,16 +13554,105 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "aws.s3.bucket": AttributeMetadata(
-        brief="The S3 bucket name the request refers to.",
+        brief="The S3 bucket name the request refers to. Corresponds to the `--bucket` parameter of the S3 API operations.",
         type=AttributeType.STRING,
         keys=("aws.s3.bucket",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="ot-demo-test",
+        example="some-bucket-name",
+        examples=["some-bucket-name"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[639],
+                description="Aligned aws.s3.bucket description and examples with OTel",
+            ),
+            ChangelogEntry(
                 version="0.16.0", prs=[480], description="Added aws.s3.bucket attribute"
+            ),
+        ],
+    ),
+    "aws.s3.copy_source": AttributeMetadata(
+        brief="The source object (in the form `bucket`/`key`) for the copy operation.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.copy_source",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="someFile.yml",
+        examples=["someFile.yml"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[639],
+                description="Added aws.s3.copy_source attribute",
+            ),
+        ],
+    ),
+    "aws.s3.delete": AttributeMetadata(
+        brief="The delete request container that specifies the objects to be deleted.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.delete",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean",
+        examples=[
+            "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[639], description="Added aws.s3.delete attribute"
+            ),
+        ],
+    ),
+    "aws.s3.key": AttributeMetadata(
+        brief="The S3 object key the request refers to. Corresponds to the `--key` parameter of the S3 API operations.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.key",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="someFile.yml",
+        examples=["someFile.yml"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[639], description="Added aws.s3.key attribute"
+            ),
+        ],
+    ),
+    "aws.s3.part_number": AttributeMetadata(
+        brief="The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.",
+        type=AttributeType.INTEGER,
+        keys=("aws.s3.part_number",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=3456,
+        examples=[3456],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[639],
+                description="Added aws.s3.part_number attribute",
+            ),
+        ],
+    ),
+    "aws.s3.upload_id": AttributeMetadata(
+        brief="Upload ID that identifies the multipart upload.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.upload_id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ",
+        examples=["dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[639],
+                description="Added aws.s3.upload_id attribute",
             ),
         ],
     ),
@@ -26355,6 +26499,11 @@ Attributes = TypedDict(
         "aws.request.url": str,
         "aws.request_id": str,
         "aws.s3.bucket": str,
+        "aws.s3.copy_source": str,
+        "aws.s3.delete": str,
+        "aws.s3.key": str,
+        "aws.s3.part_number": int,
+        "aws.s3.upload_id": str,
         "aws.secretsmanager.secret.arn": str,
         "aws.sns.topic.arn": str,
         "aws.step_functions.activity.arn": str,

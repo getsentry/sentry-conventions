@@ -813,6 +813,31 @@ export const SEARCH_AWS__REQUEST_ID = 'aws.request_id';
 export const SEARCH_AWS__S3__BUCKET = 'aws.s3.bucket';
 
 /**
+ * Search name for {@link attributes.AWS_S3_COPY_SOURCE}. `aws.s3.copy_source`
+ */
+export const SEARCH_AWS__S3__COPY_SOURCE = 'aws.s3.copy_source';
+
+/**
+ * Search name for {@link attributes.AWS_S3_DELETE}. `aws.s3.delete`
+ */
+export const SEARCH_AWS__S3__DELETE = 'aws.s3.delete';
+
+/**
+ * Search name for {@link attributes.AWS_S3_KEY}. `aws.s3.key`
+ */
+export const SEARCH_AWS__S3__KEY = 'aws.s3.key';
+
+/**
+ * Search name for {@link attributes.AWS_S3_PART_NUMBER}. `aws.s3.part_number`
+ */
+export const SEARCH_AWS__S3__PART_NUMBER = 'aws.s3.part_number';
+
+/**
+ * Search name for {@link attributes.AWS_S3_UPLOAD_ID}. `aws.s3.upload_id`
+ */
+export const SEARCH_AWS__S3__UPLOAD_ID = 'aws.s3.upload_id';
+
+/**
  * Search name for {@link attributes.AWS_SECRETSMANAGER_SECRET_ARN}. `aws.secretsmanager.secret.arn`
  */
 export const SEARCH_AWS__SECRETSMANAGER__SECRET__ARN = 'aws.secretsmanager.secret.arn';
@@ -4947,6 +4972,11 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__REQUEST__URL
   | typeof SEARCH_AWS__REQUEST_ID
   | typeof SEARCH_AWS__S3__BUCKET
+  | typeof SEARCH_AWS__S3__COPY_SOURCE
+  | typeof SEARCH_AWS__S3__DELETE
+  | typeof SEARCH_AWS__S3__KEY
+  | typeof SEARCH_AWS__S3__PART_NUMBER
+  | typeof SEARCH_AWS__S3__UPLOAD_ID
   | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__ARN
   | typeof SEARCH_AWS__SNS__TOPIC__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN
@@ -6545,8 +6575,40 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'aws.s3.bucket': {
     canonicalName: 'aws.s3.bucket',
     type: 'string',
-    brief: 'The S3 bucket name the request refers to.',
+    brief:
+      'The S3 bucket name the request refers to. Corresponds to the `--bucket` parameter of the S3 API operations.',
     deprecationChain: ['aws.s3.bucket'],
+  },
+  'aws.s3.copy_source': {
+    canonicalName: 'aws.s3.copy_source',
+    type: 'string',
+    brief: 'The source object (in the form `bucket`/`key`) for the copy operation.',
+    deprecationChain: ['aws.s3.copy_source'],
+  },
+  'aws.s3.delete': {
+    canonicalName: 'aws.s3.delete',
+    type: 'string',
+    brief: 'The delete request container that specifies the objects to be deleted.',
+    deprecationChain: ['aws.s3.delete'],
+  },
+  'aws.s3.key': {
+    canonicalName: 'aws.s3.key',
+    type: 'string',
+    brief: 'The S3 object key the request refers to. Corresponds to the `--key` parameter of the S3 API operations.',
+    deprecationChain: ['aws.s3.key'],
+  },
+  'aws.s3.part_number': {
+    canonicalName: 'aws.s3.part_number',
+    type: 'integer',
+    brief:
+      'The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.',
+    deprecationChain: ['aws.s3.part_number'],
+  },
+  'aws.s3.upload_id': {
+    canonicalName: 'aws.s3.upload_id',
+    type: 'string',
+    brief: 'Upload ID that identifies the multipart upload.',
+    deprecationChain: ['aws.s3.upload_id'],
   },
   'aws.secretsmanager.secret.arn': {
     canonicalName: 'aws.secretsmanager.secret.arn',

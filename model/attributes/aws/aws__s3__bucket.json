@@ -1,14 +1,19 @@
 {
   "key": "aws.s3.bucket",
-  "brief": "The S3 bucket name the request refers to.",
+  "brief": "The S3 bucket name the request refers to. Corresponds to the `--bucket` parameter of the S3 API operations.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "ot-demo-test",
+  "examples": ["some-bucket-name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [639],
+      "description": "Aligned aws.s3.bucket description and examples with OTel"
+    },
     {
       "version": "0.16.0",
       "prs": [480],

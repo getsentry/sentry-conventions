@@ -1,0 +1,18 @@
+{
+  "key": "aws.s3.key",
+  "brief": "The S3 object key the request refers to. Corresponds to the `--key` parameter of the S3 API operations.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["someFile.yml"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [639],
+      "description": "Added aws.s3.key attribute"
+    }
+  ]
+}

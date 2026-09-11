@@ -3005,7 +3005,7 @@ export type AWS_REQUEST_URL_TYPE = string;
 // Path: model/attributes/aws/aws__s3__bucket.json
 
 /**
- * The S3 bucket name the request refers to. `aws.s3.bucket`
+ * The S3 bucket name the request refers to. Corresponds to the `--bucket` parameter of the S3 API operations. `aws.s3.bucket`
  *
  * Attribute Value Type: `string` {@link AWS_S3_BUCKET_TYPE}
  *
@@ -3014,7 +3014,7 @@ export type AWS_REQUEST_URL_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @example "ot-demo-test"
+ * @example "some-bucket-name"
  */
 export const AWS_S3_BUCKET = 'aws.s3.bucket';
 
@@ -3022,6 +3022,111 @@ export const AWS_S3_BUCKET = 'aws.s3.bucket';
  * Type for {@link AWS_S3_BUCKET} aws.s3.bucket
  */
 export type AWS_S3_BUCKET_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__copy_source.json
+
+/**
+ * The source object (in the form `bucket`/`key`) for the copy operation. `aws.s3.copy_source`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_COPY_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "someFile.yml"
+ */
+export const AWS_S3_COPY_SOURCE = 'aws.s3.copy_source';
+
+/**
+ * Type for {@link AWS_S3_COPY_SOURCE} aws.s3.copy_source
+ */
+export type AWS_S3_COPY_SOURCE_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__delete.json
+
+/**
+ * The delete request container that specifies the objects to be deleted. `aws.s3.delete`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_DELETE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+ */
+export const AWS_S3_DELETE = 'aws.s3.delete';
+
+/**
+ * Type for {@link AWS_S3_DELETE} aws.s3.delete
+ */
+export type AWS_S3_DELETE_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__key.json
+
+/**
+ * The S3 object key the request refers to. Corresponds to the `--key` parameter of the S3 API operations. `aws.s3.key`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "someFile.yml"
+ */
+export const AWS_S3_KEY = 'aws.s3.key';
+
+/**
+ * Type for {@link AWS_S3_KEY} aws.s3.key
+ */
+export type AWS_S3_KEY_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__part_number.json
+
+/**
+ * The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000. `aws.s3.part_number`
+ *
+ * Attribute Value Type: `number` {@link AWS_S3_PART_NUMBER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 3456
+ */
+export const AWS_S3_PART_NUMBER = 'aws.s3.part_number';
+
+/**
+ * Type for {@link AWS_S3_PART_NUMBER} aws.s3.part_number
+ */
+export type AWS_S3_PART_NUMBER_TYPE = number;
+
+// Path: model/attributes/aws/aws__s3__upload_id.json
+
+/**
+ * Upload ID that identifies the multipart upload. `aws.s3.upload_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_UPLOAD_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"
+ */
+export const AWS_S3_UPLOAD_ID = 'aws.s3.upload_id';
+
+/**
+ * Type for {@link AWS_S3_UPLOAD_ID} aws.s3.upload_id
+ */
+export type AWS_S3_UPLOAD_ID_TYPE = string;
 
 // Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
 
@@ -18864,6 +18969,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.request.id': 'string',
   'aws.request.url': 'string',
   'aws.s3.bucket': 'string',
+  'aws.s3.copy_source': 'string',
+  'aws.s3.delete': 'string',
+  'aws.s3.key': 'string',
+  'aws.s3.part_number': 'integer',
+  'aws.s3.upload_id': 'string',
   'aws.secretsmanager.secret.arn': 'string',
   'aws.sns.topic.arn': 'string',
   'aws.step_functions.activity.arn': 'string',
@@ -19702,6 +19812,11 @@ export type AttributeName =
   | typeof _AWS_REQUEST_ID
   | typeof AWS_REQUEST_URL
   | typeof AWS_S3_BUCKET
+  | typeof AWS_S3_COPY_SOURCE
+  | typeof AWS_S3_DELETE
+  | typeof AWS_S3_KEY
+  | typeof AWS_S3_PART_NUMBER
+  | typeof AWS_S3_UPLOAD_ID
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
@@ -22590,7 +22705,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'aws.s3.bucket': {
-    brief: 'The S3 bucket name the request refers to.',
+    brief:
+      'The S3 bucket name the request refers to. Corresponds to the `--bucket` parameter of the S3 API operations.',
     type: 'string',
     keys: ['aws.s3.bucket'],
     applyScrubbing: {
@@ -22598,8 +22714,78 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'ot-demo-test',
-    changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.s3.bucket attribute' }],
+    example: 'some-bucket-name',
+    examples: ['some-bucket-name'],
+    changelog: [
+      { version: 'next', prs: [639], description: 'Aligned aws.s3.bucket description and examples with OTel' },
+      { version: '0.16.0', prs: [480], description: 'Added aws.s3.bucket attribute' },
+    ],
+  },
+  'aws.s3.copy_source': {
+    brief: 'The source object (in the form `bucket`/`key`) for the copy operation.',
+    type: 'string',
+    keys: ['aws.s3.copy_source'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'someFile.yml',
+    examples: ['someFile.yml'],
+    changelog: [{ version: 'next', prs: [639], description: 'Added aws.s3.copy_source attribute' }],
+  },
+  'aws.s3.delete': {
+    brief: 'The delete request container that specifies the objects to be deleted.',
+    type: 'string',
+    keys: ['aws.s3.delete'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
+    examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
+    changelog: [{ version: 'next', prs: [639], description: 'Added aws.s3.delete attribute' }],
+  },
+  'aws.s3.key': {
+    brief: 'The S3 object key the request refers to. Corresponds to the `--key` parameter of the S3 API operations.',
+    type: 'string',
+    keys: ['aws.s3.key'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'someFile.yml',
+    examples: ['someFile.yml'],
+    changelog: [{ version: 'next', prs: [639], description: 'Added aws.s3.key attribute' }],
+  },
+  'aws.s3.part_number': {
+    brief:
+      'The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.',
+    type: 'integer',
+    keys: ['aws.s3.part_number'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 3456,
+    examples: [3456],
+    changelog: [{ version: 'next', prs: [639], description: 'Added aws.s3.part_number attribute' }],
+  },
+  'aws.s3.upload_id': {
+    brief: 'Upload ID that identifies the multipart upload.',
+    type: 'string',
+    keys: ['aws.s3.upload_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ',
+    examples: ['dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ'],
+    changelog: [{ version: 'next', prs: [639], description: 'Added aws.s3.upload_id attribute' }],
   },
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
@@ -33710,6 +33896,11 @@ export type Attributes = {
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
   [AWS_REQUEST_URL]?: AWS_REQUEST_URL_TYPE;
   [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
+  [AWS_S3_COPY_SOURCE]?: AWS_S3_COPY_SOURCE_TYPE;
+  [AWS_S3_DELETE]?: AWS_S3_DELETE_TYPE;
+  [AWS_S3_KEY]?: AWS_S3_KEY_TYPE;
+  [AWS_S3_PART_NUMBER]?: AWS_S3_PART_NUMBER_TYPE;
+  [AWS_S3_UPLOAD_ID]?: AWS_S3_UPLOAD_ID_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
