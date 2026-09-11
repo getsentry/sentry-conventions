@@ -1,0 +1,25 @@
+{
+  "key": "cache.tags",
+  "brief": "The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "Applications pick tag values freely and often build them from record identifiers such as a user id."
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [["blog-posts", "post-42"], ["products"]],
+  "additional_context": [
+    "Cache library examples that support tags: Next.js `cacheTag()`, Symfony `ItemInterface::tag()`, Laravel `Cache::tags()`.",
+    "HTTP caches take tags from a response header. Cloudflare reads `Cache-Tag`, Fastly reads `Surrogate-Key`.",
+    "Record only the tags the application declared. Leave out implicit tags that the framework adds itself, for example one tag per route.",
+    "The tags describe the entry, not the operation. Take them from the entry the cache returned or stored."
+  ],
+  "changelog": [
+    {
+      "version": "0.23.0",
+      "prs": [637],
+      "description": "Added cache.tags attribute"
+    }
+  ]
+}

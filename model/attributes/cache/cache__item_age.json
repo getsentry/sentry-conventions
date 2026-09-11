@@ -1,0 +1,27 @@
+{
+  "key": "cache.item_age",
+  "brief": "The age of the cache entry in seconds, measured at read time.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [5, 3600],
+  "search_alias": {
+    "name": "cache.item_age",
+    "type": "second"
+  },
+  "additional_context": [
+    "Set on reads that return an entry. Absent on a miss, or when the cache does not report a write time.",
+    "Clamped to 0. On a shared cache, the writer's clock and the reader's clock can drift far enough to make the age negative.",
+    "Can exceed `cache.ttl`. A cache that discards an expired entry on read still reports the age of that entry, with `cache.hit: false`."
+  ],
+  "changelog": [
+    {
+      "version": "0.23.0",
+      "prs": [637],
+      "description": "Added cache.item_age attribute"
+    }
+  ]
+}

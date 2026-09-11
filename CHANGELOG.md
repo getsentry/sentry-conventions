@@ -1,3 +1,71 @@
+## 0.23.0
+
+### New Features ✨
+
+- (attributes) Add `cache.item_age` and `cache.tags` by @s1gr1d in [#637](https://github.com/getsentry/sentry-conventions/pull/637)
+
+### Bug Fixes 🐛
+
+- (attributes) Remove accidentally merged attribute transformation by @Lms24 in [#638](https://github.com/getsentry/sentry-conventions/pull/638)
+
+## 0.22.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add `browser.navigation.id` by @logaretm in [#634](https://github.com/getsentry/sentry-conventions/pull/634)
+- Replace `fs_error` in favor of `error.type` by @JPeer264 in [#589](https://github.com/getsentry/sentry-conventions/pull/589)
+- Complete the `gen_ai.tool.definitions` alias group by @JPeer264 in [#595](https://github.com/getsentry/sentry-conventions/pull/595)
+- Add `sveltekit.*` attributes emitted by SvelteKit's native spans by @Lms24 in [#611](https://github.com/getsentry/sentry-conventions/pull/611)
+- Add browser.navigation.type, move navigation._ to router.navigation._ by @logaretm in [#600](https://github.com/getsentry/sentry-conventions/pull/600)
+- Add `langchain.chain.name` (deprecated) in favor of `gen_ai.pipeline.name` by @RulaKhaled in [#599](https://github.com/getsentry/sentry-conventions/pull/599)
+- Add `browser.paint.type` by @Lms24 in [#606](https://github.com/getsentry/sentry-conventions/pull/606)
+
+#### Descriptions
+
+- Add more fine grained `function.gcp` span description rules by @Lms24 in [#624](https://github.com/getsentry/sentry-conventions/pull/624)
+- Add `graphql` span description rules by @Lms24 in [#616](https://github.com/getsentry/sentry-conventions/pull/616)
+
+#### Names
+
+- Add FAAS function span name and description rules by @Lms24 in [#617](https://github.com/getsentry/sentry-conventions/pull/617)
+- Add `function` span name and description rules by @Lms24 in [#618](https://github.com/getsentry/sentry-conventions/pull/618)
+- Add `browser.*` span name and description rules by @Lms24 in [#607](https://github.com/getsentry/sentry-conventions/pull/607)
+- Add `cache` span name rules by @Lms24 in [#605](https://github.com/getsentry/sentry-conventions/pull/605)
+
+#### Other
+
+- (op) Add mobile OTA update span operations by @antonis in [#540](https://github.com/getsentry/sentry-conventions/pull/540)
+- (search-attributes) Add search attribute names by @nsdeschenes in [#610](https://github.com/getsentry/sentry-conventions/pull/610)
+
+### Bug Fixes 🐛
+
+- (attributes) Set `db.query.text` scrubbing to `auto` by @loewenheim in [#625](https://github.com/getsentry/sentry-conventions/pull/625)
+- (descriptions) Add graphql-enhanced http.client span description template by @Lms24 in [#613](https://github.com/getsentry/sentry-conventions/pull/613)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump astro from 7.1.0 to 7.2.8 by @dependabot in [#628](https://github.com/getsentry/sentry-conventions/pull/628)
+- Bump sharp from 0.35.3 to 0.35.4 by @dependabot in [#630](https://github.com/getsentry/sentry-conventions/pull/630)
+- Bump js-yaml from 4.3.1 to 4.3.2 by @dependabot in [#631](https://github.com/getsentry/sentry-conventions/pull/631)
+- Bump svgo from 4.0.2 to 4.1.0 by @dependabot in [#627](https://github.com/getsentry/sentry-conventions/pull/627)
+- Bump browserslist from 4.28.2 to 4.28.8 by @dependabot in [#614](https://github.com/getsentry/sentry-conventions/pull/614)
+- Bump fast-uri from 3.1.5 to 3.1.7 by @dependabot in [#612](https://github.com/getsentry/sentry-conventions/pull/612)
+
+#### Names
+
+- Clarify GraphQL OTel divergence note by @andreiborza in [#626](https://github.com/getsentry/sentry-conventions/pull/626)
+- Add OTel divergence note for graphql span names by @Lms24 in [#615](https://github.com/getsentry/sentry-conventions/pull/615)
+
+#### Other
+
+- (attributes) Clarify parameter name casing by @Lms24 in [#632](https://github.com/getsentry/sentry-conventions/pull/632)
+- (deps-dev) Bump vitest from 4.1.9 to 4.1.11 by @dependabot in [#629](https://github.com/getsentry/sentry-conventions/pull/629)
+- (descriptions) Fix `http.client` span description example by @Lms24 in [#603](https://github.com/getsentry/sentry-conventions/pull/603)
+
 ## 0.21.0
 
 ### New Features ✨

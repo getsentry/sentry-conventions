@@ -870,6 +870,11 @@ export const SEARCH_BROWSER__BFCACHE__REASON = 'browser.bfcache.reason';
 export const SEARCH_BROWSER__NAME = 'browser.name';
 
 /**
+ * Search name for {@link attributes.BROWSER_NAVIGATION_ID}. `browser.navigation.id`
+ */
+export const SEARCH_BROWSER__NAVIGATION__ID = 'browser.navigation.id';
+
+/**
  * Search name for {@link attributes.BROWSER_NAVIGATION_TYPE}. `browser.navigation.type`
  */
 export const SEARCH_BROWSER__NAVIGATION__TYPE = 'browser.navigation.type';
@@ -1001,6 +1006,11 @@ export const SEARCH_BROWSER__WEB_VITAL__TTFB__VALUE = 'browser.web_vital.ttfb.va
 export const SEARCH_CACHE__HIT = 'cache.hit';
 
 /**
+ * Search name for {@link attributes.CACHE_ITEM_AGE}. `cache.item_age`
+ */
+export const SEARCH_CACHE__ITEM_AGE = 'cache.item_age';
+
+/**
  * Search name for {@link attributes.CACHE_ITEM_SIZE}. `cache.item_size`
  */
 export const SEARCH_CACHE__ITEM_SIZE = 'cache.item_size';
@@ -1014,6 +1024,11 @@ export const SEARCH_CACHE__KEY = 'cache.key';
  * Search name for {@link attributes.CACHE_OPERATION}. `cache.operation`
  */
 export const SEARCH_CACHE__OPERATION = 'cache.operation';
+
+/**
+ * Search name for {@link attributes.CACHE_TAGS}. `cache.tags`
+ */
+export const SEARCH_CACHE__TAGS = 'cache.tags';
 
 /**
  * Search name for {@link attributes.CACHE_TTL}. `cache.ttl`
@@ -4943,6 +4958,7 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__BFCACHE__OUTCOME
   | typeof SEARCH_BROWSER__BFCACHE__REASON
   | typeof SEARCH_BROWSER__NAME
+  | typeof SEARCH_BROWSER__NAVIGATION__ID
   | typeof SEARCH_BROWSER__NAVIGATION__TYPE
   | typeof SEARCH_BROWSER__PAINT__TYPE
   | typeof SEARCH_BROWSER__PERFORMANCE__NAVIGATION__ACTIVATION_START
@@ -4969,9 +4985,11 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__WEB_VITAL__TTFB__REQUEST_TIME
   | typeof SEARCH_BROWSER__WEB_VITAL__TTFB__VALUE
   | typeof SEARCH_CACHE__HIT
+  | typeof SEARCH_CACHE__ITEM_AGE
   | typeof SEARCH_CACHE__ITEM_SIZE
   | typeof SEARCH_CACHE__KEY
   | typeof SEARCH_CACHE__OPERATION
+  | typeof SEARCH_CACHE__TAGS
   | typeof SEARCH_CACHE__TTL
   | typeof SEARCH_CACHE__WRITE
   | typeof SEARCH_CHANNEL
@@ -6601,6 +6619,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name of the browser.',
     deprecationChain: ['browser.name', 'sentry.browser.name'],
   },
+  'browser.navigation.id': {
+    canonicalName: 'browser.navigation.id',
+    type: 'integer',
+    brief:
+      "The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.",
+    deprecationChain: ['browser.navigation.id'],
+  },
   'browser.navigation.type': {
     canonicalName: 'browser.navigation.type',
     type: 'string',
@@ -6758,6 +6783,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'If the cache was hit during this span.',
     deprecationChain: ['cache.hit'],
   },
+  'cache.item_age': {
+    canonicalName: 'cache.item_age',
+    type: 'second',
+    brief: 'The age of the cache entry in seconds, measured at read time.',
+    deprecationChain: ['cache.item_age'],
+  },
   'cache.item_size': {
     canonicalName: 'cache.item_size',
     type: 'byte',
@@ -6775,6 +6806,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The operation being performed on the cache.',
     deprecationChain: ['cache.operation'],
+  },
+  'cache.tags': {
+    canonicalName: 'cache.tags',
+    type: 'string[]',
+    brief: 'The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.',
+    deprecationChain: ['cache.tags'],
   },
   'cache.ttl': {
     canonicalName: 'cache.ttl',

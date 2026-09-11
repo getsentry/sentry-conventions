@@ -2246,6 +2246,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Chrome"
     """
 
+    # Path: model/attributes/browser/browser__navigation__id.json
+    BROWSER_NAVIGATION_ID: Literal["browser.navigation.id"] = "browser.navigation.id"
+    """The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1
+    Example: 3
+    """
+
     # Path: model/attributes/browser/browser__navigation__type.json
     BROWSER_NAVIGATION_TYPE: Literal["browser.navigation.type"] = (
         "browser.navigation.type"
@@ -2597,6 +2609,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/cache/cache__item_age.json
+    CACHE_ITEM_AGE: Literal["cache.item_age"] = "cache.item_age"
+    """The age of the cache entry in seconds, measured at read time.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5
+    Example: 3600
+    """
+
     # Path: model/attributes/cache/cache__item_size.json
     CACHE_ITEM_SIZE: Literal["cache.item_size"] = "cache.item_size"
     """The size of the requested item in the cache. In bytes.
@@ -2630,6 +2654,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "get"
     Example: "put"
     Example: "remove"
+    """
+
+    # Path: model/attributes/cache/cache__tags.json
+    CACHE_TAGS: Literal["cache.tags"] = "cache.tags"
+    """The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.
+
+    Type: List[str]
+    Apply Scrubbing: auto - Applications pick tag values freely and often build them from record identifiers such as a user id.
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["blog-posts","post-42"]
+    Example: ["products"]
     """
 
     # Path: model/attributes/cache/cache__ttl.json
@@ -3352,7 +3388,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Aliases: db.statement, query
@@ -11097,7 +11133,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.pipeline.name", "langchain.chain.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[599],
                 description="Added langchain.chain.name as an alias",
             ),
@@ -13665,6 +13701,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "browser.navigation.id": AttributeMetadata(
+        brief="The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.",
+        type=AttributeType.INTEGER,
+        keys=("browser.navigation.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1,
+        examples=[1, 3],
+        changelog=[
+            ChangelogEntry(
+                version="0.22.0",
+                prs=[634],
+                description="Added browser.navigation.id attribute",
+            ),
+        ],
+        additional_context=[
+            "Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.",
+            "The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.",
+            "Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.",
+            "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
+            "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
+        ],
+    ),
     "browser.navigation.type": AttributeMetadata(
         brief="The type of navigation the browser performed to arrive at the page the metrics were measured on.",
         type=AttributeType.STRING,
@@ -13676,7 +13736,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["navigate", "reload", "prerender", "bfcache", "soft-navigation"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Added browser.navigation.type attribute",
             ),
@@ -13699,7 +13759,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["first-paint", "first-contentful-paint"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[606],
                 description="Added browser.paint.type attribute",
             ),
@@ -14093,6 +14153,29 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "cache.item_age": AttributeMetadata(
+        brief="The age of the cache entry in seconds, measured at read time.",
+        type=AttributeType.INTEGER,
+        keys=("cache.item_age",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5,
+        examples=[5, 3600],
+        changelog=[
+            ChangelogEntry(
+                version="0.23.0",
+                prs=[637],
+                description="Added cache.item_age attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on reads that return an entry. Absent on a miss, or when the cache does not report a write time.",
+            "Clamped to 0. On a shared cache, the writer's clock and the reader's clock can drift far enough to make the age negative.",
+            "Can exceed `cache.ttl`. A cache that discards an expired entry on read still reports the age of that entry, with `cache.hit: false`.",
+        ],
+        search_alias=SearchAlias(name="cache.item_age", type="second"),
+    ),
     "cache.item_size": AttributeMetadata(
         brief="The size of the requested item in the cache. In bytes.",
         type=AttributeType.INTEGER,
@@ -14131,6 +14214,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "cache.tags": AttributeMetadata(
+        brief="The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("cache.tags",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Applications pick tag values freely and often build them from record identifiers such as a user id.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["blog-posts", "post-42"],
+        examples=[["blog-posts", "post-42"], ["products"]],
+        changelog=[
+            ChangelogEntry(
+                version="0.23.0", prs=[637], description="Added cache.tags attribute"
+            ),
+        ],
+        additional_context=[
+            "Cache library examples that support tags: Next.js `cacheTag()`, Symfony `ItemInterface::tag()`, Laravel `Cache::tags()`.",
+            "HTTP caches take tags from a response header. Cloudflare reads `Cache-Tag`, Fastly reads `Surrogate-Key`.",
+            "Record only the tags the application declared. Leave out implicit tags that the framework adds itself, for example one tag per route.",
+            "The tags describe the entry, not the operation. Take them from the entry the cache returned or stored.",
         ],
     ),
     "cache.ttl": AttributeMetadata(
@@ -14662,7 +14769,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["code.filepath", "sveltekit.load.node_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.node_id as an alias",
             ),
@@ -14687,7 +14794,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["code.file.path", "sveltekit.load.node_id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.node_id as an alias",
             ),
@@ -15169,7 +15276,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "db.statement",
             "query",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="SELECT * FROM users WHERE id = $1",
@@ -16734,12 +16841,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(
             replacement="error.type",
             reason="This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.",
-            status=DeprecationStatus.TRANSFORM,
-            transformation="fs_error_to_error_type",
         ),
         changelog=[
             ChangelogEntry(
-                version="next", description="Transform fs_error into error.type"
+                version="0.23.0",
+                prs=[638],
+                description="Remove unnecessary transformation and change deprecation status to null.",
+            ),
+            ChangelogEntry(
+                version="0.22.0",
+                prs=[589],
+                description="Transform fs_error into error.type",
             ),
             ChangelogEntry(version="0.1.0", prs=[61, 127]),
             ChangelogEntry(version="0.0.0"),
@@ -17219,7 +17331,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.pipeline.name", "langchain.chain.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[599],
                 description="Added langchain.chain.name as an alias",
             ),
@@ -17319,7 +17431,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.tool.definitions"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added gen_ai.tool.definitions as an alias"
+                version="0.22.0",
+                prs=[595],
+                description="Added gen_ai.tool.definitions as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[221]),
             ChangelogEntry(version="0.1.0", prs=[63, 127]),
@@ -17864,7 +17978,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.request.available_tools"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
+                prs=[595],
                 description="Added gen_ai.request.available_tools as an alias",
             ),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -19828,7 +19943,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.pipeline.name", "ai.pipeline.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[599],
                 description="Added langchain.chain.name attribute",
             ),
@@ -21272,7 +21387,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["router.navigation.origin", "sentry.sveltekit.navigation.from"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Deprecated in favor of router.navigation.origin",
             ),
@@ -21302,7 +21417,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["router.navigation.route.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Deprecated in favor of router.navigation.route.id",
             ),
@@ -21333,7 +21448,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["router.navigation.type", "sentry.sveltekit.navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Deprecated in favor of router.navigation.type",
             ),
@@ -22717,7 +22832,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.origin", "sentry.sveltekit.navigation.from"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Added router.navigation.origin attribute, replacing navigation.origin",
             ),
@@ -22737,7 +22852,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.route.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Added router.navigation.route.id attribute, replacing navigation.route.id",
             ),
@@ -22758,7 +22873,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.type", "sentry.sveltekit.navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Added router.navigation.type attribute, replacing navigation.type",
             ),
@@ -24153,7 +24268,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.origin", "router.navigation.origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Re-pointed deprecation from navigation.origin to router.navigation.origin",
             ),
@@ -24203,7 +24318,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["navigation.type", "router.navigation.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[600],
                 description="Re-pointed deprecation from navigation.type to router.navigation.type",
             ),
@@ -24779,7 +24894,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["server", "client"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.environment attribute",
             ),
@@ -24804,7 +24919,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["code.file.path", "code.filepath"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.node_id attribute",
             ),
@@ -24824,7 +24939,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["+page.server", "+layout", "+layout.server"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.load.node_type attribute",
             ),
@@ -24844,7 +24959,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["sveltekit.handle.root"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.22.0",
                 prs=[611],
                 description="Added sveltekit.tracing.original_name attribute",
             ),
@@ -26251,6 +26366,7 @@ Attributes = TypedDict(
         "browser.bfcache.outcome": str,
         "browser.bfcache.reason": str,
         "browser.name": str,
+        "browser.navigation.id": int,
         "browser.navigation.type": str,
         "browser.paint.type": str,
         "browser.performance.navigation.activation_start": float,
@@ -26277,9 +26393,11 @@ Attributes = TypedDict(
         "browser.web_vital.ttfb.request_time": float,
         "browser.web_vital.ttfb.value": float,
         "cache.hit": bool,
+        "cache.item_age": int,
         "cache.item_size": int,
         "cache.key": List[str],
         "cache.operation": str,
+        "cache.tags": List[str],
         "cache.ttl": int,
         "cache.write": bool,
         "channel": str,

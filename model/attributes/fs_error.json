@@ -8,15 +8,20 @@
   "is_in_otel": false,
   "example": "ENOENT: no such file or directory",
   "deprecation": {
-    "_status": "transform",
+    "_status": null,
     "replacement": "error.type",
-    "transformation": "fs_error_to_error_type",
     "reason": "This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over."
   },
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.23.0",
+      "prs": [638],
+      "description": "Remove unnecessary transformation and change deprecation status to null."
+    },
+    {
+      "version": "0.22.0",
+      "prs": [589],
       "description": "Transform fs_error into error.type"
     },
     {

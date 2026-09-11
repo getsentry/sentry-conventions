@@ -16,7 +16,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.22.0",
       "prs": [600],
       "description": "Added browser.navigation.type attribute"
     }

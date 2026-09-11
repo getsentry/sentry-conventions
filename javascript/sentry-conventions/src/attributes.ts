@@ -3240,6 +3240,28 @@ export const BROWSER_NAME = 'browser.name';
  */
 export type BROWSER_NAME_TYPE = string;
 
+// Path: model/attributes/browser/browser__navigation__id.json
+
+/**
+ * The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime. `browser.navigation.id`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_NAVIGATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ * @example 3
+ */
+export const BROWSER_NAVIGATION_ID = 'browser.navigation.id';
+
+/**
+ * Type for {@link BROWSER_NAVIGATION_ID} browser.navigation.id
+ */
+export type BROWSER_NAVIGATION_ID_TYPE = number;
+
 // Path: model/attributes/browser/browser__navigation__type.json
 
 /**
@@ -3832,6 +3854,28 @@ export const CACHE_HIT = 'cache.hit';
  */
 export type CACHE_HIT_TYPE = boolean;
 
+// Path: model/attributes/cache/cache__item_age.json
+
+/**
+ * The age of the cache entry in seconds, measured at read time. `cache.item_age`
+ *
+ * Attribute Value Type: `number` {@link CACHE_ITEM_AGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5
+ * @example 3600
+ */
+export const CACHE_ITEM_AGE = 'cache.item_age';
+
+/**
+ * Type for {@link CACHE_ITEM_AGE} cache.item_age
+ */
+export type CACHE_ITEM_AGE_TYPE = number;
+
 // Path: model/attributes/cache/cache__item_size.json
 
 /**
@@ -3896,6 +3940,28 @@ export const CACHE_OPERATION = 'cache.operation';
  * Type for {@link CACHE_OPERATION} cache.operation
  */
 export type CACHE_OPERATION_TYPE = string;
+
+// Path: model/attributes/cache/cache__tags.json
+
+/**
+ * The tags attached to the cache entry. Tags group entries so a cache can invalidate them together. `cache.tags`
+ *
+ * Attribute Value Type: `Array<string>` {@link CACHE_TAGS_TYPE}
+ *
+ * Apply Scrubbing: auto - Applications pick tag values freely and often build them from record identifiers such as a user id.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["blog-posts","post-42"]
+ * @example ["products"]
+ */
+export const CACHE_TAGS = 'cache.tags';
+
+/**
+ * Type for {@link CACHE_TAGS} cache.tags
+ */
+export type CACHE_TAGS_TYPE = Array<string>;
 
 // Path: model/attributes/cache/cache__ttl.json
 
@@ -5194,7 +5260,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_QUERY_TEXT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -18808,6 +18874,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.bfcache.outcome': 'string',
   'browser.bfcache.reason': 'string',
   'browser.name': 'string',
+  'browser.navigation.id': 'integer',
   'browser.navigation.type': 'string',
   'browser.paint.type': 'string',
   'browser.performance.navigation.activation_start': 'double',
@@ -18834,9 +18901,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.web_vital.ttfb.request_time': 'double',
   'browser.web_vital.ttfb.value': 'double',
   'cache.hit': 'boolean',
+  'cache.item_age': 'integer',
   'cache.item_size': 'integer',
   'cache.key': 'string[]',
   'cache.operation': 'string',
+  'cache.tags': 'string[]',
   'cache.ttl': 'integer',
   'cache.write': 'boolean',
   channel: 'string',
@@ -19643,6 +19712,7 @@ export type AttributeName =
   | typeof BROWSER_BFCACHE_OUTCOME
   | typeof BROWSER_BFCACHE_REASON
   | typeof BROWSER_NAME
+  | typeof BROWSER_NAVIGATION_ID
   | typeof BROWSER_NAVIGATION_TYPE
   | typeof BROWSER_PAINT_TYPE
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
@@ -19669,9 +19739,11 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_TTFB_REQUEST_TIME
   | typeof BROWSER_WEB_VITAL_TTFB_VALUE
   | typeof CACHE_HIT
+  | typeof CACHE_ITEM_AGE
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
   | typeof CACHE_OPERATION
+  | typeof CACHE_TAGS
   | typeof CACHE_TTL
   | typeof CACHE_WRITE
   | typeof CHANNEL
@@ -20612,7 +20684,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.pipeline.name', 'langchain.chain.name'],
     changelog: [
-      { version: 'next', prs: [599], description: 'Added langchain.chain.name as an alias' },
+      { version: '0.22.0', prs: [599], description: 'Added langchain.chain.name as an alias' },
       { version: '0.1.0', prs: [53, 76, 108, 127] },
     ],
   },
@@ -22661,6 +22733,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.browser.name'],
     changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
   },
+  'browser.navigation.id': {
+    brief:
+      "The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.",
+    type: 'integer',
+    keys: ['browser.navigation.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    examples: [1, 3],
+    changelog: [{ version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' }],
+    additionalContext: [
+      'Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.',
+      'The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.',
+      'Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.',
+      "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
+      "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
+    ],
+  },
   'browser.navigation.type': {
     brief: 'The type of navigation the browser performed to arrive at the page the metrics were measured on.',
     type: 'string',
@@ -22672,7 +22765,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'navigate',
     examples: ['navigate', 'reload', 'prerender', 'bfcache', 'soft-navigation'],
-    changelog: [{ version: 'next', prs: [600], description: 'Added browser.navigation.type attribute' }],
+    changelog: [{ version: '0.22.0', prs: [600], description: 'Added browser.navigation.type attribute' }],
     additionalContext: [
       'Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.',
       '`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.',
@@ -22691,7 +22784,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'first-paint',
     examples: ['first-paint', 'first-contentful-paint'],
-    changelog: [{ version: 'next', prs: [606], description: 'Added browser.paint.type attribute' }],
+    changelog: [{ version: '0.22.0', prs: [606], description: 'Added browser.paint.type attribute' }],
   },
   'browser.performance.navigation.activation_start': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
@@ -23004,6 +23097,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
+  'cache.item_age': {
+    brief: 'The age of the cache entry in seconds, measured at read time.',
+    type: 'integer',
+    keys: ['cache.item_age'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5,
+    examples: [5, 3600],
+    changelog: [{ version: '0.23.0', prs: [637], description: 'Added cache.item_age attribute' }],
+    additionalContext: [
+      'Set on reads that return an entry. Absent on a miss, or when the cache does not report a write time.',
+      "Clamped to 0. On a shared cache, the writer's clock and the reader's clock can drift far enough to make the age negative.",
+      'Can exceed `cache.ttl`. A cache that discards an expired entry on read still reports the age of that entry, with `cache.hit: false`.',
+    ],
+    searchAlias: {
+      name: 'cache.item_age',
+      type: 'second',
+    },
+  },
   'cache.item_size': {
     brief: 'The size of the requested item in the cache. In bytes.',
     type: 'integer',
@@ -23044,6 +23159,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'get',
     examples: ['get', 'put', 'remove'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'cache.tags': {
+    brief: 'The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.',
+    type: 'string[]',
+    keys: ['cache.tags'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Applications pick tag values freely and often build them from record identifiers such as a user id.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['blog-posts', 'post-42'],
+    examples: [['blog-posts', 'post-42'], ['products']],
+    changelog: [{ version: '0.23.0', prs: [637], description: 'Added cache.tags attribute' }],
+    additionalContext: [
+      'Cache library examples that support tags: Next.js `cacheTag()`, Symfony `ItemInterface::tag()`, Laravel `Cache::tags()`.',
+      'HTTP caches take tags from a response header. Cloudflare reads `Cache-Tag`, Fastly reads `Surrogate-Key`.',
+      'Record only the tags the application declared. Leave out implicit tags that the framework adds itself, for example one tag per route.',
+      'The tags describe the entry, not the operation. Take them from the entry the cache returned or stored.',
+    ],
   },
   'cache.ttl': {
     brief: 'The ttl of the cache in seconds',
@@ -23498,7 +23633,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['code.file.path', 'sveltekit.load.node_id'],
     changelog: [
-      { version: 'next', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
+      { version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
       { version: '0.1.0', prs: [61] },
       { version: '0.0.0' },
     ],
@@ -23516,7 +23651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/app/myapplication/http/handler/server.py',
     aliases: ['code.filepath', 'sveltekit.load.node_id'],
     changelog: [
-      { version: 'next', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
+      { version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
       { version: '0.0.0' },
     ],
   },
@@ -23918,7 +24053,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['db.query.text', 'db.statement', 'query'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
@@ -25263,11 +25398,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'error.type',
       reason:
         'This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.',
-      status: 'transform',
-      transformation: 'fs_error_to_error_type',
     },
     changelog: [
-      { version: 'next', description: 'Transform fs_error into error.type' },
+      {
+        version: '0.23.0',
+        prs: [638],
+        description: 'Remove unnecessary transformation and change deprecation status to null.',
+      },
+      { version: '0.22.0', prs: [589], description: 'Transform fs_error into error.type' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
     ],
@@ -25684,7 +25822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Autofix Pipeline',
     aliases: ['ai.pipeline.name', 'langchain.chain.name'],
     changelog: [
-      { version: 'next', prs: [599], description: 'Added langchain.chain.name as an alias' },
+      { version: '0.22.0', prs: [599], description: 'Added langchain.chain.name as an alias' },
       { version: '0.1.0', prs: [76, 127] },
     ],
   },
@@ -25761,7 +25899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.tool.definitions'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.tool.definitions as an alias' },
+      { version: '0.22.0', prs: [595], description: 'Added gen_ai.tool.definitions as an alias' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 127] },
     ],
@@ -26248,7 +26386,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
     aliases: ['gen_ai.request.available_tools'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.request.available_tools as an alias' },
+      { version: '0.22.0', prs: [595], description: 'Added gen_ai.request.available_tools as an alias' },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -27923,7 +28061,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
-    changelog: [{ version: 'next', prs: [599], description: 'Added langchain.chain.name attribute' }],
+    changelog: [{ version: '0.22.0', prs: [599], description: 'Added langchain.chain.name attribute' }],
   },
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
@@ -29174,7 +29312,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['router.navigation.origin', 'sentry.sveltekit.navigation.from'],
     changelog: [
-      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.origin' },
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.origin' },
       { version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' },
     ],
   },
@@ -29196,7 +29334,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['router.navigation.route.id'],
     changelog: [
-      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.route.id' },
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.route.id' },
       { version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' },
     ],
   },
@@ -29217,7 +29355,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['router.navigation.type', 'sentry.sveltekit.navigation.type'],
     changelog: [
-      { version: 'next', prs: [600], description: 'Deprecated in favor of router.navigation.type' },
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.type' },
       { version: '0.16.0', prs: [467], description: 'Added new deprecated alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -30389,7 +30527,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
     changelog: [
       {
-        version: 'next',
+        version: '0.22.0',
         prs: [600],
         description: 'Added router.navigation.origin attribute, replacing navigation.origin',
       },
@@ -30409,7 +30547,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['navigation.route.id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.22.0',
         prs: [600],
         description: 'Added router.navigation.route.id attribute, replacing navigation.route.id',
       },
@@ -30427,7 +30565,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'router.push',
     aliases: ['navigation.type', 'sentry.sveltekit.navigation.type'],
     changelog: [
-      { version: 'next', prs: [600], description: 'Added router.navigation.type attribute, replacing navigation.type' },
+      {
+        version: '0.22.0',
+        prs: [600],
+        description: 'Added router.navigation.type attribute, replacing navigation.type',
+      },
     ],
   },
   'rpc.grpc.status_code': {
@@ -31698,7 +31840,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['navigation.origin', 'router.navigation.origin'],
     changelog: [
       {
-        version: 'next',
+        version: '0.22.0',
         prs: [600],
         description: 'Re-pointed deprecation from navigation.origin to router.navigation.origin',
       },
@@ -31738,7 +31880,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['navigation.type', 'router.navigation.type'],
     changelog: [
       {
-        version: 'next',
+        version: '0.22.0',
         prs: [600],
         description: 'Re-pointed deprecation from navigation.type to router.navigation.type',
       },
@@ -32250,7 +32392,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'server',
     examples: ['server', 'client'],
-    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.environment attribute' }],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.environment attribute' }],
     additionalContext: [
       'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
     ],
@@ -32267,7 +32409,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'src/routes/users/:id/+page.server.ts',
     examples: ['src/routes/users/:id/+page.server.ts'],
     aliases: ['code.file.path', 'code.filepath'],
-    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.node_id attribute' }],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id attribute' }],
     additionalContext: [
       'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
     ],
@@ -32284,7 +32426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '+page.server',
     examples: ['+page.server', '+layout', '+layout.server'],
-    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.load.node_type attribute' }],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_type attribute' }],
     additionalContext: [
       'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
     ],
@@ -32300,7 +32442,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'sveltekit.handle.root',
     examples: ['sveltekit.handle.root'],
-    changelog: [{ version: 'next', prs: [611], description: 'Added sveltekit.tracing.original_name attribute' }],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.tracing.original_name attribute' }],
     additionalContext: [
       "The Sentry SDK renames SvelteKit-emitted spans to match Sentry's span name semantics, and preserves the name SvelteKit originally set in this attribute.",
     ],
@@ -33578,6 +33720,7 @@ export type Attributes = {
   [BROWSER_BFCACHE_OUTCOME]?: BROWSER_BFCACHE_OUTCOME_TYPE;
   [BROWSER_BFCACHE_REASON]?: BROWSER_BFCACHE_REASON_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_NAVIGATION_ID]?: BROWSER_NAVIGATION_ID_TYPE;
   [BROWSER_NAVIGATION_TYPE]?: BROWSER_NAVIGATION_TYPE_TYPE;
   [BROWSER_PAINT_TYPE]?: BROWSER_PAINT_TYPE_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
@@ -33604,9 +33747,11 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]?: BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE;
   [BROWSER_WEB_VITAL_TTFB_VALUE]?: BROWSER_WEB_VITAL_TTFB_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
+  [CACHE_ITEM_AGE]?: CACHE_ITEM_AGE_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
   [CACHE_OPERATION]?: CACHE_OPERATION_TYPE;
+  [CACHE_TAGS]?: CACHE_TAGS_TYPE;
   [CACHE_TTL]?: CACHE_TTL_TYPE;
   [CACHE_WRITE]?: CACHE_WRITE_TYPE;
   [CHANNEL]?: CHANNEL_TYPE;
