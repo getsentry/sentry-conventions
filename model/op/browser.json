@@ -175,31 +175,67 @@
       "name": "ui.action.click"
     },
     {
-      "name": "ui.react"
+      "name": "ui.react",
+      "deprecation": {
+        "replacement": "ui",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "ui.react.mount"
+      "name": "ui.react.mount",
+      "deprecation": {
+        "replacement": "ui.mount",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "ui.react.render"
+      "name": "ui.react.render",
+      "deprecation": {
+        "replacement": "ui.render",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "ui.react.update"
+      "name": "ui.react.update",
+      "deprecation": {
+        "replacement": "ui.update",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "ui.vue"
+      "name": "ui.vue",
+      "deprecation": {
+        "replacement": "ui",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "ui.svelte"
+      "name": "ui.svelte",
+      "deprecation": {
+        "replacement": "ui",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "ui.angular"
+      "name": "ui.angular",
+      "deprecation": {
+        "replacement": "ui",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "ui.ember"
+      "name": "ui.ember",
+      "deprecation": {
+        "replacement": "ui",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     },
     {
-      "name": "ui.livewire"
+      "name": "ui.livewire",
+      "deprecation": {
+        "replacement": "ui",
+        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+      }
     }
   ]
 }
