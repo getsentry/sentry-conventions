@@ -3750,6 +3750,11 @@ export const SEARCH_SDK__VERSION = 'sdk.version';
 export const SEARCH_SENTRY__ACTION = 'sentry.action';
 
 /**
+ * Search name for {@link attributes.SENTRY_APP_URL_DOMAIN}. `sentry.app.url.domain`
+ */
+export const SEARCH_SENTRY__APP__URL__DOMAIN = 'sentry.app.url.domain';
+
+/**
  * Search name for {@link attributes.SENTRY_BROWSER_VERSION}. `sentry.browser.version`
  *
  * @deprecated Use {@link SEARCH_BROWSER__VERSION} (`browser.version`) instead
@@ -5478,6 +5483,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SDK__NAME
   | typeof SEARCH_SDK__VERSION
   | typeof SEARCH_SENTRY__ACTION
+  | typeof SEARCH_SENTRY__APP__URL__DOMAIN
   | typeof SEARCH_SENTRY__BROWSER__VERSION
   | typeof SEARCH_SENTRY__CANCELLATION_REASON
   | typeof SEARCH_SENTRY__CATEGORY
@@ -9901,6 +9907,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The sentry sdk version.',
     deprecationChain: ['sentry.sdk.version', 'sdk.version'],
+  },
+  'sentry.app.url.domain': {
+    canonicalName: 'sentry.app.url.domain',
+    type: 'string',
+    brief:
+      "The domain the instrumented app is running on. For browsers, that's the current window's url. For server-side applications, the domain the application is deployed on. Importantly, this attribute MUST NOT be used to describe urls of outgoing requests.",
+    deprecationChain: ['sentry.app.url.domain'],
   },
   'sentry.browser.version': {
     canonicalName: 'browser.version',
