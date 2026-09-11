@@ -136,6 +136,11 @@ export const UI = 'ui';
  */
 export const UI_TASK = 'ui.task';
 
+/**
+ * Looking up which component a name in a template refers to, before that component renders. Ember does this for every component it renders. The render itself is a separate `ui.render` span.
+ */
+export const UI_RESOLVE = 'ui.resolve';
+
 export const UI_RENDER = 'ui.render';
 
 /**
