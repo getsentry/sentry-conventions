@@ -18,6 +18,19 @@ allOps.sort((a, b) => {
 
 // Count total operations across all categories
 const totalOps = allOps.reduce((acc, op) => acc + op.data.fields.length, 0);
+
+// An op can be listed in several categories, so anchors are scoped to their category.
+const opAnchor = (categoryId: string, opName: string) => `${categoryId}-${opName.replace(/\./g, '-')}`;
+
+// Where a deprecation notice links to: the first listing of the replacement op.
+const anchorByOp = new Map<string, string>();
+for (const category of allOps) {
+  for (const field of category.data.fields) {
+    if (!anchorByOp.has(field.name)) {
+      anchorByOp.set(field.name, opAnchor(category.id, field.name));
+    }
+  }
+}
 ---
 
 <BaseLayout
@@ -90,13 +103,36 @@ const totalOps = allOps.reduce((acc, op) => acc + op.data.fields.length, 0);
             </thead>
             <tbody>
               {op.data.fields.map(field => (
-                <tr>
-                  <td class="whitespace-nowrap align-top"><code class="text-xs">{field.name}</code></td>
+                <tr id={opAnchor(op.id, field.name)} class="scroll-mt-20">
+                  <td class="whitespace-nowrap align-top">
+                    <code class:list={['text-xs', { 'line-through text-text-muted': !!field.deprecation }]}>{field.name}</code>
+                    {field.deprecation && (
+                      <span class="badge badge-deprecated ml-2">Deprecated</span>
+                    )}
+                  </td>
                   <td class="text-text-secondary">
                     {field.description ? (
                       <span set:html={renderMarkdownLinks(field.description)} />
-                    ) : (
+                    ) : !field.deprecation ? (
                       <span class="text-text-muted">—</span>
+                    ) : null}
+                    {field.deprecation && (
+                      <div class:list={['text-sm pl-2 border-l-2 border-error', { 'mt-2': !!field.description }]}>
+                        <span class="text-text-primary">
+                          {field.deprecation.replacement ? (
+                            <Fragment>Use{' '}
+                              {anchorByOp.has(field.deprecation.replacement) ? (
+                                <a href={`#${anchorByOp.get(field.deprecation.replacement)}`} class="text-accent hover:text-accent-hover"><code class="text-xs">{field.deprecation.replacement}</code></a>
+                              ) : (
+                                <code class="text-xs">{field.deprecation.replacement}</code>
+                              )} instead.
+                            </Fragment>
+                          ) : (
+                            'No replacement available at this time.'
+                          )}
+                        </span>
+                        {field.deprecation.reason && <span class="text-text-secondary">{' '}{field.deprecation.reason}</span>}
+                      </div>
                     )}
                   </td>
                 </tr>
