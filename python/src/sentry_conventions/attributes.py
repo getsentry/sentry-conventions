@@ -2273,8 +2273,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Example: "navigate"
     Example: "reload"
+    Example: "back-forward"
+    Example: "back-forward-cache"
     Example: "prerender"
-    Example: "bfcache"
+    Example: "restore"
     Example: "soft-navigation"
     """
 
@@ -13779,8 +13781,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="navigate",
-        examples=["navigate", "reload", "prerender", "bfcache", "soft-navigation"],
+        examples=[
+            "navigate",
+            "reload",
+            "back-forward",
+            "back-forward-cache",
+            "prerender",
+            "restore",
+            "soft-navigation",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Use the web-vitals navigation types as-is: `bfcache` is now `back-forward-cache`, and `back-forward` and `restore` are no longer reported as `navigate`",
+            ),
             ChangelogEntry(
                 version="0.22.0",
                 prs=[600],
@@ -13788,8 +13802,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
         additional_context=[
-            "Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.",
-            "`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.",
+            "Carries the `navigationType` value reported by the web-vitals library verbatim. web-vitals hyphenates the Navigation Timing `PerformanceNavigationTiming.type` value (`back_forward` becomes `back-forward`) and adds states that API does not cover: `back-forward-cache` for a restore from the back/forward cache, `prerender`, `restore` for a discarded tab being reloaded, and `soft-navigation`.",
+            "`back-forward-cache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache is a full document load and reports `back-forward`. Use the `browser.bfcache.*` attributes to diagnose misses.",
             "`prerender` pages finish painting before activation, so their paint timings are offset by `browser.performance.navigation.activation_start`. Keep them separate when aggregating web vitals.",
             "Not to be confused with `router.navigation.type`, which holds the client-side router's own vocabulary (`link`, `goto`, `router.push`). The two are independent and can both be set on the same span.",
         ],
