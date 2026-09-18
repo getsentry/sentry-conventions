@@ -3254,6 +3254,7 @@ export type BROWSER_NAME_TYPE = string;
  *
  * @example 1
  * @example 3
+ * @example 0
  */
 export const BROWSER_NAVIGATION_ID = 'browser.navigation.id';
 
@@ -22824,11 +22825,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    examples: [1, 3],
-    changelog: [{ version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' }],
+    examples: [1, 3, 0],
+    changelog: [
+      {
+        version: 'next',
+        prs: [640],
+        description: 'Document 0 as the fallback value when the browser does not support `navigationId`',
+      },
+      { version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' },
+    ],
     additionalContext: [
       'Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.',
       'The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.',
+      'A value of 0 is a fallback rather than a real navigation id: web-vitals reports 0 when the browser does not expose `PerformanceEntry.navigationId`, so 0 means the id is unknown.',
       'Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.',
       "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
       "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
