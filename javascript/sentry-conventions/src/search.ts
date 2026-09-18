@@ -847,6 +847,11 @@ export const SEARCH_AWS__SNS__TOPIC__ARN = 'aws.sns.topic.arn';
 export const SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN = 'aws.step_functions.activity.arn';
 
 /**
+ * Search name for {@link attributes.AWS_STEP_FUNCTIONS_EXECUTION_ARN}. `aws.step_functions.execution.arn`
+ */
+export const SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN = 'aws.step_functions.execution.arn';
+
+/**
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN}. `aws.step_functions.state_machine.arn`
  */
 export const SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN = 'aws.step_functions.state_machine.arn';
@@ -5173,6 +5178,7 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__ARN
   | typeof SEARCH_AWS__SNS__TOPIC__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN
+  | typeof SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN
   | typeof SEARCH_AWS_REGION
   | typeof SEARCH_BLOCKED_MAIN_THREAD
@@ -6870,6 +6876,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The ARN of the AWS Step Functions Activity.',
     deprecationChain: ['aws.step_functions.activity.arn'],
+  },
+  'aws.step_functions.execution.arn': {
+    canonicalName: 'aws.step_functions.execution.arn',
+    type: 'string',
+    brief: 'The ARN of the AWS Step Functions Execution.',
+    deprecationChain: ['aws.step_functions.execution.arn'],
   },
   'aws.step_functions.state_machine.arn': {
     canonicalName: 'aws.step_functions.state_machine.arn',
