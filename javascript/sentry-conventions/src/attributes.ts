@@ -22848,6 +22848,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [640],
         description:
           'Use the web-vitals navigation types as-is: `bfcache` is now `back-forward-cache`, and `back-forward` and `restore` are no longer reported as `navigate`',
       },
