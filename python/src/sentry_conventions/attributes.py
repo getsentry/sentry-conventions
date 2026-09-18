@@ -2147,6 +2147,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
     """
 
+    # Path: model/attributes/aws/aws__step_functions__execution__arn.json
+    AWS_STEP_FUNCTIONS_EXECUTION_ARN: Literal["aws.step_functions.execution.arn"] = (
+        "aws.step_functions.execution.arn"
+    )
+    """The ARN of the AWS Step Functions Execution.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
+    """
+
     # Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
     AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN: Literal[
         "aws.step_functions.state_machine.arn"
@@ -13603,6 +13616,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0",
                 prs=[480],
                 description="Added aws.step_functions.activity.arn attribute",
+            ),
+        ],
+    ),
+    "aws.step_functions.execution.arn": AttributeMetadata(
+        brief="The ARN of the AWS Step Functions Execution.",
+        type=AttributeType.STRING,
+        keys=("aws.step_functions.execution.arn",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution",
+        examples=[
+            "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[640],
+                description="Added aws.step_functions.execution.arn attribute",
             ),
         ],
     ),
@@ -26510,6 +26542,7 @@ Attributes = TypedDict(
         "aws.secretsmanager.secret.arn": str,
         "aws.sns.topic.arn": str,
         "aws.step_functions.activity.arn": str,
+        "aws.step_functions.execution.arn": str,
         "aws.step_functions.state_machine.arn": str,
         "aws_region": str,
         "blocked_main_thread": bool,

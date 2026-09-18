@@ -1,0 +1,18 @@
+{
+  "key": "aws.step_functions.execution.arn",
+  "brief": "The ARN of the AWS Step Functions Execution.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [640],
+      "description": "Added aws.step_functions.execution.arn attribute"
+    }
+  ]
+}

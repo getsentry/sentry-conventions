@@ -3086,6 +3086,27 @@ export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn'
  */
 export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
 
+// Path: model/attributes/aws/aws__step_functions__execution__arn.json
+
+/**
+ * The ARN of the AWS Step Functions Execution. `aws.step_functions.execution.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
+ */
+export const AWS_STEP_FUNCTIONS_EXECUTION_ARN = 'aws.step_functions.execution.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_EXECUTION_ARN} aws.step_functions.execution.arn
+ */
+export type AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE = string;
+
 // Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
 
 /**
@@ -18939,6 +18960,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.secretsmanager.secret.arn': 'string',
   'aws.sns.topic.arn': 'string',
   'aws.step_functions.activity.arn': 'string',
+  'aws.step_functions.execution.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
   'browser.bfcache.frame': 'string',
@@ -19780,6 +19802,7 @@ export type AttributeName =
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof AWS_STEP_FUNCTIONS_EXECUTION_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_BFCACHE_FRAME
@@ -22715,6 +22738,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
+  },
+  'aws.step_functions.execution.arn': {
+    brief: 'The ARN of the AWS Step Functions Execution.',
+    type: 'string',
+    keys: ['aws.step_functions.execution.arn'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution',
+    examples: ['arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution'],
+    changelog: [{ version: 'next', prs: [640], description: 'Added aws.step_functions.execution.arn attribute' }],
   },
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',
@@ -33877,6 +33913,7 @@ export type Attributes = {
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_EXECUTION_ARN]?: AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_BFCACHE_FRAME]?: BROWSER_BFCACHE_FRAME_TYPE;
