@@ -3477,6 +3477,7 @@ export type BROWSER_VERSION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.
  * @example "navigation"
  */
 export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT = 'browser.web_vital.cls.report_event';
@@ -3712,6 +3713,7 @@ export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.
  * @example "pagehide"
  */
 export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_event';
@@ -16106,7 +16108,7 @@ export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated  - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
+ * @deprecated  - The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.
  * @example "pagehide"
  */
 export const SENTRY_REPORT_EVENT = 'sentry.report_event';
@@ -23596,7 +23598,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'navigation',
-    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
+    deprecation: {
+      reason:
+        'The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.',
+    },
+    changelog: [
+      { version: 'next', description: 'Deprecated browser.web_vital.cls.report_event, which has no replacement' },
+      { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' },
+    ],
   },
   'browser.web_vital.cls.source.<key>': {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
@@ -23726,7 +23735,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'pagehide',
-    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
+    deprecation: {
+      reason:
+        'The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.',
+    },
+    changelog: [
+      { version: 'next', description: 'Deprecated browser.web_vital.lcp.report_event, which has no replacement' },
+      { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' },
+    ],
   },
   'browser.web_vital.lcp.size': {
     brief: 'The size of the largest contentful paint element',
@@ -32561,9 +32577,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'pagehide',
     deprecation: {
       reason:
-        'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
+        'The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.',
     },
-    changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated',
+      },
+      { version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' },
+    ],
   },
   'sentry.sdk.integrations': {
     brief:

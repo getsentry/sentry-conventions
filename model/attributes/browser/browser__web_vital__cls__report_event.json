@@ -7,8 +7,16 @@
   },
   "is_in_otel": false,
   "example": "navigation",
+  "deprecation": {
+    "reason": "The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.",
+    "_status": null
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Deprecated browser.web_vital.cls.report_event, which has no replacement"
+    },
     {
       "version": "0.5.0",
       "prs": [319],
