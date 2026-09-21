@@ -14436,6 +14436,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[641],
                 description="Added browser.web_vital.inp.element attribute",
             ),
         ],
@@ -14456,6 +14457,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[641],
                 description="Added browser.web_vital.inp.interaction_type attribute",
             ),
         ],

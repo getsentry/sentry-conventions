@@ -16,6 +16,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [641],
       "description": "Added browser.web_vital.inp.interaction_type attribute"
     }
   ]

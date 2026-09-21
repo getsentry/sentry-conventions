@@ -23726,7 +23726,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'body > div#app > button.submit',
     examples: ['body > div#app > button.submit', 'SubmitButton'],
-    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.element attribute' }],
+    changelog: [{ version: 'next', prs: [641], description: 'Added browser.web_vital.inp.element attribute' }],
     additionalContext: [
       'Uses the same format as `browser.web_vital.lcp.element`.',
       'Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`.',
@@ -23743,7 +23743,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'click',
     examples: ['click', 'hover', 'drag', 'press'],
-    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.interaction_type attribute' }],
+    changelog: [{ version: 'next', prs: [641], description: 'Added browser.web_vital.inp.interaction_type attribute' }],
     additionalContext: [
       "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
       'Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.',
