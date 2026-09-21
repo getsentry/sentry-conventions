@@ -3586,6 +3586,52 @@ export const BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
  */
 export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
 
+// Path: model/attributes/browser/browser__web_vital__inp__element.json
+
+/**
+ * The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on `browser.web_vital.inp.element`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_INP_ELEMENT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "body > div#app > button.submit"
+ * @example "SubmitButton"
+ */
+export const BROWSER_WEB_VITAL_INP_ELEMENT = 'browser.web_vital.inp.element';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_ELEMENT} browser.web_vital.inp.element
+ */
+export type BROWSER_WEB_VITAL_INP_ELEMENT_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
+
+/**
+ * The kind of user interaction INP was reported on `browser.web_vital.inp.interaction_type`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "click"
+ * @example "hover"
+ * @example "drag"
+ * @example "press"
+ */
+export const BROWSER_WEB_VITAL_INP_INTERACTION_TYPE = 'browser.web_vital.inp.interaction_type';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_INTERACTION_TYPE} browser.web_vital.inp.interaction_type
+ */
+export type BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE = string;
+
 // Path: model/attributes/browser/browser__web_vital__inp__value.json
 
 /**
@@ -19530,6 +19576,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.web_vital.cls.value': 'double',
   'browser.web_vital.fcp.value': 'double',
   'browser.web_vital.fp.value': 'double',
+  'browser.web_vital.inp.element': 'string',
+  'browser.web_vital.inp.interaction_type': 'string',
   'browser.web_vital.inp.value': 'double',
   'browser.web_vital.lcp.element': 'string',
   'browser.web_vital.lcp.id': 'string',
@@ -20395,6 +20443,8 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_FCP_VALUE
   | typeof BROWSER_WEB_VITAL_FP_VALUE
+  | typeof BROWSER_WEB_VITAL_INP_ELEMENT
+  | typeof BROWSER_WEB_VITAL_INP_INTERACTION_TYPE
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof BROWSER_WEB_VITAL_LCP_ID
@@ -23663,6 +23713,42 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 477.1926,
     aliases: ['fp'],
     changelog: [{ version: '0.5.0', prs: [235] }],
+  },
+  'browser.web_vital.inp.element': {
+    brief:
+      'The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on',
+    type: 'string',
+    keys: ['browser.web_vital.inp.element'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'body > div#app > button.submit',
+    examples: ['body > div#app > button.submit', 'SubmitButton'],
+    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.element attribute' }],
+    additionalContext: [
+      'Uses the same format as `browser.web_vital.lcp.element`.',
+      'Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`.',
+    ],
+  },
+  'browser.web_vital.inp.interaction_type': {
+    brief: 'The kind of user interaction INP was reported on',
+    type: 'string',
+    keys: ['browser.web_vital.inp.interaction_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'click',
+    examples: ['click', 'hover', 'drag', 'press'],
+    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.interaction_type attribute' }],
+    additionalContext: [
+      "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
+      'Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.',
+      'Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.element`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.',
+    ],
   },
   'browser.web_vital.inp.value': {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
@@ -35091,6 +35177,8 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FP_VALUE]?: BROWSER_WEB_VITAL_FP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_INP_ELEMENT]?: BROWSER_WEB_VITAL_INP_ELEMENT_TYPE;
+  [BROWSER_WEB_VITAL_INP_INTERACTION_TYPE]?: BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;

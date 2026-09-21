@@ -1,0 +1,21 @@
+{
+  "key": "browser.web_vital.inp.element",
+  "brief": "The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["body > div#app > button.submit", "SubmitButton"],
+  "additional_context": [
+    "Uses the same format as `browser.web_vital.lcp.element`.",
+    "Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added browser.web_vital.inp.element attribute"
+    }
+  ]
+}
