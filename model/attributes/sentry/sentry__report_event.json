@@ -15,6 +15,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [642],
       "description": "Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated"
     },
     {

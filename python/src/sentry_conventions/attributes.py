@@ -14315,6 +14315,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[642],
                 description="Deprecated browser.web_vital.cls.report_event, which has no replacement",
             ),
             ChangelogEntry(
@@ -14491,6 +14492,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[642],
                 description="Deprecated browser.web_vital.lcp.report_event, which has no replacement",
             ),
             ChangelogEntry(
@@ -24792,6 +24794,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[642],
                 description="Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated",
             ),
             ChangelogEntry(

@@ -23603,7 +23603,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.',
     },
     changelog: [
-      { version: 'next', description: 'Deprecated browser.web_vital.cls.report_event, which has no replacement' },
+      {
+        version: 'next',
+        prs: [642],
+        description: 'Deprecated browser.web_vital.cls.report_event, which has no replacement',
+      },
       { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' },
     ],
   },
@@ -23740,7 +23744,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.',
     },
     changelog: [
-      { version: 'next', description: 'Deprecated browser.web_vital.lcp.report_event, which has no replacement' },
+      {
+        version: 'next',
+        prs: [642],
+        description: 'Deprecated browser.web_vital.lcp.report_event, which has no replacement',
+      },
       { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' },
     ],
   },
@@ -32582,6 +32590,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [642],
         description:
           'Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated',
       },

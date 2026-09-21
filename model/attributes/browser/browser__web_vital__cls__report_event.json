@@ -15,6 +15,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [642],
       "description": "Deprecated browser.web_vital.cls.report_event, which has no replacement"
     },
     {
