@@ -3254,6 +3254,7 @@ export type BROWSER_NAME_TYPE = string;
  *
  * @example 1
  * @example 3
+ * @example 0
  */
 export const BROWSER_NAVIGATION_ID = 'browser.navigation.id';
 
@@ -3276,8 +3277,10 @@ export type BROWSER_NAVIGATION_ID_TYPE = number;
  *
  * @example "navigate"
  * @example "reload"
+ * @example "back-forward"
+ * @example "back-forward-cache"
  * @example "prerender"
- * @example "bfcache"
+ * @example "restore"
  * @example "soft-navigation"
  */
 export const BROWSER_NAVIGATION_TYPE = 'browser.navigation.type';
@@ -22822,11 +22825,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    examples: [1, 3],
-    changelog: [{ version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' }],
+    examples: [1, 3, 0],
+    changelog: [
+      {
+        version: 'next',
+        prs: [640],
+        description: 'Document 0 as the fallback value when the browser does not support `navigationId`',
+      },
+      { version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' },
+    ],
     additionalContext: [
       'Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.',
       'The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.',
+      'A value of 0 is a fallback rather than a real navigation id: web-vitals reports 0 when the browser does not expose `PerformanceEntry.navigationId`, so 0 means the id is unknown.',
       'Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.',
       "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
       "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
@@ -22842,11 +22853,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'navigate',
-    examples: ['navigate', 'reload', 'prerender', 'bfcache', 'soft-navigation'],
-    changelog: [{ version: '0.22.0', prs: [600], description: 'Added browser.navigation.type attribute' }],
+    examples: ['navigate', 'reload', 'back-forward', 'back-forward-cache', 'prerender', 'restore', 'soft-navigation'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [640],
+        description:
+          'Use the web-vitals navigation types as-is: `bfcache` is now `back-forward-cache`, and `back-forward` and `restore` are no longer reported as `navigate`',
+      },
+      { version: '0.22.0', prs: [600], description: 'Added browser.navigation.type attribute' },
+    ],
     additionalContext: [
-      'Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.',
-      '`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.',
+      'Carries the `navigationType` value reported by the web-vitals library verbatim. web-vitals hyphenates the Navigation Timing `PerformanceNavigationTiming.type` value (`back_forward` becomes `back-forward`) and adds states that API does not cover: `back-forward-cache` for a restore from the back/forward cache, `prerender`, `restore` for a discarded tab being reloaded, and `soft-navigation`.',
+      '`back-forward-cache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache is a full document load and reports `back-forward`. Use the `browser.bfcache.*` attributes to diagnose misses.',
       '`prerender` pages finish painting before activation, so their paint timings are offset by `browser.performance.navigation.activation_start`. Keep them separate when aggregating web vitals.',
       "Not to be confused with `router.navigation.type`, which holds the client-side router's own vocabulary (`link`, `goto`, `router.push`). The two are independent and can both be set on the same span.",
     ],
