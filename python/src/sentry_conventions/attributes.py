@@ -2467,20 +2467,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 477.1926
     """
 
-    # Path: model/attributes/browser/browser__web_vital__inp__element.json
-    BROWSER_WEB_VITAL_INP_ELEMENT: Literal["browser.web_vital.inp.element"] = (
-        "browser.web_vital.inp.element"
-    )
-    """The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "body > div#app > button.submit"
-    Example: "SubmitButton"
-    """
-
     # Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
     BROWSER_WEB_VITAL_INP_INTERACTION_TYPE: Literal[
         "browser.web_vital.inp.interaction_type"
@@ -2495,6 +2481,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "hover"
     Example: "drag"
     Example: "press"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__target.json
+    BROWSER_WEB_VITAL_INP_TARGET: Literal["browser.web_vital.inp.target"] = (
+        "browser.web_vital.inp.target"
+    )
+    """The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "body > div#app > button.submit"
+    Example: "SubmitButton"
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__value.json
@@ -14424,27 +14424,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
-    "browser.web_vital.inp.element": AttributeMetadata(
-        brief="The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on",
-        type=AttributeType.STRING,
-        keys=("browser.web_vital.inp.element",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="body > div#app > button.submit",
-        examples=["body > div#app > button.submit", "SubmitButton"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[641],
-                description="Added browser.web_vital.inp.element attribute",
-            ),
-        ],
-        additional_context=[
-            "Uses the same format as `browser.web_vital.lcp.element`.",
-            "Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`.",
-        ],
-    ),
     "browser.web_vital.inp.interaction_type": AttributeMetadata(
         brief="The kind of user interaction INP was reported on",
         type=AttributeType.STRING,
@@ -14464,7 +14443,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
             "Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.",
-            "Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.element`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.",
+            "Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.",
+        ],
+    ),
+    "browser.web_vital.inp.target": AttributeMetadata(
+        brief="The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on",
+        type=AttributeType.STRING,
+        keys=("browser.web_vital.inp.target",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="body > div#app > button.submit",
+        examples=["body > div#app > button.submit", "SubmitButton"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[641],
+                description="Added browser.web_vital.inp.target attribute",
+            ),
+        ],
+        additional_context=[
+            "Named after `PerformanceEventTiming.target`, the way `browser.web_vital.lcp.element` is named after `LargestContentfulPaint.element`. The value uses the same format as that attribute.",
+            "Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`.",
         ],
     ),
     "browser.web_vital.inp.value": AttributeMetadata(
@@ -27613,8 +27613,8 @@ Attributes = TypedDict(
         "browser.web_vital.cls.value": float,
         "browser.web_vital.fcp.value": float,
         "browser.web_vital.fp.value": float,
-        "browser.web_vital.inp.element": str,
         "browser.web_vital.inp.interaction_type": str,
+        "browser.web_vital.inp.target": str,
         "browser.web_vital.inp.value": float,
         "browser.web_vital.lcp.element": str,
         "browser.web_vital.lcp.id": str,

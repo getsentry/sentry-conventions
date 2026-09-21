@@ -948,14 +948,14 @@ export const SEARCH_BROWSER__WEB_VITAL__FCP__VALUE = 'browser.web_vital.fcp.valu
 export const SEARCH_BROWSER__WEB_VITAL__FP__VALUE = 'browser.web_vital.fp.value';
 
 /**
- * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_ELEMENT}. `browser.web_vital.inp.element`
- */
-export const SEARCH_BROWSER__WEB_VITAL__INP__ELEMENT = 'browser.web_vital.inp.element';
-
-/**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_INTERACTION_TYPE}. `browser.web_vital.inp.interaction_type`
  */
 export const SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE = 'browser.web_vital.inp.interaction_type';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_TARGET}. `browser.web_vital.inp.target`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__TARGET = 'browser.web_vital.inp.target';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_VALUE}. `browser.web_vital.inp.value`
@@ -5154,8 +5154,8 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__WEB_VITAL__CLS__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FCP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FP__VALUE
-  | typeof SEARCH_BROWSER__WEB_VITAL__INP__ELEMENT
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__TARGET
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ID
@@ -6920,18 +6920,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
   },
-  'browser.web_vital.inp.element': {
-    canonicalName: 'browser.web_vital.inp.element',
-    type: 'string',
-    brief:
-      'The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on',
-    deprecationChain: ['browser.web_vital.inp.element'],
-  },
   'browser.web_vital.inp.interaction_type': {
     canonicalName: 'browser.web_vital.inp.interaction_type',
     type: 'string',
     brief: 'The kind of user interaction INP was reported on',
     deprecationChain: ['browser.web_vital.inp.interaction_type'],
+  },
+  'browser.web_vital.inp.target': {
+    canonicalName: 'browser.web_vital.inp.target',
+    type: 'string',
+    brief:
+      'The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on',
+    deprecationChain: ['browser.web_vital.inp.target'],
   },
   'browser.web_vital.inp.value': {
     canonicalName: 'browser.web_vital.inp.value',
