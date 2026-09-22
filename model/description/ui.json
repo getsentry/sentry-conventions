@@ -46,7 +46,7 @@
       "name": "Layout shift",
       "brief": "A Cumulative Layout Shift (CLS) web vital measurement, described by the first of its layout shift sources.",
       "ops": ["ui.webvital.cls"],
-      "templates": ["{{browser.web_vital.cls.source.<key>}}", "{{ui.component_name}}"],
+      "templates": ["{{browser.web_vital.cls.source.1}}", "{{ui.component_name}}"],
       "examples": ["body > div#app", "HeroImage"]
     }
   ]
