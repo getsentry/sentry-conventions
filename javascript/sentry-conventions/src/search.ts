@@ -922,6 +922,8 @@ export const SEARCH_BROWSER__VERSION = 'browser.version';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_CLS_REPORT_EVENT}. `browser.web_vital.cls.report_event`
+ *
+ * @deprecated
  */
 export const SEARCH_BROWSER__WEB_VITAL__CLS__REPORT_EVENT = 'browser.web_vital.cls.report_event';
 
@@ -972,6 +974,8 @@ export const SEARCH_BROWSER__WEB_VITAL__LCP__RENDER_TIME = 'browser.web_vital.lc
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_REPORT_EVENT}. `browser.web_vital.lcp.report_event`
+ *
+ * @deprecated
  */
 export const SEARCH_BROWSER__WEB_VITAL__LCP__REPORT_EVENT = 'browser.web_vital.lcp.report_event';
 
