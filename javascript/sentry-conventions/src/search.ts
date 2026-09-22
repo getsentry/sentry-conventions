@@ -3984,6 +3984,11 @@ export const SEARCH_SENTRY__HTTP__PREFETCH = 'sentry.http.prefetch';
 export const SEARCH_SENTRY__IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
 
 /**
+ * Search name for {@link attributes.SENTRY_IS_LOCALHOST}. `sentry.is_localhost`
+ */
+export const SEARCH_SENTRY__IS_LOCALHOST = 'sentry.is_localhost';
+
+/**
  * Search name for {@link attributes.SENTRY_IS_REMOTE}. `sentry.is_remote`
  */
 export const SEARCH_SENTRY__IS_REMOTE = 'sentry.is_remote';
@@ -5687,6 +5692,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__GROUP
   | typeof SEARCH_SENTRY__HTTP__PREFETCH
   | typeof SEARCH_SENTRY__IDLE_SPAN_FINISH_REASON
+  | typeof SEARCH_SENTRY__IS_LOCALHOST
   | typeof SEARCH_SENTRY__IS_REMOTE
   | typeof SEARCH_SENTRY__KIND
   | typeof SEARCH_SENTRY__MAIN_THREAD
@@ -10383,6 +10389,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The reason why an idle span ended early.',
     deprecationChain: ['sentry.idle_span_finish_reason'],
+  },
+  'sentry.is_localhost': {
+    canonicalName: 'sentry.is_localhost',
+    type: 'boolean',
+    brief: 'Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.',
+    internal: true,
+    deprecationChain: ['sentry.is_localhost'],
   },
   'sentry.is_remote': {
     canonicalName: 'sentry.is_remote',

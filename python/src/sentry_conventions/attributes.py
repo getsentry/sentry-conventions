@@ -9170,6 +9170,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "idleTimeout"
     """
 
+    # Path: model/attributes/sentry/sentry__is_localhost.json
+    SENTRY_IS_LOCALHOST: Literal["sentry.is_localhost"] = "sentry.is_localhost"
+    """Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: internal
+    Example: true
+    Example: false
+    """
+
     # Path: model/attributes/sentry/sentry__is_remote.json
     SENTRY_IS_REMOTE: Literal["sentry.is_remote"] = "sentry.is_remote"
     """Indicates whether a span's parent is remote.
@@ -24386,6 +24398,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.is_localhost": AttributeMetadata(
+        brief="Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.",
+        type=AttributeType.BOOLEAN,
+        keys=("sentry.is_localhost",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        example=True,
+        examples=[True, False],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[646],
+                description="Added sentry.is_localhost attribute",
+            ),
+        ],
+        additional_context=[
+            'This attribute is used for the Sentry "Filter telemetry from localhost" inbound filter feature.',
+            "SDKs must set this attribute on every span, as well as every other telemetry item supporting attribuztes.",
+        ],
+    ),
     "sentry.is_remote": AttributeMetadata(
         brief="Indicates whether a span's parent is remote.",
         type=AttributeType.BOOLEAN,
@@ -28050,6 +28083,7 @@ Attributes = TypedDict(
         "sentry.group": str,
         "sentry.http.prefetch": bool,
         "sentry.idle_span_finish_reason": str,
+        "sentry.is_localhost": bool,
         "sentry.is_remote": bool,
         "sentry.kind": str,
         "sentry.main_thread": bool,
