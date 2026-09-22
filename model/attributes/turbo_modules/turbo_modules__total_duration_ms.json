@@ -6,17 +6,18 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 128.45,
+  "visibility": "public",
+  "examples": [128.45],
   "alias": ["turbo_module.duration.total", "turbo_module.total_duration_ms"],
   "deprecation": {
     "replacement": "turbo_module.duration.total",
     "reason": "Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
     "_status": "backfill"
   },
-  "visibility": "public",
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_modules.total_duration_ms and deprecated it in favor of turbo_module.duration.total"
     }
   ]

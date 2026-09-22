@@ -6,12 +6,13 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 128.45,
-  "alias": ["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
   "visibility": "public",
+  "examples": [128.45],
+  "alias": ["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.duration.total attribute"
     }
   ]

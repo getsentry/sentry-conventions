@@ -6,11 +6,12 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 512.5,
   "visibility": "public",
+  "examples": [512.5],
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.duration.max attribute"
     }
   ]

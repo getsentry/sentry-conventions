@@ -17228,12 +17228,13 @@ export type TURBO_MODULES_UNIQUE_METHODS_TYPE = number;
  *
  * Attribute Value Type: `string` {@link TURBO_MODULE_ARCH_TYPE}
  *
- * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
  *
  * @example "new"
+ * @example "legacy"
  */
 export const TURBO_MODULE_ARCH = 'turbo_module.arch';
 
@@ -17362,11 +17363,12 @@ export type TURBO_MODULE_ERROR_COUNT_TYPE = number;
  *
  * Attribute Value Type: `string` {@link TURBO_MODULE_KIND_TYPE}
  *
- * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @example "sync"
  * @example "async"
  */
 export const TURBO_MODULE_KIND = 'turbo_module.kind';
@@ -17448,7 +17450,7 @@ export type TURBO_MODULE_TOP_DURATION_TYPE = number;
  *
  * Attribute Value Type: `string` {@link TURBO_MODULE_TOP_MODULE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -33330,6 +33332,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 42,
+    examples: [42],
     deprecation: {
       replacement: 'turbo_module.call.count',
       reason:
@@ -33340,6 +33343,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description: 'Added turbo_modules.total_call_count and deprecated it in favor of turbo_module.call.count',
       },
     ],
@@ -33355,6 +33359,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 128.45,
+    examples: [128.45],
     deprecation: {
       replacement: 'turbo_module.duration.total',
       reason:
@@ -33365,6 +33370,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description: 'Added turbo_modules.total_duration_ms and deprecated it in favor of turbo_module.duration.total',
       },
     ],
@@ -33379,6 +33385,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 2,
+    examples: [2],
     deprecation: {
       replacement: 'turbo_module.error.count',
       reason:
@@ -33389,6 +33396,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description: 'Added turbo_modules.total_error_count and deprecated it in favor of turbo_module.error.count',
       },
     ],
@@ -33404,6 +33412,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 7,
+    examples: [7],
     deprecation: {
       replacement: 'turbo_module.call.distinct_count',
       reason:
@@ -33414,6 +33423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description:
           'Added turbo_modules.unique_methods and deprecated it in favor of turbo_module.call.distinct_count',
       },
@@ -33426,13 +33436,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: ['turbo_module.arch'],
     applyScrubbing: {
       key: 'manual',
-      reason:
-        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'new',
-    changelog: [{ version: 'next', description: 'Added turbo_module.arch attribute' }],
+    examples: ['new', 'legacy'],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.arch attribute' }],
   },
   'turbo_module.call.count': {
     brief: 'The number of native module calls observed during the lifetime of the span. Only applies to React Native.',
@@ -33444,8 +33453,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 42,
+    examples: [42],
     aliases: ['turbo_module.total_call_count', 'turbo_modules.total_call_count'],
-    changelog: [{ version: 'next', description: 'Added turbo_module.call.count attribute' }],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.call.count attribute' }],
   },
   'turbo_module.call.distinct_count': {
     brief:
@@ -33458,8 +33468,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 7,
+    examples: [7],
     aliases: ['turbo_module.unique_methods', 'turbo_modules.unique_methods'],
-    changelog: [{ version: 'next', description: 'Added turbo_module.call.distinct_count attribute' }],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.call.distinct_count attribute' }],
   },
   'turbo_module.duration.max': {
     brief:
@@ -33472,7 +33483,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 512.5,
-    changelog: [{ version: 'next', description: 'Added turbo_module.duration.max attribute' }],
+    examples: [512.5],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.duration.max attribute' }],
   },
   'turbo_module.duration.total': {
     brief:
@@ -33485,8 +33497,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 128.45,
+    examples: [128.45],
     aliases: ['turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
-    changelog: [{ version: 'next', description: 'Added turbo_module.duration.total attribute' }],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.duration.total attribute' }],
   },
   'turbo_module.error.count': {
     brief:
@@ -33499,8 +33512,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 2,
+    examples: [2],
     aliases: ['turbo_module.total_error_count', 'turbo_modules.total_error_count'],
-    changelog: [{ version: 'next', description: 'Added turbo_module.error.count attribute' }],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.error.count attribute' }],
   },
   'turbo_module.kind': {
     brief:
@@ -33509,13 +33523,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: ['turbo_module.kind'],
     applyScrubbing: {
       key: 'manual',
-      reason:
-        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'async',
-    changelog: [{ version: 'next', description: 'Added turbo_module.kind attribute' }],
+    example: 'sync',
+    examples: ['sync', 'async'],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.kind attribute' }],
   },
   'turbo_module.method': {
     brief: 'The name of the native module method that was called. Only applies to React Native.',
@@ -33529,7 +33542,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'getUniqueId',
-    changelog: [{ version: 'next', description: 'Added turbo_module.method attribute' }],
+    examples: ['getUniqueId'],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.method attribute' }],
   },
   'turbo_module.name': {
     brief:
@@ -33544,7 +33558,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'RNDeviceInfo',
-    changelog: [{ version: 'next', description: 'Added turbo_module.name attribute' }],
+    examples: ['RNDeviceInfo'],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.name attribute' }],
   },
   'turbo_module.top.duration': {
     brief: 'The total duration attributed to `turbo_module.top.name`, in milliseconds. Only applies to React Native.',
@@ -33556,8 +33571,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 87.25,
+    examples: [87.25],
     aliases: ['turbo_module.top_module_duration_ms'],
-    changelog: [{ version: 'next', description: 'Added turbo_module.top.duration attribute' }],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.top.duration attribute' }],
   },
   'turbo_module.top_module': {
     brief:
@@ -33566,10 +33582,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: ['turbo_module.top.name', 'turbo_module.top_module'],
     applyScrubbing: {
       key: 'manual',
+      reason:
+        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'RNDeviceInfo.getUniqueId',
+    examples: ['RNDeviceInfo.getUniqueId'],
     deprecation: {
       replacement: 'turbo_module.top.name',
       reason:
@@ -33580,6 +33599,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description: 'Added turbo_module.top_module and deprecated it in favor of turbo_module.top.name',
       },
     ],
@@ -33595,6 +33615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 87.25,
+    examples: [87.25],
     deprecation: {
       replacement: 'turbo_module.top.duration',
       reason:
@@ -33605,6 +33626,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description:
           'Added turbo_module.top_module_duration_ms and deprecated it in favor of turbo_module.top.duration',
       },
@@ -33623,8 +33645,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'RNDeviceInfo.getUniqueId',
+    examples: ['RNDeviceInfo.getUniqueId'],
     aliases: ['turbo_module.top_module'],
-    changelog: [{ version: 'next', description: 'Added turbo_module.top.name attribute' }],
+    changelog: [{ version: 'next', prs: [564], description: 'Added turbo_module.top.name attribute' }],
   },
   'turbo_module.total_call_count': {
     brief: 'The number of native module calls observed during the lifetime of the span. Only applies to React Native.',
@@ -33636,6 +33659,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 42,
+    examples: [42],
     deprecation: {
       replacement: 'turbo_module.call.count',
       reason:
@@ -33646,6 +33670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description: 'Added turbo_module.total_call_count and deprecated it in favor of turbo_module.call.count',
       },
     ],
@@ -33661,6 +33686,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 128.45,
+    examples: [128.45],
     deprecation: {
       replacement: 'turbo_module.duration.total',
       reason:
@@ -33671,6 +33697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description: 'Added turbo_module.total_duration_ms and deprecated it in favor of turbo_module.duration.total',
       },
     ],
@@ -33686,6 +33713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 2,
+    examples: [2],
     deprecation: {
       replacement: 'turbo_module.error.count',
       reason:
@@ -33696,6 +33724,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description: 'Added turbo_module.total_error_count and deprecated it in favor of turbo_module.error.count',
       },
     ],
@@ -33711,6 +33740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 7,
+    examples: [7],
     deprecation: {
       replacement: 'turbo_module.call.distinct_count',
       reason:
@@ -33721,6 +33751,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
+        prs: [564],
         description: 'Added turbo_module.unique_methods and deprecated it in favor of turbo_module.call.distinct_count',
       },
     ],

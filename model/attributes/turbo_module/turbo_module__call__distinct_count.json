@@ -6,12 +6,13 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 7,
-  "alias": ["turbo_module.unique_methods", "turbo_modules.unique_methods"],
   "visibility": "public",
+  "examples": [7],
+  "alias": ["turbo_module.unique_methods", "turbo_modules.unique_methods"],
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.call.distinct_count attribute"
     }
   ]

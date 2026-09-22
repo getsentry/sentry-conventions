@@ -6,17 +6,18 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 87.25,
+  "visibility": "public",
+  "examples": [87.25],
   "alias": ["turbo_module.top.duration"],
   "deprecation": {
     "replacement": "turbo_module.top.duration",
     "reason": "Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
     "_status": "backfill"
   },
-  "visibility": "public",
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.top_module_duration_ms and deprecated it in favor of turbo_module.top.duration"
     }
   ]

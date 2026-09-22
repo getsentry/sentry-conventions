@@ -3,15 +3,15 @@
   "brief": "The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual",
-    "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
+    "key": "manual"
   },
   "is_in_otel": false,
-  "example": "new",
   "visibility": "public",
+  "examples": ["new", "legacy"],
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.arch attribute"
     }
   ]

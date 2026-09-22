@@ -3,15 +3,15 @@
   "brief": "Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`. Only applies to React Native.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual",
-    "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
+    "key": "manual"
   },
   "is_in_otel": false,
-  "example": "async",
   "visibility": "public",
+  "examples": ["sync", "async"],
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.kind attribute"
     }
   ]

@@ -6,17 +6,18 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 2,
+  "visibility": "public",
+  "examples": [2],
   "alias": ["turbo_module.error.count", "turbo_module.total_error_count"],
   "deprecation": {
     "replacement": "turbo_module.error.count",
     "reason": "Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
     "_status": "backfill"
   },
-  "visibility": "public",
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_modules.total_error_count and deprecated it in favor of turbo_module.error.count"
     }
   ]

@@ -10036,10 +10036,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.
 
     Type: str
-    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Example: "new"
+    Example: "legacy"
     """
 
     # Path: model/attributes/turbo_module/turbo_module__call__count.json
@@ -10116,9 +10117,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`. Only applies to React Native.
 
     Type: str
-    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Example: "sync"
     Example: "async"
     """
 
@@ -10177,7 +10179,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
     Defined in OTEL: No
     Visibility: public
     Aliases: turbo_module.top.name
@@ -25640,16 +25642,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.",
         type=AttributeType.STRING,
         keys=("turbo_module.arch",),
-        apply_scrubbing=ApplyScrubbingInfo(
-            key=ApplyScrubbing.MANUAL,
-            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
-        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="new",
+        examples=["new", "legacy"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.arch attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.arch attribute",
             ),
         ],
     ),
@@ -25665,10 +25667,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=42,
+        examples=[42],
         aliases=["turbo_module.total_call_count", "turbo_modules.total_call_count"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.call.count attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.call.count attribute",
             ),
         ],
     ),
@@ -25684,10 +25689,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=7,
+        examples=[7],
         aliases=["turbo_module.unique_methods", "turbo_modules.unique_methods"],
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_module.call.distinct_count attribute",
             ),
         ],
@@ -25700,9 +25707,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=512.5,
+        examples=[512.5],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.duration.max attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.duration.max attribute",
             ),
         ],
     ),
@@ -25718,10 +25728,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=128.45,
+        examples=[128.45],
         aliases=["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_module.duration.total attribute",
             ),
         ],
@@ -25738,10 +25750,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2,
+        examples=[2],
         aliases=["turbo_module.total_error_count", "turbo_modules.total_error_count"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.error.count attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.error.count attribute",
             ),
         ],
     ),
@@ -25749,16 +25764,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`. Only applies to React Native.",
         type=AttributeType.STRING,
         keys=("turbo_module.kind",),
-        apply_scrubbing=ApplyScrubbingInfo(
-            key=ApplyScrubbing.MANUAL,
-            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
-        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="async",
+        example="sync",
+        examples=["sync", "async"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.kind attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.kind attribute",
             ),
         ],
     ),
@@ -25773,9 +25788,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="getUniqueId",
+        examples=["getUniqueId"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.method attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.method attribute",
             ),
         ],
     ),
@@ -25790,9 +25808,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="RNDeviceInfo",
+        examples=["RNDeviceInfo"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.name attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.name attribute",
             ),
         ],
     ),
@@ -25807,10 +25828,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=87.25,
+        examples=[87.25],
         aliases=["turbo_module.top_module_duration_ms"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.top.duration attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.top.duration attribute",
             ),
         ],
     ),
@@ -25828,10 +25852,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="RNDeviceInfo.getUniqueId",
+        examples=["RNDeviceInfo.getUniqueId"],
         aliases=["turbo_module.top_module"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added turbo_module.top.name attribute"
+                version="next",
+                prs=[564],
+                description="Added turbo_module.top.name attribute",
             ),
         ],
     ),
@@ -25842,10 +25869,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "turbo_module.top.name",
             "turbo_module.top_module",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="RNDeviceInfo.getUniqueId",
+        examples=["RNDeviceInfo.getUniqueId"],
         deprecation=DeprecationInfo(
             replacement="turbo_module.top.name",
             reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
@@ -25855,6 +25886,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_module.top_module and deprecated it in favor of turbo_module.top.name",
             ),
         ],
@@ -25870,6 +25902,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=87.25,
+        examples=[87.25],
         deprecation=DeprecationInfo(
             replacement="turbo_module.top.duration",
             reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
@@ -25879,6 +25912,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_module.top_module_duration_ms and deprecated it in favor of turbo_module.top.duration",
             ),
         ],
@@ -25895,6 +25929,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=42,
+        examples=[42],
         deprecation=DeprecationInfo(
             replacement="turbo_module.call.count",
             reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
@@ -25904,6 +25939,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_module.total_call_count and deprecated it in favor of turbo_module.call.count",
             ),
         ],
@@ -25920,6 +25956,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=128.45,
+        examples=[128.45],
         deprecation=DeprecationInfo(
             replacement="turbo_module.duration.total",
             reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
@@ -25929,6 +25966,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_module.total_duration_ms and deprecated it in favor of turbo_module.duration.total",
             ),
         ],
@@ -25945,6 +25983,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2,
+        examples=[2],
         deprecation=DeprecationInfo(
             replacement="turbo_module.error.count",
             reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
@@ -25954,6 +25993,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_module.total_error_count and deprecated it in favor of turbo_module.error.count",
             ),
         ],
@@ -25970,6 +26010,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=7,
+        examples=[7],
         deprecation=DeprecationInfo(
             replacement="turbo_module.call.distinct_count",
             reason="Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
@@ -25979,6 +26020,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_module.unique_methods and deprecated it in favor of turbo_module.call.distinct_count",
             ),
         ],
@@ -25995,6 +26037,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=42,
+        examples=[42],
         deprecation=DeprecationInfo(
             replacement="turbo_module.call.count",
             reason="Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
@@ -26004,6 +26047,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_modules.total_call_count and deprecated it in favor of turbo_module.call.count",
             ),
         ],
@@ -26020,6 +26064,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=128.45,
+        examples=[128.45],
         deprecation=DeprecationInfo(
             replacement="turbo_module.duration.total",
             reason="Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
@@ -26029,6 +26074,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_modules.total_duration_ms and deprecated it in favor of turbo_module.duration.total",
             ),
         ],
@@ -26045,6 +26091,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2,
+        examples=[2],
         deprecation=DeprecationInfo(
             replacement="turbo_module.error.count",
             reason="Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
@@ -26054,6 +26101,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_modules.total_error_count and deprecated it in favor of turbo_module.error.count",
             ),
         ],
@@ -26070,6 +26118,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=7,
+        examples=[7],
         deprecation=DeprecationInfo(
             replacement="turbo_module.call.distinct_count",
             reason="Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
@@ -26079,6 +26128,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[564],
                 description="Added turbo_modules.unique_methods and deprecated it in favor of turbo_module.call.distinct_count",
             ),
         ],

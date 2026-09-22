@@ -3,20 +3,22 @@
   "brief": "The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "manual",
+    "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
   },
   "is_in_otel": false,
-  "example": "RNDeviceInfo.getUniqueId",
+  "visibility": "public",
+  "examples": ["RNDeviceInfo.getUniqueId"],
   "alias": ["turbo_module.top.name"],
   "deprecation": {
     "replacement": "turbo_module.top.name",
     "reason": "Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
     "_status": "backfill"
   },
-  "visibility": "public",
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.top_module and deprecated it in favor of turbo_module.top.name"
     }
   ]

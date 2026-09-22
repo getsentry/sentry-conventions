@@ -6,12 +6,13 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 2,
-  "alias": ["turbo_module.total_error_count", "turbo_modules.total_error_count"],
   "visibility": "public",
+  "examples": [2],
+  "alias": ["turbo_module.total_error_count", "turbo_modules.total_error_count"],
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.error.count attribute"
     }
   ]

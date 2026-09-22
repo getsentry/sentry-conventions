@@ -7,11 +7,12 @@
     "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
   },
   "is_in_otel": false,
-  "example": "RNDeviceInfo",
   "visibility": "public",
+  "examples": ["RNDeviceInfo"],
   "changelog": [
     {
       "version": "next",
+      "prs": [564],
       "description": "Added turbo_module.name attribute"
     }
   ]
