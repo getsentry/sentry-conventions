@@ -71,12 +71,13 @@ def test_key_chain_includes_deprecated_search_aliases() -> None:
 
 
 def test_key_chain_omits_deprecated_aliases_outside_the_family() -> None:
-    # address aliases five deprecated attributes. Its replacement server.address heads the chain and
-    # the other backfilled ones follow as fellow predecessors, but http.host is left out: its value
-    # is never rewritten onto server.address.
+    # address aliases the server.address family. Its replacement server.address heads the chain and
+    # the backfilled attributes follow as fellow predecessors, but http.host and net.peer.name are
+    # left out: their value is never rewritten onto server.address.
     assert ATTRIBUTE_METADATA["address"].keys == (
         "server.address",
         "address",
         "http.server_name",
         "net.host.name",
+        "server_name",
     )

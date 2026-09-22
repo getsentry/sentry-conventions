@@ -1,13 +1,12 @@
 {
   "key": "device.name",
-  "brief": "The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
+  "brief": "The user-assigned name of the mobile device.",
   "type": "string",
   "apply_scrubbing": {
     "key": "auto"
   },
   "is_in_otel": false,
   "example": "localhost",
-  "alias": ["server_name"],
   "visibility": "public",
   "changelog": [
     {

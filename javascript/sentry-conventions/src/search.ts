@@ -4242,7 +4242,7 @@ export const SEARCH_SERVER__PORT = 'server.port';
 /**
  * Search name for {@link attributes.SERVER_NAME}. `server_name`
  *
- * @deprecated Use {@link SEARCH_DEVICE__NAME} (`device.name`) instead
+ * @deprecated Use {@link SEARCH_SERVER__ADDRESS} (`server.address`) instead
  */
 export const SEARCH_SERVER_NAME = 'server_name';
 
@@ -5700,7 +5700,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The destination hostname or IP address for a TCP connection.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
   },
   'ai.citations': {
     canonicalName: 'ai.citations',
@@ -7419,9 +7419,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'device.name': {
     canonicalName: 'device.name',
     type: 'string',
-    brief:
-      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
-    deprecationChain: ['device.name', 'server_name'],
+    brief: 'The user-assigned name of the mobile device.',
+    deprecationChain: ['device.name'],
   },
   'device.online': {
     canonicalName: 'device.online',
@@ -8719,7 +8718,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The server domain name',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
   },
   'http.status_code': {
     canonicalName: 'http.response.status_code',
@@ -9401,7 +9400,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
   },
   'net.host.port': {
     canonicalName: 'server.port',
@@ -10318,7 +10317,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
   },
   'server.port': {
     canonicalName: 'server.port',
@@ -10327,10 +10326,10 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['server.port', 'net.host.port', 'port'],
   },
   server_name: {
-    canonicalName: 'device.name',
+    canonicalName: 'server.address',
     type: 'string',
     brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
-    deprecationChain: ['device.name', 'server_name'],
+    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
   },
   server_sample_rate: {
     canonicalName: 'sentry.server_sample_rate',
