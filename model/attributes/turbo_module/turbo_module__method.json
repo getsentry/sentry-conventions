@@ -9,11 +9,17 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": ["getUniqueId"],
+  "alias": ["react_native.module.method"],
+  "deprecation": {
+    "replacement": "react_native.module.method",
+    "reason": "Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules",
+    "_status": "backfill"
+  },
   "changelog": [
     {
       "version": "next",
       "prs": [564],
-      "description": "Added turbo_module.method attribute"
+      "description": "Added turbo_module.method and deprecated it in favor of react_native.module.method"
     }
   ]
 }

@@ -8,11 +8,17 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": ["new", "legacy"],
+  "alias": ["react_native.architecture"],
+  "deprecation": {
+    "replacement": "react_native.architecture",
+    "reason": "Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules",
+    "_status": "backfill"
+  },
   "changelog": [
     {
       "version": "next",
       "prs": [564],
-      "description": "Added turbo_module.arch attribute"
+      "description": "Added turbo_module.arch and deprecated it in favor of react_native.architecture"
     }
   ]
 }

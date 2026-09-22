@@ -8,17 +8,17 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": [2],
-  "alias": ["turbo_module.error.count", "turbo_module.total_error_count"],
+  "alias": ["react_native.module.error.count", "turbo_module.total_error_count"],
   "deprecation": {
-    "replacement": "turbo_module.error.count",
-    "reason": "Replaced by the `turbo_module.*` namespace; the SDK emitted the same values under both a singular and a plural prefix",
+    "replacement": "react_native.module.error.count",
+    "reason": "Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix",
     "_status": "backfill"
   },
   "changelog": [
     {
       "version": "next",
       "prs": [564],
-      "description": "Added turbo_modules.total_error_count and deprecated it in favor of turbo_module.error.count"
+      "description": "Added turbo_modules.total_error_count and deprecated it in favor of react_native.module.error.count"
     }
   ]
 }

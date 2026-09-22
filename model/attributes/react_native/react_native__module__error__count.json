@@ -1,0 +1,19 @@
+{
+  "key": "react_native.module.error.count",
+  "brief": "The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or \u2014 on the Old Architecture bridge only \u2014 invoked its failure callback.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [2],
+  "alias": ["turbo_module.total_error_count", "turbo_modules.total_error_count"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [564],
+      "description": "Added react_native.module.error.count attribute"
+    }
+  ]
+}

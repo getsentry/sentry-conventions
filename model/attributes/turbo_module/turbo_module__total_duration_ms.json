@@ -8,17 +8,17 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": [128.45],
-  "alias": ["turbo_module.duration.total", "turbo_modules.total_duration_ms"],
+  "alias": ["react_native.module.duration.total", "turbo_modules.total_duration_ms"],
   "deprecation": {
-    "replacement": "turbo_module.duration.total",
-    "reason": "Replaced to consolidate the React Native TurboModule attributes under a single `turbo_module.*` namespace with dot-separated logical grouping",
+    "replacement": "react_native.module.duration.total",
+    "reason": "Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping",
     "_status": "backfill"
   },
   "changelog": [
     {
       "version": "next",
       "prs": [564],
-      "description": "Added turbo_module.total_duration_ms and deprecated it in favor of turbo_module.duration.total"
+      "description": "Added turbo_module.total_duration_ms and deprecated it in favor of react_native.module.duration.total"
     }
   ]
 }

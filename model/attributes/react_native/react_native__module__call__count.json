@@ -1,6 +1,6 @@
 {
-  "key": "turbo_module.call.count",
-  "brief": "The number of native module calls observed during the lifetime of the span. Only applies to React Native.",
+  "key": "react_native.module.call.count",
+  "brief": "The number of native module calls observed during the lifetime of the span.",
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"
@@ -13,7 +13,7 @@
     {
       "version": "next",
       "prs": [564],
-      "description": "Added turbo_module.call.count attribute"
+      "description": "Added react_native.module.call.count attribute"
     }
   ]
 }

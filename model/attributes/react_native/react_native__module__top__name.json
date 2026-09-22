@@ -1,6 +1,6 @@
 {
-  "key": "turbo_module.top.name",
-  "brief": "The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`. Only applies to React Native.",
+  "key": "react_native.module.top.name",
+  "brief": "The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual",
@@ -14,7 +14,7 @@
     {
       "version": "next",
       "prs": [564],
-      "description": "Added turbo_module.top.name attribute"
+      "description": "Added react_native.module.top.name attribute"
     }
   ]
 }
