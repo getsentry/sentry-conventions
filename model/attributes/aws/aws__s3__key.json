@@ -7,15 +7,11 @@
   },
   "is_in_otel": true,
   "visibility": "public",
-  "examples": [
-    "someFile.yml"
-  ],
+  "examples": ["someFile.yml"],
   "changelog": [
     {
       "version": "next",
-      "prs": [
-        644
-      ],
+      "prs": [644],
       "description": "Added aws.s3.key attribute"
     }
   ]
