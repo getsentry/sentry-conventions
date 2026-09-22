@@ -3477,6 +3477,7 @@ export type BROWSER_VERSION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.
  * @example "navigation"
  */
 export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT = 'browser.web_vital.cls.report_event';
@@ -3584,6 +3585,52 @@ export const BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
  * Type for {@link BROWSER_WEB_VITAL_FP_VALUE} browser.web_vital.fp.value
  */
 export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
+
+/**
+ * The kind of user interaction INP was reported on `browser.web_vital.inp.interaction_type`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "click"
+ * @example "hover"
+ * @example "drag"
+ * @example "press"
+ */
+export const BROWSER_WEB_VITAL_INP_INTERACTION_TYPE = 'browser.web_vital.inp.interaction_type';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_INTERACTION_TYPE} browser.web_vital.inp.interaction_type
+ */
+export type BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__inp__target.json
+
+/**
+ * The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on `browser.web_vital.inp.target`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_INP_TARGET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "body > div#app > button.submit"
+ * @example "SubmitButton"
+ */
+export const BROWSER_WEB_VITAL_INP_TARGET = 'browser.web_vital.inp.target';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_TARGET} browser.web_vital.inp.target
+ */
+export type BROWSER_WEB_VITAL_INP_TARGET_TYPE = string;
 
 // Path: model/attributes/browser/browser__web_vital__inp__value.json
 
@@ -3712,6 +3759,7 @@ export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.
  * @example "pagehide"
  */
 export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_event';
@@ -16128,7 +16176,7 @@ export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated  - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
+ * @deprecated  - The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.
  * @example "pagehide"
  */
 export const SENTRY_REPORT_EVENT = 'sentry.report_event';
@@ -19550,6 +19598,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.web_vital.cls.value': 'double',
   'browser.web_vital.fcp.value': 'double',
   'browser.web_vital.fp.value': 'double',
+  'browser.web_vital.inp.interaction_type': 'string',
+  'browser.web_vital.inp.target': 'string',
   'browser.web_vital.inp.value': 'double',
   'browser.web_vital.lcp.element': 'string',
   'browser.web_vital.lcp.id': 'string',
@@ -20416,6 +20466,8 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_FCP_VALUE
   | typeof BROWSER_WEB_VITAL_FP_VALUE
+  | typeof BROWSER_WEB_VITAL_INP_INTERACTION_TYPE
+  | typeof BROWSER_WEB_VITAL_INP_TARGET
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof BROWSER_WEB_VITAL_LCP_ID
@@ -23620,7 +23672,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'navigation',
-    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
+    deprecation: {
+      reason:
+        'The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        prs: [642],
+        description: 'Deprecated browser.web_vital.cls.report_event, which has no replacement',
+      },
+      { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' },
+    ],
   },
   'browser.web_vital.cls.source.<key>': {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
@@ -23674,6 +23737,42 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 477.1926,
     aliases: ['fp'],
     changelog: [{ version: '0.5.0', prs: [235] }],
+  },
+  'browser.web_vital.inp.interaction_type': {
+    brief: 'The kind of user interaction INP was reported on',
+    type: 'string',
+    keys: ['browser.web_vital.inp.interaction_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'click',
+    examples: ['click', 'hover', 'drag', 'press'],
+    changelog: [{ version: 'next', prs: [641], description: 'Added browser.web_vital.inp.interaction_type attribute' }],
+    additionalContext: [
+      "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
+      'Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.',
+      'Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.',
+    ],
+  },
+  'browser.web_vital.inp.target': {
+    brief:
+      'The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on',
+    type: 'string',
+    keys: ['browser.web_vital.inp.target'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'body > div#app > button.submit',
+    examples: ['body > div#app > button.submit', 'SubmitButton'],
+    changelog: [{ version: 'next', prs: [641], description: 'Added browser.web_vital.inp.target attribute' }],
+    additionalContext: [
+      'Named after `PerformanceEventTiming.target`, the way `browser.web_vital.lcp.element` is named after `LargestContentfulPaint.element`. The value uses the same format as that attribute.',
+      'Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`.',
+    ],
   },
   'browser.web_vital.inp.value': {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
@@ -23750,7 +23849,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'pagehide',
-    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
+    deprecation: {
+      reason:
+        'The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        prs: [642],
+        description: 'Deprecated browser.web_vital.lcp.report_event, which has no replacement',
+      },
+      { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' },
+    ],
   },
   'browser.web_vital.lcp.size': {
     brief: 'The size of the largest contentful paint element',
@@ -32602,9 +32712,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'pagehide',
     deprecation: {
       reason:
-        'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
+        'The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.',
     },
-    changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
+    changelog: [
+      {
+        version: 'next',
+        prs: [642],
+        description:
+          'Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated',
+      },
+      { version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' },
+    ],
   },
   'sentry.sdk.integrations': {
     brief:
@@ -35100,6 +35218,8 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FP_VALUE]?: BROWSER_WEB_VITAL_FP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_INP_INTERACTION_TYPE]?: BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE;
+  [BROWSER_WEB_VITAL_INP_TARGET]?: BROWSER_WEB_VITAL_INP_TARGET_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;

@@ -1,0 +1,133 @@
+{
+  "brief": "UI",
+  "operations": [
+    {
+      "name": "Component mount",
+      "brief": "Mounting of a UI component or application (e.g. initial render/bootstrap).",
+      "is_in_otel": false,
+      "ops": ["ui.mount"],
+      "templates": ["{{ui.component_name}}", "Component mount"],
+      "examples": ["HomeButton", "Component mount"]
+    },
+    {
+      "name": "Component update",
+      "brief": "Updating of an already-mounted UI component.",
+      "is_in_otel": false,
+      "ops": ["ui.update"],
+      "templates": ["{{ui.component_name}}", "Component update"],
+      "examples": ["HomeButton", "Component update"]
+    },
+    {
+      "name": "Component render",
+      "brief": "Rendering of a UI component.",
+      "is_in_otel": false,
+      "ops": ["ui.render"],
+      "templates": ["{{ui.component_name}}", "Component render"],
+      "examples": ["HomeButton", "Component render"]
+    },
+    {
+      "name": "Component unmount",
+      "brief": "Unmounting/teardown of a UI component.",
+      "is_in_otel": false,
+      "ops": ["ui.unmount"],
+      "templates": ["{{ui.component_name}}", "Component unmount"],
+      "examples": ["HomeButton", "Component unmount"]
+    },
+    {
+      "name": "Component resolve",
+      "brief": "Looking up which component a name in a template refers to, before that component renders.",
+      "is_in_otel": false,
+      "ops": ["ui.resolve"],
+      "templates": ["{{ui.component_name}}", "Component resolve"],
+      "examples": ["HomeButton", "Component resolve"]
+    },
+    {
+      "name": "UI task",
+      "brief": "A task taken on the main UI thread, such as an Ember runloop queue.",
+      "is_in_otel": false,
+      "ops": ["ui.task"],
+      "templates": ["UI task"],
+      "examples": ["UI task"]
+    },
+    {
+      "name": "Main UI thread blocked",
+      "brief": "A long task or long animation frame on the main UI thread.",
+      "is_in_otel": false,
+      "ops": ["ui.long_task", "ui.long_animation_frame"],
+      "templates": ["Main UI thread blocked"],
+      "examples": ["Main UI thread blocked"]
+    },
+    {
+      "name": "UI action",
+      "brief": "A user interaction that starts a new trace segment and collects the work it triggers.",
+      "is_in_otel": false,
+      "ops": ["ui.action"],
+      "templates": ["{{router.navigation.route.id}}", "{{url.template}}", "{{http.route}}", "UI action"],
+      "examples": ["UserProfile", "/users/:id", "/home", "UI action"]
+    },
+    {
+      "name": "Click action",
+      "brief": "A click that starts a new idle span, named after the current route.",
+      "is_in_otel": false,
+      "ops": ["ui.action.click"],
+      "templates": ["{{router.navigation.route.id}}", "{{url.template}}", "{{http.route}}", "Click"],
+      "examples": ["UserProfile", "/users/:id", "/home", "Click"]
+    },
+    {
+      "name": "Click interaction",
+      "brief": "A click interaction measured via Interaction to Next Paint (INP) or the Event Timing API.",
+      "is_in_otel": false,
+      "ops": ["ui.interaction.click"],
+      "templates": ["{{ui.component_name}}", "Click"],
+      "examples": ["HomeButton", "Click"]
+    },
+    {
+      "name": "Hover interaction",
+      "brief": "A hover interaction measured via Interaction to Next Paint (INP).",
+      "is_in_otel": false,
+      "ops": ["ui.interaction.hover"],
+      "templates": ["{{ui.component_name}}", "Hover"],
+      "examples": ["HomeButton", "Hover"]
+    },
+    {
+      "name": "Drag interaction",
+      "brief": "A drag interaction measured via Interaction to Next Paint (INP).",
+      "is_in_otel": false,
+      "ops": ["ui.interaction.drag"],
+      "templates": ["{{ui.component_name}}", "Drag"],
+      "examples": ["HomeButton", "Drag"]
+    },
+    {
+      "name": "Key press interaction",
+      "brief": "A key press interaction measured via Interaction to Next Paint (INP).",
+      "is_in_otel": false,
+      "ops": ["ui.interaction.press"],
+      "templates": ["{{ui.component_name}}", "Key press"],
+      "examples": ["SearchInput", "Key press"]
+    },
+    {
+      "name": "Largest contentful paint",
+      "brief": "A Largest Contentful Paint (LCP) web vital measurement.",
+      "is_in_otel": false,
+      "ops": ["ui.webvital.lcp"],
+      "templates": ["{{ui.component_name}}", "Largest contentful paint"],
+      "examples": ["HeroImage", "Largest contentful paint"]
+    },
+    {
+      "name": "Layout shift",
+      "brief": "A Cumulative Layout Shift (CLS) web vital measurement.",
+      "is_in_otel": false,
+      "ops": ["ui.webvital.cls"],
+      "templates": ["{{ui.component_name}}", "Layout shift"],
+      "examples": ["HeroImage", "Layout shift"]
+    },
+    {
+      "name": "UI",
+      "brief": "A generic UI operation. Prefer the more specific ui.mount, ui.render, ui.update, and ui.unmount ops.",
+      "is_in_otel": false,
+      "ops": ["ui"],
+      "templates": ["{{ui.component_name}}", "UI"],
+      "examples": ["HomeButton", "UI"]
+    }
+  ]
+}

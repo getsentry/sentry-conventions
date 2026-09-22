@@ -14,7 +14,8 @@
       "description": "The time it takes to download an over-the-air (OTA) update."
     },
     {
-      "name": "ui"
+      "name": "ui",
+      "description": "Operations related to mobile UI."
     },
     {
       "name": "navigation"
