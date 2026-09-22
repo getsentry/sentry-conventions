@@ -298,6 +298,9 @@ pub const FILE: &str = "file";
 
 pub const SERIALIZE: &str = "serialize";
 
+/// A call from JavaScript into a React Native native module, or an aggregate of such calls.
+pub const TURBO_MODULE: &str = "turbo_module";
+
 // Path: model/op/object.json
 // Name: object
 

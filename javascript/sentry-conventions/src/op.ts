@@ -437,6 +437,11 @@ export const FILE = 'file';
 
 export const SERIALIZE = 'serialize';
 
+/**
+ * A call from JavaScript into a React Native native module, or an aggregate of such calls.
+ */
+export const TURBO_MODULE = 'turbo_module';
+
 // Path: model/op/object.json
 // Name: object
 

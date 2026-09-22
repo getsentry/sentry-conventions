@@ -1,0 +1,24 @@
+{
+  "key": "turbo_modules.total_error_count",
+  "brief": "The number of failed native module calls in the flushed call aggregate. Only applies to React Native.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [2],
+  "alias": ["react_native.module.error.count", "turbo_module.total_error_count"],
+  "deprecation": {
+    "replacement": "react_native.module.error.count",
+    "reason": "Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [564],
+      "description": "Added turbo_modules.total_error_count and deprecated it in favor of react_native.module.error.count"
+    }
+  ]
+}
