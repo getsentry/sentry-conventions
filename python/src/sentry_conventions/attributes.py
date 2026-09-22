@@ -9698,7 +9698,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/server/server__address.json
     SERVER_ADDRESS: Literal["server.address"] = "server.address"
-    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+    """Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.
 
     Type: str
     Apply Scrubbing: manual
@@ -24772,7 +24772,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="user.username"),
     ),
     "server.address": AttributeMetadata(
-        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+        brief="Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.",
         type=AttributeType.STRING,
         keys=(
             "server.address",
@@ -24792,6 +24792,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[645],
+                description="Broaden brief to allow hostnames",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],

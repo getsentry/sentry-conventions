@@ -10317,7 +10317,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+      'Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.',
     deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name'],
   },
   'server.port': {
