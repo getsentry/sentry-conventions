@@ -7,6 +7,9 @@
   },
   "is_in_otel": false,
   "visibility": "public",
+  "search_alias": {
+    "name": "trace_lifecycle"
+  },
   "example": "stream",
   "changelog": [
     {

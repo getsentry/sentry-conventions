@@ -22,6 +22,7 @@ export const GET: APIRoute = async () => {
       category,
       url,
       deprecated: !!attr.data.deprecation,
+      ...(attr.data.search_alias ? { search_alias: attr.data.search_alias } : {}),
     };
   });
 

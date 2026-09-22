@@ -1,7 +1,7 @@
 {
   "name": "@sentry/conventions",
   "license": "MIT",
-  "version": "0.19.0",
+  "version": "0.23.0",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -10,6 +10,10 @@
     "./attributes": {
       "import": "./dist/attributes.mjs",
       "require": "./dist/attributes.cjs"
+    },
+    "./attributes/search": {
+      "import": "./dist/search.mjs",
+      "require": "./dist/search.cjs"
     },
     "./op": {
       "import": "./dist/op.mjs",
@@ -32,6 +36,7 @@
   },
   "files": [
     "dist",
+    "attributes",
     "attributes.js",
     "attributes.d.ts",
     "op.js",

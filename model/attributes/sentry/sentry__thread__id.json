@@ -1,6 +1,6 @@
 {
   "key": "sentry.thread.id",
-  "brief": "Current “managed” thread ID.",
+  "brief": "Current \"managed\" thread ID.",
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"
@@ -8,6 +8,9 @@
   "is_in_otel": false,
   "example": 56,
   "visibility": "public",
+  "search_alias": {
+    "name": "thread.id"
+  },
   "deprecation": {
     "_status": "backfill",
     "replacement": "thread.id",

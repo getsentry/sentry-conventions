@@ -9,7 +9,7 @@
   "example": "192.168.0.1",
   "alias": ["network.peer.address", "net.sock.peer.addr"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "network.peer.address"
   },
   "visibility": "public",

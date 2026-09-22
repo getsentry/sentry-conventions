@@ -57,8 +57,8 @@ if (args.includes('--all')) {
   });
 } else {
   const keyIndex = args.indexOf('--key');
-  if (keyIndex !== -1 && args[keyIndex + 1]) {
-    const key = args[keyIndex + 1];
+  const key = keyIndex !== -1 ? args[keyIndex + 1] : undefined;
+  if (key) {
     clearByKey(key).catch((err) => {
       console.error(err);
       process.exit(1);

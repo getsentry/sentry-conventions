@@ -9,7 +9,7 @@
   "example": 42,
   "alias": ["code.line.number"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "code.line.number"
   },
   "visibility": "public",

@@ -6,26 +6,50 @@
       "brief": "Generative AI agent operations (e.g., spawning a new agent, an agent performing an action on behalf of a user, and agent handing off work to another agent).",
       "is_in_otel": true,
       "otel_notes": "The \"gen_ai.handoff\" operation is not present in OpenTelemetry.",
-      "ops": ["gen_ai.handoff", "gen_ai.invoke_agent"],
+      "ops": ["gen_ai.create_agent", "gen_ai.handoff", "gen_ai.invoke_agent"],
       "templates": [
         "{{gen_ai.operation.name}} {{gen_ai.agent.name}}",
+        "{{gen_ai.operation.name}} {{gen_ai.pipeline.name}}",
+        "{{gen_ai.operation.name}} {{gen_ai.function_id}}",
         "{{gen_ai.operation.name}}",
         "Generative AI agent operation"
       ],
-      "examples": ["text_completion Zed", "text_completion Claude Code", "embeddings"]
+      "examples": [
+        "text_completion Zed",
+        "text_completion Claude Code",
+        "invoke_agent format_prompt",
+        "invoke_agent weather_agent",
+        "embeddings"
+      ]
     },
     {
       "name": "Inference",
       "brief": "Generative AI inference operations. Requests to a generative AI model to perform some unit of work (e.g., autocomplete, translation, chat completion, response to a query).",
       "is_in_otel": true,
       "otel_notes": "",
-      "ops": ["gen_ai", "gen_ai.chat", "gen_ai.execute_tool"],
+      "ops": [
+        "gen_ai",
+        "gen_ai.chat",
+        "gen_ai.embeddings",
+        "gen_ai.execute_tool",
+        "gen_ai.generate_content",
+        "gen_ai.rerank",
+        "gen_ai.responses",
+        "gen_ai.text_completion"
+      ],
       "templates": [
         "{{gen_ai.operation.name}} {{gen_ai.request.model}}",
+        "{{gen_ai.operation.name}} {{gen_ai.tool.name}}",
         "{{gen_ai.operation.name}}",
         "Generative AI model operation"
       ],
-      "examples": ["text_completion gpt-4", "embeddings huggingface", "chat claude-opus-4", "chat"]
+      "examples": [
+        "text_completion gpt-4",
+        "embeddings huggingface",
+        "chat claude-opus-4",
+        "execute_tool get_weather",
+        "chat"
+      ]
     }
   ]
 }

@@ -136,6 +136,11 @@ export const UI = 'ui';
  */
 export const UI_TASK = 'ui.task';
 
+/**
+ * Looking up which component a name in a template refers to, before that component renders. Ember does this for every component it renders. The render itself is a separate `ui.render` span.
+ */
+export const UI_RESOLVE = 'ui.resolve';
+
 export const UI_RENDER = 'ui.render';
 
 /**
@@ -285,6 +290,21 @@ export const GEN_AI_GENERATE_CONTENT = 'gen_ai.generate_content';
  */
 export const GEN_AI_RERANK = 'gen_ai.rerank';
 
+/**
+ * Creation of an AI agent that can later be invoked to perform a task
+ */
+export const GEN_AI_CREATE_AGENT = 'gen_ai.create_agent';
+
+/**
+ * An interaction with a generative AI model through a responses API
+ */
+export const GEN_AI_RESPONSES = 'gen_ai.responses';
+
+/**
+ * A text completion request to a generative AI model
+ */
+export const GEN_AI_TEXT_COMPLETION = 'gen_ai.text_completion';
+
 // Path: model/op/general.json
 // Name: general
 
@@ -302,6 +322,26 @@ export const FUNCTION = 'function';
  * A user-defined measurement of the duration between two points in time
  */
 export const MEASURE = 'measure';
+
+// Path: model/op/mcp.json
+// Name: mcp
+
+// Description: Operations related to Model Context Protocol (MCP) interactions
+
+/**
+ * A request handled by an MCP server (e.g. a tool call, resource read, or prompt request).
+ */
+export const MCP_SERVER = 'mcp.server';
+
+/**
+ * A notification sent from an MCP client to an MCP server.
+ */
+export const MCP_NOTIFICATION_CLIENT_TO_SERVER = 'mcp.notification.client_to_server';
+
+/**
+ * A notification sent from an MCP server to an MCP client.
+ */
+export const MCP_NOTIFICATION_SERVER_TO_CLIENT = 'mcp.notification.server_to_client';
 
 // Path: model/op/messaging.json
 // Name: messaging
@@ -383,6 +423,16 @@ export const QUEUE_TASK_RQ = 'queue.task.rq';
 
 export const APP = 'app';
 
+/**
+ * The time it takes to check for an available over-the-air (OTA) update.
+ */
+export const APP_UPDATE_CHECK = 'app.update.check';
+
+/**
+ * The time it takes to download an over-the-air (OTA) update.
+ */
+export const APP_UPDATE_DOWNLOAD = 'app.update.download';
+
 export const FILE = 'file';
 
 export const SERIALIZE = 'serialize';
@@ -390,7 +440,7 @@ export const SERIALIZE = 'serialize';
 /**
  * A call from JavaScript into a React Native native module, or an aggregate of such calls.
  */
-export const MOBILE_TURBO_MODULE_SPAN_OP = 'turbo_module';
+export const TURBO_MODULE = 'turbo_module';
 
 // Path: model/op/object.json
 // Name: object

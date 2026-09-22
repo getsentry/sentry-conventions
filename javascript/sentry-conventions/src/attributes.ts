@@ -12,7 +12,7 @@
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
  * @example "example.com"
@@ -176,7 +176,7 @@ export type AI_FUNCTION_CALL_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`
+ * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`, {@link AI_RESPONSE_ID} `ai.response.id`
  *
  * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead
  * @example "gen_123abc"
@@ -256,10 +256,10 @@ export const AI_METADATA = 'ai.metadata';
  */
 export type AI_METADATA_TYPE = string;
 
-// Path: model/attributes/ai/ai__model_id.json
+// Path: model/attributes/ai/ai__model__id.json
 
 /**
- * The vendor-specific ID of the model used. `ai.model_id`
+ * The id of the model used by the Vercel AI SDK. `ai.model.id`
  *
  * Attribute Value Type: `string` {@link AI_MODEL_ID_TYPE}
  *
@@ -268,17 +268,41 @@ export type AI_METADATA_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`
+ * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`, {@link _AI_MODEL_ID} `ai.model_id`
+ *
+ * @deprecated Use {@link GEN_AI_REQUEST_MODEL} (gen_ai.request.model) instead - This attribute is being deprecated in favor of gen_ai.request.model.
+ * @example "gpt-4o"
+ */
+export const AI_MODEL_ID = 'ai.model.id';
+
+/**
+ * Type for {@link AI_MODEL_ID} ai.model.id
+ */
+export type AI_MODEL_ID_TYPE = string;
+
+// Path: model/attributes/ai/ai__model_id.json
+
+/**
+ * The vendor-specific ID of the model used. `ai.model_id`
+ *
+ * Attribute Value Type: `string` {@link _AI_MODEL_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_REQUEST_MODEL} `gen_ai.request.model`, {@link AI_MODEL_ID} `ai.model.id`
  *
  * @deprecated Use {@link GEN_AI_REQUEST_MODEL} (gen_ai.request.model) instead
  * @example "gpt-4"
  */
-export const AI_MODEL_ID = 'ai.model_id';
+export const _AI_MODEL_ID = 'ai.model_id';
 
 /**
- * Type for {@link AI_MODEL_ID} ai.model_id
+ * Type for {@link _AI_MODEL_ID} ai.model_id
  */
-export type AI_MODEL_ID_TYPE = string;
+export type _AI_MODEL_ID_TYPE = string;
 
 // Path: model/attributes/ai/ai__model__provider.json
 
@@ -316,7 +340,7 @@ export type AI_MODEL_PROVIDER_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_PIPELINE_NAME} `gen_ai.pipeline.name`
+ * Aliases: {@link GEN_AI_PIPELINE_NAME} `gen_ai.pipeline.name`, {@link LANGCHAIN_CHAIN_NAME} `langchain.chain.name`
  *
  * @deprecated Use {@link GEN_AI_PIPELINE_NAME} (gen_ai.pipeline.name) instead
  * @example "Autofix Pipeline"
@@ -376,6 +400,30 @@ export const AI_PRESENCE_PENALTY = 'ai.presence_penalty';
  */
 export type AI_PRESENCE_PENALTY_TYPE = number;
 
+// Path: model/attributes/ai/ai__prompt.json
+
+/**
+ * The prompt passed to the Vercel AI SDK, as a stringified object. `ai.prompt`
+ *
+ * Attribute Value Type: `string` {@link AI_PROMPT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ *
+ * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead - This attribute is being deprecated in favor of gen_ai.input.messages.
+ * @example "{\"prompt\":\"What is the weather in Paris?\"}"
+ */
+export const AI_PROMPT = 'ai.prompt';
+
+/**
+ * Type for {@link AI_PROMPT} ai.prompt
+ */
+export type AI_PROMPT_TYPE = string;
+
 // Path: model/attributes/ai/ai__prompt__messages.json
 
 /**
@@ -388,7 +436,7 @@ export type AI_PRESENCE_PENALTY_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -423,6 +471,28 @@ export const AI_PROMPT_TOKENS_USED = 'ai.prompt_tokens.used';
  * Type for {@link AI_PROMPT_TOKENS_USED} ai.prompt_tokens.used
  */
 export type AI_PROMPT_TOKENS_USED_TYPE = number;
+
+// Path: model/attributes/ai/ai__prompt__tools.json
+
+/**
+ * The tools made available to the model, as an array of stringified tool definitions. `ai.prompt.tools`
+ *
+ * Attribute Value Type: `Array<string>` {@link AI_PROMPT_TOOLS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead - This attribute is being deprecated in favor of gen_ai.tool.definitions.
+ * @example ["{\"type\":\"function\",\"name\":\"get_weather\"}"]
+ */
+export const AI_PROMPT_TOOLS = 'ai.prompt.tools';
+
+/**
+ * Type for {@link AI_PROMPT_TOOLS} ai.prompt.tools
+ */
+export type AI_PROMPT_TOOLS_TYPE = Array<string>;
 
 // Path: model/attributes/ai/ai__raw_prompting.json
 
@@ -490,6 +560,76 @@ export const AI_RESPONSE_FORMAT = 'ai.response_format';
  */
 export type AI_RESPONSE_FORMAT_TYPE = string;
 
+// Path: model/attributes/ai/ai__response__id.json
+
+/**
+ * The id of the response returned by the model. `ai.response.id`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_ID} `gen_ai.response.id`, {@link AI_GENERATION_ID} `ai.generation_id`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_ID} (gen_ai.response.id) instead - This attribute is being deprecated in favor of gen_ai.response.id.
+ * @example "chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY"
+ */
+export const AI_RESPONSE_ID = 'ai.response.id';
+
+/**
+ * Type for {@link AI_RESPONSE_ID} ai.response.id
+ */
+export type AI_RESPONSE_ID_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__model.json
+
+/**
+ * The id of the model that produced the response. `ai.response.model`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_MODEL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_RESPONSE_MODEL} `gen_ai.response.model`
+ *
+ * @deprecated Use {@link GEN_AI_RESPONSE_MODEL} (gen_ai.response.model) instead - This attribute is being deprecated in favor of gen_ai.response.model.
+ * @example "gpt-4o-2024-08-06"
+ */
+export const AI_RESPONSE_MODEL = 'ai.response.model';
+
+/**
+ * Type for {@link AI_RESPONSE_MODEL} ai.response.model
+ */
+export type AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/ai/ai__response__object.json
+
+/**
+ * The type of the object returned by the model. `ai.response.object`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_OBJECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.
+ * @example "chat.completion"
+ */
+export const AI_RESPONSE_OBJECT = 'ai.response.object';
+
+/**
+ * Type for {@link AI_RESPONSE_OBJECT} ai.response.object
+ */
+export type AI_RESPONSE_OBJECT_TYPE = string;
+
 // Path: model/attributes/ai/ai__response__text.json
 
 /**
@@ -514,6 +654,28 @@ export const AI_RESPONSE_TEXT = 'ai.response.text';
  */
 export type AI_RESPONSE_TEXT_TYPE = string;
 
+// Path: model/attributes/ai/ai__response__timestamp.json
+
+/**
+ * The ISO 8601 timestamp at which the response was produced. `ai.response.timestamp`
+ *
+ * Attribute Value Type: `string` {@link AI_RESPONSE_TIMESTAMP_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The span start and end timestamps carry the same information.
+ * @example "2026-02-19T15:32:11.000Z"
+ */
+export const AI_RESPONSE_TIMESTAMP = 'ai.response.timestamp';
+
+/**
+ * Type for {@link AI_RESPONSE_TIMESTAMP} ai.response.timestamp
+ */
+export type AI_RESPONSE_TIMESTAMP_TYPE = string;
+
 // Path: model/attributes/ai/ai__response__toolCalls.json
 
 /**
@@ -537,6 +699,28 @@ export const AI_RESPONSE_TOOLCALLS = 'ai.response.toolCalls';
  * Type for {@link AI_RESPONSE_TOOLCALLS} ai.response.toolCalls
  */
 export type AI_RESPONSE_TOOLCALLS_TYPE = string;
+
+// Path: model/attributes/ai/ai__schema.json
+
+/**
+ * The stringified JSON schema the model output must conform to. `ai.schema`
+ *
+ * Attribute Value Type: `string` {@link AI_SCHEMA_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+ * @example "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
+ */
+export const AI_SCHEMA = 'ai.schema';
+
+/**
+ * Type for {@link AI_SCHEMA} ai.schema
+ */
+export type AI_SCHEMA_TYPE = string;
 
 // Path: model/attributes/ai/ai__search_queries.json
 
@@ -688,7 +872,7 @@ export type AI_TEMPERATURE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead
  * @example ["Hello, how are you?","What is the capital of France?"]
@@ -876,7 +1060,7 @@ export type AI_TOTAL_COST_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`
+ * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead
  * @example 30
@@ -887,6 +1071,52 @@ export const AI_TOTAL_TOKENS_USED = 'ai.total_tokens.used';
  * Type for {@link AI_TOTAL_TOKENS_USED} ai.total_tokens.used
  */
 export type AI_TOTAL_TOKENS_USED_TYPE = number;
+
+// Path: model/attributes/ai/ai__usage__tokens.json
+
+/**
+ * The total number of tokens used for the request and the response. `ai.usage.tokens`
+ *
+ * Attribute Value Type: `number` {@link AI_USAGE_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_TOTAL_TOKENS} `gen_ai.usage.total_tokens`, {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_TOTAL_TOKENS} (gen_ai.usage.total_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.total_tokens.
+ * @example 150
+ */
+export const AI_USAGE_TOKENS = 'ai.usage.tokens';
+
+/**
+ * Type for {@link AI_USAGE_TOKENS} ai.usage.tokens
+ */
+export type AI_USAGE_TOKENS_TYPE = number;
+
+// Path: model/attributes/ai/ai__values.json
+
+/**
+ * The stringified values produced by a Vercel AI SDK object or array generation. `ai.values`
+ *
+ * Attribute Value Type: `string` {@link AI_VALUES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. Use gen_ai.output.messages for model output instead.
+ * @example "[{\"city\":\"Paris\"}]"
+ */
+export const AI_VALUES = 'ai.values';
+
+/**
+ * Type for {@link AI_VALUES} ai.values
+ */
+export type AI_VALUES_TYPE = string;
 
 // Path: model/attributes/ai/ai__warnings.json
 
@@ -2760,7 +2990,7 @@ export type _AWS_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.
  * @example "https://sqs.us-east-1.amazonaws.com/123456789/my-queue"
@@ -3009,6 +3239,78 @@ export const BROWSER_NAME = 'browser.name';
  * Type for {@link BROWSER_NAME} browser.name
  */
 export type BROWSER_NAME_TYPE = string;
+
+// Path: model/attributes/browser/browser__navigation__id.json
+
+/**
+ * The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime. `browser.navigation.id`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_NAVIGATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1
+ * @example 3
+ * @example 0
+ */
+export const BROWSER_NAVIGATION_ID = 'browser.navigation.id';
+
+/**
+ * Type for {@link BROWSER_NAVIGATION_ID} browser.navigation.id
+ */
+export type BROWSER_NAVIGATION_ID_TYPE = number;
+
+// Path: model/attributes/browser/browser__navigation__type.json
+
+/**
+ * The type of navigation the browser performed to arrive at the page the metrics were measured on. `browser.navigation.type`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_NAVIGATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "navigate"
+ * @example "reload"
+ * @example "back-forward"
+ * @example "back-forward-cache"
+ * @example "prerender"
+ * @example "restore"
+ * @example "soft-navigation"
+ */
+export const BROWSER_NAVIGATION_TYPE = 'browser.navigation.type';
+
+/**
+ * Type for {@link BROWSER_NAVIGATION_TYPE} browser.navigation.type
+ */
+export type BROWSER_NAVIGATION_TYPE_TYPE = string;
+
+// Path: model/attributes/browser/browser__paint__type.json
+
+/**
+ * The type of paint timing entry reported by the browser. `browser.paint.type`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_PAINT_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "first-paint"
+ * @example "first-contentful-paint"
+ */
+export const BROWSER_PAINT_TYPE = 'browser.paint.type';
+
+/**
+ * Type for {@link BROWSER_PAINT_TYPE} browser.paint.type
+ */
+export type BROWSER_PAINT_TYPE_TYPE = string;
 
 // Path: model/attributes/browser/browser__performance__navigation__activation_start.json
 
@@ -3555,6 +3857,28 @@ export const CACHE_HIT = 'cache.hit';
  */
 export type CACHE_HIT_TYPE = boolean;
 
+// Path: model/attributes/cache/cache__item_age.json
+
+/**
+ * The age of the cache entry in seconds, measured at read time. `cache.item_age`
+ *
+ * Attribute Value Type: `number` {@link CACHE_ITEM_AGE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5
+ * @example 3600
+ */
+export const CACHE_ITEM_AGE = 'cache.item_age';
+
+/**
+ * Type for {@link CACHE_ITEM_AGE} cache.item_age
+ */
+export type CACHE_ITEM_AGE_TYPE = number;
+
 // Path: model/attributes/cache/cache__item_size.json
 
 /**
@@ -3610,6 +3934,8 @@ export type CACHE_KEY_TYPE = Array<string>;
  * Visibility: public
  *
  * @example "get"
+ * @example "put"
+ * @example "remove"
  */
 export const CACHE_OPERATION = 'cache.operation';
 
@@ -3617,6 +3943,28 @@ export const CACHE_OPERATION = 'cache.operation';
  * Type for {@link CACHE_OPERATION} cache.operation
  */
 export type CACHE_OPERATION_TYPE = string;
+
+// Path: model/attributes/cache/cache__tags.json
+
+/**
+ * The tags attached to the cache entry. Tags group entries so a cache can invalidate them together. `cache.tags`
+ *
+ * Attribute Value Type: `Array<string>` {@link CACHE_TAGS_TYPE}
+ *
+ * Apply Scrubbing: auto - Applications pick tag values freely and often build them from record identifiers such as a user id.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["blog-posts","post-42"]
+ * @example ["products"]
+ */
+export const CACHE_TAGS = 'cache.tags';
+
+/**
+ * Type for {@link CACHE_TAGS} cache.tags
+ */
+export type CACHE_TAGS_TYPE = Array<string>;
 
 // Path: model/attributes/cache/cache__ttl.json
 
@@ -4329,7 +4677,7 @@ export type CODE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FILE_PATH} `code.file.path`
+ * Aliases: {@link CODE_FILE_PATH} `code.file.path`, {@link SVELTEKIT_LOAD_NODE_ID} `sveltekit.load.node_id`
  *
  * @deprecated Use {@link CODE_FILE_PATH} (code.file.path) instead
  * @example "/app/myapplication/http/handler/server.py"
@@ -4353,7 +4701,7 @@ export type CODE_FILEPATH_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link CODE_FILEPATH} `code.filepath`
+ * Aliases: {@link CODE_FILEPATH} `code.filepath`, {@link SVELTEKIT_LOAD_NODE_ID} `sveltekit.load.node_id`
  *
  * @example "/app/myapplication/http/handler/server.py"
  */
@@ -4654,6 +5002,28 @@ export const DB_COLLECTION_NAME = 'db.collection.name';
  */
 export type DB_COLLECTION_NAME_TYPE = string;
 
+// Path: model/attributes/db/db__connection_string.json
+
+/**
+ * The connection string used to connect to the database. `db.connection_string`
+ *
+ * Attribute Value Type: `string` {@link DB_CONNECTION_STRING_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.
+ * @example "redis://localhost:6379"
+ */
+export const DB_CONNECTION_STRING = 'db.connection_string';
+
+/**
+ * Type for {@link DB_CONNECTION_STRING} db.connection_string
+ */
+export type DB_CONNECTION_STRING_TYPE = string;
+
 // Path: model/attributes/db/db__driver__name.json
 
 /**
@@ -4893,7 +5263,7 @@ export type DB_QUERY_SUMMARY_TYPE = string;
  *
  * Attribute Value Type: `string` {@link DB_QUERY_TEXT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -5674,6 +6044,8 @@ export type DEVICE_MODEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SERVER_NAME} `server_name`
  *
  * @example "localhost"
  */
@@ -6825,7 +7197,7 @@ export type FRAMES_TOTAL_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better.
+ * @deprecated Use {@link ERROR_TYPE} (error.type) instead - This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.
  * @example "ENOENT: no such file or directory"
  */
 export const FS_ERROR = 'fs_error';
@@ -7335,7 +7707,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`
+ * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  */
@@ -7423,7 +7795,7 @@ export type GEN_AI_OUTPUT_MESSAGES_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link AI_PIPELINE_NAME} `ai.pipeline.name`
+ * Aliases: {@link AI_PIPELINE_NAME} `ai.pipeline.name`, {@link LANGCHAIN_CHAIN_NAME} `langchain.chain.name`
  *
  * @example "Autofix Pipeline"
  */
@@ -7446,7 +7818,7 @@ export type GEN_AI_PIPELINE_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`
+ * Aliases: {@link GEN_AI_INPUT_MESSAGES} `gen_ai.input.messages`, {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link AI_PROMPT} `ai.prompt`
  *
  * @deprecated Use {@link GEN_AI_INPUT_MESSAGES} (gen_ai.input.messages) instead - Deprecated from OTEL, use gen_ai.input.messages with the new format instead.
  * @example "[{\"role\": \"user\", \"message\": \"hello\"}]"
@@ -7515,6 +7887,8 @@ export type GEN_AI_PROVIDER_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_TOOL_DEFINITIONS} `gen_ai.tool.definitions`
  *
  * @deprecated Use {@link GEN_AI_TOOL_DEFINITIONS} (gen_ai.tool.definitions) instead
  * @example "[{\"name\": \"get_weather\", \"description\": \"Get the weather for a given location\"}, {\"name\": \"get_news\", \"description\": \"Get the news for a given topic\"}]"
@@ -7606,7 +7980,7 @@ export type GEN_AI_REQUEST_MESSAGES_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_MODEL_ID} `ai.model_id`
+ * Aliases: {@link _AI_MODEL_ID} `ai.model_id`, {@link AI_MODEL_ID} `ai.model.id`
  *
  * @example "gpt-4-turbo-preview"
  */
@@ -7660,6 +8034,28 @@ export const GEN_AI_REQUEST_REASONING_LEVEL = 'gen_ai.request.reasoning.level';
  * Type for {@link GEN_AI_REQUEST_REASONING_LEVEL} gen_ai.request.reasoning.level
  */
 export type GEN_AI_REQUEST_REASONING_LEVEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__request__schema.json
+
+/**
+ * The stringified JSON schema the model output must conform to. `gen_ai.request.schema`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_REQUEST_SCHEMA_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.
+ * @example "{\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"}}}"
+ */
+export const GEN_AI_REQUEST_SCHEMA = 'gen_ai.request.schema';
+
+/**
+ * Type for {@link GEN_AI_REQUEST_SCHEMA} gen_ai.request.schema
+ */
+export type GEN_AI_REQUEST_SCHEMA_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__request__seed.json
 
@@ -7833,7 +8229,7 @@ export type GEN_AI_RESPONSE_FINISH_REASONS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`
+ * Aliases: {@link AI_GENERATION_ID} `ai.generation_id`, {@link AI_RESPONSE_ID} `ai.response.id`
  *
  * @example "gen_123abc"
  */
@@ -7856,6 +8252,8 @@ export type GEN_AI_RESPONSE_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link AI_RESPONSE_MODEL} `ai.response.model`
+ *
  * @example "gpt-4"
  */
 export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
@@ -7864,6 +8262,28 @@ export const GEN_AI_RESPONSE_MODEL = 'gen_ai.response.model';
  * Type for {@link GEN_AI_RESPONSE_MODEL} gen_ai.response.model
  */
 export type GEN_AI_RESPONSE_MODEL_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__response__object.json
+
+/**
+ * The type of the object returned by the model. `gen_ai.response.object`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_RESPONSE_OBJECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @deprecated  - This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.
+ * @example "chat.completion"
+ */
+export const GEN_AI_RESPONSE_OBJECT = 'gen_ai.response.object';
+
+/**
+ * Type for {@link GEN_AI_RESPONSE_OBJECT} gen_ai.response.object
+ */
+export type GEN_AI_RESPONSE_OBJECT_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__response__streaming.json
 
@@ -8127,6 +8547,8 @@ export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link GEN_AI_REQUEST_AVAILABLE_TOOLS} `gen_ai.request.available_tools`
+ *
  * @example "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]"
  */
 export const GEN_AI_TOOL_DEFINITIONS = 'gen_ai.tool.definitions';
@@ -8286,7 +8708,7 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
  * @example 100
  */
@@ -8296,6 +8718,30 @@ export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_crea
  * Type for {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation.input_tokens
  */
 export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_creation_input_tokens.json
+
+/**
+ * The number of tokens written to the cache when processing the AI input (prompt). `gen_ai.usage.cache_creation_input_tokens`
+ *
+ * Attribute Value Type: `number` {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.
+ * @example 100
+ */
+export const _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation_input_tokens';
+
+/**
+ * Type for {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation_input_tokens
+ */
+export type _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
 
@@ -8309,7 +8755,7 @@ export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`, {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read_input_tokens`
  *
  * @example 50
  */
@@ -8319,6 +8765,30 @@ export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read.inp
  * Type for {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read.input_tokens
  */
 export type GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_read_input_tokens.json
+
+/**
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.cache_read_input_tokens`
+ *
+ * Attribute Value Type: `number` {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.
+ * @example 50
+ */
+export const _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read_input_tokens';
+
+/**
+ * Type for {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read_input_tokens
+ */
+export type _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
@@ -8379,7 +8849,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`, {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read_input_tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead
  * @example 50
@@ -8403,7 +8873,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead
  * @example 100
@@ -8521,7 +8991,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`
+ * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
  * @example 20
  */
@@ -8543,6 +9013,8 @@ export type GEN_AI_USAGE_TOTAL_TOKENS_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link GRAPHQL_SOURCE} `graphql.source`
  *
  * @example "query findBookById { bookById(id: ?) { name } }"
  */
@@ -8594,6 +9066,54 @@ export const GRAPHQL_OPERATION_TYPE = 'graphql.operation.type';
  * Type for {@link GRAPHQL_OPERATION_TYPE} graphql.operation.type
  */
 export type GRAPHQL_OPERATION_TYPE_TYPE = string;
+
+// Path: model/attributes/graphql/graphql__processing__type.json
+
+/**
+ * The type of processing represented by this span. `graphql.processing.type`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_PROCESSING_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "parse"
+ * @example "validate"
+ * @example "execute"
+ * @example "resolve"
+ */
+export const GRAPHQL_PROCESSING_TYPE = 'graphql.processing.type';
+
+/**
+ * Type for {@link GRAPHQL_PROCESSING_TYPE} graphql.processing.type
+ */
+export type GRAPHQL_PROCESSING_TYPE_TYPE = string;
+
+// Path: model/attributes/graphql/graphql__source.json
+
+/**
+ * The GraphQL document being executed. `graphql.source`
+ *
+ * Attribute Value Type: `string` {@link GRAPHQL_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GRAPHQL_DOCUMENT} `graphql.document`
+ *
+ * @deprecated Use {@link GRAPHQL_DOCUMENT} (graphql.document) instead - This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.
+ * @example "query findBookById { bookById(id: ?) { name } }"
+ */
+export const GRAPHQL_SOURCE = 'graphql.source';
+
+/**
+ * Type for {@link GRAPHQL_SOURCE} graphql.source
+ */
+export type GRAPHQL_SOURCE_TYPE = string;
 
 // Path: model/attributes/grpc/grpc__error__bad_request__field_violations.json
 
@@ -8935,6 +9455,9 @@ export type HTTP_CLIENT_IP_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link HTTP_RESPONSE_BODY_DECODED_SIZE} `http.response.body.decoded_size`, {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} `http.response_content_length_uncompressed`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_BODY_DECODED_SIZE} (http.response.body.decoded_size) instead
  * @example 456
  */
 export const HTTP_DECODED_RESPONSE_CONTENT_LENGTH = 'http.decoded_response_content_length';
@@ -8956,7 +9479,7 @@ export type HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -9001,7 +9524,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -9079,6 +9602,52 @@ export const HTTP_REQUEST_BODY_DATA = 'http.request.body.data';
  */
 export type HTTP_REQUEST_BODY_DATA_TYPE = string;
 
+// Path: model/attributes/http/http__request__body__decoded_size.json
+
+/**
+ * The decoded body size of the request (in bytes). `http.request.body.decoded_size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_BODY_DECODED_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED} `http.request_content_length_uncompressed`
+ *
+ * @example 456
+ */
+export const HTTP_REQUEST_BODY_DECODED_SIZE = 'http.request.body.decoded_size';
+
+/**
+ * Type for {@link HTTP_REQUEST_BODY_DECODED_SIZE} http.request.body.decoded_size
+ */
+export type HTTP_REQUEST_BODY_DECODED_SIZE_TYPE = number;
+
+// Path: model/attributes/http/http__request__body__size.json
+
+/**
+ * The encoded body size of the request (in bytes). `http.request.body.size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_BODY_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_CONTENT_LENGTH} `http.request_content_length`
+ *
+ * @example 123
+ */
+export const HTTP_REQUEST_BODY_SIZE = 'http.request.body.size';
+
+/**
+ * Type for {@link HTTP_REQUEST_BODY_SIZE} http.request.body.size
+ */
+export type HTTP_REQUEST_BODY_SIZE_TYPE = number;
+
 // Path: model/attributes/http/http__request__connection_end.json
 
 /**
@@ -9120,6 +9689,54 @@ export const HTTP_REQUEST_CONNECT_START = 'http.request.connect_start';
  * Type for {@link HTTP_REQUEST_CONNECT_START} http.request.connect_start
  */
 export type HTTP_REQUEST_CONNECT_START_TYPE = number;
+
+// Path: model/attributes/http/http__request_content_length.json
+
+/**
+ * The encoded body size of the request (in bytes). `http.request_content_length`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_CONTENT_LENGTH_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_BODY_SIZE} `http.request.body.size`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_BODY_SIZE} (http.request.body.size) instead
+ * @example 123
+ */
+export const HTTP_REQUEST_CONTENT_LENGTH = 'http.request_content_length';
+
+/**
+ * Type for {@link HTTP_REQUEST_CONTENT_LENGTH} http.request_content_length
+ */
+export type HTTP_REQUEST_CONTENT_LENGTH_TYPE = number;
+
+// Path: model/attributes/http/http__request_content_length_uncompressed.json
+
+/**
+ * The decoded body size of the request (in bytes). `http.request_content_length_uncompressed`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_REQUEST_BODY_DECODED_SIZE} `http.request.body.decoded_size`
+ *
+ * @deprecated Use {@link HTTP_REQUEST_BODY_DECODED_SIZE} (http.request.body.decoded_size) instead
+ * @example 456
+ */
+export const HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED = 'http.request_content_length_uncompressed';
+
+/**
+ * Type for {@link HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED} http.request_content_length_uncompressed
+ */
+export type HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
 
 // Path: model/attributes/http/http__request__domain_lookup_end.json
 
@@ -9187,7 +9804,7 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
 // Path: model/attributes/http/http__request__header__[key].json
 
 /**
- * HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.request.header.<key>`
+ * HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values. `http.request.header.<key>`
  *
  * Attribute Value Type: `Array<string>` {@link HTTP_REQUEST_HEADER_KEY_TYPE}
  *
@@ -9199,6 +9816,7 @@ export type HTTP_REQUEST_FETCH_START_TYPE = number;
  * Has Dynamic Suffix: true
  *
  * @example "http.request.header.custom-header=['foo', 'bar']"
+ * @example "http.request.header.content-length=['123']"
  */
 export const HTTP_REQUEST_HEADER_KEY = 'http.request.header.<key>';
 
@@ -9471,6 +10089,29 @@ export const HTTP_REQUEST_WORKER_START = 'http.request.worker_start';
  */
 export type HTTP_REQUEST_WORKER_START_TYPE = number;
 
+// Path: model/attributes/http/http__response__body__decoded_size.json
+
+/**
+ * The decoded body size of the response (in bytes). `http.response.body.decoded_size`
+ *
+ * Attribute Value Type: `number` {@link HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} `http.decoded_response_content_length`, {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} `http.response_content_length_uncompressed`
+ *
+ * @example 456
+ */
+export const HTTP_RESPONSE_BODY_DECODED_SIZE = 'http.response.body.decoded_size';
+
+/**
+ * Type for {@link HTTP_RESPONSE_BODY_DECODED_SIZE} http.response.body.decoded_size
+ */
+export type HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE = number;
+
 // Path: model/attributes/http/http__response__body__size.json
 
 /**
@@ -9518,6 +10159,30 @@ export const HTTP_RESPONSE_CONTENT_LENGTH = 'http.response_content_length';
  */
 export type HTTP_RESPONSE_CONTENT_LENGTH_TYPE = number;
 
+// Path: model/attributes/http/http__response_content_length_uncompressed.json
+
+/**
+ * The decoded body size of the response (in bytes). `http.response_content_length_uncompressed`
+ *
+ * Attribute Value Type: `number` {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_BODY_DECODED_SIZE} `http.response.body.decoded_size`, {@link HTTP_DECODED_RESPONSE_CONTENT_LENGTH} `http.decoded_response_content_length`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_BODY_DECODED_SIZE} (http.response.body.decoded_size) instead
+ * @example 456
+ */
+export const HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED = 'http.response_content_length_uncompressed';
+
+/**
+ * Type for {@link HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED} http.response_content_length_uncompressed
+ */
+export type HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE = number;
+
 // Path: model/attributes/http/http__response__header__content-length.json
 
 /**
@@ -9544,7 +10209,7 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
 // Path: model/attributes/http/http__response__header__[key].json
 
 /**
- * HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values. `http.response.header.<key>`
+ * HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values. `http.response.header.<key>`
  *
  * Attribute Value Type: `Array<string>` {@link HTTP_RESPONSE_HEADER_KEY_TYPE}
  *
@@ -9556,6 +10221,7 @@ export type HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE = string;
  * Has Dynamic Suffix: true
  *
  * @example "http.response.header.custom-header=['foo', 'bar']"
+ * @example "http.response.header.content-length=['123']"
  */
 export const HTTP_RESPONSE_HEADER_KEY = 'http.response.header.<key>';
 
@@ -9614,6 +10280,29 @@ export const HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code';
  * Type for {@link HTTP_RESPONSE_STATUS_CODE} http.response.status_code
  */
 export type HTTP_RESPONSE_STATUS_CODE_TYPE = number;
+
+// Path: model/attributes/http/http__response__status_text.json
+
+/**
+ * The reason phrase of the HTTP response. `http.response.status_text`
+ *
+ * Attribute Value Type: `string` {@link HTTP_RESPONSE_STATUS_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_STATUS_TEXT} `http.status_text`
+ *
+ * @example "NOT FOUND"
+ */
+export const HTTP_RESPONSE_STATUS_TEXT = 'http.response.status_text';
+
+/**
+ * Type for {@link HTTP_RESPONSE_STATUS_TEXT} http.response.status_text
+ */
+export type HTTP_RESPONSE_STATUS_TEXT_TYPE = string;
 
 // Path: model/attributes/http/http__response_transfer_size.json
 
@@ -9700,7 +10389,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -9757,6 +10446,30 @@ export const HTTP_STATUS_CODE = 'http.status_code';
  */
 export type HTTP_STATUS_CODE_TYPE = number;
 
+// Path: model/attributes/http/http__status_text.json
+
+/**
+ * The reason phrase of the HTTP response `http.status_text`
+ *
+ * Attribute Value Type: `string` {@link HTTP_STATUS_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HTTP_RESPONSE_STATUS_TEXT} `http.response.status_text`
+ *
+ * @deprecated Use {@link HTTP_RESPONSE_STATUS_TEXT} (http.response.status_text) instead
+ * @example "NOT FOUND"
+ */
+export const HTTP_STATUS_TEXT = 'http.status_text';
+
+/**
+ * Type for {@link HTTP_STATUS_TEXT} http.status_text
+ */
+export type HTTP_STATUS_TEXT_TYPE = string;
+
 // Path: model/attributes/http/http__target.json
 
 /**
@@ -9769,7 +10482,7 @@ export type HTTP_STATUS_CODE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @deprecated Use {@link URL_PATH} (url.path) instead - This attribute is being deprecated in favor of url.path and url.query
+ * @deprecated  - This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.
  * @example "/test?foo=bar#buzz"
  */
 export const HTTP_TARGET = 'http.target';
@@ -9791,7 +10504,7 @@ export type HTTP_TARGET_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -10084,6 +10797,31 @@ export const KOA_TYPE = 'koa.type';
  * Type for {@link KOA_TYPE} koa.type
  */
 export type KOA_TYPE_TYPE = string;
+
+// Path: model/attributes/langchain/langchain__chain__name.json
+
+/**
+ * The name of the LangChain chain being executed. `langchain.chain.name`
+ *
+ * Attribute Value Type: `string` {@link LANGCHAIN_CHAIN_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_PIPELINE_NAME} `gen_ai.pipeline.name`, {@link AI_PIPELINE_NAME} `ai.pipeline.name`
+ *
+ * @deprecated Use {@link GEN_AI_PIPELINE_NAME} (gen_ai.pipeline.name) instead - This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed.
+ * @example "format_prompt"
+ * @example "RunnableSequence"
+ */
+export const LANGCHAIN_CHAIN_NAME = 'langchain.chain.name';
+
+/**
+ * Type for {@link LANGCHAIN_CHAIN_NAME} langchain.chain.name
+ */
+export type LANGCHAIN_CHAIN_NAME_TYPE = string;
 
 // Path: model/attributes/lcp.json
 
@@ -10890,7 +11628,7 @@ export type MCP_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - OTel uses the generic network.protocol.name attribute
  * @example "file"
@@ -11171,6 +11909,30 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__conversation_id.json
+
+/**
+ * The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID". `messaging.conversation_id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_CONVERSATION_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_CONVERSATION_ID} `messaging.message.conversation_id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_CONVERSATION_ID} (messaging.message.conversation_id) instead - This attribute is being deprecated in favor of messaging.message.conversation_id.
+ * @example "MyConversationId"
+ */
+export const MESSAGING_CONVERSATION_ID = 'messaging.conversation_id';
+
+/**
+ * Type for {@link MESSAGING_CONVERSATION_ID} messaging.conversation_id
+ */
+export type MESSAGING_CONVERSATION_ID_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__destination.json
 
 /**
@@ -11378,6 +12140,8 @@ export type MESSAGING_MESSAGE_BODY_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_CONVERSATION_ID} `messaging.conversation_id`
+ *
  * @example "MyConversationId"
  */
 export const MESSAGING_MESSAGE_CONVERSATION_ID = 'messaging.message.conversation_id';
@@ -11420,6 +12184,8 @@ export type MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link _MESSAGING_MESSAGE_ID} `messaging.message_id`
+ *
  * @example "f47ac10b58cc4372a5670e02b2c3d479"
  */
 export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
@@ -11428,6 +12194,30 @@ export const MESSAGING_MESSAGE_ID = 'messaging.message.id';
  * Type for {@link MESSAGING_MESSAGE_ID} messaging.message.id
  */
 export type MESSAGING_MESSAGE_ID_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__message_id.json
+
+/**
+ * A value used by the messaging system as an identifier for the message, represented as a string. `messaging.message_id`
+ *
+ * Attribute Value Type: `string` {@link _MESSAGING_MESSAGE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_MESSAGE_ID} `messaging.message.id`
+ *
+ * @deprecated Use {@link MESSAGING_MESSAGE_ID} (messaging.message.id) instead - This attribute is being deprecated in favor of messaging.message.id.
+ * @example "452a7c7c7c7048c2f887f0e7"
+ */
+export const _MESSAGING_MESSAGE_ID = 'messaging.message_id';
+
+/**
+ * Type for {@link _MESSAGING_MESSAGE_ID} messaging.message_id
+ */
+export type _MESSAGING_MESSAGE_ID_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__message__receive__latency.json
 
@@ -11471,6 +12261,30 @@ export const MESSAGING_MESSAGE_RETRY_COUNT = 'messaging.message.retry.count';
  */
 export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__operation.json
+
+/**
+ * The name of the messaging operation being performed. `messaging.operation`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_OPERATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_OPERATION_NAME} `messaging.operation.name`
+ *
+ * @deprecated Use {@link MESSAGING_OPERATION_NAME} (messaging.operation.name) instead - This attribute is being deprecated in favor of messaging.operation.name.
+ * @example "publish"
+ */
+export const MESSAGING_OPERATION = 'messaging.operation';
+
+/**
+ * Type for {@link MESSAGING_OPERATION} messaging.operation
+ */
+export type MESSAGING_OPERATION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__operation__name.json
 
 /**
@@ -11482,6 +12296,8 @@ export type MESSAGING_MESSAGE_RETRY_COUNT_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_OPERATION} `messaging.operation`
  *
  * @example "send"
  */
@@ -11513,6 +12329,54 @@ export const MESSAGING_OPERATION_TYPE = 'messaging.operation.type';
  */
 export type MESSAGING_OPERATION_TYPE_TYPE = string;
 
+// Path: model/attributes/messaging/messaging__protocol.json
+
+/**
+ * OSI application layer or non-OSI equivalent. `messaging.protocol`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_PROTOCOL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - This attribute is being deprecated in favor of network.protocol.name.
+ * @example "AMQP"
+ */
+export const MESSAGING_PROTOCOL = 'messaging.protocol';
+
+/**
+ * Type for {@link MESSAGING_PROTOCOL} messaging.protocol
+ */
+export type MESSAGING_PROTOCOL_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__protocol_version.json
+
+/**
+ * The actual version of the protocol used for network communication. `messaging.protocol_version`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_PROTOCOL_VERSION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ *
+ * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead - This attribute is being deprecated in favor of network.protocol.version.
+ * @example "0.9.1"
+ */
+export const MESSAGING_PROTOCOL_VERSION = 'messaging.protocol_version';
+
+/**
+ * Type for {@link MESSAGING_PROTOCOL_VERSION} messaging.protocol_version
+ */
+export type MESSAGING_PROTOCOL_VERSION_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__rabbitmq__destination__routing_key.json
 
 /**
@@ -11525,6 +12389,8 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link MESSAGING_RABBITMQ_ROUTING_KEY} `messaging.rabbitmq.routing_key`
+ *
  * @example "myKey"
  */
 export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.destination.routing_key';
@@ -11533,6 +12399,30 @@ export const MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY = 'messaging.rabbitmq.de
  * Type for {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} messaging.rabbitmq.destination.routing_key
  */
 export type MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__rabbitmq__routing_key.json
+
+/**
+ * RabbitMQ message routing key. `messaging.rabbitmq.routing_key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_RABBITMQ_ROUTING_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} `messaging.rabbitmq.destination.routing_key`
+ *
+ * @deprecated Use {@link MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY} (messaging.rabbitmq.destination.routing_key) instead - This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.
+ * @example "myKey"
+ */
+export const MESSAGING_RABBITMQ_ROUTING_KEY = 'messaging.rabbitmq.routing_key';
+
+/**
+ * Type for {@link MESSAGING_RABBITMQ_ROUTING_KEY} messaging.rabbitmq.routing_key
+ */
+export type MESSAGING_RABBITMQ_ROUTING_KEY_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__system.json
 
@@ -11554,6 +12444,30 @@ export const MESSAGING_SYSTEM = 'messaging.system';
  * Type for {@link MESSAGING_SYSTEM} messaging.system
  */
 export type MESSAGING_SYSTEM_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__url.json
+
+/**
+ * The connection string of the messaging broker. `messaging.url`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_URL_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ *
+ * @deprecated Use {@link URL_FULL} (url.full) instead - This attribute is being deprecated in favor of url.full.
+ * @example "amqp://guest:guest@localhost:5672"
+ */
+export const MESSAGING_URL = 'messaging.url';
+
+/**
+ * Type for {@link MESSAGING_URL} messaging.url
+ */
+export type MESSAGING_URL_TYPE = string;
 
 // Path: model/attributes/method.json
 
@@ -11614,8 +12528,9 @@ export type MIDDLEWARE_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
+ * Aliases: {@link ROUTER_NAVIGATION_ORIGIN} `router.navigation.origin`, {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
  *
+ * @deprecated Use {@link ROUTER_NAVIGATION_ORIGIN} (router.navigation.origin) instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
  * @example "/users/:id"
  */
 export const NAVIGATION_ORIGIN = 'navigation.origin';
@@ -11637,6 +12552,9 @@ export type NAVIGATION_ORIGIN_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link ROUTER_NAVIGATION_ROUTE_ID} `router.navigation.route.id`
+ *
+ * @deprecated Use {@link ROUTER_NAVIGATION_ROUTE_ID} (router.navigation.route.id) instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
  * @example "AboutView"
  */
 export const NAVIGATION_ROUTE_ID = 'navigation.route.id';
@@ -11658,8 +12576,9 @@ export type NAVIGATION_ROUTE_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
+ * Aliases: {@link ROUTER_NAVIGATION_TYPE} `router.navigation.type`, {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
  *
+ * @deprecated Use {@link ROUTER_NAVIGATION_TYPE} (router.navigation.type) instead - Moved to the router.* namespace to separate client-side router navigations from browser navigations.
  * @example "router.push"
  */
 export const NAVIGATION_TYPE = 'navigation.type';
@@ -11858,6 +12777,7 @@ export type NETWORK_CONNECTION_TYPE_TYPE = string;
  * Aliases: {@link NET_HOST_IP} `net.host.ip`, {@link NET_SOCK_HOST_ADDR} `net.sock.host.addr`
  *
  * @example "10.1.2.80"
+ * @example "/var/run/my.sock"
  */
 export const NETWORK_LOCAL_ADDRESS = 'network.local.address';
 
@@ -11924,6 +12844,8 @@ export type NETWORK_PEER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link NET_SOCK_PEER_PORT} `net.sock.peer.port`
+ *
  * @example 65400
  */
 export const NETWORK_PEER_PORT = 'network.peer.port';
@@ -11945,7 +12867,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @example "http"
  */
@@ -11968,7 +12890,7 @@ export type NETWORK_PROTOCOL_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`
+ * Aliases: {@link HTTP_FLAVOR} `http.flavor`, {@link NET_PROTOCOL_VERSION} `net.protocol.version`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @example "1.1"
  */
@@ -12059,7 +12981,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12131,6 +13053,8 @@ export type NET_PEER_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
  */
@@ -12175,7 +13099,7 @@ export type NET_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
@@ -12199,7 +13123,7 @@ export type NET_PROTOCOL_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`
+ * Aliases: {@link NETWORK_PROTOCOL_VERSION} `network.protocol.version`, {@link HTTP_FLAVOR} `http.flavor`, {@link MESSAGING_PROTOCOL_VERSION} `messaging.protocol_version`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_VERSION} (network.protocol.version) instead
  * @example "1.1"
@@ -12339,6 +13263,8 @@ export type NET_SOCK_PEER_NAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link NETWORK_PEER_PORT} `network.peer.port`
+ *
  * @deprecated Use {@link NETWORK_PEER_PORT} (network.peer.port) instead
  * @example 8080
  */
@@ -12363,7 +13289,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  *
  * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link MCP_TRANSPORT} `mcp.transport`
  *
- * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead
+ * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
  * @example "tcp"
  */
 export const NET_TRANSPORT = 'net.transport';
@@ -12710,7 +13636,7 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`, {@link URL_PATH_PARAMS_KEY} `url.path.params.<key>`
  *
  * @example "params.id='123'"
  */
@@ -13195,6 +14121,30 @@ export const REMIX_ACTION_FORM_DATA_KEY_BASE = 'remix.action_form_data';
  */
 export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
 
+// Path: model/attributes/replayId.json
+
+/**
+ * The id of the sentry replay. `replayId`
+ *
+ * Attribute Value Type: `string` {@link REPLAYID_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_REPLAY_ID} `sentry.replay_id`
+ *
+ * @deprecated Use {@link SENTRY_REPLAY_ID} (sentry.replay_id) instead
+ * @example "123e4567e89b12d3a456426614174000"
+ */
+export const REPLAYID = 'replayId';
+
+/**
+ * Type for {@link REPLAYID} replayId
+ */
+export type REPLAYID_TYPE = string;
+
 // Path: model/attributes/replay_id.json
 
 /**
@@ -13307,6 +14257,75 @@ export const ROUTE = 'route';
  * Type for {@link ROUTE} route
  */
 export type ROUTE_TYPE = string;
+
+// Path: model/attributes/router/router__navigation__origin.json
+
+/**
+ * The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise. `router.navigation.origin`
+ *
+ * Attribute Value Type: `string` {@link ROUTER_NAVIGATION_ORIGIN_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`, {@link SENTRY_SVELTEKIT_NAVIGATION_FROM} `sentry.sveltekit.navigation.from`
+ *
+ * @example "/users/:id"
+ */
+export const ROUTER_NAVIGATION_ORIGIN = 'router.navigation.origin';
+
+/**
+ * Type for {@link ROUTER_NAVIGATION_ORIGIN} router.navigation.origin
+ */
+export type ROUTER_NAVIGATION_ORIGIN_TYPE = string;
+
+// Path: model/attributes/router/router__navigation__route__id.json
+
+/**
+ * The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id). `router.navigation.route.id`
+ *
+ * Attribute Value Type: `string` {@link ROUTER_NAVIGATION_ROUTE_ID_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_ROUTE_ID} `navigation.route.id`
+ *
+ * @example "AboutView"
+ */
+export const ROUTER_NAVIGATION_ROUTE_ID = 'router.navigation.route.id';
+
+/**
+ * Type for {@link ROUTER_NAVIGATION_ROUTE_ID} router.navigation.route.id
+ */
+export type ROUTER_NAVIGATION_ROUTE_ID_TYPE = string;
+
+// Path: model/attributes/router/router__navigation__type.json
+
+/**
+ * The type of navigation done by a client-side router. `router.navigation.type`
+ *
+ * Attribute Value Type: `string` {@link ROUTER_NAVIGATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NAVIGATION_TYPE} `navigation.type`, {@link SENTRY_SVELTEKIT_NAVIGATION_TYPE} `sentry.sveltekit.navigation.type`
+ *
+ * @example "router.push"
+ */
+export const ROUTER_NAVIGATION_TYPE = 'router.navigation.type';
+
+/**
+ * Type for {@link ROUTER_NAVIGATION_TYPE} router.navigation.type
+ */
+export type ROUTER_NAVIGATION_TYPE_TYPE = string;
 
 // Path: model/attributes/rpc/rpc__grpc__status_code.json
 
@@ -14792,7 +15811,7 @@ export type SENTRY_RELEASE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link REPLAY_ID} `replay_id`
+ * Aliases: {@link REPLAY_ID} `replay_id`, {@link REPLAYID} `replayId`
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
@@ -15145,9 +16164,9 @@ export type SENTRY_STATUS_MESSAGE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`
+ * Aliases: {@link NAVIGATION_ORIGIN} `navigation.origin`, {@link ROUTER_NAVIGATION_ORIGIN} `router.navigation.origin`
  *
- * @deprecated Use {@link NAVIGATION_ORIGIN} (navigation.origin) instead - Use the more generic attribute instead
+ * @deprecated Use {@link ROUTER_NAVIGATION_ORIGIN} (router.navigation.origin) instead - Use the more generic attribute instead
  * @example "/home"
  */
 export const SENTRY_SVELTEKIT_NAVIGATION_FROM = 'sentry.sveltekit.navigation.from';
@@ -15191,9 +16210,9 @@ export type SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NAVIGATION_TYPE} `navigation.type`
+ * Aliases: {@link NAVIGATION_TYPE} `navigation.type`, {@link ROUTER_NAVIGATION_TYPE} `router.navigation.type`
  *
- * @deprecated Use {@link NAVIGATION_TYPE} (navigation.type) instead - Use the more generic attribute instead
+ * @deprecated Use {@link ROUTER_NAVIGATION_TYPE} (router.navigation.type) instead - Use the more generic attribute instead
  * @example "link"
  */
 export const SENTRY_SVELTEKIT_NAVIGATION_TYPE = 'sentry.sveltekit.navigation.type';
@@ -15206,7 +16225,7 @@ export type SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE = string;
 // Path: model/attributes/sentry/sentry__thread__id.json
 
 /**
- * Current “managed” thread ID. `sentry.thread.id`
+ * Current "managed" thread ID. `sentry.thread.id`
  *
  * Attribute Value Type: `number` {@link SENTRY_THREAD_ID_TYPE}
  *
@@ -15530,7 +16549,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @example "example.com"
  */
@@ -15544,18 +16563,18 @@ export type SERVER_ADDRESS_TYPE = string;
 // Path: model/attributes/server_name.json
 
 /**
- * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server_name`
+ * The name of the device. On servers and desktops, this is typically the hostname. `server_name`
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link DEVICE_NAME} `device.name`
  *
- * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.
+ * @deprecated Use {@link DEVICE_NAME} (device.name) instead - This attribute is being deprecated in favor of device.name.
  * @example "example.com"
  */
 export const SERVER_NAME = 'server_name';
@@ -15791,6 +16810,95 @@ export const SUBPROCESS_PID = 'subprocess.pid';
  * Type for {@link SUBPROCESS_PID} subprocess.pid
  */
 export type SUBPROCESS_PID_TYPE = number;
+
+// Path: model/attributes/sveltekit/sveltekit__load__environment.json
+
+/**
+ * The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`. `sveltekit.load.environment`
+ *
+ * Attribute Value Type: `string` {@link SVELTEKIT_LOAD_ENVIRONMENT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "server"
+ * @example "client"
+ */
+export const SVELTEKIT_LOAD_ENVIRONMENT = 'sveltekit.load.environment';
+
+/**
+ * Type for {@link SVELTEKIT_LOAD_ENVIRONMENT} sveltekit.load.environment
+ */
+export type SVELTEKIT_LOAD_ENVIRONMENT_TYPE = string;
+
+// Path: model/attributes/sveltekit/sveltekit__load__node_id.json
+
+/**
+ * The path to the SvelteKit load function. `sveltekit.load.node_id`
+ *
+ * Attribute Value Type: `string` {@link SVELTEKIT_LOAD_NODE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link CODE_FILE_PATH} `code.file.path`, {@link CODE_FILEPATH} `code.filepath`
+ *
+ * @example "src/routes/users/:id/+page.server.ts"
+ */
+export const SVELTEKIT_LOAD_NODE_ID = 'sveltekit.load.node_id';
+
+/**
+ * Type for {@link SVELTEKIT_LOAD_NODE_ID} sveltekit.load.node_id
+ */
+export type SVELTEKIT_LOAD_NODE_ID_TYPE = string;
+
+// Path: model/attributes/sveltekit/sveltekit__load__node_type.json
+
+/**
+ * The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions. `sveltekit.load.node_type`
+ *
+ * Attribute Value Type: `string` {@link SVELTEKIT_LOAD_NODE_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "+page.server"
+ * @example "+layout"
+ * @example "+layout.server"
+ */
+export const SVELTEKIT_LOAD_NODE_TYPE = 'sveltekit.load.node_type';
+
+/**
+ * Type for {@link SVELTEKIT_LOAD_NODE_TYPE} sveltekit.load.node_type
+ */
+export type SVELTEKIT_LOAD_NODE_TYPE_TYPE = string;
+
+// Path: model/attributes/sveltekit/sveltekit__tracing__original_name.json
+
+/**
+ * The original span name as emitted by SvelteKit. `sveltekit.tracing.original_name`
+ *
+ * Attribute Value Type: `string` {@link SVELTEKIT_TRACING_ORIGINAL_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "sveltekit.handle.root"
+ */
+export const SVELTEKIT_TRACING_ORIGINAL_NAME = 'sveltekit.tracing.original_name';
+
+/**
+ * Type for {@link SVELTEKIT_TRACING_ORIGINAL_NAME} sveltekit.tracing.original_name
+ */
+export type SVELTEKIT_TRACING_ORIGINAL_NAME_TYPE = string;
 
 // Path: model/attributes/thread/thread__id.json
 
@@ -16785,7 +17893,7 @@ export type UI_ELEMENT_WIDTH_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link URL_FULL} `url.full`, {@link HTTP_URL} `http.url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @deprecated Use {@link URL_FULL} (url.full) instead
  * @example "https://example.com/test?foo=bar#buzz"
@@ -16851,7 +17959,7 @@ export type URL_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`
+ * Aliases: {@link HTTP_URL} `http.url`, {@link URL} `url`, {@link AWS_REQUEST_URL} `aws.request.url`, {@link MESSAGING_URL} `messaging.url`
  *
  * @example "https://example.com/test?foo=bar#buzz"
  */
@@ -16897,7 +18005,7 @@ export type URL_PATH_TYPE = string;
  *
  * Has Dynamic Suffix: true
  *
- * Aliases: {@link PARAMS_KEY} `params.<key>`
+ * Aliases: {@link PARAMS_KEY} `params.<key>`, {@link URL_PATH_PARAMS_KEY} `url.path.params.<key>`
  *
  * @example "url.path.parameter.id='123'"
  */
@@ -16912,6 +18020,39 @@ export const URL_PATH_PARAMETER_KEY_BASE = 'url.path.parameter';
  * Type for {@link URL_PATH_PARAMETER_KEY} url.path.parameter.<key>
  */
 export type URL_PATH_PARAMETER_KEY_TYPE = string;
+
+// Path: model/attributes/url/url__path__params__[key].json
+
+/**
+ * Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router. `url.path.params.<key>`
+ *
+ * Attribute Value Type: `string` {@link URL_PATH_PARAMS_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * Aliases: {@link URL_PATH_PARAMETER_KEY} `url.path.parameter.<key>`, {@link PARAMS_KEY} `params.<key>`
+ *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY} (url.path.parameter.<key>) instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+ * @example "url.path.params.id='123'"
+ */
+export const URL_PATH_PARAMS_KEY = 'url.path.params.<key>';
+
+/**
+ * Base key for {@link URL_PATH_PARAMS_KEY}. Use with a dynamic suffix, e.g. `${URL_PATH_PARAMS_KEY_BASE}.${key}`.
+ *
+ * @deprecated Use {@link URL_PATH_PARAMETER_KEY_BASE} (url.path.parameter) instead - This attribute is being deprecated in favor of url.path.parameter.<key>.
+ */
+export const URL_PATH_PARAMS_KEY_BASE = 'url.path.params';
+
+/**
+ * Type for {@link URL_PATH_PARAMS_KEY} url.path.params.<key>
+ */
+export type URL_PATH_PARAMS_KEY_TYPE = string;
 
 // Path: model/attributes/url/url__port.json
 
@@ -18095,11 +19236,33 @@ export interface ChangelogEntry {
   description?: string;
 }
 
+export type SearchAliasType = 'byte' | 'currency' | 'millisecond' | 'percentage' | 'second';
+
+export interface SearchAlias {
+  /** The public name exposed in Sentry search */
+  name: string;
+  /** The type exposed by Sentry search. Defaults to the attribute's primary type if omitted */
+  type?: SearchAliasType;
+  /** Deprecated aliases still accepted in search queries */
+  deprecatedAliases?: string[];
+}
+
 export interface AttributeMetadata {
   /** A description of the attribute */
   brief: string;
   /** The type of the attribute value */
   type: AttributeType;
+  /**
+   * Every key this attribute's value may be readable under, preferred key first.
+   *
+   * All members of a family read the same set of keys. Mutually aliased attributes each head their
+   * own chain, so those chains agree on membership but differ in which key they prefer. Only
+   * `backfill` and `normalize` deprecations join their replacement's chain,
+   * because only for those is the value rewritten onto the replacement. An attribute with any other
+   * deprecation therefore has a chain of just its own names, and the first key is not guaranteed to
+   * be non-deprecated — check `deprecation` if that matters.
+   */
+  keys: readonly string[];
   /** How PII scrubbing should be applied to the attribute value */
   applyScrubbing: ApplyScrubbingInfo;
   /** Whether the attribute is defined in OpenTelemetry Semantic Conventions */
@@ -18120,6 +19283,8 @@ export interface AttributeMetadata {
   changelog?: ChangelogEntry[];
   /** A list of freeform notes providing additional context about how this attribute behaves, common pitfalls, or query-time nuances */
   additionalContext?: string[];
+  /** How this attribute is exposed in Sentry search */
+  searchAlias?: SearchAlias;
 }
 
 export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
@@ -18134,18 +19299,26 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.input_messages': 'string',
   'ai.is_search_required': 'boolean',
   'ai.metadata': 'string',
+  'ai.model.id': 'string',
   'ai.model_id': 'string',
   'ai.model.provider': 'string',
   'ai.pipeline.name': 'string',
   'ai.preamble': 'string',
   'ai.presence_penalty': 'double',
+  'ai.prompt': 'string',
   'ai.prompt.messages': 'string',
   'ai.prompt_tokens.used': 'integer',
+  'ai.prompt.tools': 'string[]',
   'ai.raw_prompting': 'boolean',
   'ai.responses': 'string[]',
   'ai.response_format': 'string',
+  'ai.response.id': 'string',
+  'ai.response.model': 'string',
+  'ai.response.object': 'string',
   'ai.response.text': 'string',
+  'ai.response.timestamp': 'string',
   'ai.response.toolCalls': 'string',
+  'ai.schema': 'string',
   'ai.search_queries': 'string[]',
   'ai.search_results': 'string[]',
   'ai.seed': 'string',
@@ -18161,6 +19334,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.top_p': 'double',
   'ai.total_cost': 'double',
   'ai.total_tokens.used': 'integer',
+  'ai.usage.tokens': 'integer',
+  'ai.values': 'string',
   'ai.warnings': 'string[]',
   'angular.version': 'string',
   'app.app_build': 'string',
@@ -18257,6 +19432,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.bfcache.outcome': 'string',
   'browser.bfcache.reason': 'string',
   'browser.name': 'string',
+  'browser.navigation.id': 'integer',
+  'browser.navigation.type': 'string',
+  'browser.paint.type': 'string',
   'browser.performance.navigation.activation_start': 'double',
   'browser.performance.time_origin': 'double',
   'browser.report.type': 'string',
@@ -18281,9 +19459,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.web_vital.ttfb.request_time': 'double',
   'browser.web_vital.ttfb.value': 'double',
   'cache.hit': 'boolean',
+  'cache.item_age': 'integer',
   'cache.item_size': 'integer',
   'cache.key': 'string[]',
   'cache.operation': 'string',
+  'cache.tags': 'string[]',
   'cache.ttl': 'integer',
   'cache.write': 'boolean',
   channel: 'string',
@@ -18331,6 +19511,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'culture.locale': 'string',
   'culture.timezone': 'string',
   'db.collection.name': 'string',
+  'db.connection_string': 'string',
   'db.driver.name': 'string',
   'db.mongodb.collection': 'string',
   'db.name': 'string',
@@ -18468,6 +19649,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.request.model': 'string',
   'gen_ai.request.presence_penalty': 'double',
   'gen_ai.request.reasoning.level': 'string',
+  'gen_ai.request.schema': 'string',
   'gen_ai.request.seed': 'string',
   'gen_ai.request.stop_sequences': 'string[]',
   'gen_ai.request.temperature': 'double',
@@ -18477,6 +19659,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.response.finish_reasons': 'string',
   'gen_ai.response.id': 'string',
   'gen_ai.response.model': 'string',
+  'gen_ai.response.object': 'string',
   'gen_ai.response.streaming': 'boolean',
   'gen_ai.response.text': 'string',
   'gen_ai.response.time_to_first_chunk': 'double',
@@ -18496,7 +19679,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.tool.output': 'string',
   'gen_ai.tool.type': 'string',
   'gen_ai.usage.cache_creation.input_tokens': 'integer',
+  'gen_ai.usage.cache_creation_input_tokens': 'integer',
   'gen_ai.usage.cache_read.input_tokens': 'integer',
+  'gen_ai.usage.cache_read_input_tokens': 'integer',
   'gen_ai.usage.completion_tokens': 'integer',
   'gen_ai.usage.input_tokens': 'integer',
   'gen_ai.usage.input_tokens.cached': 'integer',
@@ -18509,6 +19694,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'graphql.document': 'string',
   'graphql.operation.name': 'string',
   'graphql.operation.type': 'string',
+  'graphql.processing.type': 'string',
+  'graphql.source': 'string',
   'grpc.error.bad_request.field_violations': 'string[]',
   'grpc.error.debug_info.detail': 'string',
   'grpc.error.debug_info.stack_entries': 'string[]',
@@ -18531,8 +19718,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.method': 'string',
   'http.query': 'string',
   'http.request.body.data': 'string',
+  'http.request.body.decoded_size': 'integer',
+  'http.request.body.size': 'integer',
   'http.request.connection_end': 'double',
   'http.request.connect_start': 'double',
+  'http.request_content_length': 'integer',
+  'http.request_content_length_uncompressed': 'integer',
   'http.request.domain_lookup_end': 'double',
   'http.request.domain_lookup_start': 'double',
   'http.request.fetch_start': 'double',
@@ -18549,18 +19740,22 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.request.secure_connection_start': 'double',
   'http.request.time_to_first_byte': 'double',
   'http.request.worker_start': 'double',
+  'http.response.body.decoded_size': 'integer',
   'http.response.body.size': 'integer',
   'http.response_content_length': 'integer',
+  'http.response_content_length_uncompressed': 'integer',
   'http.response.header.content-length': 'string',
   'http.response.header.<key>': 'string[]',
   'http.response.size': 'integer',
   'http.response.status_code': 'integer',
+  'http.response.status_text': 'string',
   'http.response_transfer_size': 'integer',
   'http.route': 'string',
   'http.scheme': 'string',
   'http.server_name': 'string',
   'http.server.request.time_in_queue': 'double',
   'http.status_code': 'integer',
+  'http.status_text': 'string',
   'http.target': 'string',
   'http.url': 'string',
   'http.user_agent': 'string',
@@ -18576,6 +19771,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'jvm.thread.state': 'string',
   'koa.name': 'string',
   'koa.type': 'string',
+  'langchain.chain.name': 'string',
   lcp: 'double',
   'lcp.element': 'string',
   'lcp.id': 'string',
@@ -18625,6 +19821,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.conversation_id': 'string',
   'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
   'messaging.destination_kind': 'string',
@@ -18637,12 +19834,18 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.message.conversation_id': 'string',
   'messaging.message.envelope.size': 'integer',
   'messaging.message.id': 'string',
+  'messaging.message_id': 'string',
   'messaging.message.receive.latency': 'integer',
   'messaging.message.retry.count': 'integer',
+  'messaging.operation': 'string',
   'messaging.operation.name': 'string',
   'messaging.operation.type': 'string',
+  'messaging.protocol': 'string',
+  'messaging.protocol_version': 'string',
   'messaging.rabbitmq.destination.routing_key': 'string',
+  'messaging.rabbitmq.routing_key': 'string',
   'messaging.system': 'string',
+  'messaging.url': 'string',
   method: 'string',
   'middleware.name': 'string',
   'navigation.origin': 'string',
@@ -18715,11 +19918,15 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
+  replayId: 'string',
   replay_id: 'string',
   'resource.deployment.environment': 'string',
   'resource.deployment.environment.name': 'string',
   'resource.render_blocking_status': 'string',
   route: 'string',
+  'router.navigation.origin': 'string',
+  'router.navigation.route.id': 'string',
+  'router.navigation.type': 'string',
   'rpc.grpc.status_code': 'integer',
   'rpc.method': 'string',
   'rpc.response.status_code': 'string',
@@ -18832,6 +20039,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'starlite.middleware_name': 'string',
   'state.type': 'string',
   'subprocess.pid': 'integer',
+  'sveltekit.load.environment': 'string',
+  'sveltekit.load.node_id': 'string',
+  'sveltekit.load.node_type': 'string',
+  'sveltekit.tracing.original_name': 'string',
   'thread.id': 'integer',
   'thread.name': 'string',
   'timber.tag': 'string',
@@ -18882,6 +20093,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'url.full': 'string',
   'url.path': 'string',
   'url.path.parameter.<key>': 'string',
+  'url.path.params.<key>': 'string',
   'url.port': 'integer',
   'url.query': 'string',
   'url.same_origin': 'boolean',
@@ -18950,17 +20162,25 @@ export type AttributeName =
   | typeof AI_IS_SEARCH_REQUIRED
   | typeof AI_METADATA
   | typeof AI_MODEL_ID
+  | typeof _AI_MODEL_ID
   | typeof AI_MODEL_PROVIDER
   | typeof AI_PIPELINE_NAME
   | typeof AI_PREAMBLE
   | typeof AI_PRESENCE_PENALTY
+  | typeof AI_PROMPT
   | typeof AI_PROMPT_MESSAGES
   | typeof AI_PROMPT_TOKENS_USED
+  | typeof AI_PROMPT_TOOLS
   | typeof AI_RAW_PROMPTING
   | typeof AI_RESPONSES
   | typeof AI_RESPONSE_FORMAT
+  | typeof AI_RESPONSE_ID
+  | typeof AI_RESPONSE_MODEL
+  | typeof AI_RESPONSE_OBJECT
   | typeof AI_RESPONSE_TEXT
+  | typeof AI_RESPONSE_TIMESTAMP
   | typeof AI_RESPONSE_TOOLCALLS
+  | typeof AI_SCHEMA
   | typeof AI_SEARCH_QUERIES
   | typeof AI_SEARCH_RESULTS
   | typeof AI_SEED
@@ -18976,6 +20196,8 @@ export type AttributeName =
   | typeof AI_TOP_P
   | typeof AI_TOTAL_COST
   | typeof AI_TOTAL_TOKENS_USED
+  | typeof AI_USAGE_TOKENS
+  | typeof AI_VALUES
   | typeof AI_WARNINGS
   | typeof ANGULAR_VERSION
   | typeof APP_APP_BUILD
@@ -19072,6 +20294,9 @@ export type AttributeName =
   | typeof BROWSER_BFCACHE_OUTCOME
   | typeof BROWSER_BFCACHE_REASON
   | typeof BROWSER_NAME
+  | typeof BROWSER_NAVIGATION_ID
+  | typeof BROWSER_NAVIGATION_TYPE
+  | typeof BROWSER_PAINT_TYPE
   | typeof BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START
   | typeof BROWSER_PERFORMANCE_TIME_ORIGIN
   | typeof BROWSER_REPORT_TYPE
@@ -19096,9 +20321,11 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_TTFB_REQUEST_TIME
   | typeof BROWSER_WEB_VITAL_TTFB_VALUE
   | typeof CACHE_HIT
+  | typeof CACHE_ITEM_AGE
   | typeof CACHE_ITEM_SIZE
   | typeof CACHE_KEY
   | typeof CACHE_OPERATION
+  | typeof CACHE_TAGS
   | typeof CACHE_TTL
   | typeof CACHE_WRITE
   | typeof CHANNEL
@@ -19146,6 +20373,7 @@ export type AttributeName =
   | typeof CULTURE_LOCALE
   | typeof CULTURE_TIMEZONE
   | typeof DB_COLLECTION_NAME
+  | typeof DB_CONNECTION_STRING
   | typeof DB_DRIVER_NAME
   | typeof DB_MONGODB_COLLECTION
   | typeof DB_NAME
@@ -19283,6 +20511,7 @@ export type AttributeName =
   | typeof GEN_AI_REQUEST_MODEL
   | typeof GEN_AI_REQUEST_PRESENCE_PENALTY
   | typeof GEN_AI_REQUEST_REASONING_LEVEL
+  | typeof GEN_AI_REQUEST_SCHEMA
   | typeof GEN_AI_REQUEST_SEED
   | typeof GEN_AI_REQUEST_STOP_SEQUENCES
   | typeof GEN_AI_REQUEST_TEMPERATURE
@@ -19292,6 +20521,7 @@ export type AttributeName =
   | typeof GEN_AI_RESPONSE_FINISH_REASONS
   | typeof GEN_AI_RESPONSE_ID
   | typeof GEN_AI_RESPONSE_MODEL
+  | typeof GEN_AI_RESPONSE_OBJECT
   | typeof GEN_AI_RESPONSE_STREAMING
   | typeof GEN_AI_RESPONSE_TEXT
   | typeof GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK
@@ -19311,7 +20541,9 @@ export type AttributeName =
   | typeof GEN_AI_TOOL_OUTPUT
   | typeof GEN_AI_TOOL_TYPE
   | typeof GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
+  | typeof _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
   | typeof GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
+  | typeof _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
   | typeof GEN_AI_USAGE_COMPLETION_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHED
@@ -19324,6 +20556,8 @@ export type AttributeName =
   | typeof GRAPHQL_DOCUMENT
   | typeof GRAPHQL_OPERATION_NAME
   | typeof GRAPHQL_OPERATION_TYPE
+  | typeof GRAPHQL_PROCESSING_TYPE
+  | typeof GRAPHQL_SOURCE
   | typeof GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS
   | typeof GRPC_ERROR_DEBUG_INFO_DETAIL
   | typeof GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES
@@ -19346,8 +20580,12 @@ export type AttributeName =
   | typeof HTTP_METHOD
   | typeof HTTP_QUERY
   | typeof HTTP_REQUEST_BODY_DATA
+  | typeof HTTP_REQUEST_BODY_DECODED_SIZE
+  | typeof HTTP_REQUEST_BODY_SIZE
   | typeof HTTP_REQUEST_CONNECTION_END
   | typeof HTTP_REQUEST_CONNECT_START
+  | typeof HTTP_REQUEST_CONTENT_LENGTH
+  | typeof HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
   | typeof HTTP_REQUEST_FETCH_START
@@ -19364,18 +20602,22 @@ export type AttributeName =
   | typeof HTTP_REQUEST_SECURE_CONNECTION_START
   | typeof HTTP_REQUEST_TIME_TO_FIRST_BYTE
   | typeof HTTP_REQUEST_WORKER_START
+  | typeof HTTP_RESPONSE_BODY_DECODED_SIZE
   | typeof HTTP_RESPONSE_BODY_SIZE
   | typeof HTTP_RESPONSE_CONTENT_LENGTH
+  | typeof HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_RESPONSE_HEADER_CONTENT_LENGTH
   | typeof HTTP_RESPONSE_HEADER_KEY
   | typeof HTTP_RESPONSE_SIZE
   | typeof HTTP_RESPONSE_STATUS_CODE
+  | typeof HTTP_RESPONSE_STATUS_TEXT
   | typeof HTTP_RESPONSE_TRANSFER_SIZE
   | typeof HTTP_ROUTE
   | typeof HTTP_SCHEME
   | typeof HTTP_SERVER_NAME
   | typeof HTTP_SERVER_REQUEST_TIME_IN_QUEUE
   | typeof HTTP_STATUS_CODE
+  | typeof HTTP_STATUS_TEXT
   | typeof HTTP_TARGET
   | typeof HTTP_URL
   | typeof HTTP_USER_AGENT
@@ -19391,6 +20633,7 @@ export type AttributeName =
   | typeof JVM_THREAD_STATE
   | typeof KOA_NAME
   | typeof KOA_TYPE
+  | typeof LANGCHAIN_CHAIN_NAME
   | typeof LCP
   | typeof LCP_ELEMENT
   | typeof LCP_ID
@@ -19440,6 +20683,7 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_CONVERSATION_ID
   | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
   | typeof MESSAGING_DESTINATION_KIND
@@ -19452,12 +20696,18 @@ export type AttributeName =
   | typeof MESSAGING_MESSAGE_CONVERSATION_ID
   | typeof MESSAGING_MESSAGE_ENVELOPE_SIZE
   | typeof MESSAGING_MESSAGE_ID
+  | typeof _MESSAGING_MESSAGE_ID
   | typeof MESSAGING_MESSAGE_RECEIVE_LATENCY
   | typeof MESSAGING_MESSAGE_RETRY_COUNT
+  | typeof MESSAGING_OPERATION
   | typeof MESSAGING_OPERATION_NAME
   | typeof MESSAGING_OPERATION_TYPE
+  | typeof MESSAGING_PROTOCOL
+  | typeof MESSAGING_PROTOCOL_VERSION
   | typeof MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY
+  | typeof MESSAGING_RABBITMQ_ROUTING_KEY
   | typeof MESSAGING_SYSTEM
+  | typeof MESSAGING_URL
   | typeof METHOD
   | typeof MIDDLEWARE_NAME
   | typeof NAVIGATION_ORIGIN
@@ -19530,11 +20780,15 @@ export type AttributeName =
   | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
+  | typeof REPLAYID
   | typeof REPLAY_ID
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
   | typeof RESOURCE_RENDER_BLOCKING_STATUS
   | typeof ROUTE
+  | typeof ROUTER_NAVIGATION_ORIGIN
+  | typeof ROUTER_NAVIGATION_ROUTE_ID
+  | typeof ROUTER_NAVIGATION_TYPE
   | typeof RPC_GRPC_STATUS_CODE
   | typeof RPC_METHOD
   | typeof RPC_RESPONSE_STATUS_CODE
@@ -19647,6 +20901,10 @@ export type AttributeName =
   | typeof STARLITE_MIDDLEWARE_NAME
   | typeof STATE_TYPE
   | typeof SUBPROCESS_PID
+  | typeof SVELTEKIT_LOAD_ENVIRONMENT
+  | typeof SVELTEKIT_LOAD_NODE_ID
+  | typeof SVELTEKIT_LOAD_NODE_TYPE
+  | typeof SVELTEKIT_TRACING_ORIGINAL_NAME
   | typeof THREAD_ID
   | typeof THREAD_NAME
   | typeof TIMBER_TAG
@@ -19697,6 +20955,7 @@ export type AttributeName =
   | typeof URL_FULL
   | typeof URL_PATH
   | typeof URL_PATH_PARAMETER_KEY
+  | typeof URL_PATH_PARAMS_KEY
   | typeof URL_PORT
   | typeof URL_QUERY
   | typeof URL_SAME_ORIGIN
@@ -19755,6 +21014,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   address: {
     brief: 'The destination hostname or IP address for a TCP connection.',
     type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19767,12 +21027,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
-    changelog: [{ version: '0.19.0', prs: [534], description: 'Added address attribute' }],
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
+    changelog: [
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
+      { version: '0.19.0', prs: [534], description: 'Added address attribute' },
+    ],
   },
   'ai.citations': {
     brief: 'References or sources cited by the AI model in its response.',
     type: 'string[]',
+    keys: ['ai.citations'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19788,6 +21052,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.completion_tokens.used': {
     brief: 'The number of tokens used to respond to the message.',
     type: 'integer',
+    keys: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19804,6 +21069,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.documents': {
     brief: 'Documents or content chunks used as context for the AI model.',
     type: 'string[]',
+    keys: ['ai.documents'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19819,6 +21085,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.finish_reason': {
     brief: 'The reason why the model stopped generating.',
     type: 'string',
+    keys: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19836,6 +21103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: 'double',
+    keys: ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19856,6 +21124,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls',
     type: 'string',
+    keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -19872,6 +21141,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.generation_id': {
     brief: 'Unique identifier for the completion.',
     type: 'string',
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19882,12 +21152,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.response.id',
       status: 'backfill',
     },
-    aliases: ['gen_ai.response.id'],
-    changelog: [{ version: '0.1.0', prs: [55, 57, 61, 108, 127] }],
+    aliases: ['gen_ai.response.id', 'ai.response.id'],
+    changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.response.id as an alias' },
+      { version: '0.1.0', prs: [55, 57, 61, 108, 127] },
+    ],
   },
   'ai.input_messages': {
     brief: 'The input messages sent to the model',
     type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19904,6 +21185,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.is_search_required': {
     brief: 'Boolean indicating if the model needs to perform a search.',
     type: 'boolean',
+    keys: ['ai.is_search_required'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19919,6 +21201,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.metadata': {
     brief: 'Extra metadata passed to an AI pipeline step.',
     type: 'string',
+    keys: ['ai.metadata'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19931,9 +21214,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
+  'ai.model.id': {
+    brief: 'The id of the model used by the Vercel AI SDK.',
+    type: 'string',
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'gpt-4o',
+    examples: ['gpt-4o'],
+    deprecation: {
+      replacement: 'gen_ai.request.model',
+      reason: 'This attribute is being deprecated in favor of gen_ai.request.model.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.request.model', 'ai.model_id'],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.model.id attribute' }],
+  },
   'ai.model_id': {
     brief: 'The vendor-specific ID of the model used.',
     type: 'string',
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19944,12 +21247,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.request.model',
       status: 'backfill',
     },
-    aliases: ['gen_ai.request.model'],
-    changelog: [{ version: '0.1.0', prs: [57, 61, 127] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.request.model', 'ai.model.id'],
+    changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.model.id as an alias' },
+      { version: '0.1.0', prs: [57, 61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'ai.model.provider': {
     brief: 'The provider of the model.',
     type: 'string',
+    keys: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19969,6 +21277,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.pipeline.name': {
     brief: 'The name of the AI pipeline.',
     type: 'string',
+    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -19979,13 +21288,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.pipeline.name',
       status: 'backfill',
     },
-    aliases: ['gen_ai.pipeline.name'],
-    changelog: [{ version: '0.1.0', prs: [53, 76, 108, 127] }],
+    aliases: ['gen_ai.pipeline.name', 'langchain.chain.name'],
+    changelog: [
+      { version: '0.22.0', prs: [599], description: 'Added langchain.chain.name as an alias' },
+      { version: '0.1.0', prs: [53, 76, 108, 127] },
+    ],
   },
   'ai.preamble': {
     brief:
       "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
     type: 'string',
+    keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20006,6 +21319,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: 'double',
+    keys: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20022,9 +21336,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 57, 61, 108] },
     ],
   },
+  'ai.prompt': {
+    brief: 'The prompt passed to the Vercel AI SDK, as a stringified object.',
+    type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"prompt":"What is the weather in Paris?"}',
+    examples: ['{"prompt":"What is the weather in Paris?"}'],
+    deprecation: {
+      replacement: 'gen_ai.input.messages',
+      reason: 'This attribute is being deprecated in favor of gen_ai.input.messages.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.prompt attribute' }],
+  },
   'ai.prompt.messages': {
     brief: 'The input messages sent to the AI model.',
     type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20035,12 +21383,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt'],
-    changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.prompt.messages attribute' }],
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'gen_ai.prompt', 'ai.prompt'],
+    changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
+      { version: '0.19.0', prs: [498], description: 'Added ai.prompt.messages attribute' },
+    ],
   },
   'ai.prompt_tokens.used': {
     brief: 'The number of tokens used to process just the prompt.',
     type: 'integer',
+    keys: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20054,9 +21406,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['gen_ai.usage.prompt_tokens', 'gen_ai.usage.input_tokens'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61] }, { version: '0.0.0' }],
   },
+  'ai.prompt.tools': {
+    brief: 'The tools made available to the model, as an array of stringified tool definitions.',
+    type: 'string[]',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['{"type":"function","name":"get_weather"}'],
+    examples: [['{"type":"function","name":"get_weather"}']],
+    deprecation: {
+      replacement: 'gen_ai.tool.definitions',
+      reason: 'This attribute is being deprecated in favor of gen_ai.tool.definitions.',
+      status: 'backfill',
+    },
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.prompt.tools attribute' }],
+  },
   'ai.raw_prompting': {
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
     type: 'boolean',
+    keys: ['ai.raw_prompting'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20072,6 +21443,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.responses': {
     brief: 'The response messages sent back by the AI model.',
     type: 'string[]',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20087,6 +21459,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.response_format': {
     brief: 'For an AI model call, the format of the response',
     type: 'string',
+    keys: ['ai.response_format'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20099,9 +21472,65 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [55, 127] },
     ],
   },
+  'ai.response.id': {
+    brief: 'The id of the response returned by the model.',
+    type: 'string',
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY',
+    examples: ['chatcmpl-BuKJgVSKAMTUYbBSjHTMUuNGKzOPY'],
+    deprecation: {
+      replacement: 'gen_ai.response.id',
+      reason: 'This attribute is being deprecated in favor of gen_ai.response.id.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.response.id', 'ai.generation_id'],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.response.id attribute' }],
+  },
+  'ai.response.model': {
+    brief: 'The id of the model that produced the response.',
+    type: 'string',
+    keys: ['gen_ai.response.model', 'ai.response.model'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'gpt-4o-2024-08-06',
+    examples: ['gpt-4o-2024-08-06'],
+    deprecation: {
+      replacement: 'gen_ai.response.model',
+      reason: 'This attribute is being deprecated in favor of gen_ai.response.model.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.response.model'],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.response.model attribute' }],
+  },
+  'ai.response.object': {
+    brief: 'The type of the object returned by the model.',
+    type: 'string',
+    keys: ['ai.response.object'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chat.completion',
+    examples: ['chat.completion'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the raw Vercel AI response object type.',
+    },
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.response.object attribute' }],
+  },
   'ai.response.text': {
     brief: 'The text response from the AI model.',
     type: 'string',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20115,9 +21544,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['gen_ai.output.messages', 'ai.response.toolCalls'],
     changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.text attribute' }],
   },
+  'ai.response.timestamp': {
+    brief: 'The ISO 8601 timestamp at which the response was produced.',
+    type: 'string',
+    keys: ['ai.response.timestamp'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '2026-02-19T15:32:11.000Z',
+    examples: ['2026-02-19T15:32:11.000Z'],
+    deprecation: {
+      reason: 'This attribute is deprecated. The span start and end timestamps carry the same information.',
+    },
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.response.timestamp attribute' }],
+  },
   'ai.response.toolCalls': {
     brief: 'The tool calls in the AI model response.',
     type: 'string',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20131,9 +21577,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['gen_ai.output.messages', 'ai.response.text'],
     changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.response.toolCalls attribute' }],
   },
+  'ai.schema': {
+    brief: 'The stringified JSON schema the model output must conform to.',
+    type: 'string',
+    keys: ['ai.schema'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"type":"object","properties":{"city":{"type":"string"}}}',
+    examples: ['{"type":"object","properties":{"city":{"type":"string"}}}'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.',
+    },
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.schema attribute' }],
+  },
   'ai.search_queries': {
     brief: 'Queries used to search for relevant context or documents.',
     type: 'string[]',
+    keys: ['ai.search_queries'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20149,6 +21613,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.search_results': {
     brief: 'Results returned from search queries for context.',
     type: 'string[]',
+    keys: ['ai.search_results'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20164,6 +21629,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
     type: 'string',
+    keys: ['gen_ai.request.seed', 'ai.seed'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20180,6 +21646,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.streaming': {
     brief: 'Whether the request was streamed back.',
     type: 'boolean',
+    keys: ['gen_ai.response.streaming', 'ai.streaming'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20196,6 +21663,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tags': {
     brief: 'Tags that describe an AI pipeline step.',
     type: 'string',
+    keys: ['ai.tags'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20212,6 +21680,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: 'double',
+    keys: ['gen_ai.request.temperature', 'ai.temperature'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20231,6 +21700,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.texts': {
     brief: 'Raw text inputs provided to the model.',
     type: 'string[]',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20241,8 +21718,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.input.messages',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt'],
+    aliases: ['gen_ai.input.messages', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.1.0', prs: [55] },
     ],
@@ -20250,6 +21728,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.toolCall.args': {
     brief: 'The arguments of the tool call.',
     type: 'string',
+    keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20266,6 +21745,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.toolCall.result': {
     brief: 'The result of the tool call.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20282,6 +21768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tools': {
     brief: 'For an AI model call, the functions that are available',
     type: 'string[]',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20297,6 +21784,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.tool_calls': {
     brief: 'For an AI model call, the tool calls that were made.',
     type: 'string[]',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20313,6 +21801,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: 'integer',
+    keys: ['gen_ai.request.top_k', 'ai.top_k'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20333,6 +21822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: 'double',
+    keys: ['gen_ai.request.top_p', 'ai.top_p'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20352,6 +21842,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ai.total_cost': {
     brief: 'The total cost for the tokens used.',
     type: 'double',
+    keys: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20368,10 +21859,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [53] },
     ],
+    searchAlias: {
+      name: 'ai.total_cost',
+      type: 'currency',
+    },
   },
   'ai.total_tokens.used': {
     brief: 'The total number of tokens used to process the prompt.',
     type: 'integer',
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20382,12 +21878,53 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.total_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.total_tokens'],
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [57, 61, 108] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.usage.total_tokens', 'ai.usage.tokens'],
+    changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [57, 61, 108] },
+      { version: '0.0.0' },
+    ],
+  },
+  'ai.usage.tokens': {
+    brief: 'The total number of tokens used for the request and the response.',
+    type: 'integer',
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 150,
+    examples: [150],
+    deprecation: {
+      replacement: 'gen_ai.usage.total_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.total_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used'],
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens attribute' }],
+  },
+  'ai.values': {
+    brief: 'The stringified values produced by a Vercel AI SDK object or array generation.',
+    type: 'string',
+    keys: ['ai.values'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '[{"city":"Paris"}]',
+    examples: ['[{"city":"Paris"}]'],
+    deprecation: {
+      reason: 'This attribute is deprecated. Use gen_ai.output.messages for model output instead.',
+    },
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added ai.values attribute' }],
   },
   'ai.warnings': {
     brief: 'Warning messages generated during model execution.',
     type: 'string[]',
+    keys: ['ai.warnings'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -20403,6 +21940,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'angular.version': {
     brief: 'The version of the Angular framework',
     type: 'string',
+    keys: ['angular.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20414,6 +21952,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_build': {
     brief: 'Internal build identifier, as it appears on the platform.',
     type: 'string',
+    keys: ['app.build', 'app.app_build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20433,6 +21972,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_identifier': {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
     type: 'string',
+    keys: ['app.identifier', 'app.app_identifier'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20456,6 +21996,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_name': {
     brief: 'Human readable application name, as it appears on the platform.',
     type: 'string',
+    keys: ['app.name', 'app.app_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20475,6 +22016,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_start_time': {
     brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
+    keys: ['app.start_time', 'app.app_start_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20498,6 +22040,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.app_version': {
     brief: 'Human readable application version, as it appears on the platform.',
     type: 'string',
+    keys: ['app.version', 'app.app_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20517,6 +22060,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.build': {
     brief: 'Internal build identifier, as it appears on the platform.',
     type: 'string',
+    keys: ['app.build', 'app.app_build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20529,6 +22073,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.identifier': {
     brief: 'Version-independent application identifier, often a dotted bundle ID.',
     type: 'string',
+    keys: ['app.identifier', 'app.app_identifier'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20541,6 +22086,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.in_foreground': {
     brief: 'Whether the application is currently in the foreground.',
     type: 'boolean',
+    keys: ['app.in_foreground'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20552,6 +22098,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.name': {
     brief: 'Human readable application name, as it appears on the platform.',
     type: 'string',
+    keys: ['app.name', 'app.app_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20564,6 +22111,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   app_start_cold: {
     brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
+    keys: ['app.vitals.start.cold.value', 'app_start_cold'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20584,6 +22132,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.start_time': {
     brief: 'Formatted UTC timestamp when the user started the application.',
     type: 'string',
+    keys: ['app.start_time', 'app.app_start_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20596,6 +22145,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   app_start_type: {
     brief: 'Mobile app start variant. Either cold or warm.',
     type: 'string',
+    keys: ['app.vitals.start.type', 'app_start_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20618,6 +22168,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   app_start_warm: {
     brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
+    keys: ['app.vitals.start.warm.value', 'app_start_warm'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20638,6 +22189,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.version': {
     brief: 'Human readable application version, as it appears on the platform.',
     type: 'string',
+    keys: ['app.version', 'app.app_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20651,6 +22203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     type: 'integer',
+    keys: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20665,6 +22218,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.frames.frozen.count': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.frozen.count', 'frames.frozen', 'mobile.frozen_frames', 'sentry.frames.frozen'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20681,6 +22235,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The fraction of rendered frames that were frozen, calculated as `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20693,6 +22248,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.frames.slow.count': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20709,6 +22265,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The fraction of rendered frames that were slow, calculated as `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20721,6 +22278,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.frames.total.count': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20737,6 +22295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.stall.duration', 'stall_total_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20750,6 +22309,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The fraction of transaction duration during which the app was stalled, between 0.0 and 1.0. For example, 0.8 represents 80%. Only applies to React Native. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.stall.percentage', 'stall_percentage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20762,6 +22322,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.cold.value': {
     brief: 'The duration of a cold app start in milliseconds',
     type: 'double',
+    keys: ['app.vitals.start.cold.value', 'app_start_cold'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20774,6 +22335,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.prewarmed': {
     brief: 'Whether the app start was prewarmed.',
     type: 'boolean',
+    keys: ['app.vitals.start.prewarmed'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20785,6 +22347,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.reason': {
     brief: 'The reason that triggered the app start.',
     type: 'string',
+    keys: ['app.vitals.start.reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20797,6 +22360,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The screen that is rendered when the app start is complete. This is the screen the user first sees and can interact with after launch. The absence of this attribute on the app start span indicates a background app start where no UI was rendered.',
     type: 'string',
+    keys: ['app.vitals.start.screen'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20808,6 +22372,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.type': {
     brief: 'The type of app start, for example `cold` or `warm`',
     type: 'string',
+    keys: ['app.vitals.start.type', 'app_start_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20820,6 +22385,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.start.warm.value': {
     brief: 'The duration of a warm app start in milliseconds',
     type: 'double',
+    keys: ['app.vitals.start.warm.value', 'app_start_warm'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20832,6 +22398,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.ttfd.value': {
     brief: 'The duration of time to full display in milliseconds',
     type: 'double',
+    keys: ['app.vitals.ttfd.value', 'time_to_full_display'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20844,6 +22411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'app.vitals.ttid.value': {
     brief: 'The duration of time to initial display in milliseconds',
     type: 'double',
+    keys: ['app.vitals.ttid.value', 'time_to_initial_display'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20856,6 +22424,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.gc.blocking_count': {
     brief: 'Total number of blocking (stop-the-world) garbage collections performed by the Android Runtime',
     type: 'integer',
+    keys: ['art.gc.blocking_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20867,6 +22436,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.gc.blocking_time': {
     brief: 'Total time spent in blocking (stop-the-world) garbage collections by the Android Runtime, in milliseconds',
     type: 'double',
+    keys: ['art.gc.blocking_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20879,6 +22449,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Total number of garbage collections triggered as a last resort before an OutOfMemoryError by the Android Runtime',
     type: 'integer',
+    keys: ['art.gc.pre_oome_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20890,6 +22461,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.gc.total_count': {
     brief: 'Total number of garbage collections performed by the Android Runtime',
     type: 'integer',
+    keys: ['art.gc.total_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20901,6 +22473,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.gc.total_time': {
     brief: 'Total time spent in garbage collection by the Android Runtime, in milliseconds',
     type: 'double',
+    keys: ['art.gc.total_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20913,6 +22486,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Total time threads spent waiting for garbage collection to complete in the Android Runtime, in milliseconds',
     type: 'double',
+    keys: ['art.gc.waiting_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20924,6 +22498,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.free': {
     brief: 'Free memory available to the process as reported by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.free'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20935,6 +22510,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.free_until_gc': {
     brief: 'Free memory available before a garbage collection would be triggered by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.free_until_gc'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20946,6 +22522,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.free_until_oome': {
     brief: 'Free memory available before an OutOfMemoryError would be thrown by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.free_until_oome'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20957,6 +22534,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.max': {
     brief: 'Maximum memory the process is allowed to use as reported by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.max'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20968,6 +22546,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'art.memory.total': {
     brief: 'Total memory currently allocated to the process by the Android Runtime, in bytes',
     type: 'integer',
+    keys: ['art.memory.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20979,6 +22558,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.cloudwatch.logs.log_group': {
     brief: 'The name of the CloudWatch Logs log group',
     type: 'string',
+    keys: ['aws.cloudwatch.logs.log_group'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20990,6 +22570,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.cloudwatch.logs.log_stream': {
     brief: 'The name of the CloudWatch Logs log stream',
     type: 'string',
+    keys: ['aws.cloudwatch.logs.log_stream'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21001,6 +22582,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.cloudwatch.logs.url': {
     brief: 'The URL to the CloudWatch Logs log group',
     type: 'string',
+    keys: ['aws.cloudwatch.logs.url'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21012,6 +22594,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.attribute_definitions': {
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.attribute_definitions'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21023,6 +22606,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.consistent_read': {
     brief: 'The value of the `ConsistentRead` request parameter.',
     type: 'boolean',
+    keys: ['aws.dynamodb.consistent_read'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21034,6 +22618,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.consumed_capacity': {
     brief: 'The JSON-serialized value of each item in the `ConsumedCapacity` response field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.consumed_capacity'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21047,6 +22632,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.count': {
     brief: 'The value of the `Count` response parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21058,6 +22644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.exclusive_start_table': {
     brief: 'The value of the `ExclusiveStartTableName` request parameter.',
     type: 'string',
+    keys: ['aws.dynamodb.exclusive_start_table'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21069,6 +22656,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.global_secondary_indexes': {
     brief: 'The JSON-serialized value of each item of the `GlobalSecondaryIndexes` request field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.global_secondary_indexes'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21084,6 +22672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.global_secondary_index_updates': {
     brief: 'The JSON-serialized value of each item in the `GlobalSecondaryIndexUpdates` request field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.global_secondary_index_updates'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21099,6 +22688,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.index_name': {
     brief: 'The value of the `IndexName` request parameter.',
     type: 'string',
+    keys: ['aws.dynamodb.index_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21110,6 +22700,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.item_collection_metrics': {
     brief: 'The JSON-serialized value of the `ItemCollectionMetrics` response field.',
     type: 'string',
+    keys: ['aws.dynamodb.item_collection_metrics'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21122,6 +22713,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.limit': {
     brief: 'The value of the `Limit` request parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.limit'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21133,6 +22725,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.local_secondary_indexes': {
     brief: 'The JSON-serialized value of each item of the `LocalSecondaryIndexes` request field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.local_secondary_indexes'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21146,6 +22739,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.projection': {
     brief: 'The value of the `ProjectionExpression` request parameter.',
     type: 'string',
+    keys: ['aws.dynamodb.projection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21157,6 +22751,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.provisioned_read_capacity': {
     brief: 'The value of the `ProvisionedThroughput.ReadCapacityUnits` request parameter.',
     type: 'double',
+    keys: ['aws.dynamodb.provisioned_read_capacity'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21170,6 +22765,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.provisioned_write_capacity': {
     brief: 'The value of the `ProvisionedThroughput.WriteCapacityUnits` request parameter.',
     type: 'double',
+    keys: ['aws.dynamodb.provisioned_write_capacity'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21183,6 +22779,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.scanned_count': {
     brief: 'The value of the `ScannedCount` response parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.scanned_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21194,6 +22791,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.scan_forward': {
     brief: 'The value of the `ScanIndexForward` request parameter.',
     type: 'boolean',
+    keys: ['aws.dynamodb.scan_forward'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21205,6 +22803,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.segment': {
     brief: 'The value of the `Segment` request parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.segment'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21216,6 +22815,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.select': {
     brief: 'The value of the `Select` request parameter.',
     type: 'string',
+    keys: ['aws.dynamodb.select'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21227,6 +22827,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.table_count': {
     brief: 'The number of items in the `TableNames` response parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.table_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21238,6 +22839,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.table_names': {
     brief: 'The keys in the `RequestItems` object field.',
     type: 'string[]',
+    keys: ['aws.dynamodb.table_names'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21249,6 +22851,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.dynamodb.total_segments': {
     brief: 'The value of the `TotalSegments` request parameter.',
     type: 'integer',
+    keys: ['aws.dynamodb.total_segments'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21260,6 +22863,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.extended_request_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
+    keys: ['aws.extended_request_id', 'aws.request.extended_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21272,6 +22876,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.kinesis.stream_name': {
     brief: 'The name of the AWS Kinesis stream the request refers to.',
     type: 'string',
+    keys: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21284,6 +22889,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.kinesis.stream.name': {
     brief: 'The name of the AWS Kinesis stream the request refers to.',
     type: 'string',
+    keys: ['aws.kinesis.stream_name', 'aws.kinesis.stream.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21308,6 +22914,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.aws_request_id': {
     brief: 'The AWS request ID as received by the Lambda function runtime',
     type: 'string',
+    keys: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21333,6 +22940,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.execution_duration_in_millis': {
     brief: 'The execution duration of the Lambda function invocation in milliseconds',
     type: 'double',
+    keys: ['aws.lambda.execution_duration_in_millis'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21346,6 +22954,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.function_name': {
     brief: 'The name of the Lambda function',
     type: 'string',
+    keys: ['faas.name', 'aws.lambda.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21366,6 +22975,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.function_version': {
     brief: 'The version of the Lambda function',
     type: 'string',
+    keys: ['faas.version', 'aws.lambda.function_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21390,6 +23000,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.invoked_arn': {
     brief: 'The full ARN of the Lambda function that was invoked',
     type: 'string',
+    keys: ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21402,6 +23013,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.invoked_function_arn': {
     brief: 'The full ARN of the Lambda function that was invoked',
     type: 'string',
+    keys: ['aws.lambda.invoked_arn', 'aws.lambda.invoked_function_arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21426,6 +23038,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.lambda.remaining_time_in_millis': {
     brief: 'The remaining time in milliseconds before the Lambda function times out',
     type: 'double',
+    keys: ['aws.lambda.remaining_time_in_millis'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21437,6 +23050,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
     type: 'string[]',
+    keys: ['aws.log.group.names'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21448,6 +23062,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.log.stream.names': {
     brief: 'The name(s) of the AWS log stream(s) an application is writing to.',
     type: 'string[]',
+    keys: ['aws.log.stream.names'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21459,6 +23074,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.operation_name': {
     brief: 'The name of the API operation invoked on an AWS service.',
     type: 'string',
+    keys: ['rpc.method', 'aws.operation_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21477,6 +23093,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   aws_region: {
     brief: 'The geographical region the AWS resource is running',
     type: 'string',
+    keys: ['cloud.region', 'aws_region', 'gcp_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21494,6 +23111,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.extended_id': {
     brief: 'The AWS extended request ID as returned in the response headers.',
     type: 'string',
+    keys: ['aws.extended_request_id', 'aws.request.extended_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21518,6 +23136,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request_id': {
     brief: 'The AWS request ID as returned in the response headers.',
     type: 'string',
+    keys: ['aws.request_id', 'aws.request.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21530,6 +23149,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.id': {
     brief: 'The AWS request ID as returned in the response headers.',
     type: 'string',
+    keys: ['aws.request_id', 'aws.request.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21553,6 +23173,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.request.url': {
     brief: 'The URL of the AWS API request.',
     type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21564,8 +23185,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of url.full, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'url'],
+    aliases: ['url.full', 'http.url', 'url', 'messaging.url'],
     changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       {
         version: '0.19.0',
         prs: [488],
@@ -21576,6 +23198,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.s3.bucket': {
     brief: 'The S3 bucket name the request refers to.',
     type: 'string',
+    keys: ['aws.s3.bucket'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21587,6 +23210,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
     type: 'string',
+    keys: ['aws.secretsmanager.secret.arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21599,6 +23223,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
     type: 'string',
+    keys: ['aws.sns.topic.arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21610,6 +23235,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
     type: 'string',
+    keys: ['aws.step_functions.activity.arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21621,6 +23247,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',
     type: 'string',
+    keys: ['aws.step_functions.state_machine.arn'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21632,6 +23259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
     type: 'boolean',
+    keys: ['blocked_main_thread'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21644,6 +23272,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "Which frame in the page's frame tree a back/forward cache not-restored reason originated from: the top document or a child frame.",
     type: 'string',
+    keys: ['browser.bfcache.frame'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21657,6 +23286,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The number of reported reasons a page was not restored from the back/forward cache on a back/forward navigation. 0 when the browser reported no reasons (e.g. non-Chromium browsers).',
     type: 'integer',
+    keys: ['browser.bfcache.not_restored_reason_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21672,6 +23302,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "Whether a back/forward navigation was restored from the browser's back/forward cache (bfcache). 'hit' means the page was restored; 'miss' means it was reloaded.",
     type: 'string',
+    keys: ['browser.bfcache.outcome'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21685,6 +23316,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A browser-reported reason a page was not restored from the back/forward cache on a back/forward navigation, taken from the notRestoredReasons API. Reported per reason (a single miss can have several). Currently Chromium-only.',
     type: 'string',
+    keys: ['browser.bfcache.reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21697,6 +23329,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.name': {
     brief: 'The name of the browser.',
     type: 'string',
+    keys: ['browser.name', 'sentry.browser.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21706,9 +23339,79 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.browser.name'],
     changelog: [{ version: '0.1.0', prs: [127, 139] }, { version: '0.0.0' }],
   },
+  'browser.navigation.id': {
+    brief:
+      "The identifier of the navigation the measurement belongs to, incremented by the browser for each navigation within a page's lifetime.",
+    type: 'integer',
+    keys: ['browser.navigation.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1,
+    examples: [1, 3, 0],
+    changelog: [
+      {
+        version: 'next',
+        prs: [640],
+        description: 'Document 0 as the fallback value when the browser does not support `navigationId`',
+      },
+      { version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' },
+    ],
+    additionalContext: [
+      'Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.',
+      'The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.',
+      'A value of 0 is a fallback rather than a real navigation id: web-vitals reports 0 when the browser does not expose `PerformanceEntry.navigationId`, so 0 means the id is unknown.',
+      'Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.',
+      "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
+      "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
+    ],
+  },
+  'browser.navigation.type': {
+    brief: 'The type of navigation the browser performed to arrive at the page the metrics were measured on.',
+    type: 'string',
+    keys: ['browser.navigation.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'navigate',
+    examples: ['navigate', 'reload', 'back-forward', 'back-forward-cache', 'prerender', 'restore', 'soft-navigation'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [640],
+        description:
+          'Use the web-vitals navigation types as-is: `bfcache` is now `back-forward-cache`, and `back-forward` and `restore` are no longer reported as `navigate`',
+      },
+      { version: '0.22.0', prs: [600], description: 'Added browser.navigation.type attribute' },
+    ],
+    additionalContext: [
+      'Carries the `navigationType` value reported by the web-vitals library verbatim. web-vitals hyphenates the Navigation Timing `PerformanceNavigationTiming.type` value (`back_forward` becomes `back-forward`) and adds states that API does not cover: `back-forward-cache` for a restore from the back/forward cache, `prerender`, `restore` for a discarded tab being reloaded, and `soft-navigation`.',
+      '`back-forward-cache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache is a full document load and reports `back-forward`. Use the `browser.bfcache.*` attributes to diagnose misses.',
+      '`prerender` pages finish painting before activation, so their paint timings are offset by `browser.performance.navigation.activation_start`. Keep them separate when aggregating web vitals.',
+      "Not to be confused with `router.navigation.type`, which holds the client-side router's own vocabulary (`link`, `goto`, `router.push`). The two are independent and can both be set on the same span.",
+    ],
+  },
+  'browser.paint.type': {
+    brief: 'The type of paint timing entry reported by the browser.',
+    type: 'string',
+    keys: ['browser.paint.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'first-paint',
+    examples: ['first-paint', 'first-contentful-paint'],
+    changelog: [{ version: '0.22.0', prs: [606], description: 'Added browser.paint.type attribute' }],
+  },
   'browser.performance.navigation.activation_start': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
     type: 'double',
+    keys: ['browser.performance.navigation.activation_start', 'performance.activationStart'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21723,6 +23426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.performance.time_origin': {
     brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
     type: 'double',
+    keys: ['browser.performance.time_origin', 'performance.timeOrigin'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21737,6 +23441,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.report.type': {
     brief: 'A browser report sent via reporting API..',
     type: 'string',
+    keys: ['browser.report.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21748,6 +23453,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.script.invoker': {
     brief: 'How a script was called in the browser.',
     type: 'string',
+    keys: ['browser.script.invoker'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21759,6 +23465,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.script.invoker_type': {
     brief: 'Browser script entry point type.',
     type: 'string',
+    keys: ['browser.script.invoker_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21770,6 +23477,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.script.source_char_position': {
     brief: 'A number representing the script character position of the script.',
     type: 'integer',
+    keys: ['browser.script.source_char_position'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21781,6 +23489,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.version': {
     brief: 'The version of the browser.',
     type: 'string',
+    keys: ['browser.version', 'sentry.browser.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21793,6 +23502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.cls.report_event': {
     brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
     type: 'string',
+    keys: ['browser.web_vital.cls.report_event'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21804,6 +23514,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.cls.source.<key>': {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
+    keys: ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21817,6 +23528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.cls.value': {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
+    keys: ['browser.web_vital.cls.value', 'cls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21829,6 +23541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.fcp.value': {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     type: 'double',
+    keys: ['browser.web_vital.fcp.value', 'fcp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21841,6 +23554,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.fp.value': {
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     type: 'double',
+    keys: ['browser.web_vital.fp.value', 'fp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21853,6 +23567,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.inp.value': {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
+    keys: ['browser.web_vital.inp.value', 'inp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21865,6 +23580,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.element': {
     brief: 'The HTML element selector or component name for which LCP was reported',
     type: 'string',
+    keys: ['browser.web_vital.lcp.element', 'lcp.element'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21877,6 +23593,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.id': {
     brief: 'The id of the dom element responsible for the largest contentful paint',
     type: 'string',
+    keys: ['browser.web_vital.lcp.id', 'lcp.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21889,6 +23606,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.load_time': {
     brief: 'The time it took for the LCP element to be loaded',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.load_time', 'lcp.loadTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21901,6 +23619,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.render_time': {
     brief: 'The time it took for the LCP element to be rendered',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.render_time', 'lcp.renderTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21913,6 +23632,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.report_event': {
     brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
     type: 'string',
+    keys: ['browser.web_vital.lcp.report_event'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21924,6 +23644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.size': {
     brief: 'The size of the largest contentful paint element',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.size', 'lcp.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21936,6 +23657,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.url': {
     brief: 'The url of the dom element responsible for the largest contentful paint',
     type: 'string',
+    keys: ['browser.web_vital.lcp.url', 'lcp.url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -21948,6 +23670,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.lcp.value': {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
+    keys: ['browser.web_vital.lcp.value', 'lcp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21961,6 +23684,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
     type: 'double',
+    keys: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21973,6 +23697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'browser.web_vital.ttfb.value': {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
     type: 'double',
+    keys: ['browser.web_vital.ttfb.value', 'ttfb'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21985,6 +23710,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cache.hit': {
     brief: 'If the cache was hit during this span.',
     type: 'boolean',
+    keys: ['cache.hit'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -21993,9 +23719,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: true,
     changelog: [{ version: '0.0.0' }],
   },
+  'cache.item_age': {
+    brief: 'The age of the cache entry in seconds, measured at read time.',
+    type: 'integer',
+    keys: ['cache.item_age'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5,
+    examples: [5, 3600],
+    changelog: [{ version: '0.23.0', prs: [637], description: 'Added cache.item_age attribute' }],
+    additionalContext: [
+      'Set on reads that return an entry. Absent on a miss, or when the cache does not report a write time.',
+      "Clamped to 0. On a shared cache, the writer's clock and the reader's clock can drift far enough to make the age negative.",
+      'Can exceed `cache.ttl`. A cache that discards an expired entry on read still reports the age of that entry, with `cache.hit: false`.',
+    ],
+    searchAlias: {
+      name: 'cache.item_age',
+      type: 'second',
+    },
+  },
   'cache.item_size': {
     brief: 'The size of the requested item in the cache. In bytes.',
     type: 'integer',
+    keys: ['cache.item_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22003,10 +23752,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 58,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'cache.item_size',
+      type: 'byte',
+    },
   },
   'cache.key': {
     brief: 'The key of the cache accessed.',
     type: 'string[]',
+    keys: ['cache.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22018,17 +23772,40 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cache.operation': {
     brief: 'The operation being performed on the cache.',
     type: 'string',
+    keys: ['cache.operation'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'get',
+    examples: ['get', 'put', 'remove'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'cache.tags': {
+    brief: 'The tags attached to the cache entry. Tags group entries so a cache can invalidate them together.',
+    type: 'string[]',
+    keys: ['cache.tags'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Applications pick tag values freely and often build them from record identifiers such as a user id.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['blog-posts', 'post-42'],
+    examples: [['blog-posts', 'post-42'], ['products']],
+    changelog: [{ version: '0.23.0', prs: [637], description: 'Added cache.tags attribute' }],
+    additionalContext: [
+      'Cache library examples that support tags: Next.js `cacheTag()`, Symfony `ItemInterface::tag()`, Laravel `Cache::tags()`.',
+      'HTTP caches take tags from a response header. Cloudflare reads `Cache-Tag`, Fastly reads `Surrogate-Key`.',
+      'Record only the tags the application declared. Leave out implicit tags that the framework adds itself, for example one tag per route.',
+      'The tags describe the entry, not the operation. Take them from the entry the cache returned or stored.',
+    ],
   },
   'cache.ttl': {
     brief: 'The ttl of the cache in seconds',
     type: 'integer',
+    keys: ['cache.ttl'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22040,6 +23817,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cache.write': {
     brief: 'If the cache operation resulted in a write to the cache.',
     type: 'boolean',
+    keys: ['cache.write'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22051,6 +23829,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   channel: {
     brief: 'The channel name that is being used.',
     type: 'string',
+    keys: ['channel'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22063,6 +23842,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['client.address', 'http.client_ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22075,6 +23855,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'client.port': {
     brief: 'Client port number.',
     type: 'integer',
+    keys: ['client.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22086,6 +23867,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.d1.duration': {
     brief: 'The duration of a Cloudflare D1 operation.',
     type: 'integer',
+    keys: ['cloudflare.d1.duration'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22097,6 +23879,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.d1.query_type': {
     brief: 'The type of query executed in a Cloudflare D1 operation',
     type: 'string',
+    keys: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22116,6 +23899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.d1.rows_read': {
     brief: 'The number of rows read in a Cloudflare D1 operation.',
     type: 'integer',
+    keys: ['cloudflare.d1.rows_read'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22127,6 +23911,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.d1.rows_written': {
     brief: 'The number of rows written in a Cloudflare D1 operation.',
     type: 'integer',
+    keys: ['cloudflare.d1.rows_written'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22138,6 +23923,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.durable_object.query.bindings': {
     brief: 'The number of bound parameters passed to the SQL exec call.',
     type: 'integer',
+    keys: ['cloudflare.durable_object.query.bindings'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22151,6 +23937,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.durable_object.response.rows_read': {
     brief: 'The number of rows read by a Cloudflare Durable Object SQL operation.',
     type: 'integer',
+    keys: ['cloudflare.durable_object.response.rows_read'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22164,6 +23951,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.durable_object.response.rows_written': {
     brief: 'The number of rows written by a Cloudflare Durable Object SQL operation.',
     type: 'integer',
+    keys: ['cloudflare.durable_object.response.rows_written'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22177,6 +23965,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.bucket': {
     brief: 'The name of the Cloudflare R2 bucket binding',
     type: 'string',
+    keys: ['cloudflare.r2.bucket'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22188,6 +23977,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.operation': {
     brief: 'The R2 API operation being performed',
     type: 'string',
+    keys: ['cloudflare.r2.operation'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22199,6 +23989,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.request.delimiter': {
     brief: 'The delimiter used to group objects in an R2 list operation',
     type: 'string',
+    keys: ['cloudflare.r2.request.delimiter'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22210,6 +24001,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.request.key': {
     brief: 'The object key used in the R2 operation',
     type: 'string',
+    keys: ['cloudflare.r2.request.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22221,6 +24013,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.request.part_number': {
     brief: 'The part number in a multipart upload operation',
     type: 'integer',
+    keys: ['cloudflare.r2.request.part_number'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22232,6 +24025,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.r2.request.prefix': {
     brief: 'The prefix used to filter objects in an R2 list operation',
     type: 'string',
+    keys: ['cloudflare.r2.request.prefix'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22243,6 +24037,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.attempt': {
     brief: 'The current attempt number for a Cloudflare Workflow step',
     type: 'integer',
+    keys: ['cloudflare.workflow.attempt'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22254,6 +24049,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.retries.backoff': {
     brief: 'The backoff strategy for Cloudflare Workflow step retries',
     type: 'string',
+    keys: ['cloudflare.workflow.retries.backoff'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22265,6 +24061,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.retries.delay': {
     brief: 'The delay between Cloudflare Workflow step retries',
     type: 'string',
+    keys: ['cloudflare.workflow.retries.delay'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22276,6 +24073,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.retries.limit': {
     brief: 'The maximum number of retries for a Cloudflare Workflow step',
     type: 'integer',
+    keys: ['cloudflare.workflow.retries.limit'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22287,6 +24085,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloudflare.workflow.timeout': {
     brief: 'The timeout duration for a Cloudflare Workflow step',
     type: 'string',
+    keys: ['cloudflare.workflow.timeout'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22298,6 +24097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.account.id': {
     brief: 'The cloud account ID the resource is assigned to',
     type: 'string',
+    keys: ['cloud.account.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22309,6 +24109,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.availability_zone': {
     brief: 'Cloud regions often have multiple, isolated locations known as zones to increase availability',
     type: 'string',
+    keys: ['cloud.availability_zone'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22320,6 +24121,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.platform': {
     brief: 'The cloud platform in use',
     type: 'string',
+    keys: ['cloud.platform'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22331,6 +24133,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.provider': {
     brief: 'Name of the cloud provider',
     type: 'string',
+    keys: ['cloud.provider'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22342,6 +24145,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.region': {
     brief: 'The geographical region the resource is running',
     type: 'string',
+    keys: ['cloud.region', 'aws_region', 'gcp_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22357,6 +24161,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cloud.resource_id': {
     brief: 'Cloud provider-specific native identifier of the monitored cloud resource',
     type: 'string',
+    keys: ['cloud.resource_id', 'faas.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22375,6 +24180,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   cls: {
     brief: 'The value of the recorded Cumulative Layout Shift (CLS) web vital',
     type: 'double',
+    keys: ['browser.web_vital.cls.value', 'cls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22398,6 +24204,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'cls.source.<key>': {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
     type: 'string',
+    keys: ['browser.web_vital.cls.source.<key>', 'cls.source.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22416,6 +24223,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   code: {
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
     type: 'string',
+    keys: ['rpc.response.status_code', 'code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22434,6 +24242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
+    keys: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22442,26 +24251,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/app/myapplication/http/handler/server.py',
     deprecation: {
       replacement: 'code.file.path',
+      status: 'backfill',
     },
-    aliases: ['code.file.path'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['code.file.path', 'sveltekit.load.node_id'],
+    changelog: [
+      { version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'code.file.path': {
     brief:
       'The source code file name that identifies the code unit as uniquely as possible (preferably an absolute file path).',
     type: 'string',
+    keys: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '/app/myapplication/http/handler/server.py',
-    aliases: ['code.filepath'],
-    changelog: [{ version: '0.0.0' }],
+    aliases: ['code.filepath', 'sveltekit.load.node_id'],
+    changelog: [
+      { version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id as an alias' },
+      { version: '0.0.0' },
+    ],
   },
   'code.function': {
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
     type: 'string',
+    keys: ['code.function', 'code.function.name', 'django.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22478,6 +24297,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'code.function.name': {
     brief: 'The method or function fully-qualified name without arguments.',
     type: 'string',
+    keys: ['code.function.name', 'code.function', 'django.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22495,6 +24315,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
+    keys: ['code.line.number', 'code.lineno'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22503,6 +24324,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 42,
     deprecation: {
       replacement: 'code.line.number',
+      status: 'backfill',
     },
     aliases: ['code.line.number'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
@@ -22511,6 +24333,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The line number in code.filepath best representing the operation. It SHOULD point within the code unit named in code.function',
     type: 'integer',
+    keys: ['code.line.number', 'code.lineno'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22524,6 +24347,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The 'namespace' within which code.function is defined. Usually the qualified class or module name, such that code.namespace + some separator + code.function form a unique identifier for the code unit.",
     type: 'string',
+    keys: ['code.namespace'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22535,6 +24359,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   connectionType: {
     brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     type: 'string',
+    keys: ['network.connection.type', 'connectionType', 'device.connection_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22558,6 +24383,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'connection.rtt': {
     brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
     type: 'integer',
+    keys: ['network.connection.rtt', 'connection.rtt'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22582,6 +24408,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.calendar': {
     brief: 'The calendar system used by the culture.',
     type: 'string',
+    keys: ['culture.calendar'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22593,6 +24420,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.display_name': {
     brief: 'Human readable name of the culture.',
     type: 'string',
+    keys: ['culture.display_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22604,6 +24432,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.is_24_hour_format': {
     brief: 'Whether the culture uses 24-hour time format.',
     type: 'boolean',
+    keys: ['culture.is_24_hour_format'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22615,6 +24444,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.locale': {
     brief: 'The locale identifier following RFC 4646.',
     type: 'string',
+    keys: ['culture.locale'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22626,6 +24456,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'culture.timezone': {
     brief: 'The timezone of the culture, as a geographic timezone identifier.',
     type: 'string',
+    keys: ['culture.timezone'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22637,6 +24468,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.collection.name': {
     brief: 'The name of a collection (table, container) within the database.',
     type: 'string',
+    keys: ['db.collection.name', 'db.mongodb.collection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22650,9 +24482,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  'db.connection_string': {
+    brief: 'The connection string used to connect to the database.',
+    type: 'string',
+    keys: ['db.connection_string'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'redis://localhost:6379',
+    examples: ['redis://localhost:6379'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The connection is described by server.address and server.port instead, so the value cannot be copied to a single replacement attribute.',
+    },
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added db.connection_string attribute' }],
+  },
   'db.driver.name': {
     brief: 'The name of the driver used for the database connection.',
     type: 'string',
+    keys: ['db.driver.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22664,6 +24514,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.mongodb.collection': {
     brief: 'The MongoDB collection being accessed.',
     type: 'string',
+    keys: ['db.collection.name', 'db.mongodb.collection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22688,6 +24539,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.name': {
     brief: 'The name of the database being accessed.',
     type: 'string',
+    keys: ['db.namespace', 'db.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22696,6 +24548,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'customers',
     deprecation: {
       replacement: 'db.namespace',
+      status: 'backfill',
     },
     aliases: ['db.namespace'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -22703,6 +24556,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.namespace': {
     brief: 'The name of the database being accessed.',
     type: 'string',
+    keys: ['db.namespace', 'db.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22715,6 +24569,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.operation': {
     brief: 'The name of the operation being executed.',
     type: 'string',
+    keys: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22737,6 +24592,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The number of queries included in a batch operation. Operations are only considered batches when they contain two or more operations, and so db.operation.batch.size SHOULD never be 1.',
     type: 'integer',
+    keys: ['db.operation.batch.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22748,6 +24604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.operation.name': {
     brief: 'The name of the operation being executed.',
     type: 'string',
+    keys: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22764,6 +24621,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.params': {
     brief: 'The query bindings for a database request.',
     type: 'string',
+    keys: ['db.params'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22782,6 +24640,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
     type: 'string',
+    keys: ['db.query.parameter.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22795,6 +24654,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A shortened representation of operation(s) in the full query. This attribute must be low-cardinality and should only contain the operation table names.',
     type: 'string',
+    keys: ['db.query.summary'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22813,8 +24673,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The database parameterized query being executed. Any parameter values (filters, insertion values, etc) should be replaced with parameter placeholders. If applicable, use `db.query.parameter.<key>` to add the parameter value.',
     type: 'string',
+    keys: ['db.query.text', 'db.statement', 'query'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
@@ -22830,6 +24691,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.redis.connection': {
     brief: 'The redis connection name.',
     type: 'string',
+    keys: ['db.redis.connection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22841,6 +24703,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.redis.key': {
     brief: 'The key the Redis command is operating on.',
     type: 'string',
+    keys: ['db.redis.key', 'redis.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22856,6 +24719,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.redis.parameters': {
     brief: 'The array of command parameters given to a redis command.',
     type: 'string[]',
+    keys: ['db.redis.parameters'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22868,6 +24732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Database response status code. The status code returned by the database. Usually it represents an error code, but may also represent partial success, warning, or differentiate between various types of successful outcomes.',
     type: 'string',
+    keys: ['db.response.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22879,6 +24744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.sql.bindings': {
     brief: 'The array of query bindings.',
     type: 'string[]',
+    keys: ['db.sql.bindings'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22895,6 +24761,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.statement': {
     brief: 'The database statement being executed.',
     type: 'string',
+    keys: ['db.query.text', 'db.statement', 'query'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -22922,6 +24789,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.stored_procedure.name': {
     brief: 'The name of a stored procedure being called.',
     type: 'string',
+    keys: ['db.stored_procedure.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22934,6 +24802,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
     type: 'string',
+    keys: ['db.system.name', 'db.system', 'span.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22946,11 +24815,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['db.system.name'],
     changelog: [{ version: '0.4.0', prs: [199, 224] }, { version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'db.system',
+      deprecatedAliases: ['span.system'],
+    },
   },
   'db.system.name': {
     brief:
       'An identifier for the database management system (DBMS) product being used. See [OpenTelemetry docs](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem) for a list of well-known identifiers.',
     type: 'string',
+    keys: ['db.system.name', 'db.system', 'span.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22963,6 +24837,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'db.user': {
     brief: 'The database user.',
     type: 'string',
+    keys: ['db.user'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22974,6 +24849,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   deviceMemory: {
     brief: 'The estimated total memory capacity of the device, only a rough estimation in gigabytes.',
     type: 'string',
+    keys: ['device.memory.estimated_capacity', 'deviceMemory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -22998,6 +24874,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.archs': {
     brief: 'The CPU architectures of the device.',
     type: 'string[]',
+    keys: ['device.archs'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23009,6 +24886,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.battery_level': {
     brief: 'The battery level of the device as a percentage (0-100).',
     type: 'double',
+    keys: ['device.battery_level'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23020,6 +24898,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.battery_temperature': {
     brief: 'The battery temperature of the device in Celsius.',
     type: 'double',
+    keys: ['device.battery_temperature'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23031,6 +24910,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.boot_time': {
     brief: 'A formatted UTC timestamp when the system was booted.',
     type: 'string',
+    keys: ['device.boot_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23042,6 +24922,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.brand': {
     brief: 'The brand of the device.',
     type: 'string',
+    keys: ['device.brand'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23053,6 +24934,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.charging': {
     brief: 'Whether the device was charging or not.',
     type: 'boolean',
+    keys: ['device.charging'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23064,6 +24946,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.chipset': {
     brief: 'The chipset of the device.',
     type: 'string',
+    keys: ['device.chipset'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23076,6 +24959,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     type: 'string',
+    keys: ['device.class'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23087,6 +24971,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.connection_type': {
     brief: 'The internet connection type currently being used by the device.',
     type: 'string',
+    keys: ['network.connection.type', 'connectionType', 'device.connection_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23110,6 +24995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.cpu_description': {
     brief: 'A description of the CPU of the device.',
     type: 'string',
+    keys: ['device.cpu_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23121,6 +25007,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.external_free_storage': {
     brief: 'External storage free size in bytes.',
     type: 'integer',
+    keys: ['device.external_free_storage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23132,6 +25019,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.external_storage_size': {
     brief: 'External storage total size in bytes.',
     type: 'integer',
+    keys: ['device.external_storage_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23143,6 +25031,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.family': {
     brief: 'The family of the device.',
     type: 'string',
+    keys: ['device.family'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23154,6 +25043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.free_memory': {
     brief: 'Free system memory in bytes.',
     type: 'integer',
+    keys: ['device.free_memory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23165,6 +25055,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.free_storage': {
     brief: 'Free device storage in bytes.',
     type: 'integer',
+    keys: ['device.free_storage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23176,6 +25067,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.id': {
     brief: 'Unique device identifier.',
     type: 'string',
+    keys: ['device.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23187,6 +25079,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.locale': {
     brief: 'The locale of the device.',
     type: 'string',
+    keys: ['device.locale'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23198,6 +25091,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.low_memory': {
     brief: 'Whether the device was low on memory.',
     type: 'boolean',
+    keys: ['device.low_memory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23209,6 +25103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.low_power_mode': {
     brief: 'Whether the device is in Low Power Mode.',
     type: 'boolean',
+    keys: ['device.low_power_mode'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23220,6 +25115,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.manufacturer': {
     brief: 'The manufacturer of the device.',
     type: 'string',
+    keys: ['device.manufacturer'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23232,6 +25128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The estimated total memory capacity of the device, only a rough estimation in gigabytes. Browsers report estimations in buckets of powers of 2, mostly capped at 8 GB',
     type: 'integer',
+    keys: ['device.memory.estimated_capacity', 'deviceMemory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23250,6 +25147,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.memory_size': {
     brief: 'Total system memory available in bytes.',
     type: 'integer',
+    keys: ['device.memory_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23261,6 +25159,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.model': {
     brief: 'The model of the device.',
     type: 'string',
+    keys: ['device.model'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23272,6 +25171,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.model_id': {
     brief: 'An internal hardware revision to identify the device exactly.',
     type: 'string',
+    keys: ['device.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23284,17 +25184,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
     type: 'string',
+    keys: ['device.name', 'server_name'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'localhost',
-    changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.name attribute' }],
+    aliases: ['server_name'],
+    changelog: [
+      { version: '0.21.0', prs: [602], description: 'Added server_name as an alias' },
+      { version: '0.5.0', prs: [303], description: 'Added device.name attribute' },
+    ],
   },
   'device.online': {
     brief: 'Whether the device was online or not.',
     type: 'boolean',
+    keys: ['device.online'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23306,6 +25212,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.orientation': {
     brief: 'The orientation of the device, either "portrait" or "landscape".',
     type: 'string',
+    keys: ['device.orientation'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23317,6 +25224,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.processor_count': {
     brief: 'Number of "logical processors".',
     type: 'integer',
+    keys: ['device.processor_count', 'hardwareConcurrency'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23335,6 +25243,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.processor_frequency': {
     brief: 'Processor frequency in MHz.',
     type: 'double',
+    keys: ['device.processor_frequency'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23346,6 +25255,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_density': {
     brief: 'The screen density of the device.',
     type: 'double',
+    keys: ['device.screen_density'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23357,6 +25267,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_dpi': {
     brief: 'The screen density in dots-per-inch (DPI) of the device.',
     type: 'integer',
+    keys: ['device.screen_dpi'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23368,6 +25279,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_height_pixels': {
     brief: 'The height of the device screen in pixels.',
     type: 'integer',
+    keys: ['device.screen_height_pixels'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23379,6 +25291,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.screen_width_pixels': {
     brief: 'The width of the device screen in pixels.',
     type: 'integer',
+    keys: ['device.screen_width_pixels'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23390,6 +25303,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.simulator': {
     brief: 'Whether the device is a simulator or an actual device.',
     type: 'boolean',
+    keys: ['device.simulator'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23401,6 +25315,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.storage_size': {
     brief: 'Total device storage in bytes.',
     type: 'integer',
+    keys: ['device.storage_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23413,6 +25328,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
     type: 'string',
+    keys: ['device.thermal_state'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23424,6 +25340,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.timezone': {
     brief: 'The timezone of the device.',
     type: 'string',
+    keys: ['device.timezone'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23435,6 +25352,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'device.usable_memory': {
     brief: 'Memory usable for the app in bytes.',
     type: 'integer',
+    keys: ['device.usable_memory'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23446,6 +25364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   dist: {
     brief: 'The sentry dist.',
     type: 'string',
+    keys: ['sentry.dist', 'dist'],
     applyScrubbing: {
       key: 'never',
     },
@@ -23463,6 +25382,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'django.function_name': {
     brief: 'The fully qualified name of a function used in a Django context.',
     type: 'string',
+    keys: ['code.function.name', 'code.function', 'django.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23482,6 +25402,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'django.middleware_name': {
     brief: 'The name of the Django middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23501,6 +25428,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
+    keys: ['network.connection.effective_type', 'effectiveConnectionType'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23525,6 +25453,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   environment: {
     brief: 'The sentry environment.',
     type: 'string',
+    keys: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23545,6 +25479,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'error.type': {
     brief: 'Describes a class of error the operation ended with.',
     type: 'string',
+    keys: ['error.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23556,6 +25491,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'event.id': {
     brief: 'The unique identifier for this event (log record)',
     type: 'integer',
+    keys: ['event.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23567,6 +25503,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'event.name': {
     brief: 'The name that uniquely identifies this event (log record)',
     type: 'string',
+    keys: ['event.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23579,6 +25516,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'SHOULD be set to true if the exception event is recorded at a point where it is known that the exception is escaping the scope of the span.',
     type: 'boolean',
+    keys: ['exception.escaped'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23590,6 +25528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'exception.message': {
     brief: 'The error message.',
     type: 'string',
+    keys: ['exception.message'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -23602,6 +25541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A stacktrace as a string in the natural representation for the language runtime. The representation is to be determined and documented by each language SIG.',
     type: 'string',
+    keys: ['exception.stacktrace'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -23615,6 +25555,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The type of the exception (its fully-qualified class name, if applicable). The dynamic type of the exception should be preferred over the static type in languages that support it.',
     type: 'string',
+    keys: ['exception.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23626,6 +25567,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.coldstart': {
     brief: 'A boolean that is true if the serverless function is executed for the first time (aka cold-start).',
     type: 'boolean',
+    keys: ['faas.coldstart'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23637,6 +25579,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.cron': {
     brief: 'A string containing the schedule period as Cron Expression.',
     type: 'string',
+    keys: ['faas.cron'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23648,6 +25591,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.duration_in_ms': {
     brief: 'The duration a function took to run, in milliseconds.',
     type: 'integer',
+    keys: ['faas.duration_in_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23659,6 +25603,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.entry_point': {
     brief: "The code that's run when the cloud provider invokes your function.",
     type: 'string',
+    keys: ['faas.entry_point'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23670,6 +25615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.execution': {
     brief: 'The execution ID of the current function execution.',
     type: 'string',
+    keys: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23694,6 +25640,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.id': {
     brief: 'The unique ID of the single function that this runtime instance executes.',
     type: 'string',
+    keys: ['cloud.resource_id', 'faas.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23719,6 +25666,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
     type: 'string',
+    keys: ['faas.identity'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23731,6 +25679,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.invocation_id': {
     brief: 'The invocation ID of the current function invocation.',
     type: 'string',
+    keys: ['faas.invocation_id', 'aws.lambda.aws_request_id', 'faas.execution'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23746,6 +25695,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.invoked_name': {
     brief: 'The name of the invoked function.',
     type: 'string',
+    keys: ['faas.invoked_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23757,6 +25707,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.invoked_provider': {
     brief: 'The cloud provider of the invoked function.',
     type: 'string',
+    keys: ['faas.invoked_provider'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23768,6 +25719,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.invoked_region': {
     brief: 'The cloud region of the invoked function.',
     type: 'string',
+    keys: ['faas.invoked_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23779,6 +25731,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.name': {
     brief: 'The name of the serverless function',
     type: 'string',
+    keys: ['faas.name', 'aws.lambda.function_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23791,6 +25744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.time': {
     brief: 'A string containing the function invocation time in the ISO 8601 format expressed in UTC.',
     type: 'string',
+    keys: ['faas.time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23802,6 +25756,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.trigger': {
     brief: 'Type of the trigger which caused this function invocation.',
     type: 'string',
+    keys: ['faas.trigger'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23813,6 +25768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'faas.version': {
     brief: 'The version of the function that was invoked',
     type: 'string',
+    keys: ['faas.version', 'aws.lambda.function_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23825,6 +25781,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   fcp: {
     brief: 'The time it takes for the browser to render the first piece of meaningful content on the screen',
     type: 'double',
+    keys: ['browser.web_vital.fcp.value', 'fcp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23842,6 +25799,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'file.path': {
     brief: 'Path to the file.',
     type: 'string',
+    keys: ['file.path'],
     applyScrubbing: {
       key: 'auto',
       reason: 'File paths can contain end-user paths (e.g. from stack traces) that may be sensitive.',
@@ -23854,6 +25812,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'file.size': {
     brief: 'File size in bytes.',
     type: 'integer',
+    keys: ['file.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23866,6 +25825,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An instance of a feature flag evaluation. The value of this attribute is the boolean representing the evaluation result. The <key> suffix is the name of the feature flag.',
     type: 'boolean',
+    keys: ['flag.evaluation.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23878,6 +25838,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   fp: {
     brief: 'The time it takes for the browser to render the first pixel on the screen',
     type: 'double',
+    keys: ['browser.web_vital.fp.value', 'fp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23896,6 +25857,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The sum of all delayed frame durations in seconds during the lifetime of the span. For more information see [frames delay](https://develop.sentry.dev/sdk/performance/frames-delay/).',
     type: 'integer',
+    keys: ['app.vitals.frames.delay.value', 'frames.delay', 'mobile.frames_delay'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23914,10 +25876,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    searchAlias: {
+      name: 'mobile.frames_delay',
+      type: 'second',
+    },
   },
   'frames.frozen': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.frozen.count', 'frames.frozen', 'mobile.frozen_frames', 'sentry.frames.frozen'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23937,11 +25904,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    searchAlias: {
+      name: 'mobile.frozen_frames',
+    },
   },
   frames_frozen_rate: {
     brief:
       'The rate of frozen frames, or `app.vitals.frames.frozen.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.frames.frozen.rate', 'frames_frozen_rate'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23962,6 +25933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -23981,11 +25953,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    searchAlias: {
+      name: 'mobile.slow_frames',
+    },
   },
   frames_slow_rate: {
     brief:
       'The rate of slow frames, or `app.vitals.frames.slow.count` divided by `app.vitals.frames.total.count`. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.frames.slow.rate', 'frames_slow_rate'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24006,6 +25982,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24025,10 +26002,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [228] },
       { version: '0.0.0' },
     ],
+    searchAlias: {
+      name: 'mobile.total_frames',
+    },
   },
   fs_error: {
     brief: 'The error message of a file system error.',
     type: 'string',
+    keys: ['fs_error'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24037,13 +26018,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'ENOENT: no such file or directory',
     deprecation: {
       replacement: 'error.type',
-      reason: 'This attribute is not part of the OpenTelemetry specification and error.type fits much better.',
+      reason:
+        'This attribute is not part of the OpenTelemetry specification and error.type fits much better. The value changes from the full error message to the syscall error code, so the old value cannot be copied over.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: '0.23.0',
+        prs: [638],
+        description: 'Remove unnecessary transformation and change deprecation status to null.',
+      },
+      { version: '0.22.0', prs: [589], description: 'Transform fs_error into error.type' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'gcp.function.context.event_id': {
     brief: 'The event ID from the legacy GCP Cloud Function context (1st gen)',
     type: 'string',
+    keys: ['gcp.function.context.event_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24055,6 +26047,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.event_type': {
     brief: 'The type of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.event_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24066,6 +26059,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.id': {
     brief: 'The unique event ID from the GCP CloudEvents context (2nd gen Cloud Functions)',
     type: 'string',
+    keys: ['gcp.function.context.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24077,6 +26071,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.resource': {
     brief: 'The resource that triggered the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.resource'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24088,6 +26083,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.source': {
     brief: 'The source of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.source'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24099,6 +26095,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.specversion': {
     brief: 'The CloudEvents specification version of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.specversion'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24110,6 +26107,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.time': {
     brief: 'The timestamp of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24121,6 +26119,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.timestamp': {
     brief: 'The legacy timestamp of the GCP Cloud Function event',
     type: 'string',
+    keys: ['gcp.function.context.timestamp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24132,6 +26131,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.function.context.type': {
     brief: 'The type of the GCP Cloud Function event context',
     type: 'string',
+    keys: ['gcp.function.context.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24143,6 +26143,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gcp.project.id': {
     brief: 'The ID of the project in GCP that this resource is associated with',
     type: 'string',
+    keys: ['gcp.project.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24154,6 +26155,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   gcp_region: {
     brief: 'The geographical region the GCP resource is running',
     type: 'string',
+    keys: ['cloud.region', 'aws_region', 'gcp_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24171,6 +26173,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.agent.name': {
     brief: 'The name of the agent being used.',
     type: 'string',
+    keys: ['gen_ai.agent.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24182,6 +26185,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.context.utilization': {
     brief: 'The fraction of the model context window utilized by this generation.',
     type: 'double',
+    keys: ['gen_ai.context.utilization'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24193,6 +26197,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.context.window_size': {
     brief: 'The maximum context window size supported by the model for this generation.',
     type: 'integer',
+    keys: ['gen_ai.context.window_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24205,6 +26210,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.',
     type: 'string',
+    keys: ['gen_ai.conversation.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24216,6 +26222,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.cache_creation.input_tokens': {
     brief: 'The cost of input tokens written to cache in USD.',
     type: 'double',
+    keys: ['gen_ai.cost.cache_creation.input_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24232,6 +26239,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.cache_read.input_tokens': {
     brief: 'The cost of cached input tokens in USD.',
     type: 'double',
+    keys: ['gen_ai.cost.cache_read.input_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24248,6 +26256,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.input_tokens': {
     brief: 'The total cost of all input tokens in USD (includes cached and cache creation tokens).',
     type: 'double',
+    keys: ['gen_ai.cost.input_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24268,6 +26277,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.output_tokens': {
     brief: 'The total cost of all output tokens in USD (includes reasoning tokens).',
     type: 'double',
+    keys: ['gen_ai.cost.output_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24288,6 +26298,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.reasoning.output_tokens': {
     brief: 'The cost of reasoning output tokens in USD.',
     type: 'double',
+    keys: ['gen_ai.cost.reasoning.output_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24304,6 +26315,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.cost.total_tokens': {
     brief: 'The total cost for the tokens used.',
     type: 'double',
+    keys: ['gen_ai.cost.total_tokens', 'ai.total_cost'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24325,6 +26337,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.embeddings.input': {
     brief: 'The input to the embeddings model.',
     type: 'string',
+    keys: ['gen_ai.embeddings.input'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24337,6 +26350,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Framework-specific tracing label for the execution of a function or other unit of execution in a generative AI system.',
     type: 'string',
+    keys: ['gen_ai.function_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24349,6 +26363,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24356,8 +26378,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
-    aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt'],
+    aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
@@ -24366,6 +26389,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
     type: 'string',
+    keys: ['gen_ai.operation.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24381,6 +26405,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
     type: 'string',
+    keys: ['gen_ai.operation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24396,6 +26421,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
     type: 'string',
+    keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24409,18 +26435,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.pipeline.name': {
     brief: 'Name of the AI pipeline or chain being executed.',
     type: 'string',
+    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'Autofix Pipeline',
-    aliases: ['ai.pipeline.name'],
-    changelog: [{ version: '0.1.0', prs: [76, 127] }],
+    aliases: ['ai.pipeline.name', 'langchain.chain.name'],
+    changelog: [
+      { version: '0.22.0', prs: [599], description: 'Added langchain.chain.name as an alias' },
+      { version: '0.1.0', prs: [76, 127] },
+    ],
   },
   'gen_ai.prompt': {
     brief: 'The input messages sent to the model',
     type: 'string',
+    keys: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24432,12 +26470,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Deprecated from OTEL, use gen_ai.input.messages with the new format instead.',
       status: 'backfill',
     },
-    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages'],
-    changelog: [{ version: '0.1.0', prs: [74, 108, 119] }, { version: '0.0.0' }],
+    aliases: ['gen_ai.input.messages', 'ai.texts', 'ai.prompt.messages', 'ai.prompt'],
+    changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
+      { version: '0.1.0', prs: [74, 108, 119] },
+      { version: '0.0.0' },
+    ],
   },
   'gen_ai.prompt.name': {
     brief: 'The name of the prompt that uniquely identifies it.',
     type: 'string',
+    keys: ['gen_ai.prompt.name', 'mcp.prompt.name'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
@@ -24451,6 +26494,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.provider.name': {
     brief: 'The Generative AI provider as identified by the client or server instrumentation.',
     type: 'string',
+    keys: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24463,6 +26507,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.available_tools': {
     brief: 'The available tools for the model. It has to be a stringified version of an array of objects.',
     type: 'string',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24474,7 +26519,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.definitions',
       status: 'normalize',
     },
+    aliases: ['gen_ai.tool.definitions'],
     changelog: [
+      { version: '0.22.0', prs: [595], description: 'Added gen_ai.tool.definitions as an alias' },
       { version: '0.4.0', prs: [221] },
       { version: '0.1.0', prs: [63, 127] },
     ],
@@ -24483,6 +26530,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.',
     type: 'double',
+    keys: ['gen_ai.request.frequency_penalty', 'ai.frequency_penalty'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24498,6 +26546,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.max_tokens': {
     brief: 'The maximum number of tokens to generate in the response.',
     type: 'integer',
+    keys: ['gen_ai.request.max_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24513,6 +26562,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
     type: 'string',
+    keys: ['gen_ai.request.messages'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24534,19 +26584,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.model': {
     brief: 'The model identifier being used for the request.',
     type: 'string',
+    keys: ['gen_ai.request.model', 'ai.model.id', 'ai.model_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4-turbo-preview',
-    aliases: ['ai.model_id'],
-    changelog: [{ version: '0.1.0', prs: [62, 127] }],
+    aliases: ['ai.model_id', 'ai.model.id'],
+    changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.model.id as an alias' },
+      { version: '0.1.0', prs: [62, 127] },
+    ],
   },
   'gen_ai.request.presence_penalty': {
     brief:
       'Used to reduce repetitiveness of generated tokens. Similar to frequency_penalty, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.',
     type: 'double',
+    keys: ['gen_ai.request.presence_penalty', 'ai.presence_penalty'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24562,6 +26617,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.reasoning.level': {
     brief: 'The reasoning or thinking effort level requested for a GenAI model.',
     type: 'string',
+    keys: ['gen_ai.request.reasoning.level'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24570,9 +26626,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'high',
     changelog: [{ version: '0.17.0', prs: [502], description: 'Added gen_ai.request.reasoning.level attribute' }],
   },
+  'gen_ai.request.schema': {
+    brief: 'The stringified JSON schema the model output must conform to.',
+    type: 'string',
+    keys: ['gen_ai.request.schema'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '{"type":"object","properties":{"city":{"type":"string"}}}',
+    examples: ['{"type":"object","properties":{"city":{"type":"string"}}}'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the requested output schema.',
+    },
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added gen_ai.request.schema attribute' }],
+  },
   'gen_ai.request.seed': {
     brief: 'The seed, ideally models given the same seed and same other parameters will produce the exact same output.',
     type: 'string',
+    keys: ['gen_ai.request.seed', 'ai.seed'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24585,6 +26659,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.request.stop_sequences': {
     brief: 'List of sequences that the model will use to stop generating further tokens.',
     type: 'string[]',
+    keys: ['gen_ai.request.stop_sequences'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24597,6 +26672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'For an AI model call, the temperature parameter. Temperature essentially means how random the output will be.',
     type: 'double',
+    keys: ['gen_ai.request.temperature', 'ai.temperature'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24613,6 +26689,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Limits the model to only consider the K most likely next tokens, where K is an integer (e.g., top_k=20 means only the 20 highest probability tokens are considered).',
     type: 'integer',
+    keys: ['gen_ai.request.top_k', 'ai.top_k'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24629,6 +26706,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Limits the model to only consider tokens whose cumulative probability mass adds up to p, where p is a float between 0 and 1 (e.g., top_p=0.7 means only tokens that sum up to 70% of the probability mass are considered).',
     type: 'double',
+    keys: ['gen_ai.request.top_p', 'ai.top_p'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24644,6 +26722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.finish_reason': {
     brief: 'The reason why the model stopped generating (singular form).',
     type: 'string',
+    keys: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24660,6 +26739,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.finish_reasons': {
     brief: 'The reason why the model stopped generating.',
     type: 'string',
+    keys: ['gen_ai.response.finish_reasons', 'ai.finish_reason', 'gen_ai.response.finish_reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24672,29 +26752,57 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.id': {
     brief: 'Unique identifier for the completion.',
     type: 'string',
+    keys: ['gen_ai.response.id', 'ai.generation_id', 'ai.response.id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gen_123abc',
-    aliases: ['ai.generation_id'],
-    changelog: [{ version: '0.1.0', prs: [57, 127] }],
+    aliases: ['ai.generation_id', 'ai.response.id'],
+    changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.response.id as an alias' },
+      { version: '0.1.0', prs: [57, 127] },
+    ],
   },
   'gen_ai.response.model': {
     brief: 'The vendor-specific ID of the model used.',
     type: 'string',
+    keys: ['gen_ai.response.model', 'ai.response.model'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'gpt-4',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['ai.response.model'],
+    changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.response.model as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'gen_ai.response.object': {
+    brief: 'The type of the object returned by the model.',
+    type: 'string',
+    keys: ['gen_ai.response.object'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'chat.completion',
+    examples: ['chat.completion'],
+    deprecation: {
+      reason:
+        'This attribute is deprecated. The Sentry conventions have no replacement for the raw response object type.',
+    },
+    changelog: [{ version: '0.21.0', prs: [583], description: 'Added gen_ai.response.object attribute' }],
   },
   'gen_ai.response.streaming': {
     brief: "Whether or not the AI model call's response was streamed back asynchronously",
     type: 'boolean',
+    keys: ['gen_ai.response.streaming', 'ai.streaming'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24708,6 +26816,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The model's response text messages. It has to be a stringified version of an array of response text messages.",
     type: 'string',
+    keys: ['gen_ai.response.text'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24728,6 +26837,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.time_to_first_chunk': {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
+    keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24740,6 +26850,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.time_to_first_token': {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
     type: 'double',
+    keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24759,6 +26870,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.tokens_per_second': {
     brief: 'The total output tokens per seconds throughput',
     type: 'double',
+    keys: ['gen_ai.response.tokens_per_second'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24773,6 +26885,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.response.tool_calls': {
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
     type: 'string',
+    keys: ['gen_ai.response.tool_calls'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24792,6 +26905,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.system': {
     brief: 'The provider of the model.',
     type: 'string',
+    keys: ['gen_ai.provider.name', 'ai.model.provider', 'gen_ai.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24811,6 +26925,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.system_instructions': {
     brief: 'The system instructions passed to the model.',
     type: 'string',
+    keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24826,6 +26941,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.system.message': {
     brief: 'The system instructions passed to the model.',
     type: 'string',
+    keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24844,6 +26960,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.call.arguments': {
     brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
     type: 'string',
+    keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24859,6 +26976,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.call.result': {
     brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24874,6 +26998,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.definitions': {
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
     type: 'string',
+    keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24881,11 +27006,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"type": "function", "name": "get_current_weather", "description": "Get the current weather in a given location", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}}, "required": ["location", "unit"]}}]',
-    changelog: [{ version: '0.4.0', prs: [221] }],
+    aliases: ['gen_ai.request.available_tools'],
+    changelog: [
+      { version: '0.22.0', prs: [595], description: 'Added gen_ai.request.available_tools as an alias' },
+      { version: '0.4.0', prs: [221] },
+    ],
   },
   'gen_ai.tool.description': {
     brief: 'The description of the tool being used.',
     type: 'string',
+    keys: ['gen_ai.tool.description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24897,6 +27027,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.input': {
     brief: 'The input of the tool being used. It has to be a stringified version of the input to the tool.',
     type: 'string',
+    keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24916,6 +27047,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.message': {
     brief: 'The response from a tool or function call passed to the model.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'auto',
     },
@@ -24935,6 +27073,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.name': {
     brief: 'Name of the tool utilized by the agent.',
     type: 'string',
+    keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24947,6 +27086,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.output': {
     brief: 'The output of the tool being used. It has to be a stringified version of the output of the tool.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24966,6 +27112,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.tool.type': {
     brief: 'The type of tool being used.',
     type: 'string',
+    keys: ['gen_ai.tool.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -24980,39 +27127,102 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.cache_creation.input_tokens': {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 100,
-    aliases: ['gen_ai.usage.input_tokens.cache_write'],
+    aliases: ['gen_ai.usage.input_tokens.cache_write', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
+      { version: 'next', description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' },
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
     ],
   },
+  'gen_ai.usage.cache_creation_input_tokens': {
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 100,
+    examples: [100],
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_creation.input_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    changelog: [
+      { version: 'next', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens attribute' },
+    ],
+  },
   'gen_ai.usage.cache_read.input_tokens': {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 50,
-    aliases: ['gen_ai.usage.input_tokens.cached'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
+    aliases: ['gen_ai.usage.input_tokens.cached', 'gen_ai.usage.cache_read_input_tokens'],
+    changelog: [
+      { version: 'next', description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
     ],
   },
+  'gen_ai.usage.cache_read_input_tokens': {
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 50,
+    examples: [50],
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_read.input_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    changelog: [{ version: 'next', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens attribute' }],
+  },
   'gen_ai.usage.completion_tokens': {
     brief: 'The number of tokens used in the GenAI response (completion).',
     type: 'integer',
+    keys: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25037,6 +27247,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens': {
     brief: 'The number of tokens used to process the AI input (prompt) including cached input tokens.',
     type: 'integer',
+    keys: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25064,6 +27275,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens.cached': {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25074,8 +27290,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.cache_read.input_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.cache_read.input_tokens'],
+    aliases: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.cache_read_input_tokens'],
     changelog: [
+      { version: 'next', description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
@@ -25089,6 +27306,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens.cache_write': {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25099,8 +27321,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.cache_creation.input_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.cache_creation.input_tokens'],
+    aliases: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
+      { version: 'next', description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
@@ -25112,6 +27335,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.output_tokens': {
     brief: 'The number of tokens used for creating the AI output (including reasoning tokens).',
     type: 'integer',
+    keys: ['gen_ai.usage.output_tokens', 'ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25139,6 +27363,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.output_tokens.reasoning': {
     brief: 'The number of tokens used for reasoning to create the AI output.',
     type: 'integer',
+    keys: ['gen_ai.usage.reasoning.output_tokens', 'gen_ai.usage.output_tokens.reasoning'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25164,6 +27389,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.prompt_tokens': {
     brief: 'The number of tokens used in the GenAI input (prompt).',
     type: 'integer',
+    keys: ['gen_ai.usage.input_tokens', 'ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25188,6 +27414,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.reasoning.output_tokens': {
     brief: 'The number of tokens used for reasoning to create the AI output.',
     type: 'integer',
+    keys: ['gen_ai.usage.reasoning.output_tokens', 'gen_ai.usage.output_tokens.reasoning'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25204,14 +27431,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.total_tokens': {
     brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
     type: 'integer',
+    keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 20,
-    aliases: ['ai.total_tokens.used'],
+    aliases: ['ai.total_tokens.used', 'ai.usage.tokens'],
     changelog: [
+      { version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens as an alias' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [57] },
@@ -25224,6 +27453,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'graphql.document': {
     brief: 'The GraphQL document being executed.',
     type: 'string',
+    keys: ['graphql.document', 'graphql.source'],
     applyScrubbing: {
       key: 'auto',
       reason:
@@ -25232,7 +27462,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'query findBookById { bookById(id: ?) { name } }',
+    aliases: ['graphql.source'],
     changelog: [
+      { version: '0.21.0', prs: [584], description: 'Added graphql.source as an alias' },
       {
         version: '0.7.0',
         description: 'Adds the `graphql.document` attribute to track the GraphQL document being executed.',
@@ -25242,6 +27474,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'graphql.operation.name': {
     brief: 'The name of the operation being executed.',
     type: 'string',
+    keys: ['graphql.operation.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25253,6 +27486,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'graphql.operation.type': {
     brief: 'The type of the operation being executed.',
     type: 'string',
+    keys: ['graphql.operation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25261,10 +27495,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'query',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'graphql.processing.type': {
+    brief: 'The type of processing represented by this span.',
+    type: 'string',
+    keys: ['graphql.processing.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'parse',
+    examples: ['parse', 'validate', 'execute', 'resolve'],
+    changelog: [{ version: '0.21.0', prs: [572], description: 'Added graphql.processing.type attribute' }],
+    additionalContext: [
+      'Well-known values are request, parse, validate, variable_coercion, plan, execute, subscription_event, step_execute, resolve, dataloader_dispatch, dataloader_batch and _OTHER. Use one of these if it applies, otherwise a custom value.',
+      'Not to be confused with graphql.operation.type, which holds the GraphQL operation type (query, mutation, subscription) and only applies to spans that run an operation.',
+    ],
+  },
+  'graphql.source': {
+    brief: 'The GraphQL document being executed.',
+    type: 'string',
+    keys: ['graphql.document', 'graphql.source'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'query findBookById { bookById(id: ?) { name } }',
+    examples: ['query findBookById { bookById(id: ?) { name } }'],
+    deprecation: {
+      replacement: 'graphql.document',
+      reason:
+        'This attribute is being deprecated in favor of graphql.document, which is the OpenTelemetry name for the same value.',
+      status: 'backfill',
+    },
+    aliases: ['graphql.document'],
+    changelog: [{ version: '0.21.0', prs: [584], description: 'Added graphql.source attribute' }],
+  },
   'grpc.error.bad_request.field_violations': {
     brief:
       'The individual field violations from a google.rpc.BadRequest error detail. Each entry is a JSON-encoded object with field, description, reason, and (optional) localized_message keys, mirroring google.rpc.BadRequest.FieldViolation.',
     type: 'string[]',
+    keys: ['grpc.error.bad_request.field_violations'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25281,6 +27553,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Additional debugging information, such as a server-side stack trace, from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
+    keys: ['grpc.error.debug_info.detail'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25293,6 +27566,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The server-side stack trace entries from a google.rpc.DebugInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string[]',
+    keys: ['grpc.error.debug_info.stack_entries'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25304,6 +27578,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'grpc.error.error_info.domain': {
     brief: 'The logical grouping to which the gRPC error reason belongs, from the google.rpc.ErrorInfo error detail.',
     type: 'string',
+    keys: ['grpc.error.error_info.domain'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25316,6 +27591,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Additional structured metadata attached to a google.rpc.ErrorInfo error detail, with <key> being the metadata key name. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
+    keys: ['grpc.error.error_info.metadata.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25329,6 +27605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The reason for the gRPC error, as defined by the service that generated it, from the google.rpc.ErrorInfo error detail.',
     type: 'string',
+    keys: ['grpc.error.error_info.reason'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25341,6 +27618,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The individual precondition violations from a google.rpc.PreconditionFailure error detail. Each entry is a JSON-encoded object with type, subject, and description keys. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
     type: 'string[]',
+    keys: ['grpc.error.precondition_failure.violations'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25355,6 +27633,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The individual quota violations from a google.rpc.QuotaFailure error detail. Each entry is a JSON-encoded object with subject, description, api_service, quota_metric, quota_id, quota_dimensions, quota_value, and (optional) future_quota_value keys, mirroring google.rpc.QuotaFailure.Violation. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly, since violation subjects may identify specific resources or users.',
     type: 'string[]',
+    keys: ['grpc.error.quota_failure.violations'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25369,6 +27648,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A description of the error that occurred while accessing the resource, from a google.rpc.ResourceInfo error detail.',
     type: 'string',
+    keys: ['grpc.error.resource_info.description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25381,6 +27661,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The owner of the resource being accessed (e.g. project or account owning it), from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
+    keys: ['grpc.error.resource_info.owner'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25393,6 +27674,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The name of the resource being accessed, from a google.rpc.ResourceInfo error detail. SDKs should only send this attribute when sendDefaultPii is enabled or dataCollection is configured accordingly.',
     type: 'string',
+    keys: ['grpc.error.resource_info.resource_name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25406,6 +27688,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'grpc.error.resource_info.resource_type': {
     brief: 'The type of resource being accessed, from a google.rpc.ResourceInfo error detail.',
     type: 'string',
+    keys: ['grpc.error.resource_info.resource_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25420,6 +27703,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
     type: 'integer',
+    keys: ['grpc.error.retry_info.retry_delay_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25431,6 +27715,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
     type: 'string',
+    keys: ['device.processor_count', 'hardwareConcurrency'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25455,6 +27740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['client.address', 'http.client_ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25463,6 +27749,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'client.address',
+      status: 'backfill',
     },
     aliases: ['client.address'],
     changelog: [{ version: '0.1.0', prs: [61, 106, 127] }, { version: '0.0.0' }],
@@ -25470,17 +27757,36 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.decoded_response_content_length': {
     brief: 'The decoded body size of the response (in bytes).',
     type: 'integer',
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 456,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    deprecation: {
+      replacement: 'http.response.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.response.body.decoded_size', 'http.response_content_length_uncompressed'],
+    changelog: [
+      { version: '0.21.0', prs: [574], description: 'Deprecated in favor of http.response.body.decoded_size' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
+    searchAlias: {
+      name: 'http.decoded_response_content_length',
+      type: 'byte',
+    },
   },
   'http.flavor': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25489,14 +27795,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
+      status: 'backfill',
     },
-    aliases: ['network.protocol.version', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.version', 'net.protocol.version', 'messaging.protocol_version'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'http.fragment': {
     brief:
       'The fragments present in the URI. Note that this contains the leading # character, while the `url.fragment` attribute does not.',
     type: 'string',
+    keys: ['http.fragment'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25508,6 +27820,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.host': {
     brief: 'The domain name.',
     type: 'string',
+    keys: ['http.host'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25518,8 +27831,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'server_name'],
+    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'net.peer.name'],
     changelog: [
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -25528,6 +27842,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.method': {
     brief: 'The HTTP method used.',
     type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25545,6 +27860,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The query string present in the URL. Note that this contains the leading ? character, while the `url.query` attribute does not.',
     type: 'string',
+    keys: ['http.query'],
     applyScrubbing: {
       key: 'auto',
       reason:
@@ -25558,6 +27874,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.body.data': {
     brief: 'HTTP request body data. Can be given as string or structural data of any format.',
     type: 'string',
+    keys: ['http.request.body.data'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25566,10 +27883,44 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '[{"role": "user", "message": "hello"}]',
     changelog: [{ version: '0.6.0', prs: [336], description: 'Added http.request.body.data attribute' }],
   },
+  'http.request.body.decoded_size': {
+    brief: 'The decoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 456,
+    aliases: ['http.request_content_length_uncompressed'],
+    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.request.body.decoded_size attribute' }],
+    additionalContext: [
+      'This is the size after content decoding. Set it only when the decoded size is actually known, for example by measuring a decompressed request stream.',
+      'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.request.body.size` for that.',
+    ],
+  },
+  'http.request.body.size': {
+    brief: 'The encoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.size', 'http.request_content_length'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 123,
+    aliases: ['http.request_content_length'],
+    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.request.body.size attribute' }],
+    additionalContext: [
+      'This is the on-the-wire (encoded) size. The `content-length` header always carries the encoded size, so set this attribute whenever `content-length` is known, regardless of whether `content-encoding` is present.',
+    ],
+  },
   'http.request.connection_end': {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes establishing the connection to the server to retrieve the resource. The timestamp value includes the time interval to establish the transport connection, as well as other time intervals such as TLS handshake and SOCKS authentication.',
     type: 'double',
+    keys: ['http.request.connection_end'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25582,6 +27933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the user agent starts establishing the connection to the server to retrieve the resource.',
     type: 'double',
+    keys: ['http.request.connect_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25590,10 +27942,58 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.111,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
+  'http.request_content_length': {
+    brief: 'The encoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.size', 'http.request_content_length'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 123,
+    deprecation: {
+      replacement: 'http.request.body.size',
+      status: 'backfill',
+    },
+    aliases: ['http.request.body.size'],
+    changelog: [
+      {
+        version: '0.21.0',
+        prs: [574],
+        description: 'Added http.request_content_length attribute, deprecated in favor of http.request.body.size',
+      },
+    ],
+  },
+  'http.request_content_length_uncompressed': {
+    brief: 'The decoded body size of the request (in bytes).',
+    type: 'integer',
+    keys: ['http.request.body.decoded_size', 'http.request_content_length_uncompressed'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 456,
+    deprecation: {
+      replacement: 'http.request.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.request.body.decoded_size'],
+    changelog: [
+      {
+        version: '0.21.0',
+        prs: [574],
+        description:
+          'Added http.request_content_length_uncompressed attribute, deprecated in favor of http.request.body.decoded_size',
+      },
+    ],
+  },
   'http.request.domain_lookup_end': {
     brief:
       'The UNIX timestamp representing the time immediately after the browser finishes the domain-name lookup for the resource.',
     type: 'double',
+    keys: ['http.request.domain_lookup_end'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25606,6 +28006,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
     type: 'double',
+    keys: ['http.request.domain_lookup_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25617,6 +28018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.fetch_start': {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
     type: 'double',
+    keys: ['http.request.fetch_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25627,8 +28029,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'http.request.header.<key>': {
     brief:
-      'HTTP request headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+      'HTTP request headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.',
     type: 'string[]',
+    keys: ['http.request.header.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25636,6 +28039,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.request.header.custom-header=['foo', 'bar']",
+    examples: ["http.request.header.custom-header=['foo', 'bar']", "http.request.header.content-length=['123']"],
     changelog: [
       { version: '0.4.0', prs: [201, 204] },
       { version: '0.1.0', prs: [103] },
@@ -25644,6 +28048,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.method': {
     brief: 'The HTTP method used.',
     type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25656,6 +28061,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request_method': {
     brief: 'The HTTP method used.',
     type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25673,6 +28079,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the timestamp immediately after receiving the last byte of the response of the last redirect',
     type: 'double',
+    keys: ['http.request.redirect_end'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25687,6 +28094,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.redirect_start': {
     brief: 'The UNIX timestamp representing the start time of the fetch which that initiates the redirect.',
     type: 'double',
+    keys: ['http.request.redirect_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25699,6 +28107,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: 'double',
+    keys: ['http.request.request_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25710,6 +28119,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.resend_count': {
     brief: 'The ordinal number of request resending attempt (for any reason, including redirects).',
     type: 'integer',
+    keys: ['http.request.resend_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25722,6 +28132,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first.',
     type: 'double',
+    keys: ['http.request.response_end'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25734,6 +28145,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts requesting the resource from the server, cache, or local resource. If the transport connection fails and the browser retires the request, the value returned will be the start of the retry request.',
     type: 'double',
+    keys: ['http.request.response_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25745,6 +28157,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.request.same_origin': {
     brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
     type: 'boolean',
+    keys: ['http.request.same_origin', 'url.same_origin'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25758,6 +28171,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the handshake process to secure the current connection. If a secure connection is not used, the property returns zero.',
     type: 'double',
+    keys: ['http.request.secure_connection_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25770,6 +28184,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The time in seconds from the browser's timeorigin to when the first byte of the request's response was received. See https://web.dev/articles/ttfb#measure-resource-requests",
     type: 'double',
+    keys: ['http.request.time_to_first_byte'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25785,6 +28200,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The UNIX timestamp representing the timestamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running.',
     type: 'double',
+    keys: ['http.request.worker_start'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25796,9 +28212,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.1.0', prs: [130, 134] },
     ],
   },
+  'http.response.body.decoded_size': {
+    brief: 'The decoded body size of the response (in bytes).',
+    type: 'integer',
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 456,
+    aliases: ['http.decoded_response_content_length', 'http.response_content_length_uncompressed'],
+    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.response.body.decoded_size attribute' }],
+    additionalContext: [
+      'This is the size after content decoding. Set it only when the decoded size is actually known, for example from the browser Resource Timing `decodedBodySize` or by measuring a decompressed response stream.',
+      'Do not derive this from the `content-length` header, which always carries the encoded size. Use `http.response.body.size` for that.',
+    ],
+  },
   'http.response.body.size': {
     brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
+    keys: ['http.response.body.size', 'http.response.header.content-length', 'http.response_content_length'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25811,6 +28249,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.response_content_length': {
     brief: 'The encoded body size of the response (in bytes).',
     type: 'integer',
+    keys: ['http.response.body.size', 'http.response.header.content-length', 'http.response_content_length'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25823,10 +28262,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.response.body.size', 'http.response.header.content-length'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61, 106] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.response_content_length',
+      type: 'byte',
+    },
+  },
+  'http.response_content_length_uncompressed': {
+    brief: 'The decoded body size of the response (in bytes).',
+    type: 'integer',
+    keys: [
+      'http.response.body.decoded_size',
+      'http.decoded_response_content_length',
+      'http.response_content_length_uncompressed',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 456,
+    deprecation: {
+      replacement: 'http.response.body.decoded_size',
+      status: 'backfill',
+    },
+    aliases: ['http.response.body.decoded_size', 'http.decoded_response_content_length'],
+    changelog: [
+      {
+        version: '0.21.0',
+        prs: [574],
+        description:
+          'Added http.response_content_length_uncompressed attribute, deprecated in favor of http.response.body.decoded_size',
+      },
+    ],
   },
   'http.response.header.content-length': {
     brief: 'The size of the message body sent to the recipient (in bytes)',
     type: 'string',
+    keys: ['http.response.header.content-length', 'http.response.body.size', 'http.response_content_length'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25838,8 +28310,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'http.response.header.<key>': {
     brief:
-      'HTTP response headers, <key> being the normalized HTTP Header name (lowercase), the value being the header values.',
+      'HTTP response headers, <key> being the lower-cased, but otherwise unchanged HTTP Header name, the value being the header values.',
     type: 'string[]',
+    keys: ['http.response.header.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25847,6 +28320,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "http.response.header.custom-header=['foo', 'bar']",
+    examples: ["http.response.header.custom-header=['foo', 'bar']", "http.response.header.content-length=['123']"],
     changelog: [
       { version: '0.4.0', prs: [201, 204] },
       { version: '0.1.0', prs: [103] },
@@ -25855,6 +28329,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.response.size': {
     brief: 'The transfer size of the response (in bytes).',
     type: 'integer',
+    keys: ['http.response.size', 'http.response_transfer_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25867,6 +28342,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.response.status_code': {
     brief: 'The status code of the HTTP response.',
     type: 'integer',
+    keys: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25875,10 +28351,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 404,
     aliases: ['http.status_code'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.response_status_code',
+    },
+  },
+  'http.response.status_text': {
+    brief: 'The reason phrase of the HTTP response.',
+    type: 'string',
+    keys: ['http.response.status_text', 'http.status_text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'NOT FOUND',
+    aliases: ['http.status_text'],
+    changelog: [{ version: '0.21.0', prs: [574], description: 'Added http.response.status_text attribute' }],
+    additionalContext: [
+      'HTTP/2 and HTTP/3 do not carry a reason phrase. Do not set this attribute when the protocol provides none; use `http.response.status_code` instead.',
+    ],
   },
   'http.response_transfer_size': {
     brief: 'The transfer size of the response (in bytes).',
     type: 'integer',
+    keys: ['http.response.size', 'http.response_transfer_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25891,10 +28387,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['http.response.size'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'http.response_transfer_size',
+      type: 'byte',
+    },
   },
   'http.route': {
     brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
     type: 'string',
+    keys: ['http.route'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25920,6 +28421,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
+    keys: ['url.scheme', 'http.scheme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25928,6 +28430,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https',
     deprecation: {
       replacement: 'url.scheme',
+      status: 'backfill',
     },
     aliases: ['url.scheme'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -25935,6 +28438,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.server_name': {
     brief: 'The server domain name',
     type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25943,9 +28447,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
+      status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name'],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -25955,6 +28461,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The time in milliseconds the request spent in the server queue before processing began. Measured from the X-Request-Start header set by reverse proxies (e.g., Nginx, HAProxy, Heroku) to when the application started handling the request.',
     type: 'double',
+    keys: ['http.server.request.time_in_queue'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25966,6 +28473,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.status_code': {
     brief: 'The status code of the HTTP response.',
     type: 'integer',
+    keys: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -25974,13 +28482,39 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 404,
     deprecation: {
       replacement: 'http.response.status_code',
+      status: 'backfill',
     },
     aliases: ['http.response.status_code'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
+  'http.status_text': {
+    brief: 'The reason phrase of the HTTP response',
+    type: 'string',
+    keys: ['http.response.status_text', 'http.status_text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'NOT FOUND',
+    examples: ['NOT FOUND'],
+    deprecation: {
+      replacement: 'http.response.status_text',
+      status: 'backfill',
+    },
+    aliases: ['http.response.status_text'],
+    changelog: [
+      {
+        version: '0.21.0',
+        prs: [574],
+        description: 'Added http.status_text attribute, deprecated in favor of http.response.status_text',
+      },
+    ],
+  },
   'http.target': {
     brief: 'The pathname and query string of the URL.',
     type: 'string',
+    keys: ['http.target'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -25988,14 +28522,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/test?foo=bar#buzz',
     deprecation: {
-      replacement: 'url.path',
-      reason: 'This attribute is being deprecated in favor of url.path and url.query',
+      reason:
+        'This attribute is being deprecated in favor of url.path, url.query and url.fragment. The value holds all three parts at once, so it has no single replacement.',
     },
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: '0.21.0',
+        prs: [587],
+        description: 'Documented url.path, url.query and url.fragment as the replacements for http.target',
+      },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'http.url': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26004,13 +28547,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
+      status: 'backfill',
     },
-    aliases: ['url.full', 'url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61, 108] }, { version: '0.0.0' }],
+    aliases: ['url.full', 'url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
+      { version: '0.1.0', prs: [61, 108] },
+      { version: '0.0.0' },
+    ],
   },
   'http.user_agent': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
+    keys: ['user_agent.original', 'http.user_agent'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26020,6 +28569,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
     deprecation: {
       replacement: 'user_agent.original',
+      status: 'backfill',
     },
     aliases: ['user_agent.original'],
     changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
@@ -26027,6 +28577,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   id: {
     brief: 'A unique identifier for the span.',
     type: 'string',
+    keys: ['id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -26038,6 +28589,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   inp: {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     type: 'double',
+    keys: ['browser.web_vital.inp.value', 'inp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26061,6 +28613,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jsonrpc.protocol.version': {
     brief: 'The version of the JSON-RPC protocol used.',
     type: 'string',
+    keys: ['jsonrpc.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26072,6 +28625,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jsonrpc.request.id': {
     brief: 'The JSON-RPC request identifier. Unique within the session.',
     type: 'string',
+    keys: ['jsonrpc.request.id', 'mcp.request.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26084,6 +28638,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.gc.action': {
     brief: 'Name of the garbage collector action.',
     type: 'string',
+    keys: ['jvm.gc.action'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26095,6 +28650,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.gc.name': {
     brief: 'Name of the garbage collector.',
     type: 'string',
+    keys: ['jvm.gc.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26106,6 +28662,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.memory.pool.name': {
     brief: 'Name of the memory pool.',
     type: 'string',
+    keys: ['jvm.memory.pool.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26117,6 +28674,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.memory.type': {
     brief: 'Name of the memory pool.',
     type: 'string',
+    keys: ['jvm.memory.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26128,6 +28686,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.thread.daemon': {
     brief: 'Whether the thread is daemon or not.',
     type: 'boolean',
+    keys: ['jvm.thread.daemon'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26139,6 +28698,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'jvm.thread.state': {
     brief: 'State of the thread.',
     type: 'string',
+    keys: ['jvm.thread.state'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26150,6 +28710,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'koa.name': {
     brief: 'The name of the Koa middleware or matched route that handled the request.',
     type: 'string',
+    keys: ['koa.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26165,6 +28726,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'koa.type': {
     brief: 'The type of the Koa layer that handled the request.',
     type: 'string',
+    keys: ['koa.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26173,9 +28735,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'router',
     changelog: [{ version: '0.16.0', prs: [471], description: 'Added koa.type attribute' }],
   },
+  'langchain.chain.name': {
+    brief: 'The name of the LangChain chain being executed.',
+    type: 'string',
+    keys: ['gen_ai.pipeline.name', 'ai.pipeline.name', 'langchain.chain.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'format_prompt',
+    examples: ['format_prompt', 'RunnableSequence'],
+    deprecation: {
+      replacement: 'gen_ai.pipeline.name',
+      reason:
+        'This attribute is being deprecated in favor of gen_ai.pipeline.name, which is the SDK-agnostic replacement for the name of the AI pipeline or chain being executed.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.pipeline.name', 'ai.pipeline.name'],
+    changelog: [{ version: '0.22.0', prs: [599], description: 'Added langchain.chain.name attribute' }],
+  },
   lcp: {
     brief: 'The value of the recorded Largest Contentful Paint (LCP) web vital',
     type: 'double',
+    keys: ['browser.web_vital.lcp.value', 'lcp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26199,6 +28782,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.element': {
     brief: 'The dom element responsible for the largest contentful paint.',
     type: 'string',
+    keys: ['browser.web_vital.lcp.element', 'lcp.element'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26216,6 +28800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.id': {
     brief: 'The id of the dom element responsible for the largest contentful paint.',
     type: 'string',
+    keys: ['browser.web_vital.lcp.id', 'lcp.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26233,6 +28818,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.loadTime': {
     brief: 'The time it took for the LCP element to be loaded',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.load_time', 'lcp.loadTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26250,6 +28836,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.renderTime': {
     brief: 'The time it took for the LCP element to be rendered',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.render_time', 'lcp.renderTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26267,6 +28854,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.size': {
     brief: 'The size of the largest contentful paint element.',
     type: 'integer',
+    keys: ['browser.web_vital.lcp.size', 'lcp.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26284,6 +28872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'lcp.url': {
     brief: 'The url of the dom element responsible for the largest contentful paint.',
     type: 'string',
+    keys: ['browser.web_vital.lcp.url', 'lcp.url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26301,6 +28890,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'litestar.middleware_name': {
     brief: 'The name of the Litestar middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26325,6 +28921,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'logger.name': {
     brief: 'The name of the logger that generated this event.',
     type: 'string',
+    keys: ['logger.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26336,6 +28933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.cancelled.reason': {
     brief: 'Reason for the cancellation of an MCP operation.',
     type: 'string',
+    keys: ['mcp.cancelled.reason'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Cancellation reasons may contain user-specific or sensitive information',
@@ -26348,6 +28946,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.cancelled.request_id': {
     brief: 'Request ID of the cancelled MCP operation.',
     type: 'string',
+    keys: ['mcp.cancelled.request_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26359,6 +28958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.client.name': {
     brief: 'Name of the MCP client application.',
     type: 'string',
+    keys: ['mcp.client.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26370,6 +28970,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.client.title': {
     brief: 'Display title of the MCP client application.',
     type: 'string',
+    keys: ['mcp.client.title'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Client titles may reveal user-specific application configurations or custom setups',
@@ -26382,6 +28983,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.client.version': {
     brief: 'Version of the MCP client application.',
     type: 'string',
+    keys: ['mcp.client.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26393,6 +28995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.lifecycle.phase': {
     brief: 'Lifecycle phase indicator for MCP operations.',
     type: 'string',
+    keys: ['mcp.lifecycle.phase'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26404,6 +29007,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.logging.data_type': {
     brief: 'Data type of the logged message content.',
     type: 'string',
+    keys: ['mcp.logging.data_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26415,6 +29019,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.logging.level': {
     brief: 'Log level for MCP logging operations.',
     type: 'string',
+    keys: ['mcp.logging.level'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26426,6 +29031,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.logging.logger': {
     brief: 'Logger name for MCP logging operations.',
     type: 'string',
+    keys: ['mcp.logging.logger'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Logger names may be user-defined and could contain sensitive information',
@@ -26438,6 +29044,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.logging.message': {
     brief: 'Log message content from MCP logging operations.',
     type: 'string',
+    keys: ['mcp.logging.message'],
     applyScrubbing: {
       key: 'auto',
       reason: 'Log messages can contain user data',
@@ -26450,6 +29057,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.method.name': {
     brief: 'The name of the MCP request or notification method being called.',
     type: 'string',
+    keys: ['mcp.method.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26464,6 +29072,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.current': {
     brief: 'Current progress value of an MCP operation.',
     type: 'integer',
+    keys: ['mcp.progress.current'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26478,6 +29087,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.message': {
     brief: 'Progress message describing the current state of an MCP operation.',
     type: 'string',
+    keys: ['mcp.progress.message'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Progress messages may contain user-specific or sensitive information',
@@ -26490,6 +29100,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.percentage': {
     brief: 'Calculated progress percentage of an MCP operation. Computed from current/total * 100.',
     type: 'double',
+    keys: ['mcp.progress.percentage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26504,6 +29115,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.token': {
     brief: 'Token for tracking progress of an MCP operation.',
     type: 'string',
+    keys: ['mcp.progress.token'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26515,6 +29127,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.progress.total': {
     brief: 'Total progress target value of an MCP operation.',
     type: 'integer',
+    keys: ['mcp.progress.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26529,6 +29142,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.name': {
     brief: 'Name of the MCP prompt template being used.',
     type: 'string',
+    keys: ['gen_ai.prompt.name', 'mcp.prompt.name'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Prompt names may reveal user behavior patterns or sensitive operations',
@@ -26550,6 +29164,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.result.description': {
     brief: 'Description of the prompt result.',
     type: 'string',
+    keys: ['mcp.prompt.result.description'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26561,6 +29176,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.result.message_content': {
     brief: 'Content of the message in the prompt result. Used for single message results only.',
     type: 'string',
+    keys: ['mcp.prompt.result.message_content'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26572,6 +29188,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.result.message_count': {
     brief: 'Number of messages in the prompt result.',
     type: 'integer',
+    keys: ['mcp.prompt.result.message_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26586,6 +29203,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.prompt.result.message_role': {
     brief: 'Role of the message in the prompt result. Used for single message results only.',
     type: 'string',
+    keys: ['mcp.prompt.result.message_role'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26597,6 +29215,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.protocol.ready': {
     brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
     type: 'integer',
+    keys: ['mcp.protocol.ready'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26611,6 +29230,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.protocol.version': {
     brief: 'MCP protocol version used in the session.',
     type: 'string',
+    keys: ['mcp.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26626,6 +29246,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'MCP request argument with dynamic key suffix. The <key> is replaced with the actual argument name. The value is a JSON-stringified representation of the argument value.',
     type: 'string',
+    keys: ['mcp.request.argument.<key>'],
     applyScrubbing: {
       key: 'auto',
       reason: 'Arguments contain user input',
@@ -26639,6 +29260,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.request.argument.name': {
     brief: 'Name argument from prompts/get MCP request.',
     type: 'string',
+    keys: ['mcp.request.argument.name'],
     applyScrubbing: {
       key: 'auto',
       reason: 'Prompt names can contain user input',
@@ -26651,6 +29273,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.request.argument.uri': {
     brief: 'URI argument from resources/read MCP request.',
     type: 'string',
+    keys: ['mcp.request.argument.uri'],
     applyScrubbing: {
       key: 'auto',
       reason: 'URIs can contain user file paths',
@@ -26663,6 +29286,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.request.id': {
     brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
     type: 'string',
+    keys: ['jsonrpc.request.id', 'mcp.request.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26683,6 +29307,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.resource.protocol': {
     brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
     type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26694,8 +29319,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'OTel uses the generic network.protocol.name attribute',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'net.protocol.name'],
+    aliases: ['network.protocol.name', 'net.protocol.name', 'messaging.protocol'],
     changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -26703,6 +29329,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.resource.uri': {
     brief: 'The resource URI being accessed in an MCP operation.',
     type: 'string',
+    keys: ['mcp.resource.uri'],
     applyScrubbing: {
       key: 'auto',
       reason: 'URIs can contain sensitive file paths',
@@ -26718,6 +29345,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.server.name': {
     brief: 'Name of the MCP server application.',
     type: 'string',
+    keys: ['mcp.server.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26729,6 +29357,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.server.title': {
     brief: 'Display title of the MCP server application.',
     type: 'string',
+    keys: ['mcp.server.title'],
     applyScrubbing: {
       key: 'manual',
       reason: 'Server titles may reveal user-specific application configurations or custom setups',
@@ -26741,6 +29370,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.server.version': {
     brief: 'Version of the MCP server application.',
     type: 'string',
+    keys: ['mcp.server.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26752,6 +29382,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.session.id': {
     brief: 'Identifier for the MCP session.',
     type: 'string',
+    keys: ['mcp.session.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26766,6 +29397,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.tool.name': {
     brief: 'Name of the MCP tool being called.',
     type: 'string',
+    keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26786,6 +29418,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.tool.result.content': {
     brief: 'The content of the tool result.',
     type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
     applyScrubbing: {
       key: 'auto',
       reason: 'Tool results can contain user data',
@@ -26808,6 +29447,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.tool.result.content_count': {
     brief: 'Number of content items in the tool result.',
     type: 'integer',
+    keys: ['mcp.tool.result.content_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26822,6 +29462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.tool.result.is_error': {
     brief: 'Whether a tool execution resulted in an error.',
     type: 'boolean',
+    keys: ['mcp.tool.result.is_error'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26841,6 +29482,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'mcp.transport': {
     brief: 'Transport method used for MCP communication.',
     type: 'string',
+    keys: ['network.transport', 'mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26862,6 +29504,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "Attributes from the Mapped Diagnostic Context (MDC) present at the moment the log record was created. The MDC is supported by all the most popular logging solutions in the Java ecosystem, and it's usually implemented as a thread-local map that stores context for e.g. a specific request.",
     type: 'string',
+    keys: ['mdc.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -26874,6 +29517,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.batch.message_count': {
     brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
     type: 'integer',
+    keys: ['messaging.batch.message_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26882,9 +29526,30 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
+  'messaging.conversation_id': {
+    brief:
+      'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
+    type: 'string',
+    keys: ['messaging.message.conversation_id', 'messaging.conversation_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'MyConversationId',
+    examples: ['MyConversationId'],
+    deprecation: {
+      replacement: 'messaging.message.conversation_id',
+      reason: 'This attribute is being deprecated in favor of messaging.message.conversation_id.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.conversation_id'],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.conversation_id attribute' }],
+  },
   'messaging.destination': {
     brief: 'The message destination name.',
     type: 'string',
+    keys: ['messaging.destination.name', 'messaging.destination'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26909,6 +29574,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination.connection': {
     brief: 'The message destination connection.',
     type: 'string',
+    keys: ['messaging.destination.connection'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26920,6 +29586,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination_kind': {
     brief: 'The kind of message destination.',
     type: 'string',
+    keys: ['messaging.destination_kind'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26942,6 +29609,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination.name': {
     brief: 'The message destination name.',
     type: 'string',
+    keys: ['messaging.destination.name', 'messaging.destination'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26959,6 +29627,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The identifier of the partition messages are sent to or received from, unique within the messaging.destination.name.',
     type: 'string',
+    keys: ['messaging.destination.partition.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26971,6 +29640,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "Message keys in Kafka are used for grouping alike messages to ensure they're processed on the same partition. They differ from messaging.message.id in that they're not unique. If the key is null, the attribute MUST NOT be set.",
     type: 'string',
+    keys: ['messaging.kafka.message.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26982,6 +29652,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.kafka.message.tombstone': {
     brief: 'A boolean that is true if the message is a tombstone.',
     type: 'boolean',
+    keys: ['messaging.kafka.message.tombstone'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26993,6 +29664,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.kafka.offset': {
     brief: 'The offset of a record in the corresponding Kafka partition.',
     type: 'integer',
+    keys: ['messaging.kafka.offset'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27004,6 +29676,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message.body.size': {
     brief: 'The size of the message body in bytes.',
     type: 'integer',
+    keys: ['messaging.message.body.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27011,22 +29684,32 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 839,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'messaging.message.body.size',
+      type: 'byte',
+    },
   },
   'messaging.message.conversation_id': {
     brief:
       'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
     type: 'string',
+    keys: ['messaging.message.conversation_id', 'messaging.conversation_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'MyConversationId',
-    changelog: [{ version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' }],
+    aliases: ['messaging.conversation_id'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.conversation_id as an alias' },
+      { version: '0.16.0', prs: [468], description: 'Added messaging.message.conversation_id attribute' },
+    ],
   },
   'messaging.message.envelope.size': {
     brief: 'The size of the message body and metadata in bytes.',
     type: 'integer',
+    keys: ['messaging.message.envelope.size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27038,17 +29721,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.message.id': {
     brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
     type: 'string',
+    keys: ['messaging.message.id', 'messaging.message_id'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['messaging.message_id'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.message_id as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+  },
+  'messaging.message_id': {
+    brief: 'A value used by the messaging system as an identifier for the message, represented as a string.',
+    type: 'string',
+    keys: ['messaging.message.id', 'messaging.message_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '452a7c7c7c7048c2f887f0e7',
+    examples: ['452a7c7c7c7048c2f887f0e7'],
+    deprecation: {
+      replacement: 'messaging.message.id',
+      reason: 'This attribute is being deprecated in favor of messaging.message.id.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.message.id'],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.message_id attribute' }],
   },
   'messaging.message.receive.latency': {
     brief: 'The latency between when the message was published and received.',
     type: 'integer',
+    keys: ['messaging.message.receive.latency'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27056,10 +29765,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1732847252,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'messaging.message.receive.latency',
+      type: 'millisecond',
+    },
   },
   'messaging.message.retry.count': {
     brief: 'The amount of attempts to send the message.',
     type: 'integer',
+    keys: ['messaging.message.retry.count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27068,20 +29782,45 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
   },
+  'messaging.operation': {
+    brief: 'The name of the messaging operation being performed.',
+    type: 'string',
+    keys: ['messaging.operation.name', 'messaging.operation'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'publish',
+    examples: ['publish'],
+    deprecation: {
+      replacement: 'messaging.operation.name',
+      reason: 'This attribute is being deprecated in favor of messaging.operation.name.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.operation.name'],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.operation attribute' }],
+  },
   'messaging.operation.name': {
     brief: 'The name of the messaging operation being performed',
     type: 'string',
+    keys: ['messaging.operation.name', 'messaging.operation'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'send',
-    changelog: [{ version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' }],
+    aliases: ['messaging.operation'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.operation as an alias' },
+      { version: '0.11.0', prs: [392], description: 'Added messaging.operation.name attribute' },
+    ],
   },
   'messaging.operation.type': {
     brief: 'A string identifying the type of the messaging operation',
     type: 'string',
+    keys: ['messaging.operation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27090,22 +29829,83 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'create',
     changelog: [{ version: '0.1.0', prs: [51, 127] }],
   },
+  'messaging.protocol': {
+    brief: 'OSI application layer or non-OSI equivalent.',
+    type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AMQP',
+    examples: ['AMQP'],
+    deprecation: {
+      replacement: 'network.protocol.name',
+      reason: 'This attribute is being deprecated in favor of network.protocol.name.',
+      status: 'backfill',
+    },
+    aliases: ['network.protocol.name', 'net.protocol.name', 'mcp.resource.protocol'],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.protocol attribute' }],
+  },
+  'messaging.protocol_version': {
+    brief: 'The actual version of the protocol used for network communication.',
+    type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '0.9.1',
+    examples: ['0.9.1'],
+    deprecation: {
+      replacement: 'network.protocol.version',
+      reason: 'This attribute is being deprecated in favor of network.protocol.version.',
+      status: 'backfill',
+    },
+    aliases: ['network.protocol.version', 'http.flavor', 'net.protocol.version'],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.protocol_version attribute' }],
+  },
   'messaging.rabbitmq.destination.routing_key': {
     brief: 'RabbitMQ message routing key.',
     type: 'string',
+    keys: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'myKey',
+    aliases: ['messaging.rabbitmq.routing_key'],
     changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.rabbitmq.routing_key as an alias' },
       { version: '0.16.0', prs: [468], description: 'Added messaging.rabbitmq.destination.routing_key attribute' },
     ],
+  },
+  'messaging.rabbitmq.routing_key': {
+    brief: 'RabbitMQ message routing key.',
+    type: 'string',
+    keys: ['messaging.rabbitmq.destination.routing_key', 'messaging.rabbitmq.routing_key'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'myKey',
+    examples: ['myKey'],
+    deprecation: {
+      replacement: 'messaging.rabbitmq.destination.routing_key',
+      reason: 'This attribute is being deprecated in favor of messaging.rabbitmq.destination.routing_key.',
+      status: 'backfill',
+    },
+    aliases: ['messaging.rabbitmq.destination.routing_key'],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.rabbitmq.routing_key attribute' }],
   },
   'messaging.system': {
     brief: 'The messaging system as identified by the client instrumentation.',
     type: 'string',
+    keys: ['messaging.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27114,9 +29914,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'activemq',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'messaging.url': {
+    brief: 'The connection string of the messaging broker.',
+    type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'amqp://guest:guest@localhost:5672',
+    examples: ['amqp://guest:guest@localhost:5672'],
+    deprecation: {
+      replacement: 'url.full',
+      reason: 'This attribute is being deprecated in favor of url.full.',
+      status: 'backfill',
+    },
+    aliases: ['url.full', 'http.url', 'url', 'aws.request.url'],
+    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.url attribute' }],
+  },
   method: {
     brief: 'The HTTP method used.',
     type: 'string',
+    keys: ['http.request.method', 'http.method', 'http.request_method', 'method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27137,6 +29957,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'middleware.name': {
     brief: 'The name of the middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27163,38 +29990,64 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
     type: 'string',
+    keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: '/users/:id',
-    aliases: ['sentry.sveltekit.navigation.from'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' }],
+    deprecation: {
+      replacement: 'router.navigation.origin',
+      reason: 'Moved to the router.* namespace to separate client-side router navigations from browser navigations.',
+      status: 'backfill',
+    },
+    aliases: ['router.navigation.origin', 'sentry.sveltekit.navigation.from'],
+    changelog: [
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.origin' },
+      { version: '0.16.0', prs: [467], description: 'Added navigation.origin attribute' },
+    ],
   },
   'navigation.route.id': {
     brief:
       'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
     type: 'string',
+    keys: ['router.navigation.route.id', 'navigation.route.id'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'AboutView',
-    changelog: [{ version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' }],
+    deprecation: {
+      replacement: 'router.navigation.route.id',
+      reason: 'Moved to the router.* namespace to separate client-side router navigations from browser navigations.',
+      status: 'backfill',
+    },
+    aliases: ['router.navigation.route.id'],
+    changelog: [
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.route.id' },
+      { version: '0.16.0', prs: [468], description: 'Added navigation.route.id attribute' },
+    ],
   },
   'navigation.type': {
     brief: 'The type of navigation done by a client-side router.',
     type: 'string',
+    keys: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'router.push',
-    aliases: ['sentry.sveltekit.navigation.type'],
+    deprecation: {
+      replacement: 'router.navigation.type',
+      reason: 'Moved to the router.* namespace to separate client-side router navigations from browser navigations.',
+      status: 'backfill',
+    },
+    aliases: ['router.navigation.type', 'sentry.sveltekit.navigation.type'],
     changelog: [
+      { version: '0.22.0', prs: [600], description: 'Deprecated in favor of router.navigation.type' },
       { version: '0.16.0', prs: [467], description: 'Added new deprecated alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -27204,6 +30057,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The elapsed number of milliseconds between the start of the resource fetch and when it was completed or aborted by the user agent.',
     type: 'integer',
+    keys: ['nel.elapsed_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27218,6 +30072,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'nel.phase': {
     brief: 'If request failed, the phase of its network error. If request succeeded, "application".',
     type: 'string',
+    keys: ['nel.phase'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27229,6 +30084,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'nel.referrer': {
     brief: "request's referrer, as determined by the referrer policy associated with its client.",
     type: 'string',
+    keys: ['nel.referrer'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27240,6 +30096,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'nel.sampling_function': {
     brief: 'The sampling function used to determine if the request should be sampled.',
     type: 'double',
+    keys: ['nel.sampling_function'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27254,6 +30111,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'nel.type': {
     brief: 'If request failed, the type of its network error. If request succeeded, "ok".',
     type: 'string',
+    keys: ['nel.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27265,6 +30123,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.connection.effective_type': {
     brief: 'Specifies the effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
     type: 'string',
+    keys: ['network.connection.effective_type', 'effectiveConnectionType'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27283,6 +30142,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.connection.rtt': {
     brief: 'Specifies the estimated effective round-trip time of the current connection, in milliseconds.',
     type: 'integer',
+    keys: ['network.connection.rtt', 'connection.rtt'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27301,6 +30161,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.connection.type': {
     brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     type: 'string',
+    keys: ['network.connection.type', 'connectionType', 'device.connection_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27319,18 +30180,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.local.address': {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '10.1.2.80',
+    examples: ['10.1.2.80', '/var/run/my.sock'],
     aliases: ['net.host.ip', 'net.sock.host.addr'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
   'network.local.port': {
     brief: 'Local port number of the network connection.',
     type: 'integer',
+    keys: ['network.local.port', 'net.sock.host.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27343,6 +30207,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.peer.address': {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27355,41 +30220,58 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.peer.port': {
     brief: 'Peer port number of the network connection.',
     type: 'integer',
+    keys: ['network.peer.port', 'net.sock.peer.port'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 65400,
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    aliases: ['net.sock.peer.port'],
+    changelog: [
+      { version: '0.21.0', prs: [588], description: 'Added net.sock.peer.port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.0.0' },
+    ],
   },
   'network.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'http',
-    aliases: ['net.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['net.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: '1.1',
-    aliases: ['http.flavor', 'net.protocol.version'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['http.flavor', 'net.protocol.version', 'messaging.protocol_version'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
+    keys: ['network.transport', 'mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27402,6 +30284,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.type': {
     brief: 'OSI network layer or non-OSI equivalent.',
     type: 'string',
+    keys: ['network.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27413,6 +30296,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.host.ip': {
     brief: 'Local address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27421,6 +30305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.local.address',
+      status: 'backfill',
     },
     aliases: ['network.local.address', 'net.sock.host.addr'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27429,6 +30314,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27437,9 +30323,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     deprecation: {
       replacement: 'server.address',
+      status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
       { version: '0.0.0' },
@@ -27448,6 +30336,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.host.port': {
     brief: 'Server port number.',
     type: 'integer',
+    keys: ['server.port', 'net.host.port', 'port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27456,6 +30345,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1337,
     deprecation: {
       replacement: 'server.port',
+      status: 'backfill',
     },
     aliases: ['server.port', 'port'],
     changelog: [
@@ -27468,6 +30358,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.peer.ip': {
     brief: 'Peer address of the network connection - IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27476,6 +30367,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
+      status: 'backfill',
     },
     aliases: ['network.peer.address', 'net.sock.peer.addr'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27484,6 +30376,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['net.peer.name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27494,11 +30387,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    changelog: [
+      { version: '0.21.0', prs: [588, 602], description: 'Added the server.address alias group to net.peer.name' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.peer.port': {
     brief: 'Peer port number.',
     type: 'integer',
+    keys: ['net.peer.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27514,6 +30413,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
+    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27522,13 +30422,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'http',
     deprecation: {
       replacement: 'network.protocol.name',
+      status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.protocol.version': {
     brief: 'The actual version of the protocol used for network communication.',
     type: 'string',
+    keys: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version', 'net.protocol.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27537,13 +30443,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '1.1',
     deprecation: {
       replacement: 'network.protocol.version',
+      status: 'backfill',
     },
-    aliases: ['network.protocol.version', 'http.flavor'],
-    changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
+    aliases: ['network.protocol.version', 'http.flavor', 'messaging.protocol_version'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol_version as an alias' },
+      { version: '0.1.0', prs: [61, 108, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'net.sock.family': {
     brief: 'OSI transport and network layer',
     type: 'string',
+    keys: ['net.sock.family'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27559,6 +30471,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.host.addr': {
     brief: 'Local address of the network connection mapping to Unix domain socket name.',
     type: 'string',
+    keys: ['network.local.address', 'net.host.ip', 'net.sock.host.addr'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27567,6 +30480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '/var/my.sock',
     deprecation: {
       replacement: 'network.local.address',
+      status: 'backfill',
     },
     aliases: ['network.local.address', 'net.host.ip'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27574,6 +30488,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.host.port': {
     brief: 'Local port number of the network connection.',
     type: 'integer',
+    keys: ['network.local.port', 'net.sock.host.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27582,6 +30497,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8080,
     deprecation: {
       replacement: 'network.local.port',
+      status: 'backfill',
     },
     aliases: ['network.local.port'],
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
@@ -27589,6 +30505,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.peer.addr': {
     brief: 'Peer address of the network connection - IP address',
     type: 'string',
+    keys: ['network.peer.address', 'net.peer.ip', 'net.sock.peer.addr'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27597,6 +30514,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '192.168.0.1',
     deprecation: {
       replacement: 'network.peer.address',
+      status: 'backfill',
     },
     aliases: ['network.peer.address', 'net.peer.ip'],
     changelog: [{ version: '0.1.0', prs: [61, 108, 127] }, { version: '0.0.0' }],
@@ -27604,6 +30522,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.peer.name': {
     brief: 'Peer address of the network connection - Unix domain socket name',
     type: 'string',
+    keys: ['net.sock.peer.name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27618,6 +30537,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.sock.peer.port': {
     brief: 'Peer port number of the network connection.',
     type: 'integer',
+    keys: ['network.peer.port', 'net.sock.peer.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27626,12 +30546,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 8080,
     deprecation: {
       replacement: 'network.peer.port',
+      status: 'backfill',
     },
-    changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['network.peer.port'],
+    changelog: [
+      { version: '0.21.0', prs: [588], description: 'Added network.peer.port as an alias' },
+      { version: '0.4.0', prs: [228] },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'net.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
+    keys: ['net.transport'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27640,13 +30568,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'tcp',
     deprecation: {
       replacement: 'network.transport',
+      reason:
+        'This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.',
     },
     aliases: ['network.transport', 'mcp.transport'],
-    changelog: [{ version: '0.1.0', prs: [61, 127] }, { version: '0.0.0' }],
+    changelog: [
+      {
+        version: '0.21.0',
+        prs: [588],
+        description: 'Set net.transport to _status null, because its values change on the replacement',
+      },
+      { version: '0.1.0', prs: [61, 127] },
+      { version: '0.0.0' },
+    ],
   },
   'os.build': {
     brief: 'The build ID of the operating system.',
     type: 'string',
+    keys: ['os.build_id', 'os.build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27665,6 +30604,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.build_id': {
     brief: 'The build ID of the operating system.',
     type: 'string',
+    keys: ['os.build_id', 'os.build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27682,6 +30622,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Human readable (not intended to be parsed) OS version information, like e.g. reported by ver or lsb_release -a commands.',
     type: 'string',
+    keys: ['os.description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27693,6 +30634,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.kernel_version': {
     brief: 'An independent kernel version string. Typically the entire output of the `uname` syscall.',
     type: 'string',
+    keys: ['os.kernel_version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27704,6 +30646,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.name': {
     brief: 'Human readable operating system name.',
     type: 'string',
+    keys: ['os.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27716,6 +30659,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An unprocessed description string obtained by the operating system. For some well-known runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are not explicitly given.',
     type: 'string',
+    keys: ['os.raw_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27727,6 +30671,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.rooted': {
     brief: 'Whether the operating system has been jailbroken or rooted.',
     type: 'boolean',
+    keys: ['os.rooted'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27738,6 +30683,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.theme': {
     brief: 'Whether the OS runs in dark mode or light mode.',
     type: 'string',
+    keys: ['os.theme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27749,6 +30695,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.type': {
     brief: 'The operating system type.',
     type: 'string',
+    keys: ['os.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27760,6 +30707,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.version': {
     brief: 'The version of the operating system.',
     type: 'string',
+    keys: ['os.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27772,6 +30720,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
     type: 'string',
+    keys: ['sentry.kind', 'span.kind', 'otel.kind'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27789,6 +30738,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'otel.scope.name': {
     brief: 'The name of the instrumentation scope - (InstrumentationScope.Name in OTLP).',
     type: 'string',
+    keys: ['otel.scope.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27800,6 +30750,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'otel.scope.version': {
     brief: 'The version of the instrumentation scope - (InstrumentationScope.Version in OTLP).',
     type: 'string',
+    keys: ['otel.scope.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27811,6 +30762,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'otel.status_code': {
     brief: 'Name of the code, either “OK” or “ERROR”. MUST NOT be set if the status code is UNSET.',
     type: 'string',
+    keys: ['otel.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27822,6 +30774,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'otel.status_description': {
     brief: 'Description of the Status if it has a value, otherwise not set.',
     type: 'string',
+    keys: ['otel.status_description'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27834,6 +30787,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
+    keys: ['params.<key>', 'url.path.parameter.<key>', 'url.path.params.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27841,12 +30795,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "params.id='123'",
-    aliases: ['url.path.parameter.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
+    aliases: ['url.path.parameter.<key>', 'url.path.params.<key>'],
+    changelog: [
+      { version: '0.21.0', prs: [586], description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.1.0', prs: [103] },
+    ],
   },
   'performance.activationStart': {
     brief: 'The time between initiating a navigation to a page and the browser activating the page',
     type: 'double',
+    keys: ['browser.performance.navigation.activation_start', 'performance.activationStart'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27864,6 +30822,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'performance.timeOrigin': {
     brief: "The browser's performance.timeOrigin timestamp representing the time when the pageload was initiated",
     type: 'double',
+    keys: ['browser.performance.time_origin', 'performance.timeOrigin'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27881,6 +30840,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   port: {
     brief: 'The destination port for a TCP connection.',
     type: 'integer',
+    keys: ['server.port', 'net.host.port', 'port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27899,6 +30859,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   previous_route: {
     brief: 'Also used by mobile SDKs to indicate the previous route in the application.',
     type: 'string',
+    keys: ['previous_route'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27910,6 +30871,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.command_args': {
     brief: 'All the command arguments (including the command/executable itself) as received by the process.',
     type: 'string[]',
+    keys: ['process.command_args'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -27921,6 +30883,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.executable.name': {
     brief: 'The name of the executable that started the process.',
     type: 'string',
+    keys: ['process.executable.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27932,6 +30895,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.pid': {
     brief: 'The process ID of the running process.',
     type: 'integer',
+    keys: ['process.pid', 'subprocess.pid'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27949,6 +30913,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
     type: 'string',
+    keys: ['process.runtime.description', 'runtime.raw_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27961,6 +30926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.engine.name': {
     brief: 'The name of the runtime engine.',
     type: 'string',
+    keys: ['process.runtime.engine.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27972,6 +30938,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.engine.version': {
     brief: 'The version of the runtime engine.',
     type: 'string',
+    keys: ['process.runtime.engine.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27983,6 +30950,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'process.runtime.name': {
     brief: 'The name of the runtime. Equivalent to `name` in the Sentry runtime context.',
     type: 'string',
+    keys: ['process.runtime.name', 'runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27996,6 +30964,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The version of the runtime of this process, as returned by the runtime without modification. Equivalent to `version` in the Sentry runtime context.',
     type: 'string',
+    keys: ['process.runtime.version', 'runtime.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28009,6 +30978,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     type: 'string',
+    keys: ['sentry.profile_id', 'profile.id', 'profile_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28025,6 +30995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   query: {
     brief: 'The database query being executed.',
     type: 'string',
+    keys: ['db.query.text', 'db.statement', 'query'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28044,6 +31015,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'query.<key>': {
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
+    keys: ['query.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28060,6 +31032,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'react.version': {
     brief: 'The version of the React framework',
     type: 'string',
+    keys: ['react.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28071,6 +31044,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'redis.command': {
     brief: 'The name of the Redis operation being executed.',
     type: 'string',
+    keys: ['db.operation.name', 'cloudflare.d1.query_type', 'db.operation', 'redis.command'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28088,6 +31062,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'redis.key': {
     brief: 'The key the Redis command is operating on.',
     type: 'string',
+    keys: ['db.redis.key', 'redis.key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28107,6 +31082,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   release: {
     brief: 'The sentry release.',
     type: 'string',
+    keys: ['sentry.release', 'release', 'service.version'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28127,6 +31103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'remix.action_form_data.<key>': {
     brief: 'Remix form data, <key> being the form data key, the value being the form data value.',
     type: 'string',
+    keys: ['remix.action_form_data.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28136,9 +31113,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "http.response.header.text='test'",
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
+  replayId: {
+    brief: 'The id of the sentry replay.',
+    type: 'string',
+    keys: ['replayId'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '123e4567e89b12d3a456426614174000',
+    deprecation: {
+      replacement: 'sentry.replay_id',
+    },
+    aliases: ['sentry.replay_id'],
+    changelog: [{ version: 'next' }],
+  },
   replay_id: {
     brief: 'The id of the sentry replay.',
     type: 'string',
+    keys: ['sentry.replay_id', 'replay.id', 'replay_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28159,6 +31153,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'resource.deployment.environment': {
     brief: 'The software deployment environment name.',
     type: 'string',
+    keys: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28174,6 +31174,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'resource.deployment.environment.name': {
     brief: 'The software deployment environment name.',
     type: 'string',
+    keys: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28189,6 +31195,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'resource.render_blocking_status': {
     brief: 'The render blocking status of the resource.',
     type: 'string',
+    keys: ['resource.render_blocking_status'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28201,6 +31208,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
     type: 'string',
+    keys: ['route'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28213,9 +31221,69 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['http.route'],
     changelog: [{ version: '0.1.0', prs: [61, 74] }, { version: '0.0.0' }],
   },
+  'router.navigation.origin': {
+    brief:
+      'The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.',
+    type: 'string',
+    keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/users/:id',
+    aliases: ['navigation.origin', 'sentry.sveltekit.navigation.from'],
+    changelog: [
+      {
+        version: '0.22.0',
+        prs: [600],
+        description: 'Added router.navigation.origin attribute, replacing navigation.origin',
+      },
+    ],
+  },
+  'router.navigation.route.id': {
+    brief:
+      'The identifier of the matched client-side route, as assigned by the routing framework (e.g., vue-router name, react-router id).',
+    type: 'string',
+    keys: ['router.navigation.route.id', 'navigation.route.id'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'AboutView',
+    aliases: ['navigation.route.id'],
+    changelog: [
+      {
+        version: '0.22.0',
+        prs: [600],
+        description: 'Added router.navigation.route.id attribute, replacing navigation.route.id',
+      },
+    ],
+  },
+  'router.navigation.type': {
+    brief: 'The type of navigation done by a client-side router.',
+    type: 'string',
+    keys: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'router.push',
+    aliases: ['navigation.type', 'sentry.sveltekit.navigation.type'],
+    changelog: [
+      {
+        version: '0.22.0',
+        prs: [600],
+        description: 'Added router.navigation.type attribute, replacing navigation.type',
+      },
+    ],
+  },
   'rpc.grpc.status_code': {
     brief: 'The numeric status code of the gRPC request.',
     type: 'integer',
+    keys: ['rpc.grpc.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28241,6 +31309,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.method': {
     brief: 'The fully-qualified logical name of the method from the RPC interface perspective.',
     type: 'string',
+    keys: ['rpc.method', 'aws.operation_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28256,6 +31325,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.response.status_code': {
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
     type: 'string',
+    keys: ['rpc.response.status_code', 'code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28271,6 +31341,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.service': {
     brief: 'The full (logical) name of the service being called, including its package name, if applicable.',
     type: 'string',
+    keys: ['rpc.service'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28282,6 +31353,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.system': {
     brief: 'A string identifying the remoting system.',
     type: 'string',
+    keys: ['rpc.system.name', 'rpc.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28305,6 +31377,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'rpc.system.name': {
     brief: 'A string identifying the remoting system.',
     type: 'string',
+    keys: ['rpc.system.name', 'rpc.system'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28317,6 +31390,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.build': {
     brief: 'The application build string, when it is separate from the version.',
     type: 'string',
+    keys: ['runtime.build'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28332,6 +31406,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.name': {
     brief: 'The name of the runtime. For example node, CPython, or rustc.',
     type: 'string',
+    keys: ['process.runtime.name', 'runtime.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28341,6 +31416,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.name',
       reason: 'Prefer OTel-aligned process.runtime.name',
+      status: 'backfill',
     },
     aliases: ['process.runtime.name'],
     changelog: [
@@ -28355,6 +31431,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Unprocessed description string as obtained from the runtime. Used to extract name and version for well-known runtimes.',
     type: 'string',
+    keys: ['process.runtime.description', 'runtime.raw_description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28364,6 +31441,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.description',
       reason: 'Prefer OTel-aligned process.runtime.description',
+      status: 'backfill',
     },
     aliases: ['process.runtime.description'],
     changelog: [
@@ -28377,6 +31455,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'runtime.version': {
     brief: 'The version of the runtime.',
     type: 'string',
+    keys: ['process.runtime.version', 'runtime.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28386,6 +31465,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'process.runtime.version',
       reason: 'Prefer OTel-aligned process.runtime.version',
+      status: 'backfill',
     },
     aliases: ['process.runtime.version'],
     changelog: [
@@ -28400,6 +31480,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The weighted performance score for a web vital. This is defined as `score.weight.<key>` * `score.ratio.<key>`.',
     type: 'double',
+    keys: ['score.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28412,6 +31493,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'score.ratio.<key>': {
     brief: 'The score for a web vital, normalized to a number between 0 and 1.',
     type: 'double',
+    keys: ['score.ratio.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28425,6 +31507,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The total performance score of a span. This is the sum of individual weighted web vital scores (see `score.<key>`).',
     type: 'double',
+    keys: ['score.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28435,6 +31518,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'score.weight.<key>': {
     brief: "The relative weight of a web vital in a span's performance score.",
     type: 'double',
+    keys: ['score.weight.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28448,6 +31532,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
     type: 'string',
+    keys: ['sentry.action', 'span.action'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28455,10 +31540,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'SELECT',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    searchAlias: {
+      name: 'span.action',
+    },
   },
   'sentry.browser.name': {
     brief: 'The name of the browser.',
     type: 'string',
+    keys: ['browser.name', 'sentry.browser.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28467,13 +31556,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Chrome',
     deprecation: {
       replacement: 'browser.name',
+      status: 'backfill',
     },
     aliases: ['browser.name'],
     changelog: [{ version: '0.1.0', prs: [139] }],
+    searchAlias: {
+      name: 'browser.name',
+    },
   },
   'sentry.browser.version': {
     brief: 'The version of the browser.',
     type: 'string',
+    keys: ['browser.version', 'sentry.browser.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28482,6 +31576,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '120.0.6099.130',
     deprecation: {
       replacement: 'browser.version',
+      status: 'backfill',
     },
     aliases: ['browser.version'],
     changelog: [{ version: '0.1.0', prs: [139] }],
@@ -28489,6 +31584,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.cancellation_reason': {
     brief: 'The reason why a span ended early.',
     type: 'string',
+    keys: ['sentry.cancellation_reason'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28501,6 +31597,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
     type: 'string',
+    keys: ['sentry.category', 'span.category'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28508,10 +31605,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'db',
     changelog: [{ version: '0.4.0', prs: [218] }],
+    searchAlias: {
+      name: 'span.category',
+    },
   },
   'sentry.client_sample_rate': {
     brief: 'Rate at which a span was sampled in the SDK.',
     type: 'double',
+    keys: ['sentry.client_sample_rate', 'client_sample_rate'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28519,10 +31620,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
+    searchAlias: {
+      name: 'client_sample_rate',
+    },
   },
   'sentry.description': {
     brief: 'The human-readable description of a span.',
     type: 'string',
+    keys: ['sentry.description'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28534,6 +31639,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dist': {
     brief: 'The sentry dist.',
     type: 'string',
+    keys: ['sentry.dist', 'dist'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28547,6 +31653,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
     type: 'string',
+    keys: ['sentry.domain', 'span.domain'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28554,10 +31661,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'example.com',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    searchAlias: {
+      name: 'span.domain',
+    },
   },
   'sentry.dsc.environment': {
     brief: 'The environment from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.environment'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28570,6 +31681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The ID of the project where the trace originated (i.e. the project of the SDK that started the trace). Propagated through the dynamic sampling context and set by Relay during ingestion.',
     type: 'string',
+    keys: ['sentry.dsc.project_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28581,6 +31693,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.public_key': {
     brief: 'The public key from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.public_key'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28592,6 +31705,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.release': {
     brief: 'The release identifier from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.release'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28603,6 +31717,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.sampled': {
     brief: 'Whether the event was sampled according to the dynamic sampling context.',
     type: 'boolean',
+    keys: ['sentry.dsc.sampled'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28614,6 +31729,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.sample_rate': {
     brief: 'The sample rate from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.sample_rate'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28625,6 +31741,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.trace_id': {
     brief: 'The trace ID from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.trace_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28636,6 +31753,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.dsc.transaction': {
     brief: 'The transaction name from the dynamic sampling context.',
     type: 'string',
+    keys: ['sentry.dsc.transaction'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28647,6 +31765,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.environment': {
     brief: 'The sentry environment.',
     type: 'string',
+    keys: [
+      'sentry.environment',
+      'environment',
+      'resource.deployment.environment',
+      'resource.deployment.environment.name',
+    ],
     applyScrubbing: {
       key: 'never',
     },
@@ -28655,10 +31779,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'production',
     aliases: ['environment'],
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'environment',
+    },
   },
   'sentry.event.serialized_breadcrumbs': {
     brief: 'JSON-serialized `breadcrumbs` property from a Sentry event.',
     type: 'string',
+    keys: ['sentry.event.serialized_breadcrumbs'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28669,6 +31797,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.event.serialized_contexts': {
     brief: 'JSON-serialized `contexts` property from a Sentry event.',
     type: 'string',
+    keys: ['sentry.event.serialized_contexts'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28679,6 +31808,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.event.serialized_extra': {
     brief: 'JSON-serialized `extra` property from a Sentry event.',
     type: 'string',
+    keys: ['sentry.event.serialized_extra'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28689,16 +31819,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.event.serialized_meta': {
     brief: 'JSON-serialized `_meta` for the `sentry.event.serialized_*` properties from a Sentry event.',
     type: 'string',
+    keys: ['sentry.event.serialized_meta'],
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'internal',
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.20.0', prs: [566] }],
   },
   'sentry.exclusive_time': {
     brief: 'The exclusive time duration of the span in milliseconds.',
     type: 'double',
+    keys: ['sentry.exclusive_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28710,6 +31842,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.frames.frozen': {
     brief: 'The number of frozen frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.frozen.count', 'frames.frozen', 'mobile.frozen_frames', 'sentry.frames.frozen'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28728,6 +31861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.frames.slow': {
     brief: 'The number of slow frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.slow.count', 'frames.slow', 'mobile.slow_frames', 'sentry.frames.slow'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28746,6 +31880,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.frames.total': {
     brief: 'The number of total frames rendered during the lifetime of the span.',
     type: 'integer',
+    keys: ['app.vitals.frames.total.count', 'frames.total', 'mobile.total_frames', 'sentry.frames.total'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28764,6 +31899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.graphql.operation': {
     brief: 'Indicates the type of graphql operation, emitted by the Javascript SDK.',
     type: 'string',
+    keys: ['sentry.graphql.operation'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28776,16 +31912,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
     type: 'string',
+    keys: ['sentry.group', 'span.group'],
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
     changelog: [{ version: '0.4.0', prs: [212] }],
+    searchAlias: {
+      name: 'span.group',
+    },
   },
   'sentry.http.prefetch': {
     brief: 'If an http request was a prefetch request.',
     type: 'boolean',
+    keys: ['sentry.http.prefetch'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28797,6 +31938,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.idle_span_finish_reason': {
     brief: 'The reason why an idle span ended early.',
     type: 'string',
+    keys: ['sentry.idle_span_finish_reason'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28808,6 +31950,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.is_remote': {
     brief: "Indicates whether a span's parent is remote.",
     type: 'boolean',
+    keys: ['sentry.is_remote'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28820,6 +31963,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
     type: 'string',
+    keys: ['sentry.kind', 'span.kind', 'otel.kind'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28833,10 +31977,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.3.1', prs: [190] },
     ],
     additionalContext: ['Valid attribute values are: "client", "server", "producer", "consumer" and "internal"'],
+    searchAlias: {
+      name: 'span.kind',
+    },
   },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
+    keys: ['sentry.main_thread'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28849,6 +31997,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "A parameter used in the message template. <key> can either be the number that represent the parameter's position in the template string (sentry.message.parameter.0, sentry.message.parameter.1, etc) or the parameter's name (sentry.message.parameter.item_id, sentry.message.parameter.user_id, etc)",
     type: 'string',
+    keys: ['sentry.message.parameter.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28860,6 +32009,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.message.template': {
     brief: 'The parameterized template string.',
     type: 'string',
+    keys: ['sentry.message.template'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28872,6 +32022,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The provenance of a metric.  For example, this can be set to indicate if a metric was generated by Relay from a span.',
     type: 'string',
+    keys: ['sentry.metric.source'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28883,6 +32034,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.mobile': {
     brief: 'Whether the application is using a mobile SDK. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
+    keys: ['sentry.mobile'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28894,6 +32046,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.module.<key>': {
     brief: 'A module that was loaded in the process. The key is the name of the module.',
     type: 'string',
+    keys: ['sentry.module.<key>'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28907,6 +32060,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A parameterized route for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions when the file location of the function is known.',
     type: 'string',
+    keys: ['sentry.nextjs.ssr.function.route'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28919,6 +32073,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A descriptor for a for a function in Next.js that contributes to Server-Side Rendering. Should be present on spans that track such functions.',
     type: 'string',
+    keys: ['sentry.nextjs.ssr.function.type'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28930,6 +32085,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.normalized_db_query': {
     brief: 'The normalized version of `db.query.text`.',
     type: 'string',
+    keys: ['sentry.normalized_db_query'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -28941,6 +32097,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.normalized_db_query.hash': {
     brief: 'The hash of `sentry.normalized_db_query`.',
     type: 'string',
+    keys: ['sentry.normalized_db_query.hash'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28952,6 +32109,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Used as a generic attribute representing the normalized `sentry.description`. This refers to the legacy use case of `sentry.description` where it holds relevant data depending on the type of span (e.g. database query, resource url, http request description, etc).',
     type: 'string',
+    keys: ['sentry.normalized_description'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -28963,6 +32121,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.observed_timestamp_nanos': {
     brief: 'The timestamp at which an envelope was received by Relay, in nanoseconds.',
     type: 'string',
+    keys: ['sentry.observed_timestamp_nanos'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28977,6 +32136,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.op': {
     brief: 'The operation of a span.',
     type: 'string',
+    keys: ['sentry.op', 'span.op'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28984,10 +32144,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'http.client',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'span.op',
+    },
   },
   'sentry.origin': {
     brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
     type: 'string',
+    keys: ['sentry.origin', 'origin'],
     applyScrubbing: {
       key: 'never',
     },
@@ -28995,10 +32159,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'auto.http.otel.fastify',
     changelog: [{ version: '0.1.0', prs: [68] }, { version: '0.0.0' }],
+    searchAlias: {
+      name: 'origin',
+    },
   },
   'sentry.pageload.span_id': {
     brief: 'The id of the pageload span, set by web vital spans and metrics',
     type: 'string',
+    keys: ['sentry.pageload.span_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29010,6 +32178,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.platform': {
     brief: 'The sdk platform that generated the event.',
     type: 'string',
+    keys: ['sentry.platform', 'platform'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29017,10 +32186,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'php',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'platform',
+    },
   },
   'sentry.profiler_id': {
     brief: 'The id of the currently running profiler (continuous profiling)',
     type: 'string',
+    keys: ['sentry.profiler_id', 'profiler.id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29028,11 +32201,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '18779b64dd35d1a538e7ce2dd2d3fad3',
     changelog: [{ version: '0.4.0', prs: [242] }],
+    searchAlias: {
+      name: 'profiler.id',
+    },
   },
   'sentry.profile_id': {
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     type: 'string',
+    keys: ['sentry.profile_id', 'profile.id', 'profile_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29044,10 +32221,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.19.0', prs: [497], description: 'Added profile_id as an alias' },
       { version: '0.6.0', prs: [344], description: 'Added sentry.profile_id attribute' },
     ],
+    searchAlias: {
+      name: 'profile.id',
+    },
   },
   'sentry.relay.ingress': {
     brief: 'How an item (span, log, &c.) entered Relay.',
     type: 'string',
+    keys: ['sentry.relay.ingress'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29059,6 +32240,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.relay.pipeline': {
     brief: 'An internal descriptor of which processing pipeline an item went through in Relay.',
     type: 'string',
+    keys: ['sentry.relay.pipeline'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29070,6 +32252,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.release': {
     brief: 'The sentry release.',
     type: 'string',
+    keys: ['sentry.release', 'release', 'service.version'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29078,23 +32261,31 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '7.0.0',
     aliases: ['service.version', 'release'],
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'release',
+    },
   },
   'sentry.replay_id': {
     brief: 'The id of the sentry replay.',
     type: 'string',
+    keys: ['sentry.replay_id', 'replay.id', 'replay_id'],
     applyScrubbing: {
       key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
     example: '123e4567e89b12d3a456426614174000',
-    aliases: ['replay_id'],
+    aliases: ['replay_id', 'replayId'],
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'replay.id',
+    },
   },
   'sentry.replay_is_buffering': {
     brief:
       'A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).',
     type: 'boolean',
+    keys: ['sentry.replay_is_buffering'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29106,6 +32297,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.report_event': {
     brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
     type: 'string',
+    keys: ['sentry.report_event'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29122,6 +32314,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'A list of names identifying enabled integrations. The list shouldhave all enabled integrations, including default integrations. Defaultintegrations are included because different SDK releases may contain differentdefault integrations.',
     type: 'string[]',
+    keys: ['sentry.sdk.integrations'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29133,6 +32326,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.sdk.name': {
     brief: 'The sentry sdk name.',
     type: 'string',
+    keys: ['sentry.sdk.name', 'sdk.name'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29140,10 +32334,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '@sentry/react',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'sdk.name',
+    },
   },
   'sentry.sdk.version': {
     brief: 'The sentry sdk version.',
     type: 'string',
+    keys: ['sentry.sdk.version', 'sdk.version'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29151,10 +32349,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '7.0.0',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'sdk.version',
+    },
   },
   'sentry.segment.id': {
     brief: 'The segment ID of a span',
     type: 'string',
+    keys: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29167,6 +32369,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.segment_id': {
     brief: 'The segment ID of a span',
     type: 'string',
+    keys: ['sentry.segment.id', 'sentry.segment_id', 'transaction.span_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29179,10 +32382,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['sentry.segment.id'],
     changelog: [{ version: '0.1.0', prs: [124] }],
+    searchAlias: {
+      name: 'transaction.span_id',
+    },
   },
   'sentry.segment.name': {
     brief: 'The segment name of a span',
     type: 'string',
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29194,11 +32401,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.6.0', prs: [345], description: 'Added sentry.transaction and transaction aliases' },
       { version: '0.1.0', prs: [104] },
     ],
+    searchAlias: {
+      name: 'transaction',
+    },
   },
   'sentry.segment.name.source': {
     brief:
       "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
     type: 'string',
+    keys: ['sentry.segment.name.source'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29215,6 +32426,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.server_sample_rate': {
     brief: 'Rate at which a span was sampled in Relay.',
     type: 'double',
+    keys: ['sentry.server_sample_rate', 'server_sample_rate'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29222,11 +32434,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.5,
     changelog: [{ version: '0.1.0', prs: [102] }],
+    searchAlias: {
+      name: 'server_sample_rate',
+    },
   },
   'sentry.source': {
     brief:
       "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     type: 'string',
+    keys: ['sentry.source'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29246,6 +32462,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
     type: 'string',
+    keys: ['sentry.span.source'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29270,6 +32487,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
     type: 'string',
+    keys: ['sentry.status', 'span.status'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29277,11 +32495,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ok',
     changelog: [{ version: '0.14.0', prs: [453] }],
+    searchAlias: {
+      name: 'span.status',
+    },
   },
   'sentry.status_code': {
     brief:
       'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
     type: 'integer',
+    keys: ['sentry.status_code', 'span.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29289,10 +32511,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 200,
     changelog: [{ version: '0.4.0', prs: [223, 228] }],
+    searchAlias: {
+      name: 'span.status_code',
+    },
   },
   'sentry.status.message': {
     brief: 'The from OTLP extracted status message.',
     type: 'string',
+    keys: ['sentry.status.message', 'span.status.message'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29300,10 +32526,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'foobar',
     changelog: [{ version: '0.3.1', prs: [190] }],
+    searchAlias: {
+      name: 'span.status.message',
+    },
   },
   'sentry.sveltekit.navigation.from': {
     brief: 'the navigation origin (sveltekit router)',
     type: 'string',
+    keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29311,16 +32541,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '/home',
     deprecation: {
-      replacement: 'navigation.origin',
+      replacement: 'router.navigation.origin',
       reason: 'Use the more generic attribute instead',
       status: 'backfill',
     },
-    aliases: ['navigation.origin'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' }],
+    aliases: ['navigation.origin', 'router.navigation.origin'],
+    changelog: [
+      {
+        version: '0.22.0',
+        prs: [600],
+        description: 'Re-pointed deprecation from navigation.origin to router.navigation.origin',
+      },
+      { version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.from attribute' },
+    ],
   },
   'sentry.sveltekit.navigation.to': {
     brief: 'the navigation destination',
     type: 'string',
+    keys: ['sentry.sveltekit.navigation.to'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29335,6 +32573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.sveltekit.navigation.type': {
     brief: 'The type of navigation event emitted from the sveltekit client router',
     type: 'string',
+    keys: ['router.navigation.type', 'navigation.type', 'sentry.sveltekit.navigation.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29342,16 +32581,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'link',
     deprecation: {
-      replacement: 'navigation.type',
+      replacement: 'router.navigation.type',
       reason: 'Use the more generic attribute instead',
       status: 'backfill',
     },
-    aliases: ['navigation.type'],
-    changelog: [{ version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' }],
+    aliases: ['navigation.type', 'router.navigation.type'],
+    changelog: [
+      {
+        version: '0.22.0',
+        prs: [600],
+        description: 'Re-pointed deprecation from navigation.type to router.navigation.type',
+      },
+      { version: '0.16.0', prs: [467], description: 'Added sentry.sveltekit.navigation.type attribute' },
+    ],
   },
   'sentry.thread.id': {
-    brief: 'Current “managed” thread ID.',
+    brief: 'Current "managed" thread ID.',
     type: 'integer',
+    keys: ['thread.id', 'sentry.thread.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29364,11 +32611,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     changelog: [{ version: '0.13.0', prs: [451] }],
+    searchAlias: {
+      name: 'thread.id',
+    },
   },
   'sentry.timestamp.sequence': {
     brief:
       'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
     type: 'integer',
+    keys: ['sentry.timestamp.sequence'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29380,6 +32631,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.trace_lifecycle': {
     brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
     type: 'string',
+    keys: ['sentry.trace_lifecycle', 'trace_lifecycle'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29387,11 +32639,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'stream',
     changelog: [{ version: '0.13.0', prs: [442], description: 'Added sentry.trace_lifecycle attribute' }],
+    searchAlias: {
+      name: 'trace_lifecycle',
+    },
   },
   'sentry.trace.parent_span_id': {
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
     type: 'string',
+    keys: ['sentry.trace.parent_span_id'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29408,6 +32664,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
     type: 'string',
+    keys: ['sentry.trace.status', 'trace.status'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29415,10 +32672,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ok',
     changelog: [{ version: '0.14.0', prs: [453] }],
+    searchAlias: {
+      name: 'trace.status',
+    },
   },
   'sentry.transaction': {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'never',
     },
@@ -29439,6 +32700,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.user.email': {
     brief: 'User email address.',
     type: 'string',
+    keys: ['user.email', 'sentry.user.email'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29446,13 +32708,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.email',
+      status: 'backfill',
     },
     aliases: ['user.email'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.email',
+    },
   },
   'sentry.user.geo.city': {
     brief: 'Human readable city name.',
     type: 'string',
+    keys: ['user.geo.city', 'sentry.user.geo.city'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29460,13 +32727,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.city',
+      status: 'backfill',
     },
     aliases: ['user.geo.city'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.geo.city',
+    },
   },
   'sentry.user.geo.country_code': {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: 'string',
+    keys: ['user.geo.country_code', 'sentry.user.geo.country_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29474,13 +32746,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.country_code',
+      status: 'backfill',
     },
     aliases: ['user.geo.country_code'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.geo.country_code',
+    },
   },
   'sentry.user.geo.region': {
     brief: 'Human readable region name or code.',
     type: 'string',
+    keys: ['user.geo.region', 'sentry.user.geo.region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29488,13 +32765,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.region',
+      status: 'backfill',
     },
     aliases: ['user.geo.region'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.geo.region',
+    },
   },
   'sentry.user.geo.subdivision': {
     brief: 'Human readable subdivision name.',
     type: 'string',
+    keys: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29502,13 +32784,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.geo.subdivision',
+      status: 'backfill',
     },
     aliases: ['user.geo.subdivision'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.geo.subdivision',
+    },
   },
   'sentry.user.id': {
     brief: 'Unique identifier of the user.',
     type: 'string',
+    keys: ['user.id', 'sentry.user.id'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29516,13 +32803,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.id',
+      status: 'backfill',
     },
     aliases: ['user.id'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.id',
+    },
   },
   'sentry.user.ip': {
     brief: 'The IP address of the user.',
     type: 'string',
+    keys: ['user.ip_address', 'sentry.user.ip', 'user.ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29530,13 +32822,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.ip_address',
+      status: 'backfill',
     },
     aliases: ['user.ip_address'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.ip',
+    },
   },
   'sentry.user.username': {
     brief: 'Short name or login/username of the user.',
     type: 'string',
+    keys: ['user.name', 'sentry.user.username', 'user.username'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -29544,44 +32841,55 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     deprecation: {
       replacement: 'user.name',
+      status: 'backfill',
     },
     aliases: ['user.name'],
     changelog: [{ version: '0.10.0', prs: [406] }],
+    searchAlias: {
+      name: 'user.username',
+    },
   },
   'server.address': {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
       { version: '0.0.0' },
     ],
   },
   server_name: {
-    brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+    brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
     type: 'string',
+    keys: ['device.name', 'server_name'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'example.com',
     deprecation: {
-      replacement: 'server.address',
-      reason: 'This attribute is being deprecated in favor of server.address, which is the OTel-aligned replacement.',
+      replacement: 'device.name',
+      reason: 'This attribute is being deprecated in favor of device.name.',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['device.name'],
     changelog: [
+      {
+        version: '0.21.0',
+        prs: [588, 602],
+        description: 'Alias device.name instead of the server.address alias group',
+      },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       {
         version: '0.16.0',
@@ -29593,6 +32901,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'server.port': {
     brief: 'Server port number.',
     type: 'integer',
+    keys: ['server.port', 'net.host.port', 'port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29609,6 +32918,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'service.name': {
     brief: 'Logical name of the service.',
     type: 'string',
+    keys: ['service.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29620,6 +32930,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'service.version': {
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
     type: 'string',
+    keys: ['service.version', 'sentry.release', 'release'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29632,6 +32943,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'session.id': {
     brief: 'A unique id identifying the active session at the time of setting this attribute',
     type: 'string',
+    keys: ['session.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29643,6 +32955,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   stall_percentage: {
     brief: 'The fraction of time the app was stalled. Only applies to React Native. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.stall.percentage', 'stall_percentage'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29664,6 +32977,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The combined duration of all stalls in milliseconds. Only applies to React Native. This is computed by Relay.',
     type: 'double',
+    keys: ['app.vitals.stall.duration', 'stall_total_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29684,6 +32998,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'starlette.middleware_name': {
     brief: 'The name of the Starlette middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29708,6 +33029,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'starlite.middleware_name': {
     brief: 'The name of the Starlite middleware.',
     type: 'string',
+    keys: [
+      'middleware.name',
+      'django.middleware_name',
+      'litestar.middleware_name',
+      'starlette.middleware_name',
+      'starlite.middleware_name',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29727,6 +33055,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'state.type': {
     brief: 'The type of state management library',
     type: 'string',
+    keys: ['state.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29738,6 +33067,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'subprocess.pid': {
     brief: 'The process ID of a subprocess.',
     type: 'integer',
+    keys: ['process.pid', 'subprocess.pid'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29758,9 +33088,77 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       },
     ],
   },
+  'sveltekit.load.environment': {
+    brief:
+      "The runtime environment in which the SvelteKit load function was executed. Known values are `'server'` and `'client'`.",
+    type: 'string',
+    keys: ['sveltekit.load.environment'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'server',
+    examples: ['server', 'client'],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.environment attribute' }],
+    additionalContext: [
+      'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
+    ],
+  },
+  'sveltekit.load.node_id': {
+    brief: 'The path to the SvelteKit load function.',
+    type: 'string',
+    keys: ['sveltekit.load.node_id', 'code.file.path', 'code.filepath'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'src/routes/users/:id/+page.server.ts',
+    examples: ['src/routes/users/:id/+page.server.ts'],
+    aliases: ['code.file.path', 'code.filepath'],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_id attribute' }],
+    additionalContext: [
+      'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
+    ],
+  },
+  'sveltekit.load.node_type': {
+    brief:
+      'The kind of SvelteKit load function that was executed, distinguishing page from layout and universal from server load functions.',
+    type: 'string',
+    keys: ['sveltekit.load.node_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '+page.server',
+    examples: ['+page.server', '+layout', '+layout.server'],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.load.node_type attribute' }],
+    additionalContext: [
+      'Added by the SvelteKit framework itself. The Sentry SDK only forwards the attribute to Sentry.',
+    ],
+  },
+  'sveltekit.tracing.original_name': {
+    brief: 'The original span name as emitted by SvelteKit.',
+    type: 'string',
+    keys: ['sveltekit.tracing.original_name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'sveltekit.handle.root',
+    examples: ['sveltekit.handle.root'],
+    changelog: [{ version: '0.22.0', prs: [611], description: 'Added sveltekit.tracing.original_name attribute' }],
+    additionalContext: [
+      "The Sentry SDK renames SvelteKit-emitted spans to match Sentry's span name semantics, and preserves the name SvelteKit originally set in this attribute.",
+    ],
+  },
   'thread.id': {
     brief: 'Current “managed” thread ID.',
     type: 'integer',
+    keys: ['thread.id', 'sentry.thread.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29772,6 +33170,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'thread.name': {
     brief: 'Current thread name.',
     type: 'string',
+    keys: ['thread.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29783,6 +33182,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'timber.tag': {
     brief: 'The log tag provided by the timber logging framework.',
     type: 'string',
+    keys: ['timber.tag'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29794,6 +33194,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   time_to_full_display: {
     brief: 'The duration of time to full display in milliseconds',
     type: 'double',
+    keys: ['app.vitals.ttfd.value', 'time_to_full_display'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29814,6 +33215,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   time_to_initial_display: {
     brief: 'The duration of time to initial display in milliseconds',
     type: 'double',
+    keys: ['app.vitals.ttid.value', 'time_to_initial_display'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29834,6 +33236,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   transaction: {
     brief: 'The sentry transaction (segment name).',
     type: 'string',
+    keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29859,6 +33262,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'trpc.procedure_path': {
     brief: 'The path of the tRPC procedure being called',
     type: 'string',
+    keys: ['trpc.procedure_path'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29870,6 +33274,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'trpc.procedure_type': {
     brief: 'The type of the tRPC procedure',
     type: 'string',
+    keys: ['trpc.procedure_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29881,6 +33286,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   ttfb: {
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in milliseconds',
     type: 'double',
+    keys: ['browser.web_vital.ttfb.value', 'ttfb'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29899,6 +33305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
     type: 'double',
+    keys: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29916,6 +33323,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'turbo_modules.total_call_count': {
     brief: 'The number of native module calls in the flushed call aggregate. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.call.count', 'turbo_module.total_call_count', 'turbo_modules.total_call_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29940,6 +33348,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native.',
     type: 'double',
+    keys: ['turbo_module.duration.total', 'turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29963,6 +33372,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'turbo_modules.total_error_count': {
     brief: 'The number of failed native module calls in the flushed call aggregate. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.error.count', 'turbo_module.total_error_count', 'turbo_modules.total_error_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29987,6 +33397,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.call.distinct_count', 'turbo_module.unique_methods', 'turbo_modules.unique_methods'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30012,6 +33423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.',
     type: 'string',
+    keys: ['turbo_module.arch'],
     applyScrubbing: {
       key: 'manual',
       reason:
@@ -30025,6 +33437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'turbo_module.call.count': {
     brief: 'The number of native module calls observed during the lifetime of the span. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.call.count', 'turbo_module.total_call_count', 'turbo_modules.total_call_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30038,6 +33451,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.call.distinct_count', 'turbo_module.unique_methods', 'turbo_modules.unique_methods'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30051,6 +33465,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds. Only applies to React Native.',
     type: 'double',
+    keys: ['turbo_module.duration.max'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30063,6 +33478,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration. Only applies to React Native.',
     type: 'double',
+    keys: ['turbo_module.duration.total', 'turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30076,6 +33492,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.error.count', 'turbo_module.total_error_count', 'turbo_modules.total_error_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30089,6 +33506,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`. Only applies to React Native.',
     type: 'string',
+    keys: ['turbo_module.kind'],
     applyScrubbing: {
       key: 'manual',
       reason:
@@ -30102,6 +33520,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'turbo_module.method': {
     brief: 'The name of the native module method that was called. Only applies to React Native.',
     type: 'string',
+    keys: ['turbo_module.method'],
     applyScrubbing: {
       key: 'manual',
       reason:
@@ -30116,6 +33535,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.',
     type: 'string',
+    keys: ['turbo_module.name'],
     applyScrubbing: {
       key: 'manual',
       reason:
@@ -30129,6 +33549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'turbo_module.top.duration': {
     brief: 'The total duration attributed to `turbo_module.top.name`, in milliseconds. Only applies to React Native.',
     type: 'double',
+    keys: ['turbo_module.top.duration', 'turbo_module.top_module_duration_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30142,6 +33563,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.',
     type: 'string',
+    keys: ['turbo_module.top.name', 'turbo_module.top_module'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30166,6 +33588,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.',
     type: 'double',
+    keys: ['turbo_module.top.duration', 'turbo_module.top_module_duration_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30191,6 +33614,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`. Only applies to React Native.',
     type: 'string',
+    keys: ['turbo_module.top.name', 'turbo_module.top_module'],
     applyScrubbing: {
       key: 'manual',
       reason:
@@ -30205,6 +33629,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'turbo_module.total_call_count': {
     brief: 'The number of native module calls observed during the lifetime of the span. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.call.count', 'turbo_module.total_call_count', 'turbo_modules.total_call_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30229,6 +33654,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.',
     type: 'double',
+    keys: ['turbo_module.duration.total', 'turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30253,6 +33679,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The number of native module calls that failed during the lifetime of the span. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.error.count', 'turbo_module.total_error_count', 'turbo_modules.total_error_count'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30277,6 +33704,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.',
     type: 'integer',
+    keys: ['turbo_module.call.distinct_count', 'turbo_module.unique_methods', 'turbo_modules.unique_methods'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30300,6 +33728,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   type: {
     brief: 'More granular type of the operation happening.',
     type: 'string',
+    keys: ['type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30311,6 +33740,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.component_name': {
     brief: 'The name of the associated component.',
     type: 'string',
+    keys: ['ui.component_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30322,6 +33752,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.contributes_to_ttfd': {
     brief: 'Whether the span execution contributed to the TTFD (time to fully drawn) metric.',
     type: 'boolean',
+    keys: ['ui.contributes_to_ttfd'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30333,6 +33764,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.contributes_to_ttid': {
     brief: 'Whether the span execution contributed to the TTID (time to initial display) metric.',
     type: 'boolean',
+    keys: ['ui.contributes_to_ttid'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30344,6 +33776,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.height': {
     brief: 'The height of the UI element (for Html in pixels)',
     type: 'integer',
+    keys: ['ui.element.height'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30355,6 +33788,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.id': {
     brief: 'The id of the UI element',
     type: 'string',
+    keys: ['ui.element.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30366,6 +33800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.identifier': {
     brief: 'The identifier used to measure the UI element timing',
     type: 'string',
+    keys: ['ui.element.identifier'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30377,6 +33812,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.load_time': {
     brief: 'The loading time of a UI element (from time origin to finished loading)',
     type: 'double',
+    keys: ['ui.element.load_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30388,6 +33824,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.paint_type': {
     brief: "The type of element paint. Can either be 'image-paint' or 'text-paint'",
     type: 'string',
+    keys: ['ui.element.paint_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30399,6 +33836,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.render_time': {
     brief: 'The rendering time of the UI element (from time origin to finished rendering)',
     type: 'double',
+    keys: ['ui.element.render_time'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30410,6 +33848,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.type': {
     brief: 'type of the UI element',
     type: 'string',
+    keys: ['ui.element.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30421,6 +33860,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.url': {
     brief: 'The URL of the UI element (e.g. an img src)',
     type: 'string',
+    keys: ['ui.element.url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30432,6 +33872,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'ui.element.width': {
     brief: 'The width of the UI element (for HTML in pixels)',
     type: 'integer',
+    keys: ['ui.element.width'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30443,6 +33884,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   url: {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30451,14 +33893,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/test?foo=bar#buzz',
     deprecation: {
       replacement: 'url.full',
+      status: 'backfill',
     },
-    aliases: ['url.full', 'http.url', 'aws.request.url'],
-    changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
+    aliases: ['url.full', 'http.url', 'aws.request.url', 'messaging.url'],
+    changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
+      { version: '0.1.0', prs: [61] },
+      { version: '0.0.0' },
+    ],
   },
   'url.domain': {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
+    keys: ['url.domain'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30471,6 +33919,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The fragments present in the URI. Note that this does not contain the leading # character, while the `http.fragment` attribute does.',
     type: 'string',
+    keys: ['url.fragment'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30482,14 +33931,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.full': {
     brief: 'The URL of the resource that was fetched.',
     type: 'string',
+    keys: ['url.full', 'aws.request.url', 'http.url', 'messaging.url', 'url'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'https://example.com/test?foo=bar#buzz',
-    aliases: ['http.url', 'url', 'aws.request.url'],
+    aliases: ['http.url', 'url', 'aws.request.url', 'messaging.url'],
     changelog: [
+      { version: '0.21.0', prs: [581], description: 'Added messaging.url as an alias' },
       { version: '0.19.0', prs: [488], description: 'Added aws.request.url as an alias' },
       { version: '0.1.0', prs: [108] },
       { version: '0.0.0' },
@@ -30498,6 +33949,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.path': {
     brief: 'The URI path component.',
     type: 'string',
+    keys: ['url.path'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30510,6 +33962,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
     type: 'string',
+    keys: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30517,12 +33970,37 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     hasDynamicSuffix: true,
     example: "url.path.parameter.id='123'",
-    aliases: ['params.<key>'],
-    changelog: [{ version: '0.1.0', prs: [103] }],
+    aliases: ['params.<key>', 'url.path.params.<key>'],
+    changelog: [
+      { version: '0.21.0', prs: [586], description: 'Added url.path.params.<key> as an alias' },
+      { version: '0.1.0', prs: [103] },
+    ],
+  },
+  'url.path.params.<key>': {
+    brief:
+      'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
+    type: 'string',
+    keys: ['url.path.parameter.<key>', 'params.<key>', 'url.path.params.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "url.path.params.id='123'",
+    examples: ["url.path.params.id='123'"],
+    deprecation: {
+      replacement: 'url.path.parameter.<key>',
+      reason: 'This attribute is being deprecated in favor of url.path.parameter.<key>.',
+      status: 'backfill',
+    },
+    aliases: ['url.path.parameter.<key>', 'params.<key>'],
+    changelog: [{ version: '0.21.0', prs: [586], description: 'Added url.path.params.<key> attribute' }],
   },
   'url.port': {
     brief: 'Server port number.',
     type: 'integer',
+    keys: ['url.port'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30535,6 +34013,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
     type: 'string',
+    keys: ['url.query'],
     applyScrubbing: {
       key: 'auto',
       reason:
@@ -30548,6 +34027,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.same_origin': {
     brief: "Indicates that a URL has the same origin as the current page's origin in the browser.",
     type: 'boolean',
+    keys: ['http.request.same_origin', 'url.same_origin'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30571,6 +34051,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.scheme': {
     brief: 'The URI scheme component identifying the used protocol.',
     type: 'string',
+    keys: ['url.scheme', 'http.scheme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30583,6 +34064,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'url.template': {
     brief: 'The low-cardinality template of an absolute URL path reference.',
     type: 'string',
+    keys: ['url.template'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30607,6 +34089,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user_agent.original': {
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     type: 'string',
+    keys: ['user_agent.original', 'http.user_agent'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30620,6 +34103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.email': {
     brief: 'User email address.',
     type: 'string',
+    keys: ['user.email', 'sentry.user.email'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30632,6 +34116,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.full_name': {
     brief: "User's full name.",
     type: 'string',
+    keys: ['user.full_name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30643,6 +34128,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.city': {
     brief: 'Human readable city name.',
     type: 'string',
+    keys: ['user.geo.city', 'sentry.user.geo.city'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30655,6 +34141,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.country_code': {
     brief: 'Two-letter country code (ISO 3166-1 alpha-2).',
     type: 'string',
+    keys: ['user.geo.country_code', 'sentry.user.geo.country_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30667,6 +34154,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.region': {
     brief: 'Human readable region name or code.',
     type: 'string',
+    keys: ['user.geo.region', 'sentry.user.geo.region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30679,6 +34167,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.geo.subdivision': {
     brief: 'Human readable subdivision name.',
     type: 'string',
+    keys: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30691,6 +34180,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.hash': {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
     type: 'string',
+    keys: ['user.hash'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30702,6 +34192,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.id': {
     brief: 'Unique identifier of the user.',
     type: 'string',
+    keys: ['user.id', 'sentry.user.id'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30714,6 +34205,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.ip_address': {
     brief: 'The IP address of the user.',
     type: 'string',
+    keys: ['user.ip_address', 'sentry.user.ip', 'user.ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30726,6 +34218,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.name': {
     brief: 'Short name or login/username of the user.',
     type: 'string',
+    keys: ['user.name', 'sentry.user.username', 'user.username'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30738,6 +34231,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'user.roles': {
     brief: 'Array of user roles at the time of the event.',
     type: 'string[]',
+    keys: ['user.roles'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30749,6 +34243,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.branch': {
     brief: 'Git branch name for Vercel project',
     type: 'string',
+    keys: ['vercel.branch'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30760,6 +34255,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.build_id': {
     brief: 'Identifier for the Vercel build (only present on build logs)',
     type: 'string',
+    keys: ['vercel.build_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30771,6 +34267,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.deployment_id': {
     brief: 'Identifier for the Vercel deployment',
     type: 'string',
+    keys: ['vercel.deployment_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30782,6 +34279,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.destination': {
     brief: 'Origin of the external content in Vercel (only on external logs)',
     type: 'string',
+    keys: ['vercel.destination'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30793,6 +34291,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.edge_type': {
     brief: 'Type of edge runtime in Vercel',
     type: 'string',
+    keys: ['vercel.edge_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30804,6 +34303,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.entrypoint': {
     brief: 'Entrypoint for the request in Vercel',
     type: 'string',
+    keys: ['vercel.entrypoint'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30815,6 +34315,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.execution_region': {
     brief: 'Region where the request is executed',
     type: 'string',
+    keys: ['vercel.execution_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30826,6 +34327,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.id': {
     brief: 'Unique identifier for the log entry in Vercel',
     type: 'string',
+    keys: ['vercel.id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30837,6 +34339,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.ja3_digest': {
     brief: 'JA3 fingerprint digest of Vercel request',
     type: 'string',
+    keys: ['vercel.ja3_digest'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30848,6 +34351,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.ja4_digest': {
     brief: 'JA4 fingerprint digest',
     type: 'string',
+    keys: ['vercel.ja4_digest'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30859,6 +34363,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.log_type': {
     brief: 'Vercel log output type',
     type: 'string',
+    keys: ['vercel.log_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30870,6 +34375,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.path': {
     brief: 'Function or dynamic path of the request in Vercel.',
     type: 'string',
+    keys: ['vercel.path'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30881,6 +34387,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.project_id': {
     brief: 'Identifier for the Vercel project',
     type: 'string',
+    keys: ['vercel.project_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30892,6 +34399,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.project_name': {
     brief: 'Name of the Vercel project',
     type: 'string',
+    keys: ['vercel.project_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30903,6 +34411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.cache_id': {
     brief: 'Original request ID when request is served from cache',
     type: 'string',
+    keys: ['vercel.proxy.cache_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30914,6 +34423,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.client_ip': {
     brief: 'Client IP address',
     type: 'string',
+    keys: ['vercel.proxy.client_ip'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30925,6 +34435,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.host': {
     brief: 'Hostname of the request',
     type: 'string',
+    keys: ['vercel.proxy.host'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30936,6 +34447,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.lambda_region': {
     brief: 'Region where lambda function executed',
     type: 'string',
+    keys: ['vercel.proxy.lambda_region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30947,6 +34459,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.method': {
     brief: 'HTTP method of the request',
     type: 'string',
+    keys: ['vercel.proxy.method'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30958,6 +34471,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.path': {
     brief: 'Request path with query parameters',
     type: 'string',
+    keys: ['vercel.proxy.path'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -30969,6 +34483,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.path_type': {
     brief: 'How the request was served based on its path and project configuration',
     type: 'string',
+    keys: ['vercel.proxy.path_type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30980,6 +34495,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.path_type_variant': {
     brief: 'Variant of the path type',
     type: 'string',
+    keys: ['vercel.proxy.path_type_variant'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30991,6 +34507,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.referer': {
     brief: 'Referer of the request',
     type: 'string',
+    keys: ['vercel.proxy.referer'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -31002,6 +34519,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.region': {
     brief: 'Region where the request is processed',
     type: 'string',
+    keys: ['vercel.proxy.region'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31013,6 +34531,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.response_byte_size': {
     brief: 'Size of the response in bytes',
     type: 'integer',
+    keys: ['vercel.proxy.response_byte_size'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31027,6 +34546,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.scheme': {
     brief: 'Protocol of the request',
     type: 'string',
+    keys: ['vercel.proxy.scheme'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31038,6 +34558,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.status_code': {
     brief: 'HTTP status code of the proxy request',
     type: 'integer',
+    keys: ['vercel.proxy.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31052,6 +34573,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.timestamp': {
     brief: 'Unix timestamp when the proxy request was made',
     type: 'integer',
+    keys: ['vercel.proxy.timestamp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31066,6 +34588,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.user_agent': {
     brief: 'User agent strings of the request',
     type: 'string[]',
+    keys: ['vercel.proxy.user_agent'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31077,6 +34600,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.vercel_cache': {
     brief: 'Cache status sent to the browser',
     type: 'string',
+    keys: ['vercel.proxy.vercel_cache'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31088,6 +34612,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.vercel_id': {
     brief: 'Vercel-specific identifier',
     type: 'string',
+    keys: ['vercel.proxy.vercel_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31099,6 +34624,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.waf_action': {
     brief: 'Action taken by firewall rules',
     type: 'string',
+    keys: ['vercel.proxy.waf_action'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31110,6 +34636,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.proxy.waf_rule_id': {
     brief: 'ID of the firewall rule that matched',
     type: 'string',
+    keys: ['vercel.proxy.waf_rule_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31121,6 +34648,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.request_id': {
     brief: 'Identifier of the Vercel request',
     type: 'string',
+    keys: ['vercel.request_id'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31132,6 +34660,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.source': {
     brief: 'Origin of the Vercel log (build, edge, lambda, static, external, or firewall)',
     type: 'string',
+    keys: ['vercel.source'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31143,6 +34672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.status_code': {
     brief: 'HTTP status code of the request (-1 means no response returned and the lambda crashed)',
     type: 'integer',
+    keys: ['vercel.status_code'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31171,17 +34701,25 @@ export type Attributes = {
   [AI_IS_SEARCH_REQUIRED]?: AI_IS_SEARCH_REQUIRED_TYPE;
   [AI_METADATA]?: AI_METADATA_TYPE;
   [AI_MODEL_ID]?: AI_MODEL_ID_TYPE;
+  [_AI_MODEL_ID]?: _AI_MODEL_ID_TYPE;
   [AI_MODEL_PROVIDER]?: AI_MODEL_PROVIDER_TYPE;
   [AI_PIPELINE_NAME]?: AI_PIPELINE_NAME_TYPE;
   [AI_PREAMBLE]?: AI_PREAMBLE_TYPE;
   [AI_PRESENCE_PENALTY]?: AI_PRESENCE_PENALTY_TYPE;
+  [AI_PROMPT]?: AI_PROMPT_TYPE;
   [AI_PROMPT_MESSAGES]?: AI_PROMPT_MESSAGES_TYPE;
   [AI_PROMPT_TOKENS_USED]?: AI_PROMPT_TOKENS_USED_TYPE;
+  [AI_PROMPT_TOOLS]?: AI_PROMPT_TOOLS_TYPE;
   [AI_RAW_PROMPTING]?: AI_RAW_PROMPTING_TYPE;
   [AI_RESPONSES]?: AI_RESPONSES_TYPE;
   [AI_RESPONSE_FORMAT]?: AI_RESPONSE_FORMAT_TYPE;
+  [AI_RESPONSE_ID]?: AI_RESPONSE_ID_TYPE;
+  [AI_RESPONSE_MODEL]?: AI_RESPONSE_MODEL_TYPE;
+  [AI_RESPONSE_OBJECT]?: AI_RESPONSE_OBJECT_TYPE;
   [AI_RESPONSE_TEXT]?: AI_RESPONSE_TEXT_TYPE;
+  [AI_RESPONSE_TIMESTAMP]?: AI_RESPONSE_TIMESTAMP_TYPE;
   [AI_RESPONSE_TOOLCALLS]?: AI_RESPONSE_TOOLCALLS_TYPE;
+  [AI_SCHEMA]?: AI_SCHEMA_TYPE;
   [AI_SEARCH_QUERIES]?: AI_SEARCH_QUERIES_TYPE;
   [AI_SEARCH_RESULTS]?: AI_SEARCH_RESULTS_TYPE;
   [AI_SEED]?: AI_SEED_TYPE;
@@ -31197,6 +34735,8 @@ export type Attributes = {
   [AI_TOP_P]?: AI_TOP_P_TYPE;
   [AI_TOTAL_COST]?: AI_TOTAL_COST_TYPE;
   [AI_TOTAL_TOKENS_USED]?: AI_TOTAL_TOKENS_USED_TYPE;
+  [AI_USAGE_TOKENS]?: AI_USAGE_TOKENS_TYPE;
+  [AI_VALUES]?: AI_VALUES_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [ANGULAR_VERSION]?: ANGULAR_VERSION_TYPE;
   [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
@@ -31293,6 +34833,9 @@ export type Attributes = {
   [BROWSER_BFCACHE_OUTCOME]?: BROWSER_BFCACHE_OUTCOME_TYPE;
   [BROWSER_BFCACHE_REASON]?: BROWSER_BFCACHE_REASON_TYPE;
   [BROWSER_NAME]?: BROWSER_NAME_TYPE;
+  [BROWSER_NAVIGATION_ID]?: BROWSER_NAVIGATION_ID_TYPE;
+  [BROWSER_NAVIGATION_TYPE]?: BROWSER_NAVIGATION_TYPE_TYPE;
+  [BROWSER_PAINT_TYPE]?: BROWSER_PAINT_TYPE_TYPE;
   [BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START]?: BROWSER_PERFORMANCE_NAVIGATION_ACTIVATION_START_TYPE;
   [BROWSER_PERFORMANCE_TIME_ORIGIN]?: BROWSER_PERFORMANCE_TIME_ORIGIN_TYPE;
   [BROWSER_REPORT_TYPE]?: BROWSER_REPORT_TYPE_TYPE;
@@ -31317,9 +34860,11 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_TTFB_REQUEST_TIME]?: BROWSER_WEB_VITAL_TTFB_REQUEST_TIME_TYPE;
   [BROWSER_WEB_VITAL_TTFB_VALUE]?: BROWSER_WEB_VITAL_TTFB_VALUE_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
+  [CACHE_ITEM_AGE]?: CACHE_ITEM_AGE_TYPE;
   [CACHE_ITEM_SIZE]?: CACHE_ITEM_SIZE_TYPE;
   [CACHE_KEY]?: CACHE_KEY_TYPE;
   [CACHE_OPERATION]?: CACHE_OPERATION_TYPE;
+  [CACHE_TAGS]?: CACHE_TAGS_TYPE;
   [CACHE_TTL]?: CACHE_TTL_TYPE;
   [CACHE_WRITE]?: CACHE_WRITE_TYPE;
   [CHANNEL]?: CHANNEL_TYPE;
@@ -31367,6 +34912,7 @@ export type Attributes = {
   [CULTURE_LOCALE]?: CULTURE_LOCALE_TYPE;
   [CULTURE_TIMEZONE]?: CULTURE_TIMEZONE_TYPE;
   [DB_COLLECTION_NAME]?: DB_COLLECTION_NAME_TYPE;
+  [DB_CONNECTION_STRING]?: DB_CONNECTION_STRING_TYPE;
   [DB_DRIVER_NAME]?: DB_DRIVER_NAME_TYPE;
   [DB_MONGODB_COLLECTION]?: DB_MONGODB_COLLECTION_TYPE;
   [DB_NAME]?: DB_NAME_TYPE;
@@ -31504,6 +35050,7 @@ export type Attributes = {
   [GEN_AI_REQUEST_MODEL]?: GEN_AI_REQUEST_MODEL_TYPE;
   [GEN_AI_REQUEST_PRESENCE_PENALTY]?: GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE;
   [GEN_AI_REQUEST_REASONING_LEVEL]?: GEN_AI_REQUEST_REASONING_LEVEL_TYPE;
+  [GEN_AI_REQUEST_SCHEMA]?: GEN_AI_REQUEST_SCHEMA_TYPE;
   [GEN_AI_REQUEST_SEED]?: GEN_AI_REQUEST_SEED_TYPE;
   [GEN_AI_REQUEST_STOP_SEQUENCES]?: GEN_AI_REQUEST_STOP_SEQUENCES_TYPE;
   [GEN_AI_REQUEST_TEMPERATURE]?: GEN_AI_REQUEST_TEMPERATURE_TYPE;
@@ -31513,6 +35060,7 @@ export type Attributes = {
   [GEN_AI_RESPONSE_FINISH_REASONS]?: GEN_AI_RESPONSE_FINISH_REASONS_TYPE;
   [GEN_AI_RESPONSE_ID]?: GEN_AI_RESPONSE_ID_TYPE;
   [GEN_AI_RESPONSE_MODEL]?: GEN_AI_RESPONSE_MODEL_TYPE;
+  [GEN_AI_RESPONSE_OBJECT]?: GEN_AI_RESPONSE_OBJECT_TYPE;
   [GEN_AI_RESPONSE_STREAMING]?: GEN_AI_RESPONSE_STREAMING_TYPE;
   [GEN_AI_RESPONSE_TEXT]?: GEN_AI_RESPONSE_TEXT_TYPE;
   [GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK]?: GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE;
@@ -31532,7 +35080,9 @@ export type Attributes = {
   [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
   [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
+  [_GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
+  [_GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
@@ -31545,6 +35095,8 @@ export type Attributes = {
   [GRAPHQL_DOCUMENT]?: GRAPHQL_DOCUMENT_TYPE;
   [GRAPHQL_OPERATION_NAME]?: GRAPHQL_OPERATION_NAME_TYPE;
   [GRAPHQL_OPERATION_TYPE]?: GRAPHQL_OPERATION_TYPE_TYPE;
+  [GRAPHQL_PROCESSING_TYPE]?: GRAPHQL_PROCESSING_TYPE_TYPE;
+  [GRAPHQL_SOURCE]?: GRAPHQL_SOURCE_TYPE;
   [GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS]?: GRPC_ERROR_BAD_REQUEST_FIELD_VIOLATIONS_TYPE;
   [GRPC_ERROR_DEBUG_INFO_DETAIL]?: GRPC_ERROR_DEBUG_INFO_DETAIL_TYPE;
   [GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES]?: GRPC_ERROR_DEBUG_INFO_STACK_ENTRIES_TYPE;
@@ -31567,8 +35119,12 @@ export type Attributes = {
   [HTTP_METHOD]?: HTTP_METHOD_TYPE;
   [HTTP_QUERY]?: HTTP_QUERY_TYPE;
   [HTTP_REQUEST_BODY_DATA]?: HTTP_REQUEST_BODY_DATA_TYPE;
+  [HTTP_REQUEST_BODY_DECODED_SIZE]?: HTTP_REQUEST_BODY_DECODED_SIZE_TYPE;
+  [HTTP_REQUEST_BODY_SIZE]?: HTTP_REQUEST_BODY_SIZE_TYPE;
   [HTTP_REQUEST_CONNECTION_END]?: HTTP_REQUEST_CONNECTION_END_TYPE;
   [HTTP_REQUEST_CONNECT_START]?: HTTP_REQUEST_CONNECT_START_TYPE;
+  [HTTP_REQUEST_CONTENT_LENGTH]?: HTTP_REQUEST_CONTENT_LENGTH_TYPE;
+  [HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
@@ -31585,18 +35141,22 @@ export type Attributes = {
   [HTTP_REQUEST_SECURE_CONNECTION_START]?: HTTP_REQUEST_SECURE_CONNECTION_START_TYPE;
   [HTTP_REQUEST_TIME_TO_FIRST_BYTE]?: HTTP_REQUEST_TIME_TO_FIRST_BYTE_TYPE;
   [HTTP_REQUEST_WORKER_START]?: HTTP_REQUEST_WORKER_START_TYPE;
+  [HTTP_RESPONSE_BODY_DECODED_SIZE]?: HTTP_RESPONSE_BODY_DECODED_SIZE_TYPE;
   [HTTP_RESPONSE_BODY_SIZE]?: HTTP_RESPONSE_BODY_SIZE_TYPE;
   [HTTP_RESPONSE_CONTENT_LENGTH]?: HTTP_RESPONSE_CONTENT_LENGTH_TYPE;
+  [HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_RESPONSE_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_RESPONSE_HEADER_CONTENT_LENGTH]?: HTTP_RESPONSE_HEADER_CONTENT_LENGTH_TYPE;
   [HTTP_RESPONSE_HEADER_KEY]?: HTTP_RESPONSE_HEADER_KEY_TYPE;
   [HTTP_RESPONSE_SIZE]?: HTTP_RESPONSE_SIZE_TYPE;
   [HTTP_RESPONSE_STATUS_CODE]?: HTTP_RESPONSE_STATUS_CODE_TYPE;
+  [HTTP_RESPONSE_STATUS_TEXT]?: HTTP_RESPONSE_STATUS_TEXT_TYPE;
   [HTTP_RESPONSE_TRANSFER_SIZE]?: HTTP_RESPONSE_TRANSFER_SIZE_TYPE;
   [HTTP_ROUTE]?: HTTP_ROUTE_TYPE;
   [HTTP_SCHEME]?: HTTP_SCHEME_TYPE;
   [HTTP_SERVER_NAME]?: HTTP_SERVER_NAME_TYPE;
   [HTTP_SERVER_REQUEST_TIME_IN_QUEUE]?: HTTP_SERVER_REQUEST_TIME_IN_QUEUE_TYPE;
   [HTTP_STATUS_CODE]?: HTTP_STATUS_CODE_TYPE;
+  [HTTP_STATUS_TEXT]?: HTTP_STATUS_TEXT_TYPE;
   [HTTP_TARGET]?: HTTP_TARGET_TYPE;
   [HTTP_URL]?: HTTP_URL_TYPE;
   [HTTP_USER_AGENT]?: HTTP_USER_AGENT_TYPE;
@@ -31612,6 +35172,7 @@ export type Attributes = {
   [JVM_THREAD_STATE]?: JVM_THREAD_STATE_TYPE;
   [KOA_NAME]?: KOA_NAME_TYPE;
   [KOA_TYPE]?: KOA_TYPE_TYPE;
+  [LANGCHAIN_CHAIN_NAME]?: LANGCHAIN_CHAIN_NAME_TYPE;
   [LCP]?: LCP_TYPE;
   [LCP_ELEMENT]?: LCP_ELEMENT_TYPE;
   [LCP_ID]?: LCP_ID_TYPE;
@@ -31661,6 +35222,7 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_CONVERSATION_ID]?: MESSAGING_CONVERSATION_ID_TYPE;
   [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
   [MESSAGING_DESTINATION_KIND]?: MESSAGING_DESTINATION_KIND_TYPE;
@@ -31673,12 +35235,18 @@ export type Attributes = {
   [MESSAGING_MESSAGE_CONVERSATION_ID]?: MESSAGING_MESSAGE_CONVERSATION_ID_TYPE;
   [MESSAGING_MESSAGE_ENVELOPE_SIZE]?: MESSAGING_MESSAGE_ENVELOPE_SIZE_TYPE;
   [MESSAGING_MESSAGE_ID]?: MESSAGING_MESSAGE_ID_TYPE;
+  [_MESSAGING_MESSAGE_ID]?: _MESSAGING_MESSAGE_ID_TYPE;
   [MESSAGING_MESSAGE_RECEIVE_LATENCY]?: MESSAGING_MESSAGE_RECEIVE_LATENCY_TYPE;
   [MESSAGING_MESSAGE_RETRY_COUNT]?: MESSAGING_MESSAGE_RETRY_COUNT_TYPE;
+  [MESSAGING_OPERATION]?: MESSAGING_OPERATION_TYPE;
   [MESSAGING_OPERATION_NAME]?: MESSAGING_OPERATION_NAME_TYPE;
   [MESSAGING_OPERATION_TYPE]?: MESSAGING_OPERATION_TYPE_TYPE;
+  [MESSAGING_PROTOCOL]?: MESSAGING_PROTOCOL_TYPE;
+  [MESSAGING_PROTOCOL_VERSION]?: MESSAGING_PROTOCOL_VERSION_TYPE;
   [MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY]?: MESSAGING_RABBITMQ_DESTINATION_ROUTING_KEY_TYPE;
+  [MESSAGING_RABBITMQ_ROUTING_KEY]?: MESSAGING_RABBITMQ_ROUTING_KEY_TYPE;
   [MESSAGING_SYSTEM]?: MESSAGING_SYSTEM_TYPE;
+  [MESSAGING_URL]?: MESSAGING_URL_TYPE;
   [METHOD]?: METHOD_TYPE;
   [MIDDLEWARE_NAME]?: MIDDLEWARE_NAME_TYPE;
   [NAVIGATION_ORIGIN]?: NAVIGATION_ORIGIN_TYPE;
@@ -31751,11 +35319,15 @@ export type Attributes = {
   [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
+  [REPLAYID]?: REPLAYID_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
   [RESOURCE_DEPLOYMENT_ENVIRONMENT]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE;
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE;
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
   [ROUTE]?: ROUTE_TYPE;
+  [ROUTER_NAVIGATION_ORIGIN]?: ROUTER_NAVIGATION_ORIGIN_TYPE;
+  [ROUTER_NAVIGATION_ROUTE_ID]?: ROUTER_NAVIGATION_ROUTE_ID_TYPE;
+  [ROUTER_NAVIGATION_TYPE]?: ROUTER_NAVIGATION_TYPE_TYPE;
   [RPC_GRPC_STATUS_CODE]?: RPC_GRPC_STATUS_CODE_TYPE;
   [RPC_METHOD]?: RPC_METHOD_TYPE;
   [RPC_RESPONSE_STATUS_CODE]?: RPC_RESPONSE_STATUS_CODE_TYPE;
@@ -31868,6 +35440,10 @@ export type Attributes = {
   [STARLITE_MIDDLEWARE_NAME]?: STARLITE_MIDDLEWARE_NAME_TYPE;
   [STATE_TYPE]?: STATE_TYPE_TYPE;
   [SUBPROCESS_PID]?: SUBPROCESS_PID_TYPE;
+  [SVELTEKIT_LOAD_ENVIRONMENT]?: SVELTEKIT_LOAD_ENVIRONMENT_TYPE;
+  [SVELTEKIT_LOAD_NODE_ID]?: SVELTEKIT_LOAD_NODE_ID_TYPE;
+  [SVELTEKIT_LOAD_NODE_TYPE]?: SVELTEKIT_LOAD_NODE_TYPE_TYPE;
+  [SVELTEKIT_TRACING_ORIGINAL_NAME]?: SVELTEKIT_TRACING_ORIGINAL_NAME_TYPE;
   [THREAD_ID]?: THREAD_ID_TYPE;
   [THREAD_NAME]?: THREAD_NAME_TYPE;
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
@@ -31918,6 +35494,7 @@ export type Attributes = {
   [URL_FULL]?: URL_FULL_TYPE;
   [URL_PATH]?: URL_PATH_TYPE;
   [URL_PATH_PARAMETER_KEY]?: URL_PATH_PARAMETER_KEY_TYPE;
+  [URL_PATH_PARAMS_KEY]?: URL_PATH_PARAMS_KEY_TYPE;
   [URL_PORT]?: URL_PORT_TYPE;
   [URL_QUERY]?: URL_QUERY_TYPE;
   [URL_SAME_ORIGIN]?: URL_SAME_ORIGIN_TYPE;

@@ -9,7 +9,7 @@
   "example": "/var/my.sock",
   "alias": ["network.local.address", "net.host.ip"],
   "deprecation": {
-    "_status": null,
+    "_status": "backfill",
     "replacement": "network.local.address"
   },
   "visibility": "public",

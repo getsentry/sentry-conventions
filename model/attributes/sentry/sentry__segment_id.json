@@ -13,6 +13,9 @@
     "replacement": "sentry.segment.id"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "transaction.span_id"
+  },
   "changelog": [
     {
       "version": "0.1.0",

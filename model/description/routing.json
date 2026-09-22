@@ -5,7 +5,7 @@
       "name": "Router",
       "brief": "Operations that match and dispatch requests or navigations through an application router.",
       "ops": ["router"],
-      "templates": ["{{navigation.route.id}}", "{{http.route}}", "{{url.template}}", "{{url.path}}"],
+      "templates": ["{{router.navigation.route.id}}", "{{http.route}}", "{{url.template}}", "{{url.path}}"],
       "examples": ["UserProfile", "/users/:id", "/users/{id}", "/users/123"]
     }
   ]

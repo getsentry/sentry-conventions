@@ -9,9 +9,12 @@
   "alias": ["user.geo.subdivision"],
   "deprecation": {
     "replacement": "user.geo.subdivision",
-    "_status": null
+    "_status": "backfill"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "user.geo.subdivision"
+  },
   "changelog": [
     {
       "version": "0.10.0",

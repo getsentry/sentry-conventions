@@ -7,8 +7,14 @@
   },
   "is_in_otel": true,
   "example": "send",
+  "alias": ["messaging.operation"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.21.0",
+      "prs": [581],
+      "description": "Added messaging.operation as an alias"
+    },
     {
       "version": "0.11.0",
       "prs": [392],

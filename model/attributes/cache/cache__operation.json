@@ -6,7 +6,7 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": "get",
+  "examples": ["get", "put", "remove"],
   "visibility": "public",
   "changelog": [
     {

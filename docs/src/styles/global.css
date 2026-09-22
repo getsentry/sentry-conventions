@@ -351,6 +351,59 @@
   .section-anchor:focus-visible .section-anchor-marker {
     @apply opacity-100;
   }
+
+  /* Info tooltip: shows instantly on hover/focus, unlike the browser's native
+     title attribute which waits ~1s before appearing. */
+  /* The glyph is a solid disc, so no ring here — a border around it would just
+     compete with the icon's own outline at this size. */
+  .info-tooltip {
+    @apply relative inline-flex items-center justify-center align-middle w-4 h-4
+           text-text-muted cursor-help transition-colors duration-fast;
+  }
+
+  .info-tooltip:hover,
+  .info-tooltip:focus-visible {
+    @apply text-accent;
+  }
+
+  .info-tooltip:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent rounded-full;
+  }
+
+  /* Nudge onto the pixel grid so the disc edge stays sharp. */
+  .info-tooltip svg {
+    @apply block shrink-0;
+    shape-rendering: geometricPrecision;
+  }
+
+  .info-tooltip-content {
+    @apply invisible absolute bottom-[calc(100%+8px)] left-1/2 z-30 w-max max-w-[260px]
+           -translate-x-1/2 rounded-md border border-border-light bg-bg-primary
+           px-3 py-2 text-xs font-normal normal-case tracking-normal leading-relaxed
+           text-text-secondary opacity-0 shadow-lg transition-opacity duration-fast;
+  }
+
+  /* Arrow pointing down at the icon. */
+  .info-tooltip-content::after {
+    @apply absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent content-[''];
+    border-top-color: var(--color-border-light);
+  }
+
+  .info-tooltip:hover .info-tooltip-content,
+  .info-tooltip:focus-visible .info-tooltip-content {
+    @apply visible opacity-100;
+  }
+
+  /* Flip below the icon when there is no room above (first card in a list). */
+  .info-tooltip-content.info-tooltip-below {
+    @apply bottom-auto top-[calc(100%+8px)];
+  }
+
+  .info-tooltip-content.info-tooltip-below::after {
+    @apply top-auto bottom-full;
+    border-top-color: transparent;
+    border-bottom-color: var(--color-border-light);
+  }
 }
 
 @layer utilities {

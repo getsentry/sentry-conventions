@@ -9,6 +9,9 @@
   "example": "production",
   "alias": ["environment"],
   "visibility": "public",
+  "search_alias": {
+    "name": "environment"
+  },
   "changelog": [
     {
       "version": "0.0.0"

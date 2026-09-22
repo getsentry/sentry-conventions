@@ -1,0 +1,29 @@
+{
+  "brief": "Model Context Protocol (MCP)",
+  "operations": [
+    {
+      "name": "Server",
+      "brief": "MCP server-side operations. Processing of incoming MCP requests initiated by a client, such as tool calls, prompt requests, and resource reads.",
+      "ops": ["mcp.server"],
+      "templates": [
+        "{{mcp.method.name}} {{gen_ai.tool.name}}",
+        "{{mcp.method.name}} {{gen_ai.prompt.name}}",
+        "{{mcp.method.name}} {{mcp.resource.uri}}",
+        "{{mcp.method.name}}"
+      ],
+      "examples": [
+        "tools/call get-weather",
+        "prompts/get analyze-code",
+        "resources/read postgres://database/customers/schema",
+        "initialize"
+      ]
+    },
+    {
+      "name": "Notification",
+      "brief": "MCP notifications. One-way messages exchanged between an MCP client and server that do not expect a response.",
+      "ops": ["mcp.notification.client_to_server", "mcp.notification.server_to_client"],
+      "templates": ["{{mcp.method.name}}"],
+      "examples": ["notifications/initialized", "notifications/cancelled", "notifications/progress"]
+    }
+  ]
+}

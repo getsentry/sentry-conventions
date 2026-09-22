@@ -9,9 +9,12 @@
   "alias": ["user.geo.region"],
   "deprecation": {
     "replacement": "user.geo.region",
-    "_status": null
+    "_status": "backfill"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "user.geo.region"
+  },
   "changelog": [
     {
       "version": "0.10.0",

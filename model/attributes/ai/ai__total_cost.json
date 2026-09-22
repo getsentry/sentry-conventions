@@ -13,6 +13,10 @@
     "replacement": "gen_ai.cost.total_tokens"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "ai.total_cost",
+    "type": "currency"
+  },
   "changelog": [
     {
       "version": "0.5.0",

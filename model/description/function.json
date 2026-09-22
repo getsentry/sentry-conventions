@@ -1,0 +1,12 @@
+{
+  "brief": "Function",
+  "operations": [
+    {
+      "name": "Function execution",
+      "brief": "The execution of a function or a set of instructions that isn't covered by a more specific operation.",
+      "ops": ["function"],
+      "templates": ["{{code.function.name}}"],
+      "examples": ["server_request", "handleSubmit"]
+    }
+  ]
+}

@@ -9,6 +9,9 @@
   "example": 404,
   "alias": ["http.status_code"],
   "visibility": "public",
+  "search_alias": {
+    "name": "http.response_status_code"
+  },
   "changelog": [
     {
       "version": "0.4.0",

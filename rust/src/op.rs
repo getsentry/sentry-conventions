@@ -90,6 +90,9 @@ pub const UI: &str = "ui";
 /// A task that is taken on the main UI thread. Typically used to indicate to users about things like the [Long Tasks API](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming).
 pub const UI_TASK: &str = "ui.task";
 
+/// Looking up which component a name in a template refers to, before that component renders. Ember does this for every component it renders. The render itself is a separate `ui.render` span.
+pub const UI_RESOLVE: &str = "ui.resolve";
+
 pub const UI_RENDER: &str = "ui.render";
 
 /// Mounting of a UI component or application (e.g. initial render/bootstrap).
@@ -200,6 +203,15 @@ pub const GEN_AI_GENERATE_CONTENT: &str = "gen_ai.generate_content";
 /// Reranking of documents or results by a generative AI model
 pub const GEN_AI_RERANK: &str = "gen_ai.rerank";
 
+/// Creation of an AI agent that can later be invoked to perform a task
+pub const GEN_AI_CREATE_AGENT: &str = "gen_ai.create_agent";
+
+/// An interaction with a generative AI model through a responses API
+pub const GEN_AI_RESPONSES: &str = "gen_ai.responses";
+
+/// A text completion request to a generative AI model
+pub const GEN_AI_TEXT_COMPLETION: &str = "gen_ai.text_completion";
+
 // Path: model/op/general.json
 // Name: general
 
@@ -211,6 +223,19 @@ pub const FUNCTION: &str = "function";
 
 /// A user-defined measurement of the duration between two points in time
 pub const MEASURE: &str = "measure";
+
+// Path: model/op/mcp.json
+// Name: mcp
+
+// Description: Operations related to Model Context Protocol (MCP) interactions
+/// A request handled by an MCP server (e.g. a tool call, resource read, or prompt request).
+pub const MCP_SERVER: &str = "mcp.server";
+
+/// A notification sent from an MCP client to an MCP server.
+pub const MCP_NOTIFICATION_CLIENT_TO_SERVER: &str = "mcp.notification.client_to_server";
+
+/// A notification sent from an MCP server to an MCP client.
+pub const MCP_NOTIFICATION_SERVER_TO_CLIENT: &str = "mcp.notification.server_to_client";
 
 // Path: model/op/messaging.json
 // Name: messaging
@@ -263,12 +288,18 @@ pub const QUEUE_TASK_RQ: &str = "queue.task.rq";
 
 pub const APP: &str = "app";
 
+/// The time it takes to check for an available over-the-air (OTA) update.
+pub const APP_UPDATE_CHECK: &str = "app.update.check";
+
+/// The time it takes to download an over-the-air (OTA) update.
+pub const APP_UPDATE_DOWNLOAD: &str = "app.update.download";
+
 pub const FILE: &str = "file";
 
 pub const SERIALIZE: &str = "serialize";
 
 /// A call from JavaScript into a React Native native module, or an aggregate of such calls.
-pub const MOBILE_TURBO_MODULE_SPAN_OP: &str = "turbo_module";
+pub const TURBO_MODULE: &str = "turbo_module";
 
 // Path: model/op/object.json
 // Name: object

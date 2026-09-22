@@ -6,7 +6,7 @@
       "brief": "Operations that match and dispatch requests or navigations through an application router.",
       "is_in_otel": false,
       "ops": ["router"],
-      "templates": ["{{navigation.route.id}}", "{{http.route}}", "{{url.template}}", "Router"],
+      "templates": ["{{router.navigation.route.id}}", "{{http.route}}", "{{url.template}}", "Router"],
       "examples": ["UserProfile", "/users/:id", "/users/{id}", "Router"]
     }
   ]

@@ -9,9 +9,12 @@
   "alias": ["user.name"],
   "deprecation": {
     "replacement": "user.name",
-    "_status": null
+    "_status": "backfill"
   },
   "visibility": "public",
+  "search_alias": {
+    "name": "user.username"
+  },
   "changelog": [
     {
       "version": "0.10.0",

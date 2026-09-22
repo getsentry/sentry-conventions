@@ -7,9 +7,14 @@
   },
   "is_in_otel": true,
   "example": "gpt-4-turbo-preview",
-  "alias": ["ai.model_id"],
+  "alias": ["ai.model_id", "ai.model.id"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.21.0",
+      "prs": [583],
+      "description": "Added ai.model.id as an alias"
+    },
     {
       "version": "0.1.0",
       "prs": [62, 127]
