@@ -10,6 +10,11 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "prs": [647],
+      "description": "Limit brief to mobile attributes and remove server_name alias"
+    },
+    {
       "version": "0.21.0",
       "prs": [602],
       "description": "Added server_name as an alias"

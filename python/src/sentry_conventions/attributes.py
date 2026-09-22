@@ -10897,6 +10897,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
+            ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
                 description="Added net.peer.name as an alias",
@@ -15918,6 +15921,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="localhost",
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[647],
+                description="Limit brief to mobile attributes and remove server_name alias",
+            ),
+            ChangelogEntry(
                 version="0.21.0", prs=[602], description="Added server_name as an alias"
             ),
             ChangelogEntry(
@@ -19043,6 +19051,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
+            ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
                 description="Added net.peer.name as an alias",
@@ -19772,6 +19783,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -21729,6 +21743,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
+            ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
                 description="Added net.peer.name as an alias",
@@ -21807,6 +21824,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server_name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -24798,6 +24818,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
+            ChangelogEntry(
                 version="next",
                 prs=[645],
                 description="Broaden brief to allow hostnames",
@@ -24863,6 +24886,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[647],
+                description="Alias the server.address alias group",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],

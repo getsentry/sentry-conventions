@@ -16,6 +16,11 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "prs": [647],
+      "description": "Added server_name as an alias"
+    },
+    {
       "version": "0.21.0",
       "prs": [588, 602],
       "description": "Added the server.address alias group to net.peer.name"

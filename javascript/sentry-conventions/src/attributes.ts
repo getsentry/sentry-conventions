@@ -20502,6 +20502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address attribute' },
     ],
@@ -24664,6 +24665,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'localhost',
     changelog: [
+      { version: 'next', prs: [647], description: 'Limit brief to mobile attributes and remove server_name alias' },
       { version: '0.21.0', prs: [602], description: 'Added server_name as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.name attribute' },
     ],
@@ -27312,6 +27314,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'net.peer.name',
     ],
     changelog: [
+      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -27930,6 +27933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -29806,6 +29810,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -29868,6 +29873,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
     changelog: [
+      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added the server.address alias group to net.peer.name' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -32341,6 +32347,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
       { version: 'next', prs: [645], description: 'Broaden brief to allow hostnames' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
@@ -32365,6 +32372,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: 'next', prs: [647], description: 'Alias the server.address alias group' },
       {
         version: '0.21.0',
         prs: [588, 602],

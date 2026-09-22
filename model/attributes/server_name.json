@@ -16,6 +16,11 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "prs": [647],
+      "description": "Alias the server.address alias group"
+    },
+    {
       "version": "0.21.0",
       "prs": [588, 602],
       "description": "Alias device.name instead of the server.address alias group"

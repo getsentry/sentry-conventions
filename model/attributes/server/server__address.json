@@ -12,6 +12,11 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [647],
+      "description": "Added server_name as an alias"
+    },
+    {
+      "version": "next",
       "prs": [645],
       "description": "Broaden brief to allow hostnames"
     },
