@@ -1,0 +1,53 @@
+{
+  "brief": "UI",
+  "operations": [
+    {
+      "name": "UI component",
+      "brief": "Mounting, updating, rendering, unmounting, or resolving a UI component.",
+      "ops": ["ui.mount", "ui.update", "ui.render", "ui.unmount", "ui.resolve", "ui"],
+      "templates": ["{{ui.component_name}}"],
+      "examples": ["HomeButton", "UserProfile"]
+    },
+    {
+      "name": "Main UI thread blocked",
+      "brief": "A long task or long animation frame on the main UI thread.",
+      "ops": ["ui.long_task", "ui.long_animation_frame"],
+      "templates": ["{{code.function.name}}", "{{browser.script.invoker}}"],
+      "examples": ["handleClick", "Window.requestAnimationFrame"]
+    },
+    {
+      "name": "UI action",
+      "brief": "A user interaction that starts a new trace segment, described by the route it occurred on.",
+      "ops": ["ui.action", "ui.action.click"],
+      "templates": [
+        "{{router.navigation.route.id}}",
+        "{{url.template}}",
+        "{{http.route}}",
+        "{{url.path}}",
+        "{{url.full}}"
+      ],
+      "examples": ["UserProfile", "/users/:id", "/users/123", "http://example.com/users/123"]
+    },
+    {
+      "name": "UI interaction",
+      "brief": "A user interaction measured via Interaction to Next Paint (INP) or the Event Timing API, described by the element the user interacted with.",
+      "ops": ["ui.interaction.click", "ui.interaction.hover", "ui.interaction.drag", "ui.interaction.press"],
+      "templates": ["{{browser.web_vital.inp.target}}", "{{ui.component_name}}"],
+      "examples": ["body > div#app > button.submit", "HomeButton"]
+    },
+    {
+      "name": "Largest contentful paint",
+      "brief": "A Largest Contentful Paint (LCP) web vital measurement.",
+      "ops": ["ui.webvital.lcp"],
+      "templates": ["{{browser.web_vital.lcp.element}}", "{{ui.component_name}}"],
+      "examples": ["body > div#app > div#container > div", "HeroImage"]
+    },
+    {
+      "name": "Layout shift",
+      "brief": "A Cumulative Layout Shift (CLS) web vital measurement, described by the first of its layout shift sources.",
+      "ops": ["ui.webvital.cls"],
+      "templates": ["{{browser.web_vital.cls.source.<key>}}", "{{ui.component_name}}"],
+      "examples": ["body > div#app", "HeroImage"]
+    }
+  ]
+}
