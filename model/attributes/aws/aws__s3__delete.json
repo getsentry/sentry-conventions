@@ -7,15 +7,11 @@
   },
   "is_in_otel": true,
   "visibility": "public",
-  "examples": [
-    "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
-  ],
+  "examples": ["Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"],
   "changelog": [
     {
       "version": "next",
-      "prs": [
-        644
-      ],
+      "prs": [644],
       "description": "Added aws.s3.delete attribute"
     }
   ]
