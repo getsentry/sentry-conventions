@@ -16861,7 +16861,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
 // Path: model/attributes/server/server__address.json
 
 /**
- * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server.address`
+ * Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user. `server.address`
  *
  * Attribute Value Type: `string` {@link SERVER_ADDRESS_TYPE}
  *
@@ -33265,7 +33265,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'server.address': {
     brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+      'Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.',
     type: 'string',
     keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
     applyScrubbing: {
@@ -33276,6 +33276,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: 'next', prs: [645], description: 'Broaden brief to allow hostnames' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
