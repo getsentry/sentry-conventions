@@ -14,7 +14,8 @@
       "description": "The time it takes to download an over-the-air (OTA) update."
     },
     {
-      "name": "ui"
+      "name": "ui",
+      "description": "Operations related to mobile UI."
     },
     {
       "name": "navigation"
@@ -27,6 +28,10 @@
     },
     {
       "name": "http"
+    },
+    {
+      "name": "turbo_module",
+      "description": "A call from JavaScript into a React Native native module, or an aggregate of such calls."
     }
   ]
 }

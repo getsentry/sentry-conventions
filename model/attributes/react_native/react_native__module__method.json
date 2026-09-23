@@ -1,0 +1,20 @@
+{
+  "key": "react_native.module.method",
+  "brief": "The name of the native module method that was called.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual",
+    "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["getUniqueId"],
+  "alias": ["turbo_module.method"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [564],
+      "description": "Added react_native.module.method attribute"
+    }
+  ]
+}

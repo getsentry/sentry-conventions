@@ -1,0 +1,19 @@
+{
+  "key": "react_native.module.call.count",
+  "brief": "The number of native module calls observed during the lifetime of the span.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [42],
+  "alias": ["turbo_module.total_call_count", "turbo_modules.total_call_count"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [564],
+      "description": "Added react_native.module.call.count attribute"
+    }
+  ]
+}

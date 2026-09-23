@@ -922,6 +922,8 @@ export const SEARCH_BROWSER__VERSION = 'browser.version';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_CLS_REPORT_EVENT}. `browser.web_vital.cls.report_event`
+ *
+ * @deprecated
  */
 export const SEARCH_BROWSER__WEB_VITAL__CLS__REPORT_EVENT = 'browser.web_vital.cls.report_event';
 
@@ -944,6 +946,16 @@ export const SEARCH_BROWSER__WEB_VITAL__FCP__VALUE = 'browser.web_vital.fcp.valu
  * Search name for {@link attributes.BROWSER_WEB_VITAL_FP_VALUE}. `browser.web_vital.fp.value`
  */
 export const SEARCH_BROWSER__WEB_VITAL__FP__VALUE = 'browser.web_vital.fp.value';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_INTERACTION_TYPE}. `browser.web_vital.inp.interaction_type`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE = 'browser.web_vital.inp.interaction_type';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_TARGET}. `browser.web_vital.inp.target`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__TARGET = 'browser.web_vital.inp.target';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_VALUE}. `browser.web_vital.inp.value`
@@ -972,6 +984,8 @@ export const SEARCH_BROWSER__WEB_VITAL__LCP__RENDER_TIME = 'browser.web_vital.lc
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_REPORT_EVENT}. `browser.web_vital.lcp.report_event`
+ *
+ * @deprecated
  */
 export const SEARCH_BROWSER__WEB_VITAL__LCP__REPORT_EVENT = 'browser.web_vital.lcp.report_event';
 
@@ -3588,6 +3602,61 @@ export const SEARCH_QUERY__KEY = 'query.<key>';
 export const SEARCH_REACT__VERSION = 'react.version';
 
 /**
+ * Search name for {@link attributes.REACT_NATIVE_ARCHITECTURE}. `react_native.architecture`
+ */
+export const SEARCH_REACT_NATIVE__ARCHITECTURE = 'react_native.architecture';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_CALL_COUNT}. `react_native.module.call.count`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__CALL__COUNT = 'react_native.module.call.count';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT}. `react_native.module.call.distinct_count`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__CALL__DISTINCT_COUNT = 'react_native.module.call.distinct_count';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_DURATION_MAX}. `react_native.module.duration.max`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__DURATION__MAX = 'react_native.module.duration.max';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_DURATION_TOTAL}. `react_native.module.duration.total`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__DURATION__TOTAL = 'react_native.module.duration.total';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_ERROR_COUNT}. `react_native.module.error.count`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__ERROR__COUNT = 'react_native.module.error.count';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_KIND}. `react_native.module.kind`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__KIND = 'react_native.module.kind';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_METHOD}. `react_native.module.method`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__METHOD = 'react_native.module.method';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_NAME}. `react_native.module.name`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__NAME = 'react_native.module.name';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_TOP_DURATION}. `react_native.module.top.duration`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__TOP__DURATION = 'react_native.module.top.duration';
+
+/**
+ * Search name for {@link attributes.REACT_NATIVE_MODULE_TOP_NAME}. `react_native.module.top.name`
+ */
+export const SEARCH_REACT_NATIVE__MODULE__TOP__NAME = 'react_native.module.top.name';
+
+/**
  * Search name for {@link attributes.REDIS_COMMAND}. `redis.command`
  *
  * @deprecated Use {@link SEARCH_DB__OPERATION__NAME} (`db.operation.name`) instead
@@ -3927,6 +3996,11 @@ export const SEARCH_SENTRY__HTTP__PREFETCH = 'sentry.http.prefetch';
  * Search name for {@link attributes.SENTRY_IDLE_SPAN_FINISH_REASON}. `sentry.idle_span_finish_reason`
  */
 export const SEARCH_SENTRY__IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
+
+/**
+ * Search name for {@link attributes.SENTRY_IS_LOCALHOST}. `sentry.is_localhost`
+ */
+export const SEARCH_SENTRY__IS_LOCALHOST = 'sentry.is_localhost';
 
 /**
  * Search name for {@link attributes.SENTRY_IS_REMOTE}. `sentry.is_remote`
@@ -4452,6 +4526,97 @@ export const SEARCH_TTFB = 'ttfb';
  * @deprecated Use {@link SEARCH_BROWSER__WEB_VITAL__TTFB__REQUEST_TIME} (`browser.web_vital.ttfb.request_time`) instead
  */
 export const SEARCH_TTFB__REQUESTTIME = 'ttfb.requestTime';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_ARCH}. `turbo_module.arch`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__ARCHITECTURE} (`react_native.architecture`) instead
+ */
+export const SEARCH_TURBO_MODULE__ARCH = 'turbo_module.arch';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_METHOD}. `turbo_module.method`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__METHOD} (`react_native.module.method`) instead
+ */
+export const SEARCH_TURBO_MODULE__METHOD = 'turbo_module.method';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_NAME}. `turbo_module.name`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__NAME} (`react_native.module.name`) instead
+ */
+export const SEARCH_TURBO_MODULE__NAME = 'turbo_module.name';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_TOP_MODULE}. `turbo_module.top_module`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__TOP__NAME} (`react_native.module.top.name`) instead
+ */
+export const SEARCH_TURBO_MODULE__TOP_MODULE = 'turbo_module.top_module';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_TOP_MODULE_DURATION_MS}. `turbo_module.top_module_duration_ms`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__TOP__DURATION} (`react_native.module.top.duration`) instead
+ */
+export const SEARCH_TURBO_MODULE__TOP_MODULE_DURATION_MS = 'turbo_module.top_module_duration_ms';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_TOTAL_CALL_COUNT}. `turbo_module.total_call_count`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__CALL__COUNT} (`react_native.module.call.count`) instead
+ */
+export const SEARCH_TURBO_MODULE__TOTAL_CALL_COUNT = 'turbo_module.total_call_count';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_TOTAL_DURATION_MS}. `turbo_module.total_duration_ms`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__DURATION__TOTAL} (`react_native.module.duration.total`) instead
+ */
+export const SEARCH_TURBO_MODULE__TOTAL_DURATION_MS = 'turbo_module.total_duration_ms';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_TOTAL_ERROR_COUNT}. `turbo_module.total_error_count`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__ERROR__COUNT} (`react_native.module.error.count`) instead
+ */
+export const SEARCH_TURBO_MODULE__TOTAL_ERROR_COUNT = 'turbo_module.total_error_count';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULE_UNIQUE_METHODS}. `turbo_module.unique_methods`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__CALL__DISTINCT_COUNT} (`react_native.module.call.distinct_count`) instead
+ */
+export const SEARCH_TURBO_MODULE__UNIQUE_METHODS = 'turbo_module.unique_methods';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULES_TOTAL_CALL_COUNT}. `turbo_modules.total_call_count`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__CALL__COUNT} (`react_native.module.call.count`) instead
+ */
+export const SEARCH_TURBO_MODULES__TOTAL_CALL_COUNT = 'turbo_modules.total_call_count';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULES_TOTAL_DURATION_MS}. `turbo_modules.total_duration_ms`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__DURATION__TOTAL} (`react_native.module.duration.total`) instead
+ */
+export const SEARCH_TURBO_MODULES__TOTAL_DURATION_MS = 'turbo_modules.total_duration_ms';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULES_TOTAL_ERROR_COUNT}. `turbo_modules.total_error_count`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__ERROR__COUNT} (`react_native.module.error.count`) instead
+ */
+export const SEARCH_TURBO_MODULES__TOTAL_ERROR_COUNT = 'turbo_modules.total_error_count';
+
+/**
+ * Search name for {@link attributes.TURBO_MODULES_UNIQUE_METHODS}. `turbo_modules.unique_methods`
+ *
+ * @deprecated Use {@link SEARCH_REACT_NATIVE__MODULE__CALL__DISTINCT_COUNT} (`react_native.module.call.distinct_count`) instead
+ */
+export const SEARCH_TURBO_MODULES__UNIQUE_METHODS = 'turbo_modules.unique_methods';
 
 /**
  * Search name for {@link attributes.TYPE}. `type`
@@ -4994,6 +5159,8 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__WEB_VITAL__CLS__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FCP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FP__VALUE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__TARGET
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ID
@@ -5471,6 +5638,17 @@ export type AttributeSearchName =
   | typeof SEARCH_QUERY
   | typeof SEARCH_QUERY__KEY
   | typeof SEARCH_REACT__VERSION
+  | typeof SEARCH_REACT_NATIVE__ARCHITECTURE
+  | typeof SEARCH_REACT_NATIVE__MODULE__CALL__COUNT
+  | typeof SEARCH_REACT_NATIVE__MODULE__CALL__DISTINCT_COUNT
+  | typeof SEARCH_REACT_NATIVE__MODULE__DURATION__MAX
+  | typeof SEARCH_REACT_NATIVE__MODULE__DURATION__TOTAL
+  | typeof SEARCH_REACT_NATIVE__MODULE__ERROR__COUNT
+  | typeof SEARCH_REACT_NATIVE__MODULE__KIND
+  | typeof SEARCH_REACT_NATIVE__MODULE__METHOD
+  | typeof SEARCH_REACT_NATIVE__MODULE__NAME
+  | typeof SEARCH_REACT_NATIVE__MODULE__TOP__DURATION
+  | typeof SEARCH_REACT_NATIVE__MODULE__TOP__NAME
   | typeof SEARCH_REDIS__COMMAND
   | typeof SEARCH_REDIS__KEY
   | typeof SEARCH_RELEASE
@@ -5530,6 +5708,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__GROUP
   | typeof SEARCH_SENTRY__HTTP__PREFETCH
   | typeof SEARCH_SENTRY__IDLE_SPAN_FINISH_REASON
+  | typeof SEARCH_SENTRY__IS_LOCALHOST
   | typeof SEARCH_SENTRY__IS_REMOTE
   | typeof SEARCH_SENTRY__KIND
   | typeof SEARCH_SENTRY__MAIN_THREAD
@@ -5619,6 +5798,19 @@ export type AttributeSearchName =
   | typeof SEARCH_TRPC__PROCEDURE_TYPE
   | typeof SEARCH_TTFB
   | typeof SEARCH_TTFB__REQUESTTIME
+  | typeof SEARCH_TURBO_MODULE__ARCH
+  | typeof SEARCH_TURBO_MODULE__METHOD
+  | typeof SEARCH_TURBO_MODULE__NAME
+  | typeof SEARCH_TURBO_MODULE__TOP_MODULE
+  | typeof SEARCH_TURBO_MODULE__TOP_MODULE_DURATION_MS
+  | typeof SEARCH_TURBO_MODULE__TOTAL_CALL_COUNT
+  | typeof SEARCH_TURBO_MODULE__TOTAL_DURATION_MS
+  | typeof SEARCH_TURBO_MODULE__TOTAL_ERROR_COUNT
+  | typeof SEARCH_TURBO_MODULE__UNIQUE_METHODS
+  | typeof SEARCH_TURBO_MODULES__TOTAL_CALL_COUNT
+  | typeof SEARCH_TURBO_MODULES__TOTAL_DURATION_MS
+  | typeof SEARCH_TURBO_MODULES__TOTAL_ERROR_COUNT
+  | typeof SEARCH_TURBO_MODULES__UNIQUE_METHODS
   | typeof SEARCH_TYPE
   | typeof SEARCH_UI__COMPONENT_NAME
   | typeof SEARCH_UI__CONTRIBUTES_TO_TTFD
@@ -6733,6 +6925,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
+  },
+  'browser.web_vital.inp.interaction_type': {
+    canonicalName: 'browser.web_vital.inp.interaction_type',
+    type: 'string',
+    brief: 'The kind of user interaction INP was reported on',
+    deprecationChain: ['browser.web_vital.inp.interaction_type'],
+  },
+  'browser.web_vital.inp.target': {
+    canonicalName: 'browser.web_vital.inp.target',
+    type: 'string',
+    brief:
+      'The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on',
+    deprecationChain: ['browser.web_vital.inp.target'],
   },
   'browser.web_vital.inp.value': {
     canonicalName: 'browser.web_vital.inp.value',
@@ -9772,6 +9977,96 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The version of the React framework',
     deprecationChain: ['react.version'],
   },
+  'react_native.architecture': {
+    canonicalName: 'react_native.architecture',
+    type: 'string',
+    brief:
+      'The React Native architecture the app is running on. `new` for the New Architecture, where native modules are resolved as TurboModules through `TurboModuleRegistry`, `legacy` for the Old Architecture bridge.',
+    deprecationChain: ['react_native.architecture', 'turbo_module.arch'],
+  },
+  'react_native.module.call.count': {
+    canonicalName: 'react_native.module.call.count',
+    type: 'integer',
+    brief: 'The number of native module calls observed during the lifetime of the span.',
+    deprecationChain: [
+      'react_native.module.call.count',
+      'turbo_module.total_call_count',
+      'turbo_modules.total_call_count',
+    ],
+  },
+  'react_native.module.call.distinct_count': {
+    canonicalName: 'react_native.module.call.distinct_count',
+    type: 'integer',
+    brief:
+      'The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated.',
+    deprecationChain: [
+      'react_native.module.call.distinct_count',
+      'turbo_module.unique_methods',
+      'turbo_modules.unique_methods',
+    ],
+  },
+  'react_native.module.duration.max': {
+    canonicalName: 'react_native.module.duration.max',
+    type: 'double',
+    brief:
+      'The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds.',
+    deprecationChain: ['react_native.module.duration.max'],
+  },
+  'react_native.module.duration.total': {
+    canonicalName: 'react_native.module.duration.total',
+    type: 'double',
+    brief:
+      'The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.',
+    deprecationChain: [
+      'react_native.module.duration.total',
+      'turbo_module.total_duration_ms',
+      'turbo_modules.total_duration_ms',
+    ],
+  },
+  'react_native.module.error.count': {
+    canonicalName: 'react_native.module.error.count',
+    type: 'integer',
+    brief:
+      'The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback.',
+    deprecationChain: [
+      'react_native.module.error.count',
+      'turbo_module.total_error_count',
+      'turbo_modules.total_error_count',
+    ],
+  },
+  'react_native.module.kind': {
+    canonicalName: 'react_native.module.kind',
+    type: 'string',
+    brief:
+      'Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`.',
+    deprecationChain: ['react_native.module.kind'],
+  },
+  'react_native.module.method': {
+    canonicalName: 'react_native.module.method',
+    type: 'string',
+    brief: 'The name of the native module method that was called.',
+    deprecationChain: ['react_native.module.method', 'turbo_module.method'],
+  },
+  'react_native.module.name': {
+    canonicalName: 'react_native.module.name',
+    type: 'string',
+    brief:
+      'The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key.',
+    deprecationChain: ['react_native.module.name', 'turbo_module.name'],
+  },
+  'react_native.module.top.duration': {
+    canonicalName: 'react_native.module.top.duration',
+    type: 'double',
+    brief: 'The total duration attributed to `react_native.module.top.name`, in milliseconds.',
+    deprecationChain: ['react_native.module.top.duration', 'turbo_module.top_module_duration_ms'],
+  },
+  'react_native.module.top.name': {
+    canonicalName: 'react_native.module.top.name',
+    type: 'string',
+    brief:
+      'The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`.',
+    deprecationChain: ['react_native.module.top.name', 'turbo_module.top_module'],
+  },
   'redis.command': {
     canonicalName: 'db.operation.name',
     type: 'string',
@@ -10123,6 +10418,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The reason why an idle span ended early.',
     deprecationChain: ['sentry.idle_span_finish_reason'],
+  },
+  'sentry.is_localhost': {
+    canonicalName: 'sentry.is_localhost',
+    type: 'boolean',
+    brief: 'Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.',
+    internal: true,
+    deprecationChain: ['sentry.is_localhost'],
   },
   'sentry.is_remote': {
     canonicalName: 'sentry.is_remote',
@@ -10571,6 +10873,125 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       "The time it takes for the server to process the initial request and send the first byte of a response to the user's browser",
     deprecationChain: ['browser.web_vital.ttfb.request_time', 'ttfb.requestTime'],
+  },
+  'turbo_module.arch': {
+    canonicalName: 'react_native.architecture',
+    type: 'string',
+    brief:
+      'The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.',
+    deprecationChain: ['react_native.architecture', 'turbo_module.arch'],
+  },
+  'turbo_module.method': {
+    canonicalName: 'react_native.module.method',
+    type: 'string',
+    brief: 'The name of the native module method that was called. Only applies to React Native.',
+    deprecationChain: ['react_native.module.method', 'turbo_module.method'],
+  },
+  'turbo_module.name': {
+    canonicalName: 'react_native.module.name',
+    type: 'string',
+    brief:
+      'The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.',
+    deprecationChain: ['react_native.module.name', 'turbo_module.name'],
+  },
+  'turbo_module.top_module': {
+    canonicalName: 'react_native.module.top.name',
+    type: 'string',
+    brief:
+      'The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.',
+    deprecationChain: ['react_native.module.top.name', 'turbo_module.top_module'],
+  },
+  'turbo_module.top_module_duration_ms': {
+    canonicalName: 'react_native.module.top.duration',
+    type: 'double',
+    brief:
+      'The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.',
+    deprecationChain: ['react_native.module.top.duration', 'turbo_module.top_module_duration_ms'],
+  },
+  'turbo_module.total_call_count': {
+    canonicalName: 'react_native.module.call.count',
+    type: 'integer',
+    brief: 'The number of native module calls observed during the lifetime of the span. Only applies to React Native.',
+    deprecationChain: [
+      'react_native.module.call.count',
+      'turbo_module.total_call_count',
+      'turbo_modules.total_call_count',
+    ],
+  },
+  'turbo_module.total_duration_ms': {
+    canonicalName: 'react_native.module.duration.total',
+    type: 'double',
+    brief:
+      'The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.',
+    deprecationChain: [
+      'react_native.module.duration.total',
+      'turbo_module.total_duration_ms',
+      'turbo_modules.total_duration_ms',
+    ],
+  },
+  'turbo_module.total_error_count': {
+    canonicalName: 'react_native.module.error.count',
+    type: 'integer',
+    brief:
+      'The number of native module calls that failed during the lifetime of the span. Only applies to React Native.',
+    deprecationChain: [
+      'react_native.module.error.count',
+      'turbo_module.total_error_count',
+      'turbo_modules.total_error_count',
+    ],
+  },
+  'turbo_module.unique_methods': {
+    canonicalName: 'react_native.module.call.distinct_count',
+    type: 'integer',
+    brief:
+      'The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.',
+    deprecationChain: [
+      'react_native.module.call.distinct_count',
+      'turbo_module.unique_methods',
+      'turbo_modules.unique_methods',
+    ],
+  },
+  'turbo_modules.total_call_count': {
+    canonicalName: 'react_native.module.call.count',
+    type: 'integer',
+    brief: 'The number of native module calls in the flushed call aggregate. Only applies to React Native.',
+    deprecationChain: [
+      'react_native.module.call.count',
+      'turbo_module.total_call_count',
+      'turbo_modules.total_call_count',
+    ],
+  },
+  'turbo_modules.total_duration_ms': {
+    canonicalName: 'react_native.module.duration.total',
+    type: 'double',
+    brief:
+      'The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native.',
+    deprecationChain: [
+      'react_native.module.duration.total',
+      'turbo_module.total_duration_ms',
+      'turbo_modules.total_duration_ms',
+    ],
+  },
+  'turbo_modules.total_error_count': {
+    canonicalName: 'react_native.module.error.count',
+    type: 'integer',
+    brief: 'The number of failed native module calls in the flushed call aggregate. Only applies to React Native.',
+    deprecationChain: [
+      'react_native.module.error.count',
+      'turbo_module.total_error_count',
+      'turbo_modules.total_error_count',
+    ],
+  },
+  'turbo_modules.unique_methods': {
+    canonicalName: 'react_native.module.call.distinct_count',
+    type: 'integer',
+    brief:
+      'The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.',
+    deprecationChain: [
+      'react_native.module.call.distinct_count',
+      'turbo_module.unique_methods',
+      'turbo_modules.unique_methods',
+    ],
   },
   type: {
     canonicalName: 'type',

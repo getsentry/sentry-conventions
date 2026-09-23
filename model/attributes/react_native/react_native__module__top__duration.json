@@ -1,0 +1,19 @@
+{
+  "key": "react_native.module.top.duration",
+  "brief": "The total duration attributed to `react_native.module.top.name`, in milliseconds.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [87.25],
+  "alias": ["turbo_module.top_module_duration_ms"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [564],
+      "description": "Added react_native.module.top.duration attribute"
+    }
+  ]
+}

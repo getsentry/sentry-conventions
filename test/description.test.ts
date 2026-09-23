@@ -5,11 +5,10 @@ import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
 import schema from '../schemas/description.schema.json';
-import type { AttributeJson, DescriptionJson } from '../scripts/types';
-import { attributeKeyToFileName } from '../scripts/utils';
+import type { DescriptionJson } from '../scripts/types';
+import { findTemplateAttributeIssues } from './template-attributes';
 
 const descriptionsFolder = path.resolve(__dirname, '../model/description');
-const attributesFolder = path.resolve(__dirname, '../model/attributes');
 
 describe('Description JSON', async () => {
   const filesIterator = fs.promises.glob(`${descriptionsFolder}/*.json`);
@@ -42,37 +41,7 @@ describe('Description JSON', async () => {
       });
 
       it('only references existing, non-replaced attributes', async () => {
-        const placeholder = /\{\{([^}]+)\}\}/g;
-        const missing: string[] = [];
-        const deprecated: string[] = [];
-
-        for (const operation of content.operations) {
-          for (const tmpl of operation.templates) {
-            for (const match of tmpl.matchAll(placeholder)) {
-              const key = match[1] as string;
-              const fileName = attributeKeyToFileName(key);
-              const namespace = key.includes('.') ? (key.split('.')[0] as string) : undefined;
-              const filePath = namespace
-                ? path.join(attributesFolder, namespace, fileName)
-                : path.join(attributesFolder, fileName);
-
-              const exists = await fs.promises
-                .access(filePath, fs.constants.F_OK)
-                .then(() => true)
-                .catch(() => false);
-
-              if (!exists) {
-                missing.push(key);
-                continue;
-              }
-
-              const attr: AttributeJson = JSON.parse(await fs.promises.readFile(filePath, 'utf-8'));
-              if (attr.deprecation?.replacement) {
-                deprecated.push(key);
-              }
-            }
-          }
-        }
+        const { missing, deprecated } = await findTemplateAttributeIssues(content);
 
         expect(missing, `template attributes without definitions: ${missing.join(', ')}`).toEqual([]);
         expect(
