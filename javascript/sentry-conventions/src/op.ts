@@ -141,6 +141,9 @@ export const UI_TASK = 'ui.task';
  */
 export const UI_RESOLVE = 'ui.resolve';
 
+/**
+ * Rendering of a UI component.
+ */
 export const UI_RENDER = 'ui.render';
 
 /**
@@ -198,26 +201,59 @@ export const UI_WEBVITAL_LCP = 'ui.webvital.lcp';
  */
 export const UI_WEBVITAL_CLS = 'ui.webvital.cls';
 
+/**
+ * A user interaction that starts a new trace segment and collects the work it triggers.
+ */
 export const UI_ACTION = 'ui.action';
 
+/**
+ * A click that starts a new idle span, collecting work the interaction triggers.
+ */
 export const UI_ACTION_CLICK = 'ui.action.click';
 
+/**
+ * Legacy React UI operation. Prefer ui.mount, ui.render, and ui.update.
+ */
 export const UI_REACT = 'ui.react';
 
+/**
+ * Legacy React component mount. Prefer ui.mount.
+ */
 export const UI_REACT_MOUNT = 'ui.react.mount';
 
+/**
+ * Legacy React component render. Prefer ui.render.
+ */
 export const UI_REACT_RENDER = 'ui.react.render';
 
+/**
+ * Legacy React component update. Prefer ui.update.
+ */
 export const UI_REACT_UPDATE = 'ui.react.update';
 
+/**
+ * Legacy Vue UI operation. Prefer ui.mount, ui.render, ui.update, and ui.unmount.
+ */
 export const UI_VUE = 'ui.vue';
 
+/**
+ * Legacy Svelte UI operation. Prefer ui.mount and ui.update.
+ */
 export const UI_SVELTE = 'ui.svelte';
 
+/**
+ * Legacy Angular UI operation. Prefer ui.mount.
+ */
 export const UI_ANGULAR = 'ui.angular';
 
+/**
+ * Legacy Ember UI operation. Prefer ui.mount, ui.render, ui.task, and ui.resolve.
+ */
 export const UI_EMBER = 'ui.ember';
 
+/**
+ * Legacy Livewire UI operation. Prefer ui.mount, ui.render, and ui.update.
+ */
 export const UI_LIVEWIRE = 'ui.livewire';
 
 // Path: model/op/database.json
@@ -436,6 +472,11 @@ export const APP_UPDATE_DOWNLOAD = 'app.update.download';
 export const FILE = 'file';
 
 export const SERIALIZE = 'serialize';
+
+/**
+ * A call from JavaScript into a React Native native module, or an aggregate of such calls.
+ */
+export const TURBO_MODULE = 'turbo_module';
 
 // Path: model/op/object.json
 // Name: object

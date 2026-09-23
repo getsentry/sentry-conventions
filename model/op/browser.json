@@ -126,7 +126,8 @@
       "description": "Looking up which component a name in a template refers to, before that component renders. Ember does this for every component it renders. The render itself is a separate `ui.render` span."
     },
     {
-      "name": "ui.render"
+      "name": "ui.render",
+      "description": "Rendering of a UI component."
     },
     {
       "name": "ui.mount",
@@ -173,37 +174,48 @@
       "description": "A Cumulative Layout Shift (CLS) web vital measurement."
     },
     {
-      "name": "ui.action"
+      "name": "ui.action",
+      "description": "A user interaction that starts a new trace segment and collects the work it triggers."
     },
     {
-      "name": "ui.action.click"
+      "name": "ui.action.click",
+      "description": "A click that starts a new idle span, collecting work the interaction triggers."
     },
     {
-      "name": "ui.react"
+      "name": "ui.react",
+      "description": "Legacy React UI operation. Prefer ui.mount, ui.render, and ui.update."
     },
     {
-      "name": "ui.react.mount"
+      "name": "ui.react.mount",
+      "description": "Legacy React component mount. Prefer ui.mount."
     },
     {
-      "name": "ui.react.render"
+      "name": "ui.react.render",
+      "description": "Legacy React component render. Prefer ui.render."
     },
     {
-      "name": "ui.react.update"
+      "name": "ui.react.update",
+      "description": "Legacy React component update. Prefer ui.update."
     },
     {
-      "name": "ui.vue"
+      "name": "ui.vue",
+      "description": "Legacy Vue UI operation. Prefer ui.mount, ui.render, ui.update, and ui.unmount."
     },
     {
-      "name": "ui.svelte"
+      "name": "ui.svelte",
+      "description": "Legacy Svelte UI operation. Prefer ui.mount and ui.update."
     },
     {
-      "name": "ui.angular"
+      "name": "ui.angular",
+      "description": "Legacy Angular UI operation. Prefer ui.mount."
     },
     {
-      "name": "ui.ember"
+      "name": "ui.ember",
+      "description": "Legacy Ember UI operation. Prefer ui.mount, ui.render, ui.task, and ui.resolve."
     },
     {
-      "name": "ui.livewire"
+      "name": "ui.livewire",
+      "description": "Legacy Livewire UI operation. Prefer ui.mount, ui.render, and ui.update."
     }
   ]
 }

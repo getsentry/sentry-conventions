@@ -1,0 +1,24 @@
+{
+  "key": "turbo_module.arch",
+  "brief": "The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["new", "legacy"],
+  "alias": ["react_native.architecture"],
+  "deprecation": {
+    "replacement": "react_native.architecture",
+    "reason": "Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [564],
+      "description": "Added turbo_module.arch and deprecated it in favor of react_native.architecture"
+    }
+  ]
+}
