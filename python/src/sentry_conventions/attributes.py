@@ -442,7 +442,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: server.address, http.server_name, net.host.name, http.host, net.peer.name
+    Aliases: server.address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead - Old namespace-less attribute, to be replaced with server.address for span-first future
     Example: "example.com"
     """
@@ -3846,13 +3846,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/device/device__name.json
     DEVICE_NAME: Literal["device.name"] = "device.name"
-    """The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.
+    """The user-assigned name of the mobile device.
 
     Type: str
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: server_name
     Example: "localhost"
     """
 
@@ -5840,7 +5839,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, client.address, http.server_name, net.host.name, net.peer.name
+    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name, net.peer.name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -6362,7 +6361,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, net.host.name, http.host, net.peer.name
+    Aliases: address, server.address, net.host.name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7652,7 +7651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, http.host, net.peer.name
+    Aliases: address, server.address, http.server_name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7691,7 +7690,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, net.host.name, http.host
+    Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
     Example: "example.com"
     """
@@ -9917,7 +9916,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, http.server_name, net.host.name, http.host, net.peer.name
+    Aliases: address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     Example: "example.com"
     """
 
@@ -9941,8 +9940,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: device.name
-    DEPRECATED: Use device.name instead - This attribute is being deprecated in favor of device.name.
+    Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
+    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address.
     Example: "example.com"
     """
 
@@ -11279,6 +11278,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -11295,9 +11295,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -16370,18 +16374,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "device.name": AttributeMetadata(
-        brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
+        brief="The user-assigned name of the mobile device.",
         type=AttributeType.STRING,
-        keys=(
-            "device.name",
-            "server_name",
-        ),
+        keys=("device.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
-        aliases=["server_name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[647],
+                description="Limit brief to mobile attributes and remove server_name alias",
+            ),
             ChangelogEntry(
                 version="0.21.0", prs=[602], description="Added server_name as an alias"
             ),
@@ -19503,9 +19508,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "client.address",
             "http.server_name",
             "net.host.name",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -20218,6 +20227,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -20231,9 +20241,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server.address",
             "net.host.name",
             "http.host",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -22172,6 +22186,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -22185,9 +22200,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server.address",
             "http.server_name",
             "http.host",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -22264,8 +22283,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
+            "server_name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -25503,6 +25526,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -25513,9 +25537,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="next",
                 prs=[645],
@@ -25558,7 +25586,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The name of the device. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
         keys=(
-            "device.name",
+            "server.address",
+            "address",
+            "http.server_name",
+            "net.host.name",
             "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -25566,12 +25597,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
-            replacement="device.name",
-            reason="This attribute is being deprecated in favor of device.name.",
+            replacement="server.address",
+            reason="This attribute is being deprecated in favor of server.address.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["device.name"],
+        aliases=[
+            "address",
+            "server.address",
+            "http.server_name",
+            "net.host.name",
+            "http.host",
+            "net.peer.name",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[647],
+                description="Alias the server.address alias group",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],

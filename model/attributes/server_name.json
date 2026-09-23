@@ -7,14 +7,19 @@
   },
   "is_in_otel": false,
   "example": "example.com",
-  "alias": ["device.name"],
+  "alias": ["address", "server.address", "http.server_name", "net.host.name", "http.host", "net.peer.name"],
   "deprecation": {
     "_status": "backfill",
-    "replacement": "device.name",
-    "reason": "This attribute is being deprecated in favor of device.name."
+    "replacement": "server.address",
+    "reason": "This attribute is being deprecated in favor of server.address."
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [647],
+      "description": "Alias the server.address alias group"
+    },
     {
       "version": "0.21.0",
       "prs": [588, 602],

@@ -306,14 +306,15 @@ describe('generated attribute key chains', () => {
   });
 
   it('omits deprecated aliases that are not part of the family', () => {
-    // `address` aliases five deprecated attributes. Its replacement `server.address` heads the chain
-    // and the other backfilled ones follow as fellow predecessors, but `http.host` is left out: its
-    // value is never rewritten onto `server.address`.
+    // `address` aliases the server.address family. Its replacement `server.address` heads the chain
+    // and the backfilled attributes follow as fellow predecessors, but `http.host` and `net.peer.name`
+    // are left out: their value is never rewritten onto `server.address`.
     expect(ATTRIBUTE_METADATA['address']?.keys).toEqual([
       'server.address',
       'address',
       'http.server_name',
       'net.host.name',
+      'server_name',
     ]);
   });
 });
