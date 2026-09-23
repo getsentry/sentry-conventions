@@ -11,7 +11,7 @@
   "alias": ["turbo_module.top_module_duration_ms"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [564],
       "description": "Added react_native.module.top.duration attribute"
     }

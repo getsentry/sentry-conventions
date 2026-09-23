@@ -11300,7 +11300,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[647], description="Added server_name as an alias"
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
             ),
             ChangelogEntry(
                 version="0.21.0",
@@ -14168,7 +14168,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[1, 3, 0],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[640],
                 description="Document 0 as the fallback value when the browser does not support `navigationId`",
             ),
@@ -14206,7 +14206,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[640],
                 description="Use the web-vitals navigation types as-is: `bfcache` is now `back-forward-cache`, and `back-forward` and `restore` are no longer reported as `navigate`",
             ),
@@ -14360,7 +14360,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[642],
                 description="Deprecated browser.web_vital.cls.report_event, which has no replacement",
             ),
@@ -14451,7 +14451,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["click", "hover", "drag", "press"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[641],
                 description="Added browser.web_vital.inp.interaction_type attribute",
             ),
@@ -14473,7 +14473,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["body > div#app > button.submit", "SubmitButton"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[641],
                 description="Added browser.web_vital.inp.target attribute",
             ),
@@ -14580,7 +14580,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[642],
                 description="Deprecated browser.web_vital.lcp.report_event, which has no replacement",
             ),
@@ -16383,7 +16383,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="localhost",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[647],
                 description="Limit brief to mobile attributes and remove server_name alias",
             ),
@@ -18659,7 +18659,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
+                prs=[582],
                 description="Added gen_ai.usage.cache_creation_input_tokens as an alias",
             ),
             ChangelogEntry(
@@ -18696,7 +18697,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[582],
                 description="Added gen_ai.usage.cache_creation_input_tokens attribute",
             ),
@@ -18720,7 +18721,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
+                prs=[582],
                 description="Added gen_ai.usage.cache_read_input_tokens as an alias",
             ),
             ChangelogEntry(
@@ -18758,7 +18760,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[582],
                 description="Added gen_ai.usage.cache_read_input_tokens attribute",
             ),
@@ -18846,7 +18848,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
+                prs=[582],
                 description="Added gen_ai.usage.cache_creation_input_tokens as an alias",
             ),
             ChangelogEntry(
@@ -18885,7 +18888,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
+                prs=[582],
                 description="Added gen_ai.usage.cache_read_input_tokens as an alias",
             ),
             ChangelogEntry(
@@ -19513,7 +19517,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[647], description="Added server_name as an alias"
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
             ),
             ChangelogEntry(
                 version="0.21.0",
@@ -20246,7 +20250,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[647], description="Added server_name as an alias"
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
             ),
             ChangelogEntry(
                 version="0.21.0",
@@ -22205,7 +22209,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[647], description="Added server_name as an alias"
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
             ),
             ChangelogEntry(
                 version="0.21.0",
@@ -22287,7 +22291,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[647], description="Added server_name as an alias"
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
             ),
             ChangelogEntry(
                 version="0.21.0",
@@ -23299,7 +23303,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.arch"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.architecture attribute",
             ),
@@ -23321,7 +23325,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.total_call_count", "turbo_modules.total_call_count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.call.count attribute",
             ),
@@ -23343,7 +23347,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.unique_methods", "turbo_modules.unique_methods"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.call.distinct_count attribute",
             ),
@@ -23360,7 +23364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[512.5],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.duration.max attribute",
             ),
@@ -23382,7 +23386,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.duration.total attribute",
             ),
@@ -23404,7 +23408,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.total_error_count", "turbo_modules.total_error_count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.error.count attribute",
             ),
@@ -23421,7 +23425,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["sync", "async"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.kind attribute",
             ),
@@ -23445,7 +23449,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.method"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.method attribute",
             ),
@@ -23469,7 +23473,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.name attribute",
             ),
@@ -23490,7 +23494,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.top_module_duration_ms"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.top.duration attribute",
             ),
@@ -23514,7 +23518,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["turbo_module.top_module"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added react_native.module.top.name attribute",
             ),
@@ -23617,7 +23621,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         deprecation=DeprecationInfo(replacement="sentry.replay_id"),
         aliases=["sentry.replay_id"],
         changelog=[
-            ChangelogEntry(version="next"),
+            ChangelogEntry(version="0.24.0", prs=[401]),
         ],
     ),
     "replay_id": AttributeMetadata(
@@ -24525,7 +24529,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[True, False],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[646],
                 description="Added sentry.is_localhost attribute",
             ),
@@ -24922,7 +24926,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[642],
                 description="Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated",
             ),
@@ -25542,11 +25546,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[647], description="Added server_name as an alias"
-            ),
-            ChangelogEntry(
-                version="next",
-                prs=[645],
+                version="0.24.0",
+                prs=[645, 647],
                 description="Broaden brief to allow hostnames",
             ),
             ChangelogEntry(
@@ -25611,7 +25612,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[647],
                 description="Alias the server.address alias group",
             ),
@@ -26129,7 +26130,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.architecture"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.arch and deprecated it in favor of react_native.architecture",
             ),
@@ -26158,7 +26159,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.module.method"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.method and deprecated it in favor of react_native.module.method",
             ),
@@ -26187,7 +26188,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.module.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.name and deprecated it in favor of react_native.module.name",
             ),
@@ -26216,7 +26217,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.module.top.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.top_module and deprecated it in favor of react_native.module.top.name",
             ),
@@ -26242,7 +26243,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.module.top.duration"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.top_module_duration_ms and deprecated it in favor of react_native.module.top.duration",
             ),
@@ -26269,7 +26270,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.module.call.count", "turbo_modules.total_call_count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.total_call_count and deprecated it in favor of react_native.module.call.count",
             ),
@@ -26299,7 +26300,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.total_duration_ms and deprecated it in favor of react_native.module.duration.total",
             ),
@@ -26326,7 +26327,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.module.error.count", "turbo_modules.total_error_count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.total_error_count and deprecated it in favor of react_native.module.error.count",
             ),
@@ -26356,7 +26357,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_module.unique_methods and deprecated it in favor of react_native.module.call.distinct_count",
             ),
@@ -26383,7 +26384,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.module.call.count", "turbo_module.total_call_count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_modules.total_call_count and deprecated it in favor of react_native.module.call.count",
             ),
@@ -26413,7 +26414,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_modules.total_duration_ms and deprecated it in favor of react_native.module.duration.total",
             ),
@@ -26440,7 +26441,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["react_native.module.error.count", "turbo_module.total_error_count"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_modules.total_error_count and deprecated it in favor of react_native.module.error.count",
             ),
@@ -26470,7 +26471,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.24.0",
                 prs=[564],
                 description="Added turbo_modules.unique_methods and deprecated it in favor of react_native.module.call.distinct_count",
             ),

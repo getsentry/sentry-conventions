@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [564],
       "description": "Added turbo_module.unique_methods and deprecated it in favor of react_native.module.call.distinct_count"
     }

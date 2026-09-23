@@ -11,13 +11,8 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
-      "prs": [647],
-      "description": "Added server_name as an alias"
-    },
-    {
-      "version": "next",
-      "prs": [645],
+      "version": "0.24.0",
+      "prs": [645, 647],
       "description": "Broaden brief to allow hostnames"
     },
     {
