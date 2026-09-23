@@ -14,7 +14,7 @@
   "examples": [true, false],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [646],
       "description": "Added sentry.is_localhost attribute"
     }

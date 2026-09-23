@@ -15,7 +15,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [647],
       "description": "Added server_name as an alias"
     },

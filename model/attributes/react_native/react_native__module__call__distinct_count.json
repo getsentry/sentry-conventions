@@ -11,7 +11,7 @@
   "alias": ["turbo_module.unique_methods", "turbo_modules.unique_methods"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [564],
       "description": "Added react_native.module.call.distinct_count attribute"
     }

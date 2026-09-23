@@ -18,7 +18,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [640],
       "description": "Document 0 as the fallback value when the browser does not support `navigationId`"
     },

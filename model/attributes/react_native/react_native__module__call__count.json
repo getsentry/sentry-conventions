@@ -11,7 +11,7 @@
   "alias": ["turbo_module.total_call_count", "turbo_modules.total_call_count"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [564],
       "description": "Added react_native.module.call.count attribute"
     }

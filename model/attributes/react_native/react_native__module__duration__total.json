@@ -11,7 +11,7 @@
   "alias": ["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [564],
       "description": "Added react_native.module.duration.total attribute"
     }

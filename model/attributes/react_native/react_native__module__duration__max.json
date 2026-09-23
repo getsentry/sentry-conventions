@@ -10,7 +10,7 @@
   "examples": [512.5],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [564],
       "description": "Added react_native.module.duration.max attribute"
     }

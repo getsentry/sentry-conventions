@@ -16,7 +16,7 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.24.0",
       "prs": [564],
       "description": "Added turbo_module.arch and deprecated it in favor of react_native.architecture"
     }

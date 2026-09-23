@@ -21190,7 +21190,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
-      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address attribute' },
     ],
@@ -23515,7 +23515,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [1, 3, 0],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [640],
         description: 'Document 0 as the fallback value when the browser does not support `navigationId`',
       },
@@ -23543,7 +23543,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['navigate', 'reload', 'back-forward', 'back-forward-cache', 'prerender', 'restore', 'soft-navigation'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [640],
         description:
           'Use the web-vitals navigation types as-is: `bfcache` is now `back-forward-cache`, and `back-forward` and `restore` are no longer reported as `navigate`',
@@ -23677,7 +23677,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [642],
         description: 'Deprecated browser.web_vital.cls.report_event, which has no replacement',
       },
@@ -23748,7 +23748,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'click',
     examples: ['click', 'hover', 'drag', 'press'],
-    changelog: [{ version: 'next', prs: [641], description: 'Added browser.web_vital.inp.interaction_type attribute' }],
+    changelog: [
+      { version: '0.24.0', prs: [641], description: 'Added browser.web_vital.inp.interaction_type attribute' },
+    ],
     additionalContext: [
       "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
       'Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.',
@@ -23767,7 +23769,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'body > div#app > button.submit',
     examples: ['body > div#app > button.submit', 'SubmitButton'],
-    changelog: [{ version: 'next', prs: [641], description: 'Added browser.web_vital.inp.target attribute' }],
+    changelog: [{ version: '0.24.0', prs: [641], description: 'Added browser.web_vital.inp.target attribute' }],
     additionalContext: [
       'Named after `PerformanceEventTiming.target`, the way `browser.web_vital.lcp.element` is named after `LargestContentfulPaint.element`. The value uses the same format as that attribute.',
       'Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`.',
@@ -23854,7 +23856,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [642],
         description: 'Deprecated browser.web_vital.lcp.report_event, which has no replacement',
       },
@@ -25411,7 +25413,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'localhost',
     changelog: [
-      { version: 'next', prs: [647], description: 'Limit brief to mobile attributes and remove server_name alias' },
+      { version: '0.24.0', prs: [647], description: 'Limit brief to mobile attributes and remove server_name alias' },
       { version: '0.21.0', prs: [602], description: 'Added server_name as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.name attribute' },
     ],
@@ -27359,7 +27361,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
     aliases: ['gen_ai.usage.input_tokens.cache_write', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' },
     ],
     additionalContext: [
@@ -27388,7 +27390,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
     changelog: [
-      { version: 'next', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens attribute' },
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens attribute' },
     ],
   },
   'gen_ai.usage.cache_read.input_tokens': {
@@ -27407,7 +27409,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 50,
     aliases: ['gen_ai.usage.input_tokens.cached', 'gen_ai.usage.cache_read_input_tokens'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' },
     ],
     additionalContext: [
@@ -27436,7 +27438,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
-    changelog: [{ version: 'next', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens attribute' }],
+    changelog: [{ version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens attribute' }],
   },
   'gen_ai.usage.completion_tokens': {
     brief: 'The number of tokens used in the GenAI response (completion).',
@@ -27511,7 +27513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.cache_read_input_tokens'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
@@ -27542,7 +27544,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
-      { version: 'next', description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
@@ -28060,7 +28062,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'net.peer.name',
     ],
     changelog: [
-      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -28679,7 +28681,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
-      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -30556,7 +30558,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
-      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -30619,7 +30621,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
     changelog: [
-      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added the server.address alias group to net.peer.name' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -31273,7 +31275,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'new',
     examples: ['new', 'legacy'],
     aliases: ['turbo_module.arch'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.architecture attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.architecture attribute' }],
   },
   'react_native.module.call.count': {
     brief: 'The number of native module calls observed during the lifetime of the span.',
@@ -31287,7 +31289,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 42,
     examples: [42],
     aliases: ['turbo_module.total_call_count', 'turbo_modules.total_call_count'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.call.count attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.call.count attribute' }],
   },
   'react_native.module.call.distinct_count': {
     brief:
@@ -31303,7 +31305,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [7],
     aliases: ['turbo_module.unique_methods', 'turbo_modules.unique_methods'],
     changelog: [
-      { version: 'next', prs: [564], description: 'Added react_native.module.call.distinct_count attribute' },
+      { version: '0.24.0', prs: [564], description: 'Added react_native.module.call.distinct_count attribute' },
     ],
   },
   'react_native.module.duration.max': {
@@ -31318,7 +31320,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 512.5,
     examples: [512.5],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.duration.max attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.max attribute' }],
   },
   'react_native.module.duration.total': {
     brief:
@@ -31333,7 +31335,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 128.45,
     examples: [128.45],
     aliases: ['turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.duration.total attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.total attribute' }],
   },
   'react_native.module.error.count': {
     brief:
@@ -31348,7 +31350,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 2,
     examples: [2],
     aliases: ['turbo_module.total_error_count', 'turbo_modules.total_error_count'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.error.count attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.error.count attribute' }],
   },
   'react_native.module.kind': {
     brief:
@@ -31362,7 +31364,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'sync',
     examples: ['sync', 'async'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.kind attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.kind attribute' }],
   },
   'react_native.module.method': {
     brief: 'The name of the native module method that was called.',
@@ -31378,7 +31380,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'getUniqueId',
     examples: ['getUniqueId'],
     aliases: ['turbo_module.method'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.method attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.method attribute' }],
   },
   'react_native.module.name': {
     brief:
@@ -31395,7 +31397,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'RNDeviceInfo',
     examples: ['RNDeviceInfo'],
     aliases: ['turbo_module.name'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.name attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.name attribute' }],
   },
   'react_native.module.top.duration': {
     brief: 'The total duration attributed to `react_native.module.top.name`, in milliseconds.',
@@ -31409,7 +31411,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 87.25,
     examples: [87.25],
     aliases: ['turbo_module.top_module_duration_ms'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.top.duration attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.top.duration attribute' }],
   },
   'react_native.module.top.name': {
     brief:
@@ -31426,7 +31428,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'RNDeviceInfo.getUniqueId',
     examples: ['RNDeviceInfo.getUniqueId'],
     aliases: ['turbo_module.top_module'],
-    changelog: [{ version: 'next', prs: [564], description: 'Added react_native.module.top.name attribute' }],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.top.name attribute' }],
   },
   'react.version': {
     brief: 'The version of the React framework',
@@ -31526,7 +31528,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'sentry.replay_id',
     },
     aliases: ['sentry.replay_id'],
-    changelog: [{ version: 'next' }],
+    changelog: [{ version: '0.24.0', prs: [401] }],
   },
   replay_id: {
     brief: 'The id of the sentry replay.',
@@ -32357,7 +32359,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'internal',
     example: true,
     examples: [true, false],
-    changelog: [{ version: 'next', prs: [646], description: 'Added sentry.is_localhost attribute' }],
+    changelog: [{ version: '0.24.0', prs: [646], description: 'Added sentry.is_localhost attribute' }],
     additionalContext: [
       'This attribute is used for the Sentry "Filter telemetry from localhost" inbound filter feature.',
       'SDKs must set this attribute on every span, as well as every other telemetry item supporting attribuztes.',
@@ -32726,7 +32728,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [642],
         description:
           'Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated',
@@ -33286,8 +33288,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'example.com',
     aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
-      { version: 'next', prs: [647], description: 'Added server_name as an alias' },
-      { version: 'next', prs: [645], description: 'Broaden brief to allow hostnames' },
+      { version: '0.24.0', prs: [645, 647], description: 'Broaden brief to allow hostnames' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
@@ -33311,7 +33312,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
-      { version: 'next', prs: [647], description: 'Alias the server.address alias group' },
+      { version: '0.24.0', prs: [647], description: 'Alias the server.address alias group' },
       {
         version: '0.21.0',
         prs: [588, 602],
@@ -33767,7 +33768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.call.count', 'turbo_module.total_call_count'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description:
           'Added turbo_modules.total_call_count and deprecated it in favor of react_native.module.call.count',
@@ -33795,7 +33796,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.duration.total', 'turbo_module.total_duration_ms'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description:
           'Added turbo_modules.total_duration_ms and deprecated it in favor of react_native.module.duration.total',
@@ -33822,7 +33823,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.error.count', 'turbo_module.total_error_count'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description:
           'Added turbo_modules.total_error_count and deprecated it in favor of react_native.module.error.count',
@@ -33850,7 +33851,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.call.distinct_count', 'turbo_module.unique_methods'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description:
           'Added turbo_modules.unique_methods and deprecated it in favor of react_native.module.call.distinct_count',
@@ -33878,7 +33879,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.architecture'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description: 'Added turbo_module.arch and deprecated it in favor of react_native.architecture',
       },
@@ -33906,7 +33907,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.method'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description: 'Added turbo_module.method and deprecated it in favor of react_native.module.method',
       },
@@ -33935,7 +33936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description: 'Added turbo_module.name and deprecated it in favor of react_native.module.name',
       },
@@ -33964,7 +33965,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.top.name'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description: 'Added turbo_module.top_module and deprecated it in favor of react_native.module.top.name',
       },
@@ -33991,7 +33992,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.top.duration'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description:
           'Added turbo_module.top_module_duration_ms and deprecated it in favor of react_native.module.top.duration',
@@ -34018,7 +34019,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.call.count', 'turbo_modules.total_call_count'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description: 'Added turbo_module.total_call_count and deprecated it in favor of react_native.module.call.count',
       },
@@ -34045,7 +34046,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.duration.total', 'turbo_modules.total_duration_ms'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description:
           'Added turbo_module.total_duration_ms and deprecated it in favor of react_native.module.duration.total',
@@ -34073,7 +34074,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.error.count', 'turbo_modules.total_error_count'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description:
           'Added turbo_module.total_error_count and deprecated it in favor of react_native.module.error.count',
@@ -34101,7 +34102,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['react_native.module.call.distinct_count', 'turbo_modules.unique_methods'],
     changelog: [
       {
-        version: 'next',
+        version: '0.24.0',
         prs: [564],
         description:
           'Added turbo_module.unique_methods and deprecated it in favor of react_native.module.call.distinct_count',
