@@ -15600,6 +15600,28 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__is_localhost.json
+
+/**
+ * Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address. `sentry.is_localhost`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_IS_LOCALHOST_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example true
+ * @example false
+ */
+export const SENTRY_IS_LOCALHOST = 'sentry.is_localhost';
+
+/**
+ * Type for {@link SENTRY_IS_LOCALHOST} sentry.is_localhost
+ */
+export type SENTRY_IS_LOCALHOST_TYPE = boolean;
+
 // Path: model/attributes/sentry/sentry__is_remote.json
 
 /**
@@ -20113,6 +20135,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.group': 'string',
   'sentry.http.prefetch': 'boolean',
   'sentry.idle_span_finish_reason': 'string',
+  'sentry.is_localhost': 'boolean',
   'sentry.is_remote': 'boolean',
   'sentry.kind': 'string',
   'sentry.main_thread': 'boolean',
@@ -20980,6 +21003,7 @@ export type AttributeName =
   | typeof SENTRY_GROUP
   | typeof SENTRY_HTTP_PREFETCH
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
+  | typeof SENTRY_IS_LOCALHOST
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
   | typeof SENTRY_MAIN_THREAD
@@ -32312,6 +32336,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'idleTimeout',
     changelog: [{ version: '0.0.0' }],
   },
+  'sentry.is_localhost': {
+    brief: 'Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.',
+    type: 'boolean',
+    keys: ['sentry.is_localhost'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: true,
+    examples: [true, false],
+    changelog: [{ version: 'next', prs: [646], description: 'Added sentry.is_localhost attribute' }],
+    additionalContext: [
+      'This attribute is used for the Sentry "Filter telemetry from localhost" inbound filter feature.',
+      'SDKs must set this attribute on every span, as well as every other telemetry item supporting attribuztes.',
+    ],
+  },
   'sentry.is_remote': {
     brief: "Indicates whether a span's parent is remote.",
     type: 'boolean',
@@ -35714,6 +35755,7 @@ export type Attributes = {
   [SENTRY_GROUP]?: SENTRY_GROUP_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_IS_LOCALHOST]?: SENTRY_IS_LOCALHOST_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
   [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
