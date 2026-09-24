@@ -2670,7 +2670,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/cache/cache__ttl.json
     CACHE_TTL: Literal["cache.ttl"] = "cache.ttl"
-    """The ttl of the cache in seconds
+    """The ttl (maximum lifetime) of the cache in seconds
 
     Type: int
     Apply Scrubbing: manual
@@ -14241,7 +14241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "cache.ttl": AttributeMetadata(
-        brief="The ttl of the cache in seconds",
+        brief="The ttl (maximum lifetime) of the cache in seconds",
         type=AttributeType.INTEGER,
         keys=("cache.ttl",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),

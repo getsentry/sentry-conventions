@@ -1,6 +1,6 @@
 {
   "key": "cache.ttl",
-  "brief": "The ttl of the cache in seconds",
+  "brief": "The ttl (maximum lifetime) of the cache in seconds",
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"

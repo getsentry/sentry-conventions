@@ -3966,7 +3966,7 @@ export type CACHE_TAGS_TYPE = Array<string>;
 // Path: model/attributes/cache/cache__ttl.json
 
 /**
- * The ttl of the cache in seconds `cache.ttl`
+ * The ttl (maximum lifetime) of the cache in seconds `cache.ttl`
  *
  * Attribute Value Type: `number` {@link CACHE_TTL_TYPE}
  *
@@ -23181,7 +23181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'cache.ttl': {
-    brief: 'The ttl of the cache in seconds',
+    brief: 'The ttl (maximum lifetime) of the cache in seconds',
     type: 'integer',
     keys: ['cache.ttl'],
     applyScrubbing: {
