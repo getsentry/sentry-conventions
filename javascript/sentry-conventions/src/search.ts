@@ -7045,7 +7045,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'cache.ttl': {
     canonicalName: 'cache.ttl',
     type: 'integer',
-    brief: 'The ttl of the cache in seconds',
+    brief: 'The ttl (maximum lifetime) of the cache in seconds',
     deprecationChain: ['cache.ttl'],
   },
   'cache.write': {
