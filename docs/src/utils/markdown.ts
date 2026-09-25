@@ -1,31 +1,19 @@
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+import MarkdownIt from 'markdown-it';
 
-/**
- * Renders a string containing inline markdown links (`[label](https://...)`) to HTML.
- * Everything except recognized http(s) links is HTML-escaped, so the output is safe to
- * pass to `set:html`.
- */
-export function renderMarkdownLinks(text: string): string {
-  const linkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
-  let result = '';
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
+// Only enable the inline syntax used in model prose. Raw HTML and images stay disabled.
+const markdown = new MarkdownIt('zero', { html: false }).enable(['backticks', 'escape', 'link', 'entity']);
 
-  while ((match = linkPattern.exec(text)) !== null) {
-    result += escapeHtml(text.slice(lastIndex, match.index));
-    const label = escapeHtml(match[1]);
-    const url = escapeHtml(match[2]);
-    result += `<a href="${url}" target="_blank" rel="noopener" class="text-accent hover:text-accent-hover">${label}</a>`;
-    lastIndex = linkPattern.lastIndex;
-  }
+// Preserve the existing renderer's HTTP(S)-only link policy.
+markdown.validateLink = (url) => /^https?:\/\//i.test(url);
+markdown.renderer.rules.link_open = (tokens, index, options, _env, renderer) => {
+  const token = tokens[index]!;
+  token.attrSet('target', '_blank');
+  token.attrSet('rel', 'noopener');
+  token.attrSet('class', 'text-accent hover:text-accent-hover');
+  return renderer.renderToken(tokens, index, options);
+};
 
-  result += escapeHtml(text.slice(lastIndex));
-  return result;
+/** Render inline code and links, escaping everything else for safe use with `set:html`. */
+export function renderInlineMarkdown(text: string): string {
+  return markdown.renderInline(text);
 }
