@@ -25,9 +25,12 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    define: {
+      'import.meta.env.VERCEL_ENV': JSON.stringify(process.env.VERCEL_ENV ?? ''),
+    },
   },
-  // Configure for GitHub Pages - the site will be at https://getsentry.github.io/sentry-conventions/
-  site: 'https://getsentry.github.io',
-  base: '/sentry-conventions/',
+  // Vercel previews serve from the root; production stays on GitHub Pages.
+  site: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://getsentry.github.io',
+  base: process.env.VERCEL === '1' ? '/' : '/sentry-conventions/',
   output: 'static',
 });

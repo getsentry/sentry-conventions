@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "installCommand": "yarn install --frozen-lockfile",
+  "buildCommand": "yarn docs:build",
+  "outputDirectory": "docs/dist",
+  "git": {
+    "deploymentEnabled": {
+      "main": false
+    }
+  }
+}
