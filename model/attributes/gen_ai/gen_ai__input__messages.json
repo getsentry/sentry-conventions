@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.input.messages",
-  "brief": "The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `\"user\"`, `\"assistant\"`, `\"tool\"`, or `\"system\"`. For messages of the role `\"tool\"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: \"text\", text:\"...\"}`.",
+  "brief": "The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `\"user\"`, `\"assistant\"`, `\"tool\"`, or `\"system\"`. For messages of the role `\"tool\"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: \"text\", text:\"...\"}`. For `gen_ai.evaluate` operations, the array holds one object `{type: \"evaluation\", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
@@ -10,6 +10,11 @@
   "alias": ["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [650],
+      "description": "Describe the evaluation message shape for gen_ai.evaluate"
+    },
     {
       "version": "0.21.0",
       "prs": [583],

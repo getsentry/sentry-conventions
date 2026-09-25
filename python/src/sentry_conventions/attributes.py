@@ -4776,7 +4776,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
+    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.
 
     Type: str
     Apply Scrubbing: manual
@@ -4810,7 +4810,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__output__messages.json
     GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
-    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.
+    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.
 
     Type: str
     Apply Scrubbing: manual
@@ -17783,7 +17783,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -17799,6 +17799,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[650],
+                description="Describe the evaluation message shape for gen_ai.evaluate",
+            ),
             ChangelogEntry(
                 version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
             ),
@@ -17833,7 +17838,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.output.messages": AttributeMetadata(
-        brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+        brief='The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.output.messages",
@@ -17848,6 +17853,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[650],
+                description="Describe the evaluation message shape for gen_ai.evaluate",
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),

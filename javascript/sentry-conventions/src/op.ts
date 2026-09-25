@@ -327,6 +327,11 @@ export const GEN_AI_GENERATE_CONTENT = 'gen_ai.generate_content';
 export const GEN_AI_RERANK = 'gen_ai.rerank';
 
 /**
+ * Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+ */
+export const GEN_AI_EVALUATE = 'gen_ai.evaluate';
+
+/**
  * Creation of an AI agent that can later be invoked to perform a task
  */
 export const GEN_AI_CREATE_AGENT = 'gen_ai.create_agent';
