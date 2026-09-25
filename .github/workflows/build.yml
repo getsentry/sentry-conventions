@@ -89,7 +89,10 @@ jobs:
           if-no-files-found: error
 
   build-docs:
-    name: Build Docs
+    name: Build Docs (${{ matrix.host }})
+    strategy:
+      matrix:
+        host: [github-pages, vercel]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -107,4 +110,7 @@ jobs:
         working-directory: docs
         run: yarn build
         env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_AUTH_TOKEN: ${{ matrix.host == 'github-pages' && secrets.SENTRY_AUTH_TOKEN || '' }}
+          VERCEL: ${{ matrix.host == 'vercel' && '1' || '' }}
+          VERCEL_ENV: ${{ matrix.host == 'vercel' && 'preview' || '' }}
+          VERCEL_URL: ${{ matrix.host == 'vercel' && 'conventions-preview.vercel.app' || '' }}

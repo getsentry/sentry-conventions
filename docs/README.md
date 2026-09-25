@@ -54,6 +54,24 @@ The site is automatically deployed to GitHub Pages via the `.github/workflows/do
 
 The site is available at: https://getsentry.github.io/sentry-conventions/
 
+### PR Previews
+
+The `sentry-conventions` project in the Sentry Vercel team is connected to this repository.
+Vercel builds branch pushes and adds a preview link to pull requests. Fork contributions may
+require approval through Vercel before deploying.
+
+The project uses the repository root (not `docs/`) so the build can read `model/` and the Yarn
+workspace lockfile. `vercel.json` sets the install command, docs build command, and `docs/dist`
+output directory. Use Node.js 22.x in the Vercel project settings.
+
+Vercel builds serve at `/`; GitHub Pages builds keep `/sentry-conventions/`. For example, the
+Gen AI attributes page is at `/attributes/gen_ai/` on a preview. Pagefind search is included.
+Automatic Vercel deployments of `main` are disabled; GitHub Pages remains the production host.
+Branches need this configuration (rebase older PRs onto `main` after it merges).
+
+Preview builds need no Sentry auth token. Client-side Sentry events are tagged with the Vercel
+environment (`preview`) instead of `production`.
+
 ## Error Monitoring
 
 The client-side site is instrumented with [Sentry](https://sentry.io) (`sentry` org, `conventions` project):
