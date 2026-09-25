@@ -17800,6 +17800,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[650],
+                description="Describe the evaluation message shape for gen_ai.evaluate",
+            ),
+            ChangelogEntry(
                 version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
@@ -17848,6 +17853,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[650],
+                description="Describe the evaluation message shape for gen_ai.evaluate",
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),

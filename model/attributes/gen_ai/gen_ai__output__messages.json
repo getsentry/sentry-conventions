@@ -11,6 +11,11 @@
   "visibility": "public",
   "changelog": [
     {
+      "version": "next",
+      "prs": [650],
+      "description": "Describe the evaluation message shape for gen_ai.evaluate"
+    },
+    {
       "version": "0.4.0",
       "prs": [221]
     }
