@@ -220,6 +220,8 @@ class _AttributeNamesMeta(type):
         "_AWS_REQUEST_ID",
         "AWS_REQUEST_URL",
         "AWS_REGION",
+        "BROWSER_WEB_VITAL_CLS_REPORT_EVENT",
+        "BROWSER_WEB_VITAL_LCP_REPORT_EVENT",
         "CLOUDFLARE_D1_QUERY_TYPE",
         "CLS_SOURCE_KEY",
         "CLS",
@@ -270,6 +272,8 @@ class _AttributeNamesMeta(type):
         "GEN_AI_TOOL_MESSAGE",
         "GEN_AI_TOOL_OUTPUT",
         "GEN_AI_TOOL_TYPE",
+        "_GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS",
+        "_GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS",
         "GEN_AI_USAGE_COMPLETION_TOKENS",
         "GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE",
         "GEN_AI_USAGE_INPUT_TOKENS_CACHED",
@@ -352,6 +356,7 @@ class _AttributeNamesMeta(type):
         "REDIS_COMMAND",
         "REDIS_KEY",
         "RELEASE",
+        "REPLAYID",
         "REPLAY_ID",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
@@ -396,6 +401,19 @@ class _AttributeNamesMeta(type):
         "TRANSACTION",
         "TTFB_REQUESTTIME",
         "TTFB",
+        "TURBO_MODULE_ARCH",
+        "TURBO_MODULE_METHOD",
+        "TURBO_MODULE_NAME",
+        "TURBO_MODULE_TOP_MODULE",
+        "TURBO_MODULE_TOP_MODULE_DURATION_MS",
+        "TURBO_MODULE_TOTAL_CALL_COUNT",
+        "TURBO_MODULE_TOTAL_DURATION_MS",
+        "TURBO_MODULE_TOTAL_ERROR_COUNT",
+        "TURBO_MODULE_UNIQUE_METHODS",
+        "TURBO_MODULES_TOTAL_CALL_COUNT",
+        "TURBO_MODULES_TOTAL_DURATION_MS",
+        "TURBO_MODULES_TOTAL_ERROR_COUNT",
+        "TURBO_MODULES_UNIQUE_METHODS",
         "URL_PATH_PARAMS_KEY",
         "URL_SAME_ORIGIN",
         "URL",
@@ -424,7 +442,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: server.address, http.server_name, net.host.name, http.host, net.peer.name
+    Aliases: server.address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead - Old namespace-less attribute, to be replaced with server.address for span-first future
     Example: "example.com"
     """
@@ -2256,6 +2274,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Example: 1
     Example: 3
+    Example: 0
     """
 
     # Path: model/attributes/browser/browser__navigation__type.json
@@ -2270,8 +2289,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Example: "navigate"
     Example: "reload"
+    Example: "back-forward"
+    Example: "back-forward-cache"
     Example: "prerender"
-    Example: "bfcache"
+    Example: "restore"
     Example: "soft-navigation"
     """
 
@@ -2385,6 +2406,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.
     Example: "navigation"
     """
 
@@ -2443,6 +2465,36 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: fp
     Example: 477.1926
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
+    BROWSER_WEB_VITAL_INP_INTERACTION_TYPE: Literal[
+        "browser.web_vital.inp.interaction_type"
+    ] = "browser.web_vital.inp.interaction_type"
+    """The kind of user interaction INP was reported on
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "click"
+    Example: "hover"
+    Example: "drag"
+    Example: "press"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__target.json
+    BROWSER_WEB_VITAL_INP_TARGET: Literal["browser.web_vital.inp.target"] = (
+        "browser.web_vital.inp.target"
+    )
+    """The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "body > div#app > button.submit"
+    Example: "SubmitButton"
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__value.json
@@ -2525,6 +2577,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.
     Example: "pagehide"
     """
 
@@ -3793,13 +3846,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/device/device__name.json
     DEVICE_NAME: Literal["device.name"] = "device.name"
-    """The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.
+    """The user-assigned name of the mobile device.
 
     Type: str
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: server_name
     Example: "localhost"
     """
 
@@ -5302,7 +5354,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.usage.input_tokens.cache_write
+    Aliases: gen_ai.usage.input_tokens.cache_write, gen_ai.usage.cache_creation_input_tokens
+    Example: 100
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__usage__cache_creation_input_tokens.json
+    _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS: Literal[
+        "gen_ai.usage.cache_creation_input_tokens"
+    ] = "gen_ai.usage.cache_creation_input_tokens"
+    """The number of tokens written to the cache when processing the AI input (prompt).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.usage.cache_creation.input_tokens, gen_ai.usage.input_tokens.cache_write
+    DEPRECATED: Use gen_ai.usage.cache_creation.input_tokens instead - This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.
     Example: 100
     """
 
@@ -5316,7 +5383,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.usage.input_tokens.cached
+    Aliases: gen_ai.usage.input_tokens.cached, gen_ai.usage.cache_read_input_tokens
+    Example: 50
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__usage__cache_read_input_tokens.json
+    _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS: Literal[
+        "gen_ai.usage.cache_read_input_tokens"
+    ] = "gen_ai.usage.cache_read_input_tokens"
+    """The number of cached tokens used to process the AI input (prompt).
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.usage.cache_read.input_tokens, gen_ai.usage.input_tokens.cached
+    DEPRECATED: Use gen_ai.usage.cache_read.input_tokens instead - This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.
     Example: 50
     """
 
@@ -5359,7 +5441,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.usage.cache_creation.input_tokens
+    Aliases: gen_ai.usage.cache_creation.input_tokens, gen_ai.usage.cache_creation_input_tokens
     DEPRECATED: Use gen_ai.usage.cache_creation.input_tokens instead
     Example: 100
     """
@@ -5374,7 +5456,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.usage.cache_read.input_tokens
+    Aliases: gen_ai.usage.cache_read.input_tokens, gen_ai.usage.cache_read_input_tokens
     DEPRECATED: Use gen_ai.usage.cache_read.input_tokens instead
     Example: 50
     """
@@ -5757,7 +5839,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, client.address, http.server_name, net.host.name, net.peer.name
+    Aliases: address, server.address, client.address, http.server_name, net.host.name, server_name, net.peer.name
     DEPRECATED: Use server.address instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
     Example: "example.com"
     """
@@ -6279,7 +6361,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, net.host.name, http.host, net.peer.name
+    Aliases: address, server.address, net.host.name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7569,7 +7651,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, http.host, net.peer.name
+    Aliases: address, server.address, http.server_name, http.host, server_name, net.peer.name
     DEPRECATED: Use server.address instead
     Example: "example.com"
     """
@@ -7608,7 +7690,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, server.address, http.server_name, net.host.name, http.host
+    Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
     DEPRECATED: Use server.address instead - Deprecated, use server.address on client spans and client.address on server spans.
     Example: "example.com"
     """
@@ -8267,6 +8349,160 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "18.2.0"
     """
 
+    # Path: model/attributes/react_native/react_native__architecture.json
+    REACT_NATIVE_ARCHITECTURE: Literal["react_native.architecture"] = (
+        "react_native.architecture"
+    )
+    """The React Native architecture the app is running on. `new` for the New Architecture, where native modules are resolved as TurboModules through `TurboModuleRegistry`, `legacy` for the Old Architecture bridge.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.arch
+    Example: "new"
+    Example: "legacy"
+    """
+
+    # Path: model/attributes/react_native/react_native__module__call__count.json
+    REACT_NATIVE_MODULE_CALL_COUNT: Literal["react_native.module.call.count"] = (
+        "react_native.module.call.count"
+    )
+    """The number of native module calls observed during the lifetime of the span.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.total_call_count, turbo_modules.total_call_count
+    Example: 42
+    """
+
+    # Path: model/attributes/react_native/react_native__module__call__distinct_count.json
+    REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT: Literal[
+        "react_native.module.call.distinct_count"
+    ] = "react_native.module.call.distinct_count"
+    """The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.unique_methods, turbo_modules.unique_methods
+    Example: 7
+    """
+
+    # Path: model/attributes/react_native/react_native__module__duration__max.json
+    REACT_NATIVE_MODULE_DURATION_MAX: Literal["react_native.module.duration.max"] = (
+        "react_native.module.duration.max"
+    )
+    """The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 512.5
+    """
+
+    # Path: model/attributes/react_native/react_native__module__duration__total.json
+    REACT_NATIVE_MODULE_DURATION_TOTAL: Literal[
+        "react_native.module.duration.total"
+    ] = "react_native.module.duration.total"
+    """The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.total_duration_ms, turbo_modules.total_duration_ms
+    Example: 128.45
+    """
+
+    # Path: model/attributes/react_native/react_native__module__error__count.json
+    REACT_NATIVE_MODULE_ERROR_COUNT: Literal["react_native.module.error.count"] = (
+        "react_native.module.error.count"
+    )
+    """The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.total_error_count, turbo_modules.total_error_count
+    Example: 2
+    """
+
+    # Path: model/attributes/react_native/react_native__module__kind.json
+    REACT_NATIVE_MODULE_KIND: Literal["react_native.module.kind"] = (
+        "react_native.module.kind"
+    )
+    """Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "sync"
+    Example: "async"
+    """
+
+    # Path: model/attributes/react_native/react_native__module__method.json
+    REACT_NATIVE_MODULE_METHOD: Literal["react_native.module.method"] = (
+        "react_native.module.method"
+    )
+    """The name of the native module method that was called.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.method
+    Example: "getUniqueId"
+    """
+
+    # Path: model/attributes/react_native/react_native__module__name.json
+    REACT_NATIVE_MODULE_NAME: Literal["react_native.module.name"] = (
+        "react_native.module.name"
+    )
+    """The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.name
+    Example: "RNDeviceInfo"
+    """
+
+    # Path: model/attributes/react_native/react_native__module__top__duration.json
+    REACT_NATIVE_MODULE_TOP_DURATION: Literal["react_native.module.top.duration"] = (
+        "react_native.module.top.duration"
+    )
+    """The total duration attributed to `react_native.module.top.name`, in milliseconds.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.top_module_duration_ms
+    Example: 87.25
+    """
+
+    # Path: model/attributes/react_native/react_native__module__top__name.json
+    REACT_NATIVE_MODULE_TOP_NAME: Literal["react_native.module.top.name"] = (
+        "react_native.module.top.name"
+    )
+    """The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: turbo_module.top_module
+    Example: "RNDeviceInfo.getUniqueId"
+    """
+
     # Path: model/attributes/redis/redis__command.json
     REDIS_COMMAND: Literal["redis.command"] = "redis.command"
     """The name of the Redis operation being executed.
@@ -8318,6 +8554,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Has Dynamic Suffix: true
     Example: "http.response.header.text='test'"
+    """
+
+    # Path: model/attributes/replayId.json
+    REPLAYID: Literal["replayId"] = "replayId"
+    """The id of the sentry replay.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: sentry.replay_id
+    DEPRECATED: Use sentry.replay_id instead
+    Example: "123e4567e89b12d3a456426614174000"
     """
 
     # Path: model/attributes/replay_id.json
@@ -8954,6 +9203,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "idleTimeout"
     """
 
+    # Path: model/attributes/sentry/sentry__is_localhost.json
+    SENTRY_IS_LOCALHOST: Literal["sentry.is_localhost"] = "sentry.is_localhost"
+    """Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: internal
+    Example: true
+    Example: false
+    """
+
     # Path: model/attributes/sentry/sentry__is_remote.json
     SENTRY_IS_REMOTE: Literal["sentry.is_remote"] = "sentry.is_remote"
     """Indicates whether a span's parent is remote.
@@ -9240,7 +9501,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
-    Aliases: replay_id
+    Aliases: replay_id, replayId
     Example: "123e4567e89b12d3a456426614174000"
     """
 
@@ -9265,7 +9526,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: No replacement at this time - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
+    DEPRECATED: No replacement at this time - The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.
     Example: "pagehide"
     """
 
@@ -9649,13 +9910,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/server/server__address.json
     SERVER_ADDRESS: Literal["server.address"] = "server.address"
-    """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
+    """Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: address, http.server_name, net.host.name, http.host, net.peer.name
+    Aliases: address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     Example: "example.com"
     """
 
@@ -9679,8 +9940,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: device.name
-    DEPRECATED: Use device.name instead - This attribute is being deprecated in favor of device.name.
+    Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
+    DEPRECATED: Use server.address instead - This attribute is being deprecated in favor of server.address.
     Example: "example.com"
     """
 
@@ -9970,6 +10231,196 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: browser.web_vital.ttfb.value
     DEPRECATED: Use browser.web_vital.ttfb.value instead - This attribute is being deprecated in favor of browser.web_vital.ttfb.value
     Example: 194
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__arch.json
+    TURBO_MODULE_ARCH: Literal["turbo_module.arch"] = "turbo_module.arch"
+    """The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.architecture
+    DEPRECATED: Use react_native.architecture instead - Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules
+    Example: "new"
+    Example: "legacy"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__method.json
+    TURBO_MODULE_METHOD: Literal["turbo_module.method"] = "turbo_module.method"
+    """The name of the native module method that was called. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.method
+    DEPRECATED: Use react_native.module.method instead - Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules
+    Example: "getUniqueId"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__name.json
+    TURBO_MODULE_NAME: Literal["turbo_module.name"] = "turbo_module.name"
+    """The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.name
+    DEPRECATED: Use react_native.module.name instead - Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules
+    Example: "RNDeviceInfo"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__top_module.json
+    TURBO_MODULE_TOP_MODULE: Literal["turbo_module.top_module"] = (
+        "turbo_module.top_module"
+    )
+    """The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.
+
+    Type: str
+    Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.top.name
+    DEPRECATED: Use react_native.module.top.name instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+    Example: "RNDeviceInfo.getUniqueId"
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__top_module_duration_ms.json
+    TURBO_MODULE_TOP_MODULE_DURATION_MS: Literal[
+        "turbo_module.top_module_duration_ms"
+    ] = "turbo_module.top_module_duration_ms"
+    """The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.top.duration
+    DEPRECATED: Use react_native.module.top.duration instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+    Example: 87.25
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__total_call_count.json
+    TURBO_MODULE_TOTAL_CALL_COUNT: Literal["turbo_module.total_call_count"] = (
+        "turbo_module.total_call_count"
+    )
+    """The number of native module calls observed during the lifetime of the span. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.call.count, turbo_modules.total_call_count
+    DEPRECATED: Use react_native.module.call.count instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+    Example: 42
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__total_duration_ms.json
+    TURBO_MODULE_TOTAL_DURATION_MS: Literal["turbo_module.total_duration_ms"] = (
+        "turbo_module.total_duration_ms"
+    )
+    """The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.duration.total, turbo_modules.total_duration_ms
+    DEPRECATED: Use react_native.module.duration.total instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+    Example: 128.45
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__total_error_count.json
+    TURBO_MODULE_TOTAL_ERROR_COUNT: Literal["turbo_module.total_error_count"] = (
+        "turbo_module.total_error_count"
+    )
+    """The number of native module calls that failed during the lifetime of the span. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.error.count, turbo_modules.total_error_count
+    DEPRECATED: Use react_native.module.error.count instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+    Example: 2
+    """
+
+    # Path: model/attributes/turbo_module/turbo_module__unique_methods.json
+    TURBO_MODULE_UNIQUE_METHODS: Literal["turbo_module.unique_methods"] = (
+        "turbo_module.unique_methods"
+    )
+    """The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.call.distinct_count, turbo_modules.unique_methods
+    DEPRECATED: Use react_native.module.call.distinct_count instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+    Example: 7
+    """
+
+    # Path: model/attributes/turbo_modules/turbo_modules__total_call_count.json
+    TURBO_MODULES_TOTAL_CALL_COUNT: Literal["turbo_modules.total_call_count"] = (
+        "turbo_modules.total_call_count"
+    )
+    """The number of native module calls in the flushed call aggregate. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.call.count, turbo_module.total_call_count
+    DEPRECATED: Use react_native.module.call.count instead - Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix
+    Example: 42
+    """
+
+    # Path: model/attributes/turbo_modules/turbo_modules__total_duration_ms.json
+    TURBO_MODULES_TOTAL_DURATION_MS: Literal["turbo_modules.total_duration_ms"] = (
+        "turbo_modules.total_duration_ms"
+    )
+    """The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.duration.total, turbo_module.total_duration_ms
+    DEPRECATED: Use react_native.module.duration.total instead - Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix
+    Example: 128.45
+    """
+
+    # Path: model/attributes/turbo_modules/turbo_modules__total_error_count.json
+    TURBO_MODULES_TOTAL_ERROR_COUNT: Literal["turbo_modules.total_error_count"] = (
+        "turbo_modules.total_error_count"
+    )
+    """The number of failed native module calls in the flushed call aggregate. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.error.count, turbo_module.total_error_count
+    DEPRECATED: Use react_native.module.error.count instead - Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix
+    Example: 2
+    """
+
+    # Path: model/attributes/turbo_modules/turbo_modules__unique_methods.json
+    TURBO_MODULES_UNIQUE_METHODS: Literal["turbo_modules.unique_methods"] = (
+        "turbo_modules.unique_methods"
+    )
+    """The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: react_native.module.call.distinct_count, turbo_module.unique_methods
+    DEPRECATED: Use react_native.module.call.distinct_count instead - Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix
+    Example: 7
     """
 
     # Path: model/attributes/type.json
@@ -10827,6 +11278,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -10843,9 +11295,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -13709,8 +14165,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
-        examples=[1, 3],
+        examples=[1, 3, 0],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[640],
+                description="Document 0 as the fallback value when the browser does not support `navigationId`",
+            ),
             ChangelogEntry(
                 version="0.22.0",
                 prs=[634],
@@ -13720,6 +14181,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.",
             "The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.",
+            "A value of 0 is a fallback rather than a real navigation id: web-vitals reports 0 when the browser does not expose `PerformanceEntry.navigationId`, so 0 means the id is unknown.",
             "Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.",
             "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
             "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
@@ -13733,8 +14195,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="navigate",
-        examples=["navigate", "reload", "prerender", "bfcache", "soft-navigation"],
+        examples=[
+            "navigate",
+            "reload",
+            "back-forward",
+            "back-forward-cache",
+            "prerender",
+            "restore",
+            "soft-navigation",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[640],
+                description="Use the web-vitals navigation types as-is: `bfcache` is now `back-forward-cache`, and `back-forward` and `restore` are no longer reported as `navigate`",
+            ),
             ChangelogEntry(
                 version="0.22.0",
                 prs=[600],
@@ -13742,8 +14217,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
         additional_context=[
-            "Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.",
-            "`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.",
+            "Carries the `navigationType` value reported by the web-vitals library verbatim. web-vitals hyphenates the Navigation Timing `PerformanceNavigationTiming.type` value (`back_forward` becomes `back-forward`) and adds states that API does not cover: `back-forward-cache` for a restore from the back/forward cache, `prerender`, `restore` for a discarded tab being reloaded, and `soft-navigation`.",
+            "`back-forward-cache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache is a full document load and reports `back-forward`. Use the `browser.bfcache.*` attributes to diagnose misses.",
             "`prerender` pages finish painting before activation, so their paint timings are offset by `browser.performance.navigation.activation_start`. Keep them separate when aggregating web vitals.",
             "Not to be confused with `router.navigation.type`, which holds the client-side router's own vocabulary (`link`, `goto`, `router.push`). The two are independent and can both be set on the same span.",
         ],
@@ -13880,7 +14355,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="navigation",
+        deprecation=DeprecationInfo(
+            reason="The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement."
+        ),
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[642],
+                description="Deprecated browser.web_vital.cls.report_event, which has no replacement",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[319],
@@ -13955,6 +14438,49 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["fp"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
+        ],
+    ),
+    "browser.web_vital.inp.interaction_type": AttributeMetadata(
+        brief="The kind of user interaction INP was reported on",
+        type=AttributeType.STRING,
+        keys=("browser.web_vital.inp.interaction_type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="click",
+        examples=["click", "hover", "drag", "press"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[641],
+                description="Added browser.web_vital.inp.interaction_type attribute",
+            ),
+        ],
+        additional_context=[
+            "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
+            "Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.",
+            "Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.",
+        ],
+    ),
+    "browser.web_vital.inp.target": AttributeMetadata(
+        brief="The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on",
+        type=AttributeType.STRING,
+        keys=("browser.web_vital.inp.target",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="body > div#app > button.submit",
+        examples=["body > div#app > button.submit", "SubmitButton"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[641],
+                description="Added browser.web_vital.inp.target attribute",
+            ),
+        ],
+        additional_context=[
+            "Named after `PerformanceEventTiming.target`, the way `browser.web_vital.lcp.element` is named after `LargestContentfulPaint.element`. The value uses the same format as that attribute.",
+            "Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`.",
         ],
     ),
     "browser.web_vital.inp.value": AttributeMetadata(
@@ -14049,7 +14575,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="pagehide",
+        deprecation=DeprecationInfo(
+            reason="The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement."
+        ),
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[642],
+                description="Deprecated browser.web_vital.lcp.report_event, which has no replacement",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[319],
@@ -15840,18 +16374,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "device.name": AttributeMetadata(
-        brief="The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.",
+        brief="The user-assigned name of the mobile device.",
         type=AttributeType.STRING,
-        keys=(
-            "device.name",
-            "server_name",
-        ),
+        keys=("device.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
-        aliases=["server_name"],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[647],
+                description="Limit brief to mobile attributes and remove server_name alias",
+            ),
             ChangelogEntry(
                 version="0.21.0", prs=[602], description="Added server_name as an alias"
             ),
@@ -18111,14 +18646,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.cache_creation_input_tokens",
             "gen_ai.usage.input_tokens.cache_write",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=100,
-        aliases=["gen_ai.usage.input_tokens.cache_write"],
+        aliases=[
+            "gen_ai.usage.input_tokens.cache_write",
+            "gen_ai.usage.cache_creation_input_tokens",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[582],
+                description="Added gen_ai.usage.cache_creation_input_tokens as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
@@ -18129,19 +18673,58 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans."
         ],
     ),
+    "gen_ai.usage.cache_creation_input_tokens": AttributeMetadata(
+        brief="The number of tokens written to the cache when processing the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.cache_creation_input_tokens",
+            "gen_ai.usage.input_tokens.cache_write",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        examples=[100],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.cache_creation.input_tokens",
+            reason="This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.input_tokens.cache_write",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[582],
+                description="Added gen_ai.usage.cache_creation_input_tokens attribute",
+            ),
+        ],
+    ),
     "gen_ai.usage.cache_read.input_tokens": AttributeMetadata(
         brief="The number of cached tokens used to process the AI input (prompt).",
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.cache_read_input_tokens",
             "gen_ai.usage.input_tokens.cached",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example=50,
-        aliases=["gen_ai.usage.input_tokens.cached"],
+        aliases=[
+            "gen_ai.usage.input_tokens.cached",
+            "gen_ai.usage.cache_read_input_tokens",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[582],
+                description="Added gen_ai.usage.cache_read_input_tokens as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
@@ -18151,6 +18734,36 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.",
             "This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.",
+        ],
+    ),
+    "gen_ai.usage.cache_read_input_tokens": AttributeMetadata(
+        brief="The number of cached tokens used to process the AI input (prompt).",
+        type=AttributeType.INTEGER,
+        keys=(
+            "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.cache_read_input_tokens",
+            "gen_ai.usage.input_tokens.cached",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=50,
+        examples=[50],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.usage.cache_read.input_tokens",
+            reason="This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.input_tokens.cached",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[582],
+                description="Added gen_ai.usage.cache_read_input_tokens attribute",
+            ),
         ],
     ),
     "gen_ai.usage.completion_tokens": AttributeMetadata(
@@ -18218,6 +18831,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.cache_creation_input_tokens",
             "gen_ai.usage.input_tokens.cache_write",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -18228,8 +18842,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.usage.cache_creation.input_tokens",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["gen_ai.usage.cache_creation.input_tokens"],
+        aliases=[
+            "gen_ai.usage.cache_creation.input_tokens",
+            "gen_ai.usage.cache_creation_input_tokens",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[582],
+                description="Added gen_ai.usage.cache_creation_input_tokens as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
@@ -18249,6 +18871,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.cache_read_input_tokens",
             "gen_ai.usage.input_tokens.cached",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -18259,8 +18882,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             replacement="gen_ai.usage.cache_read.input_tokens",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["gen_ai.usage.cache_read.input_tokens"],
+        aliases=[
+            "gen_ai.usage.cache_read.input_tokens",
+            "gen_ai.usage.cache_read_input_tokens",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[582],
+                description="Added gen_ai.usage.cache_read_input_tokens as an alias",
+            ),
             ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
@@ -18881,9 +19512,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "client.address",
             "http.server_name",
             "net.host.name",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -19596,6 +20231,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -19609,9 +20245,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server.address",
             "net.host.name",
             "http.host",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -21550,6 +22190,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -21563,9 +22204,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "server.address",
             "http.server_name",
             "http.host",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -21642,8 +22287,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
+            "server_name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0", prs=[647], description="Added server_name as an alias"
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -22639,6 +23288,242 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "react_native.architecture": AttributeMetadata(
+        brief="The React Native architecture the app is running on. `new` for the New Architecture, where native modules are resolved as TurboModules through `TurboModuleRegistry`, `legacy` for the Old Architecture bridge.",
+        type=AttributeType.STRING,
+        keys=(
+            "react_native.architecture",
+            "turbo_module.arch",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="new",
+        examples=["new", "legacy"],
+        aliases=["turbo_module.arch"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.architecture attribute",
+            ),
+        ],
+    ),
+    "react_native.module.call.count": AttributeMetadata(
+        brief="The number of native module calls observed during the lifetime of the span.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.call.count",
+            "turbo_module.total_call_count",
+            "turbo_modules.total_call_count",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=42,
+        examples=[42],
+        aliases=["turbo_module.total_call_count", "turbo_modules.total_call_count"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.call.count attribute",
+            ),
+        ],
+    ),
+    "react_native.module.call.distinct_count": AttributeMetadata(
+        brief="The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.call.distinct_count",
+            "turbo_module.unique_methods",
+            "turbo_modules.unique_methods",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=7,
+        examples=[7],
+        aliases=["turbo_module.unique_methods", "turbo_modules.unique_methods"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.call.distinct_count attribute",
+            ),
+        ],
+    ),
+    "react_native.module.duration.max": AttributeMetadata(
+        brief="The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds.",
+        type=AttributeType.DOUBLE,
+        keys=("react_native.module.duration.max",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=512.5,
+        examples=[512.5],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.duration.max attribute",
+            ),
+        ],
+    ),
+    "react_native.module.duration.total": AttributeMetadata(
+        brief="The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "react_native.module.duration.total",
+            "turbo_module.total_duration_ms",
+            "turbo_modules.total_duration_ms",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=128.45,
+        examples=[128.45],
+        aliases=["turbo_module.total_duration_ms", "turbo_modules.total_duration_ms"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.duration.total attribute",
+            ),
+        ],
+    ),
+    "react_native.module.error.count": AttributeMetadata(
+        brief="The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.error.count",
+            "turbo_module.total_error_count",
+            "turbo_modules.total_error_count",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        examples=[2],
+        aliases=["turbo_module.total_error_count", "turbo_modules.total_error_count"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.error.count attribute",
+            ),
+        ],
+    ),
+    "react_native.module.kind": AttributeMetadata(
+        brief="Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`.",
+        type=AttributeType.STRING,
+        keys=("react_native.module.kind",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="sync",
+        examples=["sync", "async"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.kind attribute",
+            ),
+        ],
+    ),
+    "react_native.module.method": AttributeMetadata(
+        brief="The name of the native module method that was called.",
+        type=AttributeType.STRING,
+        keys=(
+            "react_native.module.method",
+            "turbo_module.method",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="getUniqueId",
+        examples=["getUniqueId"],
+        aliases=["turbo_module.method"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.method attribute",
+            ),
+        ],
+    ),
+    "react_native.module.name": AttributeMetadata(
+        brief="The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key.",
+        type=AttributeType.STRING,
+        keys=(
+            "react_native.module.name",
+            "turbo_module.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="RNDeviceInfo",
+        examples=["RNDeviceInfo"],
+        aliases=["turbo_module.name"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.name attribute",
+            ),
+        ],
+    ),
+    "react_native.module.top.duration": AttributeMetadata(
+        brief="The total duration attributed to `react_native.module.top.name`, in milliseconds.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "react_native.module.top.duration",
+            "turbo_module.top_module_duration_ms",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=87.25,
+        examples=[87.25],
+        aliases=["turbo_module.top_module_duration_ms"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.top.duration attribute",
+            ),
+        ],
+    ),
+    "react_native.module.top.name": AttributeMetadata(
+        brief="The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`.",
+        type=AttributeType.STRING,
+        keys=(
+            "react_native.module.top.name",
+            "turbo_module.top_module",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="RNDeviceInfo.getUniqueId",
+        examples=["RNDeviceInfo.getUniqueId"],
+        aliases=["turbo_module.top_module"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added react_native.module.top.name attribute",
+            ),
+        ],
+    ),
     "redis.command": AttributeMetadata(
         brief="The name of the Redis operation being executed.",
         type=AttributeType.STRING,
@@ -22723,6 +23608,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="http.response.header.text='test'",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[103]),
+        ],
+    ),
+    "replayId": AttributeMetadata(
+        brief="The id of the sentry replay.",
+        type=AttributeType.STRING,
+        keys=("replayId",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="123e4567e89b12d3a456426614174000",
+        deprecation=DeprecationInfo(replacement="sentry.replay_id"),
+        aliases=["sentry.replay_id"],
+        changelog=[
+            ChangelogEntry(version="0.24.0", prs=[401]),
         ],
     ),
     "replay_id": AttributeMetadata(
@@ -23619,6 +24518,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "sentry.is_localhost": AttributeMetadata(
+        brief="Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.",
+        type=AttributeType.BOOLEAN,
+        keys=("sentry.is_localhost",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.INTERNAL,
+        example=True,
+        examples=[True, False],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[646],
+                description="Added sentry.is_localhost attribute",
+            ),
+        ],
+        additional_context=[
+            'This attribute is used for the Sentry "Filter telemetry from localhost" inbound filter feature.',
+            "SDKs must set this attribute on every span, as well as every other telemetry item supporting attribuztes.",
+        ],
+    ),
     "sentry.is_remote": AttributeMetadata(
         brief="Indicates whether a span's parent is remote.",
         type=AttributeType.BOOLEAN,
@@ -23975,7 +24895,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="123e4567e89b12d3a456426614174000",
-        aliases=["replay_id"],
+        aliases=["replay_id", "replayId"],
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
@@ -24002,9 +24922,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="pagehide",
         deprecation=DeprecationInfo(
-            reason="The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required."
+            reason="The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required."
         ),
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[642],
+                description="Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[320],
@@ -24598,13 +25523,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="user.username"),
     ),
     "server.address": AttributeMetadata(
-        brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+        brief="Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.",
         type=AttributeType.STRING,
         keys=(
             "server.address",
             "address",
             "http.server_name",
             "net.host.name",
+            "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -24615,9 +25541,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "http.server_name",
             "net.host.name",
             "http.host",
+            "server_name",
             "net.peer.name",
         ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[645, 647],
+                description="Broaden brief to allow hostnames",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -24655,7 +25587,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The name of the device. On servers and desktops, this is typically the hostname.",
         type=AttributeType.STRING,
         keys=(
-            "device.name",
+            "server.address",
+            "address",
+            "http.server_name",
+            "net.host.name",
             "server_name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
@@ -24663,12 +25598,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="example.com",
         deprecation=DeprecationInfo(
-            replacement="device.name",
-            reason="This attribute is being deprecated in favor of device.name.",
+            replacement="server.address",
+            reason="This attribute is being deprecated in favor of server.address.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["device.name"],
+        aliases=[
+            "address",
+            "server.address",
+            "http.server_name",
+            "net.host.name",
+            "http.host",
+            "net.peer.name",
+        ],
         changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[647],
+                description="Alias the server.address alias group",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588, 602],
@@ -25161,6 +26108,373 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["browser.web_vital.ttfb.value"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[235]),
+        ],
+    ),
+    "turbo_module.arch": AttributeMetadata(
+        brief="The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.",
+        type=AttributeType.STRING,
+        keys=(
+            "react_native.architecture",
+            "turbo_module.arch",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="new",
+        examples=["new", "legacy"],
+        deprecation=DeprecationInfo(
+            replacement="react_native.architecture",
+            reason="Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.architecture"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.arch and deprecated it in favor of react_native.architecture",
+            ),
+        ],
+    ),
+    "turbo_module.method": AttributeMetadata(
+        brief="The name of the native module method that was called. Only applies to React Native.",
+        type=AttributeType.STRING,
+        keys=(
+            "react_native.module.method",
+            "turbo_module.method",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="getUniqueId",
+        examples=["getUniqueId"],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.method",
+            reason="Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.module.method"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.method and deprecated it in favor of react_native.module.method",
+            ),
+        ],
+    ),
+    "turbo_module.name": AttributeMetadata(
+        brief="The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.",
+        type=AttributeType.STRING,
+        keys=(
+            "react_native.module.name",
+            "turbo_module.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="RNDeviceInfo",
+        examples=["RNDeviceInfo"],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.name",
+            reason="Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.module.name"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.name and deprecated it in favor of react_native.module.name",
+            ),
+        ],
+    ),
+    "turbo_module.top_module": AttributeMetadata(
+        brief="The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.STRING,
+        keys=(
+            "react_native.module.top.name",
+            "turbo_module.top_module",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL,
+            reason="Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="RNDeviceInfo.getUniqueId",
+        examples=["RNDeviceInfo.getUniqueId"],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.top.name",
+            reason="Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.module.top.name"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.top_module and deprecated it in favor of react_native.module.top.name",
+            ),
+        ],
+    ),
+    "turbo_module.top_module_duration_ms": AttributeMetadata(
+        brief="The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "react_native.module.top.duration",
+            "turbo_module.top_module_duration_ms",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=87.25,
+        examples=[87.25],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.top.duration",
+            reason="Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.module.top.duration"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.top_module_duration_ms and deprecated it in favor of react_native.module.top.duration",
+            ),
+        ],
+    ),
+    "turbo_module.total_call_count": AttributeMetadata(
+        brief="The number of native module calls observed during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.call.count",
+            "turbo_module.total_call_count",
+            "turbo_modules.total_call_count",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=42,
+        examples=[42],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.call.count",
+            reason="Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.module.call.count", "turbo_modules.total_call_count"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.total_call_count and deprecated it in favor of react_native.module.call.count",
+            ),
+        ],
+    ),
+    "turbo_module.total_duration_ms": AttributeMetadata(
+        brief="The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "react_native.module.duration.total",
+            "turbo_module.total_duration_ms",
+            "turbo_modules.total_duration_ms",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=128.45,
+        examples=[128.45],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.duration.total",
+            reason="Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "react_native.module.duration.total",
+            "turbo_modules.total_duration_ms",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.total_duration_ms and deprecated it in favor of react_native.module.duration.total",
+            ),
+        ],
+    ),
+    "turbo_module.total_error_count": AttributeMetadata(
+        brief="The number of native module calls that failed during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.error.count",
+            "turbo_module.total_error_count",
+            "turbo_modules.total_error_count",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        examples=[2],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.error.count",
+            reason="Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.module.error.count", "turbo_modules.total_error_count"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.total_error_count and deprecated it in favor of react_native.module.error.count",
+            ),
+        ],
+    ),
+    "turbo_module.unique_methods": AttributeMetadata(
+        brief="The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.call.distinct_count",
+            "turbo_module.unique_methods",
+            "turbo_modules.unique_methods",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=7,
+        examples=[7],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.call.distinct_count",
+            reason="Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "react_native.module.call.distinct_count",
+            "turbo_modules.unique_methods",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_module.unique_methods and deprecated it in favor of react_native.module.call.distinct_count",
+            ),
+        ],
+    ),
+    "turbo_modules.total_call_count": AttributeMetadata(
+        brief="The number of native module calls in the flushed call aggregate. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.call.count",
+            "turbo_module.total_call_count",
+            "turbo_modules.total_call_count",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=42,
+        examples=[42],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.call.count",
+            reason="Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.module.call.count", "turbo_module.total_call_count"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_modules.total_call_count and deprecated it in favor of react_native.module.call.count",
+            ),
+        ],
+    ),
+    "turbo_modules.total_duration_ms": AttributeMetadata(
+        brief="The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "react_native.module.duration.total",
+            "turbo_module.total_duration_ms",
+            "turbo_modules.total_duration_ms",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=128.45,
+        examples=[128.45],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.duration.total",
+            reason="Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "react_native.module.duration.total",
+            "turbo_module.total_duration_ms",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_modules.total_duration_ms and deprecated it in favor of react_native.module.duration.total",
+            ),
+        ],
+    ),
+    "turbo_modules.total_error_count": AttributeMetadata(
+        brief="The number of failed native module calls in the flushed call aggregate. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.error.count",
+            "turbo_module.total_error_count",
+            "turbo_modules.total_error_count",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2,
+        examples=[2],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.error.count",
+            reason="Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["react_native.module.error.count", "turbo_module.total_error_count"],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_modules.total_error_count and deprecated it in favor of react_native.module.error.count",
+            ),
+        ],
+    ),
+    "turbo_modules.unique_methods": AttributeMetadata(
+        brief="The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "react_native.module.call.distinct_count",
+            "turbo_module.unique_methods",
+            "turbo_modules.unique_methods",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=7,
+        examples=[7],
+        deprecation=DeprecationInfo(
+            replacement="react_native.module.call.distinct_count",
+            reason="Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "react_native.module.call.distinct_count",
+            "turbo_module.unique_methods",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.24.0",
+                prs=[564],
+                description="Added turbo_modules.unique_methods and deprecated it in favor of react_native.module.call.distinct_count",
+            ),
         ],
     ),
     "type": AttributeMetadata(
@@ -26381,6 +27695,8 @@ Attributes = TypedDict(
         "browser.web_vital.cls.value": float,
         "browser.web_vital.fcp.value": float,
         "browser.web_vital.fp.value": float,
+        "browser.web_vital.inp.interaction_type": str,
+        "browser.web_vital.inp.target": str,
         "browser.web_vital.inp.value": float,
         "browser.web_vital.lcp.element": str,
         "browser.web_vital.lcp.id": str,
@@ -26613,7 +27929,9 @@ Attributes = TypedDict(
         "gen_ai.tool.output": str,
         "gen_ai.tool.type": str,
         "gen_ai.usage.cache_creation.input_tokens": int,
+        "gen_ai.usage.cache_creation_input_tokens": int,
         "gen_ai.usage.cache_read.input_tokens": int,
+        "gen_ai.usage.cache_read_input_tokens": int,
         "gen_ai.usage.completion_tokens": int,
         "gen_ai.usage.input_tokens": int,
         "gen_ai.usage.input_tokens.cache_write": int,
@@ -26846,10 +28164,22 @@ Attributes = TypedDict(
         "query.<key>": str,
         "query": str,
         "react.version": str,
+        "react_native.architecture": str,
+        "react_native.module.call.count": int,
+        "react_native.module.call.distinct_count": int,
+        "react_native.module.duration.max": float,
+        "react_native.module.duration.total": float,
+        "react_native.module.error.count": int,
+        "react_native.module.kind": str,
+        "react_native.module.method": str,
+        "react_native.module.name": str,
+        "react_native.module.top.duration": float,
+        "react_native.module.top.name": str,
         "redis.command": str,
         "redis.key": str,
         "release": str,
         "remix.action_form_data.<key>": str,
+        "replayId": str,
         "replay_id": str,
         "resource.deployment.environment": str,
         "resource.deployment.environment.name": str,
@@ -26902,6 +28232,7 @@ Attributes = TypedDict(
         "sentry.group": str,
         "sentry.http.prefetch": bool,
         "sentry.idle_span_finish_reason": str,
+        "sentry.is_localhost": bool,
         "sentry.is_remote": bool,
         "sentry.kind": str,
         "sentry.main_thread": bool,
@@ -26984,6 +28315,19 @@ Attributes = TypedDict(
         "trpc.procedure_type": str,
         "ttfb.requestTime": float,
         "ttfb": float,
+        "turbo_module.arch": str,
+        "turbo_module.method": str,
+        "turbo_module.name": str,
+        "turbo_module.top_module": str,
+        "turbo_module.top_module_duration_ms": float,
+        "turbo_module.total_call_count": int,
+        "turbo_module.total_duration_ms": float,
+        "turbo_module.total_error_count": int,
+        "turbo_module.unique_methods": int,
+        "turbo_modules.total_call_count": int,
+        "turbo_modules.total_duration_ms": float,
+        "turbo_modules.total_error_count": int,
+        "turbo_modules.unique_methods": int,
         "type": str,
         "ui.component_name": str,
         "ui.contributes_to_ttfd": bool,

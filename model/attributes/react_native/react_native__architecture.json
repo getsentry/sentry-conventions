@@ -1,0 +1,19 @@
+{
+  "key": "react_native.architecture",
+  "brief": "The React Native architecture the app is running on. `new` for the New Architecture, where native modules are resolved as TurboModules through `TurboModuleRegistry`, `legacy` for the Old Architecture bridge.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["new", "legacy"],
+  "alias": ["turbo_module.arch"],
+  "changelog": [
+    {
+      "version": "0.24.0",
+      "prs": [564],
+      "description": "Added react_native.architecture attribute"
+    }
+  ]
+}

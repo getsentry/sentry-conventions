@@ -8,11 +8,16 @@
   "is_in_otel": false,
   "example": "pagehide",
   "deprecation": {
-    "reason": "The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.",
+    "reason": "The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.",
     "_status": null
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.24.0",
+      "prs": [642],
+      "description": "Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated"
+    },
     {
       "version": "0.5.0",
       "prs": [320],

@@ -1,0 +1,25 @@
+{
+  "key": "turbo_module.method",
+  "brief": "The name of the native module method that was called. Only applies to React Native.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual",
+    "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["getUniqueId"],
+  "alias": ["react_native.module.method"],
+  "deprecation": {
+    "replacement": "react_native.module.method",
+    "reason": "Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.24.0",
+      "prs": [564],
+      "description": "Added turbo_module.method and deprecated it in favor of react_native.module.method"
+    }
+  ]
+}

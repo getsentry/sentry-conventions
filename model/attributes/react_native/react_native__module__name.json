@@ -1,0 +1,20 @@
+{
+  "key": "react_native.module.name",
+  "brief": "The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual",
+    "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["RNDeviceInfo"],
+  "alias": ["turbo_module.name"],
+  "changelog": [
+    {
+      "version": "0.24.0",
+      "prs": [564],
+      "description": "Added react_native.module.name attribute"
+    }
+  ]
+}

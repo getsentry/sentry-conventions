@@ -1,0 +1,18 @@
+{
+  "key": "react_native.module.duration.max",
+  "brief": "The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [512.5],
+  "changelog": [
+    {
+      "version": "0.24.0",
+      "prs": [564],
+      "description": "Added react_native.module.duration.max attribute"
+    }
+  ]
+}

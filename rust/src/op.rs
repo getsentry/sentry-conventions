@@ -90,6 +90,10 @@ pub const UI: &str = "ui";
 /// A task that is taken on the main UI thread. Typically used to indicate to users about things like the [Long Tasks API](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming).
 pub const UI_TASK: &str = "ui.task";
 
+/// Looking up which component a name in a template refers to, before that component renders. Ember does this for every component it renders. The render itself is a separate `ui.render` span.
+pub const UI_RESOLVE: &str = "ui.resolve";
+
+/// Rendering of a UI component.
 pub const UI_RENDER: &str = "ui.render";
 
 /// Mounting of a UI component or application (e.g. initial render/bootstrap).
@@ -125,26 +129,37 @@ pub const UI_WEBVITAL_LCP: &str = "ui.webvital.lcp";
 /// A Cumulative Layout Shift (CLS) web vital measurement.
 pub const UI_WEBVITAL_CLS: &str = "ui.webvital.cls";
 
+/// A user interaction that starts a new trace segment and collects the work it triggers.
 pub const UI_ACTION: &str = "ui.action";
 
+/// A click that starts a new idle span, collecting work the interaction triggers.
 pub const UI_ACTION_CLICK: &str = "ui.action.click";
 
+/// Legacy React UI operation. Prefer ui.mount, ui.render, and ui.update.
 pub const UI_REACT: &str = "ui.react";
 
+/// Legacy React component mount. Prefer ui.mount.
 pub const UI_REACT_MOUNT: &str = "ui.react.mount";
 
+/// Legacy React component render. Prefer ui.render.
 pub const UI_REACT_RENDER: &str = "ui.react.render";
 
+/// Legacy React component update. Prefer ui.update.
 pub const UI_REACT_UPDATE: &str = "ui.react.update";
 
+/// Legacy Vue UI operation. Prefer ui.mount, ui.render, ui.update, and ui.unmount.
 pub const UI_VUE: &str = "ui.vue";
 
+/// Legacy Svelte UI operation. Prefer ui.mount and ui.update.
 pub const UI_SVELTE: &str = "ui.svelte";
 
+/// Legacy Angular UI operation. Prefer ui.mount.
 pub const UI_ANGULAR: &str = "ui.angular";
 
+/// Legacy Ember UI operation. Prefer ui.mount, ui.render, ui.task, and ui.resolve.
 pub const UI_EMBER: &str = "ui.ember";
 
+/// Legacy Livewire UI operation. Prefer ui.mount, ui.render, and ui.update.
 pub const UI_LIVEWIRE: &str = "ui.livewire";
 
 // Path: model/op/database.json
@@ -294,6 +309,9 @@ pub const APP_UPDATE_DOWNLOAD: &str = "app.update.download";
 pub const FILE: &str = "file";
 
 pub const SERIALIZE: &str = "serialize";
+
+/// A call from JavaScript into a React Native native module, or an aggregate of such calls.
+pub const TURBO_MODULE: &str = "turbo_module";
 
 // Path: model/op/object.json
 // Name: object

@@ -1,0 +1,22 @@
+{
+  "key": "replayId",
+  "brief": "The id of the sentry replay.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": false,
+  "example": "123e4567e89b12d3a456426614174000",
+  "alias": ["sentry.replay_id"],
+  "deprecation": {
+    "_status": null,
+    "replacement": "sentry.replay_id"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.24.0",
+      "prs": [401]
+    }
+  ]
+}

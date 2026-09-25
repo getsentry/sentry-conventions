@@ -1,3 +1,34 @@
+## 0.24.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add internal `sentry.is_localhost` attribute by @Lms24 in [#646](https://github.com/getsentry/sentry-conventions/pull/646)
+- Add the INP target and interaction type attributes by @logaretm in [#641](https://github.com/getsentry/sentry-conventions/pull/641)
+- Deprecate the web vital report event attributes by @logaretm in [#642](https://github.com/getsentry/sentry-conventions/pull/642)
+- Add React Native native module call attributes by @alwx in [#564](https://github.com/getsentry/sentry-conventions/pull/564)
+- Use the web-vitals navigation types as-is for `browser.navigation.type` by @logaretm in [#640](https://github.com/getsentry/sentry-conventions/pull/640)
+- Add legacy gen_ai cache token attributes (deprecated) by @JPeer264 in [#582](https://github.com/getsentry/sentry-conventions/pull/582)
+
+#### Other
+
+- (names) Add span name and description conventions for `ui.*` ops by @Lms24 in [#643](https://github.com/getsentry/sentry-conventions/pull/643)
+- (op) Add `ui.resolve` span op by @Lms24 in [#633](https://github.com/getsentry/sentry-conventions/pull/633)
+- (replays) Define `replayId` as a deprecated attribute by @mjq in [#401](https://github.com/getsentry/sentry-conventions/pull/401)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump devalue from 5.8.1 to 5.9.2 by @dependabot in [#639](https://github.com/getsentry/sentry-conventions/pull/639)
+- Bump smol-toml from 1.6.1 to 1.8.0 by @dependabot in [#635](https://github.com/getsentry/sentry-conventions/pull/635)
+
+#### Other
+
+- Limit `device.name` to mobile devices and alias `server_name` to `server.address` by @alexander-alderman-webb in [#647](https://github.com/getsentry/sentry-conventions/pull/647)
+- Broaden `server.address` brief to also allow hostnames by @alexander-alderman-webb in [#645](https://github.com/getsentry/sentry-conventions/pull/645)
+
 ## 0.23.0
 
 ### New Features ✨

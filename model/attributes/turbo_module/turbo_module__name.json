@@ -1,0 +1,25 @@
+{
+  "key": "turbo_module.name",
+  "brief": "The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual",
+    "reason": "Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["RNDeviceInfo"],
+  "alias": ["react_native.module.name"],
+  "deprecation": {
+    "replacement": "react_native.module.name",
+    "reason": "Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules",
+    "_status": "backfill"
+  },
+  "changelog": [
+    {
+      "version": "0.24.0",
+      "prs": [564],
+      "description": "Added turbo_module.name and deprecated it in favor of react_native.module.name"
+    }
+  ]
+}

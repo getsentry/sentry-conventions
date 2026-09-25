@@ -12,7 +12,7 @@
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Old namespace-less attribute, to be replaced with server.address for span-first future
  * @example "example.com"
@@ -3254,6 +3254,7 @@ export type BROWSER_NAME_TYPE = string;
  *
  * @example 1
  * @example 3
+ * @example 0
  */
 export const BROWSER_NAVIGATION_ID = 'browser.navigation.id';
 
@@ -3276,8 +3277,10 @@ export type BROWSER_NAVIGATION_ID_TYPE = number;
  *
  * @example "navigate"
  * @example "reload"
+ * @example "back-forward"
+ * @example "back-forward-cache"
  * @example "prerender"
- * @example "bfcache"
+ * @example "restore"
  * @example "soft-navigation"
  */
 export const BROWSER_NAVIGATION_TYPE = 'browser.navigation.type';
@@ -3474,6 +3477,7 @@ export type BROWSER_VERSION_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.
  * @example "navigation"
  */
 export const BROWSER_WEB_VITAL_CLS_REPORT_EVENT = 'browser.web_vital.cls.report_event';
@@ -3581,6 +3585,52 @@ export const BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
  * Type for {@link BROWSER_WEB_VITAL_FP_VALUE} browser.web_vital.fp.value
  */
 export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
+
+/**
+ * The kind of user interaction INP was reported on `browser.web_vital.inp.interaction_type`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "click"
+ * @example "hover"
+ * @example "drag"
+ * @example "press"
+ */
+export const BROWSER_WEB_VITAL_INP_INTERACTION_TYPE = 'browser.web_vital.inp.interaction_type';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_INTERACTION_TYPE} browser.web_vital.inp.interaction_type
+ */
+export type BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__inp__target.json
+
+/**
+ * The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on `browser.web_vital.inp.target`
+ *
+ * Attribute Value Type: `string` {@link BROWSER_WEB_VITAL_INP_TARGET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "body > div#app > button.submit"
+ * @example "SubmitButton"
+ */
+export const BROWSER_WEB_VITAL_INP_TARGET = 'browser.web_vital.inp.target';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_TARGET} browser.web_vital.inp.target
+ */
+export type BROWSER_WEB_VITAL_INP_TARGET_TYPE = string;
 
 // Path: model/attributes/browser/browser__web_vital__inp__value.json
 
@@ -3709,6 +3759,7 @@ export type BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.
  * @example "pagehide"
  */
 export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_event';
@@ -6033,7 +6084,7 @@ export type DEVICE_MODEL_ID_TYPE = string;
 // Path: model/attributes/device/device__name.json
 
 /**
- * The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname. `device.name`
+ * The user-assigned name of the mobile device. `device.name`
  *
  * Attribute Value Type: `string` {@link DEVICE_NAME_TYPE}
  *
@@ -6041,8 +6092,6 @@ export type DEVICE_MODEL_ID_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
- *
- * Aliases: {@link SERVER_NAME} `server_name`
  *
  * @example "localhost"
  */
@@ -8705,7 +8754,7 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
  * @example 100
  */
@@ -8715,6 +8764,30 @@ export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_crea
  * Type for {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation.input_tokens
  */
 export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_creation_input_tokens.json
+
+/**
+ * The number of tokens written to the cache when processing the AI input (prompt). `gen_ai.usage.cache_creation_input_tokens`
+ *
+ * Attribute Value Type: `number` {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.
+ * @example 100
+ */
+export const _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation_input_tokens';
+
+/**
+ * Type for {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} gen_ai.usage.cache_creation_input_tokens
+ */
+export type _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__cache_read__input_tokens.json
 
@@ -8728,7 +8801,7 @@ export type GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`, {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read_input_tokens`
  *
  * @example 50
  */
@@ -8738,6 +8811,30 @@ export const GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read.inp
  * Type for {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read.input_tokens
  */
 export type GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__usage__cache_read_input_tokens.json
+
+/**
+ * The number of cached tokens used to process the AI input (prompt). `gen_ai.usage.cache_read_input_tokens`
+ *
+ * Attribute Value Type: `number` {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`, {@link GEN_AI_USAGE_INPUT_TOKENS_CACHED} `gen_ai.usage.input_tokens.cached`
+ *
+ * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead - This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.
+ * @example 50
+ */
+export const _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS = 'gen_ai.usage.cache_read_input_tokens';
+
+/**
+ * Type for {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} gen_ai.usage.cache_read_input_tokens
+ */
+export type _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__usage__completion_tokens.json
 
@@ -8798,7 +8895,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`
+ * Aliases: {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read.input_tokens`, {@link _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} `gen_ai.usage.cache_read_input_tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS} (gen_ai.usage.cache_read.input_tokens) instead
  * @example 50
@@ -8822,7 +8919,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`
+ * Aliases: {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation.input_tokens`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
  * @deprecated Use {@link GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} (gen_ai.usage.cache_creation.input_tokens) instead
  * @example 100
@@ -9473,7 +9570,7 @@ export type HTTP_FRAGMENT_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link CLIENT_ADDRESS} `client.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use one of `server.address` or `client.address`, depending on the usage
  * @example "example.com"
@@ -10338,7 +10435,7 @@ export type HTTP_SCHEME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -12930,7 +13027,7 @@ export type NET_HOST_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead
  * @example "example.com"
@@ -13002,7 +13099,7 @@ export type NET_PEER_IP_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`
  *
  * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - Deprecated, use server.address on client spans and client.address on server spans.
  * @example "example.com"
@@ -13949,6 +14046,257 @@ export const QUERY_KEY_BASE = 'query';
  */
 export type QUERY_KEY_TYPE = string;
 
+// Path: model/attributes/react_native/react_native__architecture.json
+
+/**
+ * The React Native architecture the app is running on. `new` for the New Architecture, where native modules are resolved as TurboModules through `TurboModuleRegistry`, `legacy` for the Old Architecture bridge. `react_native.architecture`
+ *
+ * Attribute Value Type: `string` {@link REACT_NATIVE_ARCHITECTURE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_ARCH} `turbo_module.arch`
+ *
+ * @example "new"
+ * @example "legacy"
+ */
+export const REACT_NATIVE_ARCHITECTURE = 'react_native.architecture';
+
+/**
+ * Type for {@link REACT_NATIVE_ARCHITECTURE} react_native.architecture
+ */
+export type REACT_NATIVE_ARCHITECTURE_TYPE = string;
+
+// Path: model/attributes/react_native/react_native__module__call__count.json
+
+/**
+ * The number of native module calls observed during the lifetime of the span. `react_native.module.call.count`
+ *
+ * Attribute Value Type: `number` {@link REACT_NATIVE_MODULE_CALL_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_TOTAL_CALL_COUNT} `turbo_module.total_call_count`, {@link TURBO_MODULES_TOTAL_CALL_COUNT} `turbo_modules.total_call_count`
+ *
+ * @example 42
+ */
+export const REACT_NATIVE_MODULE_CALL_COUNT = 'react_native.module.call.count';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_CALL_COUNT} react_native.module.call.count
+ */
+export type REACT_NATIVE_MODULE_CALL_COUNT_TYPE = number;
+
+// Path: model/attributes/react_native/react_native__module__call__distinct_count.json
+
+/**
+ * The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated. `react_native.module.call.distinct_count`
+ *
+ * Attribute Value Type: `number` {@link REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_UNIQUE_METHODS} `turbo_module.unique_methods`, {@link TURBO_MODULES_UNIQUE_METHODS} `turbo_modules.unique_methods`
+ *
+ * @example 7
+ */
+export const REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT = 'react_native.module.call.distinct_count';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT} react_native.module.call.distinct_count
+ */
+export type REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT_TYPE = number;
+
+// Path: model/attributes/react_native/react_native__module__duration__max.json
+
+/**
+ * The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds. `react_native.module.duration.max`
+ *
+ * Attribute Value Type: `number` {@link REACT_NATIVE_MODULE_DURATION_MAX_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 512.5
+ */
+export const REACT_NATIVE_MODULE_DURATION_MAX = 'react_native.module.duration.max';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_DURATION_MAX} react_native.module.duration.max
+ */
+export type REACT_NATIVE_MODULE_DURATION_MAX_TYPE = number;
+
+// Path: model/attributes/react_native/react_native__module__duration__total.json
+
+/**
+ * The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration. `react_native.module.duration.total`
+ *
+ * Attribute Value Type: `number` {@link REACT_NATIVE_MODULE_DURATION_TOTAL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_TOTAL_DURATION_MS} `turbo_module.total_duration_ms`, {@link TURBO_MODULES_TOTAL_DURATION_MS} `turbo_modules.total_duration_ms`
+ *
+ * @example 128.45
+ */
+export const REACT_NATIVE_MODULE_DURATION_TOTAL = 'react_native.module.duration.total';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_DURATION_TOTAL} react_native.module.duration.total
+ */
+export type REACT_NATIVE_MODULE_DURATION_TOTAL_TYPE = number;
+
+// Path: model/attributes/react_native/react_native__module__error__count.json
+
+/**
+ * The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback. `react_native.module.error.count`
+ *
+ * Attribute Value Type: `number` {@link REACT_NATIVE_MODULE_ERROR_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_TOTAL_ERROR_COUNT} `turbo_module.total_error_count`, {@link TURBO_MODULES_TOTAL_ERROR_COUNT} `turbo_modules.total_error_count`
+ *
+ * @example 2
+ */
+export const REACT_NATIVE_MODULE_ERROR_COUNT = 'react_native.module.error.count';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_ERROR_COUNT} react_native.module.error.count
+ */
+export type REACT_NATIVE_MODULE_ERROR_COUNT_TYPE = number;
+
+// Path: model/attributes/react_native/react_native__module__kind.json
+
+/**
+ * Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`. `react_native.module.kind`
+ *
+ * Attribute Value Type: `string` {@link REACT_NATIVE_MODULE_KIND_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "sync"
+ * @example "async"
+ */
+export const REACT_NATIVE_MODULE_KIND = 'react_native.module.kind';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_KIND} react_native.module.kind
+ */
+export type REACT_NATIVE_MODULE_KIND_TYPE = string;
+
+// Path: model/attributes/react_native/react_native__module__method.json
+
+/**
+ * The name of the native module method that was called. `react_native.module.method`
+ *
+ * Attribute Value Type: `string` {@link REACT_NATIVE_MODULE_METHOD_TYPE}
+ *
+ * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_METHOD} `turbo_module.method`
+ *
+ * @example "getUniqueId"
+ */
+export const REACT_NATIVE_MODULE_METHOD = 'react_native.module.method';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_METHOD} react_native.module.method
+ */
+export type REACT_NATIVE_MODULE_METHOD_TYPE = string;
+
+// Path: model/attributes/react_native/react_native__module__name.json
+
+/**
+ * The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. `react_native.module.name`
+ *
+ * Attribute Value Type: `string` {@link REACT_NATIVE_MODULE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_NAME} `turbo_module.name`
+ *
+ * @example "RNDeviceInfo"
+ */
+export const REACT_NATIVE_MODULE_NAME = 'react_native.module.name';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_NAME} react_native.module.name
+ */
+export type REACT_NATIVE_MODULE_NAME_TYPE = string;
+
+// Path: model/attributes/react_native/react_native__module__top__duration.json
+
+/**
+ * The total duration attributed to `react_native.module.top.name`, in milliseconds. `react_native.module.top.duration`
+ *
+ * Attribute Value Type: `number` {@link REACT_NATIVE_MODULE_TOP_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_TOP_MODULE_DURATION_MS} `turbo_module.top_module_duration_ms`
+ *
+ * @example 87.25
+ */
+export const REACT_NATIVE_MODULE_TOP_DURATION = 'react_native.module.top.duration';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_TOP_DURATION} react_native.module.top.duration
+ */
+export type REACT_NATIVE_MODULE_TOP_DURATION_TYPE = number;
+
+// Path: model/attributes/react_native/react_native__module__top__name.json
+
+/**
+ * The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`. `react_native.module.top.name`
+ *
+ * Attribute Value Type: `string` {@link REACT_NATIVE_MODULE_TOP_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link TURBO_MODULE_TOP_MODULE} `turbo_module.top_module`
+ *
+ * @example "RNDeviceInfo.getUniqueId"
+ */
+export const REACT_NATIVE_MODULE_TOP_NAME = 'react_native.module.top.name';
+
+/**
+ * Type for {@link REACT_NATIVE_MODULE_TOP_NAME} react_native.module.top.name
+ */
+export type REACT_NATIVE_MODULE_TOP_NAME_TYPE = string;
+
 // Path: model/attributes/react/react__version.json
 
 /**
@@ -14069,6 +14417,30 @@ export const REMIX_ACTION_FORM_DATA_KEY_BASE = 'remix.action_form_data';
  * Type for {@link REMIX_ACTION_FORM_DATA_KEY} remix.action_form_data.<key>
  */
 export type REMIX_ACTION_FORM_DATA_KEY_TYPE = string;
+
+// Path: model/attributes/replayId.json
+
+/**
+ * The id of the sentry replay. `replayId`
+ *
+ * Attribute Value Type: `string` {@link REPLAYID_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SENTRY_REPLAY_ID} `sentry.replay_id`
+ *
+ * @deprecated Use {@link SENTRY_REPLAY_ID} (sentry.replay_id) instead
+ * @example "123e4567e89b12d3a456426614174000"
+ */
+export const REPLAYID = 'replayId';
+
+/**
+ * Type for {@link REPLAYID} replayId
+ */
+export type REPLAYID_TYPE = string;
 
 // Path: model/attributes/replay_id.json
 
@@ -15226,6 +15598,28 @@ export const SENTRY_IDLE_SPAN_FINISH_REASON = 'sentry.idle_span_finish_reason';
  */
 export type SENTRY_IDLE_SPAN_FINISH_REASON_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__is_localhost.json
+
+/**
+ * Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address. `sentry.is_localhost`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_IS_LOCALHOST_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: internal
+ *
+ * @example true
+ * @example false
+ */
+export const SENTRY_IS_LOCALHOST = 'sentry.is_localhost';
+
+/**
+ * Type for {@link SENTRY_IS_LOCALHOST} sentry.is_localhost
+ */
+export type SENTRY_IS_LOCALHOST_TYPE = boolean;
+
 // Path: model/attributes/sentry/sentry__is_remote.json
 
 /**
@@ -15736,7 +16130,7 @@ export type SENTRY_RELEASE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link REPLAY_ID} `replay_id`
+ * Aliases: {@link REPLAY_ID} `replay_id`, {@link REPLAYID} `replayId`
  *
  * @example "123e4567e89b12d3a456426614174000"
  */
@@ -15780,7 +16174,7 @@ export type SENTRY_REPLAY_IS_BUFFERING_TYPE = boolean;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated  - The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.
+ * @deprecated  - The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.
  * @example "pagehide"
  */
 export const SENTRY_REPORT_EVENT = 'sentry.report_event';
@@ -16465,7 +16859,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
 // Path: model/attributes/server/server__address.json
 
 /**
- * Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name. `server.address`
+ * Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user. `server.address`
  *
  * Attribute Value Type: `string` {@link SERVER_ADDRESS_TYPE}
  *
@@ -16474,7 +16868,7 @@ export type SENTRY_USER_USERNAME_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
+ * Aliases: {@link ADDRESS} `address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link SERVER_NAME} `server_name`, {@link NET_PEER_NAME} `net.peer.name`
  *
  * @example "example.com"
  */
@@ -16497,9 +16891,9 @@ export type SERVER_ADDRESS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link DEVICE_NAME} `device.name`
+ * Aliases: {@link ADDRESS} `address`, {@link SERVER_ADDRESS} `server.address`, {@link HTTP_SERVER_NAME} `http.server_name`, {@link NET_HOST_NAME} `net.host.name`, {@link HTTP_HOST} `http.host`, {@link NET_PEER_NAME} `net.peer.name`
  *
- * @deprecated Use {@link DEVICE_NAME} (device.name) instead - This attribute is being deprecated in favor of device.name.
+ * @deprecated Use {@link SERVER_ADDRESS} (server.address) instead - This attribute is being deprecated in favor of server.address.
  * @example "example.com"
  */
 export const SERVER_NAME = 'server_name';
@@ -17049,6 +17443,319 @@ export const TTFB_REQUESTTIME = 'ttfb.requestTime';
  * Type for {@link TTFB_REQUESTTIME} ttfb.requestTime
  */
 export type TTFB_REQUESTTIME_TYPE = number;
+
+// Path: model/attributes/turbo_modules/turbo_modules__total_call_count.json
+
+/**
+ * The number of native module calls in the flushed call aggregate. Only applies to React Native. `turbo_modules.total_call_count`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULES_TOTAL_CALL_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_CALL_COUNT} `react_native.module.call.count`, {@link TURBO_MODULE_TOTAL_CALL_COUNT} `turbo_module.total_call_count`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_CALL_COUNT} (react_native.module.call.count) instead - Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix
+ * @example 42
+ */
+export const TURBO_MODULES_TOTAL_CALL_COUNT = 'turbo_modules.total_call_count';
+
+/**
+ * Type for {@link TURBO_MODULES_TOTAL_CALL_COUNT} turbo_modules.total_call_count
+ */
+export type TURBO_MODULES_TOTAL_CALL_COUNT_TYPE = number;
+
+// Path: model/attributes/turbo_modules/turbo_modules__total_duration_ms.json
+
+/**
+ * The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native. `turbo_modules.total_duration_ms`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULES_TOTAL_DURATION_MS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_DURATION_TOTAL} `react_native.module.duration.total`, {@link TURBO_MODULE_TOTAL_DURATION_MS} `turbo_module.total_duration_ms`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_DURATION_TOTAL} (react_native.module.duration.total) instead - Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix
+ * @example 128.45
+ */
+export const TURBO_MODULES_TOTAL_DURATION_MS = 'turbo_modules.total_duration_ms';
+
+/**
+ * Type for {@link TURBO_MODULES_TOTAL_DURATION_MS} turbo_modules.total_duration_ms
+ */
+export type TURBO_MODULES_TOTAL_DURATION_MS_TYPE = number;
+
+// Path: model/attributes/turbo_modules/turbo_modules__total_error_count.json
+
+/**
+ * The number of failed native module calls in the flushed call aggregate. Only applies to React Native. `turbo_modules.total_error_count`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULES_TOTAL_ERROR_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_ERROR_COUNT} `react_native.module.error.count`, {@link TURBO_MODULE_TOTAL_ERROR_COUNT} `turbo_module.total_error_count`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_ERROR_COUNT} (react_native.module.error.count) instead - Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix
+ * @example 2
+ */
+export const TURBO_MODULES_TOTAL_ERROR_COUNT = 'turbo_modules.total_error_count';
+
+/**
+ * Type for {@link TURBO_MODULES_TOTAL_ERROR_COUNT} turbo_modules.total_error_count
+ */
+export type TURBO_MODULES_TOTAL_ERROR_COUNT_TYPE = number;
+
+// Path: model/attributes/turbo_modules/turbo_modules__unique_methods.json
+
+/**
+ * The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native. `turbo_modules.unique_methods`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULES_UNIQUE_METHODS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT} `react_native.module.call.distinct_count`, {@link TURBO_MODULE_UNIQUE_METHODS} `turbo_module.unique_methods`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT} (react_native.module.call.distinct_count) instead - Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix
+ * @example 7
+ */
+export const TURBO_MODULES_UNIQUE_METHODS = 'turbo_modules.unique_methods';
+
+/**
+ * Type for {@link TURBO_MODULES_UNIQUE_METHODS} turbo_modules.unique_methods
+ */
+export type TURBO_MODULES_UNIQUE_METHODS_TYPE = number;
+
+// Path: model/attributes/turbo_module/turbo_module__arch.json
+
+/**
+ * The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native. `turbo_module.arch`
+ *
+ * Attribute Value Type: `string` {@link TURBO_MODULE_ARCH_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_ARCHITECTURE} `react_native.architecture`
+ *
+ * @deprecated Use {@link REACT_NATIVE_ARCHITECTURE} (react_native.architecture) instead - Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules
+ * @example "new"
+ * @example "legacy"
+ */
+export const TURBO_MODULE_ARCH = 'turbo_module.arch';
+
+/**
+ * Type for {@link TURBO_MODULE_ARCH} turbo_module.arch
+ */
+export type TURBO_MODULE_ARCH_TYPE = string;
+
+// Path: model/attributes/turbo_module/turbo_module__method.json
+
+/**
+ * The name of the native module method that was called. Only applies to React Native. `turbo_module.method`
+ *
+ * Attribute Value Type: `string` {@link TURBO_MODULE_METHOD_TYPE}
+ *
+ * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_METHOD} `react_native.module.method`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_METHOD} (react_native.module.method) instead - Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules
+ * @example "getUniqueId"
+ */
+export const TURBO_MODULE_METHOD = 'turbo_module.method';
+
+/**
+ * Type for {@link TURBO_MODULE_METHOD} turbo_module.method
+ */
+export type TURBO_MODULE_METHOD_TYPE = string;
+
+// Path: model/attributes/turbo_module/turbo_module__name.json
+
+/**
+ * The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native. `turbo_module.name`
+ *
+ * Attribute Value Type: `string` {@link TURBO_MODULE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_NAME} `react_native.module.name`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_NAME} (react_native.module.name) instead - Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules
+ * @example "RNDeviceInfo"
+ */
+export const TURBO_MODULE_NAME = 'turbo_module.name';
+
+/**
+ * Type for {@link TURBO_MODULE_NAME} turbo_module.name
+ */
+export type TURBO_MODULE_NAME_TYPE = string;
+
+// Path: model/attributes/turbo_module/turbo_module__top_module.json
+
+/**
+ * The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native. `turbo_module.top_module`
+ *
+ * Attribute Value Type: `string` {@link TURBO_MODULE_TOP_MODULE_TYPE}
+ *
+ * Apply Scrubbing: manual - Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_TOP_NAME} `react_native.module.top.name`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_TOP_NAME} (react_native.module.top.name) instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+ * @example "RNDeviceInfo.getUniqueId"
+ */
+export const TURBO_MODULE_TOP_MODULE = 'turbo_module.top_module';
+
+/**
+ * Type for {@link TURBO_MODULE_TOP_MODULE} turbo_module.top_module
+ */
+export type TURBO_MODULE_TOP_MODULE_TYPE = string;
+
+// Path: model/attributes/turbo_module/turbo_module__top_module_duration_ms.json
+
+/**
+ * The total duration attributed to the top native module method, in milliseconds. Only applies to React Native. `turbo_module.top_module_duration_ms`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULE_TOP_MODULE_DURATION_MS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_TOP_DURATION} `react_native.module.top.duration`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_TOP_DURATION} (react_native.module.top.duration) instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+ * @example 87.25
+ */
+export const TURBO_MODULE_TOP_MODULE_DURATION_MS = 'turbo_module.top_module_duration_ms';
+
+/**
+ * Type for {@link TURBO_MODULE_TOP_MODULE_DURATION_MS} turbo_module.top_module_duration_ms
+ */
+export type TURBO_MODULE_TOP_MODULE_DURATION_MS_TYPE = number;
+
+// Path: model/attributes/turbo_module/turbo_module__total_call_count.json
+
+/**
+ * The number of native module calls observed during the lifetime of the span. Only applies to React Native. `turbo_module.total_call_count`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULE_TOTAL_CALL_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_CALL_COUNT} `react_native.module.call.count`, {@link TURBO_MODULES_TOTAL_CALL_COUNT} `turbo_modules.total_call_count`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_CALL_COUNT} (react_native.module.call.count) instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+ * @example 42
+ */
+export const TURBO_MODULE_TOTAL_CALL_COUNT = 'turbo_module.total_call_count';
+
+/**
+ * Type for {@link TURBO_MODULE_TOTAL_CALL_COUNT} turbo_module.total_call_count
+ */
+export type TURBO_MODULE_TOTAL_CALL_COUNT_TYPE = number;
+
+// Path: model/attributes/turbo_module/turbo_module__total_duration_ms.json
+
+/**
+ * The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native. `turbo_module.total_duration_ms`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULE_TOTAL_DURATION_MS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_DURATION_TOTAL} `react_native.module.duration.total`, {@link TURBO_MODULES_TOTAL_DURATION_MS} `turbo_modules.total_duration_ms`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_DURATION_TOTAL} (react_native.module.duration.total) instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+ * @example 128.45
+ */
+export const TURBO_MODULE_TOTAL_DURATION_MS = 'turbo_module.total_duration_ms';
+
+/**
+ * Type for {@link TURBO_MODULE_TOTAL_DURATION_MS} turbo_module.total_duration_ms
+ */
+export type TURBO_MODULE_TOTAL_DURATION_MS_TYPE = number;
+
+// Path: model/attributes/turbo_module/turbo_module__total_error_count.json
+
+/**
+ * The number of native module calls that failed during the lifetime of the span. Only applies to React Native. `turbo_module.total_error_count`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULE_TOTAL_ERROR_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_ERROR_COUNT} `react_native.module.error.count`, {@link TURBO_MODULES_TOTAL_ERROR_COUNT} `turbo_modules.total_error_count`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_ERROR_COUNT} (react_native.module.error.count) instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+ * @example 2
+ */
+export const TURBO_MODULE_TOTAL_ERROR_COUNT = 'turbo_module.total_error_count';
+
+/**
+ * Type for {@link TURBO_MODULE_TOTAL_ERROR_COUNT} turbo_module.total_error_count
+ */
+export type TURBO_MODULE_TOTAL_ERROR_COUNT_TYPE = number;
+
+// Path: model/attributes/turbo_module/turbo_module__unique_methods.json
+
+/**
+ * The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native. `turbo_module.unique_methods`
+ *
+ * Attribute Value Type: `number` {@link TURBO_MODULE_UNIQUE_METHODS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT} `react_native.module.call.distinct_count`, {@link TURBO_MODULES_UNIQUE_METHODS} `turbo_modules.unique_methods`
+ *
+ * @deprecated Use {@link REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT} (react_native.module.call.distinct_count) instead - Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping
+ * @example 7
+ */
+export const TURBO_MODULE_UNIQUE_METHODS = 'turbo_module.unique_methods';
+
+/**
+ * Type for {@link TURBO_MODULE_UNIQUE_METHODS} turbo_module.unique_methods
+ */
+export type TURBO_MODULE_UNIQUE_METHODS_TYPE = number;
 
 // Path: model/attributes/type.json
 
@@ -18889,6 +19596,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.web_vital.cls.value': 'double',
   'browser.web_vital.fcp.value': 'double',
   'browser.web_vital.fp.value': 'double',
+  'browser.web_vital.inp.interaction_type': 'string',
+  'browser.web_vital.inp.target': 'string',
   'browser.web_vital.inp.value': 'double',
   'browser.web_vital.lcp.element': 'string',
   'browser.web_vital.lcp.id': 'string',
@@ -19121,7 +19830,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.tool.output': 'string',
   'gen_ai.tool.type': 'string',
   'gen_ai.usage.cache_creation.input_tokens': 'integer',
+  'gen_ai.usage.cache_creation_input_tokens': 'integer',
   'gen_ai.usage.cache_read.input_tokens': 'integer',
+  'gen_ai.usage.cache_read_input_tokens': 'integer',
   'gen_ai.usage.completion_tokens': 'integer',
   'gen_ai.usage.input_tokens': 'integer',
   'gen_ai.usage.input_tokens.cached': 'integer',
@@ -19353,11 +20064,23 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   profile_id: 'string',
   query: 'string',
   'query.<key>': 'string',
+  'react_native.architecture': 'string',
+  'react_native.module.call.count': 'integer',
+  'react_native.module.call.distinct_count': 'integer',
+  'react_native.module.duration.max': 'double',
+  'react_native.module.duration.total': 'double',
+  'react_native.module.error.count': 'integer',
+  'react_native.module.kind': 'string',
+  'react_native.module.method': 'string',
+  'react_native.module.name': 'string',
+  'react_native.module.top.duration': 'double',
+  'react_native.module.top.name': 'string',
   'react.version': 'string',
   'redis.command': 'string',
   'redis.key': 'string',
   release: 'string',
   'remix.action_form_data.<key>': 'string',
+  replayId: 'string',
   replay_id: 'string',
   'resource.deployment.environment': 'string',
   'resource.deployment.environment.name': 'string',
@@ -19410,6 +20133,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.group': 'string',
   'sentry.http.prefetch': 'boolean',
   'sentry.idle_span_finish_reason': 'string',
+  'sentry.is_localhost': 'boolean',
   'sentry.is_remote': 'boolean',
   'sentry.kind': 'string',
   'sentry.main_thread': 'boolean',
@@ -19492,6 +20216,19 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'trpc.procedure_type': 'string',
   ttfb: 'double',
   'ttfb.requestTime': 'double',
+  'turbo_modules.total_call_count': 'integer',
+  'turbo_modules.total_duration_ms': 'double',
+  'turbo_modules.total_error_count': 'integer',
+  'turbo_modules.unique_methods': 'integer',
+  'turbo_module.arch': 'string',
+  'turbo_module.method': 'string',
+  'turbo_module.name': 'string',
+  'turbo_module.top_module': 'string',
+  'turbo_module.top_module_duration_ms': 'double',
+  'turbo_module.total_call_count': 'integer',
+  'turbo_module.total_duration_ms': 'double',
+  'turbo_module.total_error_count': 'integer',
+  'turbo_module.unique_methods': 'integer',
   type: 'string',
   'ui.component_name': 'string',
   'ui.contributes_to_ttfd': 'boolean',
@@ -19727,6 +20464,8 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_FCP_VALUE
   | typeof BROWSER_WEB_VITAL_FP_VALUE
+  | typeof BROWSER_WEB_VITAL_INP_INTERACTION_TYPE
+  | typeof BROWSER_WEB_VITAL_INP_TARGET
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
   | typeof BROWSER_WEB_VITAL_LCP_ID
@@ -19959,7 +20698,9 @@ export type AttributeName =
   | typeof GEN_AI_TOOL_OUTPUT
   | typeof GEN_AI_TOOL_TYPE
   | typeof GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
+  | typeof _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS
   | typeof GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
+  | typeof _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS
   | typeof GEN_AI_USAGE_COMPLETION_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS
   | typeof GEN_AI_USAGE_INPUT_TOKENS_CACHED
@@ -20191,11 +20932,23 @@ export type AttributeName =
   | typeof PROFILE_ID
   | typeof QUERY
   | typeof QUERY_KEY
+  | typeof REACT_NATIVE_ARCHITECTURE
+  | typeof REACT_NATIVE_MODULE_CALL_COUNT
+  | typeof REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT
+  | typeof REACT_NATIVE_MODULE_DURATION_MAX
+  | typeof REACT_NATIVE_MODULE_DURATION_TOTAL
+  | typeof REACT_NATIVE_MODULE_ERROR_COUNT
+  | typeof REACT_NATIVE_MODULE_KIND
+  | typeof REACT_NATIVE_MODULE_METHOD
+  | typeof REACT_NATIVE_MODULE_NAME
+  | typeof REACT_NATIVE_MODULE_TOP_DURATION
+  | typeof REACT_NATIVE_MODULE_TOP_NAME
   | typeof REACT_VERSION
   | typeof REDIS_COMMAND
   | typeof REDIS_KEY
   | typeof RELEASE
   | typeof REMIX_ACTION_FORM_DATA_KEY
+  | typeof REPLAYID
   | typeof REPLAY_ID
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
@@ -20248,6 +21001,7 @@ export type AttributeName =
   | typeof SENTRY_GROUP
   | typeof SENTRY_HTTP_PREFETCH
   | typeof SENTRY_IDLE_SPAN_FINISH_REASON
+  | typeof SENTRY_IS_LOCALHOST
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
   | typeof SENTRY_MAIN_THREAD
@@ -20330,6 +21084,19 @@ export type AttributeName =
   | typeof TRPC_PROCEDURE_TYPE
   | typeof TTFB
   | typeof TTFB_REQUESTTIME
+  | typeof TURBO_MODULES_TOTAL_CALL_COUNT
+  | typeof TURBO_MODULES_TOTAL_DURATION_MS
+  | typeof TURBO_MODULES_TOTAL_ERROR_COUNT
+  | typeof TURBO_MODULES_UNIQUE_METHODS
+  | typeof TURBO_MODULE_ARCH
+  | typeof TURBO_MODULE_METHOD
+  | typeof TURBO_MODULE_NAME
+  | typeof TURBO_MODULE_TOP_MODULE
+  | typeof TURBO_MODULE_TOP_MODULE_DURATION_MS
+  | typeof TURBO_MODULE_TOTAL_CALL_COUNT
+  | typeof TURBO_MODULE_TOTAL_DURATION_MS
+  | typeof TURBO_MODULE_TOTAL_ERROR_COUNT
+  | typeof TURBO_MODULE_UNIQUE_METHODS
   | typeof TYPE
   | typeof UI_COMPONENT_NAME
   | typeof UI_CONTRIBUTES_TO_TTFD
@@ -20408,7 +21175,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   address: {
     brief: 'The destination hostname or IP address for a TCP connection.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -20421,8 +21188,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'Old namespace-less attribute, to be replaced with server.address for span-first future',
       status: 'backfill',
     },
-    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
+    aliases: ['server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address attribute' },
     ],
@@ -22744,11 +23512,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
-    examples: [1, 3],
-    changelog: [{ version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' }],
+    examples: [1, 3, 0],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [640],
+        description: 'Document 0 as the fallback value when the browser does not support `navigationId`',
+      },
+      { version: '0.22.0', prs: [634], description: 'Added browser.navigation.id attribute' },
+    ],
     additionalContext: [
       'Sourced from `PerformanceEntry.navigationId`, defined by the Soft Navigations spec. Despite its origin it is not soft-navigation specific: the field is set on the `PerformanceNavigationTiming` entry of a hard navigation too.',
       'The value starts at 1 for the initial page load and increments for each subsequent navigation. It is only unique within a single page lifetime, not globally.',
+      'A value of 0 is a fallback rather than a real navigation id: web-vitals reports 0 when the browser does not expose `PerformanceEntry.navigationId`, so 0 means the id is unknown.',
       'Pairs with `browser.navigation.type`: the type says how the browser arrived at the page, the id says which navigation of that page a measurement belongs to.',
       "Not to be confused with the Navigation API's `NavigationHistoryEntry.id`, which is an opaque string identifying a history entry rather than a counter, and is not interchangeable with this value.",
       "Also distinct from the `router.navigation.*` attributes, which describe the client-side router's own view of a navigation. Those come from the framework, this one comes from the browser, and both can be set on the same span.",
@@ -22764,11 +23540,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'navigate',
-    examples: ['navigate', 'reload', 'prerender', 'bfcache', 'soft-navigation'],
-    changelog: [{ version: '0.22.0', prs: [600], description: 'Added browser.navigation.type attribute' }],
+    examples: ['navigate', 'reload', 'back-forward', 'back-forward-cache', 'prerender', 'restore', 'soft-navigation'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [640],
+        description:
+          'Use the web-vitals navigation types as-is: `bfcache` is now `back-forward-cache`, and `back-forward` and `restore` are no longer reported as `navigate`',
+      },
+      { version: '0.22.0', prs: [600], description: 'Added browser.navigation.type attribute' },
+    ],
     additionalContext: [
-      'Mirrors the `navigationType` field reported by the web-vitals library, which combines the Navigation Timing `PerformanceNavigationTiming.type` value with states that API does not cover: back/forward cache restores, prerendering, and soft navigations.',
-      '`bfcache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache reports `navigate`. Use the `browser.bfcache.*` attributes to diagnose misses.',
+      'Carries the `navigationType` value reported by the web-vitals library verbatim. web-vitals hyphenates the Navigation Timing `PerformanceNavigationTiming.type` value (`back_forward` becomes `back-forward`) and adds states that API does not cover: `back-forward-cache` for a restore from the back/forward cache, `prerender`, `restore` for a discarded tab being reloaded, and `soft-navigation`.',
+      '`back-forward-cache` is only set when the page was actually restored from the back/forward cache. A back/forward navigation that missed the cache is a full document load and reports `back-forward`. Use the `browser.bfcache.*` attributes to diagnose misses.',
       '`prerender` pages finish painting before activation, so their paint timings are offset by `browser.performance.navigation.activation_start`. Keep them separate when aggregating web vitals.',
       "Not to be confused with `router.navigation.type`, which holds the client-side router's own vocabulary (`link`, `goto`, `router.push`). The two are independent and can both be set on the same span.",
     ],
@@ -22887,7 +23671,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'navigation',
-    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' }],
+    deprecation: {
+      reason:
+        'The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the CLS value is final, so there is no report event to record. No replacement.',
+    },
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [642],
+        description: 'Deprecated browser.web_vital.cls.report_event, which has no replacement',
+      },
+      { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.cls.report_event attribute' },
+    ],
   },
   'browser.web_vital.cls.source.<key>': {
     brief: 'The HTML elements or components responsible for the layout shift. <key> is a numeric index from 1 to N',
@@ -22941,6 +23736,44 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 477.1926,
     aliases: ['fp'],
     changelog: [{ version: '0.5.0', prs: [235] }],
+  },
+  'browser.web_vital.inp.interaction_type': {
+    brief: 'The kind of user interaction INP was reported on',
+    type: 'string',
+    keys: ['browser.web_vital.inp.interaction_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'click',
+    examples: ['click', 'hover', 'drag', 'press'],
+    changelog: [
+      { version: '0.24.0', prs: [641], description: 'Added browser.web_vital.inp.interaction_type attribute' },
+    ],
+    additionalContext: [
+      "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
+      'Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.',
+      'Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.',
+    ],
+  },
+  'browser.web_vital.inp.target': {
+    brief:
+      'The HTML element selector or component name of the element the user interacted with, for the interaction INP was reported on',
+    type: 'string',
+    keys: ['browser.web_vital.inp.target'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'body > div#app > button.submit',
+    examples: ['body > div#app > button.submit', 'SubmitButton'],
+    changelog: [{ version: '0.24.0', prs: [641], description: 'Added browser.web_vital.inp.target attribute' }],
+    additionalContext: [
+      'Named after `PerformanceEventTiming.target`, the way `browser.web_vital.lcp.element` is named after `LargestContentfulPaint.element`. The value uses the same format as that attribute.',
+      'Omitted when INP is reported without an interaction to attribute it to. web-vitals reports such a value for a soft navigation whose interactions all stayed below the Event Timing duration threshold, so there is no element to name. The span is still named and still carries `browser.web_vital.inp.value`.',
+    ],
   },
   'browser.web_vital.inp.value': {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
@@ -23017,7 +23850,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'pagehide',
-    changelog: [{ version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' }],
+    deprecation: {
+      reason:
+        'The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.',
+    },
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [642],
+        description: 'Deprecated browser.web_vital.lcp.report_event, which has no replacement',
+      },
+      { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' },
+    ],
   },
   'browser.web_vital.lcp.size': {
     brief: 'The size of the largest contentful paint element',
@@ -24559,18 +25403,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.model_id attribute' }],
   },
   'device.name': {
-    brief:
-      'The name of the device. On mobile, this is the user-assigned device name. On servers and desktops, this is typically the hostname.',
+    brief: 'The user-assigned name of the mobile device.',
     type: 'string',
-    keys: ['device.name', 'server_name'],
+    keys: ['device.name'],
     applyScrubbing: {
       key: 'auto',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'localhost',
-    aliases: ['server_name'],
     changelog: [
+      { version: '0.24.0', prs: [647], description: 'Limit brief to mobile attributes and remove server_name alias' },
       { version: '0.21.0', prs: [602], description: 'Added server_name as an alias' },
       { version: '0.5.0', prs: [303], description: 'Added device.name attribute' },
     ],
@@ -26505,37 +27348,97 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.cache_creation.input_tokens': {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
-    keys: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 100,
-    aliases: ['gen_ai.usage.input_tokens.cache_write'],
+    aliases: ['gen_ai.usage.input_tokens.cache_write', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_creation.input_tokens attribute' },
     ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
     ],
   },
+  'gen_ai.usage.cache_creation_input_tokens': {
+    brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
+    type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 100,
+    examples: [100],
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_creation.input_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.cache_creation.input_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    changelog: [
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens attribute' },
+    ],
+  },
   'gen_ai.usage.cache_read.input_tokens': {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
-    keys: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 50,
-    aliases: ['gen_ai.usage.input_tokens.cached'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' }],
+    aliases: ['gen_ai.usage.input_tokens.cached', 'gen_ai.usage.cache_read_input_tokens'],
+    changelog: [
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.cache_read.input_tokens attribute' },
+    ],
     additionalContext: [
       'This attribute appears on both agent parent spans (aggregated totals) and LLM child spans (per-call values). When using sum() to count tokens, filter to gen_ai.operation.type:ai_client to avoid double-counting hierarchical spans.',
       'This is a subset of gen_ai.usage.input_tokens, not an independent count. Do not sum this with gen_ai.usage.input_tokens — it is already included.',
     ],
+  },
+  'gen_ai.usage.cache_read_input_tokens': {
+    brief: 'The number of cached tokens used to process the AI input (prompt).',
+    type: 'integer',
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 50,
+    examples: [50],
+    deprecation: {
+      replacement: 'gen_ai.usage.cache_read.input_tokens',
+      reason: 'This attribute is being deprecated in favor of gen_ai.usage.cache_read.input_tokens.',
+      status: 'backfill',
+    },
+    aliases: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    changelog: [{ version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens attribute' }],
   },
   'gen_ai.usage.completion_tokens': {
     brief: 'The number of tokens used in the GenAI response (completion).',
@@ -26593,7 +27496,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens.cached': {
     brief: 'The number of cached tokens used to process the AI input (prompt).',
     type: 'integer',
-    keys: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.input_tokens.cached'],
+    keys: [
+      'gen_ai.usage.cache_read.input_tokens',
+      'gen_ai.usage.cache_read_input_tokens',
+      'gen_ai.usage.input_tokens.cached',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26604,8 +27511,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.cache_read.input_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.cache_read.input_tokens'],
+    aliases: ['gen_ai.usage.cache_read.input_tokens', 'gen_ai.usage.cache_read_input_tokens'],
     changelog: [
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_read_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_read.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [228] },
@@ -26619,7 +27527,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'gen_ai.usage.input_tokens.cache_write': {
     brief: 'The number of tokens written to the cache when processing the AI input (prompt).',
     type: 'integer',
-    keys: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.input_tokens.cache_write'],
+    keys: [
+      'gen_ai.usage.cache_creation.input_tokens',
+      'gen_ai.usage.cache_creation_input_tokens',
+      'gen_ai.usage.input_tokens.cache_write',
+    ],
     applyScrubbing: {
       key: 'manual',
     },
@@ -26630,8 +27542,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.usage.cache_creation.input_tokens',
       status: 'backfill',
     },
-    aliases: ['gen_ai.usage.cache_creation.input_tokens'],
+    aliases: ['gen_ai.usage.cache_creation.input_tokens', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
+      { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
       { version: '0.11.0', prs: [418], description: 'Deprecate in favor of gen_ai.usage.cache_creation.input_tokens' },
       { version: '0.9.0', prs: [397], description: 'Add additional_context' },
       { version: '0.4.0', prs: [217, 228] },
@@ -27139,8 +28052,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use one of `server.address` or `client.address`, depending on the usage',
     },
-    aliases: ['address', 'server.address', 'client.address', 'http.server_name', 'net.host.name', 'net.peer.name'],
+    aliases: [
+      'address',
+      'server.address',
+      'client.address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'net.peer.name',
+    ],
     changelog: [
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -27746,7 +28668,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'http.server_name': {
     brief: 'The server domain name',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -27757,8 +28679,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'net.peer.name'],
+    aliases: ['address', 'server.address', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -29622,7 +30545,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -29633,8 +30556,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       status: 'backfill',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'net.peer.name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [61, 108, 127] },
@@ -29695,8 +30619,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'server.address',
       reason: 'Deprecated, use server.address on client spans and client.address on server spans.',
     },
-    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'server_name'],
     changelog: [
+      { version: '0.24.0', prs: [647], description: 'Added server_name as an alias' },
       { version: '0.21.0', prs: [588, 602], description: 'Added the server.address alias group to net.peer.name' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -30337,6 +31262,174 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [{ version: '0.1.0', prs: [103] }],
   },
+  'react_native.architecture': {
+    brief:
+      'The React Native architecture the app is running on. `new` for the New Architecture, where native modules are resolved as TurboModules through `TurboModuleRegistry`, `legacy` for the Old Architecture bridge.',
+    type: 'string',
+    keys: ['react_native.architecture', 'turbo_module.arch'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'new',
+    examples: ['new', 'legacy'],
+    aliases: ['turbo_module.arch'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.architecture attribute' }],
+  },
+  'react_native.module.call.count': {
+    brief: 'The number of native module calls observed during the lifetime of the span.',
+    type: 'integer',
+    keys: ['react_native.module.call.count', 'turbo_module.total_call_count', 'turbo_modules.total_call_count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 42,
+    examples: [42],
+    aliases: ['turbo_module.total_call_count', 'turbo_modules.total_call_count'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.call.count attribute' }],
+  },
+  'react_native.module.call.distinct_count': {
+    brief:
+      'The number of distinct native module and method pairs called during the lifetime of the span. Useful as a cardinality signal when the per-method breakdown has been truncated.',
+    type: 'integer',
+    keys: ['react_native.module.call.distinct_count', 'turbo_module.unique_methods', 'turbo_modules.unique_methods'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 7,
+    examples: [7],
+    aliases: ['turbo_module.unique_methods', 'turbo_modules.unique_methods'],
+    changelog: [
+      { version: '0.24.0', prs: [564], description: 'Added react_native.module.call.distinct_count attribute' },
+    ],
+  },
+  'react_native.module.duration.max': {
+    brief:
+      'The duration of the slowest single native module call observed during the lifetime of the span, in milliseconds.',
+    type: 'double',
+    keys: ['react_native.module.duration.max'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 512.5,
+    examples: [512.5],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.max attribute' }],
+  },
+  'react_native.module.duration.total': {
+    brief:
+      'The combined wall-clock duration of all native module calls observed during the lifetime of the span, in milliseconds. Calls overlap, so this can exceed the span duration.',
+    type: 'double',
+    keys: ['react_native.module.duration.total', 'turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 128.45,
+    examples: [128.45],
+    aliases: ['turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.duration.total attribute' }],
+  },
+  'react_native.module.error.count': {
+    brief:
+      'The number of native module calls that failed during the lifetime of the span. A call counts as failed when it threw, rejected, or — on the Old Architecture bridge only — invoked its failure callback.',
+    type: 'integer',
+    keys: ['react_native.module.error.count', 'turbo_module.total_error_count', 'turbo_modules.total_error_count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2,
+    examples: [2],
+    aliases: ['turbo_module.total_error_count', 'turbo_modules.total_error_count'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.error.count attribute' }],
+  },
+  'react_native.module.kind': {
+    brief:
+      'Whether the native module call completed synchronously or reported completion later through a Promise or a callback. One of `sync` or `async`.',
+    type: 'string',
+    keys: ['react_native.module.kind'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'sync',
+    examples: ['sync', 'async'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.kind attribute' }],
+  },
+  'react_native.module.method': {
+    brief: 'The name of the native module method that was called.',
+    type: 'string',
+    keys: ['react_native.module.method', 'turbo_module.method'],
+    applyScrubbing: {
+      key: 'manual',
+      reason:
+        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'getUniqueId',
+    examples: ['getUniqueId'],
+    aliases: ['turbo_module.method'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.method attribute' }],
+  },
+  'react_native.module.name': {
+    brief:
+      'The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key.',
+    type: 'string',
+    keys: ['react_native.module.name', 'turbo_module.name'],
+    applyScrubbing: {
+      key: 'manual',
+      reason:
+        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'RNDeviceInfo',
+    examples: ['RNDeviceInfo'],
+    aliases: ['turbo_module.name'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.name attribute' }],
+  },
+  'react_native.module.top.duration': {
+    brief: 'The total duration attributed to `react_native.module.top.name`, in milliseconds.',
+    type: 'double',
+    keys: ['react_native.module.top.duration', 'turbo_module.top_module_duration_ms'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 87.25,
+    examples: [87.25],
+    aliases: ['turbo_module.top_module_duration_ms'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.top.duration attribute' }],
+  },
+  'react_native.module.top.name': {
+    brief:
+      'The native module and method that accounted for the most total duration during the lifetime of the span, formatted as `<module>.<method>`.',
+    type: 'string',
+    keys: ['react_native.module.top.name', 'turbo_module.top_module'],
+    applyScrubbing: {
+      key: 'manual',
+      reason:
+        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'RNDeviceInfo.getUniqueId',
+    examples: ['RNDeviceInfo.getUniqueId'],
+    aliases: ['turbo_module.top_module'],
+    changelog: [{ version: '0.24.0', prs: [564], description: 'Added react_native.module.top.name attribute' }],
+  },
   'react.version': {
     brief: 'The version of the React framework',
     type: 'string',
@@ -30420,6 +31513,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "http.response.header.text='test'",
     changelog: [{ version: '0.1.0', prs: [103] }],
+  },
+  replayId: {
+    brief: 'The id of the sentry replay.',
+    type: 'string',
+    keys: ['replayId'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '123e4567e89b12d3a456426614174000',
+    deprecation: {
+      replacement: 'sentry.replay_id',
+    },
+    aliases: ['sentry.replay_id'],
+    changelog: [{ version: '0.24.0', prs: [401] }],
   },
   replay_id: {
     brief: 'The id of the sentry replay.',
@@ -31239,6 +32348,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'idleTimeout',
     changelog: [{ version: '0.0.0' }],
   },
+  'sentry.is_localhost': {
+    brief: 'Indicates whether a telemetry item was sent on a host, device or browser on a localhost URL or IP address.',
+    type: 'boolean',
+    keys: ['sentry.is_localhost'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'internal',
+    example: true,
+    examples: [true, false],
+    changelog: [{ version: '0.24.0', prs: [646], description: 'Added sentry.is_localhost attribute' }],
+    additionalContext: [
+      'This attribute is used for the Sentry "Filter telemetry from localhost" inbound filter feature.',
+      'SDKs must set this attribute on every span, as well as every other telemetry item supporting attribuztes.',
+    ],
+  },
   'sentry.is_remote': {
     brief: "Indicates whether a span's parent is remote.",
     type: 'boolean',
@@ -31567,7 +32693,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '123e4567e89b12d3a456426614174000',
-    aliases: ['replay_id'],
+    aliases: ['replay_id', 'replayId'],
     changelog: [{ version: '0.0.0' }],
     searchAlias: {
       name: 'replay.id',
@@ -31598,9 +32724,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'pagehide',
     deprecation: {
       reason:
-        'The report event is now recorded as a browser.web_vital.lcp.report_event or browser.web_vital.cls.report_event attribute. No backfill required.',
+        'The report event moved to browser.web_vital.lcp.report_event and browser.web_vital.cls.report_event, which are themselves deprecated without a replacement. No backfill required.',
     },
-    changelog: [{ version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' }],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [642],
+        description:
+          'Updated the deprecation reason now that the browser.web_vital.*.report_event attributes are deprecated',
+      },
+      { version: '0.5.0', prs: [320], description: 'Added sentry.report_event attribute' },
+    ],
   },
   'sentry.sdk.integrations': {
     brief:
@@ -32143,17 +33277,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'server.address': {
     brief:
-      'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
+      'Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.',
     type: 'string',
-    keys: ['server.address', 'address', 'http.server_name', 'net.host.name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'example.com',
-    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
+    aliases: ['address', 'http.server_name', 'net.host.name', 'http.host', 'server_name', 'net.peer.name'],
     changelog: [
+      { version: '0.24.0', prs: [645, 647], description: 'Broaden brief to allow hostnames' },
       { version: '0.21.0', prs: [588, 602], description: 'Added net.peer.name as an alias' },
       { version: '0.19.0', prs: [534], description: 'Added address as an alias' },
       { version: '0.1.0', prs: [108, 127] },
@@ -32163,7 +33298,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   server_name: {
     brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
     type: 'string',
-    keys: ['device.name', 'server_name'],
+    keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
       key: 'auto',
     },
@@ -32171,12 +33306,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'example.com',
     deprecation: {
-      replacement: 'device.name',
-      reason: 'This attribute is being deprecated in favor of device.name.',
+      replacement: 'server.address',
+      reason: 'This attribute is being deprecated in favor of server.address.',
       status: 'backfill',
     },
-    aliases: ['device.name'],
+    aliases: ['address', 'server.address', 'http.server_name', 'net.host.name', 'http.host', 'net.peer.name'],
     changelog: [
+      { version: '0.24.0', prs: [647], description: 'Alias the server.address alias group' },
       {
         version: '0.21.0',
         prs: [588, 602],
@@ -32611,6 +33747,367 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['browser.web_vital.ttfb.request_time'],
     changelog: [{ version: '0.5.0', prs: [235] }],
+  },
+  'turbo_modules.total_call_count': {
+    brief: 'The number of native module calls in the flushed call aggregate. Only applies to React Native.',
+    type: 'integer',
+    keys: ['react_native.module.call.count', 'turbo_module.total_call_count', 'turbo_modules.total_call_count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 42,
+    examples: [42],
+    deprecation: {
+      replacement: 'react_native.module.call.count',
+      reason:
+        'Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.call.count', 'turbo_module.total_call_count'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description:
+          'Added turbo_modules.total_call_count and deprecated it in favor of react_native.module.call.count',
+      },
+    ],
+  },
+  'turbo_modules.total_duration_ms': {
+    brief:
+      'The combined duration of all native module calls in the flushed call aggregate, in milliseconds. Only applies to React Native.',
+    type: 'double',
+    keys: ['react_native.module.duration.total', 'turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 128.45,
+    examples: [128.45],
+    deprecation: {
+      replacement: 'react_native.module.duration.total',
+      reason:
+        'Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.duration.total', 'turbo_module.total_duration_ms'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description:
+          'Added turbo_modules.total_duration_ms and deprecated it in favor of react_native.module.duration.total',
+      },
+    ],
+  },
+  'turbo_modules.total_error_count': {
+    brief: 'The number of failed native module calls in the flushed call aggregate. Only applies to React Native.',
+    type: 'integer',
+    keys: ['react_native.module.error.count', 'turbo_module.total_error_count', 'turbo_modules.total_error_count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2,
+    examples: [2],
+    deprecation: {
+      replacement: 'react_native.module.error.count',
+      reason:
+        'Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.error.count', 'turbo_module.total_error_count'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description:
+          'Added turbo_modules.total_error_count and deprecated it in favor of react_native.module.error.count',
+      },
+    ],
+  },
+  'turbo_modules.unique_methods': {
+    brief:
+      'The number of distinct native module and method pairs in the flushed call aggregate. Only applies to React Native.',
+    type: 'integer',
+    keys: ['react_native.module.call.distinct_count', 'turbo_module.unique_methods', 'turbo_modules.unique_methods'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 7,
+    examples: [7],
+    deprecation: {
+      replacement: 'react_native.module.call.distinct_count',
+      reason:
+        'Replaced by the `react_native.module.*` namespace; the SDK emitted the same values under both a singular `turbo_module.*` and a plural `turbo_modules.*` prefix',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.call.distinct_count', 'turbo_module.unique_methods'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description:
+          'Added turbo_modules.unique_methods and deprecated it in favor of react_native.module.call.distinct_count',
+      },
+    ],
+  },
+  'turbo_module.arch': {
+    brief:
+      'The React Native architecture the call was observed on. `new` for a TurboModule resolved through `TurboModuleRegistry`, `legacy` for a module reached over the Old Architecture bridge. Only applies to React Native.',
+    type: 'string',
+    keys: ['react_native.architecture', 'turbo_module.arch'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'new',
+    examples: ['new', 'legacy'],
+    deprecation: {
+      replacement: 'react_native.architecture',
+      reason:
+        'Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules',
+      status: 'backfill',
+    },
+    aliases: ['react_native.architecture'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description: 'Added turbo_module.arch and deprecated it in favor of react_native.architecture',
+      },
+    ],
+  },
+  'turbo_module.method': {
+    brief: 'The name of the native module method that was called. Only applies to React Native.',
+    type: 'string',
+    keys: ['react_native.module.method', 'turbo_module.method'],
+    applyScrubbing: {
+      key: 'manual',
+      reason:
+        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'getUniqueId',
+    examples: ['getUniqueId'],
+    deprecation: {
+      replacement: 'react_native.module.method',
+      reason:
+        'Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.method'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description: 'Added turbo_module.method and deprecated it in favor of react_native.module.method',
+      },
+    ],
+  },
+  'turbo_module.name': {
+    brief:
+      'The name of the native module the call was dispatched to. On the New Architecture this is the TurboModule name, on the Old Architecture the `NativeModules` key. Only applies to React Native.',
+    type: 'string',
+    keys: ['react_native.module.name', 'turbo_module.name'],
+    applyScrubbing: {
+      key: 'manual',
+      reason:
+        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'RNDeviceInfo',
+    examples: ['RNDeviceInfo'],
+    deprecation: {
+      replacement: 'react_native.module.name',
+      reason:
+        'Replaced by the `react_native.*` namespace, which also covers native module calls made over the Old Architecture bridge, which are not TurboModules',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.name'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description: 'Added turbo_module.name and deprecated it in favor of react_native.module.name',
+      },
+    ],
+  },
+  'turbo_module.top_module': {
+    brief:
+      'The native module and method that accounted for the most total duration during the lifetime of the span. Only applies to React Native.',
+    type: 'string',
+    keys: ['react_native.module.top.name', 'turbo_module.top_module'],
+    applyScrubbing: {
+      key: 'manual',
+      reason:
+        'Native module and method names are app-defined identifiers, but scrubbing them would make the call attribution unusable',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'RNDeviceInfo.getUniqueId',
+    examples: ['RNDeviceInfo.getUniqueId'],
+    deprecation: {
+      replacement: 'react_native.module.top.name',
+      reason:
+        'Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.top.name'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description: 'Added turbo_module.top_module and deprecated it in favor of react_native.module.top.name',
+      },
+    ],
+  },
+  'turbo_module.top_module_duration_ms': {
+    brief:
+      'The total duration attributed to the top native module method, in milliseconds. Only applies to React Native.',
+    type: 'double',
+    keys: ['react_native.module.top.duration', 'turbo_module.top_module_duration_ms'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 87.25,
+    examples: [87.25],
+    deprecation: {
+      replacement: 'react_native.module.top.duration',
+      reason:
+        'Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.top.duration'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description:
+          'Added turbo_module.top_module_duration_ms and deprecated it in favor of react_native.module.top.duration',
+      },
+    ],
+  },
+  'turbo_module.total_call_count': {
+    brief: 'The number of native module calls observed during the lifetime of the span. Only applies to React Native.',
+    type: 'integer',
+    keys: ['react_native.module.call.count', 'turbo_module.total_call_count', 'turbo_modules.total_call_count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 42,
+    examples: [42],
+    deprecation: {
+      replacement: 'react_native.module.call.count',
+      reason:
+        'Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.call.count', 'turbo_modules.total_call_count'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description: 'Added turbo_module.total_call_count and deprecated it in favor of react_native.module.call.count',
+      },
+    ],
+  },
+  'turbo_module.total_duration_ms': {
+    brief:
+      'The combined duration of all native module calls observed during the lifetime of the span, in milliseconds. Only applies to React Native.',
+    type: 'double',
+    keys: ['react_native.module.duration.total', 'turbo_module.total_duration_ms', 'turbo_modules.total_duration_ms'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 128.45,
+    examples: [128.45],
+    deprecation: {
+      replacement: 'react_native.module.duration.total',
+      reason:
+        'Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.duration.total', 'turbo_modules.total_duration_ms'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description:
+          'Added turbo_module.total_duration_ms and deprecated it in favor of react_native.module.duration.total',
+      },
+    ],
+  },
+  'turbo_module.total_error_count': {
+    brief:
+      'The number of native module calls that failed during the lifetime of the span. Only applies to React Native.',
+    type: 'integer',
+    keys: ['react_native.module.error.count', 'turbo_module.total_error_count', 'turbo_modules.total_error_count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 2,
+    examples: [2],
+    deprecation: {
+      replacement: 'react_native.module.error.count',
+      reason:
+        'Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.error.count', 'turbo_modules.total_error_count'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description:
+          'Added turbo_module.total_error_count and deprecated it in favor of react_native.module.error.count',
+      },
+    ],
+  },
+  'turbo_module.unique_methods': {
+    brief:
+      'The number of distinct native module and method pairs called during the lifetime of the span. Only applies to React Native.',
+    type: 'integer',
+    keys: ['react_native.module.call.distinct_count', 'turbo_module.unique_methods', 'turbo_modules.unique_methods'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 7,
+    examples: [7],
+    deprecation: {
+      replacement: 'react_native.module.call.distinct_count',
+      reason:
+        'Replaced by the `react_native.module.*` namespace, which also covers native module calls made over the Old Architecture bridge, and which drops the `total_` prefix and `_ms` suffix in favor of dot-separated logical grouping',
+      status: 'backfill',
+    },
+    aliases: ['react_native.module.call.distinct_count', 'turbo_modules.unique_methods'],
+    changelog: [
+      {
+        version: '0.24.0',
+        prs: [564],
+        description:
+          'Added turbo_module.unique_methods and deprecated it in favor of react_native.module.call.distinct_count',
+      },
+    ],
   },
   type: {
     brief: 'More granular type of the operation happening.',
@@ -33735,6 +35232,8 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FP_VALUE]?: BROWSER_WEB_VITAL_FP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_INP_INTERACTION_TYPE]?: BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE;
+  [BROWSER_WEB_VITAL_INP_TARGET]?: BROWSER_WEB_VITAL_INP_TARGET_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
@@ -33967,7 +35466,9 @@ export type Attributes = {
   [GEN_AI_TOOL_OUTPUT]?: GEN_AI_TOOL_OUTPUT_TYPE;
   [GEN_AI_TOOL_TYPE]?: GEN_AI_TOOL_TYPE_TYPE;
   [GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
+  [_GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS]?: _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
+  [_GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS]?: _GEN_AI_USAGE_CACHE_READ_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_COMPLETION_TOKENS]?: GEN_AI_USAGE_COMPLETION_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS]?: GEN_AI_USAGE_INPUT_TOKENS_TYPE;
   [GEN_AI_USAGE_INPUT_TOKENS_CACHED]?: GEN_AI_USAGE_INPUT_TOKENS_CACHED_TYPE;
@@ -34199,11 +35700,23 @@ export type Attributes = {
   [PROFILE_ID]?: PROFILE_ID_TYPE;
   [QUERY]?: QUERY_TYPE;
   [QUERY_KEY]?: QUERY_KEY_TYPE;
+  [REACT_NATIVE_ARCHITECTURE]?: REACT_NATIVE_ARCHITECTURE_TYPE;
+  [REACT_NATIVE_MODULE_CALL_COUNT]?: REACT_NATIVE_MODULE_CALL_COUNT_TYPE;
+  [REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT]?: REACT_NATIVE_MODULE_CALL_DISTINCT_COUNT_TYPE;
+  [REACT_NATIVE_MODULE_DURATION_MAX]?: REACT_NATIVE_MODULE_DURATION_MAX_TYPE;
+  [REACT_NATIVE_MODULE_DURATION_TOTAL]?: REACT_NATIVE_MODULE_DURATION_TOTAL_TYPE;
+  [REACT_NATIVE_MODULE_ERROR_COUNT]?: REACT_NATIVE_MODULE_ERROR_COUNT_TYPE;
+  [REACT_NATIVE_MODULE_KIND]?: REACT_NATIVE_MODULE_KIND_TYPE;
+  [REACT_NATIVE_MODULE_METHOD]?: REACT_NATIVE_MODULE_METHOD_TYPE;
+  [REACT_NATIVE_MODULE_NAME]?: REACT_NATIVE_MODULE_NAME_TYPE;
+  [REACT_NATIVE_MODULE_TOP_DURATION]?: REACT_NATIVE_MODULE_TOP_DURATION_TYPE;
+  [REACT_NATIVE_MODULE_TOP_NAME]?: REACT_NATIVE_MODULE_TOP_NAME_TYPE;
   [REACT_VERSION]?: REACT_VERSION_TYPE;
   [REDIS_COMMAND]?: REDIS_COMMAND_TYPE;
   [REDIS_KEY]?: REDIS_KEY_TYPE;
   [RELEASE]?: RELEASE_TYPE;
   [REMIX_ACTION_FORM_DATA_KEY]?: REMIX_ACTION_FORM_DATA_KEY_TYPE;
+  [REPLAYID]?: REPLAYID_TYPE;
   [REPLAY_ID]?: REPLAY_ID_TYPE;
   [RESOURCE_DEPLOYMENT_ENVIRONMENT]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE;
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE;
@@ -34256,6 +35769,7 @@ export type Attributes = {
   [SENTRY_GROUP]?: SENTRY_GROUP_TYPE;
   [SENTRY_HTTP_PREFETCH]?: SENTRY_HTTP_PREFETCH_TYPE;
   [SENTRY_IDLE_SPAN_FINISH_REASON]?: SENTRY_IDLE_SPAN_FINISH_REASON_TYPE;
+  [SENTRY_IS_LOCALHOST]?: SENTRY_IS_LOCALHOST_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
   [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
@@ -34338,6 +35852,19 @@ export type Attributes = {
   [TRPC_PROCEDURE_TYPE]?: TRPC_PROCEDURE_TYPE_TYPE;
   [TTFB]?: TTFB_TYPE;
   [TTFB_REQUESTTIME]?: TTFB_REQUESTTIME_TYPE;
+  [TURBO_MODULES_TOTAL_CALL_COUNT]?: TURBO_MODULES_TOTAL_CALL_COUNT_TYPE;
+  [TURBO_MODULES_TOTAL_DURATION_MS]?: TURBO_MODULES_TOTAL_DURATION_MS_TYPE;
+  [TURBO_MODULES_TOTAL_ERROR_COUNT]?: TURBO_MODULES_TOTAL_ERROR_COUNT_TYPE;
+  [TURBO_MODULES_UNIQUE_METHODS]?: TURBO_MODULES_UNIQUE_METHODS_TYPE;
+  [TURBO_MODULE_ARCH]?: TURBO_MODULE_ARCH_TYPE;
+  [TURBO_MODULE_METHOD]?: TURBO_MODULE_METHOD_TYPE;
+  [TURBO_MODULE_NAME]?: TURBO_MODULE_NAME_TYPE;
+  [TURBO_MODULE_TOP_MODULE]?: TURBO_MODULE_TOP_MODULE_TYPE;
+  [TURBO_MODULE_TOP_MODULE_DURATION_MS]?: TURBO_MODULE_TOP_MODULE_DURATION_MS_TYPE;
+  [TURBO_MODULE_TOTAL_CALL_COUNT]?: TURBO_MODULE_TOTAL_CALL_COUNT_TYPE;
+  [TURBO_MODULE_TOTAL_DURATION_MS]?: TURBO_MODULE_TOTAL_DURATION_MS_TYPE;
+  [TURBO_MODULE_TOTAL_ERROR_COUNT]?: TURBO_MODULE_TOTAL_ERROR_COUNT_TYPE;
+  [TURBO_MODULE_UNIQUE_METHODS]?: TURBO_MODULE_UNIQUE_METHODS_TYPE;
   [TYPE]?: TYPE_TYPE;
   [UI_COMPONENT_NAME]?: UI_COMPONENT_NAME_TYPE;
   [UI_CONTRIBUTES_TO_TTFD]?: UI_CONTRIBUTES_TO_TTFD_TYPE;

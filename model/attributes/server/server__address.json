@@ -1,15 +1,20 @@
 {
   "key": "server.address",
-  "brief": "Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
+  "brief": "Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
   "example": "example.com",
-  "alias": ["address", "http.server_name", "net.host.name", "http.host", "net.peer.name"],
+  "alias": ["address", "http.server_name", "net.host.name", "http.host", "server_name", "net.peer.name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.24.0",
+      "prs": [645, 647],
+      "description": "Broaden brief to allow hostnames"
+    },
     {
       "version": "0.21.0",
       "prs": [588, 602],
