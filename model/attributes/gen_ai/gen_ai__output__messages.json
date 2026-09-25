@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.output.messages",
-  "brief": "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+  "brief": "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: \"evaluation\", answers: {...}}` with the answers keyed by question name, as the provider returned them.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"

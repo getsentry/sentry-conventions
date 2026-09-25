@@ -31,6 +31,10 @@
       "description": "Reranking of documents or results by a generative AI model"
     },
     {
+      "name": "gen_ai.evaluate",
+      "description": "Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model"
+    },
+    {
       "name": "gen_ai.create_agent",
       "description": "Creation of an AI agent that can later be invoked to perform a task"
     },
