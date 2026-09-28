@@ -7875,7 +7875,7 @@ export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
- * The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'fetch_response', 'generate_content', 'invoke_agent', 'invoke_workflow', 'plan', 'rerank', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. `gen_ai.operation.name`
+ * The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. `gen_ai.operation.name`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_NAME_TYPE}
  *
@@ -26799,7 +26799,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.operation.name': {
     brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'fetch_response', 'generate_content', 'invoke_agent', 'invoke_workflow', 'plan', 'rerank', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
     type: 'string',
     keys: ['gen_ai.operation.name'],
     applyScrubbing: {
@@ -26809,12 +26809,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
-      {
-        version: 'next',
-        prs: [653],
-        description:
-          "Added memory operation values and 'fetch_response', 'invoke_workflow', 'plan', 'rerank' to the well-known values",
-      },
+      { version: 'next', prs: [653], description: 'Added memory operation values to the well-known values' },
       { version: '0.4.0', prs: [225] },
       { version: '0.1.0', prs: [62, 127] },
     ],

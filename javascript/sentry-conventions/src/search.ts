@@ -8163,7 +8163,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.operation.name',
     type: 'string',
     brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'fetch_response', 'generate_content', 'invoke_agent', 'invoke_workflow', 'plan', 'rerank', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
     deprecationChain: ['gen_ai.operation.name'],
   },
   'gen_ai.operation.type': {
