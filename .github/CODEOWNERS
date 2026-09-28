@@ -1,5 +1,5 @@
 # Global ownership
-* @Lms24 @cleptric @getsentry/ingest @mjq @nsdeschenes
+* @Lms24 @alexander-alderman-webb @cleptric @getsentry/ingest @mjq @nsdeschenes
 
 # Generated files that aggregate every attribute namespace; left unowned so
 # individual namespace owners aren't required reviewers on unrelated diffs
@@ -7,5 +7,5 @@ javascript/sentry-conventions/
 python/src/sentry_conventions/
 
 # Gen AI / AI attributes
-/model/attributes/gen_ai/ @getsentry/telemetry-experience @Lms24 @cleptric @getsentry/ingest @mjq @nsdeschenes
-/model/attributes/ai/ @getsentry/telemetry-experience @Lms24 @cleptric @getsentry/ingest @mjq @nsdeschenes
+/model/attributes/gen_ai/ @getsentry/telemetry-experience @Lms24 @alexander-alderman-webb @cleptric @getsentry/ingest @mjq @nsdeschenes
+/model/attributes/ai/ @getsentry/telemetry-experience @Lms24 @alexander-alderman-webb @cleptric @getsentry/ingest @mjq @nsdeschenes
