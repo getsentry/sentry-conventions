@@ -32697,6 +32697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.0.0' }],
     searchAlias: {
       name: 'replay.id',
+      deprecatedAliases: ['replay_id'],
     },
   },
   'sentry.replay_is_buffering': {

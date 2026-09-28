@@ -24899,7 +24899,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="replay.id"),
+        search_alias=SearchAlias(name="replay.id", deprecated_aliases=["replay_id"]),
     ),
     "sentry.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
