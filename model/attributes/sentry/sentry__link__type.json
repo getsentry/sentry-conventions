@@ -1,0 +1,19 @@
+{
+  "key": "sentry.link.type",
+  "brief": "The type of span link this attribute is set on, describing the relationship between the span and the linked span",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "additional_context": ["This attribute is set on span links added by Sentry instrumentation."],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["previous_trace", "next_trace"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [656],
+      "description": "Added sentry.link.type attribute"
+    }
+  ]
+}
