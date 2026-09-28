@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryChip from '../../components/CategoryChip.astro';
 import AttributeLink from '../../components/AttributeLink.astro';
 import AnchorIcon from '../../components/icons/AnchorIcon.astro';
-import { renderMarkdownLinks } from '../../utils/markdown';
+import { renderInlineMarkdown } from '../../utils/markdown';
 import { getCollection } from 'astro:content';
 
 // Get all span operation categories
@@ -77,7 +77,7 @@ const totalOps = allOps.reduce((acc, op) => acc + op.data.fields.length, 0);
           <span class="text-sm text-text-muted">{op.data.fields.length} operations</span>
         </div>
         {op.data.description && (
-          <p class="text-sm text-text-secondary mb-4 max-w-3xl">{op.data.description}</p>
+          <p class="text-sm text-text-secondary mb-4 max-w-3xl" set:html={renderInlineMarkdown(op.data.description)} />
         )}
 
         <div class="overflow-x-auto">
@@ -94,7 +94,7 @@ const totalOps = allOps.reduce((acc, op) => acc + op.data.fields.length, 0);
                   <td class="whitespace-nowrap align-top"><code class="text-xs">{field.name}</code></td>
                   <td class="text-text-secondary">
                     {field.description ? (
-                      <span set:html={renderMarkdownLinks(field.description)} />
+                      <span set:html={renderInlineMarkdown(field.description)} />
                     ) : (
                       <span class="text-text-muted">—</span>
                     )}
