@@ -4786,9 +4786,73 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__memory__query__text.json
+    GEN_AI_MEMORY_QUERY_TEXT: Literal["gen_ai.memory.query.text"] = (
+        "gen_ai.memory.query.text"
+    )
+    """The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "user dietary preferences"
+    Example: "past flight bookings"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__record__count.json
+    GEN_AI_MEMORY_RECORD_COUNT: Literal["gen_ai.memory.record.count"] = (
+        "gen_ai.memory.record.count"
+    )
+    """The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 3
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__record__id.json
+    GEN_AI_MEMORY_RECORD_ID: Literal["gen_ai.memory.record.id"] = (
+        "gen_ai.memory.record.id"
+    )
+    """The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "mem_5j66UpCpwteGg4YSxUnt7lPY"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__records.json
+    GEN_AI_MEMORY_RECORDS: Literal["gen_ai.memory.records"] = "gen_ai.memory.records"
+    """The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "[{\"content\": \"User prefers dark mode\", \"id\": \"mem_123\", \"score\": 0.95}, {\"content\": {\"preference\": \"vegetarian meals\", \"confidence\": 0.9}, \"metadata\": {\"source\": \"profile\"}}]"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__store__id.json
+    GEN_AI_MEMORY_STORE_ID: Literal["gen_ai.memory.store.id"] = "gen_ai.memory.store.id"
+    """The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "ms_abc123"
+    Example: "user-preferences-store"
+    Example: "seer-knowledge"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__operation__name.json
     GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
-    """The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.
+    """The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'fetch_response', 'generate_content', 'invoke_agent', 'invoke_workflow', 'plan', 'rerank', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.
 
     Type: str
     Apply Scrubbing: manual
@@ -4799,7 +4863,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__operation__type.json
     GEN_AI_OPERATION_TYPE: Literal["gen_ai.operation.type"] = "gen_ai.operation.type"
-    """The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
+    """The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'memory' (gen_ai.memory.client spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
 
     Type: str
     Apply Scrubbing: manual
@@ -17806,8 +17870,95 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
+    "gen_ai.memory.query.text": AttributeMetadata(
+        brief="The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.query.text",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="user dietary preferences",
+        examples=["user dietary preferences", "past flight bookings"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.query.text attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.record.count": AttributeMetadata(
+        brief="The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.",
+        type=AttributeType.INTEGER,
+        keys=("gen_ai.memory.record.count",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=3,
+        examples=[3],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.record.count attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.record.id": AttributeMetadata(
+        brief="The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.record.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="mem_5j66UpCpwteGg4YSxUnt7lPY",
+        examples=["mem_5j66UpCpwteGg4YSxUnt7lPY"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.record.id attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.records": AttributeMetadata(
+        brief="The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.records",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example='[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]',
+        examples=[
+            '[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.records attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.store.id": AttributeMetadata(
+        brief="The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.store.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="ms_abc123",
+        examples=["ms_abc123", "user-preferences-store", "seer-knowledge"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.store.id attribute",
+            ),
+        ],
+    ),
     "gen_ai.operation.name": AttributeMetadata(
-        brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+        brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'fetch_response', 'generate_content', 'invoke_agent', 'invoke_workflow', 'plan', 'rerank', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
         type=AttributeType.STRING,
         keys=("gen_ai.operation.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17815,12 +17966,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="chat",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added memory operation values and 'fetch_response', 'invoke_workflow', 'plan', 'rerank' to the well-known values",
+            ),
             ChangelogEntry(version="0.4.0", prs=[225]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
     "gen_ai.operation.type": AttributeMetadata(
-        brief="The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+        brief="The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'memory' (gen_ai.memory.client spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
         type=AttributeType.STRING,
         keys=("gen_ai.operation.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17828,6 +17984,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="tool",
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[653], description="Added 'memory' value"
+            ),
             ChangelogEntry(version="0.4.0", prs=[257]),
             ChangelogEntry(version="0.1.0", prs=[113, 127]),
         ],
@@ -27885,6 +28044,11 @@ Attributes = TypedDict(
         "gen_ai.embeddings.input": str,
         "gen_ai.function_id": str,
         "gen_ai.input.messages": str,
+        "gen_ai.memory.query.text": str,
+        "gen_ai.memory.record.count": int,
+        "gen_ai.memory.record.id": str,
+        "gen_ai.memory.records": str,
+        "gen_ai.memory.store.id": str,
         "gen_ai.operation.name": str,
         "gen_ai.operation.type": str,
         "gen_ai.output.messages": str,
