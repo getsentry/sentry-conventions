@@ -13,7 +13,19 @@ export interface AttributeSearchMetadata {
   brief: string;
   /** Whether the attribute is internal to Sentry */
   internal?: true;
-  /** Every key under which the attribute's value is readable, preferred key first */
+  /**
+   * Present when the attribute is deprecated but does not join a replacement's
+   * deprecation chain. `backfill` and `normalize` deprecations are omitted
+   * because those keys already appear in that chain.
+   */
+  deprecated?: true;
+  /**
+   * Names that resolve to this search field, preferred search name first.
+   *
+   * Unlike attribute key chains, this also lists deprecated attributes whose
+   * status is not `backfill` or `normalize`. Their values stay on the old
+   * key, but the chain still leads search users to the preferred name.
+   */
   deprecationChain: readonly string[];
 }
 
@@ -3686,9 +3698,9 @@ export const SEARCH_REMIX__ACTION_FORM_DATA__KEY = 'remix.action_form_data.<key>
 export const SEARCH_REPLAY__ID = 'replay.id';
 
 /**
- * Search name for {@link attributes.REPLAYID}. `replayId`
+ * Search name for {@link attributes.SENTRY_REPLAY_ID}. `replayId`
  *
- * @deprecated Use {@link SEARCH_SENTRY__REPLAY_ID} (`sentry.replay_id`) instead
+ * @deprecated Use {@link SEARCH_REPLAY__ID} (`replay.id`) instead
  */
 export const SEARCH_REPLAYID = 'replayId';
 
@@ -5898,12 +5910,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The destination hostname or IP address for a TCP connection.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: [
+      'server.address',
+      'address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'http.host',
+      'net.peer.name',
+    ],
   },
   'ai.citations': {
     canonicalName: 'ai.citations',
     type: 'string[]',
     brief: 'References or sources cited by the AI model in its response.',
+    deprecated: true,
     deprecationChain: ['ai.citations'],
   },
   'ai.completion_tokens.used': {
@@ -5916,6 +5937,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'ai.documents',
     type: 'string[]',
     brief: 'Documents or content chunks used as context for the AI model.',
+    deprecated: true,
     deprecationChain: ['ai.documents'],
   },
   'ai.finish_reason': {
@@ -5955,18 +5977,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
   },
   'ai.is_search_required': {
     canonicalName: 'ai.is_search_required',
     type: 'boolean',
     brief: 'Boolean indicating if the model needs to perform a search.',
+    deprecated: true,
     deprecationChain: ['ai.is_search_required'],
   },
   'ai.metadata': {
     canonicalName: 'ai.metadata',
     type: 'string',
     brief: 'Extra metadata passed to an AI pipeline step.',
+    deprecated: true,
     deprecationChain: ['ai.metadata'],
   },
   'ai.model.id': {
@@ -6018,6 +6043,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
   },
   'ai.prompt.messages': {
@@ -6031,6 +6057,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
   },
   'ai.prompt.tools': {
@@ -6049,6 +6076,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'ai.raw_prompting',
     type: 'boolean',
     brief: 'When enabled, the user’s prompt will be sent to the model without any pre-processing.',
+    deprecated: true,
     deprecationChain: ['ai.raw_prompting'],
   },
   'ai.response.id': {
@@ -6067,6 +6095,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'ai.response.object',
     type: 'string',
     brief: 'The type of the object returned by the model.',
+    deprecated: true,
     deprecationChain: ['ai.response.object'],
   },
   'ai.response.text': {
@@ -6079,12 +6108,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.response.toolCalls',
       'ai.responses',
       'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
     ],
   },
   'ai.response.timestamp': {
     canonicalName: 'ai.response.timestamp',
     type: 'string',
     brief: 'The ISO 8601 timestamp at which the response was produced.',
+    deprecated: true,
     deprecationChain: ['ai.response.timestamp'],
   },
   'ai.response.toolCalls': {
@@ -6097,12 +6129,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.response.toolCalls',
       'ai.responses',
       'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
     ],
   },
   'ai.response_format': {
     canonicalName: 'ai.response_format',
     type: 'string',
     brief: 'For an AI model call, the format of the response',
+    deprecated: true,
     deprecationChain: ['ai.response_format'],
   },
   'ai.responses': {
@@ -6115,24 +6150,29 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.response.toolCalls',
       'ai.responses',
       'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
     ],
   },
   'ai.schema': {
     canonicalName: 'ai.schema',
     type: 'string',
     brief: 'The stringified JSON schema the model output must conform to.',
+    deprecated: true,
     deprecationChain: ['ai.schema'],
   },
   'ai.search_queries': {
     canonicalName: 'ai.search_queries',
     type: 'string[]',
     brief: 'Queries used to search for relevant context or documents.',
+    deprecated: true,
     deprecationChain: ['ai.search_queries'],
   },
   'ai.search_results': {
     canonicalName: 'ai.search_results',
     type: 'string[]',
     brief: 'Results returned from search queries for context.',
+    deprecated: true,
     deprecationChain: ['ai.search_results'],
   },
   'ai.seed': {
@@ -6151,6 +6191,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'ai.tags',
     type: 'string',
     brief: 'Tags that describe an AI pipeline step.',
+    deprecated: true,
     deprecationChain: ['ai.tags'],
   },
   'ai.temperature': {
@@ -6171,6 +6212,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
   },
   'ai.toolCall.args': {
@@ -6201,6 +6243,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.response.toolCalls',
       'ai.responses',
       'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
     ],
   },
   'ai.tools': {
@@ -6245,12 +6289,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'ai.values',
     type: 'string',
     brief: 'The stringified values produced by a Vercel AI SDK object or array generation.',
+    deprecated: true,
     deprecationChain: ['ai.values'],
   },
   'ai.warnings': {
     canonicalName: 'ai.warnings',
     type: 'string[]',
     brief: 'Warning messages generated during model execution.',
+    deprecated: true,
     deprecationChain: ['ai.warnings'],
   },
   'angular.version': {
@@ -6906,6 +6952,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'browser.web_vital.cls.report_event',
     type: 'string',
     brief: 'The event that caused the SDK to report CLS (pagehide or navigation)',
+    deprecated: true,
     deprecationChain: ['browser.web_vital.cls.report_event'],
   },
   'browser.web_vital.cls.source.<key>': {
@@ -6979,6 +7026,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'browser.web_vital.lcp.report_event',
     type: 'string',
     brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
+    deprecated: true,
     deprecationChain: ['browser.web_vital.lcp.report_event'],
   },
   'browser.web_vital.lcp.size': {
@@ -7083,7 +7131,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.client_sample_rate',
     type: 'double',
     brief: 'Rate at which a span was sampled in the SDK.',
-    deprecationChain: ['sentry.client_sample_rate', 'client_sample_rate'],
+    deprecationChain: ['client_sample_rate', 'sentry.client_sample_rate'],
   },
   'cloud.account.id': {
     canonicalName: 'cloud.account.id',
@@ -7245,7 +7293,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'rpc.response.status_code',
     type: 'string',
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
-    deprecationChain: ['rpc.response.status_code', 'code'],
+    deprecationChain: ['rpc.response.status_code', 'code', 'rpc.grpc.status_code'],
   },
   'code.file.path': {
     canonicalName: 'code.file.path',
@@ -7346,6 +7394,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'db.connection_string',
     type: 'string',
     brief: 'The connection string used to connect to the database.',
+    deprecated: true,
     deprecationChain: ['db.connection_string'],
   },
   'db.driver.name': {
@@ -7395,14 +7444,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'db.query.parameter.<key>',
     type: 'string',
     brief: 'The query bindings for a database request.',
-    deprecationChain: ['db.params'],
+    deprecationChain: ['db.query.parameter.<key>', 'db.params', 'db.sql.bindings'],
   },
   'db.query.parameter.<key>': {
     canonicalName: 'db.query.parameter.<key>',
     type: 'string',
     brief:
       'A query parameter used in db.query.text, with <key> being the parameter name, and the attribute value being a string representation of the parameter value.',
-    deprecationChain: ['db.query.parameter.<key>'],
+    deprecationChain: ['db.query.parameter.<key>', 'db.params', 'db.sql.bindings'],
   },
   'db.query.summary': {
     canonicalName: 'db.query.summary',
@@ -7447,7 +7496,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'db.query.parameter.<key>',
     type: 'string[]',
     brief: 'The array of query bindings.',
-    deprecationChain: ['db.sql.bindings'],
+    deprecationChain: ['db.query.parameter.<key>', 'db.params', 'db.sql.bindings'],
   },
   'db.statement': {
     canonicalName: 'db.query.text',
@@ -7753,8 +7802,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The sentry environment.',
     deprecationChain: [
-      'sentry.environment',
       'environment',
+      'sentry.environment',
       'resource.deployment.environment',
       'resource.deployment.environment.name',
     ],
@@ -7763,7 +7812,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'error.type',
     type: 'string',
     brief: 'Describes a class of error the operation ended with.',
-    deprecationChain: ['error.type'],
+    deprecationChain: ['error.type', 'fs_error', 'mcp.tool.result.is_error'],
   },
   'event.id': {
     canonicalName: 'event.id',
@@ -7944,7 +7993,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'error.type',
     type: 'string',
     brief: 'The error message of a file system error.',
-    deprecationChain: ['fs_error'],
+    deprecationChain: ['error.type', 'fs_error', 'mcp.tool.result.is_error'],
   },
   'gcp.function.context.event_id': {
     canonicalName: 'gcp.function.context.event_id',
@@ -8098,6 +8147,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
   },
   'gen_ai.operation.name': {
@@ -8125,6 +8175,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.response.toolCalls',
       'ai.responses',
       'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
     ],
   },
   'gen_ai.pipeline.name': {
@@ -8144,6 +8196,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'ai.prompt.messages',
       'ai.texts',
       'gen_ai.prompt',
+      'gen_ai.request.messages',
     ],
   },
   'gen_ai.prompt.name': {
@@ -8182,7 +8235,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
-    deprecationChain: ['gen_ai.request.messages'],
+    deprecationChain: [
+      'gen_ai.input.messages',
+      'ai.input_messages',
+      'ai.prompt',
+      'ai.prompt.messages',
+      'ai.texts',
+      'gen_ai.prompt',
+      'gen_ai.request.messages',
+    ],
   },
   'gen_ai.request.model': {
     canonicalName: 'gen_ai.request.model',
@@ -8207,6 +8268,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.request.schema',
     type: 'string',
     brief: 'The stringified JSON schema the model output must conform to.',
+    deprecated: true,
     deprecationChain: ['gen_ai.request.schema'],
   },
   'gen_ai.request.seed': {
@@ -8270,6 +8332,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.response.object',
     type: 'string',
     brief: 'The type of the object returned by the model.',
+    deprecated: true,
     deprecationChain: ['gen_ai.response.object'],
   },
   'gen_ai.response.streaming': {
@@ -8283,7 +8346,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       "The model's response text messages. It has to be a stringified version of an array of response text messages.",
-    deprecationChain: ['gen_ai.response.text'],
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
   },
   'gen_ai.response.time_to_first_chunk': {
     canonicalName: 'gen_ai.response.time_to_first_chunk',
@@ -8307,7 +8378,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief: "The tool calls in the model's response. It has to be a stringified version of an array of objects.",
-    deprecationChain: ['gen_ai.response.tool_calls'],
+    deprecationChain: [
+      'gen_ai.output.messages',
+      'ai.response.text',
+      'ai.response.toolCalls',
+      'ai.responses',
+      'ai.tool_calls',
+      'gen_ai.response.text',
+      'gen_ai.response.tool_calls',
+    ],
   },
   'gen_ai.system': {
     canonicalName: 'gen_ai.provider.name',
@@ -8397,6 +8476,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.tool.type',
     type: 'string',
     brief: 'The type of tool being used.',
+    deprecated: true,
     deprecationChain: ['gen_ai.tool.type'],
   },
   'gen_ai.usage.cache_creation.input_tokens': {
@@ -8660,7 +8740,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The domain name.',
-    deprecationChain: ['http.host'],
+    deprecationChain: [
+      'server.address',
+      'address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'http.host',
+      'net.peer.name',
+    ],
   },
   'http.method': {
     canonicalName: 'http.request.method',
@@ -8898,7 +8986,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.response.status_code',
     type: 'integer',
     brief: 'The status code of the HTTP response.',
-    deprecationChain: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
+    deprecationChain: ['http.response_status_code', 'http.response.status_code', 'http.status_code'],
   },
   'http.response_transfer_size': {
     canonicalName: 'http.response.size',
@@ -8910,7 +8998,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.route',
     type: 'string',
     brief: 'The matched route, that is, the path template in the format used by the respective server framework.',
-    deprecationChain: ['http.route'],
+    deprecationChain: ['http.route', 'route'],
   },
   'http.scheme': {
     canonicalName: 'url.scheme',
@@ -8929,13 +9017,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The server domain name',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: [
+      'server.address',
+      'address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'http.host',
+      'net.peer.name',
+    ],
   },
   'http.status_code': {
     canonicalName: 'http.response.status_code',
     type: 'integer',
     brief: 'The status code of the HTTP response.',
-    deprecationChain: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
+    deprecationChain: ['http.response_status_code', 'http.response.status_code', 'http.status_code'],
   },
   'http.status_text': {
     canonicalName: 'http.response.status_text',
@@ -8947,6 +9043,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.target',
     type: 'string',
     brief: 'The pathname and query string of the URL.',
+    deprecated: true,
     deprecationChain: ['http.target'],
   },
   'http.url': {
@@ -9025,6 +9122,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'koa.name',
     type: 'string',
     brief: 'The name of the Koa middleware or matched route that handled the request.',
+    deprecated: true,
     deprecationChain: ['koa.name'],
   },
   'koa.type': {
@@ -9326,13 +9424,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'error.type',
     type: 'boolean',
     brief: 'Whether a tool execution resulted in an error.',
-    deprecationChain: ['mcp.tool.result.is_error'],
+    deprecationChain: ['error.type', 'fs_error', 'mcp.tool.result.is_error'],
   },
   'mcp.transport': {
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'Transport method used for MCP communication.',
-    deprecationChain: ['network.transport', 'mcp.transport'],
+    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
   },
   'mdc.<key>': {
     canonicalName: 'mdc.<key>',
@@ -9383,6 +9481,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.destination_kind',
     type: 'string',
     brief: 'The kind of message destination.',
+    deprecated: true,
     deprecationChain: ['messaging.destination_kind'],
   },
   'messaging.kafka.message.key': {
@@ -9611,13 +9710,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: [
+      'server.address',
+      'address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'http.host',
+      'net.peer.name',
+    ],
   },
   'net.host.port': {
     canonicalName: 'server.port',
     type: 'integer',
     brief: 'Server port number.',
-    deprecationChain: ['server.port', 'net.host.port', 'port'],
+    deprecationChain: ['server.port', 'net.host.port', 'port', 'net.peer.port'],
   },
   'net.peer.ip': {
     canonicalName: 'network.peer.address',
@@ -9630,13 +9737,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.',
-    deprecationChain: ['net.peer.name'],
+    deprecationChain: [
+      'server.address',
+      'address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'http.host',
+      'net.peer.name',
+    ],
   },
   'net.peer.port': {
     canonicalName: 'server.port',
     type: 'integer',
     brief: 'Peer port number.',
-    deprecationChain: ['net.peer.port'],
+    deprecationChain: ['server.port', 'net.host.port', 'port', 'net.peer.port'],
   },
   'net.protocol.name': {
     canonicalName: 'network.protocol.name',
@@ -9654,7 +9769,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport and network layer',
-    deprecationChain: ['net.sock.family'],
+    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
   },
   'net.sock.host.addr': {
     canonicalName: 'network.local.address',
@@ -9678,6 +9793,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'net.sock.peer.name',
     type: 'string',
     brief: 'Peer address of the network connection - Unix domain socket name',
+    deprecated: true,
     deprecationChain: ['net.sock.peer.name'],
   },
   'net.sock.peer.port': {
@@ -9690,7 +9806,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['net.transport'],
+    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
   },
   'network.connection.effective_type': {
     canonicalName: 'network.connection.effective_type',
@@ -9750,7 +9866,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport'],
+    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
   },
   'network.type': {
     canonicalName: 'network.type',
@@ -9762,7 +9878,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.origin',
     type: 'string',
     brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
-    deprecationChain: ['sentry.origin', 'origin'],
+    deprecationChain: ['origin', 'sentry.origin'],
   },
   'os.build': {
     canonicalName: 'os.build_id',
@@ -9831,7 +9947,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
-    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+    deprecationChain: ['span.kind', 'sentry.kind', 'otel.kind'],
   },
   'otel.scope.name': {
     canonicalName: 'otel.scope.name',
@@ -9880,13 +9996,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.platform',
     type: 'string',
     brief: 'The sdk platform that generated the event.',
-    deprecationChain: ['sentry.platform', 'platform'],
+    deprecationChain: ['platform', 'sentry.platform'],
   },
   port: {
     canonicalName: 'server.port',
     type: 'integer',
     brief: 'The destination port for a TCP connection.',
-    deprecationChain: ['server.port', 'net.host.port', 'port'],
+    deprecationChain: ['server.port', 'net.host.port', 'port', 'net.peer.port'],
   },
   previous_route: {
     canonicalName: 'previous_route',
@@ -9949,20 +10065,20 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
-    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+    deprecationChain: ['profile.id', 'sentry.profile_id', 'profile_id'],
   },
   profile_id: {
     canonicalName: 'sentry.profile_id',
     type: 'string',
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
-    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+    deprecationChain: ['profile.id', 'sentry.profile_id', 'profile_id'],
   },
   'profiler.id': {
     canonicalName: 'sentry.profiler_id',
     type: 'string',
     brief: 'The id of the currently running profiler (continuous profiling)',
-    deprecationChain: ['sentry.profiler_id', 'profiler.id'],
+    deprecationChain: ['profiler.id', 'sentry.profiler_id'],
   },
   query: {
     canonicalName: 'db.query.text',
@@ -9974,7 +10090,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'url.query',
     type: 'string',
     brief: 'An item in a query string. Usually added by client-side routing frameworks like vue-router.',
-    deprecationChain: ['query.<key>'],
+    deprecationChain: ['url.query', 'query.<key>'],
   },
   'react.version': {
     canonicalName: 'react.version',
@@ -10088,7 +10204,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.release',
     type: 'string',
     brief: 'The sentry release.',
-    deprecationChain: ['sentry.release', 'release', 'service.version'],
+    deprecationChain: ['release', 'sentry.release', 'service.version'],
   },
   'remix.action_form_data.<key>': {
     canonicalName: 'remix.action_form_data.<key>',
@@ -10100,27 +10216,27 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.replay_id',
     type: 'string',
     brief: 'The id of the sentry replay.',
-    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
+    deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
   },
   replayId: {
     canonicalName: 'sentry.replay_id',
     type: 'string',
     brief: 'The id of the sentry replay.',
-    deprecationChain: ['replayId'],
+    deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
   },
   replay_id: {
     canonicalName: 'sentry.replay_id',
     type: 'string',
     brief: 'The id of the sentry replay.',
-    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id'],
+    deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
   },
   'resource.deployment.environment': {
     canonicalName: 'sentry.environment',
     type: 'string',
     brief: 'The software deployment environment name.',
     deprecationChain: [
-      'sentry.environment',
       'environment',
+      'sentry.environment',
       'resource.deployment.environment',
       'resource.deployment.environment.name',
     ],
@@ -10130,8 +10246,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The software deployment environment name.',
     deprecationChain: [
-      'sentry.environment',
       'environment',
+      'sentry.environment',
       'resource.deployment.environment',
       'resource.deployment.environment.name',
     ],
@@ -10147,7 +10263,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The matched route, that is, the path template in the format used by the respective server framework. Also used by mobile SDKs to indicate the current route in the application.',
-    deprecationChain: ['route'],
+    deprecationChain: ['http.route', 'route'],
   },
   'router.navigation.origin': {
     canonicalName: 'router.navigation.origin',
@@ -10173,7 +10289,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'rpc.response.status_code',
     type: 'integer',
     brief: 'The numeric status code of the gRPC request.',
-    deprecationChain: ['rpc.grpc.status_code'],
+    deprecationChain: ['rpc.response.status_code', 'code', 'rpc.grpc.status_code'],
   },
   'rpc.method': {
     canonicalName: 'rpc.method',
@@ -10185,7 +10301,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'rpc.response.status_code',
     type: 'string',
     brief: 'Status code of the RPC returned by the RPC server or generated by the client.',
-    deprecationChain: ['rpc.response.status_code', 'code'],
+    deprecationChain: ['rpc.response.status_code', 'code', 'rpc.grpc.status_code'],
   },
   'rpc.service': {
     canonicalName: 'rpc.service',
@@ -10209,6 +10325,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'runtime.build',
     type: 'string',
     brief: 'The application build string, when it is separate from the version.',
+    deprecated: true,
     deprecationChain: ['runtime.build'],
   },
   'runtime.name': {
@@ -10260,13 +10377,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.sdk.name',
     type: 'string',
     brief: 'The sentry sdk name.',
-    deprecationChain: ['sentry.sdk.name', 'sdk.name'],
+    deprecationChain: ['sdk.name', 'sentry.sdk.name'],
   },
   'sdk.version': {
     canonicalName: 'sentry.sdk.version',
     type: 'string',
     brief: 'The sentry sdk version.',
-    deprecationChain: ['sentry.sdk.version', 'sdk.version'],
+    deprecationChain: ['sdk.version', 'sentry.sdk.version'],
   },
   'sentry.browser.version': {
     canonicalName: 'browser.version',
@@ -10551,6 +10668,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.report_event',
     type: 'string',
     brief: '(Deprecated) The event that caused the SDK to report CLS or LCP (pagehide or navigation)',
+    deprecated: true,
     deprecationChain: ['sentry.report_event'],
   },
   'sentry.sdk.integrations': {
@@ -10579,6 +10697,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    deprecated: true,
     deprecationChain: ['sentry.source'],
   },
   'sentry.span.source': {
@@ -10586,6 +10705,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    deprecated: true,
     deprecationChain: ['sentry.span.source'],
   },
   'sentry.sveltekit.navigation.from': {
@@ -10598,6 +10718,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.sveltekit.navigation.to',
     type: 'string',
     brief: 'the navigation destination',
+    deprecated: true,
     deprecationChain: ['sentry.sveltekit.navigation.to'],
   },
   'sentry.sveltekit.navigation.type': {
@@ -10618,38 +10739,55 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The span id of the span that was active when the log was collected. This should not be set if there was no active span.',
+    deprecated: true,
     deprecationChain: ['sentry.trace.parent_span_id'],
   },
   'sentry.transaction': {
     canonicalName: 'sentry.segment.name',
     type: 'string',
     brief: 'The sentry transaction (segment name).',
-    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
+    deprecationChain: ['transaction', 'sentry.segment.name', 'sentry.transaction'],
   },
   'server.address': {
     canonicalName: 'server.address',
     type: 'string',
     brief:
       'Preferably the server domain name if available without reverse DNS lookup, or an IP address or Unix domain socket name. For compatibility, it may contain what the hostname command returns on UNIX systems, the fully qualified hostname, or another name specified by the user.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: [
+      'server.address',
+      'address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'http.host',
+      'net.peer.name',
+    ],
   },
   'server.port': {
     canonicalName: 'server.port',
     type: 'integer',
     brief: 'Server port number.',
-    deprecationChain: ['server.port', 'net.host.port', 'port'],
+    deprecationChain: ['server.port', 'net.host.port', 'port', 'net.peer.port'],
   },
   server_name: {
     canonicalName: 'server.address',
     type: 'string',
     brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
-    deprecationChain: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
+    deprecationChain: [
+      'server.address',
+      'address',
+      'http.server_name',
+      'net.host.name',
+      'server_name',
+      'http.host',
+      'net.peer.name',
+    ],
   },
   server_sample_rate: {
     canonicalName: 'sentry.server_sample_rate',
     type: 'double',
     brief: 'Rate at which a span was sampled in Relay.',
-    deprecationChain: ['sentry.server_sample_rate', 'server_sample_rate'],
+    deprecationChain: ['server_sample_rate', 'sentry.server_sample_rate'],
   },
   'service.name': {
     canonicalName: 'service.name',
@@ -10674,61 +10812,61 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
-    deprecationChain: ['sentry.action', 'span.action'],
+    deprecationChain: ['span.action', 'sentry.action'],
   },
   'span.category': {
     canonicalName: 'sentry.category',
     type: 'string',
     brief:
       "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
-    deprecationChain: ['sentry.category', 'span.category'],
+    deprecationChain: ['span.category', 'sentry.category'],
   },
   'span.domain': {
     canonicalName: 'sentry.domain',
     type: 'string',
     brief:
       'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
-    deprecationChain: ['sentry.domain', 'span.domain'],
+    deprecationChain: ['span.domain', 'sentry.domain'],
   },
   'span.group': {
     canonicalName: 'sentry.group',
     type: 'string',
     brief:
       'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
-    deprecationChain: ['sentry.group', 'span.group'],
+    deprecationChain: ['span.group', 'sentry.group'],
   },
   'span.kind': {
     canonicalName: 'sentry.kind',
     type: 'string',
     brief:
       'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
-    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+    deprecationChain: ['span.kind', 'sentry.kind', 'otel.kind'],
   },
   'span.op': {
     canonicalName: 'sentry.op',
     type: 'string',
     brief: 'The operation of a span.',
-    deprecationChain: ['sentry.op', 'span.op'],
+    deprecationChain: ['span.op', 'sentry.op'],
   },
   'span.status': {
     canonicalName: 'sentry.status',
     type: 'string',
     brief:
       'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
-    deprecationChain: ['sentry.status', 'span.status'],
+    deprecationChain: ['span.status', 'sentry.status'],
   },
   'span.status.message': {
     canonicalName: 'sentry.status.message',
     type: 'string',
     brief: 'The from OTLP extracted status message.',
-    deprecationChain: ['sentry.status.message', 'span.status.message'],
+    deprecationChain: ['span.status.message', 'sentry.status.message'],
   },
   'span.status_code': {
     canonicalName: 'sentry.status_code',
     type: 'integer',
     brief:
       'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
-    deprecationChain: ['sentry.status_code', 'span.status_code'],
+    deprecationChain: ['span.status_code', 'sentry.status_code'],
   },
   stall_percentage: {
     canonicalName: 'app.vitals.stall.percentage',
@@ -10840,19 +10978,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
-    deprecationChain: ['sentry.trace.status', 'trace.status'],
+    deprecationChain: ['trace.status', 'sentry.trace.status'],
   },
   trace_lifecycle: {
     canonicalName: 'sentry.trace_lifecycle',
     type: 'string',
     brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
-    deprecationChain: ['sentry.trace_lifecycle', 'trace_lifecycle'],
+    deprecationChain: ['trace_lifecycle', 'sentry.trace_lifecycle'],
   },
   transaction: {
     canonicalName: 'sentry.segment.name',
     type: 'string',
     brief: 'The segment name of a span',
-    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
+    deprecationChain: ['transaction', 'sentry.segment.name', 'sentry.transaction'],
   },
   'transaction.span_id': {
     canonicalName: 'sentry.segment.id',
@@ -11139,7 +11277,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The query string present in the URL. Note that this does not contain the leading ? character, while the `http.query` attribute does.',
-    deprecationChain: ['url.query'],
+    deprecationChain: ['url.query', 'query.<key>'],
   },
   'url.same_origin': {
     canonicalName: 'http.request.same_origin',
