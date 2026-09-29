@@ -15682,6 +15682,7 @@ export type SENTRY_KIND_TYPE = string;
  *
  * @example "previous_trace"
  * @example "next_trace"
+ * @example "cache_origin"
  */
 export const SENTRY_LINK_TYPE = 'sentry.link.type';
 
@@ -32433,7 +32434,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'previous_trace',
-    examples: ['previous_trace', 'next_trace'],
+    examples: ['previous_trace', 'next_trace', 'cache_origin'],
     changelog: [{ version: 'next', prs: [656], description: 'Added sentry.link.type attribute' }],
     additionalContext: [
       'This attribute is exclusively set on span links.',

@@ -11,7 +11,7 @@
   ],
   "is_in_otel": false,
   "visibility": "public",
-  "examples": ["previous_trace", "next_trace"],
+  "examples": ["previous_trace", "next_trace", "cache_origin"],
   "changelog": [
     {
       "version": "next",

@@ -9252,6 +9252,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Example: "previous_trace"
     Example: "next_trace"
+    Example: "cache_origin"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -24598,7 +24599,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
-        examples=["previous_trace", "next_trace"],
+        examples=["previous_trace", "next_trace", "cache_origin"],
         changelog=[
             ChangelogEntry(
                 version="next",
