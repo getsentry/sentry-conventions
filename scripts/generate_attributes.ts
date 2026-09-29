@@ -1114,6 +1114,12 @@ export interface AttributeSearchMetadata {
   brief: string;
   /** Whether the attribute is internal to Sentry */
   internal?: true;
+  /**
+   * Present when the attribute is deprecated but does not join a replacement's
+   * deprecation chain. \`backfill\` and \`normalize\` deprecations are omitted
+   * because those keys already appear in that chain.
+   */
+  deprecated?: true;
   /** Every key under which the attribute's value is readable, preferred key first */
   deprecationChain: readonly string[];
 }
@@ -1279,6 +1285,7 @@ function generateMetadata(
     deprecationChain: string[];
     canonicalName: string;
     isInternal: boolean;
+    deprecated: boolean;
   }> = [];
 
   for (const searchKey of [...searchMetadataByKey.keys()].sort()) {
@@ -1315,12 +1322,16 @@ function generateMetadata(
       }
     }
 
+    const deprecationChainKeys = [...deprecationChain];
     searchEntries.push({
       searchKey,
       preferredAttribute,
-      deprecationChain: [...deprecationChain],
+      deprecationChain: deprecationChainKeys,
       canonicalName: preferredAttribute.attributeJson.deprecation?.replacement ?? preferredAttribute.key,
       isInternal: getVisibility(preferredAttribute.attributeJson) === 'internal',
+      // A rewriting deprecation's chain is headed by its replacement. Anything else
+      // that is deprecated heads its own chain and is invisible in `deprecationChain`.
+      deprecated: preferredAttribute.isDeprecated && deprecationChainKeys[0] === preferredAttribute.key,
     });
   }
 
@@ -1441,7 +1452,14 @@ function generateMetadata(
 
   searchMetadata += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
 
-  for (const { searchKey, preferredAttribute, deprecationChain, canonicalName, isInternal } of searchEntries) {
+  for (const {
+    searchKey,
+    preferredAttribute,
+    deprecationChain,
+    canonicalName,
+    isInternal,
+    deprecated,
+  } of searchEntries) {
     searchMetadata += `  ${JSON.stringify(searchKey)}: {\n`;
     searchMetadata += `    canonicalName: ${JSON.stringify(canonicalName)},\n`;
     searchMetadata += `    type: ${JSON.stringify(
@@ -1450,6 +1468,9 @@ function generateMetadata(
     searchMetadata += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
     if (isInternal) {
       searchMetadata += '    internal: true,\n';
+    }
+    if (deprecated) {
+      searchMetadata += '    deprecated: true,\n';
     }
     searchMetadata += `    deprecationChain: ${JSON.stringify(deprecationChain)},\n`;
     searchMetadata += '  },\n';

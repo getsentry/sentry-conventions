@@ -162,6 +162,7 @@ describe('generateAttributes', () => {
         'export type AttributeSearchType = attributes.AttributeType | attributes.SearchAliasType;',
       );
       expect(search).toContain('internal?: true;');
+      expect(search).toContain('deprecated?: true;');
       expect(search).toContain("export const SEARCH_SHARED__NAME = 'shared.name';");
       expect(search).toContain("export const SEARCH_DEPRECATED__SEARCH = 'deprecated.search';");
       expect(search).toContain("export const SEARCH_OLD__NAME = 'old.name';");
@@ -210,8 +211,14 @@ describe('generateAttributes', () => {
         '"shared.name": {\n    canonicalName: "current.attribute",\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name"],',
       );
       expect(compactMetadata).toContain(
-        '"deprecated.search": {\n    canonicalName: "fallback.attribute",\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    internal: true,\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',
+        '"deprecated.search": {\n    canonicalName: "fallback.attribute",\n    type: "double",\n    brief: "A deprecated attribute with a distinct search name.",\n    internal: true,\n    deprecated: true,\n    deprecationChain: ["standalone.deprecated","deprecated.search"],',
       );
+      expect(compactMetadata).toContain(
+        '"aws.request.id": {\n    canonicalName: "aws.request_id",\n    type: "string",\n    brief: "The deprecated dotted AWS request id.",\n    deprecationChain: ["aws.request_id","aws.request.id"],',
+      );
+      expect(compactMetadata).not.toMatch(/"aws\.request\.id": \{[^}]*deprecated:/);
+      expect(compactMetadata).not.toMatch(/"shared\.name": \{[^}]*deprecated:/);
+      expect(compactMetadata).not.toMatch(/"fallback\.attribute": \{[^}]*deprecated:/);
       expect(compactMetadata).toContain(
         '"sentry.plain": {\n    canonicalName: "sentry.plain",\n    type: "string",\n    brief: "A sentry-prefixed attribute without a search alias.",\n    deprecationChain: ["sentry.plain"],',
       );
@@ -223,7 +230,7 @@ describe('generateAttributes', () => {
 
       const compactPropertyNames = [...compactMetadata.matchAll(/^    (\w+):/gm)].map((match) => match[1]);
       expect(new Set(compactPropertyNames)).toEqual(
-        new Set(['canonicalName', 'type', 'brief', 'internal', 'deprecationChain']),
+        new Set(['canonicalName', 'type', 'brief', 'internal', 'deprecated', 'deprecationChain']),
       );
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true });
