@@ -24610,6 +24610,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute is exclusively set on span links.",
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
+            "For known values, see Examples. Add new values to Examples.",
         ],
     ),
     "sentry.main_thread": AttributeMetadata(
