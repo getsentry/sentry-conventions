@@ -1121,7 +1121,7 @@ export interface AttributeSearchMetadata {
    */
   deprecated?: true;
   /**
-   * Names that resolve to this search field, preferred key first.
+   * Names that resolve to this search field, preferred search name first.
    *
    * Unlike attribute key chains, this also lists deprecated attributes whose
    * status is not \`backfill\` or \`normalize\`. Their values stay on the old
@@ -1402,6 +1402,25 @@ function generateMetadata(
 
     entry.deprecationChain = [...replacementChain];
     entry.deprecated = entry.deprecationChain[0] === entry.preferredAttribute.key;
+  }
+
+  // Chain membership is keyed by attribute key. Search queries use the alias, so that
+  // name leads the chain once every entry has been attached to its head.
+  const attributesByKey = new Map(allAttributes.map((attribute) => [attribute.key, attribute]));
+  for (const entry of searchEntries) {
+    const headKey = entry.deprecationChain[0];
+    const searchName = headKey ? attributesByKey.get(headKey)?.attributeJson.search_alias?.name : undefined;
+    if (!searchName || searchName === headKey) {
+      continue;
+    }
+
+    const searchNameIndex = entry.deprecationChain.indexOf(searchName);
+    if (searchNameIndex <= 0) {
+      continue;
+    }
+
+    entry.deprecationChain.splice(searchNameIndex, 1);
+    entry.deprecationChain.unshift(searchName);
   }
 
   const searchNameConstantsByName = new Map<
