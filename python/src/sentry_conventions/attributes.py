@@ -24602,7 +24602,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["previous_trace", "next_trace", "cache_origin"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.25.0",
                 prs=[656],
                 description="Added sentry.link.type attribute",
             ),

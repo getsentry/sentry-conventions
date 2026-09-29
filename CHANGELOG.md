@@ -1,3 +1,30 @@
+## 0.25.0
+
+### New Features ✨
+
+#### Docs
+
+- Move LLM links to the footer by @cleptric in [#654](https://github.com/getsentry/sentry-conventions/pull/654)
+- Add Vercel PR previews by @sentry-junior in [#651](https://github.com/getsentry/sentry-conventions/pull/651)
+
+#### Other
+
+- (attributes) Add `sentry.link.type` span link attribute by @Lms24 in [#656](https://github.com/getsentry/sentry-conventions/pull/656)
+
+### Bug Fixes 🐛
+
+- (docs) Render inline code in convention descriptions by @sentry-junior in [#652](https://github.com/getsentry/sentry-conventions/pull/652)
+
+### Documentation 📚
+
+- Specify TTL lifetime by @s1gr1d in [#648](https://github.com/getsentry/sentry-conventions/pull/648)
+
+### Internal Changes 🔧
+
+- (attributes) Add in deprecated search aliases for replay id by @nsdeschenes in [#657](https://github.com/getsentry/sentry-conventions/pull/657)
+- (search-metadata) Add deprecated field to search metadata by @nsdeschenes in [#658](https://github.com/getsentry/sentry-conventions/pull/658)
+- Add alexander-alderman-webb to CODEOWNERS by @cleptric in [#655](https://github.com/getsentry/sentry-conventions/pull/655)
+
 ## 0.24.0
 
 ### New Features ✨
