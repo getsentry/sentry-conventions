@@ -15671,7 +15671,7 @@ export type SENTRY_KIND_TYPE = string;
 // Path: model/attributes/sentry/sentry__link__type.json
 
 /**
- * The type of span link this attribute is set on, describing the relationship between the span and the linked span `sentry.link.type`
+ * Set on a span link. Describes the relationship between the span and the linked span. `sentry.link.type`
  *
  * Attribute Value Type: `string` {@link SENTRY_LINK_TYPE_TYPE}
  *
@@ -32424,8 +32424,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.link.type': {
-    brief:
-      'The type of span link this attribute is set on, describing the relationship between the span and the linked span',
+    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
     type: 'string',
     keys: ['sentry.link.type'],
     applyScrubbing: {
@@ -32436,7 +32435,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'previous_trace',
     examples: ['previous_trace', 'next_trace'],
     changelog: [{ version: 'next', prs: [656], description: 'Added sentry.link.type attribute' }],
-    additionalContext: ['This attribute is set on span links added by Sentry instrumentation.'],
+    additionalContext: [
+      'This attribute is exclusively set on span links.',
+      'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
+    ],
   },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',

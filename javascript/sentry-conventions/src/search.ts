@@ -10440,8 +10440,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'sentry.link.type': {
     canonicalName: 'sentry.link.type',
     type: 'string',
-    brief:
-      'The type of span link this attribute is set on, describing the relationship between the span and the linked span',
+    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
     deprecationChain: ['sentry.link.type'],
   },
   'sentry.main_thread': {

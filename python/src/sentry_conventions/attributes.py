@@ -9244,7 +9244,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__link__type.json
     SENTRY_LINK_TYPE: Literal["sentry.link.type"] = "sentry.link.type"
-    """The type of span link this attribute is set on, describing the relationship between the span and the linked span
+    """Set on a span link. Describes the relationship between the span and the linked span.
 
     Type: str
     Apply Scrubbing: manual
@@ -24591,7 +24591,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="span.kind"),
     ),
     "sentry.link.type": AttributeMetadata(
-        brief="The type of span link this attribute is set on, describing the relationship between the span and the linked span",
+        brief="Set on a span link. Describes the relationship between the span and the linked span.",
         type=AttributeType.STRING,
         keys=("sentry.link.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -24607,7 +24607,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
         additional_context=[
-            "This attribute is set on span links added by Sentry instrumentation."
+            "This attribute is exclusively set on span links.",
+            "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
         ],
     ),
     "sentry.main_thread": AttributeMetadata(
