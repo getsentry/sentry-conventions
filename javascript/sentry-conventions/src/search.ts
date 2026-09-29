@@ -20,7 +20,7 @@ export interface AttributeSearchMetadata {
    */
   deprecated?: true;
   /**
-   * Names that resolve to this search field, preferred key first.
+   * Names that resolve to this search field, preferred search name first.
    *
    * Unlike attribute key chains, this also lists deprecated attributes whose
    * status is not `backfill` or `normalize`. Their values stay on the old
@@ -7125,7 +7125,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.client_sample_rate',
     type: 'double',
     brief: 'Rate at which a span was sampled in the SDK.',
-    deprecationChain: ['sentry.client_sample_rate', 'client_sample_rate'],
+    deprecationChain: ['client_sample_rate', 'sentry.client_sample_rate'],
   },
   'cloud.account.id': {
     canonicalName: 'cloud.account.id',
@@ -7796,8 +7796,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The sentry environment.',
     deprecationChain: [
-      'sentry.environment',
       'environment',
+      'sentry.environment',
       'resource.deployment.environment',
       'resource.deployment.environment.name',
     ],
@@ -8980,7 +8980,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.response.status_code',
     type: 'integer',
     brief: 'The status code of the HTTP response.',
-    deprecationChain: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
+    deprecationChain: ['http.response_status_code', 'http.response.status_code', 'http.status_code'],
   },
   'http.response_transfer_size': {
     canonicalName: 'http.response.size',
@@ -9025,7 +9025,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'http.response.status_code',
     type: 'integer',
     brief: 'The status code of the HTTP response.',
-    deprecationChain: ['http.response.status_code', 'http.response_status_code', 'http.status_code'],
+    deprecationChain: ['http.response_status_code', 'http.response.status_code', 'http.status_code'],
   },
   'http.status_text': {
     canonicalName: 'http.response.status_text',
@@ -9872,7 +9872,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.origin',
     type: 'string',
     brief: 'The origin of the instrumentation (e.g. span, log, etc.)',
-    deprecationChain: ['sentry.origin', 'origin'],
+    deprecationChain: ['origin', 'sentry.origin'],
   },
   'os.build': {
     canonicalName: 'os.build_id',
@@ -9941,7 +9941,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The span kind (https://opentelemetry.io/docs/concepts/signals/traces/#span-kind). Deprecated, use `sentry.kind` instead.',
-    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+    deprecationChain: ['span.kind', 'sentry.kind', 'otel.kind'],
   },
   'otel.scope.name': {
     canonicalName: 'otel.scope.name',
@@ -9990,7 +9990,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.platform',
     type: 'string',
     brief: 'The sdk platform that generated the event.',
-    deprecationChain: ['sentry.platform', 'platform'],
+    deprecationChain: ['platform', 'sentry.platform'],
   },
   port: {
     canonicalName: 'server.port',
@@ -10059,20 +10059,20 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
-    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+    deprecationChain: ['profile.id', 'sentry.profile_id', 'profile_id'],
   },
   profile_id: {
     canonicalName: 'sentry.profile_id',
     type: 'string',
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
-    deprecationChain: ['sentry.profile_id', 'profile.id', 'profile_id'],
+    deprecationChain: ['profile.id', 'sentry.profile_id', 'profile_id'],
   },
   'profiler.id': {
     canonicalName: 'sentry.profiler_id',
     type: 'string',
     brief: 'The id of the currently running profiler (continuous profiling)',
-    deprecationChain: ['sentry.profiler_id', 'profiler.id'],
+    deprecationChain: ['profiler.id', 'sentry.profiler_id'],
   },
   query: {
     canonicalName: 'db.query.text',
@@ -10198,7 +10198,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.release',
     type: 'string',
     brief: 'The sentry release.',
-    deprecationChain: ['sentry.release', 'release', 'service.version'],
+    deprecationChain: ['release', 'sentry.release', 'service.version'],
   },
   'remix.action_form_data.<key>': {
     canonicalName: 'remix.action_form_data.<key>',
@@ -10210,27 +10210,27 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.replay_id',
     type: 'string',
     brief: 'The id of the sentry replay.',
-    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id', 'replayId'],
+    deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
   },
   replayId: {
     canonicalName: 'sentry.replay_id',
     type: 'string',
     brief: 'The id of the sentry replay.',
-    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id', 'replayId'],
+    deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
   },
   replay_id: {
     canonicalName: 'sentry.replay_id',
     type: 'string',
     brief: 'The id of the sentry replay.',
-    deprecationChain: ['sentry.replay_id', 'replay.id', 'replay_id', 'replayId'],
+    deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
   },
   'resource.deployment.environment': {
     canonicalName: 'sentry.environment',
     type: 'string',
     brief: 'The software deployment environment name.',
     deprecationChain: [
-      'sentry.environment',
       'environment',
+      'sentry.environment',
       'resource.deployment.environment',
       'resource.deployment.environment.name',
     ],
@@ -10240,8 +10240,8 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The software deployment environment name.',
     deprecationChain: [
-      'sentry.environment',
       'environment',
+      'sentry.environment',
       'resource.deployment.environment',
       'resource.deployment.environment.name',
     ],
@@ -10371,13 +10371,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.sdk.name',
     type: 'string',
     brief: 'The sentry sdk name.',
-    deprecationChain: ['sentry.sdk.name', 'sdk.name'],
+    deprecationChain: ['sdk.name', 'sentry.sdk.name'],
   },
   'sdk.version': {
     canonicalName: 'sentry.sdk.version',
     type: 'string',
     brief: 'The sentry sdk version.',
-    deprecationChain: ['sentry.sdk.version', 'sdk.version'],
+    deprecationChain: ['sdk.version', 'sentry.sdk.version'],
   },
   'sentry.browser.version': {
     canonicalName: 'browser.version',
@@ -10734,7 +10734,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.segment.name',
     type: 'string',
     brief: 'The sentry transaction (segment name).',
-    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
+    deprecationChain: ['transaction', 'sentry.segment.name', 'sentry.transaction'],
   },
   'server.address': {
     canonicalName: 'server.address',
@@ -10775,7 +10775,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.server_sample_rate',
     type: 'double',
     brief: 'Rate at which a span was sampled in Relay.',
-    deprecationChain: ['sentry.server_sample_rate', 'server_sample_rate'],
+    deprecationChain: ['server_sample_rate', 'sentry.server_sample_rate'],
   },
   'service.name': {
     canonicalName: 'service.name',
@@ -10800,61 +10800,61 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'Used as a generic attribute representing the action depending on the type of span. For instance, this is the database query operation for DB spans, and the request method for HTTP spans.',
-    deprecationChain: ['sentry.action', 'span.action'],
+    deprecationChain: ['span.action', 'sentry.action'],
   },
   'span.category': {
     canonicalName: 'sentry.category',
     type: 'string',
     brief:
       "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
-    deprecationChain: ['sentry.category', 'span.category'],
+    deprecationChain: ['span.category', 'sentry.category'],
   },
   'span.domain': {
     canonicalName: 'sentry.domain',
     type: 'string',
     brief:
       'Used as a generic attribute representing the domain depending on the type of span. For instance, this is the collection/table name for database spans, and the server address for HTTP spans.',
-    deprecationChain: ['sentry.domain', 'span.domain'],
+    deprecationChain: ['span.domain', 'sentry.domain'],
   },
   'span.group': {
     canonicalName: 'sentry.group',
     type: 'string',
     brief:
       'Stores the hash of `sentry.normalized_description`. This is primarily used for grouping spans in the product end.',
-    deprecationChain: ['sentry.group', 'span.group'],
+    deprecationChain: ['span.group', 'sentry.group'],
   },
   'span.kind': {
     canonicalName: 'sentry.kind',
     type: 'string',
     brief:
       'Used to clarify the relationship between parents and children, or to distinguish between spans, e.g. a `server` and `client` span with the same name.',
-    deprecationChain: ['sentry.kind', 'span.kind', 'otel.kind'],
+    deprecationChain: ['span.kind', 'sentry.kind', 'otel.kind'],
   },
   'span.op': {
     canonicalName: 'sentry.op',
     type: 'string',
     brief: 'The operation of a span.',
-    deprecationChain: ['sentry.op', 'span.op'],
+    deprecationChain: ['span.op', 'sentry.op'],
   },
   'span.status': {
     canonicalName: 'sentry.status',
     type: 'string',
     brief:
       'The span\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
-    deprecationChain: ['sentry.status', 'span.status'],
+    deprecationChain: ['span.status', 'sentry.status'],
   },
   'span.status.message': {
     canonicalName: 'sentry.status.message',
     type: 'string',
     brief: 'The from OTLP extracted status message.',
-    deprecationChain: ['sentry.status.message', 'span.status.message'],
+    deprecationChain: ['span.status.message', 'sentry.status.message'],
   },
   'span.status_code': {
     canonicalName: 'sentry.status_code',
     type: 'integer',
     brief:
       'The HTTP status code used in Sentry Insights. Typically set by Sentry during ingestion, rather than by clients.',
-    deprecationChain: ['sentry.status_code', 'span.status_code'],
+    deprecationChain: ['span.status_code', 'sentry.status_code'],
   },
   stall_percentage: {
     canonicalName: 'app.vitals.stall.percentage',
@@ -10966,19 +10966,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief:
       'The segment\'s status (either "ok" or "error"). Older SDKs may set this to a more specific error, but this behaviour is deprecated.',
-    deprecationChain: ['sentry.trace.status', 'trace.status'],
+    deprecationChain: ['trace.status', 'sentry.trace.status'],
   },
   trace_lifecycle: {
     canonicalName: 'sentry.trace_lifecycle',
     type: 'string',
     brief: 'Indicates the chosen trace lifecycle mode of the SDK (stream or static)',
-    deprecationChain: ['sentry.trace_lifecycle', 'trace_lifecycle'],
+    deprecationChain: ['trace_lifecycle', 'sentry.trace_lifecycle'],
   },
   transaction: {
     canonicalName: 'sentry.segment.name',
     type: 'string',
     brief: 'The segment name of a span',
-    deprecationChain: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
+    deprecationChain: ['transaction', 'sentry.segment.name', 'sentry.transaction'],
   },
   'transaction.span_id': {
     canonicalName: 'sentry.segment.id',
