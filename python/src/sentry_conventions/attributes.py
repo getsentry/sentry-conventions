@@ -9242,6 +9242,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "internal"
     """
 
+    # Path: model/attributes/sentry/sentry__link__type.json
+    SENTRY_LINK_TYPE: Literal["sentry.link.type"] = "sentry.link.type"
+    """Set on a span link. Describes the relationship between the span and the linked span.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "previous_trace"
+    Example: "next_trace"
+    Example: "cache_origin"
+    """
+
     # Path: model/attributes/sentry/sentry__main_thread.json
     SENTRY_MAIN_THREAD: Literal["sentry.main_thread"] = "sentry.main_thread"
     """Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.
@@ -24578,6 +24591,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="span.kind"),
     ),
+    "sentry.link.type": AttributeMetadata(
+        brief="Set on a span link. Describes the relationship between the span and the linked span.",
+        type=AttributeType.STRING,
+        keys=("sentry.link.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="previous_trace",
+        examples=["previous_trace", "next_trace", "cache_origin"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[656],
+                description="Added sentry.link.type attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute is exclusively set on span links.",
+            "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
+            "For known values, see Examples. Add new values to Examples.",
+        ],
+    ),
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
@@ -24899,7 +24934,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="replay.id"),
+        search_alias=SearchAlias(name="replay.id", deprecated_aliases=["replay_id"]),
     ),
     "sentry.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
@@ -28235,6 +28270,7 @@ Attributes = TypedDict(
         "sentry.is_localhost": bool,
         "sentry.is_remote": bool,
         "sentry.kind": str,
+        "sentry.link.type": str,
         "sentry.main_thread": bool,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,

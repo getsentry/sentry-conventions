@@ -10,7 +10,8 @@
   "alias": ["replay_id", "replayId"],
   "visibility": "public",
   "search_alias": {
-    "name": "replay.id"
+    "name": "replay.id",
+    "deprecated_aliases": ["replay_id"]
   },
   "changelog": [
     {

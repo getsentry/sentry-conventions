@@ -4027,6 +4027,11 @@ export const SEARCH_SENTRY__IS_REMOTE = 'sentry.is_remote';
 export const SEARCH_SENTRY__KIND = 'sentry.kind';
 
 /**
+ * Search name for {@link attributes.SENTRY_LINK_TYPE}. `sentry.link.type`
+ */
+export const SEARCH_SENTRY__LINK__TYPE = 'sentry.link.type';
+
+/**
  * Search name for {@link attributes.SENTRY_MAIN_THREAD}. `sentry.main_thread`
  */
 export const SEARCH_SENTRY__MAIN_THREAD = 'sentry.main_thread';
@@ -5723,6 +5728,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__IS_LOCALHOST
   | typeof SEARCH_SENTRY__IS_REMOTE
   | typeof SEARCH_SENTRY__KIND
+  | typeof SEARCH_SENTRY__LINK__TYPE
   | typeof SEARCH_SENTRY__MAIN_THREAD
   | typeof SEARCH_SENTRY__MESSAGE__PARAMETER__KEY
   | typeof SEARCH_SENTRY__MESSAGE__TEMPLATE
@@ -10547,6 +10553,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'boolean',
     brief: "Indicates whether a span's parent is remote.",
     deprecationChain: ['sentry.is_remote'],
+  },
+  'sentry.link.type': {
+    canonicalName: 'sentry.link.type',
+    type: 'string',
+    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
+    deprecationChain: ['sentry.link.type'],
   },
   'sentry.main_thread': {
     canonicalName: 'sentry.main_thread',
