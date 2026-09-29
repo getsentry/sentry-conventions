@@ -32435,7 +32435,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'previous_trace',
     examples: ['previous_trace', 'next_trace', 'cache_origin'],
-    changelog: [{ version: 'next', prs: [656], description: 'Added sentry.link.type attribute' }],
+    changelog: [{ version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' }],
     additionalContext: [
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
