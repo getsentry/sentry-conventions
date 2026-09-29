@@ -133,6 +133,18 @@ describe('generateAttributes', () => {
         search_alias: { name: 'deprecated.search' },
         deprecation: { replacement: 'fallback.attribute', _status: null },
       },
+      {
+        key: 'sentry.replay_id',
+        brief: 'The replay id.',
+        type: 'string',
+        search_alias: { name: 'replay.id' },
+      },
+      {
+        key: 'replayId',
+        brief: 'The deprecated camel-case replay id.',
+        type: 'string',
+        deprecation: { replacement: 'sentry.replay_id', _status: null },
+      },
     ];
 
     for (const attribute of attributes) {
@@ -194,6 +206,9 @@ describe('generateAttributes', () => {
       expect(search).toContain(
         ' * @deprecated Use {@link SEARCH_AWS__REQUEST_ID} (`aws.request_id`) instead\n */\nexport const SEARCH_AWS__REQUEST__ID',
       );
+      expect(search).toContain(
+        ' * @deprecated Use {@link SEARCH_REPLAY__ID} (`replay.id`) instead\n */\nexport const SEARCH_REPLAYID',
+      );
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_SHARED__NAME/);
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_DEPRECATED__SEARCH/);
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_FALLBACK__ATTRIBUTE/);
@@ -201,11 +216,11 @@ describe('generateAttributes', () => {
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_ITEM__SEARCH/);
       expect(search).not.toMatch(/@deprecated[^*]*\*\/\s*export const SEARCH_AWS__REQUEST_ID/);
       expect(search).toContain(
-        'export type AttributeSearchName = typeof SEARCH_AWS__REQUEST__ID | typeof SEARCH_AWS__REQUEST_ID | typeof SEARCH_CURRENT__ATTRIBUTE | typeof SEARCH_DEPRECATED__SEARCH | typeof SEARCH_FALLBACK__ATTRIBUTE | typeof SEARCH_ITEM__SEARCH | typeof SEARCH_LIVE__ATTRIBUTE | typeof SEARCH_LIVE__SEARCH | typeof SEARCH_OLD__NAME | typeof SEARCH_SENTRY__ITEM | typeof SEARCH_SENTRY__PLAIN | typeof SEARCH_SHARED__NAME | typeof SEARCH_STANDALONE__DEPRECATED;',
+        'export type AttributeSearchName = typeof SEARCH_AWS__REQUEST__ID | typeof SEARCH_AWS__REQUEST_ID | typeof SEARCH_CURRENT__ATTRIBUTE | typeof SEARCH_DEPRECATED__SEARCH | typeof SEARCH_FALLBACK__ATTRIBUTE | typeof SEARCH_ITEM__SEARCH | typeof SEARCH_LIVE__ATTRIBUTE | typeof SEARCH_LIVE__SEARCH | typeof SEARCH_OLD__NAME | typeof SEARCH_REPLAY__ID | typeof SEARCH_REPLAYID | typeof SEARCH_SENTRY__ITEM | typeof SEARCH_SENTRY__PLAIN | typeof SEARCH_SENTRY__REPLAY_ID | typeof SEARCH_SHARED__NAME | typeof SEARCH_STANDALONE__DEPRECATED;',
       );
       expect(search).toContain('export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata>');
       expect(compactMetadata).toContain(
-        '"fallback.attribute": {\n    canonicalName: "fallback.attribute",\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute"],',
+        '"fallback.attribute": {\n    canonicalName: "fallback.attribute",\n    type: "boolean",\n    brief: "An attribute without explicit search metadata.",\n    deprecationChain: ["fallback.attribute","standalone.deprecated","deprecated.search"],',
       );
       expect(compactMetadata).toContain(
         '"shared.name": {\n    canonicalName: "current.attribute",\n    type: "byte",\n    brief: "The preferred attribute.",\n    deprecationChain: ["current.attribute","shared.name","old.name"],',
@@ -219,6 +234,13 @@ describe('generateAttributes', () => {
       expect(compactMetadata).not.toMatch(/"aws\.request\.id": \{[^}]*deprecated:/);
       expect(compactMetadata).not.toMatch(/"shared\.name": \{[^}]*deprecated:/);
       expect(compactMetadata).not.toMatch(/"fallback\.attribute": \{[^}]*deprecated:/);
+      expect(compactMetadata).toContain(
+        '"replay.id": {\n    canonicalName: "sentry.replay_id",\n    type: "string",\n    brief: "The replay id.",\n    deprecationChain: ["sentry.replay_id","replay.id","replayId"],',
+      );
+      expect(compactMetadata).toContain(
+        '"replayId": {\n    canonicalName: "sentry.replay_id",\n    type: "string",\n    brief: "The deprecated camel-case replay id.",\n    deprecationChain: ["sentry.replay_id","replay.id","replayId"],',
+      );
+      expect(compactMetadata).not.toMatch(/"replayId": \{[^}]*deprecated:/);
       expect(compactMetadata).toContain(
         '"sentry.plain": {\n    canonicalName: "sentry.plain",\n    type: "string",\n    brief: "A sentry-prefixed attribute without a search alias.",\n    deprecationChain: ["sentry.plain"],',
       );
