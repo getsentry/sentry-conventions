@@ -15668,6 +15668,29 @@ export const SENTRY_KIND = 'sentry.kind';
  */
 export type SENTRY_KIND_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__link__type.json
+
+/**
+ * Set on a span link. Describes the relationship between the span and the linked span. `sentry.link.type`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_LINK_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "previous_trace"
+ * @example "next_trace"
+ * @example "cache_origin"
+ */
+export const SENTRY_LINK_TYPE = 'sentry.link.type';
+
+/**
+ * Type for {@link SENTRY_LINK_TYPE} sentry.link.type
+ */
+export type SENTRY_LINK_TYPE_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__main_thread.json
 
 /**
@@ -20136,6 +20159,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.is_localhost': 'boolean',
   'sentry.is_remote': 'boolean',
   'sentry.kind': 'string',
+  'sentry.link.type': 'string',
   'sentry.main_thread': 'boolean',
   'sentry.message.parameter.<key>': 'string',
   'sentry.message.template': 'string',
@@ -21004,6 +21028,7 @@ export type AttributeName =
   | typeof SENTRY_IS_LOCALHOST
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
+  | typeof SENTRY_LINK_TYPE
   | typeof SENTRY_MAIN_THREAD
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
@@ -32399,6 +32424,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       name: 'span.kind',
     },
   },
+  'sentry.link.type': {
+    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
+    type: 'string',
+    keys: ['sentry.link.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'previous_trace',
+    examples: ['previous_trace', 'next_trace', 'cache_origin'],
+    changelog: [{ version: 'next', prs: [656], description: 'Added sentry.link.type attribute' }],
+    additionalContext: [
+      'This attribute is exclusively set on span links.',
+      'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
+      'For known values, see Examples. Add new values to Examples.',
+    ],
+  },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
@@ -35773,6 +35816,7 @@ export type Attributes = {
   [SENTRY_IS_LOCALHOST]?: SENTRY_IS_LOCALHOST_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
+  [SENTRY_LINK_TYPE]?: SENTRY_LINK_TYPE_TYPE;
   [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
