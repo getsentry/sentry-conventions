@@ -9547,6 +9547,35 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
+    # Path: model/attributes/process/process__runtime__elixir__memory__type.json
+    PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE: Literal[
+        "process.runtime.elixir.memory.type"
+    ] = "process.runtime.elixir.memory.type"
+    """The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "processes"
+    Example: "binary"
+    Example: "other"
+    """
+
+    # Path: model/attributes/process/process__runtime__elixir__run_queue__type.json
+    PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE: Literal[
+        "process.runtime.elixir.run_queue.type"
+    ] = "process.runtime.elixir.run_queue.type"
+    """The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "cpu"
+    Example: "io"
+    """
+
     # Path: model/attributes/process/process__runtime__engine__name.json
     PROCESS_RUNTIME_ENGINE_NAME: Literal["process.runtime.engine.name"] = (
         "process.runtime.engine.name"
@@ -26860,6 +26889,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "process.runtime.elixir.memory.type": AttributeMetadata(
+        brief="The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.",
+        type=AttributeType.STRING,
+        keys=("process.runtime.elixir.memory.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="processes",
+        examples=["processes", "binary", "other"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added process.runtime.elixir.memory.type attribute",
+            ),
+        ],
+    ),
+    "process.runtime.elixir.run_queue.type": AttributeMetadata(
+        brief="The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.",
+        type=AttributeType.STRING,
+        keys=("process.runtime.elixir.run_queue.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="cpu",
+        examples=["cpu", "io"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added process.runtime.elixir.run_queue.type attribute",
+            ),
+        ],
+    ),
     "process.runtime.engine.name": AttributeMetadata(
         brief="The name of the runtime engine.",
         type=AttributeType.STRING,
@@ -32209,6 +32270,8 @@ Attributes = TypedDict(
         "process.executable.name": str,
         "process.pid": int,
         "process.runtime.description": str,
+        "process.runtime.elixir.memory.type": str,
+        "process.runtime.elixir.run_queue.type": str,
         "process.runtime.engine.name": str,
         "process.runtime.engine.version": str,
         "process.runtime.name": str,
