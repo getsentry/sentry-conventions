@@ -228,10 +228,10 @@
     },
     {
       "name": "ui.angular",
-      "description": "Legacy Angular UI operation. Prefer ui.mount.",
+      "description": "Legacy Angular UI operation. Prefer general `ui` or `function` ops instead.",
       "deprecation": {
         "replacement": "ui.mount",
-        "note": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Use `ui.mount`, `ui.update` or `function` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {

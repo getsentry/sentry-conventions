@@ -254,9 +254,9 @@ export const UI_VUE = 'ui.vue';
 export const UI_SVELTE = 'ui.svelte';
 
 /**
- * Legacy Angular UI operation. Prefer ui.mount.
+ * Legacy Angular UI operation. Prefer general `ui` or `function` ops instead.
  *
- * @deprecated Use {@link UI_MOUNT} (ui.mount) instead - Framework-specific UI ops are replaced by framework-agnostic ones.
+ * @deprecated Use {@link UI_MOUNT} (ui.mount) instead - Use `ui.mount`, `ui.update` or `function` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones.
  */
 export const UI_ANGULAR = 'ui.angular';
 
