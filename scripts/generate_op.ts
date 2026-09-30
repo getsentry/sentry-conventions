@@ -91,14 +91,14 @@ function ownedFields(category: OpCategory, owners: Map<string, string>): OpField
   return category.fields.filter((field) => owners.get(field.name) === category.file);
 }
 
-/** The `Use X instead - reason` part of a deprecation notice, with the replacement constant linked as `link`. */
+/** The `Use X instead - note` part of a deprecation notice, with the replacement constant linked as `link`. */
 function deprecationNote(deprecation: OpDeprecation, link: (replacement: string) => string): string {
   const parts: string[] = [];
   if (deprecation.replacement) {
     parts.push(`Use ${link(deprecation.replacement)} (${deprecation.replacement}) instead`);
   }
-  if (deprecation.reason) {
-    parts.push(deprecation.reason);
+  if (deprecation.note) {
+    parts.push(deprecation.note);
   }
   return parts.join(' - ');
 }

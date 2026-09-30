@@ -131,8 +131,8 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
 Span ops live in `model/op/` and are shipped to SDKs as generated constants, so they can't just be removed.
 
 - Deprecate an op instead of deleting it, by adding a `deprecation` object to its field in `model/op/<category>.json`.
-- Point at the successor with `deprecation.replacement` whenever there is one. It MUST be an existing, non-deprecated op.
-- Add a `deprecation.reason` if the replacement alone doesn't explain the change.
+- Point at the successor with `deprecation.replacement` only if there is a direct, 1:1 replacement. It MUST be an existing, non-deprecated op.
+- Add a `deprecation.note` if the replacement alone doesn't explain the change. If there is no direct replacement, use the note to recommend what to use instead (e.g. "Use `ui.mount` or `ui.update` instead, depending on the operation.").
 - If the op is listed in more than one category, all of its definitions MUST declare the same `deprecation`, because they share a single generated constant.
 - Run `yarn run generate` afterwards. Deprecated ops keep their constant, marked with a JSDoc `@deprecated` tag in JavaScript and `#[deprecated]` in Rust.
 

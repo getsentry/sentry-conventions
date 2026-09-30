@@ -58,7 +58,7 @@ export interface OpFieldJson {
   description?: string;
   deprecation?: {
     replacement?: string;
-    reason?: string;
+    note?: string;
   };
 }
 

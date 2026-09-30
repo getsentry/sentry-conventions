@@ -127,11 +127,16 @@ for (const category of allOps) {
                                 <code class="text-xs">{field.deprecation.replacement}</code>
                               )} instead.
                             </Fragment>
-                          ) : (
+                          ) : !field.deprecation.note ? (
                             'No replacement available at this time.'
-                          )}
+                          ) : null}
                         </span>
-                        {field.deprecation.reason && <span class="text-text-secondary">{' '}{field.deprecation.reason}</span>}
+                        {field.deprecation.note && (
+                          <span
+                            class:list={[field.deprecation.replacement ? 'text-text-secondary' : 'text-text-primary']}
+                            set:html={`${field.deprecation.replacement ? ' ' : ''}${renderInlineMarkdown(field.deprecation.note)}`}
+                          />
+                        )}
                       </div>
                     )}
                   </td>

@@ -112,7 +112,7 @@ const opFieldSchema = z.object({
   deprecation: z
     .object({
       replacement: z.string().optional(),
-      reason: z.string().optional(),
+      note: z.string().optional(),
     })
     .optional(),
 });

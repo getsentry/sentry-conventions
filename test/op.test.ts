@@ -90,9 +90,13 @@ describe('generateOps', () => {
           {
             name: 'test.old',
             description: 'The deprecated op.',
-            deprecation: { replacement: 'test.new', reason: 'Renamed for consistency' },
+            deprecation: { replacement: 'test.new', note: 'Renamed for consistency' },
           },
           { name: 'test.gone', deprecation: {} },
+          {
+            name: 'test.split',
+            deprecation: { note: 'Use test.new or test.old instead, depending on the operation.' },
+          },
         ],
       }),
     );
@@ -105,11 +109,17 @@ describe('generateOps', () => {
         ' * @deprecated Use {@link TEST_NEW} (test.new) instead - Renamed for consistency\n',
       );
       expect(javascript).toContain(" * @deprecated\n */\nexport const TEST_GONE = 'test.gone';");
+      expect(javascript).toContain(
+        " * @deprecated Use test.new or test.old instead, depending on the operation.\n */\nexport const TEST_SPLIT = 'test.split';",
+      );
       expect(javascript).toContain("export const TEST_OLD = 'test.old';");
 
       const rust = fs.readFileSync(rustOutputFilePath, 'utf8');
       expect(rust).toContain('#[deprecated(note = "Use `TEST_NEW` (test.new) instead - Renamed for consistency")]\n');
       expect(rust).toContain('#[deprecated]\npub const TEST_GONE: &str = "test.gone";');
+      expect(rust).toContain(
+        '#[deprecated(note = "Use test.new or test.old instead, depending on the operation.")]\npub const TEST_SPLIT: &str = "test.split";',
+      );
       expect(rust).toContain('/// The replacement op.\npub const TEST_NEW: &str = "test.new";');
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true, force: true });
