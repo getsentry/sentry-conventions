@@ -185,8 +185,7 @@
       "name": "ui.react",
       "description": "Legacy React UI operation. Prefer ui.mount, ui.render, and ui.update.",
       "deprecation": {
-        "replacement": "ui",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Use `ui.mount`, `ui.render` or `ui.update` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {
@@ -194,7 +193,7 @@
       "description": "Legacy React component mount. Prefer ui.mount.",
       "deprecation": {
         "replacement": "ui.mount",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {
@@ -202,7 +201,7 @@
       "description": "Legacy React component render. Prefer ui.render.",
       "deprecation": {
         "replacement": "ui.render",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {
@@ -210,47 +209,43 @@
       "description": "Legacy React component update. Prefer ui.update.",
       "deprecation": {
         "replacement": "ui.update",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {
       "name": "ui.vue",
       "description": "Legacy Vue UI operation. Prefer ui.mount, ui.render, ui.update, and ui.unmount.",
       "deprecation": {
-        "replacement": "ui",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Use `ui.mount`, `ui.render`, `ui.update` or `ui.unmount` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {
       "name": "ui.svelte",
       "description": "Legacy Svelte UI operation. Prefer ui.mount and ui.update.",
       "deprecation": {
-        "replacement": "ui",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Use `ui.mount`, `ui.render` or `ui.update` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {
       "name": "ui.angular",
       "description": "Legacy Angular UI operation. Prefer ui.mount.",
       "deprecation": {
-        "replacement": "ui",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "replacement": "ui.mount",
+        "note": "Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {
       "name": "ui.ember",
       "description": "Legacy Ember UI operation. Prefer ui.mount, ui.render, ui.task, and ui.resolve.",
       "deprecation": {
-        "replacement": "ui",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Use `ui.mount`, `ui.render`, `ui.task` or `ui.resolve` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     },
     {
       "name": "ui.livewire",
       "description": "Legacy Livewire UI operation. Prefer ui.mount, ui.render, and ui.update.",
       "deprecation": {
-        "replacement": "ui",
-        "reason": "Framework-specific UI ops are replaced by framework-agnostic ones."
+        "note": "Use `ui.mount`, `ui.render` or `ui.update` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones."
       }
     }
   ]
