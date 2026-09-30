@@ -136,30 +136,39 @@ pub const UI_ACTION: &str = "ui.action";
 pub const UI_ACTION_CLICK: &str = "ui.action.click";
 
 /// Legacy React UI operation. Prefer ui.mount, ui.render, and ui.update.
+#[deprecated(note = "Use `ui.mount`, `ui.render` or `ui.update` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_REACT: &str = "ui.react";
 
 /// Legacy React component mount. Prefer ui.mount.
+#[deprecated(note = "Use `UI_MOUNT` (ui.mount) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_REACT_MOUNT: &str = "ui.react.mount";
 
 /// Legacy React component render. Prefer ui.render.
+#[deprecated(note = "Use `UI_RENDER` (ui.render) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_REACT_RENDER: &str = "ui.react.render";
 
 /// Legacy React component update. Prefer ui.update.
+#[deprecated(note = "Use `UI_UPDATE` (ui.update) instead - Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_REACT_UPDATE: &str = "ui.react.update";
 
 /// Legacy Vue UI operation. Prefer ui.mount, ui.render, ui.update, and ui.unmount.
+#[deprecated(note = "Use `ui.mount`, `ui.render`, `ui.update` or `ui.unmount` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_VUE: &str = "ui.vue";
 
 /// Legacy Svelte UI operation. Prefer ui.mount and ui.update.
+#[deprecated(note = "Use `ui.mount`, `ui.render` or `ui.update` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_SVELTE: &str = "ui.svelte";
 
-/// Legacy Angular UI operation. Prefer ui.mount.
+/// Legacy Angular UI operation. Prefer general `ui` or `function` ops instead.
+#[deprecated(note = "Use `UI_MOUNT` (ui.mount) instead - Use `ui.mount`, `ui.update` or `function` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_ANGULAR: &str = "ui.angular";
 
 /// Legacy Ember UI operation. Prefer ui.mount, ui.render, ui.task, and ui.resolve.
+#[deprecated(note = "Use `ui.mount`, `ui.render`, `ui.task` or `ui.resolve` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_EMBER: &str = "ui.ember";
 
 /// Legacy Livewire UI operation. Prefer ui.mount, ui.render, and ui.update.
+#[deprecated(note = "Use `ui.mount`, `ui.render` or `ui.update` instead, depending on the operation. Framework-specific UI ops are replaced by framework-agnostic ones.")]
 pub const UI_LIVEWIRE: &str = "ui.livewire";
 
 // Path: model/op/database.json
@@ -381,8 +390,10 @@ pub const VIEW: &str = "view";
 
 pub const TEMPLATE: &str = "template";
 
+#[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
 pub const FUNCTION_REMIX: &str = "function.remix";
 
+#[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
 pub const FUNCTION_NEXTJS: &str = "function.nextjs";
 
 pub const CONSOLE: &str = "console";
