@@ -8,6 +8,10 @@
   "is_in_otel": false,
   "example": "medium",
   "visibility": "public",
+  "search_alias": {
+    "name": "device.class",
+    "allowWildcard": false
+  },
   "changelog": [
     {
       "version": "0.5.0",
