@@ -920,7 +920,7 @@ export type AI_TOOLCALL_ARGS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -1160,6 +1160,30 @@ export const ANGULAR_VERSION = 'angular.version';
  * Type for {@link ANGULAR_VERSION} angular.version
  */
 export type ANGULAR_VERSION_TYPE = string;
+
+// Path: model/attributes/anthropic/anthropic__tool_result__content.json
+
+/**
+ * The content of the tool result. `anthropic.tool_result.content`
+ *
+ * Attribute Value Type: `string` {@link ANTHROPIC_TOOL_RESULT_CONTENT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead - Use gen_ai.tool.call.result for tool results.
+ * @example "rainy, 57°F"
+ */
+export const ANTHROPIC_TOOL_RESULT_CONTENT = 'anthropic.tool_result.content';
+
+/**
+ * Type for {@link ANTHROPIC_TOOL_RESULT_CONTENT} anthropic.tool_result.content
+ */
+export type ANTHROPIC_TOOL_RESULT_CONTENT_TYPE = string;
 
 // Path: model/attributes/app/app__app_build.json
 
@@ -8570,7 +8594,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @example "rainy, 57°F"
  */
@@ -8661,7 +8685,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -8708,7 +8732,7 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -11827,7 +11851,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead - OTel uses gen_ai.tool.call.result for MCP tool results
  * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
@@ -19510,6 +19534,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.values': 'string',
   'ai.warnings': 'string[]',
   'angular.version': 'string',
+  'anthropic.tool_result.content': 'string',
   'app.app_build': 'string',
   'app.app_identifier': 'string',
   'app.app_name': 'string',
@@ -20379,6 +20404,7 @@ export type AttributeName =
   | typeof AI_VALUES
   | typeof AI_WARNINGS
   | typeof ANGULAR_VERSION
+  | typeof ANTHROPIC_TOOL_RESULT_CONTENT
   | typeof APP_APP_BUILD
   | typeof APP_APP_IDENTIFIER
   | typeof APP_APP_NAME
@@ -21935,6 +21961,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -21949,7 +21976,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
       status: 'backfill',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.output',
+      'gen_ai.tool.message',
+      'mcp.tool.result.content',
+      'anthropic.tool_result.content',
+    ],
     changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
@@ -22135,6 +22168,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '17.1.0',
     changelog: [{ version: '0.7.0', prs: [367], description: 'Added angular.version attribute' }],
+  },
+  'anthropic.tool_result.content': {
+    brief: 'The content of the tool result.',
+    type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'rainy, 57°F',
+    examples: ['rainy, 57°F'],
+    deprecation: {
+      replacement: 'gen_ai.tool.call.result',
+      reason: 'Use gen_ai.tool.call.result for tool results.',
+      status: 'backfill',
+    },
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.output',
+      'gen_ai.tool.message',
+      'mcp.tool.result.content',
+      'ai.toolCall.result',
+    ],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result',
+      },
+    ],
   },
   'app.app_build': {
     brief: 'Internal build identifier, as it appears on the platform.',
@@ -27225,6 +27295,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -27235,7 +27306,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'rainy, 57°F',
-    aliases: ['gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
+    aliases: [
+      'gen_ai.tool.output',
+      'gen_ai.tool.message',
+      'mcp.tool.result.content',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+    ],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
@@ -27296,6 +27373,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -27310,7 +27388,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
       status: 'normalize',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'mcp.tool.result.content', 'ai.toolCall.result'],
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+    ],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [62] },
@@ -27335,6 +27419,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -27349,7 +27434,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
       status: 'normalize',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.message',
+      'mcp.tool.result.content',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+    ],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
@@ -29677,6 +29768,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -29693,7 +29785,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'OTel uses gen_ai.tool.call.result for MCP tool results',
       status: 'backfill',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'gen_ai.tool.output', 'ai.toolCall.result'],
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+    ],
     changelog: [
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.tool.call.result' },
       { version: '0.3.0', prs: [171] },
@@ -35167,6 +35265,7 @@ export type Attributes = {
   [AI_VALUES]?: AI_VALUES_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [ANGULAR_VERSION]?: ANGULAR_VERSION_TYPE;
+  [ANTHROPIC_TOOL_RESULT_CONTENT]?: ANTHROPIC_TOOL_RESULT_CONTENT_TYPE;
   [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
   [APP_APP_IDENTIFIER]?: APP_APP_IDENTIFIER_TYPE;
   [APP_APP_NAME]?: APP_APP_NAME_TYPE;

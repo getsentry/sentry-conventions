@@ -1,0 +1,29 @@
+{
+  "key": "anthropic.tool_result.content",
+  "brief": "The content of the tool result.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["rainy, 57°F"],
+  "alias": [
+    "gen_ai.tool.call.result",
+    "gen_ai.tool.output",
+    "gen_ai.tool.message",
+    "mcp.tool.result.content",
+    "ai.toolCall.result"
+  ],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "gen_ai.tool.call.result",
+    "reason": "Use gen_ai.tool.call.result for tool results."
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result"
+    }
+  ]
+}

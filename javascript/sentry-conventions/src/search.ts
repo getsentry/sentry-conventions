@@ -376,6 +376,13 @@ export const SEARCH_AI__WARNINGS = 'ai.warnings';
 export const SEARCH_ANGULAR__VERSION = 'angular.version';
 
 /**
+ * Search name for {@link attributes.ANTHROPIC_TOOL_RESULT_CONTENT}. `anthropic.tool_result.content`
+ *
+ * @deprecated Use {@link SEARCH_GEN_AI__TOOL__CALL__RESULT} (`gen_ai.tool.call.result`) instead
+ */
+export const SEARCH_ANTHROPIC__TOOL_RESULT__CONTENT = 'anthropic.tool_result.content';
+
+/**
  * Search name for {@link attributes.APP_APP_BUILD}. `app.app_build`
  *
  * @deprecated Use {@link SEARCH_APP__BUILD} (`app.build`) instead
@@ -5067,6 +5074,7 @@ export type AttributeSearchName =
   | typeof SEARCH_AI__VALUES
   | typeof SEARCH_AI__WARNINGS
   | typeof SEARCH_ANGULAR__VERSION
+  | typeof SEARCH_ANTHROPIC__TOOL_RESULT__CONTENT
   | typeof SEARCH_APP__APP_BUILD
   | typeof SEARCH_APP__APP_IDENTIFIER
   | typeof SEARCH_APP__APP_NAME
@@ -6228,6 +6236,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -6304,6 +6313,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The version of the Angular framework',
     deprecationChain: ['angular.version'],
+  },
+  'anthropic.tool_result.content': {
+    canonicalName: 'gen_ai.tool.call.result',
+    type: 'string',
+    brief: 'The content of the tool result.',
+    deprecationChain: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
   },
   'app.app_build': {
     canonicalName: 'app.build',
@@ -8419,6 +8441,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -8449,6 +8472,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -8467,6 +8491,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -9409,6 +9434,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
