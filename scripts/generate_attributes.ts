@@ -605,7 +605,11 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    """The type exposed by Sentry search. Defaults to the attribute\'s primary type if omitted"""\n';
   content += '    \n';
   content += '    deprecated_aliases: Optional[List[str]] = None\n';
-  content += '    """Deprecated aliases still accepted in search queries"""\n\n';
+  content += '    """Deprecated aliases still accepted in search queries"""\n';
+  content += '    \n';
+  content += '    allow_wildcard: bool = True\n';
+  content +=
+    '    """Set to false to disable wildcard queries. Defaults to true. Only valid for string attributes."""\n\n';
 
   content += '@dataclass\n';
   content += 'class AttributeMetadata:\n';
@@ -873,6 +877,9 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
       if (sa.deprecated_aliases && sa.deprecated_aliases.length > 0) {
         saFields += `,\n            deprecated_aliases=${JSON.stringify(sa.deprecated_aliases)}`;
       }
+      if (sa.allowWildcard === false) {
+        saFields += ',\n            allow_wildcard=False';
+      }
       metadataDict += `        search_alias=SearchAlias(${saFields}\n        ),\n`;
     }
 
@@ -1057,6 +1064,8 @@ export interface SearchAlias {
   type?: SearchAliasType;
   /** Deprecated aliases still accepted in search queries */
   deprecatedAliases?: string[];
+  /** Set to false to disable wildcard queries. Defaults to true. Only valid for string attributes. */
+  allowWildcard?: boolean;
 }
 
 export interface AttributeMetadata {
@@ -1128,6 +1137,8 @@ export interface AttributeSearchMetadata {
    * key, but the chain still leads search users to the preferred name.
    */
   deprecationChain: readonly string[];
+  /** Present when wildcard queries are disabled. Omitted when wildcards are allowed */
+  allowWildcard?: false;
 }
 
 `;
@@ -1265,6 +1276,9 @@ function generateMetadata(
       }
       if (sa.deprecated_aliases && sa.deprecated_aliases.length > 0) {
         metadataDict += `      deprecatedAliases: ${JSON.stringify(sa.deprecated_aliases)},\n`;
+      }
+      if (sa.allowWildcard === false) {
+        metadataDict += '      allowWildcard: false,\n';
       }
       metadataDict += '    },\n';
     }
@@ -1561,6 +1575,12 @@ function generateMetadata(
       searchMetadata += '    deprecated: true,\n';
     }
     searchMetadata += `    deprecationChain: ${JSON.stringify(deprecationChain)},\n`;
+    const allowWildcard =
+      preferredAttribute.attributeJson.search_alias?.allowWildcard ??
+      attributesByKey.get(canonicalName)?.attributeJson.search_alias?.allowWildcard;
+    if (allowWildcard === false) {
+      searchMetadata += '    allowWildcard: false,\n';
+    }
     searchMetadata += '  },\n';
   }
 
