@@ -10867,6 +10867,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     """
 
+    # Path: model/attributes/vercel/vercel__ai__telemetry__metadata__[key].json
+    VERCEL_AI_TELEMETRY_METADATA_KEY: Literal["vercel.ai.telemetry.metadata.<key>"] = (
+        "vercel.ai.telemetry.metadata.<key>"
+    )
+    """Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.
+
+    Type: object
+    Apply Scrubbing: auto - Metadata is user-defined and can contain user data
+    Defined in OTEL: No
+    Visibility: public
+    Has Dynamic Suffix: true
+    Example: "vercel.ai.telemetry.metadata.tenantId='acme'"
+    """
+
     # Path: model/attributes/vercel/vercel__branch.json
     VERCEL_BRANCH: Literal["vercel.branch"] = "vercel.branch"
     """Git branch name for Vercel project
@@ -27123,6 +27137,31 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "vercel.ai.telemetry.metadata.<key>": AttributeMetadata(
+        brief="Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.",
+        type=AttributeType.ANY,
+        keys=("vercel.ai.telemetry.metadata.<key>",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Metadata is user-defined and can contain user data",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        has_dynamic_suffix=True,
+        example="vercel.ai.telemetry.metadata.tenantId='acme'",
+        examples=["vercel.ai.telemetry.metadata.tenantId='acme'"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[662],
+                description="Added vercel.ai.telemetry.metadata.<key> attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.",
+            "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
+        ],
+    ),
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
         type=AttributeType.STRING,
@@ -28401,6 +28440,7 @@ Attributes = TypedDict(
         "user.name": str,
         "user.roles": List[str],
         "user_agent.original": str,
+        "vercel.ai.telemetry.metadata.<key>": object,
         "vercel.branch": str,
         "vercel.build_id": str,
         "vercel.deployment_id": str,

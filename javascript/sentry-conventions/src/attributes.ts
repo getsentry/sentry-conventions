@@ -18608,6 +18608,34 @@ export const USER_ROLES = 'user.roles';
  */
 export type USER_ROLES_TYPE = Array<string>;
 
+// Path: model/attributes/vercel/vercel__ai__telemetry__metadata__[key].json
+
+/**
+ * Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name. `vercel.ai.telemetry.metadata.<key>`
+ *
+ * Attribute Value Type: `unknown` {@link VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto - Metadata is user-defined and can contain user data
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "vercel.ai.telemetry.metadata.tenantId='acme'"
+ */
+export const VERCEL_AI_TELEMETRY_METADATA_KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
+ * Base key for {@link VERCEL_AI_TELEMETRY_METADATA_KEY}. Use with a dynamic suffix, e.g. `${VERCEL_AI_TELEMETRY_METADATA_KEY_BASE}.${key}`.
+ */
+export const VERCEL_AI_TELEMETRY_METADATA_KEY_BASE = 'vercel.ai.telemetry.metadata';
+
+/**
+ * Type for {@link VERCEL_AI_TELEMETRY_METADATA_KEY} vercel.ai.telemetry.metadata.<key>
+ */
+export type VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE = unknown;
+
 // Path: model/attributes/vercel/vercel__branch.json
 
 /**
@@ -20290,6 +20318,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'user.ip_address': 'string',
   'user.name': 'string',
   'user.roles': 'string[]',
+  'vercel.ai.telemetry.metadata.<key>': 'any',
   'vercel.branch': 'string',
   'vercel.build_id': 'string',
   'vercel.deployment_id': 'string',
@@ -21159,6 +21188,7 @@ export type AttributeName =
   | typeof USER_IP_ADDRESS
   | typeof USER_NAME
   | typeof USER_ROLES
+  | typeof VERCEL_AI_TELEMETRY_METADATA_KEY
   | typeof VERCEL_BRANCH
   | typeof VERCEL_BUILD_ID
   | typeof VERCEL_DEPLOYMENT_ID
@@ -34668,6 +34698,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['admin', 'editor'],
     changelog: [{ version: '0.0.0' }],
   },
+  'vercel.ai.telemetry.metadata.<key>': {
+    brief:
+      'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
+    type: 'any',
+    keys: ['vercel.ai.telemetry.metadata.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Metadata is user-defined and can contain user data',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "vercel.ai.telemetry.metadata.tenantId='acme'",
+    examples: ["vercel.ai.telemetry.metadata.tenantId='acme'"],
+    changelog: [{ version: 'next', prs: [662], description: 'Added vercel.ai.telemetry.metadata.<key> attribute' }],
+    additionalContext: [
+      'Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.',
+      "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
+    ],
+  },
   'vercel.branch': {
     brief: 'Git branch name for Vercel project',
     type: 'string',
@@ -35947,6 +35997,7 @@ export type Attributes = {
   [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
+  [VERCEL_AI_TELEMETRY_METADATA_KEY]?: VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE;
   [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
   [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
   [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;
