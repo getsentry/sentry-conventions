@@ -10,7 +10,8 @@
   "alias": ["profile_id"],
   "visibility": "public",
   "search_alias": {
-    "name": "profile.id"
+    "name": "profile.id",
+    "allowWildcard": false
   },
   "changelog": [
     {

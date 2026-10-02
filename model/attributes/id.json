@@ -8,6 +8,10 @@
   "is_in_otel": false,
   "example": "f47ac10b58cc4372a5670e02b2c3d479",
   "visibility": "public",
+  "search_alias": {
+    "name": "id",
+    "allowWildcard": false
+  },
   "changelog": [
     {
       "version": "0.0.0"

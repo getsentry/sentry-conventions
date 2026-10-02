@@ -154,7 +154,7 @@
       }
     },
     "search_alias": {
-      "description": "How this attribute is exposed in Sentry search. Used to define user-facing aliases or narrowing search types.",
+      "description": "How this attribute is exposed in Sentry search. Used to define user-facing aliases, narrowing search types, and allowing wildcard queries.",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -172,6 +172,11 @@
           "items": {
             "type": "string"
           }
+        },
+        "allowWildcard": {
+          "type": "boolean",
+          "default": true,
+          "description": "Set to false to disable wildcard queries. Defaults to true. Only valid when type is string."
         }
       },
       "required": ["name"]
@@ -368,6 +373,27 @@
             }
           }
         ]
+      }
+    },
+    {
+      "if": {
+        "not": {
+          "properties": {
+            "type": {
+              "const": "string"
+            }
+          },
+          "required": ["type"]
+        }
+      },
+      "then": {
+        "properties": {
+          "search_alias": {
+            "not": {
+              "required": ["allowWildcard"]
+            }
+          }
+        }
       }
     }
   ],

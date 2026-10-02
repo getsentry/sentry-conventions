@@ -27,6 +27,8 @@ export interface AttributeSearchMetadata {
    * key, but the chain still leads search users to the preferred name.
    */
   deprecationChain: readonly string[];
+  /** Present when wildcard queries are disabled. Omitted when wildcards are allowed */
+  allowWildcard?: false;
 }
 
 /**
@@ -7600,6 +7602,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.',
     deprecationChain: ['device.class'],
+    allowWildcard: false,
   },
   'device.connection_type': {
     canonicalName: 'network.connection.type',
@@ -9088,6 +9091,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'A unique identifier for the span.',
     deprecationChain: ['id'],
+    allowWildcard: false,
   },
   inp: {
     canonicalName: 'browser.web_vital.inp.value',
@@ -10092,6 +10096,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     deprecationChain: ['profile.id', 'sentry.profile_id', 'profile_id'],
+    allowWildcard: false,
   },
   profile_id: {
     canonicalName: 'sentry.profile_id',
@@ -10099,12 +10104,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The ID of the Sentry profile the span is associated with. This is only meaningful for transaction-based profiling.',
     deprecationChain: ['profile.id', 'sentry.profile_id', 'profile_id'],
+    allowWildcard: false,
   },
   'profiler.id': {
     canonicalName: 'sentry.profiler_id',
     type: 'string',
     brief: 'The id of the currently running profiler (continuous profiling)',
     deprecationChain: ['profiler.id', 'sentry.profiler_id'],
+    allowWildcard: false,
   },
   query: {
     canonicalName: 'db.query.text',
@@ -10231,6 +10238,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The sentry release.',
     deprecationChain: ['release', 'sentry.release', 'service.version'],
+    allowWildcard: false,
   },
   'remix.action_form_data.<key>': {
     canonicalName: 'remix.action_form_data.<key>',
@@ -10243,18 +10251,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The id of the sentry replay.',
     deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
+    allowWildcard: false,
   },
   replayId: {
     canonicalName: 'sentry.replay_id',
     type: 'string',
     brief: 'The id of the sentry replay.',
     deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
+    allowWildcard: false,
   },
   replay_id: {
     canonicalName: 'sentry.replay_id',
     type: 'string',
     brief: 'The id of the sentry replay.',
     deprecationChain: ['replay.id', 'sentry.replay_id', 'replay_id', 'replayId'],
+    allowWildcard: false,
   },
   'resource.deployment.environment': {
     canonicalName: 'sentry.environment',

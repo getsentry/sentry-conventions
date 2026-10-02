@@ -40,6 +40,7 @@ const attributeSchema = z
         name: z.string(),
         type: z.enum(['byte', 'currency', 'millisecond', 'percentage', 'second']).optional(),
         deprecated_aliases: z.array(z.string()).optional(),
+        allowWildcard: z.boolean().optional(),
       })
       .optional(),
     additional_context: z.array(z.string()).optional(),
