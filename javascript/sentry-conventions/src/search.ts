@@ -4851,6 +4851,11 @@ export const SEARCH_USER__USERNAME = 'user.username';
 export const SEARCH_USER_AGENT__ORIGINAL = 'user_agent.original';
 
 /**
+ * Search name for {@link attributes.VERCEL_AI_TELEMETRY_METADATA_KEY}. `vercel.ai.telemetry.metadata.<key>`
+ */
+export const SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
  * Search name for {@link attributes.VERCEL_BRANCH}. `vercel.branch`
  */
 export const SEARCH_VERCEL__BRANCH = 'vercel.branch';
@@ -5884,6 +5889,7 @@ export type AttributeSearchName =
   | typeof SEARCH_USER__ROLES
   | typeof SEARCH_USER__USERNAME
   | typeof SEARCH_USER_AGENT__ORIGINAL
+  | typeof SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY
   | typeof SEARCH_VERCEL__BRANCH
   | typeof SEARCH_VERCEL__BUILD_ID
   | typeof SEARCH_VERCEL__DEPLOYMENT_ID
@@ -11420,6 +11426,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     deprecationChain: ['user_agent.original', 'http.user_agent'],
+  },
+  'vercel.ai.telemetry.metadata.<key>': {
+    canonicalName: 'vercel.ai.telemetry.metadata.<key>',
+    type: 'any',
+    brief:
+      'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
+    deprecationChain: ['vercel.ai.telemetry.metadata.<key>'],
   },
   'vercel.branch': {
     canonicalName: 'vercel.branch',
