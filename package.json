@@ -26,6 +26,7 @@
     "build:tarball:python": "yarn build:python",
     "build:tarball:model": "tsx scripts/gzip_folder.ts model model/sentry-conventions-json.tgz",
     "create:attribute": "tsx scripts/create_attribute.ts",
+    "create:metric": "tsx scripts/create_metric.ts",
     "generate": "tsx scripts/generate.ts && yarn format",
     "generate:attribute-changelog": "tsx scripts/generate_attribute_changelog.ts",
     "bump:attribute-changelog": "tsx scripts/bump_attribute_changelog.ts",
