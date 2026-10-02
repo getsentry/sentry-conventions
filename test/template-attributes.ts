@@ -42,14 +42,36 @@ export async function resolveTemplateAttribute(key: string): Promise<AttributeJs
 }
 
 /**
+ * The attribute types a template placeholder can substitute: a string, boolean, integer, or
+ * double as-is, an array of them joined with `", "`. `any` carries no type information, so it
+ * has no defined substitution.
+ */
+const supportedTemplateTypes: ReadonlySet<AttributeJson['type']> = new Set([
+  'string',
+  'boolean',
+  'integer',
+  'double',
+  'string[]',
+  'boolean[]',
+  'integer[]',
+  'double[]',
+]);
+
+export function isSupportedTemplateType(type: AttributeJson['type']): boolean {
+  return supportedTemplateTypes.has(type);
+}
+
+/**
  * Collects the placeholders across a name or description file that don't resolve to an
- * attribute, and those that resolve to one that has been deprecated in favour of another.
+ * attribute, those that resolve to one that has been deprecated in favour of another,
+ * and those whose attribute type templates cannot substitute.
  */
 export async function findTemplateAttributeIssues(content: {
   operations: { templates: string[] }[];
-}): Promise<{ missing: string[]; deprecated: string[] }> {
+}): Promise<{ missing: string[]; deprecated: string[]; unsupported: string[] }> {
   const missing: string[] = [];
   const deprecated: string[] = [];
+  const unsupported: string[] = [];
 
   for (const operation of content.operations) {
     for (const tmpl of operation.templates) {
@@ -61,10 +83,12 @@ export async function findTemplateAttributeIssues(content: {
           missing.push(key);
         } else if (attribute.deprecation?.replacement) {
           deprecated.push(key);
+        } else if (!isSupportedTemplateType(attribute.type)) {
+          unsupported.push(key);
         }
       }
     }
   }
 
-  return { missing, deprecated };
+  return { missing, deprecated, unsupported };
 }
