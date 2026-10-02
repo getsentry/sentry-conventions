@@ -359,6 +359,11 @@ export const GEN_AI_RESPONSES = 'gen_ai.responses';
  */
 export const GEN_AI_TEXT_COMPLETION = 'gen_ai.text_completion';
 
+/**
+ * A memory store or memory record operation performed by a generative AI agent
+ */
+export const GEN_AI_MEMORY_CLIENT = 'gen_ai.memory.client';
+
 // Path: model/op/general.json
 // Name: general
 

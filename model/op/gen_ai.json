@@ -41,6 +41,10 @@
     {
       "name": "gen_ai.text_completion",
       "description": "A text completion request to a generative AI model"
+    },
+    {
+      "name": "gen_ai.memory.client",
+      "description": "A memory store or memory record operation performed by a generative AI agent"
     }
   ]
 }

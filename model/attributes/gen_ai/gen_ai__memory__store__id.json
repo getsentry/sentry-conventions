@@ -1,0 +1,18 @@
+{
+  "key": "gen_ai.memory.store.id",
+  "brief": "The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["ms_abc123", "user-preferences-store", "seer-knowledge"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [653],
+      "description": "Added gen_ai.memory.store.id attribute"
+    }
+  ]
+}
