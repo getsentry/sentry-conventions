@@ -17,10 +17,12 @@
     "@tailwindcss/vite": "^4.3.1",
     "astro": "7.2.8",
     "dompurify": "^3.4.13",
+    "markdown-it": "^15.0.2",
     "svelte": "^5.56.3",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.2.0",
     "pagefind": "^1.5.2"
   },
   "volta": {

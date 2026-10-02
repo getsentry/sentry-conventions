@@ -8,7 +8,13 @@
   "is_in_otel": false,
   "visibility": "public",
   "example": "rainy, 57°F",
-  "alias": ["gen_ai.tool.call.result", "gen_ai.tool.output", "gen_ai.tool.message", "mcp.tool.result.content"],
+  "alias": [
+    "gen_ai.tool.call.result",
+    "gen_ai.tool.output",
+    "gen_ai.tool.message",
+    "mcp.tool.result.content",
+    "anthropic.tool_result.content"
+  ],
   "deprecation": {
     "_status": "backfill",
     "replacement": "gen_ai.tool.call.result"
