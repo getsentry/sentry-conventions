@@ -39,6 +39,12 @@ const totalOperations = allDescriptions.reduce((acc, desc) => acc + desc.data.op
       The templates should be evaluated <strong>in order of appearance</strong>. Every template references
       at least one attribute.
     </p>
+    <p class="text-sm max-w-2xl">
+      A <code>string</code>, <code>boolean</code>, <code>integer</code>, or <code>double</code> value
+      replaces the placeholder as-is. An array value is joined with <code>", "</code>:
+      <code>["Users", "Cats"]</code> becomes <code>"Users, Cats"</code>.
+      A template only applies when the span has all of its attributes.
+    </p>
 
     <div class="mt-6 p-4 bg-bg-elevated rounded-md border-l-[3px] border-accent">
       <h4 class="text-sm text-accent mb-3">Example</h4>
