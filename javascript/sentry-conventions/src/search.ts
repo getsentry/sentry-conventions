@@ -847,6 +847,11 @@ export const SEARCH_AWS__S3__DELETE = 'aws.s3.delete';
 export const SEARCH_AWS__S3__KEY = 'aws.s3.key';
 
 /**
+ * Search name for {@link attributes.AWS_S3_OBJECT_SIZE}. `aws.s3.object_size`
+ */
+export const SEARCH_AWS__S3__OBJECT_SIZE = 'aws.s3.object_size';
+
+/**
  * Search name for {@link attributes.AWS_S3_PART_NUMBER}. `aws.s3.part_number`
  */
 export const SEARCH_AWS__S3__PART_NUMBER = 'aws.s3.part_number';
@@ -865,6 +870,11 @@ export const SEARCH_AWS__SECRETSMANAGER__SECRET__ARN = 'aws.secretsmanager.secre
  * Search name for {@link attributes.AWS_SNS_TOPIC_ARN}. `aws.sns.topic.arn`
  */
 export const SEARCH_AWS__SNS__TOPIC__ARN = 'aws.sns.topic.arn';
+
+/**
+ * Search name for {@link attributes.AWS_SQS_QUEUE_URL}. `aws.sqs.queue.url`
+ */
+export const SEARCH_AWS__SQS__QUEUE__URL = 'aws.sqs.queue.url';
 
 /**
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_ACTIVITY_ARN}. `aws.step_functions.activity.arn`
@@ -5203,10 +5213,12 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__S3__COPY_SOURCE
   | typeof SEARCH_AWS__S3__DELETE
   | typeof SEARCH_AWS__S3__KEY
+  | typeof SEARCH_AWS__S3__OBJECT_SIZE
   | typeof SEARCH_AWS__S3__PART_NUMBER
   | typeof SEARCH_AWS__S3__UPLOAD_ID
   | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__ARN
   | typeof SEARCH_AWS__SNS__TOPIC__ARN
+  | typeof SEARCH_AWS__SQS__QUEUE__URL
   | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN
@@ -6906,6 +6918,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.',
     deprecationChain: ['aws.s3.key'],
   },
+  'aws.s3.object_size': {
+    canonicalName: 'aws.s3.object_size',
+    type: 'integer',
+    brief: 'The size of the S3 object in bytes.',
+    deprecationChain: ['aws.s3.object_size'],
+  },
   'aws.s3.part_number': {
     canonicalName: 'aws.s3.part_number',
     type: 'integer',
@@ -6931,6 +6949,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
     deprecationChain: ['aws.sns.topic.arn'],
+  },
+  'aws.sqs.queue.url': {
+    canonicalName: 'aws.sqs.queue.url',
+    type: 'string',
+    brief:
+      "The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+    deprecationChain: ['aws.sqs.queue.url'],
   },
   'aws.step_functions.activity.arn': {
     canonicalName: 'aws.step_functions.activity.arn',

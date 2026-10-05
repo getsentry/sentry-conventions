@@ -7,15 +7,11 @@
   },
   "is_in_otel": false,
   "visibility": "public",
-  "examples": [
-    434234
-  ],
+  "examples": [434234],
   "changelog": [
     {
       "version": "next",
-      "prs": [
-        645
-      ],
+      "prs": [645],
       "description": "Added aws.s3.object_size attribute"
     }
   ]

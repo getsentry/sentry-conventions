@@ -3110,6 +3110,27 @@ export const AWS_S3_KEY = 'aws.s3.key';
  */
 export type AWS_S3_KEY_TYPE = string;
 
+// Path: model/attributes/aws/aws__s3__object_size.json
+
+/**
+ * The size of the S3 object in bytes. `aws.s3.object_size`
+ *
+ * Attribute Value Type: `number` {@link AWS_S3_OBJECT_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 434234
+ */
+export const AWS_S3_OBJECT_SIZE = 'aws.s3.object_size';
+
+/**
+ * Type for {@link AWS_S3_OBJECT_SIZE} aws.s3.object_size
+ */
+export type AWS_S3_OBJECT_SIZE_TYPE = number;
+
 // Path: model/attributes/aws/aws__s3__part_number.json
 
 /**
@@ -3193,6 +3214,27 @@ export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
  * Type for {@link AWS_SNS_TOPIC_ARN} aws.sns.topic.arn
  */
 export type AWS_SNS_TOPIC_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__sqs__queue__url.json
+
+/**
+ * The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it. `aws.sqs.queue.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_SQS_QUEUE_URL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
+ */
+export const AWS_SQS_QUEUE_URL = 'aws.sqs.queue.url';
+
+/**
+ * Type for {@link AWS_SQS_QUEUE_URL} aws.sqs.queue.url
+ */
+export type AWS_SQS_QUEUE_URL_TYPE = string;
 
 // Path: model/attributes/aws/aws__step_functions__activity__arn.json
 
@@ -19802,10 +19844,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.s3.copy_source': 'string',
   'aws.s3.delete': 'string',
   'aws.s3.key': 'string',
+  'aws.s3.object_size': 'integer',
   'aws.s3.part_number': 'integer',
   'aws.s3.upload_id': 'string',
   'aws.secretsmanager.secret.arn': 'string',
   'aws.sns.topic.arn': 'string',
+  'aws.sqs.queue.url': 'string',
   'aws.step_functions.activity.arn': 'string',
   'aws.step_functions.execution.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
@@ -20680,10 +20724,12 @@ export type AttributeName =
   | typeof AWS_S3_COPY_SOURCE
   | typeof AWS_S3_DELETE
   | typeof AWS_S3_KEY
+  | typeof AWS_S3_OBJECT_SIZE
   | typeof AWS_S3_PART_NUMBER
   | typeof AWS_S3_UPLOAD_ID
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
+  | typeof AWS_SQS_QUEUE_URL
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
   | typeof AWS_STEP_FUNCTIONS_EXECUTION_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
@@ -23700,6 +23746,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['someFile.yml'],
     changelog: [{ version: 'next', prs: [644], description: 'Added aws.s3.key attribute' }],
   },
+  'aws.s3.object_size': {
+    brief: 'The size of the S3 object in bytes.',
+    type: 'integer',
+    keys: ['aws.s3.object_size'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 434234,
+    examples: [434234],
+    changelog: [{ version: 'next', prs: [645], description: 'Added aws.s3.object_size attribute' }],
+  },
   'aws.s3.part_number': {
     brief:
       'The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.',
@@ -23751,6 +23810,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
+  },
+  'aws.sqs.queue.url': {
+    brief:
+      "The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+    type: 'string',
+    keys: ['aws.sqs.queue.url'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue',
+    examples: ['https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue'],
+    changelog: [{ version: 'next', prs: [671], description: 'Added aws.sqs.queue.url attribute' }],
   },
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
@@ -35676,10 +35749,12 @@ export type Attributes = {
   [AWS_S3_COPY_SOURCE]?: AWS_S3_COPY_SOURCE_TYPE;
   [AWS_S3_DELETE]?: AWS_S3_DELETE_TYPE;
   [AWS_S3_KEY]?: AWS_S3_KEY_TYPE;
+  [AWS_S3_OBJECT_SIZE]?: AWS_S3_OBJECT_SIZE_TYPE;
   [AWS_S3_PART_NUMBER]?: AWS_S3_PART_NUMBER_TYPE;
   [AWS_S3_UPLOAD_ID]?: AWS_S3_UPLOAD_ID_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
+  [AWS_SQS_QUEUE_URL]?: AWS_SQS_QUEUE_URL_TYPE;
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_EXECUTION_ARN]?: AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;

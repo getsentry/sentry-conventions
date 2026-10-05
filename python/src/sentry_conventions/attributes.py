@@ -2175,6 +2175,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "someFile.yml"
     """
 
+    # Path: model/attributes/aws/aws__s3__object_size.json
+    AWS_S3_OBJECT_SIZE: Literal["aws.s3.object_size"] = "aws.s3.object_size"
+    """The size of the S3 object in bytes.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 434234
+    """
+
     # Path: model/attributes/aws/aws__s3__part_number.json
     AWS_S3_PART_NUMBER: Literal["aws.s3.part_number"] = "aws.s3.part_number"
     """The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.
@@ -2219,6 +2230,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
+    """
+
+    # Path: model/attributes/aws/aws__sqs__queue__url.json
+    AWS_SQS_QUEUE_URL: Literal["aws.sqs.queue.url"] = "aws.sqs.queue.url"
+    """The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
     """
 
     # Path: model/attributes/aws/aws__step_functions__activity__arn.json
@@ -14181,6 +14203,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.s3.object_size": AttributeMetadata(
+        brief="The size of the S3 object in bytes.",
+        type=AttributeType.INTEGER,
+        keys=("aws.s3.object_size",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=434234,
+        examples=[434234],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[645],
+                description="Added aws.s3.object_size attribute",
+            ),
+        ],
+    ),
     "aws.s3.part_number": AttributeMetadata(
         brief="The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.",
         type=AttributeType.INTEGER,
@@ -14244,6 +14283,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0",
                 prs=[480],
                 description="Added aws.sns.topic.arn attribute",
+            ),
+        ],
+    ),
+    "aws.sqs.queue.url": AttributeMetadata(
+        brief="The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+        type=AttributeType.STRING,
+        keys=("aws.sqs.queue.url",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue",
+        examples=["https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Added aws.sqs.queue.url attribute",
             ),
         ],
     ),
@@ -28041,10 +28097,12 @@ Attributes = TypedDict(
         "aws.s3.copy_source": str,
         "aws.s3.delete": str,
         "aws.s3.key": str,
+        "aws.s3.object_size": int,
         "aws.s3.part_number": int,
         "aws.s3.upload_id": str,
         "aws.secretsmanager.secret.arn": str,
         "aws.sns.topic.arn": str,
+        "aws.sqs.queue.url": str,
         "aws.step_functions.activity.arn": str,
         "aws.step_functions.execution.arn": str,
         "aws.step_functions.state_machine.arn": str,
