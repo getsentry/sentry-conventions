@@ -312,6 +312,7 @@ class _AttributeNamesMeta(type):
         "LCP",
         "LITESTAR_MIDDLEWARE_NAME",
         "MCP_PROMPT_NAME",
+        "MCP_PROMPT_RESULT_MESSAGE_COUNT",
         "MCP_REQUEST_ID",
         "MCP_RESOURCE_PROTOCOL",
         "MCP_TOOL_NAME",
@@ -6945,6 +6946,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - A count can be calculcated from the value of the mcp.prompt.result.message_content attribute.
     Example: 3
     """
 
@@ -21161,6 +21163,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=3,
+        deprecation=DeprecationInfo(
+            reason="A count can be calculcated from the value of the mcp.prompt.result.message_content attribute."
+        ),
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),

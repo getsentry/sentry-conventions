@@ -7,6 +7,10 @@
   },
   "is_in_otel": false,
   "example": 3,
+  "deprecation": {
+    "reason": "A count can be calculcated from the value of the mcp.prompt.result.message_content attribute.",
+    "_status": null
+  },
   "visibility": "public",
   "changelog": [
     {

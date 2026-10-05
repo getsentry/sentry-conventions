@@ -2928,6 +2928,8 @@ export const SEARCH_MCP__PROMPT__RESULT__MESSAGE_CONTENT = 'mcp.prompt.result.me
 
 /**
  * Search name for {@link attributes.MCP_PROMPT_RESULT_MESSAGE_COUNT}. `mcp.prompt.result.message_count`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__PROMPT__RESULT__MESSAGE_COUNT = 'mcp.prompt.result.message_count';
 
@@ -9348,6 +9350,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'mcp.prompt.result.message_count',
     type: 'integer',
     brief: 'Number of messages in the prompt result.',
+    deprecated: true,
     deprecationChain: ['mcp.prompt.result.message_count'],
   },
   'mcp.prompt.result.message_role': {

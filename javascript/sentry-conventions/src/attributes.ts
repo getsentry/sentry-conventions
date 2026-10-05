@@ -11520,6 +11520,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - A count can be calculcated from the value of the mcp.prompt.result.message_content attribute.
  * @example 3
  */
 export const MCP_PROMPT_RESULT_MESSAGE_COUNT = 'mcp.prompt.result.message_count';
@@ -29574,6 +29575,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 3,
+    deprecation: {
+      reason: 'A count can be calculcated from the value of the mcp.prompt.result.message_content attribute.',
+    },
     changelog: [
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
