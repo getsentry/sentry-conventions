@@ -10904,7 +10904,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     )
     """Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.
 
-    Type: object
+    Type: str
     Apply Scrubbing: auto - Metadata is user-defined and can contain user data
     Defined in OTEL: No
     Visibility: public
@@ -27260,7 +27260,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "vercel.ai.telemetry.metadata.<key>": AttributeMetadata(
         brief="Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.",
-        type=AttributeType.ANY,
+        type=AttributeType.STRING,
         keys=("vercel.ai.telemetry.metadata.<key>",),
         apply_scrubbing=ApplyScrubbingInfo(
             key=ApplyScrubbing.AUTO,
@@ -27281,7 +27281,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.",
             "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
-            "This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys or restrict the values beyond primitive types and arrays. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.",
+            "The Vercel AI SDK also allows numbers, booleans and arrays as metadata values. SDKs MUST convert these values to strings.",
+            "This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.",
         ],
     ),
     "vercel.branch": AttributeMetadata(
@@ -28564,7 +28565,7 @@ Attributes = TypedDict(
         "user.name": str,
         "user.roles": List[str],
         "user_agent.original": str,
-        "vercel.ai.telemetry.metadata.<key>": object,
+        "vercel.ai.telemetry.metadata.<key>": str,
         "vercel.branch": str,
         "vercel.build_id": str,
         "vercel.deployment_id": str,

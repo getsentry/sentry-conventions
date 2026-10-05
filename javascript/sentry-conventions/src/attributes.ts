@@ -18663,7 +18663,7 @@ export type USER_ROLES_TYPE = Array<string>;
 /**
  * Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name. `vercel.ai.telemetry.metadata.<key>`
  *
- * Attribute Value Type: `unknown` {@link VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE}
+ * Attribute Value Type: `string` {@link VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE}
  *
  * Apply Scrubbing: auto - Metadata is user-defined and can contain user data
  *
@@ -18684,7 +18684,7 @@ export const VERCEL_AI_TELEMETRY_METADATA_KEY_BASE = 'vercel.ai.telemetry.metada
 /**
  * Type for {@link VERCEL_AI_TELEMETRY_METADATA_KEY} vercel.ai.telemetry.metadata.<key>
  */
-export type VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE = unknown;
+export type VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE = string;
 
 // Path: model/attributes/vercel/vercel__branch.json
 
@@ -20370,7 +20370,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'user.ip_address': 'string',
   'user.name': 'string',
   'user.roles': 'string[]',
-  'vercel.ai.telemetry.metadata.<key>': 'any',
+  'vercel.ai.telemetry.metadata.<key>': 'string',
   'vercel.branch': 'string',
   'vercel.build_id': 'string',
   'vercel.deployment_id': 'string',
@@ -34852,7 +34852,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'vercel.ai.telemetry.metadata.<key>': {
     brief:
       'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
-    type: 'any',
+    type: 'string',
     keys: ['vercel.ai.telemetry.metadata.<key>'],
     applyScrubbing: {
       key: 'auto',
@@ -34867,7 +34867,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     additionalContext: [
       'Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.',
       "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
-      'This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys or restrict the values beyond primitive types and arrays. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.',
+      'The Vercel AI SDK also allows numbers, booleans and arrays as metadata values. SDKs MUST convert these values to strings.',
+      'This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.',
     ],
   },
   'vercel.branch': {

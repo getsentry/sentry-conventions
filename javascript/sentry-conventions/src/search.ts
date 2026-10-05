@@ -11429,7 +11429,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'vercel.ai.telemetry.metadata.<key>': {
     canonicalName: 'vercel.ai.telemetry.metadata.<key>',
-    type: 'any',
+    type: 'string',
     brief:
       'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
     deprecationChain: ['vercel.ai.telemetry.metadata.<key>'],
