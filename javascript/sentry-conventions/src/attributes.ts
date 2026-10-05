@@ -11106,6 +11106,28 @@ export const LOGGER_NAME = 'logger.name';
  */
 export type LOGGER_NAME_TYPE = string;
 
+// Path: model/attributes/mcp/mcp__auth__client__name.json
+
+/**
+ * Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable. `mcp.auth.client.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_AUTH_CLIENT_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Example Desktop"
+ * @example "Example CLI"
+ */
+export const MCP_AUTH_CLIENT_NAME = 'mcp.auth.client.name';
+
+/**
+ * Type for {@link MCP_AUTH_CLIENT_NAME} mcp.auth.client.name
+ */
+export type MCP_AUTH_CLIENT_NAME_TYPE = string;
+
 // Path: model/attributes/mcp/mcp__cancelled__reason.json
 
 /**
@@ -20006,6 +20028,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'lcp.url': 'string',
   'litestar.middleware_name': 'string',
   'logger.name': 'string',
+  'mcp.auth.client.name': 'string',
   'mcp.cancelled.reason': 'string',
   'mcp.cancelled.request_id': 'string',
   'mcp.client.name': 'string',
@@ -20877,6 +20900,7 @@ export type AttributeName =
   | typeof LCP_URL
   | typeof LITESTAR_MIDDLEWARE_NAME
   | typeof LOGGER_NAME
+  | typeof MCP_AUTH_CLIENT_NAME
   | typeof MCP_CANCELLED_REASON
   | typeof MCP_CANCELLED_REQUEST_ID
   | typeof MCP_CLIENT_NAME
@@ -29309,6 +29333,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myLogger',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'mcp.auth.client.name': {
+    brief:
+      'Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.',
+    type: 'string',
+    keys: ['mcp.auth.client.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Example Desktop',
+    examples: ['Example Desktop', 'Example CLI'],
+    changelog: [{ version: 'next', prs: [671], description: 'Added mcp.auth.client.name attribute' }],
+  },
   'mcp.cancelled.reason': {
     brief: 'Reason for the cancellation of an MCP operation.',
     type: 'string',
@@ -35764,6 +35802,7 @@ export type Attributes = {
   [LCP_URL]?: LCP_URL_TYPE;
   [LITESTAR_MIDDLEWARE_NAME]?: LITESTAR_MIDDLEWARE_NAME_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
+  [MCP_AUTH_CLIENT_NAME]?: MCP_AUTH_CLIENT_NAME_TYPE;
   [MCP_CANCELLED_REASON]?: MCP_CANCELLED_REASON_TYPE;
   [MCP_CANCELLED_REQUEST_ID]?: MCP_CANCELLED_REQUEST_ID_TYPE;
   [MCP_CLIENT_NAME]?: MCP_CLIENT_NAME_TYPE;

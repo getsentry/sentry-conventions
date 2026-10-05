@@ -6716,6 +6716,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myLogger"
     """
 
+    # Path: model/attributes/mcp/mcp__auth__client__name.json
+    MCP_AUTH_CLIENT_NAME: Literal["mcp.auth.client.name"] = "mcp.auth.client.name"
+    """Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "Example Desktop"
+    Example: "Example CLI"
+    """
+
     # Path: model/attributes/mcp/mcp__cancelled__reason.json
     MCP_CANCELLED_REASON: Literal["mcp.cancelled.reason"] = "mcp.cancelled.reason"
     """Reason for the cancellation of an MCP operation.
@@ -20886,6 +20898,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "mcp.auth.client.name": AttributeMetadata(
+        brief="Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.",
+        type=AttributeType.STRING,
+        keys=("mcp.auth.client.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Example Desktop",
+        examples=["Example Desktop", "Example CLI"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Added mcp.auth.client.name attribute",
+            ),
+        ],
+    ),
     "mcp.cancelled.reason": AttributeMetadata(
         brief="Reason for the cancellation of an MCP operation.",
         type=AttributeType.STRING,
@@ -28188,6 +28217,7 @@ Attributes = TypedDict(
         "lcp": float,
         "litestar.middleware_name": str,
         "logger.name": str,
+        "mcp.auth.client.name": str,
         "mcp.cancelled.reason": str,
         "mcp.cancelled.request_id": str,
         "mcp.client.name": str,

@@ -2830,6 +2830,11 @@ export const SEARCH_LITESTAR__MIDDLEWARE_NAME = 'litestar.middleware_name';
 export const SEARCH_LOGGER__NAME = 'logger.name';
 
 /**
+ * Search name for {@link attributes.MCP_AUTH_CLIENT_NAME}. `mcp.auth.client.name`
+ */
+export const SEARCH_MCP__AUTH__CLIENT__NAME = 'mcp.auth.client.name';
+
+/**
  * Search name for {@link attributes.MCP_CANCELLED_REASON}. `mcp.cancelled.reason`
  */
 export const SEARCH_MCP__CANCELLED__REASON = 'mcp.cancelled.reason';
@@ -5529,6 +5534,7 @@ export type AttributeSearchName =
   | typeof SEARCH_LCP__URL
   | typeof SEARCH_LITESTAR__MIDDLEWARE_NAME
   | typeof SEARCH_LOGGER__NAME
+  | typeof SEARCH_MCP__AUTH__CLIENT__NAME
   | typeof SEARCH_MCP__CANCELLED__REASON
   | typeof SEARCH_MCP__CANCELLED__REQUEST_ID
   | typeof SEARCH_MCP__CLIENT__NAME
@@ -9229,6 +9235,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of the logger that generated this event.',
     deprecationChain: ['logger.name'],
+  },
+  'mcp.auth.client.name': {
+    canonicalName: 'mcp.auth.client.name',
+    type: 'string',
+    brief:
+      'Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.',
+    deprecationChain: ['mcp.auth.client.name'],
   },
   'mcp.cancelled.reason': {
     canonicalName: 'mcp.cancelled.reason',
