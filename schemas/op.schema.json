@@ -31,6 +31,21 @@
         },
         "description": {
           "type": "string"
+        },
+        "deprecation": {
+          "description": "If a span op was deprecated, and what to use instead. Deprecated ops keep their generated constant, which is marked as deprecated for SDKs.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "replacement": {
+              "description": "The span op that directly replaces this one. Only set this if there is a 1:1 replacement. Must be an op defined in model/op/",
+              "type": "string"
+            },
+            "note": {
+              "description": "Why the op was deprecated. If there is no direct replacement, this should recommend what to use instead.",
+              "type": "string"
+            }
+          }
         }
       },
       "required": ["name"],

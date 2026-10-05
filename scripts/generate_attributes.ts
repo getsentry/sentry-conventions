@@ -1114,7 +1114,19 @@ export interface AttributeSearchMetadata {
   brief: string;
   /** Whether the attribute is internal to Sentry */
   internal?: true;
-  /** Every key under which the attribute's value is readable, preferred key first */
+  /**
+   * Present when the attribute is deprecated but does not join a replacement's
+   * deprecation chain. \`backfill\` and \`normalize\` deprecations are omitted
+   * because those keys already appear in that chain.
+   */
+  deprecated?: true;
+  /**
+   * Names that resolve to this search field, preferred search name first.
+   *
+   * Unlike attribute key chains, this also lists deprecated attributes whose
+   * status is not \`backfill\` or \`normalize\`. Their values stay on the old
+   * key, but the chain still leads search users to the preferred name.
+   */
   deprecationChain: readonly string[];
 }
 
@@ -1279,6 +1291,7 @@ function generateMetadata(
     deprecationChain: string[];
     canonicalName: string;
     isInternal: boolean;
+    deprecated: boolean;
   }> = [];
 
   for (const searchKey of [...searchMetadataByKey.keys()].sort()) {
@@ -1315,13 +1328,99 @@ function generateMetadata(
       }
     }
 
+    const deprecationChainKeys = [...deprecationChain];
     searchEntries.push({
       searchKey,
       preferredAttribute,
-      deprecationChain: [...deprecationChain],
+      deprecationChain: deprecationChainKeys,
       canonicalName: preferredAttribute.attributeJson.deprecation?.replacement ?? preferredAttribute.key,
       isInternal: getVisibility(preferredAttribute.attributeJson) === 'internal',
+      // A rewriting deprecation's chain is headed by its replacement. Anything else
+      // that is deprecated heads its own chain until the search-only pass below.
+      deprecated: preferredAttribute.isDeprecated && deprecationChainKeys[0] === preferredAttribute.key,
     });
+  }
+
+  // Attribute key chains omit non-rewriting deprecations, because the pipeline never
+  // copies the value onto the replacement. Search still needs those old names on the
+  // replacement's chain so a query for the old key can be sent to the current search name.
+  const nonRewritingPredecessors = allAttributes
+    .filter((attribute) => {
+      const replacement = attribute.attributeJson.deprecation?.replacement;
+      return replacement != null && !isRewritingDeprecation(attribute.attributeJson);
+    })
+    .toSorted((left, right) => (left.key < right.key ? -1 : left.key > right.key ? 1 : 0));
+
+  const extraSearchNamesByHead = new Map<string, string[]>();
+  for (const attribute of nonRewritingPredecessors) {
+    const replacement = attribute.attributeJson.deprecation?.replacement;
+    if (!replacement) {
+      continue;
+    }
+
+    const searchAlias = attribute.attributeJson.search_alias;
+    const readableNames = searchAlias
+      ? [attribute.key, searchAlias.name, ...(searchAlias.deprecated_aliases ?? [])]
+      : [attribute.key];
+    const names = extraSearchNamesByHead.get(replacement) ?? [];
+    for (const name of readableNames) {
+      if (!names.includes(name)) {
+        names.push(name);
+      }
+    }
+    extraSearchNamesByHead.set(replacement, names);
+  }
+
+  for (const entry of searchEntries) {
+    const extraNames = extraSearchNamesByHead.get(entry.deprecationChain[0] ?? '');
+    if (!extraNames) {
+      continue;
+    }
+    for (const name of extraNames) {
+      if (!entry.deprecationChain.includes(name)) {
+        entry.deprecationChain.push(name);
+      }
+    }
+  }
+
+  for (const attribute of nonRewritingPredecessors) {
+    // An explicit search alias is already the name this attribute is queried as.
+    if (attribute.attributeJson.search_alias) {
+      continue;
+    }
+
+    const replacement = attribute.attributeJson.deprecation?.replacement;
+    const entry = searchEntries.find(
+      (candidate) => candidate.searchKey === attribute.key && candidate.preferredAttribute.key === attribute.key,
+    );
+    const replacementChain = replacement
+      ? searchEntries.find((candidate) => candidate.deprecationChain[0] === replacement)?.deprecationChain
+      : undefined;
+    if (!entry || !replacementChain) {
+      continue;
+    }
+
+    entry.deprecationChain = [...replacementChain];
+    entry.deprecated = entry.deprecationChain[0] === entry.preferredAttribute.key;
+  }
+
+  // Chain membership is keyed by attribute key. Search queries use the alias, so that
+  // name leads the chain once every entry has been attached to its head.
+  const attributesByKey = new Map(allAttributes.map((attribute) => [attribute.key, attribute]));
+  for (const entry of searchEntries) {
+    const headKey = entry.deprecationChain[0];
+    const searchName = headKey ? attributesByKey.get(headKey)?.attributeJson.search_alias?.name : undefined;
+    if (!searchName || searchName === headKey) {
+      continue;
+    }
+
+    const searchNameIndex = entry.deprecationChain.indexOf(searchName);
+    if (searchNameIndex <= 0) {
+      continue;
+    }
+
+    entry.deprecationChain.splice(searchNameIndex, 1);
+    entry.deprecationChain.unshift(searchName);
   }
 
   const searchNameConstantsByName = new Map<
@@ -1441,7 +1540,14 @@ function generateMetadata(
 
   searchMetadata += 'export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> = {\n';
 
-  for (const { searchKey, preferredAttribute, deprecationChain, canonicalName, isInternal } of searchEntries) {
+  for (const {
+    searchKey,
+    preferredAttribute,
+    deprecationChain,
+    canonicalName,
+    isInternal,
+    deprecated,
+  } of searchEntries) {
     searchMetadata += `  ${JSON.stringify(searchKey)}: {\n`;
     searchMetadata += `    canonicalName: ${JSON.stringify(canonicalName)},\n`;
     searchMetadata += `    type: ${JSON.stringify(
@@ -1450,6 +1556,9 @@ function generateMetadata(
     searchMetadata += `    brief: ${JSON.stringify(preferredAttribute.attributeJson.brief)},\n`;
     if (isInternal) {
       searchMetadata += '    internal: true,\n';
+    }
+    if (deprecated) {
+      searchMetadata += '    deprecated: true,\n';
     }
     searchMetadata += `    deprecationChain: ${JSON.stringify(deprecationChain)},\n`;
     searchMetadata += '  },\n';
