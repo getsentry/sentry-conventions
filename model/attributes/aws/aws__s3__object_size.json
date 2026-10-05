@@ -1,9 +1,6 @@
 {
   "key": "aws.s3.object_size",
   "brief": "The size of the S3 object in bytes.",
-  "additional_context": [
-    "Not defined in OpenTelemetry. Extract from the S3 API: `ContentLength` on GetObject and HeadObject responses, `ObjectSize` on GetObjectAttributes, and `ContentLength` on PutObject requests. For ranged GetObject or HeadObject calls, `ContentLength` is the size of the returned range, not the full object."
-  ],
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"
