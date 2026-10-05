@@ -1650,6 +1650,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["{ \"AttributeName\": \"string\", \"AttributeType\": \"string\" }"]
     """
 
+    # Path: model/attributes/aws/aws__dynamodb__attributes_to_get.json
+    AWS_DYNAMODB_ATTRIBUTES_TO_GET: Literal["aws.dynamodb.attributes_to_get"] = (
+        "aws.dynamodb.attributes_to_get"
+    )
+    """The value of the `AttributesToGet` request parameter.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["lives","id"]
+    """
+
     # Path: model/attributes/aws/aws__dynamodb__consistent_read.json
     AWS_DYNAMODB_CONSISTENT_READ: Literal["aws.dynamodb.consistent_read"] = (
         "aws.dynamodb.consistent_read"
@@ -2234,7 +2247,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/aws/aws__sqs__queue__url.json
     AWS_SQS_QUEUE_URL: Literal["aws.sqs.queue.url"] = "aws.sqs.queue.url"
-    """The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.
+    """The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.
 
     Type: str
     Apply Scrubbing: manual
@@ -13420,6 +13433,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.dynamodb.attributes_to_get": AttributeMetadata(
+        brief="The value of the `AttributesToGet` request parameter.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.attributes_to_get",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=["lives", "id"],
+        examples=[["lives", "id"]],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Added aws.dynamodb.attributes_to_get attribute",
+            ),
+        ],
+    ),
     "aws.dynamodb.consistent_read": AttributeMetadata(
         brief="The value of the `ConsistentRead` request parameter.",
         type=AttributeType.BOOLEAN,
@@ -14287,7 +14317,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "aws.sqs.queue.url": AttributeMetadata(
-        brief="The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+        brief="The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
         type=AttributeType.STRING,
         keys=("aws.sqs.queue.url",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -28056,6 +28086,7 @@ Attributes = TypedDict(
         "aws.cloudwatch.logs.log_stream": str,
         "aws.cloudwatch.logs.url": str,
         "aws.dynamodb.attribute_definitions": List[str],
+        "aws.dynamodb.attributes_to_get": List[str],
         "aws.dynamodb.consistent_read": bool,
         "aws.dynamodb.consumed_capacity": List[str],
         "aws.dynamodb.count": int,

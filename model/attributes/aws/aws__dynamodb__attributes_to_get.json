@@ -7,18 +7,11 @@
   },
   "is_in_otel": true,
   "visibility": "public",
-  "examples": [
-    [
-      "lives",
-      "id"
-    ]
-  ],
+  "examples": [["lives", "id"]],
   "changelog": [
     {
       "version": "next",
-      "prs": [
-        671
-      ],
+      "prs": [671],
       "description": "Added aws.dynamodb.attributes_to_get attribute"
     }
   ]

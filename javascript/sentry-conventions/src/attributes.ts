@@ -2169,6 +2169,27 @@ export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
  */
 export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
 
+// Path: model/attributes/aws/aws__dynamodb__attributes_to_get.json
+
+/**
+ * The value of the `AttributesToGet` request parameter. `aws.dynamodb.attributes_to_get`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["lives","id"]
+ */
+export const AWS_DYNAMODB_ATTRIBUTES_TO_GET = 'aws.dynamodb.attributes_to_get';
+
+/**
+ * Type for {@link AWS_DYNAMODB_ATTRIBUTES_TO_GET} aws.dynamodb.attributes_to_get
+ */
+export type AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE = Array<string>;
+
 // Path: model/attributes/aws/aws__dynamodb__attribute_definitions.json
 
 /**
@@ -3218,7 +3239,7 @@ export type AWS_SNS_TOPIC_ARN_TYPE = string;
 // Path: model/attributes/aws/aws__sqs__queue__url.json
 
 /**
- * The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it. `aws.sqs.queue.url`
+ * The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it. `aws.sqs.queue.url`
  *
  * Attribute Value Type: `string` {@link AWS_SQS_QUEUE_URL_TYPE}
  *
@@ -19801,6 +19822,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.cloudwatch.logs.log_group': 'string',
   'aws.cloudwatch.logs.log_stream': 'string',
   'aws.cloudwatch.logs.url': 'string',
+  'aws.dynamodb.attributes_to_get': 'string[]',
   'aws.dynamodb.attribute_definitions': 'string[]',
   'aws.dynamodb.consistent_read': 'boolean',
   'aws.dynamodb.consumed_capacity': 'string[]',
@@ -20681,6 +20703,7 @@ export type AttributeName =
   | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
   | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
   | typeof AWS_CLOUDWATCH_LOGS_URL
+  | typeof AWS_DYNAMODB_ATTRIBUTES_TO_GET
   | typeof AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS
   | typeof AWS_DYNAMODB_CONSISTENT_READ
   | typeof AWS_DYNAMODB_CONSUMED_CAPACITY
@@ -23091,6 +23114,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
   },
+  'aws.dynamodb.attributes_to_get': {
+    brief: 'The value of the `AttributesToGet` request parameter.',
+    type: 'string[]',
+    keys: ['aws.dynamodb.attributes_to_get'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['lives', 'id'],
+    examples: [['lives', 'id']],
+    changelog: [{ version: 'next', prs: [671], description: 'Added aws.dynamodb.attributes_to_get attribute' }],
+  },
   'aws.dynamodb.attribute_definitions': {
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
     type: 'string[]',
@@ -23813,7 +23849,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'aws.sqs.queue.url': {
     brief:
-      "The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+      'The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.',
     type: 'string',
     keys: ['aws.sqs.queue.url'],
     applyScrubbing: {
@@ -35706,6 +35742,7 @@ export type Attributes = {
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
   [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
   [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
+  [AWS_DYNAMODB_ATTRIBUTES_TO_GET]?: AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE;
   [AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS]?: AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE;
   [AWS_DYNAMODB_CONSISTENT_READ]?: AWS_DYNAMODB_CONSISTENT_READ_TYPE;
   [AWS_DYNAMODB_CONSUMED_CAPACITY]?: AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE;

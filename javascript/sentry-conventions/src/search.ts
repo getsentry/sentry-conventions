@@ -624,6 +624,11 @@ export const SEARCH_AWS__CLOUDWATCH__LOGS__URL = 'aws.cloudwatch.logs.url';
 export const SEARCH_AWS__DYNAMODB__ATTRIBUTE_DEFINITIONS = 'aws.dynamodb.attribute_definitions';
 
 /**
+ * Search name for {@link attributes.AWS_DYNAMODB_ATTRIBUTES_TO_GET}. `aws.dynamodb.attributes_to_get`
+ */
+export const SEARCH_AWS__DYNAMODB__ATTRIBUTES_TO_GET = 'aws.dynamodb.attributes_to_get';
+
+/**
  * Search name for {@link attributes.AWS_DYNAMODB_CONSISTENT_READ}. `aws.dynamodb.consistent_read`
  */
 export const SEARCH_AWS__DYNAMODB__CONSISTENT_READ = 'aws.dynamodb.consistent_read';
@@ -5172,6 +5177,7 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__CLOUDWATCH__LOGS__LOG_STREAM
   | typeof SEARCH_AWS__CLOUDWATCH__LOGS__URL
   | typeof SEARCH_AWS__DYNAMODB__ATTRIBUTE_DEFINITIONS
+  | typeof SEARCH_AWS__DYNAMODB__ATTRIBUTES_TO_GET
   | typeof SEARCH_AWS__DYNAMODB__CONSISTENT_READ
   | typeof SEARCH_AWS__DYNAMODB__CONSUMED_CAPACITY
   | typeof SEARCH_AWS__DYNAMODB__COUNT
@@ -6672,6 +6678,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
     deprecationChain: ['aws.dynamodb.attribute_definitions'],
   },
+  'aws.dynamodb.attributes_to_get': {
+    canonicalName: 'aws.dynamodb.attributes_to_get',
+    type: 'string[]',
+    brief: 'The value of the `AttributesToGet` request parameter.',
+    deprecationChain: ['aws.dynamodb.attributes_to_get'],
+  },
   'aws.dynamodb.consistent_read': {
     canonicalName: 'aws.dynamodb.consistent_read',
     type: 'boolean',
@@ -6954,7 +6966,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'aws.sqs.queue.url',
     type: 'string',
     brief:
-      "The URL of the AWS SQS Queue. It's a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+      'The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.',
     deprecationChain: ['aws.sqs.queue.url'],
   },
   'aws.step_functions.activity.arn': {
