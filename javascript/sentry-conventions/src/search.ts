@@ -852,11 +852,6 @@ export const SEARCH_AWS__S3__DELETE = 'aws.s3.delete';
 export const SEARCH_AWS__S3__KEY = 'aws.s3.key';
 
 /**
- * Search name for {@link attributes.AWS_S3_OBJECT_SIZE}. `aws.s3.object_size`
- */
-export const SEARCH_AWS__S3__OBJECT_SIZE = 'aws.s3.object_size';
-
-/**
  * Search name for {@link attributes.AWS_S3_PART_NUMBER}. `aws.s3.part_number`
  */
 export const SEARCH_AWS__S3__PART_NUMBER = 'aws.s3.part_number';
@@ -5219,7 +5214,6 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__S3__COPY_SOURCE
   | typeof SEARCH_AWS__S3__DELETE
   | typeof SEARCH_AWS__S3__KEY
-  | typeof SEARCH_AWS__S3__OBJECT_SIZE
   | typeof SEARCH_AWS__S3__PART_NUMBER
   | typeof SEARCH_AWS__S3__UPLOAD_ID
   | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__ARN
@@ -6929,12 +6923,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.',
     deprecationChain: ['aws.s3.key'],
-  },
-  'aws.s3.object_size': {
-    canonicalName: 'aws.s3.object_size',
-    type: 'integer',
-    brief: 'The size of the S3 object in bytes.',
-    deprecationChain: ['aws.s3.object_size'],
   },
   'aws.s3.part_number': {
     canonicalName: 'aws.s3.part_number',

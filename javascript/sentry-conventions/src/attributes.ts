@@ -3131,27 +3131,6 @@ export const AWS_S3_KEY = 'aws.s3.key';
  */
 export type AWS_S3_KEY_TYPE = string;
 
-// Path: model/attributes/aws/aws__s3__object_size.json
-
-/**
- * The size of the S3 object in bytes. `aws.s3.object_size`
- *
- * Attribute Value Type: `number` {@link AWS_S3_OBJECT_SIZE_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example 434234
- */
-export const AWS_S3_OBJECT_SIZE = 'aws.s3.object_size';
-
-/**
- * Type for {@link AWS_S3_OBJECT_SIZE} aws.s3.object_size
- */
-export type AWS_S3_OBJECT_SIZE_TYPE = number;
-
 // Path: model/attributes/aws/aws__s3__part_number.json
 
 /**
@@ -19866,7 +19845,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.s3.copy_source': 'string',
   'aws.s3.delete': 'string',
   'aws.s3.key': 'string',
-  'aws.s3.object_size': 'integer',
   'aws.s3.part_number': 'integer',
   'aws.s3.upload_id': 'string',
   'aws.secretsmanager.secret.arn': 'string',
@@ -20747,7 +20725,6 @@ export type AttributeName =
   | typeof AWS_S3_COPY_SOURCE
   | typeof AWS_S3_DELETE
   | typeof AWS_S3_KEY
-  | typeof AWS_S3_OBJECT_SIZE
   | typeof AWS_S3_PART_NUMBER
   | typeof AWS_S3_UPLOAD_ID
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
@@ -23781,19 +23758,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'someFile.yml',
     examples: ['someFile.yml'],
     changelog: [{ version: 'next', prs: [644], description: 'Added aws.s3.key attribute' }],
-  },
-  'aws.s3.object_size': {
-    brief: 'The size of the S3 object in bytes.',
-    type: 'integer',
-    keys: ['aws.s3.object_size'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: 434234,
-    examples: [434234],
-    changelog: [{ version: 'next', prs: [645], description: 'Added aws.s3.object_size attribute' }],
   },
   'aws.s3.part_number': {
     brief:
@@ -35786,7 +35750,6 @@ export type Attributes = {
   [AWS_S3_COPY_SOURCE]?: AWS_S3_COPY_SOURCE_TYPE;
   [AWS_S3_DELETE]?: AWS_S3_DELETE_TYPE;
   [AWS_S3_KEY]?: AWS_S3_KEY_TYPE;
-  [AWS_S3_OBJECT_SIZE]?: AWS_S3_OBJECT_SIZE_TYPE;
   [AWS_S3_PART_NUMBER]?: AWS_S3_PART_NUMBER_TYPE;
   [AWS_S3_UPLOAD_ID]?: AWS_S3_UPLOAD_ID_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
