@@ -41,12 +41,16 @@ describe('Description JSON', async () => {
       });
 
       it('only references existing, non-replaced attributes', async () => {
-        const { missing, deprecated } = await findTemplateAttributeIssues(content);
+        const { missing, deprecated, unsupported } = await findTemplateAttributeIssues(content);
 
         expect(missing, `template attributes without definitions: ${missing.join(', ')}`).toEqual([]);
         expect(
           deprecated,
           `template references deprecated attributes with replacements: ${deprecated.join(', ')}`,
+        ).toEqual([]);
+        expect(
+          unsupported,
+          `template references attributes with types that templates cannot substitute: ${unsupported.join(', ')}`,
         ).toEqual([]);
       });
     });
