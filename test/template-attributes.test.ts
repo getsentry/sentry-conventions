@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { attributeKeyToDynamicSuffixKey } from '../scripts/utils';
-import { findTemplateAttributeIssues, resolveTemplateAttribute } from './template-attributes';
+import { findTemplateAttributeIssues, isSupportedTemplateType, resolveTemplateAttribute } from './template-attributes';
 
 describe('attributeKeyToDynamicSuffixKey', () => {
   it('replaces the last segment with the dynamic suffix', () => {
@@ -58,6 +58,26 @@ describe('findTemplateAttributeIssues', () => {
       operation(['{{browser.web_vital.cls.source.1}}', '{{ui.component_name}}']),
     );
 
-    expect(issues).toEqual({ missing: [], deprecated: [] });
+    expect(issues).toEqual({ missing: [], deprecated: [], unsupported: [] });
+  });
+
+  it('accepts array attribute types', async () => {
+    // `cache.key` is `string[]`
+    const issues = await findTemplateAttributeIssues(operation(['{{cache.key}}']));
+
+    expect(issues).toEqual({ missing: [], deprecated: [], unsupported: [] });
+  });
+});
+
+describe('isSupportedTemplateType', () => {
+  it.each(['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]'] as const)(
+    'accepts %s',
+    (type) => {
+      expect(isSupportedTemplateType(type)).toBe(true);
+    },
+  );
+
+  it('rejects `any`, which has no defined substitution', () => {
+    expect(isSupportedTemplateType('any')).toBe(false);
   });
 });
