@@ -34867,6 +34867,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     additionalContext: [
       'Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.',
       "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
+      'This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys or restrict the values beyond primitive types and arrays. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.',
     ],
   },
   'vercel.branch': {
