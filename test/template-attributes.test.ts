@@ -33,6 +33,18 @@ describe('resolveTemplateAttribute', () => {
   it('does not resolve an unknown attribute', async () => {
     await expect(resolveTemplateAttribute('does.not.exist')).resolves.toBeUndefined();
   });
+
+  it('resolves a prompt variable without treating other MCP arguments as aliases', async () => {
+    const attribute = await resolveTemplateAttribute('gen_ai.prompt.variable.language');
+
+    expect(attribute).toMatchObject({
+      key: 'gen_ai.prompt.variable.<key>',
+      type: 'string',
+      is_in_otel: true,
+      apply_scrubbing: { key: 'auto' },
+    });
+    expect(attribute?.alias).toBeUndefined();
+  });
 });
 
 describe('findTemplateAttributeIssues', () => {
