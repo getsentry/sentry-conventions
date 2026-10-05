@@ -3255,7 +3255,14 @@ export const SEARCH_NEL__PHASE = 'nel.phase';
 export const SEARCH_NEL__REFERRER = 'nel.referrer';
 
 /**
+ * Search name for {@link attributes.NEL_SAMPLING_FRACTION}. `nel.sampling_fraction`
+ */
+export const SEARCH_NEL__SAMPLING_FRACTION = 'nel.sampling_fraction';
+
+/**
  * Search name for {@link attributes.NEL_SAMPLING_FUNCTION}. `nel.sampling_function`
+ *
+ * @deprecated Use {@link SEARCH_NEL__SAMPLING_FRACTION} (`nel.sampling_fraction`) instead
  */
 export const SEARCH_NEL__SAMPLING_FUNCTION = 'nel.sampling_function';
 
@@ -5599,6 +5606,7 @@ export type AttributeSearchName =
   | typeof SEARCH_NEL__ELAPSED_TIME
   | typeof SEARCH_NEL__PHASE
   | typeof SEARCH_NEL__REFERRER
+  | typeof SEARCH_NEL__SAMPLING_FRACTION
   | typeof SEARCH_NEL__SAMPLING_FUNCTION
   | typeof SEARCH_NEL__TYPE
   | typeof SEARCH_NET__HOST__IP
@@ -9713,11 +9721,17 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: "request's referrer, as determined by the referrer policy associated with its client.",
     deprecationChain: ['nel.referrer'],
   },
+  'nel.sampling_fraction': {
+    canonicalName: 'nel.sampling_fraction',
+    type: 'double',
+    brief: 'The sampling fraction used to determine if the request should be sampled.',
+    deprecationChain: ['nel.sampling_fraction', 'nel.sampling_function'],
+  },
   'nel.sampling_function': {
-    canonicalName: 'nel.sampling_function',
+    canonicalName: 'nel.sampling_fraction',
     type: 'double',
     brief: 'The sampling function used to determine if the request should be sampled.',
-    deprecationChain: ['nel.sampling_function'],
+    deprecationChain: ['nel.sampling_fraction', 'nel.sampling_function'],
   },
   'nel.type': {
     canonicalName: 'nel.type',

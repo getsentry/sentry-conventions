@@ -331,6 +331,7 @@ class _AttributeNamesMeta(type):
         "NAVIGATION_ORIGIN",
         "NAVIGATION_ROUTE_ID",
         "NAVIGATION_TYPE",
+        "NEL_SAMPLING_FUNCTION",
         "NET_HOST_IP",
         "NET_HOST_NAME",
         "NET_HOST_PORT",
@@ -7624,6 +7625,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "https://example.com/foo?bar=baz"
     """
 
+    # Path: model/attributes/nel/nel__sampling_fraction.json
+    NEL_SAMPLING_FRACTION: Literal["nel.sampling_fraction"] = "nel.sampling_fraction"
+    """The sampling fraction used to determine if the request should be sampled.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: nel.sampling_function
+    Example: 0.5
+    """
+
     # Path: model/attributes/nel/nel__sampling_function.json
     NEL_SAMPLING_FUNCTION: Literal["nel.sampling_function"] = "nel.sampling_function"
     """The sampling function used to determine if the request should be sampled.
@@ -7632,6 +7645,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: nel.sampling_fraction
+    DEPRECATED: Use nel.sampling_fraction instead - The correct name of this attribute is nel.sampling_fraction
     Example: 0.5
     """
 
@@ -22220,15 +22235,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
         ],
     ),
-    "nel.sampling_function": AttributeMetadata(
-        brief="The sampling function used to determine if the request should be sampled.",
+    "nel.sampling_fraction": AttributeMetadata(
+        brief="The sampling fraction used to determine if the request should be sampled.",
         type=AttributeType.DOUBLE,
-        keys=("nel.sampling_function",),
+        keys=(
+            "nel.sampling_fraction",
+            "nel.sampling_function",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.5,
+        examples=[0.5],
+        aliases=["nel.sampling_function"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[668],
+                description="Added nel.sampling_fraction attribute",
+            ),
+        ],
+    ),
+    "nel.sampling_function": AttributeMetadata(
+        brief="The sampling function used to determine if the request should be sampled.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "nel.sampling_fraction",
+            "nel.sampling_function",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0.5,
+        deprecation=DeprecationInfo(
+            replacement="nel.sampling_fraction",
+            reason="The correct name of this attribute is nel.sampling_fraction",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["nel.sampling_fraction"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[668],
+                description="Deprecated in favor of nel.sampling_fraction",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[68]),
         ],
@@ -28211,6 +28261,7 @@ Attributes = TypedDict(
         "nel.elapsed_time": int,
         "nel.phase": str,
         "nel.referrer": str,
+        "nel.sampling_fraction": float,
         "nel.sampling_function": float,
         "nel.type": str,
         "net.host.ip": str,
