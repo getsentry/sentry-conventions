@@ -140,6 +140,10 @@ const currentPath = Astro.url.pathname;
             <a href="https://github.com/getsentry/sentry-conventions/blob/main/CONTRIBUTING.md" class="text-text-secondary hover:text-accent" target="_blank" rel="noopener">Contributing</a>
             <span class="text-text-muted">·</span>
             <a href="https://github.com/getsentry/sentry-conventions/issues" class="text-text-secondary hover:text-accent" target="_blank" rel="noopener">Report Issue</a>
+            <span class="text-text-muted">·</span>
+            <a href={`${import.meta.env.BASE_URL}llms.txt`} class="text-text-secondary hover:text-accent">llms.txt</a>
+            <span class="text-text-muted">·</span>
+            <a href={`${import.meta.env.BASE_URL}llms-full.txt`} class="text-text-secondary hover:text-accent">llms-full.txt</a>
           </p>
         </div>
       </footer>

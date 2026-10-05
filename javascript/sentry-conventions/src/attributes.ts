@@ -920,7 +920,7 @@ export type AI_TOOLCALL_ARGS_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -1160,6 +1160,30 @@ export const ANGULAR_VERSION = 'angular.version';
  * Type for {@link ANGULAR_VERSION} angular.version
  */
 export type ANGULAR_VERSION_TYPE = string;
+
+// Path: model/attributes/anthropic/anthropic__tool_result__content.json
+
+/**
+ * The content of the tool result. `anthropic.tool_result.content`
+ *
+ * Attribute Value Type: `string` {@link ANTHROPIC_TOOL_RESULT_CONTENT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ *
+ * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead - Use gen_ai.tool.call.result for tool results.
+ * @example "rainy, 57°F"
+ */
+export const ANTHROPIC_TOOL_RESULT_CONTENT = 'anthropic.tool_result.content';
+
+/**
+ * Type for {@link ANTHROPIC_TOOL_RESULT_CONTENT} anthropic.tool_result.content
+ */
+export type ANTHROPIC_TOOL_RESULT_CONTENT_TYPE = string;
 
 // Path: model/attributes/app/app__app_build.json
 
@@ -4017,7 +4041,7 @@ export type CACHE_TAGS_TYPE = Array<string>;
 // Path: model/attributes/cache/cache__ttl.json
 
 /**
- * The ttl of the cache in seconds `cache.ttl`
+ * The ttl (maximum lifetime) of the cache in seconds `cache.ttl`
  *
  * Attribute Value Type: `number` {@link CACHE_TTL_TYPE}
  *
@@ -7744,7 +7768,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. `gen_ai.input.messages`
+ * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them. `gen_ai.input.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
@@ -7809,7 +7833,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. `gen_ai.output.messages`
+ * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them. `gen_ai.output.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
@@ -8570,7 +8594,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ * Aliases: {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @example "rainy, 57°F"
  */
@@ -8661,7 +8685,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -8708,7 +8732,7 @@ export type GEN_AI_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link MCP_TOOL_RESULT_CONTENT} `mcp.tool.result.content`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead
  * @example "rainy, 57°F"
@@ -11827,7 +11851,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`
+ * Aliases: {@link GEN_AI_TOOL_CALL_RESULT} `gen_ai.tool.call.result`, {@link GEN_AI_TOOL_MESSAGE} `gen_ai.tool.message`, {@link GEN_AI_TOOL_OUTPUT} `gen_ai.tool.output`, {@link AI_TOOLCALL_RESULT} `ai.toolCall.result`, {@link ANTHROPIC_TOOL_RESULT_CONTENT} `anthropic.tool_result.content`
  *
  * @deprecated Use {@link GEN_AI_TOOL_CALL_RESULT} (gen_ai.tool.call.result) instead - OTel uses gen_ai.tool.call.result for MCP tool results
  * @example "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
@@ -12697,6 +12721,29 @@ export const NEL_REFERRER = 'nel.referrer';
  */
 export type NEL_REFERRER_TYPE = string;
 
+// Path: model/attributes/nel/nel__sampling_fraction.json
+
+/**
+ * The sampling fraction used to determine if the request should be sampled. `nel.sampling_fraction`
+ *
+ * Attribute Value Type: `number` {@link NEL_SAMPLING_FRACTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NEL_SAMPLING_FUNCTION} `nel.sampling_function`
+ *
+ * @example 0.5
+ */
+export const NEL_SAMPLING_FRACTION = 'nel.sampling_fraction';
+
+/**
+ * Type for {@link NEL_SAMPLING_FRACTION} nel.sampling_fraction
+ */
+export type NEL_SAMPLING_FRACTION_TYPE = number;
+
 // Path: model/attributes/nel/nel__sampling_function.json
 
 /**
@@ -12709,6 +12756,9 @@ export type NEL_REFERRER_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link NEL_SAMPLING_FRACTION} `nel.sampling_fraction`
+ *
+ * @deprecated Use {@link NEL_SAMPLING_FRACTION} (nel.sampling_fraction) instead - The correct name of this attribute is nel.sampling_fraction
  * @example 0.5
  */
 export const NEL_SAMPLING_FUNCTION = 'nel.sampling_function';
@@ -15667,6 +15717,29 @@ export const SENTRY_KIND = 'sentry.kind';
  * Type for {@link SENTRY_KIND} sentry.kind
  */
 export type SENTRY_KIND_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__link__type.json
+
+/**
+ * Set on a span link. Describes the relationship between the span and the linked span. `sentry.link.type`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_LINK_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "previous_trace"
+ * @example "next_trace"
+ * @example "cache_origin"
+ */
+export const SENTRY_LINK_TYPE = 'sentry.link.type';
+
+/**
+ * Type for {@link SENTRY_LINK_TYPE} sentry.link.type
+ */
+export type SENTRY_LINK_TYPE_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__main_thread.json
 
@@ -19487,6 +19560,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'ai.values': 'string',
   'ai.warnings': 'string[]',
   'angular.version': 'string',
+  'anthropic.tool_result.content': 'string',
   'app.app_build': 'string',
   'app.app_identifier': 'string',
   'app.app_name': 'string',
@@ -20005,6 +20079,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'nel.elapsed_time': 'integer',
   'nel.phase': 'string',
   'nel.referrer': 'string',
+  'nel.sampling_fraction': 'double',
   'nel.sampling_function': 'double',
   'nel.type': 'string',
   'network.connection.effective_type': 'string',
@@ -20136,6 +20211,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.is_localhost': 'boolean',
   'sentry.is_remote': 'boolean',
   'sentry.kind': 'string',
+  'sentry.link.type': 'string',
   'sentry.main_thread': 'boolean',
   'sentry.message.parameter.<key>': 'string',
   'sentry.message.template': 'string',
@@ -20355,6 +20431,7 @@ export type AttributeName =
   | typeof AI_VALUES
   | typeof AI_WARNINGS
   | typeof ANGULAR_VERSION
+  | typeof ANTHROPIC_TOOL_RESULT_CONTENT
   | typeof APP_APP_BUILD
   | typeof APP_APP_IDENTIFIER
   | typeof APP_APP_NAME
@@ -20873,6 +20950,7 @@ export type AttributeName =
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
   | typeof NEL_REFERRER
+  | typeof NEL_SAMPLING_FRACTION
   | typeof NEL_SAMPLING_FUNCTION
   | typeof NEL_TYPE
   | typeof NETWORK_CONNECTION_EFFECTIVE_TYPE
@@ -21004,6 +21082,7 @@ export type AttributeName =
   | typeof SENTRY_IS_LOCALHOST
   | typeof SENTRY_IS_REMOTE
   | typeof SENTRY_KIND
+  | typeof SENTRY_LINK_TYPE
   | typeof SENTRY_MAIN_THREAD
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
@@ -21910,6 +21989,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -21924,7 +22004,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
       status: 'backfill',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content'],
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.output',
+      'gen_ai.tool.message',
+      'mcp.tool.result.content',
+      'anthropic.tool_result.content',
+    ],
     changelog: [{ version: '0.19.0', prs: [498], description: 'Added ai.toolCall.result attribute' }],
   },
   'ai.tools': {
@@ -22110,6 +22196,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '17.1.0',
     changelog: [{ version: '0.7.0', prs: [367], description: 'Added angular.version attribute' }],
+  },
+  'anthropic.tool_result.content': {
+    brief: 'The content of the tool result.',
+    type: 'string',
+    keys: [
+      'gen_ai.tool.call.result',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+    ],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'rainy, 57°F',
+    examples: ['rainy, 57°F'],
+    deprecation: {
+      replacement: 'gen_ai.tool.call.result',
+      reason: 'Use gen_ai.tool.call.result for tool results.',
+      status: 'backfill',
+    },
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.output',
+      'gen_ai.tool.message',
+      'mcp.tool.result.content',
+      'ai.toolCall.result',
+    ],
+    changelog: [
+      {
+        version: 'next',
+        description: 'Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result',
+      },
+    ],
   },
   'app.app_build': {
     brief: 'Internal build identifier, as it appears on the platform.',
@@ -24025,7 +24148,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'cache.ttl': {
-    brief: 'The ttl of the cache in seconds',
+    brief: 'The ttl (maximum lifetime) of the cache in seconds',
     type: 'integer',
     keys: ['cache.ttl'],
     applyScrubbing: {
@@ -26582,7 +26705,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.input.messages': {
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
     type: 'string',
     keys: [
       'gen_ai.input.messages',
@@ -26601,6 +26724,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
+      { version: 'next', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
@@ -26640,7 +26764,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.output.messages': {
     brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
     type: 'string',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
@@ -26651,7 +26775,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example:
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
-    changelog: [{ version: '0.4.0', prs: [221] }],
+    changelog: [
+      { version: 'next', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
+      { version: '0.4.0', prs: [221] },
+    ],
   },
   'gen_ai.pipeline.name': {
     brief: 'Name of the AI pipeline or chain being executed.',
@@ -27200,6 +27327,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -27210,7 +27338,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'rainy, 57°F',
-    aliases: ['gen_ai.tool.output', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
+    aliases: [
+      'gen_ai.tool.output',
+      'gen_ai.tool.message',
+      'mcp.tool.result.content',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+    ],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
@@ -27271,6 +27405,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -27285,7 +27420,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
       status: 'normalize',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.output', 'mcp.tool.result.content', 'ai.toolCall.result'],
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.output',
+      'mcp.tool.result.content',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+    ],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [62] },
@@ -27310,6 +27451,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -27324,7 +27466,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       replacement: 'gen_ai.tool.call.result',
       status: 'normalize',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'mcp.tool.result.content', 'ai.toolCall.result'],
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.message',
+      'mcp.tool.result.content',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+    ],
     changelog: [
       { version: '0.5.0', prs: [265] },
       { version: '0.1.0', prs: [63, 74] },
@@ -29652,6 +29800,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',
+      'anthropic.tool_result.content',
       'gen_ai.tool.message',
       'gen_ai.tool.output',
       'mcp.tool.result.content',
@@ -29668,7 +29817,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'OTel uses gen_ai.tool.call.result for MCP tool results',
       status: 'backfill',
     },
-    aliases: ['gen_ai.tool.call.result', 'gen_ai.tool.message', 'gen_ai.tool.output', 'ai.toolCall.result'],
+    aliases: [
+      'gen_ai.tool.call.result',
+      'gen_ai.tool.message',
+      'gen_ai.tool.output',
+      'ai.toolCall.result',
+      'anthropic.tool_result.content',
+    ],
     changelog: [
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of gen_ai.tool.call.result' },
       { version: '0.3.0', prs: [171] },
@@ -30324,17 +30479,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/foo?bar=baz',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
-  'nel.sampling_function': {
-    brief: 'The sampling function used to determine if the request should be sampled.',
+  'nel.sampling_fraction': {
+    brief: 'The sampling fraction used to determine if the request should be sampled.',
     type: 'double',
-    keys: ['nel.sampling_function'],
+    keys: ['nel.sampling_fraction', 'nel.sampling_function'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 0.5,
+    examples: [0.5],
+    aliases: ['nel.sampling_function'],
+    changelog: [{ version: 'next', prs: [668], description: 'Added nel.sampling_fraction attribute' }],
+  },
+  'nel.sampling_function': {
+    brief: 'The sampling function used to determine if the request should be sampled.',
+    type: 'double',
+    keys: ['nel.sampling_fraction', 'nel.sampling_function'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.5,
+    deprecation: {
+      replacement: 'nel.sampling_fraction',
+      reason: 'The correct name of this attribute is nel.sampling_fraction',
+      status: 'backfill',
+    },
+    aliases: ['nel.sampling_fraction'],
     changelog: [
+      { version: 'next', prs: [668], description: 'Deprecated in favor of nel.sampling_fraction' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [68] },
     ],
@@ -32399,6 +32575,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       name: 'span.kind',
     },
   },
+  'sentry.link.type': {
+    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
+    type: 'string',
+    keys: ['sentry.link.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'previous_trace',
+    examples: ['previous_trace', 'next_trace', 'cache_origin'],
+    changelog: [{ version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' }],
+    additionalContext: [
+      'This attribute is exclusively set on span links.',
+      'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
+      'For known values, see Examples. Add new values to Examples.',
+    ],
+  },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
     type: 'boolean',
@@ -32697,6 +32891,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.0.0' }],
     searchAlias: {
       name: 'replay.id',
+      deprecatedAliases: ['replay_id'],
     },
   },
   'sentry.replay_is_buffering': {
@@ -35123,6 +35318,7 @@ export type Attributes = {
   [AI_VALUES]?: AI_VALUES_TYPE;
   [AI_WARNINGS]?: AI_WARNINGS_TYPE;
   [ANGULAR_VERSION]?: ANGULAR_VERSION_TYPE;
+  [ANTHROPIC_TOOL_RESULT_CONTENT]?: ANTHROPIC_TOOL_RESULT_CONTENT_TYPE;
   [APP_APP_BUILD]?: APP_APP_BUILD_TYPE;
   [APP_APP_IDENTIFIER]?: APP_APP_IDENTIFIER_TYPE;
   [APP_APP_NAME]?: APP_APP_NAME_TYPE;
@@ -35641,6 +35837,7 @@ export type Attributes = {
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
   [NEL_REFERRER]?: NEL_REFERRER_TYPE;
+  [NEL_SAMPLING_FRACTION]?: NEL_SAMPLING_FRACTION_TYPE;
   [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
   [NEL_TYPE]?: NEL_TYPE_TYPE;
   [NETWORK_CONNECTION_EFFECTIVE_TYPE]?: NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE;
@@ -35772,6 +35969,7 @@ export type Attributes = {
   [SENTRY_IS_LOCALHOST]?: SENTRY_IS_LOCALHOST_TYPE;
   [SENTRY_IS_REMOTE]?: SENTRY_IS_REMOTE_TYPE;
   [SENTRY_KIND]?: SENTRY_KIND_TYPE;
+  [SENTRY_LINK_TYPE]?: SENTRY_LINK_TYPE_TYPE;
   [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;

@@ -202,6 +202,7 @@ class _AttributeNamesMeta(type):
         "AI_USAGE_TOKENS",
         "AI_VALUES",
         "AI_WARNINGS",
+        "ANTHROPIC_TOOL_RESULT_CONTENT",
         "APP_APP_BUILD",
         "APP_APP_IDENTIFIER",
         "APP_APP_NAME",
@@ -330,6 +331,7 @@ class _AttributeNamesMeta(type):
         "NAVIGATION_ORIGIN",
         "NAVIGATION_ROUTE_ID",
         "NAVIGATION_TYPE",
+        "NEL_SAMPLING_FUNCTION",
         "NET_HOST_IP",
         "NET_HOST_NAME",
         "NET_HOST_PORT",
@@ -937,7 +939,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content, anthropic.tool_result.content
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -1064,6 +1066,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "17.1.0"
+    """
+
+    # Path: model/attributes/anthropic/anthropic__tool_result__content.json
+    ANTHROPIC_TOOL_RESULT_CONTENT: Literal["anthropic.tool_result.content"] = (
+        "anthropic.tool_result.content"
+    )
+    """The content of the tool result.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result
+    DEPRECATED: Use gen_ai.tool.call.result instead - Use gen_ai.tool.call.result for tool results.
+    Example: "rainy, 57°F"
     """
 
     # Path: model/attributes/app/app__app_build.json
@@ -2723,7 +2740,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/cache/cache__ttl.json
     CACHE_TTL: Literal["cache.ttl"] = "cache.ttl"
-    """The ttl of the cache in seconds
+    """The ttl (maximum lifetime) of the cache in seconds
 
     Type: int
     Apply Scrubbing: manual
@@ -4776,7 +4793,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
+    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.
 
     Type: str
     Apply Scrubbing: manual
@@ -4810,7 +4827,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__output__messages.json
     GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
-    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.
+    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.
 
     Type: str
     Apply Scrubbing: manual
@@ -5250,7 +5267,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result
+    Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
     Example: "rainy, 57°F"
     """
 
@@ -5302,7 +5319,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -5327,7 +5344,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
     DEPRECATED: Use gen_ai.tool.call.result instead
     Example: "rainy, 57°F"
     """
@@ -7110,7 +7127,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
-    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result
+    Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result, anthropic.tool_result.content
     DEPRECATED: Use gen_ai.tool.call.result instead - OTel uses gen_ai.tool.call.result for MCP tool results
     Example: "{\"output\": \"rainy\", \"toolCallId\": \"1\"}"
     """
@@ -7608,6 +7625,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "https://example.com/foo?bar=baz"
     """
 
+    # Path: model/attributes/nel/nel__sampling_fraction.json
+    NEL_SAMPLING_FRACTION: Literal["nel.sampling_fraction"] = "nel.sampling_fraction"
+    """The sampling fraction used to determine if the request should be sampled.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: nel.sampling_function
+    Example: 0.5
+    """
+
     # Path: model/attributes/nel/nel__sampling_function.json
     NEL_SAMPLING_FUNCTION: Literal["nel.sampling_function"] = "nel.sampling_function"
     """The sampling function used to determine if the request should be sampled.
@@ -7616,6 +7645,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: nel.sampling_fraction
+    DEPRECATED: Use nel.sampling_fraction instead - The correct name of this attribute is nel.sampling_fraction
     Example: 0.5
     """
 
@@ -9240,6 +9271,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "producer"
     Example: "consumer"
     Example: "internal"
+    """
+
+    # Path: model/attributes/sentry/sentry__link__type.json
+    SENTRY_LINK_TYPE: Literal["sentry.link.type"] = "sentry.link.type"
+    """Set on a span link. Describes the relationship between the span and the linked span.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "previous_trace"
+    Example: "next_trace"
+    Example: "cache_origin"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -12126,6 +12170,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.tool.call.result",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
             "gen_ai.tool.message",
             "gen_ai.tool.output",
             "mcp.tool.result.content",
@@ -12142,6 +12187,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "gen_ai.tool.message",
             "mcp.tool.result.content",
+            "anthropic.tool_result.content",
         ],
         changelog=[
             ChangelogEntry(
@@ -12353,6 +12399,41 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.7.0",
                 prs=[367],
                 description="Added angular.version attribute",
+            ),
+        ],
+    ),
+    "anthropic.tool_result.content": AttributeMetadata(
+        brief="The content of the tool result.",
+        type=AttributeType.STRING,
+        keys=(
+            "gen_ai.tool.call.result",
+            "ai.toolCall.result",
+            "anthropic.tool_result.content",
+            "gen_ai.tool.message",
+            "gen_ai.tool.output",
+            "mcp.tool.result.content",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="rainy, 57°F",
+        examples=["rainy, 57°F"],
+        deprecation=DeprecationInfo(
+            replacement="gen_ai.tool.call.result",
+            reason="Use gen_ai.tool.call.result for tool results.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=[
+            "gen_ai.tool.call.result",
+            "gen_ai.tool.output",
+            "gen_ai.tool.message",
+            "mcp.tool.result.content",
+            "ai.toolCall.result",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result",
             ),
         ],
     ),
@@ -14775,7 +14856,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "cache.ttl": AttributeMetadata(
-        brief="The ttl of the cache in seconds",
+        brief="The ttl (maximum lifetime) of the cache in seconds",
         type=AttributeType.INTEGER,
         keys=("cache.ttl",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17783,7 +17864,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -17799,6 +17880,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[650],
+                description="Describe the evaluation message shape for gen_ai.evaluate",
+            ),
             ChangelogEntry(
                 version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
             ),
@@ -17833,7 +17919,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.output.messages": AttributeMetadata(
-        brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+        brief='The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.output.messages",
@@ -17848,6 +17934,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[650],
+                description="Describe the evaluation message shape for gen_ai.evaluate",
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -18478,6 +18569,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.tool.call.result",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
             "gen_ai.tool.message",
             "gen_ai.tool.output",
             "mcp.tool.result.content",
@@ -18491,6 +18583,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.message",
             "mcp.tool.result.content",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -18559,6 +18652,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.tool.call.result",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
             "gen_ai.tool.message",
             "gen_ai.tool.output",
             "mcp.tool.result.content",
@@ -18575,6 +18669,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "mcp.tool.result.content",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -18604,6 +18699,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.tool.call.result",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
             "gen_ai.tool.message",
             "gen_ai.tool.output",
             "mcp.tool.result.content",
@@ -18620,6 +18716,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.message",
             "mcp.tool.result.content",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
         ],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[265]),
@@ -21321,6 +21418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "gen_ai.tool.call.result",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
             "gen_ai.tool.message",
             "gen_ai.tool.output",
             "mcp.tool.result.content",
@@ -21341,6 +21439,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.message",
             "gen_ai.tool.output",
             "ai.toolCall.result",
+            "anthropic.tool_result.content",
         ],
         changelog=[
             ChangelogEntry(
@@ -22136,15 +22235,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
         ],
     ),
-    "nel.sampling_function": AttributeMetadata(
-        brief="The sampling function used to determine if the request should be sampled.",
+    "nel.sampling_fraction": AttributeMetadata(
+        brief="The sampling fraction used to determine if the request should be sampled.",
         type=AttributeType.DOUBLE,
-        keys=("nel.sampling_function",),
+        keys=(
+            "nel.sampling_fraction",
+            "nel.sampling_function",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.5,
+        examples=[0.5],
+        aliases=["nel.sampling_function"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[668],
+                description="Added nel.sampling_fraction attribute",
+            ),
+        ],
+    ),
+    "nel.sampling_function": AttributeMetadata(
+        brief="The sampling function used to determine if the request should be sampled.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "nel.sampling_fraction",
+            "nel.sampling_function",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0.5,
+        deprecation=DeprecationInfo(
+            replacement="nel.sampling_fraction",
+            reason="The correct name of this attribute is nel.sampling_fraction",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["nel.sampling_fraction"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[668],
+                description="Deprecated in favor of nel.sampling_fraction",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[68]),
         ],
@@ -24578,6 +24712,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="span.kind"),
     ),
+    "sentry.link.type": AttributeMetadata(
+        brief="Set on a span link. Describes the relationship between the span and the linked span.",
+        type=AttributeType.STRING,
+        keys=("sentry.link.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="previous_trace",
+        examples=["previous_trace", "next_trace", "cache_origin"],
+        changelog=[
+            ChangelogEntry(
+                version="0.25.0",
+                prs=[656],
+                description="Added sentry.link.type attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute is exclusively set on span links.",
+            "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
+            "For known values, see Examples. Add new values to Examples.",
+        ],
+    ),
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
         type=AttributeType.BOOLEAN,
@@ -24899,7 +25055,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="replay.id"),
+        search_alias=SearchAlias(name="replay.id", deprecated_aliases=["replay_id"]),
     ),
     "sentry.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",
@@ -27586,6 +27742,7 @@ Attributes = TypedDict(
         "ai.values": str,
         "ai.warnings": List[str],
         "angular.version": str,
+        "anthropic.tool_result.content": str,
         "app.app_build": str,
         "app.app_identifier": str,
         "app.app_name": str,
@@ -28104,6 +28261,7 @@ Attributes = TypedDict(
         "nel.elapsed_time": int,
         "nel.phase": str,
         "nel.referrer": str,
+        "nel.sampling_fraction": float,
         "nel.sampling_function": float,
         "nel.type": str,
         "net.host.ip": str,
@@ -28235,6 +28393,7 @@ Attributes = TypedDict(
         "sentry.is_localhost": bool,
         "sentry.is_remote": bool,
         "sentry.kind": str,
+        "sentry.link.type": str,
         "sentry.main_thread": bool,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,

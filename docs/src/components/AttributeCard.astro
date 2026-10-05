@@ -7,6 +7,7 @@ import AttributeLink from './AttributeLink.astro';
 import InfoTooltip from './InfoTooltip.astro';
 import type { Attribute } from '../content.config';
 import { parseAttributeId } from '../utils/category';
+import { renderInlineMarkdown } from '../utils/markdown';
 
 interface Props {
   attribute: Attribute;
@@ -66,13 +67,13 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
     </div>
   </div>
   
-  <p class="text-sm text-text-secondary mb-4 leading-relaxed">{attribute.brief}</p>
+  <p class="text-sm text-text-secondary mb-4 leading-relaxed" set:html={renderInlineMarkdown(attribute.brief)} />
   
   <div class="flex flex-col gap-2">
     {attribute.apply_scrubbing.reason && (
       <div class="flex items-baseline gap-3 text-sm">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Scrubbing Reason</span>
-        <span class="text-text-secondary">{attribute.apply_scrubbing.reason}</span>
+        <span class="text-text-secondary" set:html={renderInlineMarkdown(attribute.apply_scrubbing.reason)} />
       </div>
     )}
     
@@ -148,7 +149,7 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
           <p class="text-sm m-0">No replacement available at this time.</p>
         )}
         {attribute.deprecation?.reason && (
-          <p class="mt-2 text-text-muted text-sm m-0">{attribute.deprecation.reason}</p>
+          <p class="mt-2 text-text-muted text-sm m-0" set:html={renderInlineMarkdown(attribute.deprecation.reason)} />
         )}
         {attribute.deprecation?._status && (
           <p class="mt-2 text-text-muted text-xs m-0">Status: <code class="text-xs">{attribute.deprecation._status}</code></p>
@@ -167,7 +168,7 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
       </summary>
       <ul class="mt-3 ml-5 flex flex-col gap-1.5 list-disc list-outside text-sm text-text-secondary leading-relaxed">
         {attribute.additional_context.map((note) => (
-          <li>{note}</li>
+          <li set:html={renderInlineMarkdown(note)} />
         ))}
       </ul>
     </details>
@@ -189,7 +190,7 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
               <a href={`https://github.com/getsentry/sentry-conventions/pull/${pr}`} class="text-xs text-accent hover:underline">#{pr}</a>
             ))}
             {entry.description && (
-              <span class="text-xs text-text-muted">{entry.description}</span>
+              <span class="text-xs text-text-muted" set:html={renderInlineMarkdown(entry.description)} />
             )}
           </div>
         ))}
