@@ -12721,6 +12721,29 @@ export const NEL_REFERRER = 'nel.referrer';
  */
 export type NEL_REFERRER_TYPE = string;
 
+// Path: model/attributes/nel/nel__sampling_fraction.json
+
+/**
+ * The sampling fraction used to determine if the request should be sampled. `nel.sampling_fraction`
+ *
+ * Attribute Value Type: `number` {@link NEL_SAMPLING_FRACTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link NEL_SAMPLING_FUNCTION} `nel.sampling_function`
+ *
+ * @example 0.5
+ */
+export const NEL_SAMPLING_FRACTION = 'nel.sampling_fraction';
+
+/**
+ * Type for {@link NEL_SAMPLING_FRACTION} nel.sampling_fraction
+ */
+export type NEL_SAMPLING_FRACTION_TYPE = number;
+
 // Path: model/attributes/nel/nel__sampling_function.json
 
 /**
@@ -12733,6 +12756,9 @@ export type NEL_REFERRER_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Aliases: {@link NEL_SAMPLING_FRACTION} `nel.sampling_fraction`
+ *
+ * @deprecated Use {@link NEL_SAMPLING_FRACTION} (nel.sampling_fraction) instead - The correct name of this attribute is nel.sampling_fraction
  * @example 0.5
  */
 export const NEL_SAMPLING_FUNCTION = 'nel.sampling_function';
@@ -20053,6 +20079,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'nel.elapsed_time': 'integer',
   'nel.phase': 'string',
   'nel.referrer': 'string',
+  'nel.sampling_fraction': 'double',
   'nel.sampling_function': 'double',
   'nel.type': 'string',
   'network.connection.effective_type': 'string',
@@ -20923,6 +20950,7 @@ export type AttributeName =
   | typeof NEL_ELAPSED_TIME
   | typeof NEL_PHASE
   | typeof NEL_REFERRER
+  | typeof NEL_SAMPLING_FRACTION
   | typeof NEL_SAMPLING_FUNCTION
   | typeof NEL_TYPE
   | typeof NETWORK_CONNECTION_EFFECTIVE_TYPE
@@ -30451,17 +30479,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://example.com/foo?bar=baz',
     changelog: [{ version: '0.1.0', prs: [68, 127] }],
   },
-  'nel.sampling_function': {
-    brief: 'The sampling function used to determine if the request should be sampled.',
+  'nel.sampling_fraction': {
+    brief: 'The sampling fraction used to determine if the request should be sampled.',
     type: 'double',
-    keys: ['nel.sampling_function'],
+    keys: ['nel.sampling_fraction', 'nel.sampling_function'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 0.5,
+    examples: [0.5],
+    aliases: ['nel.sampling_function'],
+    changelog: [{ version: 'next', prs: [668], description: 'Added nel.sampling_fraction attribute' }],
+  },
+  'nel.sampling_function': {
+    brief: 'The sampling function used to determine if the request should be sampled.',
+    type: 'double',
+    keys: ['nel.sampling_fraction', 'nel.sampling_function'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0.5,
+    deprecation: {
+      replacement: 'nel.sampling_fraction',
+      reason: 'The correct name of this attribute is nel.sampling_fraction',
+      status: 'backfill',
+    },
+    aliases: ['nel.sampling_fraction'],
     changelog: [
+      { version: 'next', prs: [668], description: 'Deprecated in favor of nel.sampling_fraction' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [68] },
     ],
@@ -35788,6 +35837,7 @@ export type Attributes = {
   [NEL_ELAPSED_TIME]?: NEL_ELAPSED_TIME_TYPE;
   [NEL_PHASE]?: NEL_PHASE_TYPE;
   [NEL_REFERRER]?: NEL_REFERRER_TYPE;
+  [NEL_SAMPLING_FRACTION]?: NEL_SAMPLING_FRACTION_TYPE;
   [NEL_SAMPLING_FUNCTION]?: NEL_SAMPLING_FUNCTION_TYPE;
   [NEL_TYPE]?: NEL_TYPE_TYPE;
   [NETWORK_CONNECTION_EFFECTIVE_TYPE]?: NETWORK_CONNECTION_EFFECTIVE_TYPE_TYPE;
