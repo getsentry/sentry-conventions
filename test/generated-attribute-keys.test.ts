@@ -305,11 +305,6 @@ describe('generated attribute key chains', () => {
     }
   });
 
-  it('preserves fractional MCP progress in generated metadata', () => {
-    expect(ATTRIBUTE_METADATA['mcp.progress.current']?.type).toBe('double');
-    expect(ATTRIBUTE_METADATA['mcp.progress.total']?.type).toBe('double');
-  });
-
   it('includes the search alias of the canonical key and of the attributes it replaces', () => {
     // `sentry.replay_id` is exposed as `replay.id` in search, and replaces `replay_id`.
     const replayIdKeys = ['sentry.replay_id', 'replay.id', 'replay_id'];

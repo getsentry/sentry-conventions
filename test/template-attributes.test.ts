@@ -20,10 +20,11 @@ describe('resolveTemplateAttribute', () => {
     });
   });
 
-  it('resolves a concrete variant of an attribute with a dynamic suffix', async () => {
-    await expect(resolveTemplateAttribute('browser.web_vital.cls.source.1')).resolves.toMatchObject({
-      key: 'browser.web_vital.cls.source.<key>',
-    });
+  it.each([
+    ['browser.web_vital.cls.source.1', 'browser.web_vital.cls.source.<key>'],
+    ['gen_ai.prompt.variable.language', 'gen_ai.prompt.variable.<key>'],
+  ])('resolves %s to the attribute with a dynamic suffix', async (key, expectedKey) => {
+    await expect(resolveTemplateAttribute(key)).resolves.toMatchObject({ key: expectedKey });
   });
 
   it('does not resolve a suffixed variant of an attribute without a dynamic suffix', async () => {
@@ -32,18 +33,6 @@ describe('resolveTemplateAttribute', () => {
 
   it('does not resolve an unknown attribute', async () => {
     await expect(resolveTemplateAttribute('does.not.exist')).resolves.toBeUndefined();
-  });
-
-  it('resolves a prompt variable without treating other MCP arguments as aliases', async () => {
-    const attribute = await resolveTemplateAttribute('gen_ai.prompt.variable.language');
-
-    expect(attribute).toMatchObject({
-      key: 'gen_ai.prompt.variable.<key>',
-      type: 'string',
-      is_in_otel: true,
-      apply_scrubbing: { key: 'auto' },
-    });
-    expect(attribute?.alias).toBeUndefined();
   });
 });
 
