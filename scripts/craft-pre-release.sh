@@ -30,7 +30,9 @@ cd javascript/sentry-conventions
 # Do not tag and commit changes made by "npm version"
 export npm_config_git_tag_version=false
 
-npm version "${NEW_VERSION}"
+# --no-workspaces-update: otherwise npm reifies the whole workspace afterwards and rewrites the
+# root yarn.lock in its own format, dropping optional native binaries for other platforms.
+npm version "${NEW_VERSION}" --no-workspaces-update
 
 # ==================== PY ====================
 
