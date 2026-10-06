@@ -7791,7 +7791,7 @@ export type GEN_AI_INPUT_MESSAGES_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
- * The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. `gen_ai.operation.name`
+ * The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'evaluate', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. `gen_ai.operation.name`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_NAME_TYPE}
  *
@@ -26732,7 +26732,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.operation.name': {
     brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'evaluate', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
     type: 'string',
     keys: ['gen_ai.operation.name'],
     applyScrubbing: {
@@ -26742,6 +26742,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
+      { version: 'next', prs: [680], description: "Added 'evaluate' as a well-known value." },
       { version: '0.4.0', prs: [225] },
       { version: '0.1.0', prs: [62, 127] },
     ],

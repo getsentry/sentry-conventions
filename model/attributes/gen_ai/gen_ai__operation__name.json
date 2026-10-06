@@ -11,7 +11,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [225],
+      "prs": [680],
       "description": "Added 'evaluate' as a well-known value."
     },
     {
