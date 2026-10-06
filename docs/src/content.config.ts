@@ -17,7 +17,7 @@ const attributeSchema = z
     key: z.string(),
     brief: z.string(),
     has_dynamic_suffix: z.boolean().optional(),
-    type: z.enum(['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]']),
+    type: z.enum(['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]', 'any']),
     apply_scrubbing: z.object({
       key: z.enum(['auto', 'manual', 'never']),
       reason: z.string().optional(),
