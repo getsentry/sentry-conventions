@@ -22259,7 +22259,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     changelog: [
       {
-        version: 'next',
+        version: '0.26.0',
+        prs: [660],
         description: 'Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result',
       },
     ],
@@ -26754,7 +26755,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
-      { version: 'next', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
+      { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
@@ -26806,7 +26807,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
-      { version: 'next', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
+      { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -30521,7 +30522,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     examples: [0.5],
     aliases: ['nel.sampling_function'],
-    changelog: [{ version: 'next', prs: [668], description: 'Added nel.sampling_fraction attribute' }],
+    changelog: [{ version: '0.26.0', prs: [668], description: 'Added nel.sampling_fraction attribute' }],
   },
   'nel.sampling_function': {
     brief: 'The sampling function used to determine if the request should be sampled.',
@@ -30540,7 +30541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['nel.sampling_fraction'],
     changelog: [
-      { version: 'next', prs: [668], description: 'Deprecated in favor of nel.sampling_fraction' },
+      { version: '0.26.0', prs: [668], description: 'Deprecated in favor of nel.sampling_fraction' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [68] },
     ],
@@ -34863,7 +34864,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "vercel.ai.telemetry.metadata.tenantId='acme'",
     examples: ["vercel.ai.telemetry.metadata.tenantId='acme'"],
-    changelog: [{ version: 'next', prs: [662], description: 'Added vercel.ai.telemetry.metadata.<key> attribute' }],
+    changelog: [{ version: '0.26.0', prs: [662], description: 'Added vercel.ai.telemetry.metadata.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.',
       "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",

@@ -12446,7 +12446,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
+                prs=[660],
                 description="Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result",
             ),
         ],
@@ -17895,7 +17896,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[650],
                 description="Describe the evaluation message shape for gen_ai.evaluate",
             ),
@@ -17949,7 +17950,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[650],
                 description="Describe the evaluation message shape for gen_ai.evaluate",
             ),
@@ -22264,7 +22265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["nel.sampling_function"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[668],
                 description="Added nel.sampling_fraction attribute",
             ),
@@ -22289,7 +22290,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["nel.sampling_fraction"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[668],
                 description="Deprecated in favor of nel.sampling_fraction",
             ),
@@ -27273,7 +27274,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["vercel.ai.telemetry.metadata.tenantId='acme'"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[662],
                 description="Added vercel.ai.telemetry.metadata.<key> attribute",
             ),
