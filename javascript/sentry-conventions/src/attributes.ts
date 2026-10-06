@@ -6341,7 +6341,7 @@ export type DEVICE_STORAGE_SIZE_TYPE = number;
 // Path: model/attributes/device/device__thermal_state.json
 
 /**
- * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`. `device.thermal_state`
+ * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum. `device.thermal_state`
  *
  * Attribute Value Type: `string` {@link DEVICE_THERMAL_STATE_TYPE}
  *
@@ -7791,7 +7791,7 @@ export type GEN_AI_INPUT_MESSAGES_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
- * The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. `gen_ai.operation.name`
+ * The name of the operation being performed. `gen_ai.operation.name`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_NAME_TYPE}
  *
@@ -7812,7 +7812,7 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__operation__type.json
 
 /**
- * The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI `gen_ai.operation.type`
+ * The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI `gen_ai.operation.type`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_TYPE_TYPE}
  *
@@ -15102,7 +15102,7 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
 // Path: model/attributes/sentry/sentry__category.json
 
 /**
- * The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'. `sentry.category`
+ * The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). `sentry.category`
  *
  * Attribute Value Type: `string` {@link SENTRY_CATEGORY_TYPE}
  *
@@ -16393,7 +16393,7 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
 // Path: model/attributes/sentry/sentry__segment__name__source.json
 
 /**
- * The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.segment.name.source`
+ * The source of the segment span name. Should only be set on segment spans. `sentry.segment.name.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_SOURCE_TYPE}
  *
@@ -16440,7 +16440,7 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 // Path: model/attributes/sentry/sentry__source.json
 
 /**
- * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers. `sentry.source`
+ * The source of a span, also referred to as transaction source. `sentry.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SOURCE_TYPE}
  *
@@ -16462,7 +16462,7 @@ export type SENTRY_SOURCE_TYPE = string;
 // Path: model/attributes/sentry/sentry__span__source.json
 
 /**
- * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers. `sentry.span.source`
+ * The source of a span, also referred to as transaction source. `sentry.span.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SPAN_SOURCE_TYPE}
  *
@@ -25700,8 +25700,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.storage_size attribute' }],
   },
   'device.thermal_state': {
-    brief:
-      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    brief: "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
     type: 'string',
     keys: ['device.thermal_state'],
     applyScrubbing: {
@@ -26762,8 +26761,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.operation.name': {
-    brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+    brief: 'The name of the operation being performed.',
     type: 'string',
     keys: ['gen_ai.operation.name'],
     applyScrubbing: {
@@ -26779,7 +26777,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.operation.type': {
     brief:
-      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+      'The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI',
     type: 'string',
     keys: ['gen_ai.operation.type'],
     applyScrubbing: {
@@ -32203,7 +32201,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'sentry.category': {
     brief:
-      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+      'The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).',
     type: 'string',
     keys: ['sentry.category', 'span.category'],
     applyScrubbing: {
@@ -33058,8 +33056,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.segment.name.source': {
-    brief:
-      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    brief: 'The source of the segment span name. Should only be set on segment spans.',
     type: 'string',
     keys: ['sentry.segment.name.source'],
     applyScrubbing: {
@@ -33091,8 +33088,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     type: 'string',
     keys: ['sentry.source'],
     applyScrubbing: {
@@ -33111,8 +33107,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'sentry.span.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     type: 'string',
     keys: ['sentry.span.source'],
     applyScrubbing: {
