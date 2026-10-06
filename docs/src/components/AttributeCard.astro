@@ -8,6 +8,7 @@ import InfoTooltip from './InfoTooltip.astro';
 import type { Attribute } from '../content.config';
 import { parseAttributeId } from '../utils/category';
 import { renderInlineMarkdown } from '../utils/markdown';
+import { attributeSlug } from '../utils/attributeUrl';
 
 interface Props {
   attribute: Attribute;
@@ -20,7 +21,7 @@ const { attribute, id, showCategory = false, defaultHidden = false } = Astro.pro
 
 const { category } = parseAttributeId(id);
 const isDeprecated = !!attribute.deprecation;
-const anchorId = attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '');
+const anchorId = attributeSlug(attribute.key);
 const rawJson = JSON.stringify(attribute, null, 2);
 const examples = attribute.examples ?? (attribute.example !== undefined ? [attribute.example] : []);
 ---
