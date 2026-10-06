@@ -97,6 +97,20 @@ Span name conventions are organized loosely by type of span operation. To create
 
 Remember to run `yarn run generate` after editing or creating a `name` convention to recreate the documentation and auto-generated code.
 
+## Adding a new metric
+
+Run `yarn run create:metric` to create a metric. There are two modes:
+
+- Interactive mode: This will prompt you to enter information about the metric.
+- Non-interactive mode: This will use the information provided to create the metric. You'll need to explicitly specify all the needed information when running the command.
+
+1. Check OpenTelemetry for an existing metric. Prefer OTel alignment if possible.
+2. If the metric uses attributes to describe its values, list their keys in `attributes`. Reuse existing attributes or [add new ones](#adding-a-new-attribute) if needed.
+3. Run `yarn run create:metric`. The script validates the definition against `schemas/metric.schema.json` and creates the file in `model/metrics/<namespace>/`.
+4. Run `yarn test:js test/metrics.test.ts` to validate the definitions and attribute references.
+
+Run `yarn run create:metric --help` to see the available options and examples.
+
 ## Code Generation
 
 After you edit an attribute or add a new one, run `yarn run generate` to generate and format the code, which are generated from the json files stored in the `model` directory.
