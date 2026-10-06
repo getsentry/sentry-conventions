@@ -1,0 +1,26 @@
+{
+  "key": "vercel.ai.telemetry.metadata.<key>",
+  "brief": "Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "Metadata is user-defined and can contain user data"
+  },
+  "additional_context": [
+    "Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.",
+    "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
+    "The Vercel AI SDK also allows numbers, booleans and arrays as metadata values. SDKs MUST convert these values to strings.",
+    "This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes."
+  ],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["vercel.ai.telemetry.metadata.tenantId='acme'"],
+  "changelog": [
+    {
+      "version": "0.26.0",
+      "prs": [662],
+      "description": "Added vercel.ai.telemetry.metadata.<key> attribute"
+    }
+  ]
+}

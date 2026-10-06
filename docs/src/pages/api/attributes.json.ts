@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { attributeSlug } from '../../utils/attributeUrl';
 
 export const GET: APIRoute = async () => {
   const allAttributes = await getCollection('attributes');
@@ -10,7 +11,7 @@ export const GET: APIRoute = async () => {
     const category = attr.id.includes('/') ? attr.id.split('/')[0] : 'general';
 
     // Build the URL with anchor hash (matches AttributeCard.astro format)
-    const anchorId = attr.data.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '');
+    const anchorId = attributeSlug(attr.data.key);
     // Use import.meta.env.BASE_URL for the base path
     const baseUrl = import.meta.env.BASE_URL || '/';
     const url = `${baseUrl}attributes/${category}/#${anchorId}`;
