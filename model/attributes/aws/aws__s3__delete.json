@@ -1,6 +1,7 @@
 {
   "key": "aws.s3.delete",
   "brief": "The delete request container that specifies the objects to be deleted.",
+  "additional_context": ["Applicable only to the delete-objects operation, corresponding to its Delete parameter."],
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"

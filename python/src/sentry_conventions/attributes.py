@@ -14172,6 +14172,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0", prs=[480], description="Added aws.s3.bucket attribute"
             ),
         ],
+        additional_context=[
+            "Applicable to S3 operations that reference a bucket and require the bucket name as a mandatory parameter; this is almost all S3 operations except list-buckets."
+        ],
     ),
     "aws.s3.copy_source": AttributeMetadata(
         brief="The source object (in the form bucket/key) for the copy operation.",
@@ -14188,6 +14191,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[672],
                 description="Added aws.s3.copy_source attribute",
             ),
+        ],
+        additional_context=[
+            "Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter."
         ],
     ),
     "aws.s3.delete": AttributeMetadata(
@@ -14206,6 +14212,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="next", prs=[672], description="Added aws.s3.delete attribute"
             ),
         ],
+        additional_context=[
+            "Applicable only to the delete-objects operation, corresponding to its Delete parameter."
+        ],
     ),
     "aws.s3.key": AttributeMetadata(
         brief="The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.",
@@ -14220,6 +14229,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next", prs=[672], description="Added aws.s3.key attribute"
             ),
+        ],
+        additional_context=[
+            "Applicable to object-related S3 operations that require an object key, including copy-object, delete-object, get-object, head-object, put-object, restore-object, select-object-content, abort-multipart-upload, complete-multipart-upload, create-multipart-upload, list-parts, upload-part, and upload-part-copy."
         ],
     ),
     "aws.s3.part_number": AttributeMetadata(
@@ -14238,6 +14250,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added aws.s3.part_number attribute",
             ),
         ],
+        additional_context=[
+            "Applicable only to the upload-part and upload-part-copy operations."
+        ],
     ),
     "aws.s3.upload_id": AttributeMetadata(
         brief="Upload ID that identifies the multipart upload.",
@@ -14254,6 +14269,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[672],
                 description="Added aws.s3.upload_id attribute",
             ),
+        ],
+        additional_context=[
+            "Applicable to the abort-multipart-upload, complete-multipart-upload, list-parts, upload-part, and upload-part-copy operations."
         ],
     ),
     "aws.secretsmanager.secret.arn": AttributeMetadata(

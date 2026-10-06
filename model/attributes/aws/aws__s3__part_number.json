@@ -1,6 +1,7 @@
 {
   "key": "aws.s3.part_number",
   "brief": "The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.",
+  "additional_context": ["Applicable only to the upload-part and upload-part-copy operations."],
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"

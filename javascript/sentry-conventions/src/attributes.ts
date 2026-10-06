@@ -23719,6 +23719,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ot-demo-test',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.s3.bucket attribute' }],
+    additionalContext: [
+      'Applicable to S3 operations that reference a bucket and require the bucket name as a mandatory parameter; this is almost all S3 operations except list-buckets.',
+    ],
   },
   'aws.s3.copy_source': {
     brief: 'The source object (in the form bucket/key) for the copy operation.',
@@ -23732,6 +23735,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'someFile.yml',
     examples: ['someFile.yml'],
     changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
+    additionalContext: [
+      'Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter.',
+    ],
   },
   'aws.s3.delete': {
     brief: 'The delete request container that specifies the objects to be deleted.',
@@ -23745,6 +23751,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
     examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
     changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.delete attribute' }],
+    additionalContext: ['Applicable only to the delete-objects operation, corresponding to its Delete parameter.'],
   },
   'aws.s3.key': {
     brief: 'The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.',
@@ -23758,6 +23765,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'someFile.yml',
     examples: ['someFile.yml'],
     changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.key attribute' }],
+    additionalContext: [
+      'Applicable to object-related S3 operations that require an object key, including copy-object, delete-object, get-object, head-object, put-object, restore-object, select-object-content, abort-multipart-upload, complete-multipart-upload, create-multipart-upload, list-parts, upload-part, and upload-part-copy.',
+    ],
   },
   'aws.s3.part_number': {
     brief:
@@ -23772,6 +23782,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 3456,
     examples: [3456],
     changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.part_number attribute' }],
+    additionalContext: ['Applicable only to the upload-part and upload-part-copy operations.'],
   },
   'aws.s3.upload_id': {
     brief: 'Upload ID that identifies the multipart upload.',
@@ -23785,6 +23796,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ',
     examples: ['dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ'],
     changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.upload_id attribute' }],
+    additionalContext: [
+      'Applicable to the abort-multipart-upload, complete-multipart-upload, list-parts, upload-part, and upload-part-copy operations.',
+    ],
   },
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
