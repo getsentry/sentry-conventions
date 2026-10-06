@@ -11,7 +11,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [671],
+      "prs": [672],
       "description": "Added aws.dynamodb.attributes_to_get attribute"
     }
   ]

@@ -11,7 +11,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [644],
+      "prs": [672],
       "description": "Added aws.s3.delete attribute"
     }
   ]

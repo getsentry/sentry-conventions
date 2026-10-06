@@ -11,7 +11,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [640],
+      "prs": [672],
       "description": "Added aws.step_functions.execution.arn attribute"
     }
   ]
