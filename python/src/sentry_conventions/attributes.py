@@ -331,6 +331,7 @@ class _AttributeNamesMeta(type):
         "NAVIGATION_ORIGIN",
         "NAVIGATION_ROUTE_ID",
         "NAVIGATION_TYPE",
+        "NEL_SAMPLING_FUNCTION",
         "NET_HOST_IP",
         "NET_HOST_NAME",
         "NET_HOST_PORT",
@@ -4792,7 +4793,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.
+    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.
 
     Type: str
     Apply Scrubbing: manual
@@ -4890,7 +4891,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__output__messages.json
     GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
-    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.
+    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.
 
     Type: str
     Apply Scrubbing: manual
@@ -7688,6 +7689,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "https://example.com/foo?bar=baz"
     """
 
+    # Path: model/attributes/nel/nel__sampling_fraction.json
+    NEL_SAMPLING_FRACTION: Literal["nel.sampling_fraction"] = "nel.sampling_fraction"
+    """The sampling fraction used to determine if the request should be sampled.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: nel.sampling_function
+    Example: 0.5
+    """
+
     # Path: model/attributes/nel/nel__sampling_function.json
     NEL_SAMPLING_FUNCTION: Literal["nel.sampling_function"] = "nel.sampling_function"
     """The sampling function used to determine if the request should be sampled.
@@ -7696,6 +7709,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: nel.sampling_fraction
+    DEPRECATED: Use nel.sampling_fraction instead - The correct name of this attribute is nel.sampling_fraction
     Example: 0.5
     """
 
@@ -10947,6 +10962,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     """
 
+    # Path: model/attributes/vercel/vercel__ai__telemetry__metadata__[key].json
+    VERCEL_AI_TELEMETRY_METADATA_KEY: Literal["vercel.ai.telemetry.metadata.<key>"] = (
+        "vercel.ai.telemetry.metadata.<key>"
+    )
+    """Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.
+
+    Type: str
+    Apply Scrubbing: auto - Metadata is user-defined and can contain user data
+    Defined in OTEL: No
+    Visibility: public
+    Has Dynamic Suffix: true
+    Example: "vercel.ai.telemetry.metadata.tenantId='acme'"
+    """
+
     # Path: model/attributes/vercel/vercel__branch.json
     VERCEL_BRANCH: Literal["vercel.branch"] = "vercel.branch"
     """Git branch name for Vercel project
@@ -12481,7 +12510,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
+                prs=[660],
                 description="Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result",
             ),
         ],
@@ -17913,7 +17943,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -17929,6 +17959,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
+            ChangelogEntry(
+                version="0.26.0",
+                prs=[650],
+                description="Describe the evaluation message shape for gen_ai.evaluate",
+            ),
             ChangelogEntry(
                 version="0.21.0", prs=[583], description="Added ai.prompt as an alias"
             ),
@@ -18058,7 +18093,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.output.messages": AttributeMetadata(
-        brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+        brief='The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.output.messages",
@@ -18073,6 +18108,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
+            ChangelogEntry(
+                version="0.26.0",
+                prs=[650],
+                description="Describe the evaluation message shape for gen_ai.evaluate",
+            ),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
@@ -22369,15 +22409,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[68, 127]),
         ],
     ),
-    "nel.sampling_function": AttributeMetadata(
-        brief="The sampling function used to determine if the request should be sampled.",
+    "nel.sampling_fraction": AttributeMetadata(
+        brief="The sampling fraction used to determine if the request should be sampled.",
         type=AttributeType.DOUBLE,
-        keys=("nel.sampling_function",),
+        keys=(
+            "nel.sampling_fraction",
+            "nel.sampling_function",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=0.5,
+        examples=[0.5],
+        aliases=["nel.sampling_function"],
         changelog=[
+            ChangelogEntry(
+                version="0.26.0",
+                prs=[668],
+                description="Added nel.sampling_fraction attribute",
+            ),
+        ],
+    ),
+    "nel.sampling_function": AttributeMetadata(
+        brief="The sampling function used to determine if the request should be sampled.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "nel.sampling_fraction",
+            "nel.sampling_function",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0.5,
+        deprecation=DeprecationInfo(
+            replacement="nel.sampling_fraction",
+            reason="The correct name of this attribute is nel.sampling_fraction",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["nel.sampling_fraction"],
+        changelog=[
+            ChangelogEntry(
+                version="0.26.0",
+                prs=[668],
+                description="Deprecated in favor of nel.sampling_fraction",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.1.0", prs=[68]),
         ],
@@ -27343,6 +27418,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "vercel.ai.telemetry.metadata.<key>": AttributeMetadata(
+        brief="Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.",
+        type=AttributeType.STRING,
+        keys=("vercel.ai.telemetry.metadata.<key>",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Metadata is user-defined and can contain user data",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        has_dynamic_suffix=True,
+        example="vercel.ai.telemetry.metadata.tenantId='acme'",
+        examples=["vercel.ai.telemetry.metadata.tenantId='acme'"],
+        changelog=[
+            ChangelogEntry(
+                version="0.26.0",
+                prs=[662],
+                description="Added vercel.ai.telemetry.metadata.<key> attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.",
+            "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
+            "The Vercel AI SDK also allows numbers, booleans and arrays as metadata values. SDKs MUST convert these values to strings.",
+            "This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.",
+        ],
+    ),
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
         type=AttributeType.STRING,
@@ -28365,6 +28467,7 @@ Attributes = TypedDict(
         "nel.elapsed_time": int,
         "nel.phase": str,
         "nel.referrer": str,
+        "nel.sampling_fraction": float,
         "nel.sampling_function": float,
         "nel.type": str,
         "net.host.ip": str,
@@ -28627,6 +28730,7 @@ Attributes = TypedDict(
         "user.name": str,
         "user.roles": List[str],
         "user_agent.original": str,
+        "vercel.ai.telemetry.metadata.<key>": str,
         "vercel.branch": str,
         "vercel.build_id": str,
         "vercel.deployment_id": str,

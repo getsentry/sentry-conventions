@@ -7,8 +7,19 @@
   },
   "is_in_otel": false,
   "example": 0.5,
+  "alias": ["nel.sampling_fraction"],
+  "deprecation": {
+    "replacement": "nel.sampling_fraction",
+    "reason": "The correct name of this attribute is nel.sampling_fraction",
+    "_status": "backfill"
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.26.0",
+      "prs": [668],
+      "description": "Deprecated in favor of nel.sampling_fraction"
+    },
     {
       "version": "0.4.0",
       "prs": [228]

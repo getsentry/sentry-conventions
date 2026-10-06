@@ -24,6 +24,7 @@
         "gen_ai",
         "gen_ai.chat",
         "gen_ai.embeddings",
+        "gen_ai.evaluate",
         "gen_ai.generate_content",
         "gen_ai.rerank",
         "gen_ai.responses",
@@ -36,6 +37,7 @@
         "text_completion gpt-3.5-turbo-instruct",
         "generate_content gemini-2.0-flash-001",
         "embeddings text-embedding-3-small",
+        "evaluate jev-latest",
         "chat"
       ]
     },

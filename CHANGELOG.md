@@ -1,3 +1,31 @@
+## 0.26.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add `vercel.ai.telemetry.metadata.<key>` attribute by @isaacs in [#662](https://github.com/getsentry/sentry-conventions/pull/662)
+- Add `nel.sampling_fraction` by @loewenheim in [#668](https://github.com/getsentry/sentry-conventions/pull/668)
+
+#### Op
+
+- Add gen_ai.evaluate op by @andreiborza in [#650](https://github.com/getsentry/sentry-conventions/pull/650)
+- Deprecate framework-specific span ops by @Lms24 in [#622](https://github.com/getsentry/sentry-conventions/pull/622)
+- Add span op deprecation support by @Lms24 in [#621](https://github.com/getsentry/sentry-conventions/pull/621)
+
+### Bug Fixes 🐛
+
+- (descriptions) Define template substitution for array values by @s1gr1d in [#663](https://github.com/getsentry/sentry-conventions/pull/663)
+- (gen_ai) Map Anthropic tool results to canonical attribute by @obostjancic in [#660](https://github.com/getsentry/sentry-conventions/pull/660)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump brace-expansion from 5.0.9 to 5.0.12 by @dependabot in [#665](https://github.com/getsentry/sentry-conventions/pull/665)
+- Bump devalue from 5.9.2 to 5.9.4 by @dependabot in [#666](https://github.com/getsentry/sentry-conventions/pull/666)
+- Bump dompurify from 3.4.13 to 3.4.16 by @dependabot in [#664](https://github.com/getsentry/sentry-conventions/pull/664)
+
 ## 0.25.0
 
 ### New Features ✨

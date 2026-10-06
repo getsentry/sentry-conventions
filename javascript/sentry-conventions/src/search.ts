@@ -3280,7 +3280,14 @@ export const SEARCH_NEL__PHASE = 'nel.phase';
 export const SEARCH_NEL__REFERRER = 'nel.referrer';
 
 /**
+ * Search name for {@link attributes.NEL_SAMPLING_FRACTION}. `nel.sampling_fraction`
+ */
+export const SEARCH_NEL__SAMPLING_FRACTION = 'nel.sampling_fraction';
+
+/**
  * Search name for {@link attributes.NEL_SAMPLING_FUNCTION}. `nel.sampling_function`
+ *
+ * @deprecated Use {@link SEARCH_NEL__SAMPLING_FRACTION} (`nel.sampling_fraction`) instead
  */
 export const SEARCH_NEL__SAMPLING_FUNCTION = 'nel.sampling_function';
 
@@ -4869,6 +4876,11 @@ export const SEARCH_USER__USERNAME = 'user.username';
 export const SEARCH_USER_AGENT__ORIGINAL = 'user_agent.original';
 
 /**
+ * Search name for {@link attributes.VERCEL_AI_TELEMETRY_METADATA_KEY}. `vercel.ai.telemetry.metadata.<key>`
+ */
+export const SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
  * Search name for {@link attributes.VERCEL_BRANCH}. `vercel.branch`
  */
 export const SEARCH_VERCEL__BRANCH = 'vercel.branch';
@@ -5629,6 +5641,7 @@ export type AttributeSearchName =
   | typeof SEARCH_NEL__ELAPSED_TIME
   | typeof SEARCH_NEL__PHASE
   | typeof SEARCH_NEL__REFERRER
+  | typeof SEARCH_NEL__SAMPLING_FRACTION
   | typeof SEARCH_NEL__SAMPLING_FUNCTION
   | typeof SEARCH_NEL__TYPE
   | typeof SEARCH_NET__HOST__IP
@@ -5906,6 +5919,7 @@ export type AttributeSearchName =
   | typeof SEARCH_USER__ROLES
   | typeof SEARCH_USER__USERNAME
   | typeof SEARCH_USER_AGENT__ORIGINAL
+  | typeof SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY
   | typeof SEARCH_VERCEL__BRANCH
   | typeof SEARCH_VERCEL__BUILD_ID
   | typeof SEARCH_VERCEL__DEPLOYMENT_ID
@@ -8191,7 +8205,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
     deprecationChain: [
       'gen_ai.input.messages',
       'ai.input_messages',
@@ -8255,7 +8269,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls.",
+      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -9778,11 +9792,17 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: "request's referrer, as determined by the referrer policy associated with its client.",
     deprecationChain: ['nel.referrer'],
   },
+  'nel.sampling_fraction': {
+    canonicalName: 'nel.sampling_fraction',
+    type: 'double',
+    brief: 'The sampling fraction used to determine if the request should be sampled.',
+    deprecationChain: ['nel.sampling_fraction', 'nel.sampling_function'],
+  },
   'nel.sampling_function': {
-    canonicalName: 'nel.sampling_function',
+    canonicalName: 'nel.sampling_fraction',
     type: 'double',
     brief: 'The sampling function used to determine if the request should be sampled.',
-    deprecationChain: ['nel.sampling_function'],
+    deprecationChain: ['nel.sampling_fraction', 'nel.sampling_function'],
   },
   'nel.type': {
     canonicalName: 'nel.type',
@@ -11471,6 +11491,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     deprecationChain: ['user_agent.original', 'http.user_agent'],
+  },
+  'vercel.ai.telemetry.metadata.<key>': {
+    canonicalName: 'vercel.ai.telemetry.metadata.<key>',
+    type: 'string',
+    brief:
+      'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
+    deprecationChain: ['vercel.ai.telemetry.metadata.<key>'],
   },
   'vercel.branch': {
     canonicalName: 'vercel.branch',

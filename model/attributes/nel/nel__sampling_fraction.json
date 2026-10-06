@@ -1,0 +1,19 @@
+{
+  "key": "nel.sampling_fraction",
+  "brief": "The sampling fraction used to determine if the request should be sampled.",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [0.5],
+  "alias": ["nel.sampling_function"],
+  "changelog": [
+    {
+      "version": "0.26.0",
+      "prs": [668],
+      "description": "Added nel.sampling_fraction attribute"
+    }
+  ]
+}
