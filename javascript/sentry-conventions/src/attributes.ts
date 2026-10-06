@@ -23102,7 +23102,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['lives', 'id'],
     examples: [['lives', 'id']],
-    changelog: [{ version: 'next', prs: [671], description: 'Added aws.dynamodb.attributes_to_get attribute' }],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.dynamodb.attributes_to_get attribute' }],
   },
   'aws.dynamodb.attribute_definitions': {
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
@@ -23731,7 +23731,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: 'next', prs: [644], description: 'Added aws.s3.copy_source attribute' }],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
   },
   'aws.s3.delete': {
     brief: 'The delete request container that specifies the objects to be deleted.',
@@ -23744,7 +23744,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
     examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
-    changelog: [{ version: 'next', prs: [644], description: 'Added aws.s3.delete attribute' }],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.delete attribute' }],
   },
   'aws.s3.key': {
     brief: 'The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.',
@@ -23757,7 +23757,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: 'next', prs: [644], description: 'Added aws.s3.key attribute' }],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.key attribute' }],
   },
   'aws.s3.part_number': {
     brief:
@@ -23771,7 +23771,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 3456,
     examples: [3456],
-    changelog: [{ version: 'next', prs: [644], description: 'Added aws.s3.part_number attribute' }],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.part_number attribute' }],
   },
   'aws.s3.upload_id': {
     brief: 'Upload ID that identifies the multipart upload.',
@@ -23784,7 +23784,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ',
     examples: ['dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ'],
-    changelog: [{ version: 'next', prs: [644], description: 'Added aws.s3.upload_id attribute' }],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.upload_id attribute' }],
   },
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
@@ -23823,7 +23823,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue',
     examples: ['https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue'],
-    changelog: [{ version: 'next', prs: [671], description: 'Added aws.sqs.queue.url attribute' }],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.sqs.queue.url attribute' }],
   },
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
@@ -23848,7 +23848,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution',
     examples: ['arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution'],
-    changelog: [{ version: 'next', prs: [640], description: 'Added aws.step_functions.execution.arn attribute' }],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.step_functions.execution.arn attribute' }],
   },
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',

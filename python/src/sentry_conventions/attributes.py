@@ -13434,7 +13434,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[671],
+                prs=[672],
                 description="Added aws.dynamodb.attributes_to_get attribute",
             ),
         ],
@@ -14185,7 +14185,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[644],
+                prs=[672],
                 description="Added aws.s3.copy_source attribute",
             ),
         ],
@@ -14203,7 +14203,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[644], description="Added aws.s3.delete attribute"
+                version="next", prs=[672], description="Added aws.s3.delete attribute"
             ),
         ],
     ),
@@ -14218,7 +14218,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["someFile.yml"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[644], description="Added aws.s3.key attribute"
+                version="next", prs=[672], description="Added aws.s3.key attribute"
             ),
         ],
     ),
@@ -14234,7 +14234,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[644],
+                prs=[672],
                 description="Added aws.s3.part_number attribute",
             ),
         ],
@@ -14251,7 +14251,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[644],
+                prs=[672],
                 description="Added aws.s3.upload_id attribute",
             ),
         ],
@@ -14300,7 +14300,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[671],
+                prs=[672],
                 description="Added aws.sqs.queue.url attribute",
             ),
         ],
@@ -14335,7 +14335,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[640],
+                prs=[672],
                 description="Added aws.step_functions.execution.arn attribute",
             ),
         ],
