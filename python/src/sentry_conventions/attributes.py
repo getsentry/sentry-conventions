@@ -5271,6 +5271,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "rainy, 57°F"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__tool__call__result__size.json
+    GEN_AI_TOOL_CALL_RESULT_SIZE: Literal["gen_ai.tool.call.result.size"] = (
+        "gen_ai.tool.call.result.size"
+    )
+    """The UTF-8 byte length of the serialized tool call result, measured before truncation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 1024
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
     GEN_AI_TOOL_DEFINITIONS: Literal["gen_ai.tool.definitions"] = (
         "gen_ai.tool.definitions"
@@ -18590,6 +18604,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
+    "gen_ai.tool.call.result.size": AttributeMetadata(
+        brief="The UTF-8 byte length of the serialized tool call result, measured before truncation.",
+        type=AttributeType.INTEGER,
+        keys=("gen_ai.tool.call.result.size",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 1024],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.tool.call.result.size attribute",
+            ),
+        ],
+        additional_context=[
+            "The value is a non-negative byte count, not a token count, character count, or in-memory object size. It excludes span and envelope overhead.",
+            "Use 0 for an empty string result. Omit this attribute when the tool result is unavailable; do not treat missing output as zero.",
+        ],
+        search_alias=SearchAlias(name="gen_ai.tool.call.result.size", type="byte"),
+    ),
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
         type=AttributeType.STRING,
@@ -28078,6 +28113,7 @@ Attributes = TypedDict(
         "gen_ai.system_instructions": str,
         "gen_ai.tool.call.arguments": str,
         "gen_ai.tool.call.result": str,
+        "gen_ai.tool.call.result.size": int,
         "gen_ai.tool.definitions": str,
         "gen_ai.tool.description": str,
         "gen_ai.tool.input": str,

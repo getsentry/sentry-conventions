@@ -2193,6 +2193,11 @@ export const SEARCH_GEN_AI__TOOL__CALL__ARGUMENTS = 'gen_ai.tool.call.arguments'
 export const SEARCH_GEN_AI__TOOL__CALL__RESULT = 'gen_ai.tool.call.result';
 
 /**
+ * Search name for {@link attributes.GEN_AI_TOOL_CALL_RESULT_SIZE}. `gen_ai.tool.call.result.size`
+ */
+export const SEARCH_GEN_AI__TOOL__CALL__RESULT__SIZE = 'gen_ai.tool.call.result.size';
+
+/**
  * Search name for {@link attributes.GEN_AI_TOOL_DEFINITIONS}. `gen_ai.tool.definitions`
  */
 export const SEARCH_GEN_AI__TOOL__DEFINITIONS = 'gen_ai.tool.definitions';
@@ -5418,6 +5423,7 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__SYSTEM_INSTRUCTIONS
   | typeof SEARCH_GEN_AI__TOOL__CALL__ARGUMENTS
   | typeof SEARCH_GEN_AI__TOOL__CALL__RESULT
+  | typeof SEARCH_GEN_AI__TOOL__CALL__RESULT__SIZE
   | typeof SEARCH_GEN_AI__TOOL__DEFINITIONS
   | typeof SEARCH_GEN_AI__TOOL__DESCRIPTION
   | typeof SEARCH_GEN_AI__TOOL__INPUT
@@ -8454,6 +8460,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'gen_ai.tool.output',
       'mcp.tool.result.content',
     ],
+  },
+  'gen_ai.tool.call.result.size': {
+    canonicalName: 'gen_ai.tool.call.result.size',
+    type: 'byte',
+    brief: 'The UTF-8 byte length of the serialized tool call result, measured before truncation.',
+    deprecationChain: ['gen_ai.tool.call.result.size'],
   },
   'gen_ai.tool.definitions': {
     canonicalName: 'gen_ai.tool.definitions',
