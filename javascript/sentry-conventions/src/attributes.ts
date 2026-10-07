@@ -6341,7 +6341,7 @@ export type DEVICE_STORAGE_SIZE_TYPE = number;
 // Path: model/attributes/device/device__thermal_state.json
 
 /**
- * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`. `device.thermal_state`
+ * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum. `device.thermal_state`
  *
  * Attribute Value Type: `string` {@link DEVICE_THERMAL_STATE_TYPE}
  *
@@ -6349,6 +6349,12 @@ export type DEVICE_STORAGE_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `nominal`
+ * - `fair`
+ * - `serious`
+ * - `critical`
  *
  * @example "nominal"
  */
@@ -7788,10 +7794,118 @@ export const GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
  */
 export type GEN_AI_INPUT_MESSAGES_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__memory__query__text.json
+
+/**
+ * The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information. `gen_ai.memory.query.text`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_MEMORY_QUERY_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "user dietary preferences"
+ * @example "past flight bookings"
+ */
+export const GEN_AI_MEMORY_QUERY_TEXT = 'gen_ai.memory.query.text';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_QUERY_TEXT} gen_ai.memory.query.text
+ */
+export type GEN_AI_MEMORY_QUERY_TEXT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__memory__records.json
+
+/**
+ * The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data. `gen_ai.memory.records`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_MEMORY_RECORDS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "[{\"content\": \"User prefers dark mode\", \"id\": \"mem_123\", \"score\": 0.95}, {\"content\": {\"preference\": \"vegetarian meals\", \"confidence\": 0.9}, \"metadata\": {\"source\": \"profile\"}}]"
+ */
+export const GEN_AI_MEMORY_RECORDS = 'gen_ai.memory.records';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_RECORDS} gen_ai.memory.records
+ */
+export type GEN_AI_MEMORY_RECORDS_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__memory__record__count.json
+
+/**
+ * The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively. `gen_ai.memory.record.count`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_MEMORY_RECORD_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 3
+ */
+export const GEN_AI_MEMORY_RECORD_COUNT = 'gen_ai.memory.record.count';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_RECORD_COUNT} gen_ai.memory.record.count
+ */
+export type GEN_AI_MEMORY_RECORD_COUNT_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__memory__record__id.json
+
+/**
+ * The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store. `gen_ai.memory.record.id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_MEMORY_RECORD_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "mem_5j66UpCpwteGg4YSxUnt7lPY"
+ */
+export const GEN_AI_MEMORY_RECORD_ID = 'gen_ai.memory.record.id';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_RECORD_ID} gen_ai.memory.record.id
+ */
+export type GEN_AI_MEMORY_RECORD_ID_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__memory__store__id.json
+
+/**
+ * The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration. `gen_ai.memory.store.id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_MEMORY_STORE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ms_abc123"
+ * @example "user-preferences-store"
+ * @example "seer-knowledge"
+ */
+export const GEN_AI_MEMORY_STORE_ID = 'gen_ai.memory.store.id';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_STORE_ID} gen_ai.memory.store.id
+ */
+export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
- * The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'evaluate', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. `gen_ai.operation.name`
+ * The name of the operation being performed. `gen_ai.operation.name`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_NAME_TYPE}
  *
@@ -7799,6 +7913,23 @@ export type GEN_AI_INPUT_MESSAGES_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `chat`
+ * - `create_agent`
+ * - `create_memory`
+ * - `create_memory_store`
+ * - `delete_memory`
+ * - `delete_memory_store`
+ * - `embeddings`
+ * - `evaluate`
+ * - `execute_tool`
+ * - `generate_content`
+ * - `invoke_agent`
+ * - `search_memory`
+ * - `text_completion`
+ * - `update_memory`
+ * - `upsert_memory`
  *
  * @example "chat"
  */
@@ -7812,7 +7943,7 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__operation__type.json
 
 /**
- * The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI `gen_ai.operation.type`
+ * The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI `gen_ai.operation.type`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_TYPE_TYPE}
  *
@@ -7820,6 +7951,14 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `agent` - invoke_agent and create_agent spans
+ * - `ai_client` - any LLM call
+ * - `tool` - execute_tool spans
+ * - `handoff` - handoff spans
+ * - `memory` - gen_ai.memory.client spans
+ * - `other` - input and output processors, skill loading, guardrails etc.
  *
  * @example "tool"
  */
@@ -11875,6 +12014,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
  * @example 1
  */
 export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
@@ -15102,7 +15242,7 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
 // Path: model/attributes/sentry/sentry__category.json
 
 /**
- * The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'. `sentry.category`
+ * The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). `sentry.category`
  *
  * Attribute Value Type: `string` {@link SENTRY_CATEGORY_TYPE}
  *
@@ -15110,6 +15250,44 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `ai`
+ * - `ai.pipeline`
+ * - `app`
+ * - `browser`
+ * - `cache`
+ * - `console`
+ * - `db`
+ * - `event`
+ * - `file`
+ * - `function.aws`
+ * - `function.azure`
+ * - `function.gcp`
+ * - `function.nextjs`
+ * - `function.remix`
+ * - `graphql`
+ * - `grpc`
+ * - `http`
+ * - `measure`
+ * - `middleware`
+ * - `navigation`
+ * - `pageload`
+ * - `queue`
+ * - `resource`
+ * - `rpc`
+ * - `serialize`
+ * - `subprocess`
+ * - `template`
+ * - `topic`
+ * - `ui`
+ * - `ui.angular`
+ * - `ui.ember`
+ * - `ui.react`
+ * - `ui.svelte`
+ * - `ui.vue`
+ * - `view`
+ * - `websocket`
  *
  * @example "db"
  */
@@ -16393,7 +16571,7 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
 // Path: model/attributes/sentry/sentry__segment__name__source.json
 
 /**
- * The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.segment.name.source`
+ * The source of the segment span name. Should only be set on segment spans. `sentry.segment.name.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_SOURCE_TYPE}
  *
@@ -16401,6 +16579,14 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: internal
+ *
+ * Well-defined Values:
+ * - `custom` - Describes a name set by the user, not derived from the URL or a route pattern
+ * - `url` - Describes the full URL, potentially containing identifiers
+ * - `route` - Describes a parametrized route
+ * - `component`
+ * - `view`
+ * - `task`
  *
  * @example "route"
  * @example "component"
@@ -16440,7 +16626,7 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 // Path: model/attributes/sentry/sentry__source.json
 
 /**
- * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers. `sentry.source`
+ * The source of a span, also referred to as transaction source. `sentry.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SOURCE_TYPE}
  *
@@ -16448,6 +16634,14 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `custom`
+ * - `url` - Describes the full URL, potentially containing identifiers
+ * - `route` - Describes a parametrized route
+ * - `component`
+ * - `view`
+ * - `task`
  *
  * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
@@ -16462,7 +16656,7 @@ export type SENTRY_SOURCE_TYPE = string;
 // Path: model/attributes/sentry/sentry__span__source.json
 
 /**
- * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers. `sentry.span.source`
+ * The source of a span, also referred to as transaction source. `sentry.span.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SPAN_SOURCE_TYPE}
  *
@@ -16470,6 +16664,14 @@ export type SENTRY_SOURCE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `custom`
+ * - `url` - Describes the full URL, potentially containing identifiers
+ * - `route` - Describes a parametrized route
+ * - `component`
+ * - `view`
+ * - `task`
  *
  * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
@@ -18658,6 +18860,34 @@ export const USER_ROLES = 'user.roles';
  */
 export type USER_ROLES_TYPE = Array<string>;
 
+// Path: model/attributes/vercel/vercel__ai__telemetry__metadata__[key].json
+
+/**
+ * Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name. `vercel.ai.telemetry.metadata.<key>`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto - Metadata is user-defined and can contain user data
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "vercel.ai.telemetry.metadata.tenantId='acme'"
+ */
+export const VERCEL_AI_TELEMETRY_METADATA_KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
+ * Base key for {@link VERCEL_AI_TELEMETRY_METADATA_KEY}. Use with a dynamic suffix, e.g. `${VERCEL_AI_TELEMETRY_METADATA_KEY_BASE}.${key}`.
+ */
+export const VERCEL_AI_TELEMETRY_METADATA_KEY_BASE = 'vercel.ai.telemetry.metadata';
+
+/**
+ * Type for {@link VERCEL_AI_TELEMETRY_METADATA_KEY} vercel.ai.telemetry.metadata.<key>
+ */
+export type VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE = string;
+
 // Path: model/attributes/vercel/vercel__branch.json
 
 /**
@@ -19860,6 +20090,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.embeddings.input': 'string',
   'gen_ai.function_id': 'string',
   'gen_ai.input.messages': 'string',
+  'gen_ai.memory.query.text': 'string',
+  'gen_ai.memory.records': 'string',
+  'gen_ai.memory.record.count': 'integer',
+  'gen_ai.memory.record.id': 'string',
+  'gen_ai.memory.store.id': 'string',
   'gen_ai.operation.name': 'string',
   'gen_ai.operation.type': 'string',
   'gen_ai.output.messages': 'string',
@@ -20342,6 +20577,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'user.ip_address': 'string',
   'user.name': 'string',
   'user.roles': 'string[]',
+  'vercel.ai.telemetry.metadata.<key>': 'string',
   'vercel.branch': 'string',
   'vercel.build_id': 'string',
   'vercel.deployment_id': 'string',
@@ -20731,6 +20967,11 @@ export type AttributeName =
   | typeof GEN_AI_EMBEDDINGS_INPUT
   | typeof GEN_AI_FUNCTION_ID
   | typeof GEN_AI_INPUT_MESSAGES
+  | typeof GEN_AI_MEMORY_QUERY_TEXT
+  | typeof GEN_AI_MEMORY_RECORDS
+  | typeof GEN_AI_MEMORY_RECORD_COUNT
+  | typeof GEN_AI_MEMORY_RECORD_ID
+  | typeof GEN_AI_MEMORY_STORE_ID
   | typeof GEN_AI_OPERATION_NAME
   | typeof GEN_AI_OPERATION_TYPE
   | typeof GEN_AI_OUTPUT_MESSAGES
@@ -21213,6 +21454,7 @@ export type AttributeName =
   | typeof USER_IP_ADDRESS
   | typeof USER_NAME
   | typeof USER_ROLES
+  | typeof VERCEL_AI_TELEMETRY_METADATA_KEY
   | typeof VERCEL_BRANCH
   | typeof VERCEL_BUILD_ID
   | typeof VERCEL_DEPLOYMENT_ID
@@ -22229,7 +22471,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     changelog: [
       {
-        version: 'next',
+        version: '0.26.0',
+        prs: [660],
         description: 'Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result',
       },
     ],
@@ -25669,8 +25912,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.storage_size attribute' }],
   },
   'device.thermal_state': {
-    brief:
-      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    brief: "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
     type: 'string',
     keys: ['device.thermal_state'],
     applyScrubbing: {
@@ -26724,15 +26966,87 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
-      { version: 'next', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
+      { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
   },
-  'gen_ai.operation.name': {
+  'gen_ai.memory.query.text': {
     brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'evaluate', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+      "The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.",
+    type: 'string',
+    keys: ['gen_ai.memory.query.text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'user dietary preferences',
+    examples: ['user dietary preferences', 'past flight bookings'],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.query.text attribute' }],
+  },
+  'gen_ai.memory.records': {
+    brief:
+      'The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.',
+    type: 'string',
+    keys: ['gen_ai.memory.records'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example:
+      '[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]',
+    examples: [
+      '[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]',
+    ],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.records attribute' }],
+  },
+  'gen_ai.memory.record.count': {
+    brief:
+      "The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.",
+    type: 'integer',
+    keys: ['gen_ai.memory.record.count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 3,
+    examples: [3],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.record.count attribute' }],
+  },
+  'gen_ai.memory.record.id': {
+    brief:
+      "The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.",
+    type: 'string',
+    keys: ['gen_ai.memory.record.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'mem_5j66UpCpwteGg4YSxUnt7lPY',
+    examples: ['mem_5j66UpCpwteGg4YSxUnt7lPY'],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.record.id attribute' }],
+  },
+  'gen_ai.memory.store.id': {
+    brief:
+      'The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.',
+    type: 'string',
+    keys: ['gen_ai.memory.store.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ms_abc123',
+    examples: ['ms_abc123', 'user-preferences-store', 'seer-knowledge'],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.store.id attribute' }],
+  },
+  'gen_ai.operation.name': {
+    brief: 'The name of the operation being performed.',
     type: 'string',
     keys: ['gen_ai.operation.name'],
     applyScrubbing: {
@@ -26742,14 +27056,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
-      { version: 'next', prs: [680], description: "Added 'evaluate' as a well-known value." },
+      {
+        version: 'next',
+        prs: [653, 680],
+        description: "Added memory operation values and 'evaluate' to the well-known values",
+      },
       { version: '0.4.0', prs: [225] },
       { version: '0.1.0', prs: [62, 127] },
     ],
   },
   'gen_ai.operation.type': {
     brief:
-      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+      'The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI',
     type: 'string',
     keys: ['gen_ai.operation.type'],
     applyScrubbing: {
@@ -26759,6 +27077,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'tool',
     changelog: [
+      { version: 'next', prs: [653], description: "Added 'memory' value" },
       { version: '0.4.0', prs: [257] },
       { version: '0.1.0', prs: [113, 127] },
     ],
@@ -26777,7 +27096,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
-      { version: 'next', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
+      { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -29841,7 +30160,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
+    deprecation: {
+      reason: 'A count can be calculcated from the value of the gen_ai.tool.call.result attribute.',
+    },
     changelog: [
+      {
+        version: 'next',
+        prs: [669],
+        description: 'Deprecate the attribute since it is redundant given gen_ai.tool.call.result.',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
@@ -30492,7 +30819,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     examples: [0.5],
     aliases: ['nel.sampling_function'],
-    changelog: [{ version: 'next', prs: [668], description: 'Added nel.sampling_fraction attribute' }],
+    changelog: [{ version: '0.26.0', prs: [668], description: 'Added nel.sampling_fraction attribute' }],
   },
   'nel.sampling_function': {
     brief: 'The sampling function used to determine if the request should be sampled.',
@@ -30511,7 +30838,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['nel.sampling_fraction'],
     changelog: [
-      { version: 'next', prs: [668], description: 'Deprecated in favor of nel.sampling_fraction' },
+      { version: '0.26.0', prs: [668], description: 'Deprecated in favor of nel.sampling_fraction' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [68] },
     ],
@@ -32173,7 +32500,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'sentry.category': {
     brief:
-      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+      'The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).',
     type: 'string',
     keys: ['sentry.category', 'span.category'],
     applyScrubbing: {
@@ -33028,8 +33355,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.segment.name.source': {
-    brief:
-      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    brief: 'The source of the segment span name. Should only be set on segment spans.',
     type: 'string',
     keys: ['sentry.segment.name.source'],
     applyScrubbing: {
@@ -33061,8 +33387,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     type: 'string',
     keys: ['sentry.source'],
     applyScrubbing: {
@@ -33081,8 +33406,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'sentry.span.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     type: 'string',
     keys: ['sentry.span.source'],
     applyScrubbing: {
@@ -34820,6 +35144,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['admin', 'editor'],
     changelog: [{ version: '0.0.0' }],
   },
+  'vercel.ai.telemetry.metadata.<key>': {
+    brief:
+      'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
+    type: 'string',
+    keys: ['vercel.ai.telemetry.metadata.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Metadata is user-defined and can contain user data',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "vercel.ai.telemetry.metadata.tenantId='acme'",
+    examples: ["vercel.ai.telemetry.metadata.tenantId='acme'"],
+    changelog: [{ version: '0.26.0', prs: [662], description: 'Added vercel.ai.telemetry.metadata.<key> attribute' }],
+    additionalContext: [
+      'Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.',
+      "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
+      'The Vercel AI SDK also allows numbers, booleans and arrays as metadata values. SDKs MUST convert these values to strings.',
+      'This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.',
+    ],
+  },
   'vercel.branch': {
     brief: 'Git branch name for Vercel project',
     type: 'string',
@@ -35619,6 +35965,11 @@ export type Attributes = {
   [GEN_AI_EMBEDDINGS_INPUT]?: GEN_AI_EMBEDDINGS_INPUT_TYPE;
   [GEN_AI_FUNCTION_ID]?: GEN_AI_FUNCTION_ID_TYPE;
   [GEN_AI_INPUT_MESSAGES]?: GEN_AI_INPUT_MESSAGES_TYPE;
+  [GEN_AI_MEMORY_QUERY_TEXT]?: GEN_AI_MEMORY_QUERY_TEXT_TYPE;
+  [GEN_AI_MEMORY_RECORDS]?: GEN_AI_MEMORY_RECORDS_TYPE;
+  [GEN_AI_MEMORY_RECORD_COUNT]?: GEN_AI_MEMORY_RECORD_COUNT_TYPE;
+  [GEN_AI_MEMORY_RECORD_ID]?: GEN_AI_MEMORY_RECORD_ID_TYPE;
+  [GEN_AI_MEMORY_STORE_ID]?: GEN_AI_MEMORY_STORE_ID_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_OUTPUT_MESSAGES]?: GEN_AI_OUTPUT_MESSAGES_TYPE;
@@ -36101,6 +36452,7 @@ export type Attributes = {
   [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
+  [VERCEL_AI_TELEMETRY_METADATA_KEY]?: VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE;
   [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
   [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
   [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;

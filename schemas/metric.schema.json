@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sentry Metric Schema",
+  "description": "Describes a metric and its attributes",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "key": {
+      "description": "The namespaced metric name",
+      "type": "string"
+    },
+    "brief": {
+      "description": "What the metric measures",
+      "type": "string"
+    },
+    "instrument": {
+      "description": "The Sentry metric type",
+      "enum": ["gauge", "counter", "distribution"]
+    },
+    "unit": {
+      "description": "A Sentry unit from https://develop.sentry.dev/sdk/foundations/state-management/scopes/attributes/#units, or none for unitless counts",
+      "enum": [
+        "nanosecond",
+        "microsecond",
+        "millisecond",
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "bit",
+        "byte",
+        "kilobyte",
+        "kibibyte",
+        "megabyte",
+        "mebibyte",
+        "gigabyte",
+        "gibibyte",
+        "terabyte",
+        "tebibyte",
+        "petabyte",
+        "pebibyte",
+        "exabyte",
+        "exbibyte",
+        "ratio",
+        "percent",
+        "none"
+      ]
+    },
+    "is_in_otel": {
+      "type": "boolean"
+    },
+    "requirement_level": {
+      "description": "Whether collection is required, recommended, or opt-in",
+      "enum": ["required", "recommended", "opt_in"]
+    },
+    "attributes": {
+      "description": "Keys of attributes that describe the metric's values, such as go.memory.detailed_type. Each key must have a definition in model/attributes.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": ["key", "brief", "instrument", "unit", "is_in_otel", "requirement_level"]
+}

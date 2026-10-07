@@ -1,0 +1,18 @@
+{
+  "key": "gen_ai.memory.query.text",
+  "brief": "The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["user dietary preferences", "past flight bookings"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [653],
+      "description": "Added gen_ai.memory.query.text attribute"
+    }
+  ]
+}

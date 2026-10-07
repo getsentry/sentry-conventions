@@ -1,0 +1,20 @@
+{
+  "key": "gen_ai.memory.records",
+  "brief": "The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": [
+    "[{\"content\": \"User prefers dark mode\", \"id\": \"mem_123\", \"score\": 0.95}, {\"content\": {\"preference\": \"vegetarian meals\", \"confidence\": 0.9}, \"metadata\": {\"source\": \"profile\"}}]"
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [653],
+      "description": "Added gen_ai.memory.records attribute"
+    }
+  ]
+}

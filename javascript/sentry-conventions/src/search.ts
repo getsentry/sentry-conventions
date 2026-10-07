@@ -1991,6 +1991,31 @@ export const SEARCH_GEN_AI__FUNCTION_ID = 'gen_ai.function_id';
 export const SEARCH_GEN_AI__INPUT__MESSAGES = 'gen_ai.input.messages';
 
 /**
+ * Search name for {@link attributes.GEN_AI_MEMORY_QUERY_TEXT}. `gen_ai.memory.query.text`
+ */
+export const SEARCH_GEN_AI__MEMORY__QUERY__TEXT = 'gen_ai.memory.query.text';
+
+/**
+ * Search name for {@link attributes.GEN_AI_MEMORY_RECORD_COUNT}. `gen_ai.memory.record.count`
+ */
+export const SEARCH_GEN_AI__MEMORY__RECORD__COUNT = 'gen_ai.memory.record.count';
+
+/**
+ * Search name for {@link attributes.GEN_AI_MEMORY_RECORD_ID}. `gen_ai.memory.record.id`
+ */
+export const SEARCH_GEN_AI__MEMORY__RECORD__ID = 'gen_ai.memory.record.id';
+
+/**
+ * Search name for {@link attributes.GEN_AI_MEMORY_RECORDS}. `gen_ai.memory.records`
+ */
+export const SEARCH_GEN_AI__MEMORY__RECORDS = 'gen_ai.memory.records';
+
+/**
+ * Search name for {@link attributes.GEN_AI_MEMORY_STORE_ID}. `gen_ai.memory.store.id`
+ */
+export const SEARCH_GEN_AI__MEMORY__STORE__ID = 'gen_ai.memory.store.id';
+
+/**
  * Search name for {@link attributes.GEN_AI_OPERATION_NAME}. `gen_ai.operation.name`
  */
 export const SEARCH_GEN_AI__OPERATION__NAME = 'gen_ai.operation.name';
@@ -3016,6 +3041,8 @@ export const SEARCH_MCP__TOOL__RESULT__CONTENT = 'mcp.tool.result.content';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_CONTENT_COUNT}. `mcp.tool.result.content_count`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT = 'mcp.tool.result.content_count';
 
@@ -4851,6 +4878,11 @@ export const SEARCH_USER__USERNAME = 'user.username';
 export const SEARCH_USER_AGENT__ORIGINAL = 'user_agent.original';
 
 /**
+ * Search name for {@link attributes.VERCEL_AI_TELEMETRY_METADATA_KEY}. `vercel.ai.telemetry.metadata.<key>`
+ */
+export const SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
  * Search name for {@link attributes.VERCEL_BRANCH}. `vercel.branch`
  */
 export const SEARCH_VERCEL__BRANCH = 'vercel.branch';
@@ -5382,6 +5414,11 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__EMBEDDINGS__INPUT
   | typeof SEARCH_GEN_AI__FUNCTION_ID
   | typeof SEARCH_GEN_AI__INPUT__MESSAGES
+  | typeof SEARCH_GEN_AI__MEMORY__QUERY__TEXT
+  | typeof SEARCH_GEN_AI__MEMORY__RECORD__COUNT
+  | typeof SEARCH_GEN_AI__MEMORY__RECORD__ID
+  | typeof SEARCH_GEN_AI__MEMORY__RECORDS
+  | typeof SEARCH_GEN_AI__MEMORY__STORE__ID
   | typeof SEARCH_GEN_AI__OPERATION__NAME
   | typeof SEARCH_GEN_AI__OPERATION__TYPE
   | typeof SEARCH_GEN_AI__OUTPUT__MESSAGES
@@ -5884,6 +5921,7 @@ export type AttributeSearchName =
   | typeof SEARCH_USER__ROLES
   | typeof SEARCH_USER__USERNAME
   | typeof SEARCH_USER_AGENT__ORIGINAL
+  | typeof SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY
   | typeof SEARCH_VERCEL__BRANCH
   | typeof SEARCH_VERCEL__BUILD_ID
   | typeof SEARCH_VERCEL__DEPLOYMENT_ID
@@ -7775,8 +7813,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'device.thermal_state': {
     canonicalName: 'device.thermal_state',
     type: 'string',
-    brief:
-      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    brief: "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
     deprecationChain: ['device.thermal_state'],
   },
   'device.timezone': {
@@ -8180,18 +8217,52 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'gen_ai.request.messages',
     ],
   },
+  'gen_ai.memory.query.text': {
+    canonicalName: 'gen_ai.memory.query.text',
+    type: 'string',
+    brief:
+      "The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.",
+    deprecationChain: ['gen_ai.memory.query.text'],
+  },
+  'gen_ai.memory.record.count': {
+    canonicalName: 'gen_ai.memory.record.count',
+    type: 'integer',
+    brief:
+      "The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.",
+    deprecationChain: ['gen_ai.memory.record.count'],
+  },
+  'gen_ai.memory.record.id': {
+    canonicalName: 'gen_ai.memory.record.id',
+    type: 'string',
+    brief:
+      "The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.",
+    deprecationChain: ['gen_ai.memory.record.id'],
+  },
+  'gen_ai.memory.records': {
+    canonicalName: 'gen_ai.memory.records',
+    type: 'string',
+    brief:
+      'The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.',
+    deprecationChain: ['gen_ai.memory.records'],
+  },
+  'gen_ai.memory.store.id': {
+    canonicalName: 'gen_ai.memory.store.id',
+    type: 'string',
+    brief:
+      'The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.',
+    deprecationChain: ['gen_ai.memory.store.id'],
+  },
   'gen_ai.operation.name': {
     canonicalName: 'gen_ai.operation.name',
     type: 'string',
-    brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'evaluate', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+    brief: 'The name of the operation being performed.',
     deprecationChain: ['gen_ai.operation.name'],
   },
   'gen_ai.operation.type': {
     canonicalName: 'gen_ai.operation.type',
     type: 'string',
     brief:
-      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+      'The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI',
     deprecationChain: ['gen_ai.operation.type'],
   },
   'gen_ai.output.messages': {
@@ -9452,6 +9523,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'mcp.tool.result.content_count',
     type: 'integer',
     brief: 'Number of content items in the tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.content_count'],
   },
   'mcp.tool.result.is_error': {
@@ -10727,24 +10799,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'sentry.segment.name.source': {
     canonicalName: 'sentry.segment.name.source',
     type: 'string',
-    brief:
-      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    brief: 'The source of the segment span name. Should only be set on segment spans.',
     internal: true,
     deprecationChain: ['sentry.segment.name.source'],
   },
   'sentry.source': {
     canonicalName: 'sentry.source',
     type: 'string',
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     deprecated: true,
     deprecationChain: ['sentry.source'],
   },
   'sentry.span.source': {
     canonicalName: 'sentry.span.source',
     type: 'string',
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     deprecated: true,
     deprecationChain: ['sentry.span.source'],
   },
@@ -10858,7 +10927,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.category',
     type: 'string',
     brief:
-      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+      'The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).',
     deprecationChain: ['span.category', 'sentry.category'],
   },
   'span.domain': {
@@ -11420,6 +11489,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     deprecationChain: ['user_agent.original', 'http.user_agent'],
+  },
+  'vercel.ai.telemetry.metadata.<key>': {
+    canonicalName: 'vercel.ai.telemetry.metadata.<key>',
+    type: 'string',
+    brief:
+      'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
+    deprecationChain: ['vercel.ai.telemetry.metadata.<key>'],
   },
   'vercel.branch': {
     canonicalName: 'vercel.branch',

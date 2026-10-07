@@ -1,18 +1,35 @@
 {
   "key": "gen_ai.operation.name",
-  "brief": "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'evaluate', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+  "brief": "The name of the operation being performed.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
   "example": "chat",
+  "enum_values": [
+    { "value": "chat" },
+    { "value": "create_agent" },
+    { "value": "create_memory" },
+    { "value": "create_memory_store" },
+    { "value": "delete_memory" },
+    { "value": "delete_memory_store" },
+    { "value": "embeddings" },
+    { "value": "evaluate" },
+    { "value": "execute_tool" },
+    { "value": "generate_content" },
+    { "value": "invoke_agent" },
+    { "value": "search_memory" },
+    { "value": "text_completion" },
+    { "value": "update_memory" },
+    { "value": "upsert_memory" }
+  ],
   "visibility": "public",
   "changelog": [
     {
       "version": "next",
-      "prs": [680],
-      "description": "Added 'evaluate' as a well-known value."
+      "prs": [653, 680],
+      "description": "Added memory operation values and 'evaluate' to the well-known values"
     },
     {
       "version": "0.4.0",
