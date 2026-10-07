@@ -1,0 +1,18 @@
+{
+  "key": "gen_ai.memory.record.count",
+  "brief": "The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": [3],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [653],
+      "description": "Added gen_ai.memory.record.count attribute"
+    }
+  ]
+}

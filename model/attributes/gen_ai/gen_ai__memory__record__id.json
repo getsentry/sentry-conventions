@@ -1,0 +1,18 @@
+{
+  "key": "gen_ai.memory.record.id",
+  "brief": "The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["mem_5j66UpCpwteGg4YSxUnt7lPY"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [653],
+      "description": "Added gen_ai.memory.record.id attribute"
+    }
+  ]
+}

@@ -19,7 +19,7 @@
     },
     "type": {
       "description": "The type of the attribute value",
-      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]", "any"]
+      "enum": ["string", "boolean", "integer", "double", "string[]", "boolean[]", "integer[]", "double[]"]
     },
     "apply_scrubbing": {
       "description": "How PII scrubbing should be applied to the attribute value. 'auto' scrubs automatically, 'manual' requires manual scrubbing rules, 'never' is never scrubbed. Optionally include a reason about why this mode applies",
@@ -108,6 +108,25 @@
             }
           }
         ]
+      }
+    },
+    "enum_values": {
+      "description": "The well-defined values the attribute can take when it behaves like an enum. Each entry is a value with an optional brief explaining when it applies.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "brief": {
+            "description": "An optional note describing when this value applies",
+            "type": "string"
+          }
+        },
+        "required": ["value"]
       }
     },
     "deprecation": {
