@@ -11875,6 +11875,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
  * @example 1
  */
 export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
@@ -29871,7 +29872,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
+    deprecation: {
+      reason: 'A count can be calculcated from the value of the gen_ai.tool.call.result attribute.',
+    },
     changelog: [
+      {
+        version: 'next',
+        prs: [669],
+        description: 'Deprecate the attribute since it is redundant given gen_ai.tool.call.result.',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
