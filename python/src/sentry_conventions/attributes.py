@@ -316,6 +316,7 @@ class _AttributeNamesMeta(type):
         "MCP_RESOURCE_PROTOCOL",
         "MCP_TOOL_NAME",
         "MCP_TOOL_RESULT_CONTENT",
+        "MCP_TOOL_RESULT_CONTENT_COUNT",
         "MCP_TOOL_RESULT_IS_ERROR",
         "MCP_TRANSPORT",
         "MESSAGING_CONVERSATION_ID",
@@ -4083,12 +4084,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/device/device__thermal_state.json
     DEVICE_THERMAL_STATE: Literal["device.thermal_state"] = "device.thermal_state"
-    """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.
+    """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `nominal`
+    - `fair`
+    - `serious`
+    - `critical`
     Example: "nominal"
     """
 
@@ -4895,25 +4901,111 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
-    # Path: model/attributes/gen_ai/gen_ai__operation__name.json
-    GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
-    """The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.
+    # Path: model/attributes/gen_ai/gen_ai__memory__query__text.json
+    GEN_AI_MEMORY_QUERY_TEXT: Literal["gen_ai.memory.query.text"] = (
+        "gen_ai.memory.query.text"
+    )
+    """The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Example: "user dietary preferences"
+    Example: "past flight bookings"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__record__count.json
+    GEN_AI_MEMORY_RECORD_COUNT: Literal["gen_ai.memory.record.count"] = (
+        "gen_ai.memory.record.count"
+    )
+    """The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 3
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__record__id.json
+    GEN_AI_MEMORY_RECORD_ID: Literal["gen_ai.memory.record.id"] = (
+        "gen_ai.memory.record.id"
+    )
+    """The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "mem_5j66UpCpwteGg4YSxUnt7lPY"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__records.json
+    GEN_AI_MEMORY_RECORDS: Literal["gen_ai.memory.records"] = "gen_ai.memory.records"
+    """The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "[{\"content\": \"User prefers dark mode\", \"id\": \"mem_123\", \"score\": 0.95}, {\"content\": {\"preference\": \"vegetarian meals\", \"confidence\": 0.9}, \"metadata\": {\"source\": \"profile\"}}]"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__store__id.json
+    GEN_AI_MEMORY_STORE_ID: Literal["gen_ai.memory.store.id"] = "gen_ai.memory.store.id"
+    """The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "ms_abc123"
+    Example: "user-preferences-store"
+    Example: "seer-knowledge"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__operation__name.json
+    GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
+    """The name of the operation being performed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Well-defined Values:
+    - `chat`
+    - `create_agent`
+    - `create_memory`
+    - `create_memory_store`
+    - `delete_memory`
+    - `delete_memory_store`
+    - `embeddings`
+    - `execute_tool`
+    - `generate_content`
+    - `invoke_agent`
+    - `search_memory`
+    - `text_completion`
+    - `update_memory`
+    - `upsert_memory`
     Example: "chat"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__operation__type.json
     GEN_AI_OPERATION_TYPE: Literal["gen_ai.operation.type"] = "gen_ai.operation.type"
-    """The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
+    """The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `agent` - invoke_agent and create_agent spans
+    - `ai_client` - any LLM call
+    - `tool` - execute_tool spans
+    - `handoff` - handoff spans
+    - `memory` - gen_ai.memory.client spans
+    - `other` - input and output processors, skill loading, guardrails etc.
     Example: "tool"
     """
 
@@ -7234,6 +7326,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
     Example: 1
     """
 
@@ -9025,12 +9118,49 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__category.json
     SENTRY_CATEGORY: Literal["sentry.category"] = "sentry.category"
-    """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.
+    """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).
 
     Type: str
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `ai`
+    - `ai.pipeline`
+    - `app`
+    - `browser`
+    - `cache`
+    - `console`
+    - `db`
+    - `event`
+    - `file`
+    - `function.aws`
+    - `function.azure`
+    - `function.gcp`
+    - `function.nextjs`
+    - `function.remix`
+    - `graphql`
+    - `grpc`
+    - `http`
+    - `measure`
+    - `middleware`
+    - `navigation`
+    - `pageload`
+    - `queue`
+    - `resource`
+    - `rpc`
+    - `serialize`
+    - `subprocess`
+    - `template`
+    - `topic`
+    - `ui`
+    - `ui.angular`
+    - `ui.ember`
+    - `ui.react`
+    - `ui.svelte`
+    - `ui.vue`
+    - `view`
+    - `websocket`
     Example: "db"
     """
 
@@ -9729,12 +9859,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_SEGMENT_NAME_SOURCE: Literal["sentry.segment.name.source"] = (
         "sentry.segment.name.source"
     )
-    """The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
+    """The source of the segment span name. Should only be set on segment spans.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: internal
+    Well-defined Values:
+    - `custom` - Describes a name set by the user, not derived from the URL or a route pattern
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
+    - `component`
+    - `view`
+    - `task`
     Example: "route"
     Example: "component"
     Example: "view"
@@ -9771,24 +9908,38 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__source.json
     SENTRY_SOURCE: Literal["sentry.source"] = "sentry.source"
-    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
+    """The source of a span, also referred to as transaction source.
 
     Type: str
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `custom`
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
+    - `component`
+    - `view`
+    - `task`
     DEPRECATED: No replacement at this time - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
     Example: "route"
     """
 
     # Path: model/attributes/sentry/sentry__span__source.json
     SENTRY_SPAN_SOURCE: Literal["sentry.span.source"] = "sentry.span.source"
-    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
+    """The source of a span, also referred to as transaction source.
 
     Type: str
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `custom`
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
+    - `component`
+    - `view`
+    - `task`
     DEPRECATED: No replacement at this time - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
     Example: "route"
     """
@@ -16891,7 +17042,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "device.thermal_state": AttributeMetadata(
-        brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+        brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
         type=AttributeType.STRING,
         keys=("device.thermal_state",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -18144,8 +18295,95 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
+    "gen_ai.memory.query.text": AttributeMetadata(
+        brief="The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.query.text",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="user dietary preferences",
+        examples=["user dietary preferences", "past flight bookings"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.query.text attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.record.count": AttributeMetadata(
+        brief="The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.",
+        type=AttributeType.INTEGER,
+        keys=("gen_ai.memory.record.count",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=3,
+        examples=[3],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.record.count attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.record.id": AttributeMetadata(
+        brief="The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.record.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="mem_5j66UpCpwteGg4YSxUnt7lPY",
+        examples=["mem_5j66UpCpwteGg4YSxUnt7lPY"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.record.id attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.records": AttributeMetadata(
+        brief="The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.records",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example='[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]',
+        examples=[
+            '[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.records attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.store.id": AttributeMetadata(
+        brief="The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.store.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="ms_abc123",
+        examples=["ms_abc123", "user-preferences-store", "seer-knowledge"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added gen_ai.memory.store.id attribute",
+            ),
+        ],
+    ),
     "gen_ai.operation.name": AttributeMetadata(
-        brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+        brief="The name of the operation being performed.",
         type=AttributeType.STRING,
         keys=("gen_ai.operation.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -18153,12 +18391,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="chat",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[653],
+                description="Added memory operation values to the well-known values",
+            ),
             ChangelogEntry(version="0.4.0", prs=[225]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
     "gen_ai.operation.type": AttributeMetadata(
-        brief="The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+        brief="The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
         type=AttributeType.STRING,
         keys=("gen_ai.operation.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -18166,6 +18409,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="tool",
         changelog=[
+            ChangelogEntry(
+                version="next", prs=[653], description="Added 'memory' value"
+            ),
             ChangelogEntry(version="0.4.0", prs=[257]),
             ChangelogEntry(version="0.1.0", prs=[113, 127]),
         ],
@@ -21711,7 +21957,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
+        deprecation=DeprecationInfo(
+            reason="A count can be calculcated from the value of the gen_ai.tool.call.result attribute."
+        ),
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[669],
+                description="Deprecate the attribute since it is redundant given gen_ai.tool.call.result.",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -24517,7 +24771,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.category": AttributeMetadata(
-        brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+        brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).",
         type=AttributeType.STRING,
         keys=(
             "sentry.category",
@@ -24967,13 +25221,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.link.type": AttributeMetadata(
         brief="Set on a span link. Describes the relationship between the span and the linked span.",
         type=AttributeType.STRING,
-        keys=("sentry.link.type",),
+        keys=(
+            "sentry.link.type",
+            "link.type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
         examples=["previous_trace", "next_trace", "cache_origin"],
         changelog=[
+            ChangelogEntry(version="next", description="Added search alias link.type"),
             ChangelogEntry(
                 version="0.25.0",
                 prs=[656],
@@ -24985,6 +25243,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
             "For known values, see Examples. Add new values to Examples.",
         ],
+        search_alias=SearchAlias(name="link.type"),
     ),
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
@@ -25435,7 +25694,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="transaction"),
     ),
     "sentry.segment.name.source": AttributeMetadata(
-        brief="The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+        brief="The source of the segment span name. Should only be set on segment spans.",
         type=AttributeType.STRING,
         keys=("sentry.segment.name.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -25493,7 +25752,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="server_sample_rate"),
     ),
     "sentry.source": AttributeMetadata(
-        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+        brief="The source of a span, also referred to as transaction source.",
         type=AttributeType.STRING,
         keys=("sentry.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
@@ -25513,7 +25772,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.span.source": AttributeMetadata(
-        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+        brief="The source of a span, also referred to as transaction source.",
         type=AttributeType.STRING,
         keys=("sentry.span.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
@@ -28329,6 +28588,11 @@ Attributes = TypedDict(
         "gen_ai.embeddings.input": str,
         "gen_ai.function_id": str,
         "gen_ai.input.messages": str,
+        "gen_ai.memory.query.text": str,
+        "gen_ai.memory.record.count": int,
+        "gen_ai.memory.record.id": str,
+        "gen_ai.memory.records": str,
+        "gen_ai.memory.store.id": str,
         "gen_ai.operation.name": str,
         "gen_ai.operation.type": str,
         "gen_ai.output.messages": str,

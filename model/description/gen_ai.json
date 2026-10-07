@@ -47,6 +47,13 @@
       "ops": ["gen_ai.execute_tool"],
       "templates": ["{{gen_ai.operation.name}} {{gen_ai.tool.name}}", "{{gen_ai.operation.name}}"],
       "examples": ["execute_tool get_weather", "execute_tool"]
+    },
+    {
+      "name": "Memory",
+      "brief": "Generative AI memory operations. Reading from, writing to, or managing an agent's persistent memory store.",
+      "ops": ["gen_ai.memory.client"],
+      "templates": ["{{gen_ai.operation.name}}"],
+      "examples": ["upsert_memory", "search_memory", "create_memory", "delete_memory"]
     }
   ]
 }

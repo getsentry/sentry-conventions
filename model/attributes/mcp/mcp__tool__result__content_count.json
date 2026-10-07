@@ -7,8 +7,17 @@
   },
   "is_in_otel": false,
   "example": 1,
+  "deprecation": {
+    "reason": "A count can be calculcated from the value of the gen_ai.tool.call.result attribute.",
+    "_status": null
+  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [669],
+      "description": "Deprecate the attribute since it is redundant given gen_ai.tool.call.result."
+    },
     {
       "version": "0.4.0",
       "prs": [228]
