@@ -26,6 +26,14 @@ const attributeSchema = z
     visibility: z.enum(['public', 'internal']),
     example: attributeValueSchema.optional(),
     examples: z.array(attributeValueSchema).min(1).optional(),
+    enum_values: z
+      .array(
+        z.object({
+          value: z.string(),
+          brief: z.string().optional(),
+        }),
+      )
+      .optional(),
     deprecation: z
       .object({
         replacement: z.string().optional(),

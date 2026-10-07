@@ -321,6 +321,15 @@ function writeToJs(
     individualConstants += ` * Attribute defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
     individualConstants += ` * Visibility: ${visibility}\n`;
 
+    // Enum values
+    if (attributeJson.enum_values && attributeJson.enum_values.length > 0) {
+      individualConstants += ' *\n';
+      individualConstants += ' * Well-defined Values:\n';
+      for (const { value, brief } of attributeJson.enum_values) {
+        individualConstants += ` * - \`${value}\`${brief ? ` - ${brief}` : ''}\n`;
+      }
+    }
+
     if (has_dynamic_suffix) {
       individualConstants += ' *\n';
       individualConstants += ' * Has Dynamic Suffix: true\n';
@@ -738,6 +747,13 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
     content += `    Apply Scrubbing: ${apply_scrubbing.key}${apply_scrubbing.reason ? ` - ${apply_scrubbing.reason}` : ''}\n`;
     content += `    Defined in OTEL: ${is_in_otel ? 'Yes' : 'No'}\n`;
     content += `    Visibility: ${visibility}\n`;
+
+    if (attributeJson.enum_values && attributeJson.enum_values.length > 0) {
+      content += '    Well-defined Values:\n';
+      for (const { value, brief } of attributeJson.enum_values) {
+        content += `    - \`${value}\`${brief ? ` - ${brief}` : ''}\n`;
+      }
+    }
 
     if (has_dynamic_suffix) {
       content += '    Has Dynamic Suffix: true\n';

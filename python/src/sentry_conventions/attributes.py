@@ -3998,6 +3998,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `nominal`
+    - `fair`
+    - `serious`
+    - `critical`
     Example: "nominal"
     """
 
@@ -4876,6 +4881,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Well-defined Values:
+    - `chat`
+    - `create_agent`
+    - `create_memory`
+    - `create_memory_store`
+    - `delete_memory`
+    - `delete_memory_store`
+    - `embeddings`
+    - `execute_tool`
+    - `generate_content`
+    - `invoke_agent`
+    - `search_memory`
+    - `text_completion`
+    - `update_memory`
+    - `upsert_memory`
     Example: "chat"
     """
 
@@ -4887,6 +4907,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `agent` - invoke_agent and create_agent spans
+    - `ai_client` - any LLM call
+    - `tool` - execute_tool spans
+    - `handoff` - handoff spans
+    - `memory` - gen_ai.memory.client spans
+    - `other` - input and output processors, skill loading, guardrails etc.
     Example: "tool"
     """
 
@@ -9005,6 +9032,43 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `ai`
+    - `ai.pipeline`
+    - `app`
+    - `browser`
+    - `cache`
+    - `console`
+    - `db`
+    - `event`
+    - `file`
+    - `function.aws`
+    - `function.azure`
+    - `function.gcp`
+    - `function.nextjs`
+    - `function.remix`
+    - `graphql`
+    - `grpc`
+    - `http`
+    - `measure`
+    - `middleware`
+    - `navigation`
+    - `pageload`
+    - `queue`
+    - `resource`
+    - `rpc`
+    - `serialize`
+    - `subprocess`
+    - `template`
+    - `topic`
+    - `ui`
+    - `ui.angular`
+    - `ui.ember`
+    - `ui.react`
+    - `ui.svelte`
+    - `ui.vue`
+    - `view`
+    - `websocket`
     Example: "db"
     """
 
@@ -9709,6 +9773,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: internal
+    Well-defined Values:
+    - `custom`
+    - `url`
+    - `route`
+    - `component`
+    - `view`
+    - `task`
     Example: "route"
     Example: "component"
     Example: "view"
@@ -9751,6 +9822,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `custom`
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
+    - `component`
+    - `view`
+    - `task`
     DEPRECATED: No replacement at this time - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
     Example: "route"
     """
@@ -9763,6 +9841,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `custom`
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
+    - `component`
+    - `view`
+    - `task`
     DEPRECATED: No replacement at this time - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
     Example: "route"
     """

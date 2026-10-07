@@ -6350,6 +6350,12 @@ export type DEVICE_STORAGE_SIZE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Well-defined Values:
+ * - `nominal`
+ * - `fair`
+ * - `serious`
+ * - `critical`
+ *
  * @example "nominal"
  */
 export const DEVICE_THERMAL_STATE = 'device.thermal_state';
@@ -7908,6 +7914,22 @@ export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Well-defined Values:
+ * - `chat`
+ * - `create_agent`
+ * - `create_memory`
+ * - `create_memory_store`
+ * - `delete_memory`
+ * - `delete_memory_store`
+ * - `embeddings`
+ * - `execute_tool`
+ * - `generate_content`
+ * - `invoke_agent`
+ * - `search_memory`
+ * - `text_completion`
+ * - `update_memory`
+ * - `upsert_memory`
+ *
  * @example "chat"
  */
 export const GEN_AI_OPERATION_NAME = 'gen_ai.operation.name';
@@ -7928,6 +7950,14 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `agent` - invoke_agent and create_agent spans
+ * - `ai_client` - any LLM call
+ * - `tool` - execute_tool spans
+ * - `handoff` - handoff spans
+ * - `memory` - gen_ai.memory.client spans
+ * - `other` - input and output processors, skill loading, guardrails etc.
  *
  * @example "tool"
  */
@@ -15220,6 +15250,44 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Well-defined Values:
+ * - `ai`
+ * - `ai.pipeline`
+ * - `app`
+ * - `browser`
+ * - `cache`
+ * - `console`
+ * - `db`
+ * - `event`
+ * - `file`
+ * - `function.aws`
+ * - `function.azure`
+ * - `function.gcp`
+ * - `function.nextjs`
+ * - `function.remix`
+ * - `graphql`
+ * - `grpc`
+ * - `http`
+ * - `measure`
+ * - `middleware`
+ * - `navigation`
+ * - `pageload`
+ * - `queue`
+ * - `resource`
+ * - `rpc`
+ * - `serialize`
+ * - `subprocess`
+ * - `template`
+ * - `topic`
+ * - `ui`
+ * - `ui.angular`
+ * - `ui.ember`
+ * - `ui.react`
+ * - `ui.svelte`
+ * - `ui.vue`
+ * - `view`
+ * - `websocket`
+ *
  * @example "db"
  */
 export const SENTRY_CATEGORY = 'sentry.category';
@@ -16511,6 +16579,14 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: internal
  *
+ * Well-defined Values:
+ * - `custom`
+ * - `url`
+ * - `route`
+ * - `component`
+ * - `view`
+ * - `task`
+ *
  * @example "route"
  * @example "component"
  * @example "view"
@@ -16558,6 +16634,14 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Well-defined Values:
+ * - `custom`
+ * - `url` - Describes the full URL, potentially containing identifiers
+ * - `route` - Describes a parametrized route
+ * - `component`
+ * - `view`
+ * - `task`
+ *
  * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
  */
@@ -16579,6 +16663,14 @@ export type SENTRY_SOURCE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `custom`
+ * - `url` - Describes the full URL, potentially containing identifiers
+ * - `route` - Describes a parametrized route
+ * - `component`
+ * - `view`
+ * - `task`
  *
  * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
