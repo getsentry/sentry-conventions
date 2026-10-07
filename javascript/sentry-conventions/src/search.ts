@@ -7813,8 +7813,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'device.thermal_state': {
     canonicalName: 'device.thermal_state',
     type: 'string',
-    brief:
-      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    brief: "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
     deprecationChain: ['device.thermal_state'],
   },
   'device.timezone': {
@@ -8256,15 +8255,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.operation.name': {
     canonicalName: 'gen_ai.operation.name',
     type: 'string',
-    brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+    brief: 'The name of the operation being performed.',
     deprecationChain: ['gen_ai.operation.name'],
   },
   'gen_ai.operation.type': {
     canonicalName: 'gen_ai.operation.type',
     type: 'string',
     brief:
-      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'memory' (gen_ai.memory.client spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+      'The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI',
     deprecationChain: ['gen_ai.operation.type'],
   },
   'gen_ai.output.messages': {
@@ -10801,24 +10799,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'sentry.segment.name.source': {
     canonicalName: 'sentry.segment.name.source',
     type: 'string',
-    brief:
-      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    brief: 'The source of the segment span name. Should only be set on segment spans.',
     internal: true,
     deprecationChain: ['sentry.segment.name.source'],
   },
   'sentry.source': {
     canonicalName: 'sentry.source',
     type: 'string',
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     deprecated: true,
     deprecationChain: ['sentry.source'],
   },
   'sentry.span.source': {
     canonicalName: 'sentry.span.source',
     type: 'string',
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     deprecated: true,
     deprecationChain: ['sentry.span.source'],
   },
@@ -10932,7 +10927,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.category',
     type: 'string',
     brief:
-      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+      'The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).',
     deprecationChain: ['span.category', 'sentry.category'],
   },
   'span.domain': {

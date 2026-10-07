@@ -89,6 +89,20 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
       </div>
     )}
     
+    {attribute.enum_values && attribute.enum_values.length > 0 && (
+      <div class="flex items-baseline gap-3 text-sm">
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">Well-defined Values</span>
+        <ul class="flex flex-col gap-1 m-0 list-none p-0">
+          {attribute.enum_values.map(({ value, brief }) => (
+            <li class="flex items-baseline gap-2">
+              <code class="text-xs">{value}</code>
+              {brief && <span class="text-xs text-text-secondary" set:html={renderInlineMarkdown(brief)} />}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
     {attribute.alias && attribute.alias.length > 0 && (
       <div class="flex items-baseline gap-3 text-sm">
         <span class="text-text-muted min-w-[100px] flex-shrink-0">Aliases</span>

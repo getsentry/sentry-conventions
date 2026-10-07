@@ -1,12 +1,26 @@
 {
   "key": "sentry.span.source",
-  "brief": "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+  "brief": "The source of a span, also referred to as transaction source.",
   "type": "string",
   "apply_scrubbing": {
     "key": "never"
   },
   "is_in_otel": false,
   "example": "route",
+  "enum_values": [
+    { "value": "custom" },
+    {
+      "value": "url",
+      "brief": "Describes the full URL, potentially containing identifiers"
+    },
+    {
+      "value": "route",
+      "brief": "Describes a parametrized route"
+    },
+    { "value": "component" },
+    { "value": "view" },
+    { "value": "task" }
+  ],
   "deprecation": {
     "_status": null,
     "reason": "This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans."

@@ -110,6 +110,25 @@
         ]
       }
     },
+    "enum_values": {
+      "description": "The well-defined values the attribute can take when it behaves like an enum. Each entry is a value with an optional brief explaining when it applies.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "brief": {
+            "description": "An optional note describing when this value applies",
+            "type": "string"
+          }
+        },
+        "required": ["value"]
+      }
+    },
     "deprecation": {
       "description": "If an attribute was deprecated, and what it was replaced with",
       "type": "object",
