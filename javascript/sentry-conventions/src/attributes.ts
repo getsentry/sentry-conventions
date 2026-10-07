@@ -8229,6 +8229,35 @@ export const GEN_AI_PROMPT_NAME = 'gen_ai.prompt.name';
  */
 export type GEN_AI_PROMPT_NAME_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__prompt__variable__[key].json
+
+/**
+ * Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string. `gen_ai.prompt.variable.<key>`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_PROMPT_VARIABLE_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto - Prompt variables contain user input and may include sensitive information
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "gen_ai.prompt.variable.language='French'"
+ * @example "gen_ai.prompt.variable.topic='weather'"
+ */
+export const GEN_AI_PROMPT_VARIABLE_KEY = 'gen_ai.prompt.variable.<key>';
+
+/**
+ * Base key for {@link GEN_AI_PROMPT_VARIABLE_KEY}. Use with a dynamic suffix, e.g. `${GEN_AI_PROMPT_VARIABLE_KEY_BASE}.${key}`.
+ */
+export const GEN_AI_PROMPT_VARIABLE_KEY_BASE = 'gen_ai.prompt.variable';
+
+/**
+ * Type for {@link GEN_AI_PROMPT_VARIABLE_KEY} gen_ai.prompt.variable.<key>
+ */
+export type GEN_AI_PROMPT_VARIABLE_KEY_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__provider__name.json
 
 /**
@@ -10985,7 +11014,7 @@ export type JSONRPC_PROTOCOL_VERSION_TYPE = string;
 // Path: model/attributes/jsonrpc/jsonrpc__request__id.json
 
 /**
- * The JSON-RPC request identifier. Unique within the session. `jsonrpc.request.id`
+ * The JSON-RPC request identifier, used to correlate a request with its response. `jsonrpc.request.id`
  *
  * Attribute Value Type: `string` {@link JSONRPC_REQUEST_ID_TYPE}
  *
@@ -11412,6 +11441,28 @@ export const LOGGER_NAME = 'logger.name';
  */
 export type LOGGER_NAME_TYPE = string;
 
+// Path: model/attributes/mcp/mcp__auth__client__name.json
+
+/**
+ * Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable. `mcp.auth.client.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_AUTH_CLIENT_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Example Desktop"
+ * @example "Example CLI"
+ */
+export const MCP_AUTH_CLIENT_NAME = 'mcp.auth.client.name';
+
+/**
+ * Type for {@link MCP_AUTH_CLIENT_NAME} mcp.auth.client.name
+ */
+export type MCP_AUTH_CLIENT_NAME_TYPE = string;
+
 // Path: model/attributes/mcp/mcp__cancelled__reason.json
 
 /**
@@ -11457,7 +11508,7 @@ export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
 // Path: model/attributes/mcp/mcp__client__name.json
 
 /**
- * Name of the MCP client application. `mcp.client.name`
+ * Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name. `mcp.client.name`
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_NAME_TYPE}
  *
@@ -11466,7 +11517,7 @@ export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "claude-desktop"
+ * @example "example-mcp-client"
  */
 export const MCP_CLIENT_NAME = 'mcp.client.name';
 
@@ -11478,7 +11529,7 @@ export type MCP_CLIENT_NAME_TYPE = string;
 // Path: model/attributes/mcp/mcp__client__title.json
 
 /**
- * Display title of the MCP client application. `mcp.client.title`
+ * Display title of the MCP client implementation, as declared in clientInfo. `mcp.client.title`
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_TITLE_TYPE}
  *
@@ -11487,7 +11538,7 @@ export type MCP_CLIENT_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "Claude Desktop"
+ * @example "Example MCP Client"
  */
 export const MCP_CLIENT_TITLE = 'mcp.client.title';
 
@@ -11499,7 +11550,7 @@ export type MCP_CLIENT_TITLE_TYPE = string;
 // Path: model/attributes/mcp/mcp__client__version.json
 
 /**
- * Version of the MCP client application. `mcp.client.version`
+ * Version of the MCP client implementation, as declared in clientInfo. `mcp.client.version`
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_VERSION_TYPE}
  *
@@ -11655,6 +11706,7 @@ export type MCP_METHOD_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @example 0.2
  * @example 50
  */
 export const MCP_PROGRESS_CURRENT = 'mcp.progress.current';
@@ -11739,6 +11791,7 @@ export type MCP_PROGRESS_TOKEN_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @example 1
  * @example 100
  */
 export const MCP_PROGRESS_TOTAL = 'mcp.progress.total';
@@ -11859,7 +11912,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE = string;
 // Path: model/attributes/mcp/mcp__protocol__ready.json
 
 /**
- * Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready. `mcp.protocol.ready`
+ * Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake. `mcp.protocol.ready`
  *
  * Attribute Value Type: `number` {@link MCP_PROTOCOL_READY_TYPE}
  *
@@ -11880,7 +11933,7 @@ export type MCP_PROTOCOL_READY_TYPE = number;
 // Path: model/attributes/mcp/mcp__protocol__version.json
 
 /**
- * MCP protocol version used in the session. `mcp.protocol.version`
+ * Version of the Model Context Protocol used for the operation. `mcp.protocol.version`
  *
  * Attribute Value Type: `string` {@link MCP_PROTOCOL_VERSION_TYPE}
  *
@@ -11971,7 +12024,7 @@ export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
 // Path: model/attributes/mcp/mcp__request__id.json
 
 /**
- * JSON-RPC request identifier for the MCP request. Unique within the MCP session. `mcp.request.id`
+ * JSON-RPC request identifier for the MCP request, used to correlate the request with its response. `mcp.request.id`
  *
  * Attribute Value Type: `string` {@link MCP_REQUEST_ID_TYPE}
  *
@@ -11995,7 +12048,7 @@ export type MCP_REQUEST_ID_TYPE = string;
 // Path: model/attributes/mcp/mcp__resource__protocol.json
 
 /**
- * Protocol of the resource URI being accessed, extracted from the URI. `mcp.resource.protocol`
+ * URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server. `mcp.resource.protocol`
  *
  * Attribute Value Type: `string` {@link MCP_RESOURCE_PROTOCOL_TYPE}
  *
@@ -12004,10 +12057,8 @@ export type MCP_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
- *
- * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - OTel uses the generic network.protocol.name attribute
  * @example "file"
+ * @example "postgres"
  */
 export const MCP_RESOURCE_PROTOCOL = 'mcp.resource.protocol';
 
@@ -12040,7 +12091,7 @@ export type MCP_RESOURCE_URI_TYPE = string;
 // Path: model/attributes/mcp/mcp__server__name.json
 
 /**
- * Name of the MCP server application. `mcp.server.name`
+ * Name of the MCP server implementation, as declared in serverInfo. `mcp.server.name`
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_NAME_TYPE}
  *
@@ -12049,7 +12100,7 @@ export type MCP_RESOURCE_URI_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "sentry-mcp-server"
+ * @example "example-mcp-server"
  */
 export const MCP_SERVER_NAME = 'mcp.server.name';
 
@@ -12061,7 +12112,7 @@ export type MCP_SERVER_NAME_TYPE = string;
 // Path: model/attributes/mcp/mcp__server__title.json
 
 /**
- * Display title of the MCP server application. `mcp.server.title`
+ * Display title of the MCP server implementation, as declared in serverInfo. `mcp.server.title`
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_TITLE_TYPE}
  *
@@ -12070,7 +12121,7 @@ export type MCP_SERVER_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "Sentry MCP Server"
+ * @example "Example MCP Server"
  */
 export const MCP_SERVER_TITLE = 'mcp.server.title';
 
@@ -12082,7 +12133,7 @@ export type MCP_SERVER_TITLE_TYPE = string;
 // Path: model/attributes/mcp/mcp__server__version.json
 
 /**
- * Version of the MCP server application. `mcp.server.version`
+ * Version of the MCP server implementation, as declared in serverInfo. `mcp.server.version`
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_VERSION_TYPE}
  *
@@ -12103,7 +12154,7 @@ export type MCP_SERVER_VERSION_TYPE = string;
 // Path: model/attributes/mcp/mcp__session__id.json
 
 /**
- * Identifier for the MCP session. `mcp.session.id`
+ * Identifier for an MCP protocol session, when the operation belongs to a session. `mcp.session.id`
  *
  * Attribute Value Type: `string` {@link MCP_SESSION_ID_TYPE}
  *
@@ -12216,7 +12267,7 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
 // Path: model/attributes/mcp/mcp__transport.json
 
 /**
- * Transport method used for MCP communication. `mcp.transport`
+ * MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol. `mcp.transport`
  *
  * Attribute Value Type: `string` {@link MCP_TRANSPORT_TYPE}
  *
@@ -12225,10 +12276,8 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link NET_TRANSPORT} `net.transport`
- *
- * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - OTel uses the generic network.transport attribute
- * @example "stdio"
+ * @example "StdioServerTransport"
+ * @example "CustomHTTPTransport"
  */
 export const MCP_TRANSPORT = 'mcp.transport';
 
@@ -12718,7 +12767,7 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - This attribute is being deprecated in favor of network.protocol.name.
  * @example "AMQP"
@@ -13270,7 +13319,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
+ * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @example "http"
  */
@@ -13316,7 +13365,7 @@ export type NETWORK_PROTOCOL_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_TRANSPORT} `net.transport`, {@link MCP_TRANSPORT} `mcp.transport`
+ * Aliases: {@link NET_TRANSPORT} `net.transport`
  *
  * @example "tcp"
  */
@@ -13502,7 +13551,7 @@ export type NET_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
@@ -13690,7 +13739,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link MCP_TRANSPORT} `mcp.transport`
+ * Aliases: {@link NETWORK_TRANSPORT} `network.transport`
  *
  * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
  * @example "tcp"
@@ -20276,6 +20325,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.pipeline.name': 'string',
   'gen_ai.prompt': 'string',
   'gen_ai.prompt.name': 'string',
+  'gen_ai.prompt.variable.<key>': 'string',
   'gen_ai.provider.name': 'string',
   'gen_ai.request.available_tools': 'string',
   'gen_ai.request.frequency_penalty': 'double',
@@ -20416,6 +20466,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'lcp.url': 'string',
   'litestar.middleware_name': 'string',
   'logger.name': 'string',
+  'mcp.auth.client.name': 'string',
   'mcp.cancelled.reason': 'string',
   'mcp.cancelled.request_id': 'string',
   'mcp.client.name': 'string',
@@ -20427,11 +20478,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.logging.logger': 'string',
   'mcp.logging.message': 'string',
   'mcp.method.name': 'string',
-  'mcp.progress.current': 'integer',
+  'mcp.progress.current': 'double',
   'mcp.progress.message': 'string',
   'mcp.progress.percentage': 'double',
   'mcp.progress.token': 'string',
-  'mcp.progress.total': 'integer',
+  'mcp.progress.total': 'double',
   'mcp.prompt.name': 'string',
   'mcp.prompt.result.description': 'string',
   'mcp.prompt.result.message_content': 'string',
@@ -21161,6 +21212,7 @@ export type AttributeName =
   | typeof GEN_AI_PIPELINE_NAME
   | typeof GEN_AI_PROMPT
   | typeof GEN_AI_PROMPT_NAME
+  | typeof GEN_AI_PROMPT_VARIABLE_KEY
   | typeof GEN_AI_PROVIDER_NAME
   | typeof GEN_AI_REQUEST_AVAILABLE_TOOLS
   | typeof GEN_AI_REQUEST_FREQUENCY_PENALTY
@@ -21301,6 +21353,7 @@ export type AttributeName =
   | typeof LCP_URL
   | typeof LITESTAR_MIDDLEWARE_NAME
   | typeof LOGGER_NAME
+  | typeof MCP_AUTH_CLIENT_NAME
   | typeof MCP_CANCELLED_REASON
   | typeof MCP_CANCELLED_REQUEST_ID
   | typeof MCP_CLIENT_NAME
@@ -27449,6 +27502,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['mcp.prompt.name'],
     changelog: [{ version: '0.12.0', prs: [420], description: 'Added gen_ai.prompt.name attribute' }],
   },
+  'gen_ai.prompt.variable.<key>': {
+    brief:
+      'Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.',
+    type: 'string',
+    keys: ['gen_ai.prompt.variable.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Prompt variables contain user input and may include sensitive information',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "gen_ai.prompt.variable.language='French'",
+    examples: ["gen_ai.prompt.variable.language='French'", "gen_ai.prompt.variable.topic='weather'"],
+    changelog: [
+      { version: 'next', prs: [671], description: 'Added the OpenTelemetry convention for prompt variables' },
+    ],
+    additionalContext: [
+      'Capture only when the user explicitly opts in to recording prompt inputs. In MCP, these values are the arguments supplied in prompts/get requests.',
+    ],
+  },
   'gen_ai.provider.name': {
     brief: 'The Generative AI provider as identified by the client or server instrumentation.',
     type: 'string',
@@ -29612,7 +29686,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.12.0', prs: [420], description: 'Added jsonrpc.protocol.version attribute' }],
   },
   'jsonrpc.request.id': {
-    brief: 'The JSON-RPC request identifier. Unique within the session.',
+    brief: 'The JSON-RPC request identifier, used to correlate a request with its response.',
     type: 'string',
     keys: ['jsonrpc.request.id', 'mcp.request.id'],
     applyScrubbing: {
@@ -29621,8 +29695,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '1',
+    examples: ['1'],
     aliases: ['mcp.request.id'],
-    changelog: [{ version: '0.12.0', prs: [420], description: 'Added jsonrpc.request.id attribute' }],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Removed the session-scoped uniqueness requirement from the request identifier',
+      },
+      { version: '0.12.0', prs: [420], description: 'Added jsonrpc.request.id attribute' },
+    ],
   },
   'jvm.gc.action': {
     brief: 'Name of the garbage collector action.',
@@ -29919,6 +30001,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myLogger',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'mcp.auth.client.name': {
+    brief:
+      'Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.',
+    type: 'string',
+    keys: ['mcp.auth.client.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Example Desktop',
+    examples: ['Example Desktop', 'Example CLI'],
+    changelog: [{ version: 'next', prs: [671], description: 'Added mcp.auth.client.name attribute' }],
+  },
   'mcp.cancelled.reason': {
     brief: 'Reason for the cancellation of an MCP operation.',
     type: 'string',
@@ -29945,7 +30041,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.client.name': {
-    brief: 'Name of the MCP client application.',
+    brief:
+      'Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.',
     type: 'string',
     keys: ['mcp.client.name'],
     applyScrubbing: {
@@ -29953,11 +30050,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'claude-desktop',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    example: 'example-mcp-client',
+    examples: ['example-mcp-client'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.client.title': {
-    brief: 'Display title of the MCP client application.',
+    brief: 'Display title of the MCP client implementation, as declared in clientInfo.',
     type: 'string',
     keys: ['mcp.client.title'],
     applyScrubbing: {
@@ -29966,11 +30071,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Claude Desktop',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    example: 'Example MCP Client',
+    examples: ['Example MCP Client'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.client.version': {
-    brief: 'Version of the MCP client application.',
+    brief: 'Version of the MCP client implementation, as declared in clientInfo.',
     type: 'string',
     keys: ['mcp.client.version'],
     applyScrubbing: {
@@ -29979,7 +30092,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1.0.0',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    examples: ['1.0.0'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.lifecycle.phase': {
     brief: 'Lifecycle phase indicator for MCP operations.',
@@ -30060,15 +30181,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'mcp.progress.current': {
     brief: 'Current progress value of an MCP operation.',
-    type: 'integer',
+    type: 'double',
     keys: ['mcp.progress.current'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 50,
+    example: 0.2,
+    examples: [0.2, 50],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Changed the type to double to support fractional MCP progress values',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
@@ -30115,15 +30242,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'mcp.progress.total': {
     brief: 'Total progress target value of an MCP operation.',
-    type: 'integer',
+    type: 'double',
     keys: ['mcp.progress.total'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 100,
+    example: 1,
+    examples: [1, 100],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Changed the type to double to support fractional MCP progress values',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
@@ -30202,7 +30335,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.protocol.ready': {
-    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
+    brief:
+      'Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.',
     type: 'integer',
     keys: ['mcp.protocol.ready'],
     applyScrubbing: {
@@ -30211,13 +30345,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
+    examples: [1],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that readiness describes the legacy MCP initialization handshake',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
   },
   'mcp.protocol.version': {
-    brief: 'MCP protocol version used in the session.',
+    brief: 'Version of the Model Context Protocol used for the operation.',
     type: 'string',
     keys: ['mcp.protocol.version'],
     applyScrubbing: {
@@ -30226,7 +30366,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '2024-11-05',
+    examples: ['2024-11-05'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the protocol version applies to an operation without requiring a session',
+      },
       { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -30273,7 +30419,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.request.id': {
-    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
+    brief: 'JSON-RPC request identifier for the MCP request, used to correlate the request with its response.',
     type: 'string',
     keys: ['jsonrpc.request.id', 'mcp.request.id'],
     applyScrubbing: {
@@ -30282,6 +30428,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1',
+    examples: ['1'],
     deprecation: {
       replacement: 'jsonrpc.request.id',
       reason: 'OTel models MCP as JSON-RPC, uses jsonrpc.request.id',
@@ -30289,27 +30436,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['jsonrpc.request.id'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Removed the session-scoped uniqueness requirement from the request identifier',
+      },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of jsonrpc.request.id' },
       { version: '0.3.0', prs: [171] },
     ],
   },
   'mcp.resource.protocol': {
-    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
+    brief:
+      'URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    keys: ['mcp.resource.protocol'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'file',
-    deprecation: {
-      replacement: 'network.protocol.name',
-      reason: 'OTel uses the generic network.protocol.name attribute',
-      status: 'backfill',
-    },
-    aliases: ['network.protocol.name', 'net.protocol.name', 'messaging.protocol'],
+    examples: ['file', 'postgres'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description:
+          'Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation',
+      },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
       { version: '0.3.0', prs: [171] },
@@ -30332,7 +30486,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'mcp.server.name': {
-    brief: 'Name of the MCP server application.',
+    brief: 'Name of the MCP server implementation, as declared in serverInfo.',
     type: 'string',
     keys: ['mcp.server.name'],
     applyScrubbing: {
@@ -30340,11 +30494,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'sentry-mcp-server',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    example: 'example-mcp-server',
+    examples: ['example-mcp-server'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.server.title': {
-    brief: 'Display title of the MCP server application.',
+    brief: 'Display title of the MCP server implementation, as declared in serverInfo.',
     type: 'string',
     keys: ['mcp.server.title'],
     applyScrubbing: {
@@ -30353,11 +30515,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Sentry MCP Server',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    example: 'Example MCP Server',
+    examples: ['Example MCP Server'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.server.version': {
-    brief: 'Version of the MCP server application.',
+    brief: 'Version of the MCP server implementation, as declared in serverInfo.',
     type: 'string',
     keys: ['mcp.server.version'],
     applyScrubbing: {
@@ -30366,10 +30536,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '0.1.0',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    examples: ['0.1.0'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.session.id': {
-    brief: 'Identifier for the MCP session.',
+    brief: 'Identifier for an MCP protocol session, when the operation belongs to a session.',
     type: 'string',
     keys: ['mcp.session.id'],
     applyScrubbing: {
@@ -30378,9 +30556,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '550e8400-e29b-41d4-a716-446655440000',
+    examples: ['550e8400-e29b-41d4-a716-446655440000'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the identifier requires a real MCP protocol session',
+      },
       { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
       { version: '0.3.0', prs: [171] },
+    ],
+    additionalContext: [
+      'Applies to protocol versions and transports that provide MCP session management, including legacy Streamable HTTP sessions. Omit for operations without a protocol session; do not synthesize a session identifier from a request, connection, or conversation.',
     ],
   },
   'mcp.tool.name': {
@@ -30484,22 +30671,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'mcp.transport': {
-    brief: 'Transport method used for MCP communication.',
+    brief:
+      'MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport'],
+    keys: ['mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'stdio',
-    deprecation: {
-      replacement: 'network.transport',
-      reason: 'OTel uses the generic network.transport attribute',
-      status: 'backfill',
-    },
-    aliases: ['network.transport', 'net.transport'],
+    example: 'StdioServerTransport',
+    examples: ['StdioServerTransport', 'CustomHTTPTransport'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description:
+          'Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation',
+      },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.transport' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -30836,7 +31025,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.protocol': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30849,8 +31038,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of network.protocol.name.',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'net.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.protocol attribute' }],
+    aliases: ['network.protocol.name', 'net.protocol.name'],
+    changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol attribute' },
+    ],
   },
   'messaging.protocol_version': {
     brief: 'The actual version of the protocol used for network communication.',
@@ -31262,15 +31454,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'http',
-    aliases: ['net.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    examples: ['http'],
+    aliases: ['net.protocol.name', 'messaging.protocol'],
     changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -31296,15 +31490,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport'],
+    keys: ['network.transport'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'tcp',
-    aliases: ['net.transport', 'mcp.transport'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    examples: ['tcp'],
+    aliases: ['net.transport'],
+    changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.transport alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.type': {
     brief: 'OSI network layer or non-OSI equivalent.',
@@ -31440,19 +31639,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'http',
+    examples: ['http'],
     deprecation: {
       replacement: 'network.protocol.name',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    aliases: ['network.protocol.name', 'messaging.protocol'],
     changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -31593,13 +31794,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'tcp',
+    examples: ['tcp'],
     deprecation: {
       replacement: 'network.transport',
       reason:
         'This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.',
     },
-    aliases: ['network.transport', 'mcp.transport'],
+    aliases: ['network.transport'],
     changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.transport alias' },
       {
         version: '0.21.0',
         prs: [588],
@@ -36280,6 +36483,7 @@ export type Attributes = {
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_PROMPT_NAME]?: GEN_AI_PROMPT_NAME_TYPE;
+  [GEN_AI_PROMPT_VARIABLE_KEY]?: GEN_AI_PROMPT_VARIABLE_KEY_TYPE;
   [GEN_AI_PROVIDER_NAME]?: GEN_AI_PROVIDER_NAME_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
@@ -36420,6 +36624,7 @@ export type Attributes = {
   [LCP_URL]?: LCP_URL_TYPE;
   [LITESTAR_MIDDLEWARE_NAME]?: LITESTAR_MIDDLEWARE_NAME_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
+  [MCP_AUTH_CLIENT_NAME]?: MCP_AUTH_CLIENT_NAME_TYPE;
   [MCP_CANCELLED_REASON]?: MCP_CANCELLED_REASON_TYPE;
   [MCP_CANCELLED_REQUEST_ID]?: MCP_CANCELLED_REQUEST_ID_TYPE;
   [MCP_CLIENT_NAME]?: MCP_CLIENT_NAME_TYPE;

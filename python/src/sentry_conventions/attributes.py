@@ -313,12 +313,10 @@ class _AttributeNamesMeta(type):
         "LITESTAR_MIDDLEWARE_NAME",
         "MCP_PROMPT_NAME",
         "MCP_REQUEST_ID",
-        "MCP_RESOURCE_PROTOCOL",
         "MCP_TOOL_NAME",
         "MCP_TOOL_RESULT_CONTENT",
         "MCP_TOOL_RESULT_CONTENT_COUNT",
         "MCP_TOOL_RESULT_IS_ERROR",
-        "MCP_TRANSPORT",
         "MESSAGING_CONVERSATION_ID",
         "MESSAGING_DESTINATION",
         "MESSAGING_DESTINATION_KIND",
@@ -5058,6 +5056,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "summarize_text"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__prompt__variable__[key].json
+    GEN_AI_PROMPT_VARIABLE_KEY: Literal["gen_ai.prompt.variable.<key>"] = (
+        "gen_ai.prompt.variable.<key>"
+    )
+    """Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.
+
+    Type: str
+    Apply Scrubbing: auto - Prompt variables contain user input and may include sensitive information
+    Defined in OTEL: Yes
+    Visibility: public
+    Has Dynamic Suffix: true
+    Example: "gen_ai.prompt.variable.language='French'"
+    Example: "gen_ai.prompt.variable.topic='weather'"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__provider__name.json
     GEN_AI_PROVIDER_NAME: Literal["gen_ai.provider.name"] = "gen_ai.provider.name"
     """The Generative AI provider as identified by the client or server instrumentation.
@@ -6670,7 +6683,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/jsonrpc/jsonrpc__request__id.json
     JSONRPC_REQUEST_ID: Literal["jsonrpc.request.id"] = "jsonrpc.request.id"
-    """The JSON-RPC request identifier. Unique within the session.
+    """The JSON-RPC request identifier, used to correlate a request with its response.
 
     Type: str
     Apply Scrubbing: manual
@@ -6900,6 +6913,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myLogger"
     """
 
+    # Path: model/attributes/mcp/mcp__auth__client__name.json
+    MCP_AUTH_CLIENT_NAME: Literal["mcp.auth.client.name"] = "mcp.auth.client.name"
+    """Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "Example Desktop"
+    Example: "Example CLI"
+    """
+
     # Path: model/attributes/mcp/mcp__cancelled__reason.json
     MCP_CANCELLED_REASON: Literal["mcp.cancelled.reason"] = "mcp.cancelled.reason"
     """Reason for the cancellation of an MCP operation.
@@ -6926,29 +6951,29 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__client__name.json
     MCP_CLIENT_NAME: Literal["mcp.client.name"] = "mcp.client.name"
-    """Name of the MCP client application.
+    """Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Example: "claude-desktop"
+    Example: "example-mcp-client"
     """
 
     # Path: model/attributes/mcp/mcp__client__title.json
     MCP_CLIENT_TITLE: Literal["mcp.client.title"] = "mcp.client.title"
-    """Display title of the MCP client application.
+    """Display title of the MCP client implementation, as declared in clientInfo.
 
     Type: str
     Apply Scrubbing: manual - Client titles may reveal user-specific application configurations or custom setups
     Defined in OTEL: No
     Visibility: public
-    Example: "Claude Desktop"
+    Example: "Example MCP Client"
     """
 
     # Path: model/attributes/mcp/mcp__client__version.json
     MCP_CLIENT_VERSION: Literal["mcp.client.version"] = "mcp.client.version"
-    """Version of the MCP client application.
+    """Version of the MCP client implementation, as declared in clientInfo.
 
     Type: str
     Apply Scrubbing: manual
@@ -7027,10 +7052,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     MCP_PROGRESS_CURRENT: Literal["mcp.progress.current"] = "mcp.progress.current"
     """Current progress value of an MCP operation.
 
-    Type: int
+    Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Example: 0.2
     Example: 50
     """
 
@@ -7073,10 +7099,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     MCP_PROGRESS_TOTAL: Literal["mcp.progress.total"] = "mcp.progress.total"
     """Total progress target value of an MCP operation.
 
-    Type: int
+    Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Example: 1
     Example: 100
     """
 
@@ -7147,7 +7174,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__protocol__ready.json
     MCP_PROTOCOL_READY: Literal["mcp.protocol.ready"] = "mcp.protocol.ready"
-    """Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.
+    """Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.
 
     Type: int
     Apply Scrubbing: manual
@@ -7158,7 +7185,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__protocol__version.json
     MCP_PROTOCOL_VERSION: Literal["mcp.protocol.version"] = "mcp.protocol.version"
-    """MCP protocol version used in the session.
+    """Version of the Model Context Protocol used for the operation.
 
     Type: str
     Apply Scrubbing: manual
@@ -7209,7 +7236,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__request__id.json
     MCP_REQUEST_ID: Literal["mcp.request.id"] = "mcp.request.id"
-    """JSON-RPC request identifier for the MCP request. Unique within the MCP session.
+    """JSON-RPC request identifier for the MCP request, used to correlate the request with its response.
 
     Type: str
     Apply Scrubbing: manual
@@ -7222,15 +7249,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__resource__protocol.json
     MCP_RESOURCE_PROTOCOL: Literal["mcp.resource.protocol"] = "mcp.resource.protocol"
-    """Protocol of the resource URI being accessed, extracted from the URI.
+    """URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: network.protocol.name, net.protocol.name, messaging.protocol
-    DEPRECATED: Use network.protocol.name instead - OTel uses the generic network.protocol.name attribute
     Example: "file"
+    Example: "postgres"
     """
 
     # Path: model/attributes/mcp/mcp__resource__uri.json
@@ -7246,29 +7272,29 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__server__name.json
     MCP_SERVER_NAME: Literal["mcp.server.name"] = "mcp.server.name"
-    """Name of the MCP server application.
+    """Name of the MCP server implementation, as declared in serverInfo.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Example: "sentry-mcp-server"
+    Example: "example-mcp-server"
     """
 
     # Path: model/attributes/mcp/mcp__server__title.json
     MCP_SERVER_TITLE: Literal["mcp.server.title"] = "mcp.server.title"
-    """Display title of the MCP server application.
+    """Display title of the MCP server implementation, as declared in serverInfo.
 
     Type: str
     Apply Scrubbing: manual - Server titles may reveal user-specific application configurations or custom setups
     Defined in OTEL: No
     Visibility: public
-    Example: "Sentry MCP Server"
+    Example: "Example MCP Server"
     """
 
     # Path: model/attributes/mcp/mcp__server__version.json
     MCP_SERVER_VERSION: Literal["mcp.server.version"] = "mcp.server.version"
-    """Version of the MCP server application.
+    """Version of the MCP server implementation, as declared in serverInfo.
 
     Type: str
     Apply Scrubbing: manual
@@ -7279,7 +7305,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__session__id.json
     MCP_SESSION_ID: Literal["mcp.session.id"] = "mcp.session.id"
-    """Identifier for the MCP session.
+    """Identifier for an MCP protocol session, when the operation belongs to a session.
 
     Type: str
     Apply Scrubbing: manual
@@ -7346,15 +7372,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__transport.json
     MCP_TRANSPORT: Literal["mcp.transport"] = "mcp.transport"
-    """Transport method used for MCP communication.
+    """MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: network.transport, net.transport
-    DEPRECATED: Use network.transport instead - OTel uses the generic network.transport attribute
-    Example: "stdio"
+    Example: "StdioServerTransport"
+    Example: "CustomHTTPTransport"
     """
 
     # Path: model/attributes/mdc/mdc__[key].json
@@ -7640,7 +7665,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: network.protocol.name, net.protocol.name, mcp.resource.protocol
+    Aliases: network.protocol.name, net.protocol.name
     DEPRECATED: Use network.protocol.name instead - This attribute is being deprecated in favor of network.protocol.name.
     Example: "AMQP"
     """
@@ -7931,7 +7956,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.name, mcp.resource.protocol, messaging.protocol
+    Aliases: network.protocol.name, messaging.protocol
     DEPRECATED: Use network.protocol.name instead
     Example: "http"
     """
@@ -8033,7 +8058,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.transport, mcp.transport
+    Aliases: network.transport
     DEPRECATED: Use network.transport instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
     Example: "tcp"
     """
@@ -8135,7 +8160,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.protocol.name, mcp.resource.protocol, messaging.protocol
+    Aliases: net.protocol.name, messaging.protocol
     Example: "http"
     """
 
@@ -8161,7 +8186,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.transport, mcp.transport
+    Aliases: net.transport
     Example: "tcp"
     """
 
@@ -18519,6 +18544,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "gen_ai.prompt.variable.<key>": AttributeMetadata(
+        brief="Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.prompt.variable.<key>",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Prompt variables contain user input and may include sensitive information",
+        ),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        has_dynamic_suffix=True,
+        example="gen_ai.prompt.variable.language='French'",
+        examples=[
+            "gen_ai.prompt.variable.language='French'",
+            "gen_ai.prompt.variable.topic='weather'",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Added the OpenTelemetry convention for prompt variables",
+            ),
+        ],
+        additional_context=[
+            "Capture only when the user explicitly opts in to recording prompt inputs. In MCP, these values are the arguments supplied in prompts/get requests."
+        ],
+    ),
     "gen_ai.provider.name": AttributeMetadata(
         brief="The Generative AI provider as identified by the client or server instrumentation.",
         type=AttributeType.STRING,
@@ -21028,7 +21080,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "jsonrpc.request.id": AttributeMetadata(
-        brief="The JSON-RPC request identifier. Unique within the session.",
+        brief="The JSON-RPC request identifier, used to correlate a request with its response.",
         type=AttributeType.STRING,
         keys=(
             "jsonrpc.request.id",
@@ -21038,8 +21090,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1",
+        examples=["1"],
         aliases=["mcp.request.id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Removed the session-scoped uniqueness requirement from the request identifier",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -21384,6 +21442,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "mcp.auth.client.name": AttributeMetadata(
+        brief="Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.",
+        type=AttributeType.STRING,
+        keys=("mcp.auth.client.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Example Desktop",
+        examples=["Example Desktop", "Example CLI"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Added mcp.auth.client.name attribute",
+            ),
+        ],
+    ),
     "mcp.cancelled.reason": AttributeMetadata(
         brief="Reason for the cancellation of an MCP operation.",
         type=AttributeType.STRING,
@@ -21412,19 +21487,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.client.name": AttributeMetadata(
-        brief="Name of the MCP client application.",
+        brief="Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.",
         type=AttributeType.STRING,
         keys=("mcp.client.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="claude-desktop",
+        example="example-mcp-client",
+        examples=["example-mcp-client"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.client.title": AttributeMetadata(
-        brief="Display title of the MCP client application.",
+        brief="Display title of the MCP client implementation, as declared in clientInfo.",
         type=AttributeType.STRING,
         keys=("mcp.client.title",),
         apply_scrubbing=ApplyScrubbingInfo(
@@ -21433,20 +21514,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="Claude Desktop",
+        example="Example MCP Client",
+        examples=["Example MCP Client"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.client.version": AttributeMetadata(
-        brief="Version of the MCP client application.",
+        brief="Version of the MCP client implementation, as declared in clientInfo.",
         type=AttributeType.STRING,
         keys=("mcp.client.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0.0",
+        examples=["1.0.0"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -21534,13 +21627,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "mcp.progress.current": AttributeMetadata(
         brief="Current progress value of an MCP operation.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         keys=("mcp.progress.current",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example=50,
+        example=0.2,
+        examples=[0.2, 50],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Changed the type to double to support fractional MCP progress values",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -21587,13 +21686,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "mcp.progress.total": AttributeMetadata(
         brief="Total progress target value of an MCP operation.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         keys=("mcp.progress.total",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example=100,
+        example=1,
+        examples=[1, 100],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Changed the type to double to support fractional MCP progress values",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -21677,27 +21782,39 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.protocol.ready": AttributeMetadata(
-        brief="Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
+        brief="Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.",
         type=AttributeType.INTEGER,
         keys=("mcp.protocol.ready",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
+        examples=[1],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that readiness describes the legacy MCP initialization handshake",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.protocol.version": AttributeMetadata(
-        brief="MCP protocol version used in the session.",
+        brief="Version of the Model Context Protocol used for the operation.",
         type=AttributeType.STRING,
         keys=("mcp.protocol.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="2024-11-05",
+        examples=["2024-11-05"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that the protocol version applies to an operation without requiring a session",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -21750,7 +21867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.request.id": AttributeMetadata(
-        brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
+        brief="JSON-RPC request identifier for the MCP request, used to correlate the request with its response.",
         type=AttributeType.STRING,
         keys=(
             "jsonrpc.request.id",
@@ -21760,6 +21877,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1",
+        examples=["1"],
         deprecation=DeprecationInfo(
             replacement="jsonrpc.request.id",
             reason="OTel models MCP as JSON-RPC, uses jsonrpc.request.id",
@@ -21767,6 +21885,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["jsonrpc.request.id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Removed the session-scoped uniqueness requirement from the request identifier",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -21776,25 +21899,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.resource.protocol": AttributeMetadata(
-        brief="Protocol of the resource URI being accessed, extracted from the URI.",
+        brief="URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.",
         type=AttributeType.STRING,
-        keys=(
-            "network.protocol.name",
-            "mcp.resource.protocol",
-            "messaging.protocol",
-            "net.protocol.name",
-        ),
+        keys=("mcp.resource.protocol",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="file",
-        deprecation=DeprecationInfo(
-            replacement="network.protocol.name",
-            reason="OTel uses the generic network.protocol.name attribute",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["network.protocol.name", "net.protocol.name", "messaging.protocol"],
+        examples=["file", "postgres"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -21828,19 +21946,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.server.name": AttributeMetadata(
-        brief="Name of the MCP server application.",
+        brief="Name of the MCP server implementation, as declared in serverInfo.",
         type=AttributeType.STRING,
         keys=("mcp.server.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="sentry-mcp-server",
+        example="example-mcp-server",
+        examples=["example-mcp-server"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.server.title": AttributeMetadata(
-        brief="Display title of the MCP server application.",
+        brief="Display title of the MCP server implementation, as declared in serverInfo.",
         type=AttributeType.STRING,
         keys=("mcp.server.title",),
         apply_scrubbing=ApplyScrubbingInfo(
@@ -21849,38 +21973,59 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="Sentry MCP Server",
+        example="Example MCP Server",
+        examples=["Example MCP Server"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.server.version": AttributeMetadata(
-        brief="Version of the MCP server application.",
+        brief="Version of the MCP server implementation, as declared in serverInfo.",
         type=AttributeType.STRING,
         keys=("mcp.server.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="0.1.0",
+        examples=["0.1.0"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.session.id": AttributeMetadata(
-        brief="Identifier for the MCP session.",
+        brief="Identifier for an MCP protocol session, when the operation belongs to a session.",
         type=AttributeType.STRING,
         keys=("mcp.session.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="550e8400-e29b-41d4-a716-446655440000",
+        examples=["550e8400-e29b-41d4-a716-446655440000"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified that the identifier requires a real MCP protocol session",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
                 description="Set is_in_otel=true, attribute exists in OTel MCP registry",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
+        additional_context=[
+            "Applies to protocol versions and transports that provide MCP session management, including legacy Streamable HTTP sessions. Omit for operations without a protocol session; do not synthesize a session identifier from a request, connection, or conversation."
         ],
     ),
     "mcp.tool.name": AttributeMetadata(
@@ -21992,23 +22137,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.transport": AttributeMetadata(
-        brief="Transport method used for MCP communication.",
+        brief="MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.",
         type=AttributeType.STRING,
-        keys=(
-            "network.transport",
-            "mcp.transport",
-        ),
+        keys=("mcp.transport",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="stdio",
-        deprecation=DeprecationInfo(
-            replacement="network.transport",
-            reason="OTel uses the generic network.transport attribute",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["network.transport", "net.transport"],
+        example="StdioServerTransport",
+        examples=["StdioServerTransport", "CustomHTTPTransport"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -22412,7 +22554,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "network.protocol.name",
-            "mcp.resource.protocol",
             "messaging.protocol",
             "net.protocol.name",
         ),
@@ -22426,8 +22567,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of network.protocol.name.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["network.protocol.name", "net.protocol.name", "mcp.resource.protocol"],
+        aliases=["network.protocol.name", "net.protocol.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Removed the semantically distinct mcp.resource.protocol alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -22965,7 +23111,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "network.protocol.name",
-            "mcp.resource.protocol",
             "messaging.protocol",
             "net.protocol.name",
         ),
@@ -22973,15 +23118,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
+        examples=["http"],
         deprecation=DeprecationInfo(
             replacement="network.protocol.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=[
-            "network.protocol.name",
-            "mcp.resource.protocol",
-            "messaging.protocol",
-        ],
+        aliases=["network.protocol.name", "messaging.protocol"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Removed the semantically distinct mcp.resource.protocol alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -23152,12 +23299,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
+        examples=["tcp"],
         deprecation=DeprecationInfo(
             replacement="network.transport",
             reason="This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.",
         ),
-        aliases=["network.transport", "mcp.transport"],
+        aliases=["network.transport"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Removed the semantically distinct mcp.transport alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588],
@@ -23309,7 +23462,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "network.protocol.name",
-            "mcp.resource.protocol",
             "messaging.protocol",
             "net.protocol.name",
         ),
@@ -23317,8 +23469,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
-        aliases=["net.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
+        examples=["http"],
+        aliases=["net.protocol.name", "messaging.protocol"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Removed the semantically distinct mcp.resource.protocol alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -23355,16 +23513,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        keys=(
-            "network.transport",
-            "mcp.transport",
-        ),
+        keys=("network.transport",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
-        aliases=["net.transport", "mcp.transport"],
+        examples=["tcp"],
+        aliases=["net.transport"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[671],
+                description="Removed the semantically distinct mcp.transport alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -28599,6 +28760,7 @@ Attributes = TypedDict(
         "gen_ai.pipeline.name": str,
         "gen_ai.prompt": str,
         "gen_ai.prompt.name": str,
+        "gen_ai.prompt.variable.<key>": str,
         "gen_ai.provider.name": str,
         "gen_ai.request.available_tools": str,
         "gen_ai.request.frequency_penalty": float,
@@ -28739,6 +28901,7 @@ Attributes = TypedDict(
         "lcp": float,
         "litestar.middleware_name": str,
         "logger.name": str,
+        "mcp.auth.client.name": str,
         "mcp.cancelled.reason": str,
         "mcp.cancelled.request_id": str,
         "mcp.client.name": str,
@@ -28750,11 +28913,11 @@ Attributes = TypedDict(
         "mcp.logging.logger": str,
         "mcp.logging.message": str,
         "mcp.method.name": str,
-        "mcp.progress.current": int,
+        "mcp.progress.current": float,
         "mcp.progress.message": str,
         "mcp.progress.percentage": float,
         "mcp.progress.token": str,
-        "mcp.progress.total": int,
+        "mcp.progress.total": float,
         "mcp.prompt.name": str,
         "mcp.prompt.result.description": str,
         "mcp.prompt.result.message_content": str,
