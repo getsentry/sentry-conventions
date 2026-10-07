@@ -9774,9 +9774,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: internal
     Well-defined Values:
-    - `custom`
-    - `url`
-    - `route`
+    - `custom` - Describes a name set by the user, not derived from the URL or a route pattern
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
     - `component`
     - `view`
     - `task`

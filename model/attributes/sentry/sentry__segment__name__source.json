@@ -13,9 +13,18 @@
   "visibility": "internal",
   "examples": ["route", "component", "view", "task", "custom", "url"],
   "enum_values": [
-    { "value": "custom" },
-    { "value": "url" },
-    { "value": "route" },
+    {
+      "value": "custom",
+      "brief": "Describes a name set by the user, not derived from the URL or a route pattern"
+    },
+    {
+      "value": "url",
+      "brief": "Describes the full URL, potentially containing identifiers"
+    },
+    {
+      "value": "route",
+      "brief": "Describes a parametrized route"
+    },
     { "value": "component" },
     { "value": "view" },
     { "value": "task" }
