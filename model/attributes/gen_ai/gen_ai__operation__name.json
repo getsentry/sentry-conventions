@@ -1,12 +1,28 @@
 {
   "key": "gen_ai.operation.name",
-  "brief": "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+  "brief": "The name of the operation being performed.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
   "example": "chat",
+  "enum_values": [
+    { "value": "chat" },
+    { "value": "create_agent" },
+    { "value": "create_memory" },
+    { "value": "create_memory_store" },
+    { "value": "delete_memory" },
+    { "value": "delete_memory_store" },
+    { "value": "embeddings" },
+    { "value": "execute_tool" },
+    { "value": "generate_content" },
+    { "value": "invoke_agent" },
+    { "value": "search_memory" },
+    { "value": "text_completion" },
+    { "value": "update_memory" },
+    { "value": "upsert_memory" }
+  ],
   "visibility": "public",
   "changelog": [
     {

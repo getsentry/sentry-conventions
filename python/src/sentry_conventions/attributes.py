@@ -3992,7 +3992,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/device/device__thermal_state.json
     DEVICE_THERMAL_STATE: Literal["device.thermal_state"] = "device.thermal_state"
-    """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.
+    """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.
 
     Type: str
     Apply Scrubbing: manual
@@ -4870,7 +4870,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__operation__name.json
     GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
-    """The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.
+    """The name of the operation being performed.
 
     Type: str
     Apply Scrubbing: manual
@@ -4881,7 +4881,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__operation__type.json
     GEN_AI_OPERATION_TYPE: Literal["gen_ai.operation.type"] = "gen_ai.operation.type"
-    """The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'memory' (gen_ai.memory.client spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
+    """The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
 
     Type: str
     Apply Scrubbing: manual
@@ -8999,7 +8999,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__category.json
     SENTRY_CATEGORY: Literal["sentry.category"] = "sentry.category"
-    """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.
+    """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).
 
     Type: str
     Apply Scrubbing: never
@@ -9703,7 +9703,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_SEGMENT_NAME_SOURCE: Literal["sentry.segment.name.source"] = (
         "sentry.segment.name.source"
     )
-    """The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
+    """The source of the segment span name. Should only be set on segment spans.
 
     Type: str
     Apply Scrubbing: manual
@@ -9745,7 +9745,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__source.json
     SENTRY_SOURCE: Literal["sentry.source"] = "sentry.source"
-    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
+    """The source of a span, also referred to as transaction source.
 
     Type: str
     Apply Scrubbing: never
@@ -9757,7 +9757,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__span__source.json
     SENTRY_SPAN_SOURCE: Literal["sentry.span.source"] = "sentry.span.source"
-    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
+    """The source of a span, also referred to as transaction source.
 
     Type: str
     Apply Scrubbing: never
@@ -16720,7 +16720,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "device.thermal_state": AttributeMetadata(
-        brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+        brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
         type=AttributeType.STRING,
         keys=("device.thermal_state",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -18061,7 +18061,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.operation.name": AttributeMetadata(
-        brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'create_memory', 'create_memory_store', 'delete_memory', 'delete_memory_store', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'search_memory', 'text_completion', 'update_memory', 'upsert_memory'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+        brief="The name of the operation being performed.",
         type=AttributeType.STRING,
         keys=("gen_ai.operation.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -18079,7 +18079,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.operation.type": AttributeMetadata(
-        brief="The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'memory' (gen_ai.memory.client spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+        brief="The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
         type=AttributeType.STRING,
         keys=("gen_ai.operation.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -24449,7 +24449,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.category": AttributeMetadata(
-        brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+        brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).",
         type=AttributeType.STRING,
         keys=(
             "sentry.category",
@@ -25367,7 +25367,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="transaction"),
     ),
     "sentry.segment.name.source": AttributeMetadata(
-        brief="The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+        brief="The source of the segment span name. Should only be set on segment spans.",
         type=AttributeType.STRING,
         keys=("sentry.segment.name.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -25425,7 +25425,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="server_sample_rate"),
     ),
     "sentry.source": AttributeMetadata(
-        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+        brief="The source of a span, also referred to as transaction source.",
         type=AttributeType.STRING,
         keys=("sentry.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
@@ -25445,7 +25445,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.span.source": AttributeMetadata(
-        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+        brief="The source of a span, also referred to as transaction source.",
         type=AttributeType.STRING,
         keys=("sentry.span.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
