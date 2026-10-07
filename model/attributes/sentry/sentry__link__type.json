@@ -10,10 +10,17 @@
     "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
     "For known values, see Examples. Add new values to Examples."
   ],
+  "search_alias": {
+    "name": "link.type"
+  },
   "is_in_otel": false,
   "visibility": "public",
   "examples": ["previous_trace", "next_trace", "cache_origin"],
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added search alias link.type"
+    },
     {
       "version": "0.25.0",
       "prs": [656],

@@ -32901,7 +32901,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.link.type': {
     brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
     type: 'string',
-    keys: ['sentry.link.type'],
+    keys: ['sentry.link.type', 'link.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -32909,12 +32909,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'previous_trace',
     examples: ['previous_trace', 'next_trace', 'cache_origin'],
-    changelog: [{ version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search alias link.type' },
+      { version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' },
+    ],
     additionalContext: [
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
       'For known values, see Examples. Add new values to Examples.',
     ],
+    searchAlias: {
+      name: 'link.type',
+    },
   },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
