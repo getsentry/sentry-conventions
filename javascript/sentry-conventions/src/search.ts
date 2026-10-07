@@ -2843,6 +2843,11 @@ export const SEARCH_LCP__SIZE = 'lcp.size';
 export const SEARCH_LCP__URL = 'lcp.url';
 
 /**
+ * Search name for {@link attributes.SENTRY_LINK_TYPE}. `link.type`
+ */
+export const SEARCH_LINK__TYPE = 'link.type';
+
+/**
  * Search name for {@link attributes.LITESTAR_MIDDLEWARE_NAME}. `litestar.middleware_name`
  *
  * @deprecated Use {@link SEARCH_MIDDLEWARE__NAME} (`middleware.name`) instead
@@ -4069,6 +4074,8 @@ export const SEARCH_SENTRY__KIND = 'sentry.kind';
 
 /**
  * Search name for {@link attributes.SENTRY_LINK_TYPE}. `sentry.link.type`
+ *
+ * @deprecated Use {@link SEARCH_LINK__TYPE} (`link.type`) instead
  */
 export const SEARCH_SENTRY__LINK__TYPE = 'sentry.link.type';
 
@@ -5564,6 +5571,7 @@ export type AttributeSearchName =
   | typeof SEARCH_LCP__RENDERTIME
   | typeof SEARCH_LCP__SIZE
   | typeof SEARCH_LCP__URL
+  | typeof SEARCH_LINK__TYPE
   | typeof SEARCH_LITESTAR__MIDDLEWARE_NAME
   | typeof SEARCH_LOGGER__NAME
   | typeof SEARCH_MCP__CANCELLED__REASON
@@ -9285,6 +9293,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The url of the dom element responsible for the largest contentful paint.',
     deprecationChain: ['browser.web_vital.lcp.url', 'lcp.url'],
   },
+  'link.type': {
+    canonicalName: 'sentry.link.type',
+    type: 'string',
+    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
+    deprecationChain: ['link.type', 'sentry.link.type'],
+  },
   'litestar.middleware_name': {
     canonicalName: 'middleware.name',
     type: 'string',
@@ -10667,12 +10681,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'boolean',
     brief: "Indicates whether a span's parent is remote.",
     deprecationChain: ['sentry.is_remote'],
-  },
-  'sentry.link.type': {
-    canonicalName: 'sentry.link.type',
-    type: 'string',
-    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
-    deprecationChain: ['sentry.link.type'],
   },
   'sentry.main_thread': {
     canonicalName: 'sentry.main_thread',

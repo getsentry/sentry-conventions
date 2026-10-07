@@ -24899,13 +24899,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.link.type": AttributeMetadata(
         brief="Set on a span link. Describes the relationship between the span and the linked span.",
         type=AttributeType.STRING,
-        keys=("sentry.link.type",),
+        keys=(
+            "sentry.link.type",
+            "link.type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
         examples=["previous_trace", "next_trace", "cache_origin"],
         changelog=[
+            ChangelogEntry(version="next", description="Added search alias link.type"),
             ChangelogEntry(
                 version="0.25.0",
                 prs=[656],
@@ -24917,6 +24921,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
             "For known values, see Examples. Add new values to Examples.",
         ],
+        search_alias=SearchAlias(name="link.type"),
     ),
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
