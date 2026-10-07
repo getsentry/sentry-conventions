@@ -316,6 +316,7 @@ class _AttributeNamesMeta(type):
         "MCP_RESOURCE_PROTOCOL",
         "MCP_TOOL_NAME",
         "MCP_TOOL_RESULT_CONTENT",
+        "MCP_TOOL_RESULT_CONTENT_COUNT",
         "MCP_TOOL_RESULT_IS_ERROR",
         "MCP_TRANSPORT",
         "MESSAGING_CONVERSATION_ID",
@@ -7206,6 +7207,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
     Example: 1
     """
 
@@ -21633,7 +21635,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
+        deprecation=DeprecationInfo(
+            reason="A count can be calculcated from the value of the gen_ai.tool.call.result attribute."
+        ),
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[669],
+                description="Deprecate the attribute since it is redundant given gen_ai.tool.call.result.",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],

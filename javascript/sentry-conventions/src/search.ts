@@ -3041,6 +3041,8 @@ export const SEARCH_MCP__TOOL__RESULT__CONTENT = 'mcp.tool.result.content';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_CONTENT_COUNT}. `mcp.tool.result.content_count`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT = 'mcp.tool.result.content_count';
 
@@ -9523,6 +9525,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'mcp.tool.result.content_count',
     type: 'integer',
     brief: 'Number of content items in the tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.content_count'],
   },
   'mcp.tool.result.is_error': {
