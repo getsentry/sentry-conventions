@@ -1651,6 +1651,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["{ \"AttributeName\": \"string\", \"AttributeType\": \"string\" }"]
     """
 
+    # Path: model/attributes/aws/aws__dynamodb__attributes_to_get.json
+    AWS_DYNAMODB_ATTRIBUTES_TO_GET: Literal["aws.dynamodb.attributes_to_get"] = (
+        "aws.dynamodb.attributes_to_get"
+    )
+    """The value of the `AttributesToGet` request parameter.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["lives","id"]
+    """
+
     # Path: model/attributes/aws/aws__dynamodb__consistent_read.json
     AWS_DYNAMODB_CONSISTENT_READ: Literal["aws.dynamodb.consistent_read"] = (
         "aws.dynamodb.consistent_read"
@@ -2143,6 +2156,61 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ot-demo-test"
     """
 
+    # Path: model/attributes/aws/aws__s3__copy_source.json
+    AWS_S3_COPY_SOURCE: Literal["aws.s3.copy_source"] = "aws.s3.copy_source"
+    """The source object (in the form bucket/key) for the copy operation.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "someFile.yml"
+    """
+
+    # Path: model/attributes/aws/aws__s3__delete.json
+    AWS_S3_DELETE: Literal["aws.s3.delete"] = "aws.s3.delete"
+    """The delete request container that specifies the objects to be deleted.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+    """
+
+    # Path: model/attributes/aws/aws__s3__key.json
+    AWS_S3_KEY: Literal["aws.s3.key"] = "aws.s3.key"
+    """The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "someFile.yml"
+    """
+
+    # Path: model/attributes/aws/aws__s3__part_number.json
+    AWS_S3_PART_NUMBER: Literal["aws.s3.part_number"] = "aws.s3.part_number"
+    """The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 3456
+    """
+
+    # Path: model/attributes/aws/aws__s3__upload_id.json
+    AWS_S3_UPLOAD_ID: Literal["aws.s3.upload_id"] = "aws.s3.upload_id"
+    """Upload ID that identifies the multipart upload.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"
+    """
+
     # Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
     AWS_SECRETSMANAGER_SECRET_ARN: Literal["aws.secretsmanager.secret.arn"] = (
         "aws.secretsmanager.secret.arn"
@@ -2167,6 +2235,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
     """
 
+    # Path: model/attributes/aws/aws__sqs__queue__url.json
+    AWS_SQS_QUEUE_URL: Literal["aws.sqs.queue.url"] = "aws.sqs.queue.url"
+    """The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
+    """
+
     # Path: model/attributes/aws/aws__step_functions__activity__arn.json
     AWS_STEP_FUNCTIONS_ACTIVITY_ARN: Literal["aws.step_functions.activity.arn"] = (
         "aws.step_functions.activity.arn"
@@ -2178,6 +2257,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
+    """
+
+    # Path: model/attributes/aws/aws__step_functions__execution__arn.json
+    AWS_STEP_FUNCTIONS_EXECUTION_ARN: Literal["aws.step_functions.execution.arn"] = (
+        "aws.step_functions.execution.arn"
+    )
+    """The ARN of the AWS Step Functions Execution.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
     """
 
     # Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
@@ -13481,6 +13573,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.dynamodb.attributes_to_get": AttributeMetadata(
+        brief="The value of the `AttributesToGet` request parameter.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.attributes_to_get",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=["lives", "id"],
+        examples=[["lives", "id"]],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[672],
+                description="Added aws.dynamodb.attributes_to_get attribute",
+            ),
+        ],
+    ),
     "aws.dynamodb.consistent_read": AttributeMetadata(
         brief="The value of the `ConsistentRead` request parameter.",
         type=AttributeType.BOOLEAN,
@@ -14215,6 +14324,98 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.s3.copy_source": AttributeMetadata(
+        brief="The source object (in the form bucket/key) for the copy operation.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.copy_source",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="someFile.yml",
+        examples=["someFile.yml"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[672],
+                description="Added aws.s3.copy_source attribute",
+            ),
+        ],
+        additional_context=[
+            "Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter."
+        ],
+    ),
+    "aws.s3.delete": AttributeMetadata(
+        brief="The delete request container that specifies the objects to be deleted.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.delete",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean",
+        examples=[
+            "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[672], description="Added aws.s3.delete attribute"
+            ),
+        ],
+        additional_context=[
+            "Applicable only to the delete-objects operation, corresponding to its Delete parameter."
+        ],
+    ),
+    "aws.s3.key": AttributeMetadata(
+        brief="The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.key",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="someFile.yml",
+        examples=["someFile.yml"],
+        changelog=[
+            ChangelogEntry(
+                version="next", prs=[672], description="Added aws.s3.key attribute"
+            ),
+        ],
+    ),
+    "aws.s3.part_number": AttributeMetadata(
+        brief="The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.",
+        type=AttributeType.INTEGER,
+        keys=("aws.s3.part_number",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=3456,
+        examples=[3456],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[672],
+                description="Added aws.s3.part_number attribute",
+            ),
+        ],
+        additional_context=[
+            "Applicable only to the upload-part and upload-part-copy operations."
+        ],
+    ),
+    "aws.s3.upload_id": AttributeMetadata(
+        brief="Upload ID that identifies the multipart upload.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.upload_id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ",
+        examples=["dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[672],
+                description="Added aws.s3.upload_id attribute",
+            ),
+        ],
+    ),
     "aws.secretsmanager.secret.arn": AttributeMetadata(
         brief="The ARN of the Secret stored in Secrets Manager.",
         type=AttributeType.STRING,
@@ -14247,6 +14448,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.sqs.queue.url": AttributeMetadata(
+        brief="The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+        type=AttributeType.STRING,
+        keys=("aws.sqs.queue.url",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue",
+        examples=["https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[672],
+                description="Added aws.sqs.queue.url attribute",
+            ),
+        ],
+    ),
     "aws.step_functions.activity.arn": AttributeMetadata(
         brief="The ARN of the AWS Step Functions Activity.",
         type=AttributeType.STRING,
@@ -14260,6 +14478,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0",
                 prs=[480],
                 description="Added aws.step_functions.activity.arn attribute",
+            ),
+        ],
+    ),
+    "aws.step_functions.execution.arn": AttributeMetadata(
+        brief="The ARN of the AWS Step Functions Execution.",
+        type=AttributeType.STRING,
+        keys=("aws.step_functions.execution.arn",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution",
+        examples=[
+            "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[672],
+                description="Added aws.step_functions.execution.arn attribute",
             ),
         ],
     ),
@@ -28089,6 +28326,7 @@ Attributes = TypedDict(
         "aws.cloudwatch.logs.log_stream": str,
         "aws.cloudwatch.logs.url": str,
         "aws.dynamodb.attribute_definitions": List[str],
+        "aws.dynamodb.attributes_to_get": List[str],
         "aws.dynamodb.consistent_read": bool,
         "aws.dynamodb.consumed_capacity": List[str],
         "aws.dynamodb.count": int,
@@ -28127,9 +28365,16 @@ Attributes = TypedDict(
         "aws.request.url": str,
         "aws.request_id": str,
         "aws.s3.bucket": str,
+        "aws.s3.copy_source": str,
+        "aws.s3.delete": str,
+        "aws.s3.key": str,
+        "aws.s3.part_number": int,
+        "aws.s3.upload_id": str,
         "aws.secretsmanager.secret.arn": str,
         "aws.sns.topic.arn": str,
+        "aws.sqs.queue.url": str,
         "aws.step_functions.activity.arn": str,
+        "aws.step_functions.execution.arn": str,
         "aws.step_functions.state_machine.arn": str,
         "aws_region": str,
         "blocked_main_thread": bool,

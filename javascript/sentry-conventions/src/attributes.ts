@@ -2169,6 +2169,27 @@ export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
  */
 export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
 
+// Path: model/attributes/aws/aws__dynamodb__attributes_to_get.json
+
+/**
+ * The value of the `AttributesToGet` request parameter. `aws.dynamodb.attributes_to_get`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["lives","id"]
+ */
+export const AWS_DYNAMODB_ATTRIBUTES_TO_GET = 'aws.dynamodb.attributes_to_get';
+
+/**
+ * Type for {@link AWS_DYNAMODB_ATTRIBUTES_TO_GET} aws.dynamodb.attributes_to_get
+ */
+export type AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE = Array<string>;
+
 // Path: model/attributes/aws/aws__dynamodb__attribute_definitions.json
 
 /**
@@ -3047,6 +3068,111 @@ export const AWS_S3_BUCKET = 'aws.s3.bucket';
  */
 export type AWS_S3_BUCKET_TYPE = string;
 
+// Path: model/attributes/aws/aws__s3__copy_source.json
+
+/**
+ * The source object (in the form bucket/key) for the copy operation. `aws.s3.copy_source`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_COPY_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "someFile.yml"
+ */
+export const AWS_S3_COPY_SOURCE = 'aws.s3.copy_source';
+
+/**
+ * Type for {@link AWS_S3_COPY_SOURCE} aws.s3.copy_source
+ */
+export type AWS_S3_COPY_SOURCE_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__delete.json
+
+/**
+ * The delete request container that specifies the objects to be deleted. `aws.s3.delete`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_DELETE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+ */
+export const AWS_S3_DELETE = 'aws.s3.delete';
+
+/**
+ * Type for {@link AWS_S3_DELETE} aws.s3.delete
+ */
+export type AWS_S3_DELETE_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__key.json
+
+/**
+ * The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations. `aws.s3.key`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "someFile.yml"
+ */
+export const AWS_S3_KEY = 'aws.s3.key';
+
+/**
+ * Type for {@link AWS_S3_KEY} aws.s3.key
+ */
+export type AWS_S3_KEY_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__part_number.json
+
+/**
+ * The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000. `aws.s3.part_number`
+ *
+ * Attribute Value Type: `number` {@link AWS_S3_PART_NUMBER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 3456
+ */
+export const AWS_S3_PART_NUMBER = 'aws.s3.part_number';
+
+/**
+ * Type for {@link AWS_S3_PART_NUMBER} aws.s3.part_number
+ */
+export type AWS_S3_PART_NUMBER_TYPE = number;
+
+// Path: model/attributes/aws/aws__s3__upload_id.json
+
+/**
+ * Upload ID that identifies the multipart upload. `aws.s3.upload_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_UPLOAD_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"
+ */
+export const AWS_S3_UPLOAD_ID = 'aws.s3.upload_id';
+
+/**
+ * Type for {@link AWS_S3_UPLOAD_ID} aws.s3.upload_id
+ */
+export type AWS_S3_UPLOAD_ID_TYPE = string;
+
 // Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
 
 /**
@@ -3089,6 +3215,27 @@ export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
  */
 export type AWS_SNS_TOPIC_ARN_TYPE = string;
 
+// Path: model/attributes/aws/aws__sqs__queue__url.json
+
+/**
+ * The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it. `aws.sqs.queue.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_SQS_QUEUE_URL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
+ */
+export const AWS_SQS_QUEUE_URL = 'aws.sqs.queue.url';
+
+/**
+ * Type for {@link AWS_SQS_QUEUE_URL} aws.sqs.queue.url
+ */
+export type AWS_SQS_QUEUE_URL_TYPE = string;
+
 // Path: model/attributes/aws/aws__step_functions__activity__arn.json
 
 /**
@@ -3109,6 +3256,27 @@ export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn'
  * Type for {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN} aws.step_functions.activity.arn
  */
 export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__execution__arn.json
+
+/**
+ * The ARN of the AWS Step Functions Execution. `aws.step_functions.execution.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
+ */
+export const AWS_STEP_FUNCTIONS_EXECUTION_ARN = 'aws.step_functions.execution.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_EXECUTION_ARN} aws.step_functions.execution.arn
+ */
+export type AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE = string;
 
 // Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
 
@@ -19834,6 +20002,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.cloudwatch.logs.log_group': 'string',
   'aws.cloudwatch.logs.log_stream': 'string',
   'aws.cloudwatch.logs.url': 'string',
+  'aws.dynamodb.attributes_to_get': 'string[]',
   'aws.dynamodb.attribute_definitions': 'string[]',
   'aws.dynamodb.consistent_read': 'boolean',
   'aws.dynamodb.consumed_capacity': 'string[]',
@@ -19874,9 +20043,16 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.request.id': 'string',
   'aws.request.url': 'string',
   'aws.s3.bucket': 'string',
+  'aws.s3.copy_source': 'string',
+  'aws.s3.delete': 'string',
+  'aws.s3.key': 'string',
+  'aws.s3.part_number': 'integer',
+  'aws.s3.upload_id': 'string',
   'aws.secretsmanager.secret.arn': 'string',
   'aws.sns.topic.arn': 'string',
+  'aws.sqs.queue.url': 'string',
   'aws.step_functions.activity.arn': 'string',
+  'aws.step_functions.execution.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
   'browser.bfcache.frame': 'string',
@@ -20711,6 +20887,7 @@ export type AttributeName =
   | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
   | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
   | typeof AWS_CLOUDWATCH_LOGS_URL
+  | typeof AWS_DYNAMODB_ATTRIBUTES_TO_GET
   | typeof AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS
   | typeof AWS_DYNAMODB_CONSISTENT_READ
   | typeof AWS_DYNAMODB_CONSUMED_CAPACITY
@@ -20751,9 +20928,16 @@ export type AttributeName =
   | typeof _AWS_REQUEST_ID
   | typeof AWS_REQUEST_URL
   | typeof AWS_S3_BUCKET
+  | typeof AWS_S3_COPY_SOURCE
+  | typeof AWS_S3_DELETE
+  | typeof AWS_S3_KEY
+  | typeof AWS_S3_PART_NUMBER
+  | typeof AWS_S3_UPLOAD_ID
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
+  | typeof AWS_SQS_QUEUE_URL
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof AWS_STEP_FUNCTIONS_EXECUTION_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_BFCACHE_FRAME
@@ -23118,6 +23302,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
   },
+  'aws.dynamodb.attributes_to_get': {
+    brief: 'The value of the `AttributesToGet` request parameter.',
+    type: 'string[]',
+    keys: ['aws.dynamodb.attributes_to_get'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['lives', 'id'],
+    examples: [['lives', 'id']],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.dynamodb.attributes_to_get attribute' }],
+  },
   'aws.dynamodb.attribute_definitions': {
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
     type: 'string[]',
@@ -23734,6 +23931,77 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'ot-demo-test',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.s3.bucket attribute' }],
   },
+  'aws.s3.copy_source': {
+    brief: 'The source object (in the form bucket/key) for the copy operation.',
+    type: 'string',
+    keys: ['aws.s3.copy_source'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'someFile.yml',
+    examples: ['someFile.yml'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
+    additionalContext: [
+      'Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter.',
+    ],
+  },
+  'aws.s3.delete': {
+    brief: 'The delete request container that specifies the objects to be deleted.',
+    type: 'string',
+    keys: ['aws.s3.delete'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
+    examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.delete attribute' }],
+    additionalContext: ['Applicable only to the delete-objects operation, corresponding to its Delete parameter.'],
+  },
+  'aws.s3.key': {
+    brief: 'The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.',
+    type: 'string',
+    keys: ['aws.s3.key'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'someFile.yml',
+    examples: ['someFile.yml'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.key attribute' }],
+  },
+  'aws.s3.part_number': {
+    brief:
+      'The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.',
+    type: 'integer',
+    keys: ['aws.s3.part_number'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 3456,
+    examples: [3456],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.part_number attribute' }],
+    additionalContext: ['Applicable only to the upload-part and upload-part-copy operations.'],
+  },
+  'aws.s3.upload_id': {
+    brief: 'Upload ID that identifies the multipart upload.',
+    type: 'string',
+    keys: ['aws.s3.upload_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ',
+    examples: ['dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.upload_id attribute' }],
+  },
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
     type: 'string',
@@ -23759,6 +24027,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
   },
+  'aws.sqs.queue.url': {
+    brief:
+      'The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.',
+    type: 'string',
+    keys: ['aws.sqs.queue.url'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue',
+    examples: ['https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.sqs.queue.url attribute' }],
+  },
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
     type: 'string',
@@ -23770,6 +24052,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
+  },
+  'aws.step_functions.execution.arn': {
+    brief: 'The ARN of the AWS Step Functions Execution.',
+    type: 'string',
+    keys: ['aws.step_functions.execution.arn'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution',
+    examples: ['arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.step_functions.execution.arn attribute' }],
   },
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',
@@ -35711,6 +36006,7 @@ export type Attributes = {
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
   [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
   [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
+  [AWS_DYNAMODB_ATTRIBUTES_TO_GET]?: AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE;
   [AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS]?: AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE;
   [AWS_DYNAMODB_CONSISTENT_READ]?: AWS_DYNAMODB_CONSISTENT_READ_TYPE;
   [AWS_DYNAMODB_CONSUMED_CAPACITY]?: AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE;
@@ -35751,9 +36047,16 @@ export type Attributes = {
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
   [AWS_REQUEST_URL]?: AWS_REQUEST_URL_TYPE;
   [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
+  [AWS_S3_COPY_SOURCE]?: AWS_S3_COPY_SOURCE_TYPE;
+  [AWS_S3_DELETE]?: AWS_S3_DELETE_TYPE;
+  [AWS_S3_KEY]?: AWS_S3_KEY_TYPE;
+  [AWS_S3_PART_NUMBER]?: AWS_S3_PART_NUMBER_TYPE;
+  [AWS_S3_UPLOAD_ID]?: AWS_S3_UPLOAD_ID_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
+  [AWS_SQS_QUEUE_URL]?: AWS_SQS_QUEUE_URL_TYPE;
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_EXECUTION_ARN]?: AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_BFCACHE_FRAME]?: BROWSER_BFCACHE_FRAME_TYPE;

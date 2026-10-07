@@ -1,0 +1,18 @@
+{
+  "key": "aws.dynamodb.attributes_to_get",
+  "brief": "The value of the `AttributesToGet` request parameter.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": [["lives", "id"]],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [672],
+      "description": "Added aws.dynamodb.attributes_to_get attribute"
+    }
+  ]
+}
