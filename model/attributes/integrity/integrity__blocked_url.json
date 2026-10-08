@@ -1,0 +1,17 @@
+{
+  "key": "integrity.blocked_url",
+  "brief": "The URL of the resource blocked by the integrity policy.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "example": "https://example.com/app.js",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.27.0",
+      "prs": [686]
+    }
+  ]
+}
