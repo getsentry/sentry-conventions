@@ -8093,6 +8093,7 @@ export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
  * - `execute_tool`
  * - `generate_content`
  * - `invoke_agent`
+ * - `responses`
  * - `search_memory`
  * - `text_completion`
  * - `update_memory`

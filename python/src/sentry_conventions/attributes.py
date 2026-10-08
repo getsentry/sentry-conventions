@@ -4982,6 +4982,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     - `execute_tool`
     - `generate_content`
     - `invoke_agent`
+    - `responses`
     - `search_memory`
     - `text_completion`
     - `update_memory`

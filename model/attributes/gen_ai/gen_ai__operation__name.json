@@ -18,6 +18,7 @@
     { "value": "execute_tool" },
     { "value": "generate_content" },
     { "value": "invoke_agent" },
+    { "value": "responses" },
     { "value": "search_memory" },
     { "value": "text_completion" },
     { "value": "update_memory" },
