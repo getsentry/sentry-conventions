@@ -314,9 +314,24 @@ class _AttributeNamesMeta(type):
         "MCP_PROMPT_NAME",
         "MCP_REQUEST_ID",
         "MCP_TOOL_NAME",
+        "MCP_TOOL_RESULT_KEY_CONTENT",
+        "MCP_TOOL_RESULT_KEY_CONTENT_TYPE",
+        "MCP_TOOL_RESULT_KEY_DATA_SIZE",
+        "MCP_TOOL_RESULT_KEY_MIME_TYPE",
+        "MCP_TOOL_RESULT_KEY_NAME",
+        "MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE",
+        "MCP_TOOL_RESULT_KEY_RESOURCE_URI",
+        "MCP_TOOL_RESULT_KEY_URI",
         "MCP_TOOL_RESULT_CONTENT",
         "MCP_TOOL_RESULT_CONTENT_COUNT",
+        "MCP_TOOL_RESULT_CONTENT_TYPE",
+        "MCP_TOOL_RESULT_DATA_SIZE",
         "MCP_TOOL_RESULT_IS_ERROR",
+        "MCP_TOOL_RESULT_MIME_TYPE",
+        "MCP_TOOL_RESULT_NAME",
+        "MCP_TOOL_RESULT_RESOURCE_MIME_TYPE",
+        "MCP_TOOL_RESULT_RESOURCE_URI",
+        "MCP_TOOL_RESULT_URI",
         "MESSAGING_CONVERSATION_ID",
         "MESSAGING_DESTINATION",
         "MESSAGING_DESTINATION_KIND",
@@ -7364,6 +7379,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "The operation completed."
     """
 
@@ -7377,6 +7393,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "text"
     Example: "image"
     """
@@ -7391,6 +7408,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual - The length contains no result content.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: 4
     Example: 1024
     """
@@ -7405,6 +7423,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "image/png"
     Example: "audio/wav"
     """
@@ -7419,6 +7438,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "report.txt"
     """
 
@@ -7432,6 +7452,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "text/plain"
     """
 
@@ -7445,6 +7466,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "file:///project/report.txt"
     """
 
@@ -7458,6 +7480,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "file:///project/report.txt"
     """
 
@@ -7500,6 +7523,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "text"
     Example: "image"
     """
@@ -7514,6 +7538,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual - The length contains no result content.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: 4
     Example: 1024
     """
@@ -7542,6 +7567,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "image/png"
     Example: "audio/wav"
     """
@@ -7554,6 +7580,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "report.txt"
     """
 
@@ -7567,6 +7594,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "text/plain"
     """
 
@@ -7580,6 +7608,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "file:///project/report.txt"
     """
 
@@ -7591,6 +7620,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
     Example: "file:///project/report.txt"
     """
 
@@ -22339,10 +22369,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="The operation completed.",
         examples=["The operation completed."],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22364,10 +22397,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="text",
         examples=["text", "image"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22387,10 +22423,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=4,
         examples=[4, 1024],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22412,10 +22451,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="image/png",
         examples=["image/png", "audio/wav"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22436,10 +22478,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="report.txt",
         examples=["report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22460,10 +22505,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="text/plain",
         examples=["text/plain"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22484,10 +22532,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="file:///project/report.txt",
         examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22508,10 +22559,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="file:///project/report.txt",
         examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22592,10 +22646,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="text",
         examples=["text", "image"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22615,10 +22672,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=4,
         examples=[4, 1024],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22661,10 +22721,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="image/png",
         examples=["image/png", "audio/wav"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22685,10 +22748,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="report.txt",
         examples=["report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22709,10 +22775,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="text/plain",
         examples=["text/plain"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22733,10 +22802,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="file:///project/report.txt",
         examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[
@@ -22757,10 +22829,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="file:///project/report.txt",
         examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
         changelog=[
             ChangelogEntry(
                 version="next",
-                description="Register an existing JavaScript SDK MCP result attribute.",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
         additional_context=[

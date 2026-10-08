@@ -18,7 +18,11 @@
   "changelog": [
     {
       "version": "next",
-      "description": "Register an existing JavaScript SDK MCP result attribute."
+      "description": "Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill."
     }
-  ]
+  ],
+  "deprecation": {
+    "reason": "Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.",
+    "_status": null
+  }
 }

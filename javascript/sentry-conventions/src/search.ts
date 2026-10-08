@@ -3097,41 +3097,57 @@ export const SEARCH_MCP__TOOL__NAME = 'mcp.tool.name';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_CONTENT}. `mcp.tool.result.<key>.content`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__KEY__CONTENT = 'mcp.tool.result.<key>.content';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_CONTENT_TYPE}. `mcp.tool.result.<key>.content_type`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__KEY__CONTENT_TYPE = 'mcp.tool.result.<key>.content_type';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_DATA_SIZE}. `mcp.tool.result.<key>.data_size`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__KEY__DATA_SIZE = 'mcp.tool.result.<key>.data_size';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_MIME_TYPE}. `mcp.tool.result.<key>.mime_type`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__KEY__MIME_TYPE = 'mcp.tool.result.<key>.mime_type';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_NAME}. `mcp.tool.result.<key>.name`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__KEY__NAME = 'mcp.tool.result.<key>.name';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE}. `mcp.tool.result.<key>.resource_mime_type`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_MIME_TYPE = 'mcp.tool.result.<key>.resource_mime_type';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_RESOURCE_URI}. `mcp.tool.result.<key>.resource_uri`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_URI = 'mcp.tool.result.<key>.resource_uri';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_URI}. `mcp.tool.result.<key>.uri`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__KEY__URI = 'mcp.tool.result.<key>.uri';
 
@@ -3151,11 +3167,15 @@ export const SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT = 'mcp.tool.result.content_
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_CONTENT_TYPE}. `mcp.tool.result.content_type`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__CONTENT_TYPE = 'mcp.tool.result.content_type';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_DATA_SIZE}. `mcp.tool.result.data_size`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__DATA_SIZE = 'mcp.tool.result.data_size';
 
@@ -3168,26 +3188,36 @@ export const SEARCH_MCP__TOOL__RESULT__IS_ERROR = 'mcp.tool.result.is_error';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_MIME_TYPE}. `mcp.tool.result.mime_type`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__MIME_TYPE = 'mcp.tool.result.mime_type';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_NAME}. `mcp.tool.result.name`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__NAME = 'mcp.tool.result.name';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_RESOURCE_MIME_TYPE}. `mcp.tool.result.resource_mime_type`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__RESOURCE_MIME_TYPE = 'mcp.tool.result.resource_mime_type';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_RESOURCE_URI}. `mcp.tool.result.resource_uri`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__RESOURCE_URI = 'mcp.tool.result.resource_uri';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_URI}. `mcp.tool.result.uri`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__URI = 'mcp.tool.result.uri';
 
@@ -9761,12 +9791,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'mcp.tool.result.<key>.content',
     type: 'string',
     brief: 'Legacy text content of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.<key>.content'],
   },
   'mcp.tool.result.<key>.content_type': {
     canonicalName: 'mcp.tool.result.<key>.content_type',
     type: 'string',
     brief: 'Legacy content type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.<key>.content_type'],
   },
   'mcp.tool.result.<key>.data_size': {
@@ -9774,36 +9806,42 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief:
       'Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.<key>.data_size'],
   },
   'mcp.tool.result.<key>.mime_type': {
     canonicalName: 'mcp.tool.result.<key>.mime_type',
     type: 'string',
     brief: 'Legacy MIME type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.<key>.mime_type'],
   },
   'mcp.tool.result.<key>.name': {
     canonicalName: 'mcp.tool.result.<key>.name',
     type: 'string',
     brief: 'Legacy resource link name of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.<key>.name'],
   },
   'mcp.tool.result.<key>.resource_mime_type': {
     canonicalName: 'mcp.tool.result.<key>.resource_mime_type',
     type: 'string',
     brief: 'Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.<key>.resource_mime_type'],
   },
   'mcp.tool.result.<key>.resource_uri': {
     canonicalName: 'mcp.tool.result.<key>.resource_uri',
     type: 'string',
     brief: 'Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.<key>.resource_uri'],
   },
   'mcp.tool.result.<key>.uri': {
     canonicalName: 'mcp.tool.result.<key>.uri',
     type: 'string',
     brief: 'Legacy resource link URI of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.<key>.uri'],
   },
   'mcp.tool.result.content': {
@@ -9830,6 +9868,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'mcp.tool.result.content_type',
     type: 'string',
     brief: 'Legacy content type of the content item in a single-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.content_type'],
   },
   'mcp.tool.result.data_size': {
@@ -9837,6 +9876,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief:
       'Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.data_size'],
   },
   'mcp.tool.result.is_error': {
@@ -9849,30 +9889,35 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'mcp.tool.result.mime_type',
     type: 'string',
     brief: 'Legacy MIME type of the content item in a single-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.mime_type'],
   },
   'mcp.tool.result.name': {
     canonicalName: 'mcp.tool.result.name',
     type: 'string',
     brief: 'Legacy resource link name of the content item in a single-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.name'],
   },
   'mcp.tool.result.resource_mime_type': {
     canonicalName: 'mcp.tool.result.resource_mime_type',
     type: 'string',
     brief: 'Legacy embedded resource MIME type of the content item in a single-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.resource_mime_type'],
   },
   'mcp.tool.result.resource_uri': {
     canonicalName: 'mcp.tool.result.resource_uri',
     type: 'string',
     brief: 'Legacy embedded resource URI of the content item in a single-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.resource_uri'],
   },
   'mcp.tool.result.uri': {
     canonicalName: 'mcp.tool.result.uri',
     type: 'string',
     brief: 'Legacy resource link URI of the content item in a single-item MCP tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.uri'],
   },
   'mcp.transport': {

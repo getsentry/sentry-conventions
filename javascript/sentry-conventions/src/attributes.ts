@@ -12297,6 +12297,7 @@ export type MCP_TOOL_RESULT_CONTENT_COUNT_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "text"
  * @example "image"
  */
@@ -12319,6 +12320,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example 4
  * @example 1024
  */
@@ -12363,6 +12365,7 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "The operation completed."
  */
 export const MCP_TOOL_RESULT_KEY_CONTENT = 'mcp.tool.result.<key>.content';
@@ -12384,6 +12387,7 @@ export type MCP_TOOL_RESULT_KEY_CONTENT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "text"
  * @example "image"
  */
@@ -12406,6 +12410,7 @@ export type MCP_TOOL_RESULT_KEY_CONTENT_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example 4
  * @example 1024
  */
@@ -12428,6 +12433,7 @@ export type MCP_TOOL_RESULT_KEY_DATA_SIZE_TYPE = number;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "image/png"
  * @example "audio/wav"
  */
@@ -12450,6 +12456,7 @@ export type MCP_TOOL_RESULT_KEY_MIME_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "report.txt"
  */
 export const MCP_TOOL_RESULT_KEY_NAME = 'mcp.tool.result.<key>.name';
@@ -12471,6 +12478,7 @@ export type MCP_TOOL_RESULT_KEY_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "text/plain"
  */
 export const MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE = 'mcp.tool.result.<key>.resource_mime_type';
@@ -12492,6 +12500,7 @@ export type MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "file:///project/report.txt"
  */
 export const MCP_TOOL_RESULT_KEY_RESOURCE_URI = 'mcp.tool.result.<key>.resource_uri';
@@ -12513,6 +12522,7 @@ export type MCP_TOOL_RESULT_KEY_RESOURCE_URI_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "file:///project/report.txt"
  */
 export const MCP_TOOL_RESULT_KEY_URI = 'mcp.tool.result.<key>.uri';
@@ -12534,6 +12544,7 @@ export type MCP_TOOL_RESULT_KEY_URI_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "image/png"
  * @example "audio/wav"
  */
@@ -12556,6 +12567,7 @@ export type MCP_TOOL_RESULT_MIME_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "report.txt"
  */
 export const MCP_TOOL_RESULT_NAME = 'mcp.tool.result.name';
@@ -12577,6 +12589,7 @@ export type MCP_TOOL_RESULT_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "text/plain"
  */
 export const MCP_TOOL_RESULT_RESOURCE_MIME_TYPE = 'mcp.tool.result.resource_mime_type';
@@ -12598,6 +12611,7 @@ export type MCP_TOOL_RESULT_RESOURCE_MIME_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "file:///project/report.txt"
  */
 export const MCP_TOOL_RESULT_RESOURCE_URI = 'mcp.tool.result.resource_uri';
@@ -12619,6 +12633,7 @@ export type MCP_TOOL_RESULT_RESOURCE_URI_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
  * @example "file:///project/report.txt"
  */
 export const MCP_TOOL_RESULT_URI = 'mcp.tool.result.uri';
@@ -31098,7 +31113,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'text',
     examples: ['text', 'image'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted only when the result contains exactly one content item.',
@@ -31118,7 +31143,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 4,
     examples: [4, 1024],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted only when the result contains exactly one content item.',
@@ -31158,7 +31193,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'The operation completed.',
     examples: ['The operation completed.'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
@@ -31178,7 +31223,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'text',
     examples: ['text', 'image'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
@@ -31198,7 +31253,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 4,
     examples: [4, 1024],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
@@ -31218,7 +31283,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'image/png',
     examples: ['image/png', 'audio/wav'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
@@ -31237,7 +31312,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'report.txt',
     examples: ['report.txt'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
@@ -31256,7 +31341,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'text/plain',
     examples: ['text/plain'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
@@ -31275,7 +31370,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'file:///project/report.txt',
     examples: ['file:///project/report.txt'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
@@ -31294,7 +31399,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'file:///project/report.txt',
     examples: ['file:///project/report.txt'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
@@ -31313,7 +31428,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'image/png',
     examples: ['image/png', 'audio/wav'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted only when the result contains exactly one content item.',
@@ -31332,7 +31457,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'report.txt',
     examples: ['report.txt'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted only when the result contains exactly one content item.',
@@ -31351,7 +31486,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'text/plain',
     examples: ['text/plain'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted only when the result contains exactly one content item.',
@@ -31370,7 +31515,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'file:///project/report.txt',
     examples: ['file:///project/report.txt'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted only when the result contains exactly one content item.',
@@ -31389,7 +31544,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'file:///project/report.txt',
     examples: ['file:///project/report.txt'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    deprecation: {
+      reason:
+        'Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.',
+    },
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
+      },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted only when the result contains exactly one content item.',
