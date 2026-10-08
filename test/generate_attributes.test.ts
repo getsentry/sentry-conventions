@@ -11,6 +11,52 @@ describe('generateAttributes', () => {
     expect(generateAttributes).toHaveLength(1);
   });
 
+  it('preserves middle placeholders as templates without dynamic-suffix base constants', async () => {
+    const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
+    const attributesDir = path.join(temporaryDirectory, 'attributes');
+    const jsOutputFilePath = path.join(temporaryDirectory, 'attributes.ts');
+    const pythonOutputFilePath = path.join(temporaryDirectory, 'attributes.py');
+    fs.mkdirSync(attributesDir);
+
+    const key = 'mcp.tool.result.<key>.content';
+    const attributes = [{ key }, { key: 'mcp.request.argument.<key>', has_dynamic_suffix: true }];
+
+    try {
+      for (const attribute of attributes) {
+        fs.writeFileSync(
+          path.join(attributesDir, `${attribute.key.replaceAll('.', '__').replace('<key>', '[key]')}.json`),
+          JSON.stringify({
+            ...attribute,
+            brief: 'An attribute used to test dynamic placeholders.',
+            type: 'string',
+            apply_scrubbing: { key: 'auto' },
+            is_in_otel: false,
+            visibility: 'public',
+          }),
+        );
+      }
+
+      await generateAttributes({ attributesDir, jsOutputFilePath, pythonOutputFilePath });
+
+      const javascript = fs.readFileSync(jsOutputFilePath, 'utf8');
+      const python = fs.readFileSync(pythonOutputFilePath, 'utf8');
+      const javascriptTemplate = javascript.match(/export const MCP_TOOL_RESULT_KEY_CONTENT = '([^']+)';/)?.[1];
+      const pythonTemplate = python.match(/MCP_TOOL_RESULT_KEY_CONTENT: Literal\["[^"]+"\] = "([^"]+)"/)?.[1];
+
+      for (const template of [javascriptTemplate, pythonTemplate]) {
+        expect(template).toBe(key);
+        expect(template?.replace('<key>', '0')).toBe('mcp.tool.result.0.content');
+        expect(template?.replace('<key>', '12')).toBe('mcp.tool.result.12.content');
+      }
+
+      expect(javascript).not.toContain('MCP_TOOL_RESULT_KEY_CONTENT_BASE');
+      expect(python).not.toContain('MCP_TOOL_RESULT_KEY_CONTENT_BASE');
+      expect(javascript).toContain("export const MCP_REQUEST_ARGUMENT_KEY_BASE = 'mcp.request.argument';");
+    } finally {
+      fs.rmSync(temporaryDirectory, { recursive: true });
+    }
+  });
+
   it('generates multiple examples while retaining the first legacy example', async () => {
     const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'sentry-conventions-'));
     const attributesDir = path.join(temporaryDirectory, 'attributes');

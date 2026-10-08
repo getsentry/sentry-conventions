@@ -1,0 +1,23 @@
+{
+  "key": "mcp.tool.result.name",
+  "brief": "Legacy resource link name of the content item in a single-item MCP tool result.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "Preserve automatic scrubbing of server-provided result fields."
+  },
+  "is_in_otel": false,
+  "examples": ["report.txt"],
+  "visibility": "public",
+  "additional_context": [
+    "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+    "Emitted only when the result contains exactly one content item.",
+    "Recorded only when output capture is enabled."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Register an existing JavaScript SDK MCP result attribute."
+    }
+  ]
+}

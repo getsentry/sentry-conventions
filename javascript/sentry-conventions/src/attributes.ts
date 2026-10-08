@@ -11846,6 +11846,49 @@ export const MCP_PROMPT_RESULT_DESCRIPTION = 'mcp.prompt.result.description';
  */
 export type MCP_PROMPT_RESULT_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/mcp/mcp__prompt__result__[key]__content.json
+
+/**
+ * Legacy text content of an indexed message in a multi-message MCP prompt result. `mcp.prompt.result.<key>.content`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_KEY_CONTENT_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Summarize the document."
+ */
+export const MCP_PROMPT_RESULT_KEY_CONTENT = 'mcp.prompt.result.<key>.content';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_KEY_CONTENT} mcp.prompt.result.<key>.content
+ */
+export type MCP_PROMPT_RESULT_KEY_CONTENT_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__prompt__result__[key]__role.json
+
+/**
+ * Legacy role of an indexed message in a multi-message MCP prompt result. `mcp.prompt.result.<key>.role`
+ *
+ * Attribute Value Type: `string` {@link MCP_PROMPT_RESULT_KEY_ROLE_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user"
+ * @example "assistant"
+ */
+export const MCP_PROMPT_RESULT_KEY_ROLE = 'mcp.prompt.result.<key>.role';
+
+/**
+ * Type for {@link MCP_PROMPT_RESULT_KEY_ROLE} mcp.prompt.result.<key>.role
+ */
+export type MCP_PROMPT_RESULT_KEY_ROLE_TYPE = string;
+
 // Path: model/attributes/mcp/mcp__prompt__result__message_content.json
 
 /**
@@ -12242,6 +12285,50 @@ export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
  */
 export type MCP_TOOL_RESULT_CONTENT_COUNT_TYPE = number;
 
+// Path: model/attributes/mcp/mcp__tool__result__content_type.json
+
+/**
+ * Legacy content type of the content item in a single-item MCP tool result. `mcp.tool.result.content_type`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "text"
+ * @example "image"
+ */
+export const MCP_TOOL_RESULT_CONTENT_TYPE = 'mcp.tool.result.content_type';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_CONTENT_TYPE} mcp.tool.result.content_type
+ */
+export type MCP_TOOL_RESULT_CONTENT_TYPE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__data_size.json
+
+/**
+ * Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result. `mcp.tool.result.data_size`
+ *
+ * Attribute Value Type: `number` {@link MCP_TOOL_RESULT_DATA_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual - The length contains no result content.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 4
+ * @example 1024
+ */
+export const MCP_TOOL_RESULT_DATA_SIZE = 'mcp.tool.result.data_size';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_DATA_SIZE} mcp.tool.result.data_size
+ */
+export type MCP_TOOL_RESULT_DATA_SIZE_TYPE = number;
+
 // Path: model/attributes/mcp/mcp__tool__result__is_error.json
 
 /**
@@ -12263,6 +12350,283 @@ export const MCP_TOOL_RESULT_IS_ERROR = 'mcp.tool.result.is_error';
  * Type for {@link MCP_TOOL_RESULT_IS_ERROR} mcp.tool.result.is_error
  */
 export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
+
+// Path: model/attributes/mcp/mcp__tool__result__[key]__content.json
+
+/**
+ * Legacy text content of an indexed content item in a multi-item MCP tool result. `mcp.tool.result.<key>.content`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_KEY_CONTENT_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "The operation completed."
+ */
+export const MCP_TOOL_RESULT_KEY_CONTENT = 'mcp.tool.result.<key>.content';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_KEY_CONTENT} mcp.tool.result.<key>.content
+ */
+export type MCP_TOOL_RESULT_KEY_CONTENT_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__[key]__content_type.json
+
+/**
+ * Legacy content type of an indexed content item in a multi-item MCP tool result. `mcp.tool.result.<key>.content_type`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_KEY_CONTENT_TYPE_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "text"
+ * @example "image"
+ */
+export const MCP_TOOL_RESULT_KEY_CONTENT_TYPE = 'mcp.tool.result.<key>.content_type';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_KEY_CONTENT_TYPE} mcp.tool.result.<key>.content_type
+ */
+export type MCP_TOOL_RESULT_KEY_CONTENT_TYPE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__[key]__data_size.json
+
+/**
+ * Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result. `mcp.tool.result.<key>.data_size`
+ *
+ * Attribute Value Type: `number` {@link MCP_TOOL_RESULT_KEY_DATA_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual - The length contains no result content.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 4
+ * @example 1024
+ */
+export const MCP_TOOL_RESULT_KEY_DATA_SIZE = 'mcp.tool.result.<key>.data_size';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_KEY_DATA_SIZE} mcp.tool.result.<key>.data_size
+ */
+export type MCP_TOOL_RESULT_KEY_DATA_SIZE_TYPE = number;
+
+// Path: model/attributes/mcp/mcp__tool__result__[key]__mime_type.json
+
+/**
+ * Legacy MIME type of an indexed content item in a multi-item MCP tool result. `mcp.tool.result.<key>.mime_type`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_KEY_MIME_TYPE_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "image/png"
+ * @example "audio/wav"
+ */
+export const MCP_TOOL_RESULT_KEY_MIME_TYPE = 'mcp.tool.result.<key>.mime_type';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_KEY_MIME_TYPE} mcp.tool.result.<key>.mime_type
+ */
+export type MCP_TOOL_RESULT_KEY_MIME_TYPE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__[key]__name.json
+
+/**
+ * Legacy resource link name of an indexed content item in a multi-item MCP tool result. `mcp.tool.result.<key>.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_KEY_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "report.txt"
+ */
+export const MCP_TOOL_RESULT_KEY_NAME = 'mcp.tool.result.<key>.name';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_KEY_NAME} mcp.tool.result.<key>.name
+ */
+export type MCP_TOOL_RESULT_KEY_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__[key]__resource_mime_type.json
+
+/**
+ * Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result. `mcp.tool.result.<key>.resource_mime_type`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "text/plain"
+ */
+export const MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE = 'mcp.tool.result.<key>.resource_mime_type';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE} mcp.tool.result.<key>.resource_mime_type
+ */
+export type MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__[key]__resource_uri.json
+
+/**
+ * Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result. `mcp.tool.result.<key>.resource_uri`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_KEY_RESOURCE_URI_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "file:///project/report.txt"
+ */
+export const MCP_TOOL_RESULT_KEY_RESOURCE_URI = 'mcp.tool.result.<key>.resource_uri';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_KEY_RESOURCE_URI} mcp.tool.result.<key>.resource_uri
+ */
+export type MCP_TOOL_RESULT_KEY_RESOURCE_URI_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__[key]__uri.json
+
+/**
+ * Legacy resource link URI of an indexed content item in a multi-item MCP tool result. `mcp.tool.result.<key>.uri`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_KEY_URI_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "file:///project/report.txt"
+ */
+export const MCP_TOOL_RESULT_KEY_URI = 'mcp.tool.result.<key>.uri';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_KEY_URI} mcp.tool.result.<key>.uri
+ */
+export type MCP_TOOL_RESULT_KEY_URI_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__mime_type.json
+
+/**
+ * Legacy MIME type of the content item in a single-item MCP tool result. `mcp.tool.result.mime_type`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_MIME_TYPE_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "image/png"
+ * @example "audio/wav"
+ */
+export const MCP_TOOL_RESULT_MIME_TYPE = 'mcp.tool.result.mime_type';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_MIME_TYPE} mcp.tool.result.mime_type
+ */
+export type MCP_TOOL_RESULT_MIME_TYPE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__name.json
+
+/**
+ * Legacy resource link name of the content item in a single-item MCP tool result. `mcp.tool.result.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "report.txt"
+ */
+export const MCP_TOOL_RESULT_NAME = 'mcp.tool.result.name';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_NAME} mcp.tool.result.name
+ */
+export type MCP_TOOL_RESULT_NAME_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__resource_mime_type.json
+
+/**
+ * Legacy embedded resource MIME type of the content item in a single-item MCP tool result. `mcp.tool.result.resource_mime_type`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_RESOURCE_MIME_TYPE_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "text/plain"
+ */
+export const MCP_TOOL_RESULT_RESOURCE_MIME_TYPE = 'mcp.tool.result.resource_mime_type';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_RESOURCE_MIME_TYPE} mcp.tool.result.resource_mime_type
+ */
+export type MCP_TOOL_RESULT_RESOURCE_MIME_TYPE_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__resource_uri.json
+
+/**
+ * Legacy embedded resource URI of the content item in a single-item MCP tool result. `mcp.tool.result.resource_uri`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_RESOURCE_URI_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "file:///project/report.txt"
+ */
+export const MCP_TOOL_RESULT_RESOURCE_URI = 'mcp.tool.result.resource_uri';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_RESOURCE_URI} mcp.tool.result.resource_uri
+ */
+export type MCP_TOOL_RESULT_RESOURCE_URI_TYPE = string;
+
+// Path: model/attributes/mcp/mcp__tool__result__uri.json
+
+/**
+ * Legacy resource link URI of the content item in a single-item MCP tool result. `mcp.tool.result.uri`
+ *
+ * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_URI_TYPE}
+ *
+ * Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "file:///project/report.txt"
+ */
+export const MCP_TOOL_RESULT_URI = 'mcp.tool.result.uri';
+
+/**
+ * Type for {@link MCP_TOOL_RESULT_URI} mcp.tool.result.uri
+ */
+export type MCP_TOOL_RESULT_URI_TYPE = string;
 
 // Path: model/attributes/mcp/mcp__transport.json
 
@@ -20485,6 +20849,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.progress.total': 'double',
   'mcp.prompt.name': 'string',
   'mcp.prompt.result.description': 'string',
+  'mcp.prompt.result.<key>.content': 'string',
+  'mcp.prompt.result.<key>.role': 'string',
   'mcp.prompt.result.message_content': 'string',
   'mcp.prompt.result.message_count': 'integer',
   'mcp.prompt.result.message_role': 'string',
@@ -20503,7 +20869,22 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.tool.name': 'string',
   'mcp.tool.result.content': 'string',
   'mcp.tool.result.content_count': 'integer',
+  'mcp.tool.result.content_type': 'string',
+  'mcp.tool.result.data_size': 'integer',
   'mcp.tool.result.is_error': 'boolean',
+  'mcp.tool.result.<key>.content': 'string',
+  'mcp.tool.result.<key>.content_type': 'string',
+  'mcp.tool.result.<key>.data_size': 'integer',
+  'mcp.tool.result.<key>.mime_type': 'string',
+  'mcp.tool.result.<key>.name': 'string',
+  'mcp.tool.result.<key>.resource_mime_type': 'string',
+  'mcp.tool.result.<key>.resource_uri': 'string',
+  'mcp.tool.result.<key>.uri': 'string',
+  'mcp.tool.result.mime_type': 'string',
+  'mcp.tool.result.name': 'string',
+  'mcp.tool.result.resource_mime_type': 'string',
+  'mcp.tool.result.resource_uri': 'string',
+  'mcp.tool.result.uri': 'string',
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
@@ -21372,6 +21753,8 @@ export type AttributeName =
   | typeof MCP_PROGRESS_TOTAL
   | typeof MCP_PROMPT_NAME
   | typeof MCP_PROMPT_RESULT_DESCRIPTION
+  | typeof MCP_PROMPT_RESULT_KEY_CONTENT
+  | typeof MCP_PROMPT_RESULT_KEY_ROLE
   | typeof MCP_PROMPT_RESULT_MESSAGE_CONTENT
   | typeof MCP_PROMPT_RESULT_MESSAGE_COUNT
   | typeof MCP_PROMPT_RESULT_MESSAGE_ROLE
@@ -21390,7 +21773,22 @@ export type AttributeName =
   | typeof MCP_TOOL_NAME
   | typeof MCP_TOOL_RESULT_CONTENT
   | typeof MCP_TOOL_RESULT_CONTENT_COUNT
+  | typeof MCP_TOOL_RESULT_CONTENT_TYPE
+  | typeof MCP_TOOL_RESULT_DATA_SIZE
   | typeof MCP_TOOL_RESULT_IS_ERROR
+  | typeof MCP_TOOL_RESULT_KEY_CONTENT
+  | typeof MCP_TOOL_RESULT_KEY_CONTENT_TYPE
+  | typeof MCP_TOOL_RESULT_KEY_DATA_SIZE
+  | typeof MCP_TOOL_RESULT_KEY_MIME_TYPE
+  | typeof MCP_TOOL_RESULT_KEY_NAME
+  | typeof MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE
+  | typeof MCP_TOOL_RESULT_KEY_RESOURCE_URI
+  | typeof MCP_TOOL_RESULT_KEY_URI
+  | typeof MCP_TOOL_RESULT_MIME_TYPE
+  | typeof MCP_TOOL_RESULT_NAME
+  | typeof MCP_TOOL_RESULT_RESOURCE_MIME_TYPE
+  | typeof MCP_TOOL_RESULT_RESOURCE_URI
+  | typeof MCP_TOOL_RESULT_URI
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
@@ -30295,6 +30693,44 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'A summary of the requested information',
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
+  'mcp.prompt.result.<key>.content': {
+    brief: 'Legacy text content of an indexed message in a multi-message MCP prompt result.',
+    type: 'string',
+    keys: ['mcp.prompt.result.<key>.content'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Summarize the document.',
+    examples: ['Summarize the document.'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple messages. <key> is the zero-based position in the original messages array; absent fields do not renumber later messages.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.prompt.result.<key>.role': {
+    brief: 'Legacy role of an indexed message in a multi-message MCP prompt result.',
+    type: 'string',
+    keys: ['mcp.prompt.result.<key>.role'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user',
+    examples: ['user', 'assistant'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple messages. <key> is the zero-based position in the original messages array; absent fields do not renumber later messages.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
   'mcp.prompt.result.message_content': {
     brief: 'Content of the message in the prompt result. Used for single message results only.',
     type: 'string',
@@ -30650,6 +31086,46 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.3.0', prs: [171] },
     ],
   },
+  'mcp.tool.result.content_type': {
+    brief: 'Legacy content type of the content item in a single-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.content_type'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'text',
+    examples: ['text', 'image'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted only when the result contains exactly one content item.',
+      'Recorded even when output capture is disabled.',
+    ],
+  },
+  'mcp.tool.result.data_size': {
+    brief:
+      'Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.',
+    type: 'integer',
+    keys: ['mcp.tool.result.data_size'],
+    applyScrubbing: {
+      key: 'manual',
+      reason: 'The length contains no result content.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 4,
+    examples: [4, 1024],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted only when the result contains exactly one content item.',
+      'Recorded only when output capture is enabled.',
+      'The JavaScript SDK records data.length. For base64-encoded image or audio data, this counts encoded characters, not decoded bytes.',
+    ],
+  },
   'mcp.tool.result.is_error': {
     brief: 'Whether a tool execution resulted in an error.',
     type: 'boolean',
@@ -30668,6 +31144,256 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of error.type' },
       { version: '0.3.0', prs: [171] },
+    ],
+  },
+  'mcp.tool.result.<key>.content': {
+    brief: 'Legacy text content of an indexed content item in a multi-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.<key>.content'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'The operation completed.',
+    examples: ['The operation completed.'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
+      'Recorded only when output capture is enabled.',
+      "This is one item's text, not the complete tool result. It must not be aliased or directly backfilled to gen_ai.tool.call.result; reconstructing the complete result requires aggregation.",
+    ],
+  },
+  'mcp.tool.result.<key>.content_type': {
+    brief: 'Legacy content type of an indexed content item in a multi-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.<key>.content_type'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'text',
+    examples: ['text', 'image'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
+      'Recorded even when output capture is disabled.',
+    ],
+  },
+  'mcp.tool.result.<key>.data_size': {
+    brief:
+      'Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.',
+    type: 'integer',
+    keys: ['mcp.tool.result.<key>.data_size'],
+    applyScrubbing: {
+      key: 'manual',
+      reason: 'The length contains no result content.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 4,
+    examples: [4, 1024],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
+      'Recorded only when output capture is enabled.',
+      'The JavaScript SDK records data.length. For base64-encoded image or audio data, this counts encoded characters, not decoded bytes.',
+    ],
+  },
+  'mcp.tool.result.<key>.mime_type': {
+    brief: 'Legacy MIME type of an indexed content item in a multi-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.<key>.mime_type'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'image/png',
+    examples: ['image/png', 'audio/wav'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.<key>.name': {
+    brief: 'Legacy resource link name of an indexed content item in a multi-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.<key>.name'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'report.txt',
+    examples: ['report.txt'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.<key>.resource_mime_type': {
+    brief: 'Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.<key>.resource_mime_type'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'text/plain',
+    examples: ['text/plain'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.<key>.resource_uri': {
+    brief: 'Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.<key>.resource_uri'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'file:///project/report.txt',
+    examples: ['file:///project/report.txt'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.<key>.uri': {
+    brief: 'Legacy resource link URI of an indexed content item in a multi-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.<key>.uri'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'file:///project/report.txt',
+    examples: ['file:///project/report.txt'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.mime_type': {
+    brief: 'Legacy MIME type of the content item in a single-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.mime_type'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'image/png',
+    examples: ['image/png', 'audio/wav'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted only when the result contains exactly one content item.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.name': {
+    brief: 'Legacy resource link name of the content item in a single-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.name'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'report.txt',
+    examples: ['report.txt'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted only when the result contains exactly one content item.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.resource_mime_type': {
+    brief: 'Legacy embedded resource MIME type of the content item in a single-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.resource_mime_type'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'text/plain',
+    examples: ['text/plain'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted only when the result contains exactly one content item.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.resource_uri': {
+    brief: 'Legacy embedded resource URI of the content item in a single-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.resource_uri'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'file:///project/report.txt',
+    examples: ['file:///project/report.txt'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted only when the result contains exactly one content item.',
+      'Recorded only when output capture is enabled.',
+    ],
+  },
+  'mcp.tool.result.uri': {
+    brief: 'Legacy resource link URI of the content item in a single-item MCP tool result.',
+    type: 'string',
+    keys: ['mcp.tool.result.uri'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Preserve automatic scrubbing of server-provided result fields.',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'file:///project/report.txt',
+    examples: ['file:///project/report.txt'],
+    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    additionalContext: [
+      'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
+      'Emitted only when the result contains exactly one content item.',
+      'Recorded only when output capture is enabled.',
     ],
   },
   'mcp.transport': {
@@ -36643,6 +37369,8 @@ export type Attributes = {
   [MCP_PROGRESS_TOTAL]?: MCP_PROGRESS_TOTAL_TYPE;
   [MCP_PROMPT_NAME]?: MCP_PROMPT_NAME_TYPE;
   [MCP_PROMPT_RESULT_DESCRIPTION]?: MCP_PROMPT_RESULT_DESCRIPTION_TYPE;
+  [MCP_PROMPT_RESULT_KEY_CONTENT]?: MCP_PROMPT_RESULT_KEY_CONTENT_TYPE;
+  [MCP_PROMPT_RESULT_KEY_ROLE]?: MCP_PROMPT_RESULT_KEY_ROLE_TYPE;
   [MCP_PROMPT_RESULT_MESSAGE_CONTENT]?: MCP_PROMPT_RESULT_MESSAGE_CONTENT_TYPE;
   [MCP_PROMPT_RESULT_MESSAGE_COUNT]?: MCP_PROMPT_RESULT_MESSAGE_COUNT_TYPE;
   [MCP_PROMPT_RESULT_MESSAGE_ROLE]?: MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE;
@@ -36661,7 +37389,22 @@ export type Attributes = {
   [MCP_TOOL_NAME]?: MCP_TOOL_NAME_TYPE;
   [MCP_TOOL_RESULT_CONTENT]?: MCP_TOOL_RESULT_CONTENT_TYPE;
   [MCP_TOOL_RESULT_CONTENT_COUNT]?: MCP_TOOL_RESULT_CONTENT_COUNT_TYPE;
+  [MCP_TOOL_RESULT_CONTENT_TYPE]?: MCP_TOOL_RESULT_CONTENT_TYPE_TYPE;
+  [MCP_TOOL_RESULT_DATA_SIZE]?: MCP_TOOL_RESULT_DATA_SIZE_TYPE;
   [MCP_TOOL_RESULT_IS_ERROR]?: MCP_TOOL_RESULT_IS_ERROR_TYPE;
+  [MCP_TOOL_RESULT_KEY_CONTENT]?: MCP_TOOL_RESULT_KEY_CONTENT_TYPE;
+  [MCP_TOOL_RESULT_KEY_CONTENT_TYPE]?: MCP_TOOL_RESULT_KEY_CONTENT_TYPE_TYPE;
+  [MCP_TOOL_RESULT_KEY_DATA_SIZE]?: MCP_TOOL_RESULT_KEY_DATA_SIZE_TYPE;
+  [MCP_TOOL_RESULT_KEY_MIME_TYPE]?: MCP_TOOL_RESULT_KEY_MIME_TYPE_TYPE;
+  [MCP_TOOL_RESULT_KEY_NAME]?: MCP_TOOL_RESULT_KEY_NAME_TYPE;
+  [MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE]?: MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE_TYPE;
+  [MCP_TOOL_RESULT_KEY_RESOURCE_URI]?: MCP_TOOL_RESULT_KEY_RESOURCE_URI_TYPE;
+  [MCP_TOOL_RESULT_KEY_URI]?: MCP_TOOL_RESULT_KEY_URI_TYPE;
+  [MCP_TOOL_RESULT_MIME_TYPE]?: MCP_TOOL_RESULT_MIME_TYPE_TYPE;
+  [MCP_TOOL_RESULT_NAME]?: MCP_TOOL_RESULT_NAME_TYPE;
+  [MCP_TOOL_RESULT_RESOURCE_MIME_TYPE]?: MCP_TOOL_RESULT_RESOURCE_MIME_TYPE_TYPE;
+  [MCP_TOOL_RESULT_RESOURCE_URI]?: MCP_TOOL_RESULT_RESOURCE_URI_TYPE;
+  [MCP_TOOL_RESULT_URI]?: MCP_TOOL_RESULT_URI_TYPE;
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;

@@ -1,0 +1,23 @@
+{
+  "key": "mcp.tool.result.<key>.resource_mime_type",
+  "brief": "Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "Preserve automatic scrubbing of server-provided result fields."
+  },
+  "is_in_otel": false,
+  "examples": ["text/plain"],
+  "visibility": "public",
+  "additional_context": [
+    "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+    "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+    "Recorded only when output capture is enabled."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Register an existing JavaScript SDK MCP result attribute."
+    }
+  ]
+}
