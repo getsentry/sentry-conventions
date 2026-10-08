@@ -1,0 +1,23 @@
+{
+  "key": "gen_ai.prompt.variable.<key>",
+  "brief": "Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "Prompt variables contain user input and may include sensitive information"
+  },
+  "is_in_otel": true,
+  "examples": ["gen_ai.prompt.variable.language='French'", "gen_ai.prompt.variable.topic='weather'"],
+  "visibility": "public",
+  "additional_context": [
+    "Capture only when the user explicitly opts in to recording prompt inputs. In MCP, these values are the arguments supplied in prompts/get requests."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Added the OpenTelemetry convention for prompt variables"
+    }
+  ]
+}

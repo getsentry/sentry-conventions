@@ -624,6 +624,11 @@ export const SEARCH_AWS__CLOUDWATCH__LOGS__URL = 'aws.cloudwatch.logs.url';
 export const SEARCH_AWS__DYNAMODB__ATTRIBUTE_DEFINITIONS = 'aws.dynamodb.attribute_definitions';
 
 /**
+ * Search name for {@link attributes.AWS_DYNAMODB_ATTRIBUTES_TO_GET}. `aws.dynamodb.attributes_to_get`
+ */
+export const SEARCH_AWS__DYNAMODB__ATTRIBUTES_TO_GET = 'aws.dynamodb.attributes_to_get';
+
+/**
  * Search name for {@link attributes.AWS_DYNAMODB_CONSISTENT_READ}. `aws.dynamodb.consistent_read`
  */
 export const SEARCH_AWS__DYNAMODB__CONSISTENT_READ = 'aws.dynamodb.consistent_read';
@@ -832,6 +837,31 @@ export const SEARCH_AWS__REQUEST_ID = 'aws.request_id';
 export const SEARCH_AWS__S3__BUCKET = 'aws.s3.bucket';
 
 /**
+ * Search name for {@link attributes.AWS_S3_COPY_SOURCE}. `aws.s3.copy_source`
+ */
+export const SEARCH_AWS__S3__COPY_SOURCE = 'aws.s3.copy_source';
+
+/**
+ * Search name for {@link attributes.AWS_S3_DELETE}. `aws.s3.delete`
+ */
+export const SEARCH_AWS__S3__DELETE = 'aws.s3.delete';
+
+/**
+ * Search name for {@link attributes.AWS_S3_KEY}. `aws.s3.key`
+ */
+export const SEARCH_AWS__S3__KEY = 'aws.s3.key';
+
+/**
+ * Search name for {@link attributes.AWS_S3_PART_NUMBER}. `aws.s3.part_number`
+ */
+export const SEARCH_AWS__S3__PART_NUMBER = 'aws.s3.part_number';
+
+/**
+ * Search name for {@link attributes.AWS_S3_UPLOAD_ID}. `aws.s3.upload_id`
+ */
+export const SEARCH_AWS__S3__UPLOAD_ID = 'aws.s3.upload_id';
+
+/**
  * Search name for {@link attributes.AWS_SECRETSMANAGER_SECRET_ARN}. `aws.secretsmanager.secret.arn`
  */
 export const SEARCH_AWS__SECRETSMANAGER__SECRET__ARN = 'aws.secretsmanager.secret.arn';
@@ -842,9 +872,19 @@ export const SEARCH_AWS__SECRETSMANAGER__SECRET__ARN = 'aws.secretsmanager.secre
 export const SEARCH_AWS__SNS__TOPIC__ARN = 'aws.sns.topic.arn';
 
 /**
+ * Search name for {@link attributes.AWS_SQS_QUEUE_URL}. `aws.sqs.queue.url`
+ */
+export const SEARCH_AWS__SQS__QUEUE__URL = 'aws.sqs.queue.url';
+
+/**
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_ACTIVITY_ARN}. `aws.step_functions.activity.arn`
  */
 export const SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN = 'aws.step_functions.activity.arn';
+
+/**
+ * Search name for {@link attributes.AWS_STEP_FUNCTIONS_EXECUTION_ARN}. `aws.step_functions.execution.arn`
+ */
+export const SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN = 'aws.step_functions.execution.arn';
 
 /**
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN}. `aws.step_functions.state_machine.arn`
@@ -1991,6 +2031,31 @@ export const SEARCH_GEN_AI__FUNCTION_ID = 'gen_ai.function_id';
 export const SEARCH_GEN_AI__INPUT__MESSAGES = 'gen_ai.input.messages';
 
 /**
+ * Search name for {@link attributes.GEN_AI_MEMORY_QUERY_TEXT}. `gen_ai.memory.query.text`
+ */
+export const SEARCH_GEN_AI__MEMORY__QUERY__TEXT = 'gen_ai.memory.query.text';
+
+/**
+ * Search name for {@link attributes.GEN_AI_MEMORY_RECORD_COUNT}. `gen_ai.memory.record.count`
+ */
+export const SEARCH_GEN_AI__MEMORY__RECORD__COUNT = 'gen_ai.memory.record.count';
+
+/**
+ * Search name for {@link attributes.GEN_AI_MEMORY_RECORD_ID}. `gen_ai.memory.record.id`
+ */
+export const SEARCH_GEN_AI__MEMORY__RECORD__ID = 'gen_ai.memory.record.id';
+
+/**
+ * Search name for {@link attributes.GEN_AI_MEMORY_RECORDS}. `gen_ai.memory.records`
+ */
+export const SEARCH_GEN_AI__MEMORY__RECORDS = 'gen_ai.memory.records';
+
+/**
+ * Search name for {@link attributes.GEN_AI_MEMORY_STORE_ID}. `gen_ai.memory.store.id`
+ */
+export const SEARCH_GEN_AI__MEMORY__STORE__ID = 'gen_ai.memory.store.id';
+
+/**
  * Search name for {@link attributes.GEN_AI_OPERATION_NAME}. `gen_ai.operation.name`
  */
 export const SEARCH_GEN_AI__OPERATION__NAME = 'gen_ai.operation.name';
@@ -2021,6 +2086,11 @@ export const SEARCH_GEN_AI__PROMPT = 'gen_ai.prompt';
  * Search name for {@link attributes.GEN_AI_PROMPT_NAME}. `gen_ai.prompt.name`
  */
 export const SEARCH_GEN_AI__PROMPT__NAME = 'gen_ai.prompt.name';
+
+/**
+ * Search name for {@link attributes.GEN_AI_PROMPT_VARIABLE_KEY}. `gen_ai.prompt.variable.<key>`
+ */
+export const SEARCH_GEN_AI__PROMPT__VARIABLE__KEY = 'gen_ai.prompt.variable.<key>';
 
 /**
  * Search name for {@link attributes.GEN_AI_PROVIDER_NAME}. `gen_ai.provider.name`
@@ -2818,6 +2888,11 @@ export const SEARCH_LCP__SIZE = 'lcp.size';
 export const SEARCH_LCP__URL = 'lcp.url';
 
 /**
+ * Search name for {@link attributes.SENTRY_LINK_TYPE}. `link.type`
+ */
+export const SEARCH_LINK__TYPE = 'link.type';
+
+/**
  * Search name for {@link attributes.LITESTAR_MIDDLEWARE_NAME}. `litestar.middleware_name`
  *
  * @deprecated Use {@link SEARCH_MIDDLEWARE__NAME} (`middleware.name`) instead
@@ -2828,6 +2903,11 @@ export const SEARCH_LITESTAR__MIDDLEWARE_NAME = 'litestar.middleware_name';
  * Search name for {@link attributes.LOGGER_NAME}. `logger.name`
  */
 export const SEARCH_LOGGER__NAME = 'logger.name';
+
+/**
+ * Search name for {@link attributes.MCP_AUTH_CLIENT_NAME}. `mcp.auth.client.name`
+ */
+export const SEARCH_MCP__AUTH__CLIENT__NAME = 'mcp.auth.client.name';
 
 /**
  * Search name for {@link attributes.MCP_CANCELLED_REASON}. `mcp.cancelled.reason`
@@ -2970,8 +3050,6 @@ export const SEARCH_MCP__REQUEST__ID = 'mcp.request.id';
 
 /**
  * Search name for {@link attributes.MCP_RESOURCE_PROTOCOL}. `mcp.resource.protocol`
- *
- * @deprecated Use {@link SEARCH_NETWORK__PROTOCOL__NAME} (`network.protocol.name`) instead
  */
 export const SEARCH_MCP__RESOURCE__PROTOCOL = 'mcp.resource.protocol';
 
@@ -3016,6 +3094,8 @@ export const SEARCH_MCP__TOOL__RESULT__CONTENT = 'mcp.tool.result.content';
 
 /**
  * Search name for {@link attributes.MCP_TOOL_RESULT_CONTENT_COUNT}. `mcp.tool.result.content_count`
+ *
+ * @deprecated
  */
 export const SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT = 'mcp.tool.result.content_count';
 
@@ -3028,8 +3108,6 @@ export const SEARCH_MCP__TOOL__RESULT__IS_ERROR = 'mcp.tool.result.is_error';
 
 /**
  * Search name for {@link attributes.MCP_TRANSPORT}. `mcp.transport`
- *
- * @deprecated Use {@link SEARCH_NETWORK__TRANSPORT} (`network.transport`) instead
  */
 export const SEARCH_MCP__TRANSPORT = 'mcp.transport';
 
@@ -4042,6 +4120,8 @@ export const SEARCH_SENTRY__KIND = 'sentry.kind';
 
 /**
  * Search name for {@link attributes.SENTRY_LINK_TYPE}. `sentry.link.type`
+ *
+ * @deprecated Use {@link SEARCH_LINK__TYPE} (`link.type`) instead
  */
 export const SEARCH_SENTRY__LINK__TYPE = 'sentry.link.type';
 
@@ -4851,6 +4931,11 @@ export const SEARCH_USER__USERNAME = 'user.username';
 export const SEARCH_USER_AGENT__ORIGINAL = 'user_agent.original';
 
 /**
+ * Search name for {@link attributes.VERCEL_AI_TELEMETRY_METADATA_KEY}. `vercel.ai.telemetry.metadata.<key>`
+ */
+export const SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
  * Search name for {@link attributes.VERCEL_BRANCH}. `vercel.branch`
  */
 export const SEARCH_VERCEL__BRANCH = 'vercel.branch';
@@ -5127,6 +5212,7 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__CLOUDWATCH__LOGS__LOG_STREAM
   | typeof SEARCH_AWS__CLOUDWATCH__LOGS__URL
   | typeof SEARCH_AWS__DYNAMODB__ATTRIBUTE_DEFINITIONS
+  | typeof SEARCH_AWS__DYNAMODB__ATTRIBUTES_TO_GET
   | typeof SEARCH_AWS__DYNAMODB__CONSISTENT_READ
   | typeof SEARCH_AWS__DYNAMODB__CONSUMED_CAPACITY
   | typeof SEARCH_AWS__DYNAMODB__COUNT
@@ -5165,9 +5251,16 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__REQUEST__URL
   | typeof SEARCH_AWS__REQUEST_ID
   | typeof SEARCH_AWS__S3__BUCKET
+  | typeof SEARCH_AWS__S3__COPY_SOURCE
+  | typeof SEARCH_AWS__S3__DELETE
+  | typeof SEARCH_AWS__S3__KEY
+  | typeof SEARCH_AWS__S3__PART_NUMBER
+  | typeof SEARCH_AWS__S3__UPLOAD_ID
   | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__ARN
   | typeof SEARCH_AWS__SNS__TOPIC__ARN
+  | typeof SEARCH_AWS__SQS__QUEUE__URL
   | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN
+  | typeof SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN
   | typeof SEARCH_AWS_REGION
   | typeof SEARCH_BLOCKED_MAIN_THREAD
@@ -5382,12 +5475,18 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__EMBEDDINGS__INPUT
   | typeof SEARCH_GEN_AI__FUNCTION_ID
   | typeof SEARCH_GEN_AI__INPUT__MESSAGES
+  | typeof SEARCH_GEN_AI__MEMORY__QUERY__TEXT
+  | typeof SEARCH_GEN_AI__MEMORY__RECORD__COUNT
+  | typeof SEARCH_GEN_AI__MEMORY__RECORD__ID
+  | typeof SEARCH_GEN_AI__MEMORY__RECORDS
+  | typeof SEARCH_GEN_AI__MEMORY__STORE__ID
   | typeof SEARCH_GEN_AI__OPERATION__NAME
   | typeof SEARCH_GEN_AI__OPERATION__TYPE
   | typeof SEARCH_GEN_AI__OUTPUT__MESSAGES
   | typeof SEARCH_GEN_AI__PIPELINE__NAME
   | typeof SEARCH_GEN_AI__PROMPT
   | typeof SEARCH_GEN_AI__PROMPT__NAME
+  | typeof SEARCH_GEN_AI__PROMPT__VARIABLE__KEY
   | typeof SEARCH_GEN_AI__PROVIDER__NAME
   | typeof SEARCH_GEN_AI__REQUEST__AVAILABLE_TOOLS
   | typeof SEARCH_GEN_AI__REQUEST__FREQUENCY_PENALTY
@@ -5527,8 +5626,10 @@ export type AttributeSearchName =
   | typeof SEARCH_LCP__RENDERTIME
   | typeof SEARCH_LCP__SIZE
   | typeof SEARCH_LCP__URL
+  | typeof SEARCH_LINK__TYPE
   | typeof SEARCH_LITESTAR__MIDDLEWARE_NAME
   | typeof SEARCH_LOGGER__NAME
+  | typeof SEARCH_MCP__AUTH__CLIENT__NAME
   | typeof SEARCH_MCP__CANCELLED__REASON
   | typeof SEARCH_MCP__CANCELLED__REQUEST_ID
   | typeof SEARCH_MCP__CLIENT__NAME
@@ -5884,6 +5985,7 @@ export type AttributeSearchName =
   | typeof SEARCH_USER__ROLES
   | typeof SEARCH_USER__USERNAME
   | typeof SEARCH_USER_AGENT__ORIGINAL
+  | typeof SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY
   | typeof SEARCH_VERCEL__BRANCH
   | typeof SEARCH_VERCEL__BUILD_ID
   | typeof SEARCH_VERCEL__DEPLOYMENT_ID
@@ -6618,6 +6720,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
     deprecationChain: ['aws.dynamodb.attribute_definitions'],
   },
+  'aws.dynamodb.attributes_to_get': {
+    canonicalName: 'aws.dynamodb.attributes_to_get',
+    type: 'string[]',
+    brief: 'The value of the `AttributesToGet` request parameter.',
+    deprecationChain: ['aws.dynamodb.attributes_to_get'],
+  },
   'aws.dynamodb.consistent_read': {
     canonicalName: 'aws.dynamodb.consistent_read',
     type: 'boolean',
@@ -6846,6 +6954,37 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The S3 bucket name the request refers to.',
     deprecationChain: ['aws.s3.bucket'],
   },
+  'aws.s3.copy_source': {
+    canonicalName: 'aws.s3.copy_source',
+    type: 'string',
+    brief: 'The source object (in the form bucket/key) for the copy operation.',
+    deprecationChain: ['aws.s3.copy_source'],
+  },
+  'aws.s3.delete': {
+    canonicalName: 'aws.s3.delete',
+    type: 'string',
+    brief: 'The delete request container that specifies the objects to be deleted.',
+    deprecationChain: ['aws.s3.delete'],
+  },
+  'aws.s3.key': {
+    canonicalName: 'aws.s3.key',
+    type: 'string',
+    brief: 'The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.',
+    deprecationChain: ['aws.s3.key'],
+  },
+  'aws.s3.part_number': {
+    canonicalName: 'aws.s3.part_number',
+    type: 'integer',
+    brief:
+      'The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.',
+    deprecationChain: ['aws.s3.part_number'],
+  },
+  'aws.s3.upload_id': {
+    canonicalName: 'aws.s3.upload_id',
+    type: 'string',
+    brief: 'Upload ID that identifies the multipart upload.',
+    deprecationChain: ['aws.s3.upload_id'],
+  },
   'aws.secretsmanager.secret.arn': {
     canonicalName: 'aws.secretsmanager.secret.arn',
     type: 'string',
@@ -6859,11 +6998,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
     deprecationChain: ['aws.sns.topic.arn'],
   },
+  'aws.sqs.queue.url': {
+    canonicalName: 'aws.sqs.queue.url',
+    type: 'string',
+    brief:
+      'The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.',
+    deprecationChain: ['aws.sqs.queue.url'],
+  },
   'aws.step_functions.activity.arn': {
     canonicalName: 'aws.step_functions.activity.arn',
     type: 'string',
     brief: 'The ARN of the AWS Step Functions Activity.',
     deprecationChain: ['aws.step_functions.activity.arn'],
+  },
+  'aws.step_functions.execution.arn': {
+    canonicalName: 'aws.step_functions.execution.arn',
+    type: 'string',
+    brief: 'The ARN of the AWS Step Functions Execution.',
+    deprecationChain: ['aws.step_functions.execution.arn'],
   },
   'aws.step_functions.state_machine.arn': {
     canonicalName: 'aws.step_functions.state_machine.arn',
@@ -7775,8 +7927,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'device.thermal_state': {
     canonicalName: 'device.thermal_state',
     type: 'string',
-    brief:
-      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    brief: "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
     deprecationChain: ['device.thermal_state'],
   },
   'device.timezone': {
@@ -8180,18 +8331,52 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'gen_ai.request.messages',
     ],
   },
+  'gen_ai.memory.query.text': {
+    canonicalName: 'gen_ai.memory.query.text',
+    type: 'string',
+    brief:
+      "The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.",
+    deprecationChain: ['gen_ai.memory.query.text'],
+  },
+  'gen_ai.memory.record.count': {
+    canonicalName: 'gen_ai.memory.record.count',
+    type: 'integer',
+    brief:
+      "The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.",
+    deprecationChain: ['gen_ai.memory.record.count'],
+  },
+  'gen_ai.memory.record.id': {
+    canonicalName: 'gen_ai.memory.record.id',
+    type: 'string',
+    brief:
+      "The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.",
+    deprecationChain: ['gen_ai.memory.record.id'],
+  },
+  'gen_ai.memory.records': {
+    canonicalName: 'gen_ai.memory.records',
+    type: 'string',
+    brief:
+      'The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.',
+    deprecationChain: ['gen_ai.memory.records'],
+  },
+  'gen_ai.memory.store.id': {
+    canonicalName: 'gen_ai.memory.store.id',
+    type: 'string',
+    brief:
+      'The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.',
+    deprecationChain: ['gen_ai.memory.store.id'],
+  },
   'gen_ai.operation.name': {
     canonicalName: 'gen_ai.operation.name',
     type: 'string',
-    brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+    brief: 'The name of the operation being performed.',
     deprecationChain: ['gen_ai.operation.name'],
   },
   'gen_ai.operation.type': {
     canonicalName: 'gen_ai.operation.type',
     type: 'string',
     brief:
-      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+      'The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI',
     deprecationChain: ['gen_ai.operation.type'],
   },
   'gen_ai.output.messages': {
@@ -8234,6 +8419,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of the prompt that uniquely identifies it.',
     deprecationChain: ['gen_ai.prompt.name', 'mcp.prompt.name'],
+  },
+  'gen_ai.prompt.variable.<key>': {
+    canonicalName: 'gen_ai.prompt.variable.<key>',
+    type: 'string',
+    brief:
+      'Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.',
+    deprecationChain: ['gen_ai.prompt.variable.<key>'],
   },
   'gen_ai.provider.name': {
     canonicalName: 'gen_ai.provider.name',
@@ -9112,7 +9304,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'jsonrpc.request.id': {
     canonicalName: 'jsonrpc.request.id',
     type: 'string',
-    brief: 'The JSON-RPC request identifier. Unique within the session.',
+    brief: 'The JSON-RPC request identifier, used to correlate a request with its response.',
     deprecationChain: ['jsonrpc.request.id', 'mcp.request.id'],
   },
   'jvm.gc.action': {
@@ -9212,6 +9404,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The url of the dom element responsible for the largest contentful paint.',
     deprecationChain: ['browser.web_vital.lcp.url', 'lcp.url'],
   },
+  'link.type': {
+    canonicalName: 'sentry.link.type',
+    type: 'string',
+    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
+    deprecationChain: ['link.type', 'sentry.link.type'],
+  },
   'litestar.middleware_name': {
     canonicalName: 'middleware.name',
     type: 'string',
@@ -9230,6 +9428,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name of the logger that generated this event.',
     deprecationChain: ['logger.name'],
   },
+  'mcp.auth.client.name': {
+    canonicalName: 'mcp.auth.client.name',
+    type: 'string',
+    brief:
+      'Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.',
+    deprecationChain: ['mcp.auth.client.name'],
+  },
   'mcp.cancelled.reason': {
     canonicalName: 'mcp.cancelled.reason',
     type: 'string',
@@ -9245,19 +9450,20 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'mcp.client.name': {
     canonicalName: 'mcp.client.name',
     type: 'string',
-    brief: 'Name of the MCP client application.',
+    brief:
+      'Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.',
     deprecationChain: ['mcp.client.name'],
   },
   'mcp.client.title': {
     canonicalName: 'mcp.client.title',
     type: 'string',
-    brief: 'Display title of the MCP client application.',
+    brief: 'Display title of the MCP client implementation, as declared in clientInfo.',
     deprecationChain: ['mcp.client.title'],
   },
   'mcp.client.version': {
     canonicalName: 'mcp.client.version',
     type: 'string',
-    brief: 'Version of the MCP client application.',
+    brief: 'Version of the MCP client implementation, as declared in clientInfo.',
     deprecationChain: ['mcp.client.version'],
   },
   'mcp.lifecycle.phase': {
@@ -9298,7 +9504,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'mcp.progress.current': {
     canonicalName: 'mcp.progress.current',
-    type: 'integer',
+    type: 'double',
     brief: 'Current progress value of an MCP operation.',
     deprecationChain: ['mcp.progress.current'],
   },
@@ -9322,7 +9528,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'mcp.progress.total': {
     canonicalName: 'mcp.progress.total',
-    type: 'integer',
+    type: 'double',
     brief: 'Total progress target value of an MCP operation.',
     deprecationChain: ['mcp.progress.total'],
   },
@@ -9359,13 +9565,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'mcp.protocol.ready': {
     canonicalName: 'mcp.protocol.ready',
     type: 'integer',
-    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
+    brief:
+      'Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.',
     deprecationChain: ['mcp.protocol.ready'],
   },
   'mcp.protocol.version': {
     canonicalName: 'mcp.protocol.version',
     type: 'string',
-    brief: 'MCP protocol version used in the session.',
+    brief: 'Version of the Model Context Protocol used for the operation.',
     deprecationChain: ['mcp.protocol.version'],
   },
   'mcp.request.argument.<key>': {
@@ -9390,14 +9597,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'mcp.request.id': {
     canonicalName: 'jsonrpc.request.id',
     type: 'string',
-    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
+    brief: 'JSON-RPC request identifier for the MCP request, used to correlate the request with its response.',
     deprecationChain: ['jsonrpc.request.id', 'mcp.request.id'],
   },
   'mcp.resource.protocol': {
-    canonicalName: 'network.protocol.name',
+    canonicalName: 'mcp.resource.protocol',
     type: 'string',
-    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    brief:
+      'URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.',
+    deprecationChain: ['mcp.resource.protocol'],
   },
   'mcp.resource.uri': {
     canonicalName: 'mcp.resource.uri',
@@ -9408,25 +9616,25 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'mcp.server.name': {
     canonicalName: 'mcp.server.name',
     type: 'string',
-    brief: 'Name of the MCP server application.',
+    brief: 'Name of the MCP server implementation, as declared in serverInfo.',
     deprecationChain: ['mcp.server.name'],
   },
   'mcp.server.title': {
     canonicalName: 'mcp.server.title',
     type: 'string',
-    brief: 'Display title of the MCP server application.',
+    brief: 'Display title of the MCP server implementation, as declared in serverInfo.',
     deprecationChain: ['mcp.server.title'],
   },
   'mcp.server.version': {
     canonicalName: 'mcp.server.version',
     type: 'string',
-    brief: 'Version of the MCP server application.',
+    brief: 'Version of the MCP server implementation, as declared in serverInfo.',
     deprecationChain: ['mcp.server.version'],
   },
   'mcp.session.id': {
     canonicalName: 'mcp.session.id',
     type: 'string',
-    brief: 'Identifier for the MCP session.',
+    brief: 'Identifier for an MCP protocol session, when the operation belongs to a session.',
     deprecationChain: ['mcp.session.id'],
   },
   'mcp.tool.name': {
@@ -9452,6 +9660,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'mcp.tool.result.content_count',
     type: 'integer',
     brief: 'Number of content items in the tool result.',
+    deprecated: true,
     deprecationChain: ['mcp.tool.result.content_count'],
   },
   'mcp.tool.result.is_error': {
@@ -9461,10 +9670,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['error.type', 'fs_error', 'mcp.tool.result.is_error'],
   },
   'mcp.transport': {
-    canonicalName: 'network.transport',
+    canonicalName: 'mcp.transport',
     type: 'string',
-    brief: 'Transport method used for MCP communication.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
+    brief:
+      'MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.',
+    deprecationChain: ['mcp.transport'],
   },
   'mdc.<key>': {
     canonicalName: 'mdc.<key>',
@@ -9602,7 +9812,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
   },
   'messaging.protocol_version': {
     canonicalName: 'network.protocol.version',
@@ -9797,7 +10007,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
   },
   'net.protocol.version': {
     canonicalName: 'network.protocol.version',
@@ -9809,7 +10019,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport and network layer',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
+    deprecationChain: ['network.transport', 'net.sock.family', 'net.transport'],
   },
   'net.sock.host.addr': {
     canonicalName: 'network.local.address',
@@ -9846,7 +10056,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
+    deprecationChain: ['network.transport', 'net.sock.family', 'net.transport'],
   },
   'network.connection.effective_type': {
     canonicalName: 'network.connection.effective_type',
@@ -9894,7 +10104,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
   },
   'network.protocol.version': {
     canonicalName: 'network.protocol.version',
@@ -9906,7 +10116,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
+    deprecationChain: ['network.transport', 'net.sock.family', 'net.transport'],
   },
   'network.type': {
     canonicalName: 'network.type',
@@ -10594,12 +10804,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: "Indicates whether a span's parent is remote.",
     deprecationChain: ['sentry.is_remote'],
   },
-  'sentry.link.type': {
-    canonicalName: 'sentry.link.type',
-    type: 'string',
-    brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
-    deprecationChain: ['sentry.link.type'],
-  },
   'sentry.main_thread': {
     canonicalName: 'sentry.main_thread',
     type: 'boolean',
@@ -10727,24 +10931,21 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'sentry.segment.name.source': {
     canonicalName: 'sentry.segment.name.source',
     type: 'string',
-    brief:
-      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    brief: 'The source of the segment span name. Should only be set on segment spans.',
     internal: true,
     deprecationChain: ['sentry.segment.name.source'],
   },
   'sentry.source': {
     canonicalName: 'sentry.source',
     type: 'string',
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     deprecated: true,
     deprecationChain: ['sentry.source'],
   },
   'sentry.span.source': {
     canonicalName: 'sentry.span.source',
     type: 'string',
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     deprecated: true,
     deprecationChain: ['sentry.span.source'],
   },
@@ -10858,7 +11059,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.category',
     type: 'string',
     brief:
-      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+      'The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).',
     deprecationChain: ['span.category', 'sentry.category'],
   },
   'span.domain': {
@@ -11420,6 +11621,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     deprecationChain: ['user_agent.original', 'http.user_agent'],
+  },
+  'vercel.ai.telemetry.metadata.<key>': {
+    canonicalName: 'vercel.ai.telemetry.metadata.<key>',
+    type: 'string',
+    brief:
+      'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
+    deprecationChain: ['vercel.ai.telemetry.metadata.<key>'],
   },
   'vercel.branch': {
     canonicalName: 'vercel.branch',

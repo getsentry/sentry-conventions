@@ -2169,6 +2169,27 @@ export const AWS_CLOUDWATCH_LOGS_URL = 'aws.cloudwatch.logs.url';
  */
 export type AWS_CLOUDWATCH_LOGS_URL_TYPE = string;
 
+// Path: model/attributes/aws/aws__dynamodb__attributes_to_get.json
+
+/**
+ * The value of the `AttributesToGet` request parameter. `aws.dynamodb.attributes_to_get`
+ *
+ * Attribute Value Type: `Array<string>` {@link AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example ["lives","id"]
+ */
+export const AWS_DYNAMODB_ATTRIBUTES_TO_GET = 'aws.dynamodb.attributes_to_get';
+
+/**
+ * Type for {@link AWS_DYNAMODB_ATTRIBUTES_TO_GET} aws.dynamodb.attributes_to_get
+ */
+export type AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE = Array<string>;
+
 // Path: model/attributes/aws/aws__dynamodb__attribute_definitions.json
 
 /**
@@ -3047,6 +3068,111 @@ export const AWS_S3_BUCKET = 'aws.s3.bucket';
  */
 export type AWS_S3_BUCKET_TYPE = string;
 
+// Path: model/attributes/aws/aws__s3__copy_source.json
+
+/**
+ * The source object (in the form bucket/key) for the copy operation. `aws.s3.copy_source`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_COPY_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "someFile.yml"
+ */
+export const AWS_S3_COPY_SOURCE = 'aws.s3.copy_source';
+
+/**
+ * Type for {@link AWS_S3_COPY_SOURCE} aws.s3.copy_source
+ */
+export type AWS_S3_COPY_SOURCE_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__delete.json
+
+/**
+ * The delete request container that specifies the objects to be deleted. `aws.s3.delete`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_DELETE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+ */
+export const AWS_S3_DELETE = 'aws.s3.delete';
+
+/**
+ * Type for {@link AWS_S3_DELETE} aws.s3.delete
+ */
+export type AWS_S3_DELETE_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__key.json
+
+/**
+ * The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations. `aws.s3.key`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_KEY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "someFile.yml"
+ */
+export const AWS_S3_KEY = 'aws.s3.key';
+
+/**
+ * Type for {@link AWS_S3_KEY} aws.s3.key
+ */
+export type AWS_S3_KEY_TYPE = string;
+
+// Path: model/attributes/aws/aws__s3__part_number.json
+
+/**
+ * The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000. `aws.s3.part_number`
+ *
+ * Attribute Value Type: `number` {@link AWS_S3_PART_NUMBER_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 3456
+ */
+export const AWS_S3_PART_NUMBER = 'aws.s3.part_number';
+
+/**
+ * Type for {@link AWS_S3_PART_NUMBER} aws.s3.part_number
+ */
+export type AWS_S3_PART_NUMBER_TYPE = number;
+
+// Path: model/attributes/aws/aws__s3__upload_id.json
+
+/**
+ * Upload ID that identifies the multipart upload. `aws.s3.upload_id`
+ *
+ * Attribute Value Type: `string` {@link AWS_S3_UPLOAD_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"
+ */
+export const AWS_S3_UPLOAD_ID = 'aws.s3.upload_id';
+
+/**
+ * Type for {@link AWS_S3_UPLOAD_ID} aws.s3.upload_id
+ */
+export type AWS_S3_UPLOAD_ID_TYPE = string;
+
 // Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
 
 /**
@@ -3089,6 +3215,27 @@ export const AWS_SNS_TOPIC_ARN = 'aws.sns.topic.arn';
  */
 export type AWS_SNS_TOPIC_ARN_TYPE = string;
 
+// Path: model/attributes/aws/aws__sqs__queue__url.json
+
+/**
+ * The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it. `aws.sqs.queue.url`
+ *
+ * Attribute Value Type: `string` {@link AWS_SQS_QUEUE_URL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
+ */
+export const AWS_SQS_QUEUE_URL = 'aws.sqs.queue.url';
+
+/**
+ * Type for {@link AWS_SQS_QUEUE_URL} aws.sqs.queue.url
+ */
+export type AWS_SQS_QUEUE_URL_TYPE = string;
+
 // Path: model/attributes/aws/aws__step_functions__activity__arn.json
 
 /**
@@ -3109,6 +3256,27 @@ export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn'
  * Type for {@link AWS_STEP_FUNCTIONS_ACTIVITY_ARN} aws.step_functions.activity.arn
  */
 export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__execution__arn.json
+
+/**
+ * The ARN of the AWS Step Functions Execution. `aws.step_functions.execution.arn`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
+ */
+export const AWS_STEP_FUNCTIONS_EXECUTION_ARN = 'aws.step_functions.execution.arn';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_EXECUTION_ARN} aws.step_functions.execution.arn
+ */
+export type AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE = string;
 
 // Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
 
@@ -6341,7 +6509,7 @@ export type DEVICE_STORAGE_SIZE_TYPE = number;
 // Path: model/attributes/device/device__thermal_state.json
 
 /**
- * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`. `device.thermal_state`
+ * The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum. `device.thermal_state`
  *
  * Attribute Value Type: `string` {@link DEVICE_THERMAL_STATE_TYPE}
  *
@@ -6349,6 +6517,12 @@ export type DEVICE_STORAGE_SIZE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `nominal`
+ * - `fair`
+ * - `serious`
+ * - `critical`
  *
  * @example "nominal"
  */
@@ -7788,10 +7962,118 @@ export const GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
  */
 export type GEN_AI_INPUT_MESSAGES_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__memory__query__text.json
+
+/**
+ * The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information. `gen_ai.memory.query.text`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_MEMORY_QUERY_TEXT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "user dietary preferences"
+ * @example "past flight bookings"
+ */
+export const GEN_AI_MEMORY_QUERY_TEXT = 'gen_ai.memory.query.text';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_QUERY_TEXT} gen_ai.memory.query.text
+ */
+export type GEN_AI_MEMORY_QUERY_TEXT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__memory__records.json
+
+/**
+ * The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data. `gen_ai.memory.records`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_MEMORY_RECORDS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "[{\"content\": \"User prefers dark mode\", \"id\": \"mem_123\", \"score\": 0.95}, {\"content\": {\"preference\": \"vegetarian meals\", \"confidence\": 0.9}, \"metadata\": {\"source\": \"profile\"}}]"
+ */
+export const GEN_AI_MEMORY_RECORDS = 'gen_ai.memory.records';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_RECORDS} gen_ai.memory.records
+ */
+export type GEN_AI_MEMORY_RECORDS_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__memory__record__count.json
+
+/**
+ * The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively. `gen_ai.memory.record.count`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_MEMORY_RECORD_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 3
+ */
+export const GEN_AI_MEMORY_RECORD_COUNT = 'gen_ai.memory.record.count';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_RECORD_COUNT} gen_ai.memory.record.count
+ */
+export type GEN_AI_MEMORY_RECORD_COUNT_TYPE = number;
+
+// Path: model/attributes/gen_ai/gen_ai__memory__record__id.json
+
+/**
+ * The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store. `gen_ai.memory.record.id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_MEMORY_RECORD_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "mem_5j66UpCpwteGg4YSxUnt7lPY"
+ */
+export const GEN_AI_MEMORY_RECORD_ID = 'gen_ai.memory.record.id';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_RECORD_ID} gen_ai.memory.record.id
+ */
+export type GEN_AI_MEMORY_RECORD_ID_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__memory__store__id.json
+
+/**
+ * The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration. `gen_ai.memory.store.id`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_MEMORY_STORE_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "ms_abc123"
+ * @example "user-preferences-store"
+ * @example "seer-knowledge"
+ */
+export const GEN_AI_MEMORY_STORE_ID = 'gen_ai.memory.store.id';
+
+/**
+ * Type for {@link GEN_AI_MEMORY_STORE_ID} gen_ai.memory.store.id
+ */
+export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__operation__name.json
 
 /**
- * The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used. `gen_ai.operation.name`
+ * The name of the operation being performed. `gen_ai.operation.name`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_NAME_TYPE}
  *
@@ -7799,6 +8081,22 @@ export type GEN_AI_INPUT_MESSAGES_TYPE = string;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `chat`
+ * - `create_agent`
+ * - `create_memory`
+ * - `create_memory_store`
+ * - `delete_memory`
+ * - `delete_memory_store`
+ * - `embeddings`
+ * - `execute_tool`
+ * - `generate_content`
+ * - `invoke_agent`
+ * - `search_memory`
+ * - `text_completion`
+ * - `update_memory`
+ * - `upsert_memory`
  *
  * @example "chat"
  */
@@ -7812,7 +8110,7 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__operation__type.json
 
 /**
- * The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI `gen_ai.operation.type`
+ * The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI `gen_ai.operation.type`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OPERATION_TYPE_TYPE}
  *
@@ -7820,6 +8118,14 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `agent` - invoke_agent and create_agent spans
+ * - `ai_client` - any LLM call
+ * - `tool` - execute_tool spans
+ * - `handoff` - handoff spans
+ * - `memory` - gen_ai.memory.client spans
+ * - `other` - input and output processors, skill loading, guardrails etc.
  *
  * @example "tool"
  */
@@ -7922,6 +8228,35 @@ export const GEN_AI_PROMPT_NAME = 'gen_ai.prompt.name';
  * Type for {@link GEN_AI_PROMPT_NAME} gen_ai.prompt.name
  */
 export type GEN_AI_PROMPT_NAME_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__prompt__variable__[key].json
+
+/**
+ * Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string. `gen_ai.prompt.variable.<key>`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_PROMPT_VARIABLE_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto - Prompt variables contain user input and may include sensitive information
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "gen_ai.prompt.variable.language='French'"
+ * @example "gen_ai.prompt.variable.topic='weather'"
+ */
+export const GEN_AI_PROMPT_VARIABLE_KEY = 'gen_ai.prompt.variable.<key>';
+
+/**
+ * Base key for {@link GEN_AI_PROMPT_VARIABLE_KEY}. Use with a dynamic suffix, e.g. `${GEN_AI_PROMPT_VARIABLE_KEY_BASE}.${key}`.
+ */
+export const GEN_AI_PROMPT_VARIABLE_KEY_BASE = 'gen_ai.prompt.variable';
+
+/**
+ * Type for {@link GEN_AI_PROMPT_VARIABLE_KEY} gen_ai.prompt.variable.<key>
+ */
+export type GEN_AI_PROMPT_VARIABLE_KEY_TYPE = string;
 
 // Path: model/attributes/gen_ai/gen_ai__provider__name.json
 
@@ -10679,7 +11014,7 @@ export type JSONRPC_PROTOCOL_VERSION_TYPE = string;
 // Path: model/attributes/jsonrpc/jsonrpc__request__id.json
 
 /**
- * The JSON-RPC request identifier. Unique within the session. `jsonrpc.request.id`
+ * The JSON-RPC request identifier, used to correlate a request with its response. `jsonrpc.request.id`
  *
  * Attribute Value Type: `string` {@link JSONRPC_REQUEST_ID_TYPE}
  *
@@ -11106,6 +11441,28 @@ export const LOGGER_NAME = 'logger.name';
  */
 export type LOGGER_NAME_TYPE = string;
 
+// Path: model/attributes/mcp/mcp__auth__client__name.json
+
+/**
+ * Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable. `mcp.auth.client.name`
+ *
+ * Attribute Value Type: `string` {@link MCP_AUTH_CLIENT_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Example Desktop"
+ * @example "Example CLI"
+ */
+export const MCP_AUTH_CLIENT_NAME = 'mcp.auth.client.name';
+
+/**
+ * Type for {@link MCP_AUTH_CLIENT_NAME} mcp.auth.client.name
+ */
+export type MCP_AUTH_CLIENT_NAME_TYPE = string;
+
 // Path: model/attributes/mcp/mcp__cancelled__reason.json
 
 /**
@@ -11151,7 +11508,7 @@ export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
 // Path: model/attributes/mcp/mcp__client__name.json
 
 /**
- * Name of the MCP client application. `mcp.client.name`
+ * Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name. `mcp.client.name`
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_NAME_TYPE}
  *
@@ -11160,7 +11517,7 @@ export type MCP_CANCELLED_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "claude-desktop"
+ * @example "example-mcp-client"
  */
 export const MCP_CLIENT_NAME = 'mcp.client.name';
 
@@ -11172,7 +11529,7 @@ export type MCP_CLIENT_NAME_TYPE = string;
 // Path: model/attributes/mcp/mcp__client__title.json
 
 /**
- * Display title of the MCP client application. `mcp.client.title`
+ * Display title of the MCP client implementation, as declared in clientInfo. `mcp.client.title`
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_TITLE_TYPE}
  *
@@ -11181,7 +11538,7 @@ export type MCP_CLIENT_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "Claude Desktop"
+ * @example "Example MCP Client"
  */
 export const MCP_CLIENT_TITLE = 'mcp.client.title';
 
@@ -11193,7 +11550,7 @@ export type MCP_CLIENT_TITLE_TYPE = string;
 // Path: model/attributes/mcp/mcp__client__version.json
 
 /**
- * Version of the MCP client application. `mcp.client.version`
+ * Version of the MCP client implementation, as declared in clientInfo. `mcp.client.version`
  *
  * Attribute Value Type: `string` {@link MCP_CLIENT_VERSION_TYPE}
  *
@@ -11349,6 +11706,7 @@ export type MCP_METHOD_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @example 0.2
  * @example 50
  */
 export const MCP_PROGRESS_CURRENT = 'mcp.progress.current';
@@ -11433,6 +11791,7 @@ export type MCP_PROGRESS_TOKEN_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @example 1
  * @example 100
  */
 export const MCP_PROGRESS_TOTAL = 'mcp.progress.total';
@@ -11553,7 +11912,7 @@ export type MCP_PROMPT_RESULT_MESSAGE_ROLE_TYPE = string;
 // Path: model/attributes/mcp/mcp__protocol__ready.json
 
 /**
- * Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready. `mcp.protocol.ready`
+ * Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake. `mcp.protocol.ready`
  *
  * Attribute Value Type: `number` {@link MCP_PROTOCOL_READY_TYPE}
  *
@@ -11574,7 +11933,7 @@ export type MCP_PROTOCOL_READY_TYPE = number;
 // Path: model/attributes/mcp/mcp__protocol__version.json
 
 /**
- * MCP protocol version used in the session. `mcp.protocol.version`
+ * Version of the Model Context Protocol used for the operation. `mcp.protocol.version`
  *
  * Attribute Value Type: `string` {@link MCP_PROTOCOL_VERSION_TYPE}
  *
@@ -11665,7 +12024,7 @@ export type MCP_REQUEST_ARGUMENT_URI_TYPE = string;
 // Path: model/attributes/mcp/mcp__request__id.json
 
 /**
- * JSON-RPC request identifier for the MCP request. Unique within the MCP session. `mcp.request.id`
+ * JSON-RPC request identifier for the MCP request, used to correlate the request with its response. `mcp.request.id`
  *
  * Attribute Value Type: `string` {@link MCP_REQUEST_ID_TYPE}
  *
@@ -11689,7 +12048,7 @@ export type MCP_REQUEST_ID_TYPE = string;
 // Path: model/attributes/mcp/mcp__resource__protocol.json
 
 /**
- * Protocol of the resource URI being accessed, extracted from the URI. `mcp.resource.protocol`
+ * URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server. `mcp.resource.protocol`
  *
  * Attribute Value Type: `string` {@link MCP_RESOURCE_PROTOCOL_TYPE}
  *
@@ -11698,10 +12057,8 @@ export type MCP_REQUEST_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
- *
- * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - OTel uses the generic network.protocol.name attribute
  * @example "file"
+ * @example "postgres"
  */
 export const MCP_RESOURCE_PROTOCOL = 'mcp.resource.protocol';
 
@@ -11734,7 +12091,7 @@ export type MCP_RESOURCE_URI_TYPE = string;
 // Path: model/attributes/mcp/mcp__server__name.json
 
 /**
- * Name of the MCP server application. `mcp.server.name`
+ * Name of the MCP server implementation, as declared in serverInfo. `mcp.server.name`
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_NAME_TYPE}
  *
@@ -11743,7 +12100,7 @@ export type MCP_RESOURCE_URI_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "sentry-mcp-server"
+ * @example "example-mcp-server"
  */
 export const MCP_SERVER_NAME = 'mcp.server.name';
 
@@ -11755,7 +12112,7 @@ export type MCP_SERVER_NAME_TYPE = string;
 // Path: model/attributes/mcp/mcp__server__title.json
 
 /**
- * Display title of the MCP server application. `mcp.server.title`
+ * Display title of the MCP server implementation, as declared in serverInfo. `mcp.server.title`
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_TITLE_TYPE}
  *
@@ -11764,7 +12121,7 @@ export type MCP_SERVER_NAME_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "Sentry MCP Server"
+ * @example "Example MCP Server"
  */
 export const MCP_SERVER_TITLE = 'mcp.server.title';
 
@@ -11776,7 +12133,7 @@ export type MCP_SERVER_TITLE_TYPE = string;
 // Path: model/attributes/mcp/mcp__server__version.json
 
 /**
- * Version of the MCP server application. `mcp.server.version`
+ * Version of the MCP server implementation, as declared in serverInfo. `mcp.server.version`
  *
  * Attribute Value Type: `string` {@link MCP_SERVER_VERSION_TYPE}
  *
@@ -11797,7 +12154,7 @@ export type MCP_SERVER_VERSION_TYPE = string;
 // Path: model/attributes/mcp/mcp__session__id.json
 
 /**
- * Identifier for the MCP session. `mcp.session.id`
+ * Identifier for an MCP protocol session, when the operation belongs to a session. `mcp.session.id`
  *
  * Attribute Value Type: `string` {@link MCP_SESSION_ID_TYPE}
  *
@@ -11875,6 +12232,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * @deprecated  - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
  * @example 1
  */
 export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
@@ -11909,7 +12267,7 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
 // Path: model/attributes/mcp/mcp__transport.json
 
 /**
- * Transport method used for MCP communication. `mcp.transport`
+ * MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol. `mcp.transport`
  *
  * Attribute Value Type: `string` {@link MCP_TRANSPORT_TYPE}
  *
@@ -11918,10 +12276,8 @@ export type MCP_TOOL_RESULT_IS_ERROR_TYPE = boolean;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link NET_TRANSPORT} `net.transport`
- *
- * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - OTel uses the generic network.transport attribute
- * @example "stdio"
+ * @example "StdioServerTransport"
+ * @example "CustomHTTPTransport"
  */
 export const MCP_TRANSPORT = 'mcp.transport';
 
@@ -12411,7 +12767,7 @@ export type MESSAGING_OPERATION_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link NET_PROTOCOL_NAME} `net.protocol.name`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead - This attribute is being deprecated in favor of network.protocol.name.
  * @example "AMQP"
@@ -12963,7 +13319,7 @@ export type NETWORK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
+ * Aliases: {@link NET_PROTOCOL_NAME} `net.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @example "http"
  */
@@ -13009,7 +13365,7 @@ export type NETWORK_PROTOCOL_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NET_TRANSPORT} `net.transport`, {@link MCP_TRANSPORT} `mcp.transport`
+ * Aliases: {@link NET_TRANSPORT} `net.transport`
  *
  * @example "tcp"
  */
@@ -13195,7 +13551,7 @@ export type NET_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MCP_RESOURCE_PROTOCOL} `mcp.resource.protocol`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
+ * Aliases: {@link NETWORK_PROTOCOL_NAME} `network.protocol.name`, {@link MESSAGING_PROTOCOL} `messaging.protocol`
  *
  * @deprecated Use {@link NETWORK_PROTOCOL_NAME} (network.protocol.name) instead
  * @example "http"
@@ -13383,7 +13739,7 @@ export type NET_SOCK_PEER_PORT_TYPE = number;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link NETWORK_TRANSPORT} `network.transport`, {@link MCP_TRANSPORT} `mcp.transport`
+ * Aliases: {@link NETWORK_TRANSPORT} `network.transport`
  *
  * @deprecated Use {@link NETWORK_TRANSPORT} (network.transport) instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
  * @example "tcp"
@@ -15102,7 +15458,7 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
 // Path: model/attributes/sentry/sentry__category.json
 
 /**
- * The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'. `sentry.category`
+ * The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). `sentry.category`
  *
  * Attribute Value Type: `string` {@link SENTRY_CATEGORY_TYPE}
  *
@@ -15110,6 +15466,44 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `ai`
+ * - `ai.pipeline`
+ * - `app`
+ * - `browser`
+ * - `cache`
+ * - `console`
+ * - `db`
+ * - `event`
+ * - `file`
+ * - `function.aws`
+ * - `function.azure`
+ * - `function.gcp`
+ * - `function.nextjs`
+ * - `function.remix`
+ * - `graphql`
+ * - `grpc`
+ * - `http`
+ * - `measure`
+ * - `middleware`
+ * - `navigation`
+ * - `pageload`
+ * - `queue`
+ * - `resource`
+ * - `rpc`
+ * - `serialize`
+ * - `subprocess`
+ * - `template`
+ * - `topic`
+ * - `ui`
+ * - `ui.angular`
+ * - `ui.ember`
+ * - `ui.react`
+ * - `ui.svelte`
+ * - `ui.vue`
+ * - `view`
+ * - `websocket`
  *
  * @example "db"
  */
@@ -16393,7 +16787,7 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
 // Path: model/attributes/sentry/sentry__segment__name__source.json
 
 /**
- * The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. `sentry.segment.name.source`
+ * The source of the segment span name. Should only be set on segment spans. `sentry.segment.name.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SEGMENT_NAME_SOURCE_TYPE}
  *
@@ -16401,6 +16795,14 @@ export type SENTRY_SEGMENT_NAME_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: internal
+ *
+ * Well-defined Values:
+ * - `custom` - Describes a name set by the user, not derived from the URL or a route pattern
+ * - `url` - Describes the full URL, potentially containing identifiers
+ * - `route` - Describes a parametrized route
+ * - `component`
+ * - `view`
+ * - `task`
  *
  * @example "route"
  * @example "component"
@@ -16440,7 +16842,7 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
 // Path: model/attributes/sentry/sentry__source.json
 
 /**
- * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers. `sentry.source`
+ * The source of a span, also referred to as transaction source. `sentry.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SOURCE_TYPE}
  *
@@ -16448,6 +16850,14 @@ export type SENTRY_SERVER_SAMPLE_RATE_TYPE = number;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `custom`
+ * - `url` - Describes the full URL, potentially containing identifiers
+ * - `route` - Describes a parametrized route
+ * - `component`
+ * - `view`
+ * - `task`
  *
  * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
@@ -16462,7 +16872,7 @@ export type SENTRY_SOURCE_TYPE = string;
 // Path: model/attributes/sentry/sentry__span__source.json
 
 /**
- * The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers. `sentry.span.source`
+ * The source of a span, also referred to as transaction source. `sentry.span.source`
  *
  * Attribute Value Type: `string` {@link SENTRY_SPAN_SOURCE_TYPE}
  *
@@ -16470,6 +16880,14 @@ export type SENTRY_SOURCE_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Well-defined Values:
+ * - `custom`
+ * - `url` - Describes the full URL, potentially containing identifiers
+ * - `route` - Describes a parametrized route
+ * - `component`
+ * - `view`
+ * - `task`
  *
  * @deprecated  - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
  * @example "route"
@@ -18658,6 +19076,34 @@ export const USER_ROLES = 'user.roles';
  */
 export type USER_ROLES_TYPE = Array<string>;
 
+// Path: model/attributes/vercel/vercel__ai__telemetry__metadata__[key].json
+
+/**
+ * Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name. `vercel.ai.telemetry.metadata.<key>`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto - Metadata is user-defined and can contain user data
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "vercel.ai.telemetry.metadata.tenantId='acme'"
+ */
+export const VERCEL_AI_TELEMETRY_METADATA_KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
+ * Base key for {@link VERCEL_AI_TELEMETRY_METADATA_KEY}. Use with a dynamic suffix, e.g. `${VERCEL_AI_TELEMETRY_METADATA_KEY_BASE}.${key}`.
+ */
+export const VERCEL_AI_TELEMETRY_METADATA_KEY_BASE = 'vercel.ai.telemetry.metadata';
+
+/**
+ * Type for {@link VERCEL_AI_TELEMETRY_METADATA_KEY} vercel.ai.telemetry.metadata.<key>
+ */
+export type VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE = string;
+
 // Path: model/attributes/vercel/vercel__branch.json
 
 /**
@@ -19605,6 +20051,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.cloudwatch.logs.log_group': 'string',
   'aws.cloudwatch.logs.log_stream': 'string',
   'aws.cloudwatch.logs.url': 'string',
+  'aws.dynamodb.attributes_to_get': 'string[]',
   'aws.dynamodb.attribute_definitions': 'string[]',
   'aws.dynamodb.consistent_read': 'boolean',
   'aws.dynamodb.consumed_capacity': 'string[]',
@@ -19645,9 +20092,16 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.request.id': 'string',
   'aws.request.url': 'string',
   'aws.s3.bucket': 'string',
+  'aws.s3.copy_source': 'string',
+  'aws.s3.delete': 'string',
+  'aws.s3.key': 'string',
+  'aws.s3.part_number': 'integer',
+  'aws.s3.upload_id': 'string',
   'aws.secretsmanager.secret.arn': 'string',
   'aws.sns.topic.arn': 'string',
+  'aws.sqs.queue.url': 'string',
   'aws.step_functions.activity.arn': 'string',
+  'aws.step_functions.execution.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
   blocked_main_thread: 'boolean',
   'browser.bfcache.frame': 'string',
@@ -19860,12 +20314,18 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.embeddings.input': 'string',
   'gen_ai.function_id': 'string',
   'gen_ai.input.messages': 'string',
+  'gen_ai.memory.query.text': 'string',
+  'gen_ai.memory.records': 'string',
+  'gen_ai.memory.record.count': 'integer',
+  'gen_ai.memory.record.id': 'string',
+  'gen_ai.memory.store.id': 'string',
   'gen_ai.operation.name': 'string',
   'gen_ai.operation.type': 'string',
   'gen_ai.output.messages': 'string',
   'gen_ai.pipeline.name': 'string',
   'gen_ai.prompt': 'string',
   'gen_ai.prompt.name': 'string',
+  'gen_ai.prompt.variable.<key>': 'string',
   'gen_ai.provider.name': 'string',
   'gen_ai.request.available_tools': 'string',
   'gen_ai.request.frequency_penalty': 'double',
@@ -20006,6 +20466,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'lcp.url': 'string',
   'litestar.middleware_name': 'string',
   'logger.name': 'string',
+  'mcp.auth.client.name': 'string',
   'mcp.cancelled.reason': 'string',
   'mcp.cancelled.request_id': 'string',
   'mcp.client.name': 'string',
@@ -20017,11 +20478,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.logging.logger': 'string',
   'mcp.logging.message': 'string',
   'mcp.method.name': 'string',
-  'mcp.progress.current': 'integer',
+  'mcp.progress.current': 'double',
   'mcp.progress.message': 'string',
   'mcp.progress.percentage': 'double',
   'mcp.progress.token': 'string',
-  'mcp.progress.total': 'integer',
+  'mcp.progress.total': 'double',
   'mcp.prompt.name': 'string',
   'mcp.prompt.result.description': 'string',
   'mcp.prompt.result.message_content': 'string',
@@ -20342,6 +20803,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'user.ip_address': 'string',
   'user.name': 'string',
   'user.roles': 'string[]',
+  'vercel.ai.telemetry.metadata.<key>': 'string',
   'vercel.branch': 'string',
   'vercel.build_id': 'string',
   'vercel.deployment_id': 'string',
@@ -20476,6 +20938,7 @@ export type AttributeName =
   | typeof AWS_CLOUDWATCH_LOGS_LOG_GROUP
   | typeof AWS_CLOUDWATCH_LOGS_LOG_STREAM
   | typeof AWS_CLOUDWATCH_LOGS_URL
+  | typeof AWS_DYNAMODB_ATTRIBUTES_TO_GET
   | typeof AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS
   | typeof AWS_DYNAMODB_CONSISTENT_READ
   | typeof AWS_DYNAMODB_CONSUMED_CAPACITY
@@ -20516,9 +20979,16 @@ export type AttributeName =
   | typeof _AWS_REQUEST_ID
   | typeof AWS_REQUEST_URL
   | typeof AWS_S3_BUCKET
+  | typeof AWS_S3_COPY_SOURCE
+  | typeof AWS_S3_DELETE
+  | typeof AWS_S3_KEY
+  | typeof AWS_S3_PART_NUMBER
+  | typeof AWS_S3_UPLOAD_ID
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
   | typeof AWS_SNS_TOPIC_ARN
+  | typeof AWS_SQS_QUEUE_URL
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof AWS_STEP_FUNCTIONS_EXECUTION_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_BFCACHE_FRAME
@@ -20731,12 +21201,18 @@ export type AttributeName =
   | typeof GEN_AI_EMBEDDINGS_INPUT
   | typeof GEN_AI_FUNCTION_ID
   | typeof GEN_AI_INPUT_MESSAGES
+  | typeof GEN_AI_MEMORY_QUERY_TEXT
+  | typeof GEN_AI_MEMORY_RECORDS
+  | typeof GEN_AI_MEMORY_RECORD_COUNT
+  | typeof GEN_AI_MEMORY_RECORD_ID
+  | typeof GEN_AI_MEMORY_STORE_ID
   | typeof GEN_AI_OPERATION_NAME
   | typeof GEN_AI_OPERATION_TYPE
   | typeof GEN_AI_OUTPUT_MESSAGES
   | typeof GEN_AI_PIPELINE_NAME
   | typeof GEN_AI_PROMPT
   | typeof GEN_AI_PROMPT_NAME
+  | typeof GEN_AI_PROMPT_VARIABLE_KEY
   | typeof GEN_AI_PROVIDER_NAME
   | typeof GEN_AI_REQUEST_AVAILABLE_TOOLS
   | typeof GEN_AI_REQUEST_FREQUENCY_PENALTY
@@ -20877,6 +21353,7 @@ export type AttributeName =
   | typeof LCP_URL
   | typeof LITESTAR_MIDDLEWARE_NAME
   | typeof LOGGER_NAME
+  | typeof MCP_AUTH_CLIENT_NAME
   | typeof MCP_CANCELLED_REASON
   | typeof MCP_CANCELLED_REQUEST_ID
   | typeof MCP_CLIENT_NAME
@@ -21213,6 +21690,7 @@ export type AttributeName =
   | typeof USER_IP_ADDRESS
   | typeof USER_NAME
   | typeof USER_ROLES
+  | typeof VERCEL_AI_TELEMETRY_METADATA_KEY
   | typeof VERCEL_BRANCH
   | typeof VERCEL_BUILD_ID
   | typeof VERCEL_DEPLOYMENT_ID
@@ -22229,7 +22707,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     changelog: [
       {
-        version: 'next',
+        version: '0.26.0',
+        prs: [660],
         description: 'Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result',
       },
     ],
@@ -22876,6 +23355,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/my-log-group',
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.cloudwatch.logs.url attribute' }],
   },
+  'aws.dynamodb.attributes_to_get': {
+    brief: 'The value of the `AttributesToGet` request parameter.',
+    type: 'string[]',
+    keys: ['aws.dynamodb.attributes_to_get'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: ['lives', 'id'],
+    examples: [['lives', 'id']],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.dynamodb.attributes_to_get attribute' }],
+  },
   'aws.dynamodb.attribute_definitions': {
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
     type: 'string[]',
@@ -23492,6 +23984,77 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'ot-demo-test',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.s3.bucket attribute' }],
   },
+  'aws.s3.copy_source': {
+    brief: 'The source object (in the form bucket/key) for the copy operation.',
+    type: 'string',
+    keys: ['aws.s3.copy_source'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'someFile.yml',
+    examples: ['someFile.yml'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
+    additionalContext: [
+      'Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter.',
+    ],
+  },
+  'aws.s3.delete': {
+    brief: 'The delete request container that specifies the objects to be deleted.',
+    type: 'string',
+    keys: ['aws.s3.delete'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
+    examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.delete attribute' }],
+    additionalContext: ['Applicable only to the delete-objects operation, corresponding to its Delete parameter.'],
+  },
+  'aws.s3.key': {
+    brief: 'The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.',
+    type: 'string',
+    keys: ['aws.s3.key'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'someFile.yml',
+    examples: ['someFile.yml'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.key attribute' }],
+  },
+  'aws.s3.part_number': {
+    brief:
+      'The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.',
+    type: 'integer',
+    keys: ['aws.s3.part_number'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 3456,
+    examples: [3456],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.part_number attribute' }],
+    additionalContext: ['Applicable only to the upload-part and upload-part-copy operations.'],
+  },
+  'aws.s3.upload_id': {
+    brief: 'Upload ID that identifies the multipart upload.',
+    type: 'string',
+    keys: ['aws.s3.upload_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ',
+    examples: ['dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.upload_id attribute' }],
+  },
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
     type: 'string',
@@ -23517,6 +24080,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.sns.topic.arn attribute' }],
   },
+  'aws.sqs.queue.url': {
+    brief:
+      'The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.',
+    type: 'string',
+    keys: ['aws.sqs.queue.url'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue',
+    examples: ['https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.sqs.queue.url attribute' }],
+  },
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
     type: 'string',
@@ -23528,6 +24105,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
+  },
+  'aws.step_functions.execution.arn': {
+    brief: 'The ARN of the AWS Step Functions Execution.',
+    type: 'string',
+    keys: ['aws.step_functions.execution.arn'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution',
+    examples: ['arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution'],
+    changelog: [{ version: 'next', prs: [672], description: 'Added aws.step_functions.execution.arn attribute' }],
   },
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',
@@ -25669,8 +26259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.storage_size attribute' }],
   },
   'device.thermal_state': {
-    brief:
-      "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+    brief: "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
     type: 'string',
     keys: ['device.thermal_state'],
     applyScrubbing: {
@@ -26724,15 +27313,87 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
-      { version: 'next', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
+      { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
     ],
   },
-  'gen_ai.operation.name': {
+  'gen_ai.memory.query.text': {
     brief:
-      "The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+      "The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.",
+    type: 'string',
+    keys: ['gen_ai.memory.query.text'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'user dietary preferences',
+    examples: ['user dietary preferences', 'past flight bookings'],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.query.text attribute' }],
+  },
+  'gen_ai.memory.records': {
+    brief:
+      'The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.',
+    type: 'string',
+    keys: ['gen_ai.memory.records'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example:
+      '[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]',
+    examples: [
+      '[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]',
+    ],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.records attribute' }],
+  },
+  'gen_ai.memory.record.count': {
+    brief:
+      "The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.",
+    type: 'integer',
+    keys: ['gen_ai.memory.record.count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 3,
+    examples: [3],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.record.count attribute' }],
+  },
+  'gen_ai.memory.record.id': {
+    brief:
+      "The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.",
+    type: 'string',
+    keys: ['gen_ai.memory.record.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'mem_5j66UpCpwteGg4YSxUnt7lPY',
+    examples: ['mem_5j66UpCpwteGg4YSxUnt7lPY'],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.record.id attribute' }],
+  },
+  'gen_ai.memory.store.id': {
+    brief:
+      'The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.',
+    type: 'string',
+    keys: ['gen_ai.memory.store.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'ms_abc123',
+    examples: ['ms_abc123', 'user-preferences-store', 'seer-knowledge'],
+    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.store.id attribute' }],
+  },
+  'gen_ai.operation.name': {
+    brief: 'The name of the operation being performed.',
     type: 'string',
     keys: ['gen_ai.operation.name'],
     applyScrubbing: {
@@ -26742,13 +27403,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
+      { version: 'next', prs: [653], description: 'Added memory operation values to the well-known values' },
       { version: '0.4.0', prs: [225] },
       { version: '0.1.0', prs: [62, 127] },
     ],
   },
   'gen_ai.operation.type': {
     brief:
-      "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+      'The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI',
     type: 'string',
     keys: ['gen_ai.operation.type'],
     applyScrubbing: {
@@ -26758,6 +27420,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'tool',
     changelog: [
+      { version: 'next', prs: [653], description: "Added 'memory' value" },
       { version: '0.4.0', prs: [257] },
       { version: '0.1.0', prs: [113, 127] },
     ],
@@ -26776,7 +27439,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
-      { version: 'next', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
+      { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.4.0', prs: [221] },
     ],
   },
@@ -26838,6 +27501,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'summarize_text',
     aliases: ['mcp.prompt.name'],
     changelog: [{ version: '0.12.0', prs: [420], description: 'Added gen_ai.prompt.name attribute' }],
+  },
+  'gen_ai.prompt.variable.<key>': {
+    brief:
+      'Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.',
+    type: 'string',
+    keys: ['gen_ai.prompt.variable.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Prompt variables contain user input and may include sensitive information',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "gen_ai.prompt.variable.language='French'",
+    examples: ["gen_ai.prompt.variable.language='French'", "gen_ai.prompt.variable.topic='weather'"],
+    changelog: [
+      { version: 'next', prs: [671], description: 'Added the OpenTelemetry convention for prompt variables' },
+    ],
+    additionalContext: [
+      'Capture only when the user explicitly opts in to recording prompt inputs. In MCP, these values are the arguments supplied in prompts/get requests.',
+    ],
   },
   'gen_ai.provider.name': {
     brief: 'The Generative AI provider as identified by the client or server instrumentation.',
@@ -29002,7 +29686,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.12.0', prs: [420], description: 'Added jsonrpc.protocol.version attribute' }],
   },
   'jsonrpc.request.id': {
-    brief: 'The JSON-RPC request identifier. Unique within the session.',
+    brief: 'The JSON-RPC request identifier, used to correlate a request with its response.',
     type: 'string',
     keys: ['jsonrpc.request.id', 'mcp.request.id'],
     applyScrubbing: {
@@ -29011,8 +29695,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '1',
+    examples: ['1'],
     aliases: ['mcp.request.id'],
-    changelog: [{ version: '0.12.0', prs: [420], description: 'Added jsonrpc.request.id attribute' }],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Removed the session-scoped uniqueness requirement from the request identifier',
+      },
+      { version: '0.12.0', prs: [420], description: 'Added jsonrpc.request.id attribute' },
+    ],
   },
   'jvm.gc.action': {
     brief: 'Name of the garbage collector action.',
@@ -29309,6 +30001,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myLogger',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'mcp.auth.client.name': {
+    brief:
+      'Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.',
+    type: 'string',
+    keys: ['mcp.auth.client.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Example Desktop',
+    examples: ['Example Desktop', 'Example CLI'],
+    changelog: [{ version: 'next', prs: [671], description: 'Added mcp.auth.client.name attribute' }],
+  },
   'mcp.cancelled.reason': {
     brief: 'Reason for the cancellation of an MCP operation.',
     type: 'string',
@@ -29335,7 +30041,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.client.name': {
-    brief: 'Name of the MCP client application.',
+    brief:
+      'Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.',
     type: 'string',
     keys: ['mcp.client.name'],
     applyScrubbing: {
@@ -29343,11 +30050,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'claude-desktop',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    example: 'example-mcp-client',
+    examples: ['example-mcp-client'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.client.title': {
-    brief: 'Display title of the MCP client application.',
+    brief: 'Display title of the MCP client implementation, as declared in clientInfo.',
     type: 'string',
     keys: ['mcp.client.title'],
     applyScrubbing: {
@@ -29356,11 +30071,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Claude Desktop',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    example: 'Example MCP Client',
+    examples: ['Example MCP Client'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.client.version': {
-    brief: 'Version of the MCP client application.',
+    brief: 'Version of the MCP client implementation, as declared in clientInfo.',
     type: 'string',
     keys: ['mcp.client.version'],
     applyScrubbing: {
@@ -29369,7 +30092,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1.0.0',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    examples: ['1.0.0'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.lifecycle.phase': {
     brief: 'Lifecycle phase indicator for MCP operations.',
@@ -29450,15 +30181,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'mcp.progress.current': {
     brief: 'Current progress value of an MCP operation.',
-    type: 'integer',
+    type: 'double',
     keys: ['mcp.progress.current'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 50,
+    example: 0.2,
+    examples: [0.2, 50],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Changed the type to double to support fractional MCP progress values',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
@@ -29505,15 +30242,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'mcp.progress.total': {
     brief: 'Total progress target value of an MCP operation.',
-    type: 'integer',
+    type: 'double',
     keys: ['mcp.progress.total'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 100,
+    example: 1,
+    examples: [1, 100],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Changed the type to double to support fractional MCP progress values',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
@@ -29592,7 +30335,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.protocol.ready': {
-    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
+    brief:
+      'Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.',
     type: 'integer',
     keys: ['mcp.protocol.ready'],
     applyScrubbing: {
@@ -29601,13 +30345,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
+    examples: [1],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that readiness describes the legacy MCP initialization handshake',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
   },
   'mcp.protocol.version': {
-    brief: 'MCP protocol version used in the session.',
+    brief: 'Version of the Model Context Protocol used for the operation.',
     type: 'string',
     keys: ['mcp.protocol.version'],
     applyScrubbing: {
@@ -29616,7 +30366,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '2024-11-05',
+    examples: ['2024-11-05'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the protocol version applies to an operation without requiring a session',
+      },
       { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -29663,7 +30419,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.3.0', prs: [171] }],
   },
   'mcp.request.id': {
-    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
+    brief: 'JSON-RPC request identifier for the MCP request, used to correlate the request with its response.',
     type: 'string',
     keys: ['jsonrpc.request.id', 'mcp.request.id'],
     applyScrubbing: {
@@ -29672,6 +30428,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '1',
+    examples: ['1'],
     deprecation: {
       replacement: 'jsonrpc.request.id',
       reason: 'OTel models MCP as JSON-RPC, uses jsonrpc.request.id',
@@ -29679,27 +30436,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['jsonrpc.request.id'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Removed the session-scoped uniqueness requirement from the request identifier',
+      },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of jsonrpc.request.id' },
       { version: '0.3.0', prs: [171] },
     ],
   },
   'mcp.resource.protocol': {
-    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
+    brief:
+      'URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    keys: ['mcp.resource.protocol'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: 'file',
-    deprecation: {
-      replacement: 'network.protocol.name',
-      reason: 'OTel uses the generic network.protocol.name attribute',
-      status: 'backfill',
-    },
-    aliases: ['network.protocol.name', 'net.protocol.name', 'messaging.protocol'],
+    examples: ['file', 'postgres'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description:
+          'Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation',
+      },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.protocol.name' },
       { version: '0.3.0', prs: [171] },
@@ -29722,7 +30486,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'mcp.server.name': {
-    brief: 'Name of the MCP server application.',
+    brief: 'Name of the MCP server implementation, as declared in serverInfo.',
     type: 'string',
     keys: ['mcp.server.name'],
     applyScrubbing: {
@@ -29730,11 +30494,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'sentry-mcp-server',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    example: 'example-mcp-server',
+    examples: ['example-mcp-server'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.server.title': {
-    brief: 'Display title of the MCP server application.',
+    brief: 'Display title of the MCP server implementation, as declared in serverInfo.',
     type: 'string',
     keys: ['mcp.server.title'],
     applyScrubbing: {
@@ -29743,11 +30515,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'Sentry MCP Server',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    example: 'Example MCP Server',
+    examples: ['Example MCP Server'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.server.version': {
-    brief: 'Version of the MCP server application.',
+    brief: 'Version of the MCP server implementation, as declared in serverInfo.',
     type: 'string',
     keys: ['mcp.server.version'],
     applyScrubbing: {
@@ -29756,10 +30536,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: '0.1.0',
-    changelog: [{ version: '0.3.0', prs: [171] }],
+    examples: ['0.1.0'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the attribute describes declared MCP implementation metadata',
+      },
+      { version: '0.3.0', prs: [171] },
+    ],
   },
   'mcp.session.id': {
-    brief: 'Identifier for the MCP session.',
+    brief: 'Identifier for an MCP protocol session, when the operation belongs to a session.',
     type: 'string',
     keys: ['mcp.session.id'],
     applyScrubbing: {
@@ -29768,9 +30556,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: '550e8400-e29b-41d4-a716-446655440000',
+    examples: ['550e8400-e29b-41d4-a716-446655440000'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description: 'Clarified that the identifier requires a real MCP protocol session',
+      },
       { version: '0.12.0', prs: [420], description: 'Set is_in_otel=true, attribute exists in OTel MCP registry' },
       { version: '0.3.0', prs: [171] },
+    ],
+    additionalContext: [
+      'Applies to protocol versions and transports that provide MCP session management, including legacy Streamable HTTP sessions. Omit for operations without a protocol session; do not synthesize a session identifier from a request, connection, or conversation.',
     ],
   },
   'mcp.tool.name': {
@@ -29840,7 +30637,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 1,
+    deprecation: {
+      reason: 'A count can be calculcated from the value of the gen_ai.tool.call.result attribute.',
+    },
     changelog: [
+      {
+        version: 'next',
+        prs: [669],
+        description: 'Deprecate the attribute since it is redundant given gen_ai.tool.call.result.',
+      },
       { version: '0.4.0', prs: [228] },
       { version: '0.3.0', prs: [171] },
     ],
@@ -29866,22 +30671,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'mcp.transport': {
-    brief: 'Transport method used for MCP communication.',
+    brief:
+      'MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport'],
+    keys: ['mcp.transport'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
-    example: 'stdio',
-    deprecation: {
-      replacement: 'network.transport',
-      reason: 'OTel uses the generic network.transport attribute',
-      status: 'backfill',
-    },
-    aliases: ['network.transport', 'net.transport'],
+    example: 'StdioServerTransport',
+    examples: ['StdioServerTransport', 'CustomHTTPTransport'],
     changelog: [
+      {
+        version: 'next',
+        prs: [671],
+        description:
+          'Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation',
+      },
       { version: '0.12.0', prs: [420], description: 'Deprecated in favor of network.transport' },
       { version: '0.3.0', prs: [171] },
     ],
@@ -30218,7 +31025,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.protocol': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -30231,8 +31038,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       reason: 'This attribute is being deprecated in favor of network.protocol.name.',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'net.protocol.name', 'mcp.resource.protocol'],
-    changelog: [{ version: '0.21.0', prs: [581], description: 'Added messaging.protocol attribute' }],
+    aliases: ['network.protocol.name', 'net.protocol.name'],
+    changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
+      { version: '0.21.0', prs: [581], description: 'Added messaging.protocol attribute' },
+    ],
   },
   'messaging.protocol_version': {
     brief: 'The actual version of the protocol used for network communication.',
@@ -30491,7 +31301,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 0.5,
     examples: [0.5],
     aliases: ['nel.sampling_function'],
-    changelog: [{ version: 'next', prs: [668], description: 'Added nel.sampling_fraction attribute' }],
+    changelog: [{ version: '0.26.0', prs: [668], description: 'Added nel.sampling_fraction attribute' }],
   },
   'nel.sampling_function': {
     brief: 'The sampling function used to determine if the request should be sampled.',
@@ -30510,7 +31320,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['nel.sampling_fraction'],
     changelog: [
-      { version: 'next', prs: [668], description: 'Deprecated in favor of nel.sampling_fraction' },
+      { version: '0.26.0', prs: [668], description: 'Deprecated in favor of nel.sampling_fraction' },
       { version: '0.4.0', prs: [228] },
       { version: '0.1.0', prs: [68] },
     ],
@@ -30644,15 +31454,17 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'http',
-    aliases: ['net.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    examples: ['http'],
+    aliases: ['net.protocol.name', 'messaging.protocol'],
     changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -30678,15 +31490,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'network.transport': {
     brief: 'OSI transport layer or inter-process communication method.',
     type: 'string',
-    keys: ['network.transport', 'mcp.transport'],
+    keys: ['network.transport'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'tcp',
-    aliases: ['net.transport', 'mcp.transport'],
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    examples: ['tcp'],
+    aliases: ['net.transport'],
+    changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.transport alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'network.type': {
     brief: 'OSI network layer or non-OSI equivalent.',
@@ -30822,19 +31639,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'net.protocol.name': {
     brief: 'OSI application layer or non-OSI equivalent.',
     type: 'string',
-    keys: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    keys: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'http',
+    examples: ['http'],
     deprecation: {
       replacement: 'network.protocol.name',
       status: 'backfill',
     },
-    aliases: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol'],
+    aliases: ['network.protocol.name', 'messaging.protocol'],
     changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -30975,13 +31794,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'tcp',
+    examples: ['tcp'],
     deprecation: {
       replacement: 'network.transport',
       reason:
         'This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.',
     },
-    aliases: ['network.transport', 'mcp.transport'],
+    aliases: ['network.transport'],
     changelog: [
+      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.transport alias' },
       {
         version: '0.21.0',
         prs: [588],
@@ -32172,7 +32993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'sentry.category': {
     brief:
-      "The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+      'The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).',
     type: 'string',
     keys: ['sentry.category', 'span.category'],
     applyScrubbing: {
@@ -32578,7 +33399,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.link.type': {
     brief: 'Set on a span link. Describes the relationship between the span and the linked span.',
     type: 'string',
-    keys: ['sentry.link.type'],
+    keys: ['sentry.link.type', 'link.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -32586,12 +33407,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'previous_trace',
     examples: ['previous_trace', 'next_trace', 'cache_origin'],
-    changelog: [{ version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added search alias link.type' },
+      { version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' },
+    ],
     additionalContext: [
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
       'For known values, see Examples. Add new values to Examples.',
     ],
+    searchAlias: {
+      name: 'link.type',
+    },
   },
   'sentry.main_thread': {
     brief: 'Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.',
@@ -33027,8 +33854,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.segment.name.source': {
-    brief:
-      "The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+    brief: 'The source of the segment span name. Should only be set on segment spans.',
     type: 'string',
     keys: ['sentry.segment.name.source'],
     applyScrubbing: {
@@ -33060,8 +33886,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'sentry.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     type: 'string',
     keys: ['sentry.source'],
     applyScrubbing: {
@@ -33080,8 +33905,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'sentry.span.source': {
-    brief:
-      "The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+    brief: 'The source of a span, also referred to as transaction source.',
     type: 'string',
     keys: ['sentry.span.source'],
     applyScrubbing: {
@@ -34819,6 +35643,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['admin', 'editor'],
     changelog: [{ version: '0.0.0' }],
   },
+  'vercel.ai.telemetry.metadata.<key>': {
+    brief:
+      'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
+    type: 'string',
+    keys: ['vercel.ai.telemetry.metadata.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Metadata is user-defined and can contain user data',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "vercel.ai.telemetry.metadata.tenantId='acme'",
+    examples: ["vercel.ai.telemetry.metadata.tenantId='acme'"],
+    changelog: [{ version: '0.26.0', prs: [662], description: 'Added vercel.ai.telemetry.metadata.<key> attribute' }],
+    additionalContext: [
+      'Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.',
+      "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
+      'The Vercel AI SDK also allows numbers, booleans and arrays as metadata values. SDKs MUST convert these values to strings.',
+      'This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.',
+    ],
+  },
   'vercel.branch': {
     brief: 'Git branch name for Vercel project',
     type: 'string',
@@ -35363,6 +36209,7 @@ export type Attributes = {
   [AWS_CLOUDWATCH_LOGS_LOG_GROUP]?: AWS_CLOUDWATCH_LOGS_LOG_GROUP_TYPE;
   [AWS_CLOUDWATCH_LOGS_LOG_STREAM]?: AWS_CLOUDWATCH_LOGS_LOG_STREAM_TYPE;
   [AWS_CLOUDWATCH_LOGS_URL]?: AWS_CLOUDWATCH_LOGS_URL_TYPE;
+  [AWS_DYNAMODB_ATTRIBUTES_TO_GET]?: AWS_DYNAMODB_ATTRIBUTES_TO_GET_TYPE;
   [AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS]?: AWS_DYNAMODB_ATTRIBUTE_DEFINITIONS_TYPE;
   [AWS_DYNAMODB_CONSISTENT_READ]?: AWS_DYNAMODB_CONSISTENT_READ_TYPE;
   [AWS_DYNAMODB_CONSUMED_CAPACITY]?: AWS_DYNAMODB_CONSUMED_CAPACITY_TYPE;
@@ -35403,9 +36250,16 @@ export type Attributes = {
   [_AWS_REQUEST_ID]?: _AWS_REQUEST_ID_TYPE;
   [AWS_REQUEST_URL]?: AWS_REQUEST_URL_TYPE;
   [AWS_S3_BUCKET]?: AWS_S3_BUCKET_TYPE;
+  [AWS_S3_COPY_SOURCE]?: AWS_S3_COPY_SOURCE_TYPE;
+  [AWS_S3_DELETE]?: AWS_S3_DELETE_TYPE;
+  [AWS_S3_KEY]?: AWS_S3_KEY_TYPE;
+  [AWS_S3_PART_NUMBER]?: AWS_S3_PART_NUMBER_TYPE;
+  [AWS_S3_UPLOAD_ID]?: AWS_S3_UPLOAD_ID_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
+  [AWS_SQS_QUEUE_URL]?: AWS_SQS_QUEUE_URL_TYPE;
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_EXECUTION_ARN]?: AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_BFCACHE_FRAME]?: BROWSER_BFCACHE_FRAME_TYPE;
@@ -35618,12 +36472,18 @@ export type Attributes = {
   [GEN_AI_EMBEDDINGS_INPUT]?: GEN_AI_EMBEDDINGS_INPUT_TYPE;
   [GEN_AI_FUNCTION_ID]?: GEN_AI_FUNCTION_ID_TYPE;
   [GEN_AI_INPUT_MESSAGES]?: GEN_AI_INPUT_MESSAGES_TYPE;
+  [GEN_AI_MEMORY_QUERY_TEXT]?: GEN_AI_MEMORY_QUERY_TEXT_TYPE;
+  [GEN_AI_MEMORY_RECORDS]?: GEN_AI_MEMORY_RECORDS_TYPE;
+  [GEN_AI_MEMORY_RECORD_COUNT]?: GEN_AI_MEMORY_RECORD_COUNT_TYPE;
+  [GEN_AI_MEMORY_RECORD_ID]?: GEN_AI_MEMORY_RECORD_ID_TYPE;
+  [GEN_AI_MEMORY_STORE_ID]?: GEN_AI_MEMORY_STORE_ID_TYPE;
   [GEN_AI_OPERATION_NAME]?: GEN_AI_OPERATION_NAME_TYPE;
   [GEN_AI_OPERATION_TYPE]?: GEN_AI_OPERATION_TYPE_TYPE;
   [GEN_AI_OUTPUT_MESSAGES]?: GEN_AI_OUTPUT_MESSAGES_TYPE;
   [GEN_AI_PIPELINE_NAME]?: GEN_AI_PIPELINE_NAME_TYPE;
   [GEN_AI_PROMPT]?: GEN_AI_PROMPT_TYPE;
   [GEN_AI_PROMPT_NAME]?: GEN_AI_PROMPT_NAME_TYPE;
+  [GEN_AI_PROMPT_VARIABLE_KEY]?: GEN_AI_PROMPT_VARIABLE_KEY_TYPE;
   [GEN_AI_PROVIDER_NAME]?: GEN_AI_PROVIDER_NAME_TYPE;
   [GEN_AI_REQUEST_AVAILABLE_TOOLS]?: GEN_AI_REQUEST_AVAILABLE_TOOLS_TYPE;
   [GEN_AI_REQUEST_FREQUENCY_PENALTY]?: GEN_AI_REQUEST_FREQUENCY_PENALTY_TYPE;
@@ -35764,6 +36624,7 @@ export type Attributes = {
   [LCP_URL]?: LCP_URL_TYPE;
   [LITESTAR_MIDDLEWARE_NAME]?: LITESTAR_MIDDLEWARE_NAME_TYPE;
   [LOGGER_NAME]?: LOGGER_NAME_TYPE;
+  [MCP_AUTH_CLIENT_NAME]?: MCP_AUTH_CLIENT_NAME_TYPE;
   [MCP_CANCELLED_REASON]?: MCP_CANCELLED_REASON_TYPE;
   [MCP_CANCELLED_REQUEST_ID]?: MCP_CANCELLED_REQUEST_ID_TYPE;
   [MCP_CLIENT_NAME]?: MCP_CLIENT_NAME_TYPE;
@@ -36100,6 +36961,7 @@ export type Attributes = {
   [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
+  [VERCEL_AI_TELEMETRY_METADATA_KEY]?: VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE;
   [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
   [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
   [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;

@@ -1,18 +1,23 @@
 {
   "key": "mcp.client.title",
-  "brief": "Display title of the MCP client application.",
+  "brief": "Display title of the MCP client implementation, as declared in clientInfo.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual",
     "reason": "Client titles may reveal user-specific application configurations or custom setups"
   },
   "is_in_otel": false,
-  "example": "Claude Desktop",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Clarified that the attribute describes declared MCP implementation metadata"
+    },
     {
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "examples": ["Example MCP Client"]
 }

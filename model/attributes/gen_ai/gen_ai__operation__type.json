@@ -1,14 +1,45 @@
 {
   "key": "gen_ai.operation.type",
-  "brief": "The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+  "brief": "The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
   "example": "tool",
+  "enum_values": [
+    {
+      "value": "agent",
+      "brief": "invoke_agent and create_agent spans"
+    },
+    {
+      "value": "ai_client",
+      "brief": "any LLM call"
+    },
+    {
+      "value": "tool",
+      "brief": "execute_tool spans"
+    },
+    {
+      "value": "handoff",
+      "brief": "handoff spans"
+    },
+    {
+      "value": "memory",
+      "brief": "gen_ai.memory.client spans"
+    },
+    {
+      "value": "other",
+      "brief": "input and output processors, skill loading, guardrails etc."
+    }
+  ],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [653],
+      "description": "Added 'memory' value"
+    },
     {
       "version": "0.4.0",
       "prs": [257]

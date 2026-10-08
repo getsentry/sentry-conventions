@@ -1,17 +1,22 @@
 {
   "key": "mcp.client.version",
-  "brief": "Version of the MCP client application.",
+  "brief": "Version of the MCP client implementation, as declared in clientInfo.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": "1.0.0",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Clarified that the attribute describes declared MCP implementation metadata"
+    },
     {
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "examples": ["1.0.0"]
 }

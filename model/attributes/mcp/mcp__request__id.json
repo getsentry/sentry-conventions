@@ -1,14 +1,18 @@
 {
   "key": "mcp.request.id",
-  "brief": "JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
+  "brief": "JSON-RPC request identifier for the MCP request, used to correlate the request with its response.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": "1",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Removed the session-scoped uniqueness requirement from the request identifier"
+    },
     {
       "version": "0.12.0",
       "prs": [420],
@@ -24,5 +28,6 @@
     "replacement": "jsonrpc.request.id",
     "reason": "OTel models MCP as JSON-RPC, uses jsonrpc.request.id"
   },
-  "alias": ["jsonrpc.request.id"]
+  "alias": ["jsonrpc.request.id"],
+  "examples": ["1"]
 }
