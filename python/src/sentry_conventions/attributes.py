@@ -21371,7 +21371,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/app.js",
         changelog=[
-            ChangelogEntry(version="0.27.0", prs=[686]),
+            ChangelogEntry(version="0.27.0", prs=[691]),
         ],
     ),
     "integrity.destination": AttributeMetadata(
@@ -21383,7 +21383,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="script",
         changelog=[
-            ChangelogEntry(version="0.27.0", prs=[686]),
+            ChangelogEntry(version="0.27.0", prs=[691]),
         ],
     ),
     "integrity.document_url": AttributeMetadata(
@@ -21395,7 +21395,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="https://example.com/index.html",
         changelog=[
-            ChangelogEntry(version="0.27.0", prs=[686]),
+            ChangelogEntry(version="0.27.0", prs=[691]),
         ],
     ),
     "integrity.report_only": AttributeMetadata(
@@ -21407,7 +21407,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=True,
         changelog=[
-            ChangelogEntry(version="0.27.0", prs=[686]),
+            ChangelogEntry(version="0.27.0", prs=[691]),
         ],
     ),
     "jsonrpc.protocol.version": AttributeMetadata(
