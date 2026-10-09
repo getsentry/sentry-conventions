@@ -85,13 +85,13 @@ describe('generateAttributes', () => {
         key: 'live.attribute',
         brief: 'A live attribute whose search alias differs from its key.',
         type: 'string',
-        search_alias: { name: 'live.search' },
+        search_alias: { name: 'live.search', allowWildcard: false },
       },
       {
         key: 'sentry.item',
         brief: 'A sentry-prefixed attribute with a distinct search alias.',
         type: 'string',
-        search_alias: { name: 'item.search' },
+        search_alias: { name: 'item.search', allowWildcard: true },
       },
       {
         key: 'sentry.plain',
@@ -137,7 +137,7 @@ describe('generateAttributes', () => {
         key: 'sentry.replay_id',
         brief: 'The replay id.',
         type: 'string',
-        search_alias: { name: 'replay.id' },
+        search_alias: { name: 'replay.id', allowWildcard: false },
       },
       {
         key: 'replayId',
@@ -175,6 +175,7 @@ describe('generateAttributes', () => {
       );
       expect(search).toContain('internal?: true;');
       expect(search).toContain('deprecated?: true;');
+      expect(search).toContain('allowWildcard?: false;');
       expect(search).toContain("export const SEARCH_SHARED__NAME = 'shared.name';");
       expect(search).toContain("export const SEARCH_DEPRECATED__SEARCH = 'deprecated.search';");
       expect(search).toContain("export const SEARCH_OLD__NAME = 'old.name';");
@@ -244,6 +245,11 @@ describe('generateAttributes', () => {
       expect(compactMetadata).toContain(
         '"sentry.plain": {\n    canonicalName: "sentry.plain",\n    type: "string",\n    brief: "A sentry-prefixed attribute without a search alias.",\n    deprecationChain: ["sentry.plain"],',
       );
+      expect(compactMetadata).toMatch(/"live\.search": \{[^}]*allowWildcard: false,/);
+      expect(compactMetadata).toMatch(/"replay\.id": \{[^}]*allowWildcard: false,/);
+      expect(compactMetadata).toMatch(/"replayId": \{[^}]*allowWildcard: false,/);
+      expect(compactMetadata).not.toMatch(/"item\.search": \{[^}]*allowWildcard:/);
+      expect(compactMetadata).not.toMatch(/"sentry\.plain": \{[^}]*allowWildcard:/);
       expect(compactMetadata).not.toContain('"current.attribute": {');
       expect(compactMetadata).not.toContain('visibility:');
 
@@ -252,7 +258,7 @@ describe('generateAttributes', () => {
 
       const compactPropertyNames = [...compactMetadata.matchAll(/^    (\w+):/gm)].map((match) => match[1]);
       expect(new Set(compactPropertyNames)).toEqual(
-        new Set(['canonicalName', 'type', 'brief', 'internal', 'deprecated', 'deprecationChain']),
+        new Set(['canonicalName', 'type', 'brief', 'internal', 'deprecated', 'allowWildcard', 'deprecationChain']),
       );
     } finally {
       fs.rmSync(temporaryDirectory, { recursive: true });

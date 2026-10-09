@@ -25,6 +25,7 @@ export interface AttributeJson {
     name: string;
     type?: 'byte' | 'currency' | 'millisecond' | 'percentage' | 'second';
     deprecated_aliases?: string[];
+    allowWildcard?: boolean;
   };
   additional_context?: string[];
   changelog?: { version: string; prs?: number[]; description?: string }[];

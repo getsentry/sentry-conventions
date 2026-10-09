@@ -95,6 +95,9 @@ class SearchAlias:
     deprecated_aliases: Optional[List[str]] = None
     """Deprecated aliases still accepted in search queries"""
 
+    allow_wildcard: bool = True
+    """Set to false to disable wildcard queries. Defaults to true. Only valid for string attributes."""
+
 
 @dataclass
 class AttributeMetadata:
@@ -16624,6 +16627,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.5.0", prs=[300], description="Added device.class attribute"
             ),
         ],
+        search_alias=SearchAlias(name="device.class", allow_wildcard=False),
     ),
     "device.connection_type": AttributeMetadata(
         brief="The internet connection type currently being used by the device.",
@@ -21038,6 +21042,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
+        search_alias=SearchAlias(name="id", allow_wildcard=False),
     ),
     "inp": AttributeMetadata(
         brief="The value of the recorded Interaction to Next Paint (INP) web vital",
@@ -25644,7 +25649,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added sentry.profile_id attribute",
             ),
         ],
-        search_alias=SearchAlias(name="profile.id"),
+        search_alias=SearchAlias(name="profile.id", allow_wildcard=False),
     ),
     "sentry.profiler_id": AttributeMetadata(
         brief="The id of the currently running profiler (continuous profiling)",
@@ -25660,7 +25665,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[242]),
         ],
-        search_alias=SearchAlias(name="profiler.id"),
+        search_alias=SearchAlias(name="profiler.id", allow_wildcard=False),
     ),
     "sentry.relay.ingress": AttributeMetadata(
         brief="How an item (span, log, &c.) entered Relay.",
@@ -25710,7 +25715,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="release"),
+        search_alias=SearchAlias(name="release", allow_wildcard=False),
     ),
     "sentry.replay_id": AttributeMetadata(
         brief="The id of the sentry replay.",
@@ -25728,7 +25733,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.0.0"),
         ],
-        search_alias=SearchAlias(name="replay.id", deprecated_aliases=["replay_id"]),
+        search_alias=SearchAlias(
+            name="replay.id", deprecated_aliases=["replay_id"], allow_wildcard=False
+        ),
     ),
     "sentry.replay_is_buffering": AttributeMetadata(
         brief="A sentinel attribute on log events indicating whether the current Session Replay is being buffered (onErrorSampleRate).",

@@ -9,7 +9,8 @@
   "example": "18779b64dd35d1a538e7ce2dd2d3fad3",
   "visibility": "public",
   "search_alias": {
-    "name": "profiler.id"
+    "name": "profiler.id",
+    "allowWildcard": false
   },
   "changelog": [
     {
