@@ -147,7 +147,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `string` {@link AI_FUNCTION_CALL_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -359,7 +359,7 @@ export type AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_PREAMBLE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -867,7 +867,7 @@ export type AI_TEMPERATURE_TYPE = number;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TEXTS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -961,7 +961,7 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TOOL_CALLS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -6678,7 +6678,7 @@ export type EFFECTIVECONNECTIONTYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8880,7 +8880,7 @@ export type GEN_AI_SYSTEM_INSTRUCTIONS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -9016,7 +9016,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -12331,7 +12331,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
  *
- * Apply Scrubbing: auto - Tool results can contain user data
+ * Apply Scrubbing: manual - Tool results can contain user data
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13964,7 +13964,7 @@ export type NET_PEER_IP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_PEER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15343,7 +15343,7 @@ export type REPLAY_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15365,7 +15365,7 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -17610,7 +17610,7 @@ export type SENTRY_TRACE_STATUS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SENTRY_TRANSACTION_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -17841,7 +17841,7 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -22351,7 +22351,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22525,7 +22525,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22934,7 +22934,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'gen_ai.prompt',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23018,7 +23018,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string[]',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -26899,7 +26899,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28485,7 +28485,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28605,7 +28605,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -31199,7 +31199,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
       reason: 'Tool results can contain user data',
     },
     isInOtel: false,
@@ -32639,7 +32639,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['net.peer.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33594,7 +33594,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33615,7 +33615,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -35162,7 +35162,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -35355,7 +35355,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',

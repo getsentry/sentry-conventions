@@ -63,16 +63,4 @@ describe('legacy MCP result attributes', () => {
       expect(ATTRIBUTE_SEARCH_METADATA[GEN_AI_TOOL_CALL_RESULT]?.deprecationChain).not.toContain(key);
     }
   });
-
-  it('preserves automatic scrubbing for the newly registered string fields', () => {
-    const results = Object.entries(ATTRIBUTE_METADATA).filter(
-      ([key]) => key.startsWith('mcp.tool.result.') || key.startsWith('mcp.prompt.result.<key>.'),
-    );
-
-    for (const [, metadata] of results) {
-      if (metadata.type === 'string') {
-        expect(metadata.applyScrubbing.key).toBe('auto');
-      }
-    }
-  });
 });

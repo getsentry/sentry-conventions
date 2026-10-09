@@ -239,6 +239,23 @@ describe('attribute json', async () => {
         expect(missingAliases).toEqual([]);
       });
 
+      it('has the same apply_scrubbing setting as every attribute in its deprecation chain', async () => {
+        if (!content.deprecation?.replacement) {
+          return;
+        }
+
+        const replacement = content.deprecation.replacement;
+        const replacementFileName = attributeKeyToFileName(replacement);
+        const replacementNamespace = replacement.includes('.') ? replacement.split('.')[0] : undefined;
+        const replacementFilePath = path.join(traceFolders, replacementNamespace ?? '', replacementFileName);
+        const replacementContent: AttributeJson = JSON.parse(await fs.promises.readFile(replacementFilePath, 'utf-8'));
+
+        expect(
+          content.apply_scrubbing.key,
+          `Conflicting apply_scrubbing settings for alias "${content.key}" and replacement "${replacement}"`,
+        ).toBe(replacementContent.apply_scrubbing.key);
+      });
+
       it('its replacement should not be deprecated', async () => {
         if (!content.deprecation?.replacement) {
           return;

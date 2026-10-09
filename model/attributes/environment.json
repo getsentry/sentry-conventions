@@ -3,7 +3,7 @@
   "brief": "The sentry environment.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "never"
   },
   "is_in_otel": false,
   "example": "production",
