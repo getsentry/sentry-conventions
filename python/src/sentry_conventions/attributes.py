@@ -533,7 +533,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.name, mcp.tool.name
@@ -648,7 +648,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.system_instructions
@@ -924,7 +924,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Raw text inputs provided to the model.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt, ai.prompt
@@ -963,7 +963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the tool calls that were made.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -4205,7 +4205,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry environment.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.environment
@@ -5435,7 +5435,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The system instructions passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.system_instructions instead
@@ -5529,7 +5529,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The response from a tool or function call passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
@@ -7536,7 +7536,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The content of the tool result.
 
     Type: str
-    Apply Scrubbing: auto - Tool results can contain user data
+    Apply Scrubbing: manual - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result, anthropic.tool_result.content
@@ -8227,7 +8227,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
@@ -9129,7 +9129,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -9143,7 +9143,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -10411,7 +10411,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry transaction (segment name).
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment.name, transaction
@@ -10548,7 +10548,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
@@ -12037,7 +12037,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.function_call",
             "mcp.tool.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="function_name",
@@ -12229,7 +12229,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are now a clown.",
@@ -12700,7 +12700,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.texts",
             "gen_ai.prompt",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Hello, how are you?", "What is the capital of France?"],
@@ -12788,7 +12788,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.responses",
             "ai.tool_calls",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["tool_call_1", "tool_call_2"],
@@ -17551,7 +17551,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -19364,7 +19364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
@@ -19506,7 +19506,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "mcp.tool.result.content",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
@@ -22679,7 +22679,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "mcp.tool.result.content",
         ),
         apply_scrubbing=ApplyScrubbingInfo(
-            key=ApplyScrubbing.AUTO, reason="Tool results can contain user data"
+            key=ApplyScrubbing.MANUAL, reason="Tool results can contain user data"
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -23860,7 +23860,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
         keys=("net.peer.name",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -25259,7 +25259,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -25279,7 +25279,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -26978,7 +26978,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "transaction",
             "sentry.transaction",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET /",
@@ -27222,7 +27222,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "server_name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="example.com",

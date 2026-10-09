@@ -3,7 +3,7 @@
   "brief": "The software deployment environment name.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "never"
   },
   "is_in_otel": true,
   "example": "production",

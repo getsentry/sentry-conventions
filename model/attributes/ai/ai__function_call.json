@@ -3,7 +3,7 @@
   "brief": "For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls",
   "type": "string",
   "apply_scrubbing": {
-    "key": "auto"
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "function_name",
