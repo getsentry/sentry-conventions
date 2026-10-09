@@ -1291,6 +1291,8 @@ export const SEARCH_CODE__FILEPATH = 'code.filepath';
 
 /**
  * Search name for {@link attributes.CODE_FUNCTION}. `code.function`
+ *
+ * @deprecated Use {@link SEARCH_CODE__FUNCTION__NAME} (`code.function.name`) instead
  */
 export const SEARCH_CODE__FUNCTION = 'code.function';
 
@@ -7492,15 +7494,16 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecationChain: ['code.file.path', 'sveltekit.load.node_id', 'code.filepath'],
   },
   'code.function': {
-    canonicalName: 'code.function',
+    canonicalName: 'code.function.name',
     type: 'string',
     brief: "The method or function name, or equivalent (usually rightmost part of the code unit's name).",
-    deprecationChain: ['code.function', 'code.function.name', 'django.function_name'],
+    deprecationChain: ['code.function.name', 'code.function', 'django.function_name'],
   },
   'code.function.name': {
     canonicalName: 'code.function.name',
     type: 'string',
-    brief: 'The method or function fully-qualified name without arguments.',
+    brief:
+      'The method or function name without arguments. The name may be fully-qualified or just list the simple function name. See examples.',
     deprecationChain: ['code.function.name', 'code.function', 'django.function_name'],
   },
   'code.line.number': {
