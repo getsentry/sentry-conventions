@@ -9,7 +9,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [671],
       "description": "Changed the type to double to support fractional MCP progress values"
     },
@@ -22,5 +22,5 @@
       "prs": [171]
     }
   ],
-  "examples": [1.0, 100]
+  "examples": [1, 100]
 }

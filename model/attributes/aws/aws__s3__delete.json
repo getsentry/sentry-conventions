@@ -11,7 +11,7 @@
   "examples": ["Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [672],
       "description": "Added aws.s3.delete attribute"
     }

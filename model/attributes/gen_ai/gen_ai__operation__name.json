@@ -8,26 +8,56 @@
   "is_in_otel": true,
   "example": "chat",
   "enum_values": [
-    { "value": "chat" },
-    { "value": "create_agent" },
-    { "value": "create_memory" },
-    { "value": "create_memory_store" },
-    { "value": "delete_memory" },
-    { "value": "delete_memory_store" },
-    { "value": "embeddings" },
-    { "value": "evaluate" },
-    { "value": "execute_tool" },
-    { "value": "generate_content" },
-    { "value": "invoke_agent" },
-    { "value": "search_memory" },
-    { "value": "text_completion" },
-    { "value": "update_memory" },
-    { "value": "upsert_memory" }
+    {
+      "value": "chat"
+    },
+    {
+      "value": "create_agent"
+    },
+    {
+      "value": "create_memory"
+    },
+    {
+      "value": "create_memory_store"
+    },
+    {
+      "value": "delete_memory"
+    },
+    {
+      "value": "delete_memory_store"
+    },
+    {
+      "value": "embeddings"
+    },
+    {
+      "value": "evaluate"
+    },
+    {
+      "value": "execute_tool"
+    },
+    {
+      "value": "generate_content"
+    },
+    {
+      "value": "invoke_agent"
+    },
+    {
+      "value": "search_memory"
+    },
+    {
+      "value": "text_completion"
+    },
+    {
+      "value": "update_memory"
+    },
+    {
+      "value": "upsert_memory"
+    }
   ],
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [653, 680],
       "description": "Added memory operation values and 'evaluate' to the well-known values"
     },

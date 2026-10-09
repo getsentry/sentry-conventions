@@ -13,7 +13,7 @@
   "examples": ["someFile.yml"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [672],
       "description": "Added aws.s3.copy_source attribute"
     }

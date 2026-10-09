@@ -18,7 +18,8 @@
   "examples": ["previous_trace", "next_trace", "cache_origin"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
+      "prs": [687],
       "description": "Added search alias link.type"
     },
     {

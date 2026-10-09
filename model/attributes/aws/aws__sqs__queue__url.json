@@ -10,7 +10,7 @@
   "examples": ["https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [672],
       "description": "Added aws.sqs.queue.url attribute"
     }

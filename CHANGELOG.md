@@ -1,3 +1,47 @@
+## 0.27.0
+
+### New Features ✨
+
+#### Attributes
+
+- Deprecate legacy MCP tool result fields by @betegon in [#689](https://github.com/getsentry/sentry-conventions/pull/689)
+- Align MCP conventions and OAuth client identity by @betegon in [#671](https://github.com/getsentry/sentry-conventions/pull/671)
+- Add AWS service instrumentation attributes by @pabloDeputter in [#672](https://github.com/getsentry/sentry-conventions/pull/672)
+- Add gen_ai memory conventions by @ArthurKnaus in [#653](https://github.com/getsentry/sentry-conventions/pull/653)
+
+#### Other
+
+- (model) Add metric model by @giortzisg in [#649](https://github.com/getsentry/sentry-conventions/pull/649)
+- Add `enum_values` entries to shorten attribute briefs by @alexander-alderman-webb in [#685](https://github.com/getsentry/sentry-conventions/pull/685)
+
+### Bug Fixes 🐛
+
+#### Attributes
+
+- Add `search_alias` to `sentry.link.type` attribute by @Lms24 in [#687](https://github.com/getsentry/sentry-conventions/pull/687)
+- Remove `any` as valid attribute type by @Lms24 in [#677](https://github.com/getsentry/sentry-conventions/pull/677)
+
+### Documentation 📚
+
+- (contributing) Document process for fixing a misnamed attribute by @sentry-junior in [#673](https://github.com/getsentry/sentry-conventions/pull/673)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump sharp from 0.35.4 to 0.35.5 by @dependabot in [#683](https://github.com/getsentry/sentry-conventions/pull/683)
+- Bump source-map-js from 1.2.1 to 1.2.2 by @dependabot in [#675](https://github.com/getsentry/sentry-conventions/pull/675)
+- Bump smol-toml from 1.8.0 to 1.9.0 by @dependabot in [#674](https://github.com/getsentry/sentry-conventions/pull/674)
+- Bump postcss-selector-parser from 7.1.4 to 7.1.6 by @dependabot in [#676](https://github.com/getsentry/sentry-conventions/pull/676)
+
+#### Other
+
+- (deps-dev) Bump oxfmt to 0.72.0 to pull in patched tinypool by @Lms24 in [#682](https://github.com/getsentry/sentry-conventions/pull/682)
+- (docs) Add link preview meta tags by @Lms24 in [#667](https://github.com/getsentry/sentry-conventions/pull/667)
+- (publish) Stop `npm version` from rewriting `yarn.lock` by @Lms24 in [#678](https://github.com/getsentry/sentry-conventions/pull/678)
+- Add "evaluate" as a well-known value for `gen_ai.operation.name` by @alexander-alderman-webb in [#680](https://github.com/getsentry/sentry-conventions/pull/680)
+- Deprecate `mcp.tool.result.content_count` by @alexander-alderman-webb in [#669](https://github.com/getsentry/sentry-conventions/pull/669)
+
 ## 0.26.0
 
 ### New Features ✨

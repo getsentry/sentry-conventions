@@ -10,7 +10,7 @@
   "examples": ["ms_abc123", "user-preferences-store", "seer-knowledge"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [653],
       "description": "Added gen_ai.memory.store.id attribute"
     }
