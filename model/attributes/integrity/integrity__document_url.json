@@ -1,0 +1,17 @@
+{
+  "key": "integrity.document_url",
+  "brief": "The URL of the document where the integrity violation occurred.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "example": "https://example.com/index.html",
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "0.27.0",
+      "prs": [691]
+    }
+  ]
+}
