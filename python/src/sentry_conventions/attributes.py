@@ -314,9 +314,24 @@ class _AttributeNamesMeta(type):
         "MCP_PROMPT_NAME",
         "MCP_REQUEST_ID",
         "MCP_TOOL_NAME",
+        "MCP_TOOL_RESULT_KEY_CONTENT",
+        "MCP_TOOL_RESULT_KEY_CONTENT_TYPE",
+        "MCP_TOOL_RESULT_KEY_DATA_SIZE",
+        "MCP_TOOL_RESULT_KEY_MIME_TYPE",
+        "MCP_TOOL_RESULT_KEY_NAME",
+        "MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE",
+        "MCP_TOOL_RESULT_KEY_RESOURCE_URI",
+        "MCP_TOOL_RESULT_KEY_URI",
         "MCP_TOOL_RESULT_CONTENT",
         "MCP_TOOL_RESULT_CONTENT_COUNT",
+        "MCP_TOOL_RESULT_CONTENT_TYPE",
+        "MCP_TOOL_RESULT_DATA_SIZE",
         "MCP_TOOL_RESULT_IS_ERROR",
+        "MCP_TOOL_RESULT_MIME_TYPE",
+        "MCP_TOOL_RESULT_NAME",
+        "MCP_TOOL_RESULT_RESOURCE_MIME_TYPE",
+        "MCP_TOOL_RESULT_RESOURCE_URI",
+        "MCP_TOOL_RESULT_URI",
         "MESSAGING_CONVERSATION_ID",
         "MESSAGING_DESTINATION",
         "MESSAGING_DESTINATION_KIND",
@@ -7121,6 +7136,33 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "summarize"
     """
 
+    # Path: model/attributes/mcp/mcp__prompt__result__[key]__content.json
+    MCP_PROMPT_RESULT_KEY_CONTENT: Literal["mcp.prompt.result.<key>.content"] = (
+        "mcp.prompt.result.<key>.content"
+    )
+    """Legacy text content of an indexed message in a multi-message MCP prompt result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    Example: "Summarize the document."
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__[key]__role.json
+    MCP_PROMPT_RESULT_KEY_ROLE: Literal["mcp.prompt.result.<key>.role"] = (
+        "mcp.prompt.result.<key>.role"
+    )
+    """Legacy role of an indexed message in a multi-message MCP prompt result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    Example: "user"
+    Example: "assistant"
+    """
+
     # Path: model/attributes/mcp/mcp__prompt__result__description.json
     MCP_PROMPT_RESULT_DESCRIPTION: Literal["mcp.prompt.result.description"] = (
         "mcp.prompt.result.description"
@@ -7328,6 +7370,121 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "calculator"
     """
 
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__content.json
+    MCP_TOOL_RESULT_KEY_CONTENT: Literal["mcp.tool.result.<key>.content"] = (
+        "mcp.tool.result.<key>.content"
+    )
+    """Legacy text content of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "The operation completed."
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__content_type.json
+    MCP_TOOL_RESULT_KEY_CONTENT_TYPE: Literal["mcp.tool.result.<key>.content_type"] = (
+        "mcp.tool.result.<key>.content_type"
+    )
+    """Legacy content type of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "text"
+    Example: "image"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__data_size.json
+    MCP_TOOL_RESULT_KEY_DATA_SIZE: Literal["mcp.tool.result.<key>.data_size"] = (
+        "mcp.tool.result.<key>.data_size"
+    )
+    """Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.
+
+    Type: int
+    Apply Scrubbing: manual - The length contains no result content.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: 4
+    Example: 1024
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__mime_type.json
+    MCP_TOOL_RESULT_KEY_MIME_TYPE: Literal["mcp.tool.result.<key>.mime_type"] = (
+        "mcp.tool.result.<key>.mime_type"
+    )
+    """Legacy MIME type of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "image/png"
+    Example: "audio/wav"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__name.json
+    MCP_TOOL_RESULT_KEY_NAME: Literal["mcp.tool.result.<key>.name"] = (
+        "mcp.tool.result.<key>.name"
+    )
+    """Legacy resource link name of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "report.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__resource_mime_type.json
+    MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE: Literal[
+        "mcp.tool.result.<key>.resource_mime_type"
+    ] = "mcp.tool.result.<key>.resource_mime_type"
+    """Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "text/plain"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__resource_uri.json
+    MCP_TOOL_RESULT_KEY_RESOURCE_URI: Literal["mcp.tool.result.<key>.resource_uri"] = (
+        "mcp.tool.result.<key>.resource_uri"
+    )
+    """Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "file:///project/report.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__uri.json
+    MCP_TOOL_RESULT_KEY_URI: Literal["mcp.tool.result.<key>.uri"] = (
+        "mcp.tool.result.<key>.uri"
+    )
+    """Legacy resource link URI of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "file:///project/report.txt"
+    """
+
     # Path: model/attributes/mcp/mcp__tool__result__content.json
     MCP_TOOL_RESULT_CONTENT: Literal["mcp.tool.result.content"] = (
         "mcp.tool.result.content"
@@ -7357,6 +7514,36 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1
     """
 
+    # Path: model/attributes/mcp/mcp__tool__result__content_type.json
+    MCP_TOOL_RESULT_CONTENT_TYPE: Literal["mcp.tool.result.content_type"] = (
+        "mcp.tool.result.content_type"
+    )
+    """Legacy content type of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "text"
+    Example: "image"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__data_size.json
+    MCP_TOOL_RESULT_DATA_SIZE: Literal["mcp.tool.result.data_size"] = (
+        "mcp.tool.result.data_size"
+    )
+    """Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.
+
+    Type: int
+    Apply Scrubbing: manual - The length contains no result content.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: 4
+    Example: 1024
+    """
+
     # Path: model/attributes/mcp/mcp__tool__result__is_error.json
     MCP_TOOL_RESULT_IS_ERROR: Literal["mcp.tool.result.is_error"] = (
         "mcp.tool.result.is_error"
@@ -7369,6 +7556,73 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: Use error.type instead - OTel uses error.type set to 'tool_error' when isError is true. Cannot be automatically backfilled due to type mismatch (boolean vs string).
     Example: false
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__mime_type.json
+    MCP_TOOL_RESULT_MIME_TYPE: Literal["mcp.tool.result.mime_type"] = (
+        "mcp.tool.result.mime_type"
+    )
+    """Legacy MIME type of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "image/png"
+    Example: "audio/wav"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__name.json
+    MCP_TOOL_RESULT_NAME: Literal["mcp.tool.result.name"] = "mcp.tool.result.name"
+    """Legacy resource link name of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "report.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__resource_mime_type.json
+    MCP_TOOL_RESULT_RESOURCE_MIME_TYPE: Literal[
+        "mcp.tool.result.resource_mime_type"
+    ] = "mcp.tool.result.resource_mime_type"
+    """Legacy embedded resource MIME type of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "text/plain"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__resource_uri.json
+    MCP_TOOL_RESULT_RESOURCE_URI: Literal["mcp.tool.result.resource_uri"] = (
+        "mcp.tool.result.resource_uri"
+    )
+    """Legacy embedded resource URI of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "file:///project/report.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__uri.json
+    MCP_TOOL_RESULT_URI: Literal["mcp.tool.result.uri"] = "mcp.tool.result.uri"
+    """Legacy resource link URI of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "file:///project/report.txt"
     """
 
     # Path: model/attributes/mcp/mcp__transport.json
@@ -21733,6 +21987,54 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
+    "mcp.prompt.result.<key>.content": AttributeMetadata(
+        brief="Legacy text content of an indexed message in a multi-message MCP prompt result.",
+        type=AttributeType.STRING,
+        keys=("mcp.prompt.result.<key>.content",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Summarize the document.",
+        examples=["Summarize the document."],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple messages. <key> is the zero-based position in the original messages array; absent fields do not renumber later messages.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.prompt.result.<key>.role": AttributeMetadata(
+        brief="Legacy role of an indexed message in a multi-message MCP prompt result.",
+        type=AttributeType.STRING,
+        keys=("mcp.prompt.result.<key>.role",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user",
+        examples=["user", "assistant"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple messages. <key> is the zero-based position in the original messages array; absent fields do not renumber later messages.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
     "mcp.prompt.result.description": AttributeMetadata(
         brief="Description of the prompt result.",
         type=AttributeType.STRING,
@@ -22056,6 +22358,223 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
+    "mcp.tool.result.<key>.content": AttributeMetadata(
+        brief="Legacy text content of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.content",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="The operation completed.",
+        examples=["The operation completed."],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+            "This is one item's text, not the complete tool result. It must not be aliased or directly backfilled to gen_ai.tool.call.result; reconstructing the complete result requires aggregation.",
+        ],
+    ),
+    "mcp.tool.result.<key>.content_type": AttributeMetadata(
+        brief="Legacy content type of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.content_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="text",
+        examples=["text", "image"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded even when output capture is disabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.data_size": AttributeMetadata(
+        brief="Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.INTEGER,
+        keys=("mcp.tool.result.<key>.data_size",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL, reason="The length contains no result content."
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=4,
+        examples=[4, 1024],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+            "The JavaScript SDK records data.length. For base64-encoded image or audio data, this counts encoded characters, not decoded bytes.",
+        ],
+    ),
+    "mcp.tool.result.<key>.mime_type": AttributeMetadata(
+        brief="Legacy MIME type of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.mime_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="image/png",
+        examples=["image/png", "audio/wav"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.name": AttributeMetadata(
+        brief="Legacy resource link name of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.name",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="report.txt",
+        examples=["report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.resource_mime_type": AttributeMetadata(
+        brief="Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.resource_mime_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="text/plain",
+        examples=["text/plain"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.resource_uri": AttributeMetadata(
+        brief="Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.resource_uri",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="file:///project/report.txt",
+        examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.uri": AttributeMetadata(
+        brief="Legacy resource link URI of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.uri",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="file:///project/report.txt",
+        examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
     "mcp.tool.result.content": AttributeMetadata(
         brief="The content of the tool result.",
         type=AttributeType.STRING,
@@ -22116,6 +22635,60 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
+    "mcp.tool.result.content_type": AttributeMetadata(
+        brief="Legacy content type of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.content_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="text",
+        examples=["text", "image"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded even when output capture is disabled.",
+        ],
+    ),
+    "mcp.tool.result.data_size": AttributeMetadata(
+        brief="Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.",
+        type=AttributeType.INTEGER,
+        keys=("mcp.tool.result.data_size",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL, reason="The length contains no result content."
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=4,
+        examples=[4, 1024],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+            "The JavaScript SDK records data.length. For base64-encoded image or audio data, this counts encoded characters, not decoded bytes.",
+        ],
+    ),
     "mcp.tool.result.is_error": AttributeMetadata(
         brief="Whether a tool execution resulted in an error.",
         type=AttributeType.BOOLEAN,
@@ -22135,6 +22708,141 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Deprecated in favor of error.type",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
+    ),
+    "mcp.tool.result.mime_type": AttributeMetadata(
+        brief="Legacy MIME type of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.mime_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="image/png",
+        examples=["image/png", "audio/wav"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.name": AttributeMetadata(
+        brief="Legacy resource link name of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.name",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="report.txt",
+        examples=["report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.resource_mime_type": AttributeMetadata(
+        brief="Legacy embedded resource MIME type of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.resource_mime_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="text/plain",
+        examples=["text/plain"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.resource_uri": AttributeMetadata(
+        brief="Legacy embedded resource URI of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.resource_uri",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="file:///project/report.txt",
+        examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.uri": AttributeMetadata(
+        brief="Legacy resource link URI of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.uri",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="file:///project/report.txt",
+        examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
         ],
     ),
     "mcp.transport": AttributeMetadata(
@@ -28920,6 +29628,8 @@ Attributes = TypedDict(
         "mcp.progress.token": str,
         "mcp.progress.total": float,
         "mcp.prompt.name": str,
+        "mcp.prompt.result.<key>.content": str,
+        "mcp.prompt.result.<key>.role": str,
         "mcp.prompt.result.description": str,
         "mcp.prompt.result.message_content": str,
         "mcp.prompt.result.message_count": int,
@@ -28937,9 +29647,24 @@ Attributes = TypedDict(
         "mcp.server.version": str,
         "mcp.session.id": str,
         "mcp.tool.name": str,
+        "mcp.tool.result.<key>.content": str,
+        "mcp.tool.result.<key>.content_type": str,
+        "mcp.tool.result.<key>.data_size": int,
+        "mcp.tool.result.<key>.mime_type": str,
+        "mcp.tool.result.<key>.name": str,
+        "mcp.tool.result.<key>.resource_mime_type": str,
+        "mcp.tool.result.<key>.resource_uri": str,
+        "mcp.tool.result.<key>.uri": str,
         "mcp.tool.result.content": str,
         "mcp.tool.result.content_count": int,
+        "mcp.tool.result.content_type": str,
+        "mcp.tool.result.data_size": int,
         "mcp.tool.result.is_error": bool,
+        "mcp.tool.result.mime_type": str,
+        "mcp.tool.result.name": str,
+        "mcp.tool.result.resource_mime_type": str,
+        "mcp.tool.result.resource_uri": str,
+        "mcp.tool.result.uri": str,
         "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.batch.message_count": int,

@@ -60,6 +60,14 @@ After you've created an attribute, the script will ask if you'd like to generate
 
 If you need help, run `yarn run create:attribute --help` to see the available options.
 
+### Dynamic attribute keys
+
+Use `<key>` for a dynamic segment in an attribute key. Set `has_dynamic_suffix: true` only when the key ends with `.<key>`, such as `mcp.request.argument.<key>`. This also generates a JavaScript `_BASE` constant for appending the suffix.
+
+For an intermediate segment, such as `mcp.tool.result.<key>.content`, omit `has_dynamic_suffix`. The generated constant preserves the placeholder; consumers can interpolate it with `MCP_TOOL_RESULT_KEY_CONTENT.replace('<key>', String(index))`. Document the segment's meaning, including whether an index starts at zero, and define each field separately so its type and scrubbing policy remain explicit.
+
+Do not alias or backfill an indexed item to an attribute representing the complete result. Combining several items requires an explicit aggregation contract, not a direct rename. Such fields can still be deprecated: set `deprecation._status` to `null` and recommend the alternative in `deprecation.reason`. Omit `replacement` to keep search resolution independent as well.
+
 ### Adding an attribute transformation
 
 Most deprecated attributes only need a direct rename via `deprecation.replacement` and a `_status` of `backfill` or `normalize`. Add an attribute transformation only when the replacement value must be derived or reshaped from one or more source attributes.
