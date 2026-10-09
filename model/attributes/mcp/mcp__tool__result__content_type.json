@@ -1,0 +1,27 @@
+{
+  "key": "mcp.tool.result.content_type",
+  "brief": "Legacy content type of the content item in a single-item MCP tool result.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "Preserve automatic scrubbing of server-provided result fields."
+  },
+  "is_in_otel": false,
+  "examples": ["text", "image"],
+  "visibility": "public",
+  "additional_context": [
+    "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+    "Emitted only when the result contains exactly one content item.",
+    "Recorded even when output capture is disabled."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill."
+    }
+  ],
+  "deprecation": {
+    "reason": "Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.",
+    "_status": null
+  }
+}

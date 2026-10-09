@@ -1,0 +1,28 @@
+{
+  "key": "mcp.tool.result.data_size",
+  "brief": "Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual",
+    "reason": "The length contains no result content."
+  },
+  "is_in_otel": false,
+  "examples": [4, 1024],
+  "visibility": "public",
+  "additional_context": [
+    "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+    "Emitted only when the result contains exactly one content item.",
+    "Recorded only when output capture is enabled.",
+    "The JavaScript SDK records data.length. For base64-encoded image or audio data, this counts encoded characters, not decoded bytes."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill."
+    }
+  ],
+  "deprecation": {
+    "reason": "Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.",
+    "_status": null
+  }
+}
