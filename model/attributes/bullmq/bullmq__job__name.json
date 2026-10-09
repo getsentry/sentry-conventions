@@ -1,0 +1,22 @@
+{
+  "key": "bullmq.job.name",
+  "brief": "The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["send-welcome-email", "generate-report"],
+  "additional_context": [
+    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry.",
+    "Also set on the BullMQ job metrics."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added bullmq.job.name attribute"
+    }
+  ]
+}

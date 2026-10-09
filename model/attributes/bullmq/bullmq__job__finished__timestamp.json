@@ -1,0 +1,22 @@
+{
+  "key": "bullmq.job.finished.timestamp",
+  "brief": "The time in milliseconds since the Unix epoch when the Worker finished its processing call for the BullMQ job.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [1791184722411],
+  "additional_context": [
+    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry.",
+    "BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added bullmq.job.finished.timestamp attribute"
+    }
+  ]
+}

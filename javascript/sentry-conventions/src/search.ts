@@ -1074,6 +1074,161 @@ export const SEARCH_BROWSER__WEB_VITAL__TTFB__REQUEST_TIME = 'browser.web_vital.
 export const SEARCH_BROWSER__WEB_VITAL__TTFB__VALUE = 'browser.web_vital.ttfb.value';
 
 /**
+ * Search name for {@link attributes.BULLMQ_FLOW_NAME}. `bullmq.flow.name`
+ */
+export const SEARCH_BULLMQ__FLOW__NAME = 'bullmq.flow.name';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP}. `bullmq.job.attempt_finished_timestamp`
+ */
+export const SEARCH_BULLMQ__JOB__ATTEMPT_FINISHED_TIMESTAMP = 'bullmq.job.attempt_finished_timestamp';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_BULK_NAMES}. `bullmq.job.bulk.names`
+ */
+export const SEARCH_BULLMQ__JOB__BULK__NAMES = 'bullmq.job.bulk.names';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_DEDUPLICATION_KEY}. `bullmq.job.deduplication.key`
+ */
+export const SEARCH_BULLMQ__JOB__DEDUPLICATION__KEY = 'bullmq.job.deduplication.key';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_FINISHED_TIMESTAMP}. `bullmq.job.finished.timestamp`
+ */
+export const SEARCH_BULLMQ__JOB__FINISHED__TIMESTAMP = 'bullmq.job.finished.timestamp';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_IDS}. `bullmq.job.ids`
+ */
+export const SEARCH_BULLMQ__JOB__IDS = 'bullmq.job.ids';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_KEY}. `bullmq.job.key`
+ */
+export const SEARCH_BULLMQ__JOB__KEY = 'bullmq.job.key';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_NAME}. `bullmq.job.name`
+ */
+export const SEARCH_BULLMQ__JOB__NAME = 'bullmq.job.name';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_OPTIONS}. `bullmq.job.options`
+ */
+export const SEARCH_BULLMQ__JOB__OPTIONS = 'bullmq.job.options';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_PROCESSED_TIMESTAMP}. `bullmq.job.processed.timestamp`
+ */
+export const SEARCH_BULLMQ__JOB__PROCESSED__TIMESTAMP = 'bullmq.job.processed.timestamp';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_PROGRESS}. `bullmq.job.progress`
+ */
+export const SEARCH_BULLMQ__JOB__PROGRESS = 'bullmq.job.progress';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_SCHEDULER_ID}. `bullmq.job.scheduler.id`
+ */
+export const SEARCH_BULLMQ__JOB__SCHEDULER__ID = 'bullmq.job.scheduler.id';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_STATE}. `bullmq.job.state`
+ */
+export const SEARCH_BULLMQ__JOB__STATE = 'bullmq.job.state';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_STATUS}. `bullmq.job.status`
+ */
+export const SEARCH_BULLMQ__JOB__STATUS = 'bullmq.job.status';
+
+/**
+ * Search name for {@link attributes.BULLMQ_JOB_TYPE}. `bullmq.job.type`
+ */
+export const SEARCH_BULLMQ__JOB__TYPE = 'bullmq.job.type';
+
+/**
+ * Search name for {@link attributes.BULLMQ_QUEUE_CLEAN_COUNT}. `bullmq.queue.clean.count`
+ */
+export const SEARCH_BULLMQ__QUEUE__CLEAN__COUNT = 'bullmq.queue.clean.count';
+
+/**
+ * Search name for {@link attributes.BULLMQ_QUEUE_CLEAN_LIMIT}. `bullmq.queue.clean.limit`
+ */
+export const SEARCH_BULLMQ__QUEUE__CLEAN__LIMIT = 'bullmq.queue.clean.limit';
+
+/**
+ * Search name for {@link attributes.BULLMQ_QUEUE_DRAIN_DELAY}. `bullmq.queue.drain.delay`
+ */
+export const SEARCH_BULLMQ__QUEUE__DRAIN__DELAY = 'bullmq.queue.drain.delay';
+
+/**
+ * Search name for {@link attributes.BULLMQ_QUEUE_EVENT_MAX_LENGTH}. `bullmq.queue.event.max.length`
+ */
+export const SEARCH_BULLMQ__QUEUE__EVENT__MAX__LENGTH = 'bullmq.queue.event.max.length';
+
+/**
+ * Search name for {@link attributes.BULLMQ_QUEUE_GRACE}. `bullmq.queue.grace`
+ */
+export const SEARCH_BULLMQ__QUEUE__GRACE = 'bullmq.queue.grace';
+
+/**
+ * Search name for {@link attributes.BULLMQ_QUEUE_JOBS_STATE}. `bullmq.queue.jobs.state`
+ */
+export const SEARCH_BULLMQ__QUEUE__JOBS__STATE = 'bullmq.queue.jobs.state';
+
+/**
+ * Search name for {@link attributes.BULLMQ_QUEUE_OPTIONS}. `bullmq.queue.options`
+ */
+export const SEARCH_BULLMQ__QUEUE__OPTIONS = 'bullmq.queue.options';
+
+/**
+ * Search name for {@link attributes.BULLMQ_QUEUE_RATE_LIMIT}. `bullmq.queue.rate.limit`
+ */
+export const SEARCH_BULLMQ__QUEUE__RATE__LIMIT = 'bullmq.queue.rate.limit';
+
+/**
+ * Search name for {@link attributes.BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE}. `bullmq.worker.do.not.wait.active`
+ */
+export const SEARCH_BULLMQ__WORKER__DO__NOT__WAIT__ACTIVE = 'bullmq.worker.do.not.wait.active';
+
+/**
+ * Search name for {@link attributes.BULLMQ_WORKER_FORCE_CLOSE}. `bullmq.worker.force.close`
+ */
+export const SEARCH_BULLMQ__WORKER__FORCE__CLOSE = 'bullmq.worker.force.close';
+
+/**
+ * Search name for {@link attributes.BULLMQ_WORKER_ID}. `bullmq.worker.id`
+ */
+export const SEARCH_BULLMQ__WORKER__ID = 'bullmq.worker.id';
+
+/**
+ * Search name for {@link attributes.BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS}. `bullmq.worker.jobs.to.extend.locks`
+ */
+export const SEARCH_BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS = 'bullmq.worker.jobs.to.extend.locks';
+
+/**
+ * Search name for {@link attributes.BULLMQ_WORKER_NAME}. `bullmq.worker.name`
+ */
+export const SEARCH_BULLMQ__WORKER__NAME = 'bullmq.worker.name';
+
+/**
+ * Search name for {@link attributes.BULLMQ_WORKER_OPTIONS}. `bullmq.worker.options`
+ */
+export const SEARCH_BULLMQ__WORKER__OPTIONS = 'bullmq.worker.options';
+
+/**
+ * Search name for {@link attributes.BULLMQ_WORKER_RATE_LIMIT}. `bullmq.worker.rate.limit`
+ */
+export const SEARCH_BULLMQ__WORKER__RATE__LIMIT = 'bullmq.worker.rate.limit';
+
+/**
+ * Search name for {@link attributes.BULLMQ_WORKER_STALLED_JOBS}. `bullmq.worker.stalled.jobs`
+ */
+export const SEARCH_BULLMQ__WORKER__STALLED__JOBS = 'bullmq.worker.stalled.jobs';
+
+/**
  * Search name for {@link attributes.CACHE_HIT}. `cache.hit`
  */
 export const SEARCH_CACHE__HIT = 'cache.hit';
@@ -5297,6 +5452,37 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__TTFB__REQUEST_TIME
   | typeof SEARCH_BROWSER__WEB_VITAL__TTFB__VALUE
+  | typeof SEARCH_BULLMQ__FLOW__NAME
+  | typeof SEARCH_BULLMQ__JOB__ATTEMPT_FINISHED_TIMESTAMP
+  | typeof SEARCH_BULLMQ__JOB__BULK__NAMES
+  | typeof SEARCH_BULLMQ__JOB__DEDUPLICATION__KEY
+  | typeof SEARCH_BULLMQ__JOB__FINISHED__TIMESTAMP
+  | typeof SEARCH_BULLMQ__JOB__IDS
+  | typeof SEARCH_BULLMQ__JOB__KEY
+  | typeof SEARCH_BULLMQ__JOB__NAME
+  | typeof SEARCH_BULLMQ__JOB__OPTIONS
+  | typeof SEARCH_BULLMQ__JOB__PROCESSED__TIMESTAMP
+  | typeof SEARCH_BULLMQ__JOB__PROGRESS
+  | typeof SEARCH_BULLMQ__JOB__SCHEDULER__ID
+  | typeof SEARCH_BULLMQ__JOB__STATE
+  | typeof SEARCH_BULLMQ__JOB__STATUS
+  | typeof SEARCH_BULLMQ__JOB__TYPE
+  | typeof SEARCH_BULLMQ__QUEUE__CLEAN__COUNT
+  | typeof SEARCH_BULLMQ__QUEUE__CLEAN__LIMIT
+  | typeof SEARCH_BULLMQ__QUEUE__DRAIN__DELAY
+  | typeof SEARCH_BULLMQ__QUEUE__EVENT__MAX__LENGTH
+  | typeof SEARCH_BULLMQ__QUEUE__GRACE
+  | typeof SEARCH_BULLMQ__QUEUE__JOBS__STATE
+  | typeof SEARCH_BULLMQ__QUEUE__OPTIONS
+  | typeof SEARCH_BULLMQ__QUEUE__RATE__LIMIT
+  | typeof SEARCH_BULLMQ__WORKER__DO__NOT__WAIT__ACTIVE
+  | typeof SEARCH_BULLMQ__WORKER__FORCE__CLOSE
+  | typeof SEARCH_BULLMQ__WORKER__ID
+  | typeof SEARCH_BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS
+  | typeof SEARCH_BULLMQ__WORKER__NAME
+  | typeof SEARCH_BULLMQ__WORKER__OPTIONS
+  | typeof SEARCH_BULLMQ__WORKER__RATE__LIMIT
+  | typeof SEARCH_BULLMQ__WORKER__STALLED__JOBS
   | typeof SEARCH_CACHE__HIT
   | typeof SEARCH_CACHE__ITEM_AGE
   | typeof SEARCH_CACHE__ITEM_SIZE
@@ -7241,6 +7427,195 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The value of the recorded Time To First Byte (TTFB) web vital in Milliseconds',
     deprecationChain: ['browser.web_vital.ttfb.value', 'ttfb'],
+  },
+  'bullmq.flow.name': {
+    canonicalName: 'bullmq.flow.name',
+    type: 'string',
+    brief: 'The name of the root job of the BullMQ flow that FlowProducer.add() adds.',
+    deprecationChain: ['bullmq.flow.name'],
+  },
+  'bullmq.job.attempt_finished_timestamp': {
+    canonicalName: 'bullmq.job.attempt_finished_timestamp',
+    type: 'integer',
+    brief: 'The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.',
+    deprecationChain: ['bullmq.job.attempt_finished_timestamp'],
+  },
+  'bullmq.job.bulk.names': {
+    canonicalName: 'bullmq.job.bulk.names',
+    type: 'string[]',
+    brief: 'The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().',
+    deprecationChain: ['bullmq.job.bulk.names'],
+  },
+  'bullmq.job.deduplication.key': {
+    canonicalName: 'bullmq.job.deduplication.key',
+    type: 'string',
+    brief: 'The deduplication ID that Queue.removeDeduplicationKey() removes.',
+    deprecationChain: ['bullmq.job.deduplication.key'],
+  },
+  'bullmq.job.finished.timestamp': {
+    canonicalName: 'bullmq.job.finished.timestamp',
+    type: 'integer',
+    brief:
+      'The time in milliseconds since the Unix epoch when the Worker finished its processing call for the BullMQ job.',
+    deprecationChain: ['bullmq.job.finished.timestamp'],
+  },
+  'bullmq.job.ids': {
+    canonicalName: 'bullmq.job.ids',
+    type: 'string[]',
+    brief: 'The IDs of the BullMQ jobs that Queue.clean() removed.',
+    deprecationChain: ['bullmq.job.ids'],
+  },
+  'bullmq.job.key': {
+    canonicalName: 'bullmq.job.key',
+    type: 'string',
+    brief:
+      'The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().',
+    deprecationChain: ['bullmq.job.key'],
+  },
+  'bullmq.job.name': {
+    canonicalName: 'bullmq.job.name',
+    type: 'string',
+    brief: 'The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.',
+    deprecationChain: ['bullmq.job.name'],
+  },
+  'bullmq.job.options': {
+    canonicalName: 'bullmq.job.options',
+    type: 'string',
+    brief: 'The options of a BullMQ job operation as a JSON string, for example the options of Queue.remove().',
+    deprecationChain: ['bullmq.job.options'],
+  },
+  'bullmq.job.processed.timestamp': {
+    canonicalName: 'bullmq.job.processed.timestamp',
+    type: 'integer',
+    brief: 'The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.',
+    deprecationChain: ['bullmq.job.processed.timestamp'],
+  },
+  'bullmq.job.progress': {
+    canonicalName: 'bullmq.job.progress',
+    type: 'string',
+    brief: 'The progress value of a BullMQ job as a JSON string, as passed to Queue.updateJobProgress().',
+    deprecationChain: ['bullmq.job.progress'],
+  },
+  'bullmq.job.scheduler.id': {
+    canonicalName: 'bullmq.job.scheduler.id',
+    type: 'string',
+    brief: 'The ID of the BullMQ job scheduler that adds the job.',
+    deprecationChain: ['bullmq.job.scheduler.id'],
+  },
+  'bullmq.job.state': {
+    canonicalName: 'bullmq.job.state',
+    type: 'string',
+    brief: 'The state of the BullMQ job that a job metric counts.',
+    deprecationChain: ['bullmq.job.state'],
+  },
+  'bullmq.job.status': {
+    canonicalName: 'bullmq.job.status',
+    type: 'string',
+    brief: 'The state of the BullMQ job that a job metric counts.',
+    deprecationChain: ['bullmq.job.status'],
+  },
+  'bullmq.job.type': {
+    canonicalName: 'bullmq.job.type',
+    type: 'string',
+    brief: 'The job state from which Queue.clean() removes BullMQ jobs.',
+    deprecationChain: ['bullmq.job.type'],
+  },
+  'bullmq.queue.clean.count': {
+    canonicalName: 'bullmq.queue.clean.count',
+    type: 'integer',
+    brief: 'The number of BullMQ jobs that Queue.clean() removed.',
+    deprecationChain: ['bullmq.queue.clean.count'],
+  },
+  'bullmq.queue.clean.limit': {
+    canonicalName: 'bullmq.queue.clean.limit',
+    type: 'integer',
+    brief: 'The maximum number of BullMQ jobs that Queue.clean() removes.',
+    deprecationChain: ['bullmq.queue.clean.limit'],
+  },
+  'bullmq.queue.drain.delay': {
+    canonicalName: 'bullmq.queue.drain.delay',
+    type: 'boolean',
+    brief: 'Whether Queue.drain() also removes the delayed BullMQ jobs.',
+    deprecationChain: ['bullmq.queue.drain.delay'],
+  },
+  'bullmq.queue.event.max.length': {
+    canonicalName: 'bullmq.queue.event.max.length',
+    type: 'integer',
+    brief: 'The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.',
+    deprecationChain: ['bullmq.queue.event.max.length'],
+  },
+  'bullmq.queue.grace': {
+    canonicalName: 'bullmq.queue.grace',
+    type: 'integer',
+    brief: 'The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.',
+    deprecationChain: ['bullmq.queue.grace'],
+  },
+  'bullmq.queue.jobs.state': {
+    canonicalName: 'bullmq.queue.jobs.state',
+    type: 'string',
+    brief: 'The BullMQ job state that the queue job count metric counts.',
+    deprecationChain: ['bullmq.queue.jobs.state'],
+  },
+  'bullmq.queue.options': {
+    canonicalName: 'bullmq.queue.options',
+    type: 'string',
+    brief:
+      'The options of a BullMQ queue operation as a JSON string, for example the options of Queue.retryJobs() or Queue.promoteJobs().',
+    deprecationChain: ['bullmq.queue.options'],
+  },
+  'bullmq.queue.rate.limit': {
+    canonicalName: 'bullmq.queue.rate.limit',
+    type: 'integer',
+    brief: 'The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.',
+    deprecationChain: ['bullmq.queue.rate.limit'],
+  },
+  'bullmq.worker.do.not.wait.active': {
+    canonicalName: 'bullmq.worker.do.not.wait.active',
+    type: 'boolean',
+    brief: 'Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.',
+    deprecationChain: ['bullmq.worker.do.not.wait.active'],
+  },
+  'bullmq.worker.force.close': {
+    canonicalName: 'bullmq.worker.force.close',
+    type: 'boolean',
+    brief: 'Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.',
+    deprecationChain: ['bullmq.worker.force.close'],
+  },
+  'bullmq.worker.id': {
+    canonicalName: 'bullmq.worker.id',
+    type: 'string',
+    brief: 'The ID that BullMQ generates for the Worker instance.',
+    deprecationChain: ['bullmq.worker.id'],
+  },
+  'bullmq.worker.jobs.to.extend.locks': {
+    canonicalName: 'bullmq.worker.jobs.to.extend.locks',
+    type: 'string[]',
+    brief: 'The IDs of the BullMQ jobs whose locks the Worker extends.',
+    deprecationChain: ['bullmq.worker.jobs.to.extend.locks'],
+  },
+  'bullmq.worker.name': {
+    canonicalName: 'bullmq.worker.name',
+    type: 'string',
+    brief: 'The name that the user gives to the BullMQ Worker in its options.',
+    deprecationChain: ['bullmq.worker.name'],
+  },
+  'bullmq.worker.options': {
+    canonicalName: 'bullmq.worker.options',
+    type: 'string',
+    brief: 'The options of a BullMQ Worker operation as a JSON string, for example the options of Worker.getNextJob().',
+    deprecationChain: ['bullmq.worker.options'],
+  },
+  'bullmq.worker.rate.limit': {
+    canonicalName: 'bullmq.worker.rate.limit',
+    type: 'integer',
+    brief: 'The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.',
+    deprecationChain: ['bullmq.worker.rate.limit'],
+  },
+  'bullmq.worker.stalled.jobs': {
+    canonicalName: 'bullmq.worker.stalled.jobs',
+    type: 'string[]',
+    brief: 'The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.',
+    deprecationChain: ['bullmq.worker.stalled.jobs'],
   },
   'cache.hit': {
     canonicalName: 'cache.hit',

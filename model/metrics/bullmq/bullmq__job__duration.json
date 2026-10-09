@@ -1,0 +1,9 @@
+{
+  "key": "bullmq.job.duration",
+  "brief": "The time in milliseconds from when a Worker started to process a BullMQ job until the job left the active state.",
+  "instrument": "distribution",
+  "unit": "millisecond",
+  "is_in_otel": false,
+  "requirement_level": "opt_in",
+  "attributes": ["messaging.destination.name", "bullmq.job.name", "bullmq.job.status", "bullmq.job.state"]
+}

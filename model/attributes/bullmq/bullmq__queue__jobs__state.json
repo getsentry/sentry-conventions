@@ -1,0 +1,22 @@
+{
+  "key": "bullmq.queue.jobs.state",
+  "brief": "The BullMQ job state that the queue job count metric counts.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["waiting", "active", "completed"],
+  "additional_context": [
+    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry.",
+    "Set on the BullMQ queue job count metric."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added bullmq.queue.jobs.state attribute"
+    }
+  ]
+}
