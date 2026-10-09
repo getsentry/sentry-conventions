@@ -1,0 +1,22 @@
+{
+  "key": "bullmq.job.ids",
+  "brief": "The IDs of the BullMQ jobs that Queue.clean() removed.",
+  "type": "string[]",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [["1", "2", "3"]],
+  "additional_context": [
+    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry.",
+    "BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added bullmq.job.ids attribute"
+    }
+  ]
+}
