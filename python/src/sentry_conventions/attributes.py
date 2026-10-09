@@ -4994,6 +4994,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     - `delete_memory`
     - `delete_memory_store`
     - `embeddings`
+    - `evaluate`
     - `execute_tool`
     - `generate_content`
     - `invoke_agent`
@@ -18672,8 +18673,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[653],
-                description="Added memory operation values to the well-known values",
+                prs=[653, 680],
+                description="Added memory operation values and 'evaluate' to the well-known values",
             ),
             ChangelogEntry(version="0.4.0", prs=[225]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
