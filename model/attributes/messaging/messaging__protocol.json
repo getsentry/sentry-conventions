@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "examples": ["AMQP"],
-  "alias": ["network.protocol.name", "net.protocol.name", "mcp.resource.protocol"],
+  "alias": ["network.protocol.name", "net.protocol.name"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "network.protocol.name",
@@ -15,6 +15,11 @@
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Removed the semantically distinct mcp.resource.protocol alias"
+    },
     {
       "version": "0.21.0",
       "prs": [581],

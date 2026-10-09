@@ -1,14 +1,18 @@
 {
   "key": "mcp.protocol.ready",
-  "brief": "Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
+  "brief": "Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.",
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 1,
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Clarified that readiness describes the legacy MCP initialization handshake"
+    },
     {
       "version": "0.4.0",
       "prs": [228]
@@ -17,5 +21,6 @@
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "examples": [1]
 }

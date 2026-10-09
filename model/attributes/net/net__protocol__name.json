@@ -6,14 +6,18 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "http",
-  "alias": ["network.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
+  "alias": ["network.protocol.name", "messaging.protocol"],
   "deprecation": {
     "_status": "backfill",
     "replacement": "network.protocol.name"
   },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Removed the semantically distinct mcp.resource.protocol alias"
+    },
     {
       "version": "0.21.0",
       "prs": [581],
@@ -26,5 +30,6 @@
     {
       "version": "0.0.0"
     }
-  ]
+  ],
+  "examples": ["http"]
 }
