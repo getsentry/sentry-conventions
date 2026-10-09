@@ -8090,6 +8090,7 @@ export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
  * - `delete_memory`
  * - `delete_memory_store`
  * - `embeddings`
+ * - `evaluate`
  * - `execute_tool`
  * - `generate_content`
  * - `invoke_agent`
@@ -27403,7 +27404,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
-      { version: 'next', prs: [653], description: 'Added memory operation values to the well-known values' },
+      {
+        version: 'next',
+        prs: [653, 680],
+        description: "Added memory operation values and 'evaluate' to the well-known values",
+      },
       { version: '0.4.0', prs: [225] },
       { version: '0.1.0', prs: [62, 127] },
     ],
