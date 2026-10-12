@@ -42,6 +42,12 @@
       "name": "view"
     },
     {
+      "name": "view.authenticate",
+      "deprecation": {
+        "note": "Use `view` instead."
+      }
+    },
+    {
       "name": "template"
     },
     {
