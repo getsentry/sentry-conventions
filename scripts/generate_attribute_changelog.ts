@@ -298,7 +298,7 @@ export async function getAllJsonFiles(dir: string): Promise<string[]> {
     const entries = await fs.promises.readdir(currentDir, { withFileTypes: true });
     for (const entry of entries) {
       const entryPath = path.join(currentDir, entry.name);
-      const entryRelativePath = path.join(relativePath, entry.name);
+      const entryRelativePath = path.posix.join(relativePath, entry.name);
       if (entry.isDirectory()) {
         await scanDir(entryPath, entryRelativePath);
       } else if (entry.isFile() && path.extname(entry.name) === '.json') {
