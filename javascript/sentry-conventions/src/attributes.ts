@@ -29624,6 +29624,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5000,
     examples: [5000],
     changelog: [{ version: 'next', prs: [697], description: 'Added http.request.duration attribute' }],
+    additionalContext: ['This attribute is set by Relay.'],
   },
   'http.request.fetch_start': {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',

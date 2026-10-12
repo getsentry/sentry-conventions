@@ -20661,6 +20661,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Added http.request.duration attribute",
             ),
         ],
+        additional_context=["This attribute is set by Relay."],
     ),
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",

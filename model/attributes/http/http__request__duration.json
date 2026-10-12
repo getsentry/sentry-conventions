@@ -8,6 +8,7 @@
   "is_in_otel": false,
   "visibility": "public",
   "examples": [5000],
+  "additional_context": ["This attribute is set by Relay."],
   "changelog": [
     {
       "version": "next",
