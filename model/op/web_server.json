@@ -48,7 +48,7 @@
     {
       "name": "view.response.render",
       "deprecation": {
-        "note": "Use `view.render` instead."
+        "replacement": "view.render"
       }
     },
     {
