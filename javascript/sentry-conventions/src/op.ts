@@ -283,6 +283,11 @@ export const DB = 'db';
 
 export const DB_QUERY = 'db.query';
 
+/**
+ * @deprecated Use {@link DB_QUERY} (db.query) instead
+ */
+export const DB_REDIS = 'db.redis';
+
 export const CACHE = 'cache';
 
 export const CACHE_GET = 'cache.get';
