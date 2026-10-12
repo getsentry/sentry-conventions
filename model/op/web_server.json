@@ -64,7 +64,8 @@
     {
       "name": "event.django",
       "deprecation": {
-        "note": "Use `function` instead. Framework-specific event ops are replaced by framework-agnostic ones."
+        "replacement": "function",
+        "note": "Framework-specific event ops are replaced by framework-agnostic ones."
       }
     },
     {
