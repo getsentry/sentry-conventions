@@ -6188,6 +6188,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1732829555.322
     """
 
+    # Path: model/attributes/http/http__request__duration.json
+    HTTP_REQUEST_DURATION: Literal["http.request.duration"] = "http.request.duration"
+    """The duration of a HTTP request, in milliseconds.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
+    """
+
     # Path: model/attributes/http/http__request__fetch_start.json
     HTTP_REQUEST_FETCH_START: Literal["http.request.fetch_start"] = (
         "http.request.fetch_start"
@@ -20634,6 +20645,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "http.request.duration": AttributeMetadata(
+        brief="The duration of a HTTP request, in milliseconds.",
+        type=AttributeType.INTEGER,
+        keys=("http.request.duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        examples=[5000],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[697],
+                description="Added http.request.duration attribute",
+            ),
+        ],
+    ),
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
         type=AttributeType.DOUBLE,
@@ -29665,6 +29693,7 @@ Attributes = TypedDict(
         "http.request.connection_end": float,
         "http.request.domain_lookup_end": float,
         "http.request.domain_lookup_start": float,
+        "http.request.duration": int,
         "http.request.fetch_start": float,
         "http.request.header.<key>": List[str],
         "http.request.method": str,

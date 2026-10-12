@@ -1,0 +1,18 @@
+{
+  "key": "http.request.duration",
+  "brief": "The duration of a HTTP request, in milliseconds.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [5000],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [697],
+      "description": "Added http.request.duration attribute"
+    }
+  ]
+}
