@@ -10,7 +10,7 @@
   "examples": ["arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [672],
       "description": "Added aws.step_functions.execution.arn attribute"
     }

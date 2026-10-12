@@ -10,7 +10,7 @@
   "examples": ["Example Desktop", "Example CLI"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [671],
       "description": "Added mcp.auth.client.name attribute"
     }

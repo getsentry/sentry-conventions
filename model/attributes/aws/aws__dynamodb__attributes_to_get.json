@@ -10,7 +10,7 @@
   "examples": [["lives", "id"]],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [672],
       "description": "Added aws.dynamodb.attributes_to_get attribute"
     }
