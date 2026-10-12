@@ -398,7 +398,7 @@ pub const HANDLER: &str = "handler";
 
 pub const VIEW: &str = "view";
 
-#[deprecated(note = "Use `view` instead.")]
+#[deprecated(note = "Use `VIEW` (view) instead")]
 pub const VIEW_AUTHENTICATE: &str = "view.authenticate";
 
 pub const TEMPLATE: &str = "template";

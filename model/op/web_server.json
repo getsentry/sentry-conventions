@@ -44,7 +44,7 @@
     {
       "name": "view.authenticate",
       "deprecation": {
-        "note": "Use `view` instead."
+        "replacement": "view"
       }
     },
     {
