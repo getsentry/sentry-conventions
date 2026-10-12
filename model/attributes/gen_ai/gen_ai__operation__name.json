@@ -15,6 +15,7 @@
     { "value": "delete_memory" },
     { "value": "delete_memory_store" },
     { "value": "embeddings" },
+    { "value": "evaluate" },
     { "value": "execute_tool" },
     { "value": "generate_content" },
     { "value": "invoke_agent" },
@@ -27,8 +28,8 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [653],
-      "description": "Added memory operation values to the well-known values"
+      "prs": [653, 680],
+      "description": "Added memory operation values and 'evaluate' to the well-known values"
     },
     {
       "version": "0.4.0",

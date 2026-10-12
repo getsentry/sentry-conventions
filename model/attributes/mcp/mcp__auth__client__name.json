@@ -1,0 +1,18 @@
+{
+  "key": "mcp.auth.client.name",
+  "brief": "Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["Example Desktop", "Example CLI"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Added mcp.auth.client.name attribute"
+    }
+  ]
+}

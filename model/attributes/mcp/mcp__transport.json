@@ -1,14 +1,18 @@
 {
   "key": "mcp.transport",
-  "brief": "Transport method used for MCP communication.",
+  "brief": "MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": "stdio",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation"
+    },
     {
       "version": "0.12.0",
       "prs": [420],
@@ -19,10 +23,5 @@
       "prs": [171]
     }
   ],
-  "deprecation": {
-    "_status": "backfill",
-    "replacement": "network.transport",
-    "reason": "OTel uses the generic network.transport attribute"
-  },
-  "alias": ["network.transport", "net.transport"]
+  "examples": ["StdioServerTransport", "CustomHTTPTransport"]
 }

@@ -1,20 +1,18 @@
 {
   "key": "mcp.resource.protocol",
-  "brief": "Protocol of the resource URI being accessed, extracted from the URI.",
+  "brief": "URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": "file",
-  "alias": ["network.protocol.name", "net.protocol.name", "messaging.protocol"],
-  "deprecation": {
-    "_status": "backfill",
-    "replacement": "network.protocol.name",
-    "reason": "OTel uses the generic network.protocol.name attribute"
-  },
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation"
+    },
     {
       "version": "0.21.0",
       "prs": [581],
@@ -29,5 +27,6 @@
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "examples": ["file", "postgres"]
 }

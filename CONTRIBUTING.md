@@ -60,6 +60,14 @@ After you've created an attribute, the script will ask if you'd like to generate
 
 If you need help, run `yarn run create:attribute --help` to see the available options.
 
+### Dynamic attribute keys
+
+Use `<key>` for a dynamic segment in an attribute key. Set `has_dynamic_suffix: true` only when the key ends with `.<key>`, such as `mcp.request.argument.<key>`. This also generates a JavaScript `_BASE` constant for appending the suffix.
+
+For an intermediate segment, such as `mcp.tool.result.<key>.content`, omit `has_dynamic_suffix`. The generated constant preserves the placeholder; consumers can interpolate it with `MCP_TOOL_RESULT_KEY_CONTENT.replace('<key>', String(index))`. Document the segment's meaning, including whether an index starts at zero, and define each field separately so its type and scrubbing policy remain explicit.
+
+Do not alias or backfill an indexed item to an attribute representing the complete result. Combining several items requires an explicit aggregation contract, not a direct rename. Such fields can still be deprecated: set `deprecation._status` to `null` and recommend the alternative in `deprecation.reason`. Omit `replacement` to keep search resolution independent as well.
+
 ### Adding an attribute transformation
 
 Most deprecated attributes only need a direct rename via `deprecation.replacement` and a `_status` of `backfill` or `normalize`. Add an attribute transformation only when the replacement value must be derived or reshaped from one or more source attributes.
@@ -139,6 +147,18 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
   - The deprecation status of the old one SHOULD be set to `backfill` for at least 90 days, and then set to `normalize`.
   - If the value cannot be copied directly to the replacement attribute, use `_status: "transform"` and reference an attribute transformation with `deprecation.transformation`.
 - Prefer keeping names stable. Renames require deprecation cycles across all SDKs that adopted the attribute!
+
+#### Fixing a misnamed attribute
+
+If an attribute was merged with the wrong name (for example, a typo or a name that doesn't match what Relay or SDKs actually emit), do not rename or delete the existing definition. Instead:
+
+1. Add the attribute under the correct name.
+2. Deprecate the incorrect attribute, following the deprecation rules above: set `deprecation.replacement` to the correct name, explain the mistake in `deprecation.reason`, and add both names to each other's `alias` lists.
+3. Add a changelog entry to both attributes.
+
+Deprecate even if you believe the incorrect name was never sent. It's hard to prove that no SDK, integration, or user ever set it, so a deprecated alias is the safe default. Removing the incorrect attribute outright is only acceptable if you have searched all SDK repos and confirmed it was never set, and a code owner agrees.
+
+See [#668](https://github.com/getsentry/sentry-conventions/pull/668) for an example, which fixed `nel.sampling_function` to `nel.sampling_fraction`.
 
 ### Span operations
 

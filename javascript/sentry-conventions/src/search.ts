@@ -2088,6 +2088,11 @@ export const SEARCH_GEN_AI__PROMPT = 'gen_ai.prompt';
 export const SEARCH_GEN_AI__PROMPT__NAME = 'gen_ai.prompt.name';
 
 /**
+ * Search name for {@link attributes.GEN_AI_PROMPT_VARIABLE_KEY}. `gen_ai.prompt.variable.<key>`
+ */
+export const SEARCH_GEN_AI__PROMPT__VARIABLE__KEY = 'gen_ai.prompt.variable.<key>';
+
+/**
  * Search name for {@link attributes.GEN_AI_PROVIDER_NAME}. `gen_ai.provider.name`
  */
 export const SEARCH_GEN_AI__PROVIDER__NAME = 'gen_ai.provider.name';
@@ -2775,6 +2780,26 @@ export const SEARCH_ID = 'id';
 export const SEARCH_INP = 'inp';
 
 /**
+ * Search name for {@link attributes.INTEGRITY_BLOCKED_URL}. `integrity.blocked_url`
+ */
+export const SEARCH_INTEGRITY__BLOCKED_URL = 'integrity.blocked_url';
+
+/**
+ * Search name for {@link attributes.INTEGRITY_DESTINATION}. `integrity.destination`
+ */
+export const SEARCH_INTEGRITY__DESTINATION = 'integrity.destination';
+
+/**
+ * Search name for {@link attributes.INTEGRITY_DOCUMENT_URL}. `integrity.document_url`
+ */
+export const SEARCH_INTEGRITY__DOCUMENT_URL = 'integrity.document_url';
+
+/**
+ * Search name for {@link attributes.INTEGRITY_REPORT_ONLY}. `integrity.report_only`
+ */
+export const SEARCH_INTEGRITY__REPORT_ONLY = 'integrity.report_only';
+
+/**
  * Search name for {@link attributes.JSONRPC_PROTOCOL_VERSION}. `jsonrpc.protocol.version`
  */
 export const SEARCH_JSONRPC__PROTOCOL__VERSION = 'jsonrpc.protocol.version';
@@ -2900,6 +2925,11 @@ export const SEARCH_LITESTAR__MIDDLEWARE_NAME = 'litestar.middleware_name';
 export const SEARCH_LOGGER__NAME = 'logger.name';
 
 /**
+ * Search name for {@link attributes.MCP_AUTH_CLIENT_NAME}. `mcp.auth.client.name`
+ */
+export const SEARCH_MCP__AUTH__CLIENT__NAME = 'mcp.auth.client.name';
+
+/**
  * Search name for {@link attributes.MCP_CANCELLED_REASON}. `mcp.cancelled.reason`
  */
 export const SEARCH_MCP__CANCELLED__REASON = 'mcp.cancelled.reason';
@@ -2987,6 +3017,16 @@ export const SEARCH_MCP__PROGRESS__TOTAL = 'mcp.progress.total';
 export const SEARCH_MCP__PROMPT__NAME = 'mcp.prompt.name';
 
 /**
+ * Search name for {@link attributes.MCP_PROMPT_RESULT_KEY_CONTENT}. `mcp.prompt.result.<key>.content`
+ */
+export const SEARCH_MCP__PROMPT__RESULT__KEY__CONTENT = 'mcp.prompt.result.<key>.content';
+
+/**
+ * Search name for {@link attributes.MCP_PROMPT_RESULT_KEY_ROLE}. `mcp.prompt.result.<key>.role`
+ */
+export const SEARCH_MCP__PROMPT__RESULT__KEY__ROLE = 'mcp.prompt.result.<key>.role';
+
+/**
  * Search name for {@link attributes.MCP_PROMPT_RESULT_DESCRIPTION}. `mcp.prompt.result.description`
  */
 export const SEARCH_MCP__PROMPT__RESULT__DESCRIPTION = 'mcp.prompt.result.description';
@@ -3040,8 +3080,6 @@ export const SEARCH_MCP__REQUEST__ID = 'mcp.request.id';
 
 /**
  * Search name for {@link attributes.MCP_RESOURCE_PROTOCOL}. `mcp.resource.protocol`
- *
- * @deprecated Use {@link SEARCH_NETWORK__PROTOCOL__NAME} (`network.protocol.name`) instead
  */
 export const SEARCH_MCP__RESOURCE__PROTOCOL = 'mcp.resource.protocol';
 
@@ -3078,6 +3116,62 @@ export const SEARCH_MCP__SESSION__ID = 'mcp.session.id';
 export const SEARCH_MCP__TOOL__NAME = 'mcp.tool.name';
 
 /**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_CONTENT}. `mcp.tool.result.<key>.content`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__CONTENT = 'mcp.tool.result.<key>.content';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_CONTENT_TYPE}. `mcp.tool.result.<key>.content_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__CONTENT_TYPE = 'mcp.tool.result.<key>.content_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_DATA_SIZE}. `mcp.tool.result.<key>.data_size`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__DATA_SIZE = 'mcp.tool.result.<key>.data_size';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_MIME_TYPE}. `mcp.tool.result.<key>.mime_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__MIME_TYPE = 'mcp.tool.result.<key>.mime_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_NAME}. `mcp.tool.result.<key>.name`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__NAME = 'mcp.tool.result.<key>.name';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE}. `mcp.tool.result.<key>.resource_mime_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_MIME_TYPE = 'mcp.tool.result.<key>.resource_mime_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_RESOURCE_URI}. `mcp.tool.result.<key>.resource_uri`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_URI = 'mcp.tool.result.<key>.resource_uri';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_URI}. `mcp.tool.result.<key>.uri`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__URI = 'mcp.tool.result.<key>.uri';
+
+/**
  * Search name for {@link attributes.MCP_TOOL_RESULT_CONTENT}. `mcp.tool.result.content`
  *
  * @deprecated Use {@link SEARCH_GEN_AI__TOOL__CALL__RESULT} (`gen_ai.tool.call.result`) instead
@@ -3092,6 +3186,20 @@ export const SEARCH_MCP__TOOL__RESULT__CONTENT = 'mcp.tool.result.content';
 export const SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT = 'mcp.tool.result.content_count';
 
 /**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_CONTENT_TYPE}. `mcp.tool.result.content_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__CONTENT_TYPE = 'mcp.tool.result.content_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_DATA_SIZE}. `mcp.tool.result.data_size`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__DATA_SIZE = 'mcp.tool.result.data_size';
+
+/**
  * Search name for {@link attributes.MCP_TOOL_RESULT_IS_ERROR}. `mcp.tool.result.is_error`
  *
  * @deprecated Use {@link SEARCH_ERROR__TYPE} (`error.type`) instead
@@ -3099,9 +3207,42 @@ export const SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT = 'mcp.tool.result.content_
 export const SEARCH_MCP__TOOL__RESULT__IS_ERROR = 'mcp.tool.result.is_error';
 
 /**
- * Search name for {@link attributes.MCP_TRANSPORT}. `mcp.transport`
+ * Search name for {@link attributes.MCP_TOOL_RESULT_MIME_TYPE}. `mcp.tool.result.mime_type`
  *
- * @deprecated Use {@link SEARCH_NETWORK__TRANSPORT} (`network.transport`) instead
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__MIME_TYPE = 'mcp.tool.result.mime_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_NAME}. `mcp.tool.result.name`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__NAME = 'mcp.tool.result.name';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_RESOURCE_MIME_TYPE}. `mcp.tool.result.resource_mime_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__RESOURCE_MIME_TYPE = 'mcp.tool.result.resource_mime_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_RESOURCE_URI}. `mcp.tool.result.resource_uri`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__RESOURCE_URI = 'mcp.tool.result.resource_uri';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_URI}. `mcp.tool.result.uri`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__URI = 'mcp.tool.result.uri';
+
+/**
+ * Search name for {@link attributes.MCP_TRANSPORT}. `mcp.transport`
  */
 export const SEARCH_MCP__TRANSPORT = 'mcp.transport';
 
@@ -5480,6 +5621,7 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__PIPELINE__NAME
   | typeof SEARCH_GEN_AI__PROMPT
   | typeof SEARCH_GEN_AI__PROMPT__NAME
+  | typeof SEARCH_GEN_AI__PROMPT__VARIABLE__KEY
   | typeof SEARCH_GEN_AI__PROVIDER__NAME
   | typeof SEARCH_GEN_AI__REQUEST__AVAILABLE_TOOLS
   | typeof SEARCH_GEN_AI__REQUEST__FREQUENCY_PENALTY
@@ -5601,6 +5743,10 @@ export type AttributeSearchName =
   | typeof SEARCH_HTTP__USER_AGENT
   | typeof SEARCH_ID
   | typeof SEARCH_INP
+  | typeof SEARCH_INTEGRITY__BLOCKED_URL
+  | typeof SEARCH_INTEGRITY__DESTINATION
+  | typeof SEARCH_INTEGRITY__DOCUMENT_URL
+  | typeof SEARCH_INTEGRITY__REPORT_ONLY
   | typeof SEARCH_JSONRPC__PROTOCOL__VERSION
   | typeof SEARCH_JSONRPC__REQUEST__ID
   | typeof SEARCH_JVM__GC__ACTION
@@ -5622,6 +5768,7 @@ export type AttributeSearchName =
   | typeof SEARCH_LINK__TYPE
   | typeof SEARCH_LITESTAR__MIDDLEWARE_NAME
   | typeof SEARCH_LOGGER__NAME
+  | typeof SEARCH_MCP__AUTH__CLIENT__NAME
   | typeof SEARCH_MCP__CANCELLED__REASON
   | typeof SEARCH_MCP__CANCELLED__REQUEST_ID
   | typeof SEARCH_MCP__CLIENT__NAME
@@ -5639,6 +5786,8 @@ export type AttributeSearchName =
   | typeof SEARCH_MCP__PROGRESS__TOKEN
   | typeof SEARCH_MCP__PROGRESS__TOTAL
   | typeof SEARCH_MCP__PROMPT__NAME
+  | typeof SEARCH_MCP__PROMPT__RESULT__KEY__CONTENT
+  | typeof SEARCH_MCP__PROMPT__RESULT__KEY__ROLE
   | typeof SEARCH_MCP__PROMPT__RESULT__DESCRIPTION
   | typeof SEARCH_MCP__PROMPT__RESULT__MESSAGE_CONTENT
   | typeof SEARCH_MCP__PROMPT__RESULT__MESSAGE_COUNT
@@ -5656,9 +5805,24 @@ export type AttributeSearchName =
   | typeof SEARCH_MCP__SERVER__VERSION
   | typeof SEARCH_MCP__SESSION__ID
   | typeof SEARCH_MCP__TOOL__NAME
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__CONTENT
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__CONTENT_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__DATA_SIZE
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__MIME_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__NAME
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_MIME_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_URI
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__URI
   | typeof SEARCH_MCP__TOOL__RESULT__CONTENT
   | typeof SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT
+  | typeof SEARCH_MCP__TOOL__RESULT__CONTENT_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__DATA_SIZE
   | typeof SEARCH_MCP__TOOL__RESULT__IS_ERROR
+  | typeof SEARCH_MCP__TOOL__RESULT__MIME_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__NAME
+  | typeof SEARCH_MCP__TOOL__RESULT__RESOURCE_MIME_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__RESOURCE_URI
+  | typeof SEARCH_MCP__TOOL__RESULT__URI
   | typeof SEARCH_MCP__TRANSPORT
   | typeof SEARCH_MDC__KEY
   | typeof SEARCH_MESSAGING__BATCH__MESSAGE_COUNT
@@ -8412,6 +8576,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name of the prompt that uniquely identifies it.',
     deprecationChain: ['gen_ai.prompt.name', 'mcp.prompt.name'],
   },
+  'gen_ai.prompt.variable.<key>': {
+    canonicalName: 'gen_ai.prompt.variable.<key>',
+    type: 'string',
+    brief:
+      'Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.',
+    deprecationChain: ['gen_ai.prompt.variable.<key>'],
+  },
   'gen_ai.provider.name': {
     canonicalName: 'gen_ai.provider.name',
     type: 'string',
@@ -9280,6 +9451,30 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     deprecationChain: ['browser.web_vital.inp.value', 'inp'],
   },
+  'integrity.blocked_url': {
+    canonicalName: 'integrity.blocked_url',
+    type: 'string',
+    brief: 'The URL of the resource blocked by the integrity policy.',
+    deprecationChain: ['integrity.blocked_url'],
+  },
+  'integrity.destination': {
+    canonicalName: 'integrity.destination',
+    type: 'string',
+    brief: 'The destination type of the resource affected by the integrity policy.',
+    deprecationChain: ['integrity.destination'],
+  },
+  'integrity.document_url': {
+    canonicalName: 'integrity.document_url',
+    type: 'string',
+    brief: 'The URL of the document where the integrity violation occurred.',
+    deprecationChain: ['integrity.document_url'],
+  },
+  'integrity.report_only': {
+    canonicalName: 'integrity.report_only',
+    type: 'boolean',
+    brief: 'Whether the integrity violation was generated by a report-only policy.',
+    deprecationChain: ['integrity.report_only'],
+  },
   'jsonrpc.protocol.version': {
     canonicalName: 'jsonrpc.protocol.version',
     type: 'string',
@@ -9289,7 +9484,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'jsonrpc.request.id': {
     canonicalName: 'jsonrpc.request.id',
     type: 'string',
-    brief: 'The JSON-RPC request identifier. Unique within the session.',
+    brief: 'The JSON-RPC request identifier, used to correlate a request with its response.',
     deprecationChain: ['jsonrpc.request.id', 'mcp.request.id'],
   },
   'jvm.gc.action': {
@@ -9413,6 +9608,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name of the logger that generated this event.',
     deprecationChain: ['logger.name'],
   },
+  'mcp.auth.client.name': {
+    canonicalName: 'mcp.auth.client.name',
+    type: 'string',
+    brief:
+      'Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.',
+    deprecationChain: ['mcp.auth.client.name'],
+  },
   'mcp.cancelled.reason': {
     canonicalName: 'mcp.cancelled.reason',
     type: 'string',
@@ -9428,19 +9630,20 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'mcp.client.name': {
     canonicalName: 'mcp.client.name',
     type: 'string',
-    brief: 'Name of the MCP client application.',
+    brief:
+      'Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.',
     deprecationChain: ['mcp.client.name'],
   },
   'mcp.client.title': {
     canonicalName: 'mcp.client.title',
     type: 'string',
-    brief: 'Display title of the MCP client application.',
+    brief: 'Display title of the MCP client implementation, as declared in clientInfo.',
     deprecationChain: ['mcp.client.title'],
   },
   'mcp.client.version': {
     canonicalName: 'mcp.client.version',
     type: 'string',
-    brief: 'Version of the MCP client application.',
+    brief: 'Version of the MCP client implementation, as declared in clientInfo.',
     deprecationChain: ['mcp.client.version'],
   },
   'mcp.lifecycle.phase': {
@@ -9481,7 +9684,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'mcp.progress.current': {
     canonicalName: 'mcp.progress.current',
-    type: 'integer',
+    type: 'double',
     brief: 'Current progress value of an MCP operation.',
     deprecationChain: ['mcp.progress.current'],
   },
@@ -9505,7 +9708,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   },
   'mcp.progress.total': {
     canonicalName: 'mcp.progress.total',
-    type: 'integer',
+    type: 'double',
     brief: 'Total progress target value of an MCP operation.',
     deprecationChain: ['mcp.progress.total'],
   },
@@ -9514,6 +9717,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Name of the MCP prompt template being used.',
     deprecationChain: ['gen_ai.prompt.name', 'mcp.prompt.name'],
+  },
+  'mcp.prompt.result.<key>.content': {
+    canonicalName: 'mcp.prompt.result.<key>.content',
+    type: 'string',
+    brief: 'Legacy text content of an indexed message in a multi-message MCP prompt result.',
+    deprecationChain: ['mcp.prompt.result.<key>.content'],
+  },
+  'mcp.prompt.result.<key>.role': {
+    canonicalName: 'mcp.prompt.result.<key>.role',
+    type: 'string',
+    brief: 'Legacy role of an indexed message in a multi-message MCP prompt result.',
+    deprecationChain: ['mcp.prompt.result.<key>.role'],
   },
   'mcp.prompt.result.description': {
     canonicalName: 'mcp.prompt.result.description',
@@ -9542,13 +9757,14 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'mcp.protocol.ready': {
     canonicalName: 'mcp.protocol.ready',
     type: 'integer',
-    brief: 'Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.',
+    brief:
+      'Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.',
     deprecationChain: ['mcp.protocol.ready'],
   },
   'mcp.protocol.version': {
     canonicalName: 'mcp.protocol.version',
     type: 'string',
-    brief: 'MCP protocol version used in the session.',
+    brief: 'Version of the Model Context Protocol used for the operation.',
     deprecationChain: ['mcp.protocol.version'],
   },
   'mcp.request.argument.<key>': {
@@ -9573,14 +9789,15 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'mcp.request.id': {
     canonicalName: 'jsonrpc.request.id',
     type: 'string',
-    brief: 'JSON-RPC request identifier for the MCP request. Unique within the MCP session.',
+    brief: 'JSON-RPC request identifier for the MCP request, used to correlate the request with its response.',
     deprecationChain: ['jsonrpc.request.id', 'mcp.request.id'],
   },
   'mcp.resource.protocol': {
-    canonicalName: 'network.protocol.name',
+    canonicalName: 'mcp.resource.protocol',
     type: 'string',
-    brief: 'Protocol of the resource URI being accessed, extracted from the URI.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    brief:
+      'URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.',
+    deprecationChain: ['mcp.resource.protocol'],
   },
   'mcp.resource.uri': {
     canonicalName: 'mcp.resource.uri',
@@ -9591,25 +9808,25 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'mcp.server.name': {
     canonicalName: 'mcp.server.name',
     type: 'string',
-    brief: 'Name of the MCP server application.',
+    brief: 'Name of the MCP server implementation, as declared in serverInfo.',
     deprecationChain: ['mcp.server.name'],
   },
   'mcp.server.title': {
     canonicalName: 'mcp.server.title',
     type: 'string',
-    brief: 'Display title of the MCP server application.',
+    brief: 'Display title of the MCP server implementation, as declared in serverInfo.',
     deprecationChain: ['mcp.server.title'],
   },
   'mcp.server.version': {
     canonicalName: 'mcp.server.version',
     type: 'string',
-    brief: 'Version of the MCP server application.',
+    brief: 'Version of the MCP server implementation, as declared in serverInfo.',
     deprecationChain: ['mcp.server.version'],
   },
   'mcp.session.id': {
     canonicalName: 'mcp.session.id',
     type: 'string',
-    brief: 'Identifier for the MCP session.',
+    brief: 'Identifier for an MCP protocol session, when the operation belongs to a session.',
     deprecationChain: ['mcp.session.id'],
   },
   'mcp.tool.name': {
@@ -9617,6 +9834,63 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Name of the MCP tool being called.',
     deprecationChain: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
+  },
+  'mcp.tool.result.<key>.content': {
+    canonicalName: 'mcp.tool.result.<key>.content',
+    type: 'string',
+    brief: 'Legacy text content of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.content'],
+  },
+  'mcp.tool.result.<key>.content_type': {
+    canonicalName: 'mcp.tool.result.<key>.content_type',
+    type: 'string',
+    brief: 'Legacy content type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.content_type'],
+  },
+  'mcp.tool.result.<key>.data_size': {
+    canonicalName: 'mcp.tool.result.<key>.data_size',
+    type: 'integer',
+    brief:
+      'Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.data_size'],
+  },
+  'mcp.tool.result.<key>.mime_type': {
+    canonicalName: 'mcp.tool.result.<key>.mime_type',
+    type: 'string',
+    brief: 'Legacy MIME type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.mime_type'],
+  },
+  'mcp.tool.result.<key>.name': {
+    canonicalName: 'mcp.tool.result.<key>.name',
+    type: 'string',
+    brief: 'Legacy resource link name of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.name'],
+  },
+  'mcp.tool.result.<key>.resource_mime_type': {
+    canonicalName: 'mcp.tool.result.<key>.resource_mime_type',
+    type: 'string',
+    brief: 'Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.resource_mime_type'],
+  },
+  'mcp.tool.result.<key>.resource_uri': {
+    canonicalName: 'mcp.tool.result.<key>.resource_uri',
+    type: 'string',
+    brief: 'Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.resource_uri'],
+  },
+  'mcp.tool.result.<key>.uri': {
+    canonicalName: 'mcp.tool.result.<key>.uri',
+    type: 'string',
+    brief: 'Legacy resource link URI of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.uri'],
   },
   'mcp.tool.result.content': {
     canonicalName: 'gen_ai.tool.call.result',
@@ -9638,17 +9912,68 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecated: true,
     deprecationChain: ['mcp.tool.result.content_count'],
   },
+  'mcp.tool.result.content_type': {
+    canonicalName: 'mcp.tool.result.content_type',
+    type: 'string',
+    brief: 'Legacy content type of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.content_type'],
+  },
+  'mcp.tool.result.data_size': {
+    canonicalName: 'mcp.tool.result.data_size',
+    type: 'integer',
+    brief:
+      'Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.data_size'],
+  },
   'mcp.tool.result.is_error': {
     canonicalName: 'error.type',
     type: 'boolean',
     brief: 'Whether a tool execution resulted in an error.',
     deprecationChain: ['error.type', 'fs_error', 'mcp.tool.result.is_error'],
   },
-  'mcp.transport': {
-    canonicalName: 'network.transport',
+  'mcp.tool.result.mime_type': {
+    canonicalName: 'mcp.tool.result.mime_type',
     type: 'string',
-    brief: 'Transport method used for MCP communication.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
+    brief: 'Legacy MIME type of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.mime_type'],
+  },
+  'mcp.tool.result.name': {
+    canonicalName: 'mcp.tool.result.name',
+    type: 'string',
+    brief: 'Legacy resource link name of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.name'],
+  },
+  'mcp.tool.result.resource_mime_type': {
+    canonicalName: 'mcp.tool.result.resource_mime_type',
+    type: 'string',
+    brief: 'Legacy embedded resource MIME type of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.resource_mime_type'],
+  },
+  'mcp.tool.result.resource_uri': {
+    canonicalName: 'mcp.tool.result.resource_uri',
+    type: 'string',
+    brief: 'Legacy embedded resource URI of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.resource_uri'],
+  },
+  'mcp.tool.result.uri': {
+    canonicalName: 'mcp.tool.result.uri',
+    type: 'string',
+    brief: 'Legacy resource link URI of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.uri'],
+  },
+  'mcp.transport': {
+    canonicalName: 'mcp.transport',
+    type: 'string',
+    brief:
+      'MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.',
+    deprecationChain: ['mcp.transport'],
   },
   'mdc.<key>': {
     canonicalName: 'mdc.<key>',
@@ -9786,7 +10111,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
   },
   'messaging.protocol_version': {
     canonicalName: 'network.protocol.version',
@@ -9981,7 +10306,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
   },
   'net.protocol.version': {
     canonicalName: 'network.protocol.version',
@@ -9993,7 +10318,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport and network layer',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
+    deprecationChain: ['network.transport', 'net.sock.family', 'net.transport'],
   },
   'net.sock.host.addr': {
     canonicalName: 'network.local.address',
@@ -10030,7 +10355,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
+    deprecationChain: ['network.transport', 'net.sock.family', 'net.transport'],
   },
   'network.connection.effective_type': {
     canonicalName: 'network.connection.effective_type',
@@ -10078,7 +10403,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.protocol.name',
     type: 'string',
     brief: 'OSI application layer or non-OSI equivalent.',
-    deprecationChain: ['network.protocol.name', 'mcp.resource.protocol', 'messaging.protocol', 'net.protocol.name'],
+    deprecationChain: ['network.protocol.name', 'messaging.protocol', 'net.protocol.name'],
   },
   'network.protocol.version': {
     canonicalName: 'network.protocol.version',
@@ -10090,7 +10415,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'network.transport',
     type: 'string',
     brief: 'OSI transport layer or inter-process communication method.',
-    deprecationChain: ['network.transport', 'mcp.transport', 'net.sock.family', 'net.transport'],
+    deprecationChain: ['network.transport', 'net.sock.family', 'net.transport'],
   },
   'network.type': {
     canonicalName: 'network.type',

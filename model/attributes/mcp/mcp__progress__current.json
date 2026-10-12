@@ -1,14 +1,18 @@
 {
   "key": "mcp.progress.current",
   "brief": "Current progress value of an MCP operation.",
-  "type": "integer",
+  "type": "double",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 50,
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Changed the type to double to support fractional MCP progress values"
+    },
     {
       "version": "0.4.0",
       "prs": [228]
@@ -17,5 +21,6 @@
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "examples": [0.2, 50]
 }

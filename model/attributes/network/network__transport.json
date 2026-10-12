@@ -6,10 +6,14 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "tcp",
-  "alias": ["net.transport", "mcp.transport"],
+  "alias": ["net.transport"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Removed the semantically distinct mcp.transport alias"
+    },
     {
       "version": "0.1.0",
       "prs": [127]
@@ -17,5 +21,6 @@
     {
       "version": "0.0.0"
     }
-  ]
+  ],
+  "examples": ["tcp"]
 }

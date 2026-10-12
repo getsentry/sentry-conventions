@@ -1,17 +1,22 @@
 {
   "key": "mcp.server.name",
-  "brief": "Name of the MCP server application.",
+  "brief": "Name of the MCP server implementation, as declared in serverInfo.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": "sentry-mcp-server",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [671],
+      "description": "Clarified that the attribute describes declared MCP implementation metadata"
+    },
     {
       "version": "0.3.0",
       "prs": [171]
     }
-  ]
+  ],
+  "examples": ["example-mcp-server"]
 }
