@@ -10187,6 +10187,27 @@ export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_star
  */
 export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
 
+// Path: model/attributes/http/http__request__duration.json
+
+/**
+ * The duration of a HTTP request, in milliseconds. `http.request.duration`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const HTTP_REQUEST_DURATION = 'http.request.duration';
+
+/**
+ * Type for {@link HTTP_REQUEST_DURATION} http.request.duration
+ */
+export type HTTP_REQUEST_DURATION_TYPE = number;
+
 // Path: model/attributes/http/http__request__fetch_start.json
 
 /**
@@ -20876,6 +20897,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.request_content_length_uncompressed': 'integer',
   'http.request.domain_lookup_end': 'double',
   'http.request.domain_lookup_start': 'double',
+  'http.request.duration': 'integer',
   'http.request.fetch_start': 'double',
   'http.request.header.<key>': 'string[]',
   'http.request.method': 'string',
@@ -21784,6 +21806,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
+  | typeof HTTP_REQUEST_DURATION
   | typeof HTTP_REQUEST_FETCH_START
   | typeof HTTP_REQUEST_HEADER_KEY
   | typeof HTTP_REQUEST_METHOD
@@ -29588,6 +29611,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1732829555.322,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
+  },
+  'http.request.duration': {
+    brief: 'The duration of a HTTP request, in milliseconds.',
+    type: 'integer',
+    keys: ['http.request.duration'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    examples: [5000],
+    changelog: [{ version: 'next', prs: [697], description: 'Added http.request.duration attribute' }],
+    additionalContext: ['This attribute is set by Relay.'],
   },
   'http.request.fetch_start': {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
@@ -37626,6 +37663,7 @@ export type Attributes = {
   [HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
+  [HTTP_REQUEST_DURATION]?: HTTP_REQUEST_DURATION_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;

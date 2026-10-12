@@ -2562,6 +2562,11 @@ export const SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_END = 'http.request.domain_look
 export const SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
 
 /**
+ * Search name for {@link attributes.HTTP_REQUEST_DURATION}. `http.request.duration`
+ */
+export const SEARCH_HTTP__REQUEST__DURATION = 'http.request.duration';
+
+/**
  * Search name for {@link attributes.HTTP_REQUEST_FETCH_START}. `http.request.fetch_start`
  */
 export const SEARCH_HTTP__REQUEST__FETCH_START = 'http.request.fetch_start';
@@ -5705,6 +5710,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HTTP__REQUEST__CONNECTION_END
   | typeof SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_END
   | typeof SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_START
+  | typeof SEARCH_HTTP__REQUEST__DURATION
   | typeof SEARCH_HTTP__REQUEST__FETCH_START
   | typeof SEARCH_HTTP__REQUEST__HEADER__KEY
   | typeof SEARCH_HTTP__REQUEST__METHOD
@@ -9189,6 +9195,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
     deprecationChain: ['http.request.domain_lookup_start'],
+  },
+  'http.request.duration': {
+    canonicalName: 'http.request.duration',
+    type: 'integer',
+    brief: 'The duration of a HTTP request, in milliseconds.',
+    deprecationChain: ['http.request.duration'],
   },
   'http.request.fetch_start': {
     canonicalName: 'http.request.fetch_start',
