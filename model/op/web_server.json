@@ -35,6 +35,66 @@
       "name": "middleware"
     },
     {
+      "name": "middleware.django",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.litestar",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.litestar.receive",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.litestar.send",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlette",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlette.receive",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlette.send",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlite",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlite.receive",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlite.send",
+      "deprecation": {
+        "note": "Use `middleware` instead. Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
       "name": "handler",
       "description": "Handling of an incoming request by a web server route handler"
     },
