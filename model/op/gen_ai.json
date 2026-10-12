@@ -9,13 +9,15 @@
     {
       "name": "ai.chat_completions.create.cohere",
       "deprecation": {
-        "note": "Use `gen_ai.chat` instead. Provider-specific AI ops are replaced by framework-agnostic ones."
+        "replacement": "gen_ai.chat",
+        "note": "Provider-specific AI ops are replaced by framework-agnostic ones."
       }
     },
     {
       "name": "ai.embeddings.create.cohere",
       "deprecation": {
-        "note": "Use `gen_ai.embeddings` instead. Provider-specific AI ops are replaced by framework-agnostic ones."
+        "replacement": "gen_ai.embeddings",
+        "note": "Provider-specific AI ops are replaced by framework-agnostic ones."
       }
     },
     {

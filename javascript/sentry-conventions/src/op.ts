@@ -315,12 +315,12 @@ export const FUNCTION_AZURE = 'function.azure';
 export const GEN_AI_CHAT = 'gen_ai.chat';
 
 /**
- * @deprecated Use `gen_ai.chat` instead. Provider-specific AI ops are replaced by framework-agnostic ones.
+ * @deprecated Use {@link GEN_AI_CHAT} (gen_ai.chat) instead - Provider-specific AI ops are replaced by framework-agnostic ones.
  */
 export const AI_CHAT_COMPLETIONS_CREATE_COHERE = 'ai.chat_completions.create.cohere';
 
 /**
- * @deprecated Use `gen_ai.embeddings` instead. Provider-specific AI ops are replaced by framework-agnostic ones.
+ * @deprecated Use {@link GEN_AI_EMBEDDINGS} (gen_ai.embeddings) instead - Provider-specific AI ops are replaced by framework-agnostic ones.
  */
 export const AI_EMBEDDINGS_CREATE_COHERE = 'ai.embeddings.create.cohere';
 
