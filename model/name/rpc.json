@@ -1,0 +1,14 @@
+{
+  "brief": "RPC",
+  "operations": [
+    {
+      "name": "RPC call",
+      "brief": "A remote procedure call, such as an AWS SDK call or a gRPC call.",
+      "is_in_otel": true,
+      "otel_notes": "OpenTelemetry names RPC spans `{rpc.method}`, falling back to `{rpc.system.name}`. AWS SDK spans are named `{rpc.service}.{rpc.method}`, which the first template matches.",
+      "ops": ["rpc"],
+      "templates": ["{{rpc.service}}.{{rpc.method}}", "{{rpc.method}}", "{{rpc.system.name}}", "RPC call"],
+      "examples": ["S3.ListBuckets", "Lambda.Invoke", "com.example.ExampleService/exampleMethod", "grpc", "RPC call"]
+    }
+  ]
+}
