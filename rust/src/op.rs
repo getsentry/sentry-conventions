@@ -206,6 +206,12 @@ pub const FUNCTION_AZURE: &str = "function.azure";
 /// A chat interaction with a generative AI model
 pub const GEN_AI_CHAT: &str = "gen_ai.chat";
 
+#[deprecated(note = "Use `gen_ai.chat` instead. Provider-specific AI ops are replaced by framework-agnostic ones.")]
+pub const AI_CHAT_COMPLETIONS_CREATE_COHERE: &str = "ai.chat_completions.create.cohere";
+
+#[deprecated(note = "Use `gen_ai.embeddings` instead. Provider-specific AI ops are replaced by framework-agnostic ones.")]
+pub const AI_EMBEDDINGS_CREATE_COHERE: &str = "ai.embeddings.create.cohere";
+
 /// Execution of a tool or function by a generative AI model
 pub const GEN_AI_EXECUTE_TOOL: &str = "gen_ai.execute_tool";
 

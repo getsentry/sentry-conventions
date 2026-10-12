@@ -7,6 +7,18 @@
       "description": "A chat interaction with a generative AI model"
     },
     {
+      "name": "ai.chat_completions.create.cohere",
+      "deprecation": {
+        "note": "Use `gen_ai.chat` instead. Provider-specific AI ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "ai.embeddings.create.cohere",
+      "deprecation": {
+        "note": "Use `gen_ai.embeddings` instead. Provider-specific AI ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
       "name": "gen_ai.execute_tool",
       "description": "Execution of a tool or function by a generative AI model"
     },
