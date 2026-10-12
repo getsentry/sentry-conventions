@@ -617,6 +617,11 @@ export const VIEW = 'view';
  */
 export const VIEW_RENDER = 'view.render';
 
+/**
+ * @deprecated Use `view.render` instead.
+ */
+export const VIEW_RESPONSE_RENDER = 'view.response.render';
+
 export const TEMPLATE = 'template';
 
 /**
