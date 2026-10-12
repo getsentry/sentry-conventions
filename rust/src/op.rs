@@ -287,47 +287,47 @@ pub const QUEUE_PROCESS: &str = "queue.process";
 pub const QUEUE_SETTLE: &str = "queue.settle";
 
 /// Publishing a message to an arq queue.
-#[deprecated(note = "Use `queue.publish` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_SUBMIT_ARQ: &str = "queue.submit.arq";
 
 /// Publishing a message to a Celery broker.
-#[deprecated(note = "Use `queue.publish` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_SUBMIT_CELERY: &str = "queue.submit.celery";
 
 /// Publishing a message to a Django queue.
-#[deprecated(note = "Use `queue.publish` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_SUBMIT_DJANGO: &str = "queue.submit.django";
 
 /// Publishing a message to a Huey instance.
-#[deprecated(note = "Use `queue.publish` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_SUBMIT_HUEY: &str = "queue.submit.huey";
 
 /// Publishing a message to a Ray queue.
-#[deprecated(note = "Use `queue.publish` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_SUBMIT_RAY: &str = "queue.submit.ray";
 
 /// Processing a message from an arq queue.
-#[deprecated(note = "Use `queue.process` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_ARQ: &str = "queue.task.arq";
 
 /// Processing a message from a Celery queue.
-#[deprecated(note = "Use `queue.process` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_CELERY: &str = "queue.task.celery";
 
 /// Processing a message from a Dramatiq queue.
-#[deprecated(note = "Use `queue.process` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_DRAMATIQ: &str = "queue.task.dramatiq";
 
 /// Processing a message from a Huey instance.
-#[deprecated(note = "Use `queue.process` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_HUEY: &str = "queue.task.huey";
 
 /// Processing a message from a Ray queue.
-#[deprecated(note = "Use `queue.process` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_RAY: &str = "queue.task.ray";
 
 /// Processing a message from an RQ queue.
-#[deprecated(note = "Use `queue.process` instead. Framework-specific queue ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_RQ: &str = "queue.task.rq";
 
 // Path: model/op/mobile.json
