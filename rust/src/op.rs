@@ -401,6 +401,9 @@ pub const HANDLER: &str = "handler";
 
 pub const VIEW: &str = "view";
 
+/// Rendering of a view.
+pub const VIEW_RENDER: &str = "view.render";
+
 pub const TEMPLATE: &str = "template";
 
 #[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]

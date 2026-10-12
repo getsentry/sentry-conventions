@@ -42,6 +42,10 @@
       "name": "view"
     },
     {
+      "name": "view.render",
+      "description": "Rendering of a view."
+    },
+    {
       "name": "template"
     },
     {
