@@ -47,7 +47,10 @@
     },
     {
       "name": "gen_ai.responses",
-      "description": "An interaction with a generative AI model through a responses API"
+      "description": "An interaction with a generative AI model through a responses API",
+      "deprecation": {
+        "replacement": "gen_ai.chat"
+      }
     },
     {
       "name": "gen_ai.text_completion",
