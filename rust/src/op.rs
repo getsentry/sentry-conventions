@@ -406,4 +406,7 @@ pub const FUNCTION_REMIX: &str = "function.remix";
 #[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
 pub const FUNCTION_NEXTJS: &str = "function.nextjs";
 
+#[deprecated(note = "Use `function` instead. Framework-specific event ops are replaced by framework-agnostic ones.")]
+pub const EVENT_DJANGO: &str = "event.django";
+
 pub const CONSOLE: &str = "console";
