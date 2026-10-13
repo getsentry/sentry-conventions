@@ -1,0 +1,23 @@
+{
+  "brief": "Object storage",
+  "operations": [
+    {
+      "name": "Object",
+      "brief": "An operation on an object storage system such as Cloudflare R2, Amazon S3, and compatible services.",
+      "ops": [
+        "object.get",
+        "object.head",
+        "object.put",
+        "object.copy",
+        "object.delete",
+        "object.list",
+        "object.upload_part",
+        "object.multipart_upload.abort",
+        "object.multipart_upload.create",
+        "object.multipart_upload.complete"
+      ],
+      "templates": ["{{aws.s3.bucket}}", "{{cloudflare.r2.bucket}}"],
+      "examples": ["invoices", "MY_BUCKET"]
+    }
+  ]
+}
