@@ -2174,7 +2174,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source object (in the form bucket/key) for the copy operation.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "someFile.yml"
@@ -2185,7 +2185,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The delete request container that specifies the objects to be deleted.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
@@ -2196,7 +2196,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "someFile.yml"
@@ -14664,12 +14664,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The source object (in the form bucket/key) for the copy operation.",
         type=AttributeType.STRING,
         keys=("aws.s3.copy_source",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="someFile.yml",
         examples=["someFile.yml"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0",
                 prs=[672],
@@ -14684,7 +14688,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The delete request container that specifies the objects to be deleted.",
         type=AttributeType.STRING,
         keys=("aws.s3.delete",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean",
@@ -14692,6 +14696,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
         ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.delete attribute"
             ),
@@ -14704,12 +14712,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.",
         type=AttributeType.STRING,
         keys=("aws.s3.key",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="someFile.yml",
         examples=["someFile.yml"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.key attribute"
             ),
