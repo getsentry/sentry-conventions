@@ -3778,6 +3778,27 @@ export const BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
  */
 export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
 
+// Path: model/attributes/browser/browser__web_vital__inp__input_delay.json
+
+/**
+ * The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds `browser.web_vital.inp.input_delay`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_INPUT_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 120
+ */
+export const BROWSER_WEB_VITAL_INP_INPUT_DELAY = 'browser.web_vital.inp.input_delay';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_INPUT_DELAY} browser.web_vital.inp.input_delay
+ */
+export type BROWSER_WEB_VITAL_INP_INPUT_DELAY_TYPE = number;
+
 // Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
 
 /**
@@ -3801,6 +3822,48 @@ export const BROWSER_WEB_VITAL_INP_INTERACTION_TYPE = 'browser.web_vital.inp.int
  * Type for {@link BROWSER_WEB_VITAL_INP_INTERACTION_TYPE} browser.web_vital.inp.interaction_type
  */
 export type BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__inp__presentation_delay.json
+
+/**
+ * The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds `browser.web_vital.inp.presentation_delay`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 100
+ */
+export const BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY = 'browser.web_vital.inp.presentation_delay';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY} browser.web_vital.inp.presentation_delay
+ */
+export type BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__inp__processing_duration.json
+
+/**
+ * The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds `browser.web_vital.inp.processing_duration`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_PROCESSING_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 140
+ */
+export const BROWSER_WEB_VITAL_INP_PROCESSING_DURATION = 'browser.web_vital.inp.processing_duration';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_PROCESSING_DURATION} browser.web_vital.inp.processing_duration
+ */
+export type BROWSER_WEB_VITAL_INP_PROCESSING_DURATION_TYPE = number;
 
 // Path: model/attributes/browser/browser__web_vital__inp__target.json
 
@@ -3869,6 +3932,27 @@ export const BROWSER_WEB_VITAL_LCP_ELEMENT = 'browser.web_vital.lcp.element';
  * Type for {@link BROWSER_WEB_VITAL_LCP_ELEMENT} browser.web_vital.lcp.element
  */
 export type BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__element_render_delay.json
+
+/**
+ * The time between the Largest Contentful Paint (LCP) resource finishing loading and the LCP element being rendered, in milliseconds `browser.web_vital.lcp.element_render_delay`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 410
+ */
+export const BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY = 'browser.web_vital.lcp.element_render_delay';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY} browser.web_vital.lcp.element_render_delay
+ */
+export type BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY_TYPE = number;
 
 // Path: model/attributes/browser/browser__web_vital__lcp__id.json
 
@@ -3960,6 +4044,48 @@ export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_
  * Type for {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT} browser.web_vital.lcp.report_event
  */
 export type BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__resource_load_delay.json
+
+/**
+ * The time between the first byte of the document arriving and the browser starting to load the Largest Contentful Paint (LCP) resource, in milliseconds `browser.web_vital.lcp.resource_load_delay`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 320.5
+ */
+export const BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY = 'browser.web_vital.lcp.resource_load_delay';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY} browser.web_vital.lcp.resource_load_delay
+ */
+export type BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__resource_load_duration.json
+
+/**
+ * The time it took to load the Largest Contentful Paint (LCP) resource, in milliseconds `browser.web_vital.lcp.resource_load_duration`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 780.2
+ */
+export const BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION = 'browser.web_vital.lcp.resource_load_duration';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION} browser.web_vital.lcp.resource_load_duration
+ */
+export type BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION_TYPE = number;
 
 // Path: model/attributes/browser/browser__web_vital__lcp__size.json
 
@@ -20610,14 +20736,20 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.web_vital.cls.value': 'double',
   'browser.web_vital.fcp.value': 'double',
   'browser.web_vital.fp.value': 'double',
+  'browser.web_vital.inp.input_delay': 'double',
   'browser.web_vital.inp.interaction_type': 'string',
+  'browser.web_vital.inp.presentation_delay': 'double',
+  'browser.web_vital.inp.processing_duration': 'double',
   'browser.web_vital.inp.target': 'string',
   'browser.web_vital.inp.value': 'double',
   'browser.web_vital.lcp.element': 'string',
+  'browser.web_vital.lcp.element_render_delay': 'double',
   'browser.web_vital.lcp.id': 'string',
   'browser.web_vital.lcp.load_time': 'integer',
   'browser.web_vital.lcp.render_time': 'integer',
   'browser.web_vital.lcp.report_event': 'string',
+  'browser.web_vital.lcp.resource_load_delay': 'double',
+  'browser.web_vital.lcp.resource_load_duration': 'double',
   'browser.web_vital.lcp.size': 'integer',
   'browser.web_vital.lcp.url': 'string',
   'browser.web_vital.lcp.value': 'double',
@@ -21519,14 +21651,20 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_FCP_VALUE
   | typeof BROWSER_WEB_VITAL_FP_VALUE
+  | typeof BROWSER_WEB_VITAL_INP_INPUT_DELAY
   | typeof BROWSER_WEB_VITAL_INP_INTERACTION_TYPE
+  | typeof BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY
+  | typeof BROWSER_WEB_VITAL_INP_PROCESSING_DURATION
   | typeof BROWSER_WEB_VITAL_INP_TARGET
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
+  | typeof BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY
   | typeof BROWSER_WEB_VITAL_LCP_ID
   | typeof BROWSER_WEB_VITAL_LCP_LOAD_TIME
   | typeof BROWSER_WEB_VITAL_LCP_RENDER_TIME
   | typeof BROWSER_WEB_VITAL_LCP_REPORT_EVENT
+  | typeof BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY
+  | typeof BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION
   | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
@@ -24980,6 +25118,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['fp'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
+  'browser.web_vital.inp.input_delay': {
+    brief:
+      'The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.inp.input_delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 120,
+    examples: [120],
+    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.input_delay attribute' }],
+    additionalContext: [
+      'One of the three INP subparts, which add up to `browser.web_vital.inp.value`: input delay, processing duration and presentation delay. Named after `inputDelay` in the web-vitals attribution build.',
+      "Measured from the interaction's `PerformanceEventTiming` entry as `processingStart` minus `startTime`.",
+      'Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.',
+    ],
+  },
   'browser.web_vital.inp.interaction_type': {
     brief: 'The kind of user interaction INP was reported on',
     type: 'string',
@@ -24998,6 +25155,43 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
       'Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.',
       'Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.',
+    ],
+  },
+  'browser.web_vital.inp.presentation_delay': {
+    brief:
+      'The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.inp.presentation_delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 100,
+    examples: [100],
+    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.presentation_delay attribute' }],
+    additionalContext: [
+      'One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.',
+      "Measured from the interaction's `PerformanceEventTiming` entry as `startTime` plus `duration` minus `processingEnd`.",
+      'Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.',
+    ],
+  },
+  'browser.web_vital.inp.processing_duration': {
+    brief: 'The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.inp.processing_duration'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 140,
+    examples: [140],
+    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.processing_duration attribute' }],
+    additionalContext: [
+      'One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `processingDuration` in the web-vitals attribution build.',
+      "Measured from the interaction's `PerformanceEventTiming` entry as `processingEnd` minus `processingStart`.",
+      'Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.',
     ],
   },
   'browser.web_vital.inp.target': {
@@ -25043,6 +25237,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'body > div#app > div#container > div',
     aliases: ['lcp.element'],
     changelog: [{ version: '0.5.0', prs: [233] }],
+  },
+  'browser.web_vital.lcp.element_render_delay': {
+    brief:
+      'The time between the Largest Contentful Paint (LCP) resource finishing loading and the LCP element being rendered, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.lcp.element_render_delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 410,
+    examples: [410],
+    changelog: [{ version: 'next', description: 'Added browser.web_vital.lcp.element_render_delay attribute' }],
+    additionalContext: [
+      'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.',
+      "Measured as the LCP value minus the LCP resource's `responseEnd`. When the LCP element is text, it covers all time after TTFB.",
+    ],
   },
   'browser.web_vital.lcp.id': {
     brief: 'The id of the dom element responsible for the largest contentful paint',
@@ -25104,6 +25316,42 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: 'Deprecated browser.web_vital.lcp.report_event, which has no replacement',
       },
       { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' },
+    ],
+  },
+  'browser.web_vital.lcp.resource_load_delay': {
+    brief:
+      'The time between the first byte of the document arriving and the browser starting to load the Largest Contentful Paint (LCP) resource, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.lcp.resource_load_delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 320.5,
+    examples: [320.5],
+    changelog: [{ version: 'next', description: 'Added browser.web_vital.lcp.resource_load_delay attribute' }],
+    additionalContext: [
+      'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`: TTFB (`browser.web_vital.ttfb.value`), resource load delay, resource load duration and element render delay. Named after `resourceLoadDelay` in the web-vitals attribution build.',
+      "Measured as the LCP resource's `requestStart` (or `startTime` when `requestStart` is not exposed) minus TTFB. It is 0 when the LCP element is text, since no resource is loaded.",
+      'For a prerendered page, timestamps are measured from `activationStart`.',
+    ],
+  },
+  'browser.web_vital.lcp.resource_load_duration': {
+    brief: 'The time it took to load the Largest Contentful Paint (LCP) resource, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.lcp.resource_load_duration'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 780.2,
+    examples: [780.2],
+    changelog: [{ version: 'next', description: 'Added browser.web_vital.lcp.resource_load_duration attribute' }],
+    additionalContext: [
+      'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `resourceLoadDuration` in the web-vitals attribution build.',
+      "Measured as the LCP resource's `responseEnd` minus its `requestStart`. It is 0 when the LCP element is text, since no resource is loaded.",
     ],
   },
   'browser.web_vital.lcp.size': {
@@ -37376,14 +37624,20 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FP_VALUE]?: BROWSER_WEB_VITAL_FP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_INP_INPUT_DELAY]?: BROWSER_WEB_VITAL_INP_INPUT_DELAY_TYPE;
   [BROWSER_WEB_VITAL_INP_INTERACTION_TYPE]?: BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE;
+  [BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY]?: BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY_TYPE;
+  [BROWSER_WEB_VITAL_INP_PROCESSING_DURATION]?: BROWSER_WEB_VITAL_INP_PROCESSING_DURATION_TYPE;
   [BROWSER_WEB_VITAL_INP_TARGET]?: BROWSER_WEB_VITAL_INP_TARGET_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
+  [BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY]?: BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]?: BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE;
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]?: BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE;
   [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]?: BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE;
+  [BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY]?: BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY_TYPE;
+  [BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION]?: BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION_TYPE;
   [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
