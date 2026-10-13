@@ -16,8 +16,11 @@
         "object.multipart_upload.create",
         "object.multipart_upload.complete"
       ],
-      "templates": ["{{aws.s3.bucket}}", "{{cloudflare.r2.bucket}}"],
-      "examples": ["invoices", "MY_BUCKET"]
+      "templates": [
+        "{{rpc.service}}.{{rpc.method}} {{aws.s3.bucket}}",
+        "R2.{{cloudflare.r2.operation}} {{cloudflare.r2.bucket}}"
+      ],
+      "examples": ["S3.GetObject invoices", "S3.DeleteObjects invoices", "R2.GetObject MY_BUCKET"]
     }
   ]
 }
