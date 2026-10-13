@@ -235,7 +235,7 @@ pub const GEN_AI_EVALUATE: &str = "gen_ai.evaluate";
 pub const GEN_AI_CREATE_AGENT: &str = "gen_ai.create_agent";
 
 /// An interaction with a generative AI model through a responses API
-#[deprecated(note = "Use `GEN_AI_CHAT` (gen_ai.chat) instead")]
+#[deprecated(note = "Use `GEN_AI_CHAT` (gen_ai.chat) instead - responses is not a well-defined value for gen_ai.operation.name")]
 pub const GEN_AI_RESPONSES: &str = "gen_ai.responses";
 
 /// A text completion request to a generative AI model
