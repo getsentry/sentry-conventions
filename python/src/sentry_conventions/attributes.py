@@ -15350,6 +15350,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[712],
                 description="Added browser.web_vital.inp.input_delay attribute",
             ),
         ],
@@ -15393,6 +15394,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[712],
                 description="Added browser.web_vital.inp.presentation_delay attribute",
             ),
         ],
@@ -15414,6 +15416,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[712],
                 description="Added browser.web_vital.inp.processing_duration attribute",
             ),
         ],
@@ -15492,6 +15495,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[712],
                 description="Added browser.web_vital.lcp.element_render_delay attribute",
             ),
         ],
@@ -15584,6 +15588,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[712],
                 description="Added browser.web_vital.lcp.resource_load_delay attribute",
             ),
         ],
@@ -15605,6 +15610,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[712],
                 description="Added browser.web_vital.lcp.resource_load_duration attribute",
             ),
         ],

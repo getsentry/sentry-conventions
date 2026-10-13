@@ -25130,7 +25130,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 120,
     examples: [120],
-    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.input_delay attribute' }],
+    changelog: [{ version: 'next', prs: [712], description: 'Added browser.web_vital.inp.input_delay attribute' }],
     additionalContext: [
       'One of the three INP subparts, which add up to `browser.web_vital.inp.value`: input delay, processing duration and presentation delay. Named after `inputDelay` in the web-vitals attribution build.',
       "Measured from the interaction's `PerformanceEventTiming` entry as `processingStart` minus `startTime`.",
@@ -25169,7 +25169,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 100,
     examples: [100],
-    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.presentation_delay attribute' }],
+    changelog: [
+      { version: 'next', prs: [712], description: 'Added browser.web_vital.inp.presentation_delay attribute' },
+    ],
     additionalContext: [
       'One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.',
       "Measured from the interaction's `PerformanceEventTiming` entry as `startTime` plus `duration` minus `processingEnd`.",
@@ -25187,7 +25189,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 140,
     examples: [140],
-    changelog: [{ version: 'next', description: 'Added browser.web_vital.inp.processing_duration attribute' }],
+    changelog: [
+      { version: 'next', prs: [712], description: 'Added browser.web_vital.inp.processing_duration attribute' },
+    ],
     additionalContext: [
       'One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `processingDuration` in the web-vitals attribution build.',
       "Measured from the interaction's `PerformanceEventTiming` entry as `processingEnd` minus `processingStart`.",
@@ -25250,7 +25254,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 410,
     examples: [410],
-    changelog: [{ version: 'next', description: 'Added browser.web_vital.lcp.element_render_delay attribute' }],
+    changelog: [
+      { version: 'next', prs: [712], description: 'Added browser.web_vital.lcp.element_render_delay attribute' },
+    ],
     additionalContext: [
       'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.',
       "Measured as the LCP value minus the LCP resource's `responseEnd`. When the LCP element is text, it covers all time after TTFB.",
@@ -25330,7 +25336,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 320.5,
     examples: [320.5],
-    changelog: [{ version: 'next', description: 'Added browser.web_vital.lcp.resource_load_delay attribute' }],
+    changelog: [
+      { version: 'next', prs: [712], description: 'Added browser.web_vital.lcp.resource_load_delay attribute' },
+    ],
     additionalContext: [
       'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`: TTFB (`browser.web_vital.ttfb.value`), resource load delay, resource load duration and element render delay. Named after `resourceLoadDelay` in the web-vitals attribution build.',
       "Measured as the LCP resource's `requestStart` (or `startTime` when `requestStart` is not exposed) minus TTFB. It is 0 when the LCP element is text, since no resource is loaded.",
@@ -25348,7 +25356,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 780.2,
     examples: [780.2],
-    changelog: [{ version: 'next', description: 'Added browser.web_vital.lcp.resource_load_duration attribute' }],
+    changelog: [
+      { version: 'next', prs: [712], description: 'Added browser.web_vital.lcp.resource_load_duration attribute' },
+    ],
     additionalContext: [
       'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `resourceLoadDuration` in the web-vitals attribution build.',
       "Measured as the LCP resource's `responseEnd` minus its `requestStart`. It is 0 when the LCP element is text, since no resource is loaded.",
