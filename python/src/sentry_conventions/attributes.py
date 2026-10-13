@@ -2182,13 +2182,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/aws/aws__s3__delete.json
     AWS_S3_DELETE: Literal["aws.s3.delete"] = "aws.s3.delete"
-    """The delete request container that specifies the objects to be deleted.
+    """The JSON-serialized value of delete request field, which specifies the object to be deleted.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Example: "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+    Example: "{\"Objects\":[{\"Key\":\"someFile.yml\",\"VersionId\":\"3HL4kqtJlcpXroDTDmJ\"}],\"Quiet\":false}"
     """
 
     # Path: model/attributes/aws/aws__s3__key.json
@@ -3420,6 +3420,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: db.mongodb.collection
     Example: "users"
+    Example: ",customers,orders,"
     """
 
     # Path: model/attributes/db/db__connection_string.json
@@ -14681,17 +14682,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "aws.s3.delete": AttributeMetadata(
-        brief="The delete request container that specifies the objects to be deleted.",
+        brief="The JSON-serialized value of delete request field, which specifies the object to be deleted.",
         type=AttributeType.STRING,
         keys=("aws.s3.delete",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean",
+        example='{"Objects":[{"Key":"someFile.yml","VersionId":"3HL4kqtJlcpXroDTDmJ"}],"Quiet":false}',
         examples=[
-            "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+            '{"Objects":[{"Key":"someFile.yml","VersionId":"3HL4kqtJlcpXroDTDmJ"}],"Quiet":false}'
         ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed the value to a JSON-serialized field, with an example",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.delete attribute"
             ),
@@ -16397,8 +16402,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="users",
+        examples=["users", ",customers,orders,"],
         aliases=["db.mongodb.collection"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Add comma-wrapped format for calls on more than one collection",
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[483],
@@ -16406,6 +16416,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "For a call on more than one collection: the unique names, sorted and wrapped in commas (`,customers,orders,`), so each name matches `,<name>,`."
         ],
     ),
     "db.connection_string": AttributeMetadata(
