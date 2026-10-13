@@ -15,6 +15,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [712],
       "description": "Added browser.web_vital.lcp.resource_load_duration attribute"
     }
   ]
