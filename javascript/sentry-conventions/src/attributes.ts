@@ -2862,6 +2862,27 @@ export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in
  */
 export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
 
+// Path: model/attributes/aws/aws__lambda__resource_mapping__id.json
+
+/**
+ * The UUID of the [AWS Lambda EvenSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. It's contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping. `aws.lambda.resource_mapping.id`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "587ad24b-03b9-4413-8202-bbd56b36e5b7"
+ */
+export const AWS_LAMBDA_RESOURCE_MAPPING_ID = 'aws.lambda.resource_mapping.id';
+
+/**
+ * Type for {@link AWS_LAMBDA_RESOURCE_MAPPING_ID} aws.lambda.resource_mapping.id
+ */
+export type AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE = string;
+
 // Path: model/attributes/aws/aws__log__group__names.json
 
 /**
@@ -20569,6 +20590,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.invoked_arn': 'string',
   'aws.lambda.invoked_function_arn': 'string',
   'aws.lambda.remaining_time_in_millis': 'double',
+  'aws.lambda.resource_mapping.id': 'string',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
   'aws.operation_name': 'string',
@@ -21478,6 +21500,7 @@ export type AttributeName =
   | typeof AWS_LAMBDA_INVOKED_ARN
   | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
+  | typeof AWS_LAMBDA_RESOURCE_MAPPING_ID
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
   | typeof AWS_OPERATION_NAME
@@ -24353,6 +24376,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
+  },
+  'aws.lambda.resource_mapping.id': {
+    brief:
+      "The UUID of the [AWS Lambda EvenSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. It's contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+    type: 'string',
+    keys: ['aws.lambda.resource_mapping.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '587ad24b-03b9-4413-8202-bbd56b36e5b7',
+    examples: ['587ad24b-03b9-4413-8202-bbd56b36e5b7'],
+    changelog: [{ version: 'next', description: 'Added aws.lambda.resource_mapping.id attribute' }],
   },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
@@ -37335,6 +37372,7 @@ export type Attributes = {
   [AWS_LAMBDA_INVOKED_ARN]?: AWS_LAMBDA_INVOKED_ARN_TYPE;
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
+  [AWS_LAMBDA_RESOURCE_MAPPING_ID]?: AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;
