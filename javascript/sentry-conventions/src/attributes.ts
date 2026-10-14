@@ -15601,7 +15601,7 @@ export type RPC_RESPONSE_STATUS_CODE_TYPE = string;
  *
  * @example "myService.BestService"
  * @example "S3"
- * @example "ApiGateway"
+ * @example "APIGateway"
  */
 export const RPC_SERVICE = 'rpc.service';
 
@@ -33846,7 +33846,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'myService.BestService',
-    examples: ['myService.BestService', 'S3', 'ApiGateway'],
+    examples: ['myService.BestService', 'S3', 'APIGateway'],
     changelog: [
       { version: 'next', description: 'Added AWS SDK examples and additional context' },
       { version: '0.1.0', prs: [127] },

@@ -9,7 +9,7 @@
     "key": "manual"
   },
   "is_in_otel": true,
-  "examples": ["myService.BestService", "S3", "ApiGateway"],
+  "examples": ["myService.BestService", "S3", "APIGateway"],
   "visibility": "public",
   "changelog": [
     {

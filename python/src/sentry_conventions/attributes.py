@@ -9278,7 +9278,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Example: "myService.BestService"
     Example: "S3"
-    Example: "ApiGateway"
+    Example: "APIGateway"
     """
 
     # Path: model/attributes/rpc/rpc__system.json
@@ -25517,7 +25517,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="myService.BestService",
-        examples=["myService.BestService", "S3", "ApiGateway"],
+        examples=["myService.BestService", "S3", "APIGateway"],
         changelog=[
             ChangelogEntry(
                 version="next",
