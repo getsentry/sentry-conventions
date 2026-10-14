@@ -25260,6 +25260,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     additionalContext: [
       'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.',
       "Measured as the LCP value minus the LCP resource's `responseEnd`. When the LCP element is text, it covers all time after TTFB.",
+      'For a prerendered page, timestamps are measured from `activationStart`.',
     ],
   },
   'browser.web_vital.lcp.id': {
@@ -25361,7 +25362,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `resourceLoadDuration` in the web-vitals attribution build.',
-      "Measured as the LCP resource's `responseEnd` minus its `requestStart`. It is 0 when the LCP element is text, since no resource is loaded.",
+      "Measured as the LCP resource's `responseEnd` minus its `requestStart` (or `startTime` when `requestStart` is not exposed). It is 0 when the LCP element is text, since no resource is loaded.",
+      'For a prerendered page, timestamps are measured from `activationStart`.',
     ],
   },
   'browser.web_vital.lcp.size': {
