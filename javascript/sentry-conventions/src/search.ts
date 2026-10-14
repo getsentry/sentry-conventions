@@ -7407,8 +7407,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'browser.web_vital.lcp.element_render_delay': {
     canonicalName: 'browser.web_vital.lcp.element_render_delay',
     type: 'double',
-    brief:
-      'The time between the Largest Contentful Paint (LCP) resource finishing loading and the LCP element being rendered, in milliseconds',
+    brief: 'The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds',
     deprecationChain: ['browser.web_vital.lcp.element_render_delay'],
   },
   'browser.web_vital.lcp.id': {
@@ -7440,13 +7439,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'browser.web_vital.lcp.resource_load_delay',
     type: 'double',
     brief:
-      'The time between the first byte of the document arriving and the browser starting to load the Largest Contentful Paint (LCP) resource, in milliseconds',
+      'The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds',
     deprecationChain: ['browser.web_vital.lcp.resource_load_delay'],
   },
   'browser.web_vital.lcp.resource_load_duration': {
     canonicalName: 'browser.web_vital.lcp.resource_load_duration',
     type: 'double',
-    brief: 'The time it took to load the Largest Contentful Paint (LCP) resource, in milliseconds',
+    brief: 'The time it took to load the LCP resource, in milliseconds',
     deprecationChain: ['browser.web_vital.lcp.resource_load_duration'],
   },
   'browser.web_vital.lcp.size': {

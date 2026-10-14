@@ -1,6 +1,6 @@
 {
   "key": "browser.web_vital.lcp.resource_load_delay",
-  "brief": "The time between the first byte of the document arriving and the browser starting to load the Largest Contentful Paint (LCP) resource, in milliseconds",
+  "brief": "The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds",
   "type": "double",
   "apply_scrubbing": {
     "key": "manual"

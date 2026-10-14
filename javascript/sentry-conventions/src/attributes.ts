@@ -3936,7 +3936,7 @@ export type BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE = string;
 // Path: model/attributes/browser/browser__web_vital__lcp__element_render_delay.json
 
 /**
- * The time between the Largest Contentful Paint (LCP) resource finishing loading and the LCP element being rendered, in milliseconds `browser.web_vital.lcp.element_render_delay`
+ * The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds `browser.web_vital.lcp.element_render_delay`
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY_TYPE}
  *
@@ -4048,7 +4048,7 @@ export type BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE = string;
 // Path: model/attributes/browser/browser__web_vital__lcp__resource_load_delay.json
 
 /**
- * The time between the first byte of the document arriving and the browser starting to load the Largest Contentful Paint (LCP) resource, in milliseconds `browser.web_vital.lcp.resource_load_delay`
+ * The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds `browser.web_vital.lcp.resource_load_delay`
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY_TYPE}
  *
@@ -4069,7 +4069,7 @@ export type BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY_TYPE = number;
 // Path: model/attributes/browser/browser__web_vital__lcp__resource_load_duration.json
 
 /**
- * The time it took to load the Largest Contentful Paint (LCP) resource, in milliseconds `browser.web_vital.lcp.resource_load_duration`
+ * The time it took to load the LCP resource, in milliseconds `browser.web_vital.lcp.resource_load_duration`
  *
  * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION_TYPE}
  *
@@ -25243,8 +25243,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.5.0', prs: [233] }],
   },
   'browser.web_vital.lcp.element_render_delay': {
-    brief:
-      'The time between the Largest Contentful Paint (LCP) resource finishing loading and the LCP element being rendered, in milliseconds',
+    brief: 'The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds',
     type: 'double',
     keys: ['browser.web_vital.lcp.element_render_delay'],
     applyScrubbing: {
@@ -25327,7 +25326,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'browser.web_vital.lcp.resource_load_delay': {
     brief:
-      'The time between the first byte of the document arriving and the browser starting to load the Largest Contentful Paint (LCP) resource, in milliseconds',
+      'The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds',
     type: 'double',
     keys: ['browser.web_vital.lcp.resource_load_delay'],
     applyScrubbing: {
@@ -25347,7 +25346,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'browser.web_vital.lcp.resource_load_duration': {
-    brief: 'The time it took to load the Largest Contentful Paint (LCP) resource, in milliseconds',
+    brief: 'The time it took to load the LCP resource, in milliseconds',
     type: 'double',
     keys: ['browser.web_vital.lcp.resource_load_duration'],
     applyScrubbing: {
