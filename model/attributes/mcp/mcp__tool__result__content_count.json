@@ -14,7 +14,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [669],
       "description": "Deprecate the attribute since it is redundant given gen_ai.tool.call.result."
     },

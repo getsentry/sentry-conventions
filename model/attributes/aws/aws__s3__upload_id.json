@@ -10,7 +10,7 @@
   "examples": ["dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [672],
       "description": "Added aws.s3.upload_id attribute"
     }

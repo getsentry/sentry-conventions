@@ -200,7 +200,7 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
 
     for (const entry of entries) {
       const entryPath = path.join(currentDir, entry.name);
-      const entryRelativePath = path.join(relativePath, entry.name);
+      const entryRelativePath = path.posix.join(relativePath, entry.name);
 
       if (entry.isDirectory()) {
         await scanDir(entryPath, entryRelativePath);
