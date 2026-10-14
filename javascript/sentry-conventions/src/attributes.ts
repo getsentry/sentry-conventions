@@ -24246,7 +24246,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: ['Users', 'Cats'],
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_names attribute' }],
+    changelog: [
+      { version: 'next', description: 'Added additional context on sorting the names' },
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_names attribute' },
+    ],
+    additionalContext: [
+      'List each table name once, sorted alphabetically, so the same call gets the same value and span description (`DynamoDB.BatchGetItem Cat, Users`), whatever the order of the tables in the request.',
+    ],
   },
   'aws.dynamodb.total_segments': {
     brief: 'The value of the `TotalSegments` request parameter.',
