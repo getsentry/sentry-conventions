@@ -3353,6 +3353,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "wifi"
     """
 
+    # Path: model/attributes/cpython/cpython__gc__collected_objects.json
+    CPYTHON_GC_COLLECTED_OBJECTS: Literal["cpython.gc.collected_objects"] = (
+        "cpython.gc.collected_objects"
+    )
+    """The number of unreachable objects collected during a run of the CPython garbage collector.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 42
+    """
+
+    # Path: model/attributes/cpython/cpython__gc__generation.json
+    CPYTHON_GC_GENERATION: Literal["cpython.gc.generation"] = "cpython.gc.generation"
+    """The generation of objects that a run of the CPython garbage collector collected. A collection of a generation also collects all younger generations, so 2 is a full collection.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 0
+    Example: 1
+    Example: 2
+    """
+
+    # Path: model/attributes/cpython/cpython__gc__uncollectable_objects.json
+    CPYTHON_GC_UNCOLLECTABLE_OBJECTS: Literal["cpython.gc.uncollectable_objects"] = (
+        "cpython.gc.uncollectable_objects"
+    )
+    """The number of unreachable objects that couldn't be collected during a run of the CPython garbage collector. These objects are moved to gc.garbage.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    """
+
     # Path: model/attributes/culture/culture__calendar.json
     CULTURE_CALENDAR: Literal["culture.calendar"] = "culture.calendar"
     """The calendar system used by the culture.
@@ -16324,6 +16363,66 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[279],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
+        ],
+    ),
+    "cpython.gc.collected_objects": AttributeMetadata(
+        brief="The number of unreachable objects collected during a run of the CPython garbage collector.",
+        type=AttributeType.INTEGER,
+        keys=("cpython.gc.collected_objects",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=42,
+        examples=[42],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[718],
+                description="Added cpython.gc.collected_objects attribute",
+            ),
+        ],
+        additional_context=[
+            "This is the count for a single garbage collection run. It's not the same as the OpenTelemetry `cpython.gc.collected_objects` metric, which is a counter of the total since interpreter start."
+        ],
+    ),
+    "cpython.gc.generation": AttributeMetadata(
+        brief="The generation of objects that a run of the CPython garbage collector collected. A collection of a generation also collects all younger generations, so 2 is a full collection.",
+        type=AttributeType.INTEGER,
+        keys=("cpython.gc.generation",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 1, 2],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[718],
+                description="Added cpython.gc.generation attribute",
+            ),
+        ],
+        additional_context=[
+            "On free-threaded builds of CPython (3.13+), the garbage collector isn't generational: every collection scans all objects. Automatic collections report generation 0, and explicit collections report the generation that was requested, but all of them are full collections."
+        ],
+    ),
+    "cpython.gc.uncollectable_objects": AttributeMetadata(
+        brief="The number of unreachable objects that couldn't be collected during a run of the CPython garbage collector. These objects are moved to gc.garbage.",
+        type=AttributeType.INTEGER,
+        keys=("cpython.gc.uncollectable_objects",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[718],
+                description="Added cpython.gc.uncollectable_objects attribute",
+            ),
+        ],
+        additional_context=[
+            "This is the count for a single garbage collection run. It's not the same as the OpenTelemetry `cpython.gc.uncollectable_objects` metric, which is a counter of the total since interpreter start."
         ],
     ),
     "culture.calendar": AttributeMetadata(
@@ -29469,6 +29568,9 @@ Attributes = TypedDict(
         "code": str,
         "connection.rtt": int,
         "connectionType": str,
+        "cpython.gc.collected_objects": int,
+        "cpython.gc.generation": int,
+        "cpython.gc.uncollectable_objects": int,
         "culture.calendar": str,
         "culture.display_name": str,
         "culture.is_24_hour_format": bool,
