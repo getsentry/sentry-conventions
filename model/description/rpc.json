@@ -14,8 +14,7 @@
         "{{rpc.service}}.{{rpc.method}} {{aws.step_functions.activity.name}}",
         "{{rpc.service}}.{{rpc.method}} {{aws.secretsmanager.secret.name}}",
         "{{rpc.service}}.{{rpc.method}} {{messaging.destination.name}}",
-        "{{rpc.service}}.{{rpc.method}}",
-        "{{rpc.method}}"
+        "{{rpc.service}}.{{rpc.method}}"
       ],
       "examples": [
         "S3.GetBucketPolicy invoices",
@@ -24,8 +23,7 @@
         "SFN.StartExecution orders",
         "SecretsManager.GetSecretValue db-password",
         "SQS.ChangeMessageVisibility orders",
-        "S3.ListBuckets",
-        "com.example.ExampleService/exampleMethod"
+        "S3.ListBuckets"
       ]
     }
   ]
