@@ -2030,6 +2030,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "$LATEST"
     """
 
+    # Path: model/attributes/aws/aws__lambda__initialization_type.json
+    AWS_LAMBDA_INITIALIZATION_TYPE: Literal["aws.lambda.initialization_type"] = (
+        "aws.lambda.initialization_type"
+    )
+    """How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "native-http"
+    Example: "on-demand"
+    Example: "provisioned-concurrency"
+    Example: "snap-start"
+    """
+
     # Path: model/attributes/aws/aws__lambda__invoked_arn.json
     AWS_LAMBDA_INVOKED_ARN: Literal["aws.lambda.invoked_arn"] = "aws.lambda.invoked_arn"
     """The full ARN of the Lambda function that was invoked
@@ -2068,6 +2084,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 5000
+    """
+
+    # Path: model/attributes/aws/aws__lambda__web__endpoint_name.json
+    AWS_LAMBDA_WEB_ENDPOINT_NAME: Literal["aws.lambda.web.endpoint_name"] = (
+        "aws.lambda.web.endpoint_name"
+    )
+    """The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "prod"
+    Example: "canary"
     """
 
     # Path: model/attributes/aws/aws__log__group__names.json
@@ -4414,6 +4444,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "eu-central-1"
+    """
+
+    # Path: model/attributes/faas/faas__max_memory.json
+    FAAS_MAX_MEMORY: Literal["faas.max_memory"] = "faas.max_memory"
+    """The amount of memory available to the serverless function, in bytes.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 134217728
+    Example: 1073741824
     """
 
     # Path: model/attributes/faas/faas__name.json
@@ -14431,6 +14473,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.lambda.initialization_type": AttributeMetadata(
+        brief="How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.initialization_type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="native-http",
+        examples=["native-http", "on-demand", "provisioned-concurrency", "snap-start"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.lambda.initialization_type attribute",
+            ),
+        ],
+    ),
     "aws.lambda.invoked_arn": AttributeMetadata(
         brief="The full ARN of the Lambda function that was invoked",
         type=AttributeType.STRING,
@@ -14490,6 +14548,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.remaining_time_in_millis attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.web.endpoint_name": AttributeMetadata(
+        brief="The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.web.endpoint_name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="prod",
+        examples=["prod", "canary"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.lambda.web.endpoint_name attribute",
             ),
         ],
     ),
@@ -17847,6 +17921,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[481],
                 description="Added faas.invoked_region attribute",
             ),
+        ],
+    ),
+    "faas.max_memory": AttributeMetadata(
+        brief="The amount of memory available to the serverless function, in bytes.",
+        type=AttributeType.INTEGER,
+        keys=("faas.max_memory",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=134217728,
+        examples=[134217728, 1073741824],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.max_memory attribute"
+            ),
+        ],
+        additional_context=[
+            "On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes."
         ],
     ),
     "faas.name": AttributeMetadata(
@@ -29365,9 +29457,11 @@ Attributes = TypedDict(
         "aws.lambda.execution_duration_in_millis": float,
         "aws.lambda.function_name": str,
         "aws.lambda.function_version": str,
+        "aws.lambda.initialization_type": str,
         "aws.lambda.invoked_arn": str,
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
+        "aws.lambda.web.endpoint_name": str,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
         "aws.operation_name": str,
@@ -29559,6 +29653,7 @@ Attributes = TypedDict(
         "faas.invoked_name": str,
         "faas.invoked_provider": str,
         "faas.invoked_region": str,
+        "faas.max_memory": int,
         "faas.name": str,
         "faas.time": str,
         "faas.trigger": str,

@@ -2794,6 +2794,30 @@ export const AWS_LAMBDA_FUNCTION_VERSION = 'aws.lambda.function_version';
  */
 export type AWS_LAMBDA_FUNCTION_VERSION_TYPE = string;
 
+// Path: model/attributes/aws/aws__lambda__initialization_type.json
+
+/**
+ * How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE. `aws.lambda.initialization_type`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_INITIALIZATION_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "native-http"
+ * @example "on-demand"
+ * @example "provisioned-concurrency"
+ * @example "snap-start"
+ */
+export const AWS_LAMBDA_INITIALIZATION_TYPE = 'aws.lambda.initialization_type';
+
+/**
+ * Type for {@link AWS_LAMBDA_INITIALIZATION_TYPE} aws.lambda.initialization_type
+ */
+export type AWS_LAMBDA_INITIALIZATION_TYPE_TYPE = string;
+
 // Path: model/attributes/aws/aws__lambda__invoked_arn.json
 
 /**
@@ -2861,6 +2885,28 @@ export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in
  * Type for {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS} aws.lambda.remaining_time_in_millis
  */
 export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
+
+// Path: model/attributes/aws/aws__lambda__web__endpoint_name.json
+
+/**
+ * The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header. `aws.lambda.web.endpoint_name`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_WEB_ENDPOINT_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "prod"
+ * @example "canary"
+ */
+export const AWS_LAMBDA_WEB_ENDPOINT_NAME = 'aws.lambda.web.endpoint_name';
+
+/**
+ * Type for {@link AWS_LAMBDA_WEB_ENDPOINT_NAME} aws.lambda.web.endpoint_name
+ */
+export type AWS_LAMBDA_WEB_ENDPOINT_NAME_TYPE = string;
 
 // Path: model/attributes/aws/aws__log__group__names.json
 
@@ -7080,6 +7126,28 @@ export const FAAS_INVOKED_REGION = 'faas.invoked_region';
  * Type for {@link FAAS_INVOKED_REGION} faas.invoked_region
  */
 export type FAAS_INVOKED_REGION_TYPE = string;
+
+// Path: model/attributes/faas/faas__max_memory.json
+
+/**
+ * The amount of memory available to the serverless function, in bytes. `faas.max_memory`
+ *
+ * Attribute Value Type: `number` {@link FAAS_MAX_MEMORY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 134217728
+ * @example 1073741824
+ */
+export const FAAS_MAX_MEMORY = 'faas.max_memory';
+
+/**
+ * Type for {@link FAAS_MAX_MEMORY} faas.max_memory
+ */
+export type FAAS_MAX_MEMORY_TYPE = number;
 
 // Path: model/attributes/faas/faas__name.json
 
@@ -20566,9 +20634,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.execution_duration_in_millis': 'double',
   'aws.lambda.function_name': 'string',
   'aws.lambda.function_version': 'string',
+  'aws.lambda.initialization_type': 'string',
   'aws.lambda.invoked_arn': 'string',
   'aws.lambda.invoked_function_arn': 'string',
   'aws.lambda.remaining_time_in_millis': 'double',
+  'aws.lambda.web.endpoint_name': 'string',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
   'aws.operation_name': 'string',
@@ -20760,6 +20830,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.invoked_name': 'string',
   'faas.invoked_provider': 'string',
   'faas.invoked_region': 'string',
+  'faas.max_memory': 'integer',
   'faas.name': 'string',
   'faas.time': 'string',
   'faas.trigger': 'string',
@@ -21475,9 +21546,11 @@ export type AttributeName =
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
   | typeof AWS_LAMBDA_FUNCTION_VERSION
+  | typeof AWS_LAMBDA_INITIALIZATION_TYPE
   | typeof AWS_LAMBDA_INVOKED_ARN
   | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
+  | typeof AWS_LAMBDA_WEB_ENDPOINT_NAME
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
   | typeof AWS_OPERATION_NAME
@@ -21669,6 +21742,7 @@ export type AttributeName =
   | typeof FAAS_INVOKED_NAME
   | typeof FAAS_INVOKED_PROVIDER
   | typeof FAAS_INVOKED_REGION
+  | typeof FAAS_MAX_MEMORY
   | typeof FAAS_NAME
   | typeof FAAS_TIME
   | typeof FAAS_TRIGGER
@@ -24304,6 +24378,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.function_version attribute' },
     ],
   },
+  'aws.lambda.initialization_type': {
+    brief: 'How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.',
+    type: 'string',
+    keys: ['aws.lambda.initialization_type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'native-http',
+    examples: ['native-http', 'on-demand', 'provisioned-concurrency', 'snap-start'],
+    changelog: [{ version: 'next', description: 'Added aws.lambda.initialization_type attribute' }],
+  },
   'aws.lambda.invoked_arn': {
     brief: 'The full ARN of the Lambda function that was invoked',
     type: 'string',
@@ -24353,6 +24440,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
+  },
+  'aws.lambda.web.endpoint_name': {
+    brief:
+      'The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.',
+    type: 'string',
+    keys: ['aws.lambda.web.endpoint_name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'prod',
+    examples: ['prod', 'canary'],
+    changelog: [{ version: 'next', description: 'Added aws.lambda.web.endpoint_name attribute' }],
   },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
@@ -27190,6 +27291,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'eu-central-1',
     changelog: [{ version: '0.16.0', prs: [481], description: 'Added faas.invoked_region attribute' }],
+  },
+  'faas.max_memory': {
+    brief: 'The amount of memory available to the serverless function, in bytes.',
+    type: 'integer',
+    keys: ['faas.max_memory'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 134217728,
+    examples: [134217728, 1073741824],
+    changelog: [{ version: 'next', description: 'Added faas.max_memory attribute' }],
+    additionalContext: [
+      'On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes.',
+    ],
   },
   'faas.name': {
     brief: 'The name of the serverless function',
@@ -37332,9 +37449,11 @@ export type Attributes = {
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
   [AWS_LAMBDA_FUNCTION_VERSION]?: AWS_LAMBDA_FUNCTION_VERSION_TYPE;
+  [AWS_LAMBDA_INITIALIZATION_TYPE]?: AWS_LAMBDA_INITIALIZATION_TYPE_TYPE;
   [AWS_LAMBDA_INVOKED_ARN]?: AWS_LAMBDA_INVOKED_ARN_TYPE;
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
+  [AWS_LAMBDA_WEB_ENDPOINT_NAME]?: AWS_LAMBDA_WEB_ENDPOINT_NAME_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;
@@ -37526,6 +37645,7 @@ export type Attributes = {
   [FAAS_INVOKED_NAME]?: FAAS_INVOKED_NAME_TYPE;
   [FAAS_INVOKED_PROVIDER]?: FAAS_INVOKED_PROVIDER_TYPE;
   [FAAS_INVOKED_REGION]?: FAAS_INVOKED_REGION_TYPE;
+  [FAAS_MAX_MEMORY]?: FAAS_MAX_MEMORY_TYPE;
   [FAAS_NAME]?: FAAS_NAME_TYPE;
   [FAAS_TIME]?: FAAS_TIME_TYPE;
   [FAAS_TRIGGER]?: FAAS_TRIGGER_TYPE;

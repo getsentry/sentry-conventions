@@ -1,0 +1,17 @@
+{
+  "key": "aws.lambda.web.endpoint_name",
+  "brief": "The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["prod", "canary"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.lambda.web.endpoint_name attribute"
+    }
+  ]
+}
