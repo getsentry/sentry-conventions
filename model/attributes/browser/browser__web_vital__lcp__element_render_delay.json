@@ -1,6 +1,6 @@
 {
   "key": "browser.web_vital.lcp.element_render_delay",
-  "brief": "The time between the Largest Contentful Paint (LCP) resource finishing loading and the LCP element being rendered, in milliseconds",
+  "brief": "The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds",
   "type": "double",
   "apply_scrubbing": {
     "key": "manual"

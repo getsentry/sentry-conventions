@@ -1,6 +1,6 @@
 {
   "key": "browser.web_vital.lcp.resource_load_duration",
-  "brief": "The time it took to load the Largest Contentful Paint (LCP) resource, in milliseconds",
+  "brief": "The time it took to load the LCP resource, in milliseconds",
   "type": "double",
   "apply_scrubbing": {
     "key": "manual"

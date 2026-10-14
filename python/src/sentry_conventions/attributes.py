@@ -2704,7 +2704,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY: Literal[
         "browser.web_vital.lcp.element_render_delay"
     ] = "browser.web_vital.lcp.element_render_delay"
-    """The time between the Largest Contentful Paint (LCP) resource finishing loading and the LCP element being rendered, in milliseconds
+    """The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds
 
     Type: float
     Apply Scrubbing: manual
@@ -2773,7 +2773,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY: Literal[
         "browser.web_vital.lcp.resource_load_delay"
     ] = "browser.web_vital.lcp.resource_load_delay"
-    """The time between the first byte of the document arriving and the browser starting to load the Largest Contentful Paint (LCP) resource, in milliseconds
+    """The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds
 
     Type: float
     Apply Scrubbing: manual
@@ -2786,7 +2786,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION: Literal[
         "browser.web_vital.lcp.resource_load_duration"
     ] = "browser.web_vital.lcp.resource_load_duration"
-    """The time it took to load the Largest Contentful Paint (LCP) resource, in milliseconds
+    """The time it took to load the LCP resource, in milliseconds
 
     Type: float
     Apply Scrubbing: manual
@@ -15546,7 +15546,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "browser.web_vital.lcp.element_render_delay": AttributeMetadata(
-        brief="The time between the Largest Contentful Paint (LCP) resource finishing loading and the LCP element being rendered, in milliseconds",
+        brief="The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds",
         type=AttributeType.DOUBLE,
         keys=("browser.web_vital.lcp.element_render_delay",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -15640,7 +15640,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "browser.web_vital.lcp.resource_load_delay": AttributeMetadata(
-        brief="The time between the first byte of the document arriving and the browser starting to load the Largest Contentful Paint (LCP) resource, in milliseconds",
+        brief="The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds",
         type=AttributeType.DOUBLE,
         keys=("browser.web_vital.lcp.resource_load_delay",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -15662,7 +15662,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "browser.web_vital.lcp.resource_load_duration": AttributeMetadata(
-        brief="The time it took to load the Largest Contentful Paint (LCP) resource, in milliseconds",
+        brief="The time it took to load the LCP resource, in milliseconds",
         type=AttributeType.DOUBLE,
         keys=("browser.web_vital.lcp.resource_load_duration",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
