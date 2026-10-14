@@ -1,0 +1,20 @@
+{
+  "key": "aws.step_functions.activity.name",
+  "brief": "The name of the AWS Step Functions activity.",
+  "additional_context": [
+    "The last part of the activity ARN (`arn:aws:states:us-east-1:123456789012:activity:resize-image`)."
+  ],
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["resize-image"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added aws.step_functions.activity.name attribute"
+    }
+  ]
+}

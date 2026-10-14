@@ -758,7 +758,12 @@ export const SEARCH_AWS__LAMBDA__AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
 export const SEARCH_AWS__LAMBDA__EXECUTION_DURATION_IN_MILLIS = 'aws.lambda.execution_duration_in_millis';
 
 /**
- * Search name for {@link attributes.AWS_LAMBDA_FUNCTION_NAME}. `aws.lambda.function_name`
+ * Search name for {@link attributes.AWS_LAMBDA_FUNCTION_NAME}. `aws.lambda.function.name`
+ */
+export const SEARCH_AWS__LAMBDA__FUNCTION__NAME = 'aws.lambda.function.name';
+
+/**
+ * Search name for {@link attributes._AWS_LAMBDA_FUNCTION_NAME}. `aws.lambda.function_name`
  *
  * @deprecated Use {@link SEARCH_FAAS__NAME} (`faas.name`) instead
  */
@@ -867,6 +872,11 @@ export const SEARCH_AWS__S3__UPLOAD_ID = 'aws.s3.upload_id';
 export const SEARCH_AWS__SECRETSMANAGER__SECRET__ARN = 'aws.secretsmanager.secret.arn';
 
 /**
+ * Search name for {@link attributes.AWS_SECRETSMANAGER_SECRET_NAME}. `aws.secretsmanager.secret.name`
+ */
+export const SEARCH_AWS__SECRETSMANAGER__SECRET__NAME = 'aws.secretsmanager.secret.name';
+
+/**
  * Search name for {@link attributes.AWS_SNS_TOPIC_ARN}. `aws.sns.topic.arn`
  */
 export const SEARCH_AWS__SNS__TOPIC__ARN = 'aws.sns.topic.arn';
@@ -882,6 +892,11 @@ export const SEARCH_AWS__SQS__QUEUE__URL = 'aws.sqs.queue.url';
 export const SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN = 'aws.step_functions.activity.arn';
 
 /**
+ * Search name for {@link attributes.AWS_STEP_FUNCTIONS_ACTIVITY_NAME}. `aws.step_functions.activity.name`
+ */
+export const SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__NAME = 'aws.step_functions.activity.name';
+
+/**
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_EXECUTION_ARN}. `aws.step_functions.execution.arn`
  */
 export const SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN = 'aws.step_functions.execution.arn';
@@ -890,6 +905,11 @@ export const SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN = 'aws.step_functions.ex
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN}. `aws.step_functions.state_machine.arn`
  */
 export const SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN = 'aws.step_functions.state_machine.arn';
+
+/**
+ * Search name for {@link attributes.AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME}. `aws.step_functions.state_machine.name`
+ */
+export const SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__NAME = 'aws.step_functions.state_machine.name';
 
 /**
  * Search name for {@link attributes.AWS_REGION}. `aws_region`
@@ -5378,6 +5398,7 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__KINESIS__STREAM_NAME
   | typeof SEARCH_AWS__LAMBDA__AWS_REQUEST_ID
   | typeof SEARCH_AWS__LAMBDA__EXECUTION_DURATION_IN_MILLIS
+  | typeof SEARCH_AWS__LAMBDA__FUNCTION__NAME
   | typeof SEARCH_AWS__LAMBDA__FUNCTION_NAME
   | typeof SEARCH_AWS__LAMBDA__FUNCTION_VERSION
   | typeof SEARCH_AWS__LAMBDA__INVOKED_ARN
@@ -5397,11 +5418,14 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__S3__PART_NUMBER
   | typeof SEARCH_AWS__S3__UPLOAD_ID
   | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__ARN
+  | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__NAME
   | typeof SEARCH_AWS__SNS__TOPIC__ARN
   | typeof SEARCH_AWS__SQS__QUEUE__URL
   | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN
+  | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__NAME
   | typeof SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN
+  | typeof SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__NAME
   | typeof SEARCH_AWS_REGION
   | typeof SEARCH_BLOCKED_MAIN_THREAD
   | typeof SEARCH_BROWSER__BFCACHE__FRAME
@@ -7038,6 +7062,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The execution duration of the Lambda function invocation in milliseconds',
     deprecationChain: ['aws.lambda.execution_duration_in_millis'],
   },
+  'aws.lambda.function.name': {
+    canonicalName: 'aws.lambda.function.name',
+    type: 'string',
+    brief: 'The name of the AWS Lambda function that an AWS SDK call acts on.',
+    deprecationChain: ['aws.lambda.function.name'],
+  },
   'aws.lambda.function_name': {
     canonicalName: 'faas.name',
     type: 'string',
@@ -7153,6 +7183,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The ARN of the Secret stored in Secrets Manager.',
     deprecationChain: ['aws.secretsmanager.secret.arn'],
   },
+  'aws.secretsmanager.secret.name': {
+    canonicalName: 'aws.secretsmanager.secret.name',
+    type: 'string',
+    brief: 'The name of the secret stored in AWS Secrets Manager.',
+    deprecationChain: ['aws.secretsmanager.secret.name'],
+  },
   'aws.sns.topic.arn': {
     canonicalName: 'aws.sns.topic.arn',
     type: 'string',
@@ -7173,6 +7209,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The ARN of the AWS Step Functions Activity.',
     deprecationChain: ['aws.step_functions.activity.arn'],
   },
+  'aws.step_functions.activity.name': {
+    canonicalName: 'aws.step_functions.activity.name',
+    type: 'string',
+    brief: 'The name of the AWS Step Functions activity.',
+    deprecationChain: ['aws.step_functions.activity.name'],
+  },
   'aws.step_functions.execution.arn': {
     canonicalName: 'aws.step_functions.execution.arn',
     type: 'string',
@@ -7184,6 +7226,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The ARN of the AWS Step Functions State Machine.',
     deprecationChain: ['aws.step_functions.state_machine.arn'],
+  },
+  'aws.step_functions.state_machine.name': {
+    canonicalName: 'aws.step_functions.state_machine.name',
+    type: 'string',
+    brief: 'The name of the AWS Step Functions state machine.',
+    deprecationChain: ['aws.step_functions.state_machine.name'],
   },
   aws_region: {
     canonicalName: 'cloud.region',
