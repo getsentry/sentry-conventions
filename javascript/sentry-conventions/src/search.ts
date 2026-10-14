@@ -7125,7 +7125,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'aws.s3.delete': {
     canonicalName: 'aws.s3.delete',
     type: 'string',
-    brief: 'The JSON-serialized value of delete request field, which specifies the object to be deleted.',
+    brief: 'The JSON-serialized value of Delete request field, which specifies the objects to be deleted.',
     deprecationChain: ['aws.s3.delete'],
   },
   'aws.s3.key': {

@@ -3092,7 +3092,7 @@ export type AWS_S3_COPY_SOURCE_TYPE = string;
 // Path: model/attributes/aws/aws__s3__delete.json
 
 /**
- * The JSON-serialized value of delete request field, which specifies the object to be deleted. `aws.s3.delete`
+ * The JSON-serialized value of Delete request field, which specifies the objects to be deleted. `aws.s3.delete`
  *
  * Attribute Value Type: `string` {@link AWS_S3_DELETE_TYPE}
  *
@@ -24532,7 +24532,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'aws.s3.delete': {
-    brief: 'The JSON-serialized value of delete request field, which specifies the object to be deleted.',
+    brief: 'The JSON-serialized value of Delete request field, which specifies the objects to be deleted.',
     type: 'string',
     keys: ['aws.s3.delete'],
     applyScrubbing: {

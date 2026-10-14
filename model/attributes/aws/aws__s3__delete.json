@@ -1,6 +1,6 @@
 {
   "key": "aws.s3.delete",
-  "brief": "The JSON-serialized value of delete request field, which specifies the object to be deleted.",
+  "brief": "The JSON-serialized value of Delete request field, which specifies the objects to be deleted.",
   "additional_context": ["Applicable only to the delete-objects operation, corresponding to its Delete parameter."],
   "type": "string",
   "apply_scrubbing": {

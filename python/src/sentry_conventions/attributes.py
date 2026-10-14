@@ -2182,7 +2182,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/aws/aws__s3__delete.json
     AWS_S3_DELETE: Literal["aws.s3.delete"] = "aws.s3.delete"
-    """The JSON-serialized value of delete request field, which specifies the object to be deleted.
+    """The JSON-serialized value of Delete request field, which specifies the objects to be deleted.
 
     Type: str
     Apply Scrubbing: manual
@@ -14682,7 +14682,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "aws.s3.delete": AttributeMetadata(
-        brief="The JSON-serialized value of delete request field, which specifies the object to be deleted.",
+        brief="The JSON-serialized value of Delete request field, which specifies the objects to be deleted.",
         type=AttributeType.STRING,
         keys=("aws.s3.delete",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
