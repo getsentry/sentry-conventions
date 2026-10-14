@@ -28,6 +28,7 @@
     { "value": "measure" },
     { "value": "middleware" },
     { "value": "navigation" },
+    { "value": "object" },
     { "value": "pageload" },
     { "value": "queue" },
     { "value": "resource" },
@@ -50,6 +51,10 @@
     "name": "span.category"
   },
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added object to the enum values"
+    },
     {
       "version": "0.4.0",
       "prs": [218]
