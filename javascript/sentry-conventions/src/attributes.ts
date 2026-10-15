@@ -7706,6 +7706,28 @@ export const GEN_AI_AGENT_NAME = 'gen_ai.agent.name';
  */
 export type GEN_AI_AGENT_NAME_TYPE = string;
 
+// Path: model/attributes/gen_ai/gen_ai__agent__version.json
+
+/**
+ * The version of the GenAI agent. `gen_ai.agent.version`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_AGENT_VERSION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "1.0.0"
+ * @example "2025-05-01"
+ */
+export const GEN_AI_AGENT_VERSION = 'gen_ai.agent.version';
+
+/**
+ * Type for {@link GEN_AI_AGENT_VERSION} gen_ai.agent.version
+ */
+export type GEN_AI_AGENT_VERSION_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__context__utilization.json
 
 /**
@@ -20788,6 +20810,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gcp.project.id': 'string',
   gcp_region: 'string',
   'gen_ai.agent.name': 'string',
+  'gen_ai.agent.version': 'string',
   'gen_ai.context.utilization': 'double',
   'gen_ai.context.window_size': 'integer',
   'gen_ai.conversation.id': 'string',
@@ -21697,6 +21720,7 @@ export type AttributeName =
   | typeof GCP_PROJECT_ID
   | typeof GCP_REGION
   | typeof GEN_AI_AGENT_NAME
+  | typeof GEN_AI_AGENT_VERSION
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
   | typeof GEN_AI_CONVERSATION_ID
@@ -27644,6 +27668,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ResearchAssistant',
     changelog: [{ version: '0.1.0', prs: [62, 127] }],
+  },
+  'gen_ai.agent.version': {
+    brief: 'The version of the GenAI agent.',
+    type: 'string',
+    keys: ['gen_ai.agent.version'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '1.0.0',
+    examples: ['1.0.0', '2025-05-01'],
+    changelog: [{ version: 'next', prs: [722], description: 'Added gen_ai.agent.version attribute' }],
   },
   'gen_ai.context.utilization': {
     brief: 'The fraction of the model context window utilized by this generation.',
@@ -37554,6 +37591,7 @@ export type Attributes = {
   [GCP_PROJECT_ID]?: GCP_PROJECT_ID_TYPE;
   [GCP_REGION]?: GCP_REGION_TYPE;
   [GEN_AI_AGENT_NAME]?: GEN_AI_AGENT_NAME_TYPE;
+  [GEN_AI_AGENT_VERSION]?: GEN_AI_AGENT_VERSION_TYPE;
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
   [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
