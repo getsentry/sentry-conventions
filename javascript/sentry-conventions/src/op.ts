@@ -607,6 +607,11 @@ export const HANDLER = 'handler';
 
 export const VIEW = 'view';
 
+/**
+ * @deprecated Use {@link VIEW} (view) instead
+ */
+export const VIEW_AUTHENTICATE = 'view.authenticate';
+
 export const TEMPLATE = 'template';
 
 /**

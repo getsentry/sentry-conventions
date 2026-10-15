@@ -42,6 +42,12 @@
       "name": "view"
     },
     {
+      "name": "view.authenticate",
+      "deprecation": {
+        "replacement": "view"
+      }
+    },
+    {
       "name": "template"
     },
     {
