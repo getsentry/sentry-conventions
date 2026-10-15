@@ -8444,8 +8444,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.conversation.compaction.reason': {
     canonicalName: 'gen_ai.conversation.compaction.reason',
     type: 'string',
-    brief:
-      'What triggered the compaction of the conversation context, set on the span of the operation that compacted it.',
+    brief: 'What triggered the compaction of the conversation context.',
     deprecationChain: ['gen_ai.conversation.compaction.reason'],
   },
   'gen_ai.conversation.id': {

@@ -54,6 +54,13 @@
       "ops": ["gen_ai.memory.client"],
       "templates": ["{{gen_ai.operation.name}}"],
       "examples": ["upsert_memory", "search_memory", "create_memory", "delete_memory"]
+    },
+    {
+      "name": "Compaction",
+      "brief": "Generative AI conversation compaction. Compacting a conversation's context, such as summarizing earlier messages to fit the context window.",
+      "ops": ["gen_ai.compact"],
+      "templates": ["{{gen_ai.operation.name}}"],
+      "examples": ["compact"]
     }
   ]
 }

@@ -7772,7 +7772,7 @@ export type GEN_AI_CONVERSATION_COMPACTED_TYPE = boolean;
 // Path: model/attributes/gen_ai/gen_ai__conversation__compaction__reason.json
 
 /**
- * What triggered the compaction of the conversation context, set on the span of the operation that compacted it. `gen_ai.conversation.compaction.reason`
+ * What triggered the compaction of the conversation context. `gen_ai.conversation.compaction.reason`
  *
  * Attribute Value Type: `string` {@link GEN_AI_CONVERSATION_COMPACTION_REASON_TYPE}
  *
@@ -8128,6 +8128,7 @@ export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
  *
  * Well-defined Values:
  * - `chat`
+ * - `compact` - Compaction of the conversation context, such as summarizing earlier messages to fit the context window. Not an OpenTelemetry value.
  * - `create_agent`
  * - `create_memory`
  * - `create_memory_store`
@@ -8171,7 +8172,7 @@ export type GEN_AI_OPERATION_NAME_TYPE = string;
  * - `tool` - execute_tool spans
  * - `handoff` - handoff spans
  * - `memory` - gen_ai.memory.client spans
- * - `other` - input and output processors, skill loading, guardrails etc.
+ * - `other` - input and output processors, skill loading, guardrails, compact spans etc.
  *
  * @example "tool"
  */
@@ -27735,8 +27736,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.conversation.compaction.reason': {
-    brief:
-      'What triggered the compaction of the conversation context, set on the span of the operation that compacted it.',
+    brief: 'What triggered the compaction of the conversation context.',
     type: 'string',
     keys: ['gen_ai.conversation.compaction.reason'],
     applyScrubbing: {
@@ -27748,7 +27748,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['manual', 'threshold', 'overflow'],
     changelog: [{ version: 'next', prs: [723], description: 'Added gen_ai.conversation.compaction.reason attribute' }],
     additionalContext: [
-      'Set on the span of the request that writes the compacted context, such as the model call that summarizes the conversation. Its presence marks that span as a compaction. Requests that later run on the compacted context set `gen_ai.conversation.compacted` instead. Common values are `manual` (requested by the user), `threshold` (the context reached a configured limit) and `overflow` (recovering from a context window overflow).',
+      'Set on the `gen_ai.compact` span. Model requests that write the compacted context are its child spans; requests that later run on the compacted context set `gen_ai.conversation.compacted`. Common values are `manual` (requested by the user), `threshold` (the context reached a configured limit) and `overflow` (recovering from a context window overflow).',
     ],
   },
   'gen_ai.conversation.id': {
@@ -28015,6 +28015,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
+      { version: 'next', prs: [723], description: "Added 'compact' to the well-known values" },
       {
         version: '0.27.0',
         prs: [653, 680],
@@ -28037,6 +28038,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'tool',
     changelog: [
+      { version: 'next', prs: [723], description: "Documented that compact spans map to 'other'" },
       { version: '0.27.0', prs: [653], description: "Added 'memory' value" },
       { version: '0.4.0', prs: [257] },
       { version: '0.1.0', prs: [113, 127] },

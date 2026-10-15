@@ -243,6 +243,9 @@ pub const GEN_AI_TEXT_COMPLETION: &str = "gen_ai.text_completion";
 /// A memory store or memory record operation performed by a generative AI agent
 pub const GEN_AI_MEMORY_CLIENT: &str = "gen_ai.memory.client";
 
+/// Compaction of a generative AI conversation's context, such as summarizing earlier messages to fit the context window. Model requests that write the summary are child spans.
+pub const GEN_AI_COMPACT: &str = "gen_ai.compact";
+
 // Path: model/op/general.json
 // Name: general
 
