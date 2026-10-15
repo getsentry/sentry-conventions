@@ -1986,6 +1986,11 @@ export const SEARCH_GEN_AI__CONTEXT__WINDOW_SIZE = 'gen_ai.context.window_size';
 export const SEARCH_GEN_AI__CONVERSATION__COMPACTED = 'gen_ai.conversation.compacted';
 
 /**
+ * Search name for {@link attributes.GEN_AI_CONVERSATION_COMPACTION_REASON}. `gen_ai.conversation.compaction.reason`
+ */
+export const SEARCH_GEN_AI__CONVERSATION__COMPACTION__REASON = 'gen_ai.conversation.compaction.reason';
+
+/**
  * Search name for {@link attributes.GEN_AI_CONVERSATION_ID}. `gen_ai.conversation.id`
  */
 export const SEARCH_GEN_AI__CONVERSATION__ID = 'gen_ai.conversation.id';
@@ -5611,6 +5616,7 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__CONTEXT__UTILIZATION
   | typeof SEARCH_GEN_AI__CONTEXT__WINDOW_SIZE
   | typeof SEARCH_GEN_AI__CONVERSATION__COMPACTED
+  | typeof SEARCH_GEN_AI__CONVERSATION__COMPACTION__REASON
   | typeof SEARCH_GEN_AI__CONVERSATION__ID
   | typeof SEARCH_GEN_AI__COST__CACHE_CREATION__INPUT_TOKENS
   | typeof SEARCH_GEN_AI__COST__CACHE_READ__INPUT_TOKENS
@@ -8434,6 +8440,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'Indicates whether the effective conversation context used for this operation is a compacted view of a prior conversation.',
     deprecationChain: ['gen_ai.conversation.compacted'],
+  },
+  'gen_ai.conversation.compaction.reason': {
+    canonicalName: 'gen_ai.conversation.compaction.reason',
+    type: 'string',
+    brief:
+      'What triggered the compaction of the conversation context, set on the span of the operation that compacted it.',
+    deprecationChain: ['gen_ai.conversation.compaction.reason'],
   },
   'gen_ai.conversation.id': {
     canonicalName: 'gen_ai.conversation.id',

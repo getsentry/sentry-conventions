@@ -7769,6 +7769,29 @@ export const GEN_AI_CONVERSATION_COMPACTED = 'gen_ai.conversation.compacted';
  */
 export type GEN_AI_CONVERSATION_COMPACTED_TYPE = boolean;
 
+// Path: model/attributes/gen_ai/gen_ai__conversation__compaction__reason.json
+
+/**
+ * What triggered the compaction of the conversation context, set on the span of the operation that compacted it. `gen_ai.conversation.compaction.reason`
+ *
+ * Attribute Value Type: `string` {@link GEN_AI_CONVERSATION_COMPACTION_REASON_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "manual"
+ * @example "threshold"
+ * @example "overflow"
+ */
+export const GEN_AI_CONVERSATION_COMPACTION_REASON = 'gen_ai.conversation.compaction.reason';
+
+/**
+ * Type for {@link GEN_AI_CONVERSATION_COMPACTION_REASON} gen_ai.conversation.compaction.reason
+ */
+export type GEN_AI_CONVERSATION_COMPACTION_REASON_TYPE = string;
+
 // Path: model/attributes/gen_ai/gen_ai__conversation__id.json
 
 /**
@@ -20812,6 +20835,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.context.utilization': 'double',
   'gen_ai.context.window_size': 'integer',
   'gen_ai.conversation.compacted': 'boolean',
+  'gen_ai.conversation.compaction.reason': 'string',
   'gen_ai.conversation.id': 'string',
   'gen_ai.cost.cache_creation.input_tokens': 'double',
   'gen_ai.cost.cache_read.input_tokens': 'double',
@@ -21722,6 +21746,7 @@ export type AttributeName =
   | typeof GEN_AI_CONTEXT_UTILIZATION
   | typeof GEN_AI_CONTEXT_WINDOW_SIZE
   | typeof GEN_AI_CONVERSATION_COMPACTED
+  | typeof GEN_AI_CONVERSATION_COMPACTION_REASON
   | typeof GEN_AI_CONVERSATION_ID
   | typeof GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS
   | typeof GEN_AI_COST_CACHE_READ_INPUT_TOKENS
@@ -27707,6 +27732,23 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [723], description: 'Added gen_ai.conversation.compacted attribute' }],
     additionalContext: [
       'This attribute is a positive indicator of context compaction. Instrumentations SHOULD set it to `true` only when they can reliably determine that context compaction was applied. Instrumentations SHOULD NOT set it to `false`; they SHOULD leave it unset otherwise.',
+    ],
+  },
+  'gen_ai.conversation.compaction.reason': {
+    brief:
+      'What triggered the compaction of the conversation context, set on the span of the operation that compacted it.',
+    type: 'string',
+    keys: ['gen_ai.conversation.compaction.reason'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'manual',
+    examples: ['manual', 'threshold', 'overflow'],
+    changelog: [{ version: 'next', prs: [723], description: 'Added gen_ai.conversation.compaction.reason attribute' }],
+    additionalContext: [
+      'Set on the span of the request that writes the compacted context, such as the model call that summarizes the conversation. Its presence marks that span as a compaction. Requests that later run on the compacted context set `gen_ai.conversation.compacted` instead. Common values are `manual` (requested by the user), `threshold` (the context reached a configured limit) and `overflow` (recovering from a context window overflow).',
     ],
   },
   'gen_ai.conversation.id': {
@@ -37597,6 +37639,7 @@ export type Attributes = {
   [GEN_AI_CONTEXT_UTILIZATION]?: GEN_AI_CONTEXT_UTILIZATION_TYPE;
   [GEN_AI_CONTEXT_WINDOW_SIZE]?: GEN_AI_CONTEXT_WINDOW_SIZE_TYPE;
   [GEN_AI_CONVERSATION_COMPACTED]?: GEN_AI_CONVERSATION_COMPACTED_TYPE;
+  [GEN_AI_CONVERSATION_COMPACTION_REASON]?: GEN_AI_CONVERSATION_COMPACTION_REASON_TYPE;
   [GEN_AI_CONVERSATION_ID]?: GEN_AI_CONVERSATION_ID_TYPE;
   [GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS]?: GEN_AI_COST_CACHE_CREATION_INPUT_TOKENS_TYPE;
   [GEN_AI_COST_CACHE_READ_INPUT_TOKENS]?: GEN_AI_COST_CACHE_READ_INPUT_TOKENS_TYPE;

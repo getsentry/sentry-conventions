@@ -4801,6 +4801,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__conversation__compaction__reason.json
+    GEN_AI_CONVERSATION_COMPACTION_REASON: Literal[
+        "gen_ai.conversation.compaction.reason"
+    ] = "gen_ai.conversation.compaction.reason"
+    """What triggered the compaction of the conversation context, set on the span of the operation that compacted it.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "manual"
+    Example: "threshold"
+    Example: "overflow"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__conversation__id.json
     GEN_AI_CONVERSATION_ID: Literal["gen_ai.conversation.id"] = "gen_ai.conversation.id"
     """The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
@@ -18468,6 +18483,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This attribute is a positive indicator of context compaction. Instrumentations SHOULD set it to `true` only when they can reliably determine that context compaction was applied. Instrumentations SHOULD NOT set it to `false`; they SHOULD leave it unset otherwise."
         ],
     ),
+    "gen_ai.conversation.compaction.reason": AttributeMetadata(
+        brief="What triggered the compaction of the conversation context, set on the span of the operation that compacted it.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.conversation.compaction.reason",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="manual",
+        examples=["manual", "threshold", "overflow"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[723],
+                description="Added gen_ai.conversation.compaction.reason attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on the span of the request that writes the compacted context, such as the model call that summarizes the conversation. Its presence marks that span as a compaction. Requests that later run on the compacted context set `gen_ai.conversation.compacted` instead. Common values are `manual` (requested by the user), `threshold` (the context reached a configured limit) and `overflow` (recovering from a context window overflow)."
+        ],
+    ),
     "gen_ai.conversation.id": AttributeMetadata(
         brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
         type=AttributeType.STRING,
@@ -29623,6 +29658,7 @@ Attributes = TypedDict(
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,
         "gen_ai.conversation.compacted": bool,
+        "gen_ai.conversation.compaction.reason": str,
         "gen_ai.conversation.id": str,
         "gen_ai.cost.cache_creation.input_tokens": float,
         "gen_ai.cost.cache_read.input_tokens": float,
