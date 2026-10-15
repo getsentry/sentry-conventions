@@ -4788,6 +4788,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 128000
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__conversation__compacted.json
+    GEN_AI_CONVERSATION_COMPACTED: Literal["gen_ai.conversation.compacted"] = (
+        "gen_ai.conversation.compacted"
+    )
+    """Indicates whether the effective conversation context used for this operation is a compacted view of a prior conversation.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: true
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__conversation__id.json
     GEN_AI_CONVERSATION_ID: Literal["gen_ai.conversation.id"] = "gen_ai.conversation.id"
     """The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.
@@ -18435,6 +18448,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "gen_ai.conversation.compacted": AttributeMetadata(
+        brief="Indicates whether the effective conversation context used for this operation is a compacted view of a prior conversation.",
+        type=AttributeType.BOOLEAN,
+        keys=("gen_ai.conversation.compacted",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        examples=[True],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[723],
+                description="Added gen_ai.conversation.compacted attribute",
+            ),
+        ],
+        additional_context=[
+            "This attribute is a positive indicator of context compaction. Instrumentations SHOULD set it to `true` only when they can reliably determine that context compaction was applied. Instrumentations SHOULD NOT set it to `false`; they SHOULD leave it unset otherwise."
+        ],
+    ),
     "gen_ai.conversation.id": AttributeMetadata(
         brief="The unique identifier for a conversation (session, thread), used to store and correlate messages within this conversation.",
         type=AttributeType.STRING,
@@ -29589,6 +29622,7 @@ Attributes = TypedDict(
         "gen_ai.agent.name": str,
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,
+        "gen_ai.conversation.compacted": bool,
         "gen_ai.conversation.id": str,
         "gen_ai.cost.cache_creation.input_tokens": float,
         "gen_ai.cost.cache_read.input_tokens": float,
