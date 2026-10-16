@@ -451,41 +451,78 @@ export const QUEUE_SETTLE = 'queue.settle';
 
 /**
  * Publishing a message to an arq queue.
+ *
+ * @deprecated Use {@link QUEUE_PUBLISH} (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
  */
 export const QUEUE_SUBMIT_ARQ = 'queue.submit.arq';
 
 /**
- * Processing a message from an arq queue.
- */
-export const QUEUE_TASK_ARQ = 'queue.task.arq';
-
-/**
  * Publishing a message to a Celery broker.
+ *
+ * @deprecated Use {@link QUEUE_PUBLISH} (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
  */
 export const QUEUE_SUBMIT_CELERY = 'queue.submit.celery';
 
 /**
+ * Publishing a message to a Django queue.
+ *
+ * @deprecated Use {@link QUEUE_PUBLISH} (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
+ */
+export const QUEUE_SUBMIT_DJANGO = 'queue.submit.django';
+
+/**
+ * Publishing a message to a Huey instance.
+ *
+ * @deprecated Use {@link QUEUE_PUBLISH} (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
+ */
+export const QUEUE_SUBMIT_HUEY = 'queue.submit.huey';
+
+/**
+ * Publishing a message to a Ray queue.
+ *
+ * @deprecated Use {@link QUEUE_PUBLISH} (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
+ */
+export const QUEUE_SUBMIT_RAY = 'queue.submit.ray';
+
+/**
+ * Processing a message from an arq queue.
+ *
+ * @deprecated Use {@link QUEUE_PROCESS} (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
+ */
+export const QUEUE_TASK_ARQ = 'queue.task.arq';
+
+/**
  * Processing a message from a Celery queue.
+ *
+ * @deprecated Use {@link QUEUE_PROCESS} (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
  */
 export const QUEUE_TASK_CELERY = 'queue.task.celery';
 
 /**
  * Processing a message from a Dramatiq queue.
+ *
+ * @deprecated Use {@link QUEUE_PROCESS} (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
  */
 export const QUEUE_TASK_DRAMATIQ = 'queue.task.dramatiq';
 
 /**
- * Publishing a message to a Huey instance.
- */
-export const QUEUE_SUBMIT_HUEY = 'queue.submit.huey';
-
-/**
  * Processing a message from a Huey instance.
+ *
+ * @deprecated Use {@link QUEUE_PROCESS} (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
  */
 export const QUEUE_TASK_HUEY = 'queue.task.huey';
 
 /**
+ * Processing a message from a Ray queue.
+ *
+ * @deprecated Use {@link QUEUE_PROCESS} (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
+ */
+export const QUEUE_TASK_RAY = 'queue.task.ray';
+
+/**
  * Processing a message from an RQ queue.
+ *
+ * @deprecated Use {@link QUEUE_PROCESS} (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.
  */
 export const QUEUE_TASK_RQ = 'queue.task.rq';
 
@@ -532,6 +569,11 @@ export const OBJECT_HEAD = 'object.head';
  * Storing an object in an object store.
  */
 export const OBJECT_PUT = 'object.put';
+
+/**
+ * Copying an object within or between object stores.
+ */
+export const OBJECT_COPY = 'object.copy';
 
 /**
  * Deleting an object from an object store.
@@ -617,6 +659,16 @@ export const HANDLER = 'handler';
 
 export const VIEW = 'view';
 
+/**
+ * Rendering of a view.
+ */
+export const VIEW_RENDER = 'view.render';
+
+/**
+ * @deprecated Use {@link VIEW_RENDER} (view.render) instead
+ */
+export const VIEW_RESPONSE_RENDER = 'view.response.render';
+
 export const TEMPLATE = 'template';
 
 /**
@@ -628,5 +680,10 @@ export const FUNCTION_REMIX = 'function.remix';
  * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.
  */
 export const FUNCTION_NEXTJS = 'function.nextjs';
+
+/**
+ * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific event ops are replaced by framework-agnostic ones.
+ */
+export const EVENT_DJANGO = 'event.django';
 
 export const CONSOLE = 'console';
