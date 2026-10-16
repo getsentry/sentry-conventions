@@ -1,0 +1,9 @@
+{
+  "key": "bullmq.jobs.failed",
+  "brief": "The number of BullMQ jobs that failed and are not retried.",
+  "instrument": "counter",
+  "unit": "none",
+  "is_in_otel": false,
+  "requirement_level": "opt_in",
+  "attributes": ["messaging.destination.name", "bullmq.job.name", "bullmq.job.status", "bullmq.job.state"]
+}

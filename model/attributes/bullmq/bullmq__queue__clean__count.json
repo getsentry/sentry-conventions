@@ -1,0 +1,22 @@
+{
+  "key": "bullmq.queue.clean.count",
+  "brief": "The number of BullMQ jobs that Queue.clean() removed.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [25],
+  "additional_context": [
+    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry.",
+    "BullMQ 6.3.11 sets this attribute. BullMQ 5.79.1 does not."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added bullmq.queue.clean.count attribute"
+    }
+  ]
+}

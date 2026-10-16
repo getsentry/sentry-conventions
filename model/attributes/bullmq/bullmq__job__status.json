@@ -1,0 +1,22 @@
+{
+  "key": "bullmq.job.status",
+  "brief": "The state of the BullMQ job that a job metric counts.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["completed", "failed", "delayed"],
+  "additional_context": [
+    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry.",
+    "Set on the BullMQ job metrics by BullMQ 5.79.1. BullMQ 6.3.11 sets `bullmq.job.state` instead."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added bullmq.job.status attribute"
+    }
+  ]
+}
