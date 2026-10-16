@@ -624,4 +624,9 @@ export const FUNCTION_REMIX = 'function.remix';
  */
 export const FUNCTION_NEXTJS = 'function.nextjs';
 
+/**
+ * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific event ops are replaced by framework-agnostic ones.
+ */
+export const EVENT_DJANGO = 'event.django';
+
 export const CONSOLE = 'console';

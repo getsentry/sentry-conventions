@@ -62,6 +62,13 @@
       }
     },
     {
+      "name": "event.django",
+      "deprecation": {
+        "replacement": "function",
+        "note": "Framework-specific event ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
       "name": "serialize"
     },
     {
