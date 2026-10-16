@@ -1,5 +1,5 @@
 {
-  "key": "aws.lambda.function.name",
+  "key": "aws.lambda.target_function.name",
   "brief": "The name of the AWS Lambda function that an AWS SDK call acts on.",
   "additional_context": [
     "Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in."
@@ -14,7 +14,7 @@
   "changelog": [
     {
       "version": "next",
-      "description": "Added aws.lambda.function.name attribute"
+      "description": "Added aws.lambda.target_function.name attribute"
     }
   ]
 }
