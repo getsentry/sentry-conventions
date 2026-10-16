@@ -224,7 +224,11 @@ pub const GEN_AI_GENERATE_CONTENT: &str = "gen_ai.generate_content";
 /// Reranking of documents or results by a generative AI model
 pub const GEN_AI_RERANK: &str = "gen_ai.rerank";
 
+/// Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+pub const GEN_AI_DECIDE: &str = "gen_ai.decide";
+
 /// Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+#[deprecated(note = "Use `GEN_AI_DECIDE` (gen_ai.decide) instead")]
 pub const GEN_AI_EVALUATE: &str = "gen_ai.evaluate";
 
 /// Creation of an AI agent that can later be invoked to perform a task
@@ -341,6 +345,9 @@ pub const OBJECT_HEAD: &str = "object.head";
 /// Storing an object in an object store.
 pub const OBJECT_PUT: &str = "object.put";
 
+/// Copying an object within or between object stores.
+pub const OBJECT_COPY: &str = "object.copy";
+
 /// Deleting an object from an object store.
 pub const OBJECT_DELETE: &str = "object.delete";
 
@@ -424,6 +431,12 @@ pub const HANDLER: &str = "handler";
 
 pub const VIEW: &str = "view";
 
+/// Rendering of a view.
+pub const VIEW_RENDER: &str = "view.render";
+
+#[deprecated(note = "Use `VIEW_RENDER` (view.render) instead")]
+pub const VIEW_RESPONSE_RENDER: &str = "view.response.render";
+
 pub const TEMPLATE: &str = "template";
 
 #[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
@@ -431,5 +444,8 @@ pub const FUNCTION_REMIX: &str = "function.remix";
 
 #[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
 pub const FUNCTION_NEXTJS: &str = "function.nextjs";
+
+#[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific event ops are replaced by framework-agnostic ones.")]
+pub const EVENT_DJANGO: &str = "event.django";
 
 pub const CONSOLE: &str = "console";

@@ -533,7 +533,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.name, mcp.tool.name
@@ -648,7 +648,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.system_instructions
@@ -924,7 +924,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Raw text inputs provided to the model.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt, ai.prompt
@@ -963,7 +963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the tool calls that were made.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -4205,7 +4205,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry environment.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.environment
@@ -4904,7 +4904,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.
+    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.
 
     Type: str
     Apply Scrubbing: manual
@@ -4991,6 +4991,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     - `create_agent`
     - `create_memory`
     - `create_memory_store`
+    - `decide`
     - `delete_memory`
     - `delete_memory_store`
     - `embeddings`
@@ -5025,7 +5026,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__output__messages.json
     GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
-    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.
+    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.
 
     Type: str
     Apply Scrubbing: manual
@@ -5435,7 +5436,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The system instructions passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.system_instructions instead
@@ -5529,7 +5530,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The response from a tool or function call passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
@@ -6185,6 +6186,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.322
+    """
+
+    # Path: model/attributes/http/http__request__duration.json
+    HTTP_REQUEST_DURATION: Literal["http.request.duration"] = "http.request.duration"
+    """The duration of a HTTP request, in milliseconds.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
     """
 
     # Path: model/attributes/http/http__request__fetch_start.json
@@ -7536,7 +7548,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The content of the tool result.
 
     Type: str
-    Apply Scrubbing: auto - Tool results can contain user data
+    Apply Scrubbing: manual - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result, anthropic.tool_result.content
@@ -8227,7 +8239,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
@@ -9129,7 +9141,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -9143,7 +9155,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -10411,7 +10423,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry transaction (segment name).
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment.name, transaction
@@ -10548,7 +10560,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
@@ -12037,7 +12049,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.function_call",
             "mcp.tool.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="function_name",
@@ -12229,7 +12241,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are now a clown.",
@@ -12700,7 +12712,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.texts",
             "gen_ai.prompt",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Hello, how are you?", "What is the capital of France?"],
@@ -12788,7 +12800,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.responses",
             "ai.tool_calls",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["tool_call_1", "tool_call_2"],
@@ -13908,7 +13920,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[["lives", "id"]],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[672],
                 description="Added aws.dynamodb.attributes_to_get attribute",
             ),
@@ -14659,7 +14671,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["someFile.yml"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[672],
                 description="Added aws.s3.copy_source attribute",
             ),
@@ -14681,7 +14693,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[672], description="Added aws.s3.delete attribute"
+                version="0.27.0", prs=[672], description="Added aws.s3.delete attribute"
             ),
         ],
         additional_context=[
@@ -14699,7 +14711,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["someFile.yml"],
         changelog=[
             ChangelogEntry(
-                version="next", prs=[672], description="Added aws.s3.key attribute"
+                version="0.27.0", prs=[672], description="Added aws.s3.key attribute"
             ),
         ],
     ),
@@ -14714,7 +14726,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[3456],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[672],
                 description="Added aws.s3.part_number attribute",
             ),
@@ -14734,7 +14746,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[672],
                 description="Added aws.s3.upload_id attribute",
             ),
@@ -14783,7 +14795,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[672],
                 description="Added aws.sqs.queue.url attribute",
             ),
@@ -14818,7 +14830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[672],
                 description="Added aws.step_functions.execution.arn attribute",
             ),
@@ -17551,7 +17563,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -18591,7 +18603,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -18630,7 +18642,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["user dietary preferences", "past flight bookings"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[653],
                 description="Added gen_ai.memory.query.text attribute",
             ),
@@ -18647,7 +18659,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[3],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[653],
                 description="Added gen_ai.memory.record.count attribute",
             ),
@@ -18664,7 +18676,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["mem_5j66UpCpwteGg4YSxUnt7lPY"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[653],
                 description="Added gen_ai.memory.record.id attribute",
             ),
@@ -18683,7 +18695,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[653],
                 description="Added gen_ai.memory.records attribute",
             ),
@@ -18700,7 +18712,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["ms_abc123", "user-preferences-store", "seer-knowledge"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[653],
                 description="Added gen_ai.memory.store.id attribute",
             ),
@@ -18716,9 +18728,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="chat",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[653, 680],
-                description="Added memory operation values and 'evaluate' to the well-known values",
+                description="Added memory operation values, 'evaluate', and 'decide' to the well-known values; deprecated 'evaluate' in favor of 'decide'",
             ),
             ChangelogEntry(version="0.4.0", prs=[225]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
@@ -18734,14 +18746,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="tool",
         changelog=[
             ChangelogEntry(
-                version="next", prs=[653], description="Added 'memory' value"
+                version="0.27.0", prs=[653], description="Added 'memory' value"
             ),
             ChangelogEntry(version="0.4.0", prs=[257]),
             ChangelogEntry(version="0.1.0", prs=[113, 127]),
         ],
     ),
     "gen_ai.output.messages": AttributeMetadata(
-        brief='The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
+        brief='The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.output.messages",
@@ -18861,7 +18873,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Added the OpenTelemetry convention for prompt variables",
             ),
@@ -19364,7 +19376,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
@@ -19506,7 +19518,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "mcp.tool.result.content",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
@@ -20633,6 +20645,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "http.request.duration": AttributeMetadata(
+        brief="The duration of a HTTP request, in milliseconds.",
+        type=AttributeType.INTEGER,
+        keys=("http.request.duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        examples=[5000],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[697],
+                description="Added http.request.duration attribute",
+            ),
+        ],
+        additional_context=["This attribute is set by Relay."],
+    ),
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
         type=AttributeType.DOUBLE,
@@ -21441,7 +21471,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["mcp.request.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Removed the session-scoped uniqueness requirement from the request identifier",
             ),
@@ -21800,7 +21830,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["Example Desktop", "Example CLI"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Added mcp.auth.client.name attribute",
             ),
@@ -21844,7 +21874,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["example-mcp-client"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that the attribute describes declared MCP implementation metadata",
             ),
@@ -21865,7 +21895,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["Example MCP Client"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that the attribute describes declared MCP implementation metadata",
             ),
@@ -21883,7 +21913,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["1.0.0"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that the attribute describes declared MCP implementation metadata",
             ),
@@ -21983,7 +22013,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[0.2, 50],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Changed the type to double to support fractional MCP progress values",
             ),
@@ -22042,7 +22072,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[1, 100],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Changed the type to double to support fractional MCP progress values",
             ),
@@ -22093,7 +22123,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["Summarize the document."],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute.",
             ),
         ],
@@ -22117,7 +22148,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["user", "assistant"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute.",
             ),
         ],
@@ -22187,7 +22219,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[1],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that readiness describes the legacy MCP initialization handshake",
             ),
@@ -22206,7 +22238,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["2024-11-05"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that the protocol version applies to an operation without requiring a session",
             ),
@@ -22281,7 +22313,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["jsonrpc.request.id"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Removed the session-scoped uniqueness requirement from the request identifier",
             ),
@@ -22304,7 +22336,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["file", "postgres"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation",
             ),
@@ -22351,7 +22383,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["example-mcp-server"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that the attribute describes declared MCP implementation metadata",
             ),
@@ -22372,7 +22404,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["Example MCP Server"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that the attribute describes declared MCP implementation metadata",
             ),
@@ -22390,7 +22422,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["0.1.0"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that the attribute describes declared MCP implementation metadata",
             ),
@@ -22408,7 +22440,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["550e8400-e29b-41d4-a716-446655440000"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified that the identifier requires a real MCP protocol session",
             ),
@@ -22467,7 +22499,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22495,7 +22528,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22521,7 +22555,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22549,7 +22584,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22576,7 +22612,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22603,7 +22640,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22630,7 +22668,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22657,7 +22696,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22679,7 +22719,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "mcp.tool.result.content",
         ),
         apply_scrubbing=ApplyScrubbingInfo(
-            key=ApplyScrubbing.AUTO, reason="Tool results can contain user data"
+            key=ApplyScrubbing.MANUAL, reason="Tool results can contain user data"
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22719,7 +22759,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[669],
                 description="Deprecate the attribute since it is redundant given gen_ai.tool.call.result.",
             ),
@@ -22744,7 +22784,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22770,7 +22811,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22819,7 +22861,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22846,7 +22889,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22873,7 +22917,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22900,7 +22945,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22927,7 +22973,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
+                prs=[689],
                 description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
             ),
         ],
@@ -22948,7 +22995,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["StdioServerTransport", "CustomHTTPTransport"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation",
             ),
@@ -23371,7 +23418,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.name", "net.protocol.name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Removed the semantically distinct mcp.resource.protocol alias",
             ),
@@ -23860,7 +23907,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
         keys=("net.peer.name",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -23926,7 +23973,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.protocol.name", "messaging.protocol"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Removed the semantically distinct mcp.resource.protocol alias",
             ),
@@ -24108,7 +24155,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["network.transport"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Removed the semantically distinct mcp.transport alias",
             ),
@@ -24274,7 +24321,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["net.protocol.name", "messaging.protocol"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Removed the semantically distinct mcp.resource.protocol alias",
             ),
@@ -24323,7 +24370,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["net.transport"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.27.0",
                 prs=[671],
                 description="Removed the semantically distinct mcp.transport alias",
             ),
@@ -25259,7 +25306,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -25279,7 +25326,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -26193,7 +26240,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="previous_trace",
         examples=["previous_trace", "next_trace", "cache_origin"],
         changelog=[
-            ChangelogEntry(version="next", description="Added search alias link.type"),
+            ChangelogEntry(
+                version="0.27.0", prs=[687], description="Added search alias link.type"
+            ),
             ChangelogEntry(
                 version="0.25.0",
                 prs=[656],
@@ -26978,7 +27027,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "transaction",
             "sentry.transaction",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET /",
@@ -27222,7 +27271,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "server_name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -29645,6 +29694,7 @@ Attributes = TypedDict(
         "http.request.connection_end": float,
         "http.request.domain_lookup_end": float,
         "http.request.domain_lookup_start": float,
+        "http.request.duration": int,
         "http.request.fetch_start": float,
         "http.request.header.<key>": List[str],
         "http.request.method": str,

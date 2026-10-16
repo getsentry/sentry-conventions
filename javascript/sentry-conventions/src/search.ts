@@ -2562,6 +2562,11 @@ export const SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_END = 'http.request.domain_look
 export const SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
 
 /**
+ * Search name for {@link attributes.HTTP_REQUEST_DURATION}. `http.request.duration`
+ */
+export const SEARCH_HTTP__REQUEST__DURATION = 'http.request.duration';
+
+/**
  * Search name for {@link attributes.HTTP_REQUEST_FETCH_START}. `http.request.fetch_start`
  */
 export const SEARCH_HTTP__REQUEST__FETCH_START = 'http.request.fetch_start';
@@ -5705,6 +5710,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HTTP__REQUEST__CONNECTION_END
   | typeof SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_END
   | typeof SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_START
+  | typeof SEARCH_HTTP__REQUEST__DURATION
   | typeof SEARCH_HTTP__REQUEST__FETCH_START
   | typeof SEARCH_HTTP__REQUEST__HEADER__KEY
   | typeof SEARCH_HTTP__REQUEST__METHOD
@@ -8476,7 +8482,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
     deprecationChain: [
       'gen_ai.input.messages',
       'ai.input_messages',
@@ -8539,7 +8545,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
+      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -9189,6 +9195,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
     deprecationChain: ['http.request.domain_lookup_start'],
+  },
+  'http.request.duration': {
+    canonicalName: 'http.request.duration',
+    type: 'integer',
+    brief: 'The duration of a HTTP request, in milliseconds.',
+    deprecationChain: ['http.request.duration'],
   },
   'http.request.fetch_start': {
     canonicalName: 'http.request.fetch_start',
