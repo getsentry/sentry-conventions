@@ -16611,9 +16611,16 @@ export type SENTRY_KIND_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Well-defined Values:
+ * - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
+ * - `next_trace` - The linked span is the root span of the trace after this trace.
+ * - `cache_origin` - The linked span wrote the cached value that this span reads.
+ * - `message_origin` - The linked span published the queue message that this span processes.
+ *
  * @example "previous_trace"
  * @example "next_trace"
  * @example "cache_origin"
+ * @example "message_origin"
  */
 export const SENTRY_LINK_TYPE = 'sentry.link.type';
 
@@ -34504,15 +34511,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'previous_trace',
-    examples: ['previous_trace', 'next_trace', 'cache_origin'],
+    examples: ['previous_trace', 'next_trace', 'cache_origin', 'message_origin'],
     changelog: [
+      {
+        version: 'next',
+        prs: [724],
+        description: 'Added message_origin to the examples, and enum_values that describe each known value',
+      },
       { version: '0.27.0', prs: [687], description: 'Added search alias link.type' },
       { version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' },
     ],
     additionalContext: [
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
-      'For known values, see Examples. Add new values to Examples.',
+      'Add each new link type to `enum_values`, with a brief that says what the linked span is.',
     ],
     searchAlias: {
       name: 'link.type',
