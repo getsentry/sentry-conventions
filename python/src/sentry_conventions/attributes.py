@@ -9481,6 +9481,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     - `measure`
     - `middleware`
     - `navigation`
+    - `object`
     - `pageload`
     - `queue`
     - `resource`
@@ -25791,6 +25792,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="db",
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added object to the enum values"
+            ),
             ChangelogEntry(version="0.4.0", prs=[218]),
         ],
         search_alias=SearchAlias(name="span.category"),
