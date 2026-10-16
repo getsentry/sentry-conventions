@@ -1007,9 +1007,24 @@ export const SEARCH_BROWSER__WEB_VITAL__FCP__VALUE = 'browser.web_vital.fcp.valu
 export const SEARCH_BROWSER__WEB_VITAL__FP__VALUE = 'browser.web_vital.fp.value';
 
 /**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_INPUT_DELAY}. `browser.web_vital.inp.input_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__INPUT_DELAY = 'browser.web_vital.inp.input_delay';
+
+/**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_INTERACTION_TYPE}. `browser.web_vital.inp.interaction_type`
  */
 export const SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE = 'browser.web_vital.inp.interaction_type';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY}. `browser.web_vital.inp.presentation_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__PRESENTATION_DELAY = 'browser.web_vital.inp.presentation_delay';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_PROCESSING_DURATION}. `browser.web_vital.inp.processing_duration`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__PROCESSING_DURATION = 'browser.web_vital.inp.processing_duration';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_TARGET}. `browser.web_vital.inp.target`
@@ -1025,6 +1040,11 @@ export const SEARCH_BROWSER__WEB_VITAL__INP__VALUE = 'browser.web_vital.inp.valu
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ELEMENT}. `browser.web_vital.lcp.element`
  */
 export const SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT = 'browser.web_vital.lcp.element';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY}. `browser.web_vital.lcp.element_render_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT_RENDER_DELAY = 'browser.web_vital.lcp.element_render_delay';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ID}. `browser.web_vital.lcp.id`
@@ -1047,6 +1067,16 @@ export const SEARCH_BROWSER__WEB_VITAL__LCP__RENDER_TIME = 'browser.web_vital.lc
  * @deprecated
  */
 export const SEARCH_BROWSER__WEB_VITAL__LCP__REPORT_EVENT = 'browser.web_vital.lcp.report_event';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY}. `browser.web_vital.lcp.resource_load_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DELAY = 'browser.web_vital.lcp.resource_load_delay';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION}. `browser.web_vital.lcp.resource_load_duration`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DURATION = 'browser.web_vital.lcp.resource_load_duration';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_SIZE}. `browser.web_vital.lcp.size`
@@ -5424,14 +5454,20 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__WEB_VITAL__CLS__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FCP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FP__VALUE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__INPUT_DELAY
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__PRESENTATION_DELAY
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__PROCESSING_DURATION
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__TARGET
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT_RENDER_DELAY
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ID
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__LOAD_TIME
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RENDER_TIME
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__REPORT_EVENT
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DELAY
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DURATION
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__SIZE
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__URL
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__VALUE
@@ -7323,11 +7359,31 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
   },
+  'browser.web_vital.inp.input_delay': {
+    canonicalName: 'browser.web_vital.inp.input_delay',
+    type: 'double',
+    brief:
+      'The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.input_delay'],
+  },
   'browser.web_vital.inp.interaction_type': {
     canonicalName: 'browser.web_vital.inp.interaction_type',
     type: 'string',
     brief: 'The kind of user interaction INP was reported on',
     deprecationChain: ['browser.web_vital.inp.interaction_type'],
+  },
+  'browser.web_vital.inp.presentation_delay': {
+    canonicalName: 'browser.web_vital.inp.presentation_delay',
+    type: 'double',
+    brief:
+      'The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.presentation_delay'],
+  },
+  'browser.web_vital.inp.processing_duration': {
+    canonicalName: 'browser.web_vital.inp.processing_duration',
+    type: 'double',
+    brief: 'The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.processing_duration'],
   },
   'browser.web_vital.inp.target': {
     canonicalName: 'browser.web_vital.inp.target',
@@ -7347,6 +7403,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The HTML element selector or component name for which LCP was reported',
     deprecationChain: ['browser.web_vital.lcp.element', 'lcp.element'],
+  },
+  'browser.web_vital.lcp.element_render_delay': {
+    canonicalName: 'browser.web_vital.lcp.element_render_delay',
+    type: 'double',
+    brief: 'The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.element_render_delay'],
   },
   'browser.web_vital.lcp.id': {
     canonicalName: 'browser.web_vital.lcp.id',
@@ -7372,6 +7434,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
     deprecated: true,
     deprecationChain: ['browser.web_vital.lcp.report_event'],
+  },
+  'browser.web_vital.lcp.resource_load_delay': {
+    canonicalName: 'browser.web_vital.lcp.resource_load_delay',
+    type: 'double',
+    brief:
+      'The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.resource_load_delay'],
+  },
+  'browser.web_vital.lcp.resource_load_duration': {
+    canonicalName: 'browser.web_vital.lcp.resource_load_duration',
+    type: 'double',
+    brief: 'The time it took to load the LCP resource, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.resource_load_duration'],
   },
   'browser.web_vital.lcp.size': {
     canonicalName: 'browser.web_vital.lcp.size',
