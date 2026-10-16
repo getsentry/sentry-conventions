@@ -46,6 +46,12 @@
       "description": "Rendering of a view."
     },
     {
+      "name": "view.response.render",
+      "deprecation": {
+        "replacement": "view.render"
+      }
+    },
+    {
       "name": "template"
     },
     {
