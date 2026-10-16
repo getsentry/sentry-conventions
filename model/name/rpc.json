@@ -3,7 +3,7 @@
   "operations": [
     {
       "name": "RPC call",
-      "brief": "A remote procedure call, such as an AWS SDK call or a gRPC call.",
+      "brief": "A remote procedure call, such as an AWS SDK call or a gRPC call. The first template only applies to AWS SDK calls: `rpc.service` is deprecated for other RPC systems following OpenTelemetry, so they fallback to `{rpc.method}`.",
       "is_in_otel": true,
       "otel_notes": "OpenTelemetry names RPC spans `{rpc.method}`, falling back to `{rpc.system.name}` if `rpc.method` is unavailable or set to `_OTHER`. AWS SDK spans are named `{rpc.service}.{rpc.method}`, which the first template matches.",
       "ops": ["rpc"],
