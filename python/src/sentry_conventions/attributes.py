@@ -2846,7 +2846,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/cache/cache__ttl.json
     CACHE_TTL: Literal["cache.ttl"] = "cache.ttl"
-    """The ttl (maximum lifetime) of the cache in seconds
+    """The TTL (maximum lifetime) of the cache entry in seconds
 
     Type: int
     Apply Scrubbing: manual
@@ -15595,7 +15595,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "cache.ttl": AttributeMetadata(
-        brief="The ttl (maximum lifetime) of the cache in seconds",
+        brief="The TTL (maximum lifetime) of the cache entry in seconds",
         type=AttributeType.INTEGER,
         keys=("cache.ttl",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -15605,6 +15605,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "Counted from the write. On a read, the value is the full TTL, not the time that remains.",
+            "A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Omit the attribute when the entry never expires or the TTL is unknown.",
         ],
     ),
     "cache.write": AttributeMetadata(
