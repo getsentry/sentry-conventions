@@ -534,6 +534,11 @@ export const OBJECT_HEAD = 'object.head';
 export const OBJECT_PUT = 'object.put';
 
 /**
+ * Copying an object within or between object stores.
+ */
+export const OBJECT_COPY = 'object.copy';
+
+/**
  * Deleting an object from an object store.
  */
 export const OBJECT_DELETE = 'object.delete';
