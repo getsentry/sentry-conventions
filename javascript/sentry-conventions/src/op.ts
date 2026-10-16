@@ -612,6 +612,11 @@ export const HANDLER = 'handler';
 
 export const VIEW = 'view';
 
+/**
+ * Rendering of a view.
+ */
+export const VIEW_RENDER = 'view.render';
+
 export const TEMPLATE = 'template';
 
 /**
