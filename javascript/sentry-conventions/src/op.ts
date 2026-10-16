@@ -345,7 +345,14 @@ export const GEN_AI_GENERATE_CONTENT = 'gen_ai.generate_content';
 export const GEN_AI_RERANK = 'gen_ai.rerank';
 
 /**
+ * Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+ */
+export const GEN_AI_DECIDE = 'gen_ai.decide';
+
+/**
  * Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+ *
+ * @deprecated Use {@link GEN_AI_DECIDE} (gen_ai.decide) instead
  */
 export const GEN_AI_EVALUATE = 'gen_ai.evaluate';
 
@@ -564,6 +571,11 @@ export const OBJECT_HEAD = 'object.head';
 export const OBJECT_PUT = 'object.put';
 
 /**
+ * Copying an object within or between object stores.
+ */
+export const OBJECT_COPY = 'object.copy';
+
+/**
  * Deleting an object from an object store.
  */
 export const OBJECT_DELETE = 'object.delete';
@@ -637,6 +649,16 @@ export const HANDLER = 'handler';
 
 export const VIEW = 'view';
 
+/**
+ * Rendering of a view.
+ */
+export const VIEW_RENDER = 'view.render';
+
+/**
+ * @deprecated Use {@link VIEW_RENDER} (view.render) instead
+ */
+export const VIEW_RESPONSE_RENDER = 'view.response.render';
+
 export const TEMPLATE = 'template';
 
 /**
@@ -648,5 +670,10 @@ export const FUNCTION_REMIX = 'function.remix';
  * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.
  */
 export const FUNCTION_NEXTJS = 'function.nextjs';
+
+/**
+ * @deprecated Use {@link FUNCTION} (function) instead - Framework-specific event ops are replaced by framework-agnostic ones.
+ */
+export const EVENT_DJANGO = 'event.django';
 
 export const CONSOLE = 'console';

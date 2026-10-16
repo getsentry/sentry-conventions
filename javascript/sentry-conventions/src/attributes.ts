@@ -147,7 +147,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `string` {@link AI_FUNCTION_CALL_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -359,7 +359,7 @@ export type AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_PREAMBLE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -867,7 +867,7 @@ export type AI_TEMPERATURE_TYPE = number;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TEXTS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -961,7 +961,7 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TOOL_CALLS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -6678,7 +6678,7 @@ export type EFFECTIVECONNECTIONTYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -7942,7 +7942,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them. `gen_ai.input.messages`
+ * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them. `gen_ai.input.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
@@ -8087,6 +8087,7 @@ export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
  * - `create_agent`
  * - `create_memory`
  * - `create_memory_store`
+ * - `decide`
  * - `delete_memory`
  * - `delete_memory_store`
  * - `embeddings`
@@ -8140,7 +8141,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them. `gen_ai.output.messages`
+ * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them. `gen_ai.output.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
@@ -8880,7 +8881,7 @@ export type GEN_AI_SYSTEM_INSTRUCTIONS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -9016,7 +9017,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -10185,6 +10186,27 @@ export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_star
  * Type for {@link HTTP_REQUEST_DOMAIN_LOOKUP_START} http.request.domain_lookup_start
  */
 export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
+
+// Path: model/attributes/http/http__request__duration.json
+
+/**
+ * The duration of a HTTP request, in milliseconds. `http.request.duration`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const HTTP_REQUEST_DURATION = 'http.request.duration';
+
+/**
+ * Type for {@link HTTP_REQUEST_DURATION} http.request.duration
+ */
+export type HTTP_REQUEST_DURATION_TYPE = number;
 
 // Path: model/attributes/http/http__request__fetch_start.json
 
@@ -12331,7 +12353,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
  *
- * Apply Scrubbing: auto - Tool results can contain user data
+ * Apply Scrubbing: manual - Tool results can contain user data
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13964,7 +13986,7 @@ export type NET_PEER_IP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_PEER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15343,7 +15365,7 @@ export type REPLAY_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15365,7 +15387,7 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -17610,7 +17632,7 @@ export type SENTRY_TRACE_STATUS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SENTRY_TRANSACTION_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -17841,7 +17863,7 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -20875,6 +20897,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.request_content_length_uncompressed': 'integer',
   'http.request.domain_lookup_end': 'double',
   'http.request.domain_lookup_start': 'double',
+  'http.request.duration': 'integer',
   'http.request.fetch_start': 'double',
   'http.request.header.<key>': 'string[]',
   'http.request.method': 'string',
@@ -21783,6 +21806,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
+  | typeof HTTP_REQUEST_DURATION
   | typeof HTTP_REQUEST_FETCH_START
   | typeof HTTP_REQUEST_HEADER_KEY
   | typeof HTTP_REQUEST_METHOD
@@ -22351,7 +22375,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22525,7 +22549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22934,7 +22958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'gen_ai.prompt',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23018,7 +23042,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string[]',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23872,7 +23896,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['lives', 'id'],
     examples: [['lives', 'id']],
-    changelog: [{ version: 'next', prs: [672], description: 'Added aws.dynamodb.attributes_to_get attribute' }],
+    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.dynamodb.attributes_to_get attribute' }],
   },
   'aws.dynamodb.attribute_definitions': {
     brief: 'The JSON-serialized value of each item in the `AttributeDefinitions` request field.',
@@ -24501,7 +24525,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
+    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
     additionalContext: [
       'Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter.',
     ],
@@ -24517,7 +24541,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
     examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
-    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.delete attribute' }],
+    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' }],
     additionalContext: ['Applicable only to the delete-objects operation, corresponding to its Delete parameter.'],
   },
   'aws.s3.key': {
@@ -24531,7 +24555,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.key attribute' }],
+    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.key attribute' }],
   },
   'aws.s3.part_number': {
     brief:
@@ -24545,7 +24569,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 3456,
     examples: [3456],
-    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.part_number attribute' }],
+    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.part_number attribute' }],
     additionalContext: ['Applicable only to the upload-part and upload-part-copy operations.'],
   },
   'aws.s3.upload_id': {
@@ -24559,7 +24583,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ',
     examples: ['dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ'],
-    changelog: [{ version: 'next', prs: [672], description: 'Added aws.s3.upload_id attribute' }],
+    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.upload_id attribute' }],
   },
   'aws.secretsmanager.secret.arn': {
     brief: 'The ARN of the Secret stored in Secrets Manager.',
@@ -24598,7 +24622,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue',
     examples: ['https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue'],
-    changelog: [{ version: 'next', prs: [672], description: 'Added aws.sqs.queue.url attribute' }],
+    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.sqs.queue.url attribute' }],
   },
   'aws.step_functions.activity.arn': {
     brief: 'The ARN of the AWS Step Functions Activity.',
@@ -24623,7 +24647,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution',
     examples: ['arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution'],
-    changelog: [{ version: 'next', prs: [672], description: 'Added aws.step_functions.execution.arn attribute' }],
+    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.step_functions.execution.arn attribute' }],
   },
   'aws.step_functions.state_machine.arn': {
     brief: 'The ARN of the AWS Step Functions State Machine.',
@@ -26899,7 +26923,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
@@ -27800,7 +27824,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.input.messages': {
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
     type: 'string',
     keys: [
       'gen_ai.input.messages',
@@ -27837,7 +27861,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'user dietary preferences',
     examples: ['user dietary preferences', 'past flight bookings'],
-    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.query.text attribute' }],
+    changelog: [{ version: '0.27.0', prs: [653], description: 'Added gen_ai.memory.query.text attribute' }],
   },
   'gen_ai.memory.records': {
     brief:
@@ -27854,7 +27878,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [
       '[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]',
     ],
-    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.records attribute' }],
+    changelog: [{ version: '0.27.0', prs: [653], description: 'Added gen_ai.memory.records attribute' }],
   },
   'gen_ai.memory.record.count': {
     brief:
@@ -27868,7 +27892,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 3,
     examples: [3],
-    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.record.count attribute' }],
+    changelog: [{ version: '0.27.0', prs: [653], description: 'Added gen_ai.memory.record.count attribute' }],
   },
   'gen_ai.memory.record.id': {
     brief:
@@ -27882,7 +27906,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'mem_5j66UpCpwteGg4YSxUnt7lPY',
     examples: ['mem_5j66UpCpwteGg4YSxUnt7lPY'],
-    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.record.id attribute' }],
+    changelog: [{ version: '0.27.0', prs: [653], description: 'Added gen_ai.memory.record.id attribute' }],
   },
   'gen_ai.memory.store.id': {
     brief:
@@ -27896,7 +27920,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'ms_abc123',
     examples: ['ms_abc123', 'user-preferences-store', 'seer-knowledge'],
-    changelog: [{ version: 'next', prs: [653], description: 'Added gen_ai.memory.store.id attribute' }],
+    changelog: [{ version: '0.27.0', prs: [653], description: 'Added gen_ai.memory.store.id attribute' }],
   },
   'gen_ai.operation.name': {
     brief: 'The name of the operation being performed.',
@@ -27910,9 +27934,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'chat',
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [653, 680],
-        description: "Added memory operation values and 'evaluate' to the well-known values",
+        description:
+          "Added memory operation values, 'evaluate', and 'decide' to the well-known values; deprecated 'evaluate' in favor of 'decide'",
       },
       { version: '0.4.0', prs: [225] },
       { version: '0.1.0', prs: [62, 127] },
@@ -27930,14 +27955,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'tool',
     changelog: [
-      { version: 'next', prs: [653], description: "Added 'memory' value" },
+      { version: '0.27.0', prs: [653], description: "Added 'memory' value" },
       { version: '0.4.0', prs: [257] },
       { version: '0.1.0', prs: [113, 127] },
     ],
   },
   'gen_ai.output.messages': {
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
+      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
     type: 'string',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
@@ -28027,7 +28052,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: "gen_ai.prompt.variable.language='French'",
     examples: ["gen_ai.prompt.variable.language='French'", "gen_ai.prompt.variable.topic='weather'"],
     changelog: [
-      { version: 'next', prs: [671], description: 'Added the OpenTelemetry convention for prompt variables' },
+      { version: '0.27.0', prs: [671], description: 'Added the OpenTelemetry convention for prompt variables' },
     ],
     additionalContext: [
       'Capture only when the user explicitly opts in to recording prompt inputs. In MCP, these values are the arguments supplied in prompts/get requests.',
@@ -28485,7 +28510,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28605,7 +28630,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -29587,6 +29612,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1732829555.322,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
   },
+  'http.request.duration': {
+    brief: 'The duration of a HTTP request, in milliseconds.',
+    type: 'integer',
+    keys: ['http.request.duration'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    examples: [5000],
+    changelog: [{ version: 'next', prs: [697], description: 'Added http.request.duration attribute' }],
+    additionalContext: ['This attribute is set by Relay.'],
+  },
   'http.request.fetch_start': {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
     type: 'double',
@@ -30257,7 +30296,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['mcp.request.id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Removed the session-scoped uniqueness requirement from the request identifier',
       },
@@ -30571,7 +30610,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Example Desktop',
     examples: ['Example Desktop', 'Example CLI'],
-    changelog: [{ version: 'next', prs: [671], description: 'Added mcp.auth.client.name attribute' }],
+    changelog: [{ version: '0.27.0', prs: [671], description: 'Added mcp.auth.client.name attribute' }],
   },
   'mcp.cancelled.reason': {
     brief: 'Reason for the cancellation of an MCP operation.',
@@ -30612,7 +30651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['example-mcp-client'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that the attribute describes declared MCP implementation metadata',
       },
@@ -30633,7 +30672,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['Example MCP Client'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that the attribute describes declared MCP implementation metadata',
       },
@@ -30653,7 +30692,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['1.0.0'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that the attribute describes declared MCP implementation metadata',
       },
@@ -30750,7 +30789,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [0.2, 50],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Changed the type to double to support fractional MCP progress values',
       },
@@ -30811,7 +30850,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [1, 100],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Changed the type to double to support fractional MCP progress values',
       },
@@ -30865,7 +30904,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Summarize the document.',
     examples: ['Summarize the document.'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    changelog: [
+      { version: '0.27.0', prs: [689], description: 'Register an existing JavaScript SDK MCP result attribute.' },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple messages. <key> is the zero-based position in the original messages array; absent fields do not renumber later messages.',
@@ -30884,7 +30925,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'user',
     examples: ['user', 'assistant'],
-    changelog: [{ version: 'next', description: 'Register an existing JavaScript SDK MCP result attribute.' }],
+    changelog: [
+      { version: '0.27.0', prs: [689], description: 'Register an existing JavaScript SDK MCP result attribute.' },
+    ],
     additionalContext: [
       'Registers an existing Sentry JavaScript SDK attribute for compatibility.',
       'Emitted for results with multiple messages. <key> is the zero-based position in the original messages array; absent fields do not renumber later messages.',
@@ -30944,7 +30987,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [1],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that readiness describes the legacy MCP initialization handshake',
       },
@@ -30965,7 +31008,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['2024-11-05'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that the protocol version applies to an operation without requiring a session',
       },
@@ -31033,7 +31076,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['jsonrpc.request.id'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Removed the session-scoped uniqueness requirement from the request identifier',
       },
@@ -31055,7 +31098,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['file', 'postgres'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description:
           'Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation',
@@ -31094,7 +31137,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['example-mcp-server'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that the attribute describes declared MCP implementation metadata',
       },
@@ -31115,7 +31158,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['Example MCP Server'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that the attribute describes declared MCP implementation metadata',
       },
@@ -31135,7 +31178,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['0.1.0'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that the attribute describes declared MCP implementation metadata',
       },
@@ -31155,7 +31198,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['550e8400-e29b-41d4-a716-446655440000'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description: 'Clarified that the identifier requires a real MCP protocol session',
       },
@@ -31199,7 +31242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
       reason: 'Tool results can contain user data',
     },
     isInOtel: false,
@@ -31238,7 +31281,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [669],
         description: 'Deprecate the attribute since it is redundant given gen_ai.tool.call.result.',
       },
@@ -31264,7 +31307,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31294,7 +31338,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31344,7 +31389,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31374,7 +31420,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31404,7 +31451,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31434,7 +31482,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31463,7 +31512,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31492,7 +31542,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31521,7 +31572,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31550,7 +31602,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31579,7 +31632,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31608,7 +31662,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31637,7 +31692,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31666,7 +31722,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31695,7 +31752,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
+        prs: [689],
         description:
           'Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.',
       },
@@ -31720,7 +31778,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['StdioServerTransport', 'CustomHTTPTransport'],
     changelog: [
       {
-        version: 'next',
+        version: '0.27.0',
         prs: [671],
         description:
           'Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation',
@@ -32076,7 +32134,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['network.protocol.name', 'net.protocol.name'],
     changelog: [
-      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
+      { version: '0.27.0', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol attribute' },
     ],
   },
@@ -32500,7 +32558,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['http'],
     aliases: ['net.protocol.name', 'messaging.protocol'],
     changelog: [
-      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
+      { version: '0.27.0', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -32536,7 +32594,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['tcp'],
     aliases: ['net.transport'],
     changelog: [
-      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.transport alias' },
+      { version: '0.27.0', prs: [671], description: 'Removed the semantically distinct mcp.transport alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -32639,7 +32697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['net.peer.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
@@ -32689,7 +32747,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['network.protocol.name', 'messaging.protocol'],
     changelog: [
-      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
+      { version: '0.27.0', prs: [671], description: 'Removed the semantically distinct mcp.resource.protocol alias' },
       { version: '0.21.0', prs: [581], description: 'Added messaging.protocol as an alias' },
       { version: '0.1.0', prs: [61, 127] },
       { version: '0.0.0' },
@@ -32838,7 +32896,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['network.transport'],
     changelog: [
-      { version: 'next', prs: [671], description: 'Removed the semantically distinct mcp.transport alias' },
+      { version: '0.27.0', prs: [671], description: 'Removed the semantically distinct mcp.transport alias' },
       {
         version: '0.21.0',
         prs: [588],
@@ -33594,7 +33652,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33615,7 +33673,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -34444,7 +34502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'previous_trace',
     examples: ['previous_trace', 'next_trace', 'cache_origin'],
     changelog: [
-      { version: 'next', description: 'Added search alias link.type' },
+      { version: '0.27.0', prs: [687], description: 'Added search alias link.type' },
       { version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' },
     ],
     additionalContext: [
@@ -35162,7 +35220,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -35355,7 +35413,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -37605,6 +37663,7 @@ export type Attributes = {
   [HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
+  [HTTP_REQUEST_DURATION]?: HTTP_REQUEST_DURATION_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
