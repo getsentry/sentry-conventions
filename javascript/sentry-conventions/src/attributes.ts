@@ -2746,33 +2746,12 @@ export const AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS = 'aws.lambda.execution_dur
  */
 export type AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE = number;
 
-// Path: model/attributes/aws/aws__lambda__function__name.json
-
-/**
- * The name of the AWS Lambda function that an AWS SDK call acts on. `aws.lambda.function.name`
- *
- * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_NAME_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "billing"
- */
-export const AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function.name';
-
-/**
- * Type for {@link AWS_LAMBDA_FUNCTION_NAME} aws.lambda.function.name
- */
-export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
-
 // Path: model/attributes/aws/aws__lambda__function_name.json
 
 /**
  * The name of the Lambda function `aws.lambda.function_name`
  *
- * Attribute Value Type: `string` {@link _AWS_LAMBDA_FUNCTION_NAME_TYPE}
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_FUNCTION_NAME_TYPE}
  *
  * Apply Scrubbing: manual
  *
@@ -2784,12 +2763,12 @@ export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
  * @deprecated Use {@link FAAS_NAME} (faas.name) instead - Use the OTel-aligned faas.name attribute instead
  * @example "my-function"
  */
-export const _AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
+export const AWS_LAMBDA_FUNCTION_NAME = 'aws.lambda.function_name';
 
 /**
- * Type for {@link _AWS_LAMBDA_FUNCTION_NAME} aws.lambda.function_name
+ * Type for {@link AWS_LAMBDA_FUNCTION_NAME} aws.lambda.function_name
  */
-export type _AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
+export type AWS_LAMBDA_FUNCTION_NAME_TYPE = string;
 
 // Path: model/attributes/aws/aws__lambda__function_version.json
 
@@ -2882,6 +2861,27 @@ export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in
  * Type for {@link AWS_LAMBDA_REMAINING_TIME_IN_MILLIS} aws.lambda.remaining_time_in_millis
  */
 export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
+
+// Path: model/attributes/aws/aws__lambda__target_function__name.json
+
+/**
+ * The name of the AWS Lambda function that an AWS SDK call acts on. `aws.lambda.target_function.name`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_TARGET_FUNCTION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "billing"
+ */
+export const AWS_LAMBDA_TARGET_FUNCTION_NAME = 'aws.lambda.target_function.name';
+
+/**
+ * Type for {@link AWS_LAMBDA_TARGET_FUNCTION_NAME} aws.lambda.target_function.name
+ */
+export type AWS_LAMBDA_TARGET_FUNCTION_NAME_TYPE = string;
 
 // Path: model/attributes/aws/aws__log__group__names.json
 
@@ -7178,7 +7178,7 @@ export type FAAS_INVOKED_REGION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link _AWS_LAMBDA_FUNCTION_NAME} `aws.lambda.function_name`
+ * Aliases: {@link AWS_LAMBDA_FUNCTION_NAME} `aws.lambda.function_name`
  *
  * @example "my_function"
  */
@@ -20649,12 +20649,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.kinesis.stream.name': 'string',
   'aws.lambda.aws_request_id': 'string',
   'aws.lambda.execution_duration_in_millis': 'double',
-  'aws.lambda.function.name': 'string',
   'aws.lambda.function_name': 'string',
   'aws.lambda.function_version': 'string',
   'aws.lambda.invoked_arn': 'string',
   'aws.lambda.invoked_function_arn': 'string',
   'aws.lambda.remaining_time_in_millis': 'double',
+  'aws.lambda.target_function.name': 'string',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
   'aws.operation_name': 'string',
@@ -21563,11 +21563,11 @@ export type AttributeName =
   | typeof AWS_LAMBDA_AWS_REQUEST_ID
   | typeof AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS
   | typeof AWS_LAMBDA_FUNCTION_NAME
-  | typeof _AWS_LAMBDA_FUNCTION_NAME
   | typeof AWS_LAMBDA_FUNCTION_VERSION
   | typeof AWS_LAMBDA_INVOKED_ARN
   | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
+  | typeof AWS_LAMBDA_TARGET_FUNCTION_NAME
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
   | typeof AWS_OPERATION_NAME
@@ -24351,22 +24351,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.7.0', prs: [369], description: 'Added aws.lambda.execution_duration_in_millis attribute' },
     ],
   },
-  'aws.lambda.function.name': {
-    brief: 'The name of the AWS Lambda function that an AWS SDK call acts on.',
-    type: 'string',
-    keys: ['aws.lambda.function.name'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: 'billing',
-    examples: ['billing'],
-    changelog: [{ version: 'next', description: 'Added aws.lambda.function.name attribute' }],
-    additionalContext: [
-      'Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in.',
-    ],
-  },
   'aws.lambda.function_name': {
     brief: 'The name of the Lambda function',
     type: 'string',
@@ -24462,6 +24446,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
+  },
+  'aws.lambda.target_function.name': {
+    brief: 'The name of the AWS Lambda function that an AWS SDK call acts on.',
+    type: 'string',
+    keys: ['aws.lambda.target_function.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'billing',
+    examples: ['billing'],
+    changelog: [{ version: 'next', description: 'Added aws.lambda.target_function.name attribute' }],
+    additionalContext: [
+      'Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in.',
+    ],
   },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
@@ -37486,11 +37486,11 @@ export type Attributes = {
   [AWS_LAMBDA_AWS_REQUEST_ID]?: AWS_LAMBDA_AWS_REQUEST_ID_TYPE;
   [AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS]?: AWS_LAMBDA_EXECUTION_DURATION_IN_MILLIS_TYPE;
   [AWS_LAMBDA_FUNCTION_NAME]?: AWS_LAMBDA_FUNCTION_NAME_TYPE;
-  [_AWS_LAMBDA_FUNCTION_NAME]?: _AWS_LAMBDA_FUNCTION_NAME_TYPE;
   [AWS_LAMBDA_FUNCTION_VERSION]?: AWS_LAMBDA_FUNCTION_VERSION_TYPE;
   [AWS_LAMBDA_INVOKED_ARN]?: AWS_LAMBDA_INVOKED_ARN_TYPE;
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
+  [AWS_LAMBDA_TARGET_FUNCTION_NAME]?: AWS_LAMBDA_TARGET_FUNCTION_NAME_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;

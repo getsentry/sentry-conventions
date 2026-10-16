@@ -213,7 +213,7 @@ class _AttributeNamesMeta(type):
         "APP_START_WARM",
         "_AWS_KINESIS_STREAM_NAME",
         "AWS_LAMBDA_AWS_REQUEST_ID",
-        "_AWS_LAMBDA_FUNCTION_NAME",
+        "AWS_LAMBDA_FUNCTION_NAME",
         "AWS_LAMBDA_FUNCTION_VERSION",
         "AWS_LAMBDA_INVOKED_FUNCTION_ARN",
         "AWS_OPERATION_NAME",
@@ -2000,21 +2000,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1234.56
     """
 
-    # Path: model/attributes/aws/aws__lambda__function__name.json
-    AWS_LAMBDA_FUNCTION_NAME: Literal["aws.lambda.function.name"] = (
-        "aws.lambda.function.name"
-    )
-    """The name of the AWS Lambda function that an AWS SDK call acts on.
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "billing"
-    """
-
     # Path: model/attributes/aws/aws__lambda__function_name.json
-    _AWS_LAMBDA_FUNCTION_NAME: Literal["aws.lambda.function_name"] = (
+    AWS_LAMBDA_FUNCTION_NAME: Literal["aws.lambda.function_name"] = (
         "aws.lambda.function_name"
     )
     """The name of the Lambda function
@@ -2081,6 +2068,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 5000
+    """
+
+    # Path: model/attributes/aws/aws__lambda__target_function__name.json
+    AWS_LAMBDA_TARGET_FUNCTION_NAME: Literal["aws.lambda.target_function.name"] = (
+        "aws.lambda.target_function.name"
+    )
+    """The name of the AWS Lambda function that an AWS SDK call acts on.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "billing"
     """
 
     # Path: model/attributes/aws/aws__log__group__names.json
@@ -14424,24 +14424,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "aws.lambda.function.name": AttributeMetadata(
-        brief="The name of the AWS Lambda function that an AWS SDK call acts on.",
-        type=AttributeType.STRING,
-        keys=("aws.lambda.function.name",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="billing",
-        examples=["billing"],
-        changelog=[
-            ChangelogEntry(
-                version="next", description="Added aws.lambda.function.name attribute"
-            ),
-        ],
-        additional_context=[
-            "Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in."
-        ],
-    ),
     "aws.lambda.function_name": AttributeMetadata(
         brief="The name of the Lambda function",
         type=AttributeType.STRING,
@@ -14562,6 +14544,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[369],
                 description="Added aws.lambda.remaining_time_in_millis attribute",
             ),
+        ],
+    ),
+    "aws.lambda.target_function.name": AttributeMetadata(
+        brief="The name of the AWS Lambda function that an AWS SDK call acts on.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.target_function.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="billing",
+        examples=["billing"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.lambda.target_function.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in."
         ],
     ),
     "aws.log.group.names": AttributeMetadata(
@@ -29491,12 +29492,12 @@ Attributes = TypedDict(
         "aws.kinesis.stream_name": str,
         "aws.lambda.aws_request_id": str,
         "aws.lambda.execution_duration_in_millis": float,
-        "aws.lambda.function.name": str,
         "aws.lambda.function_name": str,
         "aws.lambda.function_version": str,
         "aws.lambda.invoked_arn": str,
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
+        "aws.lambda.target_function.name": str,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
         "aws.operation_name": str,

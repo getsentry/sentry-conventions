@@ -758,12 +758,7 @@ export const SEARCH_AWS__LAMBDA__AWS_REQUEST_ID = 'aws.lambda.aws_request_id';
 export const SEARCH_AWS__LAMBDA__EXECUTION_DURATION_IN_MILLIS = 'aws.lambda.execution_duration_in_millis';
 
 /**
- * Search name for {@link attributes.AWS_LAMBDA_FUNCTION_NAME}. `aws.lambda.function.name`
- */
-export const SEARCH_AWS__LAMBDA__FUNCTION__NAME = 'aws.lambda.function.name';
-
-/**
- * Search name for {@link attributes._AWS_LAMBDA_FUNCTION_NAME}. `aws.lambda.function_name`
+ * Search name for {@link attributes.AWS_LAMBDA_FUNCTION_NAME}. `aws.lambda.function_name`
  *
  * @deprecated Use {@link SEARCH_FAAS__NAME} (`faas.name`) instead
  */
@@ -792,6 +787,11 @@ export const SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_func
  * Search name for {@link attributes.AWS_LAMBDA_REMAINING_TIME_IN_MILLIS}. `aws.lambda.remaining_time_in_millis`
  */
 export const SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
+
+/**
+ * Search name for {@link attributes.AWS_LAMBDA_TARGET_FUNCTION_NAME}. `aws.lambda.target_function.name`
+ */
+export const SEARCH_AWS__LAMBDA__TARGET_FUNCTION__NAME = 'aws.lambda.target_function.name';
 
 /**
  * Search name for {@link attributes.AWS_LOG_GROUP_NAMES}. `aws.log.group.names`
@@ -5398,12 +5398,12 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__KINESIS__STREAM_NAME
   | typeof SEARCH_AWS__LAMBDA__AWS_REQUEST_ID
   | typeof SEARCH_AWS__LAMBDA__EXECUTION_DURATION_IN_MILLIS
-  | typeof SEARCH_AWS__LAMBDA__FUNCTION__NAME
   | typeof SEARCH_AWS__LAMBDA__FUNCTION_NAME
   | typeof SEARCH_AWS__LAMBDA__FUNCTION_VERSION
   | typeof SEARCH_AWS__LAMBDA__INVOKED_ARN
   | typeof SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN
   | typeof SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS
+  | typeof SEARCH_AWS__LAMBDA__TARGET_FUNCTION__NAME
   | typeof SEARCH_AWS__LOG__GROUP__NAMES
   | typeof SEARCH_AWS__LOG__STREAM__NAMES
   | typeof SEARCH_AWS__OPERATION_NAME
@@ -7062,12 +7062,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The execution duration of the Lambda function invocation in milliseconds',
     deprecationChain: ['aws.lambda.execution_duration_in_millis'],
   },
-  'aws.lambda.function.name': {
-    canonicalName: 'aws.lambda.function.name',
-    type: 'string',
-    brief: 'The name of the AWS Lambda function that an AWS SDK call acts on.',
-    deprecationChain: ['aws.lambda.function.name'],
-  },
   'aws.lambda.function_name': {
     canonicalName: 'faas.name',
     type: 'string',
@@ -7097,6 +7091,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The remaining time in milliseconds before the Lambda function times out',
     deprecationChain: ['aws.lambda.remaining_time_in_millis'],
+  },
+  'aws.lambda.target_function.name': {
+    canonicalName: 'aws.lambda.target_function.name',
+    type: 'string',
+    brief: 'The name of the AWS Lambda function that an AWS SDK call acts on.',
+    deprecationChain: ['aws.lambda.target_function.name'],
   },
   'aws.log.group.names': {
     canonicalName: 'aws.log.group.names',
