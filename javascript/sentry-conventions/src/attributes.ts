@@ -147,7 +147,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `string` {@link AI_FUNCTION_CALL_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -359,7 +359,7 @@ export type AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_PREAMBLE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -867,7 +867,7 @@ export type AI_TEMPERATURE_TYPE = number;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TEXTS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -961,7 +961,7 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TOOL_CALLS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -6678,7 +6678,7 @@ export type EFFECTIVECONNECTIONTYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8881,7 +8881,7 @@ export type GEN_AI_SYSTEM_INSTRUCTIONS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -9017,7 +9017,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -10186,6 +10186,27 @@ export const HTTP_REQUEST_DOMAIN_LOOKUP_START = 'http.request.domain_lookup_star
  * Type for {@link HTTP_REQUEST_DOMAIN_LOOKUP_START} http.request.domain_lookup_start
  */
 export type HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE = number;
+
+// Path: model/attributes/http/http__request__duration.json
+
+/**
+ * The duration of a HTTP request, in milliseconds. `http.request.duration`
+ *
+ * Attribute Value Type: `number` {@link HTTP_REQUEST_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const HTTP_REQUEST_DURATION = 'http.request.duration';
+
+/**
+ * Type for {@link HTTP_REQUEST_DURATION} http.request.duration
+ */
+export type HTTP_REQUEST_DURATION_TYPE = number;
 
 // Path: model/attributes/http/http__request__fetch_start.json
 
@@ -12332,7 +12353,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
  *
- * Apply Scrubbing: auto - Tool results can contain user data
+ * Apply Scrubbing: manual - Tool results can contain user data
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13965,7 +13986,7 @@ export type NET_PEER_IP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_PEER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15344,7 +15365,7 @@ export type REPLAY_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15366,7 +15387,7 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -17611,7 +17632,7 @@ export type SENTRY_TRACE_STATUS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SENTRY_TRANSACTION_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -17842,7 +17863,7 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -20876,6 +20897,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'http.request_content_length_uncompressed': 'integer',
   'http.request.domain_lookup_end': 'double',
   'http.request.domain_lookup_start': 'double',
+  'http.request.duration': 'integer',
   'http.request.fetch_start': 'double',
   'http.request.header.<key>': 'string[]',
   'http.request.method': 'string',
@@ -21784,6 +21806,7 @@ export type AttributeName =
   | typeof HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_END
   | typeof HTTP_REQUEST_DOMAIN_LOOKUP_START
+  | typeof HTTP_REQUEST_DURATION
   | typeof HTTP_REQUEST_FETCH_START
   | typeof HTTP_REQUEST_HEADER_KEY
   | typeof HTTP_REQUEST_METHOD
@@ -22352,7 +22375,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22526,7 +22549,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22935,7 +22958,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'gen_ai.prompt',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23019,7 +23042,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string[]',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -26900,7 +26923,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28487,7 +28510,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28607,7 +28630,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -29588,6 +29611,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1732829555.322,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.1.0', prs: [134] }, { version: '0.0.0' }],
+  },
+  'http.request.duration': {
+    brief: 'The duration of a HTTP request, in milliseconds.',
+    type: 'integer',
+    keys: ['http.request.duration'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    examples: [5000],
+    changelog: [{ version: 'next', prs: [697], description: 'Added http.request.duration attribute' }],
+    additionalContext: ['This attribute is set by Relay.'],
   },
   'http.request.fetch_start': {
     brief: 'The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.',
@@ -31205,7 +31242,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
       reason: 'Tool results can contain user data',
     },
     isInOtel: false,
@@ -32660,7 +32697,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['net.peer.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33615,7 +33652,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33636,7 +33673,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -35183,7 +35220,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -35376,7 +35413,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -37626,6 +37663,7 @@ export type Attributes = {
   [HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED]?: HTTP_REQUEST_CONTENT_LENGTH_UNCOMPRESSED_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_END]?: HTTP_REQUEST_DOMAIN_LOOKUP_END_TYPE;
   [HTTP_REQUEST_DOMAIN_LOOKUP_START]?: HTTP_REQUEST_DOMAIN_LOOKUP_START_TYPE;
+  [HTTP_REQUEST_DURATION]?: HTTP_REQUEST_DURATION_TYPE;
   [HTTP_REQUEST_FETCH_START]?: HTTP_REQUEST_FETCH_START_TYPE;
   [HTTP_REQUEST_HEADER_KEY]?: HTTP_REQUEST_HEADER_KEY_TYPE;
   [HTTP_REQUEST_METHOD]?: HTTP_REQUEST_METHOD_TYPE;
