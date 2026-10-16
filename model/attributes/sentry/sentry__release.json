@@ -10,7 +10,8 @@
   "alias": ["service.version", "release"],
   "visibility": "public",
   "search_alias": {
-    "name": "release"
+    "name": "release",
+    "allowWildcard": false
   },
   "changelog": [
     {

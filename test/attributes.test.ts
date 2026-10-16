@@ -89,6 +89,27 @@ describe('attribute examples schema', () => {
 
     expect(valid).toBe(false);
   });
+
+  it('accepts disabling allowWildcard on a string attribute', () => {
+    const ajv = new Ajv();
+    const valid = ajv.validate(schema, {
+      ...baseAttribute,
+      search_alias: { name: 'test', allowWildcard: false },
+    });
+
+    expect(valid).toBe(true);
+  });
+
+  it('rejects allowWildcard on a string array attribute', () => {
+    const ajv = new Ajv();
+    const valid = ajv.validate(schema, {
+      ...baseAttribute,
+      type: 'string[]',
+      search_alias: { name: 'test', allowWildcard: false },
+    });
+
+    expect(valid).toBe(false);
+  });
 });
 
 describe('getAttributeExamples', () => {

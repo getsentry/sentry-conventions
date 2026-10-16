@@ -20399,6 +20399,8 @@ export interface SearchAlias {
   type?: SearchAliasType;
   /** Deprecated aliases still accepted in search queries */
   deprecatedAliases?: string[];
+  /** Set to false to disable wildcard queries. Defaults to true. Only valid for string attributes. */
+  allowWildcard?: boolean;
 }
 
 export interface AttributeMetadata {
@@ -26432,6 +26434,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'medium',
     changelog: [{ version: '0.5.0', prs: [300], description: 'Added device.class attribute' }],
+    searchAlias: {
+      name: 'device.class',
+      allowWildcard: false,
+    },
   },
   'device.connection_type': {
     brief: 'The internet connection type currently being used by the device.',
@@ -30197,6 +30203,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'f47ac10b58cc4372a5670e02b2c3d479',
     changelog: [{ version: '0.0.0' }],
+    searchAlias: {
+      name: 'id',
+      allowWildcard: false,
+    },
   },
   inp: {
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
@@ -34736,6 +34746,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.4.0', prs: [242] }],
     searchAlias: {
       name: 'profiler.id',
+      allowWildcard: false,
     },
   },
   'sentry.profile_id': {
@@ -34756,6 +34767,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     searchAlias: {
       name: 'profile.id',
+      allowWildcard: false,
     },
   },
   'sentry.relay.ingress': {
@@ -34796,6 +34808,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.0.0' }],
     searchAlias: {
       name: 'release',
+      allowWildcard: false,
     },
   },
   'sentry.replay_id': {
@@ -34813,6 +34826,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     searchAlias: {
       name: 'replay.id',
       deprecatedAliases: ['replay_id'],
+      allowWildcard: false,
     },
   },
   'sentry.replay_is_buffering': {

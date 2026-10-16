@@ -11,7 +11,8 @@
   "visibility": "public",
   "search_alias": {
     "name": "replay.id",
-    "deprecated_aliases": ["replay_id"]
+    "deprecated_aliases": ["replay_id"],
+    "allowWildcard": false
   },
   "changelog": [
     {
