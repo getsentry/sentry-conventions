@@ -363,6 +363,8 @@ export const GEN_AI_CREATE_AGENT = 'gen_ai.create_agent';
 
 /**
  * An interaction with a generative AI model through a responses API
+ *
+ * @deprecated Use {@link GEN_AI_CHAT} (gen_ai.chat) instead - responses is not a well-defined value for gen_ai.operation.name
  */
 export const GEN_AI_RESPONSES = 'gen_ai.responses';
 
