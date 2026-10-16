@@ -345,6 +345,9 @@ pub const OBJECT_HEAD: &str = "object.head";
 /// Storing an object in an object store.
 pub const OBJECT_PUT: &str = "object.put";
 
+/// Copying an object within or between object stores.
+pub const OBJECT_COPY: &str = "object.copy";
+
 /// Deleting an object from an object store.
 pub const OBJECT_DELETE: &str = "object.delete";
 
