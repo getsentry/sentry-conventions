@@ -20,18 +20,11 @@
       ]
     },
     {
-      "name": "Azure Serverless function execution",
-      "brief": "The invocation of an Azure serverless function.",
-      "ops": ["function.azure"],
-      "templates": ["{{faas.name}}"],
-      "examples": ["my_function", "process-upload"]
-    },
-    {
-      "name": "AWS Lambda function execution",
-      "brief": "The invocation of an AWS Lambda function.",
-      "ops": ["function.aws"],
-      "templates": ["{{faas.name}} {{http.request.method}} {{http.route}}"],
-      "examples": ["checkout GET /orders/{id}"]
+      "name": "Serverless function execution",
+      "brief": "The invocation of a serverless function on a cloud provider.",
+      "ops": ["function.aws", "function.azure"],
+      "templates": ["{{faas.name}} {{http.request.method}} {{http.route}}", "{{faas.name}}"],
+      "examples": ["checkout GET /orders/{id}", "my_function", "process-upload"]
     }
   ]
 }
