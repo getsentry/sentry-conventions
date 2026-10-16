@@ -33840,7 +33840,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'myService.BestService',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [714], description: 'Added additional context about the OpenTelemetry deprecation' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.',
+      'Still set on AWS SDK spans, where it holds the AWS service (e.g. `S3`) and `rpc.method` is set to the operation (e.g. `GetObject`).',
+    ],
   },
   'rpc.system': {
     brief: 'A string identifying the remoting system.',
