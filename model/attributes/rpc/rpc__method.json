@@ -1,15 +1,22 @@
 {
   "key": "rpc.method",
   "brief": "The fully-qualified logical name of the method from the RPC interface perspective.",
+  "additional_context": [
+    "For AWS SDK calls, this is the operation name only, as the SDK reports it, e.g. `GetObject`."
+  ],
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "com.example.ExampleService/exampleMethod",
+  "examples": ["com.example.ExampleService/exampleMethod", "GetObject"],
   "visibility": "public",
   "alias": ["aws.operation_name"],
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added AWS SDK example and additional context"
+    },
     {
       "version": "0.19.0",
       "prs": [536],

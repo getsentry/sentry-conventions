@@ -1,14 +1,21 @@
 {
   "key": "rpc.service",
   "brief": "The full (logical) name of the service being called, including its package name, if applicable.",
+  "additional_context": [
+    "For AWS SDK calls, this is the AWS service ID with all whitespace removed (`S3`, `APIGateway` for `API Gateway`)."
+  ],
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "myService.BestService",
+  "examples": ["myService.BestService", "S3", "APIGateway"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added AWS SDK examples and additional context"
+    },
     {
       "version": "0.1.0",
       "prs": [127]
