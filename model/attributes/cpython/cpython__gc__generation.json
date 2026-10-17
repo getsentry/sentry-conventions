@@ -1,0 +1,21 @@
+{
+  "key": "cpython.gc.generation",
+  "brief": "The generation of objects that a run of the CPython garbage collector collected. A collection of a generation also collects all younger generations, so 2 is a full collection.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": [0, 1, 2],
+  "additional_context": [
+    "On free-threaded builds of CPython (3.13+), the garbage collector isn't generational: every collection scans all objects. Automatic collections report generation 0, and explicit collections report the generation that was requested, but all of them are full collections."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [718],
+      "description": "Added cpython.gc.generation attribute"
+    }
+  ]
+}
