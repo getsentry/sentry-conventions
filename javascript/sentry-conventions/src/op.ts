@@ -645,6 +645,56 @@ export const SUBPROCESS = 'subprocess';
 export const MIDDLEWARE = 'middleware';
 
 /**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_DJANGO = 'middleware.django';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_LITESTAR = 'middleware.litestar';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_LITESTAR_RECEIVE = 'middleware.litestar.receive';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_LITESTAR_SEND = 'middleware.litestar.send';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLETTE = 'middleware.starlette';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLETTE_RECEIVE = 'middleware.starlette.receive';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLETTE_SEND = 'middleware.starlette.send';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLITE = 'middleware.starlite';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLITE_RECEIVE = 'middleware.starlite.receive';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLITE_SEND = 'middleware.starlite.send';
+
+/**
  * Handling of an incoming request by a web server route handler
  */
 export const HANDLER = 'handler';
