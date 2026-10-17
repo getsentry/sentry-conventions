@@ -789,6 +789,11 @@ export const SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_func
 export const SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
 
 /**
+ * Search name for {@link attributes.AWS_LAMBDA_RESOURCE_MAPPING_ID}. `aws.lambda.resource_mapping.id`
+ */
+export const SEARCH_AWS__LAMBDA__RESOURCE_MAPPING__ID = 'aws.lambda.resource_mapping.id';
+
+/**
  * Search name for {@link attributes.AWS_LOG_GROUP_NAMES}. `aws.log.group.names`
  */
 export const SEARCH_AWS__LOG__GROUP__NAMES = 'aws.log.group.names';
@@ -5383,6 +5388,7 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__LAMBDA__INVOKED_ARN
   | typeof SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN
   | typeof SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS
+  | typeof SEARCH_AWS__LAMBDA__RESOURCE_MAPPING__ID
   | typeof SEARCH_AWS__LOG__GROUP__NAMES
   | typeof SEARCH_AWS__LOG__STREAM__NAMES
   | typeof SEARCH_AWS__OPERATION_NAME
@@ -7067,6 +7073,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The remaining time in milliseconds before the Lambda function times out',
     deprecationChain: ['aws.lambda.remaining_time_in_millis'],
+  },
+  'aws.lambda.resource_mapping.id': {
+    canonicalName: 'aws.lambda.resource_mapping.id',
+    type: 'string',
+    brief:
+      "The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+    deprecationChain: ['aws.lambda.resource_mapping.id'],
   },
   'aws.log.group.names': {
     canonicalName: 'aws.log.group.names',
