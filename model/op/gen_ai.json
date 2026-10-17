@@ -60,6 +60,10 @@
     {
       "name": "gen_ai.memory.client",
       "description": "A memory store or memory record operation performed by a generative AI agent"
+    },
+    {
+      "name": "gen_ai.compact",
+      "description": "Compaction of a generative AI conversation's context, such as summarizing earlier messages to fit the context window. Model requests that write the summary are child spans."
     }
   ]
 }

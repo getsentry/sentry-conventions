@@ -378,6 +378,11 @@ export const GEN_AI_TEXT_COMPLETION = 'gen_ai.text_completion';
  */
 export const GEN_AI_MEMORY_CLIENT = 'gen_ai.memory.client';
 
+/**
+ * Compaction of a generative AI conversation's context, such as summarizing earlier messages to fit the context window. Model requests that write the summary are child spans.
+ */
+export const GEN_AI_COMPACT = 'gen_ai.compact';
+
 // Path: model/op/general.json
 // Name: general
 

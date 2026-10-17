@@ -1,0 +1,21 @@
+{
+  "key": "gen_ai.conversation.compaction.reason",
+  "brief": "What triggered the compaction of the conversation context.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["manual", "threshold", "overflow"],
+  "additional_context": [
+    "Set on the `gen_ai.compact` span. Model requests that write the compacted context are its child spans; requests that later run on the compacted context set `gen_ai.conversation.compacted`. Common values are `manual` (requested by the user), `threshold` (the context reached a configured limit) and `overflow` (recovering from a context window overflow)."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [723],
+      "description": "Added gen_ai.conversation.compaction.reason attribute"
+    }
+  ]
+}

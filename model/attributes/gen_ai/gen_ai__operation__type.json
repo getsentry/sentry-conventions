@@ -30,11 +30,16 @@
     },
     {
       "value": "other",
-      "brief": "input and output processors, skill loading, guardrails etc."
+      "brief": "input and output processors, skill loading, guardrails, compact spans etc."
     }
   ],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [723],
+      "description": "Documented that compact spans map to 'other'"
+    },
     {
       "version": "0.27.0",
       "prs": [653],

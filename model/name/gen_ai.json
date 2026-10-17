@@ -61,6 +61,15 @@
       "ops": ["gen_ai.memory.client"],
       "templates": ["{{gen_ai.operation.name}}", "Generative AI memory operation"],
       "examples": ["upsert_memory", "search_memory", "create_memory", "delete_memory"]
+    },
+    {
+      "name": "Compaction",
+      "brief": "Generative AI conversation compaction. Compacting a conversation's context, such as summarizing earlier messages to fit the context window.",
+      "is_in_otel": false,
+      "otel_notes": "The \"gen_ai.compact\" operation is not present in OpenTelemetry.",
+      "ops": ["gen_ai.compact"],
+      "templates": ["{{gen_ai.operation.name}}", "Generative AI compaction operation"],
+      "examples": ["compact"]
     }
   ]
 }
