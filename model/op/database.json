@@ -9,6 +9,12 @@
       "name": "db.query"
     },
     {
+      "name": "db.redis",
+      "deprecation": {
+        "replacement": "db.query"
+      }
+    },
+    {
       "name": "cache"
     },
     {
