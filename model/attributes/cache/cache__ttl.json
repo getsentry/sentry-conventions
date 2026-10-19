@@ -1,6 +1,6 @@
 {
   "key": "cache.ttl",
-  "brief": "The ttl (maximum lifetime) of the cache in seconds",
+  "brief": "The TTL (maximum lifetime) of the cache entry in seconds",
   "type": "integer",
   "apply_scrubbing": {
     "key": "manual"
@@ -8,6 +8,10 @@
   "is_in_otel": false,
   "example": 120,
   "visibility": "public",
+  "additional_context": [
+    "Counted from the write. On a read, the value is the full TTL, not the time that remains.",
+    "A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Omit the attribute when the entry never expires or the TTL is unknown."
+  ],
   "changelog": [
     {
       "version": "0.4.0",
