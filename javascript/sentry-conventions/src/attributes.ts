@@ -4209,7 +4209,7 @@ export type CACHE_TAGS_TYPE = Array<string>;
 // Path: model/attributes/cache/cache__ttl.json
 
 /**
- * The ttl (maximum lifetime) of the cache in seconds `cache.ttl`
+ * The TTL (maximum lifetime) of the cache entry in seconds `cache.ttl`
  *
  * Attribute Value Type: `number` {@link CACHE_TTL_TYPE}
  *
@@ -25269,7 +25269,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'cache.ttl': {
-    brief: 'The ttl (maximum lifetime) of the cache in seconds',
+    brief: 'The TTL (maximum lifetime) of the cache entry in seconds',
     type: 'integer',
     keys: ['cache.ttl'],
     applyScrubbing: {
@@ -25279,6 +25279,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 120,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    additionalContext: [
+      'Counted from the write. On a read, the value is the full TTL, not the time that remains.',
+      'A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Omit the attribute when the entry never expires or the TTL is unknown.',
+    ],
   },
   'cache.write': {
     brief: 'If the cache operation resulted in a write to the cache.',
