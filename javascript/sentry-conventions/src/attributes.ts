@@ -15974,6 +15974,7 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  * - `measure`
  * - `middleware`
  * - `navigation`
+ * - `object`
  * - `pageload`
  * - `queue`
  * - `resource`
@@ -34100,7 +34101,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'db',
-    changelog: [{ version: '0.4.0', prs: [218] }],
+    changelog: [
+      { version: 'next', description: 'Added object to the enum values' },
+      { version: '0.4.0', prs: [218] },
+    ],
     searchAlias: {
       name: 'span.category',
     },
