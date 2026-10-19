@@ -1,0 +1,21 @@
+{
+  "key": "resource.service.version",
+  "brief": "The version string of the service API or implementation, from the OpenTelemetry resource attribute `service.version`. The format is not defined by these conventions.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "never"
+  },
+  "is_in_otel": true,
+  "examples": ["5.0.0"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "sentry.release"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added resource.service.version, backfilled into sentry.release"
+    }
+  ]
+}

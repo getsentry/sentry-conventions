@@ -376,6 +376,7 @@ class _AttributeNamesMeta(type):
         "REPLAY_ID",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT",
         "RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME",
+        "RESOURCE_SERVICE_VERSION",
         "ROUTE",
         "RPC_GRPC_STATUS_CODE",
         "RPC_SYSTEM",
@@ -9278,6 +9279,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "non-blocking"
+    """
+
+    # Path: model/attributes/resource/resource__service__version.json
+    RESOURCE_SERVICE_VERSION: Literal["resource.service.version"] = (
+        "resource.service.version"
+    )
+    """The version string of the service API or implementation, from the OpenTelemetry resource attribute `service.version`. The format is not defined by these conventions.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: Yes
+    Visibility: public
+    DEPRECATED: Use sentry.release instead
+    Example: "5.0.0"
     """
 
     # Path: model/attributes/route.json
@@ -25527,6 +25542,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "sentry.release",
             "release",
             "service.version",
+            "resource.service.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
@@ -25646,6 +25662,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "resource.service.version": AttributeMetadata(
+        brief="The version string of the service API or implementation, from the OpenTelemetry resource attribute `service.version`. The format is not defined by these conventions.",
+        type=AttributeType.STRING,
+        keys=(
+            "sentry.release",
+            "release",
+            "service.version",
+            "resource.service.version",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="5.0.0",
+        examples=["5.0.0"],
+        deprecation=DeprecationInfo(
+            replacement="sentry.release", status=DeprecationStatus.BACKFILL
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added resource.service.version, backfilled into sentry.release",
+            ),
         ],
     ),
     "route": AttributeMetadata(
@@ -26865,6 +26905,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "sentry.release",
             "release",
             "service.version",
+            "resource.service.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
@@ -27644,6 +27685,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "service.version",
             "sentry.release",
             "release",
+            "resource.service.version",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
@@ -30251,6 +30293,7 @@ Attributes = TypedDict(
         "resource.deployment.environment": str,
         "resource.deployment.environment.name": str,
         "resource.render_blocking_status": str,
+        "resource.service.version": str,
         "route": str,
         "router.navigation.origin": str,
         "router.navigation.route.id": str,
