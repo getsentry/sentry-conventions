@@ -25325,7 +25325,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
     additionalContext: [
       'Counted from the write. On a read, the value is the full TTL, not the time that remains.',
-      'A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Omit the attribute when the entry never expires or the TTL is unknown.',
+      'A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Round a fractional TTL up, so 0.3 seconds becomes 1, not 0.',
+      'Omit the attribute when the entry never expires, the TTL is unknown, or each read restarts the TTL.',
     ],
   },
   'cache.write': {
