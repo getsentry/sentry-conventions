@@ -1,5 +1,5 @@
 {
-  "key": "bullmq.job.type",
+  "key": "messaging.bullmq.job.type",
   "brief": "The job state from which Queue.clean() removes BullMQ jobs.",
   "type": "string",
   "apply_scrubbing": {
@@ -9,13 +9,13 @@
   "visibility": "public",
   "examples": ["completed", "failed"],
   "additional_context": [
-    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."
+    "The Sentry SDK sets this attribute from the `bullmq.job.type` attribute of BullMQ's telemetry interface."
   ],
   "changelog": [
     {
       "version": "next",
       "prs": [690],
-      "description": "Added bullmq.job.type attribute"
+      "description": "Added messaging.bullmq.job.type attribute"
     }
   ]
 }

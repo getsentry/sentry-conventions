@@ -5,5 +5,5 @@
   "unit": "none",
   "is_in_otel": false,
   "requirement_level": "opt_in",
-  "attributes": ["messaging.destination.name", "bullmq.queue.jobs.state"]
+  "attributes": ["messaging.destination.name", "messaging.bullmq.queue.jobs.state"]
 }

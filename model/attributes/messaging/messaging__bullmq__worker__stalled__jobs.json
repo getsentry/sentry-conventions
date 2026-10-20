@@ -1,5 +1,5 @@
 {
-  "key": "bullmq.worker.stalled.jobs",
+  "key": "messaging.bullmq.worker.stalled.jobs",
   "brief": "The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.",
   "type": "string[]",
   "apply_scrubbing": {
@@ -9,13 +9,13 @@
   "visibility": "public",
   "examples": [["1", "2"]],
   "additional_context": [
-    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."
+    "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface."
   ],
   "changelog": [
     {
       "version": "next",
       "prs": [690],
-      "description": "Added bullmq.worker.stalled.jobs attribute"
+      "description": "Added messaging.bullmq.worker.stalled.jobs attribute"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "key": "bullmq.job.bulk.names",
+  "key": "messaging.bullmq.job.bulk.names",
   "brief": "The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().",
   "type": "string[]",
   "apply_scrubbing": {
@@ -9,13 +9,13 @@
   "visibility": "public",
   "examples": [["send-welcome-email", "generate-report"]],
   "additional_context": [
-    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."
+    "The Sentry SDK sets this attribute from the `bullmq.job.bulk.names` attribute of BullMQ's telemetry interface."
   ],
   "changelog": [
     {
       "version": "next",
       "prs": [690],
-      "description": "Added bullmq.job.bulk.names attribute"
+      "description": "Added messaging.bullmq.job.bulk.names attribute"
     }
   ]
 }

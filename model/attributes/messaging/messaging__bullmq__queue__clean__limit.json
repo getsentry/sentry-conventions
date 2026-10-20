@@ -1,5 +1,5 @@
 {
-  "key": "bullmq.queue.clean.limit",
+  "key": "messaging.bullmq.queue.clean.limit",
   "brief": "The maximum number of BullMQ jobs that Queue.clean() removes.",
   "type": "integer",
   "apply_scrubbing": {
@@ -9,13 +9,13 @@
   "visibility": "public",
   "examples": [1000],
   "additional_context": [
-    "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."
+    "The Sentry SDK sets this attribute from the `bullmq.queue.clean.limit` attribute of BullMQ's telemetry interface."
   ],
   "changelog": [
     {
       "version": "next",
       "prs": [690],
-      "description": "Added bullmq.queue.clean.limit attribute"
+      "description": "Added messaging.bullmq.queue.clean.limit attribute"
     }
   ]
 }
