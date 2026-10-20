@@ -3168,11 +3168,6 @@ export const SEARCH_MESSAGING__BULLMQ__JOB__NAME = 'messaging.bullmq.job.name';
 export const SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED__TIMESTAMP = 'messaging.bullmq.job.processed.timestamp';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_PROGRESS}. `messaging.bullmq.job.progress`
- */
-export const SEARCH_MESSAGING__BULLMQ__JOB__PROGRESS = 'messaging.bullmq.job.progress';
-
-/**
  * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_SCHEDULER_ID}. `messaging.bullmq.job.scheduler.id`
  */
 export const SEARCH_MESSAGING__BULLMQ__JOB__SCHEDULER__ID = 'messaging.bullmq.job.scheduler.id';
@@ -5820,7 +5815,6 @@ export type AttributeSearchName =
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__KEY
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__NAME
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED__TIMESTAMP
-  | typeof SEARCH_MESSAGING__BULLMQ__JOB__PROGRESS
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__SCHEDULER__ID
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__STATE
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__STATUS
@@ -9913,12 +9907,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.',
     deprecationChain: ['messaging.bullmq.job.processed.timestamp'],
-  },
-  'messaging.bullmq.job.progress': {
-    canonicalName: 'messaging.bullmq.job.progress',
-    type: 'string',
-    brief: 'The progress value of a BullMQ job as a JSON string, as passed to Queue.updateJobProgress().',
-    deprecationChain: ['messaging.bullmq.job.progress'],
   },
   'messaging.bullmq.job.scheduler.id': {
     canonicalName: 'messaging.bullmq.job.scheduler.id',

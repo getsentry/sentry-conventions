@@ -7526,19 +7526,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1791184722281
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__job__progress.json
-    MESSAGING_BULLMQ_JOB_PROGRESS: Literal["messaging.bullmq.job.progress"] = (
-        "messaging.bullmq.job.progress"
-    )
-    """The progress value of a BullMQ job as a JSON string, as passed to Queue.updateJobProgress().
-
-    Type: str
-    Apply Scrubbing: auto
-    Defined in OTEL: No
-    Visibility: public
-    Example: "{\"percentage\":50}"
-    """
-
     # Path: model/attributes/messaging/messaging__bullmq__job__scheduler__id.json
     MESSAGING_BULLMQ_JOB_SCHEDULER_ID: Literal["messaging.bullmq.job.scheduler.id"] = (
         "messaging.bullmq.job.scheduler.id"
@@ -22744,26 +22731,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "The Sentry SDK sets this attribute from the `bullmq.job.processed.timestamp` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.job.progress": AttributeMetadata(
-        brief="The progress value of a BullMQ job as a JSON string, as passed to Queue.updateJobProgress().",
-        type=AttributeType.STRING,
-        keys=("messaging.bullmq.job.progress",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example='{"percentage":50}',
-        examples=['{"percentage":50}'],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[690],
-                description="Added messaging.bullmq.job.progress attribute",
-            ),
-        ],
-        additional_context=[
-            "The Sentry SDK sets this attribute from the `bullmq.job.progress` attribute of BullMQ's telemetry interface."
-        ],
-    ),
     "messaging.bullmq.job.scheduler.id": AttributeMetadata(
         brief="The ID of the BullMQ job scheduler that adds the job.",
         type=AttributeType.STRING,
@@ -29891,7 +29858,6 @@ Attributes = TypedDict(
         "messaging.bullmq.job.key": str,
         "messaging.bullmq.job.name": str,
         "messaging.bullmq.job.processed.timestamp": int,
-        "messaging.bullmq.job.progress": str,
         "messaging.bullmq.job.scheduler.id": str,
         "messaging.bullmq.job.state": str,
         "messaging.bullmq.job.status": str,

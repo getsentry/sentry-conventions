@@ -12526,27 +12526,6 @@ export const MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP = 'messaging.bullmq.job.pr
  */
 export type MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE = number;
 
-// Path: model/attributes/messaging/messaging__bullmq__job__progress.json
-
-/**
- * The progress value of a BullMQ job as a JSON string, as passed to Queue.updateJobProgress(). `messaging.bullmq.job.progress`
- *
- * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_PROGRESS_TYPE}
- *
- * Apply Scrubbing: auto
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "{\"percentage\":50}"
- */
-export const MESSAGING_BULLMQ_JOB_PROGRESS = 'messaging.bullmq.job.progress';
-
-/**
- * Type for {@link MESSAGING_BULLMQ_JOB_PROGRESS} messaging.bullmq.job.progress
- */
-export type MESSAGING_BULLMQ_JOB_PROGRESS_TYPE = string;
-
 // Path: model/attributes/messaging/messaging__bullmq__job__scheduler__id.json
 
 /**
@@ -21113,7 +21092,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.bullmq.job.key': 'string',
   'messaging.bullmq.job.name': 'string',
   'messaging.bullmq.job.processed.timestamp': 'integer',
-  'messaging.bullmq.job.progress': 'string',
   'messaging.bullmq.job.scheduler.id': 'string',
   'messaging.bullmq.job.state': 'string',
   'messaging.bullmq.job.status': 'string',
@@ -22028,7 +22006,6 @@ export type AttributeName =
   | typeof MESSAGING_BULLMQ_JOB_KEY
   | typeof MESSAGING_BULLMQ_JOB_NAME
   | typeof MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP
-  | typeof MESSAGING_BULLMQ_JOB_PROGRESS
   | typeof MESSAGING_BULLMQ_JOB_SCHEDULER_ID
   | typeof MESSAGING_BULLMQ_JOB_STATE
   | typeof MESSAGING_BULLMQ_JOB_STATUS
@@ -31531,22 +31508,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "The Sentry SDK sets this attribute from the `bullmq.job.processed.timestamp` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.job.progress': {
-    brief: 'The progress value of a BullMQ job as a JSON string, as passed to Queue.updateJobProgress().',
-    type: 'string',
-    keys: ['messaging.bullmq.job.progress'],
-    applyScrubbing: {
-      key: 'auto',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: '{"percentage":50}',
-    examples: ['{"percentage":50}'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.progress attribute' }],
-    additionalContext: [
-      "The Sentry SDK sets this attribute from the `bullmq.job.progress` attribute of BullMQ's telemetry interface.",
-    ],
-  },
   'messaging.bullmq.job.scheduler.id': {
     brief: 'The ID of the BullMQ job scheduler that adds the job.',
     type: 'string',
@@ -37800,7 +37761,6 @@ export type Attributes = {
   [MESSAGING_BULLMQ_JOB_KEY]?: MESSAGING_BULLMQ_JOB_KEY_TYPE;
   [MESSAGING_BULLMQ_JOB_NAME]?: MESSAGING_BULLMQ_JOB_NAME_TYPE;
   [MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP]?: MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE;
-  [MESSAGING_BULLMQ_JOB_PROGRESS]?: MESSAGING_BULLMQ_JOB_PROGRESS_TYPE;
   [MESSAGING_BULLMQ_JOB_SCHEDULER_ID]?: MESSAGING_BULLMQ_JOB_SCHEDULER_ID_TYPE;
   [MESSAGING_BULLMQ_JOB_STATE]?: MESSAGING_BULLMQ_JOB_STATE_TYPE;
   [MESSAGING_BULLMQ_JOB_STATUS]?: MESSAGING_BULLMQ_JOB_STATUS_TYPE;
