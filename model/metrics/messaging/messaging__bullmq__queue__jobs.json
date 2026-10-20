@@ -1,5 +1,5 @@
 {
-  "key": "bullmq.queue.jobs",
+  "key": "messaging.bullmq.queue.jobs",
   "brief": "The number of BullMQ jobs in a queue in one job state, as counted by Queue.recordJobCountsMetric().",
   "instrument": "gauge",
   "unit": "none",

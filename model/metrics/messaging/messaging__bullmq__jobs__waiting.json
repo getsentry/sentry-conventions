@@ -1,5 +1,5 @@
 {
-  "key": "bullmq.jobs.waiting",
+  "key": "messaging.bullmq.jobs.waiting",
   "brief": "The number of BullMQ jobs that Job.moveToWait() moved back to the wait state.",
   "instrument": "counter",
   "unit": "none",

@@ -1,5 +1,5 @@
 {
-  "key": "bullmq.jobs.waiting_children",
+  "key": "messaging.bullmq.jobs.waiting_children",
   "brief": "The number of BullMQ jobs that moved to the waiting-children state to wait for their child jobs.",
   "instrument": "counter",
   "unit": "none",

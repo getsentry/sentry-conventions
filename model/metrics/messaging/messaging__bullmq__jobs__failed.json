@@ -1,8 +1,8 @@
 {
-  "key": "bullmq.job.duration",
-  "brief": "The time in milliseconds from when a Worker started to process a BullMQ job until the job left the active state.",
-  "instrument": "distribution",
-  "unit": "millisecond",
+  "key": "messaging.bullmq.jobs.failed",
+  "brief": "The number of BullMQ jobs that failed and are not retried.",
+  "instrument": "counter",
+  "unit": "none",
   "is_in_otel": false,
   "requirement_level": "opt_in",
   "attributes": [

@@ -1,5 +1,5 @@
 {
-  "key": "bullmq.jobs.delayed",
+  "key": "messaging.bullmq.jobs.delayed",
   "brief": "The number of BullMQ jobs that moved to the delayed state, for a retry with a backoff delay or through Job.moveToDelayed().",
   "instrument": "counter",
   "unit": "none",

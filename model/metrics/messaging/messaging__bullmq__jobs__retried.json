@@ -1,6 +1,6 @@
 {
-  "key": "bullmq.jobs.completed",
-  "brief": "The number of BullMQ jobs that completed.",
+  "key": "messaging.bullmq.jobs.retried",
+  "brief": "The number of failed BullMQ jobs that are retried without a delay.",
   "instrument": "counter",
   "unit": "none",
   "is_in_otel": false,
