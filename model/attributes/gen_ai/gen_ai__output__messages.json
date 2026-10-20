@@ -12,7 +12,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [],
+      "prs": [728],
       "description": "Describe the extraction message shape for gen_ai.extract"
     },
     {

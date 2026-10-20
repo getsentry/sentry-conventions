@@ -64,7 +64,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [],
+      "prs": [728],
       "description": "Added 'extract' to the well-known values"
     },
     {

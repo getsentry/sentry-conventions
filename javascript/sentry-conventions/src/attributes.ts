@@ -27893,7 +27893,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
-      { version: 'next', description: 'Describe the extraction message shape for gen_ai.extract' },
+      { version: 'next', prs: [728], description: 'Describe the extraction message shape for gen_ai.extract' },
       { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
@@ -27984,7 +27984,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
-      { version: 'next', description: "Added 'extract' to the well-known values" },
+      { version: 'next', prs: [728], description: "Added 'extract' to the well-known values" },
       {
         version: '0.27.0',
         prs: [653, 680],
@@ -28026,7 +28026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
-      { version: 'next', description: 'Describe the extraction message shape for gen_ai.extract' },
+      { version: 'next', prs: [728], description: 'Describe the extraction message shape for gen_ai.extract' },
       { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.4.0', prs: [221] },
     ],

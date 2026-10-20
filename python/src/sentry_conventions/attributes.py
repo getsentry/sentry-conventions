@@ -18662,6 +18662,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[728],
                 description="Describe the extraction message shape for gen_ai.extract",
             ),
             ChangelogEntry(
@@ -18773,7 +18774,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="chat",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added 'extract' to the well-known values"
+                version="next",
+                prs=[728],
+                description="Added 'extract' to the well-known values",
             ),
             ChangelogEntry(
                 version="0.27.0",
@@ -18818,6 +18821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
+                prs=[728],
                 description="Describe the extraction message shape for gen_ai.extract",
             ),
             ChangelogEntry(
