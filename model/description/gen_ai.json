@@ -25,6 +25,7 @@
         "gen_ai.chat",
         "gen_ai.decide",
         "gen_ai.embeddings",
+        "gen_ai.extract",
         "gen_ai.generate_content",
         "gen_ai.rerank",
         "gen_ai.responses",
@@ -38,6 +39,7 @@
         "generate_content gemini-2.0-flash-001",
         "embeddings text-embedding-3-small",
         "decide jev-latest",
+        "extract clairic",
         "chat"
       ]
     },
