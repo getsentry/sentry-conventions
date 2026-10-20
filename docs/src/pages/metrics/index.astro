@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AttributeLink from '../../components/AttributeLink.astro';
-import OtelBadge from '../../components/OtelBadge.astro';
+import MetricCard from '../../components/MetricCard.astro';
 import { getCollection } from 'astro:content';
 
 const allMetrics = await getCollection('metrics');
@@ -21,12 +20,6 @@ for (const metrics of namespaceMap.values()) {
 }
 
 const sortedNamespaces = Array.from(namespaceMap.keys()).sort();
-
-const requirementLabels = {
-  required: 'Required',
-  recommended: 'Recommended',
-  opt_in: 'Opt-in',
-};
 ---
 
 <BaseLayout title="Metrics" description="Sentry metric names reference">
@@ -50,43 +43,10 @@ const requirementLabels = {
               <span class="text-sm text-text-muted">{metrics.length} metrics</span>
             </div>
 
-            <div class="overflow-x-auto">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Key</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Unit</th>
-                    <th>Requirement</th>
-                    <th>Attributes</th>
-                    <th>OTel</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {metrics.map((m) => (
-                    <tr id={m.data.key}>
-                      <td><code class="text-xs">{m.data.key}</code></td>
-                      <td class="text-text-secondary min-w-[280px]">{m.data.brief}</td>
-                      <td class="whitespace-nowrap"><code class="text-xs">{m.data.instrument}</code></td>
-                      <td class="whitespace-nowrap"><code class="text-xs">{m.data.unit}</code></td>
-                      <td class="whitespace-nowrap">{requirementLabels[m.data.requirement_level]}</td>
-                      <td>
-                        {m.data.attributes?.length ? (
-                          <div class="flex flex-col gap-1">
-                            {m.data.attributes.map((attribute) => (
-                              <AttributeLink name={attribute} />
-                            ))}
-                          </div>
-                        ) : (
-                          <span class="text-text-muted">None</span>
-                        )}
-                      </td>
-                      <td class="whitespace-nowrap"><OtelBadge isInOtel={m.data.is_in_otel} /></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+              {metrics.map((m) => (
+                <MetricCard metric={m.data} />
+              ))}
             </div>
           </section>
         );
