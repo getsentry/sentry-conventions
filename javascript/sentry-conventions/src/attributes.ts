@@ -7963,7 +7963,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
+ * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
@@ -7975,6 +7975,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
+ * @example "[[{\"type\": \"evaluation\", \"state\": \"I cannot log in, and I also want a refund for last month.\", \"questions\": {\"authIssue\": {\"type\": \"noul\", \"instructions\": \"Is there a login problem?\"}, \"department\": {\"type\": \"choice\", \"instructions\": \"Which team should handle this?\", \"criteria\": {\"billing\": \"Charges and refunds\", \"technical\": \"Bugs and outages\"}}}}]]"
  * @example "[{\"state\": \"Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. Total: $1,080.00\", \"fields\": {\"invoice_number\": {\"type\": \"text\", \"instructions\": \"The invoice number\"}, \"due_date\": {\"type\": \"date\", \"instructions\": \"The date the payment is due\"}, \"total\": {\"type\": \"number\", \"unit\": \"USD\", \"decimals\": 2}}}]"
  */
 export const GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
@@ -8164,7 +8165,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
+ * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
@@ -8176,6 +8177,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  * Aliases: {@link AI_RESPONSE_TOOLCALLS} `ai.response.toolCalls`, {@link AI_RESPONSE_TEXT} `ai.response.text`
  *
  * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
+ * @example "[[{\"type\": \"evaluation\", \"answers\": {\"authIssue\": {\"type\": \"noul\", \"noul\": 0.98}, \"department\": {\"type\": \"choice\", \"choice\": \"billing\", \"confidence\": 0.28, \"probabilities\": {\"billing\": 0.64, \"technical\": 0.36}}}}]]"
  * @example "[{\"answers\": {\"invoice_number\": {\"value\": \"INV-2291\", \"span\": [8, 16], \"confidence\": 0.99}, \"due_date\": {\"value\": \"2026-10-02\", \"confidence\": 0.97}, \"total\": {\"value\": 1080, \"confidence\": 0.98}}}]"
  */
 export const GEN_AI_OUTPUT_MESSAGES = 'gen_ai.output.messages';
@@ -27876,7 +27878,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.input.messages': {
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. Some operations use a different shape. See the additional context.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
     keys: [
       'gen_ai.input.messages',
@@ -27895,6 +27897,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
     examples: [
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+      '[[{"type": "evaluation", "state": "I cannot log in, and I also want a refund for last month.", "questions": {"authIssue": {"type": "noul", "instructions": "Is there a login problem?"}, "department": {"type": "choice", "instructions": "Which team should handle this?", "criteria": {"billing": "Charges and refunds", "technical": "Bugs and outages"}}}}]]',
       '[{"state": "Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. Total: $1,080.00", "fields": {"invoice_number": {"type": "text", "instructions": "The invoice number"}, "due_date": {"type": "date", "instructions": "The date the payment is due"}, "total": {"type": "number", "unit": "USD", "decimals": 2}}}]',
     ],
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
@@ -27911,8 +27914,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [221] },
     ],
     additionalContext: [
-      'For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them.',
-      'For `gen_ai.extract` operations, the array holds one object `{state: string, fields: {<name>: <field spec>}}`. `state` is the input text that the model reads. `fields` holds the field specs keyed by field name, as the caller passed them. Do not change the field specs.',
+      'For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. The second example shows this shape.',
+      'For `gen_ai.extract` operations, the array holds one object `{state: string, fields: {<name>: <field spec>}}`. `state` is the input text that the model reads. `fields` holds the field specs keyed by field name, as the caller passed them. Do not change the field specs. The third example shows this shape.',
     ],
   },
   'gen_ai.memory.query.text': {
@@ -28029,7 +28032,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.output.messages': {
     brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. Some operations use a different shape. See the additional context.",
+      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
     type: 'string',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
@@ -28041,6 +28044,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
     examples: [
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+      '[[{"type": "evaluation", "answers": {"authIssue": {"type": "noul", "noul": 0.98}, "department": {"type": "choice", "choice": "billing", "confidence": 0.28, "probabilities": {"billing": 0.64, "technical": 0.36}}}}]]',
       '[{"answers": {"invoice_number": {"value": "INV-2291", "span": [8, 16], "confidence": 0.99}, "due_date": {"value": "2026-10-02", "confidence": 0.97}, "total": {"value": 1080, "confidence": 0.98}}}]',
     ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
@@ -28055,8 +28059,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.4.0', prs: [221] },
     ],
     additionalContext: [
-      'For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them.',
-      'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}}`. `answers` holds one answer for each field in the input, keyed by field name, as the provider returned them. Do not change the answers. A field that the model cannot determine has a `value` of `null`.',
+      'For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.',
+      'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}}`. `answers` holds one answer for each field in the input, keyed by field name, as the provider returned them. Do not change the answers. A field that the model cannot determine has a `value` of `null`. The third example shows this shape.',
     ],
   },
   'gen_ai.pipeline.name': {

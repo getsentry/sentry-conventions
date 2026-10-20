@@ -8495,7 +8495,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. Some operations use a different shape. See the additional context.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.input.messages',
       'ai.input_messages',
@@ -8558,7 +8558,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. Some operations use a different shape. See the additional context.",
+      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',

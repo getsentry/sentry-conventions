@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.output.messages",
-  "brief": "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. Some operations use a different shape. See the additional context.",
+  "brief": "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
@@ -8,13 +8,14 @@
   "is_in_otel": true,
   "examples": [
     "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]",
+    "[[{\"type\": \"evaluation\", \"answers\": {\"authIssue\": {\"type\": \"noul\", \"noul\": 0.98}, \"department\": {\"type\": \"choice\", \"choice\": \"billing\", \"confidence\": 0.28, \"probabilities\": {\"billing\": 0.64, \"technical\": 0.36}}}}]]",
     "[{\"answers\": {\"invoice_number\": {\"value\": \"INV-2291\", \"span\": [8, 16], \"confidence\": 0.99}, \"due_date\": {\"value\": \"2026-10-02\", \"confidence\": 0.97}, \"total\": {\"value\": 1080, \"confidence\": 0.98}}}]"
   ],
   "alias": ["ai.response.toolCalls", "ai.response.text"],
   "visibility": "public",
   "additional_context": [
-    "For `gen_ai.decide` operations, the array holds one object `{type: \"evaluation\", answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them.",
-    "For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}}`. `answers` holds one answer for each field in the input, keyed by field name, as the provider returned them. Do not change the answers. A field that the model cannot determine has a `value` of `null`."
+    "For `gen_ai.decide` operations, the array holds one object `{type: \"evaluation\", answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.",
+    "For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}}`. `answers` holds one answer for each field in the input, keyed by field name, as the provider returned them. Do not change the answers. A field that the model cannot determine has a `value` of `null`. The third example shows this shape."
   ],
   "changelog": [
     {
