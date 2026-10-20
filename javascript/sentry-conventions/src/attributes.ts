@@ -8178,7 +8178,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  *
  * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
  * @example "[[{\"type\": \"evaluation\", \"answers\": {\"authIssue\": {\"type\": \"noul\", \"noul\": 0.98}, \"department\": {\"type\": \"choice\", \"choice\": \"billing\", \"confidence\": 0.28, \"probabilities\": {\"billing\": 0.64, \"technical\": 0.36}}}}]]"
- * @example "[{\"answers\": {\"invoice_number\": {\"value\": \"INV-2291\", \"span\": [8, 16], \"confidence\": 0.99}, \"due_date\": {\"value\": \"2026-10-02\", \"confidence\": 0.97}, \"total\": {\"value\": 1080, \"confidence\": 0.98}}}]"
+ * @example "[{\"answers\": {\"invoice_number\": {\"type\": \"text\", \"p_null\": 3.8e-10, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 1, \"value\": \"INV-2291\"}, \"due_date\": {\"type\": \"date\", \"p_null\": 0.01, \"guess\": \"2026-10-02\", \"confidence\": 0.97, \"value\": \"2026-10-02\"}, \"total\": {\"type\": \"number\", \"p_null\": 0.01, \"guess\": 1080, \"confidence\": 0.98, \"value\": 1080}}}]"
  */
 export const GEN_AI_OUTPUT_MESSAGES = 'gen_ai.output.messages';
 
@@ -28045,7 +28045,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
       '[[{"type": "evaluation", "answers": {"authIssue": {"type": "noul", "noul": 0.98}, "department": {"type": "choice", "choice": "billing", "confidence": 0.28, "probabilities": {"billing": 0.64, "technical": 0.36}}}}]]',
-      '[{"answers": {"invoice_number": {"value": "INV-2291", "span": [8, 16], "confidence": 0.99}, "due_date": {"value": "2026-10-02", "confidence": 0.97}, "total": {"value": 1080, "confidence": 0.98}}}]',
+      '[{"answers": {"invoice_number": {"type": "text", "p_null": 3.8e-10, "span": [8, 16], "guess": "INV-2291", "confidence": 1, "value": "INV-2291"}, "due_date": {"type": "date", "p_null": 0.01, "guess": "2026-10-02", "confidence": 0.97, "value": "2026-10-02"}, "total": {"type": "number", "p_null": 0.01, "guess": 1080, "confidence": 0.98, "value": 1080}}}]',
     ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
