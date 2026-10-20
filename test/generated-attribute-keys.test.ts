@@ -288,6 +288,23 @@ describe('generated attribute key chains', () => {
     expect(ATTRIBUTE_METADATA['cache.item_size']?.keys).toEqual(['cache.item_size']);
   });
 
+  it('keeps MCP transport implementations separate from network transports', () => {
+    expect(ATTRIBUTE_METADATA['mcp.transport']?.keys).toEqual(['mcp.transport']);
+    expect(ATTRIBUTE_METADATA['mcp.transport']?.deprecation).toBeUndefined();
+    expect(ATTRIBUTE_METADATA['network.transport']?.keys).toEqual(['network.transport']);
+    expect(ATTRIBUTE_METADATA['net.transport']?.keys).toEqual(['net.transport']);
+  });
+
+  it('keeps resource URI schemes separate from the network protocol alias family', () => {
+    expect(ATTRIBUTE_METADATA['mcp.resource.protocol']?.keys).toEqual(['mcp.resource.protocol']);
+    expect(ATTRIBUTE_METADATA['mcp.resource.protocol']?.deprecation).toBeUndefined();
+
+    const protocolKeys = ['messaging.protocol', 'net.protocol.name', 'network.protocol.name'];
+    for (const key of protocolKeys) {
+      expect(metadataByKey[key]?.keys.toSorted()).toEqual(protocolKeys);
+    }
+  });
+
   it('includes the search alias of the canonical key and of the attributes it replaces', () => {
     // `sentry.replay_id` is exposed as `replay.id` in search, and replaces `replay_id`.
     const replayIdKeys = ['sentry.replay_id', 'replay.id', 'replay_id'];

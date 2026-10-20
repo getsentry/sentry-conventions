@@ -30,8 +30,8 @@
       "ops": [
         "gen_ai",
         "gen_ai.chat",
+        "gen_ai.decide",
         "gen_ai.embeddings",
-        "gen_ai.evaluate",
         "gen_ai.execute_tool",
         "gen_ai.generate_content",
         "gen_ai.rerank",
@@ -49,9 +49,18 @@
         "embeddings huggingface",
         "chat claude-opus-4",
         "execute_tool get_weather",
-        "evaluate jev-latest",
+        "decide jev-latest",
         "chat"
       ]
+    },
+    {
+      "name": "Memory",
+      "brief": "Generative AI memory operations. Reading from, writing to, or managing an agent's persistent memory store.",
+      "is_in_otel": true,
+      "otel_notes": "",
+      "ops": ["gen_ai.memory.client"],
+      "templates": ["{{gen_ai.operation.name}}", "Generative AI memory operation"],
+      "examples": ["upsert_memory", "search_memory", "create_memory", "delete_memory"]
     }
   ]
 }

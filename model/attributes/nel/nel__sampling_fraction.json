@@ -11,7 +11,7 @@
   "alias": ["nel.sampling_function"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.26.0",
       "prs": [668],
       "description": "Added nel.sampling_fraction attribute"
     }

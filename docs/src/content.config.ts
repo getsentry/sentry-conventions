@@ -17,7 +17,7 @@ const attributeSchema = z
     key: z.string(),
     brief: z.string(),
     has_dynamic_suffix: z.boolean().optional(),
-    type: z.enum(['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]']),
+    type: z.enum(['string', 'boolean', 'integer', 'double', 'string[]', 'boolean[]', 'integer[]', 'double[]', 'any']),
     apply_scrubbing: z.object({
       key: z.enum(['auto', 'manual', 'never']),
       reason: z.string().optional(),
@@ -26,6 +26,14 @@ const attributeSchema = z
     visibility: z.enum(['public', 'internal']),
     example: attributeValueSchema.optional(),
     examples: z.array(attributeValueSchema).min(1).optional(),
+    enum_values: z
+      .array(
+        z.object({
+          value: z.string(),
+          brief: z.string().optional(),
+        }),
+      )
+      .optional(),
     deprecation: z
       .object({
         replacement: z.string().optional(),

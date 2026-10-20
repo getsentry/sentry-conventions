@@ -139,7 +139,7 @@ const createAttribute = async () => {
       process.exit(1);
     }
 
-    const hasDynamicSuffix = key.includes('.<key>');
+    const hasDynamicSuffix = key.endsWith('.<key>');
     let examplesValue: AttributeValue[] | undefined;
     if (examples) {
       examplesValue = parseAttributeExamples(examples);

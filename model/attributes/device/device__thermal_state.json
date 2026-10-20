@@ -1,12 +1,13 @@
 {
   "key": "device.thermal_state",
-  "brief": "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+  "brief": "The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": false,
   "example": "nominal",
+  "enum_values": [{ "value": "nominal" }, { "value": "fair" }, { "value": "serious" }, { "value": "critical" }],
   "visibility": "public",
   "changelog": [
     {

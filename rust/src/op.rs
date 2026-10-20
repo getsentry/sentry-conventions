@@ -224,17 +224,25 @@ pub const GEN_AI_GENERATE_CONTENT: &str = "gen_ai.generate_content";
 /// Reranking of documents or results by a generative AI model
 pub const GEN_AI_RERANK: &str = "gen_ai.rerank";
 
+/// Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+pub const GEN_AI_DECIDE: &str = "gen_ai.decide";
+
 /// Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+#[deprecated(note = "Use `GEN_AI_DECIDE` (gen_ai.decide) instead")]
 pub const GEN_AI_EVALUATE: &str = "gen_ai.evaluate";
 
 /// Creation of an AI agent that can later be invoked to perform a task
 pub const GEN_AI_CREATE_AGENT: &str = "gen_ai.create_agent";
 
 /// An interaction with a generative AI model through a responses API
+#[deprecated(note = "Use `GEN_AI_CHAT` (gen_ai.chat) instead - responses is not a well-defined value for gen_ai.operation.name")]
 pub const GEN_AI_RESPONSES: &str = "gen_ai.responses";
 
 /// A text completion request to a generative AI model
 pub const GEN_AI_TEXT_COMPLETION: &str = "gen_ai.text_completion";
+
+/// A memory store or memory record operation performed by a generative AI agent
+pub const GEN_AI_MEMORY_CLIENT: &str = "gen_ai.memory.client";
 
 // Path: model/op/general.json
 // Name: general
@@ -284,27 +292,47 @@ pub const QUEUE_PROCESS: &str = "queue.process";
 pub const QUEUE_SETTLE: &str = "queue.settle";
 
 /// Publishing a message to an arq queue.
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_SUBMIT_ARQ: &str = "queue.submit.arq";
 
-/// Processing a message from an arq queue.
-pub const QUEUE_TASK_ARQ: &str = "queue.task.arq";
-
 /// Publishing a message to a Celery broker.
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_SUBMIT_CELERY: &str = "queue.submit.celery";
 
+/// Publishing a message to a Django queue.
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
+pub const QUEUE_SUBMIT_DJANGO: &str = "queue.submit.django";
+
+/// Publishing a message to a Huey instance.
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
+pub const QUEUE_SUBMIT_HUEY: &str = "queue.submit.huey";
+
+/// Publishing a message to a Ray queue.
+#[deprecated(note = "Use `QUEUE_PUBLISH` (queue.publish) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
+pub const QUEUE_SUBMIT_RAY: &str = "queue.submit.ray";
+
+/// Processing a message from an arq queue.
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
+pub const QUEUE_TASK_ARQ: &str = "queue.task.arq";
+
 /// Processing a message from a Celery queue.
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_CELERY: &str = "queue.task.celery";
 
 /// Processing a message from a Dramatiq queue.
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_DRAMATIQ: &str = "queue.task.dramatiq";
 
-/// Publishing a message to a Huey instance.
-pub const QUEUE_SUBMIT_HUEY: &str = "queue.submit.huey";
-
 /// Processing a message from a Huey instance.
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_HUEY: &str = "queue.task.huey";
 
+/// Processing a message from a Ray queue.
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
+pub const QUEUE_TASK_RAY: &str = "queue.task.ray";
+
 /// Processing a message from an RQ queue.
+#[deprecated(note = "Use `QUEUE_PROCESS` (queue.process) instead - Framework-specific queue ops are replaced by framework-agnostic ones.")]
 pub const QUEUE_TASK_RQ: &str = "queue.task.rq";
 
 // Path: model/op/mobile.json
@@ -337,6 +365,9 @@ pub const OBJECT_HEAD: &str = "object.head";
 
 /// Storing an object in an object store.
 pub const OBJECT_PUT: &str = "object.put";
+
+/// Copying an object within or between object stores.
+pub const OBJECT_COPY: &str = "object.copy";
 
 /// Deleting an object from an object store.
 pub const OBJECT_DELETE: &str = "object.delete";
@@ -391,6 +422,12 @@ pub const HANDLER: &str = "handler";
 
 pub const VIEW: &str = "view";
 
+/// Rendering of a view.
+pub const VIEW_RENDER: &str = "view.render";
+
+#[deprecated(note = "Use `VIEW_RENDER` (view.render) instead")]
+pub const VIEW_RESPONSE_RENDER: &str = "view.response.render";
+
 pub const TEMPLATE: &str = "template";
 
 #[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
@@ -398,5 +435,8 @@ pub const FUNCTION_REMIX: &str = "function.remix";
 
 #[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific function ops are replaced by framework-agnostic ones.")]
 pub const FUNCTION_NEXTJS: &str = "function.nextjs";
+
+#[deprecated(note = "Use `FUNCTION` (function) instead - Framework-specific event ops are replaced by framework-agnostic ones.")]
+pub const EVENT_DJANGO: &str = "event.django";
 
 pub const CONSOLE: &str = "console";

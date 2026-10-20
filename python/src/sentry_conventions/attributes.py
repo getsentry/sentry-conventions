@@ -313,11 +313,25 @@ class _AttributeNamesMeta(type):
         "LITESTAR_MIDDLEWARE_NAME",
         "MCP_PROMPT_NAME",
         "MCP_REQUEST_ID",
-        "MCP_RESOURCE_PROTOCOL",
         "MCP_TOOL_NAME",
+        "MCP_TOOL_RESULT_KEY_CONTENT",
+        "MCP_TOOL_RESULT_KEY_CONTENT_TYPE",
+        "MCP_TOOL_RESULT_KEY_DATA_SIZE",
+        "MCP_TOOL_RESULT_KEY_MIME_TYPE",
+        "MCP_TOOL_RESULT_KEY_NAME",
+        "MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE",
+        "MCP_TOOL_RESULT_KEY_RESOURCE_URI",
+        "MCP_TOOL_RESULT_KEY_URI",
         "MCP_TOOL_RESULT_CONTENT",
+        "MCP_TOOL_RESULT_CONTENT_COUNT",
+        "MCP_TOOL_RESULT_CONTENT_TYPE",
+        "MCP_TOOL_RESULT_DATA_SIZE",
         "MCP_TOOL_RESULT_IS_ERROR",
-        "MCP_TRANSPORT",
+        "MCP_TOOL_RESULT_MIME_TYPE",
+        "MCP_TOOL_RESULT_NAME",
+        "MCP_TOOL_RESULT_RESOURCE_MIME_TYPE",
+        "MCP_TOOL_RESULT_RESOURCE_URI",
+        "MCP_TOOL_RESULT_URI",
         "MESSAGING_CONVERSATION_ID",
         "MESSAGING_DESTINATION",
         "MESSAGING_DESTINATION_KIND",
@@ -519,7 +533,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.name, mcp.tool.name
@@ -634,7 +648,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.system_instructions
@@ -910,7 +924,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Raw text inputs provided to the model.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt, ai.prompt
@@ -949,7 +963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the tool calls that were made.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -1650,6 +1664,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: ["{ \"AttributeName\": \"string\", \"AttributeType\": \"string\" }"]
     """
 
+    # Path: model/attributes/aws/aws__dynamodb__attributes_to_get.json
+    AWS_DYNAMODB_ATTRIBUTES_TO_GET: Literal["aws.dynamodb.attributes_to_get"] = (
+        "aws.dynamodb.attributes_to_get"
+    )
+    """The value of the `AttributesToGet` request parameter.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: ["lives","id"]
+    """
+
     # Path: model/attributes/aws/aws__dynamodb__consistent_read.json
     AWS_DYNAMODB_CONSISTENT_READ: Literal["aws.dynamodb.consistent_read"] = (
         "aws.dynamodb.consistent_read"
@@ -2043,6 +2070,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5000
     """
 
+    # Path: model/attributes/aws/aws__lambda__resource_mapping__id.json
+    AWS_LAMBDA_RESOURCE_MAPPING_ID: Literal["aws.lambda.resource_mapping.id"] = (
+        "aws.lambda.resource_mapping.id"
+    )
+    """The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "587ad24b-03b9-4413-8202-bbd56b36e5b7"
+    """
+
     # Path: model/attributes/aws/aws__log__group__names.json
     AWS_LOG_GROUP_NAMES: Literal["aws.log.group.names"] = "aws.log.group.names"
     """The name(s) of the AWS log group(s) an application is writing to.
@@ -2142,6 +2182,61 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ot-demo-test"
     """
 
+    # Path: model/attributes/aws/aws__s3__copy_source.json
+    AWS_S3_COPY_SOURCE: Literal["aws.s3.copy_source"] = "aws.s3.copy_source"
+    """The source object (in the form bucket/key) for the copy operation.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "someFile.yml"
+    """
+
+    # Path: model/attributes/aws/aws__s3__delete.json
+    AWS_S3_DELETE: Literal["aws.s3.delete"] = "aws.s3.delete"
+    """The delete request container that specifies the objects to be deleted.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+    """
+
+    # Path: model/attributes/aws/aws__s3__key.json
+    AWS_S3_KEY: Literal["aws.s3.key"] = "aws.s3.key"
+    """The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "someFile.yml"
+    """
+
+    # Path: model/attributes/aws/aws__s3__part_number.json
+    AWS_S3_PART_NUMBER: Literal["aws.s3.part_number"] = "aws.s3.part_number"
+    """The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 3456
+    """
+
+    # Path: model/attributes/aws/aws__s3__upload_id.json
+    AWS_S3_UPLOAD_ID: Literal["aws.s3.upload_id"] = "aws.s3.upload_id"
+    """Upload ID that identifies the multipart upload.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"
+    """
+
     # Path: model/attributes/aws/aws__secretsmanager__secret__arn.json
     AWS_SECRETSMANAGER_SECRET_ARN: Literal["aws.secretsmanager.secret.arn"] = (
         "aws.secretsmanager.secret.arn"
@@ -2166,6 +2261,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:sns:us-east-1:123456789012:mystack-mytopic-NZJ5JSMVGFIE"
     """
 
+    # Path: model/attributes/aws/aws__sqs__queue__url.json
+    AWS_SQS_QUEUE_URL: Literal["aws.sqs.queue.url"] = "aws.sqs.queue.url"
+    """The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
+    """
+
     # Path: model/attributes/aws/aws__step_functions__activity__arn.json
     AWS_STEP_FUNCTIONS_ACTIVITY_ARN: Literal["aws.step_functions.activity.arn"] = (
         "aws.step_functions.activity.arn"
@@ -2177,6 +2283,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
+    """
+
+    # Path: model/attributes/aws/aws__step_functions__execution__arn.json
+    AWS_STEP_FUNCTIONS_EXECUTION_ARN: Literal["aws.step_functions.execution.arn"] = (
+        "aws.step_functions.execution.arn"
+    )
+    """The ARN of the AWS Step Functions Execution.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
     """
 
     # Path: model/attributes/aws/aws__step_functions__state_machine__arn.json
@@ -2740,7 +2859,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/cache/cache__ttl.json
     CACHE_TTL: Literal["cache.ttl"] = "cache.ttl"
-    """The ttl (maximum lifetime) of the cache in seconds
+    """The TTL (maximum lifetime) of the cache entry in seconds
 
     Type: int
     Apply Scrubbing: manual
@@ -3991,12 +4110,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/device/device__thermal_state.json
     DEVICE_THERMAL_STATE: Literal["device.thermal_state"] = "device.thermal_state"
-    """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.
+    """The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `nominal`
+    - `fair`
+    - `serious`
+    - `critical`
     Example: "nominal"
     """
 
@@ -4094,7 +4218,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry environment.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.environment
@@ -4793,7 +4917,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.
+    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.
 
     Type: str
     Apply Scrubbing: manual
@@ -4803,31 +4927,119 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
     """
 
-    # Path: model/attributes/gen_ai/gen_ai__operation__name.json
-    GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
-    """The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.
+    # Path: model/attributes/gen_ai/gen_ai__memory__query__text.json
+    GEN_AI_MEMORY_QUERY_TEXT: Literal["gen_ai.memory.query.text"] = (
+        "gen_ai.memory.query.text"
+    )
+    """The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Example: "user dietary preferences"
+    Example: "past flight bookings"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__record__count.json
+    GEN_AI_MEMORY_RECORD_COUNT: Literal["gen_ai.memory.record.count"] = (
+        "gen_ai.memory.record.count"
+    )
+    """The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 3
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__record__id.json
+    GEN_AI_MEMORY_RECORD_ID: Literal["gen_ai.memory.record.id"] = (
+        "gen_ai.memory.record.id"
+    )
+    """The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "mem_5j66UpCpwteGg4YSxUnt7lPY"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__records.json
+    GEN_AI_MEMORY_RECORDS: Literal["gen_ai.memory.records"] = "gen_ai.memory.records"
+    """The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "[{\"content\": \"User prefers dark mode\", \"id\": \"mem_123\", \"score\": 0.95}, {\"content\": {\"preference\": \"vegetarian meals\", \"confidence\": 0.9}, \"metadata\": {\"source\": \"profile\"}}]"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__memory__store__id.json
+    GEN_AI_MEMORY_STORE_ID: Literal["gen_ai.memory.store.id"] = "gen_ai.memory.store.id"
+    """The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "ms_abc123"
+    Example: "user-preferences-store"
+    Example: "seer-knowledge"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__operation__name.json
+    GEN_AI_OPERATION_NAME: Literal["gen_ai.operation.name"] = "gen_ai.operation.name"
+    """The name of the operation being performed.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Well-defined Values:
+    - `chat`
+    - `create_agent`
+    - `create_memory`
+    - `create_memory_store`
+    - `decide`
+    - `delete_memory`
+    - `delete_memory_store`
+    - `embeddings`
+    - `evaluate`
+    - `execute_tool`
+    - `generate_content`
+    - `invoke_agent`
+    - `search_memory`
+    - `text_completion`
+    - `update_memory`
+    - `upsert_memory`
     Example: "chat"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__operation__type.json
     GEN_AI_OPERATION_TYPE: Literal["gen_ai.operation.type"] = "gen_ai.operation.type"
-    """The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
+    """The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `agent` - invoke_agent and create_agent spans
+    - `ai_client` - any LLM call
+    - `tool` - execute_tool spans
+    - `handoff` - handoff spans
+    - `memory` - gen_ai.memory.client spans
+    - `other` - input and output processors, skill loading, guardrails etc.
     Example: "tool"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__output__messages.json
     GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
-    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.
+    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.
 
     Type: str
     Apply Scrubbing: manual
@@ -4872,6 +5084,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: mcp.prompt.name
     Example: "summarize_text"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__prompt__variable__[key].json
+    GEN_AI_PROMPT_VARIABLE_KEY: Literal["gen_ai.prompt.variable.<key>"] = (
+        "gen_ai.prompt.variable.<key>"
+    )
+    """Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.
+
+    Type: str
+    Apply Scrubbing: auto - Prompt variables contain user input and may include sensitive information
+    Defined in OTEL: Yes
+    Visibility: public
+    Has Dynamic Suffix: true
+    Example: "gen_ai.prompt.variable.language='French'"
+    Example: "gen_ai.prompt.variable.topic='weather'"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__provider__name.json
@@ -5222,7 +5449,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The system instructions passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.system_instructions instead
@@ -5330,7 +5557,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The response from a tool or function call passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
@@ -5988,6 +6215,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 1732829555.322
     """
 
+    # Path: model/attributes/http/http__request__duration.json
+    HTTP_REQUEST_DURATION: Literal["http.request.duration"] = "http.request.duration"
+    """The duration of a HTTP request, in milliseconds.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
+    """
+
     # Path: model/attributes/http/http__request__fetch_start.json
     HTTP_REQUEST_FETCH_START: Literal["http.request.fetch_start"] = (
         "http.request.fetch_start"
@@ -6485,6 +6723,50 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 200
     """
 
+    # Path: model/attributes/integrity/integrity__blocked_url.json
+    INTEGRITY_BLOCKED_URL: Literal["integrity.blocked_url"] = "integrity.blocked_url"
+    """The URL of the resource blocked by the integrity policy.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "https://example.com/app.js"
+    """
+
+    # Path: model/attributes/integrity/integrity__destination.json
+    INTEGRITY_DESTINATION: Literal["integrity.destination"] = "integrity.destination"
+    """The destination type of the resource affected by the integrity policy.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "script"
+    """
+
+    # Path: model/attributes/integrity/integrity__document_url.json
+    INTEGRITY_DOCUMENT_URL: Literal["integrity.document_url"] = "integrity.document_url"
+    """The URL of the document where the integrity violation occurred.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "https://example.com/index.html"
+    """
+
+    # Path: model/attributes/integrity/integrity__report_only.json
+    INTEGRITY_REPORT_ONLY: Literal["integrity.report_only"] = "integrity.report_only"
+    """Whether the integrity violation was generated by a report-only policy.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: true
+    """
+
     # Path: model/attributes/jsonrpc/jsonrpc__protocol__version.json
     JSONRPC_PROTOCOL_VERSION: Literal["jsonrpc.protocol.version"] = (
         "jsonrpc.protocol.version"
@@ -6500,7 +6782,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/jsonrpc/jsonrpc__request__id.json
     JSONRPC_REQUEST_ID: Literal["jsonrpc.request.id"] = "jsonrpc.request.id"
-    """The JSON-RPC request identifier. Unique within the session.
+    """The JSON-RPC request identifier, used to correlate a request with its response.
 
     Type: str
     Apply Scrubbing: manual
@@ -6730,6 +7012,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "myLogger"
     """
 
+    # Path: model/attributes/mcp/mcp__auth__client__name.json
+    MCP_AUTH_CLIENT_NAME: Literal["mcp.auth.client.name"] = "mcp.auth.client.name"
+    """Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "Example Desktop"
+    Example: "Example CLI"
+    """
+
     # Path: model/attributes/mcp/mcp__cancelled__reason.json
     MCP_CANCELLED_REASON: Literal["mcp.cancelled.reason"] = "mcp.cancelled.reason"
     """Reason for the cancellation of an MCP operation.
@@ -6756,29 +7050,29 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__client__name.json
     MCP_CLIENT_NAME: Literal["mcp.client.name"] = "mcp.client.name"
-    """Name of the MCP client application.
+    """Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Example: "claude-desktop"
+    Example: "example-mcp-client"
     """
 
     # Path: model/attributes/mcp/mcp__client__title.json
     MCP_CLIENT_TITLE: Literal["mcp.client.title"] = "mcp.client.title"
-    """Display title of the MCP client application.
+    """Display title of the MCP client implementation, as declared in clientInfo.
 
     Type: str
     Apply Scrubbing: manual - Client titles may reveal user-specific application configurations or custom setups
     Defined in OTEL: No
     Visibility: public
-    Example: "Claude Desktop"
+    Example: "Example MCP Client"
     """
 
     # Path: model/attributes/mcp/mcp__client__version.json
     MCP_CLIENT_VERSION: Literal["mcp.client.version"] = "mcp.client.version"
-    """Version of the MCP client application.
+    """Version of the MCP client implementation, as declared in clientInfo.
 
     Type: str
     Apply Scrubbing: manual
@@ -6857,10 +7151,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     MCP_PROGRESS_CURRENT: Literal["mcp.progress.current"] = "mcp.progress.current"
     """Current progress value of an MCP operation.
 
-    Type: int
+    Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Example: 0.2
     Example: 50
     """
 
@@ -6903,10 +7198,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     MCP_PROGRESS_TOTAL: Literal["mcp.progress.total"] = "mcp.progress.total"
     """Total progress target value of an MCP operation.
 
-    Type: int
+    Type: float
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Example: 1
     Example: 100
     """
 
@@ -6921,6 +7217,33 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: gen_ai.prompt.name
     DEPRECATED: Use gen_ai.prompt.name instead - OTel uses gen_ai.prompt.name for MCP prompt names
     Example: "summarize"
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__[key]__content.json
+    MCP_PROMPT_RESULT_KEY_CONTENT: Literal["mcp.prompt.result.<key>.content"] = (
+        "mcp.prompt.result.<key>.content"
+    )
+    """Legacy text content of an indexed message in a multi-message MCP prompt result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    Example: "Summarize the document."
+    """
+
+    # Path: model/attributes/mcp/mcp__prompt__result__[key]__role.json
+    MCP_PROMPT_RESULT_KEY_ROLE: Literal["mcp.prompt.result.<key>.role"] = (
+        "mcp.prompt.result.<key>.role"
+    )
+    """Legacy role of an indexed message in a multi-message MCP prompt result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    Example: "user"
+    Example: "assistant"
     """
 
     # Path: model/attributes/mcp/mcp__prompt__result__description.json
@@ -6977,7 +7300,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__protocol__ready.json
     MCP_PROTOCOL_READY: Literal["mcp.protocol.ready"] = "mcp.protocol.ready"
-    """Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.
+    """Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.
 
     Type: int
     Apply Scrubbing: manual
@@ -6988,7 +7311,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__protocol__version.json
     MCP_PROTOCOL_VERSION: Literal["mcp.protocol.version"] = "mcp.protocol.version"
-    """MCP protocol version used in the session.
+    """Version of the Model Context Protocol used for the operation.
 
     Type: str
     Apply Scrubbing: manual
@@ -7039,7 +7362,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__request__id.json
     MCP_REQUEST_ID: Literal["mcp.request.id"] = "mcp.request.id"
-    """JSON-RPC request identifier for the MCP request. Unique within the MCP session.
+    """JSON-RPC request identifier for the MCP request, used to correlate the request with its response.
 
     Type: str
     Apply Scrubbing: manual
@@ -7052,15 +7375,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__resource__protocol.json
     MCP_RESOURCE_PROTOCOL: Literal["mcp.resource.protocol"] = "mcp.resource.protocol"
-    """Protocol of the resource URI being accessed, extracted from the URI.
+    """URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: network.protocol.name, net.protocol.name, messaging.protocol
-    DEPRECATED: Use network.protocol.name instead - OTel uses the generic network.protocol.name attribute
     Example: "file"
+    Example: "postgres"
     """
 
     # Path: model/attributes/mcp/mcp__resource__uri.json
@@ -7076,29 +7398,29 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__server__name.json
     MCP_SERVER_NAME: Literal["mcp.server.name"] = "mcp.server.name"
-    """Name of the MCP server application.
+    """Name of the MCP server implementation, as declared in serverInfo.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Example: "sentry-mcp-server"
+    Example: "example-mcp-server"
     """
 
     # Path: model/attributes/mcp/mcp__server__title.json
     MCP_SERVER_TITLE: Literal["mcp.server.title"] = "mcp.server.title"
-    """Display title of the MCP server application.
+    """Display title of the MCP server implementation, as declared in serverInfo.
 
     Type: str
     Apply Scrubbing: manual - Server titles may reveal user-specific application configurations or custom setups
     Defined in OTEL: No
     Visibility: public
-    Example: "Sentry MCP Server"
+    Example: "Example MCP Server"
     """
 
     # Path: model/attributes/mcp/mcp__server__version.json
     MCP_SERVER_VERSION: Literal["mcp.server.version"] = "mcp.server.version"
-    """Version of the MCP server application.
+    """Version of the MCP server implementation, as declared in serverInfo.
 
     Type: str
     Apply Scrubbing: manual
@@ -7109,7 +7431,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/mcp/mcp__session__id.json
     MCP_SESSION_ID: Literal["mcp.session.id"] = "mcp.session.id"
-    """Identifier for the MCP session.
+    """Identifier for an MCP protocol session, when the operation belongs to a session.
 
     Type: str
     Apply Scrubbing: manual
@@ -7131,6 +7453,121 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "calculator"
     """
 
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__content.json
+    MCP_TOOL_RESULT_KEY_CONTENT: Literal["mcp.tool.result.<key>.content"] = (
+        "mcp.tool.result.<key>.content"
+    )
+    """Legacy text content of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "The operation completed."
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__content_type.json
+    MCP_TOOL_RESULT_KEY_CONTENT_TYPE: Literal["mcp.tool.result.<key>.content_type"] = (
+        "mcp.tool.result.<key>.content_type"
+    )
+    """Legacy content type of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "text"
+    Example: "image"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__data_size.json
+    MCP_TOOL_RESULT_KEY_DATA_SIZE: Literal["mcp.tool.result.<key>.data_size"] = (
+        "mcp.tool.result.<key>.data_size"
+    )
+    """Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.
+
+    Type: int
+    Apply Scrubbing: manual - The length contains no result content.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: 4
+    Example: 1024
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__mime_type.json
+    MCP_TOOL_RESULT_KEY_MIME_TYPE: Literal["mcp.tool.result.<key>.mime_type"] = (
+        "mcp.tool.result.<key>.mime_type"
+    )
+    """Legacy MIME type of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "image/png"
+    Example: "audio/wav"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__name.json
+    MCP_TOOL_RESULT_KEY_NAME: Literal["mcp.tool.result.<key>.name"] = (
+        "mcp.tool.result.<key>.name"
+    )
+    """Legacy resource link name of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "report.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__resource_mime_type.json
+    MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE: Literal[
+        "mcp.tool.result.<key>.resource_mime_type"
+    ] = "mcp.tool.result.<key>.resource_mime_type"
+    """Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "text/plain"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__resource_uri.json
+    MCP_TOOL_RESULT_KEY_RESOURCE_URI: Literal["mcp.tool.result.<key>.resource_uri"] = (
+        "mcp.tool.result.<key>.resource_uri"
+    )
+    """Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "file:///project/report.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__[key]__uri.json
+    MCP_TOOL_RESULT_KEY_URI: Literal["mcp.tool.result.<key>.uri"] = (
+        "mcp.tool.result.<key>.uri"
+    )
+    """Legacy resource link URI of an indexed content item in a multi-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "file:///project/report.txt"
+    """
+
     # Path: model/attributes/mcp/mcp__tool__result__content.json
     MCP_TOOL_RESULT_CONTENT: Literal["mcp.tool.result.content"] = (
         "mcp.tool.result.content"
@@ -7138,7 +7575,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The content of the tool result.
 
     Type: str
-    Apply Scrubbing: auto - Tool results can contain user data
+    Apply Scrubbing: manual - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result, anthropic.tool_result.content
@@ -7156,7 +7593,38 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    DEPRECATED: No replacement at this time - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
     Example: 1
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__content_type.json
+    MCP_TOOL_RESULT_CONTENT_TYPE: Literal["mcp.tool.result.content_type"] = (
+        "mcp.tool.result.content_type"
+    )
+    """Legacy content type of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "text"
+    Example: "image"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__data_size.json
+    MCP_TOOL_RESULT_DATA_SIZE: Literal["mcp.tool.result.data_size"] = (
+        "mcp.tool.result.data_size"
+    )
+    """Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.
+
+    Type: int
+    Apply Scrubbing: manual - The length contains no result content.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: 4
+    Example: 1024
     """
 
     # Path: model/attributes/mcp/mcp__tool__result__is_error.json
@@ -7173,17 +7641,83 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
+    # Path: model/attributes/mcp/mcp__tool__result__mime_type.json
+    MCP_TOOL_RESULT_MIME_TYPE: Literal["mcp.tool.result.mime_type"] = (
+        "mcp.tool.result.mime_type"
+    )
+    """Legacy MIME type of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "image/png"
+    Example: "audio/wav"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__name.json
+    MCP_TOOL_RESULT_NAME: Literal["mcp.tool.result.name"] = "mcp.tool.result.name"
+    """Legacy resource link name of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "report.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__resource_mime_type.json
+    MCP_TOOL_RESULT_RESOURCE_MIME_TYPE: Literal[
+        "mcp.tool.result.resource_mime_type"
+    ] = "mcp.tool.result.resource_mime_type"
+    """Legacy embedded resource MIME type of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "text/plain"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__resource_uri.json
+    MCP_TOOL_RESULT_RESOURCE_URI: Literal["mcp.tool.result.resource_uri"] = (
+        "mcp.tool.result.resource_uri"
+    )
+    """Legacy embedded resource URI of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "file:///project/report.txt"
+    """
+
+    # Path: model/attributes/mcp/mcp__tool__result__uri.json
+    MCP_TOOL_RESULT_URI: Literal["mcp.tool.result.uri"] = "mcp.tool.result.uri"
+    """Legacy resource link URI of the content item in a single-item MCP tool result.
+
+    Type: str
+    Apply Scrubbing: auto - Preserve automatic scrubbing of server-provided result fields.
+    Defined in OTEL: No
+    Visibility: public
+    DEPRECATED: No replacement at this time - Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled.
+    Example: "file:///project/report.txt"
+    """
+
     # Path: model/attributes/mcp/mcp__transport.json
     MCP_TRANSPORT: Literal["mcp.transport"] = "mcp.transport"
-    """Transport method used for MCP communication.
+    """MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: network.transport, net.transport
-    DEPRECATED: Use network.transport instead - OTel uses the generic network.transport attribute
-    Example: "stdio"
+    Example: "StdioServerTransport"
+    Example: "CustomHTTPTransport"
     """
 
     # Path: model/attributes/mdc/mdc__[key].json
@@ -7469,7 +8003,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: network.protocol.name, net.protocol.name, mcp.resource.protocol
+    Aliases: network.protocol.name, net.protocol.name
     DEPRECATED: Use network.protocol.name instead - This attribute is being deprecated in favor of network.protocol.name.
     Example: "AMQP"
     """
@@ -7732,7 +8266,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
@@ -7760,7 +8294,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.protocol.name, mcp.resource.protocol, messaging.protocol
+    Aliases: network.protocol.name, messaging.protocol
     DEPRECATED: Use network.protocol.name instead
     Example: "http"
     """
@@ -7862,7 +8396,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: network.transport, mcp.transport
+    Aliases: network.transport
     DEPRECATED: Use network.transport instead - This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.
     Example: "tcp"
     """
@@ -7964,7 +8498,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.protocol.name, mcp.resource.protocol, messaging.protocol
+    Aliases: net.protocol.name, messaging.protocol
     Example: "http"
     """
 
@@ -7990,7 +8524,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: net.transport, mcp.transport
+    Aliases: net.transport
     Example: "tcp"
     """
 
@@ -8634,7 +9168,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -8648,7 +9182,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -8947,12 +9481,50 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__category.json
     SENTRY_CATEGORY: Literal["sentry.category"] = "sentry.category"
-    """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.
+    """The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).
 
     Type: str
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `ai`
+    - `ai.pipeline`
+    - `app`
+    - `browser`
+    - `cache`
+    - `console`
+    - `db`
+    - `event`
+    - `file`
+    - `function.aws`
+    - `function.azure`
+    - `function.gcp`
+    - `function.nextjs`
+    - `function.remix`
+    - `graphql`
+    - `grpc`
+    - `http`
+    - `measure`
+    - `middleware`
+    - `navigation`
+    - `object`
+    - `pageload`
+    - `queue`
+    - `resource`
+    - `rpc`
+    - `serialize`
+    - `subprocess`
+    - `template`
+    - `topic`
+    - `ui`
+    - `ui.angular`
+    - `ui.ember`
+    - `ui.react`
+    - `ui.svelte`
+    - `ui.vue`
+    - `view`
+    - `websocket`
     Example: "db"
     """
 
@@ -9295,9 +9867,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
+    - `next_trace` - The linked span is the root span of the trace after this trace.
+    - `cache_origin` - The linked span wrote the cached value that this span reads.
+    - `message_origin` - The linked span published the queue message that this span processes.
     Example: "previous_trace"
     Example: "next_trace"
     Example: "cache_origin"
+    Example: "message_origin"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -9651,12 +10229,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     SENTRY_SEGMENT_NAME_SOURCE: Literal["sentry.segment.name.source"] = (
         "sentry.segment.name.source"
     )
-    """The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.
+    """The source of the segment span name. Should only be set on segment spans.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: internal
+    Well-defined Values:
+    - `custom` - Describes a name set by the user, not derived from the URL or a route pattern
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
+    - `component`
+    - `view`
+    - `task`
     Example: "route"
     Example: "component"
     Example: "view"
@@ -9693,24 +10278,38 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/sentry/sentry__source.json
     SENTRY_SOURCE: Literal["sentry.source"] = "sentry.source"
-    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
+    """The source of a span, also referred to as transaction source.
 
     Type: str
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `custom`
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
+    - `component`
+    - `view`
+    - `task`
     DEPRECATED: No replacement at this time - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
     Example: "route"
     """
 
     # Path: model/attributes/sentry/sentry__span__source.json
     SENTRY_SPAN_SOURCE: Literal["sentry.span.source"] = "sentry.span.source"
-    """The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.
+    """The source of a span, also referred to as transaction source.
 
     Type: str
     Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `custom`
+    - `url` - Describes the full URL, potentially containing identifiers
+    - `route` - Describes a parametrized route
+    - `component`
+    - `view`
+    - `task`
     DEPRECATED: No replacement at this time - This attribute is superseded by sentry.segment.name.source, which only needs to be set on segment spans.
     Example: "route"
     """
@@ -9858,7 +10457,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry transaction (segment name).
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment.name, transaction
@@ -9995,7 +10594,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
@@ -10912,6 +11511,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
     """
 
+    # Path: model/attributes/vercel/vercel__ai__telemetry__metadata__[key].json
+    VERCEL_AI_TELEMETRY_METADATA_KEY: Literal["vercel.ai.telemetry.metadata.<key>"] = (
+        "vercel.ai.telemetry.metadata.<key>"
+    )
+    """Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.
+
+    Type: str
+    Apply Scrubbing: auto - Metadata is user-defined and can contain user data
+    Defined in OTEL: No
+    Visibility: public
+    Has Dynamic Suffix: true
+    Example: "vercel.ai.telemetry.metadata.tenantId='acme'"
+    """
+
     # Path: model/attributes/vercel/vercel__branch.json
     VERCEL_BRANCH: Literal["vercel.branch"] = "vercel.branch"
     """Git branch name for Vercel project
@@ -11470,7 +12083,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.function_call",
             "mcp.tool.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="function_name",
@@ -11662,7 +12275,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are now a clown.",
@@ -12133,7 +12746,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.texts",
             "gen_ai.prompt",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Hello, how are you?", "What is the capital of France?"],
@@ -12221,7 +12834,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.responses",
             "ai.tool_calls",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["tool_call_1", "tool_call_2"],
@@ -12446,7 +13059,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
+                prs=[660],
                 description="Added anthropic.tool_result.content attribute, deprecated in favor of gen_ai.tool.call.result",
             ),
         ],
@@ -13329,6 +13943,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.dynamodb.attributes_to_get": AttributeMetadata(
+        brief="The value of the `AttributesToGet` request parameter.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("aws.dynamodb.attributes_to_get",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=["lives", "id"],
+        examples=[["lives", "id"]],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[672],
+                description="Added aws.dynamodb.attributes_to_get attribute",
+            ),
+        ],
+    ),
     "aws.dynamodb.consistent_read": AttributeMetadata(
         brief="The value of the `ConsistentRead` request parameter.",
         type=AttributeType.BOOLEAN,
@@ -13896,6 +14527,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.lambda.resource_mapping.id": AttributeMetadata(
+        brief="The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.resource_mapping.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="587ad24b-03b9-4413-8202-bbd56b36e5b7",
+        examples=["587ad24b-03b9-4413-8202-bbd56b36e5b7"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.lambda.resource_mapping.id attribute",
+            ),
+        ],
+    ),
     "aws.log.group.names": AttributeMetadata(
         brief="The name(s) of the AWS log group(s) an application is writing to.",
         type=AttributeType.STRING_ARRAY,
@@ -14063,6 +14710,110 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.s3.copy_source": AttributeMetadata(
+        brief="The source object (in the form bucket/key) for the copy operation.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.copy_source",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="someFile.yml",
+        examples=["someFile.yml"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[672],
+                description="Added aws.s3.copy_source attribute",
+            ),
+        ],
+        additional_context=[
+            "Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter."
+        ],
+    ),
+    "aws.s3.delete": AttributeMetadata(
+        brief="The delete request container that specifies the objects to be deleted.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.delete",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean",
+        examples=[
+            "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
+            ChangelogEntry(
+                version="0.27.0", prs=[672], description="Added aws.s3.delete attribute"
+            ),
+        ],
+        additional_context=[
+            "Applicable only to the delete-objects operation, corresponding to its Delete parameter."
+        ],
+    ),
+    "aws.s3.key": AttributeMetadata(
+        brief="The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.key",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="someFile.yml",
+        examples=["someFile.yml"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
+            ChangelogEntry(
+                version="0.27.0", prs=[672], description="Added aws.s3.key attribute"
+            ),
+        ],
+    ),
+    "aws.s3.part_number": AttributeMetadata(
+        brief="The part number of the part being uploaded in a multipart-upload operation. This is a positive integer between 1 and 10,000.",
+        type=AttributeType.INTEGER,
+        keys=("aws.s3.part_number",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=3456,
+        examples=[3456],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[672],
+                description="Added aws.s3.part_number attribute",
+            ),
+        ],
+        additional_context=[
+            "Applicable only to the upload-part and upload-part-copy operations."
+        ],
+    ),
+    "aws.s3.upload_id": AttributeMetadata(
+        brief="Upload ID that identifies the multipart upload.",
+        type=AttributeType.STRING,
+        keys=("aws.s3.upload_id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ",
+        examples=["dfRtDYWFbkRONycy.Yxwh66Yjlx.cph0gtNBtJ"],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[672],
+                description="Added aws.s3.upload_id attribute",
+            ),
+        ],
+    ),
     "aws.secretsmanager.secret.arn": AttributeMetadata(
         brief="The ARN of the Secret stored in Secrets Manager.",
         type=AttributeType.STRING,
@@ -14095,6 +14846,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.sqs.queue.url": AttributeMetadata(
+        brief="The URL of the AWS SQS Queue. It’s a unique identifier for a queue in Amazon Simple Queue Service (SQS) and is used to access the queue and perform actions on it.",
+        type=AttributeType.STRING,
+        keys=("aws.sqs.queue.url",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue",
+        examples=["https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[672],
+                description="Added aws.sqs.queue.url attribute",
+            ),
+        ],
+    ),
     "aws.step_functions.activity.arn": AttributeMetadata(
         brief="The ARN of the AWS Step Functions Activity.",
         type=AttributeType.STRING,
@@ -14108,6 +14876,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.16.0",
                 prs=[480],
                 description="Added aws.step_functions.activity.arn attribute",
+            ),
+        ],
+    ),
+    "aws.step_functions.execution.arn": AttributeMetadata(
+        brief="The ARN of the AWS Step Functions Execution.",
+        type=AttributeType.STRING,
+        keys=("aws.step_functions.execution.arn",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution",
+        examples=[
+            "arn:aws:states:us-east-1:123456789012:execution:myStateMachine:myExecution"
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[672],
+                description="Added aws.step_functions.execution.arn attribute",
             ),
         ],
     ),
@@ -14870,7 +15657,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "cache.ttl": AttributeMetadata(
-        brief="The ttl (maximum lifetime) of the cache in seconds",
+        brief="The TTL (maximum lifetime) of the cache entry in seconds",
         type=AttributeType.INTEGER,
         keys=("cache.ttl",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -14880,6 +15667,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "Counted from the write. On a read, the value is the full TTL, not the time that remains.",
+            "A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Omit the attribute when the entry never expires or the TTL is unknown.",
         ],
     ),
     "cache.write": AttributeMetadata(
@@ -16653,7 +17444,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "device.thermal_state": AttributeMetadata(
-        brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum: `nominal`, `fair`, `serious`, or `critical`.",
+        brief="The thermal state of the device. Based on Apple's `ProcessInfo.ThermalState` enum.",
         type=AttributeType.STRING,
         keys=("device.thermal_state",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -16838,7 +17629,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -17878,7 +18669,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -17895,7 +18686,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[650],
                 description="Describe the evaluation message shape for gen_ai.evaluate",
             ),
@@ -17906,8 +18697,95 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
+    "gen_ai.memory.query.text": AttributeMetadata(
+        brief="The search query used to retrieve memories. Only applicable to 'search_memory'. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.query.text",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="user dietary preferences",
+        examples=["user dietary preferences", "past flight bookings"],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[653],
+                description="Added gen_ai.memory.query.text attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.record.count": AttributeMetadata(
+        brief="The number of memory records relevant to the operation. For 'search_memory' this is the number returned; for 'create_memory', 'update_memory', 'upsert_memory' and 'delete_memory' it is the number the operation attempted to create, modify, create-or-update, or delete respectively.",
+        type=AttributeType.INTEGER,
+        keys=("gen_ai.memory.record.count",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=3,
+        examples=[3],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[653],
+                description="Added gen_ai.memory.record.count attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.record.id": AttributeMetadata(
+        brief="The unique identifier of the memory record. Set when the operation applies to a specific memory record. For 'delete_memory', its absence may indicate the operation intends to delete all memory records in the store.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.record.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="mem_5j66UpCpwteGg4YSxUnt7lPY",
+        examples=["mem_5j66UpCpwteGg4YSxUnt7lPY"],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[653],
+                description="Added gen_ai.memory.record.id attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.records": AttributeMetadata(
+        brief="The memory records stored or retrieved in a memory operation. Stringified JSON array; each element follows the OTel MemoryRecord schema: {content (required), id, metadata, score}. Opt-in: instrumentations SHOULD NOT capture this by default and SHOULD gate it behind explicit user opt-in, as it may contain sensitive information including user/PII data.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.records",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example='[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]',
+        examples=[
+            '[{"content": "User prefers dark mode", "id": "mem_123", "score": 0.95}, {"content": {"preference": "vegetarian meals", "confidence": 0.9}, "metadata": {"source": "profile"}}]'
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[653],
+                description="Added gen_ai.memory.records attribute",
+            ),
+        ],
+    ),
+    "gen_ai.memory.store.id": AttributeMetadata(
+        brief="The unique identifier of the memory store the operation targets. What this maps to is implementation-specific (e.g. a collection, namespace, or vector index) and SHOULD be documented per integration.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.memory.store.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="ms_abc123",
+        examples=["ms_abc123", "user-preferences-store", "seer-knowledge"],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[653],
+                description="Added gen_ai.memory.store.id attribute",
+            ),
+        ],
+    ),
     "gen_ai.operation.name": AttributeMetadata(
-        brief="The name of the operation being performed. It has the following list of well-known values: 'chat', 'create_agent', 'embeddings', 'execute_tool', 'generate_content', 'invoke_agent', 'text_completion'. If one of them applies, then that value MUST be used. Otherwise a custom value MAY be used.",
+        brief="The name of the operation being performed.",
         type=AttributeType.STRING,
         keys=("gen_ai.operation.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17915,12 +18793,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="chat",
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[653, 680],
+                description="Added memory operation values, 'evaluate', and 'decide' to the well-known values; deprecated 'evaluate' in favor of 'decide'",
+            ),
             ChangelogEntry(version="0.4.0", prs=[225]),
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
     "gen_ai.operation.type": AttributeMetadata(
-        brief="The type of AI operation. Must be one of 'agent' (invoke_agent and create_agent spans), 'ai_client' (any LLM call), 'tool' (execute_tool spans), 'handoff' (handoff spans), 'other' (input and output processors, skill loading, guardrails etc.) . Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
+        brief="The type of AI operation. Added during ingestion based on span.op and gen_ai.operation.type. Used to filter and aggregate data in the UI",
         type=AttributeType.STRING,
         keys=("gen_ai.operation.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17928,12 +18811,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="tool",
         changelog=[
+            ChangelogEntry(
+                version="0.27.0", prs=[653], description="Added 'memory' value"
+            ),
             ChangelogEntry(version="0.4.0", prs=[257]),
             ChangelogEntry(version="0.1.0", prs=[113, 127]),
         ],
     ),
     "gen_ai.output.messages": AttributeMetadata(
-        brief='The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
+        brief='The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.output.messages",
@@ -17949,7 +18835,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[650],
                 description="Describe the evaluation message shape for gen_ai.evaluate",
             ),
@@ -18033,6 +18919,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[420],
                 description="Added gen_ai.prompt.name attribute",
             ),
+        ],
+    ),
+    "gen_ai.prompt.variable.<key>": AttributeMetadata(
+        brief="Variables supplied to the prompt template. The <key> is the variable name, and the value is the variable value serialized as a string.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.prompt.variable.<key>",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Prompt variables contain user input and may include sensitive information",
+        ),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        has_dynamic_suffix=True,
+        example="gen_ai.prompt.variable.language='French'",
+        examples=[
+            "gen_ai.prompt.variable.language='French'",
+            "gen_ai.prompt.variable.topic='weather'",
+        ],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Added the OpenTelemetry convention for prompt variables",
+            ),
+        ],
+        additional_context=[
+            "Capture only when the user explicitly opts in to recording prompt inputs. In MCP, these values are the arguments supplied in prompts/get requests."
         ],
     ),
     "gen_ai.provider.name": AttributeMetadata(
@@ -18529,7 +19442,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
@@ -18692,7 +19605,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "mcp.tool.result.content",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
@@ -19819,6 +20732,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "http.request.duration": AttributeMetadata(
+        brief="The duration of a HTTP request, in milliseconds.",
+        type=AttributeType.INTEGER,
+        keys=("http.request.duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        examples=[5000],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[697],
+                description="Added http.request.duration attribute",
+            ),
+        ],
+        additional_context=["This attribute is set by Relay."],
+    ),
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
         type=AttributeType.DOUBLE,
@@ -20548,6 +21479,54 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "integrity.blocked_url": AttributeMetadata(
+        brief="The URL of the resource blocked by the integrity policy.",
+        type=AttributeType.STRING,
+        keys=("integrity.blocked_url",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="https://example.com/app.js",
+        changelog=[
+            ChangelogEntry(version="0.27.0", prs=[691]),
+        ],
+    ),
+    "integrity.destination": AttributeMetadata(
+        brief="The destination type of the resource affected by the integrity policy.",
+        type=AttributeType.STRING,
+        keys=("integrity.destination",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="script",
+        changelog=[
+            ChangelogEntry(version="0.27.0", prs=[691]),
+        ],
+    ),
+    "integrity.document_url": AttributeMetadata(
+        brief="The URL of the document where the integrity violation occurred.",
+        type=AttributeType.STRING,
+        keys=("integrity.document_url",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="https://example.com/index.html",
+        changelog=[
+            ChangelogEntry(version="0.27.0", prs=[691]),
+        ],
+    ),
+    "integrity.report_only": AttributeMetadata(
+        brief="Whether the integrity violation was generated by a report-only policy.",
+        type=AttributeType.BOOLEAN,
+        keys=("integrity.report_only",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        changelog=[
+            ChangelogEntry(version="0.27.0", prs=[691]),
+        ],
+    ),
     "jsonrpc.protocol.version": AttributeMetadata(
         brief="The version of the JSON-RPC protocol used.",
         type=AttributeType.STRING,
@@ -20565,7 +21544,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "jsonrpc.request.id": AttributeMetadata(
-        brief="The JSON-RPC request identifier. Unique within the session.",
+        brief="The JSON-RPC request identifier, used to correlate a request with its response.",
         type=AttributeType.STRING,
         keys=(
             "jsonrpc.request.id",
@@ -20575,8 +21554,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="1",
+        examples=["1"],
         aliases=["mcp.request.id"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Removed the session-scoped uniqueness requirement from the request identifier",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -20921,6 +21906,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "mcp.auth.client.name": AttributeMetadata(
+        brief="Registered OAuth client application name associated with the authenticated MCP request. Taken from OAuth client registration metadata (client_name) made available by the authentication layer. This is distinct from the MCP implementation name in mcp.client.name; omit it when the OAuth client name is unavailable.",
+        type=AttributeType.STRING,
+        keys=("mcp.auth.client.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Example Desktop",
+        examples=["Example Desktop", "Example CLI"],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Added mcp.auth.client.name attribute",
+            ),
+        ],
+    ),
     "mcp.cancelled.reason": AttributeMetadata(
         brief="Reason for the cancellation of an MCP operation.",
         type=AttributeType.STRING,
@@ -20949,19 +21951,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.client.name": AttributeMetadata(
-        brief="Name of the MCP client application.",
+        brief="Name of the MCP client implementation, as declared in clientInfo. This is distinct from the registered OAuth application name in mcp.auth.client.name.",
         type=AttributeType.STRING,
         keys=("mcp.client.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="claude-desktop",
+        example="example-mcp-client",
+        examples=["example-mcp-client"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.client.title": AttributeMetadata(
-        brief="Display title of the MCP client application.",
+        brief="Display title of the MCP client implementation, as declared in clientInfo.",
         type=AttributeType.STRING,
         keys=("mcp.client.title",),
         apply_scrubbing=ApplyScrubbingInfo(
@@ -20970,20 +21978,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="Claude Desktop",
+        example="Example MCP Client",
+        examples=["Example MCP Client"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.client.version": AttributeMetadata(
-        brief="Version of the MCP client application.",
+        brief="Version of the MCP client implementation, as declared in clientInfo.",
         type=AttributeType.STRING,
         keys=("mcp.client.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1.0.0",
+        examples=["1.0.0"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
@@ -21071,13 +22091,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "mcp.progress.current": AttributeMetadata(
         brief="Current progress value of an MCP operation.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         keys=("mcp.progress.current",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example=50,
+        example=0.2,
+        examples=[0.2, 50],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Changed the type to double to support fractional MCP progress values",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -21124,13 +22150,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     ),
     "mcp.progress.total": AttributeMetadata(
         brief="Total progress target value of an MCP operation.",
-        type=AttributeType.INTEGER,
+        type=AttributeType.DOUBLE,
         keys=("mcp.progress.total",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example=100,
+        example=1,
+        examples=[1, 100],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Changed the type to double to support fractional MCP progress values",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
@@ -21162,6 +22194,56 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 description="Deprecated in favor of gen_ai.prompt.name",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
+    ),
+    "mcp.prompt.result.<key>.content": AttributeMetadata(
+        brief="Legacy text content of an indexed message in a multi-message MCP prompt result.",
+        type=AttributeType.STRING,
+        keys=("mcp.prompt.result.<key>.content",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Summarize the document.",
+        examples=["Summarize the document."],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple messages. <key> is the zero-based position in the original messages array; absent fields do not renumber later messages.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.prompt.result.<key>.role": AttributeMetadata(
+        brief="Legacy role of an indexed message in a multi-message MCP prompt result.",
+        type=AttributeType.STRING,
+        keys=("mcp.prompt.result.<key>.role",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user",
+        examples=["user", "assistant"],
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple messages. <key> is the zero-based position in the original messages array; absent fields do not renumber later messages.",
+            "Recorded only when output capture is enabled.",
         ],
     ),
     "mcp.prompt.result.description": AttributeMetadata(
@@ -21214,27 +22296,39 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.protocol.ready": AttributeMetadata(
-        brief="Protocol readiness indicator for MCP session. Non-zero value indicates the protocol is ready.",
+        brief="Readiness indicator for the legacy MCP initialization handshake. A non-zero value indicates that notifications/initialized has completed initialization. Omit for protocol versions without this handshake.",
         type=AttributeType.INTEGER,
         keys=("mcp.protocol.ready",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
+        examples=[1],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that readiness describes the legacy MCP initialization handshake",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.protocol.version": AttributeMetadata(
-        brief="MCP protocol version used in the session.",
+        brief="Version of the Model Context Protocol used for the operation.",
         type=AttributeType.STRING,
         keys=("mcp.protocol.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="2024-11-05",
+        examples=["2024-11-05"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that the protocol version applies to an operation without requiring a session",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -21287,7 +22381,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.request.id": AttributeMetadata(
-        brief="JSON-RPC request identifier for the MCP request. Unique within the MCP session.",
+        brief="JSON-RPC request identifier for the MCP request, used to correlate the request with its response.",
         type=AttributeType.STRING,
         keys=(
             "jsonrpc.request.id",
@@ -21297,6 +22391,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="1",
+        examples=["1"],
         deprecation=DeprecationInfo(
             replacement="jsonrpc.request.id",
             reason="OTel models MCP as JSON-RPC, uses jsonrpc.request.id",
@@ -21304,6 +22399,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         aliases=["jsonrpc.request.id"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Removed the session-scoped uniqueness requirement from the request identifier",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -21313,25 +22413,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.resource.protocol": AttributeMetadata(
-        brief="Protocol of the resource URI being accessed, extracted from the URI.",
+        brief="URI scheme of the MCP resource being accessed, extracted from its URI. This is distinct from the network protocol used to communicate with the MCP server.",
         type=AttributeType.STRING,
-        keys=(
-            "network.protocol.name",
-            "mcp.resource.protocol",
-            "messaging.protocol",
-            "net.protocol.name",
-        ),
+        keys=("mcp.resource.protocol",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="file",
-        deprecation=DeprecationInfo(
-            replacement="network.protocol.name",
-            reason="OTel uses the generic network.protocol.name attribute",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["network.protocol.name", "net.protocol.name", "messaging.protocol"],
+        examples=["file", "postgres"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -21365,19 +22460,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "mcp.server.name": AttributeMetadata(
-        brief="Name of the MCP server application.",
+        brief="Name of the MCP server implementation, as declared in serverInfo.",
         type=AttributeType.STRING,
         keys=("mcp.server.name",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="sentry-mcp-server",
+        example="example-mcp-server",
+        examples=["example-mcp-server"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.server.title": AttributeMetadata(
-        brief="Display title of the MCP server application.",
+        brief="Display title of the MCP server implementation, as declared in serverInfo.",
         type=AttributeType.STRING,
         keys=("mcp.server.title",),
         apply_scrubbing=ApplyScrubbingInfo(
@@ -21386,38 +22487,59 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="Sentry MCP Server",
+        example="Example MCP Server",
+        examples=["Example MCP Server"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.server.version": AttributeMetadata(
-        brief="Version of the MCP server application.",
+        brief="Version of the MCP server implementation, as declared in serverInfo.",
         type=AttributeType.STRING,
         keys=("mcp.server.version",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="0.1.0",
+        examples=["0.1.0"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that the attribute describes declared MCP implementation metadata",
+            ),
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
     "mcp.session.id": AttributeMetadata(
-        brief="Identifier for the MCP session.",
+        brief="Identifier for an MCP protocol session, when the operation belongs to a session.",
         type=AttributeType.STRING,
         keys=("mcp.session.id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="550e8400-e29b-41d4-a716-446655440000",
+        examples=["550e8400-e29b-41d4-a716-446655440000"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified that the identifier requires a real MCP protocol session",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
                 description="Set is_in_otel=true, attribute exists in OTel MCP registry",
             ),
             ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
+        additional_context=[
+            "Applies to protocol versions and transports that provide MCP session management, including legacy Streamable HTTP sessions. Omit for operations without a protocol session; do not synthesize a session identifier from a request, connection, or conversation."
         ],
     ),
     "mcp.tool.name": AttributeMetadata(
@@ -21447,6 +22569,231 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
+    "mcp.tool.result.<key>.content": AttributeMetadata(
+        brief="Legacy text content of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.content",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="The operation completed.",
+        examples=["The operation completed."],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+            "This is one item's text, not the complete tool result. It must not be aliased or directly backfilled to gen_ai.tool.call.result; reconstructing the complete result requires aggregation.",
+        ],
+    ),
+    "mcp.tool.result.<key>.content_type": AttributeMetadata(
+        brief="Legacy content type of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.content_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="text",
+        examples=["text", "image"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded even when output capture is disabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.data_size": AttributeMetadata(
+        brief="Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.INTEGER,
+        keys=("mcp.tool.result.<key>.data_size",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL, reason="The length contains no result content."
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=4,
+        examples=[4, 1024],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+            "The JavaScript SDK records data.length. For base64-encoded image or audio data, this counts encoded characters, not decoded bytes.",
+        ],
+    ),
+    "mcp.tool.result.<key>.mime_type": AttributeMetadata(
+        brief="Legacy MIME type of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.mime_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="image/png",
+        examples=["image/png", "audio/wav"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.name": AttributeMetadata(
+        brief="Legacy resource link name of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.name",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="report.txt",
+        examples=["report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.resource_mime_type": AttributeMetadata(
+        brief="Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.resource_mime_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="text/plain",
+        examples=["text/plain"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.resource_uri": AttributeMetadata(
+        brief="Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.resource_uri",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="file:///project/report.txt",
+        examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.<key>.uri": AttributeMetadata(
+        brief="Legacy resource link URI of an indexed content item in a multi-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.<key>.uri",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="file:///project/report.txt",
+        examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted for results with multiple content items. <key> is the zero-based position in the original content array; absent fields do not renumber later items.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
     "mcp.tool.result.content": AttributeMetadata(
         brief="The content of the tool result.",
         type=AttributeType.STRING,
@@ -21459,7 +22806,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "mcp.tool.result.content",
         ),
         apply_scrubbing=ApplyScrubbingInfo(
-            key=ApplyScrubbing.AUTO, reason="Tool results can contain user data"
+            key=ApplyScrubbing.MANUAL, reason="Tool results can contain user data"
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -21494,9 +22841,73 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1,
+        deprecation=DeprecationInfo(
+            reason="A count can be calculcated from the value of the gen_ai.tool.call.result attribute."
+        ),
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[669],
+                description="Deprecate the attribute since it is redundant given gen_ai.tool.call.result.",
+            ),
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.3.0", prs=[171]),
+        ],
+    ),
+    "mcp.tool.result.content_type": AttributeMetadata(
+        brief="Legacy content type of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.content_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="text",
+        examples=["text", "image"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded even when output capture is disabled.",
+        ],
+    ),
+    "mcp.tool.result.data_size": AttributeMetadata(
+        brief="Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.",
+        type=AttributeType.INTEGER,
+        keys=("mcp.tool.result.data_size",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.MANUAL, reason="The length contains no result content."
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=4,
+        examples=[4, 1024],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+            "The JavaScript SDK records data.length. For base64-encoded image or audio data, this counts encoded characters, not decoded bytes.",
         ],
     ),
     "mcp.tool.result.is_error": AttributeMetadata(
@@ -21520,24 +22931,161 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.3.0", prs=[171]),
         ],
     ),
-    "mcp.transport": AttributeMetadata(
-        brief="Transport method used for MCP communication.",
+    "mcp.tool.result.mime_type": AttributeMetadata(
+        brief="Legacy MIME type of the content item in a single-item MCP tool result.",
         type=AttributeType.STRING,
-        keys=(
-            "network.transport",
-            "mcp.transport",
+        keys=("mcp.tool.result.mime_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
         ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="image/png",
+        examples=["image/png", "audio/wav"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.name": AttributeMetadata(
+        brief="Legacy resource link name of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.name",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="report.txt",
+        examples=["report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.resource_mime_type": AttributeMetadata(
+        brief="Legacy embedded resource MIME type of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.resource_mime_type",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="text/plain",
+        examples=["text/plain"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.resource_uri": AttributeMetadata(
+        brief="Legacy embedded resource URI of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.resource_uri",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="file:///project/report.txt",
+        examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.tool.result.uri": AttributeMetadata(
+        brief="Legacy resource link URI of the content item in a single-item MCP tool result.",
+        type=AttributeType.STRING,
+        keys=("mcp.tool.result.uri",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Preserve automatic scrubbing of server-provided result fields.",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="file:///project/report.txt",
+        examples=["file:///project/report.txt"],
+        deprecation=DeprecationInfo(
+            reason="Capture the complete tool result in gen_ai.tool.call.result instead. This attribute describes only part of the result and cannot be directly backfilled."
+        ),
+        changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[689],
+                description="Register an existing JavaScript SDK MCP result attribute as deprecated in favor of gen_ai.tool.call.result, without backfill.",
+            ),
+        ],
+        additional_context=[
+            "Registers an existing Sentry JavaScript SDK attribute for compatibility.",
+            "Emitted only when the result contains exactly one content item.",
+            "Recorded only when output capture is enabled.",
+        ],
+    ),
+    "mcp.transport": AttributeMetadata(
+        brief="MCP transport implementation name, such as the transport class name. This identifies the implementation, not the network transport or application protocol.",
+        type=AttributeType.STRING,
+        keys=("mcp.transport",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="stdio",
-        deprecation=DeprecationInfo(
-            replacement="network.transport",
-            reason="OTel uses the generic network.transport attribute",
-            status=DeprecationStatus.BACKFILL,
-        ),
-        aliases=["network.transport", "net.transport"],
+        example="StdioServerTransport",
+        examples=["StdioServerTransport", "CustomHTTPTransport"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Clarified Sentry-specific semantics and removed the incorrect network attribute alias and deprecation",
+            ),
             ChangelogEntry(
                 version="0.12.0",
                 prs=[420],
@@ -21941,7 +23489,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "network.protocol.name",
-            "mcp.resource.protocol",
             "messaging.protocol",
             "net.protocol.name",
         ),
@@ -21955,8 +23502,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of network.protocol.name.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["network.protocol.name", "net.protocol.name", "mcp.resource.protocol"],
+        aliases=["network.protocol.name", "net.protocol.name"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Removed the semantically distinct mcp.resource.protocol alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -22285,7 +23837,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["nel.sampling_function"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[668],
                 description="Added nel.sampling_fraction attribute",
             ),
@@ -22310,7 +23862,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["nel.sampling_fraction"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.26.0",
                 prs=[668],
                 description="Deprecated in favor of nel.sampling_fraction",
             ),
@@ -22442,7 +23994,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
         keys=("net.peer.name",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -22494,7 +24046,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "network.protocol.name",
-            "mcp.resource.protocol",
             "messaging.protocol",
             "net.protocol.name",
         ),
@@ -22502,15 +24053,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
+        examples=["http"],
         deprecation=DeprecationInfo(
             replacement="network.protocol.name", status=DeprecationStatus.BACKFILL
         ),
-        aliases=[
-            "network.protocol.name",
-            "mcp.resource.protocol",
-            "messaging.protocol",
-        ],
+        aliases=["network.protocol.name", "messaging.protocol"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Removed the semantically distinct mcp.resource.protocol alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -22681,12 +24234,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
+        examples=["tcp"],
         deprecation=DeprecationInfo(
             replacement="network.transport",
             reason="This attribute is being deprecated in favor of network.transport. The values change from ip_tcp and ip_udp to tcp and udp, so the old value cannot be copied over.",
         ),
-        aliases=["network.transport", "mcp.transport"],
+        aliases=["network.transport"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Removed the semantically distinct mcp.transport alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[588],
@@ -22838,7 +24397,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         type=AttributeType.STRING,
         keys=(
             "network.protocol.name",
-            "mcp.resource.protocol",
             "messaging.protocol",
             "net.protocol.name",
         ),
@@ -22846,8 +24404,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="http",
-        aliases=["net.protocol.name", "mcp.resource.protocol", "messaging.protocol"],
+        examples=["http"],
+        aliases=["net.protocol.name", "messaging.protocol"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Removed the semantically distinct mcp.resource.protocol alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -22884,16 +24448,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "network.transport": AttributeMetadata(
         brief="OSI transport layer or inter-process communication method.",
         type=AttributeType.STRING,
-        keys=(
-            "network.transport",
-            "mcp.transport",
-        ),
+        keys=("network.transport",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="tcp",
-        aliases=["net.transport", "mcp.transport"],
+        examples=["tcp"],
+        aliases=["net.transport"],
         changelog=[
+            ChangelogEntry(
+                version="0.27.0",
+                prs=[671],
+                description="Removed the semantically distinct mcp.transport alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -23826,7 +25393,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -23846,7 +25413,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -24027,8 +25594,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="myService.BestService",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[714],
+                description="Added additional context about the OpenTelemetry deprecation",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.",
+            "Still set on AWS SDK spans, where it holds the AWS service (e.g. `S3`) and `rpc.method` is set to the operation (e.g. `GetObject`).",
         ],
     ),
     "rpc.system": AttributeMetadata(
@@ -24300,7 +25876,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.category": AttributeMetadata(
-        brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI). Known values include: 'ai', 'ai.pipeline', 'app', 'browser', 'cache', 'console', 'db', 'event', 'file', 'function.aws', 'function.azure', 'function.gcp', 'function.nextjs', 'function.remix', 'graphql', 'grpc', 'http', 'measure', 'middleware', 'navigation', 'pageload', 'queue', 'resource', 'rpc', 'serialize', 'subprocess', 'template', 'topic', 'ui', 'ui.angular', 'ui.ember', 'ui.react', 'ui.svelte', 'ui.vue', 'view', 'websocket'.",
+        brief="The high-level category of a span, derived from the span operation or span attributes. This categorizes spans by their general purpose (e.g., database, HTTP, UI).",
         type=AttributeType.STRING,
         keys=(
             "sentry.category",
@@ -24311,6 +25887,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="db",
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added object to the enum values"
+            ),
             ChangelogEntry(version="0.4.0", prs=[218]),
         ],
         search_alias=SearchAlias(name="span.category"),
@@ -24750,13 +26329,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "sentry.link.type": AttributeMetadata(
         brief="Set on a span link. Describes the relationship between the span and the linked span.",
         type=AttributeType.STRING,
-        keys=("sentry.link.type",),
+        keys=(
+            "sentry.link.type",
+            "link.type",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
-        examples=["previous_trace", "next_trace", "cache_origin"],
+        examples=["previous_trace", "next_trace", "cache_origin", "message_origin"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[724],
+                description="Added message_origin to the examples, and enum_values that describe each known value",
+            ),
+            ChangelogEntry(
+                version="0.27.0", prs=[687], description="Added search alias link.type"
+            ),
             ChangelogEntry(
                 version="0.25.0",
                 prs=[656],
@@ -24766,8 +26356,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute is exclusively set on span links.",
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
-            "For known values, see Examples. Add new values to Examples.",
+            "Add each new link type to `enum_values`, with a brief that says what the linked span is.",
         ],
+        search_alias=SearchAlias(name="link.type"),
     ),
     "sentry.main_thread": AttributeMetadata(
         brief="Whether the span or event occurred on the main thread. Computed by Relay and should not be set by SDKs.",
@@ -25218,7 +26809,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="transaction"),
     ),
     "sentry.segment.name.source": AttributeMetadata(
-        brief="The source of the segment span name. Should only be set on segment spans. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`.",
+        brief="The source of the segment span name. Should only be set on segment spans.",
         type=AttributeType.STRING,
         keys=("sentry.segment.name.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -25276,7 +26867,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="server_sample_rate"),
     ),
     "sentry.source": AttributeMetadata(
-        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+        brief="The source of a span, also referred to as transaction source.",
         type=AttributeType.STRING,
         keys=("sentry.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
@@ -25296,7 +26887,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "sentry.span.source": AttributeMetadata(
-        brief="The source of a span, also referred to as transaction source. Known values are:  `'custom'`, `'url'`, `'route'`, `'component'`, `'view'`, `'task'`. '`source`' describes a parametrized route, while `'url'` describes the full URL, potentially containing identifiers.",
+        brief="The source of a span, also referred to as transaction source.",
         type=AttributeType.STRING,
         keys=("sentry.span.source",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
@@ -25540,7 +27131,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "transaction",
             "sentry.transaction",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET /",
@@ -25784,7 +27375,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "server_name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -27279,6 +28870,33 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "vercel.ai.telemetry.metadata.<key>": AttributeMetadata(
+        brief="Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.",
+        type=AttributeType.STRING,
+        keys=("vercel.ai.telemetry.metadata.<key>",),
+        apply_scrubbing=ApplyScrubbingInfo(
+            key=ApplyScrubbing.AUTO,
+            reason="Metadata is user-defined and can contain user data",
+        ),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        has_dynamic_suffix=True,
+        example="vercel.ai.telemetry.metadata.tenantId='acme'",
+        examples=["vercel.ai.telemetry.metadata.tenantId='acme'"],
+        changelog=[
+            ChangelogEntry(
+                version="0.26.0",
+                prs=[662],
+                description="Added vercel.ai.telemetry.metadata.<key> attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on `gen_ai` spans for `invoke_agent`, `generate_content` and `embeddings` operations. Not set on `execute_tool` spans.",
+            "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
+            "The Vercel AI SDK also allows numbers, booleans and arrays as metadata values. SDKs MUST convert these values to strings.",
+            "This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.",
+        ],
+    ),
     "vercel.branch": AttributeMetadata(
         brief="Git branch name for Vercel project",
         type=AttributeType.STRING,
@@ -27823,6 +29441,7 @@ Attributes = TypedDict(
         "aws.cloudwatch.logs.log_stream": str,
         "aws.cloudwatch.logs.url": str,
         "aws.dynamodb.attribute_definitions": List[str],
+        "aws.dynamodb.attributes_to_get": List[str],
         "aws.dynamodb.consistent_read": bool,
         "aws.dynamodb.consumed_capacity": List[str],
         "aws.dynamodb.count": int,
@@ -27853,6 +29472,7 @@ Attributes = TypedDict(
         "aws.lambda.invoked_arn": str,
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
+        "aws.lambda.resource_mapping.id": str,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
         "aws.operation_name": str,
@@ -27861,9 +29481,16 @@ Attributes = TypedDict(
         "aws.request.url": str,
         "aws.request_id": str,
         "aws.s3.bucket": str,
+        "aws.s3.copy_source": str,
+        "aws.s3.delete": str,
+        "aws.s3.key": str,
+        "aws.s3.part_number": int,
+        "aws.s3.upload_id": str,
         "aws.secretsmanager.secret.arn": str,
         "aws.sns.topic.arn": str,
+        "aws.sqs.queue.url": str,
         "aws.step_functions.activity.arn": str,
+        "aws.step_functions.execution.arn": str,
         "aws.step_functions.state_machine.arn": str,
         "aws_region": str,
         "blocked_main_thread": bool,
@@ -28077,12 +29704,18 @@ Attributes = TypedDict(
         "gen_ai.embeddings.input": str,
         "gen_ai.function_id": str,
         "gen_ai.input.messages": str,
+        "gen_ai.memory.query.text": str,
+        "gen_ai.memory.record.count": int,
+        "gen_ai.memory.record.id": str,
+        "gen_ai.memory.records": str,
+        "gen_ai.memory.store.id": str,
         "gen_ai.operation.name": str,
         "gen_ai.operation.type": str,
         "gen_ai.output.messages": str,
         "gen_ai.pipeline.name": str,
         "gen_ai.prompt": str,
         "gen_ai.prompt.name": str,
+        "gen_ai.prompt.variable.<key>": str,
         "gen_ai.provider.name": str,
         "gen_ai.request.available_tools": str,
         "gen_ai.request.frequency_penalty": float,
@@ -28167,6 +29800,7 @@ Attributes = TypedDict(
         "http.request.connection_end": float,
         "http.request.domain_lookup_end": float,
         "http.request.domain_lookup_start": float,
+        "http.request.duration": int,
         "http.request.fetch_start": float,
         "http.request.header.<key>": List[str],
         "http.request.method": str,
@@ -28204,6 +29838,10 @@ Attributes = TypedDict(
         "http.user_agent": str,
         "id": str,
         "inp": float,
+        "integrity.blocked_url": str,
+        "integrity.destination": str,
+        "integrity.document_url": str,
+        "integrity.report_only": bool,
         "jsonrpc.protocol.version": str,
         "jsonrpc.request.id": str,
         "jvm.gc.action": str,
@@ -28224,6 +29862,7 @@ Attributes = TypedDict(
         "lcp": float,
         "litestar.middleware_name": str,
         "logger.name": str,
+        "mcp.auth.client.name": str,
         "mcp.cancelled.reason": str,
         "mcp.cancelled.request_id": str,
         "mcp.client.name": str,
@@ -28235,12 +29874,14 @@ Attributes = TypedDict(
         "mcp.logging.logger": str,
         "mcp.logging.message": str,
         "mcp.method.name": str,
-        "mcp.progress.current": int,
+        "mcp.progress.current": float,
         "mcp.progress.message": str,
         "mcp.progress.percentage": float,
         "mcp.progress.token": str,
-        "mcp.progress.total": int,
+        "mcp.progress.total": float,
         "mcp.prompt.name": str,
+        "mcp.prompt.result.<key>.content": str,
+        "mcp.prompt.result.<key>.role": str,
         "mcp.prompt.result.description": str,
         "mcp.prompt.result.message_content": str,
         "mcp.prompt.result.message_count": int,
@@ -28258,9 +29899,24 @@ Attributes = TypedDict(
         "mcp.server.version": str,
         "mcp.session.id": str,
         "mcp.tool.name": str,
+        "mcp.tool.result.<key>.content": str,
+        "mcp.tool.result.<key>.content_type": str,
+        "mcp.tool.result.<key>.data_size": int,
+        "mcp.tool.result.<key>.mime_type": str,
+        "mcp.tool.result.<key>.name": str,
+        "mcp.tool.result.<key>.resource_mime_type": str,
+        "mcp.tool.result.<key>.resource_uri": str,
+        "mcp.tool.result.<key>.uri": str,
         "mcp.tool.result.content": str,
         "mcp.tool.result.content_count": int,
+        "mcp.tool.result.content_type": str,
+        "mcp.tool.result.data_size": int,
         "mcp.tool.result.is_error": bool,
+        "mcp.tool.result.mime_type": str,
+        "mcp.tool.result.name": str,
+        "mcp.tool.result.resource_mime_type": str,
+        "mcp.tool.result.resource_uri": str,
+        "mcp.tool.result.uri": str,
         "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.batch.message_count": int,
@@ -28560,6 +30216,7 @@ Attributes = TypedDict(
         "user.name": str,
         "user.roles": List[str],
         "user_agent.original": str,
+        "vercel.ai.telemetry.metadata.<key>": str,
         "vercel.branch": str,
         "vercel.build_id": str,
         "vercel.deployment_id": str,

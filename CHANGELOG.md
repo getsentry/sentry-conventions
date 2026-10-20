@@ -1,3 +1,81 @@
+## 0.27.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add integrity policy attributes by @loewenheim in [#691](https://github.com/getsentry/sentry-conventions/pull/691)
+- Deprecate legacy MCP tool result fields by @betegon in [#689](https://github.com/getsentry/sentry-conventions/pull/689)
+- Align MCP conventions and OAuth client identity by @betegon in [#671](https://github.com/getsentry/sentry-conventions/pull/671)
+- Add AWS service instrumentation attributes by @pabloDeputter in [#672](https://github.com/getsentry/sentry-conventions/pull/672)
+- Add gen_ai memory conventions by @ArthurKnaus in [#653](https://github.com/getsentry/sentry-conventions/pull/653)
+
+#### Other
+
+- (model) Add metric model by @giortzisg in [#649](https://github.com/getsentry/sentry-conventions/pull/649)
+- Add `enum_values` entries to shorten attribute briefs by @alexander-alderman-webb in [#685](https://github.com/getsentry/sentry-conventions/pull/685)
+
+### Bug Fixes 🐛
+
+#### Attributes
+
+- Add `search_alias` to `sentry.link.type` attribute by @Lms24 in [#687](https://github.com/getsentry/sentry-conventions/pull/687)
+- Remove `any` as valid attribute type by @Lms24 in [#677](https://github.com/getsentry/sentry-conventions/pull/677)
+
+#### Other
+
+- Use `path.posix.join` instead of `path.join` for Windows compatibility by @alexander-alderman-webb in [#688](https://github.com/getsentry/sentry-conventions/pull/688)
+
+### Documentation 📚
+
+- (contributing) Document process for fixing a misnamed attribute by @sentry-junior in [#673](https://github.com/getsentry/sentry-conventions/pull/673)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump sharp from 0.35.4 to 0.35.5 by @dependabot in [#683](https://github.com/getsentry/sentry-conventions/pull/683)
+- Bump source-map-js from 1.2.1 to 1.2.2 by @dependabot in [#675](https://github.com/getsentry/sentry-conventions/pull/675)
+- Bump smol-toml from 1.8.0 to 1.9.0 by @dependabot in [#674](https://github.com/getsentry/sentry-conventions/pull/674)
+- Bump postcss-selector-parser from 7.1.4 to 7.1.6 by @dependabot in [#676](https://github.com/getsentry/sentry-conventions/pull/676)
+
+#### Other
+
+- (deps-dev) Bump oxfmt to 0.72.0 to pull in patched tinypool by @Lms24 in [#682](https://github.com/getsentry/sentry-conventions/pull/682)
+- (docs) Add link preview meta tags by @Lms24 in [#667](https://github.com/getsentry/sentry-conventions/pull/667)
+- (publish) Stop `npm version` from rewriting `yarn.lock` by @Lms24 in [#678](https://github.com/getsentry/sentry-conventions/pull/678)
+- Deprecate `gen_ai.evaluate` in favor of new `gen_ai.decide` by @alexander-alderman-webb in [#696](https://github.com/getsentry/sentry-conventions/pull/696)
+- Add "evaluate" as a well-known value for `gen_ai.operation.name` by @alexander-alderman-webb in [#680](https://github.com/getsentry/sentry-conventions/pull/680)
+- Deprecate `mcp.tool.result.content_count` by @alexander-alderman-webb in [#669](https://github.com/getsentry/sentry-conventions/pull/669)
+
+## 0.26.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add `vercel.ai.telemetry.metadata.<key>` attribute by @isaacs in [#662](https://github.com/getsentry/sentry-conventions/pull/662)
+- Add `nel.sampling_fraction` by @loewenheim in [#668](https://github.com/getsentry/sentry-conventions/pull/668)
+
+#### Op
+
+- Add gen_ai.evaluate op by @andreiborza in [#650](https://github.com/getsentry/sentry-conventions/pull/650)
+- Deprecate framework-specific span ops by @Lms24 in [#622](https://github.com/getsentry/sentry-conventions/pull/622)
+- Add span op deprecation support by @Lms24 in [#621](https://github.com/getsentry/sentry-conventions/pull/621)
+
+### Bug Fixes 🐛
+
+- (descriptions) Define template substitution for array values by @s1gr1d in [#663](https://github.com/getsentry/sentry-conventions/pull/663)
+- (gen_ai) Map Anthropic tool results to canonical attribute by @obostjancic in [#660](https://github.com/getsentry/sentry-conventions/pull/660)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump brace-expansion from 5.0.9 to 5.0.12 by @dependabot in [#665](https://github.com/getsentry/sentry-conventions/pull/665)
+- Bump devalue from 5.9.2 to 5.9.4 by @dependabot in [#666](https://github.com/getsentry/sentry-conventions/pull/666)
+- Bump dompurify from 3.4.13 to 3.4.16 by @dependabot in [#664](https://github.com/getsentry/sentry-conventions/pull/664)
+
 ## 0.25.0
 
 ### New Features ✨

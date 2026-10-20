@@ -8,6 +8,7 @@ import InfoTooltip from './InfoTooltip.astro';
 import type { Attribute } from '../content.config';
 import { parseAttributeId } from '../utils/category';
 import { renderInlineMarkdown } from '../utils/markdown';
+import { attributeSlug } from '../utils/attributeUrl';
 
 interface Props {
   attribute: Attribute;
@@ -20,7 +21,7 @@ const { attribute, id, showCategory = false, defaultHidden = false } = Astro.pro
 
 const { category } = parseAttributeId(id);
 const isDeprecated = !!attribute.deprecation;
-const anchorId = attribute.key.replace(/\./g, '-').replace(/</g, '').replace(/>/g, '');
+const anchorId = attributeSlug(attribute.key);
 const rawJson = JSON.stringify(attribute, null, 2);
 const examples = attribute.examples ?? (attribute.example !== undefined ? [attribute.example] : []);
 ---
@@ -85,6 +86,20 @@ const examples = attribute.examples ?? (attribute.example !== undefined ? [attri
             <code class="text-xs">{typeof example === 'object' ? JSON.stringify(example) : String(example)}</code>
           ))}
         </span>
+      </div>
+    )}
+    
+    {attribute.enum_values && attribute.enum_values.length > 0 && (
+      <div class="flex items-baseline gap-3 text-sm">
+        <span class="text-text-muted min-w-[100px] flex-shrink-0">Well-defined Values</span>
+        <ul class="flex flex-col gap-1 m-0 list-none p-0">
+          {attribute.enum_values.map(({ value, brief }) => (
+            <li class="flex items-baseline gap-2">
+              <code class="text-xs">{value}</code>
+              {brief && <span class="text-xs text-text-secondary" set:html={renderInlineMarkdown(brief)} />}
+            </li>
+          ))}
+        </ul>
       </div>
     )}
     

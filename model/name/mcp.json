@@ -5,7 +5,7 @@
       "name": "Server",
       "brief": "MCP server-side operations. Processing of incoming MCP requests or notifications initiated by a client, such as tool calls, prompt requests, and resource reads.",
       "is_in_otel": true,
-      "otel_notes": "OpenTelemetry uses gen_ai.tool.name and gen_ai.prompt.name for the target in the span name.",
+      "otel_notes": "The span name follows the OpenTelemetry MCP server convention, using gen_ai.tool.name or gen_ai.prompt.name when applicable. The mcp.server span operation is a Sentry categorization.",
       "ops": ["mcp.server"],
       "templates": [
         "{{mcp.method.name}} {{gen_ai.tool.name}}",
@@ -19,7 +19,7 @@
       "name": "Notification",
       "brief": "MCP notifications. One-way messages exchanged between an MCP client and server that do not expect a response.",
       "is_in_otel": true,
-      "otel_notes": "OpenTelemetry does not model notifications as distinct operations; they are covered by the MCP Client and Server spans.",
+      "otel_notes": "The span name follows the OpenTelemetry MCP convention for notifications. OpenTelemetry uses CLIENT spans for the sender and SERVER spans for the receiver; the directional notification operations listed here are Sentry categorizations.",
       "ops": ["mcp.notification.client_to_server", "mcp.notification.server_to_client"],
       "templates": ["{{mcp.method.name}}", "MCP notification"],
       "examples": ["notifications/initialized", "notifications/cancelled", "notifications/progress"]

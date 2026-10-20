@@ -13,6 +13,7 @@ export interface AttributeJson {
   visibility?: 'public' | 'internal';
   example?: AttributeValue;
   examples?: AttributeValue[];
+  enum_values?: { value: string; brief?: string }[];
   deprecation?: {
     replacement?: string;
     reason?: string;
