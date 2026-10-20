@@ -3096,7 +3096,7 @@ export type AWS_S3_BUCKET_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_COPY_SOURCE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3117,7 +3117,7 @@ export type AWS_S3_COPY_SOURCE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_DELETE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3138,7 +3138,7 @@ export type AWS_S3_DELETE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_KEY_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -24564,13 +24564,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.copy_source'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
+    changelog: [
+      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.copy_source attribute' },
+    ],
     additionalContext: [
       'Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter.',
     ],
@@ -24580,13 +24583,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.delete'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
     examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' }],
+    changelog: [
+      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' },
+    ],
     additionalContext: ['Applicable only to the delete-objects operation, corresponding to its Delete parameter.'],
   },
   'aws.s3.key': {
@@ -24594,13 +24600,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.key'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.key attribute' }],
+    changelog: [
+      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.key attribute' },
+    ],
   },
   'aws.s3.part_number': {
     brief:
@@ -33889,7 +33898,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'myService.BestService',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [714], description: 'Added additional context about the OpenTelemetry deprecation' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.',
+      'Still set on AWS SDK spans, where it holds the AWS service (e.g. `S3`) and `rpc.method` is set to the operation (e.g. `GetObject`).',
+    ],
   },
   'rpc.system': {
     brief: 'A string identifying the remoting system.',
