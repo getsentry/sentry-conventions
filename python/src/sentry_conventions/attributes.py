@@ -2854,17 +2854,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "generate-report"
     """
 
-    # Path: model/attributes/bullmq/bullmq__job__options.json
-    BULLMQ_JOB_OPTIONS: Literal["bullmq.job.options"] = "bullmq.job.options"
-    """The options of a BullMQ job operation as a JSON string, for example the options of Queue.remove().
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "{\"removeChildren\":true}"
-    """
-
     # Path: model/attributes/bullmq/bullmq__job__processed__timestamp.json
     BULLMQ_JOB_PROCESSED_TIMESTAMP: Literal["bullmq.job.processed.timestamp"] = (
         "bullmq.job.processed.timestamp"
@@ -3018,17 +3007,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "completed"
     """
 
-    # Path: model/attributes/bullmq/bullmq__queue__options.json
-    BULLMQ_QUEUE_OPTIONS: Literal["bullmq.queue.options"] = "bullmq.queue.options"
-    """The options of a BullMQ queue operation as a JSON string, for example the options of Queue.retryJobs() or Queue.promoteJobs().
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "{\"count\":1000}"
-    """
-
     # Path: model/attributes/bullmq/bullmq__queue__rate__limit.json
     BULLMQ_QUEUE_RATE_LIMIT: Literal["bullmq.queue.rate.limit"] = (
         "bullmq.queue.rate.limit"
@@ -3101,17 +3079,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "email-worker"
-    """
-
-    # Path: model/attributes/bullmq/bullmq__worker__options.json
-    BULLMQ_WORKER_OPTIONS: Literal["bullmq.worker.options"] = "bullmq.worker.options"
-    """The options of a BullMQ Worker operation as a JSON string, for example the options of Worker.getNextJob().
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "{\"block\":true}"
     """
 
     # Path: model/attributes/bullmq/bullmq__worker__rate__limit.json
@@ -15723,26 +15690,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Also set on the BullMQ job metrics.",
         ],
     ),
-    "bullmq.job.options": AttributeMetadata(
-        brief="The options of a BullMQ job operation as a JSON string, for example the options of Queue.remove().",
-        type=AttributeType.STRING,
-        keys=("bullmq.job.options",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example='{"removeChildren":true}',
-        examples=['{"removeChildren":true}'],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[690],
-                description="Added bullmq.job.options attribute",
-            ),
-        ],
-        additional_context=[
-            "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."
-        ],
-    ),
     "bullmq.job.processed.timestamp": AttributeMetadata(
         brief="The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.",
         type=AttributeType.INTEGER,
@@ -15985,26 +15932,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Set on the BullMQ queue job count metric.",
         ],
     ),
-    "bullmq.queue.options": AttributeMetadata(
-        brief="The options of a BullMQ queue operation as a JSON string, for example the options of Queue.retryJobs() or Queue.promoteJobs().",
-        type=AttributeType.STRING,
-        keys=("bullmq.queue.options",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example='{"count":1000}',
-        examples=['{"count":1000}'],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[690],
-                description="Added bullmq.queue.options attribute",
-            ),
-        ],
-        additional_context=[
-            "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."
-        ],
-    ),
     "bullmq.queue.rate.limit": AttributeMetadata(
         brief="The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.",
         type=AttributeType.INTEGER,
@@ -16119,26 +16046,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="next",
                 prs=[690],
                 description="Added bullmq.worker.name attribute",
-            ),
-        ],
-        additional_context=[
-            "Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."
-        ],
-    ),
-    "bullmq.worker.options": AttributeMetadata(
-        brief="The options of a BullMQ Worker operation as a JSON string, for example the options of Worker.getNextJob().",
-        type=AttributeType.STRING,
-        keys=("bullmq.worker.options",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example='{"block":true}',
-        examples=['{"block":true}'],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[690],
-                description="Added bullmq.worker.options attribute",
             ),
         ],
         additional_context=[
@@ -29581,7 +29488,6 @@ Attributes = TypedDict(
         "bullmq.job.ids": List[str],
         "bullmq.job.key": str,
         "bullmq.job.name": str,
-        "bullmq.job.options": str,
         "bullmq.job.processed.timestamp": int,
         "bullmq.job.progress": str,
         "bullmq.job.scheduler.id": str,
@@ -29594,14 +29500,12 @@ Attributes = TypedDict(
         "bullmq.queue.event.max.length": int,
         "bullmq.queue.grace": int,
         "bullmq.queue.jobs.state": str,
-        "bullmq.queue.options": str,
         "bullmq.queue.rate.limit": int,
         "bullmq.worker.do.not.wait.active": bool,
         "bullmq.worker.force.close": bool,
         "bullmq.worker.id": str,
         "bullmq.worker.jobs.to.extend.locks": List[str],
         "bullmq.worker.name": str,
-        "bullmq.worker.options": str,
         "bullmq.worker.rate.limit": int,
         "bullmq.worker.stalled.jobs": List[str],
         "cache.hit": bool,

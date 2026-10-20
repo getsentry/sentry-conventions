@@ -1114,11 +1114,6 @@ export const SEARCH_BULLMQ__JOB__KEY = 'bullmq.job.key';
 export const SEARCH_BULLMQ__JOB__NAME = 'bullmq.job.name';
 
 /**
- * Search name for {@link attributes.BULLMQ_JOB_OPTIONS}. `bullmq.job.options`
- */
-export const SEARCH_BULLMQ__JOB__OPTIONS = 'bullmq.job.options';
-
-/**
  * Search name for {@link attributes.BULLMQ_JOB_PROCESSED_TIMESTAMP}. `bullmq.job.processed.timestamp`
  */
 export const SEARCH_BULLMQ__JOB__PROCESSED__TIMESTAMP = 'bullmq.job.processed.timestamp';
@@ -1179,11 +1174,6 @@ export const SEARCH_BULLMQ__QUEUE__GRACE = 'bullmq.queue.grace';
 export const SEARCH_BULLMQ__QUEUE__JOBS__STATE = 'bullmq.queue.jobs.state';
 
 /**
- * Search name for {@link attributes.BULLMQ_QUEUE_OPTIONS}. `bullmq.queue.options`
- */
-export const SEARCH_BULLMQ__QUEUE__OPTIONS = 'bullmq.queue.options';
-
-/**
  * Search name for {@link attributes.BULLMQ_QUEUE_RATE_LIMIT}. `bullmq.queue.rate.limit`
  */
 export const SEARCH_BULLMQ__QUEUE__RATE__LIMIT = 'bullmq.queue.rate.limit';
@@ -1212,11 +1202,6 @@ export const SEARCH_BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS = 'bullmq.worker.job
  * Search name for {@link attributes.BULLMQ_WORKER_NAME}. `bullmq.worker.name`
  */
 export const SEARCH_BULLMQ__WORKER__NAME = 'bullmq.worker.name';
-
-/**
- * Search name for {@link attributes.BULLMQ_WORKER_OPTIONS}. `bullmq.worker.options`
- */
-export const SEARCH_BULLMQ__WORKER__OPTIONS = 'bullmq.worker.options';
 
 /**
  * Search name for {@link attributes.BULLMQ_WORKER_RATE_LIMIT}. `bullmq.worker.rate.limit`
@@ -5460,7 +5445,6 @@ export type AttributeSearchName =
   | typeof SEARCH_BULLMQ__JOB__IDS
   | typeof SEARCH_BULLMQ__JOB__KEY
   | typeof SEARCH_BULLMQ__JOB__NAME
-  | typeof SEARCH_BULLMQ__JOB__OPTIONS
   | typeof SEARCH_BULLMQ__JOB__PROCESSED__TIMESTAMP
   | typeof SEARCH_BULLMQ__JOB__PROGRESS
   | typeof SEARCH_BULLMQ__JOB__SCHEDULER__ID
@@ -5473,14 +5457,12 @@ export type AttributeSearchName =
   | typeof SEARCH_BULLMQ__QUEUE__EVENT__MAX__LENGTH
   | typeof SEARCH_BULLMQ__QUEUE__GRACE
   | typeof SEARCH_BULLMQ__QUEUE__JOBS__STATE
-  | typeof SEARCH_BULLMQ__QUEUE__OPTIONS
   | typeof SEARCH_BULLMQ__QUEUE__RATE__LIMIT
   | typeof SEARCH_BULLMQ__WORKER__DO__NOT__WAIT__ACTIVE
   | typeof SEARCH_BULLMQ__WORKER__FORCE__CLOSE
   | typeof SEARCH_BULLMQ__WORKER__ID
   | typeof SEARCH_BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS
   | typeof SEARCH_BULLMQ__WORKER__NAME
-  | typeof SEARCH_BULLMQ__WORKER__OPTIONS
   | typeof SEARCH_BULLMQ__WORKER__RATE__LIMIT
   | typeof SEARCH_BULLMQ__WORKER__STALLED__JOBS
   | typeof SEARCH_CACHE__HIT
@@ -7478,12 +7460,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.',
     deprecationChain: ['bullmq.job.name'],
   },
-  'bullmq.job.options': {
-    canonicalName: 'bullmq.job.options',
-    type: 'string',
-    brief: 'The options of a BullMQ job operation as a JSON string, for example the options of Queue.remove().',
-    deprecationChain: ['bullmq.job.options'],
-  },
   'bullmq.job.processed.timestamp': {
     canonicalName: 'bullmq.job.processed.timestamp',
     type: 'integer',
@@ -7556,13 +7532,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The BullMQ job state that the queue job count metric counts.',
     deprecationChain: ['bullmq.queue.jobs.state'],
   },
-  'bullmq.queue.options': {
-    canonicalName: 'bullmq.queue.options',
-    type: 'string',
-    brief:
-      'The options of a BullMQ queue operation as a JSON string, for example the options of Queue.retryJobs() or Queue.promoteJobs().',
-    deprecationChain: ['bullmq.queue.options'],
-  },
   'bullmq.queue.rate.limit': {
     canonicalName: 'bullmq.queue.rate.limit',
     type: 'integer',
@@ -7598,12 +7567,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name that the user gives to the BullMQ Worker in its options.',
     deprecationChain: ['bullmq.worker.name'],
-  },
-  'bullmq.worker.options': {
-    canonicalName: 'bullmq.worker.options',
-    type: 'string',
-    brief: 'The options of a BullMQ Worker operation as a JSON string, for example the options of Worker.getNextJob().',
-    deprecationChain: ['bullmq.worker.options'],
   },
   'bullmq.worker.rate.limit': {
     canonicalName: 'bullmq.worker.rate.limit',

@@ -4245,27 +4245,6 @@ export const BULLMQ_JOB_NAME = 'bullmq.job.name';
  */
 export type BULLMQ_JOB_NAME_TYPE = string;
 
-// Path: model/attributes/bullmq/bullmq__job__options.json
-
-/**
- * The options of a BullMQ job operation as a JSON string, for example the options of Queue.remove(). `bullmq.job.options`
- *
- * Attribute Value Type: `string` {@link BULLMQ_JOB_OPTIONS_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "{\"removeChildren\":true}"
- */
-export const BULLMQ_JOB_OPTIONS = 'bullmq.job.options';
-
-/**
- * Type for {@link BULLMQ_JOB_OPTIONS} bullmq.job.options
- */
-export type BULLMQ_JOB_OPTIONS_TYPE = string;
-
 // Path: model/attributes/bullmq/bullmq__job__processed__timestamp.json
 
 /**
@@ -4525,27 +4504,6 @@ export const BULLMQ_QUEUE_JOBS_STATE = 'bullmq.queue.jobs.state';
  */
 export type BULLMQ_QUEUE_JOBS_STATE_TYPE = string;
 
-// Path: model/attributes/bullmq/bullmq__queue__options.json
-
-/**
- * The options of a BullMQ queue operation as a JSON string, for example the options of Queue.retryJobs() or Queue.promoteJobs(). `bullmq.queue.options`
- *
- * Attribute Value Type: `string` {@link BULLMQ_QUEUE_OPTIONS_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "{\"count\":1000}"
- */
-export const BULLMQ_QUEUE_OPTIONS = 'bullmq.queue.options';
-
-/**
- * Type for {@link BULLMQ_QUEUE_OPTIONS} bullmq.queue.options
- */
-export type BULLMQ_QUEUE_OPTIONS_TYPE = string;
-
 // Path: model/attributes/bullmq/bullmq__queue__rate__limit.json
 
 /**
@@ -4671,27 +4629,6 @@ export const BULLMQ_WORKER_NAME = 'bullmq.worker.name';
  * Type for {@link BULLMQ_WORKER_NAME} bullmq.worker.name
  */
 export type BULLMQ_WORKER_NAME_TYPE = string;
-
-// Path: model/attributes/bullmq/bullmq__worker__options.json
-
-/**
- * The options of a BullMQ Worker operation as a JSON string, for example the options of Worker.getNextJob(). `bullmq.worker.options`
- *
- * Attribute Value Type: `string` {@link BULLMQ_WORKER_OPTIONS_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "{\"block\":true}"
- */
-export const BULLMQ_WORKER_OPTIONS = 'bullmq.worker.options';
-
-/**
- * Type for {@link BULLMQ_WORKER_OPTIONS} bullmq.worker.options
- */
-export type BULLMQ_WORKER_OPTIONS_TYPE = string;
 
 // Path: model/attributes/bullmq/bullmq__worker__rate__limit.json
 
@@ -20805,7 +20742,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'bullmq.job.ids': 'string[]',
   'bullmq.job.key': 'string',
   'bullmq.job.name': 'string',
-  'bullmq.job.options': 'string',
   'bullmq.job.processed.timestamp': 'integer',
   'bullmq.job.progress': 'string',
   'bullmq.job.scheduler.id': 'string',
@@ -20818,14 +20754,12 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'bullmq.queue.event.max.length': 'integer',
   'bullmq.queue.grace': 'integer',
   'bullmq.queue.jobs.state': 'string',
-  'bullmq.queue.options': 'string',
   'bullmq.queue.rate.limit': 'integer',
   'bullmq.worker.do.not.wait.active': 'boolean',
   'bullmq.worker.force.close': 'boolean',
   'bullmq.worker.id': 'string',
   'bullmq.worker.jobs.to.extend.locks': 'string[]',
   'bullmq.worker.name': 'string',
-  'bullmq.worker.options': 'string',
   'bullmq.worker.rate.limit': 'integer',
   'bullmq.worker.stalled.jobs': 'string[]',
   'cache.hit': 'boolean',
@@ -21723,7 +21657,6 @@ export type AttributeName =
   | typeof BULLMQ_JOB_IDS
   | typeof BULLMQ_JOB_KEY
   | typeof BULLMQ_JOB_NAME
-  | typeof BULLMQ_JOB_OPTIONS
   | typeof BULLMQ_JOB_PROCESSED_TIMESTAMP
   | typeof BULLMQ_JOB_PROGRESS
   | typeof BULLMQ_JOB_SCHEDULER_ID
@@ -21736,14 +21669,12 @@ export type AttributeName =
   | typeof BULLMQ_QUEUE_EVENT_MAX_LENGTH
   | typeof BULLMQ_QUEUE_GRACE
   | typeof BULLMQ_QUEUE_JOBS_STATE
-  | typeof BULLMQ_QUEUE_OPTIONS
   | typeof BULLMQ_QUEUE_RATE_LIMIT
   | typeof BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE
   | typeof BULLMQ_WORKER_FORCE_CLOSE
   | typeof BULLMQ_WORKER_ID
   | typeof BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS
   | typeof BULLMQ_WORKER_NAME
-  | typeof BULLMQ_WORKER_OPTIONS
   | typeof BULLMQ_WORKER_RATE_LIMIT
   | typeof BULLMQ_WORKER_STALLED_JOBS
   | typeof CACHE_HIT
@@ -25487,20 +25418,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Also set on the BullMQ job metrics.',
     ],
   },
-  'bullmq.job.options': {
-    brief: 'The options of a BullMQ job operation as a JSON string, for example the options of Queue.remove().',
-    type: 'string',
-    keys: ['bullmq.job.options'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: '{"removeChildren":true}',
-    examples: ['{"removeChildren":true}'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added bullmq.job.options attribute' }],
-    additionalContext: ["Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."],
-  },
   'bullmq.job.processed.timestamp': {
     brief: 'The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.',
     type: 'integer',
@@ -25681,21 +25598,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Set on the BullMQ queue job count metric.',
     ],
   },
-  'bullmq.queue.options': {
-    brief:
-      'The options of a BullMQ queue operation as a JSON string, for example the options of Queue.retryJobs() or Queue.promoteJobs().',
-    type: 'string',
-    keys: ['bullmq.queue.options'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: '{"count":1000}',
-    examples: ['{"count":1000}'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added bullmq.queue.options attribute' }],
-    additionalContext: ["Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."],
-  },
   'bullmq.queue.rate.limit': {
     brief: 'The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.',
     type: 'integer',
@@ -25778,20 +25680,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'email-worker',
     examples: ['email-worker'],
     changelog: [{ version: 'next', prs: [690], description: 'Added bullmq.worker.name attribute' }],
-    additionalContext: ["Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."],
-  },
-  'bullmq.worker.options': {
-    brief: 'The options of a BullMQ Worker operation as a JSON string, for example the options of Worker.getNextJob().',
-    type: 'string',
-    keys: ['bullmq.worker.options'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: '{"block":true}',
-    examples: ['{"block":true}'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added bullmq.worker.options attribute' }],
     additionalContext: ["Added by BullMQ's telemetry interface. The Sentry SDK only forwards the attribute to Sentry."],
   },
   'bullmq.worker.rate.limit': {
@@ -37487,7 +37375,6 @@ export type Attributes = {
   [BULLMQ_JOB_IDS]?: BULLMQ_JOB_IDS_TYPE;
   [BULLMQ_JOB_KEY]?: BULLMQ_JOB_KEY_TYPE;
   [BULLMQ_JOB_NAME]?: BULLMQ_JOB_NAME_TYPE;
-  [BULLMQ_JOB_OPTIONS]?: BULLMQ_JOB_OPTIONS_TYPE;
   [BULLMQ_JOB_PROCESSED_TIMESTAMP]?: BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE;
   [BULLMQ_JOB_PROGRESS]?: BULLMQ_JOB_PROGRESS_TYPE;
   [BULLMQ_JOB_SCHEDULER_ID]?: BULLMQ_JOB_SCHEDULER_ID_TYPE;
@@ -37500,14 +37387,12 @@ export type Attributes = {
   [BULLMQ_QUEUE_EVENT_MAX_LENGTH]?: BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE;
   [BULLMQ_QUEUE_GRACE]?: BULLMQ_QUEUE_GRACE_TYPE;
   [BULLMQ_QUEUE_JOBS_STATE]?: BULLMQ_QUEUE_JOBS_STATE_TYPE;
-  [BULLMQ_QUEUE_OPTIONS]?: BULLMQ_QUEUE_OPTIONS_TYPE;
   [BULLMQ_QUEUE_RATE_LIMIT]?: BULLMQ_QUEUE_RATE_LIMIT_TYPE;
   [BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE]?: BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE;
   [BULLMQ_WORKER_FORCE_CLOSE]?: BULLMQ_WORKER_FORCE_CLOSE_TYPE;
   [BULLMQ_WORKER_ID]?: BULLMQ_WORKER_ID_TYPE;
   [BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS]?: BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE;
   [BULLMQ_WORKER_NAME]?: BULLMQ_WORKER_NAME_TYPE;
-  [BULLMQ_WORKER_OPTIONS]?: BULLMQ_WORKER_OPTIONS_TYPE;
   [BULLMQ_WORKER_RATE_LIMIT]?: BULLMQ_WORKER_RATE_LIMIT_TYPE;
   [BULLMQ_WORKER_STALLED_JOBS]?: BULLMQ_WORKER_STALLED_JOBS_TYPE;
   [CACHE_HIT]?: CACHE_HIT_TYPE;
