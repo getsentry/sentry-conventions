@@ -3096,7 +3096,7 @@ export type AWS_S3_BUCKET_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_COPY_SOURCE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3117,7 +3117,7 @@ export type AWS_S3_COPY_SOURCE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_DELETE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3138,7 +3138,7 @@ export type AWS_S3_DELETE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_KEY_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -8962,6 +8962,28 @@ export const GEN_AI_TOOL_CALL_RESULT = 'gen_ai.tool.call.result';
  * Type for {@link GEN_AI_TOOL_CALL_RESULT} gen_ai.tool.call.result
  */
 export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__tool__call__result__size.json
+
+/**
+ * The UTF-8 byte length of the serialized tool call result, measured before truncation. `gen_ai.tool.call.result.size`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 1024
+ */
+export const GEN_AI_TOOL_CALL_RESULT_SIZE = 'gen_ai.tool.call.result.size';
+
+/**
+ * Type for {@link GEN_AI_TOOL_CALL_RESULT_SIZE} gen_ai.tool.call.result.size
+ */
+export type GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
 
@@ -20872,6 +20894,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.system.message': 'string',
   'gen_ai.tool.call.arguments': 'string',
   'gen_ai.tool.call.result': 'string',
+  'gen_ai.tool.call.result.size': 'integer',
   'gen_ai.tool.definitions': 'string',
   'gen_ai.tool.description': 'string',
   'gen_ai.tool.input': 'string',
@@ -21782,6 +21805,7 @@ export type AttributeName =
   | typeof GEN_AI_SYSTEM_MESSAGE
   | typeof GEN_AI_TOOL_CALL_ARGUMENTS
   | typeof GEN_AI_TOOL_CALL_RESULT
+  | typeof GEN_AI_TOOL_CALL_RESULT_SIZE
   | typeof GEN_AI_TOOL_DEFINITIONS
   | typeof GEN_AI_TOOL_DESCRIPTION
   | typeof GEN_AI_TOOL_INPUT
@@ -24564,13 +24588,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.copy_source'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
+    changelog: [
+      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.copy_source attribute' },
+    ],
     additionalContext: [
       'Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter.',
     ],
@@ -24580,13 +24607,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.delete'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
     examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' }],
+    changelog: [
+      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' },
+    ],
     additionalContext: ['Applicable only to the delete-objects operation, corresponding to its Delete parameter.'],
   },
   'aws.s3.key': {
@@ -24594,13 +24624,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.key'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.key attribute' }],
+    changelog: [
+      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.key attribute' },
+    ],
   },
   'aws.s3.part_number': {
     brief:
@@ -28618,6 +28651,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
+  },
+  'gen_ai.tool.call.result.size': {
+    brief: 'The UTF-8 byte length of the serialized tool call result, measured before truncation.',
+    type: 'integer',
+    keys: ['gen_ai.tool.call.result.size'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 1024],
+    changelog: [{ version: 'next', description: 'Added gen_ai.tool.call.result.size attribute' }],
+    additionalContext: [
+      'The value is a non-negative byte count, not a token count, character count, or in-memory object size. It excludes span and envelope overhead.',
+      'Use 0 for an empty string result. Omit this attribute when the tool result is unavailable; do not treat missing output as zero.',
+    ],
+    searchAlias: {
+      name: 'gen_ai.tool.call.result.size',
+      type: 'byte',
+    },
   },
   'gen_ai.tool.definitions': {
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
@@ -33890,7 +33944,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'myService.BestService',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    changelog: [
+      { version: 'next', prs: [714], description: 'Added additional context about the OpenTelemetry deprecation' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.',
+      'Still set on AWS SDK spans, where it holds the AWS service (e.g. `S3`) and `rpc.method` is set to the operation (e.g. `GetObject`).',
+    ],
   },
   'rpc.system': {
     brief: 'A string identifying the remoting system.',
@@ -37667,6 +37729,7 @@ export type Attributes = {
   [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
   [GEN_AI_TOOL_CALL_ARGUMENTS]?: GEN_AI_TOOL_CALL_ARGUMENTS_TYPE;
   [GEN_AI_TOOL_CALL_RESULT]?: GEN_AI_TOOL_CALL_RESULT_TYPE;
+  [GEN_AI_TOOL_CALL_RESULT_SIZE]?: GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE;
   [GEN_AI_TOOL_DEFINITIONS]?: GEN_AI_TOOL_DEFINITIONS_TYPE;
   [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
   [GEN_AI_TOOL_INPUT]?: GEN_AI_TOOL_INPUT_TYPE;

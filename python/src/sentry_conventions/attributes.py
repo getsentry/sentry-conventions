@@ -2187,7 +2187,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source object (in the form bucket/key) for the copy operation.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "someFile.yml"
@@ -2198,7 +2198,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The delete request container that specifies the objects to be deleted.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
@@ -2209,7 +2209,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "someFile.yml"
@@ -5496,6 +5496,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
     Example: "rainy, 57°F"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__tool__call__result__size.json
+    GEN_AI_TOOL_CALL_RESULT_SIZE: Literal["gen_ai.tool.call.result.size"] = (
+        "gen_ai.tool.call.result.size"
+    )
+    """The UTF-8 byte length of the serialized tool call result, measured before truncation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 1024
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
@@ -14700,12 +14714,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The source object (in the form bucket/key) for the copy operation.",
         type=AttributeType.STRING,
         keys=("aws.s3.copy_source",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="someFile.yml",
         examples=["someFile.yml"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0",
                 prs=[672],
@@ -14720,7 +14738,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The delete request container that specifies the objects to be deleted.",
         type=AttributeType.STRING,
         keys=("aws.s3.delete",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean",
@@ -14728,6 +14746,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
         ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.delete attribute"
             ),
@@ -14740,12 +14762,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.",
         type=AttributeType.STRING,
         keys=("aws.s3.key",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="someFile.yml",
         examples=["someFile.yml"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.key attribute"
             ),
@@ -19491,6 +19517,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
+    ),
+    "gen_ai.tool.call.result.size": AttributeMetadata(
+        brief="The UTF-8 byte length of the serialized tool call result, measured before truncation.",
+        type=AttributeType.INTEGER,
+        keys=("gen_ai.tool.call.result.size",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 1024],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.tool.call.result.size attribute",
+            ),
+        ],
+        additional_context=[
+            "The value is a non-negative byte count, not a token count, character count, or in-memory object size. It excludes span and envelope overhead.",
+            "Use 0 for an empty string result. Omit this attribute when the tool result is unavailable; do not treat missing output as zero.",
+        ],
+        search_alias=SearchAlias(name="gen_ai.tool.call.result.size", type="byte"),
     ),
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
@@ -25548,8 +25595,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="myService.BestService",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[714],
+                description="Added additional context about the OpenTelemetry deprecation",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.",
+            "Still set on AWS SDK spans, where it holds the AWS service (e.g. `S3`) and `rpc.method` is set to the operation (e.g. `GetObject`).",
         ],
     ),
     "rpc.system": AttributeMetadata(
@@ -29691,6 +29747,7 @@ Attributes = TypedDict(
         "gen_ai.system_instructions": str,
         "gen_ai.tool.call.arguments": str,
         "gen_ai.tool.call.result": str,
+        "gen_ai.tool.call.result.size": int,
         "gen_ai.tool.definitions": str,
         "gen_ai.tool.description": str,
         "gen_ai.tool.input": str,
