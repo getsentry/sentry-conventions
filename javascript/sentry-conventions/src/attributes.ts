@@ -7976,7 +7976,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
  * @example "[[{\"type\": \"evaluation\", \"state\": \"I cannot log in, and I also want a refund for last month.\", \"questions\": {\"authIssue\": {\"type\": \"noul\", \"instructions\": \"Is there a login problem?\"}, \"department\": {\"type\": \"choice\", \"instructions\": \"Which team should handle this?\", \"criteria\": {\"billing\": \"Charges and refunds\", \"technical\": \"Bugs and outages\"}}}}]]"
- * @example "[{\"state\": \"Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. Total: $1,080.00\", \"fields\": {\"invoice_number\": {\"type\": \"text\", \"instructions\": \"The invoice number\"}, \"due_date\": {\"type\": \"date\", \"instructions\": \"The date the payment is due\"}, \"total\": {\"type\": \"number\", \"unit\": \"USD\", \"decimals\": 2}}}]"
+ * @example "[{\"state\": \"Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. 4 pallets at $250.00 each, shipping $80.00. Contact: Dana Ruiz, Priya Shah.\", \"fields\": {\"invoice_number\": {\"type\": \"text\"}, \"due_date\": {\"type\": \"date\", \"instructions\": \"Issue date plus the net payment days\"}, \"total\": {\"type\": \"number\", \"decimals\": 2, \"unit\": \"USD\", \"instructions\": \"Amount due including shipping\"}, \"contacts\": {\"type\": \"list\", \"items\": \"text\"}, \"po_number\": {\"type\": \"text\", \"instructions\": \"Purchase order number\"}, \"days_to_pay\": {\"type\": \"estimate\", \"min\": 0, \"max\": 120, \"step\": 1, \"instructions\": \"Days after issue until this invoice is paid\"}}}]"
  */
 export const GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
 
@@ -8178,7 +8178,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  *
  * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
  * @example "[[{\"type\": \"evaluation\", \"answers\": {\"authIssue\": {\"type\": \"noul\", \"noul\": 0.98}, \"department\": {\"type\": \"choice\", \"choice\": \"billing\", \"confidence\": 0.28, \"probabilities\": {\"billing\": 0.64, \"technical\": 0.36}}}}]]"
- * @example "[{\"answers\": {\"invoice_number\": {\"type\": \"text\", \"p_null\": 3.8e-10, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 1, \"value\": \"INV-2291\"}, \"due_date\": {\"type\": \"date\", \"p_null\": 0.01, \"guess\": \"2026-10-02\", \"confidence\": 0.97, \"value\": \"2026-10-02\"}, \"total\": {\"type\": \"number\", \"p_null\": 0.01, \"guess\": 1080, \"confidence\": 0.98, \"value\": 1080}}}]"
+ * @example "[{\"answers\": {\"invoice_number\": {\"type\": \"text\", \"p_null\": 3.8e-10, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 1, \"value\": \"INV-2291\"}, \"due_date\": {\"type\": \"date\", \"p_null\": 1.9e-08, \"guess\": \"2026-10-02\", \"confidence\": 0.9999, \"value\": \"2026-10-02\"}, \"total\": {\"type\": \"number\", \"p_null\": 2.3e-08, \"guess\": 1080, \"confidence\": 0.9999, \"value\": 1080}, \"contacts\": {\"type\": \"list\", \"value\": [\"Dana Ruiz\", \"Priya Shah\"], \"spans\": [[120, 129], [131, 141]], \"confidence\": 0.9999}, \"po_number\": {\"type\": \"text\", \"p_null\": 1, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 0.9995, \"value\": null}, \"days_to_pay\": {\"type\": \"estimate\", \"value\": 30, \"mean\": 29.535, \"median\": 30, \"p10\": 21, \"p90\": 38, \"p_below\": 5.9e-06, \"p_above\": 1.2e-05}}, \"truncated\": false}]"
  */
 export const GEN_AI_OUTPUT_MESSAGES = 'gen_ai.output.messages';
 
@@ -27898,7 +27898,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
       '[[{"type": "evaluation", "state": "I cannot log in, and I also want a refund for last month.", "questions": {"authIssue": {"type": "noul", "instructions": "Is there a login problem?"}, "department": {"type": "choice", "instructions": "Which team should handle this?", "criteria": {"billing": "Charges and refunds", "technical": "Bugs and outages"}}}}]]',
-      '[{"state": "Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. Total: $1,080.00", "fields": {"invoice_number": {"type": "text", "instructions": "The invoice number"}, "due_date": {"type": "date", "instructions": "The date the payment is due"}, "total": {"type": "number", "unit": "USD", "decimals": 2}}}]',
+      '[{"state": "Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. 4 pallets at $250.00 each, shipping $80.00. Contact: Dana Ruiz, Priya Shah.", "fields": {"invoice_number": {"type": "text"}, "due_date": {"type": "date", "instructions": "Issue date plus the net payment days"}, "total": {"type": "number", "decimals": 2, "unit": "USD", "instructions": "Amount due including shipping"}, "contacts": {"type": "list", "items": "text"}, "po_number": {"type": "text", "instructions": "Purchase order number"}, "days_to_pay": {"type": "estimate", "min": 0, "max": 120, "step": 1, "instructions": "Days after issue until this invoice is paid"}}}]',
     ],
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
@@ -27915,7 +27915,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. The second example shows this shape.',
-      'For `gen_ai.extract` operations, the array holds one object `{state: string, fields: {<name>: <field spec>}}`. `state` is the input text that the model reads. `fields` holds the field specs keyed by field name, as the caller passed them. Do not change the field specs. The third example shows this shape.',
+      'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data. Replace each image with its MIME type, for example `"image/png"`. For a data URL, use the MIME type from the URL. For a base64 image object, use its `content_type`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
     ],
   },
   'gen_ai.memory.query.text': {
@@ -28045,7 +28045,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: [
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
       '[[{"type": "evaluation", "answers": {"authIssue": {"type": "noul", "noul": 0.98}, "department": {"type": "choice", "choice": "billing", "confidence": 0.28, "probabilities": {"billing": 0.64, "technical": 0.36}}}}]]',
-      '[{"answers": {"invoice_number": {"type": "text", "p_null": 3.8e-10, "span": [8, 16], "guess": "INV-2291", "confidence": 1, "value": "INV-2291"}, "due_date": {"type": "date", "p_null": 0.01, "guess": "2026-10-02", "confidence": 0.97, "value": "2026-10-02"}, "total": {"type": "number", "p_null": 0.01, "guess": 1080, "confidence": 0.98, "value": 1080}}}]',
+      '[{"answers": {"invoice_number": {"type": "text", "p_null": 3.8e-10, "span": [8, 16], "guess": "INV-2291", "confidence": 1, "value": "INV-2291"}, "due_date": {"type": "date", "p_null": 1.9e-08, "guess": "2026-10-02", "confidence": 0.9999, "value": "2026-10-02"}, "total": {"type": "number", "p_null": 2.3e-08, "guess": 1080, "confidence": 0.9999, "value": 1080}, "contacts": {"type": "list", "value": ["Dana Ruiz", "Priya Shah"], "spans": [[120, 129], [131, 141]], "confidence": 0.9999}, "po_number": {"type": "text", "p_null": 1, "span": [8, 16], "guess": "INV-2291", "confidence": 0.9995, "value": null}, "days_to_pay": {"type": "estimate", "value": 30, "mean": 29.535, "median": 30, "p10": 21, "p90": 38, "p_below": 5.9e-06, "p_above": 1.2e-05}}, "truncated": false}]',
     ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
@@ -28060,7 +28060,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
     additionalContext: [
       'For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.',
-      'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}}`. `answers` holds one answer for each field in the input, keyed by field name, as the provider returned them. Do not change the answers. A field that the model cannot determine has a `value` of `null`. The third example shows this shape.',
+      'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.',
     ],
   },
   'gen_ai.pipeline.name': {
