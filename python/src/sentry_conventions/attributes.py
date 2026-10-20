@@ -2603,6 +2603,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 477.1926
     """
 
+    # Path: model/attributes/browser/browser__web_vital__inp__input_delay.json
+    BROWSER_WEB_VITAL_INP_INPUT_DELAY: Literal["browser.web_vital.inp.input_delay"] = (
+        "browser.web_vital.inp.input_delay"
+    )
+    """The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 120
+    """
+
     # Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
     BROWSER_WEB_VITAL_INP_INTERACTION_TYPE: Literal[
         "browser.web_vital.inp.interaction_type"
@@ -2617,6 +2630,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "hover"
     Example: "drag"
     Example: "press"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__presentation_delay.json
+    BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY: Literal[
+        "browser.web_vital.inp.presentation_delay"
+    ] = "browser.web_vital.inp.presentation_delay"
+    """The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 100
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__processing_duration.json
+    BROWSER_WEB_VITAL_INP_PROCESSING_DURATION: Literal[
+        "browser.web_vital.inp.processing_duration"
+    ] = "browser.web_vital.inp.processing_duration"
+    """The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 140
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__target.json
@@ -2659,6 +2698,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: lcp.element
     Example: "body > div#app > div#container > div"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__element_render_delay.json
+    BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY: Literal[
+        "browser.web_vital.lcp.element_render_delay"
+    ] = "browser.web_vital.lcp.element_render_delay"
+    """The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 410
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__id.json
@@ -2715,6 +2767,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.
     Example: "pagehide"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__resource_load_delay.json
+    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY: Literal[
+        "browser.web_vital.lcp.resource_load_delay"
+    ] = "browser.web_vital.lcp.resource_load_delay"
+    """The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 320.5
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__resource_load_duration.json
+    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION: Literal[
+        "browser.web_vital.lcp.resource_load_duration"
+    ] = "browser.web_vital.lcp.resource_load_duration"
+    """The time it took to load the LCP resource, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 780.2
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__size.json
@@ -15322,6 +15400,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
+    "browser.web_vital.inp.input_delay": AttributeMetadata(
+        brief="The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.input_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=120,
+        examples=[120],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.inp.input_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`: input delay, processing duration and presentation delay. Named after `inputDelay` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `processingStart` minus `startTime`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
+        ],
+    ),
     "browser.web_vital.inp.interaction_type": AttributeMetadata(
         brief="The kind of user interaction INP was reported on",
         type=AttributeType.STRING,
@@ -15342,6 +15442,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
             "Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.",
             "Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.",
+        ],
+    ),
+    "browser.web_vital.inp.presentation_delay": AttributeMetadata(
+        brief="The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.presentation_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        examples=[100],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.inp.presentation_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `startTime` plus `duration` minus `processingEnd`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
+        ],
+    ),
+    "browser.web_vital.inp.processing_duration": AttributeMetadata(
+        brief="The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.processing_duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=140,
+        examples=[140],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.inp.processing_duration attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `processingDuration` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `processingEnd` minus `processingStart`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
         ],
     ),
     "browser.web_vital.inp.target": AttributeMetadata(
@@ -15399,6 +15543,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.element"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.element_render_delay": AttributeMetadata(
+        brief="The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.element_render_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=410,
+        examples=[410],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.lcp.element_render_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.",
+            "Measured as the LCP value minus the LCP resource's `responseEnd`. When the LCP element is text, it covers all time after TTFB.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
         ],
     ),
     "browser.web_vital.lcp.id": AttributeMetadata(
@@ -15471,6 +15637,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[319],
                 description="Added browser.web_vital.lcp.report_event attribute",
             ),
+        ],
+    ),
+    "browser.web_vital.lcp.resource_load_delay": AttributeMetadata(
+        brief="The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.resource_load_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=320.5,
+        examples=[320.5],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.lcp.resource_load_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`: TTFB (`browser.web_vital.ttfb.value`), resource load delay, resource load duration and element render delay. Named after `resourceLoadDelay` in the web-vitals attribution build.",
+            "Measured as the LCP resource's `requestStart` (or `startTime` when `requestStart` is not exposed) minus TTFB. It is 0 when the LCP element is text, since no resource is loaded.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
+        ],
+    ),
+    "browser.web_vital.lcp.resource_load_duration": AttributeMetadata(
+        brief="The time it took to load the LCP resource, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.resource_load_duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=780.2,
+        examples=[780.2],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.lcp.resource_load_duration attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `resourceLoadDuration` in the web-vitals attribution build.",
+            "Measured as the LCP resource's `responseEnd` minus its `requestStart` (or `startTime` when `requestStart` is not exposed). It is 0 when the LCP element is text, since no resource is loaded.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
         ],
     ),
     "browser.web_vital.lcp.size": AttributeMetadata(
@@ -29515,14 +29725,20 @@ Attributes = TypedDict(
         "browser.web_vital.cls.value": float,
         "browser.web_vital.fcp.value": float,
         "browser.web_vital.fp.value": float,
+        "browser.web_vital.inp.input_delay": float,
         "browser.web_vital.inp.interaction_type": str,
+        "browser.web_vital.inp.presentation_delay": float,
+        "browser.web_vital.inp.processing_duration": float,
         "browser.web_vital.inp.target": str,
         "browser.web_vital.inp.value": float,
         "browser.web_vital.lcp.element": str,
+        "browser.web_vital.lcp.element_render_delay": float,
         "browser.web_vital.lcp.id": str,
         "browser.web_vital.lcp.load_time": int,
         "browser.web_vital.lcp.render_time": int,
         "browser.web_vital.lcp.report_event": str,
+        "browser.web_vital.lcp.resource_load_delay": float,
+        "browser.web_vital.lcp.resource_load_duration": float,
         "browser.web_vital.lcp.size": int,
         "browser.web_vital.lcp.url": str,
         "browser.web_vital.lcp.value": float,

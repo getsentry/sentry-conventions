@@ -1,0 +1,23 @@
+{
+  "key": "browser.web_vital.lcp.resource_load_delay",
+  "brief": "The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [320.5],
+  "additional_context": [
+    "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`: TTFB (`browser.web_vital.ttfb.value`), resource load delay, resource load duration and element render delay. Named after `resourceLoadDelay` in the web-vitals attribution build.",
+    "Measured as the LCP resource's `requestStart` (or `startTime` when `requestStart` is not exposed) minus TTFB. It is 0 when the LCP element is text, since no resource is loaded.",
+    "For a prerendered page, timestamps are measured from `activationStart`."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [712],
+      "description": "Added browser.web_vital.lcp.resource_load_delay attribute"
+    }
+  ]
+}
