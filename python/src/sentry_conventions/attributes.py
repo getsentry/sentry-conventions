@@ -2070,6 +2070,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5000
     """
 
+    # Path: model/attributes/aws/aws__lambda__resource_mapping__id.json
+    AWS_LAMBDA_RESOURCE_MAPPING_ID: Literal["aws.lambda.resource_mapping.id"] = (
+        "aws.lambda.resource_mapping.id"
+    )
+    """The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "587ad24b-03b9-4413-8202-bbd56b36e5b7"
+    """
+
     # Path: model/attributes/aws/aws__log__group__names.json
     AWS_LOG_GROUP_NAMES: Literal["aws.log.group.names"] = "aws.log.group.names"
     """The name(s) of the AWS log group(s) an application is writing to.
@@ -9840,9 +9853,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
+    - `next_trace` - The linked span is the root span of the trace after this trace.
+    - `cache_origin` - The linked span wrote the cached value that this span reads.
+    - `message_origin` - The linked span published the queue message that this span processes.
     Example: "previous_trace"
     Example: "next_trace"
     Example: "cache_origin"
+    Example: "message_origin"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -14491,6 +14510,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="0.7.0",
                 prs=[369],
                 description="Added aws.lambda.remaining_time_in_millis attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.resource_mapping.id": AttributeMetadata(
+        brief="The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.resource_mapping.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="587ad24b-03b9-4413-8202-bbd56b36e5b7",
+        examples=["587ad24b-03b9-4413-8202-bbd56b36e5b7"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.lambda.resource_mapping.id attribute",
             ),
         ],
     ),
@@ -26258,8 +26293,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
-        examples=["previous_trace", "next_trace", "cache_origin"],
+        examples=["previous_trace", "next_trace", "cache_origin", "message_origin"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[724],
+                description="Added message_origin to the examples, and enum_values that describe each known value",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[687], description="Added search alias link.type"
             ),
@@ -26272,7 +26312,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute is exclusively set on span links.",
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
-            "For known values, see Examples. Add new values to Examples.",
+            "Add each new link type to `enum_values`, with a brief that says what the linked span is.",
         ],
         search_alias=SearchAlias(name="link.type"),
     ),
@@ -29388,6 +29428,7 @@ Attributes = TypedDict(
         "aws.lambda.invoked_arn": str,
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
+        "aws.lambda.resource_mapping.id": str,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
         "aws.operation_name": str,
