@@ -67,7 +67,7 @@ const requirementLabels = {
                   {metrics.map((m) => (
                     <tr id={m.data.key}>
                       <td><code class="text-xs">{m.data.key}</code></td>
-                      <td class="text-text-secondary">{m.data.brief}</td>
+                      <td class="text-text-secondary min-w-[280px]">{m.data.brief}</td>
                       <td class="whitespace-nowrap"><code class="text-xs">{m.data.instrument}</code></td>
                       <td class="whitespace-nowrap"><code class="text-xs">{m.data.unit}</code></td>
                       <td class="whitespace-nowrap">{requirementLabels[m.data.requirement_level]}</td>
@@ -82,7 +82,7 @@ const requirementLabels = {
                           <span class="text-text-muted">None</span>
                         )}
                       </td>
-                      <td><OtelBadge isInOtel={m.data.is_in_otel} /></td>
+                      <td class="whitespace-nowrap"><OtelBadge isInOtel={m.data.is_in_otel} /></td>
                     </tr>
                   ))}
                 </tbody>
