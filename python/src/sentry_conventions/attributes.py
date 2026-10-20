@@ -533,7 +533,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.name, mcp.tool.name
@@ -648,7 +648,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.system_instructions
@@ -924,7 +924,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Raw text inputs provided to the model.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt, ai.prompt
@@ -963,7 +963,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the tool calls that were made.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -2070,6 +2070,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5000
     """
 
+    # Path: model/attributes/aws/aws__lambda__resource_mapping__id.json
+    AWS_LAMBDA_RESOURCE_MAPPING_ID: Literal["aws.lambda.resource_mapping.id"] = (
+        "aws.lambda.resource_mapping.id"
+    )
+    """The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "587ad24b-03b9-4413-8202-bbd56b36e5b7"
+    """
+
     # Path: model/attributes/aws/aws__log__group__names.json
     AWS_LOG_GROUP_NAMES: Literal["aws.log.group.names"] = "aws.log.group.names"
     """The name(s) of the AWS log group(s) an application is writing to.
@@ -2846,7 +2859,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/cache/cache__ttl.json
     CACHE_TTL: Literal["cache.ttl"] = "cache.ttl"
-    """The ttl (maximum lifetime) of the cache in seconds
+    """The TTL (maximum lifetime) of the cache entry in seconds
 
     Type: int
     Apply Scrubbing: manual
@@ -4205,7 +4218,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry environment.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.environment
@@ -5436,7 +5449,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The system instructions passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.system_instructions instead
@@ -5530,7 +5543,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The response from a tool or function call passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
@@ -7548,7 +7561,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The content of the tool result.
 
     Type: str
-    Apply Scrubbing: auto - Tool results can contain user data
+    Apply Scrubbing: manual - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result, anthropic.tool_result.content
@@ -8239,7 +8252,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
@@ -9141,7 +9154,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -9155,7 +9168,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -9481,6 +9494,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     - `measure`
     - `middleware`
     - `navigation`
+    - `object`
     - `pageload`
     - `queue`
     - `resource`
@@ -9839,9 +9853,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
+    - `next_trace` - The linked span is the root span of the trace after this trace.
+    - `cache_origin` - The linked span wrote the cached value that this span reads.
+    - `message_origin` - The linked span published the queue message that this span processes.
     Example: "previous_trace"
     Example: "next_trace"
     Example: "cache_origin"
+    Example: "message_origin"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -10423,7 +10443,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry transaction (segment name).
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment.name, transaction
@@ -10560,7 +10580,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
@@ -12049,7 +12069,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.function_call",
             "mcp.tool.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="function_name",
@@ -12241,7 +12261,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are now a clown.",
@@ -12712,7 +12732,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.texts",
             "gen_ai.prompt",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Hello, how are you?", "What is the capital of France?"],
@@ -12800,7 +12820,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.responses",
             "ai.tool_calls",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["tool_call_1", "tool_call_2"],
@@ -14493,6 +14513,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.lambda.resource_mapping.id": AttributeMetadata(
+        brief="The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.resource_mapping.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="587ad24b-03b9-4413-8202-bbd56b36e5b7",
+        examples=["587ad24b-03b9-4413-8202-bbd56b36e5b7"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.lambda.resource_mapping.id attribute",
+            ),
+        ],
+    ),
     "aws.log.group.names": AttributeMetadata(
         brief="The name(s) of the AWS log group(s) an application is writing to.",
         type=AttributeType.STRING_ARRAY,
@@ -15595,7 +15631,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "cache.ttl": AttributeMetadata(
-        brief="The ttl (maximum lifetime) of the cache in seconds",
+        brief="The TTL (maximum lifetime) of the cache entry in seconds",
         type=AttributeType.INTEGER,
         keys=("cache.ttl",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -15605,6 +15641,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "Counted from the write. On a read, the value is the full TTL, not the time that remains.",
+            "A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Omit the attribute when the entry never expires or the TTL is unknown.",
         ],
     ),
     "cache.write": AttributeMetadata(
@@ -17563,7 +17603,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -19376,7 +19416,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
@@ -19518,7 +19558,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "mcp.tool.result.content",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
@@ -22719,7 +22759,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "mcp.tool.result.content",
         ),
         apply_scrubbing=ApplyScrubbingInfo(
-            key=ApplyScrubbing.AUTO, reason="Tool results can contain user data"
+            key=ApplyScrubbing.MANUAL, reason="Tool results can contain user data"
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -23907,7 +23947,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
         keys=("net.peer.name",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -25306,7 +25346,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -25326,7 +25366,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -25800,6 +25840,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="db",
         changelog=[
+            ChangelogEntry(
+                version="next", description="Added object to the enum values"
+            ),
             ChangelogEntry(version="0.4.0", prs=[218]),
         ],
         search_alias=SearchAlias(name="span.category"),
@@ -26247,8 +26290,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
-        examples=["previous_trace", "next_trace", "cache_origin"],
+        examples=["previous_trace", "next_trace", "cache_origin", "message_origin"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[724],
+                description="Added message_origin to the examples, and enum_values that describe each known value",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[687], description="Added search alias link.type"
             ),
@@ -26261,7 +26309,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute is exclusively set on span links.",
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
-            "For known values, see Examples. Add new values to Examples.",
+            "Add each new link type to `enum_values`, with a brief that says what the linked span is.",
         ],
         search_alias=SearchAlias(name="link.type"),
     ),
@@ -27036,7 +27084,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "transaction",
             "sentry.transaction",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET /",
@@ -27280,7 +27328,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "server_name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -29377,6 +29425,7 @@ Attributes = TypedDict(
         "aws.lambda.invoked_arn": str,
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
+        "aws.lambda.resource_mapping.id": str,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
         "aws.operation_name": str,

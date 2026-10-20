@@ -147,7 +147,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `string` {@link AI_FUNCTION_CALL_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -359,7 +359,7 @@ export type AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_PREAMBLE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -867,7 +867,7 @@ export type AI_TEMPERATURE_TYPE = number;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TEXTS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -961,7 +961,7 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TOOL_CALLS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2862,6 +2862,27 @@ export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in
  */
 export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
 
+// Path: model/attributes/aws/aws__lambda__resource_mapping__id.json
+
+/**
+ * The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping. `aws.lambda.resource_mapping.id`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "587ad24b-03b9-4413-8202-bbd56b36e5b7"
+ */
+export const AWS_LAMBDA_RESOURCE_MAPPING_ID = 'aws.lambda.resource_mapping.id';
+
+/**
+ * Type for {@link AWS_LAMBDA_RESOURCE_MAPPING_ID} aws.lambda.resource_mapping.id
+ */
+export type AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE = string;
+
 // Path: model/attributes/aws/aws__log__group__names.json
 
 /**
@@ -4209,7 +4230,7 @@ export type CACHE_TAGS_TYPE = Array<string>;
 // Path: model/attributes/cache/cache__ttl.json
 
 /**
- * The ttl (maximum lifetime) of the cache in seconds `cache.ttl`
+ * The TTL (maximum lifetime) of the cache entry in seconds `cache.ttl`
  *
  * Attribute Value Type: `number` {@link CACHE_TTL_TYPE}
  *
@@ -6678,7 +6699,7 @@ export type EFFECTIVECONNECTIONTYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8881,7 +8902,7 @@ export type GEN_AI_SYSTEM_INSTRUCTIONS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -9017,7 +9038,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -12353,7 +12374,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
  *
- * Apply Scrubbing: auto - Tool results can contain user data
+ * Apply Scrubbing: manual - Tool results can contain user data
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -13986,7 +14007,7 @@ export type NET_PEER_IP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_PEER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15365,7 +15386,7 @@ export type REPLAY_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15387,7 +15408,7 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15974,6 +15995,7 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  * - `measure`
  * - `middleware`
  * - `navigation`
+ * - `object`
  * - `pageload`
  * - `queue`
  * - `resource`
@@ -16610,9 +16632,16 @@ export type SENTRY_KIND_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Well-defined Values:
+ * - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
+ * - `next_trace` - The linked span is the root span of the trace after this trace.
+ * - `cache_origin` - The linked span wrote the cached value that this span reads.
+ * - `message_origin` - The linked span published the queue message that this span processes.
+ *
  * @example "previous_trace"
  * @example "next_trace"
  * @example "cache_origin"
+ * @example "message_origin"
  */
 export const SENTRY_LINK_TYPE = 'sentry.link.type';
 
@@ -17632,7 +17661,7 @@ export type SENTRY_TRACE_STATUS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SENTRY_TRANSACTION_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -17863,7 +17892,7 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -20569,6 +20598,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.invoked_arn': 'string',
   'aws.lambda.invoked_function_arn': 'string',
   'aws.lambda.remaining_time_in_millis': 'double',
+  'aws.lambda.resource_mapping.id': 'string',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
   'aws.operation_name': 'string',
@@ -21478,6 +21508,7 @@ export type AttributeName =
   | typeof AWS_LAMBDA_INVOKED_ARN
   | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
+  | typeof AWS_LAMBDA_RESOURCE_MAPPING_ID
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
   | typeof AWS_OPERATION_NAME
@@ -22375,7 +22406,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22549,7 +22580,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22958,7 +22989,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'gen_ai.prompt',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23042,7 +23073,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string[]',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -24354,6 +24385,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5000,
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
   },
+  'aws.lambda.resource_mapping.id': {
+    brief:
+      "The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+    type: 'string',
+    keys: ['aws.lambda.resource_mapping.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '587ad24b-03b9-4413-8202-bbd56b36e5b7',
+    examples: ['587ad24b-03b9-4413-8202-bbd56b36e5b7'],
+    changelog: [{ version: 'next', description: 'Added aws.lambda.resource_mapping.id attribute' }],
+  },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
     type: 'string[]',
@@ -25268,7 +25313,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'cache.ttl': {
-    brief: 'The ttl (maximum lifetime) of the cache in seconds',
+    brief: 'The TTL (maximum lifetime) of the cache entry in seconds',
     type: 'integer',
     keys: ['cache.ttl'],
     applyScrubbing: {
@@ -25278,6 +25323,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 120,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    additionalContext: [
+      'Counted from the write. On a read, the value is the full TTL, not the time that remains.',
+      'A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Omit the attribute when the entry never expires or the TTL is unknown.',
+    ],
   },
   'cache.write': {
     brief: 'If the cache operation resulted in a write to the cache.',
@@ -26923,7 +26972,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28510,7 +28559,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28630,7 +28679,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -31242,7 +31291,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
       reason: 'Tool results can contain user data',
     },
     isInOtel: false,
@@ -32697,7 +32746,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['net.peer.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33652,7 +33701,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33673,7 +33722,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -34104,7 +34153,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'db',
-    changelog: [{ version: '0.4.0', prs: [218] }],
+    changelog: [
+      { version: 'next', description: 'Added object to the enum values' },
+      { version: '0.4.0', prs: [218] },
+    ],
     searchAlias: {
       name: 'span.category',
     },
@@ -34508,15 +34560,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'previous_trace',
-    examples: ['previous_trace', 'next_trace', 'cache_origin'],
+    examples: ['previous_trace', 'next_trace', 'cache_origin', 'message_origin'],
     changelog: [
+      {
+        version: 'next',
+        prs: [724],
+        description: 'Added message_origin to the examples, and enum_values that describe each known value',
+      },
       { version: '0.27.0', prs: [687], description: 'Added search alias link.type' },
       { version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' },
     ],
     additionalContext: [
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
-      'For known values, see Examples. Add new values to Examples.',
+      'Add each new link type to `enum_values`, with a brief that says what the linked span is.',
     ],
     searchAlias: {
       name: 'link.type',
@@ -35228,7 +35285,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -35421,7 +35478,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -37343,6 +37400,7 @@ export type Attributes = {
   [AWS_LAMBDA_INVOKED_ARN]?: AWS_LAMBDA_INVOKED_ARN_TYPE;
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
+  [AWS_LAMBDA_RESOURCE_MAPPING_ID]?: AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;
