@@ -1740,11 +1740,6 @@ export const SEARCH_DJANGO__FUNCTION_NAME = 'django.function_name';
 export const SEARCH_DJANGO__MIDDLEWARE_NAME = 'django.middleware_name';
 
 /**
- * Search name for {@link attributes.DOCUMENT_STATIC_HTML}. `document.static_html`
- */
-export const SEARCH_DOCUMENT__STATIC_HTML = 'document.static_html';
-
-/**
  * Search name for {@link attributes.EFFECTIVECONNECTIONTYPE}. `effectiveConnectionType`
  *
  * @deprecated Use {@link SEARCH_NETWORK__CONNECTION__EFFECTIVE_TYPE} (`network.connection.effective_type`) instead
@@ -3779,6 +3774,11 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING}. `page.server_rendering`
+ */
+export const SEARCH_PAGE__SERVER_RENDERING = 'page.server_rendering';
+
+/**
  * Search name for {@link attributes.PARAMS_KEY}. `params.<key>`
  */
 export const SEARCH_PARAMS__KEY = 'params.<key>';
@@ -5607,7 +5607,6 @@ export type AttributeSearchName =
   | typeof SEARCH_DIST
   | typeof SEARCH_DJANGO__FUNCTION_NAME
   | typeof SEARCH_DJANGO__MIDDLEWARE_NAME
-  | typeof SEARCH_DOCUMENT__STATIC_HTML
   | typeof SEARCH_EFFECTIVECONNECTIONTYPE
   | typeof SEARCH_ENVIRONMENT
   | typeof SEARCH_ERROR__TYPE
@@ -5968,6 +5967,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
+  | typeof SEARCH_PAGE__SERVER_RENDERING
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
   | typeof SEARCH_PERFORMANCE__TIMEORIGIN
@@ -8233,13 +8233,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'starlette.middleware_name',
       'starlite.middleware_name',
     ],
-  },
-  'document.static_html': {
-    canonicalName: 'document.static_html',
-    type: 'string',
-    brief:
-      "Set on a pageload span when the server rendered the document's HTML to reuse it for other requests. The value says if the whole document or only a part of it is reused.",
-    deprecationChain: ['document.static_html'],
   },
   effectiveConnectionType: {
     canonicalName: 'network.connection.effective_type',
@@ -10646,6 +10639,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
+  },
+  'page.server_rendering': {
+    canonicalName: 'page.server_rendering',
+    type: 'string',
+    brief:
+      'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
+    deprecationChain: ['page.server_rendering'],
   },
   'params.<key>': {
     canonicalName: 'params.<key>',
