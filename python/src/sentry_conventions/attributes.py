@@ -26555,6 +26555,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(
                 version="next",
+                prs=[739],
                 description="Removed next_trace from the examples and enum_values, because no SDK sets it",
             ),
             ChangelogEntry(
