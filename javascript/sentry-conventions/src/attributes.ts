@@ -6797,7 +6797,7 @@ export type DJANGO_MIDDLEWARE_NAME_TYPE = string;
 // Path: model/attributes/document/document__static_html.json
 
 /**
- * Set on a pageload span when the server rendered the document's HTML before the request, either fully or partly. `document.static_html`
+ * Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then. `document.static_html`
  *
  * Attribute Value Type: `string` {@link DOCUMENT_STATIC_HTML_TYPE}
  *
@@ -27260,7 +27260,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'document.static_html': {
     brief:
-      "Set on a pageload span when the server rendered the document's HTML before the request, either fully or partly.",
+      "Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then.",
     type: 'string',
     keys: ['document.static_html'],
     applyScrubbing: {

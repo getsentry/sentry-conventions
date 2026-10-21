@@ -1,6 +1,6 @@
 {
   "key": "document.static_html",
-  "brief": "Set on a pageload span when the server rendered the document's HTML before the request, either fully or partly.",
+  "brief": "Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"

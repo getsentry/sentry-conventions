@@ -4278,7 +4278,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/document/document__static_html.json
     DOCUMENT_STATIC_HTML: Literal["document.static_html"] = "document.static_html"
-    """Set on a pageload span when the server rendered the document's HTML before the request, either fully or partly.
+    """Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then.
 
     Type: str
     Apply Scrubbing: manual
@@ -17822,7 +17822,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "document.static_html": AttributeMetadata(
-        brief="Set on a pageload span when the server rendered the document's HTML before the request, either fully or partly.",
+        brief="Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then.",
         type=AttributeType.STRING,
         keys=("document.static_html",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
