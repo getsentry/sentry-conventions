@@ -3158,9 +3158,9 @@ export const SEARCH_MESSAGING__BULLMQ__JOB__KEY = 'messaging.bullmq.job.key';
 export const SEARCH_MESSAGING__BULLMQ__JOB__NAME = 'messaging.bullmq.job.name';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP}. `messaging.bullmq.job.processed.timestamp`
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP}. `messaging.bullmq.job.processed_timestamp`
  */
-export const SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED__TIMESTAMP = 'messaging.bullmq.job.processed.timestamp';
+export const SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED_TIMESTAMP = 'messaging.bullmq.job.processed_timestamp';
 
 /**
  * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_SCHEDULER_ID}. `messaging.bullmq.job.scheduler.id`
@@ -3193,9 +3193,9 @@ export const SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__LIMIT = 'messaging.bullmq.q
 export const SEARCH_MESSAGING__BULLMQ__QUEUE__DRAIN__DELAY = 'messaging.bullmq.queue.drain.delay';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH}. `messaging.bullmq.queue.event.max.length`
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH}. `messaging.bullmq.queue.event.max_length`
  */
-export const SEARCH_MESSAGING__BULLMQ__QUEUE__EVENT__MAX__LENGTH = 'messaging.bullmq.queue.event.max.length';
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__EVENT__MAX_LENGTH = 'messaging.bullmq.queue.event.max_length';
 
 /**
  * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_GRACE}. `messaging.bullmq.queue.grace`
@@ -3208,24 +3208,24 @@ export const SEARCH_MESSAGING__BULLMQ__QUEUE__GRACE = 'messaging.bullmq.queue.gr
 export const SEARCH_MESSAGING__BULLMQ__QUEUE__JOBS__STATE = 'messaging.bullmq.queue.jobs.state';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_RATE_LIMIT}. `messaging.bullmq.queue.rate.limit`
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_RATE_LIMIT}. `messaging.bullmq.queue.rate_limit`
  */
-export const SEARCH_MESSAGING__BULLMQ__QUEUE__RATE__LIMIT = 'messaging.bullmq.queue.rate.limit';
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__RATE_LIMIT = 'messaging.bullmq.queue.rate_limit';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE}. `messaging.bullmq.worker.do.not.wait.active`
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE}. `messaging.bullmq.worker.do_not_wait_active`
  */
-export const SEARCH_MESSAGING__BULLMQ__WORKER__DO__NOT__WAIT__ACTIVE = 'messaging.bullmq.worker.do.not.wait.active';
+export const SEARCH_MESSAGING__BULLMQ__WORKER__DO_NOT_WAIT_ACTIVE = 'messaging.bullmq.worker.do_not_wait_active';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_FORCE_CLOSE}. `messaging.bullmq.worker.force.close`
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_FORCE_CLOSE}. `messaging.bullmq.worker.force_close`
  */
-export const SEARCH_MESSAGING__BULLMQ__WORKER__FORCE__CLOSE = 'messaging.bullmq.worker.force.close';
+export const SEARCH_MESSAGING__BULLMQ__WORKER__FORCE_CLOSE = 'messaging.bullmq.worker.force_close';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS}. `messaging.bullmq.worker.jobs.to.extend.locks`
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS}. `messaging.bullmq.worker.jobs_to_extend_locks`
  */
-export const SEARCH_MESSAGING__BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS = 'messaging.bullmq.worker.jobs.to.extend.locks';
+export const SEARCH_MESSAGING__BULLMQ__WORKER__JOBS_TO_EXTEND_LOCKS = 'messaging.bullmq.worker.jobs_to_extend_locks';
 
 /**
  * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_NAME}. `messaging.bullmq.worker.name`
@@ -3233,14 +3233,14 @@ export const SEARCH_MESSAGING__BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS = 'messag
 export const SEARCH_MESSAGING__BULLMQ__WORKER__NAME = 'messaging.bullmq.worker.name';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_RATE_LIMIT}. `messaging.bullmq.worker.rate.limit`
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_RATE_LIMIT}. `messaging.bullmq.worker.rate_limit`
  */
-export const SEARCH_MESSAGING__BULLMQ__WORKER__RATE__LIMIT = 'messaging.bullmq.worker.rate.limit';
+export const SEARCH_MESSAGING__BULLMQ__WORKER__RATE_LIMIT = 'messaging.bullmq.worker.rate_limit';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_STALLED_JOBS}. `messaging.bullmq.worker.stalled.jobs`
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_STALLED_JOBS}. `messaging.bullmq.worker.stalled_jobs`
  */
-export const SEARCH_MESSAGING__BULLMQ__WORKER__STALLED__JOBS = 'messaging.bullmq.worker.stalled.jobs';
+export const SEARCH_MESSAGING__BULLMQ__WORKER__STALLED_JOBS = 'messaging.bullmq.worker.stalled_jobs';
 
 /**
  * Search name for {@link attributes.MESSAGING_CLIENT_ID}. `messaging.client.id`
@@ -5803,23 +5803,23 @@ export type AttributeSearchName =
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__IDS
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__KEY
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__NAME
-  | typeof SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED__TIMESTAMP
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED_TIMESTAMP
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__SCHEDULER__ID
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__STATE
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__TYPE
   | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__COUNT
   | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__LIMIT
   | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__DRAIN__DELAY
-  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__EVENT__MAX__LENGTH
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__EVENT__MAX_LENGTH
   | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__GRACE
   | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__JOBS__STATE
-  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__RATE__LIMIT
-  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__DO__NOT__WAIT__ACTIVE
-  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__FORCE__CLOSE
-  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__RATE_LIMIT
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__DO_NOT_WAIT_ACTIVE
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__FORCE_CLOSE
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__JOBS_TO_EXTEND_LOCKS
   | typeof SEARCH_MESSAGING__BULLMQ__WORKER__NAME
-  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__RATE__LIMIT
-  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__STALLED__JOBS
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__RATE_LIMIT
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__STALLED_JOBS
   | typeof SEARCH_MESSAGING__CLIENT__ID
   | typeof SEARCH_MESSAGING__CONVERSATION_ID
   | typeof SEARCH_MESSAGING__DESTINATION
@@ -9883,11 +9883,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.',
     deprecationChain: ['messaging.bullmq.job.name'],
   },
-  'messaging.bullmq.job.processed.timestamp': {
-    canonicalName: 'messaging.bullmq.job.processed.timestamp',
+  'messaging.bullmq.job.processed_timestamp': {
+    canonicalName: 'messaging.bullmq.job.processed_timestamp',
     type: 'integer',
     brief: 'The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.',
-    deprecationChain: ['messaging.bullmq.job.processed.timestamp'],
+    deprecationChain: ['messaging.bullmq.job.processed_timestamp'],
   },
   'messaging.bullmq.job.scheduler.id': {
     canonicalName: 'messaging.bullmq.job.scheduler.id',
@@ -9925,11 +9925,11 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Whether Queue.drain() also removes the delayed BullMQ jobs.',
     deprecationChain: ['messaging.bullmq.queue.drain.delay'],
   },
-  'messaging.bullmq.queue.event.max.length': {
-    canonicalName: 'messaging.bullmq.queue.event.max.length',
+  'messaging.bullmq.queue.event.max_length': {
+    canonicalName: 'messaging.bullmq.queue.event.max_length',
     type: 'integer',
     brief: 'The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.',
-    deprecationChain: ['messaging.bullmq.queue.event.max.length'],
+    deprecationChain: ['messaging.bullmq.queue.event.max_length'],
   },
   'messaging.bullmq.queue.grace': {
     canonicalName: 'messaging.bullmq.queue.grace',
@@ -9943,29 +9943,29 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The BullMQ job state that the queue job count metric counts.',
     deprecationChain: ['messaging.bullmq.queue.jobs.state'],
   },
-  'messaging.bullmq.queue.rate.limit': {
-    canonicalName: 'messaging.bullmq.queue.rate.limit',
+  'messaging.bullmq.queue.rate_limit': {
+    canonicalName: 'messaging.bullmq.queue.rate_limit',
     type: 'integer',
     brief: 'The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.',
-    deprecationChain: ['messaging.bullmq.queue.rate.limit'],
+    deprecationChain: ['messaging.bullmq.queue.rate_limit'],
   },
-  'messaging.bullmq.worker.do.not.wait.active': {
-    canonicalName: 'messaging.bullmq.worker.do.not.wait.active',
+  'messaging.bullmq.worker.do_not_wait_active': {
+    canonicalName: 'messaging.bullmq.worker.do_not_wait_active',
     type: 'boolean',
     brief: 'Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.',
-    deprecationChain: ['messaging.bullmq.worker.do.not.wait.active'],
+    deprecationChain: ['messaging.bullmq.worker.do_not_wait_active'],
   },
-  'messaging.bullmq.worker.force.close': {
-    canonicalName: 'messaging.bullmq.worker.force.close',
+  'messaging.bullmq.worker.force_close': {
+    canonicalName: 'messaging.bullmq.worker.force_close',
     type: 'boolean',
     brief: 'Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.',
-    deprecationChain: ['messaging.bullmq.worker.force.close'],
+    deprecationChain: ['messaging.bullmq.worker.force_close'],
   },
-  'messaging.bullmq.worker.jobs.to.extend.locks': {
-    canonicalName: 'messaging.bullmq.worker.jobs.to.extend.locks',
+  'messaging.bullmq.worker.jobs_to_extend_locks': {
+    canonicalName: 'messaging.bullmq.worker.jobs_to_extend_locks',
     type: 'string[]',
     brief: 'The IDs of the BullMQ jobs whose locks the Worker extends.',
-    deprecationChain: ['messaging.bullmq.worker.jobs.to.extend.locks'],
+    deprecationChain: ['messaging.bullmq.worker.jobs_to_extend_locks'],
   },
   'messaging.bullmq.worker.name': {
     canonicalName: 'messaging.bullmq.worker.name',
@@ -9973,17 +9973,17 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The name that the user gives to the BullMQ Worker in its options.',
     deprecationChain: ['messaging.bullmq.worker.name'],
   },
-  'messaging.bullmq.worker.rate.limit': {
-    canonicalName: 'messaging.bullmq.worker.rate.limit',
+  'messaging.bullmq.worker.rate_limit': {
+    canonicalName: 'messaging.bullmq.worker.rate_limit',
     type: 'integer',
     brief: 'The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.',
-    deprecationChain: ['messaging.bullmq.worker.rate.limit'],
+    deprecationChain: ['messaging.bullmq.worker.rate_limit'],
   },
-  'messaging.bullmq.worker.stalled.jobs': {
-    canonicalName: 'messaging.bullmq.worker.stalled.jobs',
+  'messaging.bullmq.worker.stalled_jobs': {
+    canonicalName: 'messaging.bullmq.worker.stalled_jobs',
     type: 'string[]',
     brief: 'The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.',
-    deprecationChain: ['messaging.bullmq.worker.stalled.jobs'],
+    deprecationChain: ['messaging.bullmq.worker.stalled_jobs'],
   },
   'messaging.client.id': {
     canonicalName: 'messaging.client.id',

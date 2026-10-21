@@ -1,5 +1,5 @@
 {
-  "key": "messaging.bullmq.job.processed.timestamp",
+  "key": "messaging.bullmq.job.processed_timestamp",
   "brief": "The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.",
   "type": "integer",
   "apply_scrubbing": {
@@ -15,7 +15,7 @@
     {
       "version": "next",
       "prs": [690],
-      "description": "Added messaging.bullmq.job.processed.timestamp attribute"
+      "description": "Added messaging.bullmq.job.processed_timestamp attribute"
     }
   ]
 }

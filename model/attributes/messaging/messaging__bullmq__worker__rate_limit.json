@@ -1,5 +1,5 @@
 {
-  "key": "messaging.bullmq.worker.rate.limit",
+  "key": "messaging.bullmq.worker.rate_limit",
   "brief": "The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.",
   "type": "integer",
   "apply_scrubbing": {
@@ -15,7 +15,7 @@
     {
       "version": "next",
       "prs": [690],
-      "description": "Added messaging.bullmq.worker.rate.limit attribute"
+      "description": "Added messaging.bullmq.worker.rate_limit attribute"
     }
   ]
 }

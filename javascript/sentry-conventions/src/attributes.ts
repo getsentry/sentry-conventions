@@ -12484,10 +12484,10 @@ export const MESSAGING_BULLMQ_JOB_NAME = 'messaging.bullmq.job.name';
  */
 export type MESSAGING_BULLMQ_JOB_NAME_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__bullmq__job__processed__timestamp.json
+// Path: model/attributes/messaging/messaging__bullmq__job__processed_timestamp.json
 
 /**
- * The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job. `messaging.bullmq.job.processed.timestamp`
+ * The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job. `messaging.bullmq.job.processed_timestamp`
  *
  * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE}
  *
@@ -12498,10 +12498,10 @@ export type MESSAGING_BULLMQ_JOB_NAME_TYPE = string;
  *
  * @example 1791184722281
  */
-export const MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP = 'messaging.bullmq.job.processed.timestamp';
+export const MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP = 'messaging.bullmq.job.processed_timestamp';
 
 /**
- * Type for {@link MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP} messaging.bullmq.job.processed.timestamp
+ * Type for {@link MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP} messaging.bullmq.job.processed_timestamp
  */
 export type MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE = number;
 
@@ -12634,10 +12634,10 @@ export const MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY = 'messaging.bullmq.queue.drain.
  */
 export type MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY_TYPE = boolean;
 
-// Path: model/attributes/messaging/messaging__bullmq__queue__event__max__length.json
+// Path: model/attributes/messaging/messaging__bullmq__queue__event__max_length.json
 
 /**
- * The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream. `messaging.bullmq.queue.event.max.length`
+ * The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream. `messaging.bullmq.queue.event.max_length`
  *
  * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE}
  *
@@ -12648,10 +12648,10 @@ export type MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY_TYPE = boolean;
  *
  * @example 10000
  */
-export const MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH = 'messaging.bullmq.queue.event.max.length';
+export const MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH = 'messaging.bullmq.queue.event.max_length';
 
 /**
- * Type for {@link MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH} messaging.bullmq.queue.event.max.length
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH} messaging.bullmq.queue.event.max_length
  */
 export type MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE = number;
 
@@ -12699,10 +12699,10 @@ export const MESSAGING_BULLMQ_QUEUE_JOBS_STATE = 'messaging.bullmq.queue.jobs.st
  */
 export type MESSAGING_BULLMQ_QUEUE_JOBS_STATE_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__bullmq__queue__rate__limit.json
+// Path: model/attributes/messaging/messaging__bullmq__queue__rate_limit.json
 
 /**
- * The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue. `messaging.bullmq.queue.rate.limit`
+ * The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue. `messaging.bullmq.queue.rate_limit`
  *
  * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE}
  *
@@ -12713,17 +12713,17 @@ export type MESSAGING_BULLMQ_QUEUE_JOBS_STATE_TYPE = string;
  *
  * @example 5000
  */
-export const MESSAGING_BULLMQ_QUEUE_RATE_LIMIT = 'messaging.bullmq.queue.rate.limit';
+export const MESSAGING_BULLMQ_QUEUE_RATE_LIMIT = 'messaging.bullmq.queue.rate_limit';
 
 /**
- * Type for {@link MESSAGING_BULLMQ_QUEUE_RATE_LIMIT} messaging.bullmq.queue.rate.limit
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_RATE_LIMIT} messaging.bullmq.queue.rate_limit
  */
 export type MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE = number;
 
-// Path: model/attributes/messaging/messaging__bullmq__worker__do__not__wait__active.json
+// Path: model/attributes/messaging/messaging__bullmq__worker__do_not_wait_active.json
 
 /**
- * Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish. `messaging.bullmq.worker.do.not.wait.active`
+ * Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish. `messaging.bullmq.worker.do_not_wait_active`
  *
  * Attribute Value Type: `boolean` {@link MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE}
  *
@@ -12734,17 +12734,17 @@ export type MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE = number;
  *
  * @example false
  */
-export const MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE = 'messaging.bullmq.worker.do.not.wait.active';
+export const MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE = 'messaging.bullmq.worker.do_not_wait_active';
 
 /**
- * Type for {@link MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE} messaging.bullmq.worker.do.not.wait.active
+ * Type for {@link MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE} messaging.bullmq.worker.do_not_wait_active
  */
 export type MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE = boolean;
 
-// Path: model/attributes/messaging/messaging__bullmq__worker__force__close.json
+// Path: model/attributes/messaging/messaging__bullmq__worker__force_close.json
 
 /**
- * Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish. `messaging.bullmq.worker.force.close`
+ * Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish. `messaging.bullmq.worker.force_close`
  *
  * Attribute Value Type: `boolean` {@link MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE}
  *
@@ -12755,17 +12755,17 @@ export type MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE = boolean;
  *
  * @example false
  */
-export const MESSAGING_BULLMQ_WORKER_FORCE_CLOSE = 'messaging.bullmq.worker.force.close';
+export const MESSAGING_BULLMQ_WORKER_FORCE_CLOSE = 'messaging.bullmq.worker.force_close';
 
 /**
- * Type for {@link MESSAGING_BULLMQ_WORKER_FORCE_CLOSE} messaging.bullmq.worker.force.close
+ * Type for {@link MESSAGING_BULLMQ_WORKER_FORCE_CLOSE} messaging.bullmq.worker.force_close
  */
 export type MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE = boolean;
 
-// Path: model/attributes/messaging/messaging__bullmq__worker__jobs__to__extend__locks.json
+// Path: model/attributes/messaging/messaging__bullmq__worker__jobs_to_extend_locks.json
 
 /**
- * The IDs of the BullMQ jobs whose locks the Worker extends. `messaging.bullmq.worker.jobs.to.extend.locks`
+ * The IDs of the BullMQ jobs whose locks the Worker extends. `messaging.bullmq.worker.jobs_to_extend_locks`
  *
  * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE}
  *
@@ -12776,10 +12776,10 @@ export type MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE = boolean;
  *
  * @example ["1","2"]
  */
-export const MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS = 'messaging.bullmq.worker.jobs.to.extend.locks';
+export const MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS = 'messaging.bullmq.worker.jobs_to_extend_locks';
 
 /**
- * Type for {@link MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS} messaging.bullmq.worker.jobs.to.extend.locks
+ * Type for {@link MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS} messaging.bullmq.worker.jobs_to_extend_locks
  */
 export type MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE = Array<string>;
 
@@ -12804,10 +12804,10 @@ export const MESSAGING_BULLMQ_WORKER_NAME = 'messaging.bullmq.worker.name';
  */
 export type MESSAGING_BULLMQ_WORKER_NAME_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__bullmq__worker__rate__limit.json
+// Path: model/attributes/messaging/messaging__bullmq__worker__rate_limit.json
 
 /**
- * The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker. `messaging.bullmq.worker.rate.limit`
+ * The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker. `messaging.bullmq.worker.rate_limit`
  *
  * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE}
  *
@@ -12818,17 +12818,17 @@ export type MESSAGING_BULLMQ_WORKER_NAME_TYPE = string;
  *
  * @example 5000
  */
-export const MESSAGING_BULLMQ_WORKER_RATE_LIMIT = 'messaging.bullmq.worker.rate.limit';
+export const MESSAGING_BULLMQ_WORKER_RATE_LIMIT = 'messaging.bullmq.worker.rate_limit';
 
 /**
- * Type for {@link MESSAGING_BULLMQ_WORKER_RATE_LIMIT} messaging.bullmq.worker.rate.limit
+ * Type for {@link MESSAGING_BULLMQ_WORKER_RATE_LIMIT} messaging.bullmq.worker.rate_limit
  */
 export type MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE = number;
 
-// Path: model/attributes/messaging/messaging__bullmq__worker__stalled__jobs.json
+// Path: model/attributes/messaging/messaging__bullmq__worker__stalled_jobs.json
 
 /**
- * The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state. `messaging.bullmq.worker.stalled.jobs`
+ * The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state. `messaging.bullmq.worker.stalled_jobs`
  *
  * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE}
  *
@@ -12839,10 +12839,10 @@ export type MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE = number;
  *
  * @example ["1","2"]
  */
-export const MESSAGING_BULLMQ_WORKER_STALLED_JOBS = 'messaging.bullmq.worker.stalled.jobs';
+export const MESSAGING_BULLMQ_WORKER_STALLED_JOBS = 'messaging.bullmq.worker.stalled_jobs';
 
 /**
- * Type for {@link MESSAGING_BULLMQ_WORKER_STALLED_JOBS} messaging.bullmq.worker.stalled.jobs
+ * Type for {@link MESSAGING_BULLMQ_WORKER_STALLED_JOBS} messaging.bullmq.worker.stalled_jobs
  */
 export type MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE = Array<string>;
 
@@ -21047,23 +21047,23 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.bullmq.job.ids': 'string[]',
   'messaging.bullmq.job.key': 'string',
   'messaging.bullmq.job.name': 'string',
-  'messaging.bullmq.job.processed.timestamp': 'integer',
+  'messaging.bullmq.job.processed_timestamp': 'integer',
   'messaging.bullmq.job.scheduler.id': 'string',
   'messaging.bullmq.job.state': 'string',
   'messaging.bullmq.job.type': 'string',
   'messaging.bullmq.queue.clean.count': 'integer',
   'messaging.bullmq.queue.clean.limit': 'integer',
   'messaging.bullmq.queue.drain.delay': 'boolean',
-  'messaging.bullmq.queue.event.max.length': 'integer',
+  'messaging.bullmq.queue.event.max_length': 'integer',
   'messaging.bullmq.queue.grace': 'integer',
   'messaging.bullmq.queue.jobs.state': 'string',
-  'messaging.bullmq.queue.rate.limit': 'integer',
-  'messaging.bullmq.worker.do.not.wait.active': 'boolean',
-  'messaging.bullmq.worker.force.close': 'boolean',
-  'messaging.bullmq.worker.jobs.to.extend.locks': 'string[]',
+  'messaging.bullmq.queue.rate_limit': 'integer',
+  'messaging.bullmq.worker.do_not_wait_active': 'boolean',
+  'messaging.bullmq.worker.force_close': 'boolean',
+  'messaging.bullmq.worker.jobs_to_extend_locks': 'string[]',
   'messaging.bullmq.worker.name': 'string',
-  'messaging.bullmq.worker.rate.limit': 'integer',
-  'messaging.bullmq.worker.stalled.jobs': 'string[]',
+  'messaging.bullmq.worker.rate_limit': 'integer',
+  'messaging.bullmq.worker.stalled_jobs': 'string[]',
   'messaging.client.id': 'string',
   'messaging.conversation_id': 'string',
   'messaging.destination': 'string',
@@ -31423,10 +31423,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Also set on the BullMQ job metrics.',
     ],
   },
-  'messaging.bullmq.job.processed.timestamp': {
+  'messaging.bullmq.job.processed_timestamp': {
     brief: 'The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.',
     type: 'integer',
-    keys: ['messaging.bullmq.job.processed.timestamp'],
+    keys: ['messaging.bullmq.job.processed_timestamp'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31435,7 +31435,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1791184722281,
     examples: [1791184722281],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.job.processed.timestamp attribute' },
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.job.processed_timestamp attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.processed.timestamp` attribute of BullMQ's telemetry interface.",
@@ -31538,10 +31538,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "The Sentry SDK sets this attribute from the `bullmq.queue.drain.delay` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.queue.event.max.length': {
+  'messaging.bullmq.queue.event.max_length': {
     brief: 'The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.',
     type: 'integer',
-    keys: ['messaging.bullmq.queue.event.max.length'],
+    keys: ['messaging.bullmq.queue.event.max_length'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31550,7 +31550,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10000,
     examples: [10000],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.event.max.length attribute' },
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.event.max_length attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.event.max.length` attribute of BullMQ's telemetry interface.",
@@ -31589,10 +31589,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'Set on the BullMQ queue job count metric.',
     ],
   },
-  'messaging.bullmq.queue.rate.limit': {
+  'messaging.bullmq.queue.rate_limit': {
     brief: 'The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.',
     type: 'integer',
-    keys: ['messaging.bullmq.queue.rate.limit'],
+    keys: ['messaging.bullmq.queue.rate_limit'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31600,15 +31600,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     examples: [5000],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.rate.limit attribute' }],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.rate_limit attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.rate.limit` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.worker.do.not.wait.active': {
+  'messaging.bullmq.worker.do_not_wait_active': {
     brief: 'Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.',
     type: 'boolean',
-    keys: ['messaging.bullmq.worker.do.not.wait.active'],
+    keys: ['messaging.bullmq.worker.do_not_wait_active'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31617,16 +31617,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     examples: [false],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.do.not.wait.active attribute' },
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.do_not_wait_active attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.do.not.wait.active` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.worker.force.close': {
+  'messaging.bullmq.worker.force_close': {
     brief: 'Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.',
     type: 'boolean',
-    keys: ['messaging.bullmq.worker.force.close'],
+    keys: ['messaging.bullmq.worker.force_close'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31634,15 +31634,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: false,
     examples: [false],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.force.close attribute' }],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.force_close attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.worker.jobs.to.extend.locks': {
+  'messaging.bullmq.worker.jobs_to_extend_locks': {
     brief: 'The IDs of the BullMQ jobs whose locks the Worker extends.',
     type: 'string[]',
-    keys: ['messaging.bullmq.worker.jobs.to.extend.locks'],
+    keys: ['messaging.bullmq.worker.jobs_to_extend_locks'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31651,7 +31651,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['1', '2'],
     examples: [['1', '2']],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.jobs.to.extend.locks attribute' },
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.jobs_to_extend_locks attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.jobs.to.extend.locks` attribute of BullMQ's telemetry interface.",
@@ -31673,10 +31673,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "The Sentry SDK sets this attribute from the `bullmq.worker.name` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.worker.rate.limit': {
+  'messaging.bullmq.worker.rate_limit': {
     brief: 'The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.',
     type: 'integer',
-    keys: ['messaging.bullmq.worker.rate.limit'],
+    keys: ['messaging.bullmq.worker.rate_limit'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31684,15 +31684,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     examples: [5000],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.rate.limit attribute' }],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.rate_limit attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.rate.limit` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.worker.stalled.jobs': {
+  'messaging.bullmq.worker.stalled_jobs': {
     brief: 'The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.',
     type: 'string[]',
-    keys: ['messaging.bullmq.worker.stalled.jobs'],
+    keys: ['messaging.bullmq.worker.stalled_jobs'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -31700,7 +31700,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['1', '2'],
     examples: [['1', '2']],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.stalled.jobs attribute' }],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.stalled_jobs attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface.",
     ],

@@ -7500,10 +7500,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "generate-report"
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__job__processed__timestamp.json
+    # Path: model/attributes/messaging/messaging__bullmq__job__processed_timestamp.json
     MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP: Literal[
-        "messaging.bullmq.job.processed.timestamp"
-    ] = "messaging.bullmq.job.processed.timestamp"
+        "messaging.bullmq.job.processed_timestamp"
+    ] = "messaging.bullmq.job.processed_timestamp"
     """The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.
 
     Type: int
@@ -7594,10 +7594,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: true
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__queue__event__max__length.json
+    # Path: model/attributes/messaging/messaging__bullmq__queue__event__max_length.json
     MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH: Literal[
-        "messaging.bullmq.queue.event.max.length"
-    ] = "messaging.bullmq.queue.event.max.length"
+        "messaging.bullmq.queue.event.max_length"
+    ] = "messaging.bullmq.queue.event.max_length"
     """The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.
 
     Type: int
@@ -7635,9 +7635,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "completed"
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__queue__rate__limit.json
-    MESSAGING_BULLMQ_QUEUE_RATE_LIMIT: Literal["messaging.bullmq.queue.rate.limit"] = (
-        "messaging.bullmq.queue.rate.limit"
+    # Path: model/attributes/messaging/messaging__bullmq__queue__rate_limit.json
+    MESSAGING_BULLMQ_QUEUE_RATE_LIMIT: Literal["messaging.bullmq.queue.rate_limit"] = (
+        "messaging.bullmq.queue.rate_limit"
     )
     """The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.
 
@@ -7648,10 +7648,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5000
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__worker__do__not__wait__active.json
+    # Path: model/attributes/messaging/messaging__bullmq__worker__do_not_wait_active.json
     MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE: Literal[
-        "messaging.bullmq.worker.do.not.wait.active"
-    ] = "messaging.bullmq.worker.do.not.wait.active"
+        "messaging.bullmq.worker.do_not_wait_active"
+    ] = "messaging.bullmq.worker.do_not_wait_active"
     """Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.
 
     Type: bool
@@ -7661,10 +7661,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__worker__force__close.json
+    # Path: model/attributes/messaging/messaging__bullmq__worker__force_close.json
     MESSAGING_BULLMQ_WORKER_FORCE_CLOSE: Literal[
-        "messaging.bullmq.worker.force.close"
-    ] = "messaging.bullmq.worker.force.close"
+        "messaging.bullmq.worker.force_close"
+    ] = "messaging.bullmq.worker.force_close"
     """Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.
 
     Type: bool
@@ -7674,10 +7674,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__worker__jobs__to__extend__locks.json
+    # Path: model/attributes/messaging/messaging__bullmq__worker__jobs_to_extend_locks.json
     MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS: Literal[
-        "messaging.bullmq.worker.jobs.to.extend.locks"
-    ] = "messaging.bullmq.worker.jobs.to.extend.locks"
+        "messaging.bullmq.worker.jobs_to_extend_locks"
+    ] = "messaging.bullmq.worker.jobs_to_extend_locks"
     """The IDs of the BullMQ jobs whose locks the Worker extends.
 
     Type: List[str]
@@ -7700,10 +7700,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "email-worker"
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__worker__rate__limit.json
+    # Path: model/attributes/messaging/messaging__bullmq__worker__rate_limit.json
     MESSAGING_BULLMQ_WORKER_RATE_LIMIT: Literal[
-        "messaging.bullmq.worker.rate.limit"
-    ] = "messaging.bullmq.worker.rate.limit"
+        "messaging.bullmq.worker.rate_limit"
+    ] = "messaging.bullmq.worker.rate_limit"
     """The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.
 
     Type: int
@@ -7713,10 +7713,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5000
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__worker__stalled__jobs.json
+    # Path: model/attributes/messaging/messaging__bullmq__worker__stalled_jobs.json
     MESSAGING_BULLMQ_WORKER_STALLED_JOBS: Literal[
-        "messaging.bullmq.worker.stalled.jobs"
-    ] = "messaging.bullmq.worker.stalled.jobs"
+        "messaging.bullmq.worker.stalled_jobs"
+    ] = "messaging.bullmq.worker.stalled_jobs"
     """The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.
 
     Type: List[str]
@@ -22661,10 +22661,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Also set on the BullMQ job metrics.",
         ],
     ),
-    "messaging.bullmq.job.processed.timestamp": AttributeMetadata(
+    "messaging.bullmq.job.processed_timestamp": AttributeMetadata(
         brief="The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.",
         type=AttributeType.INTEGER,
-        keys=("messaging.bullmq.job.processed.timestamp",),
+        keys=("messaging.bullmq.job.processed_timestamp",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22674,7 +22674,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[690],
-                description="Added messaging.bullmq.job.processed.timestamp attribute",
+                description="Added messaging.bullmq.job.processed_timestamp attribute",
             ),
         ],
         additional_context=[
@@ -22802,10 +22802,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "The Sentry SDK sets this attribute from the `bullmq.queue.drain.delay` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.queue.event.max.length": AttributeMetadata(
+    "messaging.bullmq.queue.event.max_length": AttributeMetadata(
         brief="The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.",
         type=AttributeType.INTEGER,
-        keys=("messaging.bullmq.queue.event.max.length",),
+        keys=("messaging.bullmq.queue.event.max_length",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22815,7 +22815,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[690],
-                description="Added messaging.bullmq.queue.event.max.length attribute",
+                description="Added messaging.bullmq.queue.event.max_length attribute",
             ),
         ],
         additional_context=[
@@ -22863,10 +22863,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Set on the BullMQ queue job count metric.",
         ],
     ),
-    "messaging.bullmq.queue.rate.limit": AttributeMetadata(
+    "messaging.bullmq.queue.rate_limit": AttributeMetadata(
         brief="The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.",
         type=AttributeType.INTEGER,
-        keys=("messaging.bullmq.queue.rate.limit",),
+        keys=("messaging.bullmq.queue.rate_limit",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22876,17 +22876,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[690],
-                description="Added messaging.bullmq.queue.rate.limit attribute",
+                description="Added messaging.bullmq.queue.rate_limit attribute",
             ),
         ],
         additional_context=[
             "The Sentry SDK sets this attribute from the `bullmq.queue.rate.limit` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.worker.do.not.wait.active": AttributeMetadata(
+    "messaging.bullmq.worker.do_not_wait_active": AttributeMetadata(
         brief="Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.",
         type=AttributeType.BOOLEAN,
-        keys=("messaging.bullmq.worker.do.not.wait.active",),
+        keys=("messaging.bullmq.worker.do_not_wait_active",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22896,17 +22896,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[690],
-                description="Added messaging.bullmq.worker.do.not.wait.active attribute",
+                description="Added messaging.bullmq.worker.do_not_wait_active attribute",
             ),
         ],
         additional_context=[
             "The Sentry SDK sets this attribute from the `bullmq.worker.do.not.wait.active` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.worker.force.close": AttributeMetadata(
+    "messaging.bullmq.worker.force_close": AttributeMetadata(
         brief="Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.",
         type=AttributeType.BOOLEAN,
-        keys=("messaging.bullmq.worker.force.close",),
+        keys=("messaging.bullmq.worker.force_close",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22916,17 +22916,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[690],
-                description="Added messaging.bullmq.worker.force.close attribute",
+                description="Added messaging.bullmq.worker.force_close attribute",
             ),
         ],
         additional_context=[
             "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.worker.jobs.to.extend.locks": AttributeMetadata(
+    "messaging.bullmq.worker.jobs_to_extend_locks": AttributeMetadata(
         brief="The IDs of the BullMQ jobs whose locks the Worker extends.",
         type=AttributeType.STRING_ARRAY,
-        keys=("messaging.bullmq.worker.jobs.to.extend.locks",),
+        keys=("messaging.bullmq.worker.jobs_to_extend_locks",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22936,7 +22936,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[690],
-                description="Added messaging.bullmq.worker.jobs.to.extend.locks attribute",
+                description="Added messaging.bullmq.worker.jobs_to_extend_locks attribute",
             ),
         ],
         additional_context=[
@@ -22963,10 +22963,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "The Sentry SDK sets this attribute from the `bullmq.worker.name` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.worker.rate.limit": AttributeMetadata(
+    "messaging.bullmq.worker.rate_limit": AttributeMetadata(
         brief="The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.",
         type=AttributeType.INTEGER,
-        keys=("messaging.bullmq.worker.rate.limit",),
+        keys=("messaging.bullmq.worker.rate_limit",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22976,17 +22976,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[690],
-                description="Added messaging.bullmq.worker.rate.limit attribute",
+                description="Added messaging.bullmq.worker.rate_limit attribute",
             ),
         ],
         additional_context=[
             "The Sentry SDK sets this attribute from the `bullmq.worker.rate.limit` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.worker.stalled.jobs": AttributeMetadata(
+    "messaging.bullmq.worker.stalled_jobs": AttributeMetadata(
         brief="The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.",
         type=AttributeType.STRING_ARRAY,
-        keys=("messaging.bullmq.worker.stalled.jobs",),
+        keys=("messaging.bullmq.worker.stalled_jobs",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -22996,7 +22996,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[690],
-                description="Added messaging.bullmq.worker.stalled.jobs attribute",
+                description="Added messaging.bullmq.worker.stalled_jobs attribute",
             ),
         ],
         additional_context=[
@@ -29784,23 +29784,23 @@ Attributes = TypedDict(
         "messaging.bullmq.job.ids": List[str],
         "messaging.bullmq.job.key": str,
         "messaging.bullmq.job.name": str,
-        "messaging.bullmq.job.processed.timestamp": int,
+        "messaging.bullmq.job.processed_timestamp": int,
         "messaging.bullmq.job.scheduler.id": str,
         "messaging.bullmq.job.state": str,
         "messaging.bullmq.job.type": str,
         "messaging.bullmq.queue.clean.count": int,
         "messaging.bullmq.queue.clean.limit": int,
         "messaging.bullmq.queue.drain.delay": bool,
-        "messaging.bullmq.queue.event.max.length": int,
+        "messaging.bullmq.queue.event.max_length": int,
         "messaging.bullmq.queue.grace": int,
         "messaging.bullmq.queue.jobs.state": str,
-        "messaging.bullmq.queue.rate.limit": int,
-        "messaging.bullmq.worker.do.not.wait.active": bool,
-        "messaging.bullmq.worker.force.close": bool,
-        "messaging.bullmq.worker.jobs.to.extend.locks": List[str],
+        "messaging.bullmq.queue.rate_limit": int,
+        "messaging.bullmq.worker.do_not_wait_active": bool,
+        "messaging.bullmq.worker.force_close": bool,
+        "messaging.bullmq.worker.jobs_to_extend_locks": List[str],
         "messaging.bullmq.worker.name": str,
-        "messaging.bullmq.worker.rate.limit": int,
-        "messaging.bullmq.worker.stalled.jobs": List[str],
+        "messaging.bullmq.worker.rate_limit": int,
+        "messaging.bullmq.worker.stalled_jobs": List[str],
         "messaging.client.id": str,
         "messaging.conversation_id": str,
         "messaging.destination": str,

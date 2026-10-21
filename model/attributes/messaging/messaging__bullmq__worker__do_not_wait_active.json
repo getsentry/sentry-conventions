@@ -1,5 +1,5 @@
 {
-  "key": "messaging.bullmq.worker.do.not.wait.active",
+  "key": "messaging.bullmq.worker.do_not_wait_active",
   "brief": "Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.",
   "type": "boolean",
   "apply_scrubbing": {
@@ -15,7 +15,7 @@
     {
       "version": "next",
       "prs": [690],
-      "description": "Added messaging.bullmq.worker.do.not.wait.active attribute"
+      "description": "Added messaging.bullmq.worker.do_not_wait_active attribute"
     }
   ]
 }

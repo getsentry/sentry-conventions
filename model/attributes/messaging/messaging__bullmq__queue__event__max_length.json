@@ -1,5 +1,5 @@
 {
-  "key": "messaging.bullmq.queue.event.max.length",
+  "key": "messaging.bullmq.queue.event.max_length",
   "brief": "The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.",
   "type": "integer",
   "apply_scrubbing": {
@@ -15,7 +15,7 @@
     {
       "version": "next",
       "prs": [690],
-      "description": "Added messaging.bullmq.queue.event.max.length attribute"
+      "description": "Added messaging.bullmq.queue.event.max_length attribute"
     }
   ]
 }
