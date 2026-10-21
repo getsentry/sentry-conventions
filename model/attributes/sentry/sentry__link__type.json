@@ -15,7 +15,7 @@
   },
   "is_in_otel": false,
   "visibility": "public",
-  "examples": ["previous_trace", "cache_origin", "message_origin"],
+  "examples": ["previous_trace", "cache_origin", "message_origin", "server_request"],
   "enum_values": [
     {
       "value": "previous_trace",
@@ -28,6 +28,10 @@
     {
       "value": "message_origin",
       "brief": "The linked span published the queue message that this span processes."
+    },
+    {
+      "value": "server_request",
+      "brief": "The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace."
     }
   ],
   "changelog": [
@@ -35,6 +39,11 @@
       "version": "next",
       "prs": [724],
       "description": "Added message_origin to the examples, and enum_values that describe each known value"
+    },
+    {
+      "version": "next",
+      "prs": [738],
+      "description": "Added server_request to the examples and enum_values"
     },
     {
       "version": "next",

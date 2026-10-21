@@ -9949,9 +9949,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
     - `cache_origin` - The linked span wrote the cached value that this span reads.
     - `message_origin` - The linked span published the queue message that this span processes.
+    - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
     Example: "previous_trace"
     Example: "cache_origin"
     Example: "message_origin"
+    Example: "server_request"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -26546,12 +26548,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
-        examples=["previous_trace", "cache_origin", "message_origin"],
+        examples=["previous_trace", "cache_origin", "message_origin", "server_request"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[724],
                 description="Added message_origin to the examples, and enum_values that describe each known value",
+            ),
+            ChangelogEntry(
+                version="next",
+                prs=[738],
+                description="Added server_request to the examples and enum_values",
             ),
             ChangelogEntry(
                 version="next",
