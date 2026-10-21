@@ -9,8 +9,7 @@
   "visibility": "public",
   "examples": ["completed", "failed", "delayed"],
   "additional_context": [
-    "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface.",
-    "Set on the BullMQ job metrics with BullMQ 6.3.11. With BullMQ 5.79.1, `messaging.bullmq.job.status` is set instead."
+    "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value."
   ],
   "changelog": [
     {

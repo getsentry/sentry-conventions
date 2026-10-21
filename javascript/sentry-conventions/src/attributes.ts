@@ -12570,29 +12570,6 @@ export const MESSAGING_BULLMQ_JOB_STATE = 'messaging.bullmq.job.state';
  */
 export type MESSAGING_BULLMQ_JOB_STATE_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__bullmq__job__status.json
-
-/**
- * The state of the BullMQ job that a job metric counts. `messaging.bullmq.job.status`
- *
- * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_STATUS_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "completed"
- * @example "failed"
- * @example "delayed"
- */
-export const MESSAGING_BULLMQ_JOB_STATUS = 'messaging.bullmq.job.status';
-
-/**
- * Type for {@link MESSAGING_BULLMQ_JOB_STATUS} messaging.bullmq.job.status
- */
-export type MESSAGING_BULLMQ_JOB_STATUS_TYPE = string;
-
 // Path: model/attributes/messaging/messaging__bullmq__job__type.json
 
 /**
@@ -21095,7 +21072,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.bullmq.job.processed.timestamp': 'integer',
   'messaging.bullmq.job.scheduler.id': 'string',
   'messaging.bullmq.job.state': 'string',
-  'messaging.bullmq.job.status': 'string',
   'messaging.bullmq.job.type': 'string',
   'messaging.bullmq.queue.clean.count': 'integer',
   'messaging.bullmq.queue.clean.limit': 'integer',
@@ -22009,7 +21985,6 @@ export type AttributeName =
   | typeof MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP
   | typeof MESSAGING_BULLMQ_JOB_SCHEDULER_ID
   | typeof MESSAGING_BULLMQ_JOB_STATE
-  | typeof MESSAGING_BULLMQ_JOB_STATUS
   | typeof MESSAGING_BULLMQ_JOB_TYPE
   | typeof MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT
   | typeof MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT
@@ -31538,25 +31513,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['completed', 'failed', 'delayed'],
     changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.state attribute' }],
     additionalContext: [
-      "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface.",
-      'Set on the BullMQ job metrics with BullMQ 6.3.11. With BullMQ 5.79.1, `messaging.bullmq.job.status` is set instead.',
-    ],
-  },
-  'messaging.bullmq.job.status': {
-    brief: 'The state of the BullMQ job that a job metric counts.',
-    type: 'string',
-    keys: ['messaging.bullmq.job.status'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: 'completed',
-    examples: ['completed', 'failed', 'delayed'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.status attribute' }],
-    additionalContext: [
-      "The Sentry SDK sets this attribute from the `bullmq.job.status` attribute of BullMQ's telemetry interface.",
-      'Set on the BullMQ job metrics with BullMQ 5.79.1. With BullMQ 6.3.11, `messaging.bullmq.job.state` is set instead.',
+      "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value.",
     ],
   },
   'messaging.bullmq.job.type': {
@@ -37764,7 +37721,6 @@ export type Attributes = {
   [MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP]?: MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE;
   [MESSAGING_BULLMQ_JOB_SCHEDULER_ID]?: MESSAGING_BULLMQ_JOB_SCHEDULER_ID_TYPE;
   [MESSAGING_BULLMQ_JOB_STATE]?: MESSAGING_BULLMQ_JOB_STATE_TYPE;
-  [MESSAGING_BULLMQ_JOB_STATUS]?: MESSAGING_BULLMQ_JOB_STATUS_TYPE;
   [MESSAGING_BULLMQ_JOB_TYPE]?: MESSAGING_BULLMQ_JOB_TYPE_TYPE;
   [MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT]?: MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT_TYPE;
   [MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT]?: MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT_TYPE;

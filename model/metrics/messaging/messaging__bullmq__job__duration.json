@@ -5,10 +5,5 @@
   "unit": "millisecond",
   "is_in_otel": false,
   "requirement_level": "opt_in",
-  "attributes": [
-    "messaging.destination.name",
-    "messaging.bullmq.job.name",
-    "messaging.bullmq.job.status",
-    "messaging.bullmq.job.state"
-  ]
+  "attributes": ["messaging.destination.name", "messaging.bullmq.job.name", "messaging.bullmq.job.state"]
 }

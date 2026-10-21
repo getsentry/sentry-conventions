@@ -3178,11 +3178,6 @@ export const SEARCH_MESSAGING__BULLMQ__JOB__SCHEDULER__ID = 'messaging.bullmq.jo
 export const SEARCH_MESSAGING__BULLMQ__JOB__STATE = 'messaging.bullmq.job.state';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_STATUS}. `messaging.bullmq.job.status`
- */
-export const SEARCH_MESSAGING__BULLMQ__JOB__STATUS = 'messaging.bullmq.job.status';
-
-/**
  * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_TYPE}. `messaging.bullmq.job.type`
  */
 export const SEARCH_MESSAGING__BULLMQ__JOB__TYPE = 'messaging.bullmq.job.type';
@@ -5817,7 +5812,6 @@ export type AttributeSearchName =
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED__TIMESTAMP
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__SCHEDULER__ID
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__STATE
-  | typeof SEARCH_MESSAGING__BULLMQ__JOB__STATUS
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__TYPE
   | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__COUNT
   | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__LIMIT
@@ -9919,12 +9913,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The state of the BullMQ job that a job metric counts.',
     deprecationChain: ['messaging.bullmq.job.state'],
-  },
-  'messaging.bullmq.job.status': {
-    canonicalName: 'messaging.bullmq.job.status',
-    type: 'string',
-    brief: 'The state of the BullMQ job that a job metric counts.',
-    deprecationChain: ['messaging.bullmq.job.status'],
   },
   'messaging.bullmq.job.type': {
     canonicalName: 'messaging.bullmq.job.type',

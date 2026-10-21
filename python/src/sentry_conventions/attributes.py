@@ -7554,21 +7554,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "delayed"
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__job__status.json
-    MESSAGING_BULLMQ_JOB_STATUS: Literal["messaging.bullmq.job.status"] = (
-        "messaging.bullmq.job.status"
-    )
-    """The state of the BullMQ job that a job metric counts.
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "completed"
-    Example: "failed"
-    Example: "delayed"
-    """
-
     # Path: model/attributes/messaging/messaging__bullmq__job__type.json
     MESSAGING_BULLMQ_JOB_TYPE: Literal["messaging.bullmq.job.type"] = (
         "messaging.bullmq.job.type"
@@ -22767,29 +22752,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
         additional_context=[
-            "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface.",
-            "Set on the BullMQ job metrics with BullMQ 6.3.11. With BullMQ 5.79.1, `messaging.bullmq.job.status` is set instead.",
-        ],
-    ),
-    "messaging.bullmq.job.status": AttributeMetadata(
-        brief="The state of the BullMQ job that a job metric counts.",
-        type=AttributeType.STRING,
-        keys=("messaging.bullmq.job.status",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="completed",
-        examples=["completed", "failed", "delayed"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[690],
-                description="Added messaging.bullmq.job.status attribute",
-            ),
-        ],
-        additional_context=[
-            "The Sentry SDK sets this attribute from the `bullmq.job.status` attribute of BullMQ's telemetry interface.",
-            "Set on the BullMQ job metrics with BullMQ 5.79.1. With BullMQ 6.3.11, `messaging.bullmq.job.state` is set instead.",
+            "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value."
         ],
     ),
     "messaging.bullmq.job.type": AttributeMetadata(
@@ -29859,7 +29822,6 @@ Attributes = TypedDict(
         "messaging.bullmq.job.processed.timestamp": int,
         "messaging.bullmq.job.scheduler.id": str,
         "messaging.bullmq.job.state": str,
-        "messaging.bullmq.job.status": str,
         "messaging.bullmq.job.type": str,
         "messaging.bullmq.queue.clean.count": int,
         "messaging.bullmq.queue.clean.limit": int,
