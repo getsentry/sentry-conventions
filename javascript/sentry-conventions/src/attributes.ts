@@ -27270,7 +27270,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'full',
     examples: ['full', 'partial'],
-    changelog: [{ version: 'next', description: 'Added document.static_html attribute' }],
+    changelog: [{ version: 'next', prs: [740], description: 'Added document.static_html attribute' }],
     additionalContext: [
       'Not set when the server rendered the whole document for this request, or when the SDK cannot tell.',
       "Describes the server render only. A response that a CDN or the browser cache reused does not count. The browser's own prerendering (Speculation Rules) is described by `browser.navigation.type`.",

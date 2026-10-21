@@ -17832,7 +17832,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["full", "partial"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added document.static_html attribute"
+                version="next",
+                prs=[740],
+                description="Added document.static_html attribute",
             ),
         ],
         additional_context=[

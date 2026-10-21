@@ -25,6 +25,7 @@
   "changelog": [
     {
       "version": "next",
+      "prs": [740],
       "description": "Added document.static_html attribute"
     }
   ]
