@@ -15,15 +15,11 @@
   },
   "is_in_otel": false,
   "visibility": "public",
-  "examples": ["previous_trace", "next_trace", "cache_origin", "message_origin"],
+  "examples": ["previous_trace", "cache_origin", "message_origin"],
   "enum_values": [
     {
       "value": "previous_trace",
       "brief": "The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span."
-    },
-    {
-      "value": "next_trace",
-      "brief": "The linked span is the root span of the trace after this trace."
     },
     {
       "value": "cache_origin",
@@ -39,6 +35,10 @@
       "version": "next",
       "prs": [724],
       "description": "Added message_origin to the examples, and enum_values that describe each known value"
+    },
+    {
+      "version": "next",
+      "description": "Removed next_trace from the examples and enum_values, because no SDK sets it"
     },
     {
       "version": "0.27.0",

@@ -9947,11 +9947,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Well-defined Values:
     - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
-    - `next_trace` - The linked span is the root span of the trace after this trace.
     - `cache_origin` - The linked span wrote the cached value that this span reads.
     - `message_origin` - The linked span published the queue message that this span processes.
     Example: "previous_trace"
-    Example: "next_trace"
     Example: "cache_origin"
     Example: "message_origin"
     """
@@ -26548,12 +26546,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
-        examples=["previous_trace", "next_trace", "cache_origin", "message_origin"],
+        examples=["previous_trace", "cache_origin", "message_origin"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[724],
                 description="Added message_origin to the examples, and enum_values that describe each known value",
+            ),
+            ChangelogEntry(
+                version="next",
+                description="Removed next_trace from the examples and enum_values, because no SDK sets it",
             ),
             ChangelogEntry(
                 version="0.27.0", prs=[687], description="Added search alias link.type"

@@ -16782,12 +16782,10 @@ export type SENTRY_KIND_TYPE = string;
  *
  * Well-defined Values:
  * - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
- * - `next_trace` - The linked span is the root span of the trace after this trace.
  * - `cache_origin` - The linked span wrote the cached value that this span reads.
  * - `message_origin` - The linked span published the queue message that this span processes.
  *
  * @example "previous_trace"
- * @example "next_trace"
  * @example "cache_origin"
  * @example "message_origin"
  */
@@ -34874,13 +34872,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'previous_trace',
-    examples: ['previous_trace', 'next_trace', 'cache_origin', 'message_origin'],
+    examples: ['previous_trace', 'cache_origin', 'message_origin'],
     changelog: [
       {
         version: 'next',
         prs: [724],
         description: 'Added message_origin to the examples, and enum_values that describe each known value',
       },
+      { version: 'next', description: 'Removed next_trace from the examples and enum_values, because no SDK sets it' },
       { version: '0.27.0', prs: [687], description: 'Added search alias link.type' },
       { version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' },
     ],
