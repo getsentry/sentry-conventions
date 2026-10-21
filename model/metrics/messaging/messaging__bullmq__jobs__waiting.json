@@ -4,6 +4,6 @@
   "instrument": "counter",
   "unit": "none",
   "is_in_otel": false,
-  "requirement_level": "opt_in",
+  "requirement_level": "recommended",
   "attributes": ["messaging.destination.name", "messaging.bullmq.job.name", "messaging.bullmq.job.state"]
 }

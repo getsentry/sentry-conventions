@@ -4,6 +4,6 @@
   "instrument": "gauge",
   "unit": "none",
   "is_in_otel": false,
-  "requirement_level": "opt_in",
+  "requirement_level": "recommended",
   "attributes": ["messaging.destination.name", "messaging.bullmq.queue.jobs.state"]
 }
