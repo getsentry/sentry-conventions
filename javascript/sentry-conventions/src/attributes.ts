@@ -9974,7 +9974,7 @@ export type GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE = number;
 // Path: model/attributes/hapi/hapi__ext__type.json
 
 /**
- * The Hapi request lifecycle extension point that the extension method runs at. `hapi.ext.type`
+ * The request lifecycle extension point where the Hapi extension function runs. `hapi.ext.type`
  *
  * Attribute Value Type: `string` {@link HAPI_EXT_TYPE_TYPE}
  *
@@ -10007,7 +10007,7 @@ export type HAPI_EXT_TYPE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @example "@hapi/inert"
+ * @example "hapi-swagger"
  */
 export const HAPI_PLUGIN_NAME = 'hapi.plugin.name';
 
@@ -10019,7 +10019,7 @@ export type HAPI_PLUGIN_NAME_TYPE = string;
 // Path: model/attributes/hapi/hapi__type.json
 
 /**
- * The type of the Hapi layer that handled the request. `hapi.type`
+ * The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`. `hapi.type`
  *
  * Attribute Value Type: `string` {@link HAPI_TYPE_TYPE}
  *
@@ -18104,7 +18104,7 @@ export type SERVER_ADDRESS_TYPE = string;
 // Path: model/attributes/server/server__ext__type.json
 
 /**
- * The Hapi request lifecycle extension point that the extension method runs at. `server.ext.type`
+ * The request lifecycle extension point where the Hapi extension function runs. `server.ext.type`
  *
  * Attribute Value Type: `string` {@link SERVER_EXT_TYPE_TYPE}
  *
@@ -18115,7 +18115,7 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Aliases: {@link HAPI_EXT_TYPE} `hapi.ext.type`
  *
- * @deprecated Use {@link HAPI_EXT_TYPE} (hapi.ext.type) instead - The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace.
+ * @deprecated Use {@link HAPI_EXT_TYPE} (hapi.ext.type) instead - Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace.
  * @example "onRequest"
  * @example "onPreResponse"
  */
@@ -29765,7 +29765,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
   },
   'hapi.ext.type': {
-    brief: 'The Hapi request lifecycle extension point that the extension method runs at.',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
     type: 'string',
     keys: ['hapi.ext.type', 'server.ext.type'],
     applyScrubbing: {
@@ -29787,12 +29787,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: '@hapi/inert',
-    examples: ['@hapi/inert'],
+    example: 'hapi-swagger',
+    examples: ['hapi-swagger'],
     changelog: [{ version: 'next', description: 'Added hapi.plugin.name attribute' }],
   },
   'hapi.type': {
-    brief: 'The type of the Hapi layer that handled the request.',
+    brief: 'The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.',
     type: 'string',
     keys: ['hapi.type'],
     applyScrubbing: {
@@ -35935,7 +35935,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'server.ext.type': {
-    brief: 'The Hapi request lifecycle extension point that the extension method runs at.',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
     type: 'string',
     keys: ['hapi.ext.type', 'server.ext.type'],
     applyScrubbing: {
@@ -35948,7 +35948,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'hapi.ext.type',
       reason:
-        'The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace.',
+        'Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace.',
       status: 'backfill',
     },
     aliases: ['hapi.ext.type'],

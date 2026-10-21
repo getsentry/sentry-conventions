@@ -9216,7 +9216,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'hapi.ext.type': {
     canonicalName: 'hapi.ext.type',
     type: 'string',
-    brief: 'The Hapi request lifecycle extension point that the extension method runs at.',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
     deprecationChain: ['hapi.ext.type', 'server.ext.type'],
   },
   'hapi.plugin.name': {
@@ -9228,7 +9228,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'hapi.type': {
     canonicalName: 'hapi.type',
     type: 'string',
-    brief: 'The type of the Hapi layer that handled the request.',
+    brief: 'The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.',
     deprecationChain: ['hapi.type'],
   },
   hardwareConcurrency: {
@@ -11462,7 +11462,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'server.ext.type': {
     canonicalName: 'hapi.ext.type',
     type: 'string',
-    brief: 'The Hapi request lifecycle extension point that the extension method runs at.',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
     deprecationChain: ['hapi.ext.type', 'server.ext.type'],
   },
   'server.port': {

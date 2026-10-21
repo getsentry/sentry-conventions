@@ -1,6 +1,6 @@
 {
   "key": "hapi.type",
-  "brief": "The type of the Hapi layer that handled the request.",
+  "brief": "The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"

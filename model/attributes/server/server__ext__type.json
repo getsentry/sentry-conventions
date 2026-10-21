@@ -1,6 +1,6 @@
 {
   "key": "server.ext.type",
-  "brief": "The Hapi request lifecycle extension point that the extension method runs at.",
+  "brief": "The request lifecycle extension point where the Hapi extension function runs.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
@@ -12,7 +12,7 @@
   "deprecation": {
     "_status": "backfill",
     "replacement": "hapi.ext.type",
-    "reason": "The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace."
+    "reason": "Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace."
   },
   "changelog": [
     {

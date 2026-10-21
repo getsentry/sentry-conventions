@@ -6105,7 +6105,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/hapi/hapi__ext__type.json
     HAPI_EXT_TYPE: Literal["hapi.ext.type"] = "hapi.ext.type"
-    """The Hapi request lifecycle extension point that the extension method runs at.
+    """The request lifecycle extension point where the Hapi extension function runs.
 
     Type: str
     Apply Scrubbing: manual
@@ -6124,12 +6124,12 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Example: "@hapi/inert"
+    Example: "hapi-swagger"
     """
 
     # Path: model/attributes/hapi/hapi__type.json
     HAPI_TYPE: Literal["hapi.type"] = "hapi.type"
-    """The type of the Hapi layer that handled the request.
+    """The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.
 
     Type: str
     Apply Scrubbing: manual
@@ -10695,14 +10695,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/server/server__ext__type.json
     SERVER_EXT_TYPE: Literal["server.ext.type"] = "server.ext.type"
-    """The Hapi request lifecycle extension point that the extension method runs at.
+    """The request lifecycle extension point where the Hapi extension function runs.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: hapi.ext.type
-    DEPRECATED: Use hapi.ext.type instead - The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace.
+    DEPRECATED: Use hapi.ext.type instead - Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace.
     Example: "onRequest"
     Example: "onPreResponse"
     """
@@ -20682,7 +20682,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "hapi.ext.type": AttributeMetadata(
-        brief="The Hapi request lifecycle extension point that the extension method runs at.",
+        brief="The request lifecycle extension point where the Hapi extension function runs.",
         type=AttributeType.STRING,
         keys=(
             "hapi.ext.type",
@@ -20705,8 +20705,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example="@hapi/inert",
-        examples=["@hapi/inert"],
+        example="hapi-swagger",
+        examples=["hapi-swagger"],
         changelog=[
             ChangelogEntry(
                 version="next", description="Added hapi.plugin.name attribute"
@@ -20714,7 +20714,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "hapi.type": AttributeMetadata(
-        brief="The type of the Hapi layer that handled the request.",
+        brief="The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.",
         type=AttributeType.STRING,
         keys=("hapi.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -27663,7 +27663,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "server.ext.type": AttributeMetadata(
-        brief="The Hapi request lifecycle extension point that the extension method runs at.",
+        brief="The request lifecycle extension point where the Hapi extension function runs.",
         type=AttributeType.STRING,
         keys=(
             "hapi.ext.type",
@@ -27676,7 +27676,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["onRequest", "onPreResponse"],
         deprecation=DeprecationInfo(
             replacement="hapi.ext.type",
-            reason="The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace.",
+            reason="Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace.",
             status=DeprecationStatus.BACKFILL,
         ),
         aliases=["hapi.ext.type"],

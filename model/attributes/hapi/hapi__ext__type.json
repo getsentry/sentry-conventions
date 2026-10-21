@@ -1,6 +1,6 @@
 {
   "key": "hapi.ext.type",
-  "brief": "The Hapi request lifecycle extension point that the extension method runs at.",
+  "brief": "The request lifecycle extension point where the Hapi extension function runs.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
