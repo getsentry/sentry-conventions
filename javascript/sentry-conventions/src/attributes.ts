@@ -6797,7 +6797,7 @@ export type DJANGO_MIDDLEWARE_NAME_TYPE = string;
 // Path: model/attributes/document/document__static_html.json
 
 /**
- * Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor. `document.static_html`
+ * Set on a pageload span when the server rendered the document's HTML before the request, either fully or partly. `document.static_html`
  *
  * Attribute Value Type: `string` {@link DOCUMENT_STATIC_HTML_TYPE}
  *
@@ -27260,7 +27260,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'document.static_html': {
     brief:
-      "Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor.",
+      "Set on a pageload span when the server rendered the document's HTML before the request, either fully or partly.",
     type: 'string',
     keys: ['document.static_html'],
     applyScrubbing: {
@@ -27272,8 +27272,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['full', 'partial'],
     changelog: [{ version: 'next', prs: [740], description: 'Added document.static_html attribute' }],
     additionalContext: [
-      'Not set when the server rendered the whole document for this request, or when the SDK cannot tell.',
-      "Describes the server render only. A response that a CDN or the browser cache reused does not count. The browser's own prerendering (Speculation Rules) is described by `browser.navigation.type`.",
+      'Not set when the server rendered the document for this request, or when the SDK does not know.',
+      'The server spans that rendered this HTML are in an earlier trace, not in the trace of the pageload span.',
+      "Does not cover CDN or browser caches. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
     ],
   },
   effectiveConnectionType: {

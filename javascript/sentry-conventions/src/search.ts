@@ -8238,7 +8238,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'document.static_html',
     type: 'string',
     brief:
-      "Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor.",
+      "Set on a pageload span when the server rendered the document's HTML before the request, either fully or partly.",
     deprecationChain: ['document.static_html'],
   },
   effectiveConnectionType: {
