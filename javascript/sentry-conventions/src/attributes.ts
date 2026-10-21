@@ -9971,6 +9971,74 @@ export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS = 'grpc.error.retry_info.retry
  */
 export type GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE = number;
 
+// Path: model/attributes/hapi/hapi__ext__type.json
+
+/**
+ * The Hapi request lifecycle extension point that the extension method runs at. `hapi.ext.type`
+ *
+ * Attribute Value Type: `string` {@link HAPI_EXT_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_EXT_TYPE} `server.ext.type`
+ *
+ * @example "onRequest"
+ * @example "onPreResponse"
+ */
+export const HAPI_EXT_TYPE = 'hapi.ext.type';
+
+/**
+ * Type for {@link HAPI_EXT_TYPE} hapi.ext.type
+ */
+export type HAPI_EXT_TYPE_TYPE = string;
+
+// Path: model/attributes/hapi/hapi__plugin__name.json
+
+/**
+ * The name of the Hapi plugin that registered the route. `hapi.plugin.name`
+ *
+ * Attribute Value Type: `string` {@link HAPI_PLUGIN_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "@hapi/inert"
+ */
+export const HAPI_PLUGIN_NAME = 'hapi.plugin.name';
+
+/**
+ * Type for {@link HAPI_PLUGIN_NAME} hapi.plugin.name
+ */
+export type HAPI_PLUGIN_NAME_TYPE = string;
+
+// Path: model/attributes/hapi/hapi__type.json
+
+/**
+ * The type of the Hapi layer that handled the request. `hapi.type`
+ *
+ * Attribute Value Type: `string` {@link HAPI_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "router"
+ * @example "plugin"
+ * @example "server.ext"
+ */
+export const HAPI_TYPE = 'hapi.type';
+
+/**
+ * Type for {@link HAPI_TYPE} hapi.type
+ */
+export type HAPI_TYPE_TYPE = string;
+
 // Path: model/attributes/hardwareConcurrency.json
 
 /**
@@ -18033,6 +18101,31 @@ export const SERVER_ADDRESS = 'server.address';
  */
 export type SERVER_ADDRESS_TYPE = string;
 
+// Path: model/attributes/server/server__ext__type.json
+
+/**
+ * The Hapi request lifecycle extension point that the extension method runs at. `server.ext.type`
+ *
+ * Attribute Value Type: `string` {@link SERVER_EXT_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HAPI_EXT_TYPE} `hapi.ext.type`
+ *
+ * @deprecated Use {@link HAPI_EXT_TYPE} (hapi.ext.type) instead - The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace.
+ * @example "onRequest"
+ * @example "onPreResponse"
+ */
+export const SERVER_EXT_TYPE = 'server.ext.type';
+
+/**
+ * Type for {@link SERVER_EXT_TYPE} server.ext.type
+ */
+export type SERVER_EXT_TYPE_TYPE = string;
+
 // Path: model/attributes/server_name.json
 
 /**
@@ -21065,6 +21158,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'grpc.error.resource_info.resource_name': 'string',
   'grpc.error.resource_info.resource_type': 'string',
   'grpc.error.retry_info.retry_delay_ms': 'integer',
+  'hapi.ext.type': 'string',
+  'hapi.plugin.name': 'string',
+  'hapi.type': 'string',
   hardwareConcurrency: 'string',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
@@ -21421,6 +21517,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.user.ip': 'string',
   'sentry.user.username': 'string',
   'server.address': 'string',
+  'server.ext.type': 'string',
   server_name: 'string',
   'server.port': 'integer',
   'service.name': 'string',
@@ -21982,6 +22079,9 @@ export type AttributeName =
   | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME
   | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE
   | typeof GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS
+  | typeof HAPI_EXT_TYPE
+  | typeof HAPI_PLUGIN_NAME
+  | typeof HAPI_TYPE
   | typeof HARDWARECONCURRENCY
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
@@ -22338,6 +22438,7 @@ export type AttributeName =
   | typeof SENTRY_USER_IP
   | typeof SENTRY_USER_USERNAME
   | typeof SERVER_ADDRESS
+  | typeof SERVER_EXT_TYPE
   | typeof SERVER_NAME
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
@@ -29663,6 +29764,46 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5000,
     changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
   },
+  'hapi.ext.type': {
+    brief: 'The Hapi request lifecycle extension point that the extension method runs at.',
+    type: 'string',
+    keys: ['hapi.ext.type', 'server.ext.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'onRequest',
+    examples: ['onRequest', 'onPreResponse'],
+    aliases: ['server.ext.type'],
+    changelog: [{ version: 'next', description: 'Added hapi.ext.type attribute' }],
+  },
+  'hapi.plugin.name': {
+    brief: 'The name of the Hapi plugin that registered the route.',
+    type: 'string',
+    keys: ['hapi.plugin.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '@hapi/inert',
+    examples: ['@hapi/inert'],
+    changelog: [{ version: 'next', description: 'Added hapi.plugin.name attribute' }],
+  },
+  'hapi.type': {
+    brief: 'The type of the Hapi layer that handled the request.',
+    type: 'string',
+    keys: ['hapi.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'router',
+    examples: ['router', 'plugin', 'server.ext'],
+    changelog: [{ version: 'next', description: 'Added hapi.type attribute' }],
+  },
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
     type: 'string',
@@ -35793,6 +35934,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  'server.ext.type': {
+    brief: 'The Hapi request lifecycle extension point that the extension method runs at.',
+    type: 'string',
+    keys: ['hapi.ext.type', 'server.ext.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'onRequest',
+    examples: ['onRequest', 'onPreResponse'],
+    deprecation: {
+      replacement: 'hapi.ext.type',
+      reason:
+        'The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace.',
+      status: 'backfill',
+    },
+    aliases: ['hapi.ext.type'],
+    changelog: [
+      { version: 'next', description: 'Added server.ext.type attribute, deprecated in favor of hapi.ext.type' },
+    ],
+  },
   server_name: {
     brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
     type: 'string',
@@ -38039,6 +38202,9 @@ export type Attributes = {
   [GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE;
   [GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE;
   [GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS]?: GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE;
+  [HAPI_EXT_TYPE]?: HAPI_EXT_TYPE_TYPE;
+  [HAPI_PLUGIN_NAME]?: HAPI_PLUGIN_NAME_TYPE;
+  [HAPI_TYPE]?: HAPI_TYPE_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
@@ -38395,6 +38561,7 @@ export type Attributes = {
   [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
   [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
+  [SERVER_EXT_TYPE]?: SERVER_EXT_TYPE_TYPE;
   [SERVER_NAME]?: SERVER_NAME_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;

@@ -1,0 +1,23 @@
+{
+  "key": "server.ext.type",
+  "brief": "The Hapi request lifecycle extension point that the extension method runs at.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["onRequest", "onPreResponse"],
+  "alias": ["hapi.ext.type"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "hapi.ext.type",
+    "reason": "The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace."
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added server.ext.type attribute, deprecated in favor of hapi.ext.type"
+    }
+  ]
+}

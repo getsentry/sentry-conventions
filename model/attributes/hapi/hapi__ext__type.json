@@ -1,0 +1,18 @@
+{
+  "key": "hapi.ext.type",
+  "brief": "The Hapi request lifecycle extension point that the extension method runs at.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["onRequest", "onPreResponse"],
+  "alias": ["server.ext.type"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added hapi.ext.type attribute"
+    }
+  ]
+}

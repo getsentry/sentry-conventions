@@ -406,6 +406,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
+        "SERVER_EXT_TYPE",
         "SERVER_NAME",
         "STALL_PERCENTAGE",
         "STALL_TOTAL_TIME",
@@ -6102,6 +6103,43 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5000
     """
 
+    # Path: model/attributes/hapi/hapi__ext__type.json
+    HAPI_EXT_TYPE: Literal["hapi.ext.type"] = "hapi.ext.type"
+    """The Hapi request lifecycle extension point that the extension method runs at.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.ext.type
+    Example: "onRequest"
+    Example: "onPreResponse"
+    """
+
+    # Path: model/attributes/hapi/hapi__plugin__name.json
+    HAPI_PLUGIN_NAME: Literal["hapi.plugin.name"] = "hapi.plugin.name"
+    """The name of the Hapi plugin that registered the route.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "@hapi/inert"
+    """
+
+    # Path: model/attributes/hapi/hapi__type.json
+    HAPI_TYPE: Literal["hapi.type"] = "hapi.type"
+    """The type of the Hapi layer that handled the request.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "router"
+    Example: "plugin"
+    Example: "server.ext"
+    """
+
     # Path: model/attributes/hardwareConcurrency.json
     HARDWARECONCURRENCY: Literal["hardwareConcurrency"] = "hardwareConcurrency"
     """The number of logical CPU cores available.
@@ -10653,6 +10691,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: address, http.server_name, net.host.name, http.host, server_name, net.peer.name
     Example: "example.com"
+    """
+
+    # Path: model/attributes/server/server__ext__type.json
+    SERVER_EXT_TYPE: Literal["server.ext.type"] = "server.ext.type"
+    """The Hapi request lifecycle extension point that the extension method runs at.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: hapi.ext.type
+    DEPRECATED: Use hapi.ext.type instead - The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace.
+    Example: "onRequest"
+    Example: "onPreResponse"
     """
 
     # Path: model/attributes/server/server__port.json
@@ -20629,6 +20681,51 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "hapi.ext.type": AttributeMetadata(
+        brief="The Hapi request lifecycle extension point that the extension method runs at.",
+        type=AttributeType.STRING,
+        keys=(
+            "hapi.ext.type",
+            "server.ext.type",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="onRequest",
+        examples=["onRequest", "onPreResponse"],
+        aliases=["server.ext.type"],
+        changelog=[
+            ChangelogEntry(version="next", description="Added hapi.ext.type attribute"),
+        ],
+    ),
+    "hapi.plugin.name": AttributeMetadata(
+        brief="The name of the Hapi plugin that registered the route.",
+        type=AttributeType.STRING,
+        keys=("hapi.plugin.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="@hapi/inert",
+        examples=["@hapi/inert"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added hapi.plugin.name attribute"
+            ),
+        ],
+    ),
+    "hapi.type": AttributeMetadata(
+        brief="The type of the Hapi layer that handled the request.",
+        type=AttributeType.STRING,
+        keys=("hapi.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="router",
+        examples=["router", "plugin", "server.ext"],
+        changelog=[
+            ChangelogEntry(version="next", description="Added hapi.type attribute"),
+        ],
+    ),
     "hardwareConcurrency": AttributeMetadata(
         brief="The number of logical CPU cores available.",
         type=AttributeType.STRING,
@@ -27565,6 +27662,31 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "server.ext.type": AttributeMetadata(
+        brief="The Hapi request lifecycle extension point that the extension method runs at.",
+        type=AttributeType.STRING,
+        keys=(
+            "hapi.ext.type",
+            "server.ext.type",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="onRequest",
+        examples=["onRequest", "onPreResponse"],
+        deprecation=DeprecationInfo(
+            replacement="hapi.ext.type",
+            reason="The server namespace describes the server network endpoint. Hapi extension points belong to the hapi namespace.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["hapi.ext.type"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added server.ext.type attribute, deprecated in favor of hapi.ext.type",
+            ),
+        ],
+    ),
     "server.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
@@ -30012,6 +30134,9 @@ Attributes = TypedDict(
         "grpc.error.resource_info.resource_name": str,
         "grpc.error.resource_info.resource_type": str,
         "grpc.error.retry_info.retry_delay_ms": int,
+        "hapi.ext.type": str,
+        "hapi.plugin.name": str,
+        "hapi.type": str,
         "hardwareConcurrency": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
@@ -30368,6 +30493,7 @@ Attributes = TypedDict(
         "sentry.user.ip": str,
         "sentry.user.username": str,
         "server.address": str,
+        "server.ext.type": str,
         "server.port": int,
         "server_name": str,
         "service.name": str,
