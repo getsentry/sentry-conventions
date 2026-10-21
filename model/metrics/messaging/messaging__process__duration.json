@@ -1,0 +1,15 @@
+{
+  "key": "messaging.process.duration",
+  "brief": "The duration of the operation that processes a message.",
+  "instrument": "distribution",
+  "unit": "second",
+  "is_in_otel": true,
+  "requirement_level": "opt_in",
+  "attributes": [
+    "messaging.system",
+    "messaging.operation.name",
+    "messaging.destination.name",
+    "messaging.bullmq.job.name",
+    "messaging.bullmq.job.state"
+  ]
+}
