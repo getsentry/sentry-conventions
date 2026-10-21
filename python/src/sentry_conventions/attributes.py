@@ -26565,6 +26565,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(
                 version="next",
+                prs=[738],
                 description="Added server_request to the examples and enum_values",
             ),
             ChangelogEntry(

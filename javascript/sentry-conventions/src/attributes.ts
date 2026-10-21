@@ -34883,7 +34883,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         prs: [724],
         description: 'Added message_origin to the examples, and enum_values that describe each known value',
       },
-      { version: 'next', description: 'Added server_request to the examples and enum_values' },
+      { version: 'next', prs: [738], description: 'Added server_request to the examples and enum_values' },
       { version: '0.27.0', prs: [687], description: 'Added search alias link.type' },
       { version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' },
     ],
