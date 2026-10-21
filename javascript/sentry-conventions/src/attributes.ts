@@ -12806,27 +12806,6 @@ export const MESSAGING_BULLMQ_WORKER_FORCE_CLOSE = 'messaging.bullmq.worker.forc
  */
 export type MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE = boolean;
 
-// Path: model/attributes/messaging/messaging__bullmq__worker__id.json
-
-/**
- * The ID that BullMQ generates for the Worker instance. `messaging.bullmq.worker.id`
- *
- * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_WORKER_ID_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "03327d57-05cc-4528-9d24-c59bf6520039"
- */
-export const MESSAGING_BULLMQ_WORKER_ID = 'messaging.bullmq.worker.id';
-
-/**
- * Type for {@link MESSAGING_BULLMQ_WORKER_ID} messaging.bullmq.worker.id
- */
-export type MESSAGING_BULLMQ_WORKER_ID_TYPE = string;
-
 // Path: model/attributes/messaging/messaging__bullmq__worker__jobs__to__extend__locks.json
 
 /**
@@ -12910,6 +12889,28 @@ export const MESSAGING_BULLMQ_WORKER_STALLED_JOBS = 'messaging.bullmq.worker.sta
  * Type for {@link MESSAGING_BULLMQ_WORKER_STALLED_JOBS} messaging.bullmq.worker.stalled.jobs
  */
 export type MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__client__id.json
+
+/**
+ * A unique identifier for the client that consumes or produces a message. `messaging.client.id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_CLIENT_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "client-5"
+ * @example "myhost@8742@s8083jm"
+ */
+export const MESSAGING_CLIENT_ID = 'messaging.client.id';
+
+/**
+ * Type for {@link MESSAGING_CLIENT_ID} messaging.client.id
+ */
+export type MESSAGING_CLIENT_ID_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__conversation_id.json
 
@@ -21105,11 +21106,11 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.bullmq.queue.rate.limit': 'integer',
   'messaging.bullmq.worker.do.not.wait.active': 'boolean',
   'messaging.bullmq.worker.force.close': 'boolean',
-  'messaging.bullmq.worker.id': 'string',
   'messaging.bullmq.worker.jobs.to.extend.locks': 'string[]',
   'messaging.bullmq.worker.name': 'string',
   'messaging.bullmq.worker.rate.limit': 'integer',
   'messaging.bullmq.worker.stalled.jobs': 'string[]',
+  'messaging.client.id': 'string',
   'messaging.conversation_id': 'string',
   'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
@@ -22019,11 +22020,11 @@ export type AttributeName =
   | typeof MESSAGING_BULLMQ_QUEUE_RATE_LIMIT
   | typeof MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE
   | typeof MESSAGING_BULLMQ_WORKER_FORCE_CLOSE
-  | typeof MESSAGING_BULLMQ_WORKER_ID
   | typeof MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS
   | typeof MESSAGING_BULLMQ_WORKER_NAME
   | typeof MESSAGING_BULLMQ_WORKER_RATE_LIMIT
   | typeof MESSAGING_BULLMQ_WORKER_STALLED_JOBS
+  | typeof MESSAGING_CLIENT_ID
   | typeof MESSAGING_CONVERSATION_ID
   | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
@@ -31724,22 +31725,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.worker.id': {
-    brief: 'The ID that BullMQ generates for the Worker instance.',
-    type: 'string',
-    keys: ['messaging.bullmq.worker.id'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: '03327d57-05cc-4528-9d24-c59bf6520039',
-    examples: ['03327d57-05cc-4528-9d24-c59bf6520039'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.id attribute' }],
-    additionalContext: [
-      "The Sentry SDK sets this attribute from the `bullmq.worker.id` attribute of BullMQ's telemetry interface.",
-    ],
-  },
   'messaging.bullmq.worker.jobs.to.extend.locks': {
     brief: 'The IDs of the BullMQ jobs whose locks the Worker extends.',
     type: 'string[]',
@@ -31804,6 +31789,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.stalled.jobs attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.client.id': {
+    brief: 'A unique identifier for the client that consumes or produces a message.',
+    type: 'string',
+    keys: ['messaging.client.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'client-5',
+    examples: ['client-5', 'myhost@8742@s8083jm'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.client.id attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute on BullMQ spans from the `bullmq.worker.id` attribute of BullMQ's telemetry interface, which is the ID of the Worker.",
     ],
   },
   'messaging.conversation_id': {
@@ -37774,11 +37775,11 @@ export type Attributes = {
   [MESSAGING_BULLMQ_QUEUE_RATE_LIMIT]?: MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE;
   [MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE]?: MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE;
   [MESSAGING_BULLMQ_WORKER_FORCE_CLOSE]?: MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE;
-  [MESSAGING_BULLMQ_WORKER_ID]?: MESSAGING_BULLMQ_WORKER_ID_TYPE;
   [MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS]?: MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE;
   [MESSAGING_BULLMQ_WORKER_NAME]?: MESSAGING_BULLMQ_WORKER_NAME_TYPE;
   [MESSAGING_BULLMQ_WORKER_RATE_LIMIT]?: MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE;
   [MESSAGING_BULLMQ_WORKER_STALLED_JOBS]?: MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE;
+  [MESSAGING_CLIENT_ID]?: MESSAGING_CLIENT_ID_TYPE;
   [MESSAGING_CONVERSATION_ID]?: MESSAGING_CONVERSATION_ID_TYPE;
   [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;

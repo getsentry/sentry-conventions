@@ -7702,19 +7702,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: false
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__worker__id.json
-    MESSAGING_BULLMQ_WORKER_ID: Literal["messaging.bullmq.worker.id"] = (
-        "messaging.bullmq.worker.id"
-    )
-    """The ID that BullMQ generates for the Worker instance.
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "03327d57-05cc-4528-9d24-c59bf6520039"
-    """
-
     # Path: model/attributes/messaging/messaging__bullmq__worker__jobs__to__extend__locks.json
     MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS: Literal[
         "messaging.bullmq.worker.jobs.to.extend.locks"
@@ -7765,6 +7752,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: ["1","2"]
+    """
+
+    # Path: model/attributes/messaging/messaging__client__id.json
+    MESSAGING_CLIENT_ID: Literal["messaging.client.id"] = "messaging.client.id"
+    """A unique identifier for the client that consumes or produces a message.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "client-5"
+    Example: "myhost@8742@s8083jm"
     """
 
     # Path: model/attributes/messaging/messaging__conversation_id.json
@@ -22995,26 +22994,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.worker.id": AttributeMetadata(
-        brief="The ID that BullMQ generates for the Worker instance.",
-        type=AttributeType.STRING,
-        keys=("messaging.bullmq.worker.id",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="03327d57-05cc-4528-9d24-c59bf6520039",
-        examples=["03327d57-05cc-4528-9d24-c59bf6520039"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[690],
-                description="Added messaging.bullmq.worker.id attribute",
-            ),
-        ],
-        additional_context=[
-            "The Sentry SDK sets this attribute from the `bullmq.worker.id` attribute of BullMQ's telemetry interface."
-        ],
-    ),
     "messaging.bullmq.worker.jobs.to.extend.locks": AttributeMetadata(
         brief="The IDs of the BullMQ jobs whose locks the Worker extends.",
         type=AttributeType.STRING_ARRAY,
@@ -23093,6 +23072,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.client.id": AttributeMetadata(
+        brief="A unique identifier for the client that consumes or produces a message.",
+        type=AttributeType.STRING,
+        keys=("messaging.client.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="client-5",
+        examples=["client-5", "myhost@8742@s8083jm"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.client.id attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute on BullMQ spans from the `bullmq.worker.id` attribute of BullMQ's telemetry interface, which is the ID of the Worker."
         ],
     ),
     "messaging.conversation_id": AttributeMetadata(
@@ -29871,11 +29870,11 @@ Attributes = TypedDict(
         "messaging.bullmq.queue.rate.limit": int,
         "messaging.bullmq.worker.do.not.wait.active": bool,
         "messaging.bullmq.worker.force.close": bool,
-        "messaging.bullmq.worker.id": str,
         "messaging.bullmq.worker.jobs.to.extend.locks": List[str],
         "messaging.bullmq.worker.name": str,
         "messaging.bullmq.worker.rate.limit": int,
         "messaging.bullmq.worker.stalled.jobs": List[str],
+        "messaging.client.id": str,
         "messaging.conversation_id": str,
         "messaging.destination": str,
         "messaging.destination.connection": str,

@@ -3233,11 +3233,6 @@ export const SEARCH_MESSAGING__BULLMQ__WORKER__DO__NOT__WAIT__ACTIVE = 'messagin
 export const SEARCH_MESSAGING__BULLMQ__WORKER__FORCE__CLOSE = 'messaging.bullmq.worker.force.close';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_ID}. `messaging.bullmq.worker.id`
- */
-export const SEARCH_MESSAGING__BULLMQ__WORKER__ID = 'messaging.bullmq.worker.id';
-
-/**
  * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS}. `messaging.bullmq.worker.jobs.to.extend.locks`
  */
 export const SEARCH_MESSAGING__BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS = 'messaging.bullmq.worker.jobs.to.extend.locks';
@@ -3256,6 +3251,11 @@ export const SEARCH_MESSAGING__BULLMQ__WORKER__RATE__LIMIT = 'messaging.bullmq.w
  * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_STALLED_JOBS}. `messaging.bullmq.worker.stalled.jobs`
  */
 export const SEARCH_MESSAGING__BULLMQ__WORKER__STALLED__JOBS = 'messaging.bullmq.worker.stalled.jobs';
+
+/**
+ * Search name for {@link attributes.MESSAGING_CLIENT_ID}. `messaging.client.id`
+ */
+export const SEARCH_MESSAGING__CLIENT__ID = 'messaging.client.id';
 
 /**
  * Search name for {@link attributes.MESSAGING_CONVERSATION_ID}. `messaging.conversation_id`
@@ -5828,11 +5828,11 @@ export type AttributeSearchName =
   | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__RATE__LIMIT
   | typeof SEARCH_MESSAGING__BULLMQ__WORKER__DO__NOT__WAIT__ACTIVE
   | typeof SEARCH_MESSAGING__BULLMQ__WORKER__FORCE__CLOSE
-  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__ID
   | typeof SEARCH_MESSAGING__BULLMQ__WORKER__JOBS__TO__EXTEND__LOCKS
   | typeof SEARCH_MESSAGING__BULLMQ__WORKER__NAME
   | typeof SEARCH_MESSAGING__BULLMQ__WORKER__RATE__LIMIT
   | typeof SEARCH_MESSAGING__BULLMQ__WORKER__STALLED__JOBS
+  | typeof SEARCH_MESSAGING__CLIENT__ID
   | typeof SEARCH_MESSAGING__CONVERSATION_ID
   | typeof SEARCH_MESSAGING__DESTINATION
   | typeof SEARCH_MESSAGING__DESTINATION__CONNECTION
@@ -9986,12 +9986,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.',
     deprecationChain: ['messaging.bullmq.worker.force.close'],
   },
-  'messaging.bullmq.worker.id': {
-    canonicalName: 'messaging.bullmq.worker.id',
-    type: 'string',
-    brief: 'The ID that BullMQ generates for the Worker instance.',
-    deprecationChain: ['messaging.bullmq.worker.id'],
-  },
   'messaging.bullmq.worker.jobs.to.extend.locks': {
     canonicalName: 'messaging.bullmq.worker.jobs.to.extend.locks',
     type: 'string[]',
@@ -10015,6 +10009,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string[]',
     brief: 'The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.',
     deprecationChain: ['messaging.bullmq.worker.stalled.jobs'],
+  },
+  'messaging.client.id': {
+    canonicalName: 'messaging.client.id',
+    type: 'string',
+    brief: 'A unique identifier for the client that consumes or produces a message.',
+    deprecationChain: ['messaging.client.id'],
   },
   'messaging.conversation_id': {
     canonicalName: 'messaging.message.conversation_id',
