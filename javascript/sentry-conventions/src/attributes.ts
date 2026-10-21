@@ -12420,27 +12420,6 @@ export const MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY = 'messaging.bullmq.job.dedu
  */
 export type MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY_TYPE = string;
 
-// Path: model/attributes/messaging/messaging__bullmq__job__finished__timestamp.json
-
-/**
- * The time in milliseconds since the Unix epoch when the Worker finished its processing call for the BullMQ job. `messaging.bullmq.job.finished.timestamp`
- *
- * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example 1791184722411
- */
-export const MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP = 'messaging.bullmq.job.finished.timestamp';
-
-/**
- * Type for {@link MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP} messaging.bullmq.job.finished.timestamp
- */
-export type MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP_TYPE = number;
-
 // Path: model/attributes/messaging/messaging__bullmq__job__ids.json
 
 /**
@@ -21065,7 +21044,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'messaging.bullmq.job.attempt_finished_timestamp': 'integer',
   'messaging.bullmq.job.bulk.names': 'string[]',
   'messaging.bullmq.job.deduplication.key': 'string',
-  'messaging.bullmq.job.finished.timestamp': 'integer',
   'messaging.bullmq.job.ids': 'string[]',
   'messaging.bullmq.job.key': 'string',
   'messaging.bullmq.job.name': 'string',
@@ -21978,7 +21956,6 @@ export type AttributeName =
   | typeof MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP
   | typeof MESSAGING_BULLMQ_JOB_BULK_NAMES
   | typeof MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY
-  | typeof MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP
   | typeof MESSAGING_BULLMQ_JOB_IDS
   | typeof MESSAGING_BULLMQ_JOB_KEY
   | typeof MESSAGING_BULLMQ_JOB_NAME
@@ -31395,26 +31372,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "The Sentry SDK sets this attribute from the `bullmq.job.deduplication.key` attribute of BullMQ's telemetry interface.",
     ],
   },
-  'messaging.bullmq.job.finished.timestamp': {
-    brief:
-      'The time in milliseconds since the Unix epoch when the Worker finished its processing call for the BullMQ job.',
-    type: 'integer',
-    keys: ['messaging.bullmq.job.finished.timestamp'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: 1791184722411,
-    examples: [1791184722411],
-    changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.job.finished.timestamp attribute' },
-    ],
-    additionalContext: [
-      "The Sentry SDK sets this attribute from the `bullmq.job.finished.timestamp` attribute of BullMQ's telemetry interface.",
-      'BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not.',
-    ],
-  },
   'messaging.bullmq.job.ids': {
     brief: 'The IDs of the BullMQ jobs that Queue.clean() removed.',
     type: 'string[]',
@@ -37714,7 +37671,6 @@ export type Attributes = {
   [MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP]?: MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP_TYPE;
   [MESSAGING_BULLMQ_JOB_BULK_NAMES]?: MESSAGING_BULLMQ_JOB_BULK_NAMES_TYPE;
   [MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY]?: MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY_TYPE;
-  [MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP]?: MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP_TYPE;
   [MESSAGING_BULLMQ_JOB_IDS]?: MESSAGING_BULLMQ_JOB_IDS_TYPE;
   [MESSAGING_BULLMQ_JOB_KEY]?: MESSAGING_BULLMQ_JOB_KEY_TYPE;
   [MESSAGING_BULLMQ_JOB_NAME]?: MESSAGING_BULLMQ_JOB_NAME_TYPE;

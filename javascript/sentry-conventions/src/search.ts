@@ -3143,11 +3143,6 @@ export const SEARCH_MESSAGING__BULLMQ__JOB__BULK__NAMES = 'messaging.bullmq.job.
 export const SEARCH_MESSAGING__BULLMQ__JOB__DEDUPLICATION__KEY = 'messaging.bullmq.job.deduplication.key';
 
 /**
- * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP}. `messaging.bullmq.job.finished.timestamp`
- */
-export const SEARCH_MESSAGING__BULLMQ__JOB__FINISHED__TIMESTAMP = 'messaging.bullmq.job.finished.timestamp';
-
-/**
  * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_IDS}. `messaging.bullmq.job.ids`
  */
 export const SEARCH_MESSAGING__BULLMQ__JOB__IDS = 'messaging.bullmq.job.ids';
@@ -5805,7 +5800,6 @@ export type AttributeSearchName =
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__ATTEMPT_FINISHED_TIMESTAMP
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__BULK__NAMES
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__DEDUPLICATION__KEY
-  | typeof SEARCH_MESSAGING__BULLMQ__JOB__FINISHED__TIMESTAMP
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__IDS
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__KEY
   | typeof SEARCH_MESSAGING__BULLMQ__JOB__NAME
@@ -9869,13 +9863,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The deduplication ID that Queue.removeDeduplicationKey() removes.',
     deprecationChain: ['messaging.bullmq.job.deduplication.key'],
-  },
-  'messaging.bullmq.job.finished.timestamp': {
-    canonicalName: 'messaging.bullmq.job.finished.timestamp',
-    type: 'integer',
-    brief:
-      'The time in milliseconds since the Unix epoch when the Worker finished its processing call for the BullMQ job.',
-    deprecationChain: ['messaging.bullmq.job.finished.timestamp'],
   },
   'messaging.bullmq.job.ids': {
     canonicalName: 'messaging.bullmq.job.ids',

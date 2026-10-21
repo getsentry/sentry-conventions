@@ -7460,19 +7460,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "user-42-sync"
     """
 
-    # Path: model/attributes/messaging/messaging__bullmq__job__finished__timestamp.json
-    MESSAGING_BULLMQ_JOB_FINISHED_TIMESTAMP: Literal[
-        "messaging.bullmq.job.finished.timestamp"
-    ] = "messaging.bullmq.job.finished.timestamp"
-    """The time in milliseconds since the Unix epoch when the Worker finished its processing call for the BullMQ job.
-
-    Type: int
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: 1791184722411
-    """
-
     # Path: model/attributes/messaging/messaging__bullmq__job__ids.json
     MESSAGING_BULLMQ_JOB_IDS: Literal["messaging.bullmq.job.ids"] = (
         "messaging.bullmq.job.ids"
@@ -22612,27 +22599,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "The Sentry SDK sets this attribute from the `bullmq.job.deduplication.key` attribute of BullMQ's telemetry interface."
         ],
     ),
-    "messaging.bullmq.job.finished.timestamp": AttributeMetadata(
-        brief="The time in milliseconds since the Unix epoch when the Worker finished its processing call for the BullMQ job.",
-        type=AttributeType.INTEGER,
-        keys=("messaging.bullmq.job.finished.timestamp",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example=1791184722411,
-        examples=[1791184722411],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[690],
-                description="Added messaging.bullmq.job.finished.timestamp attribute",
-            ),
-        ],
-        additional_context=[
-            "The Sentry SDK sets this attribute from the `bullmq.job.finished.timestamp` attribute of BullMQ's telemetry interface.",
-            "BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not.",
-        ],
-    ),
     "messaging.bullmq.job.ids": AttributeMetadata(
         brief="The IDs of the BullMQ jobs that Queue.clean() removed.",
         type=AttributeType.STRING_ARRAY,
@@ -29815,7 +29781,6 @@ Attributes = TypedDict(
         "messaging.bullmq.job.attempt_finished_timestamp": int,
         "messaging.bullmq.job.bulk.names": List[str],
         "messaging.bullmq.job.deduplication.key": str,
-        "messaging.bullmq.job.finished.timestamp": int,
         "messaging.bullmq.job.ids": List[str],
         "messaging.bullmq.job.key": str,
         "messaging.bullmq.job.name": str,
