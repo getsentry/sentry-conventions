@@ -6797,7 +6797,7 @@ export type DJANGO_MIDDLEWARE_NAME_TYPE = string;
 // Path: model/attributes/document/document__static_html.json
 
 /**
- * Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then. `document.static_html`
+ * Set on a pageload span when the server rendered the document's HTML to reuse it for other requests. The value says if the whole document or only a part of it is reused. `document.static_html`
  *
  * Attribute Value Type: `string` {@link DOCUMENT_STATIC_HTML_TYPE}
  *
@@ -6807,8 +6807,8 @@ export type DJANGO_MIDDLEWARE_NAME_TYPE = string;
  * Visibility: public
  *
  * Well-defined Values:
- * - `full` - The server rendered the whole document before the request, for example at build time or during an earlier request (Next.js ISR, Nuxt `swr` route rules).
- * - `partial` - The server rendered a static part of the document before the request, and the other parts for this request in the same response (Next.js Partial Prerendering).
+ * - `full` - The server reuses the whole document, for example a page from the build, a Next.js ISR page, or a Nuxt `swr` route.
+ * - `partial` - The server reuses a static part of the document, and renders the other parts for this request in the same response (Next.js Partial Prerendering).
  *
  * @example "full"
  * @example "partial"
@@ -27260,7 +27260,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'document.static_html': {
     brief:
-      "Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then.",
+      "Set on a pageload span when the server rendered the document's HTML to reuse it for other requests. The value says if the whole document or only a part of it is reused.",
     type: 'string',
     keys: ['document.static_html'],
     applyScrubbing: {
@@ -27272,8 +27272,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['full', 'partial'],
     changelog: [{ version: 'next', prs: [740], description: 'Added document.static_html attribute' }],
     additionalContext: [
-      'Not set when the server rendered the document for this request, or when the SDK does not know.',
-      'The server spans that rendered this HTML are in an earlier trace, not in the trace of the pageload span.',
+      'Not set when the server rendered the document only for this request, or when the SDK does not know.',
+      'The server spans that rendered this HTML are in a different trace, not in the trace of the pageload span.',
       "Does not cover CDN or browser caches. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
     ],
   },

@@ -4278,15 +4278,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/document/document__static_html.json
     DOCUMENT_STATIC_HTML: Literal["document.static_html"] = "document.static_html"
-    """Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then.
+    """Set on a pageload span when the server rendered the document's HTML to reuse it for other requests. The value says if the whole document or only a part of it is reused.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Well-defined Values:
-    - `full` - The server rendered the whole document before the request, for example at build time or during an earlier request (Next.js ISR, Nuxt `swr` route rules).
-    - `partial` - The server rendered a static part of the document before the request, and the other parts for this request in the same response (Next.js Partial Prerendering).
+    - `full` - The server reuses the whole document, for example a page from the build, a Next.js ISR page, or a Nuxt `swr` route.
+    - `partial` - The server reuses a static part of the document, and renders the other parts for this request in the same response (Next.js Partial Prerendering).
     Example: "full"
     Example: "partial"
     """
@@ -17822,7 +17822,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "document.static_html": AttributeMetadata(
-        brief="Set on a pageload span when the server rendered the document's HTML before the request. The value says if the whole document or only a part of it was rendered then.",
+        brief="Set on a pageload span when the server rendered the document's HTML to reuse it for other requests. The value says if the whole document or only a part of it is reused.",
         type=AttributeType.STRING,
         keys=("document.static_html",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -17838,8 +17838,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
         additional_context=[
-            "Not set when the server rendered the document for this request, or when the SDK does not know.",
-            "The server spans that rendered this HTML are in an earlier trace, not in the trace of the pageload span.",
+            "Not set when the server rendered the document only for this request, or when the SDK does not know.",
+            "The server spans that rendered this HTML are in a different trace, not in the trace of the pageload span.",
             "Does not cover CDN or browser caches. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
         ],
     ),
