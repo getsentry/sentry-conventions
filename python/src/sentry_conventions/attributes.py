@@ -4276,6 +4276,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "AuthenticationMiddleware"
     """
 
+    # Path: model/attributes/document/document__static_html.json
+    DOCUMENT_STATIC_HTML: Literal["document.static_html"] = "document.static_html"
+    """Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `full` - The server rendered the whole document before the request, for example at build time or during an earlier request (Next.js ISR, Nuxt `swr` route rules).
+    - `partial` - The server rendered a static part of the document before the request, and the other parts for this request in the same response (Next.js Partial Prerendering).
+    Example: "full"
+    Example: "partial"
+    """
+
     # Path: model/attributes/effectiveConnectionType.json
     EFFECTIVECONNECTIONTYPE: Literal["effectiveConnectionType"] = (
         "effectiveConnectionType"
@@ -17806,6 +17821,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "document.static_html": AttributeMetadata(
+        brief="Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor.",
+        type=AttributeType.STRING,
+        keys=("document.static_html",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="full",
+        examples=["full", "partial"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added document.static_html attribute"
+            ),
+        ],
+        additional_context=[
+            "Not set when the server rendered the whole document for this request, or when the SDK cannot tell.",
+            "Describes the server render only. A response that a CDN or the browser cache reused does not count. The browser's own prerendering (Speculation Rules) is described by `browser.navigation.type`.",
+        ],
+    ),
     "effectiveConnectionType": AttributeMetadata(
         brief="Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).",
         type=AttributeType.STRING,
@@ -29871,6 +29905,7 @@ Attributes = TypedDict(
         "dist": str,
         "django.function_name": str,
         "django.middleware_name": str,
+        "document.static_html": str,
         "effectiveConnectionType": str,
         "environment": str,
         "error.type": str,

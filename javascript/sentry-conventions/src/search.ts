@@ -1740,6 +1740,11 @@ export const SEARCH_DJANGO__FUNCTION_NAME = 'django.function_name';
 export const SEARCH_DJANGO__MIDDLEWARE_NAME = 'django.middleware_name';
 
 /**
+ * Search name for {@link attributes.DOCUMENT_STATIC_HTML}. `document.static_html`
+ */
+export const SEARCH_DOCUMENT__STATIC_HTML = 'document.static_html';
+
+/**
  * Search name for {@link attributes.EFFECTIVECONNECTIONTYPE}. `effectiveConnectionType`
  *
  * @deprecated Use {@link SEARCH_NETWORK__CONNECTION__EFFECTIVE_TYPE} (`network.connection.effective_type`) instead
@@ -5602,6 +5607,7 @@ export type AttributeSearchName =
   | typeof SEARCH_DIST
   | typeof SEARCH_DJANGO__FUNCTION_NAME
   | typeof SEARCH_DJANGO__MIDDLEWARE_NAME
+  | typeof SEARCH_DOCUMENT__STATIC_HTML
   | typeof SEARCH_EFFECTIVECONNECTIONTYPE
   | typeof SEARCH_ENVIRONMENT
   | typeof SEARCH_ERROR__TYPE
@@ -8227,6 +8233,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'starlette.middleware_name',
       'starlite.middleware_name',
     ],
+  },
+  'document.static_html': {
+    canonicalName: 'document.static_html',
+    type: 'string',
+    brief:
+      "Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor.",
+    deprecationChain: ['document.static_html'],
   },
   effectiveConnectionType: {
     canonicalName: 'network.connection.effective_type',

@@ -6794,6 +6794,32 @@ export const DJANGO_MIDDLEWARE_NAME = 'django.middleware_name';
  */
 export type DJANGO_MIDDLEWARE_NAME_TYPE = string;
 
+// Path: model/attributes/document/document__static_html.json
+
+/**
+ * Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor. `document.static_html`
+ *
+ * Attribute Value Type: `string` {@link DOCUMENT_STATIC_HTML_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `full` - The server rendered the whole document before the request, for example at build time or during an earlier request (Next.js ISR, Nuxt `swr` route rules).
+ * - `partial` - The server rendered a static part of the document before the request, and the other parts for this request in the same response (Next.js Partial Prerendering).
+ *
+ * @example "full"
+ * @example "partial"
+ */
+export const DOCUMENT_STATIC_HTML = 'document.static_html';
+
+/**
+ * Type for {@link DOCUMENT_STATIC_HTML} document.static_html
+ */
+export type DOCUMENT_STATIC_HTML_TYPE = string;
+
 // Path: model/attributes/effectiveConnectionType.json
 
 /**
@@ -20924,6 +20950,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   dist: 'string',
   'django.function_name': 'string',
   'django.middleware_name': 'string',
+  'document.static_html': 'string',
   effectiveConnectionType: 'string',
   environment: 'string',
   'error.type': 'string',
@@ -21841,6 +21868,7 @@ export type AttributeName =
   | typeof DIST
   | typeof DJANGO_FUNCTION_NAME
   | typeof DJANGO_MIDDLEWARE_NAME
+  | typeof DOCUMENT_STATIC_HTML
   | typeof EFFECTIVECONNECTIONTYPE
   | typeof ENVIRONMENT
   | typeof ERROR_TYPE
@@ -27229,6 +27257,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['middleware.name'],
     changelog: [{ version: '0.19.0', prs: [520], description: 'Added django.middleware_name attribute' }],
+  },
+  'document.static_html': {
+    brief:
+      "Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor.",
+    type: 'string',
+    keys: ['document.static_html'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'full',
+    examples: ['full', 'partial'],
+    changelog: [{ version: 'next', description: 'Added document.static_html attribute' }],
+    additionalContext: [
+      'Not set when the server rendered the whole document for this request, or when the SDK cannot tell.',
+      "Describes the server render only. A response that a CDN or the browser cache reused does not count. The browser's own prerendering (Speculation Rules) is described by `browser.navigation.type`.",
+    ],
   },
   effectiveConnectionType: {
     brief: 'Specifies the estimated effective type of the current connection (e.g. slow-2g, 2g, 3g, 4g).',
@@ -37898,6 +37944,7 @@ export type Attributes = {
   [DIST]?: DIST_TYPE;
   [DJANGO_FUNCTION_NAME]?: DJANGO_FUNCTION_NAME_TYPE;
   [DJANGO_MIDDLEWARE_NAME]?: DJANGO_MIDDLEWARE_NAME_TYPE;
+  [DOCUMENT_STATIC_HTML]?: DOCUMENT_STATIC_HTML_TYPE;
   [EFFECTIVECONNECTIONTYPE]?: EFFECTIVECONNECTIONTYPE_TYPE;
   [ENVIRONMENT]?: ENVIRONMENT_TYPE;
   [ERROR_TYPE]?: ERROR_TYPE_TYPE;

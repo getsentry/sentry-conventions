@@ -1,0 +1,31 @@
+{
+  "key": "document.static_html",
+  "brief": "Set on a pageload span. Describes how much of the document's HTML the server rendered before the request, to serve the same HTML to every visitor.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "additional_context": [
+    "Not set when the server rendered the whole document for this request, or when the SDK cannot tell.",
+    "Describes the server render only. A response that a CDN or the browser cache reused does not count. The browser's own prerendering (Speculation Rules) is described by `browser.navigation.type`."
+  ],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["full", "partial"],
+  "enum_values": [
+    {
+      "value": "full",
+      "brief": "The server rendered the whole document before the request, for example at build time or during an earlier request (Next.js ISR, Nuxt `swr` route rules)."
+    },
+    {
+      "value": "partial",
+      "brief": "The server rendered a static part of the document before the request, and the other parts for this request in the same response (Next.js Partial Prerendering)."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added document.static_html attribute"
+    }
+  ]
+}
