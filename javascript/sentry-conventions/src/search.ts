@@ -4144,6 +4144,13 @@ export const SEARCH_RESOURCE__DEPLOYMENT__ENVIRONMENT__NAME = 'resource.deployme
 export const SEARCH_RESOURCE__RENDER_BLOCKING_STATUS = 'resource.render_blocking_status';
 
 /**
+ * Search name for {@link attributes.SENTRY_RELEASE}. `resource.service.version`
+ *
+ * @deprecated Use {@link SEARCH_RELEASE} (`release`) instead
+ */
+export const SEARCH_RESOURCE__SERVICE__VERSION = 'resource.service.version';
+
+/**
  * Search name for {@link attributes.ROUTE}. `route`
  *
  * @deprecated Use {@link SEARCH_HTTP__ROUTE} (`http.route`) instead
@@ -6179,6 +6186,7 @@ export type AttributeSearchName =
   | typeof SEARCH_RESOURCE__DEPLOYMENT__ENVIRONMENT
   | typeof SEARCH_RESOURCE__DEPLOYMENT__ENVIRONMENT__NAME
   | typeof SEARCH_RESOURCE__RENDER_BLOCKING_STATUS
+  | typeof SEARCH_RESOURCE__SERVICE__VERSION
   | typeof SEARCH_ROUTE
   | typeof SEARCH_ROUTER__NAVIGATION__ORIGIN
   | typeof SEARCH_ROUTER__NAVIGATION__ROUTE__ID
@@ -11211,7 +11219,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'sentry.release',
     type: 'string',
     brief: 'The sentry release.',
-    deprecationChain: ['release', 'sentry.release', 'service.version'],
+    deprecationChain: ['release', 'sentry.release', 'service.version', 'resource.service.version'],
   },
   'remix.action_form_data.<key>': {
     canonicalName: 'remix.action_form_data.<key>',
@@ -11264,6 +11272,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The render blocking status of the resource.',
     deprecationChain: ['resource.render_blocking_status'],
+  },
+  'resource.service.version': {
+    canonicalName: 'sentry.release',
+    type: 'string',
+    brief:
+      'The version string of the service API or implementation, from the OpenTelemetry resource attribute `service.version`. The format is not defined by these conventions.',
+    deprecationChain: ['release', 'sentry.release', 'service.version', 'resource.service.version'],
   },
   route: {
     canonicalName: 'http.route',
@@ -11803,7 +11818,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'service.version',
     type: 'string',
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
-    deprecationChain: ['service.version', 'sentry.release', 'release'],
+    deprecationChain: ['service.version', 'sentry.release', 'release', 'resource.service.version'],
   },
   'session.id': {
     canonicalName: 'session.id',

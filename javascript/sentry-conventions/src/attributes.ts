@@ -16197,6 +16197,28 @@ export const RESOURCE_RENDER_BLOCKING_STATUS = 'resource.render_blocking_status'
  */
 export type RESOURCE_RENDER_BLOCKING_STATUS_TYPE = string;
 
+// Path: model/attributes/resource/resource__service__version.json
+
+/**
+ * The version string of the service API or implementation, from the OpenTelemetry resource attribute `service.version`. The format is not defined by these conventions. `resource.service.version`
+ *
+ * Attribute Value Type: `string` {@link RESOURCE_SERVICE_VERSION_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @deprecated Use {@link SENTRY_RELEASE} (sentry.release) instead
+ * @example "5.0.0"
+ */
+export const RESOURCE_SERVICE_VERSION = 'resource.service.version';
+
+/**
+ * Type for {@link RESOURCE_SERVICE_VERSION} resource.service.version
+ */
+export type RESOURCE_SERVICE_VERSION_TYPE = string;
+
 // Path: model/attributes/route.json
 
 /**
@@ -21972,6 +21994,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'resource.deployment.environment': 'string',
   'resource.deployment.environment.name': 'string',
   'resource.render_blocking_status': 'string',
+  'resource.service.version': 'string',
   route: 'string',
   'router.navigation.origin': 'string',
   'router.navigation.route.id': 'string',
@@ -22918,6 +22941,7 @@ export type AttributeName =
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT
   | typeof RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME
   | typeof RESOURCE_RENDER_BLOCKING_STATUS
+  | typeof RESOURCE_SERVICE_VERSION
   | typeof ROUTE
   | typeof ROUTER_NAVIGATION_ORIGIN
   | typeof ROUTER_NAVIGATION_ROUTE_ID
@@ -35113,7 +35137,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   release: {
     brief: 'The sentry release.',
     type: 'string',
-    keys: ['sentry.release', 'release', 'service.version'],
+    keys: ['sentry.release', 'release', 'service.version', 'resource.service.version'],
     applyScrubbing: {
       key: 'never',
     },
@@ -35234,6 +35258,24 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'non-blocking',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'resource.service.version': {
+    brief:
+      'The version string of the service API or implementation, from the OpenTelemetry resource attribute `service.version`. The format is not defined by these conventions.',
+    type: 'string',
+    keys: ['sentry.release', 'release', 'service.version', 'resource.service.version'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '5.0.0',
+    examples: ['5.0.0'],
+    deprecation: {
+      replacement: 'sentry.release',
+      status: 'backfill',
+    },
+    changelog: [{ version: 'next', description: 'Added resource.service.version, backfilled into sentry.release' }],
   },
   route: {
     brief:
@@ -36340,7 +36382,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'sentry.release': {
     brief: 'The sentry release.',
     type: 'string',
-    keys: ['sentry.release', 'release', 'service.version'],
+    keys: ['sentry.release', 'release', 'service.version', 'resource.service.version'],
     applyScrubbing: {
       key: 'never',
     },
@@ -37052,7 +37094,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'service.version': {
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
     type: 'string',
-    keys: ['service.version', 'sentry.release', 'release'],
+    keys: ['service.version', 'sentry.release', 'release', 'resource.service.version'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -39512,6 +39554,7 @@ export type Attributes = {
   [RESOURCE_DEPLOYMENT_ENVIRONMENT]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE;
   [RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME]?: RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE;
   [RESOURCE_RENDER_BLOCKING_STATUS]?: RESOURCE_RENDER_BLOCKING_STATUS_TYPE;
+  [RESOURCE_SERVICE_VERSION]?: RESOURCE_SERVICE_VERSION_TYPE;
   [ROUTE]?: ROUTE_TYPE;
   [ROUTER_NAVIGATION_ORIGIN]?: ROUTER_NAVIGATION_ORIGIN_TYPE;
   [ROUTER_NAVIGATION_ROUTE_ID]?: ROUTER_NAVIGATION_ROUTE_ID_TYPE;
