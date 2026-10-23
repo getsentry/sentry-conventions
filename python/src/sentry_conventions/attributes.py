@@ -2084,6 +2084,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "587ad24b-03b9-4413-8202-bbd56b36e5b7"
     """
 
+    # Path: model/attributes/aws/aws__lambda__target_function__name.json
+    AWS_LAMBDA_TARGET_FUNCTION_NAME: Literal["aws.lambda.target_function.name"] = (
+        "aws.lambda.target_function.name"
+    )
+    """The name of the AWS Lambda function that an AWS SDK call acts on.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "billing"
+    """
+
     # Path: model/attributes/aws/aws__log__group__names.json
     AWS_LOG_GROUP_NAMES: Literal["aws.log.group.names"] = "aws.log.group.names"
     """The name(s) of the AWS log group(s) an application is writing to.
@@ -2251,6 +2264,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
     """
 
+    # Path: model/attributes/aws/aws__secretsmanager__secret__name.json
+    AWS_SECRETSMANAGER_SECRET_NAME: Literal["aws.secretsmanager.secret.name"] = (
+        "aws.secretsmanager.secret.name"
+    )
+    """The name of the secret stored in AWS Secrets Manager.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "db-password"
+    Example: "prod/billing/api-key"
+    """
+
     # Path: model/attributes/aws/aws__sns__topic__arn.json
     AWS_SNS_TOPIC_ARN: Literal["aws.sns.topic.arn"] = "aws.sns.topic.arn"
     """The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.
@@ -2286,6 +2313,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
     """
 
+    # Path: model/attributes/aws/aws__step_functions__activity__name.json
+    AWS_STEP_FUNCTIONS_ACTIVITY_NAME: Literal["aws.step_functions.activity.name"] = (
+        "aws.step_functions.activity.name"
+    )
+    """The name of the AWS Step Functions activity.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "resize-image"
+    """
+
     # Path: model/attributes/aws/aws__step_functions__execution__arn.json
     AWS_STEP_FUNCTIONS_EXECUTION_ARN: Literal["aws.step_functions.execution.arn"] = (
         "aws.step_functions.execution.arn"
@@ -2310,6 +2350,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
+    """
+
+    # Path: model/attributes/aws/aws__step_functions__state_machine__name.json
+    AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME: Literal[
+        "aws.step_functions.state_machine.name"
+    ] = "aws.step_functions.state_machine.name"
+    """The name of the AWS Step Functions state machine.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "orders"
     """
 
     # Path: model/attributes/aws_region.json
@@ -15013,6 +15066,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.lambda.target_function.name": AttributeMetadata(
+        brief="The name of the AWS Lambda function that an AWS SDK call acts on.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.target_function.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="billing",
+        examples=["billing"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.lambda.target_function.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in."
+        ],
+    ),
     "aws.log.group.names": AttributeMetadata(
         brief="The name(s) of the AWS log group(s) an application is writing to.",
         type=AttributeType.STRING_ARRAY,
@@ -15307,6 +15379,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.secretsmanager.secret.name": AttributeMetadata(
+        brief="The name of the secret stored in AWS Secrets Manager.",
+        type=AttributeType.STRING,
+        keys=("aws.secretsmanager.secret.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="db-password",
+        examples=["db-password", "prod/billing/api-key"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.secretsmanager.secret.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Without the hyphen and six random characters that Secrets Manager appends to the name in the secret's ARN (`db-password`, not `db-password-AbCdEf`)."
+        ],
+    ),
     "aws.sns.topic.arn": AttributeMetadata(
         brief="The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.",
         type=AttributeType.STRING,
@@ -15356,6 +15447,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.step_functions.activity.name": AttributeMetadata(
+        brief="The name of the AWS Step Functions activity.",
+        type=AttributeType.STRING,
+        keys=("aws.step_functions.activity.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="resize-image",
+        examples=["resize-image"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.step_functions.activity.name attribute",
+            ),
+        ],
+        additional_context=[
+            "The last part of the activity ARN (`arn:aws:states:us-east-1:123456789012:activity:resize-image`)."
+        ],
+    ),
     "aws.step_functions.execution.arn": AttributeMetadata(
         brief="The ARN of the AWS Step Functions Execution.",
         type=AttributeType.STRING,
@@ -15389,6 +15499,25 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[480],
                 description="Added aws.step_functions.state_machine.arn attribute",
             ),
+        ],
+    ),
+    "aws.step_functions.state_machine.name": AttributeMetadata(
+        brief="The name of the AWS Step Functions state machine.",
+        type=AttributeType.STRING,
+        keys=("aws.step_functions.state_machine.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="orders",
+        examples=["orders"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added aws.step_functions.state_machine.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Contains no version or alias qualifier (`orders`, not `orders:1` or `orders:prod`)."
         ],
     ),
     "aws_region": AttributeMetadata(
@@ -30718,6 +30847,7 @@ Attributes = TypedDict(
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
         "aws.lambda.resource_mapping.id": str,
+        "aws.lambda.target_function.name": str,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
         "aws.operation_name": str,
@@ -30732,11 +30862,14 @@ Attributes = TypedDict(
         "aws.s3.part_number": int,
         "aws.s3.upload_id": str,
         "aws.secretsmanager.secret.arn": str,
+        "aws.secretsmanager.secret.name": str,
         "aws.sns.topic.arn": str,
         "aws.sqs.queue.url": str,
         "aws.step_functions.activity.arn": str,
+        "aws.step_functions.activity.name": str,
         "aws.step_functions.execution.arn": str,
         "aws.step_functions.state_machine.arn": str,
+        "aws.step_functions.state_machine.name": str,
         "aws_region": str,
         "blocked_main_thread": bool,
         "browser.bfcache.frame": str,

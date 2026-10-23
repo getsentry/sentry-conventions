@@ -2883,6 +2883,27 @@ export const AWS_LAMBDA_RESOURCE_MAPPING_ID = 'aws.lambda.resource_mapping.id';
  */
 export type AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE = string;
 
+// Path: model/attributes/aws/aws__lambda__target_function__name.json
+
+/**
+ * The name of the AWS Lambda function that an AWS SDK call acts on. `aws.lambda.target_function.name`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_TARGET_FUNCTION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "billing"
+ */
+export const AWS_LAMBDA_TARGET_FUNCTION_NAME = 'aws.lambda.target_function.name';
+
+/**
+ * Type for {@link AWS_LAMBDA_TARGET_FUNCTION_NAME} aws.lambda.target_function.name
+ */
+export type AWS_LAMBDA_TARGET_FUNCTION_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__log__group__names.json
 
 /**
@@ -3215,6 +3236,28 @@ export const AWS_SECRETSMANAGER_SECRET_ARN = 'aws.secretsmanager.secret.arn';
  */
 export type AWS_SECRETSMANAGER_SECRET_ARN_TYPE = string;
 
+// Path: model/attributes/aws/aws__secretsmanager__secret__name.json
+
+/**
+ * The name of the secret stored in AWS Secrets Manager. `aws.secretsmanager.secret.name`
+ *
+ * Attribute Value Type: `string` {@link AWS_SECRETSMANAGER_SECRET_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "db-password"
+ * @example "prod/billing/api-key"
+ */
+export const AWS_SECRETSMANAGER_SECRET_NAME = 'aws.secretsmanager.secret.name';
+
+/**
+ * Type for {@link AWS_SECRETSMANAGER_SECRET_NAME} aws.secretsmanager.secret.name
+ */
+export type AWS_SECRETSMANAGER_SECRET_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__sns__topic__arn.json
 
 /**
@@ -3278,6 +3321,27 @@ export const AWS_STEP_FUNCTIONS_ACTIVITY_ARN = 'aws.step_functions.activity.arn'
  */
 export type AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE = string;
 
+// Path: model/attributes/aws/aws__step_functions__activity__name.json
+
+/**
+ * The name of the AWS Step Functions activity. `aws.step_functions.activity.name`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_ACTIVITY_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "resize-image"
+ */
+export const AWS_STEP_FUNCTIONS_ACTIVITY_NAME = 'aws.step_functions.activity.name';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_ACTIVITY_NAME} aws.step_functions.activity.name
+ */
+export type AWS_STEP_FUNCTIONS_ACTIVITY_NAME_TYPE = string;
+
 // Path: model/attributes/aws/aws__step_functions__execution__arn.json
 
 /**
@@ -3319,6 +3383,27 @@ export const AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN = 'aws.step_functions.state_ma
  * Type for {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN} aws.step_functions.state_machine.arn
  */
 export type AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE = string;
+
+// Path: model/attributes/aws/aws__step_functions__state_machine__name.json
+
+/**
+ * The name of the AWS Step Functions state machine. `aws.step_functions.state_machine.name`
+ *
+ * Attribute Value Type: `string` {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "orders"
+ */
+export const AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME = 'aws.step_functions.state_machine.name';
+
+/**
+ * Type for {@link AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME} aws.step_functions.state_machine.name
+ */
+export type AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME_TYPE = string;
 
 // Path: model/attributes/blocked_main_thread.json
 
@@ -21381,6 +21466,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.invoked_function_arn': 'string',
   'aws.lambda.remaining_time_in_millis': 'double',
   'aws.lambda.resource_mapping.id': 'string',
+  'aws.lambda.target_function.name': 'string',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
   'aws.operation_name': 'string',
@@ -21396,11 +21482,14 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.s3.part_number': 'integer',
   'aws.s3.upload_id': 'string',
   'aws.secretsmanager.secret.arn': 'string',
+  'aws.secretsmanager.secret.name': 'string',
   'aws.sns.topic.arn': 'string',
   'aws.sqs.queue.url': 'string',
   'aws.step_functions.activity.arn': 'string',
+  'aws.step_functions.activity.name': 'string',
   'aws.step_functions.execution.arn': 'string',
   'aws.step_functions.state_machine.arn': 'string',
+  'aws.step_functions.state_machine.name': 'string',
   blocked_main_thread: 'boolean',
   'browser.bfcache.frame': 'string',
   'browser.bfcache.not_restored_reason_count': 'integer',
@@ -22327,6 +22416,7 @@ export type AttributeName =
   | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
   | typeof AWS_LAMBDA_RESOURCE_MAPPING_ID
+  | typeof AWS_LAMBDA_TARGET_FUNCTION_NAME
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
   | typeof AWS_OPERATION_NAME
@@ -22342,11 +22432,14 @@ export type AttributeName =
   | typeof AWS_S3_PART_NUMBER
   | typeof AWS_S3_UPLOAD_ID
   | typeof AWS_SECRETSMANAGER_SECRET_ARN
+  | typeof AWS_SECRETSMANAGER_SECRET_NAME
   | typeof AWS_SNS_TOPIC_ARN
   | typeof AWS_SQS_QUEUE_URL
   | typeof AWS_STEP_FUNCTIONS_ACTIVITY_ARN
+  | typeof AWS_STEP_FUNCTIONS_ACTIVITY_NAME
   | typeof AWS_STEP_FUNCTIONS_EXECUTION_ARN
   | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN
+  | typeof AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME
   | typeof BLOCKED_MAIN_THREAD
   | typeof BROWSER_BFCACHE_FRAME
   | typeof BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT
@@ -25253,6 +25346,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['587ad24b-03b9-4413-8202-bbd56b36e5b7'],
     changelog: [{ version: '0.28.0', prs: [710], description: 'Added aws.lambda.resource_mapping.id attribute' }],
   },
+  'aws.lambda.target_function.name': {
+    brief: 'The name of the AWS Lambda function that an AWS SDK call acts on.',
+    type: 'string',
+    keys: ['aws.lambda.target_function.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'billing',
+    examples: ['billing'],
+    changelog: [{ version: 'next', description: 'Added aws.lambda.target_function.name attribute' }],
+    additionalContext: [
+      'Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in.',
+    ],
+  },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
     type: 'string[]',
@@ -25506,6 +25615,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.secretsmanager.secret.arn attribute' }],
   },
+  'aws.secretsmanager.secret.name': {
+    brief: 'The name of the secret stored in AWS Secrets Manager.',
+    type: 'string',
+    keys: ['aws.secretsmanager.secret.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'db-password',
+    examples: ['db-password', 'prod/billing/api-key'],
+    changelog: [{ version: 'next', description: 'Added aws.secretsmanager.secret.name attribute' }],
+    additionalContext: [
+      "Without the hyphen and six random characters that Secrets Manager appends to the name in the secret's ARN (`db-password`, not `db-password-AbCdEf`).",
+    ],
+  },
   'aws.sns.topic.arn': {
     brief:
       'The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.',
@@ -25545,6 +25670,22 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'arn:aws:states:us-east-1:123456789012:activity:get-greeting',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.activity.arn attribute' }],
   },
+  'aws.step_functions.activity.name': {
+    brief: 'The name of the AWS Step Functions activity.',
+    type: 'string',
+    keys: ['aws.step_functions.activity.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'resize-image',
+    examples: ['resize-image'],
+    changelog: [{ version: 'next', description: 'Added aws.step_functions.activity.name attribute' }],
+    additionalContext: [
+      'The last part of the activity ARN (`arn:aws:states:us-east-1:123456789012:activity:resize-image`).',
+    ],
+  },
   'aws.step_functions.execution.arn': {
     brief: 'The ARN of the AWS Step Functions Execution.',
     type: 'string',
@@ -25569,6 +25710,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1',
     changelog: [{ version: '0.16.0', prs: [480], description: 'Added aws.step_functions.state_machine.arn attribute' }],
+  },
+  'aws.step_functions.state_machine.name': {
+    brief: 'The name of the AWS Step Functions state machine.',
+    type: 'string',
+    keys: ['aws.step_functions.state_machine.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'orders',
+    examples: ['orders'],
+    changelog: [{ version: 'next', description: 'Added aws.step_functions.state_machine.name attribute' }],
+    additionalContext: ['Contains no version or alias qualifier (`orders`, not `orders:1` or `orders:prod`).'],
   },
   blocked_main_thread: {
     brief: 'Whether the main thread was blocked by the span.',
@@ -38932,6 +39087,7 @@ export type Attributes = {
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
   [AWS_LAMBDA_RESOURCE_MAPPING_ID]?: AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE;
+  [AWS_LAMBDA_TARGET_FUNCTION_NAME]?: AWS_LAMBDA_TARGET_FUNCTION_NAME_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;
@@ -38947,11 +39103,14 @@ export type Attributes = {
   [AWS_S3_PART_NUMBER]?: AWS_S3_PART_NUMBER_TYPE;
   [AWS_S3_UPLOAD_ID]?: AWS_S3_UPLOAD_ID_TYPE;
   [AWS_SECRETSMANAGER_SECRET_ARN]?: AWS_SECRETSMANAGER_SECRET_ARN_TYPE;
+  [AWS_SECRETSMANAGER_SECRET_NAME]?: AWS_SECRETSMANAGER_SECRET_NAME_TYPE;
   [AWS_SNS_TOPIC_ARN]?: AWS_SNS_TOPIC_ARN_TYPE;
   [AWS_SQS_QUEUE_URL]?: AWS_SQS_QUEUE_URL_TYPE;
   [AWS_STEP_FUNCTIONS_ACTIVITY_ARN]?: AWS_STEP_FUNCTIONS_ACTIVITY_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_ACTIVITY_NAME]?: AWS_STEP_FUNCTIONS_ACTIVITY_NAME_TYPE;
   [AWS_STEP_FUNCTIONS_EXECUTION_ARN]?: AWS_STEP_FUNCTIONS_EXECUTION_ARN_TYPE;
   [AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN_TYPE;
+  [AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME]?: AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME_TYPE;
   [BLOCKED_MAIN_THREAD]?: BLOCKED_MAIN_THREAD_TYPE;
   [BROWSER_BFCACHE_FRAME]?: BROWSER_BFCACHE_FRAME_TYPE;
   [BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT]?: BROWSER_BFCACHE_NOT_RESTORED_REASON_COUNT_TYPE;
