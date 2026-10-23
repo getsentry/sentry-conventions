@@ -13,7 +13,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
       "prs": [690],
       "description": "Added messaging.bullmq.job.deduplication.key attribute"
     }

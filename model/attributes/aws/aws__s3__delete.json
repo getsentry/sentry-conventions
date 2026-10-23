@@ -11,7 +11,8 @@
   "examples": ["Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
+      "prs": [713],
       "description": "Changed apply_scrubbing from manual to auto"
     },
     {

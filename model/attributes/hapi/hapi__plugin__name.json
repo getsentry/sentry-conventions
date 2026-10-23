@@ -10,7 +10,8 @@
   "examples": ["hapi-swagger"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
+      "prs": [741],
       "description": "Added hapi.plugin.name attribute"
     }
   ]

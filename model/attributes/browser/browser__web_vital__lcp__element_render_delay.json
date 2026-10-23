@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "visibility": "public",
-  "examples": [410.0],
+  "examples": [410],
   "additional_context": [
     "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.",
     "Measured as the LCP value minus the LCP resource's `responseEnd`. When the LCP element is text, it covers all time after TTFB.",
@@ -15,7 +15,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
       "prs": [712],
       "description": "Added browser.web_vital.lcp.element_render_delay attribute"
     }

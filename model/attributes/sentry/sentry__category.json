@@ -8,43 +8,117 @@
   "is_in_otel": false,
   "example": "db",
   "enum_values": [
-    { "value": "ai" },
-    { "value": "ai.pipeline" },
-    { "value": "app" },
-    { "value": "browser" },
-    { "value": "cache" },
-    { "value": "console" },
-    { "value": "db" },
-    { "value": "event" },
-    { "value": "file" },
-    { "value": "function.aws" },
-    { "value": "function.azure" },
-    { "value": "function.gcp" },
-    { "value": "function.nextjs" },
-    { "value": "function.remix" },
-    { "value": "graphql" },
-    { "value": "grpc" },
-    { "value": "http" },
-    { "value": "measure" },
-    { "value": "middleware" },
-    { "value": "navigation" },
-    { "value": "object" },
-    { "value": "pageload" },
-    { "value": "queue" },
-    { "value": "resource" },
-    { "value": "rpc" },
-    { "value": "serialize" },
-    { "value": "subprocess" },
-    { "value": "template" },
-    { "value": "topic" },
-    { "value": "ui" },
-    { "value": "ui.angular" },
-    { "value": "ui.ember" },
-    { "value": "ui.react" },
-    { "value": "ui.svelte" },
-    { "value": "ui.vue" },
-    { "value": "view" },
-    { "value": "websocket" }
+    {
+      "value": "ai"
+    },
+    {
+      "value": "ai.pipeline"
+    },
+    {
+      "value": "app"
+    },
+    {
+      "value": "browser"
+    },
+    {
+      "value": "cache"
+    },
+    {
+      "value": "console"
+    },
+    {
+      "value": "db"
+    },
+    {
+      "value": "event"
+    },
+    {
+      "value": "file"
+    },
+    {
+      "value": "function.aws"
+    },
+    {
+      "value": "function.azure"
+    },
+    {
+      "value": "function.gcp"
+    },
+    {
+      "value": "function.nextjs"
+    },
+    {
+      "value": "function.remix"
+    },
+    {
+      "value": "graphql"
+    },
+    {
+      "value": "grpc"
+    },
+    {
+      "value": "http"
+    },
+    {
+      "value": "measure"
+    },
+    {
+      "value": "middleware"
+    },
+    {
+      "value": "navigation"
+    },
+    {
+      "value": "object"
+    },
+    {
+      "value": "pageload"
+    },
+    {
+      "value": "queue"
+    },
+    {
+      "value": "resource"
+    },
+    {
+      "value": "rpc"
+    },
+    {
+      "value": "serialize"
+    },
+    {
+      "value": "subprocess"
+    },
+    {
+      "value": "template"
+    },
+    {
+      "value": "topic"
+    },
+    {
+      "value": "ui"
+    },
+    {
+      "value": "ui.angular"
+    },
+    {
+      "value": "ui.ember"
+    },
+    {
+      "value": "ui.react"
+    },
+    {
+      "value": "ui.svelte"
+    },
+    {
+      "value": "ui.vue"
+    },
+    {
+      "value": "view"
+    },
+    {
+      "value": "websocket"
+    }
   ],
   "visibility": "public",
   "search_alias": {
@@ -52,7 +126,8 @@
   },
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
+      "prs": [721],
       "description": "Added object to the enum values"
     },
     {

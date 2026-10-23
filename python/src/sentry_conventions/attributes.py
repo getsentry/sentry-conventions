@@ -15003,7 +15003,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["587ad24b-03b9-4413-8202-bbd56b36e5b7"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
+                prs=[710],
                 description="Added aws.lambda.resource_mapping.id attribute",
             ),
         ],
@@ -15186,7 +15187,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["someFile.yml"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
+                prs=[713],
                 description="Changed apply_scrubbing from manual to auto",
             ),
             ChangelogEntry(
@@ -15212,7 +15214,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
+                prs=[713],
                 description="Changed apply_scrubbing from manual to auto",
             ),
             ChangelogEntry(
@@ -15234,7 +15237,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["someFile.yml"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
+                prs=[713],
                 description="Changed apply_scrubbing from manual to auto",
             ),
             ChangelogEntry(
@@ -15798,7 +15802,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[120],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[712],
                 description="Added browser.web_vital.inp.input_delay attribute",
             ),
@@ -15842,7 +15846,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[100],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[712],
                 description="Added browser.web_vital.inp.presentation_delay attribute",
             ),
@@ -15864,7 +15868,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[140],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[712],
                 description="Added browser.web_vital.inp.processing_duration attribute",
             ),
@@ -15943,7 +15947,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[410],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[712],
                 description="Added browser.web_vital.lcp.element_render_delay attribute",
             ),
@@ -16037,7 +16041,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[320.5],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[712],
                 description="Added browser.web_vital.lcp.resource_load_delay attribute",
             ),
@@ -16059,7 +16063,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[780.2],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[712],
                 description="Added browser.web_vital.lcp.resource_load_duration attribute",
             ),
@@ -19289,7 +19293,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[728],
                 description="Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context",
             ),
@@ -19406,7 +19410,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="chat",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[728],
                 description="Added 'extract' to the well-known values",
             ),
@@ -19457,7 +19461,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[728],
                 description="Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context",
             ),
@@ -20159,7 +20163,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[0, 1024],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
+                prs=[679],
                 description="Added gen_ai.tool.call.result.size attribute",
             ),
         ],
@@ -21063,7 +21068,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["onRequest", "onPreResponse"],
         aliases=["server.ext.type"],
         changelog=[
-            ChangelogEntry(version="next", description="Added hapi.ext.type attribute"),
+            ChangelogEntry(
+                version="0.28.0", prs=[741], description="Added hapi.ext.type attribute"
+            ),
         ],
     ),
     "hapi.plugin.name": AttributeMetadata(
@@ -21077,7 +21084,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["hapi-swagger"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added hapi.plugin.name attribute"
+                version="0.28.0",
+                prs=[741],
+                description="Added hapi.plugin.name attribute",
             ),
         ],
     ),
@@ -21091,7 +21100,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="router",
         examples=["router", "plugin", "server.ext"],
         changelog=[
-            ChangelogEntry(version="next", description="Added hapi.type attribute"),
+            ChangelogEntry(
+                version="0.28.0", prs=[741], description="Added hapi.type attribute"
+            ),
         ],
     ),
     "hardwareConcurrency": AttributeMetadata(
@@ -21419,7 +21430,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[5000],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[697],
                 description="Added http.request.duration attribute",
             ),
@@ -23810,7 +23821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["build-report"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.flow.name attribute",
             ),
@@ -23830,7 +23841,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[1791184722406],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.attempt_finished_timestamp attribute",
             ),
@@ -23850,7 +23861,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[["send-welcome-email", "generate-report"]],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.bulk.names attribute",
             ),
@@ -23870,7 +23881,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["user-42-sync"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.deduplication.key attribute",
             ),
@@ -23890,7 +23901,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[["1", "2", "3"]],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.ids attribute",
             ),
@@ -23911,7 +23922,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["user-42-sync"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.key attribute",
             ),
@@ -23931,7 +23942,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["send-welcome-email", "generate-report"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.name attribute",
             ),
@@ -23952,7 +23963,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[1791184722281],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.processed_timestamp attribute",
             ),
@@ -23972,7 +23983,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["daily-report"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.scheduler.id attribute",
             ),
@@ -23992,7 +24003,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["completed", "failed", "delayed"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.state attribute",
             ),
@@ -24012,7 +24023,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["completed", "failed"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.job.type attribute",
             ),
@@ -24032,7 +24043,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[25],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.queue.clean.count attribute",
             ),
@@ -24053,7 +24064,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[1000],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.queue.clean.limit attribute",
             ),
@@ -24073,7 +24084,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[True],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.queue.drain.delay attribute",
             ),
@@ -24093,7 +24104,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[10000],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.queue.event.max_length attribute",
             ),
@@ -24113,7 +24124,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[60000],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.queue.grace attribute",
             ),
@@ -24133,7 +24144,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["waiting", "active", "completed"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.queue.jobs.state attribute",
             ),
@@ -24154,7 +24165,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[5000],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.queue.rate_limit attribute",
             ),
@@ -24174,7 +24185,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[False],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.worker.do_not_wait_active attribute",
             ),
@@ -24194,7 +24205,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[False],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.worker.force_close attribute",
             ),
@@ -24214,7 +24225,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[["1", "2"]],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.worker.jobs_to_extend_locks attribute",
             ),
@@ -24234,7 +24245,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["email-worker"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.worker.name attribute",
             ),
@@ -24254,7 +24265,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[5000],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.worker.rate_limit attribute",
             ),
@@ -24274,7 +24285,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[["1", "2"]],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.bullmq.worker.stalled_jobs attribute",
             ),
@@ -24294,7 +24305,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["client-5", "myhost@8742@s8083jm"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[690],
                 description="Added messaging.client.id attribute",
             ),
@@ -26775,7 +26786,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="myService.BestService",
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
                 prs=[714],
                 description="Added additional context about the OpenTelemetry deprecation",
             ),
@@ -27068,7 +27079,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="db",
         changelog=[
             ChangelogEntry(
-                version="next", description="Added object to the enum values"
+                version="0.28.0",
+                prs=[721],
+                description="Added object to the enum values",
             ),
             ChangelogEntry(version="0.4.0", prs=[218]),
         ],
@@ -27520,18 +27533,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["previous_trace", "cache_origin", "message_origin", "server_request"],
         changelog=[
             ChangelogEntry(
-                version="next",
-                prs=[724],
-                description="Added message_origin to the examples, and enum_values that describe each known value",
-            ),
-            ChangelogEntry(
-                version="next",
-                prs=[738],
-                description="Added server_request to the examples and enum_values",
-            ),
-            ChangelogEntry(
-                version="next",
-                prs=[739],
+                version="0.28.0",
+                prs=[724, 738, 739],
                 description="Removed next_trace from the examples and enum_values, because no SDK sets it",
             ),
             ChangelogEntry(
@@ -28554,7 +28557,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["hapi.ext.type"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.28.0",
+                prs=[741],
                 description="Added server.ext.type attribute, deprecated in favor of hapi.ext.type",
             ),
         ],

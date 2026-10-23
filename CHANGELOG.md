@@ -1,3 +1,61 @@
+## 0.28.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add Hapi attributes `hapi.type`, `hapi.plugin.name`, and `hapi.ext.type` by @s1gr1d in [#741](https://github.com/getsentry/sentry-conventions/pull/741)
+- Add experimental `gen_ai.extract` operation by @andreiborza in [#728](https://github.com/getsentry/sentry-conventions/pull/728)
+- Remove next_trace from the sentry.link.type values by @s1gr1d in [#739](https://github.com/getsentry/sentry-conventions/pull/739)
+- Add server_request as a sentry.link.type value by @s1gr1d in [#738](https://github.com/getsentry/sentry-conventions/pull/738)
+- Add LCP and INP subpart attributes by @logaretm in [#712](https://github.com/getsentry/sentry-conventions/pull/712)
+- Add message_origin as a sentry.link.type value by @JPeer264 in [#724](https://github.com/getsentry/sentry-conventions/pull/724)
+- Add `aws.lambda.resource_mapping.id` attribute by @pabloDeputter in [#710](https://github.com/getsentry/sentry-conventions/pull/710)
+- Add object to the `sentry.category` values by @pabloDeputter in [#721](https://github.com/getsentry/sentry-conventions/pull/721)
+- Add http.request.duration by @loewenheim in [#697](https://github.com/getsentry/sentry-conventions/pull/697)
+
+#### Names
+
+- Add span name rules for `rpc` spans by @pabloDeputter in [#714](https://github.com/getsentry/sentry-conventions/pull/714)
+- Add `queue.publish`/`create`/`receive`/`process`/`settle` to messaging span names by @pabloDeputter in [#705](https://github.com/getsentry/sentry-conventions/pull/705)
+
+#### Other
+
+- (descriptions) AWS Lambda function descriptions by @pabloDeputter in [#720](https://github.com/getsentry/sentry-conventions/pull/720)
+- (docs) Add metrics page by @logaretm in [#733](https://github.com/getsentry/sentry-conventions/pull/733)
+- (gen_ai) Add tool call result size attribute by @obostjancic in [#679](https://github.com/getsentry/sentry-conventions/pull/679)
+- (metrics) Add browser bfcache and element timing metrics by @logaretm in [#729](https://github.com/getsentry/sentry-conventions/pull/729)
+- (ops) Add `object.copy` op by @pabloDeputter in [#706](https://github.com/getsentry/sentry-conventions/pull/706)
+- Add BullMQ attributes and metrics by @JPeer264 in [#690](https://github.com/getsentry/sentry-conventions/pull/690)
+- Add `view.render` op by @alexander-alderman-webb in [#699](https://github.com/getsentry/sentry-conventions/pull/699)
+
+### Bug Fixes 🐛
+
+- (attributes) Apply consistent scrubbing across deprecations by @mjq in [#692](https://github.com/getsentry/sentry-conventions/pull/692)
+
+### Documentation 📚
+
+- (cache) Define `cache.ttl` for fractional and per-read TTLs by @s1gr1d in [#726](https://github.com/getsentry/sentry-conventions/pull/726)
+- Clarify `cache.ttl` for 0, no expiry, and reads by @s1gr1d in [#725](https://github.com/getsentry/sentry-conventions/pull/725)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump nanoid to 3.3.20 by @Lms24 in [#737](https://github.com/getsentry/sentry-conventions/pull/737)
+- Bump vite from 8.2.1 to 8.3.5 by @dependabot in [#735](https://github.com/getsentry/sentry-conventions/pull/735)
+- Bump markdown-it from 15.0.2 to 15.0.3 by @dependabot in [#736](https://github.com/getsentry/sentry-conventions/pull/736)
+
+#### Other
+
+- (attributes) Scrub S3 object keys by default by @pabloDeputter in [#713](https://github.com/getsentry/sentry-conventions/pull/713)
+- (node) Bump Node to 22.23.4 by @oioki in [#742](https://github.com/getsentry/sentry-conventions/pull/742)
+- (repo) Update CODEOWNERS to include @giortzisg by @Lms24 in [#708](https://github.com/getsentry/sentry-conventions/pull/708)
+- Deprecate `gen_ai.responses` in favor of `gen_ai.chat` by @alexander-alderman-webb in [#703](https://github.com/getsentry/sentry-conventions/pull/703)
+- Add deprecated messaging ops set by the Python SDK by @alexander-alderman-webb in [#693](https://github.com/getsentry/sentry-conventions/pull/693)
+- Add `view.response.render` op, deprecated in favor of `view.render` by @alexander-alderman-webb in [#700](https://github.com/getsentry/sentry-conventions/pull/700)
+- Add `event.django` op, deprecated in favor of `function` by @alexander-alderman-webb in [#698](https://github.com/getsentry/sentry-conventions/pull/698)
+
 ## 0.27.0
 
 ### New Features ✨

@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "visibility": "public",
-  "examples": [100.0],
+  "examples": [100],
   "additional_context": [
     "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.",
     "Measured from the interaction's `PerformanceEventTiming` entry as `startTime` plus `duration` minus `processingEnd`.",
@@ -15,7 +15,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
       "prs": [712],
       "description": "Added browser.web_vital.inp.presentation_delay attribute"
     }
