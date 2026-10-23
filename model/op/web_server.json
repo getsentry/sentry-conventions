@@ -35,6 +35,76 @@
       "name": "middleware"
     },
     {
+      "name": "middleware.django",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.litestar",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.litestar.receive",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.litestar.send",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlette",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlette.receive",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlette.send",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlite",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlite.receive",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
+      "name": "middleware.starlite.send",
+      "deprecation": {
+        "replacement": "middleware",
+        "note": "Framework-specific middleware ops are replaced by framework-agnostic ones."
+      }
+    },
+    {
       "name": "handler",
       "description": "Handling of an incoming request by a web server route handler"
     },
