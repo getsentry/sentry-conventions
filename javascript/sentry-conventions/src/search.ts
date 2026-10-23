@@ -2517,6 +2517,21 @@ export const SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_TYPE = 'grpc.error.reso
 export const SEARCH_GRPC__ERROR__RETRY_INFO__RETRY_DELAY_MS = 'grpc.error.retry_info.retry_delay_ms';
 
 /**
+ * Search name for {@link attributes.HAPI_EXT_TYPE}. `hapi.ext.type`
+ */
+export const SEARCH_HAPI__EXT__TYPE = 'hapi.ext.type';
+
+/**
+ * Search name for {@link attributes.HAPI_PLUGIN_NAME}. `hapi.plugin.name`
+ */
+export const SEARCH_HAPI__PLUGIN__NAME = 'hapi.plugin.name';
+
+/**
+ * Search name for {@link attributes.HAPI_TYPE}. `hapi.type`
+ */
+export const SEARCH_HAPI__TYPE = 'hapi.type';
+
+/**
  * Search name for {@link attributes.HARDWARECONCURRENCY}. `hardwareConcurrency`
  *
  * @deprecated Use {@link SEARCH_DEVICE__PROCESSOR_COUNT} (`device.processor_count`) instead
@@ -4600,6 +4615,13 @@ export const SEARCH_SENTRY__USER__USERNAME = 'sentry.user.username';
 export const SEARCH_SERVER__ADDRESS = 'server.address';
 
 /**
+ * Search name for {@link attributes.SERVER_EXT_TYPE}. `server.ext.type`
+ *
+ * @deprecated Use {@link SEARCH_HAPI__EXT__TYPE} (`hapi.ext.type`) instead
+ */
+export const SEARCH_SERVER__EXT__TYPE = 'server.ext.type';
+
+/**
  * Search name for {@link attributes.SERVER_PORT}. `server.port`
  */
 export const SEARCH_SERVER__PORT = 'server.port';
@@ -5743,6 +5765,9 @@ export type AttributeSearchName =
   | typeof SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_NAME
   | typeof SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_TYPE
   | typeof SEARCH_GRPC__ERROR__RETRY_INFO__RETRY_DELAY_MS
+  | typeof SEARCH_HAPI__EXT__TYPE
+  | typeof SEARCH_HAPI__PLUGIN__NAME
+  | typeof SEARCH_HAPI__TYPE
   | typeof SEARCH_HARDWARECONCURRENCY
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
@@ -6104,6 +6129,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__USER__IP
   | typeof SEARCH_SENTRY__USER__USERNAME
   | typeof SEARCH_SERVER__ADDRESS
+  | typeof SEARCH_SERVER__EXT__TYPE
   | typeof SEARCH_SERVER__PORT
   | typeof SEARCH_SERVER_NAME
   | typeof SEARCH_SERVER_SAMPLE_RATE
@@ -9187,6 +9213,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
     deprecationChain: ['grpc.error.retry_info.retry_delay_ms'],
   },
+  'hapi.ext.type': {
+    canonicalName: 'hapi.ext.type',
+    type: 'string',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
+    deprecationChain: ['hapi.ext.type', 'server.ext.type'],
+  },
+  'hapi.plugin.name': {
+    canonicalName: 'hapi.plugin.name',
+    type: 'string',
+    brief: 'The name of the Hapi plugin that registered the route.',
+    deprecationChain: ['hapi.plugin.name'],
+  },
+  'hapi.type': {
+    canonicalName: 'hapi.type',
+    type: 'string',
+    brief: 'The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.',
+    deprecationChain: ['hapi.type'],
+  },
   hardwareConcurrency: {
     canonicalName: 'device.processor_count',
     type: 'string',
@@ -11414,6 +11458,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'http.host',
       'net.peer.name',
     ],
+  },
+  'server.ext.type': {
+    canonicalName: 'hapi.ext.type',
+    type: 'string',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
+    deprecationChain: ['hapi.ext.type', 'server.ext.type'],
   },
   'server.port': {
     canonicalName: 'server.port',
