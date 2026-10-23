@@ -14734,6 +14734,34 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/page/page__server_rendering.json
+
+/**
+ * Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both. `page.server_rendering`
+ *
+ * Attribute Value Type: `string` {@link PAGE_SERVER_RENDERING_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `static` - The server rendered the whole page to reuse it for other requests, for example a page from the build, a Next.js ISR page, or a Nuxt `swr` route.
+ * - `partially_static` - The server reuses a static part of the page, and renders the other parts for this request in the same response (Next.js Partial Prerendering).
+ * - `dynamic` - The server rendered the whole page only for this request. Set only when the SDK knows that the server reused no part of the page. If the SDK cannot tell `dynamic` from `partially_static`, it leaves the attribute unset.
+ *
+ * @example "static"
+ * @example "partially_static"
+ * @example "dynamic"
+ */
+export const PAGE_SERVER_RENDERING = 'page.server_rendering';
+
+/**
+ * Type for {@link PAGE_SERVER_RENDERING} page.server_rendering
+ */
+export type PAGE_SERVER_RENDERING_TYPE = string;
+
 // Path: model/attributes/params/params__[key].json
 
 /**
@@ -21282,6 +21310,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'otel.scope.version': 'string',
   'otel.status_code': 'string',
   'otel.status_description': 'string',
+  'page.server_rendering': 'string',
   'params.<key>': 'string',
   'performance.activationStart': 'double',
   'performance.timeOrigin': 'double',
@@ -22199,6 +22228,7 @@ export type AttributeName =
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
+  | typeof PAGE_SERVER_RENDERING
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
   | typeof PERFORMANCE_TIMEORIGIN
@@ -33506,6 +33536,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'resource not found',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'page.server_rendering': {
+    brief:
+      'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
+    type: 'string',
+    keys: ['page.server_rendering'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'static',
+    examples: ['static', 'partially_static', 'dynamic'],
+    changelog: [{ version: 'next', prs: [740], description: 'Added page.server_rendering attribute' }],
+    additionalContext: [
+      'Set only by an SDK that controls the server render, and only when the SDK knows the value.',
+      'Not set when the server sent a page without content that the browser renders (client-side rendering), or when the SDK does not know.',
+      'With `static` and `partially_static`, the server spans that rendered the reused part are in a different trace, not in the trace of the pageload span.',
+      "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
+    ],
+  },
   'params.<key>': {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
@@ -38287,6 +38337,7 @@ export type Attributes = {
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
+  [PAGE_SERVER_RENDERING]?: PAGE_SERVER_RENDERING_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
   [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;

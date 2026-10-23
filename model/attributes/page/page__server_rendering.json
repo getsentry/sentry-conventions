@@ -1,0 +1,38 @@
+{
+  "key": "page.server_rendering",
+  "brief": "Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "additional_context": [
+    "Set only by an SDK that controls the server render, and only when the SDK knows the value.",
+    "Not set when the server sent a page without content that the browser renders (client-side rendering), or when the SDK does not know.",
+    "With `static` and `partially_static`, the server spans that rendered the reused part are in a different trace, not in the trace of the pageload span.",
+    "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`."
+  ],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["static", "partially_static", "dynamic"],
+  "enum_values": [
+    {
+      "value": "static",
+      "brief": "The server rendered the whole page to reuse it for other requests, for example a page from the build, a Next.js ISR page, or a Nuxt `swr` route."
+    },
+    {
+      "value": "partially_static",
+      "brief": "The server reuses a static part of the page, and renders the other parts for this request in the same response (Next.js Partial Prerendering)."
+    },
+    {
+      "value": "dynamic",
+      "brief": "The server rendered the whole page only for this request. Set only when the SDK knows that the server reused no part of the page. If the SDK cannot tell `dynamic` from `partially_static`, it leaves the attribute unset."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [740],
+      "description": "Added page.server_rendering attribute"
+    }
+  ]
+}
