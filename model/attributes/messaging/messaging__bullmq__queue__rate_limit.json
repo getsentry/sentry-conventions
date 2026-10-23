@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.queue.rate_limit",
+  "brief": "The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [5000],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.queue.rate.limit` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added messaging.bullmq.queue.rate_limit attribute"
+    }
+  ]
+}

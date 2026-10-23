@@ -13063,6 +13063,538 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
 
+// Path: model/attributes/messaging/messaging__bullmq__flow__name.json
+
+/**
+ * The name of the root job of the BullMQ flow that FlowProducer.add() adds. `messaging.bullmq.flow.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_FLOW_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "build-report"
+ */
+export const MESSAGING_BULLMQ_FLOW_NAME = 'messaging.bullmq.flow.name';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_FLOW_NAME} messaging.bullmq.flow.name
+ */
+export type MESSAGING_BULLMQ_FLOW_NAME_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__attempt_finished_timestamp.json
+
+/**
+ * The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished. `messaging.bullmq.job.attempt_finished_timestamp`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1791184722406
+ */
+export const MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP = 'messaging.bullmq.job.attempt_finished_timestamp';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP} messaging.bullmq.job.attempt_finished_timestamp
+ */
+export type MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__bulk__names.json
+
+/**
+ * The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk(). `messaging.bullmq.job.bulk.names`
+ *
+ * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_JOB_BULK_NAMES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["send-welcome-email","generate-report"]
+ */
+export const MESSAGING_BULLMQ_JOB_BULK_NAMES = 'messaging.bullmq.job.bulk.names';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_BULK_NAMES} messaging.bullmq.job.bulk.names
+ */
+export type MESSAGING_BULLMQ_JOB_BULK_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__deduplication__key.json
+
+/**
+ * The deduplication ID that Queue.removeDeduplicationKey() removes. `messaging.bullmq.job.deduplication.key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user-42-sync"
+ */
+export const MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY = 'messaging.bullmq.job.deduplication.key';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY} messaging.bullmq.job.deduplication.key
+ */
+export type MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__ids.json
+
+/**
+ * The IDs of the BullMQ jobs that Queue.clean() removed. `messaging.bullmq.job.ids`
+ *
+ * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_JOB_IDS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["1","2","3"]
+ */
+export const MESSAGING_BULLMQ_JOB_IDS = 'messaging.bullmq.job.ids';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_IDS} messaging.bullmq.job.ids
+ */
+export type MESSAGING_BULLMQ_JOB_IDS_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__key.json
+
+/**
+ * The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey(). `messaging.bullmq.job.key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user-42-sync"
+ */
+export const MESSAGING_BULLMQ_JOB_KEY = 'messaging.bullmq.job.key';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_KEY} messaging.bullmq.job.key
+ */
+export type MESSAGING_BULLMQ_JOB_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__name.json
+
+/**
+ * The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work. `messaging.bullmq.job.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "send-welcome-email"
+ * @example "generate-report"
+ */
+export const MESSAGING_BULLMQ_JOB_NAME = 'messaging.bullmq.job.name';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_NAME} messaging.bullmq.job.name
+ */
+export type MESSAGING_BULLMQ_JOB_NAME_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__processed_timestamp.json
+
+/**
+ * The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job. `messaging.bullmq.job.processed_timestamp`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1791184722281
+ */
+export const MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP = 'messaging.bullmq.job.processed_timestamp';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP} messaging.bullmq.job.processed_timestamp
+ */
+export type MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__scheduler__id.json
+
+/**
+ * The ID of the BullMQ job scheduler that adds the job. `messaging.bullmq.job.scheduler.id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_SCHEDULER_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "daily-report"
+ */
+export const MESSAGING_BULLMQ_JOB_SCHEDULER_ID = 'messaging.bullmq.job.scheduler.id';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_SCHEDULER_ID} messaging.bullmq.job.scheduler.id
+ */
+export type MESSAGING_BULLMQ_JOB_SCHEDULER_ID_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__state.json
+
+/**
+ * The state of the BullMQ job that a job metric counts. `messaging.bullmq.job.state`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_STATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "completed"
+ * @example "failed"
+ * @example "delayed"
+ */
+export const MESSAGING_BULLMQ_JOB_STATE = 'messaging.bullmq.job.state';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_STATE} messaging.bullmq.job.state
+ */
+export type MESSAGING_BULLMQ_JOB_STATE_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__type.json
+
+/**
+ * The job state from which Queue.clean() removes BullMQ jobs. `messaging.bullmq.job.type`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "completed"
+ * @example "failed"
+ */
+export const MESSAGING_BULLMQ_JOB_TYPE = 'messaging.bullmq.job.type';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_TYPE} messaging.bullmq.job.type
+ */
+export type MESSAGING_BULLMQ_JOB_TYPE_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__clean__count.json
+
+/**
+ * The number of BullMQ jobs that Queue.clean() removed. `messaging.bullmq.queue.clean.count`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 25
+ */
+export const MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT = 'messaging.bullmq.queue.clean.count';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT} messaging.bullmq.queue.clean.count
+ */
+export type MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__clean__limit.json
+
+/**
+ * The maximum number of BullMQ jobs that Queue.clean() removes. `messaging.bullmq.queue.clean.limit`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1000
+ */
+export const MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT = 'messaging.bullmq.queue.clean.limit';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT} messaging.bullmq.queue.clean.limit
+ */
+export type MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__drain__delay.json
+
+/**
+ * Whether Queue.drain() also removes the delayed BullMQ jobs. `messaging.bullmq.queue.drain.delay`
+ *
+ * Attribute Value Type: `boolean` {@link MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example true
+ */
+export const MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY = 'messaging.bullmq.queue.drain.delay';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY} messaging.bullmq.queue.drain.delay
+ */
+export type MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY_TYPE = boolean;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__event__max_length.json
+
+/**
+ * The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream. `messaging.bullmq.queue.event.max_length`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 10000
+ */
+export const MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH = 'messaging.bullmq.queue.event.max_length';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH} messaging.bullmq.queue.event.max_length
+ */
+export type MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__grace.json
+
+/**
+ * The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed. `messaging.bullmq.queue.grace`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_GRACE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 60000
+ */
+export const MESSAGING_BULLMQ_QUEUE_GRACE = 'messaging.bullmq.queue.grace';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_GRACE} messaging.bullmq.queue.grace
+ */
+export type MESSAGING_BULLMQ_QUEUE_GRACE_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__jobs__state.json
+
+/**
+ * The BullMQ job state that the queue job count metric counts. `messaging.bullmq.queue.jobs.state`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_QUEUE_JOBS_STATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "waiting"
+ * @example "active"
+ * @example "completed"
+ */
+export const MESSAGING_BULLMQ_QUEUE_JOBS_STATE = 'messaging.bullmq.queue.jobs.state';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_JOBS_STATE} messaging.bullmq.queue.jobs.state
+ */
+export type MESSAGING_BULLMQ_QUEUE_JOBS_STATE_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__rate_limit.json
+
+/**
+ * The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue. `messaging.bullmq.queue.rate_limit`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const MESSAGING_BULLMQ_QUEUE_RATE_LIMIT = 'messaging.bullmq.queue.rate_limit';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_RATE_LIMIT} messaging.bullmq.queue.rate_limit
+ */
+export type MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__do_not_wait_active.json
+
+/**
+ * Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish. `messaging.bullmq.worker.do_not_wait_active`
+ *
+ * Attribute Value Type: `boolean` {@link MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example false
+ */
+export const MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE = 'messaging.bullmq.worker.do_not_wait_active';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE} messaging.bullmq.worker.do_not_wait_active
+ */
+export type MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE = boolean;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__force_close.json
+
+/**
+ * Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish. `messaging.bullmq.worker.force_close`
+ *
+ * Attribute Value Type: `boolean` {@link MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example false
+ */
+export const MESSAGING_BULLMQ_WORKER_FORCE_CLOSE = 'messaging.bullmq.worker.force_close';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_FORCE_CLOSE} messaging.bullmq.worker.force_close
+ */
+export type MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE = boolean;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__jobs_to_extend_locks.json
+
+/**
+ * The IDs of the BullMQ jobs whose locks the Worker extends. `messaging.bullmq.worker.jobs_to_extend_locks`
+ *
+ * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["1","2"]
+ */
+export const MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS = 'messaging.bullmq.worker.jobs_to_extend_locks';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS} messaging.bullmq.worker.jobs_to_extend_locks
+ */
+export type MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__name.json
+
+/**
+ * The name that the user gives to the BullMQ Worker in its options. `messaging.bullmq.worker.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_WORKER_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "email-worker"
+ */
+export const MESSAGING_BULLMQ_WORKER_NAME = 'messaging.bullmq.worker.name';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_NAME} messaging.bullmq.worker.name
+ */
+export type MESSAGING_BULLMQ_WORKER_NAME_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__rate_limit.json
+
+/**
+ * The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker. `messaging.bullmq.worker.rate_limit`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const MESSAGING_BULLMQ_WORKER_RATE_LIMIT = 'messaging.bullmq.worker.rate_limit';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_RATE_LIMIT} messaging.bullmq.worker.rate_limit
+ */
+export type MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__stalled_jobs.json
+
+/**
+ * The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state. `messaging.bullmq.worker.stalled_jobs`
+ *
+ * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["1","2"]
+ */
+export const MESSAGING_BULLMQ_WORKER_STALLED_JOBS = 'messaging.bullmq.worker.stalled_jobs';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_STALLED_JOBS} messaging.bullmq.worker.stalled_jobs
+ */
+export type MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__client__id.json
+
+/**
+ * A unique identifier for the client that consumes or produces a message. `messaging.client.id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_CLIENT_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "client-5"
+ * @example "myhost@8742@s8083jm"
+ */
+export const MESSAGING_CLIENT_ID = 'messaging.client.id';
+
+/**
+ * Type for {@link MESSAGING_CLIENT_ID} messaging.client.id
+ */
+export type MESSAGING_CLIENT_ID_TYPE = string;
+
 // Path: model/attributes/messaging/messaging__conversation_id.json
 
 /**
@@ -21301,6 +21833,31 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.bullmq.flow.name': 'string',
+  'messaging.bullmq.job.attempt_finished_timestamp': 'integer',
+  'messaging.bullmq.job.bulk.names': 'string[]',
+  'messaging.bullmq.job.deduplication.key': 'string',
+  'messaging.bullmq.job.ids': 'string[]',
+  'messaging.bullmq.job.key': 'string',
+  'messaging.bullmq.job.name': 'string',
+  'messaging.bullmq.job.processed_timestamp': 'integer',
+  'messaging.bullmq.job.scheduler.id': 'string',
+  'messaging.bullmq.job.state': 'string',
+  'messaging.bullmq.job.type': 'string',
+  'messaging.bullmq.queue.clean.count': 'integer',
+  'messaging.bullmq.queue.clean.limit': 'integer',
+  'messaging.bullmq.queue.drain.delay': 'boolean',
+  'messaging.bullmq.queue.event.max_length': 'integer',
+  'messaging.bullmq.queue.grace': 'integer',
+  'messaging.bullmq.queue.jobs.state': 'string',
+  'messaging.bullmq.queue.rate_limit': 'integer',
+  'messaging.bullmq.worker.do_not_wait_active': 'boolean',
+  'messaging.bullmq.worker.force_close': 'boolean',
+  'messaging.bullmq.worker.jobs_to_extend_locks': 'string[]',
+  'messaging.bullmq.worker.name': 'string',
+  'messaging.bullmq.worker.rate_limit': 'integer',
+  'messaging.bullmq.worker.stalled_jobs': 'string[]',
+  'messaging.client.id': 'string',
   'messaging.conversation_id': 'string',
   'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
@@ -22222,6 +22779,31 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_BULLMQ_FLOW_NAME
+  | typeof MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP
+  | typeof MESSAGING_BULLMQ_JOB_BULK_NAMES
+  | typeof MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY
+  | typeof MESSAGING_BULLMQ_JOB_IDS
+  | typeof MESSAGING_BULLMQ_JOB_KEY
+  | typeof MESSAGING_BULLMQ_JOB_NAME
+  | typeof MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP
+  | typeof MESSAGING_BULLMQ_JOB_SCHEDULER_ID
+  | typeof MESSAGING_BULLMQ_JOB_STATE
+  | typeof MESSAGING_BULLMQ_JOB_TYPE
+  | typeof MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT
+  | typeof MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT
+  | typeof MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY
+  | typeof MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH
+  | typeof MESSAGING_BULLMQ_QUEUE_GRACE
+  | typeof MESSAGING_BULLMQ_QUEUE_JOBS_STATE
+  | typeof MESSAGING_BULLMQ_QUEUE_RATE_LIMIT
+  | typeof MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE
+  | typeof MESSAGING_BULLMQ_WORKER_FORCE_CLOSE
+  | typeof MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS
+  | typeof MESSAGING_BULLMQ_WORKER_NAME
+  | typeof MESSAGING_BULLMQ_WORKER_RATE_LIMIT
+  | typeof MESSAGING_BULLMQ_WORKER_STALLED_JOBS
+  | typeof MESSAGING_CLIENT_ID
   | typeof MESSAGING_CONVERSATION_ID
   | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
@@ -32353,6 +32935,421 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
   },
+  'messaging.bullmq.flow.name': {
+    brief: 'The name of the root job of the BullMQ flow that FlowProducer.add() adds.',
+    type: 'string',
+    keys: ['messaging.bullmq.flow.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'build-report',
+    examples: ['build-report'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.flow.name attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.flow.name` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.attempt_finished_timestamp': {
+    brief: 'The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.',
+    type: 'integer',
+    keys: ['messaging.bullmq.job.attempt_finished_timestamp'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1791184722406,
+    examples: [1791184722406],
+    changelog: [
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.job.attempt_finished_timestamp attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.attempt_finished_timestamp` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.bulk.names': {
+    brief: 'The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().',
+    type: 'string[]',
+    keys: ['messaging.bullmq.job.bulk.names'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['send-welcome-email', 'generate-report'],
+    examples: [['send-welcome-email', 'generate-report']],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.bulk.names attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.bulk.names` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.deduplication.key': {
+    brief: 'The deduplication ID that Queue.removeDeduplicationKey() removes.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.deduplication.key'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user-42-sync',
+    examples: ['user-42-sync'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.deduplication.key attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.deduplication.key` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.ids': {
+    brief: 'The IDs of the BullMQ jobs that Queue.clean() removed.',
+    type: 'string[]',
+    keys: ['messaging.bullmq.job.ids'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['1', '2', '3'],
+    examples: [['1', '2', '3']],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.ids attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.ids` attribute of BullMQ's telemetry interface.",
+      'BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not.',
+    ],
+  },
+  'messaging.bullmq.job.key': {
+    brief:
+      'The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().',
+    type: 'string',
+    keys: ['messaging.bullmq.job.key'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user-42-sync',
+    examples: ['user-42-sync'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.key attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.key` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.name': {
+    brief: 'The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'send-welcome-email',
+    examples: ['send-welcome-email', 'generate-report'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.name attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.name` attribute of BullMQ's telemetry interface.",
+      'Also set on the BullMQ job metrics.',
+    ],
+  },
+  'messaging.bullmq.job.processed_timestamp': {
+    brief: 'The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.',
+    type: 'integer',
+    keys: ['messaging.bullmq.job.processed_timestamp'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1791184722281,
+    examples: [1791184722281],
+    changelog: [
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.job.processed_timestamp attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.processed.timestamp` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.scheduler.id': {
+    brief: 'The ID of the BullMQ job scheduler that adds the job.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.scheduler.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'daily-report',
+    examples: ['daily-report'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.scheduler.id attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.scheduler.id` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.state': {
+    brief: 'The state of the BullMQ job that a job metric counts.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.state'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'completed',
+    examples: ['completed', 'failed', 'delayed'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.state attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value.",
+    ],
+  },
+  'messaging.bullmq.job.type': {
+    brief: 'The job state from which Queue.clean() removes BullMQ jobs.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'completed',
+    examples: ['completed', 'failed'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.type attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.type` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.clean.count': {
+    brief: 'The number of BullMQ jobs that Queue.clean() removed.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.clean.count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 25,
+    examples: [25],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.clean.count attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.clean.count` attribute of BullMQ's telemetry interface.",
+      'BullMQ 6.3.11 sets this attribute. BullMQ 5.79.1 does not.',
+    ],
+  },
+  'messaging.bullmq.queue.clean.limit': {
+    brief: 'The maximum number of BullMQ jobs that Queue.clean() removes.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.clean.limit'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1000,
+    examples: [1000],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.clean.limit attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.clean.limit` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.drain.delay': {
+    brief: 'Whether Queue.drain() also removes the delayed BullMQ jobs.',
+    type: 'boolean',
+    keys: ['messaging.bullmq.queue.drain.delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    examples: [true],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.drain.delay attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.drain.delay` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.event.max_length': {
+    brief: 'The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.event.max_length'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 10000,
+    examples: [10000],
+    changelog: [
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.event.max_length attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.event.max.length` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.grace': {
+    brief: 'The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.grace'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 60000,
+    examples: [60000],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.grace attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.grace` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.jobs.state': {
+    brief: 'The BullMQ job state that the queue job count metric counts.',
+    type: 'string',
+    keys: ['messaging.bullmq.queue.jobs.state'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'waiting',
+    examples: ['waiting', 'active', 'completed'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.jobs.state attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.jobs.state` attribute of BullMQ's telemetry interface.",
+      'Set on the BullMQ queue job count metric.',
+    ],
+  },
+  'messaging.bullmq.queue.rate_limit': {
+    brief: 'The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.rate_limit'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    examples: [5000],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.rate_limit attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.rate.limit` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.do_not_wait_active': {
+    brief: 'Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.',
+    type: 'boolean',
+    keys: ['messaging.bullmq.worker.do_not_wait_active'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: false,
+    examples: [false],
+    changelog: [
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.do_not_wait_active attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.do.not.wait.active` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.force_close': {
+    brief: 'Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.',
+    type: 'boolean',
+    keys: ['messaging.bullmq.worker.force_close'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: false,
+    examples: [false],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.force_close attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.jobs_to_extend_locks': {
+    brief: 'The IDs of the BullMQ jobs whose locks the Worker extends.',
+    type: 'string[]',
+    keys: ['messaging.bullmq.worker.jobs_to_extend_locks'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['1', '2'],
+    examples: [['1', '2']],
+    changelog: [
+      { version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.jobs_to_extend_locks attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.jobs.to.extend.locks` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.name': {
+    brief: 'The name that the user gives to the BullMQ Worker in its options.',
+    type: 'string',
+    keys: ['messaging.bullmq.worker.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'email-worker',
+    examples: ['email-worker'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.name attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.name` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.rate_limit': {
+    brief: 'The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.',
+    type: 'integer',
+    keys: ['messaging.bullmq.worker.rate_limit'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    examples: [5000],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.rate_limit attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.rate.limit` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.stalled_jobs': {
+    brief: 'The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.',
+    type: 'string[]',
+    keys: ['messaging.bullmq.worker.stalled_jobs'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['1', '2'],
+    examples: [['1', '2']],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.stalled_jobs attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.client.id': {
+    brief: 'A unique identifier for the client that consumes or produces a message.',
+    type: 'string',
+    keys: ['messaging.client.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'client-5',
+    examples: ['client-5', 'myhost@8742@s8083jm'],
+    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.client.id attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute on BullMQ spans from the `bullmq.worker.id` attribute of BullMQ's telemetry interface, which is the ID of the Worker.",
+    ],
+  },
   'messaging.conversation_id': {
     brief:
       'The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
@@ -38376,6 +39373,31 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_BULLMQ_FLOW_NAME]?: MESSAGING_BULLMQ_FLOW_NAME_TYPE;
+  [MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP]?: MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP_TYPE;
+  [MESSAGING_BULLMQ_JOB_BULK_NAMES]?: MESSAGING_BULLMQ_JOB_BULK_NAMES_TYPE;
+  [MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY]?: MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY_TYPE;
+  [MESSAGING_BULLMQ_JOB_IDS]?: MESSAGING_BULLMQ_JOB_IDS_TYPE;
+  [MESSAGING_BULLMQ_JOB_KEY]?: MESSAGING_BULLMQ_JOB_KEY_TYPE;
+  [MESSAGING_BULLMQ_JOB_NAME]?: MESSAGING_BULLMQ_JOB_NAME_TYPE;
+  [MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP]?: MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE;
+  [MESSAGING_BULLMQ_JOB_SCHEDULER_ID]?: MESSAGING_BULLMQ_JOB_SCHEDULER_ID_TYPE;
+  [MESSAGING_BULLMQ_JOB_STATE]?: MESSAGING_BULLMQ_JOB_STATE_TYPE;
+  [MESSAGING_BULLMQ_JOB_TYPE]?: MESSAGING_BULLMQ_JOB_TYPE_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT]?: MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT]?: MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY]?: MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH]?: MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_GRACE]?: MESSAGING_BULLMQ_QUEUE_GRACE_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_JOBS_STATE]?: MESSAGING_BULLMQ_QUEUE_JOBS_STATE_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_RATE_LIMIT]?: MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE;
+  [MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE]?: MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE;
+  [MESSAGING_BULLMQ_WORKER_FORCE_CLOSE]?: MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE;
+  [MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS]?: MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE;
+  [MESSAGING_BULLMQ_WORKER_NAME]?: MESSAGING_BULLMQ_WORKER_NAME_TYPE;
+  [MESSAGING_BULLMQ_WORKER_RATE_LIMIT]?: MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE;
+  [MESSAGING_BULLMQ_WORKER_STALLED_JOBS]?: MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE;
+  [MESSAGING_CLIENT_ID]?: MESSAGING_CLIENT_ID_TYPE;
   [MESSAGING_CONVERSATION_ID]?: MESSAGING_CONVERSATION_ID_TYPE;
   [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;

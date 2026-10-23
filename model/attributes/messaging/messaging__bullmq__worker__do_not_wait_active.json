@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.worker.do_not_wait_active",
+  "brief": "Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [false],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.worker.do.not.wait.active` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added messaging.bullmq.worker.do_not_wait_active attribute"
+    }
+  ]
+}

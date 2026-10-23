@@ -7866,6 +7866,336 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 10
     """
 
+    # Path: model/attributes/messaging/messaging__bullmq__flow__name.json
+    MESSAGING_BULLMQ_FLOW_NAME: Literal["messaging.bullmq.flow.name"] = (
+        "messaging.bullmq.flow.name"
+    )
+    """The name of the root job of the BullMQ flow that FlowProducer.add() adds.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "build-report"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__attempt_finished_timestamp.json
+    MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP: Literal[
+        "messaging.bullmq.job.attempt_finished_timestamp"
+    ] = "messaging.bullmq.job.attempt_finished_timestamp"
+    """The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1791184722406
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__bulk__names.json
+    MESSAGING_BULLMQ_JOB_BULK_NAMES: Literal["messaging.bullmq.job.bulk.names"] = (
+        "messaging.bullmq.job.bulk.names"
+    )
+    """The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["send-welcome-email","generate-report"]
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__deduplication__key.json
+    MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY: Literal[
+        "messaging.bullmq.job.deduplication.key"
+    ] = "messaging.bullmq.job.deduplication.key"
+    """The deduplication ID that Queue.removeDeduplicationKey() removes.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "user-42-sync"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__ids.json
+    MESSAGING_BULLMQ_JOB_IDS: Literal["messaging.bullmq.job.ids"] = (
+        "messaging.bullmq.job.ids"
+    )
+    """The IDs of the BullMQ jobs that Queue.clean() removed.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["1","2","3"]
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__key.json
+    MESSAGING_BULLMQ_JOB_KEY: Literal["messaging.bullmq.job.key"] = (
+        "messaging.bullmq.job.key"
+    )
+    """The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "user-42-sync"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__name.json
+    MESSAGING_BULLMQ_JOB_NAME: Literal["messaging.bullmq.job.name"] = (
+        "messaging.bullmq.job.name"
+    )
+    """The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "send-welcome-email"
+    Example: "generate-report"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__processed_timestamp.json
+    MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP: Literal[
+        "messaging.bullmq.job.processed_timestamp"
+    ] = "messaging.bullmq.job.processed_timestamp"
+    """The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1791184722281
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__scheduler__id.json
+    MESSAGING_BULLMQ_JOB_SCHEDULER_ID: Literal["messaging.bullmq.job.scheduler.id"] = (
+        "messaging.bullmq.job.scheduler.id"
+    )
+    """The ID of the BullMQ job scheduler that adds the job.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "daily-report"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__state.json
+    MESSAGING_BULLMQ_JOB_STATE: Literal["messaging.bullmq.job.state"] = (
+        "messaging.bullmq.job.state"
+    )
+    """The state of the BullMQ job that a job metric counts.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "completed"
+    Example: "failed"
+    Example: "delayed"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__type.json
+    MESSAGING_BULLMQ_JOB_TYPE: Literal["messaging.bullmq.job.type"] = (
+        "messaging.bullmq.job.type"
+    )
+    """The job state from which Queue.clean() removes BullMQ jobs.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "completed"
+    Example: "failed"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__clean__count.json
+    MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT: Literal[
+        "messaging.bullmq.queue.clean.count"
+    ] = "messaging.bullmq.queue.clean.count"
+    """The number of BullMQ jobs that Queue.clean() removed.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 25
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__clean__limit.json
+    MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT: Literal[
+        "messaging.bullmq.queue.clean.limit"
+    ] = "messaging.bullmq.queue.clean.limit"
+    """The maximum number of BullMQ jobs that Queue.clean() removes.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__drain__delay.json
+    MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY: Literal[
+        "messaging.bullmq.queue.drain.delay"
+    ] = "messaging.bullmq.queue.drain.delay"
+    """Whether Queue.drain() also removes the delayed BullMQ jobs.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: true
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__event__max_length.json
+    MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH: Literal[
+        "messaging.bullmq.queue.event.max_length"
+    ] = "messaging.bullmq.queue.event.max_length"
+    """The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 10000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__grace.json
+    MESSAGING_BULLMQ_QUEUE_GRACE: Literal["messaging.bullmq.queue.grace"] = (
+        "messaging.bullmq.queue.grace"
+    )
+    """The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 60000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__jobs__state.json
+    MESSAGING_BULLMQ_QUEUE_JOBS_STATE: Literal["messaging.bullmq.queue.jobs.state"] = (
+        "messaging.bullmq.queue.jobs.state"
+    )
+    """The BullMQ job state that the queue job count metric counts.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "waiting"
+    Example: "active"
+    Example: "completed"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__rate_limit.json
+    MESSAGING_BULLMQ_QUEUE_RATE_LIMIT: Literal["messaging.bullmq.queue.rate_limit"] = (
+        "messaging.bullmq.queue.rate_limit"
+    )
+    """The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__do_not_wait_active.json
+    MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE: Literal[
+        "messaging.bullmq.worker.do_not_wait_active"
+    ] = "messaging.bullmq.worker.do_not_wait_active"
+    """Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: false
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__force_close.json
+    MESSAGING_BULLMQ_WORKER_FORCE_CLOSE: Literal[
+        "messaging.bullmq.worker.force_close"
+    ] = "messaging.bullmq.worker.force_close"
+    """Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: false
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__jobs_to_extend_locks.json
+    MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS: Literal[
+        "messaging.bullmq.worker.jobs_to_extend_locks"
+    ] = "messaging.bullmq.worker.jobs_to_extend_locks"
+    """The IDs of the BullMQ jobs whose locks the Worker extends.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["1","2"]
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__name.json
+    MESSAGING_BULLMQ_WORKER_NAME: Literal["messaging.bullmq.worker.name"] = (
+        "messaging.bullmq.worker.name"
+    )
+    """The name that the user gives to the BullMQ Worker in its options.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "email-worker"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__rate_limit.json
+    MESSAGING_BULLMQ_WORKER_RATE_LIMIT: Literal[
+        "messaging.bullmq.worker.rate_limit"
+    ] = "messaging.bullmq.worker.rate_limit"
+    """The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__stalled_jobs.json
+    MESSAGING_BULLMQ_WORKER_STALLED_JOBS: Literal[
+        "messaging.bullmq.worker.stalled_jobs"
+    ] = "messaging.bullmq.worker.stalled_jobs"
+    """The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["1","2"]
+    """
+
+    # Path: model/attributes/messaging/messaging__client__id.json
+    MESSAGING_CLIENT_ID: Literal["messaging.client.id"] = "messaging.client.id"
+    """A unique identifier for the client that consumes or produces a message.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "client-5"
+    Example: "myhost@8742@s8083jm"
+    """
+
     # Path: model/attributes/messaging/messaging__conversation_id.json
     MESSAGING_CONVERSATION_ID: Literal["messaging.conversation_id"] = (
         "messaging.conversation_id"
@@ -23469,6 +23799,510 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "messaging.bullmq.flow.name": AttributeMetadata(
+        brief="The name of the root job of the BullMQ flow that FlowProducer.add() adds.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.flow.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="build-report",
+        examples=["build-report"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.flow.name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.flow.name` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.attempt_finished_timestamp": AttributeMetadata(
+        brief="The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.job.attempt_finished_timestamp",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1791184722406,
+        examples=[1791184722406],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.attempt_finished_timestamp attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.attempt_finished_timestamp` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.bulk.names": AttributeMetadata(
+        brief="The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().",
+        type=AttributeType.STRING_ARRAY,
+        keys=("messaging.bullmq.job.bulk.names",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["send-welcome-email", "generate-report"],
+        examples=[["send-welcome-email", "generate-report"]],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.bulk.names attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.bulk.names` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.deduplication.key": AttributeMetadata(
+        brief="The deduplication ID that Queue.removeDeduplicationKey() removes.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.deduplication.key",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user-42-sync",
+        examples=["user-42-sync"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.deduplication.key attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.deduplication.key` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.ids": AttributeMetadata(
+        brief="The IDs of the BullMQ jobs that Queue.clean() removed.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("messaging.bullmq.job.ids",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["1", "2", "3"],
+        examples=[["1", "2", "3"]],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.ids attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.ids` attribute of BullMQ's telemetry interface.",
+            "BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not.",
+        ],
+    ),
+    "messaging.bullmq.job.key": AttributeMetadata(
+        brief="The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.key",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user-42-sync",
+        examples=["user-42-sync"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.key attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.key` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.name": AttributeMetadata(
+        brief="The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="send-welcome-email",
+        examples=["send-welcome-email", "generate-report"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.name` attribute of BullMQ's telemetry interface.",
+            "Also set on the BullMQ job metrics.",
+        ],
+    ),
+    "messaging.bullmq.job.processed_timestamp": AttributeMetadata(
+        brief="The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.job.processed_timestamp",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1791184722281,
+        examples=[1791184722281],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.processed_timestamp attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.processed.timestamp` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.scheduler.id": AttributeMetadata(
+        brief="The ID of the BullMQ job scheduler that adds the job.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.scheduler.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="daily-report",
+        examples=["daily-report"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.scheduler.id attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.scheduler.id` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.state": AttributeMetadata(
+        brief="The state of the BullMQ job that a job metric counts.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.state",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="completed",
+        examples=["completed", "failed", "delayed"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.state attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value."
+        ],
+    ),
+    "messaging.bullmq.job.type": AttributeMetadata(
+        brief="The job state from which Queue.clean() removes BullMQ jobs.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="completed",
+        examples=["completed", "failed"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.job.type attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.type` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.clean.count": AttributeMetadata(
+        brief="The number of BullMQ jobs that Queue.clean() removed.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.clean.count",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=25,
+        examples=[25],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.queue.clean.count attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.clean.count` attribute of BullMQ's telemetry interface.",
+            "BullMQ 6.3.11 sets this attribute. BullMQ 5.79.1 does not.",
+        ],
+    ),
+    "messaging.bullmq.queue.clean.limit": AttributeMetadata(
+        brief="The maximum number of BullMQ jobs that Queue.clean() removes.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.clean.limit",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1000,
+        examples=[1000],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.queue.clean.limit attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.clean.limit` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.drain.delay": AttributeMetadata(
+        brief="Whether Queue.drain() also removes the delayed BullMQ jobs.",
+        type=AttributeType.BOOLEAN,
+        keys=("messaging.bullmq.queue.drain.delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        examples=[True],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.queue.drain.delay attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.drain.delay` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.event.max_length": AttributeMetadata(
+        brief="The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.event.max_length",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=10000,
+        examples=[10000],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.queue.event.max_length attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.event.max.length` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.grace": AttributeMetadata(
+        brief="The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.grace",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=60000,
+        examples=[60000],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.queue.grace attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.grace` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.jobs.state": AttributeMetadata(
+        brief="The BullMQ job state that the queue job count metric counts.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.queue.jobs.state",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="waiting",
+        examples=["waiting", "active", "completed"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.queue.jobs.state attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.jobs.state` attribute of BullMQ's telemetry interface.",
+            "Set on the BullMQ queue job count metric.",
+        ],
+    ),
+    "messaging.bullmq.queue.rate_limit": AttributeMetadata(
+        brief="The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.rate_limit",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        examples=[5000],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.queue.rate_limit attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.rate.limit` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.do_not_wait_active": AttributeMetadata(
+        brief="Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.",
+        type=AttributeType.BOOLEAN,
+        keys=("messaging.bullmq.worker.do_not_wait_active",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        examples=[False],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.worker.do_not_wait_active attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.do.not.wait.active` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.force_close": AttributeMetadata(
+        brief="Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.",
+        type=AttributeType.BOOLEAN,
+        keys=("messaging.bullmq.worker.force_close",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        examples=[False],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.worker.force_close attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.jobs_to_extend_locks": AttributeMetadata(
+        brief="The IDs of the BullMQ jobs whose locks the Worker extends.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("messaging.bullmq.worker.jobs_to_extend_locks",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["1", "2"],
+        examples=[["1", "2"]],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.worker.jobs_to_extend_locks attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.jobs.to.extend.locks` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.name": AttributeMetadata(
+        brief="The name that the user gives to the BullMQ Worker in its options.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.worker.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="email-worker",
+        examples=["email-worker"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.worker.name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.name` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.rate_limit": AttributeMetadata(
+        brief="The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.worker.rate_limit",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        examples=[5000],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.worker.rate_limit attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.rate.limit` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.stalled_jobs": AttributeMetadata(
+        brief="The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("messaging.bullmq.worker.stalled_jobs",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["1", "2"],
+        examples=[["1", "2"]],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.bullmq.worker.stalled_jobs attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.client.id": AttributeMetadata(
+        brief="A unique identifier for the client that consumes or produces a message.",
+        type=AttributeType.STRING,
+        keys=("messaging.client.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="client-5",
+        examples=["client-5", "myhost@8742@s8083jm"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[690],
+                description="Added messaging.client.id attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute on BullMQ spans from the `bullmq.worker.id` attribute of BullMQ's telemetry interface, which is the ID of the Worker."
+        ],
+    ),
     "messaging.conversation_id": AttributeMetadata(
         brief='The conversation ID identifying the conversation to which the message belongs, represented as a string. Sometimes called "Correlation ID".',
         type=AttributeType.STRING,
@@ -30310,6 +31144,31 @@ Attributes = TypedDict(
         "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.batch.message_count": int,
+        "messaging.bullmq.flow.name": str,
+        "messaging.bullmq.job.attempt_finished_timestamp": int,
+        "messaging.bullmq.job.bulk.names": List[str],
+        "messaging.bullmq.job.deduplication.key": str,
+        "messaging.bullmq.job.ids": List[str],
+        "messaging.bullmq.job.key": str,
+        "messaging.bullmq.job.name": str,
+        "messaging.bullmq.job.processed_timestamp": int,
+        "messaging.bullmq.job.scheduler.id": str,
+        "messaging.bullmq.job.state": str,
+        "messaging.bullmq.job.type": str,
+        "messaging.bullmq.queue.clean.count": int,
+        "messaging.bullmq.queue.clean.limit": int,
+        "messaging.bullmq.queue.drain.delay": bool,
+        "messaging.bullmq.queue.event.max_length": int,
+        "messaging.bullmq.queue.grace": int,
+        "messaging.bullmq.queue.jobs.state": str,
+        "messaging.bullmq.queue.rate_limit": int,
+        "messaging.bullmq.worker.do_not_wait_active": bool,
+        "messaging.bullmq.worker.force_close": bool,
+        "messaging.bullmq.worker.jobs_to_extend_locks": List[str],
+        "messaging.bullmq.worker.name": str,
+        "messaging.bullmq.worker.rate_limit": int,
+        "messaging.bullmq.worker.stalled_jobs": List[str],
+        "messaging.client.id": str,
         "messaging.conversation_id": str,
         "messaging.destination": str,
         "messaging.destination.connection": str,

@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.queue.grace",
+  "brief": "The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [60000],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.queue.grace` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [690],
+      "description": "Added messaging.bullmq.queue.grace attribute"
+    }
+  ]
+}
