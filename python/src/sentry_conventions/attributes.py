@@ -14788,10 +14788,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Users", "Cats"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                description="Added additional context on sorting the names",
+            ),
+            ChangelogEntry(
                 version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.table_names attribute",
             ),
+        ],
+        additional_context=[
+            "List each table name once, sorted alphabetically, so the same call gets the same value and span description (`DynamoDB.BatchGetItem Cat, Users`), whatever the order of the tables in the request."
         ],
     ),
     "aws.dynamodb.total_segments": AttributeMetadata(
