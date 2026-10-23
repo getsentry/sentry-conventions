@@ -32,6 +32,7 @@
         "gen_ai.chat",
         "gen_ai.decide",
         "gen_ai.embeddings",
+        "gen_ai.extract",
         "gen_ai.execute_tool",
         "gen_ai.generate_content",
         "gen_ai.rerank",
@@ -50,6 +51,7 @@
         "chat claude-opus-4",
         "execute_tool get_weather",
         "decide jev-latest",
+        "extract clairic",
         "chat"
       ]
     },

@@ -147,7 +147,7 @@ export type AI_FREQUENCY_PENALTY_TYPE = number;
  *
  * Attribute Value Type: `string` {@link AI_FUNCTION_CALL_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -359,7 +359,7 @@ export type AI_PIPELINE_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AI_PREAMBLE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -867,7 +867,7 @@ export type AI_TEMPERATURE_TYPE = number;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TEXTS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -961,7 +961,7 @@ export type AI_TOOLS_TYPE = Array<string>;
  *
  * Attribute Value Type: `Array<string>` {@link AI_TOOL_CALLS_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -2862,6 +2862,27 @@ export const AWS_LAMBDA_REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in
  */
 export type AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE = number;
 
+// Path: model/attributes/aws/aws__lambda__resource_mapping__id.json
+
+/**
+ * The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping. `aws.lambda.resource_mapping.id`
+ *
+ * Attribute Value Type: `string` {@link AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "587ad24b-03b9-4413-8202-bbd56b36e5b7"
+ */
+export const AWS_LAMBDA_RESOURCE_MAPPING_ID = 'aws.lambda.resource_mapping.id';
+
+/**
+ * Type for {@link AWS_LAMBDA_RESOURCE_MAPPING_ID} aws.lambda.resource_mapping.id
+ */
+export type AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE = string;
+
 // Path: model/attributes/aws/aws__log__group__names.json
 
 /**
@@ -3075,7 +3096,7 @@ export type AWS_S3_BUCKET_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_COPY_SOURCE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3096,7 +3117,7 @@ export type AWS_S3_COPY_SOURCE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_DELETE_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3117,7 +3138,7 @@ export type AWS_S3_DELETE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_S3_KEY_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -3778,6 +3799,27 @@ export const BROWSER_WEB_VITAL_FP_VALUE = 'browser.web_vital.fp.value';
  */
 export type BROWSER_WEB_VITAL_FP_VALUE_TYPE = number;
 
+// Path: model/attributes/browser/browser__web_vital__inp__input_delay.json
+
+/**
+ * The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds `browser.web_vital.inp.input_delay`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_INPUT_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 120
+ */
+export const BROWSER_WEB_VITAL_INP_INPUT_DELAY = 'browser.web_vital.inp.input_delay';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_INPUT_DELAY} browser.web_vital.inp.input_delay
+ */
+export type BROWSER_WEB_VITAL_INP_INPUT_DELAY_TYPE = number;
+
 // Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
 
 /**
@@ -3801,6 +3843,48 @@ export const BROWSER_WEB_VITAL_INP_INTERACTION_TYPE = 'browser.web_vital.inp.int
  * Type for {@link BROWSER_WEB_VITAL_INP_INTERACTION_TYPE} browser.web_vital.inp.interaction_type
  */
 export type BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__inp__presentation_delay.json
+
+/**
+ * The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds `browser.web_vital.inp.presentation_delay`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 100
+ */
+export const BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY = 'browser.web_vital.inp.presentation_delay';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY} browser.web_vital.inp.presentation_delay
+ */
+export type BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__inp__processing_duration.json
+
+/**
+ * The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds `browser.web_vital.inp.processing_duration`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_INP_PROCESSING_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 140
+ */
+export const BROWSER_WEB_VITAL_INP_PROCESSING_DURATION = 'browser.web_vital.inp.processing_duration';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_INP_PROCESSING_DURATION} browser.web_vital.inp.processing_duration
+ */
+export type BROWSER_WEB_VITAL_INP_PROCESSING_DURATION_TYPE = number;
 
 // Path: model/attributes/browser/browser__web_vital__inp__target.json
 
@@ -3869,6 +3953,27 @@ export const BROWSER_WEB_VITAL_LCP_ELEMENT = 'browser.web_vital.lcp.element';
  * Type for {@link BROWSER_WEB_VITAL_LCP_ELEMENT} browser.web_vital.lcp.element
  */
 export type BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__element_render_delay.json
+
+/**
+ * The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds `browser.web_vital.lcp.element_render_delay`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 410
+ */
+export const BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY = 'browser.web_vital.lcp.element_render_delay';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY} browser.web_vital.lcp.element_render_delay
+ */
+export type BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY_TYPE = number;
 
 // Path: model/attributes/browser/browser__web_vital__lcp__id.json
 
@@ -3960,6 +4065,48 @@ export const BROWSER_WEB_VITAL_LCP_REPORT_EVENT = 'browser.web_vital.lcp.report_
  * Type for {@link BROWSER_WEB_VITAL_LCP_REPORT_EVENT} browser.web_vital.lcp.report_event
  */
 export type BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE = string;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__resource_load_delay.json
+
+/**
+ * The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds `browser.web_vital.lcp.resource_load_delay`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 320.5
+ */
+export const BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY = 'browser.web_vital.lcp.resource_load_delay';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY} browser.web_vital.lcp.resource_load_delay
+ */
+export type BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY_TYPE = number;
+
+// Path: model/attributes/browser/browser__web_vital__lcp__resource_load_duration.json
+
+/**
+ * The time it took to load the LCP resource, in milliseconds `browser.web_vital.lcp.resource_load_duration`
+ *
+ * Attribute Value Type: `number` {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 780.2
+ */
+export const BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION = 'browser.web_vital.lcp.resource_load_duration';
+
+/**
+ * Type for {@link BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION} browser.web_vital.lcp.resource_load_duration
+ */
+export type BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION_TYPE = number;
 
 // Path: model/attributes/browser/browser__web_vital__lcp__size.json
 
@@ -4209,7 +4356,7 @@ export type CACHE_TAGS_TYPE = Array<string>;
 // Path: model/attributes/cache/cache__ttl.json
 
 /**
- * The ttl (maximum lifetime) of the cache in seconds `cache.ttl`
+ * The TTL (maximum lifetime) of the cache entry in seconds `cache.ttl`
  *
  * Attribute Value Type: `number` {@link CACHE_TTL_TYPE}
  *
@@ -6678,7 +6825,7 @@ export type EFFECTIVECONNECTIONTYPE_TYPE = string;
  *
  * Attribute Value Type: `string` {@link ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -7942,7 +8089,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them. `gen_ai.input.messages`
+ * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
@@ -7954,6 +8101,8 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
  * Aliases: {@link AI_TEXTS} `ai.texts`, {@link AI_PROMPT_MESSAGES} `ai.prompt.messages`, {@link GEN_AI_PROMPT} `gen_ai.prompt`, {@link AI_PROMPT} `ai.prompt`
  *
  * @example "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
+ * @example "[{\"state\": \"I cannot log in, and I also want a refund for last month.\", \"questions\": {\"authIssue\": {\"type\": \"noul\", \"instructions\": \"Is there a login problem?\"}, \"department\": {\"type\": \"choice\", \"instructions\": \"Which team should handle this?\", \"criteria\": {\"billing\": \"Charges and refunds\", \"technical\": \"Bugs and outages\"}}}}]"
+ * @example "[{\"state\": \"Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. 4 pallets at $250.00 each, shipping $80.00. Contact: Dana Ruiz, Priya Shah.\", \"fields\": {\"invoice_number\": {\"type\": \"text\"}, \"due_date\": {\"type\": \"date\", \"instructions\": \"Issue date plus the net payment days\"}, \"total\": {\"type\": \"number\", \"decimals\": 2, \"unit\": \"USD\", \"instructions\": \"Amount due including shipping\"}, \"contacts\": {\"type\": \"list\", \"items\": \"text\"}, \"po_number\": {\"type\": \"text\", \"instructions\": \"Purchase order number\"}, \"days_to_pay\": {\"type\": \"estimate\", \"min\": 0, \"max\": 120, \"step\": 1, \"instructions\": \"Days after issue until this invoice is paid\"}}}]"
  */
 export const GEN_AI_INPUT_MESSAGES = 'gen_ai.input.messages';
 
@@ -8093,6 +8242,7 @@ export type GEN_AI_MEMORY_STORE_ID_TYPE = string;
  * - `embeddings`
  * - `evaluate`
  * - `execute_tool`
+ * - `extract`
  * - `generate_content`
  * - `invoke_agent`
  * - `search_memory`
@@ -8141,7 +8291,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them. `gen_ai.output.messages`
+ * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
@@ -8153,6 +8303,8 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  * Aliases: {@link AI_RESPONSE_TOOLCALLS} `ai.response.toolCalls`, {@link AI_RESPONSE_TEXT} `ai.response.text`
  *
  * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
+ * @example "[{\"answers\": {\"authIssue\": {\"type\": \"noul\", \"noul\": 0.98}, \"department\": {\"type\": \"choice\", \"choice\": \"billing\", \"confidence\": 0.28, \"probabilities\": {\"billing\": 0.64, \"technical\": 0.36}}}}]"
+ * @example "[{\"answers\": {\"invoice_number\": {\"type\": \"text\", \"p_null\": 3.8e-10, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 1, \"value\": \"INV-2291\"}, \"due_date\": {\"type\": \"date\", \"p_null\": 1.9e-08, \"guess\": \"2026-10-02\", \"confidence\": 0.9999, \"value\": \"2026-10-02\"}, \"total\": {\"type\": \"number\", \"p_null\": 2.3e-08, \"guess\": 1080, \"confidence\": 0.9999, \"value\": 1080}, \"contacts\": {\"type\": \"list\", \"value\": [\"Dana Ruiz\", \"Priya Shah\"], \"spans\": [[120, 129], [131, 141]], \"confidence\": 0.9999}, \"po_number\": {\"type\": \"text\", \"p_null\": 1, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 0.9995, \"value\": null}, \"days_to_pay\": {\"type\": \"estimate\", \"value\": 30, \"mean\": 29.535, \"median\": 30, \"p10\": 21, \"p90\": 38, \"p_below\": 5.9e-06, \"p_above\": 1.2e-05}}, \"truncated\": false}]"
  */
 export const GEN_AI_OUTPUT_MESSAGES = 'gen_ai.output.messages';
 
@@ -8881,7 +9033,7 @@ export type GEN_AI_SYSTEM_INSTRUCTIONS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -8941,6 +9093,28 @@ export const GEN_AI_TOOL_CALL_RESULT = 'gen_ai.tool.call.result';
  * Type for {@link GEN_AI_TOOL_CALL_RESULT} gen_ai.tool.call.result
  */
 export type GEN_AI_TOOL_CALL_RESULT_TYPE = string;
+
+// Path: model/attributes/gen_ai/gen_ai__tool__call__result__size.json
+
+/**
+ * The UTF-8 byte length of the serialized tool call result, measured before truncation. `gen_ai.tool.call.result.size`
+ *
+ * Attribute Value Type: `number` {@link GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 1024
+ */
+export const GEN_AI_TOOL_CALL_RESULT_SIZE = 'gen_ai.tool.call.result.size';
+
+/**
+ * Type for {@link GEN_AI_TOOL_CALL_RESULT_SIZE} gen_ai.tool.call.result.size
+ */
+export type GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE = number;
 
 // Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
 
@@ -9017,7 +9191,7 @@ export type GEN_AI_TOOL_INPUT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_MESSAGE_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -9801,6 +9975,74 @@ export const GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS = 'grpc.error.retry_info.retry
  * Type for {@link GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS} grpc.error.retry_info.retry_delay_ms
  */
 export type GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE = number;
+
+// Path: model/attributes/hapi/hapi__ext__type.json
+
+/**
+ * The request lifecycle extension point where the Hapi extension function runs. `hapi.ext.type`
+ *
+ * Attribute Value Type: `string` {@link HAPI_EXT_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link SERVER_EXT_TYPE} `server.ext.type`
+ *
+ * @example "onRequest"
+ * @example "onPreResponse"
+ */
+export const HAPI_EXT_TYPE = 'hapi.ext.type';
+
+/**
+ * Type for {@link HAPI_EXT_TYPE} hapi.ext.type
+ */
+export type HAPI_EXT_TYPE_TYPE = string;
+
+// Path: model/attributes/hapi/hapi__plugin__name.json
+
+/**
+ * The name of the Hapi plugin that registered the route. `hapi.plugin.name`
+ *
+ * Attribute Value Type: `string` {@link HAPI_PLUGIN_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "hapi-swagger"
+ */
+export const HAPI_PLUGIN_NAME = 'hapi.plugin.name';
+
+/**
+ * Type for {@link HAPI_PLUGIN_NAME} hapi.plugin.name
+ */
+export type HAPI_PLUGIN_NAME_TYPE = string;
+
+// Path: model/attributes/hapi/hapi__type.json
+
+/**
+ * The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`. `hapi.type`
+ *
+ * Attribute Value Type: `string` {@link HAPI_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "router"
+ * @example "plugin"
+ * @example "server.ext"
+ */
+export const HAPI_TYPE = 'hapi.type';
+
+/**
+ * Type for {@link HAPI_TYPE} hapi.type
+ */
+export type HAPI_TYPE_TYPE = string;
 
 // Path: model/attributes/hardwareConcurrency.json
 
@@ -12353,7 +12595,7 @@ export type MCP_TOOL_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link MCP_TOOL_RESULT_CONTENT_TYPE}
  *
- * Apply Scrubbing: auto - Tool results can contain user data
+ * Apply Scrubbing: manual - Tool results can contain user data
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -12820,6 +13062,538 @@ export const MESSAGING_BATCH_MESSAGE_COUNT = 'messaging.batch.message_count';
  * Type for {@link MESSAGING_BATCH_MESSAGE_COUNT} messaging.batch.message_count
  */
 export type MESSAGING_BATCH_MESSAGE_COUNT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__flow__name.json
+
+/**
+ * The name of the root job of the BullMQ flow that FlowProducer.add() adds. `messaging.bullmq.flow.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_FLOW_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "build-report"
+ */
+export const MESSAGING_BULLMQ_FLOW_NAME = 'messaging.bullmq.flow.name';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_FLOW_NAME} messaging.bullmq.flow.name
+ */
+export type MESSAGING_BULLMQ_FLOW_NAME_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__attempt_finished_timestamp.json
+
+/**
+ * The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished. `messaging.bullmq.job.attempt_finished_timestamp`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1791184722406
+ */
+export const MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP = 'messaging.bullmq.job.attempt_finished_timestamp';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP} messaging.bullmq.job.attempt_finished_timestamp
+ */
+export type MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__bulk__names.json
+
+/**
+ * The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk(). `messaging.bullmq.job.bulk.names`
+ *
+ * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_JOB_BULK_NAMES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["send-welcome-email","generate-report"]
+ */
+export const MESSAGING_BULLMQ_JOB_BULK_NAMES = 'messaging.bullmq.job.bulk.names';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_BULK_NAMES} messaging.bullmq.job.bulk.names
+ */
+export type MESSAGING_BULLMQ_JOB_BULK_NAMES_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__deduplication__key.json
+
+/**
+ * The deduplication ID that Queue.removeDeduplicationKey() removes. `messaging.bullmq.job.deduplication.key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user-42-sync"
+ */
+export const MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY = 'messaging.bullmq.job.deduplication.key';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY} messaging.bullmq.job.deduplication.key
+ */
+export type MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__ids.json
+
+/**
+ * The IDs of the BullMQ jobs that Queue.clean() removed. `messaging.bullmq.job.ids`
+ *
+ * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_JOB_IDS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["1","2","3"]
+ */
+export const MESSAGING_BULLMQ_JOB_IDS = 'messaging.bullmq.job.ids';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_IDS} messaging.bullmq.job.ids
+ */
+export type MESSAGING_BULLMQ_JOB_IDS_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__key.json
+
+/**
+ * The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey(). `messaging.bullmq.job.key`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "user-42-sync"
+ */
+export const MESSAGING_BULLMQ_JOB_KEY = 'messaging.bullmq.job.key';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_KEY} messaging.bullmq.job.key
+ */
+export type MESSAGING_BULLMQ_JOB_KEY_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__name.json
+
+/**
+ * The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work. `messaging.bullmq.job.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "send-welcome-email"
+ * @example "generate-report"
+ */
+export const MESSAGING_BULLMQ_JOB_NAME = 'messaging.bullmq.job.name';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_NAME} messaging.bullmq.job.name
+ */
+export type MESSAGING_BULLMQ_JOB_NAME_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__processed_timestamp.json
+
+/**
+ * The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job. `messaging.bullmq.job.processed_timestamp`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1791184722281
+ */
+export const MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP = 'messaging.bullmq.job.processed_timestamp';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP} messaging.bullmq.job.processed_timestamp
+ */
+export type MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__scheduler__id.json
+
+/**
+ * The ID of the BullMQ job scheduler that adds the job. `messaging.bullmq.job.scheduler.id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_SCHEDULER_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "daily-report"
+ */
+export const MESSAGING_BULLMQ_JOB_SCHEDULER_ID = 'messaging.bullmq.job.scheduler.id';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_SCHEDULER_ID} messaging.bullmq.job.scheduler.id
+ */
+export type MESSAGING_BULLMQ_JOB_SCHEDULER_ID_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__state.json
+
+/**
+ * The state of the BullMQ job that a job metric counts. `messaging.bullmq.job.state`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_STATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "completed"
+ * @example "failed"
+ * @example "delayed"
+ */
+export const MESSAGING_BULLMQ_JOB_STATE = 'messaging.bullmq.job.state';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_STATE} messaging.bullmq.job.state
+ */
+export type MESSAGING_BULLMQ_JOB_STATE_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__job__type.json
+
+/**
+ * The job state from which Queue.clean() removes BullMQ jobs. `messaging.bullmq.job.type`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_JOB_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "completed"
+ * @example "failed"
+ */
+export const MESSAGING_BULLMQ_JOB_TYPE = 'messaging.bullmq.job.type';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_JOB_TYPE} messaging.bullmq.job.type
+ */
+export type MESSAGING_BULLMQ_JOB_TYPE_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__clean__count.json
+
+/**
+ * The number of BullMQ jobs that Queue.clean() removed. `messaging.bullmq.queue.clean.count`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 25
+ */
+export const MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT = 'messaging.bullmq.queue.clean.count';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT} messaging.bullmq.queue.clean.count
+ */
+export type MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__clean__limit.json
+
+/**
+ * The maximum number of BullMQ jobs that Queue.clean() removes. `messaging.bullmq.queue.clean.limit`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 1000
+ */
+export const MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT = 'messaging.bullmq.queue.clean.limit';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT} messaging.bullmq.queue.clean.limit
+ */
+export type MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__drain__delay.json
+
+/**
+ * Whether Queue.drain() also removes the delayed BullMQ jobs. `messaging.bullmq.queue.drain.delay`
+ *
+ * Attribute Value Type: `boolean` {@link MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example true
+ */
+export const MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY = 'messaging.bullmq.queue.drain.delay';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY} messaging.bullmq.queue.drain.delay
+ */
+export type MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY_TYPE = boolean;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__event__max_length.json
+
+/**
+ * The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream. `messaging.bullmq.queue.event.max_length`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 10000
+ */
+export const MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH = 'messaging.bullmq.queue.event.max_length';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH} messaging.bullmq.queue.event.max_length
+ */
+export type MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__grace.json
+
+/**
+ * The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed. `messaging.bullmq.queue.grace`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_GRACE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 60000
+ */
+export const MESSAGING_BULLMQ_QUEUE_GRACE = 'messaging.bullmq.queue.grace';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_GRACE} messaging.bullmq.queue.grace
+ */
+export type MESSAGING_BULLMQ_QUEUE_GRACE_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__jobs__state.json
+
+/**
+ * The BullMQ job state that the queue job count metric counts. `messaging.bullmq.queue.jobs.state`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_QUEUE_JOBS_STATE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "waiting"
+ * @example "active"
+ * @example "completed"
+ */
+export const MESSAGING_BULLMQ_QUEUE_JOBS_STATE = 'messaging.bullmq.queue.jobs.state';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_JOBS_STATE} messaging.bullmq.queue.jobs.state
+ */
+export type MESSAGING_BULLMQ_QUEUE_JOBS_STATE_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__queue__rate_limit.json
+
+/**
+ * The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue. `messaging.bullmq.queue.rate_limit`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const MESSAGING_BULLMQ_QUEUE_RATE_LIMIT = 'messaging.bullmq.queue.rate_limit';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_QUEUE_RATE_LIMIT} messaging.bullmq.queue.rate_limit
+ */
+export type MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__do_not_wait_active.json
+
+/**
+ * Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish. `messaging.bullmq.worker.do_not_wait_active`
+ *
+ * Attribute Value Type: `boolean` {@link MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example false
+ */
+export const MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE = 'messaging.bullmq.worker.do_not_wait_active';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE} messaging.bullmq.worker.do_not_wait_active
+ */
+export type MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE = boolean;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__force_close.json
+
+/**
+ * Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish. `messaging.bullmq.worker.force_close`
+ *
+ * Attribute Value Type: `boolean` {@link MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example false
+ */
+export const MESSAGING_BULLMQ_WORKER_FORCE_CLOSE = 'messaging.bullmq.worker.force_close';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_FORCE_CLOSE} messaging.bullmq.worker.force_close
+ */
+export type MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE = boolean;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__jobs_to_extend_locks.json
+
+/**
+ * The IDs of the BullMQ jobs whose locks the Worker extends. `messaging.bullmq.worker.jobs_to_extend_locks`
+ *
+ * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["1","2"]
+ */
+export const MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS = 'messaging.bullmq.worker.jobs_to_extend_locks';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS} messaging.bullmq.worker.jobs_to_extend_locks
+ */
+export type MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__name.json
+
+/**
+ * The name that the user gives to the BullMQ Worker in its options. `messaging.bullmq.worker.name`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_BULLMQ_WORKER_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "email-worker"
+ */
+export const MESSAGING_BULLMQ_WORKER_NAME = 'messaging.bullmq.worker.name';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_NAME} messaging.bullmq.worker.name
+ */
+export type MESSAGING_BULLMQ_WORKER_NAME_TYPE = string;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__rate_limit.json
+
+/**
+ * The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker. `messaging.bullmq.worker.rate_limit`
+ *
+ * Attribute Value Type: `number` {@link MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 5000
+ */
+export const MESSAGING_BULLMQ_WORKER_RATE_LIMIT = 'messaging.bullmq.worker.rate_limit';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_RATE_LIMIT} messaging.bullmq.worker.rate_limit
+ */
+export type MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE = number;
+
+// Path: model/attributes/messaging/messaging__bullmq__worker__stalled_jobs.json
+
+/**
+ * The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state. `messaging.bullmq.worker.stalled_jobs`
+ *
+ * Attribute Value Type: `Array<string>` {@link MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example ["1","2"]
+ */
+export const MESSAGING_BULLMQ_WORKER_STALLED_JOBS = 'messaging.bullmq.worker.stalled_jobs';
+
+/**
+ * Type for {@link MESSAGING_BULLMQ_WORKER_STALLED_JOBS} messaging.bullmq.worker.stalled_jobs
+ */
+export type MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE = Array<string>;
+
+// Path: model/attributes/messaging/messaging__client__id.json
+
+/**
+ * A unique identifier for the client that consumes or produces a message. `messaging.client.id`
+ *
+ * Attribute Value Type: `string` {@link MESSAGING_CLIENT_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "client-5"
+ * @example "myhost@8742@s8083jm"
+ */
+export const MESSAGING_CLIENT_ID = 'messaging.client.id';
+
+/**
+ * Type for {@link MESSAGING_CLIENT_ID} messaging.client.id
+ */
+export type MESSAGING_CLIENT_ID_TYPE = string;
 
 // Path: model/attributes/messaging/messaging__conversation_id.json
 
@@ -13986,7 +14760,7 @@ export type NET_PEER_IP_TYPE = string;
  *
  * Attribute Value Type: `string` {@link NET_PEER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15365,7 +16139,7 @@ export type REPLAY_ID_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15387,7 +16161,7 @@ export type RESOURCE_DEPLOYMENT_ENVIRONMENT_TYPE = string;
  *
  * Attribute Value Type: `string` {@link RESOURCE_DEPLOYMENT_ENVIRONMENT_NAME_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: never
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -15977,6 +16751,7 @@ export type SENTRY_CANCELLATION_REASON_TYPE = string;
  * - `measure`
  * - `middleware`
  * - `navigation`
+ * - `object`
  * - `pageload`
  * - `queue`
  * - `resource`
@@ -16613,9 +17388,16 @@ export type SENTRY_KIND_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
+ * Well-defined Values:
+ * - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
+ * - `cache_origin` - The linked span wrote the cached value that this span reads.
+ * - `message_origin` - The linked span published the queue message that this span processes.
+ * - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
+ *
  * @example "previous_trace"
- * @example "next_trace"
  * @example "cache_origin"
+ * @example "message_origin"
+ * @example "server_request"
  */
 export const SENTRY_LINK_TYPE = 'sentry.link.type';
 
@@ -17635,7 +18417,7 @@ export type SENTRY_TRACE_STATUS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SENTRY_TRANSACTION_TYPE}
  *
- * Apply Scrubbing: never
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -17859,6 +18641,31 @@ export const SERVER_ADDRESS = 'server.address';
  */
 export type SERVER_ADDRESS_TYPE = string;
 
+// Path: model/attributes/server/server__ext__type.json
+
+/**
+ * The request lifecycle extension point where the Hapi extension function runs. `server.ext.type`
+ *
+ * Attribute Value Type: `string` {@link SERVER_EXT_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link HAPI_EXT_TYPE} `hapi.ext.type`
+ *
+ * @deprecated Use {@link HAPI_EXT_TYPE} (hapi.ext.type) instead - Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace.
+ * @example "onRequest"
+ * @example "onPreResponse"
+ */
+export const SERVER_EXT_TYPE = 'server.ext.type';
+
+/**
+ * Type for {@link SERVER_EXT_TYPE} server.ext.type
+ */
+export type SERVER_EXT_TYPE_TYPE = string;
+
 // Path: model/attributes/server_name.json
 
 /**
@@ -17866,7 +18673,7 @@ export type SERVER_ADDRESS_TYPE = string;
  *
  * Attribute Value Type: `string` {@link SERVER_NAME_TYPE}
  *
- * Apply Scrubbing: auto
+ * Apply Scrubbing: manual
  *
  * Attribute defined in OTEL: No
  * Visibility: public
@@ -20572,6 +21379,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'aws.lambda.invoked_arn': 'string',
   'aws.lambda.invoked_function_arn': 'string',
   'aws.lambda.remaining_time_in_millis': 'double',
+  'aws.lambda.resource_mapping.id': 'string',
   'aws.log.group.names': 'string[]',
   'aws.log.stream.names': 'string[]',
   'aws.operation_name': 'string',
@@ -20613,14 +21421,20 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'browser.web_vital.cls.value': 'double',
   'browser.web_vital.fcp.value': 'double',
   'browser.web_vital.fp.value': 'double',
+  'browser.web_vital.inp.input_delay': 'double',
   'browser.web_vital.inp.interaction_type': 'string',
+  'browser.web_vital.inp.presentation_delay': 'double',
+  'browser.web_vital.inp.processing_duration': 'double',
   'browser.web_vital.inp.target': 'string',
   'browser.web_vital.inp.value': 'double',
   'browser.web_vital.lcp.element': 'string',
+  'browser.web_vital.lcp.element_render_delay': 'double',
   'browser.web_vital.lcp.id': 'string',
   'browser.web_vital.lcp.load_time': 'integer',
   'browser.web_vital.lcp.render_time': 'integer',
   'browser.web_vital.lcp.report_event': 'string',
+  'browser.web_vital.lcp.resource_load_delay': 'double',
+  'browser.web_vital.lcp.resource_load_duration': 'double',
   'browser.web_vital.lcp.size': 'integer',
   'browser.web_vital.lcp.url': 'string',
   'browser.web_vital.lcp.value': 'double',
@@ -20845,6 +21659,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'gen_ai.system.message': 'string',
   'gen_ai.tool.call.arguments': 'string',
   'gen_ai.tool.call.result': 'string',
+  'gen_ai.tool.call.result.size': 'integer',
   'gen_ai.tool.definitions': 'string',
   'gen_ai.tool.description': 'string',
   'gen_ai.tool.input': 'string',
@@ -20883,6 +21698,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'grpc.error.resource_info.resource_name': 'string',
   'grpc.error.resource_info.resource_type': 'string',
   'grpc.error.retry_info.retry_delay_ms': 'integer',
+  'hapi.ext.type': 'string',
+  'hapi.plugin.name': 'string',
+  'hapi.type': 'string',
   hardwareConcurrency: 'string',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
@@ -21018,6 +21836,31 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'mcp.transport': 'string',
   'mdc.<key>': 'string',
   'messaging.batch.message_count': 'integer',
+  'messaging.bullmq.flow.name': 'string',
+  'messaging.bullmq.job.attempt_finished_timestamp': 'integer',
+  'messaging.bullmq.job.bulk.names': 'string[]',
+  'messaging.bullmq.job.deduplication.key': 'string',
+  'messaging.bullmq.job.ids': 'string[]',
+  'messaging.bullmq.job.key': 'string',
+  'messaging.bullmq.job.name': 'string',
+  'messaging.bullmq.job.processed_timestamp': 'integer',
+  'messaging.bullmq.job.scheduler.id': 'string',
+  'messaging.bullmq.job.state': 'string',
+  'messaging.bullmq.job.type': 'string',
+  'messaging.bullmq.queue.clean.count': 'integer',
+  'messaging.bullmq.queue.clean.limit': 'integer',
+  'messaging.bullmq.queue.drain.delay': 'boolean',
+  'messaging.bullmq.queue.event.max_length': 'integer',
+  'messaging.bullmq.queue.grace': 'integer',
+  'messaging.bullmq.queue.jobs.state': 'string',
+  'messaging.bullmq.queue.rate_limit': 'integer',
+  'messaging.bullmq.worker.do_not_wait_active': 'boolean',
+  'messaging.bullmq.worker.force_close': 'boolean',
+  'messaging.bullmq.worker.jobs_to_extend_locks': 'string[]',
+  'messaging.bullmq.worker.name': 'string',
+  'messaging.bullmq.worker.rate_limit': 'integer',
+  'messaging.bullmq.worker.stalled_jobs': 'string[]',
+  'messaging.client.id': 'string',
   'messaging.conversation_id': 'string',
   'messaging.destination': 'string',
   'messaging.destination.connection': 'string',
@@ -21239,6 +22082,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.user.ip': 'string',
   'sentry.user.username': 'string',
   'server.address': 'string',
+  'server.ext.type': 'string',
   server_name: 'string',
   'server.port': 'integer',
   'service.name': 'string',
@@ -21481,6 +22325,7 @@ export type AttributeName =
   | typeof AWS_LAMBDA_INVOKED_ARN
   | typeof AWS_LAMBDA_INVOKED_FUNCTION_ARN
   | typeof AWS_LAMBDA_REMAINING_TIME_IN_MILLIS
+  | typeof AWS_LAMBDA_RESOURCE_MAPPING_ID
   | typeof AWS_LOG_GROUP_NAMES
   | typeof AWS_LOG_STREAM_NAMES
   | typeof AWS_OPERATION_NAME
@@ -21522,14 +22367,20 @@ export type AttributeName =
   | typeof BROWSER_WEB_VITAL_CLS_VALUE
   | typeof BROWSER_WEB_VITAL_FCP_VALUE
   | typeof BROWSER_WEB_VITAL_FP_VALUE
+  | typeof BROWSER_WEB_VITAL_INP_INPUT_DELAY
   | typeof BROWSER_WEB_VITAL_INP_INTERACTION_TYPE
+  | typeof BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY
+  | typeof BROWSER_WEB_VITAL_INP_PROCESSING_DURATION
   | typeof BROWSER_WEB_VITAL_INP_TARGET
   | typeof BROWSER_WEB_VITAL_INP_VALUE
   | typeof BROWSER_WEB_VITAL_LCP_ELEMENT
+  | typeof BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY
   | typeof BROWSER_WEB_VITAL_LCP_ID
   | typeof BROWSER_WEB_VITAL_LCP_LOAD_TIME
   | typeof BROWSER_WEB_VITAL_LCP_RENDER_TIME
   | typeof BROWSER_WEB_VITAL_LCP_REPORT_EVENT
+  | typeof BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY
+  | typeof BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION
   | typeof BROWSER_WEB_VITAL_LCP_SIZE
   | typeof BROWSER_WEB_VITAL_LCP_URL
   | typeof BROWSER_WEB_VITAL_LCP_VALUE
@@ -21754,6 +22605,7 @@ export type AttributeName =
   | typeof GEN_AI_SYSTEM_MESSAGE
   | typeof GEN_AI_TOOL_CALL_ARGUMENTS
   | typeof GEN_AI_TOOL_CALL_RESULT
+  | typeof GEN_AI_TOOL_CALL_RESULT_SIZE
   | typeof GEN_AI_TOOL_DEFINITIONS
   | typeof GEN_AI_TOOL_DESCRIPTION
   | typeof GEN_AI_TOOL_INPUT
@@ -21792,6 +22644,9 @@ export type AttributeName =
   | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME
   | typeof GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE
   | typeof GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS
+  | typeof HAPI_EXT_TYPE
+  | typeof HAPI_PLUGIN_NAME
+  | typeof HAPI_TYPE
   | typeof HARDWARECONCURRENCY
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
@@ -21927,6 +22782,31 @@ export type AttributeName =
   | typeof MCP_TRANSPORT
   | typeof MDC_KEY
   | typeof MESSAGING_BATCH_MESSAGE_COUNT
+  | typeof MESSAGING_BULLMQ_FLOW_NAME
+  | typeof MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP
+  | typeof MESSAGING_BULLMQ_JOB_BULK_NAMES
+  | typeof MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY
+  | typeof MESSAGING_BULLMQ_JOB_IDS
+  | typeof MESSAGING_BULLMQ_JOB_KEY
+  | typeof MESSAGING_BULLMQ_JOB_NAME
+  | typeof MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP
+  | typeof MESSAGING_BULLMQ_JOB_SCHEDULER_ID
+  | typeof MESSAGING_BULLMQ_JOB_STATE
+  | typeof MESSAGING_BULLMQ_JOB_TYPE
+  | typeof MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT
+  | typeof MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT
+  | typeof MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY
+  | typeof MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH
+  | typeof MESSAGING_BULLMQ_QUEUE_GRACE
+  | typeof MESSAGING_BULLMQ_QUEUE_JOBS_STATE
+  | typeof MESSAGING_BULLMQ_QUEUE_RATE_LIMIT
+  | typeof MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE
+  | typeof MESSAGING_BULLMQ_WORKER_FORCE_CLOSE
+  | typeof MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS
+  | typeof MESSAGING_BULLMQ_WORKER_NAME
+  | typeof MESSAGING_BULLMQ_WORKER_RATE_LIMIT
+  | typeof MESSAGING_BULLMQ_WORKER_STALLED_JOBS
+  | typeof MESSAGING_CLIENT_ID
   | typeof MESSAGING_CONVERSATION_ID
   | typeof MESSAGING_DESTINATION
   | typeof MESSAGING_DESTINATION_CONNECTION
@@ -22148,6 +23028,7 @@ export type AttributeName =
   | typeof SENTRY_USER_IP
   | typeof SENTRY_USER_USERNAME
   | typeof SERVER_ADDRESS
+  | typeof SERVER_EXT_TYPE
   | typeof SERVER_NAME
   | typeof SERVER_PORT
   | typeof SERVICE_NAME
@@ -22378,7 +23259,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22552,7 +23433,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -22961,7 +23842,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'gen_ai.prompt',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -23045,7 +23926,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string[]',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -24357,6 +25238,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5000,
     changelog: [{ version: '0.7.0', prs: [369], description: 'Added aws.lambda.remaining_time_in_millis attribute' }],
   },
+  'aws.lambda.resource_mapping.id': {
+    brief:
+      "The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+    type: 'string',
+    keys: ['aws.lambda.resource_mapping.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '587ad24b-03b9-4413-8202-bbd56b36e5b7',
+    examples: ['587ad24b-03b9-4413-8202-bbd56b36e5b7'],
+    changelog: [{ version: '0.28.0', prs: [710], description: 'Added aws.lambda.resource_mapping.id attribute' }],
+  },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
     type: 'string[]',
@@ -24522,13 +25417,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.copy_source'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.copy_source attribute' }],
+    changelog: [
+      { version: '0.28.0', prs: [713], description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.copy_source attribute' },
+    ],
     additionalContext: [
       'Applicable to the copy-object and upload-part-copy operations, corresponding to the CopySource parameter.',
     ],
@@ -24538,13 +25436,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.delete'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
     examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' }],
+    changelog: [
+      { version: '0.28.0', prs: [713], description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' },
+    ],
     additionalContext: ['Applicable only to the delete-objects operation, corresponding to its Delete parameter.'],
   },
   'aws.s3.key': {
@@ -24552,13 +25453,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.s3.key'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'someFile.yml',
     examples: ['someFile.yml'],
-    changelog: [{ version: '0.27.0', prs: [672], description: 'Added aws.s3.key attribute' }],
+    changelog: [
+      { version: '0.28.0', prs: [713], description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.27.0', prs: [672], description: 'Added aws.s3.key attribute' },
+    ],
   },
   'aws.s3.part_number': {
     brief:
@@ -24983,6 +25887,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['fp'],
     changelog: [{ version: '0.5.0', prs: [235] }],
   },
+  'browser.web_vital.inp.input_delay': {
+    brief:
+      'The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.inp.input_delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 120,
+    examples: [120],
+    changelog: [{ version: '0.28.0', prs: [712], description: 'Added browser.web_vital.inp.input_delay attribute' }],
+    additionalContext: [
+      'One of the three INP subparts, which add up to `browser.web_vital.inp.value`: input delay, processing duration and presentation delay. Named after `inputDelay` in the web-vitals attribution build.',
+      "Measured from the interaction's `PerformanceEventTiming` entry as `processingStart` minus `startTime`.",
+      'Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.',
+    ],
+  },
   'browser.web_vital.inp.interaction_type': {
     brief: 'The kind of user interaction INP was reported on',
     type: 'string',
@@ -25001,6 +25924,47 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
       'Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.',
       'Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.',
+    ],
+  },
+  'browser.web_vital.inp.presentation_delay': {
+    brief:
+      'The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.inp.presentation_delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 100,
+    examples: [100],
+    changelog: [
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.inp.presentation_delay attribute' },
+    ],
+    additionalContext: [
+      'One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.',
+      "Measured from the interaction's `PerformanceEventTiming` entry as `startTime` plus `duration` minus `processingEnd`.",
+      'Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.',
+    ],
+  },
+  'browser.web_vital.inp.processing_duration': {
+    brief: 'The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.inp.processing_duration'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 140,
+    examples: [140],
+    changelog: [
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.inp.processing_duration attribute' },
+    ],
+    additionalContext: [
+      'One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `processingDuration` in the web-vitals attribution build.',
+      "Measured from the interaction's `PerformanceEventTiming` entry as `processingEnd` minus `processingStart`.",
+      'Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.',
     ],
   },
   'browser.web_vital.inp.target': {
@@ -25046,6 +26010,26 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'body > div#app > div#container > div',
     aliases: ['lcp.element'],
     changelog: [{ version: '0.5.0', prs: [233] }],
+  },
+  'browser.web_vital.lcp.element_render_delay': {
+    brief: 'The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.lcp.element_render_delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 410,
+    examples: [410],
+    changelog: [
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.lcp.element_render_delay attribute' },
+    ],
+    additionalContext: [
+      'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.',
+      "Measured as the LCP value minus the LCP resource's `responseEnd`. When the LCP element is text, it covers all time after TTFB.",
+      'For a prerendered page, timestamps are measured from `activationStart`.',
+    ],
   },
   'browser.web_vital.lcp.id': {
     brief: 'The id of the dom element responsible for the largest contentful paint',
@@ -25107,6 +26091,47 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: 'Deprecated browser.web_vital.lcp.report_event, which has no replacement',
       },
       { version: '0.5.0', prs: [319], description: 'Added browser.web_vital.lcp.report_event attribute' },
+    ],
+  },
+  'browser.web_vital.lcp.resource_load_delay': {
+    brief:
+      'The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.lcp.resource_load_delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 320.5,
+    examples: [320.5],
+    changelog: [
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.lcp.resource_load_delay attribute' },
+    ],
+    additionalContext: [
+      'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`: TTFB (`browser.web_vital.ttfb.value`), resource load delay, resource load duration and element render delay. Named after `resourceLoadDelay` in the web-vitals attribution build.',
+      "Measured as the LCP resource's `requestStart` (or `startTime` when `requestStart` is not exposed) minus TTFB. It is 0 when the LCP element is text, since no resource is loaded.",
+      'For a prerendered page, timestamps are measured from `activationStart`.',
+    ],
+  },
+  'browser.web_vital.lcp.resource_load_duration': {
+    brief: 'The time it took to load the LCP resource, in milliseconds',
+    type: 'double',
+    keys: ['browser.web_vital.lcp.resource_load_duration'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 780.2,
+    examples: [780.2],
+    changelog: [
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.lcp.resource_load_duration attribute' },
+    ],
+    additionalContext: [
+      'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `resourceLoadDuration` in the web-vitals attribution build.',
+      "Measured as the LCP resource's `responseEnd` minus its `requestStart` (or `startTime` when `requestStart` is not exposed). It is 0 when the LCP element is text, since no resource is loaded.",
+      'For a prerendered page, timestamps are measured from `activationStart`.',
     ],
   },
   'browser.web_vital.lcp.size': {
@@ -25271,7 +26296,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'cache.ttl': {
-    brief: 'The ttl (maximum lifetime) of the cache in seconds',
+    brief: 'The TTL (maximum lifetime) of the cache entry in seconds',
     type: 'integer',
     keys: ['cache.ttl'],
     applyScrubbing: {
@@ -25281,6 +26306,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 120,
     changelog: [{ version: '0.4.0', prs: [228] }, { version: '0.0.0' }],
+    additionalContext: [
+      'Counted from the write. On a read, the value is the full TTL, not the time that remains.',
+      'A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Round a fractional TTL up, so 0.3 seconds becomes 1, not 0.',
+      'Omit the attribute when the entry never expires, the TTL is unknown, or each read restarts the TTL.',
+    ],
   },
   'cache.write': {
     brief: 'If the cache operation resulted in a write to the cache.',
@@ -26926,7 +27956,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: false,
     visibility: 'public',
@@ -27827,7 +28857,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.input.messages': {
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
     keys: [
       'gen_ai.input.messages',
@@ -27844,12 +28874,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+    examples: [
+      '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+      '[{"state": "I cannot log in, and I also want a refund for last month.", "questions": {"authIssue": {"type": "noul", "instructions": "Is there a login problem?"}, "department": {"type": "choice", "instructions": "Which team should handle this?", "criteria": {"billing": "Charges and refunds", "technical": "Bugs and outages"}}}}]',
+      '[{"state": "Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. 4 pallets at $250.00 each, shipping $80.00. Contact: Dana Ruiz, Priya Shah.", "fields": {"invoice_number": {"type": "text"}, "due_date": {"type": "date", "instructions": "Issue date plus the net payment days"}, "total": {"type": "number", "decimals": 2, "unit": "USD", "instructions": "Amount due including shipping"}, "contacts": {"type": "list", "items": "text"}, "po_number": {"type": "text", "instructions": "Purchase order number"}, "days_to_pay": {"type": "estimate", "min": 0, "max": 120, "step": 1, "instructions": "Days after issue until this invoice is paid"}}}]',
+    ],
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
+      {
+        version: '0.28.0',
+        prs: [728],
+        description:
+          'Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context',
+      },
       { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.21.0', prs: [583], description: 'Added ai.prompt as an alias' },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
+    ],
+    additionalContext: [
+      'For `gen_ai.decide` operations, the array holds one object `{state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. Replace binary data in `state`, including `data:` URLs, with the string `"[Blob substitute]"`. The second example shows this shape.',
+      'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data. Replace each image with the string `"[Blob substitute]"`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
     ],
   },
   'gen_ai.memory.query.text': {
@@ -27936,6 +28981,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
+      { version: '0.28.0', prs: [728], description: "Added 'extract' to the well-known values" },
       {
         version: '0.27.0',
         prs: [653, 680],
@@ -27965,7 +29011,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.output.messages': {
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
+      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
     type: 'string',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
@@ -27975,10 +29021,25 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example:
       '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+    examples: [
+      '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+      '[{"answers": {"authIssue": {"type": "noul", "noul": 0.98}, "department": {"type": "choice", "choice": "billing", "confidence": 0.28, "probabilities": {"billing": 0.64, "technical": 0.36}}}}]',
+      '[{"answers": {"invoice_number": {"type": "text", "p_null": 3.8e-10, "span": [8, 16], "guess": "INV-2291", "confidence": 1, "value": "INV-2291"}, "due_date": {"type": "date", "p_null": 1.9e-08, "guess": "2026-10-02", "confidence": 0.9999, "value": "2026-10-02"}, "total": {"type": "number", "p_null": 2.3e-08, "guess": 1080, "confidence": 0.9999, "value": 1080}, "contacts": {"type": "list", "value": ["Dana Ruiz", "Priya Shah"], "spans": [[120, 129], [131, 141]], "confidence": 0.9999}, "po_number": {"type": "text", "p_null": 1, "span": [8, 16], "guess": "INV-2291", "confidence": 0.9995, "value": null}, "days_to_pay": {"type": "estimate", "value": 30, "mean": 29.535, "median": 30, "p10": 21, "p90": 38, "p_below": 5.9e-06, "p_above": 1.2e-05}}, "truncated": false}]',
+    ],
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
+      {
+        version: '0.28.0',
+        prs: [728],
+        description:
+          'Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context',
+      },
       { version: '0.26.0', prs: [650], description: 'Describe the evaluation message shape for gen_ai.evaluate' },
       { version: '0.4.0', prs: [221] },
+    ],
+    additionalContext: [
+      'For `gen_ai.decide` operations, the array holds one object `{answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.',
+      'For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.',
     ],
   },
   'gen_ai.pipeline.name': {
@@ -28513,7 +29574,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -28571,6 +29632,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
+  },
+  'gen_ai.tool.call.result.size': {
+    brief: 'The UTF-8 byte length of the serialized tool call result, measured before truncation.',
+    type: 'integer',
+    keys: ['gen_ai.tool.call.result.size'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 1024],
+    changelog: [{ version: '0.28.0', prs: [679], description: 'Added gen_ai.tool.call.result.size attribute' }],
+    additionalContext: [
+      'The value is a non-negative byte count, not a token count, character count, or in-memory object size. It excludes span and envelope overhead.',
+      'Use 0 for an empty string result. Omit this attribute when the tool result is unavailable; do not treat missing output as zero.',
+    ],
+    searchAlias: {
+      name: 'gen_ai.tool.call.result.size',
+      type: 'byte',
+    },
   },
   'gen_ai.tool.definitions': {
     brief: 'The list of source system tool definitions available to the GenAI agent or model.',
@@ -28633,7 +29715,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -29303,6 +30385,46 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 5000,
     changelog: [{ version: '0.17.0', prs: [460], description: 'Added grpc.error.retry_info.retry_delay_ms attribute' }],
   },
+  'hapi.ext.type': {
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
+    type: 'string',
+    keys: ['hapi.ext.type', 'server.ext.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'onRequest',
+    examples: ['onRequest', 'onPreResponse'],
+    aliases: ['server.ext.type'],
+    changelog: [{ version: '0.28.0', prs: [741], description: 'Added hapi.ext.type attribute' }],
+  },
+  'hapi.plugin.name': {
+    brief: 'The name of the Hapi plugin that registered the route.',
+    type: 'string',
+    keys: ['hapi.plugin.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'hapi-swagger',
+    examples: ['hapi-swagger'],
+    changelog: [{ version: '0.28.0', prs: [741], description: 'Added hapi.plugin.name attribute' }],
+  },
+  'hapi.type': {
+    brief: 'The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.',
+    type: 'string',
+    keys: ['hapi.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'router',
+    examples: ['router', 'plugin', 'server.ext'],
+    changelog: [{ version: '0.28.0', prs: [741], description: 'Added hapi.type attribute' }],
+  },
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
     type: 'string',
@@ -29626,7 +30748,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     examples: [5000],
-    changelog: [{ version: 'next', prs: [697], description: 'Added http.request.duration attribute' }],
+    changelog: [{ version: '0.28.0', prs: [697], description: 'Added http.request.duration attribute' }],
     additionalContext: ['This attribute is set by Relay.'],
   },
   'http.request.fetch_start': {
@@ -31245,7 +32367,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'mcp.tool.result.content',
     ],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
       reason: 'Tool results can contain user data',
     },
     isInOtel: false,
@@ -31815,6 +32937,423 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 10,
     changelog: [{ version: '0.6.0', prs: [341], description: 'Added messaging.batch.message_count attribute' }],
+  },
+  'messaging.bullmq.flow.name': {
+    brief: 'The name of the root job of the BullMQ flow that FlowProducer.add() adds.',
+    type: 'string',
+    keys: ['messaging.bullmq.flow.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'build-report',
+    examples: ['build-report'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.flow.name attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.flow.name` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.attempt_finished_timestamp': {
+    brief: 'The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.',
+    type: 'integer',
+    keys: ['messaging.bullmq.job.attempt_finished_timestamp'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1791184722406,
+    examples: [1791184722406],
+    changelog: [
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.attempt_finished_timestamp attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.attempt_finished_timestamp` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.bulk.names': {
+    brief: 'The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().',
+    type: 'string[]',
+    keys: ['messaging.bullmq.job.bulk.names'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['send-welcome-email', 'generate-report'],
+    examples: [['send-welcome-email', 'generate-report']],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.bulk.names attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.bulk.names` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.deduplication.key': {
+    brief: 'The deduplication ID that Queue.removeDeduplicationKey() removes.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.deduplication.key'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user-42-sync',
+    examples: ['user-42-sync'],
+    changelog: [
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.deduplication.key attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.deduplication.key` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.ids': {
+    brief: 'The IDs of the BullMQ jobs that Queue.clean() removed.',
+    type: 'string[]',
+    keys: ['messaging.bullmq.job.ids'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['1', '2', '3'],
+    examples: [['1', '2', '3']],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.ids attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.ids` attribute of BullMQ's telemetry interface.",
+      'BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not.',
+    ],
+  },
+  'messaging.bullmq.job.key': {
+    brief:
+      'The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().',
+    type: 'string',
+    keys: ['messaging.bullmq.job.key'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'user-42-sync',
+    examples: ['user-42-sync'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.key attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.key` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.name': {
+    brief: 'The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'send-welcome-email',
+    examples: ['send-welcome-email', 'generate-report'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.name attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.name` attribute of BullMQ's telemetry interface.",
+      'Also set on the BullMQ job metrics.',
+    ],
+  },
+  'messaging.bullmq.job.processed_timestamp': {
+    brief: 'The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.',
+    type: 'integer',
+    keys: ['messaging.bullmq.job.processed_timestamp'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1791184722281,
+    examples: [1791184722281],
+    changelog: [
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.processed_timestamp attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.processed.timestamp` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.scheduler.id': {
+    brief: 'The ID of the BullMQ job scheduler that adds the job.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.scheduler.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'daily-report',
+    examples: ['daily-report'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.scheduler.id attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.scheduler.id` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.job.state': {
+    brief: 'The state of the BullMQ job that a job metric counts.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.state'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'completed',
+    examples: ['completed', 'failed', 'delayed'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.state attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value.",
+    ],
+  },
+  'messaging.bullmq.job.type': {
+    brief: 'The job state from which Queue.clean() removes BullMQ jobs.',
+    type: 'string',
+    keys: ['messaging.bullmq.job.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'completed',
+    examples: ['completed', 'failed'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.type attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.job.type` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.clean.count': {
+    brief: 'The number of BullMQ jobs that Queue.clean() removed.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.clean.count'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 25,
+    examples: [25],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.clean.count attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.clean.count` attribute of BullMQ's telemetry interface.",
+      'BullMQ 6.3.11 sets this attribute. BullMQ 5.79.1 does not.',
+    ],
+  },
+  'messaging.bullmq.queue.clean.limit': {
+    brief: 'The maximum number of BullMQ jobs that Queue.clean() removes.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.clean.limit'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 1000,
+    examples: [1000],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.clean.limit attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.clean.limit` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.drain.delay': {
+    brief: 'Whether Queue.drain() also removes the delayed BullMQ jobs.',
+    type: 'boolean',
+    keys: ['messaging.bullmq.queue.drain.delay'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    examples: [true],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.drain.delay attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.drain.delay` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.event.max_length': {
+    brief: 'The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.event.max_length'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 10000,
+    examples: [10000],
+    changelog: [
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.event.max_length attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.event.max.length` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.grace': {
+    brief: 'The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.grace'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 60000,
+    examples: [60000],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.grace attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.grace` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.queue.jobs.state': {
+    brief: 'The BullMQ job state that the queue job count metric counts.',
+    type: 'string',
+    keys: ['messaging.bullmq.queue.jobs.state'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'waiting',
+    examples: ['waiting', 'active', 'completed'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.jobs.state attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.jobs.state` attribute of BullMQ's telemetry interface.",
+      'Set on the BullMQ queue job count metric.',
+    ],
+  },
+  'messaging.bullmq.queue.rate_limit': {
+    brief: 'The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.',
+    type: 'integer',
+    keys: ['messaging.bullmq.queue.rate_limit'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    examples: [5000],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.rate_limit attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.queue.rate.limit` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.do_not_wait_active': {
+    brief: 'Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.',
+    type: 'boolean',
+    keys: ['messaging.bullmq.worker.do_not_wait_active'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: false,
+    examples: [false],
+    changelog: [
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.do_not_wait_active attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.do.not.wait.active` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.force_close': {
+    brief: 'Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.',
+    type: 'boolean',
+    keys: ['messaging.bullmq.worker.force_close'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: false,
+    examples: [false],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.force_close attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.jobs_to_extend_locks': {
+    brief: 'The IDs of the BullMQ jobs whose locks the Worker extends.',
+    type: 'string[]',
+    keys: ['messaging.bullmq.worker.jobs_to_extend_locks'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['1', '2'],
+    examples: [['1', '2']],
+    changelog: [
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.jobs_to_extend_locks attribute' },
+    ],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.jobs.to.extend.locks` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.name': {
+    brief: 'The name that the user gives to the BullMQ Worker in its options.',
+    type: 'string',
+    keys: ['messaging.bullmq.worker.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'email-worker',
+    examples: ['email-worker'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.name attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.name` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.rate_limit': {
+    brief: 'The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.',
+    type: 'integer',
+    keys: ['messaging.bullmq.worker.rate_limit'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 5000,
+    examples: [5000],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.rate_limit attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.rate.limit` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.bullmq.worker.stalled_jobs': {
+    brief: 'The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.',
+    type: 'string[]',
+    keys: ['messaging.bullmq.worker.stalled_jobs'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: ['1', '2'],
+    examples: [['1', '2']],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.stalled_jobs attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface.",
+    ],
+  },
+  'messaging.client.id': {
+    brief: 'A unique identifier for the client that consumes or produces a message.',
+    type: 'string',
+    keys: ['messaging.client.id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'client-5',
+    examples: ['client-5', 'myhost@8742@s8083jm'],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.client.id attribute' }],
+    additionalContext: [
+      "The Sentry SDK sets this attribute on BullMQ spans from the `bullmq.worker.id` attribute of BullMQ's telemetry interface, which is the ID of the Worker.",
+    ],
   },
   'messaging.conversation_id': {
     brief:
@@ -32700,7 +34239,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['net.peer.name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33655,7 +35194,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33676,7 +35215,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'resource.deployment.environment.name',
     ],
     applyScrubbing: {
-      key: 'manual',
+      key: 'never',
     },
     isInOtel: true,
     visibility: 'public',
@@ -33848,12 +35387,14 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myService.BestService',
     examples: ['myService.BestService', 'S3', 'APIGateway'],
     changelog: [
-      { version: 'next', description: 'Added AWS SDK examples and additional context' },
+      { version: 'next', description: 'Added AWS SDK examples' },
+      { version: '0.28.0', prs: [714], description: 'Added additional context about the OpenTelemetry deprecation' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
     additionalContext: [
-      'For AWS SDK calls, this is the AWS service ID with all whitespace removed (`S3`, `APIGateway` for `API Gateway`).',
+      'Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.',
+      'Still set on AWS SDK spans, where it holds the AWS service ID with all whitespace removed (e.g. `S3`, `APIGateway` for `API Gateway`) and `rpc.method` is set to the operation (e.g. `GetObject`).',
     ],
   },
   'rpc.system': {
@@ -34110,7 +35651,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'db',
-    changelog: [{ version: '0.4.0', prs: [218] }],
+    changelog: [
+      { version: '0.28.0', prs: [721], description: 'Added object to the enum values' },
+      { version: '0.4.0', prs: [218] },
+    ],
     searchAlias: {
       name: 'span.category',
     },
@@ -34514,15 +36058,20 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: false,
     visibility: 'public',
     example: 'previous_trace',
-    examples: ['previous_trace', 'next_trace', 'cache_origin'],
+    examples: ['previous_trace', 'cache_origin', 'message_origin', 'server_request'],
     changelog: [
+      {
+        version: '0.28.0',
+        prs: [724, 738, 739],
+        description: 'Removed next_trace from the examples and enum_values, because no SDK sets it',
+      },
       { version: '0.27.0', prs: [687], description: 'Added search alias link.type' },
       { version: '0.25.0', prs: [656], description: 'Added sentry.link.type attribute' },
     ],
     additionalContext: [
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
-      'For known values, see Examples. Add new values to Examples.',
+      'Add each new link type to `enum_values`, with a brief that says what the linked span is.',
     ],
     searchAlias: {
       name: 'link.type',
@@ -35234,7 +36783,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['sentry.segment.name', 'transaction', 'sentry.transaction'],
     applyScrubbing: {
-      key: 'never',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -35422,12 +36971,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       { version: '0.0.0' },
     ],
   },
+  'server.ext.type': {
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
+    type: 'string',
+    keys: ['hapi.ext.type', 'server.ext.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'onRequest',
+    examples: ['onRequest', 'onPreResponse'],
+    deprecation: {
+      replacement: 'hapi.ext.type',
+      reason:
+        'Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace.',
+      status: 'backfill',
+    },
+    aliases: ['hapi.ext.type'],
+    changelog: [
+      {
+        version: '0.28.0',
+        prs: [741],
+        description: 'Added server.ext.type attribute, deprecated in favor of hapi.ext.type',
+      },
+    ],
+  },
   server_name: {
     brief: 'The name of the device. On servers and desktops, this is typically the hostname.',
     type: 'string',
     keys: ['server.address', 'address', 'http.server_name', 'net.host.name', 'server_name'],
     applyScrubbing: {
-      key: 'auto',
+      key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
@@ -37349,6 +38924,7 @@ export type Attributes = {
   [AWS_LAMBDA_INVOKED_ARN]?: AWS_LAMBDA_INVOKED_ARN_TYPE;
   [AWS_LAMBDA_INVOKED_FUNCTION_ARN]?: AWS_LAMBDA_INVOKED_FUNCTION_ARN_TYPE;
   [AWS_LAMBDA_REMAINING_TIME_IN_MILLIS]?: AWS_LAMBDA_REMAINING_TIME_IN_MILLIS_TYPE;
+  [AWS_LAMBDA_RESOURCE_MAPPING_ID]?: AWS_LAMBDA_RESOURCE_MAPPING_ID_TYPE;
   [AWS_LOG_GROUP_NAMES]?: AWS_LOG_GROUP_NAMES_TYPE;
   [AWS_LOG_STREAM_NAMES]?: AWS_LOG_STREAM_NAMES_TYPE;
   [AWS_OPERATION_NAME]?: AWS_OPERATION_NAME_TYPE;
@@ -37390,14 +38966,20 @@ export type Attributes = {
   [BROWSER_WEB_VITAL_CLS_VALUE]?: BROWSER_WEB_VITAL_CLS_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FCP_VALUE]?: BROWSER_WEB_VITAL_FCP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_FP_VALUE]?: BROWSER_WEB_VITAL_FP_VALUE_TYPE;
+  [BROWSER_WEB_VITAL_INP_INPUT_DELAY]?: BROWSER_WEB_VITAL_INP_INPUT_DELAY_TYPE;
   [BROWSER_WEB_VITAL_INP_INTERACTION_TYPE]?: BROWSER_WEB_VITAL_INP_INTERACTION_TYPE_TYPE;
+  [BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY]?: BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY_TYPE;
+  [BROWSER_WEB_VITAL_INP_PROCESSING_DURATION]?: BROWSER_WEB_VITAL_INP_PROCESSING_DURATION_TYPE;
   [BROWSER_WEB_VITAL_INP_TARGET]?: BROWSER_WEB_VITAL_INP_TARGET_TYPE;
   [BROWSER_WEB_VITAL_INP_VALUE]?: BROWSER_WEB_VITAL_INP_VALUE_TYPE;
   [BROWSER_WEB_VITAL_LCP_ELEMENT]?: BROWSER_WEB_VITAL_LCP_ELEMENT_TYPE;
+  [BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY]?: BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY_TYPE;
   [BROWSER_WEB_VITAL_LCP_ID]?: BROWSER_WEB_VITAL_LCP_ID_TYPE;
   [BROWSER_WEB_VITAL_LCP_LOAD_TIME]?: BROWSER_WEB_VITAL_LCP_LOAD_TIME_TYPE;
   [BROWSER_WEB_VITAL_LCP_RENDER_TIME]?: BROWSER_WEB_VITAL_LCP_RENDER_TIME_TYPE;
   [BROWSER_WEB_VITAL_LCP_REPORT_EVENT]?: BROWSER_WEB_VITAL_LCP_REPORT_EVENT_TYPE;
+  [BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY]?: BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY_TYPE;
+  [BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION]?: BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION_TYPE;
   [BROWSER_WEB_VITAL_LCP_SIZE]?: BROWSER_WEB_VITAL_LCP_SIZE_TYPE;
   [BROWSER_WEB_VITAL_LCP_URL]?: BROWSER_WEB_VITAL_LCP_URL_TYPE;
   [BROWSER_WEB_VITAL_LCP_VALUE]?: BROWSER_WEB_VITAL_LCP_VALUE_TYPE;
@@ -37622,6 +39204,7 @@ export type Attributes = {
   [GEN_AI_SYSTEM_MESSAGE]?: GEN_AI_SYSTEM_MESSAGE_TYPE;
   [GEN_AI_TOOL_CALL_ARGUMENTS]?: GEN_AI_TOOL_CALL_ARGUMENTS_TYPE;
   [GEN_AI_TOOL_CALL_RESULT]?: GEN_AI_TOOL_CALL_RESULT_TYPE;
+  [GEN_AI_TOOL_CALL_RESULT_SIZE]?: GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE;
   [GEN_AI_TOOL_DEFINITIONS]?: GEN_AI_TOOL_DEFINITIONS_TYPE;
   [GEN_AI_TOOL_DESCRIPTION]?: GEN_AI_TOOL_DESCRIPTION_TYPE;
   [GEN_AI_TOOL_INPUT]?: GEN_AI_TOOL_INPUT_TYPE;
@@ -37660,6 +39243,9 @@ export type Attributes = {
   [GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_NAME_TYPE;
   [GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE]?: GRPC_ERROR_RESOURCE_INFO_RESOURCE_TYPE_TYPE;
   [GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS]?: GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS_TYPE;
+  [HAPI_EXT_TYPE]?: HAPI_EXT_TYPE_TYPE;
+  [HAPI_PLUGIN_NAME]?: HAPI_PLUGIN_NAME_TYPE;
+  [HAPI_TYPE]?: HAPI_TYPE_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
@@ -37795,6 +39381,31 @@ export type Attributes = {
   [MCP_TRANSPORT]?: MCP_TRANSPORT_TYPE;
   [MDC_KEY]?: MDC_KEY_TYPE;
   [MESSAGING_BATCH_MESSAGE_COUNT]?: MESSAGING_BATCH_MESSAGE_COUNT_TYPE;
+  [MESSAGING_BULLMQ_FLOW_NAME]?: MESSAGING_BULLMQ_FLOW_NAME_TYPE;
+  [MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP]?: MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP_TYPE;
+  [MESSAGING_BULLMQ_JOB_BULK_NAMES]?: MESSAGING_BULLMQ_JOB_BULK_NAMES_TYPE;
+  [MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY]?: MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY_TYPE;
+  [MESSAGING_BULLMQ_JOB_IDS]?: MESSAGING_BULLMQ_JOB_IDS_TYPE;
+  [MESSAGING_BULLMQ_JOB_KEY]?: MESSAGING_BULLMQ_JOB_KEY_TYPE;
+  [MESSAGING_BULLMQ_JOB_NAME]?: MESSAGING_BULLMQ_JOB_NAME_TYPE;
+  [MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP]?: MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP_TYPE;
+  [MESSAGING_BULLMQ_JOB_SCHEDULER_ID]?: MESSAGING_BULLMQ_JOB_SCHEDULER_ID_TYPE;
+  [MESSAGING_BULLMQ_JOB_STATE]?: MESSAGING_BULLMQ_JOB_STATE_TYPE;
+  [MESSAGING_BULLMQ_JOB_TYPE]?: MESSAGING_BULLMQ_JOB_TYPE_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT]?: MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT]?: MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY]?: MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH]?: MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_GRACE]?: MESSAGING_BULLMQ_QUEUE_GRACE_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_JOBS_STATE]?: MESSAGING_BULLMQ_QUEUE_JOBS_STATE_TYPE;
+  [MESSAGING_BULLMQ_QUEUE_RATE_LIMIT]?: MESSAGING_BULLMQ_QUEUE_RATE_LIMIT_TYPE;
+  [MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE]?: MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE_TYPE;
+  [MESSAGING_BULLMQ_WORKER_FORCE_CLOSE]?: MESSAGING_BULLMQ_WORKER_FORCE_CLOSE_TYPE;
+  [MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS]?: MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS_TYPE;
+  [MESSAGING_BULLMQ_WORKER_NAME]?: MESSAGING_BULLMQ_WORKER_NAME_TYPE;
+  [MESSAGING_BULLMQ_WORKER_RATE_LIMIT]?: MESSAGING_BULLMQ_WORKER_RATE_LIMIT_TYPE;
+  [MESSAGING_BULLMQ_WORKER_STALLED_JOBS]?: MESSAGING_BULLMQ_WORKER_STALLED_JOBS_TYPE;
+  [MESSAGING_CLIENT_ID]?: MESSAGING_CLIENT_ID_TYPE;
   [MESSAGING_CONVERSATION_ID]?: MESSAGING_CONVERSATION_ID_TYPE;
   [MESSAGING_DESTINATION]?: MESSAGING_DESTINATION_TYPE;
   [MESSAGING_DESTINATION_CONNECTION]?: MESSAGING_DESTINATION_CONNECTION_TYPE;
@@ -38016,6 +39627,7 @@ export type Attributes = {
   [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
   [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
   [SERVER_ADDRESS]?: SERVER_ADDRESS_TYPE;
+  [SERVER_EXT_TYPE]?: SERVER_EXT_TYPE_TYPE;
   [SERVER_NAME]?: SERVER_NAME_TYPE;
   [SERVER_PORT]?: SERVER_PORT_TYPE;
   [SERVICE_NAME]?: SERVICE_NAME_TYPE;
