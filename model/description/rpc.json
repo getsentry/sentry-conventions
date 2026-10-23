@@ -8,7 +8,7 @@
       "templates": [
         "{{rpc.service}}.{{rpc.method}} {{aws.s3.bucket}}",
         "{{rpc.service}}.{{rpc.method}} {{faas.invoked_name}}",
-        "{{rpc.service}}.{{rpc.method}} {{aws.lambda.function.name}}",
+        "{{rpc.service}}.{{rpc.method}} {{aws.lambda.target_function.name}}",
         "{{rpc.service}}.{{rpc.method}} {{aws.kinesis.stream_name}}",
         "{{rpc.service}}.{{rpc.method}} {{aws.step_functions.state_machine.name}}",
         "{{rpc.service}}.{{rpc.method}} {{aws.step_functions.activity.name}}",
