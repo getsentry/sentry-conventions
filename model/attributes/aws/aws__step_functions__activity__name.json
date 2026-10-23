@@ -13,7 +13,8 @@
   "examples": ["resize-image"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.29.0",
+      "prs": [716],
       "description": "Added aws.step_functions.activity.name attribute"
     }
   ]

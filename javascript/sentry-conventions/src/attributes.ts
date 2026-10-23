@@ -25132,7 +25132,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['Users', 'Cats'],
     changelog: [
-      { version: 'next', description: 'Added additional context on sorting the names' },
+      { version: '0.29.0', prs: [717], description: 'Added additional context on sorting the names' },
       { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.table_names attribute' },
     ],
     additionalContext: [
@@ -25363,7 +25363,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'billing',
     examples: ['billing'],
-    changelog: [{ version: 'next', description: 'Added aws.lambda.target_function.name attribute' }],
+    changelog: [{ version: '0.29.0', prs: [716], description: 'Added aws.lambda.target_function.name attribute' }],
     additionalContext: [
       'Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in.',
     ],
@@ -25559,7 +25559,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"Objects":[{"Key":"someFile.yml","VersionId":"3HL4kqtJlcpXroDTDmJ"}],"Quiet":false}',
     examples: ['{"Objects":[{"Key":"someFile.yml","VersionId":"3HL4kqtJlcpXroDTDmJ"}],"Quiet":false}'],
     changelog: [
-      { version: 'next', description: 'Changed the value to a JSON-serialized field, with an example' },
+      { version: '0.29.0', prs: [711], description: 'Changed the value to a JSON-serialized field, with an example' },
       { version: '0.28.0', prs: [713], description: 'Changed apply_scrubbing from manual to auto' },
       { version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' },
     ],
@@ -25632,7 +25632,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'db-password',
     examples: ['db-password', 'prod/billing/api-key'],
-    changelog: [{ version: 'next', description: 'Added aws.secretsmanager.secret.name attribute' }],
+    changelog: [{ version: '0.29.0', prs: [716], description: 'Added aws.secretsmanager.secret.name attribute' }],
     additionalContext: [
       "Without the hyphen and six random characters that Secrets Manager appends to the name in the secret's ARN (`db-password`, not `db-password-AbCdEf`).",
     ],
@@ -25687,7 +25687,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'resize-image',
     examples: ['resize-image'],
-    changelog: [{ version: 'next', description: 'Added aws.step_functions.activity.name attribute' }],
+    changelog: [{ version: '0.29.0', prs: [716], description: 'Added aws.step_functions.activity.name attribute' }],
     additionalContext: [
       'The last part of the activity ARN (`arn:aws:states:us-east-1:123456789012:activity:resize-image`).',
     ],
@@ -25728,7 +25728,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'orders',
     examples: ['orders'],
-    changelog: [{ version: 'next', description: 'Added aws.step_functions.state_machine.name attribute' }],
+    changelog: [
+      { version: '0.29.0', prs: [716], description: 'Added aws.step_functions.state_machine.name attribute' },
+    ],
     additionalContext: ['Contains no version or alias qualifier (`orders`, not `orders:1` or `orders:prod`).'],
   },
   blocked_main_thread: {
@@ -27139,7 +27141,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['users', ',customers,orders,'],
     aliases: ['db.mongodb.collection'],
     changelog: [
-      { version: 'next', description: 'Add comma-wrapped format for calls on more than one collection' },
+      { version: '0.29.0', prs: [711], description: 'Add comma-wrapped format for calls on more than one collection' },
       { version: '0.19.0', prs: [483], description: 'Added db.mongodb.collection as an alias' },
       { version: '0.1.0', prs: [106, 127] },
       { version: '0.0.0' },
@@ -35521,7 +35523,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['com.example.ExampleService/exampleMethod', 'GetObject'],
     aliases: ['aws.operation_name'],
     changelog: [
-      { version: 'next', description: 'Added AWS SDK example and additional context' },
+      { version: '0.29.0', prs: [707], description: 'Added AWS SDK example and additional context' },
       { version: '0.19.0', prs: [536], description: 'Added aws.operation_name as an alias' },
       { version: '0.7.0', prs: [351], description: 'Added rpc.method attribute' },
     ],
@@ -35555,7 +35557,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'myService.BestService',
     examples: ['myService.BestService', 'S3', 'APIGateway'],
     changelog: [
-      { version: 'next', description: 'Added AWS SDK examples' },
+      { version: '0.29.0', prs: [707], description: 'Added AWS SDK examples' },
       { version: '0.28.0', prs: [714], description: 'Added additional context about the OpenTelemetry deprecation' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },

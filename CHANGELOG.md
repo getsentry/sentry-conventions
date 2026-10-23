@@ -1,3 +1,15 @@
+## 0.29.0
+
+### New Features ✨
+
+- (attributes) Add AWS Lambda, Step Functions and Secrets Manager name attributes by @pabloDeputter in [#716](https://github.com/getsentry/sentry-conventions/pull/716)
+- (descriptions) Add descriptions for AWS SDK spans by service, operation and resource by @pabloDeputter in [#717](https://github.com/getsentry/sentry-conventions/pull/717)
+- (names) Add span name and description rules for `object.*` ops by @pabloDeputter in [#707](https://github.com/getsentry/sentry-conventions/pull/707)
+
+### Internal Changes 🔧
+
+- (attributes) Use JSON for `aws.s3.delete` & document multi-collection `db.collection.name` by @pabloDeputter in [#711](https://github.com/getsentry/sentry-conventions/pull/711)
+
 ## 0.28.0
 
 ### New Features ✨
