@@ -11,7 +11,8 @@
   "examples": ["{\"Objects\":[{\"Key\":\"someFile.yml\",\"VersionId\":\"3HL4kqtJlcpXroDTDmJ\"}],\"Quiet\":false}"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.29.0",
+      "prs": [711],
       "description": "Changed the value to a JSON-serialized field, with an example"
     },
     {

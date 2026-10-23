@@ -14788,7 +14788,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Users", "Cats"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.29.0",
+                prs=[717],
                 description="Added additional context on sorting the names",
             ),
             ChangelogEntry(
@@ -15084,7 +15085,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["billing"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.29.0",
+                prs=[716],
                 description="Added aws.lambda.target_function.name attribute",
             ),
         ],
@@ -15297,7 +15299,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.29.0",
+                prs=[711],
                 description="Changed the value to a JSON-serialized field, with an example",
             ),
             ChangelogEntry(
@@ -15397,7 +15400,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["db-password", "prod/billing/api-key"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.29.0",
+                prs=[716],
                 description="Added aws.secretsmanager.secret.name attribute",
             ),
         ],
@@ -15465,7 +15469,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["resize-image"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.29.0",
+                prs=[716],
                 description="Added aws.step_functions.activity.name attribute",
             ),
         ],
@@ -15519,7 +15524,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["orders"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.29.0",
+                prs=[716],
                 description="Added aws.step_functions.state_machine.name attribute",
             ),
         ],
@@ -17213,7 +17219,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["db.mongodb.collection"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.29.0",
+                prs=[711],
                 description="Add comma-wrapped format for calls on more than one collection",
             ),
             ChangelogEntry(
@@ -26895,7 +26902,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["aws.operation_name"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.29.0",
+                prs=[707],
                 description="Added AWS SDK example and additional context",
             ),
             ChangelogEntry(
@@ -26946,7 +26954,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="myService.BestService",
         examples=["myService.BestService", "S3", "APIGateway"],
         changelog=[
-            ChangelogEntry(version="next", description="Added AWS SDK examples"),
+            ChangelogEntry(
+                version="0.29.0", prs=[707], description="Added AWS SDK examples"
+            ),
             ChangelogEntry(
                 version="0.28.0",
                 prs=[714],

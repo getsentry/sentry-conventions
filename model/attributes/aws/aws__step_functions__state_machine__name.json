@@ -11,7 +11,8 @@
   "examples": ["orders"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.29.0",
+      "prs": [716],
       "description": "Added aws.step_functions.state_machine.name attribute"
     }
   ]
