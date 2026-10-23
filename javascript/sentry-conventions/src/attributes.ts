@@ -5346,6 +5346,71 @@ export const CONNECTION_RTT = 'connection.rtt';
  */
 export type CONNECTION_RTT_TYPE = number;
 
+// Path: model/attributes/cpython/cpython__gc__collected_objects.json
+
+/**
+ * The number of unreachable objects collected during a run of the CPython garbage collector. `cpython.gc.collected_objects`
+ *
+ * Attribute Value Type: `number` {@link CPYTHON_GC_COLLECTED_OBJECTS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 42
+ */
+export const CPYTHON_GC_COLLECTED_OBJECTS = 'cpython.gc.collected_objects';
+
+/**
+ * Type for {@link CPYTHON_GC_COLLECTED_OBJECTS} cpython.gc.collected_objects
+ */
+export type CPYTHON_GC_COLLECTED_OBJECTS_TYPE = number;
+
+// Path: model/attributes/cpython/cpython__gc__generation.json
+
+/**
+ * The generation of objects that a run of the CPython garbage collector collected. A collection of a generation also collects all younger generations, so 2 is a full collection. `cpython.gc.generation`
+ *
+ * Attribute Value Type: `number` {@link CPYTHON_GC_GENERATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example 0
+ * @example 1
+ * @example 2
+ */
+export const CPYTHON_GC_GENERATION = 'cpython.gc.generation';
+
+/**
+ * Type for {@link CPYTHON_GC_GENERATION} cpython.gc.generation
+ */
+export type CPYTHON_GC_GENERATION_TYPE = number;
+
+// Path: model/attributes/cpython/cpython__gc__uncollectable_objects.json
+
+/**
+ * The number of unreachable objects that couldn't be collected during a run of the CPython garbage collector. These objects are moved to gc.garbage. `cpython.gc.uncollectable_objects`
+ *
+ * Attribute Value Type: `number` {@link CPYTHON_GC_UNCOLLECTABLE_OBJECTS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ */
+export const CPYTHON_GC_UNCOLLECTABLE_OBJECTS = 'cpython.gc.uncollectable_objects';
+
+/**
+ * Type for {@link CPYTHON_GC_UNCOLLECTABLE_OBJECTS} cpython.gc.uncollectable_objects
+ */
+export type CPYTHON_GC_UNCOLLECTABLE_OBJECTS_TYPE = number;
+
 // Path: model/attributes/culture/culture__calendar.json
 
 /**
@@ -21577,6 +21642,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'code.namespace': 'string',
   connectionType: 'string',
   'connection.rtt': 'integer',
+  'cpython.gc.collected_objects': 'integer',
+  'cpython.gc.generation': 'integer',
+  'cpython.gc.uncollectable_objects': 'integer',
   'culture.calendar': 'string',
   'culture.display_name': 'string',
   'culture.is_24_hour_format': 'boolean',
@@ -22527,6 +22595,9 @@ export type AttributeName =
   | typeof CODE_NAMESPACE
   | typeof CONNECTIONTYPE
   | typeof CONNECTION_RTT
+  | typeof CPYTHON_GC_COLLECTED_OBJECTS
+  | typeof CPYTHON_GC_GENERATION
+  | typeof CPYTHON_GC_UNCOLLECTABLE_OBJECTS
   | typeof CULTURE_CALENDAR
   | typeof CULTURE_DISPLAY_NAME
   | typeof CULTURE_IS_24_HOUR_FORMAT
@@ -27066,6 +27137,56 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         prs: [279],
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
+    ],
+  },
+  'cpython.gc.collected_objects': {
+    brief: 'The number of unreachable objects collected during a run of the CPython garbage collector.',
+    type: 'integer',
+    keys: ['cpython.gc.collected_objects'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 42,
+    examples: [42],
+    changelog: [{ version: 'next', prs: [718], description: 'Added cpython.gc.collected_objects attribute' }],
+    additionalContext: [
+      "This is the count for a single garbage collection run. It's not the same as the OpenTelemetry `cpython.gc.collected_objects` metric, which is a counter of the total since interpreter start.",
+    ],
+  },
+  'cpython.gc.generation': {
+    brief:
+      'The generation of objects that a run of the CPython garbage collector collected. A collection of a generation also collects all younger generations, so 2 is a full collection.',
+    type: 'integer',
+    keys: ['cpython.gc.generation'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 1, 2],
+    changelog: [{ version: 'next', prs: [718], description: 'Added cpython.gc.generation attribute' }],
+    additionalContext: [
+      "On free-threaded builds of CPython (3.13+), the garbage collector isn't generational: every collection scans all objects. Automatic collections report generation 0, and explicit collections report the generation that was requested, but all of them are full collections.",
+    ],
+  },
+  'cpython.gc.uncollectable_objects': {
+    brief:
+      "The number of unreachable objects that couldn't be collected during a run of the CPython garbage collector. These objects are moved to gc.garbage.",
+    type: 'integer',
+    keys: ['cpython.gc.uncollectable_objects'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0],
+    changelog: [{ version: 'next', prs: [718], description: 'Added cpython.gc.uncollectable_objects attribute' }],
+    additionalContext: [
+      "This is the count for a single garbage collection run. It's not the same as the OpenTelemetry `cpython.gc.uncollectable_objects` metric, which is a counter of the total since interpreter start.",
     ],
   },
   'culture.calendar': {
@@ -39206,6 +39327,9 @@ export type Attributes = {
   [CODE_NAMESPACE]?: CODE_NAMESPACE_TYPE;
   [CONNECTIONTYPE]?: CONNECTIONTYPE_TYPE;
   [CONNECTION_RTT]?: CONNECTION_RTT_TYPE;
+  [CPYTHON_GC_COLLECTED_OBJECTS]?: CPYTHON_GC_COLLECTED_OBJECTS_TYPE;
+  [CPYTHON_GC_GENERATION]?: CPYTHON_GC_GENERATION_TYPE;
+  [CPYTHON_GC_UNCOLLECTABLE_OBJECTS]?: CPYTHON_GC_UNCOLLECTABLE_OBJECTS_TYPE;
   [CULTURE_CALENDAR]?: CULTURE_CALENDAR_TYPE;
   [CULTURE_DISPLAY_NAME]?: CULTURE_DISPLAY_NAME_TYPE;
   [CULTURE_IS_24_HOUR_FORMAT]?: CULTURE_IS_24_HOUR_FORMAT_TYPE;

@@ -397,6 +397,13 @@ pub const OBJECT_MULTIPART_UPLOAD_COMPLETE: &str = "object.multipart_upload.comp
 /// A framework-neutral operation for work performed by an application router.
 pub const ROUTER: &str = "router";
 
+// Path: model/op/runtime.json
+// Name: runtime
+
+// Description: Operations of the language runtime itself, as opposed to the application code running on it.
+/// A run of the runtime's garbage collector.
+pub const GC: &str = "gc";
+
 // Path: model/op/web_server.json
 // Name: web_server
 
