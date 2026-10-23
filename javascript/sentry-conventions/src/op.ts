@@ -350,6 +350,11 @@ export const GEN_AI_RERANK = 'gen_ai.rerank';
 export const GEN_AI_DECIDE = 'gen_ai.decide';
 
 /**
+ * Extraction of a set of typed fields (e.g., text, date, number, list, or estimate) from a shared state by a generative AI model
+ */
+export const GEN_AI_EXTRACT = 'gen_ai.extract';
+
+/**
  * Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
  *
  * @deprecated Use {@link GEN_AI_DECIDE} (gen_ai.decide) instead
