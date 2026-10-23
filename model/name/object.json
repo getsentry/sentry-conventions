@@ -1,0 +1,25 @@
+{
+  "brief": "Object storage",
+  "operations": [
+    {
+      "name": "Object",
+      "brief": "An operation on an object storage system such as Amazon S3, Cloudflare R2, and compatible services.",
+      "is_in_otel": true,
+      "otel_notes": "OpenTelemetry has no Object Storage conventions. It names S3 calls like any other AWS SDK span, `{rpc.service}.{rpc.method}`, which the first template matches.",
+      "ops": [
+        "object.get",
+        "object.head",
+        "object.put",
+        "object.copy",
+        "object.delete",
+        "object.list",
+        "object.upload_part",
+        "object.multipart_upload.abort",
+        "object.multipart_upload.create",
+        "object.multipart_upload.complete"
+      ],
+      "templates": ["{{rpc.service}}.{{rpc.method}}", "R2.{{cloudflare.r2.operation}}", "Object storage operation"],
+      "examples": ["S3.GetObject", "R2.GetObject", "Object storage operation"]
+    }
+  ]
+}
