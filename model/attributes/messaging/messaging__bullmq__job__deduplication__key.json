@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.job.deduplication.key",
+  "brief": "The deduplication ID that Queue.removeDeduplicationKey() removes.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["user-42-sync"],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.job.deduplication.key` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [690],
+      "description": "Added messaging.bullmq.job.deduplication.key attribute"
+    }
+  ]
+}

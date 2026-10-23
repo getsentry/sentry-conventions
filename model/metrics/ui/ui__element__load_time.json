@@ -1,0 +1,17 @@
+{
+  "key": "ui.element.load_time",
+  "brief": "The time at which the resource of an element marked with the elementtiming attribute finished loading, relative to the time origin.",
+  "instrument": "distribution",
+  "unit": "millisecond",
+  "is_in_otel": false,
+  "requirement_level": "recommended",
+  "attributes": [
+    "ui.element.identifier",
+    "ui.element.paint_type",
+    "ui.element.id",
+    "ui.element.type",
+    "ui.element.url",
+    "ui.element.width",
+    "ui.element.height"
+  ]
+}

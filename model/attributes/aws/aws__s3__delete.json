@@ -4,7 +4,7 @@
   "additional_context": ["Applicable only to the delete-objects operation, corresponding to its Delete parameter."],
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "auto"
   },
   "is_in_otel": true,
   "visibility": "public",
@@ -13,6 +13,11 @@
     {
       "version": "next",
       "description": "Changed the value to a JSON-serialized field, with an example"
+    },
+    {
+      "version": "0.28.0",
+      "prs": [713],
+      "description": "Changed apply_scrubbing from manual to auto"
     },
     {
       "version": "0.27.0",
