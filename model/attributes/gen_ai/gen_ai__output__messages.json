@@ -19,7 +19,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
       "prs": [728],
       "description": "Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context"
     },

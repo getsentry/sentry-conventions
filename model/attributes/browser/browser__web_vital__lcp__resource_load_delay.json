@@ -15,7 +15,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
       "prs": [712],
       "description": "Added browser.web_vital.lcp.resource_load_delay attribute"
     }

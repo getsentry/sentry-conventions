@@ -25247,7 +25247,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '587ad24b-03b9-4413-8202-bbd56b36e5b7',
     examples: ['587ad24b-03b9-4413-8202-bbd56b36e5b7'],
-    changelog: [{ version: 'next', description: 'Added aws.lambda.resource_mapping.id attribute' }],
+    changelog: [{ version: '0.28.0', prs: [710], description: 'Added aws.lambda.resource_mapping.id attribute' }],
   },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
@@ -25421,7 +25421,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'someFile.yml',
     examples: ['someFile.yml'],
     changelog: [
-      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.28.0', prs: [713], description: 'Changed apply_scrubbing from manual to auto' },
       { version: '0.27.0', prs: [672], description: 'Added aws.s3.copy_source attribute' },
     ],
     additionalContext: [
@@ -25440,7 +25440,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
     examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
     changelog: [
-      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.28.0', prs: [713], description: 'Changed apply_scrubbing from manual to auto' },
       { version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' },
     ],
     additionalContext: ['Applicable only to the delete-objects operation, corresponding to its Delete parameter.'],
@@ -25457,7 +25457,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'someFile.yml',
     examples: ['someFile.yml'],
     changelog: [
-      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.28.0', prs: [713], description: 'Changed apply_scrubbing from manual to auto' },
       { version: '0.27.0', prs: [672], description: 'Added aws.s3.key attribute' },
     ],
   },
@@ -25896,7 +25896,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 120,
     examples: [120],
-    changelog: [{ version: 'next', prs: [712], description: 'Added browser.web_vital.inp.input_delay attribute' }],
+    changelog: [{ version: '0.28.0', prs: [712], description: 'Added browser.web_vital.inp.input_delay attribute' }],
     additionalContext: [
       'One of the three INP subparts, which add up to `browser.web_vital.inp.value`: input delay, processing duration and presentation delay. Named after `inputDelay` in the web-vitals attribution build.',
       "Measured from the interaction's `PerformanceEventTiming` entry as `processingStart` minus `startTime`.",
@@ -25936,7 +25936,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 100,
     examples: [100],
     changelog: [
-      { version: 'next', prs: [712], description: 'Added browser.web_vital.inp.presentation_delay attribute' },
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.inp.presentation_delay attribute' },
     ],
     additionalContext: [
       'One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.',
@@ -25956,7 +25956,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 140,
     examples: [140],
     changelog: [
-      { version: 'next', prs: [712], description: 'Added browser.web_vital.inp.processing_duration attribute' },
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.inp.processing_duration attribute' },
     ],
     additionalContext: [
       'One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `processingDuration` in the web-vitals attribution build.',
@@ -26020,7 +26020,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 410,
     examples: [410],
     changelog: [
-      { version: 'next', prs: [712], description: 'Added browser.web_vital.lcp.element_render_delay attribute' },
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.lcp.element_render_delay attribute' },
     ],
     additionalContext: [
       'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.',
@@ -26103,7 +26103,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 320.5,
     examples: [320.5],
     changelog: [
-      { version: 'next', prs: [712], description: 'Added browser.web_vital.lcp.resource_load_delay attribute' },
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.lcp.resource_load_delay attribute' },
     ],
     additionalContext: [
       'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`: TTFB (`browser.web_vital.ttfb.value`), resource load delay, resource load duration and element render delay. Named after `resourceLoadDelay` in the web-vitals attribution build.',
@@ -26123,7 +26123,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 780.2,
     examples: [780.2],
     changelog: [
-      { version: 'next', prs: [712], description: 'Added browser.web_vital.lcp.resource_load_duration attribute' },
+      { version: '0.28.0', prs: [712], description: 'Added browser.web_vital.lcp.resource_load_duration attribute' },
     ],
     additionalContext: [
       'One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `resourceLoadDuration` in the web-vitals attribution build.',
@@ -28879,7 +28879,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['ai.texts', 'ai.prompt.messages', 'gen_ai.prompt', 'ai.prompt'],
     changelog: [
       {
-        version: 'next',
+        version: '0.28.0',
         prs: [728],
         description:
           'Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context',
@@ -28978,7 +28978,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'chat',
     changelog: [
-      { version: 'next', prs: [728], description: "Added 'extract' to the well-known values" },
+      { version: '0.28.0', prs: [728], description: "Added 'extract' to the well-known values" },
       {
         version: '0.27.0',
         prs: [653, 680],
@@ -29026,7 +29026,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['ai.response.toolCalls', 'ai.response.text'],
     changelog: [
       {
-        version: 'next',
+        version: '0.28.0',
         prs: [728],
         description:
           'Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context',
@@ -29641,7 +29641,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0,
     examples: [0, 1024],
-    changelog: [{ version: 'next', description: 'Added gen_ai.tool.call.result.size attribute' }],
+    changelog: [{ version: '0.28.0', prs: [679], description: 'Added gen_ai.tool.call.result.size attribute' }],
     additionalContext: [
       'The value is a non-negative byte count, not a token count, character count, or in-memory object size. It excludes span and envelope overhead.',
       'Use 0 for an empty string result. Omit this attribute when the tool result is unavailable; do not treat missing output as zero.',
@@ -30394,7 +30394,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'onRequest',
     examples: ['onRequest', 'onPreResponse'],
     aliases: ['server.ext.type'],
-    changelog: [{ version: 'next', description: 'Added hapi.ext.type attribute' }],
+    changelog: [{ version: '0.28.0', prs: [741], description: 'Added hapi.ext.type attribute' }],
   },
   'hapi.plugin.name': {
     brief: 'The name of the Hapi plugin that registered the route.',
@@ -30407,7 +30407,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'hapi-swagger',
     examples: ['hapi-swagger'],
-    changelog: [{ version: 'next', description: 'Added hapi.plugin.name attribute' }],
+    changelog: [{ version: '0.28.0', prs: [741], description: 'Added hapi.plugin.name attribute' }],
   },
   'hapi.type': {
     brief: 'The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.',
@@ -30420,7 +30420,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'router',
     examples: ['router', 'plugin', 'server.ext'],
-    changelog: [{ version: 'next', description: 'Added hapi.type attribute' }],
+    changelog: [{ version: '0.28.0', prs: [741], description: 'Added hapi.type attribute' }],
   },
   hardwareConcurrency: {
     brief: 'The number of logical CPU cores available.',
@@ -30745,7 +30745,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     examples: [5000],
-    changelog: [{ version: 'next', prs: [697], description: 'Added http.request.duration attribute' }],
+    changelog: [{ version: '0.28.0', prs: [697], description: 'Added http.request.duration attribute' }],
     additionalContext: ['This attribute is set by Relay.'],
   },
   'http.request.fetch_start': {
@@ -32946,7 +32946,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'build-report',
     examples: ['build-report'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.flow.name attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.flow.name attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.flow.name` attribute of BullMQ's telemetry interface.",
     ],
@@ -32963,7 +32963,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1791184722406,
     examples: [1791184722406],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.job.attempt_finished_timestamp attribute' },
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.attempt_finished_timestamp attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.attempt_finished_timestamp` attribute of BullMQ's telemetry interface.",
@@ -32980,7 +32980,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['send-welcome-email', 'generate-report'],
     examples: [['send-welcome-email', 'generate-report']],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.bulk.names attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.bulk.names attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.bulk.names` attribute of BullMQ's telemetry interface.",
     ],
@@ -32996,7 +32996,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'user-42-sync',
     examples: ['user-42-sync'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.deduplication.key attribute' }],
+    changelog: [
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.deduplication.key attribute' },
+    ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.deduplication.key` attribute of BullMQ's telemetry interface.",
     ],
@@ -33012,7 +33014,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['1', '2', '3'],
     examples: [['1', '2', '3']],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.ids attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.ids attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.ids` attribute of BullMQ's telemetry interface.",
       'BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not.',
@@ -33030,7 +33032,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'user-42-sync',
     examples: ['user-42-sync'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.key attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.key attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.key` attribute of BullMQ's telemetry interface.",
     ],
@@ -33046,7 +33048,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'send-welcome-email',
     examples: ['send-welcome-email', 'generate-report'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.name attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.name attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.name` attribute of BullMQ's telemetry interface.",
       'Also set on the BullMQ job metrics.',
@@ -33064,7 +33066,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 1791184722281,
     examples: [1791184722281],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.job.processed_timestamp attribute' },
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.processed_timestamp attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.processed.timestamp` attribute of BullMQ's telemetry interface.",
@@ -33081,7 +33083,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'daily-report',
     examples: ['daily-report'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.scheduler.id attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.scheduler.id attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.scheduler.id` attribute of BullMQ's telemetry interface.",
     ],
@@ -33097,7 +33099,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'completed',
     examples: ['completed', 'failed', 'delayed'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.state attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.state attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value.",
     ],
@@ -33113,7 +33115,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'completed',
     examples: ['completed', 'failed'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.job.type attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.job.type attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.job.type` attribute of BullMQ's telemetry interface.",
     ],
@@ -33129,7 +33131,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 25,
     examples: [25],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.clean.count attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.clean.count attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.clean.count` attribute of BullMQ's telemetry interface.",
       'BullMQ 6.3.11 sets this attribute. BullMQ 5.79.1 does not.',
@@ -33146,7 +33148,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1000,
     examples: [1000],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.clean.limit attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.clean.limit attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.clean.limit` attribute of BullMQ's telemetry interface.",
     ],
@@ -33162,7 +33164,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: true,
     examples: [true],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.drain.delay attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.drain.delay attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.drain.delay` attribute of BullMQ's telemetry interface.",
     ],
@@ -33179,7 +33181,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 10000,
     examples: [10000],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.event.max_length attribute' },
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.event.max_length attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.event.max.length` attribute of BullMQ's telemetry interface.",
@@ -33196,7 +33198,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 60000,
     examples: [60000],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.grace attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.grace attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.grace` attribute of BullMQ's telemetry interface.",
     ],
@@ -33212,7 +33214,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'waiting',
     examples: ['waiting', 'active', 'completed'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.jobs.state attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.jobs.state attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.jobs.state` attribute of BullMQ's telemetry interface.",
       'Set on the BullMQ queue job count metric.',
@@ -33229,7 +33231,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     examples: [5000],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.queue.rate_limit attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.queue.rate_limit attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.queue.rate.limit` attribute of BullMQ's telemetry interface.",
     ],
@@ -33246,7 +33248,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: false,
     examples: [false],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.do_not_wait_active attribute' },
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.do_not_wait_active attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.do.not.wait.active` attribute of BullMQ's telemetry interface.",
@@ -33263,7 +33265,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: false,
     examples: [false],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.force_close attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.force_close attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface.",
     ],
@@ -33280,7 +33282,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['1', '2'],
     examples: [['1', '2']],
     changelog: [
-      { version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.jobs_to_extend_locks attribute' },
+      { version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.jobs_to_extend_locks attribute' },
     ],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.jobs.to.extend.locks` attribute of BullMQ's telemetry interface.",
@@ -33297,7 +33299,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'email-worker',
     examples: ['email-worker'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.name attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.name attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.name` attribute of BullMQ's telemetry interface.",
     ],
@@ -33313,7 +33315,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 5000,
     examples: [5000],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.rate_limit attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.rate_limit attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.rate.limit` attribute of BullMQ's telemetry interface.",
     ],
@@ -33329,7 +33331,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: ['1', '2'],
     examples: [['1', '2']],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.bullmq.worker.stalled_jobs attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.bullmq.worker.stalled_jobs attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface.",
     ],
@@ -33345,7 +33347,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'client-5',
     examples: ['client-5', 'myhost@8742@s8083jm'],
-    changelog: [{ version: 'next', prs: [690], description: 'Added messaging.client.id attribute' }],
+    changelog: [{ version: '0.28.0', prs: [690], description: 'Added messaging.client.id attribute' }],
     additionalContext: [
       "The Sentry SDK sets this attribute on BullMQ spans from the `bullmq.worker.id` attribute of BullMQ's telemetry interface, which is the ID of the Worker.",
     ],
@@ -35378,7 +35380,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myService.BestService',
     changelog: [
-      { version: 'next', prs: [714], description: 'Added additional context about the OpenTelemetry deprecation' },
+      { version: '0.28.0', prs: [714], description: 'Added additional context about the OpenTelemetry deprecation' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
     ],
@@ -35642,7 +35644,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'db',
     changelog: [
-      { version: 'next', description: 'Added object to the enum values' },
+      { version: '0.28.0', prs: [721], description: 'Added object to the enum values' },
       { version: '0.4.0', prs: [218] },
     ],
     searchAlias: {
@@ -36051,14 +36053,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     examples: ['previous_trace', 'cache_origin', 'message_origin', 'server_request'],
     changelog: [
       {
-        version: 'next',
-        prs: [724],
-        description: 'Added message_origin to the examples, and enum_values that describe each known value',
-      },
-      { version: 'next', prs: [738], description: 'Added server_request to the examples and enum_values' },
-      {
-        version: 'next',
-        prs: [739],
+        version: '0.28.0',
+        prs: [724, 738, 739],
         description: 'Removed next_trace from the examples and enum_values, because no SDK sets it',
       },
       { version: '0.27.0', prs: [687], description: 'Added search alias link.type' },
@@ -36986,7 +36982,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     aliases: ['hapi.ext.type'],
     changelog: [
-      { version: 'next', description: 'Added server.ext.type attribute, deprecated in favor of hapi.ext.type' },
+      {
+        version: '0.28.0',
+        prs: [741],
+        description: 'Added server.ext.type attribute, deprecated in favor of hapi.ext.type',
+      },
     ],
   },
   server_name: {

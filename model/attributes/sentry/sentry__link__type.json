@@ -36,18 +36,8 @@
   ],
   "changelog": [
     {
-      "version": "next",
-      "prs": [724],
-      "description": "Added message_origin to the examples, and enum_values that describe each known value"
-    },
-    {
-      "version": "next",
-      "prs": [738],
-      "description": "Added server_request to the examples and enum_values"
-    },
-    {
-      "version": "next",
-      "prs": [739],
+      "version": "0.28.0",
+      "prs": [724, 738, 739],
       "description": "Removed next_trace from the examples and enum_values, because no SDK sets it"
     },
     {

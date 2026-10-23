@@ -7,7 +7,7 @@
   },
   "is_in_otel": false,
   "visibility": "public",
-  "examples": [140.0],
+  "examples": [140],
   "additional_context": [
     "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `processingDuration` in the web-vitals attribution build.",
     "Measured from the interaction's `PerformanceEventTiming` entry as `processingEnd` minus `processingStart`.",
@@ -15,7 +15,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
       "prs": [712],
       "description": "Added browser.web_vital.inp.processing_duration attribute"
     }
