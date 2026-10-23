@@ -9729,6 +9729,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: aws.operation_name
     Example: "com.example.ExampleService/exampleMethod"
+    Example: "GetObject"
     """
 
     # Path: model/attributes/rpc/rpc__response__status_code.json
@@ -9754,6 +9755,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "myService.BestService"
+    Example: "S3"
+    Example: "APIGateway"
     """
 
     # Path: model/attributes/rpc/rpc__system.json
@@ -26739,8 +26742,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="com.example.ExampleService/exampleMethod",
+        examples=["com.example.ExampleService/exampleMethod", "GetObject"],
         aliases=["aws.operation_name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added AWS SDK example and additional context",
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[536],
@@ -26749,6 +26757,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="0.7.0", prs=[351], description="Added rpc.method attribute"
             ),
+        ],
+        additional_context=[
+            "For AWS SDK calls, this is the operation name only, as the SDK reports it, e.g. `GetObject`."
         ],
     ),
     "rpc.response.status_code": AttributeMetadata(
@@ -26784,7 +26795,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="myService.BestService",
+        examples=["myService.BestService", "S3", "APIGateway"],
         changelog=[
+            ChangelogEntry(version="next", description="Added AWS SDK examples"),
             ChangelogEntry(
                 version="0.28.0",
                 prs=[714],
@@ -26795,7 +26808,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.",
-            "Still set on AWS SDK spans, where it holds the AWS service (e.g. `S3`) and `rpc.method` is set to the operation (e.g. `GetObject`).",
+            "Still set on AWS SDK spans, where it holds the AWS service ID with all whitespace removed (e.g. `S3`, `APIGateway` for `API Gateway`) and `rpc.method` is set to the operation (e.g. `GetObject`).",
         ],
     ),
     "rpc.system": AttributeMetadata(
