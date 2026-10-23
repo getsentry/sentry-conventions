@@ -227,6 +227,9 @@ pub const GEN_AI_RERANK: &str = "gen_ai.rerank";
 /// Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
 pub const GEN_AI_DECIDE: &str = "gen_ai.decide";
 
+/// Extraction of a set of typed fields (e.g., text, date, number, list, or estimate) from a shared state by a generative AI model
+pub const GEN_AI_EXTRACT: &str = "gen_ai.extract";
+
 /// Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
 #[deprecated(note = "Use `GEN_AI_DECIDE` (gen_ai.decide) instead")]
 pub const GEN_AI_EVALUATE: &str = "gen_ai.evaluate";

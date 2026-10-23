@@ -1,0 +1,9 @@
+{
+  "key": "browser.bfcache.navigation",
+  "brief": "Counts back/forward navigations and whether the page was restored from the back/forward cache.",
+  "instrument": "counter",
+  "unit": "none",
+  "is_in_otel": false,
+  "requirement_level": "recommended",
+  "attributes": ["browser.bfcache.outcome", "browser.bfcache.not_restored_reason_count", "sentry.segment.name"]
+}
