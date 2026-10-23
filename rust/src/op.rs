@@ -179,6 +179,9 @@ pub const DB: &str = "db";
 
 pub const DB_QUERY: &str = "db.query";
 
+#[deprecated(note = "Use `DB_QUERY` (db.query) instead")]
+pub const DB_REDIS: &str = "db.redis";
+
 pub const CACHE: &str = "cache";
 
 pub const CACHE_GET: &str = "cache.get";
