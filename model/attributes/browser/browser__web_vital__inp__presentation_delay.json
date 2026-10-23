@@ -1,0 +1,23 @@
+{
+  "key": "browser.web_vital.inp.presentation_delay",
+  "brief": "The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [100.0],
+  "additional_context": [
+    "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.",
+    "Measured from the interaction's `PerformanceEventTiming` entry as `startTime` plus `duration` minus `processingEnd`.",
+    "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [712],
+      "description": "Added browser.web_vital.inp.presentation_delay attribute"
+    }
+  ]
+}

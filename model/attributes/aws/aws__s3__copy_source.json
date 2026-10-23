@@ -6,7 +6,7 @@
   ],
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "auto"
   },
   "is_in_otel": true,
   "visibility": "public",
@@ -14,6 +14,10 @@
   "changelog": [
     {
       "version": "next",
+      "description": "Changed apply_scrubbing from manual to auto"
+    },
+    {
+      "version": "0.27.0",
       "prs": [672],
       "description": "Added aws.s3.copy_source attribute"
     }

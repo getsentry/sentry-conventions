@@ -1,0 +1,9 @@
+{
+  "key": "browser.bfcache.reload.duration",
+  "brief": "The duration of the full page reload when a back/forward navigation missed the back/forward cache.",
+  "instrument": "distribution",
+  "unit": "millisecond",
+  "is_in_otel": false,
+  "requirement_level": "recommended",
+  "attributes": ["sentry.segment.name"]
+}

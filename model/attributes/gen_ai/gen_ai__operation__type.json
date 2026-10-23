@@ -36,7 +36,7 @@
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [653],
       "description": "Added 'memory' value"
     },

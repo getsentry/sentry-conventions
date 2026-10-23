@@ -10,7 +10,7 @@
   "examples": ["user dietary preferences", "past flight bookings"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.27.0",
       "prs": [653],
       "description": "Added gen_ai.memory.query.text attribute"
     }

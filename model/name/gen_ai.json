@@ -30,8 +30,9 @@
       "ops": [
         "gen_ai",
         "gen_ai.chat",
+        "gen_ai.decide",
         "gen_ai.embeddings",
-        "gen_ai.evaluate",
+        "gen_ai.extract",
         "gen_ai.execute_tool",
         "gen_ai.generate_content",
         "gen_ai.rerank",
@@ -49,7 +50,8 @@
         "embeddings huggingface",
         "chat claude-opus-4",
         "execute_tool get_weather",
-        "evaluate jev-latest",
+        "decide jev-latest",
+        "extract clairic",
         "chat"
       ]
     },

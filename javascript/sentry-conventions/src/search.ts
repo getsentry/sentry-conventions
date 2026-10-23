@@ -789,6 +789,11 @@ export const SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_func
 export const SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
 
 /**
+ * Search name for {@link attributes.AWS_LAMBDA_RESOURCE_MAPPING_ID}. `aws.lambda.resource_mapping.id`
+ */
+export const SEARCH_AWS__LAMBDA__RESOURCE_MAPPING__ID = 'aws.lambda.resource_mapping.id';
+
+/**
  * Search name for {@link attributes.AWS_LOG_GROUP_NAMES}. `aws.log.group.names`
  */
 export const SEARCH_AWS__LOG__GROUP__NAMES = 'aws.log.group.names';
@@ -1007,9 +1012,24 @@ export const SEARCH_BROWSER__WEB_VITAL__FCP__VALUE = 'browser.web_vital.fcp.valu
 export const SEARCH_BROWSER__WEB_VITAL__FP__VALUE = 'browser.web_vital.fp.value';
 
 /**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_INPUT_DELAY}. `browser.web_vital.inp.input_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__INPUT_DELAY = 'browser.web_vital.inp.input_delay';
+
+/**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_INTERACTION_TYPE}. `browser.web_vital.inp.interaction_type`
  */
 export const SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE = 'browser.web_vital.inp.interaction_type';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY}. `browser.web_vital.inp.presentation_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__PRESENTATION_DELAY = 'browser.web_vital.inp.presentation_delay';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_PROCESSING_DURATION}. `browser.web_vital.inp.processing_duration`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__PROCESSING_DURATION = 'browser.web_vital.inp.processing_duration';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_TARGET}. `browser.web_vital.inp.target`
@@ -1025,6 +1045,11 @@ export const SEARCH_BROWSER__WEB_VITAL__INP__VALUE = 'browser.web_vital.inp.valu
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ELEMENT}. `browser.web_vital.lcp.element`
  */
 export const SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT = 'browser.web_vital.lcp.element';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY}. `browser.web_vital.lcp.element_render_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT_RENDER_DELAY = 'browser.web_vital.lcp.element_render_delay';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ID}. `browser.web_vital.lcp.id`
@@ -1047,6 +1072,16 @@ export const SEARCH_BROWSER__WEB_VITAL__LCP__RENDER_TIME = 'browser.web_vital.lc
  * @deprecated
  */
 export const SEARCH_BROWSER__WEB_VITAL__LCP__REPORT_EVENT = 'browser.web_vital.lcp.report_event';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY}. `browser.web_vital.lcp.resource_load_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DELAY = 'browser.web_vital.lcp.resource_load_delay';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION}. `browser.web_vital.lcp.resource_load_duration`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DURATION = 'browser.web_vital.lcp.resource_load_duration';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_SIZE}. `browser.web_vital.lcp.size`
@@ -2263,6 +2298,11 @@ export const SEARCH_GEN_AI__TOOL__CALL__ARGUMENTS = 'gen_ai.tool.call.arguments'
 export const SEARCH_GEN_AI__TOOL__CALL__RESULT = 'gen_ai.tool.call.result';
 
 /**
+ * Search name for {@link attributes.GEN_AI_TOOL_CALL_RESULT_SIZE}. `gen_ai.tool.call.result.size`
+ */
+export const SEARCH_GEN_AI__TOOL__CALL__RESULT__SIZE = 'gen_ai.tool.call.result.size';
+
+/**
  * Search name for {@link attributes.GEN_AI_TOOL_DEFINITIONS}. `gen_ai.tool.definitions`
  */
 export const SEARCH_GEN_AI__TOOL__DEFINITIONS = 'gen_ai.tool.definitions';
@@ -2477,6 +2517,21 @@ export const SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_TYPE = 'grpc.error.reso
 export const SEARCH_GRPC__ERROR__RETRY_INFO__RETRY_DELAY_MS = 'grpc.error.retry_info.retry_delay_ms';
 
 /**
+ * Search name for {@link attributes.HAPI_EXT_TYPE}. `hapi.ext.type`
+ */
+export const SEARCH_HAPI__EXT__TYPE = 'hapi.ext.type';
+
+/**
+ * Search name for {@link attributes.HAPI_PLUGIN_NAME}. `hapi.plugin.name`
+ */
+export const SEARCH_HAPI__PLUGIN__NAME = 'hapi.plugin.name';
+
+/**
+ * Search name for {@link attributes.HAPI_TYPE}. `hapi.type`
+ */
+export const SEARCH_HAPI__TYPE = 'hapi.type';
+
+/**
  * Search name for {@link attributes.HARDWARECONCURRENCY}. `hardwareConcurrency`
  *
  * @deprecated Use {@link SEARCH_DEVICE__PROCESSOR_COUNT} (`device.processor_count`) instead
@@ -2560,6 +2615,11 @@ export const SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_END = 'http.request.domain_look
  * Search name for {@link attributes.HTTP_REQUEST_DOMAIN_LOOKUP_START}. `http.request.domain_lookup_start`
  */
 export const SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_START = 'http.request.domain_lookup_start';
+
+/**
+ * Search name for {@link attributes.HTTP_REQUEST_DURATION}. `http.request.duration`
+ */
+export const SEARCH_HTTP__REQUEST__DURATION = 'http.request.duration';
 
 /**
  * Search name for {@link attributes.HTTP_REQUEST_FETCH_START}. `http.request.fetch_start`
@@ -2780,6 +2840,26 @@ export const SEARCH_ID = 'id';
 export const SEARCH_INP = 'inp';
 
 /**
+ * Search name for {@link attributes.INTEGRITY_BLOCKED_URL}. `integrity.blocked_url`
+ */
+export const SEARCH_INTEGRITY__BLOCKED_URL = 'integrity.blocked_url';
+
+/**
+ * Search name for {@link attributes.INTEGRITY_DESTINATION}. `integrity.destination`
+ */
+export const SEARCH_INTEGRITY__DESTINATION = 'integrity.destination';
+
+/**
+ * Search name for {@link attributes.INTEGRITY_DOCUMENT_URL}. `integrity.document_url`
+ */
+export const SEARCH_INTEGRITY__DOCUMENT_URL = 'integrity.document_url';
+
+/**
+ * Search name for {@link attributes.INTEGRITY_REPORT_ONLY}. `integrity.report_only`
+ */
+export const SEARCH_INTEGRITY__REPORT_ONLY = 'integrity.report_only';
+
+/**
  * Search name for {@link attributes.JSONRPC_PROTOCOL_VERSION}. `jsonrpc.protocol.version`
  */
 export const SEARCH_JSONRPC__PROTOCOL__VERSION = 'jsonrpc.protocol.version';
@@ -2997,6 +3077,16 @@ export const SEARCH_MCP__PROGRESS__TOTAL = 'mcp.progress.total';
 export const SEARCH_MCP__PROMPT__NAME = 'mcp.prompt.name';
 
 /**
+ * Search name for {@link attributes.MCP_PROMPT_RESULT_KEY_CONTENT}. `mcp.prompt.result.<key>.content`
+ */
+export const SEARCH_MCP__PROMPT__RESULT__KEY__CONTENT = 'mcp.prompt.result.<key>.content';
+
+/**
+ * Search name for {@link attributes.MCP_PROMPT_RESULT_KEY_ROLE}. `mcp.prompt.result.<key>.role`
+ */
+export const SEARCH_MCP__PROMPT__RESULT__KEY__ROLE = 'mcp.prompt.result.<key>.role';
+
+/**
  * Search name for {@link attributes.MCP_PROMPT_RESULT_DESCRIPTION}. `mcp.prompt.result.description`
  */
 export const SEARCH_MCP__PROMPT__RESULT__DESCRIPTION = 'mcp.prompt.result.description';
@@ -3086,6 +3176,62 @@ export const SEARCH_MCP__SESSION__ID = 'mcp.session.id';
 export const SEARCH_MCP__TOOL__NAME = 'mcp.tool.name';
 
 /**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_CONTENT}. `mcp.tool.result.<key>.content`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__CONTENT = 'mcp.tool.result.<key>.content';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_CONTENT_TYPE}. `mcp.tool.result.<key>.content_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__CONTENT_TYPE = 'mcp.tool.result.<key>.content_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_DATA_SIZE}. `mcp.tool.result.<key>.data_size`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__DATA_SIZE = 'mcp.tool.result.<key>.data_size';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_MIME_TYPE}. `mcp.tool.result.<key>.mime_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__MIME_TYPE = 'mcp.tool.result.<key>.mime_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_NAME}. `mcp.tool.result.<key>.name`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__NAME = 'mcp.tool.result.<key>.name';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_RESOURCE_MIME_TYPE}. `mcp.tool.result.<key>.resource_mime_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_MIME_TYPE = 'mcp.tool.result.<key>.resource_mime_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_RESOURCE_URI}. `mcp.tool.result.<key>.resource_uri`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_URI = 'mcp.tool.result.<key>.resource_uri';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_KEY_URI}. `mcp.tool.result.<key>.uri`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__KEY__URI = 'mcp.tool.result.<key>.uri';
+
+/**
  * Search name for {@link attributes.MCP_TOOL_RESULT_CONTENT}. `mcp.tool.result.content`
  *
  * @deprecated Use {@link SEARCH_GEN_AI__TOOL__CALL__RESULT} (`gen_ai.tool.call.result`) instead
@@ -3100,11 +3246,60 @@ export const SEARCH_MCP__TOOL__RESULT__CONTENT = 'mcp.tool.result.content';
 export const SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT = 'mcp.tool.result.content_count';
 
 /**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_CONTENT_TYPE}. `mcp.tool.result.content_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__CONTENT_TYPE = 'mcp.tool.result.content_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_DATA_SIZE}. `mcp.tool.result.data_size`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__DATA_SIZE = 'mcp.tool.result.data_size';
+
+/**
  * Search name for {@link attributes.MCP_TOOL_RESULT_IS_ERROR}. `mcp.tool.result.is_error`
  *
  * @deprecated Use {@link SEARCH_ERROR__TYPE} (`error.type`) instead
  */
 export const SEARCH_MCP__TOOL__RESULT__IS_ERROR = 'mcp.tool.result.is_error';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_MIME_TYPE}. `mcp.tool.result.mime_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__MIME_TYPE = 'mcp.tool.result.mime_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_NAME}. `mcp.tool.result.name`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__NAME = 'mcp.tool.result.name';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_RESOURCE_MIME_TYPE}. `mcp.tool.result.resource_mime_type`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__RESOURCE_MIME_TYPE = 'mcp.tool.result.resource_mime_type';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_RESOURCE_URI}. `mcp.tool.result.resource_uri`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__RESOURCE_URI = 'mcp.tool.result.resource_uri';
+
+/**
+ * Search name for {@link attributes.MCP_TOOL_RESULT_URI}. `mcp.tool.result.uri`
+ *
+ * @deprecated
+ */
+export const SEARCH_MCP__TOOL__RESULT__URI = 'mcp.tool.result.uri';
 
 /**
  * Search name for {@link attributes.MCP_TRANSPORT}. `mcp.transport`
@@ -4546,6 +4741,13 @@ export const SEARCH_SENTRY__USER__USERNAME = 'sentry.user.username';
 export const SEARCH_SERVER__ADDRESS = 'server.address';
 
 /**
+ * Search name for {@link attributes.SERVER_EXT_TYPE}. `server.ext.type`
+ *
+ * @deprecated Use {@link SEARCH_HAPI__EXT__TYPE} (`hapi.ext.type`) instead
+ */
+export const SEARCH_SERVER__EXT__TYPE = 'server.ext.type';
+
+/**
  * Search name for {@link attributes.SERVER_PORT}. `server.port`
  */
 export const SEARCH_SERVER__PORT = 'server.port';
@@ -5369,6 +5571,7 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__LAMBDA__INVOKED_ARN
   | typeof SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN
   | typeof SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS
+  | typeof SEARCH_AWS__LAMBDA__RESOURCE_MAPPING__ID
   | typeof SEARCH_AWS__LOG__GROUP__NAMES
   | typeof SEARCH_AWS__LOG__STREAM__NAMES
   | typeof SEARCH_AWS__OPERATION_NAME
@@ -5410,14 +5613,20 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__WEB_VITAL__CLS__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FCP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FP__VALUE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__INPUT_DELAY
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__PRESENTATION_DELAY
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__PROCESSING_DURATION
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__TARGET
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT_RENDER_DELAY
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ID
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__LOAD_TIME
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RENDER_TIME
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__REPORT_EVENT
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DELAY
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DURATION
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__SIZE
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__URL
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__VALUE
@@ -5643,6 +5852,7 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__SYSTEM_INSTRUCTIONS
   | typeof SEARCH_GEN_AI__TOOL__CALL__ARGUMENTS
   | typeof SEARCH_GEN_AI__TOOL__CALL__RESULT
+  | typeof SEARCH_GEN_AI__TOOL__CALL__RESULT__SIZE
   | typeof SEARCH_GEN_AI__TOOL__DEFINITIONS
   | typeof SEARCH_GEN_AI__TOOL__DESCRIPTION
   | typeof SEARCH_GEN_AI__TOOL__INPUT
@@ -5681,6 +5891,9 @@ export type AttributeSearchName =
   | typeof SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_NAME
   | typeof SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_TYPE
   | typeof SEARCH_GRPC__ERROR__RETRY_INFO__RETRY_DELAY_MS
+  | typeof SEARCH_HAPI__EXT__TYPE
+  | typeof SEARCH_HAPI__PLUGIN__NAME
+  | typeof SEARCH_HAPI__TYPE
   | typeof SEARCH_HARDWARECONCURRENCY
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
@@ -5696,6 +5909,7 @@ export type AttributeSearchName =
   | typeof SEARCH_HTTP__REQUEST__CONNECTION_END
   | typeof SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_END
   | typeof SEARCH_HTTP__REQUEST__DOMAIN_LOOKUP_START
+  | typeof SEARCH_HTTP__REQUEST__DURATION
   | typeof SEARCH_HTTP__REQUEST__FETCH_START
   | typeof SEARCH_HTTP__REQUEST__HEADER__KEY
   | typeof SEARCH_HTTP__REQUEST__METHOD
@@ -5734,6 +5948,10 @@ export type AttributeSearchName =
   | typeof SEARCH_HTTP__USER_AGENT
   | typeof SEARCH_ID
   | typeof SEARCH_INP
+  | typeof SEARCH_INTEGRITY__BLOCKED_URL
+  | typeof SEARCH_INTEGRITY__DESTINATION
+  | typeof SEARCH_INTEGRITY__DOCUMENT_URL
+  | typeof SEARCH_INTEGRITY__REPORT_ONLY
   | typeof SEARCH_JSONRPC__PROTOCOL__VERSION
   | typeof SEARCH_JSONRPC__REQUEST__ID
   | typeof SEARCH_JVM__GC__ACTION
@@ -5773,6 +5991,8 @@ export type AttributeSearchName =
   | typeof SEARCH_MCP__PROGRESS__TOKEN
   | typeof SEARCH_MCP__PROGRESS__TOTAL
   | typeof SEARCH_MCP__PROMPT__NAME
+  | typeof SEARCH_MCP__PROMPT__RESULT__KEY__CONTENT
+  | typeof SEARCH_MCP__PROMPT__RESULT__KEY__ROLE
   | typeof SEARCH_MCP__PROMPT__RESULT__DESCRIPTION
   | typeof SEARCH_MCP__PROMPT__RESULT__MESSAGE_CONTENT
   | typeof SEARCH_MCP__PROMPT__RESULT__MESSAGE_COUNT
@@ -5790,9 +6010,24 @@ export type AttributeSearchName =
   | typeof SEARCH_MCP__SERVER__VERSION
   | typeof SEARCH_MCP__SESSION__ID
   | typeof SEARCH_MCP__TOOL__NAME
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__CONTENT
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__CONTENT_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__DATA_SIZE
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__MIME_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__NAME
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_MIME_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__RESOURCE_URI
+  | typeof SEARCH_MCP__TOOL__RESULT__KEY__URI
   | typeof SEARCH_MCP__TOOL__RESULT__CONTENT
   | typeof SEARCH_MCP__TOOL__RESULT__CONTENT_COUNT
+  | typeof SEARCH_MCP__TOOL__RESULT__CONTENT_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__DATA_SIZE
   | typeof SEARCH_MCP__TOOL__RESULT__IS_ERROR
+  | typeof SEARCH_MCP__TOOL__RESULT__MIME_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__NAME
+  | typeof SEARCH_MCP__TOOL__RESULT__RESOURCE_MIME_TYPE
+  | typeof SEARCH_MCP__TOOL__RESULT__RESOURCE_URI
+  | typeof SEARCH_MCP__TOOL__RESULT__URI
   | typeof SEARCH_MCP__TRANSPORT
   | typeof SEARCH_MDC__KEY
   | typeof SEARCH_MESSAGING__BATCH__MESSAGE_COUNT
@@ -6045,6 +6280,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__USER__IP
   | typeof SEARCH_SENTRY__USER__USERNAME
   | typeof SEARCH_SERVER__ADDRESS
+  | typeof SEARCH_SERVER__EXT__TYPE
   | typeof SEARCH_SERVER__PORT
   | typeof SEARCH_SERVER_NAME
   | typeof SEARCH_SERVER_SAMPLE_RATE
@@ -7057,6 +7293,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The remaining time in milliseconds before the Lambda function times out',
     deprecationChain: ['aws.lambda.remaining_time_in_millis'],
   },
+  'aws.lambda.resource_mapping.id': {
+    canonicalName: 'aws.lambda.resource_mapping.id',
+    type: 'string',
+    brief:
+      "The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+    deprecationChain: ['aws.lambda.resource_mapping.id'],
+  },
   'aws.log.group.names': {
     canonicalName: 'aws.log.group.names',
     type: 'string[]',
@@ -7312,11 +7555,31 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
   },
+  'browser.web_vital.inp.input_delay': {
+    canonicalName: 'browser.web_vital.inp.input_delay',
+    type: 'double',
+    brief:
+      'The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.input_delay'],
+  },
   'browser.web_vital.inp.interaction_type': {
     canonicalName: 'browser.web_vital.inp.interaction_type',
     type: 'string',
     brief: 'The kind of user interaction INP was reported on',
     deprecationChain: ['browser.web_vital.inp.interaction_type'],
+  },
+  'browser.web_vital.inp.presentation_delay': {
+    canonicalName: 'browser.web_vital.inp.presentation_delay',
+    type: 'double',
+    brief:
+      'The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.presentation_delay'],
+  },
+  'browser.web_vital.inp.processing_duration': {
+    canonicalName: 'browser.web_vital.inp.processing_duration',
+    type: 'double',
+    brief: 'The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.processing_duration'],
   },
   'browser.web_vital.inp.target': {
     canonicalName: 'browser.web_vital.inp.target',
@@ -7336,6 +7599,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The HTML element selector or component name for which LCP was reported',
     deprecationChain: ['browser.web_vital.lcp.element', 'lcp.element'],
+  },
+  'browser.web_vital.lcp.element_render_delay': {
+    canonicalName: 'browser.web_vital.lcp.element_render_delay',
+    type: 'double',
+    brief: 'The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.element_render_delay'],
   },
   'browser.web_vital.lcp.id': {
     canonicalName: 'browser.web_vital.lcp.id',
@@ -7361,6 +7630,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
     deprecated: true,
     deprecationChain: ['browser.web_vital.lcp.report_event'],
+  },
+  'browser.web_vital.lcp.resource_load_delay': {
+    canonicalName: 'browser.web_vital.lcp.resource_load_delay',
+    type: 'double',
+    brief:
+      'The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.resource_load_delay'],
+  },
+  'browser.web_vital.lcp.resource_load_duration': {
+    canonicalName: 'browser.web_vital.lcp.resource_load_duration',
+    type: 'double',
+    brief: 'The time it took to load the LCP resource, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.resource_load_duration'],
   },
   'browser.web_vital.lcp.size': {
     canonicalName: 'browser.web_vital.lcp.size',
@@ -7432,7 +7714,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'cache.ttl': {
     canonicalName: 'cache.ttl',
     type: 'integer',
-    brief: 'The ttl (maximum lifetime) of the cache in seconds',
+    brief: 'The TTL (maximum lifetime) of the cache entry in seconds',
     deprecationChain: ['cache.ttl'],
   },
   'cache.write': {
@@ -8471,7 +8753,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.input.messages',
       'ai.input_messages',
@@ -8534,7 +8816,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.evaluate` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
+      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -8797,6 +9079,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'gen_ai.tool.output',
       'mcp.tool.result.content',
     ],
+  },
+  'gen_ai.tool.call.result.size': {
+    canonicalName: 'gen_ai.tool.call.result.size',
+    type: 'byte',
+    brief: 'The UTF-8 byte length of the serialized tool call result, measured before truncation.',
+    deprecationChain: ['gen_ai.tool.call.result.size'],
   },
   'gen_ai.tool.definitions': {
     canonicalName: 'gen_ai.tool.definitions',
@@ -9076,6 +9364,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
     deprecationChain: ['grpc.error.retry_info.retry_delay_ms'],
   },
+  'hapi.ext.type': {
+    canonicalName: 'hapi.ext.type',
+    type: 'string',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
+    deprecationChain: ['hapi.ext.type', 'server.ext.type'],
+  },
+  'hapi.plugin.name': {
+    canonicalName: 'hapi.plugin.name',
+    type: 'string',
+    brief: 'The name of the Hapi plugin that registered the route.',
+    deprecationChain: ['hapi.plugin.name'],
+  },
+  'hapi.type': {
+    canonicalName: 'hapi.type',
+    type: 'string',
+    brief: 'The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.',
+    deprecationChain: ['hapi.type'],
+  },
   hardwareConcurrency: {
     canonicalName: 'device.processor_count',
     type: 'string',
@@ -9184,6 +9490,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The UNIX timestamp representing the time immediately before the browser starts the domain name lookup for the resource.',
     deprecationChain: ['http.request.domain_lookup_start'],
+  },
+  'http.request.duration': {
+    canonicalName: 'http.request.duration',
+    type: 'integer',
+    brief: 'The duration of a HTTP request, in milliseconds.',
+    deprecationChain: ['http.request.duration'],
   },
   'http.request.fetch_start': {
     canonicalName: 'http.request.fetch_start',
@@ -9446,6 +9758,30 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The value of the recorded Interaction to Next Paint (INP) web vital',
     deprecationChain: ['browser.web_vital.inp.value', 'inp'],
   },
+  'integrity.blocked_url': {
+    canonicalName: 'integrity.blocked_url',
+    type: 'string',
+    brief: 'The URL of the resource blocked by the integrity policy.',
+    deprecationChain: ['integrity.blocked_url'],
+  },
+  'integrity.destination': {
+    canonicalName: 'integrity.destination',
+    type: 'string',
+    brief: 'The destination type of the resource affected by the integrity policy.',
+    deprecationChain: ['integrity.destination'],
+  },
+  'integrity.document_url': {
+    canonicalName: 'integrity.document_url',
+    type: 'string',
+    brief: 'The URL of the document where the integrity violation occurred.',
+    deprecationChain: ['integrity.document_url'],
+  },
+  'integrity.report_only': {
+    canonicalName: 'integrity.report_only',
+    type: 'boolean',
+    brief: 'Whether the integrity violation was generated by a report-only policy.',
+    deprecationChain: ['integrity.report_only'],
+  },
   'jsonrpc.protocol.version': {
     canonicalName: 'jsonrpc.protocol.version',
     type: 'string',
@@ -9689,6 +10025,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Name of the MCP prompt template being used.',
     deprecationChain: ['gen_ai.prompt.name', 'mcp.prompt.name'],
   },
+  'mcp.prompt.result.<key>.content': {
+    canonicalName: 'mcp.prompt.result.<key>.content',
+    type: 'string',
+    brief: 'Legacy text content of an indexed message in a multi-message MCP prompt result.',
+    deprecationChain: ['mcp.prompt.result.<key>.content'],
+  },
+  'mcp.prompt.result.<key>.role': {
+    canonicalName: 'mcp.prompt.result.<key>.role',
+    type: 'string',
+    brief: 'Legacy role of an indexed message in a multi-message MCP prompt result.',
+    deprecationChain: ['mcp.prompt.result.<key>.role'],
+  },
   'mcp.prompt.result.description': {
     canonicalName: 'mcp.prompt.result.description',
     type: 'string',
@@ -9794,6 +10142,63 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Name of the MCP tool being called.',
     deprecationChain: ['gen_ai.tool.name', 'ai.function_call', 'mcp.tool.name'],
   },
+  'mcp.tool.result.<key>.content': {
+    canonicalName: 'mcp.tool.result.<key>.content',
+    type: 'string',
+    brief: 'Legacy text content of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.content'],
+  },
+  'mcp.tool.result.<key>.content_type': {
+    canonicalName: 'mcp.tool.result.<key>.content_type',
+    type: 'string',
+    brief: 'Legacy content type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.content_type'],
+  },
+  'mcp.tool.result.<key>.data_size': {
+    canonicalName: 'mcp.tool.result.<key>.data_size',
+    type: 'integer',
+    brief:
+      'Legacy length of the data string in UTF-16 code units of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.data_size'],
+  },
+  'mcp.tool.result.<key>.mime_type': {
+    canonicalName: 'mcp.tool.result.<key>.mime_type',
+    type: 'string',
+    brief: 'Legacy MIME type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.mime_type'],
+  },
+  'mcp.tool.result.<key>.name': {
+    canonicalName: 'mcp.tool.result.<key>.name',
+    type: 'string',
+    brief: 'Legacy resource link name of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.name'],
+  },
+  'mcp.tool.result.<key>.resource_mime_type': {
+    canonicalName: 'mcp.tool.result.<key>.resource_mime_type',
+    type: 'string',
+    brief: 'Legacy embedded resource MIME type of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.resource_mime_type'],
+  },
+  'mcp.tool.result.<key>.resource_uri': {
+    canonicalName: 'mcp.tool.result.<key>.resource_uri',
+    type: 'string',
+    brief: 'Legacy embedded resource URI of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.resource_uri'],
+  },
+  'mcp.tool.result.<key>.uri': {
+    canonicalName: 'mcp.tool.result.<key>.uri',
+    type: 'string',
+    brief: 'Legacy resource link URI of an indexed content item in a multi-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.<key>.uri'],
+  },
   'mcp.tool.result.content': {
     canonicalName: 'gen_ai.tool.call.result',
     type: 'string',
@@ -9814,11 +10219,61 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     deprecated: true,
     deprecationChain: ['mcp.tool.result.content_count'],
   },
+  'mcp.tool.result.content_type': {
+    canonicalName: 'mcp.tool.result.content_type',
+    type: 'string',
+    brief: 'Legacy content type of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.content_type'],
+  },
+  'mcp.tool.result.data_size': {
+    canonicalName: 'mcp.tool.result.data_size',
+    type: 'integer',
+    brief:
+      'Legacy length of the data string in UTF-16 code units of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.data_size'],
+  },
   'mcp.tool.result.is_error': {
     canonicalName: 'error.type',
     type: 'boolean',
     brief: 'Whether a tool execution resulted in an error.',
     deprecationChain: ['error.type', 'fs_error', 'mcp.tool.result.is_error'],
+  },
+  'mcp.tool.result.mime_type': {
+    canonicalName: 'mcp.tool.result.mime_type',
+    type: 'string',
+    brief: 'Legacy MIME type of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.mime_type'],
+  },
+  'mcp.tool.result.name': {
+    canonicalName: 'mcp.tool.result.name',
+    type: 'string',
+    brief: 'Legacy resource link name of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.name'],
+  },
+  'mcp.tool.result.resource_mime_type': {
+    canonicalName: 'mcp.tool.result.resource_mime_type',
+    type: 'string',
+    brief: 'Legacy embedded resource MIME type of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.resource_mime_type'],
+  },
+  'mcp.tool.result.resource_uri': {
+    canonicalName: 'mcp.tool.result.resource_uri',
+    type: 'string',
+    brief: 'Legacy embedded resource URI of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.resource_uri'],
+  },
+  'mcp.tool.result.uri': {
+    canonicalName: 'mcp.tool.result.uri',
+    type: 'string',
+    brief: 'Legacy resource link URI of the content item in a single-item MCP tool result.',
+    deprecated: true,
+    deprecationChain: ['mcp.tool.result.uri'],
   },
   'mcp.transport': {
     canonicalName: 'mcp.transport',
@@ -11305,6 +11760,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'http.host',
       'net.peer.name',
     ],
+  },
+  'server.ext.type': {
+    canonicalName: 'hapi.ext.type',
+    type: 'string',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
+    deprecationChain: ['hapi.ext.type', 'server.ext.type'],
   },
   'server.port': {
     canonicalName: 'server.port',
