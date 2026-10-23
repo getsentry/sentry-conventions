@@ -2187,7 +2187,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source object (in the form bucket/key) for the copy operation.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "someFile.yml"
@@ -2198,7 +2198,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The delete request container that specifies the objects to be deleted.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
@@ -2209,7 +2209,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "someFile.yml"
@@ -2603,6 +2603,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 477.1926
     """
 
+    # Path: model/attributes/browser/browser__web_vital__inp__input_delay.json
+    BROWSER_WEB_VITAL_INP_INPUT_DELAY: Literal["browser.web_vital.inp.input_delay"] = (
+        "browser.web_vital.inp.input_delay"
+    )
+    """The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 120
+    """
+
     # Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
     BROWSER_WEB_VITAL_INP_INTERACTION_TYPE: Literal[
         "browser.web_vital.inp.interaction_type"
@@ -2617,6 +2630,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "hover"
     Example: "drag"
     Example: "press"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__presentation_delay.json
+    BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY: Literal[
+        "browser.web_vital.inp.presentation_delay"
+    ] = "browser.web_vital.inp.presentation_delay"
+    """The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 100
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__processing_duration.json
+    BROWSER_WEB_VITAL_INP_PROCESSING_DURATION: Literal[
+        "browser.web_vital.inp.processing_duration"
+    ] = "browser.web_vital.inp.processing_duration"
+    """The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 140
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__target.json
@@ -2659,6 +2698,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: lcp.element
     Example: "body > div#app > div#container > div"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__element_render_delay.json
+    BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY: Literal[
+        "browser.web_vital.lcp.element_render_delay"
+    ] = "browser.web_vital.lcp.element_render_delay"
+    """The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 410
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__id.json
@@ -2715,6 +2767,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.
     Example: "pagehide"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__resource_load_delay.json
+    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY: Literal[
+        "browser.web_vital.lcp.resource_load_delay"
+    ] = "browser.web_vital.lcp.resource_load_delay"
+    """The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 320.5
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__resource_load_duration.json
+    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION: Literal[
+        "browser.web_vital.lcp.resource_load_duration"
+    ] = "browser.web_vital.lcp.resource_load_duration"
+    """The time it took to load the LCP resource, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 780.2
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__size.json
@@ -5501,6 +5579,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: gen_ai.tool.output, gen_ai.tool.message, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
     Example: "rainy, 57°F"
+    """
+
+    # Path: model/attributes/gen_ai/gen_ai__tool__call__result__size.json
+    GEN_AI_TOOL_CALL_RESULT_SIZE: Literal["gen_ai.tool.call.result.size"] = (
+        "gen_ai.tool.call.result.size"
+    )
+    """The UTF-8 byte length of the serialized tool call result, measured before truncation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 1024
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
@@ -9860,13 +9952,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Well-defined Values:
     - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
-    - `next_trace` - The linked span is the root span of the trace after this trace.
     - `cache_origin` - The linked span wrote the cached value that this span reads.
     - `message_origin` - The linked span published the queue message that this span processes.
+    - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
     Example: "previous_trace"
-    Example: "next_trace"
     Example: "cache_origin"
     Example: "message_origin"
+    Example: "server_request"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -14705,12 +14797,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The source object (in the form bucket/key) for the copy operation.",
         type=AttributeType.STRING,
         keys=("aws.s3.copy_source",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="someFile.yml",
         examples=["someFile.yml"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0",
                 prs=[672],
@@ -14725,7 +14821,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The delete request container that specifies the objects to be deleted.",
         type=AttributeType.STRING,
         keys=("aws.s3.delete",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean",
@@ -14733,6 +14829,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
         ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.delete attribute"
             ),
@@ -14745,12 +14845,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.",
         type=AttributeType.STRING,
         keys=("aws.s3.key",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="someFile.yml",
         examples=["someFile.yml"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.key attribute"
             ),
@@ -15301,6 +15405,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
+    "browser.web_vital.inp.input_delay": AttributeMetadata(
+        brief="The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.input_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=120,
+        examples=[120],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.inp.input_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`: input delay, processing duration and presentation delay. Named after `inputDelay` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `processingStart` minus `startTime`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
+        ],
+    ),
     "browser.web_vital.inp.interaction_type": AttributeMetadata(
         brief="The kind of user interaction INP was reported on",
         type=AttributeType.STRING,
@@ -15321,6 +15447,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
             "Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.",
             "Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.",
+        ],
+    ),
+    "browser.web_vital.inp.presentation_delay": AttributeMetadata(
+        brief="The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.presentation_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        examples=[100],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.inp.presentation_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `startTime` plus `duration` minus `processingEnd`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
+        ],
+    ),
+    "browser.web_vital.inp.processing_duration": AttributeMetadata(
+        brief="The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.processing_duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=140,
+        examples=[140],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.inp.processing_duration attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `processingDuration` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `processingEnd` minus `processingStart`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
         ],
     ),
     "browser.web_vital.inp.target": AttributeMetadata(
@@ -15378,6 +15548,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.element"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.element_render_delay": AttributeMetadata(
+        brief="The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.element_render_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=410,
+        examples=[410],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.lcp.element_render_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.",
+            "Measured as the LCP value minus the LCP resource's `responseEnd`. When the LCP element is text, it covers all time after TTFB.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
         ],
     ),
     "browser.web_vital.lcp.id": AttributeMetadata(
@@ -15450,6 +15642,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[319],
                 description="Added browser.web_vital.lcp.report_event attribute",
             ),
+        ],
+    ),
+    "browser.web_vital.lcp.resource_load_delay": AttributeMetadata(
+        brief="The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.resource_load_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=320.5,
+        examples=[320.5],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.lcp.resource_load_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`: TTFB (`browser.web_vital.ttfb.value`), resource load delay, resource load duration and element render delay. Named after `resourceLoadDelay` in the web-vitals attribution build.",
+            "Measured as the LCP resource's `requestStart` (or `startTime` when `requestStart` is not exposed) minus TTFB. It is 0 when the LCP element is text, since no resource is loaded.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
+        ],
+    ),
+    "browser.web_vital.lcp.resource_load_duration": AttributeMetadata(
+        brief="The time it took to load the LCP resource, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.resource_load_duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=780.2,
+        examples=[780.2],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[712],
+                description="Added browser.web_vital.lcp.resource_load_duration attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `resourceLoadDuration` in the web-vitals attribution build.",
+            "Measured as the LCP resource's `responseEnd` minus its `requestStart` (or `startTime` when `requestStart` is not exposed). It is 0 when the LCP element is text, since no resource is loaded.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
         ],
     ),
     "browser.web_vital.lcp.size": AttributeMetadata(
@@ -15649,7 +15885,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "Counted from the write. On a read, the value is the full TTL, not the time that remains.",
-            "A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Omit the attribute when the entry never expires or the TTL is unknown.",
+            "A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Round a fractional TTL up, so 0.3 seconds becomes 1, not 0.",
+            "Omit the attribute when the entry never expires, the TTL is unknown, or each read restarts the TTL.",
         ],
     ),
     "cache.write": AttributeMetadata(
@@ -19528,6 +19765,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
+    ),
+    "gen_ai.tool.call.result.size": AttributeMetadata(
+        brief="The UTF-8 byte length of the serialized tool call result, measured before truncation.",
+        type=AttributeType.INTEGER,
+        keys=("gen_ai.tool.call.result.size",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 1024],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added gen_ai.tool.call.result.size attribute",
+            ),
+        ],
+        additional_context=[
+            "The value is a non-negative byte count, not a token count, character count, or in-memory object size. It excludes span and envelope overhead.",
+            "Use 0 for an empty string result. Omit this attribute when the tool result is unavailable; do not treat missing output as zero.",
+        ],
+        search_alias=SearchAlias(name="gen_ai.tool.call.result.size", type="byte"),
     ),
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
@@ -25585,8 +25843,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="myService.BestService",
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[714],
+                description="Added additional context about the OpenTelemetry deprecation",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.",
+            "Still set on AWS SDK spans, where it holds the AWS service (e.g. `S3`) and `rpc.method` is set to the operation (e.g. `GetObject`).",
         ],
     ),
     "rpc.system": AttributeMetadata(
@@ -26319,12 +26586,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
-        examples=["previous_trace", "next_trace", "cache_origin", "message_origin"],
+        examples=["previous_trace", "cache_origin", "message_origin", "server_request"],
         changelog=[
             ChangelogEntry(
                 version="next",
                 prs=[724],
                 description="Added message_origin to the examples, and enum_values that describe each known value",
+            ),
+            ChangelogEntry(
+                version="next",
+                prs=[738],
+                description="Added server_request to the examples and enum_values",
+            ),
+            ChangelogEntry(
+                version="next",
+                prs=[739],
+                description="Removed next_trace from the examples and enum_values, because no SDK sets it",
             ),
             ChangelogEntry(
                 version="0.27.0", prs=[687], description="Added search alias link.type"
@@ -29496,14 +29773,20 @@ Attributes = TypedDict(
         "browser.web_vital.cls.value": float,
         "browser.web_vital.fcp.value": float,
         "browser.web_vital.fp.value": float,
+        "browser.web_vital.inp.input_delay": float,
         "browser.web_vital.inp.interaction_type": str,
+        "browser.web_vital.inp.presentation_delay": float,
+        "browser.web_vital.inp.processing_duration": float,
         "browser.web_vital.inp.target": str,
         "browser.web_vital.inp.value": float,
         "browser.web_vital.lcp.element": str,
+        "browser.web_vital.lcp.element_render_delay": float,
         "browser.web_vital.lcp.id": str,
         "browser.web_vital.lcp.load_time": int,
         "browser.web_vital.lcp.render_time": int,
         "browser.web_vital.lcp.report_event": str,
+        "browser.web_vital.lcp.resource_load_delay": float,
+        "browser.web_vital.lcp.resource_load_duration": float,
         "browser.web_vital.lcp.size": int,
         "browser.web_vital.lcp.url": str,
         "browser.web_vital.lcp.value": float,
@@ -29728,6 +30011,7 @@ Attributes = TypedDict(
         "gen_ai.system_instructions": str,
         "gen_ai.tool.call.arguments": str,
         "gen_ai.tool.call.result": str,
+        "gen_ai.tool.call.result.size": int,
         "gen_ai.tool.definitions": str,
         "gen_ai.tool.description": str,
         "gen_ai.tool.input": str,
