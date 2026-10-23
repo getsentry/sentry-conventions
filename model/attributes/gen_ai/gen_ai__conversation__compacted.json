@@ -1,0 +1,21 @@
+{
+  "key": "gen_ai.conversation.compacted",
+  "brief": "Indicates whether the effective conversation context used for this operation is a compacted view of a prior conversation.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": [true],
+  "additional_context": [
+    "This attribute is a positive indicator of context compaction. Instrumentations SHOULD set it to `true` only when they can reliably determine that context compaction was applied. Instrumentations SHOULD NOT set it to `false`; they SHOULD leave it unset otherwise."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [723],
+      "description": "Added gen_ai.conversation.compacted attribute"
+    }
+  ]
+}
