@@ -3113,7 +3113,7 @@ export type AWS_S3_COPY_SOURCE_TYPE = string;
 // Path: model/attributes/aws/aws__s3__delete.json
 
 /**
- * The delete request container that specifies the objects to be deleted. `aws.s3.delete`
+ * The JSON-serialized value of Delete request field, which specifies the objects to be deleted. `aws.s3.delete`
  *
  * Attribute Value Type: `string` {@link AWS_S3_DELETE_TYPE}
  *
@@ -3122,7 +3122,7 @@ export type AWS_S3_COPY_SOURCE_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * @example "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+ * @example "{\"Objects\":[{\"Key\":\"someFile.yml\",\"VersionId\":\"3HL4kqtJlcpXroDTDmJ\"}],\"Quiet\":false}"
  */
 export const AWS_S3_DELETE = 'aws.s3.delete';
 
@@ -5381,6 +5381,7 @@ export type CULTURE_TIMEZONE_TYPE = string;
  * Aliases: {@link DB_MONGODB_COLLECTION} `db.mongodb.collection`
  *
  * @example "users"
+ * @example ",customers,orders,"
  */
 export const DB_COLLECTION_NAME = 'db.collection.name';
 
@@ -25432,7 +25433,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'aws.s3.delete': {
-    brief: 'The delete request container that specifies the objects to be deleted.',
+    brief: 'The JSON-serialized value of Delete request field, which specifies the objects to be deleted.',
     type: 'string',
     keys: ['aws.s3.delete'],
     applyScrubbing: {
@@ -25440,9 +25441,10 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean',
-    examples: ['Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean'],
+    example: '{"Objects":[{"Key":"someFile.yml","VersionId":"3HL4kqtJlcpXroDTDmJ"}],"Quiet":false}',
+    examples: ['{"Objects":[{"Key":"someFile.yml","VersionId":"3HL4kqtJlcpXroDTDmJ"}],"Quiet":false}'],
     changelog: [
+      { version: 'next', description: 'Changed the value to a JSON-serialized field, with an example' },
       { version: '0.28.0', prs: [713], description: 'Changed apply_scrubbing from manual to auto' },
       { version: '0.27.0', prs: [672], description: 'Added aws.s3.delete attribute' },
     ],
@@ -26973,11 +26975,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example: 'users',
+    examples: ['users', ',customers,orders,'],
     aliases: ['db.mongodb.collection'],
     changelog: [
+      { version: 'next', description: 'Add comma-wrapped format for calls on more than one collection' },
       { version: '0.19.0', prs: [483], description: 'Added db.mongodb.collection as an alias' },
       { version: '0.1.0', prs: [106, 127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'For a call on more than one collection: the unique names, sorted and wrapped in commas (`,customers,orders,`), so each name matches `,<name>,`.',
     ],
   },
   'db.connection_string': {
