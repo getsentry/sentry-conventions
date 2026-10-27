@@ -8,17 +8,41 @@
   "additional_context": [
     "This attribute is exclusively set on span links.",
     "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
-    "For known values, see Examples. Add new values to Examples."
+    "Add each new link type to `enum_values`, with a brief that says what the linked span is."
   ],
   "search_alias": {
     "name": "link.type"
   },
   "is_in_otel": false,
   "visibility": "public",
-  "examples": ["previous_trace", "next_trace", "cache_origin"],
+  "examples": ["previous_trace", "cache_origin", "message_origin", "server_request"],
+  "enum_values": [
+    {
+      "value": "previous_trace",
+      "brief": "The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span."
+    },
+    {
+      "value": "cache_origin",
+      "brief": "The linked span wrote the cached value that this span reads."
+    },
+    {
+      "value": "message_origin",
+      "brief": "The linked span published the queue message that this span processes."
+    },
+    {
+      "value": "server_request",
+      "brief": "The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace."
+    }
+  ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
+      "prs": [724, 738, 739],
+      "description": "Removed next_trace from the examples and enum_values, because no SDK sets it"
+    },
+    {
+      "version": "0.27.0",
+      "prs": [687],
       "description": "Added search alias link.type"
     },
     {

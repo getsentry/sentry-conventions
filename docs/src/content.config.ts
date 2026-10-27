@@ -153,7 +153,24 @@ const measurements = defineCollection({
   schema: measurementSchema,
 });
 
-export const collections = { attributes, names, descriptions, measurements, ops };
+// Schema matching schemas/metric.schema.json
+const metricSchema = z.object({
+  key: z.string(),
+  brief: z.string(),
+  instrument: z.enum(['gauge', 'counter', 'distribution']),
+  unit: z.string(),
+  is_in_otel: z.boolean(),
+  requirement_level: z.enum(['required', 'recommended', 'opt_in']),
+  attributes: z.array(z.string()).optional(),
+});
+
+// Define the metrics collection - loads all JSON files from model/metrics
+const metrics = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: '../model/metrics' }),
+  schema: metricSchema,
+});
+
+export const collections = { attributes, names, descriptions, measurements, ops, metrics };
 
 // Export types for use in pages
 export type Attribute = z.infer<typeof attributeSchema>;
@@ -164,3 +181,4 @@ export type DescriptionOperation = z.infer<typeof descriptionOperationSchema>;
 export type Measurement = z.infer<typeof measurementSchema>;
 export type SpanOp = z.infer<typeof opSchema>;
 export type SpanOpField = z.infer<typeof opFieldSchema>;
+export type Metric = z.infer<typeof metricSchema>;

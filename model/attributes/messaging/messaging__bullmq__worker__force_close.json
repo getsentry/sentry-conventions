@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.worker.force_close",
+  "brief": "Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [false],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [690],
+      "description": "Added messaging.bullmq.worker.force_close attribute"
+    }
+  ]
+}

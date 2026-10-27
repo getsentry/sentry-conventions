@@ -1,3 +1,123 @@
+## 0.29.0
+
+### New Features ✨
+
+- (attributes) Add AWS Lambda, Step Functions and Secrets Manager name attributes by @pabloDeputter in [#716](https://github.com/getsentry/sentry-conventions/pull/716)
+- (descriptions) Add descriptions for AWS SDK spans by service, operation and resource by @pabloDeputter in [#717](https://github.com/getsentry/sentry-conventions/pull/717)
+- (names) Add span name and description rules for `object.*` ops by @pabloDeputter in [#707](https://github.com/getsentry/sentry-conventions/pull/707)
+
+### Internal Changes 🔧
+
+- (attributes) Use JSON for `aws.s3.delete` & document multi-collection `db.collection.name` by @pabloDeputter in [#711](https://github.com/getsentry/sentry-conventions/pull/711)
+
+## 0.28.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add Hapi attributes `hapi.type`, `hapi.plugin.name`, and `hapi.ext.type` by @s1gr1d in [#741](https://github.com/getsentry/sentry-conventions/pull/741)
+- Add experimental `gen_ai.extract` operation by @andreiborza in [#728](https://github.com/getsentry/sentry-conventions/pull/728)
+- Remove next_trace from the sentry.link.type values by @s1gr1d in [#739](https://github.com/getsentry/sentry-conventions/pull/739)
+- Add server_request as a sentry.link.type value by @s1gr1d in [#738](https://github.com/getsentry/sentry-conventions/pull/738)
+- Add LCP and INP subpart attributes by @logaretm in [#712](https://github.com/getsentry/sentry-conventions/pull/712)
+- Add message_origin as a sentry.link.type value by @JPeer264 in [#724](https://github.com/getsentry/sentry-conventions/pull/724)
+- Add `aws.lambda.resource_mapping.id` attribute by @pabloDeputter in [#710](https://github.com/getsentry/sentry-conventions/pull/710)
+- Add object to the `sentry.category` values by @pabloDeputter in [#721](https://github.com/getsentry/sentry-conventions/pull/721)
+- Add http.request.duration by @loewenheim in [#697](https://github.com/getsentry/sentry-conventions/pull/697)
+
+#### Names
+
+- Add span name rules for `rpc` spans by @pabloDeputter in [#714](https://github.com/getsentry/sentry-conventions/pull/714)
+- Add `queue.publish`/`create`/`receive`/`process`/`settle` to messaging span names by @pabloDeputter in [#705](https://github.com/getsentry/sentry-conventions/pull/705)
+
+#### Other
+
+- (descriptions) AWS Lambda function descriptions by @pabloDeputter in [#720](https://github.com/getsentry/sentry-conventions/pull/720)
+- (docs) Add metrics page by @logaretm in [#733](https://github.com/getsentry/sentry-conventions/pull/733)
+- (gen_ai) Add tool call result size attribute by @obostjancic in [#679](https://github.com/getsentry/sentry-conventions/pull/679)
+- (metrics) Add browser bfcache and element timing metrics by @logaretm in [#729](https://github.com/getsentry/sentry-conventions/pull/729)
+- (ops) Add `object.copy` op by @pabloDeputter in [#706](https://github.com/getsentry/sentry-conventions/pull/706)
+- Add BullMQ attributes and metrics by @JPeer264 in [#690](https://github.com/getsentry/sentry-conventions/pull/690)
+- Add `view.render` op by @alexander-alderman-webb in [#699](https://github.com/getsentry/sentry-conventions/pull/699)
+
+### Bug Fixes 🐛
+
+- (attributes) Apply consistent scrubbing across deprecations by @mjq in [#692](https://github.com/getsentry/sentry-conventions/pull/692)
+
+### Documentation 📚
+
+- (cache) Define `cache.ttl` for fractional and per-read TTLs by @s1gr1d in [#726](https://github.com/getsentry/sentry-conventions/pull/726)
+- Clarify `cache.ttl` for 0, no expiry, and reads by @s1gr1d in [#725](https://github.com/getsentry/sentry-conventions/pull/725)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump nanoid to 3.3.20 by @Lms24 in [#737](https://github.com/getsentry/sentry-conventions/pull/737)
+- Bump vite from 8.2.1 to 8.3.5 by @dependabot in [#735](https://github.com/getsentry/sentry-conventions/pull/735)
+- Bump markdown-it from 15.0.2 to 15.0.3 by @dependabot in [#736](https://github.com/getsentry/sentry-conventions/pull/736)
+
+#### Other
+
+- (attributes) Scrub S3 object keys by default by @pabloDeputter in [#713](https://github.com/getsentry/sentry-conventions/pull/713)
+- (node) Bump Node to 22.23.4 by @oioki in [#742](https://github.com/getsentry/sentry-conventions/pull/742)
+- (repo) Update CODEOWNERS to include @giortzisg by @Lms24 in [#708](https://github.com/getsentry/sentry-conventions/pull/708)
+- Deprecate `gen_ai.responses` in favor of `gen_ai.chat` by @alexander-alderman-webb in [#703](https://github.com/getsentry/sentry-conventions/pull/703)
+- Add deprecated messaging ops set by the Python SDK by @alexander-alderman-webb in [#693](https://github.com/getsentry/sentry-conventions/pull/693)
+- Add `view.response.render` op, deprecated in favor of `view.render` by @alexander-alderman-webb in [#700](https://github.com/getsentry/sentry-conventions/pull/700)
+- Add `event.django` op, deprecated in favor of `function` by @alexander-alderman-webb in [#698](https://github.com/getsentry/sentry-conventions/pull/698)
+
+## 0.27.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add integrity policy attributes by @loewenheim in [#691](https://github.com/getsentry/sentry-conventions/pull/691)
+- Deprecate legacy MCP tool result fields by @betegon in [#689](https://github.com/getsentry/sentry-conventions/pull/689)
+- Align MCP conventions and OAuth client identity by @betegon in [#671](https://github.com/getsentry/sentry-conventions/pull/671)
+- Add AWS service instrumentation attributes by @pabloDeputter in [#672](https://github.com/getsentry/sentry-conventions/pull/672)
+- Add gen_ai memory conventions by @ArthurKnaus in [#653](https://github.com/getsentry/sentry-conventions/pull/653)
+
+#### Other
+
+- (model) Add metric model by @giortzisg in [#649](https://github.com/getsentry/sentry-conventions/pull/649)
+- Add `enum_values` entries to shorten attribute briefs by @alexander-alderman-webb in [#685](https://github.com/getsentry/sentry-conventions/pull/685)
+
+### Bug Fixes 🐛
+
+#### Attributes
+
+- Add `search_alias` to `sentry.link.type` attribute by @Lms24 in [#687](https://github.com/getsentry/sentry-conventions/pull/687)
+- Remove `any` as valid attribute type by @Lms24 in [#677](https://github.com/getsentry/sentry-conventions/pull/677)
+
+#### Other
+
+- Use `path.posix.join` instead of `path.join` for Windows compatibility by @alexander-alderman-webb in [#688](https://github.com/getsentry/sentry-conventions/pull/688)
+
+### Documentation 📚
+
+- (contributing) Document process for fixing a misnamed attribute by @sentry-junior in [#673](https://github.com/getsentry/sentry-conventions/pull/673)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump sharp from 0.35.4 to 0.35.5 by @dependabot in [#683](https://github.com/getsentry/sentry-conventions/pull/683)
+- Bump source-map-js from 1.2.1 to 1.2.2 by @dependabot in [#675](https://github.com/getsentry/sentry-conventions/pull/675)
+- Bump smol-toml from 1.8.0 to 1.9.0 by @dependabot in [#674](https://github.com/getsentry/sentry-conventions/pull/674)
+- Bump postcss-selector-parser from 7.1.4 to 7.1.6 by @dependabot in [#676](https://github.com/getsentry/sentry-conventions/pull/676)
+
+#### Other
+
+- (deps-dev) Bump oxfmt to 0.72.0 to pull in patched tinypool by @Lms24 in [#682](https://github.com/getsentry/sentry-conventions/pull/682)
+- (docs) Add link preview meta tags by @Lms24 in [#667](https://github.com/getsentry/sentry-conventions/pull/667)
+- (publish) Stop `npm version` from rewriting `yarn.lock` by @Lms24 in [#678](https://github.com/getsentry/sentry-conventions/pull/678)
+- Deprecate `gen_ai.evaluate` in favor of new `gen_ai.decide` by @alexander-alderman-webb in [#696](https://github.com/getsentry/sentry-conventions/pull/696)
+- Add "evaluate" as a well-known value for `gen_ai.operation.name` by @alexander-alderman-webb in [#680](https://github.com/getsentry/sentry-conventions/pull/680)
+- Deprecate `mcp.tool.result.content_count` by @alexander-alderman-webb in [#669](https://github.com/getsentry/sentry-conventions/pull/669)
+
 ## 0.26.0
 
 ### New Features ✨

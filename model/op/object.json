@@ -15,6 +15,10 @@
       "description": "Storing an object in an object store."
     },
     {
+      "name": "object.copy",
+      "description": "Copying an object within or between object stores."
+    },
+    {
       "name": "object.delete",
       "description": "Deleting an object from an object store."
     },

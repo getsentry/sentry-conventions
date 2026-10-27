@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.queue.drain.delay",
+  "brief": "Whether Queue.drain() also removes the delayed BullMQ jobs.",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [true],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.queue.drain.delay` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [690],
+      "description": "Added messaging.bullmq.queue.drain.delay attribute"
+    }
+  ]
+}
