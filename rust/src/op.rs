@@ -429,6 +429,36 @@ pub const SUBPROCESS: &str = "subprocess";
 
 pub const MIDDLEWARE: &str = "middleware";
 
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_DJANGO: &str = "middleware.django";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_LITESTAR: &str = "middleware.litestar";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_LITESTAR_RECEIVE: &str = "middleware.litestar.receive";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_LITESTAR_SEND: &str = "middleware.litestar.send";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLETTE: &str = "middleware.starlette";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLETTE_RECEIVE: &str = "middleware.starlette.receive";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLETTE_SEND: &str = "middleware.starlette.send";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLITE: &str = "middleware.starlite";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLITE_RECEIVE: &str = "middleware.starlite.receive";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLITE_SEND: &str = "middleware.starlite.send";
+
 /// Handling of an incoming request by a web server route handler
 pub const HANDLER: &str = "handler";
 
