@@ -230,7 +230,11 @@ pub const GEN_AI_GENERATE_CONTENT: &str = "gen_ai.generate_content";
 /// Reranking of documents or results by a generative AI model
 pub const GEN_AI_RERANK: &str = "gen_ai.rerank";
 
+/// Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+pub const GEN_AI_DECIDE: &str = "gen_ai.decide";
+
 /// Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+#[deprecated(note = "Use `GEN_AI_DECIDE` (gen_ai.decide) instead")]
 pub const GEN_AI_EVALUATE: &str = "gen_ai.evaluate";
 
 /// Creation of an AI agent that can later be invoked to perform a task

@@ -355,7 +355,14 @@ export const GEN_AI_GENERATE_CONTENT = 'gen_ai.generate_content';
 export const GEN_AI_RERANK = 'gen_ai.rerank';
 
 /**
+ * Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+ */
+export const GEN_AI_DECIDE = 'gen_ai.decide';
+
+/**
  * Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
+ *
+ * @deprecated Use {@link GEN_AI_DECIDE} (gen_ai.decide) instead
  */
 export const GEN_AI_EVALUATE = 'gen_ai.evaluate';
 
