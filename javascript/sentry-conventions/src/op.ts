@@ -283,6 +283,11 @@ export const DB = 'db';
 
 export const DB_QUERY = 'db.query';
 
+/**
+ * @deprecated Use {@link DB_QUERY} (db.query) instead - Provider-specific Redis ops are replaced by framework-agnostic ones.
+ */
+export const DB_REDIS = 'db.redis';
+
 export const CACHE = 'cache';
 
 export const CACHE_GET = 'cache.get';
@@ -313,6 +318,16 @@ export const FUNCTION_AZURE = 'function.azure';
  * A chat interaction with a generative AI model
  */
 export const GEN_AI_CHAT = 'gen_ai.chat';
+
+/**
+ * @deprecated Use {@link GEN_AI_CHAT} (gen_ai.chat) instead - Provider-specific AI ops are replaced by framework-agnostic ones.
+ */
+export const AI_CHAT_COMPLETIONS_CREATE_COHERE = 'ai.chat_completions.create.cohere';
+
+/**
+ * @deprecated Use {@link GEN_AI_EMBEDDINGS} (gen_ai.embeddings) instead - Provider-specific AI ops are replaced by framework-agnostic ones.
+ */
+export const AI_EMBEDDINGS_CREATE_COHERE = 'ai.embeddings.create.cohere';
 
 /**
  * Execution of a tool or function by a generative AI model
@@ -650,11 +665,66 @@ export const SUBPROCESS = 'subprocess';
 export const MIDDLEWARE = 'middleware';
 
 /**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_DJANGO = 'middleware.django';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_LITESTAR = 'middleware.litestar';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_LITESTAR_RECEIVE = 'middleware.litestar.receive';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_LITESTAR_SEND = 'middleware.litestar.send';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLETTE = 'middleware.starlette';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLETTE_RECEIVE = 'middleware.starlette.receive';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLETTE_SEND = 'middleware.starlette.send';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLITE = 'middleware.starlite';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLITE_RECEIVE = 'middleware.starlite.receive';
+
+/**
+ * @deprecated Use {@link MIDDLEWARE} (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.
+ */
+export const MIDDLEWARE_STARLITE_SEND = 'middleware.starlite.send';
+
+/**
  * Handling of an incoming request by a web server route handler
  */
 export const HANDLER = 'handler';
 
 export const VIEW = 'view';
+
+/**
+ * @deprecated Use {@link VIEW} (view) instead
+ */
+export const VIEW_AUTHENTICATE = 'view.authenticate';
 
 /**
  * Rendering of a view.
