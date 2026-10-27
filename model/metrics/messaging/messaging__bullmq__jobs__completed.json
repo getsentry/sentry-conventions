@@ -1,0 +1,9 @@
+{
+  "key": "messaging.bullmq.jobs.completed",
+  "brief": "The number of BullMQ jobs that completed.",
+  "instrument": "counter",
+  "unit": "none",
+  "is_in_otel": false,
+  "requirement_level": "recommended",
+  "attributes": ["messaging.destination.name", "messaging.bullmq.job.name", "messaging.bullmq.job.state"]
+}

@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.worker.name",
+  "brief": "The name that the user gives to the BullMQ Worker in its options.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["email-worker"],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.worker.name` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [690],
+      "description": "Added messaging.bullmq.worker.name attribute"
+    }
+  ]
+}

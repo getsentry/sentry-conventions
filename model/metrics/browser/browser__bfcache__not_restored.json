@@ -1,0 +1,9 @@
+{
+  "key": "browser.bfcache.not_restored",
+  "brief": "Counts the reasons a back/forward navigation was not restored from the back/forward cache, emitted once per reason.",
+  "instrument": "counter",
+  "unit": "none",
+  "is_in_otel": false,
+  "requirement_level": "recommended",
+  "attributes": ["browser.bfcache.reason", "browser.bfcache.frame", "sentry.segment.name"]
+}
