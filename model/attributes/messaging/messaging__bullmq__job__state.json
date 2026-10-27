@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.job.state",
+  "brief": "The state of the BullMQ job that a job metric counts.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["completed", "failed", "delayed"],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value."
+  ],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [690],
+      "description": "Added messaging.bullmq.job.state attribute"
+    }
+  ]
+}

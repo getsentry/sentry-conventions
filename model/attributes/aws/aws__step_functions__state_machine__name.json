@@ -1,0 +1,19 @@
+{
+  "key": "aws.step_functions.state_machine.name",
+  "brief": "The name of the AWS Step Functions state machine.",
+  "additional_context": ["Contains no version or alias qualifier (`orders`, not `orders:1` or `orders:prod`)."],
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["orders"],
+  "changelog": [
+    {
+      "version": "0.29.0",
+      "prs": [716],
+      "description": "Added aws.step_functions.state_machine.name attribute"
+    }
+  ]
+}

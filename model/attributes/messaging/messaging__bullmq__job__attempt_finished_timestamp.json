@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.job.attempt_finished_timestamp",
+  "brief": "The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [1791184722406],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.job.attempt_finished_timestamp` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [690],
+      "description": "Added messaging.bullmq.job.attempt_finished_timestamp attribute"
+    }
+  ]
+}

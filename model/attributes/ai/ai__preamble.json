@@ -3,7 +3,7 @@
   "brief": "For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "auto"
+    "key": "manual"
   },
   "is_in_otel": false,
   "example": "You are now a clown.",

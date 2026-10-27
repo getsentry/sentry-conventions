@@ -1,0 +1,30 @@
+{
+  "brief": "RPC",
+  "operations": [
+    {
+      "name": "RPC call",
+      "brief": "A remote procedure call, such as an AWS SDK call or a gRPC call.",
+      "ops": ["rpc"],
+      "templates": [
+        "{{rpc.service}}.{{rpc.method}} {{aws.s3.bucket}}",
+        "{{rpc.service}}.{{rpc.method}} {{faas.invoked_name}}",
+        "{{rpc.service}}.{{rpc.method}} {{aws.lambda.target_function.name}}",
+        "{{rpc.service}}.{{rpc.method}} {{aws.kinesis.stream_name}}",
+        "{{rpc.service}}.{{rpc.method}} {{aws.step_functions.state_machine.name}}",
+        "{{rpc.service}}.{{rpc.method}} {{aws.step_functions.activity.name}}",
+        "{{rpc.service}}.{{rpc.method}} {{aws.secretsmanager.secret.name}}",
+        "{{rpc.service}}.{{rpc.method}} {{messaging.destination.name}}",
+        "{{rpc.service}}.{{rpc.method}}"
+      ],
+      "examples": [
+        "S3.GetBucketPolicy invoices",
+        "Lambda.UpdateFunctionCode billing",
+        "Kinesis.PutRecords clicks",
+        "SFN.StartExecution orders",
+        "SecretsManager.GetSecretValue db-password",
+        "SQS.ChangeMessageVisibility orders",
+        "S3.ListBuckets"
+      ]
+    }
+  ]
+}
