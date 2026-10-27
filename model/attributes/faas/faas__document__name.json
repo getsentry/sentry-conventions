@@ -3,8 +3,7 @@
   "brief": "The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "auto",
-    "reason": "Object keys and file names can contain user identifiers, emails, or user-provided file names."
+    "key": "auto"
   },
   "is_in_otel": true,
   "visibility": "public",
