@@ -1,0 +1,18 @@
+{
+  "key": "faas.instance",
+  "brief": "The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.",
+  "additional_context": ["For AWS Lambda, use the (full) log stream name."],
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added faas.instance attribute"
+    }
+  ]
+}

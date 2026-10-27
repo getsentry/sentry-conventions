@@ -1846,6 +1846,11 @@ export const SEARCH_FAAS__ID = 'faas.id';
 export const SEARCH_FAAS__IDENTITY = 'faas.identity';
 
 /**
+ * Search name for {@link attributes.FAAS_INSTANCE}. `faas.instance`
+ */
+export const SEARCH_FAAS__INSTANCE = 'faas.instance';
+
+/**
  * Search name for {@link attributes.FAAS_INVOCATION_ID}. `faas.invocation_id`
  */
 export const SEARCH_FAAS__INVOCATION_ID = 'faas.invocation_id';
@@ -5790,6 +5795,7 @@ export type AttributeSearchName =
   | typeof SEARCH_FAAS__EXECUTION
   | typeof SEARCH_FAAS__ID
   | typeof SEARCH_FAAS__IDENTITY
+  | typeof SEARCH_FAAS__INSTANCE
   | typeof SEARCH_FAAS__INVOCATION_ID
   | typeof SEARCH_FAAS__INVOKED_NAME
   | typeof SEARCH_FAAS__INVOKED_PROVIDER
@@ -8557,6 +8563,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
     deprecationChain: ['faas.identity'],
+  },
+  'faas.instance': {
+    canonicalName: 'faas.instance',
+    type: 'string',
+    brief:
+      'The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.',
+    deprecationChain: ['faas.instance'],
   },
   'faas.invocation_id': {
     canonicalName: 'faas.invocation_id',

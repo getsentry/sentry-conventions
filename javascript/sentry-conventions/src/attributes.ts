@@ -7228,6 +7228,27 @@ export const FAAS_IDENTITY = 'faas.identity';
  */
 export type FAAS_IDENTITY_TYPE = string;
 
+// Path: model/attributes/faas/faas__instance.json
+
+/**
+ * The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version. `faas.instance`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INSTANCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"
+ */
+export const FAAS_INSTANCE = 'faas.instance';
+
+/**
+ * Type for {@link FAAS_INSTANCE} faas.instance
+ */
+export type FAAS_INSTANCE_TYPE = string;
+
 // Path: model/attributes/faas/faas__invocation_id.json
 
 /**
@@ -21663,6 +21684,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'faas.execution': 'string',
   'faas.id': 'string',
   'faas.identity': 'string',
+  'faas.instance': 'string',
   'faas.invocation_id': 'string',
   'faas.invoked_name': 'string',
   'faas.invoked_provider': 'string',
@@ -22613,6 +22635,7 @@ export type AttributeName =
   | typeof FAAS_EXECUTION
   | typeof FAAS_ID
   | typeof FAAS_IDENTITY
+  | typeof FAAS_INSTANCE
   | typeof FAAS_INVOCATION_ID
   | typeof FAAS_INVOKED_NAME
   | typeof FAAS_INVOKED_PROVIDER
@@ -28341,6 +28364,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example:
       'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
     changelog: [{ version: '0.11.0', prs: [403] }],
+  },
+  'faas.instance': {
+    brief:
+      'The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.',
+    type: 'string',
+    keys: ['faas.instance'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de',
+    examples: ['2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de'],
+    changelog: [{ version: 'next', description: 'Added faas.instance attribute' }],
+    additionalContext: ['For AWS Lambda, use the (full) log stream name.'],
   },
   'faas.invocation_id': {
     brief: 'The invocation ID of the current function invocation.',
@@ -39292,6 +39330,7 @@ export type Attributes = {
   [FAAS_EXECUTION]?: FAAS_EXECUTION_TYPE;
   [FAAS_ID]?: FAAS_ID_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
+  [FAAS_INSTANCE]?: FAAS_INSTANCE_TYPE;
   [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
   [FAAS_INVOKED_NAME]?: FAAS_INVOKED_NAME_TYPE;
   [FAAS_INVOKED_PROVIDER]?: FAAS_INVOKED_PROVIDER_TYPE;
