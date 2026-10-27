@@ -6307,32 +6307,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"
     """
 
-    # Path: model/attributes/heroku/heroku__logplex__frame_id.json
-    HEROKU_LOGPLEX_FRAME_ID: Literal["heroku.logplex.frame_id"] = (
-        "heroku.logplex.frame_id"
-    )
-    """Unique identifier of the Heroku Logplex drain request, sent as the `Logplex-Frame-Id` header
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "09C557EAFCFB6CF2740EE62F62971098"
-    """
-
-    # Path: model/attributes/heroku/heroku__logplex__user_agent.json
-    HEROKU_LOGPLEX_USER_AGENT: Literal["heroku.logplex.user_agent"] = (
-        "heroku.logplex.user_agent"
-    )
-    """Version of Heroku Logplex that sent the log, sent as the `User-Agent` header
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "Logplex/v72"
-    """
-
     # Path: model/attributes/heroku/heroku__router__at.json
     HEROKU_ROUTER_AT: Literal["heroku.router.at"] = "heroku.router.at"
     """Log level reported by the Heroku router
@@ -21705,40 +21679,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "heroku.logplex.frame_id": AttributeMetadata(
-        brief="Unique identifier of the Heroku Logplex drain request, sent as the `Logplex-Frame-Id` header",
-        type=AttributeType.STRING,
-        keys=("heroku.logplex.frame_id",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="09C557EAFCFB6CF2740EE62F62971098",
-        examples=["09C557EAFCFB6CF2740EE62F62971098"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.logplex.frame_id attribute",
-            ),
-        ],
-    ),
-    "heroku.logplex.user_agent": AttributeMetadata(
-        brief="Version of Heroku Logplex that sent the log, sent as the `User-Agent` header",
-        type=AttributeType.STRING,
-        keys=("heroku.logplex.user_agent",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="Logplex/v72",
-        examples=["Logplex/v72"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.logplex.user_agent attribute",
-            ),
-        ],
-    ),
     "heroku.router.at": AttributeMetadata(
         brief="Log level reported by the Heroku router",
         type=AttributeType.STRING,
@@ -31900,8 +31840,6 @@ Attributes = TypedDict(
         "heroku.error.code": str,
         "heroku.error.description": str,
         "heroku.logplex.drain_token": str,
-        "heroku.logplex.frame_id": str,
-        "heroku.logplex.user_agent": str,
         "heroku.router.at": str,
         "heroku.router.bytes": int,
         "heroku.router.connect": int,

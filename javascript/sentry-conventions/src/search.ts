@@ -2594,16 +2594,6 @@ export const SEARCH_HEROKU__ERROR__DESCRIPTION = 'heroku.error.description';
 export const SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN = 'heroku.logplex.drain_token';
 
 /**
- * Search name for {@link attributes.HEROKU_LOGPLEX_FRAME_ID}. `heroku.logplex.frame_id`
- */
-export const SEARCH_HEROKU__LOGPLEX__FRAME_ID = 'heroku.logplex.frame_id';
-
-/**
- * Search name for {@link attributes.HEROKU_LOGPLEX_USER_AGENT}. `heroku.logplex.user_agent`
- */
-export const SEARCH_HEROKU__LOGPLEX__USER_AGENT = 'heroku.logplex.user_agent';
-
-/**
  * Search name for {@link attributes.HEROKU_ROUTER_AT}. `heroku.router.at`
  */
 export const SEARCH_HEROKU__ROUTER__AT = 'heroku.router.at';
@@ -6046,8 +6036,6 @@ export type AttributeSearchName =
   | typeof SEARCH_HEROKU__ERROR__CODE
   | typeof SEARCH_HEROKU__ERROR__DESCRIPTION
   | typeof SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN
-  | typeof SEARCH_HEROKU__LOGPLEX__FRAME_ID
-  | typeof SEARCH_HEROKU__LOGPLEX__USER_AGENT
   | typeof SEARCH_HEROKU__ROUTER__AT
   | typeof SEARCH_HEROKU__ROUTER__BYTES
   | typeof SEARCH_HEROKU__ROUTER__CONNECT
@@ -9622,18 +9610,6 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Token of the Heroku log drain that sent the log, sent as the `Logplex-Drain-Token` header',
     deprecationChain: ['heroku.logplex.drain_token'],
-  },
-  'heroku.logplex.frame_id': {
-    canonicalName: 'heroku.logplex.frame_id',
-    type: 'string',
-    brief: 'Unique identifier of the Heroku Logplex drain request, sent as the `Logplex-Frame-Id` header',
-    deprecationChain: ['heroku.logplex.frame_id'],
-  },
-  'heroku.logplex.user_agent': {
-    canonicalName: 'heroku.logplex.user_agent',
-    type: 'string',
-    brief: 'Version of Heroku Logplex that sent the log, sent as the `User-Agent` header',
-    deprecationChain: ['heroku.logplex.user_agent'],
   },
   'heroku.router.at': {
     canonicalName: 'heroku.router.at',

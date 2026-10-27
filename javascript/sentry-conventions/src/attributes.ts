@@ -10311,48 +10311,6 @@ export const HEROKU_LOGPLEX_DRAIN_TOKEN = 'heroku.logplex.drain_token';
  */
 export type HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE = string;
 
-// Path: model/attributes/heroku/heroku__logplex__frame_id.json
-
-/**
- * Unique identifier of the Heroku Logplex drain request, sent as the `Logplex-Frame-Id` header `heroku.logplex.frame_id`
- *
- * Attribute Value Type: `string` {@link HEROKU_LOGPLEX_FRAME_ID_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "09C557EAFCFB6CF2740EE62F62971098"
- */
-export const HEROKU_LOGPLEX_FRAME_ID = 'heroku.logplex.frame_id';
-
-/**
- * Type for {@link HEROKU_LOGPLEX_FRAME_ID} heroku.logplex.frame_id
- */
-export type HEROKU_LOGPLEX_FRAME_ID_TYPE = string;
-
-// Path: model/attributes/heroku/heroku__logplex__user_agent.json
-
-/**
- * Version of Heroku Logplex that sent the log, sent as the `User-Agent` header `heroku.logplex.user_agent`
- *
- * Attribute Value Type: `string` {@link HEROKU_LOGPLEX_USER_AGENT_TYPE}
- *
- * Apply Scrubbing: manual
- *
- * Attribute defined in OTEL: No
- * Visibility: public
- *
- * @example "Logplex/v72"
- */
-export const HEROKU_LOGPLEX_USER_AGENT = 'heroku.logplex.user_agent';
-
-/**
- * Type for {@link HEROKU_LOGPLEX_USER_AGENT} heroku.logplex.user_agent
- */
-export type HEROKU_LOGPLEX_USER_AGENT_TYPE = string;
-
 // Path: model/attributes/heroku/heroku__router__at.json
 
 /**
@@ -22323,8 +22281,6 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'heroku.error.code': 'string',
   'heroku.error.description': 'string',
   'heroku.logplex.drain_token': 'string',
-  'heroku.logplex.frame_id': 'string',
-  'heroku.logplex.user_agent': 'string',
   'heroku.router.at': 'string',
   'heroku.router.bytes': 'integer',
   'heroku.router.connect': 'integer',
@@ -23297,8 +23253,6 @@ export type AttributeName =
   | typeof HEROKU_ERROR_CODE
   | typeof HEROKU_ERROR_DESCRIPTION
   | typeof HEROKU_LOGPLEX_DRAIN_TOKEN
-  | typeof HEROKU_LOGPLEX_FRAME_ID
-  | typeof HEROKU_LOGPLEX_USER_AGENT
   | typeof HEROKU_ROUTER_AT
   | typeof HEROKU_ROUTER_BYTES
   | typeof HEROKU_ROUTER_CONNECT
@@ -31285,32 +31239,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'd.73ea7440-270a-435a-a0ea-adf50b4e5f5a',
     examples: ['d.73ea7440-270a-435a-a0ea-adf50b4e5f5a'],
     changelog: [{ version: 'next', prs: [752], description: 'Added heroku.logplex.drain_token attribute' }],
-  },
-  'heroku.logplex.frame_id': {
-    brief: 'Unique identifier of the Heroku Logplex drain request, sent as the `Logplex-Frame-Id` header',
-    type: 'string',
-    keys: ['heroku.logplex.frame_id'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: '09C557EAFCFB6CF2740EE62F62971098',
-    examples: ['09C557EAFCFB6CF2740EE62F62971098'],
-    changelog: [{ version: 'next', prs: [752], description: 'Added heroku.logplex.frame_id attribute' }],
-  },
-  'heroku.logplex.user_agent': {
-    brief: 'Version of Heroku Logplex that sent the log, sent as the `User-Agent` header',
-    type: 'string',
-    keys: ['heroku.logplex.user_agent'],
-    applyScrubbing: {
-      key: 'manual',
-    },
-    isInOtel: false,
-    visibility: 'public',
-    example: 'Logplex/v72',
-    examples: ['Logplex/v72'],
-    changelog: [{ version: 'next', prs: [752], description: 'Added heroku.logplex.user_agent attribute' }],
   },
   'heroku.router.at': {
     brief: 'Log level reported by the Heroku router',
@@ -40317,8 +40245,6 @@ export type Attributes = {
   [HEROKU_ERROR_CODE]?: HEROKU_ERROR_CODE_TYPE;
   [HEROKU_ERROR_DESCRIPTION]?: HEROKU_ERROR_DESCRIPTION_TYPE;
   [HEROKU_LOGPLEX_DRAIN_TOKEN]?: HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE;
-  [HEROKU_LOGPLEX_FRAME_ID]?: HEROKU_LOGPLEX_FRAME_ID_TYPE;
-  [HEROKU_LOGPLEX_USER_AGENT]?: HEROKU_LOGPLEX_USER_AGENT_TYPE;
   [HEROKU_ROUTER_AT]?: HEROKU_ROUTER_AT_TYPE;
   [HEROKU_ROUTER_BYTES]?: HEROKU_ROUTER_BYTES_TYPE;
   [HEROKU_ROUTER_CONNECT]?: HEROKU_ROUTER_CONNECT_TYPE;
