@@ -179,6 +179,9 @@ pub const DB: &str = "db";
 
 pub const DB_QUERY: &str = "db.query";
 
+#[deprecated(note = "Use `DB_QUERY` (db.query) instead - Provider-specific Redis ops are replaced by framework-agnostic ones.")]
+pub const DB_REDIS: &str = "db.redis";
+
 pub const CACHE: &str = "cache";
 
 pub const CACHE_GET: &str = "cache.get";
@@ -205,6 +208,12 @@ pub const FUNCTION_AZURE: &str = "function.azure";
 // Description: Operations related to Generative AI interactions
 /// A chat interaction with a generative AI model
 pub const GEN_AI_CHAT: &str = "gen_ai.chat";
+
+#[deprecated(note = "Use `GEN_AI_CHAT` (gen_ai.chat) instead - Provider-specific AI ops are replaced by framework-agnostic ones.")]
+pub const AI_CHAT_COMPLETIONS_CREATE_COHERE: &str = "ai.chat_completions.create.cohere";
+
+#[deprecated(note = "Use `GEN_AI_EMBEDDINGS` (gen_ai.embeddings) instead - Provider-specific AI ops are replaced by framework-agnostic ones.")]
+pub const AI_EMBEDDINGS_CREATE_COHERE: &str = "ai.embeddings.create.cohere";
 
 /// Execution of a tool or function by a generative AI model
 pub const GEN_AI_EXECUTE_TOOL: &str = "gen_ai.execute_tool";
@@ -420,10 +429,43 @@ pub const SUBPROCESS: &str = "subprocess";
 
 pub const MIDDLEWARE: &str = "middleware";
 
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_DJANGO: &str = "middleware.django";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_LITESTAR: &str = "middleware.litestar";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_LITESTAR_RECEIVE: &str = "middleware.litestar.receive";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_LITESTAR_SEND: &str = "middleware.litestar.send";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLETTE: &str = "middleware.starlette";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLETTE_RECEIVE: &str = "middleware.starlette.receive";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLETTE_SEND: &str = "middleware.starlette.send";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLITE: &str = "middleware.starlite";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLITE_RECEIVE: &str = "middleware.starlite.receive";
+
+#[deprecated(note = "Use `MIDDLEWARE` (middleware) instead - Framework-specific middleware ops are replaced by framework-agnostic ones.")]
+pub const MIDDLEWARE_STARLITE_SEND: &str = "middleware.starlite.send";
+
 /// Handling of an incoming request by a web server route handler
 pub const HANDLER: &str = "handler";
 
 pub const VIEW: &str = "view";
+
+#[deprecated(note = "Use `VIEW` (view) instead")]
+pub const VIEW_AUTHENTICATE: &str = "view.authenticate";
 
 /// Rendering of a view.
 pub const VIEW_RENDER: &str = "view.render";
