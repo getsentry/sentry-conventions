@@ -3,12 +3,16 @@
   "brief": "The JSON-serialized value of the `ItemCollectionMetrics` response field.",
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "auto"
   },
   "is_in_otel": true,
   "example": "{ \"string\" : [ { \"ItemCollectionKey\": { \"string\" : { \"B\": blob, \"BOOL\": boolean, \"BS\": [ blob ], \"L\": [ \"AttributeValue\" ], \"M\": { \"string\" : \"AttributeValue\" }, \"N\": \"string\", \"NS\": [ \"string\" ], \"NULL\": boolean, \"S\": \"string\", \"SS\": [ \"string\" ] } }, \"SizeEstimateRangeGB\": [ number ] } ] }",
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Changed apply_scrubbing from manual to auto"
+    },
     {
       "version": "0.16.0",
       "prs": [479],

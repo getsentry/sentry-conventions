@@ -1774,7 +1774,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The JSON-serialized value of the `ItemCollectionMetrics` response field.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "{ \"string\" : [ { \"ItemCollectionKey\": { \"string\" : { \"B\": blob, \"BOOL\": boolean, \"BS\": [ blob ], \"L\": [ \"AttributeValue\" ], \"M\": { \"string\" : \"AttributeValue\" }, \"N\": \"string\", \"NS\": [ \"string\" ], \"NULL\": boolean, \"S\": \"string\", \"SS\": [ \"string\" ] } }, \"SizeEstimateRangeGB\": [ number ] } ] }"
@@ -14604,11 +14604,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The JSON-serialized value of the `ItemCollectionMetrics` response field.",
         type=AttributeType.STRING,
         keys=("aws.dynamodb.item_collection_metrics",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[479],

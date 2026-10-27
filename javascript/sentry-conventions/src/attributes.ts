@@ -2365,7 +2365,7 @@ export type AWS_DYNAMODB_INDEX_NAME_TYPE = string;
  *
  * Attribute Value Type: `string` {@link AWS_DYNAMODB_ITEM_COLLECTION_METRICS_TYPE}
  *
- * Apply Scrubbing: manual
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -24987,13 +24987,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     type: 'string',
     keys: ['aws.dynamodb.item_collection_metrics'],
     applyScrubbing: {
-      key: 'manual',
+      key: 'auto',
     },
     isInOtel: true,
     visibility: 'public',
     example:
       '{ "string" : [ { "ItemCollectionKey": { "string" : { "B": blob, "BOOL": boolean, "BS": [ blob ], "L": [ "AttributeValue" ], "M": { "string" : "AttributeValue" }, "N": "string", "NS": [ "string" ], "NULL": boolean, "S": "string", "SS": [ "string" ] } }, "SizeEstimateRangeGB": [ number ] } ] }',
-    changelog: [{ version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.item_collection_metrics attribute' }],
+    changelog: [
+      { version: 'next', description: 'Changed apply_scrubbing from manual to auto' },
+      { version: '0.16.0', prs: [479], description: 'Added aws.dynamodb.item_collection_metrics attribute' },
+    ],
   },
   'aws.dynamodb.limit': {
     brief: 'The value of the `Limit` request parameter.',
