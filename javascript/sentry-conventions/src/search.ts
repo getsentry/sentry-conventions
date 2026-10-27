@@ -3774,9 +3774,9 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
- * Search name for {@link attributes.PAGE_SERVER_RENDERING}. `page.server_rendering`
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING_TYPE}. `page.server_rendering.type`
  */
-export const SEARCH_PAGE__SERVER_RENDERING = 'page.server_rendering';
+export const SEARCH_PAGE__SERVER_RENDERING__TYPE = 'page.server_rendering.type';
 
 /**
  * Search name for {@link attributes.PARAMS_KEY}. `params.<key>`
@@ -5967,7 +5967,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
-  | typeof SEARCH_PAGE__SERVER_RENDERING
+  | typeof SEARCH_PAGE__SERVER_RENDERING__TYPE
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
   | typeof SEARCH_PERFORMANCE__TIMEORIGIN
@@ -10640,12 +10640,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
   },
-  'page.server_rendering': {
-    canonicalName: 'page.server_rendering',
+  'page.server_rendering.type': {
+    canonicalName: 'page.server_rendering.type',
     type: 'string',
     brief:
       'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
-    deprecationChain: ['page.server_rendering'],
+    deprecationChain: ['page.server_rendering.type'],
   },
   'params.<key>': {
     canonicalName: 'params.<key>',

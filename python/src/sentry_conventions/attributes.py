@@ -8789,8 +8789,10 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "resource not found"
     """
 
-    # Path: model/attributes/page/page__server_rendering.json
-    PAGE_SERVER_RENDERING: Literal["page.server_rendering"] = "page.server_rendering"
+    # Path: model/attributes/page/page__server_rendering__type.json
+    PAGE_SERVER_RENDERING_TYPE: Literal["page.server_rendering.type"] = (
+        "page.server_rendering.type"
+    )
     """Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.
 
     Type: str
@@ -24937,10 +24939,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
-    "page.server_rendering": AttributeMetadata(
+    "page.server_rendering.type": AttributeMetadata(
         brief="Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.",
         type=AttributeType.STRING,
-        keys=("page.server_rendering",),
+        keys=("page.server_rendering.type",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -24950,13 +24952,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="next",
                 prs=[740],
-                description="Added page.server_rendering attribute",
+                description="Added page.server_rendering.type attribute",
             ),
         ],
         additional_context=[
             "Set only by an SDK that controls the server render, and only when the SDK knows the value.",
-            "Not set when the server sent a page without content that the browser renders (client-side rendering), or when the SDK does not know.",
-            "With `static` and `partially_static`, the server spans that rendered the reused part are in a different trace, not in the trace of the pageload span.",
+            "More values can be added later.",
+            "Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.",
+            "With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.",
             "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
         ],
     ),
@@ -30264,7 +30267,7 @@ Attributes = TypedDict(
         "otel.scope.version": str,
         "otel.status_code": str,
         "otel.status_description": str,
-        "page.server_rendering": str,
+        "page.server_rendering.type": str,
         "params.<key>": str,
         "performance.activationStart": float,
         "performance.timeOrigin": float,

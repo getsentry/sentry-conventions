@@ -14729,12 +14729,12 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 
-// Path: model/attributes/page/page__server_rendering.json
+// Path: model/attributes/page/page__server_rendering__type.json
 
 /**
- * Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both. `page.server_rendering`
+ * Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both. `page.server_rendering.type`
  *
- * Attribute Value Type: `string` {@link PAGE_SERVER_RENDERING_TYPE}
+ * Attribute Value Type: `string` {@link PAGE_SERVER_RENDERING_TYPE_TYPE}
  *
  * Apply Scrubbing: manual
  *
@@ -14750,12 +14750,12 @@ export type OTEL_STATUS_DESCRIPTION_TYPE = string;
  * @example "partially_static"
  * @example "dynamic"
  */
-export const PAGE_SERVER_RENDERING = 'page.server_rendering';
+export const PAGE_SERVER_RENDERING_TYPE = 'page.server_rendering.type';
 
 /**
- * Type for {@link PAGE_SERVER_RENDERING} page.server_rendering
+ * Type for {@link PAGE_SERVER_RENDERING_TYPE} page.server_rendering.type
  */
-export type PAGE_SERVER_RENDERING_TYPE = string;
+export type PAGE_SERVER_RENDERING_TYPE_TYPE = string;
 
 // Path: model/attributes/params/params__[key].json
 
@@ -21305,7 +21305,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'otel.scope.version': 'string',
   'otel.status_code': 'string',
   'otel.status_description': 'string',
-  'page.server_rendering': 'string',
+  'page.server_rendering.type': 'string',
   'params.<key>': 'string',
   'performance.activationStart': 'double',
   'performance.timeOrigin': 'double',
@@ -22223,7 +22223,7 @@ export type AttributeName =
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
-  | typeof PAGE_SERVER_RENDERING
+  | typeof PAGE_SERVER_RENDERING_TYPE
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
   | typeof PERFORMANCE_TIMEORIGIN
@@ -33500,11 +33500,11 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'resource not found',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
-  'page.server_rendering': {
+  'page.server_rendering.type': {
     brief:
       'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
     type: 'string',
-    keys: ['page.server_rendering'],
+    keys: ['page.server_rendering.type'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -33512,11 +33512,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'static',
     examples: ['static', 'partially_static', 'dynamic'],
-    changelog: [{ version: 'next', prs: [740], description: 'Added page.server_rendering attribute' }],
+    changelog: [{ version: 'next', prs: [740], description: 'Added page.server_rendering.type attribute' }],
     additionalContext: [
       'Set only by an SDK that controls the server render, and only when the SDK knows the value.',
-      'Not set when the server sent a page without content that the browser renders (client-side rendering), or when the SDK does not know.',
-      'With `static` and `partially_static`, the server spans that rendered the reused part are in a different trace, not in the trace of the pageload span.',
+      'More values can be added later.',
+      'Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.',
+      'With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.',
       "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
     ],
   },
@@ -38301,7 +38302,7 @@ export type Attributes = {
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
-  [PAGE_SERVER_RENDERING]?: PAGE_SERVER_RENDERING_TYPE;
+  [PAGE_SERVER_RENDERING_TYPE]?: PAGE_SERVER_RENDERING_TYPE_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
   [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
