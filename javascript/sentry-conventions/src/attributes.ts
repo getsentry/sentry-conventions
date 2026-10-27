@@ -7146,7 +7146,7 @@ export type FAAS_DOCUMENT_COLLECTION_TYPE = string;
  *
  * Attribute Value Type: `string` {@link FAAS_DOCUMENT_NAME_TYPE}
  *
- * Apply Scrubbing: auto - Object keys and file names can contain user identifiers, emails, or user-provided file names.
+ * Apply Scrubbing: auto
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
@@ -28371,7 +28371,6 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     keys: ['faas.document.name'],
     applyScrubbing: {
       key: 'auto',
-      reason: 'Object keys and file names can contain user identifiers, emails, or user-provided file names.',
     },
     isInOtel: true,
     visibility: 'public',

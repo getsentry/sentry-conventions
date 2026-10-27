@@ -4477,7 +4477,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.
 
     Type: str
-    Apply Scrubbing: auto - Object keys and file names can contain user identifiers, emails, or user-provided file names.
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "myFile.txt"
@@ -18590,10 +18590,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.",
         type=AttributeType.STRING,
         keys=("faas.document.name",),
-        apply_scrubbing=ApplyScrubbingInfo(
-            key=ApplyScrubbing.AUTO,
-            reason="Object keys and file names can contain user identifiers, emails, or user-provided file names.",
-        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="myFile.txt",
