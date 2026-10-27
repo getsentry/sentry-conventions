@@ -1817,6 +1817,26 @@ export const SEARCH_FAAS__COLDSTART = 'faas.coldstart';
 export const SEARCH_FAAS__CRON = 'faas.cron';
 
 /**
+ * Search name for {@link attributes.FAAS_DOCUMENT_COLLECTION}. `faas.document.collection`
+ */
+export const SEARCH_FAAS__DOCUMENT__COLLECTION = 'faas.document.collection';
+
+/**
+ * Search name for {@link attributes.FAAS_DOCUMENT_NAME}. `faas.document.name`
+ */
+export const SEARCH_FAAS__DOCUMENT__NAME = 'faas.document.name';
+
+/**
+ * Search name for {@link attributes.FAAS_DOCUMENT_OPERATION}. `faas.document.operation`
+ */
+export const SEARCH_FAAS__DOCUMENT__OPERATION = 'faas.document.operation';
+
+/**
+ * Search name for {@link attributes.FAAS_DOCUMENT_TIME}. `faas.document.time`
+ */
+export const SEARCH_FAAS__DOCUMENT__TIME = 'faas.document.time';
+
+/**
  * Search name for {@link attributes.FAAS_DURATION_IN_MS}. `faas.duration_in_ms`
  */
 export const SEARCH_FAAS__DURATION_IN_MS = 'faas.duration_in_ms';
@@ -5785,6 +5805,10 @@ export type AttributeSearchName =
   | typeof SEARCH_EXCEPTION__TYPE
   | typeof SEARCH_FAAS__COLDSTART
   | typeof SEARCH_FAAS__CRON
+  | typeof SEARCH_FAAS__DOCUMENT__COLLECTION
+  | typeof SEARCH_FAAS__DOCUMENT__NAME
+  | typeof SEARCH_FAAS__DOCUMENT__OPERATION
+  | typeof SEARCH_FAAS__DOCUMENT__TIME
   | typeof SEARCH_FAAS__DURATION_IN_MS
   | typeof SEARCH_FAAS__ENTRY_POINT
   | typeof SEARCH_FAAS__EXECUTION
@@ -8526,6 +8550,32 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'A string containing the schedule period as Cron Expression.',
     deprecationChain: ['faas.cron'],
+  },
+  'faas.document.collection': {
+    canonicalName: 'faas.document.collection',
+    type: 'string',
+    brief:
+      'The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.',
+    deprecationChain: ['faas.document.collection'],
+  },
+  'faas.document.name': {
+    canonicalName: 'faas.document.name',
+    type: 'string',
+    brief:
+      'The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.',
+    deprecationChain: ['faas.document.name'],
+  },
+  'faas.document.operation': {
+    canonicalName: 'faas.document.operation',
+    type: 'string',
+    brief: 'Describes the type of the operation that was performed on the data.',
+    deprecationChain: ['faas.document.operation'],
+  },
+  'faas.document.time': {
+    canonicalName: 'faas.document.time',
+    type: 'string',
+    brief: 'A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.',
+    deprecationChain: ['faas.document.time'],
   },
   'faas.duration_in_ms': {
     canonicalName: 'faas.duration_in_ms',
