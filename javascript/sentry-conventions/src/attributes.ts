@@ -18703,6 +18703,55 @@ export const SENTRY_USER_GEO_SUBDIVISION = 'sentry.user.geo.subdivision';
  */
 export type SENTRY_USER_GEO_SUBDIVISION_TYPE = string;
 
+// Path: model/attributes/sentry/sentry__user__geo__subregion.json
+
+/**
+ * UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions. `sentry.user.geo.subregion`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_USER_GEO_SUBREGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `5` - South America
+ * - `11` - Western Africa
+ * - `13` - Central America
+ * - `14` - Eastern Africa
+ * - `15` - Northern Africa
+ * - `17` - Middle Africa
+ * - `18` - Southern Africa
+ * - `21` - Northern America
+ * - `29` - Caribbean
+ * - `30` - Eastern Asia
+ * - `34` - Southern Asia
+ * - `35` - South-Eastern Asia
+ * - `39` - Southern Europe
+ * - `53` - Australia and New Zealand
+ * - `54` - Melanesia
+ * - `57` - Micronesia
+ * - `61` - Polynesia
+ * - `143` - Central Asia
+ * - `145` - Western Asia
+ * - `151` - Eastern Europe
+ * - `154` - Northern Europe
+ * - `155` - Western Europe
+ *
+ * Aliases: {@link USER_GEO_SUBREGION} `user.geo.subregion`
+ *
+ * @deprecated Use {@link USER_GEO_SUBREGION} (user.geo.subregion) instead
+ * @example "155"
+ * @example "21"
+ */
+export const SENTRY_USER_GEO_SUBREGION = 'sentry.user.geo.subregion';
+
+/**
+ * Type for {@link SENTRY_USER_GEO_SUBREGION} sentry.user.geo.subregion
+ */
+export type SENTRY_USER_GEO_SUBREGION_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__user__id.json
 
 /**
@@ -20414,6 +20463,54 @@ export const USER_GEO_SUBDIVISION = 'user.geo.subdivision';
  * Type for {@link USER_GEO_SUBDIVISION} user.geo.subdivision
  */
 export type USER_GEO_SUBDIVISION_TYPE = string;
+
+// Path: model/attributes/user/user__geo__subregion.json
+
+/**
+ * UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions. `user.geo.subregion`
+ *
+ * Attribute Value Type: `string` {@link USER_GEO_SUBREGION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `5` - South America
+ * - `11` - Western Africa
+ * - `13` - Central America
+ * - `14` - Eastern Africa
+ * - `15` - Northern Africa
+ * - `17` - Middle Africa
+ * - `18` - Southern Africa
+ * - `21` - Northern America
+ * - `29` - Caribbean
+ * - `30` - Eastern Asia
+ * - `34` - Southern Asia
+ * - `35` - South-Eastern Asia
+ * - `39` - Southern Europe
+ * - `53` - Australia and New Zealand
+ * - `54` - Melanesia
+ * - `57` - Micronesia
+ * - `61` - Polynesia
+ * - `143` - Central Asia
+ * - `145` - Western Asia
+ * - `151` - Eastern Europe
+ * - `154` - Northern Europe
+ * - `155` - Western Europe
+ *
+ * Aliases: {@link SENTRY_USER_GEO_SUBREGION} `sentry.user.geo.subregion`
+ *
+ * @example "155"
+ * @example "21"
+ */
+export const USER_GEO_SUBREGION = 'user.geo.subregion';
+
+/**
+ * Type for {@link USER_GEO_SUBREGION} user.geo.subregion
+ */
+export type USER_GEO_SUBREGION_TYPE = string;
 
 // Path: model/attributes/user/user__hash.json
 
@@ -22239,6 +22336,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.user.geo.country_code': 'string',
   'sentry.user.geo.region': 'string',
   'sentry.user.geo.subdivision': 'string',
+  'sentry.user.geo.subregion': 'string',
   'sentry.user.id': 'string',
   'sentry.user.ip': 'string',
   'sentry.user.username': 'string',
@@ -22314,6 +22412,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'user.geo.country_code': 'string',
   'user.geo.region': 'string',
   'user.geo.subdivision': 'string',
+  'user.geo.subregion': 'string',
   'user.hash': 'string',
   'user.id': 'string',
   'user.ip_address': 'string',
@@ -23192,6 +23291,7 @@ export type AttributeName =
   | typeof SENTRY_USER_GEO_COUNTRY_CODE
   | typeof SENTRY_USER_GEO_REGION
   | typeof SENTRY_USER_GEO_SUBDIVISION
+  | typeof SENTRY_USER_GEO_SUBREGION
   | typeof SENTRY_USER_ID
   | typeof SENTRY_USER_IP
   | typeof SENTRY_USER_USERNAME
@@ -23267,6 +23367,7 @@ export type AttributeName =
   | typeof USER_GEO_COUNTRY_CODE
   | typeof USER_GEO_REGION
   | typeof USER_GEO_SUBDIVISION
+  | typeof USER_GEO_SUBREGION
   | typeof USER_HASH
   | typeof USER_ID
   | typeof USER_IP_ADDRESS
@@ -37181,6 +37282,28 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       name: 'user.geo.subdivision',
     },
   },
+  'sentry.user.geo.subregion': {
+    brief:
+      "UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+    type: 'string',
+    keys: ['user.geo.subregion', 'sentry.user.geo.subregion'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '155',
+    examples: ['155', '21'],
+    deprecation: {
+      replacement: 'user.geo.subregion',
+      status: 'backfill',
+    },
+    aliases: ['user.geo.subregion'],
+    changelog: [{ version: 'next', prs: [753], description: 'Added sentry.user.geo.subregion attribute' }],
+    searchAlias: {
+      name: 'user.geo.subregion',
+    },
+  },
   'sentry.user.id': {
     brief: 'Unique identifier of the user.',
     type: 'string',
@@ -38550,6 +38673,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['sentry.user.geo.subdivision'],
     changelog: [{ version: '0.0.0' }],
   },
+  'user.geo.subregion': {
+    brief:
+      "UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+    type: 'string',
+    keys: ['user.geo.subregion', 'sentry.user.geo.subregion'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '155',
+    examples: ['155', '21'],
+    aliases: ['sentry.user.geo.subregion'],
+    changelog: [{ version: 'next', prs: [753], description: 'Added user.geo.subregion attribute' }],
+  },
   'user.hash': {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
     type: 'string',
@@ -39917,6 +40055,7 @@ export type Attributes = {
   [SENTRY_USER_GEO_COUNTRY_CODE]?: SENTRY_USER_GEO_COUNTRY_CODE_TYPE;
   [SENTRY_USER_GEO_REGION]?: SENTRY_USER_GEO_REGION_TYPE;
   [SENTRY_USER_GEO_SUBDIVISION]?: SENTRY_USER_GEO_SUBDIVISION_TYPE;
+  [SENTRY_USER_GEO_SUBREGION]?: SENTRY_USER_GEO_SUBREGION_TYPE;
   [SENTRY_USER_ID]?: SENTRY_USER_ID_TYPE;
   [SENTRY_USER_IP]?: SENTRY_USER_IP_TYPE;
   [SENTRY_USER_USERNAME]?: SENTRY_USER_USERNAME_TYPE;
@@ -39992,6 +40131,7 @@ export type Attributes = {
   [USER_GEO_COUNTRY_CODE]?: USER_GEO_COUNTRY_CODE_TYPE;
   [USER_GEO_REGION]?: USER_GEO_REGION_TYPE;
   [USER_GEO_SUBDIVISION]?: USER_GEO_SUBDIVISION_TYPE;
+  [USER_GEO_SUBREGION]?: USER_GEO_SUBREGION_TYPE;
   [USER_HASH]?: USER_HASH_TYPE;
   [USER_ID]?: USER_ID_TYPE;
   [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
