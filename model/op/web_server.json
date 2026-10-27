@@ -112,6 +112,12 @@
       "name": "view"
     },
     {
+      "name": "view.authenticate",
+      "deprecation": {
+        "replacement": "view"
+      }
+    },
+    {
       "name": "view.render",
       "description": "Rendering of a view."
     },

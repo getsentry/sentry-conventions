@@ -464,6 +464,9 @@ pub const HANDLER: &str = "handler";
 
 pub const VIEW: &str = "view";
 
+#[deprecated(note = "Use `VIEW` (view) instead")]
+pub const VIEW_AUTHENTICATE: &str = "view.authenticate";
+
 /// Rendering of a view.
 pub const VIEW_RENDER: &str = "view.render";
 

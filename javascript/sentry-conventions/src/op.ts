@@ -722,6 +722,11 @@ export const HANDLER = 'handler';
 export const VIEW = 'view';
 
 /**
+ * @deprecated Use {@link VIEW} (view) instead
+ */
+export const VIEW_AUTHENTICATE = 'view.authenticate';
+
+/**
  * Rendering of a view.
  */
 export const VIEW_RENDER = 'view.render';
