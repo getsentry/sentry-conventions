@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.job.scheduler.id",
+  "brief": "The ID of the BullMQ job scheduler that adds the job.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["daily-report"],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.job.scheduler.id` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [690],
+      "description": "Added messaging.bullmq.job.scheduler.id attribute"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hapi.plugin.name",
+  "brief": "The name of the Hapi plugin that registered the route.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["hapi-swagger"],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [741],
+      "description": "Added hapi.plugin.name attribute"
+    }
+  ]
+}

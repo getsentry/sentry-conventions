@@ -49,6 +49,10 @@
       "description": "Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model"
     },
     {
+      "name": "gen_ai.extract",
+      "description": "Extraction of a set of typed fields (e.g., text, date, number, list, or estimate) from a shared state by a generative AI model"
+    },
+    {
       "name": "gen_ai.evaluate",
       "description": "Evaluation of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model",
       "deprecation": {
@@ -61,7 +65,11 @@
     },
     {
       "name": "gen_ai.responses",
-      "description": "An interaction with a generative AI model through a responses API"
+      "description": "An interaction with a generative AI model through a responses API",
+      "deprecation": {
+        "replacement": "gen_ai.chat",
+        "note": "responses is not a well-defined value for gen_ai.operation.name"
+      }
     },
     {
       "name": "gen_ai.text_completion",

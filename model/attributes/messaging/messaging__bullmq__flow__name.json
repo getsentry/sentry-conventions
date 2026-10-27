@@ -1,0 +1,21 @@
+{
+  "key": "messaging.bullmq.flow.name",
+  "brief": "The name of the root job of the BullMQ flow that FlowProducer.add() adds.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["build-report"],
+  "additional_context": [
+    "The Sentry SDK sets this attribute from the `bullmq.flow.name` attribute of BullMQ's telemetry interface."
+  ],
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [690],
+      "description": "Added messaging.bullmq.flow.name attribute"
+    }
+  ]
+}

@@ -1,15 +1,25 @@
 {
   "key": "aws.s3.delete",
-  "brief": "The delete request container that specifies the objects to be deleted.",
+  "brief": "The JSON-serialized value of Delete request field, which specifies the objects to be deleted.",
   "additional_context": ["Applicable only to the delete-objects operation, corresponding to its Delete parameter."],
   "type": "string",
   "apply_scrubbing": {
-    "key": "manual"
+    "key": "auto"
   },
   "is_in_otel": true,
   "visibility": "public",
-  "examples": ["Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"],
+  "examples": ["{\"Objects\":[{\"Key\":\"someFile.yml\",\"VersionId\":\"3HL4kqtJlcpXroDTDmJ\"}],\"Quiet\":false}"],
   "changelog": [
+    {
+      "version": "0.29.0",
+      "prs": [711],
+      "description": "Changed the value to a JSON-serialized field, with an example"
+    },
+    {
+      "version": "0.28.0",
+      "prs": [713],
+      "description": "Changed apply_scrubbing from manual to auto"
+    },
     {
       "version": "0.27.0",
       "prs": [672],

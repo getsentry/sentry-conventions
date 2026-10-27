@@ -406,6 +406,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
+        "SERVER_EXT_TYPE",
         "SERVER_NAME",
         "STALL_PERCENTAGE",
         "STALL_TOTAL_TIME",
@@ -533,7 +534,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the function that was called. This is deprecated for OpenAI, and replaced by tool_calls
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.name, mcp.tool.name
@@ -648,7 +649,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the preamble parameter. Preambles are a part of the prompt used to adjust the model's overall behavior and conversation style.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.system_instructions
@@ -924,7 +925,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Raw text inputs provided to the model.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.input.messages, ai.prompt.messages, gen_ai.prompt, ai.prompt
@@ -963,7 +964,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """For an AI model call, the tool calls that were made.
 
     Type: List[str]
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.output.messages instead
@@ -2070,6 +2071,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5000
     """
 
+    # Path: model/attributes/aws/aws__lambda__resource_mapping__id.json
+    AWS_LAMBDA_RESOURCE_MAPPING_ID: Literal["aws.lambda.resource_mapping.id"] = (
+        "aws.lambda.resource_mapping.id"
+    )
+    """The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "587ad24b-03b9-4413-8202-bbd56b36e5b7"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__target_function__name.json
+    AWS_LAMBDA_TARGET_FUNCTION_NAME: Literal["aws.lambda.target_function.name"] = (
+        "aws.lambda.target_function.name"
+    )
+    """The name of the AWS Lambda function that an AWS SDK call acts on.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "billing"
+    """
+
     # Path: model/attributes/aws/aws__log__group__names.json
     AWS_LOG_GROUP_NAMES: Literal["aws.log.group.names"] = "aws.log.group.names"
     """The name(s) of the AWS log group(s) an application is writing to.
@@ -2174,7 +2201,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The source object (in the form bucket/key) for the copy operation.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "someFile.yml"
@@ -2182,13 +2209,13 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/aws/aws__s3__delete.json
     AWS_S3_DELETE: Literal["aws.s3.delete"] = "aws.s3.delete"
-    """The delete request container that specifies the objects to be deleted.
+    """The JSON-serialized value of Delete request field, which specifies the objects to be deleted.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
-    Example: "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+    Example: "{\"Objects\":[{\"Key\":\"someFile.yml\",\"VersionId\":\"3HL4kqtJlcpXroDTDmJ\"}],\"Quiet\":false}"
     """
 
     # Path: model/attributes/aws/aws__s3__key.json
@@ -2196,7 +2223,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: auto
     Defined in OTEL: Yes
     Visibility: public
     Example: "someFile.yml"
@@ -2237,6 +2264,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:secretsmanager:us-east-1:123456789012:secret:SecretName-6RandomCharacters"
     """
 
+    # Path: model/attributes/aws/aws__secretsmanager__secret__name.json
+    AWS_SECRETSMANAGER_SECRET_NAME: Literal["aws.secretsmanager.secret.name"] = (
+        "aws.secretsmanager.secret.name"
+    )
+    """The name of the secret stored in AWS Secrets Manager.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "db-password"
+    Example: "prod/billing/api-key"
+    """
+
     # Path: model/attributes/aws/aws__sns__topic__arn.json
     AWS_SNS_TOPIC_ARN: Literal["aws.sns.topic.arn"] = "aws.sns.topic.arn"
     """The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.
@@ -2272,6 +2313,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "arn:aws:states:us-east-1:123456789012:activity:get-greeting"
     """
 
+    # Path: model/attributes/aws/aws__step_functions__activity__name.json
+    AWS_STEP_FUNCTIONS_ACTIVITY_NAME: Literal["aws.step_functions.activity.name"] = (
+        "aws.step_functions.activity.name"
+    )
+    """The name of the AWS Step Functions activity.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "resize-image"
+    """
+
     # Path: model/attributes/aws/aws__step_functions__execution__arn.json
     AWS_STEP_FUNCTIONS_EXECUTION_ARN: Literal["aws.step_functions.execution.arn"] = (
         "aws.step_functions.execution.arn"
@@ -2296,6 +2350,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:1"
+    """
+
+    # Path: model/attributes/aws/aws__step_functions__state_machine__name.json
+    AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME: Literal[
+        "aws.step_functions.state_machine.name"
+    ] = "aws.step_functions.state_machine.name"
+    """The name of the AWS Step Functions state machine.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "orders"
     """
 
     # Path: model/attributes/aws_region.json
@@ -2590,6 +2657,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 477.1926
     """
 
+    # Path: model/attributes/browser/browser__web_vital__inp__input_delay.json
+    BROWSER_WEB_VITAL_INP_INPUT_DELAY: Literal["browser.web_vital.inp.input_delay"] = (
+        "browser.web_vital.inp.input_delay"
+    )
+    """The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 120
+    """
+
     # Path: model/attributes/browser/browser__web_vital__inp__interaction_type.json
     BROWSER_WEB_VITAL_INP_INTERACTION_TYPE: Literal[
         "browser.web_vital.inp.interaction_type"
@@ -2604,6 +2684,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "hover"
     Example: "drag"
     Example: "press"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__presentation_delay.json
+    BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY: Literal[
+        "browser.web_vital.inp.presentation_delay"
+    ] = "browser.web_vital.inp.presentation_delay"
+    """The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 100
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__inp__processing_duration.json
+    BROWSER_WEB_VITAL_INP_PROCESSING_DURATION: Literal[
+        "browser.web_vital.inp.processing_duration"
+    ] = "browser.web_vital.inp.processing_duration"
+    """The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 140
     """
 
     # Path: model/attributes/browser/browser__web_vital__inp__target.json
@@ -2646,6 +2752,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: lcp.element
     Example: "body > div#app > div#container > div"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__element_render_delay.json
+    BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY: Literal[
+        "browser.web_vital.lcp.element_render_delay"
+    ] = "browser.web_vital.lcp.element_render_delay"
+    """The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 410
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__id.json
@@ -2702,6 +2821,32 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     DEPRECATED: No replacement at this time - The JavaScript SDK stopped setting this in v11. With per-navigation web vitals, web-vitals decides when the LCP value is final, so there is no report event to record. No replacement.
     Example: "pagehide"
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__resource_load_delay.json
+    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY: Literal[
+        "browser.web_vital.lcp.resource_load_delay"
+    ] = "browser.web_vital.lcp.resource_load_delay"
+    """The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 320.5
+    """
+
+    # Path: model/attributes/browser/browser__web_vital__lcp__resource_load_duration.json
+    BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION: Literal[
+        "browser.web_vital.lcp.resource_load_duration"
+    ] = "browser.web_vital.lcp.resource_load_duration"
+    """The time it took to load the LCP resource, in milliseconds
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 780.2
     """
 
     # Path: model/attributes/browser/browser__web_vital__lcp__size.json
@@ -2846,7 +2991,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/cache/cache__ttl.json
     CACHE_TTL: Literal["cache.ttl"] = "cache.ttl"
-    """The ttl (maximum lifetime) of the cache in seconds
+    """The TTL (maximum lifetime) of the cache entry in seconds
 
     Type: int
     Apply Scrubbing: manual
@@ -3420,6 +3565,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: db.mongodb.collection
     Example: "users"
+    Example: ",customers,orders,"
     """
 
     # Path: model/attributes/db/db__connection_string.json
@@ -4205,7 +4351,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry environment.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.environment
@@ -4904,7 +5050,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.
+    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.
 
     Type: str
     Apply Scrubbing: manual
@@ -4912,6 +5058,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: ai.texts, ai.prompt.messages, gen_ai.prompt, ai.prompt
     Example: "[{\"role\": \"user\", \"parts\": [{\"type\": \"text\", \"content\": \"Weather in Paris?\"}]}, {\"role\": \"assistant\", \"parts\": [{\"type\": \"tool_call\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}]}, {\"role\": \"tool\", \"parts\": [{\"type\": \"tool_call_response\", \"id\": \"call_VSPygqKTWdrhaFErNvMV18Yl\", \"result\": \"rainy, 57°F\"}]}]"
+    Example: "[{\"state\": \"I cannot log in, and I also want a refund for last month.\", \"questions\": {\"authIssue\": {\"type\": \"noul\", \"instructions\": \"Is there a login problem?\"}, \"department\": {\"type\": \"choice\", \"instructions\": \"Which team should handle this?\", \"criteria\": {\"billing\": \"Charges and refunds\", \"technical\": \"Bugs and outages\"}}}}]"
+    Example: "[{\"state\": \"Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. 4 pallets at $250.00 each, shipping $80.00. Contact: Dana Ruiz, Priya Shah.\", \"fields\": {\"invoice_number\": {\"type\": \"text\"}, \"due_date\": {\"type\": \"date\", \"instructions\": \"Issue date plus the net payment days\"}, \"total\": {\"type\": \"number\", \"decimals\": 2, \"unit\": \"USD\", \"instructions\": \"Amount due including shipping\"}, \"contacts\": {\"type\": \"list\", \"items\": \"text\"}, \"po_number\": {\"type\": \"text\", \"instructions\": \"Purchase order number\"}, \"days_to_pay\": {\"type\": \"estimate\", \"min\": 0, \"max\": 120, \"step\": 1, \"instructions\": \"Days after issue until this invoice is paid\"}}}]"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__memory__query__text.json
@@ -4997,6 +5145,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     - `embeddings`
     - `evaluate`
     - `execute_tool`
+    - `extract`
     - `generate_content`
     - `invoke_agent`
     - `search_memory`
@@ -5026,7 +5175,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__output__messages.json
     GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
-    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.
+    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.
 
     Type: str
     Apply Scrubbing: manual
@@ -5034,6 +5183,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: ai.response.toolCalls, ai.response.text
     Example: "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
+    Example: "[{\"answers\": {\"authIssue\": {\"type\": \"noul\", \"noul\": 0.98}, \"department\": {\"type\": \"choice\", \"choice\": \"billing\", \"confidence\": 0.28, \"probabilities\": {\"billing\": 0.64, \"technical\": 0.36}}}}]"
+    Example: "[{\"answers\": {\"invoice_number\": {\"type\": \"text\", \"p_null\": 3.8e-10, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 1, \"value\": \"INV-2291\"}, \"due_date\": {\"type\": \"date\", \"p_null\": 1.9e-08, \"guess\": \"2026-10-02\", \"confidence\": 0.9999, \"value\": \"2026-10-02\"}, \"total\": {\"type\": \"number\", \"p_null\": 2.3e-08, \"guess\": 1080, \"confidence\": 0.9999, \"value\": 1080}, \"contacts\": {\"type\": \"list\", \"value\": [\"Dana Ruiz\", \"Priya Shah\"], \"spans\": [[120, 129], [131, 141]], \"confidence\": 0.9999}, \"po_number\": {\"type\": \"text\", \"p_null\": 1, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 0.9995, \"value\": null}, \"days_to_pay\": {\"type\": \"estimate\", \"value\": 30, \"mean\": 29.535, \"median\": 30, \"p10\": 21, \"p90\": 38, \"p_below\": 5.9e-06, \"p_above\": 1.2e-05}}, \"truncated\": false}]"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__pipeline__name.json
@@ -5436,7 +5587,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The system instructions passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     DEPRECATED: Use gen_ai.system_instructions instead
@@ -5485,6 +5636,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "rainy, 57°F"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__tool__call__result__size.json
+    GEN_AI_TOOL_CALL_RESULT_SIZE: Literal["gen_ai.tool.call.result.size"] = (
+        "gen_ai.tool.call.result.size"
+    )
+    """The UTF-8 byte length of the serialized tool call result, measured before truncation.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 1024
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
     GEN_AI_TOOL_DEFINITIONS: Literal["gen_ai.tool.definitions"] = (
         "gen_ai.tool.definitions"
@@ -5530,7 +5695,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The response from a tool or function call passed to the model.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.output, mcp.tool.result.content, ai.toolCall.result, anthropic.tool_result.content
@@ -5997,6 +6162,43 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 5000
     """
 
+    # Path: model/attributes/hapi/hapi__ext__type.json
+    HAPI_EXT_TYPE: Literal["hapi.ext.type"] = "hapi.ext.type"
+    """The request lifecycle extension point where the Hapi extension function runs.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: server.ext.type
+    Example: "onRequest"
+    Example: "onPreResponse"
+    """
+
+    # Path: model/attributes/hapi/hapi__plugin__name.json
+    HAPI_PLUGIN_NAME: Literal["hapi.plugin.name"] = "hapi.plugin.name"
+    """The name of the Hapi plugin that registered the route.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "hapi-swagger"
+    """
+
+    # Path: model/attributes/hapi/hapi__type.json
+    HAPI_TYPE: Literal["hapi.type"] = "hapi.type"
+    """The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "router"
+    Example: "plugin"
+    Example: "server.ext"
+    """
+
     # Path: model/attributes/hardwareConcurrency.json
     HARDWARECONCURRENCY: Literal["hardwareConcurrency"] = "hardwareConcurrency"
     """The number of logical CPU cores available.
@@ -6186,6 +6388,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: 1732829555.322
+    """
+
+    # Path: model/attributes/http/http__request__duration.json
+    HTTP_REQUEST_DURATION: Literal["http.request.duration"] = "http.request.duration"
+    """The duration of a HTTP request, in milliseconds.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
     """
 
     # Path: model/attributes/http/http__request__fetch_start.json
@@ -7537,7 +7750,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The content of the tool result.
 
     Type: str
-    Apply Scrubbing: auto - Tool results can contain user data
+    Apply Scrubbing: manual - Tool results can contain user data
     Defined in OTEL: No
     Visibility: public
     Aliases: gen_ai.tool.call.result, gen_ai.tool.message, gen_ai.tool.output, ai.toolCall.result, anthropic.tool_result.content
@@ -7705,6 +7918,336 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: 10
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__flow__name.json
+    MESSAGING_BULLMQ_FLOW_NAME: Literal["messaging.bullmq.flow.name"] = (
+        "messaging.bullmq.flow.name"
+    )
+    """The name of the root job of the BullMQ flow that FlowProducer.add() adds.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "build-report"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__attempt_finished_timestamp.json
+    MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP: Literal[
+        "messaging.bullmq.job.attempt_finished_timestamp"
+    ] = "messaging.bullmq.job.attempt_finished_timestamp"
+    """The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1791184722406
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__bulk__names.json
+    MESSAGING_BULLMQ_JOB_BULK_NAMES: Literal["messaging.bullmq.job.bulk.names"] = (
+        "messaging.bullmq.job.bulk.names"
+    )
+    """The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["send-welcome-email","generate-report"]
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__deduplication__key.json
+    MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY: Literal[
+        "messaging.bullmq.job.deduplication.key"
+    ] = "messaging.bullmq.job.deduplication.key"
+    """The deduplication ID that Queue.removeDeduplicationKey() removes.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "user-42-sync"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__ids.json
+    MESSAGING_BULLMQ_JOB_IDS: Literal["messaging.bullmq.job.ids"] = (
+        "messaging.bullmq.job.ids"
+    )
+    """The IDs of the BullMQ jobs that Queue.clean() removed.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["1","2","3"]
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__key.json
+    MESSAGING_BULLMQ_JOB_KEY: Literal["messaging.bullmq.job.key"] = (
+        "messaging.bullmq.job.key"
+    )
+    """The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "user-42-sync"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__name.json
+    MESSAGING_BULLMQ_JOB_NAME: Literal["messaging.bullmq.job.name"] = (
+        "messaging.bullmq.job.name"
+    )
+    """The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "send-welcome-email"
+    Example: "generate-report"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__processed_timestamp.json
+    MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP: Literal[
+        "messaging.bullmq.job.processed_timestamp"
+    ] = "messaging.bullmq.job.processed_timestamp"
+    """The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1791184722281
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__scheduler__id.json
+    MESSAGING_BULLMQ_JOB_SCHEDULER_ID: Literal["messaging.bullmq.job.scheduler.id"] = (
+        "messaging.bullmq.job.scheduler.id"
+    )
+    """The ID of the BullMQ job scheduler that adds the job.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "daily-report"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__state.json
+    MESSAGING_BULLMQ_JOB_STATE: Literal["messaging.bullmq.job.state"] = (
+        "messaging.bullmq.job.state"
+    )
+    """The state of the BullMQ job that a job metric counts.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "completed"
+    Example: "failed"
+    Example: "delayed"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__job__type.json
+    MESSAGING_BULLMQ_JOB_TYPE: Literal["messaging.bullmq.job.type"] = (
+        "messaging.bullmq.job.type"
+    )
+    """The job state from which Queue.clean() removes BullMQ jobs.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "completed"
+    Example: "failed"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__clean__count.json
+    MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT: Literal[
+        "messaging.bullmq.queue.clean.count"
+    ] = "messaging.bullmq.queue.clean.count"
+    """The number of BullMQ jobs that Queue.clean() removed.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 25
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__clean__limit.json
+    MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT: Literal[
+        "messaging.bullmq.queue.clean.limit"
+    ] = "messaging.bullmq.queue.clean.limit"
+    """The maximum number of BullMQ jobs that Queue.clean() removes.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 1000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__drain__delay.json
+    MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY: Literal[
+        "messaging.bullmq.queue.drain.delay"
+    ] = "messaging.bullmq.queue.drain.delay"
+    """Whether Queue.drain() also removes the delayed BullMQ jobs.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: true
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__event__max_length.json
+    MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH: Literal[
+        "messaging.bullmq.queue.event.max_length"
+    ] = "messaging.bullmq.queue.event.max_length"
+    """The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 10000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__grace.json
+    MESSAGING_BULLMQ_QUEUE_GRACE: Literal["messaging.bullmq.queue.grace"] = (
+        "messaging.bullmq.queue.grace"
+    )
+    """The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 60000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__jobs__state.json
+    MESSAGING_BULLMQ_QUEUE_JOBS_STATE: Literal["messaging.bullmq.queue.jobs.state"] = (
+        "messaging.bullmq.queue.jobs.state"
+    )
+    """The BullMQ job state that the queue job count metric counts.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "waiting"
+    Example: "active"
+    Example: "completed"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__queue__rate_limit.json
+    MESSAGING_BULLMQ_QUEUE_RATE_LIMIT: Literal["messaging.bullmq.queue.rate_limit"] = (
+        "messaging.bullmq.queue.rate_limit"
+    )
+    """The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__do_not_wait_active.json
+    MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE: Literal[
+        "messaging.bullmq.worker.do_not_wait_active"
+    ] = "messaging.bullmq.worker.do_not_wait_active"
+    """Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: false
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__force_close.json
+    MESSAGING_BULLMQ_WORKER_FORCE_CLOSE: Literal[
+        "messaging.bullmq.worker.force_close"
+    ] = "messaging.bullmq.worker.force_close"
+    """Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: false
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__jobs_to_extend_locks.json
+    MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS: Literal[
+        "messaging.bullmq.worker.jobs_to_extend_locks"
+    ] = "messaging.bullmq.worker.jobs_to_extend_locks"
+    """The IDs of the BullMQ jobs whose locks the Worker extends.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["1","2"]
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__name.json
+    MESSAGING_BULLMQ_WORKER_NAME: Literal["messaging.bullmq.worker.name"] = (
+        "messaging.bullmq.worker.name"
+    )
+    """The name that the user gives to the BullMQ Worker in its options.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "email-worker"
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__rate_limit.json
+    MESSAGING_BULLMQ_WORKER_RATE_LIMIT: Literal[
+        "messaging.bullmq.worker.rate_limit"
+    ] = "messaging.bullmq.worker.rate_limit"
+    """The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 5000
+    """
+
+    # Path: model/attributes/messaging/messaging__bullmq__worker__stalled_jobs.json
+    MESSAGING_BULLMQ_WORKER_STALLED_JOBS: Literal[
+        "messaging.bullmq.worker.stalled_jobs"
+    ] = "messaging.bullmq.worker.stalled_jobs"
+    """The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.
+
+    Type: List[str]
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: ["1","2"]
+    """
+
+    # Path: model/attributes/messaging/messaging__client__id.json
+    MESSAGING_CLIENT_ID: Literal["messaging.client.id"] = "messaging.client.id"
+    """A unique identifier for the client that consumes or produces a message.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "client-5"
+    Example: "myhost@8742@s8083jm"
     """
 
     # Path: model/attributes/messaging/messaging__conversation_id.json
@@ -8228,7 +8771,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, server_name
@@ -9130,7 +9673,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -9144,7 +9687,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The software deployment environment name.
 
     Type: str
-    Apply Scrubbing: manual
+    Apply Scrubbing: never
     Defined in OTEL: Yes
     Visibility: public
     DEPRECATED: Use sentry.environment instead
@@ -9240,6 +9783,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: aws.operation_name
     Example: "com.example.ExampleService/exampleMethod"
+    Example: "GetObject"
     """
 
     # Path: model/attributes/rpc/rpc__response__status_code.json
@@ -9265,6 +9809,8 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "myService.BestService"
+    Example: "S3"
+    Example: "APIGateway"
     """
 
     # Path: model/attributes/rpc/rpc__system.json
@@ -9470,6 +10016,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     - `measure`
     - `middleware`
     - `navigation`
+    - `object`
     - `pageload`
     - `queue`
     - `resource`
@@ -9828,9 +10375,15 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Well-defined Values:
+    - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
+    - `cache_origin` - The linked span wrote the cached value that this span reads.
+    - `message_origin` - The linked span published the queue message that this span processes.
+    - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
     Example: "previous_trace"
-    Example: "next_trace"
     Example: "cache_origin"
+    Example: "message_origin"
+    Example: "server_request"
     """
 
     # Path: model/attributes/sentry/sentry__main_thread.json
@@ -10412,7 +10965,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The sentry transaction (segment name).
 
     Type: str
-    Apply Scrubbing: never
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: sentry.segment.name, transaction
@@ -10532,6 +11085,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "example.com"
     """
 
+    # Path: model/attributes/server/server__ext__type.json
+    SERVER_EXT_TYPE: Literal["server.ext.type"] = "server.ext.type"
+    """The request lifecycle extension point where the Hapi extension function runs.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: hapi.ext.type
+    DEPRECATED: Use hapi.ext.type instead - Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace.
+    Example: "onRequest"
+    Example: "onPreResponse"
+    """
+
     # Path: model/attributes/server/server__port.json
     SERVER_PORT: Literal["server.port"] = "server.port"
     """Server port number.
@@ -10549,7 +11116,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     """The name of the device. On servers and desktops, this is typically the hostname.
 
     Type: str
-    Apply Scrubbing: auto
+    Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: address, server.address, http.server_name, net.host.name, http.host, net.peer.name
@@ -12038,7 +12605,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.function_call",
             "mcp.tool.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="function_name",
@@ -12230,7 +12797,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are now a clown.",
@@ -12701,7 +13268,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.texts",
             "gen_ai.prompt",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["Hello, how are you?", "What is the capital of France?"],
@@ -12789,7 +13356,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.responses",
             "ai.tool_calls",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=["tool_call_1", "tool_call_2"],
@@ -14221,10 +14788,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["Users", "Cats"],
         changelog=[
             ChangelogEntry(
+                version="0.29.0",
+                prs=[717],
+                description="Added additional context on sorting the names",
+            ),
+            ChangelogEntry(
                 version="0.16.0",
                 prs=[479],
                 description="Added aws.dynamodb.table_names attribute",
             ),
+        ],
+        additional_context=[
+            "List each table name once, sorted alphabetically, so the same call gets the same value and span description (`DynamoDB.BatchGetItem Cat, Users`), whatever the order of the tables in the request."
         ],
     ),
     "aws.dynamodb.total_segments": AttributeMetadata(
@@ -14482,6 +15057,43 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.lambda.resource_mapping.id": AttributeMetadata(
+        brief="The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.resource_mapping.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="587ad24b-03b9-4413-8202-bbd56b36e5b7",
+        examples=["587ad24b-03b9-4413-8202-bbd56b36e5b7"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[710],
+                description="Added aws.lambda.resource_mapping.id attribute",
+            ),
+        ],
+    ),
+    "aws.lambda.target_function.name": AttributeMetadata(
+        brief="The name of the AWS Lambda function that an AWS SDK call acts on.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.target_function.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="billing",
+        examples=["billing"],
+        changelog=[
+            ChangelogEntry(
+                version="0.29.0",
+                prs=[716],
+                description="Added aws.lambda.target_function.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in."
+        ],
+    ),
     "aws.log.group.names": AttributeMetadata(
         brief="The name(s) of the AWS log group(s) an application is writing to.",
         type=AttributeType.STRING_ARRAY,
@@ -14653,12 +15265,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The source object (in the form bucket/key) for the copy operation.",
         type=AttributeType.STRING,
         keys=("aws.s3.copy_source",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="someFile.yml",
         examples=["someFile.yml"],
         changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[713],
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0",
                 prs=[672],
@@ -14670,17 +15287,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "aws.s3.delete": AttributeMetadata(
-        brief="The delete request container that specifies the objects to be deleted.",
+        brief="The JSON-serialized value of Delete request field, which specifies the objects to be deleted.",
         type=AttributeType.STRING,
         keys=("aws.s3.delete",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean",
+        example='{"Objects":[{"Key":"someFile.yml","VersionId":"3HL4kqtJlcpXroDTDmJ"}],"Quiet":false}',
         examples=[
-            "Objects=[{Key=string,VersionId=string},{Key=string,VersionId=string}],Quiet=boolean"
+            '{"Objects":[{"Key":"someFile.yml","VersionId":"3HL4kqtJlcpXroDTDmJ"}],"Quiet":false}'
         ],
         changelog=[
+            ChangelogEntry(
+                version="0.29.0",
+                prs=[711],
+                description="Changed the value to a JSON-serialized field, with an example",
+            ),
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[713],
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.delete attribute"
             ),
@@ -14693,12 +15320,17 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="The S3 object key the request refers to. Corresponds to the --key parameter of the S3 API operations.",
         type=AttributeType.STRING,
         keys=("aws.s3.key",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="someFile.yml",
         examples=["someFile.yml"],
         changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[713],
+                description="Changed apply_scrubbing from manual to auto",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[672], description="Added aws.s3.key attribute"
             ),
@@ -14757,6 +15389,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.secretsmanager.secret.name": AttributeMetadata(
+        brief="The name of the secret stored in AWS Secrets Manager.",
+        type=AttributeType.STRING,
+        keys=("aws.secretsmanager.secret.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="db-password",
+        examples=["db-password", "prod/billing/api-key"],
+        changelog=[
+            ChangelogEntry(
+                version="0.29.0",
+                prs=[716],
+                description="Added aws.secretsmanager.secret.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Without the hyphen and six random characters that Secrets Manager appends to the name in the secret's ARN (`db-password`, not `db-password-AbCdEf`)."
+        ],
+    ),
     "aws.sns.topic.arn": AttributeMetadata(
         brief="The ARN of the AWS SNS Topic. An Amazon SNS topic is a logical access point that acts as a communication channel.",
         type=AttributeType.STRING,
@@ -14806,6 +15458,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.step_functions.activity.name": AttributeMetadata(
+        brief="The name of the AWS Step Functions activity.",
+        type=AttributeType.STRING,
+        keys=("aws.step_functions.activity.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="resize-image",
+        examples=["resize-image"],
+        changelog=[
+            ChangelogEntry(
+                version="0.29.0",
+                prs=[716],
+                description="Added aws.step_functions.activity.name attribute",
+            ),
+        ],
+        additional_context=[
+            "The last part of the activity ARN (`arn:aws:states:us-east-1:123456789012:activity:resize-image`)."
+        ],
+    ),
     "aws.step_functions.execution.arn": AttributeMetadata(
         brief="The ARN of the AWS Step Functions Execution.",
         type=AttributeType.STRING,
@@ -14839,6 +15511,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[480],
                 description="Added aws.step_functions.state_machine.arn attribute",
             ),
+        ],
+    ),
+    "aws.step_functions.state_machine.name": AttributeMetadata(
+        brief="The name of the AWS Step Functions state machine.",
+        type=AttributeType.STRING,
+        keys=("aws.step_functions.state_machine.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="orders",
+        examples=["orders"],
+        changelog=[
+            ChangelogEntry(
+                version="0.29.0",
+                prs=[716],
+                description="Added aws.step_functions.state_machine.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Contains no version or alias qualifier (`orders`, not `orders:1` or `orders:prod`)."
         ],
     ),
     "aws_region": AttributeMetadata(
@@ -15249,6 +15941,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.5.0", prs=[235]),
         ],
     ),
+    "browser.web_vital.inp.input_delay": AttributeMetadata(
+        brief="The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.input_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=120,
+        examples=[120],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[712],
+                description="Added browser.web_vital.inp.input_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`: input delay, processing duration and presentation delay. Named after `inputDelay` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `processingStart` minus `startTime`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
+        ],
+    ),
     "browser.web_vital.inp.interaction_type": AttributeMetadata(
         brief="The kind of user interaction INP was reported on",
         type=AttributeType.STRING,
@@ -15269,6 +15983,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "One of `click`, `hover`, `drag` or `press`, derived from the DOM event name of the Event Timing entry: pointer, mouse and touch events map to `click`, `mouseover` and similar to `hover`, drag and drop events to `drag`, and keyboard and `input` events to `press`. The same value forms the suffix of the span's `ui.interaction.*` op.",
             "Not to be confused with the `interactionType` of the web-vitals attribution build, which only distinguishes `pointer` and `keyboard`.",
             "Omitted when INP is reported without an interaction to attribute it to, see `browser.web_vital.inp.target`. The op of such a span still falls into `ui.interaction.click` so that it stays within the interaction span family, which makes this attribute, not the op, the way to tell a real click from a value with no interaction.",
+        ],
+    ),
+    "browser.web_vital.inp.presentation_delay": AttributeMetadata(
+        brief="The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.presentation_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        examples=[100],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[712],
+                description="Added browser.web_vital.inp.presentation_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `presentationDelay` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `startTime` plus `duration` minus `processingEnd`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
+        ],
+    ),
+    "browser.web_vital.inp.processing_duration": AttributeMetadata(
+        brief="The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.inp.processing_duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=140,
+        examples=[140],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[712],
+                description="Added browser.web_vital.inp.processing_duration attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the three INP subparts, which add up to `browser.web_vital.inp.value`. Named after `processingDuration` in the web-vitals attribution build.",
+            "Measured from the interaction's `PerformanceEventTiming` entry as `processingEnd` minus `processingStart`.",
+            "Omitted when INP is reported without an interaction to attribute it to, like `browser.web_vital.inp.target`.",
         ],
     ),
     "browser.web_vital.inp.target": AttributeMetadata(
@@ -15326,6 +16084,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["lcp.element"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[233]),
+        ],
+    ),
+    "browser.web_vital.lcp.element_render_delay": AttributeMetadata(
+        brief="The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.element_render_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=410,
+        examples=[410],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[712],
+                description="Added browser.web_vital.lcp.element_render_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `elementRenderDelay` in the web-vitals attribution build.",
+            "Measured as the LCP value minus the LCP resource's `responseEnd`. When the LCP element is text, it covers all time after TTFB.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
         ],
     ),
     "browser.web_vital.lcp.id": AttributeMetadata(
@@ -15398,6 +16178,50 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[319],
                 description="Added browser.web_vital.lcp.report_event attribute",
             ),
+        ],
+    ),
+    "browser.web_vital.lcp.resource_load_delay": AttributeMetadata(
+        brief="The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.resource_load_delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=320.5,
+        examples=[320.5],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[712],
+                description="Added browser.web_vital.lcp.resource_load_delay attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`: TTFB (`browser.web_vital.ttfb.value`), resource load delay, resource load duration and element render delay. Named after `resourceLoadDelay` in the web-vitals attribution build.",
+            "Measured as the LCP resource's `requestStart` (or `startTime` when `requestStart` is not exposed) minus TTFB. It is 0 when the LCP element is text, since no resource is loaded.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
+        ],
+    ),
+    "browser.web_vital.lcp.resource_load_duration": AttributeMetadata(
+        brief="The time it took to load the LCP resource, in milliseconds",
+        type=AttributeType.DOUBLE,
+        keys=("browser.web_vital.lcp.resource_load_duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=780.2,
+        examples=[780.2],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[712],
+                description="Added browser.web_vital.lcp.resource_load_duration attribute",
+            ),
+        ],
+        additional_context=[
+            "One of the four LCP subparts, which add up to `browser.web_vital.lcp.value`. Named after `resourceLoadDuration` in the web-vitals attribution build.",
+            "Measured as the LCP resource's `responseEnd` minus its `requestStart` (or `startTime` when `requestStart` is not exposed). It is 0 when the LCP element is text, since no resource is loaded.",
+            "For a prerendered page, timestamps are measured from `activationStart`.",
         ],
     ),
     "browser.web_vital.lcp.size": AttributeMetadata(
@@ -15584,7 +16408,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "cache.ttl": AttributeMetadata(
-        brief="The ttl (maximum lifetime) of the cache in seconds",
+        brief="The TTL (maximum lifetime) of the cache entry in seconds",
         type=AttributeType.INTEGER,
         keys=("cache.ttl",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -15594,6 +16418,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.4.0", prs=[228]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "Counted from the write. On a read, the value is the full TTL, not the time that remains.",
+            "A value of 0 means the entry expires immediately, as with HTTP `max-age=0`. Round a fractional TTL up, so 0.3 seconds becomes 1, not 0.",
+            "Omit the attribute when the entry never expires, the TTL is unknown, or each read restarts the TTL.",
         ],
     ),
     "cache.write": AttributeMetadata(
@@ -16386,8 +17215,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="users",
+        examples=["users", ",customers,orders,"],
         aliases=["db.mongodb.collection"],
         changelog=[
+            ChangelogEntry(
+                version="0.29.0",
+                prs=[711],
+                description="Add comma-wrapped format for calls on more than one collection",
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[483],
@@ -16395,6 +17230,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.1.0", prs=[106, 127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "For a call on more than one collection: the unique names, sorted and wrapped in commas (`,customers,orders,`), so each name matches `,<name>,`."
         ],
     ),
     "db.connection_string": AttributeMetadata(
@@ -17552,7 +18390,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -18592,7 +19430,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -18606,8 +19444,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+        examples=[
+            '[{"role": "user", "parts": [{"type": "text", "content": "Weather in Paris?"}]}, {"role": "assistant", "parts": [{"type": "tool_call", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "name": "get_weather", "arguments": {"location": "Paris"}}]}, {"role": "tool", "parts": [{"type": "tool_call_response", "id": "call_VSPygqKTWdrhaFErNvMV18Yl", "result": "rainy, 57°F"}]}]',
+            '[{"state": "I cannot log in, and I also want a refund for last month.", "questions": {"authIssue": {"type": "noul", "instructions": "Is there a login problem?"}, "department": {"type": "choice", "instructions": "Which team should handle this?", "criteria": {"billing": "Charges and refunds", "technical": "Bugs and outages"}}}}]',
+            '[{"state": "Invoice INV-2291 from Northwind Supply, issued 2026-09-02, net 30. 4 pallets at $250.00 each, shipping $80.00. Contact: Dana Ruiz, Priya Shah.", "fields": {"invoice_number": {"type": "text"}, "due_date": {"type": "date", "instructions": "Issue date plus the net payment days"}, "total": {"type": "number", "decimals": 2, "unit": "USD", "instructions": "Amount due including shipping"}, "contacts": {"type": "list", "items": "text"}, "po_number": {"type": "text", "instructions": "Purchase order number"}, "days_to_pay": {"type": "estimate", "min": 0, "max": 120, "step": 1, "instructions": "Days after issue until this invoice is paid"}}}]',
+        ],
         aliases=["ai.texts", "ai.prompt.messages", "gen_ai.prompt", "ai.prompt"],
         changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[728],
+                description="Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context",
+            ),
             ChangelogEntry(
                 version="0.26.0",
                 prs=[650],
@@ -18618,6 +19466,10 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
+        additional_context=[
+            'For `gen_ai.decide` operations, the array holds one object `{state: ..., questions: {...}}`. `state` is the evaluated state. `questions` holds the questions keyed by name, as the caller passed them. Replace binary data in `state`, including `data:` URLs, with the string `"[Blob substitute]"`. The second example shows this shape.',
+            'For `gen_ai.extract` operations, the array holds one object `{state?: string, fields: {<name>: <field spec>}, images?: string[], reference_date?: string, options?: {...}}`. This object is the request body as the caller passed it, without `model`. Do not change the values, and leave out the keys that the caller did not set. Do not record the image data. Replace each image with the string `"[Blob substitute]"`. `state` is the text that the model reads. `fields` holds the field specs keyed by field name. Set the model in `gen_ai.request.model`. The third example shows this shape.',
         ],
     ),
     "gen_ai.memory.query.text": AttributeMetadata(
@@ -18717,6 +19569,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="chat",
         changelog=[
             ChangelogEntry(
+                version="0.28.0",
+                prs=[728],
+                description="Added 'extract' to the well-known values",
+            ),
+            ChangelogEntry(
                 version="0.27.0",
                 prs=[653, 680],
                 description="Added memory operation values, 'evaluate', and 'decide' to the well-known values; deprecated 'evaluate' in favor of 'decide'",
@@ -18742,7 +19599,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.output.messages": AttributeMetadata(
-        brief='The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
+        brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.output.messages",
@@ -18755,14 +19612,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example='[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+        examples=[
+            '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+            '[{"answers": {"authIssue": {"type": "noul", "noul": 0.98}, "department": {"type": "choice", "choice": "billing", "confidence": 0.28, "probabilities": {"billing": 0.64, "technical": 0.36}}}}]',
+            '[{"answers": {"invoice_number": {"type": "text", "p_null": 3.8e-10, "span": [8, 16], "guess": "INV-2291", "confidence": 1, "value": "INV-2291"}, "due_date": {"type": "date", "p_null": 1.9e-08, "guess": "2026-10-02", "confidence": 0.9999, "value": "2026-10-02"}, "total": {"type": "number", "p_null": 2.3e-08, "guess": 1080, "confidence": 0.9999, "value": 1080}, "contacts": {"type": "list", "value": ["Dana Ruiz", "Priya Shah"], "spans": [[120, 129], [131, 141]], "confidence": 0.9999}, "po_number": {"type": "text", "p_null": 1, "span": [8, 16], "guess": "INV-2291", "confidence": 0.9995, "value": null}, "days_to_pay": {"type": "estimate", "value": 30, "mean": 29.535, "median": 30, "p10": 21, "p90": 38, "p_below": 5.9e-06, "p_above": 1.2e-05}}, "truncated": false}]',
+        ],
         aliases=["ai.response.toolCalls", "ai.response.text"],
         changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[728],
+                description="Describe the extraction message shape for gen_ai.extract and move operation-specific shapes to additional context",
+            ),
             ChangelogEntry(
                 version="0.26.0",
                 prs=[650],
                 description="Describe the evaluation message shape for gen_ai.evaluate",
             ),
             ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
+        additional_context=[
+            "For `gen_ai.decide` operations, the array holds one object `{answers: {...}}`. `answers` holds the answers keyed by question name, as the provider returned them. The second example shows this shape.",
+            "For `gen_ai.extract` operations, the array holds one object `{answers: {<name>: <answer>}, truncated: boolean, state_text?: string}`. This object is the response body as the provider returned it, without `model` and `usage`. Do not change the values. `answers` holds one answer for each field in the input, keyed by field name. A field that the model cannot determine has a `value` of `null`. `span` and `spans` are `[start, end]` character offsets into `state` (or into `state_text`, if the provider returns it), and `end` is exclusive. Set the model in `gen_ai.response.model` and the token counts in `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. The third example shows this shape.",
         ],
     ),
     "gen_ai.pipeline.name": AttributeMetadata(
@@ -19365,7 +20236,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "ai.preamble",
             "gen_ai.system.message",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="You are a helpful assistant",
@@ -19440,6 +20311,28 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
     ),
+    "gen_ai.tool.call.result.size": AttributeMetadata(
+        brief="The UTF-8 byte length of the serialized tool call result, measured before truncation.",
+        type=AttributeType.INTEGER,
+        keys=("gen_ai.tool.call.result.size",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 1024],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[679],
+                description="Added gen_ai.tool.call.result.size attribute",
+            ),
+        ],
+        additional_context=[
+            "The value is a non-negative byte count, not a token count, character count, or in-memory object size. It excludes span and envelope overhead.",
+            "Use 0 for an empty string result. Omit this attribute when the tool result is unavailable; do not treat missing output as zero.",
+        ],
+        search_alias=SearchAlias(name="gen_ai.tool.call.result.size", type="byte"),
+    ),
     "gen_ai.tool.definitions": AttributeMetadata(
         brief="The list of source system tool definitions available to the GenAI agent or model.",
         type=AttributeType.STRING,
@@ -19507,7 +20400,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "gen_ai.tool.output",
             "mcp.tool.result.content",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="rainy, 57°F",
@@ -20320,6 +21213,57 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "hapi.ext.type": AttributeMetadata(
+        brief="The request lifecycle extension point where the Hapi extension function runs.",
+        type=AttributeType.STRING,
+        keys=(
+            "hapi.ext.type",
+            "server.ext.type",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="onRequest",
+        examples=["onRequest", "onPreResponse"],
+        aliases=["server.ext.type"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0", prs=[741], description="Added hapi.ext.type attribute"
+            ),
+        ],
+    ),
+    "hapi.plugin.name": AttributeMetadata(
+        brief="The name of the Hapi plugin that registered the route.",
+        type=AttributeType.STRING,
+        keys=("hapi.plugin.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="hapi-swagger",
+        examples=["hapi-swagger"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[741],
+                description="Added hapi.plugin.name attribute",
+            ),
+        ],
+    ),
+    "hapi.type": AttributeMetadata(
+        brief="The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.",
+        type=AttributeType.STRING,
+        keys=("hapi.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="router",
+        examples=["router", "plugin", "server.ext"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0", prs=[741], description="Added hapi.type attribute"
+            ),
+        ],
+    ),
     "hardwareConcurrency": AttributeMetadata(
         brief="The number of logical CPU cores available.",
         type=AttributeType.STRING,
@@ -20633,6 +21577,24 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[134]),
             ChangelogEntry(version="0.0.0"),
         ],
+    ),
+    "http.request.duration": AttributeMetadata(
+        brief="The duration of a HTTP request, in milliseconds.",
+        type=AttributeType.INTEGER,
+        keys=("http.request.duration",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        examples=[5000],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[697],
+                description="Added http.request.duration attribute",
+            ),
+        ],
+        additional_context=["This attribute is set by Relay."],
     ),
     "http.request.fetch_start": AttributeMetadata(
         brief="The UNIX timestamp representing the time immediately before the browser starts to fetch the resource.",
@@ -22690,7 +23652,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "mcp.tool.result.content",
         ),
         apply_scrubbing=ApplyScrubbingInfo(
-            key=ApplyScrubbing.AUTO, reason="Tool results can contain user data"
+            key=ApplyScrubbing.MANUAL, reason="Tool results can contain user data"
         ),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
@@ -23005,6 +23967,510 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[341],
                 description="Added messaging.batch.message_count attribute",
             ),
+        ],
+    ),
+    "messaging.bullmq.flow.name": AttributeMetadata(
+        brief="The name of the root job of the BullMQ flow that FlowProducer.add() adds.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.flow.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="build-report",
+        examples=["build-report"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.flow.name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.flow.name` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.attempt_finished_timestamp": AttributeMetadata(
+        brief="The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.job.attempt_finished_timestamp",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1791184722406,
+        examples=[1791184722406],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.attempt_finished_timestamp attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.attempt_finished_timestamp` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.bulk.names": AttributeMetadata(
+        brief="The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().",
+        type=AttributeType.STRING_ARRAY,
+        keys=("messaging.bullmq.job.bulk.names",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["send-welcome-email", "generate-report"],
+        examples=[["send-welcome-email", "generate-report"]],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.bulk.names attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.bulk.names` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.deduplication.key": AttributeMetadata(
+        brief="The deduplication ID that Queue.removeDeduplicationKey() removes.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.deduplication.key",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user-42-sync",
+        examples=["user-42-sync"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.deduplication.key attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.deduplication.key` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.ids": AttributeMetadata(
+        brief="The IDs of the BullMQ jobs that Queue.clean() removed.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("messaging.bullmq.job.ids",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["1", "2", "3"],
+        examples=[["1", "2", "3"]],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.ids attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.ids` attribute of BullMQ's telemetry interface.",
+            "BullMQ 5.79.1 sets this attribute. BullMQ 6.3.11 does not.",
+        ],
+    ),
+    "messaging.bullmq.job.key": AttributeMetadata(
+        brief="The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.key",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="user-42-sync",
+        examples=["user-42-sync"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.key attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.key` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.name": AttributeMetadata(
+        brief="The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="send-welcome-email",
+        examples=["send-welcome-email", "generate-report"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.name` attribute of BullMQ's telemetry interface.",
+            "Also set on the BullMQ job metrics.",
+        ],
+    ),
+    "messaging.bullmq.job.processed_timestamp": AttributeMetadata(
+        brief="The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.job.processed_timestamp",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1791184722281,
+        examples=[1791184722281],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.processed_timestamp attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.processed.timestamp` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.scheduler.id": AttributeMetadata(
+        brief="The ID of the BullMQ job scheduler that adds the job.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.scheduler.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="daily-report",
+        examples=["daily-report"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.scheduler.id attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.scheduler.id` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.job.state": AttributeMetadata(
+        brief="The state of the BullMQ job that a job metric counts.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.state",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="completed",
+        examples=["completed", "failed", "delayed"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.state attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.state` attribute of BullMQ's telemetry interface. BullMQ before 5.81.2 sets `bullmq.job.status` instead, and the SDK then uses that value."
+        ],
+    ),
+    "messaging.bullmq.job.type": AttributeMetadata(
+        brief="The job state from which Queue.clean() removes BullMQ jobs.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.job.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="completed",
+        examples=["completed", "failed"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.job.type attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.job.type` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.clean.count": AttributeMetadata(
+        brief="The number of BullMQ jobs that Queue.clean() removed.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.clean.count",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=25,
+        examples=[25],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.queue.clean.count attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.clean.count` attribute of BullMQ's telemetry interface.",
+            "BullMQ 6.3.11 sets this attribute. BullMQ 5.79.1 does not.",
+        ],
+    ),
+    "messaging.bullmq.queue.clean.limit": AttributeMetadata(
+        brief="The maximum number of BullMQ jobs that Queue.clean() removes.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.clean.limit",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1000,
+        examples=[1000],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.queue.clean.limit attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.clean.limit` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.drain.delay": AttributeMetadata(
+        brief="Whether Queue.drain() also removes the delayed BullMQ jobs.",
+        type=AttributeType.BOOLEAN,
+        keys=("messaging.bullmq.queue.drain.delay",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        examples=[True],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.queue.drain.delay attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.drain.delay` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.event.max_length": AttributeMetadata(
+        brief="The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.event.max_length",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=10000,
+        examples=[10000],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.queue.event.max_length attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.event.max.length` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.grace": AttributeMetadata(
+        brief="The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.grace",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=60000,
+        examples=[60000],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.queue.grace attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.grace` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.queue.jobs.state": AttributeMetadata(
+        brief="The BullMQ job state that the queue job count metric counts.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.queue.jobs.state",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="waiting",
+        examples=["waiting", "active", "completed"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.queue.jobs.state attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.jobs.state` attribute of BullMQ's telemetry interface.",
+            "Set on the BullMQ queue job count metric.",
+        ],
+    ),
+    "messaging.bullmq.queue.rate_limit": AttributeMetadata(
+        brief="The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.queue.rate_limit",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        examples=[5000],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.queue.rate_limit attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.queue.rate.limit` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.do_not_wait_active": AttributeMetadata(
+        brief="Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.",
+        type=AttributeType.BOOLEAN,
+        keys=("messaging.bullmq.worker.do_not_wait_active",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        examples=[False],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.worker.do_not_wait_active attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.do.not.wait.active` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.force_close": AttributeMetadata(
+        brief="Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.",
+        type=AttributeType.BOOLEAN,
+        keys=("messaging.bullmq.worker.force_close",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        examples=[False],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.worker.force_close attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.force.close` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.jobs_to_extend_locks": AttributeMetadata(
+        brief="The IDs of the BullMQ jobs whose locks the Worker extends.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("messaging.bullmq.worker.jobs_to_extend_locks",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["1", "2"],
+        examples=[["1", "2"]],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.worker.jobs_to_extend_locks attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.jobs.to.extend.locks` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.name": AttributeMetadata(
+        brief="The name that the user gives to the BullMQ Worker in its options.",
+        type=AttributeType.STRING,
+        keys=("messaging.bullmq.worker.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="email-worker",
+        examples=["email-worker"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.worker.name attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.name` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.rate_limit": AttributeMetadata(
+        brief="The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.",
+        type=AttributeType.INTEGER,
+        keys=("messaging.bullmq.worker.rate_limit",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=5000,
+        examples=[5000],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.worker.rate_limit attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.rate.limit` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.bullmq.worker.stalled_jobs": AttributeMetadata(
+        brief="The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.",
+        type=AttributeType.STRING_ARRAY,
+        keys=("messaging.bullmq.worker.stalled_jobs",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=["1", "2"],
+        examples=[["1", "2"]],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.bullmq.worker.stalled_jobs attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute from the `bullmq.worker.stalled.jobs` attribute of BullMQ's telemetry interface."
+        ],
+    ),
+    "messaging.client.id": AttributeMetadata(
+        brief="A unique identifier for the client that consumes or produces a message.",
+        type=AttributeType.STRING,
+        keys=("messaging.client.id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="client-5",
+        examples=["client-5", "myhost@8742@s8083jm"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[690],
+                description="Added messaging.client.id attribute",
+            ),
+        ],
+        additional_context=[
+            "The Sentry SDK sets this attribute on BullMQ spans from the `bullmq.worker.id` attribute of BullMQ's telemetry interface, which is the ID of the Worker."
         ],
     ),
     "messaging.conversation_id": AttributeMetadata(
@@ -23878,7 +25344,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         brief="Server domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
         keys=("net.peer.name",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -25277,7 +26743,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -25297,7 +26763,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "resource.deployment.environment",
             "resource.deployment.environment.name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="production",
@@ -25432,8 +26898,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="com.example.ExampleService/exampleMethod",
+        examples=["com.example.ExampleService/exampleMethod", "GetObject"],
         aliases=["aws.operation_name"],
         changelog=[
+            ChangelogEntry(
+                version="0.29.0",
+                prs=[707],
+                description="Added AWS SDK example and additional context",
+            ),
             ChangelogEntry(
                 version="0.19.0",
                 prs=[536],
@@ -25442,6 +26914,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(
                 version="0.7.0", prs=[351], description="Added rpc.method attribute"
             ),
+        ],
+        additional_context=[
+            "For AWS SDK calls, this is the operation name only, as the SDK reports it, e.g. `GetObject`."
         ],
     ),
     "rpc.response.status_code": AttributeMetadata(
@@ -25477,9 +26952,22 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="myService.BestService",
+        examples=["myService.BestService", "S3", "APIGateway"],
         changelog=[
+            ChangelogEntry(
+                version="0.29.0", prs=[707], description="Added AWS SDK examples"
+            ),
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[714],
+                description="Added additional context about the OpenTelemetry deprecation",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.",
+            "Still set on AWS SDK spans, where it holds the AWS service ID with all whitespace removed (e.g. `S3`, `APIGateway` for `API Gateway`) and `rpc.method` is set to the operation (e.g. `GetObject`).",
         ],
     ),
     "rpc.system": AttributeMetadata(
@@ -25762,6 +27250,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example="db",
         changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[721],
+                description="Added object to the enum values",
+            ),
             ChangelogEntry(version="0.4.0", prs=[218]),
         ],
         search_alias=SearchAlias(name="span.category"),
@@ -26209,8 +27702,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="previous_trace",
-        examples=["previous_trace", "next_trace", "cache_origin"],
+        examples=["previous_trace", "cache_origin", "message_origin", "server_request"],
         changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[724, 738, 739],
+                description="Removed next_trace from the examples and enum_values, because no SDK sets it",
+            ),
             ChangelogEntry(
                 version="0.27.0", prs=[687], description="Added search alias link.type"
             ),
@@ -26223,7 +27721,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         additional_context=[
             "This attribute is exclusively set on span links.",
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
-            "For known values, see Examples. Add new values to Examples.",
+            "Add each new link type to `enum_values`, with a brief that says what the linked span is.",
         ],
         search_alias=SearchAlias(name="link.type"),
     ),
@@ -26998,7 +28496,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "transaction",
             "sentry.transaction",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="GET /",
@@ -27211,6 +28709,32 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "server.ext.type": AttributeMetadata(
+        brief="The request lifecycle extension point where the Hapi extension function runs.",
+        type=AttributeType.STRING,
+        keys=(
+            "hapi.ext.type",
+            "server.ext.type",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="onRequest",
+        examples=["onRequest", "onPreResponse"],
+        deprecation=DeprecationInfo(
+            replacement="hapi.ext.type",
+            reason="Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace.",
+            status=DeprecationStatus.BACKFILL,
+        ),
+        aliases=["hapi.ext.type"],
+        changelog=[
+            ChangelogEntry(
+                version="0.28.0",
+                prs=[741],
+                description="Added server.ext.type attribute, deprecated in favor of hapi.ext.type",
+            ),
+        ],
+    ),
     "server.port": AttributeMetadata(
         brief="Server port number.",
         type=AttributeType.INTEGER,
@@ -27242,7 +28766,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "net.host.name",
             "server_name",
         ),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="example.com",
@@ -29339,6 +30863,8 @@ Attributes = TypedDict(
         "aws.lambda.invoked_arn": str,
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
+        "aws.lambda.resource_mapping.id": str,
+        "aws.lambda.target_function.name": str,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
         "aws.operation_name": str,
@@ -29353,11 +30879,14 @@ Attributes = TypedDict(
         "aws.s3.part_number": int,
         "aws.s3.upload_id": str,
         "aws.secretsmanager.secret.arn": str,
+        "aws.secretsmanager.secret.name": str,
         "aws.sns.topic.arn": str,
         "aws.sqs.queue.url": str,
         "aws.step_functions.activity.arn": str,
+        "aws.step_functions.activity.name": str,
         "aws.step_functions.execution.arn": str,
         "aws.step_functions.state_machine.arn": str,
+        "aws.step_functions.state_machine.name": str,
         "aws_region": str,
         "blocked_main_thread": bool,
         "browser.bfcache.frame": str,
@@ -29380,14 +30909,20 @@ Attributes = TypedDict(
         "browser.web_vital.cls.value": float,
         "browser.web_vital.fcp.value": float,
         "browser.web_vital.fp.value": float,
+        "browser.web_vital.inp.input_delay": float,
         "browser.web_vital.inp.interaction_type": str,
+        "browser.web_vital.inp.presentation_delay": float,
+        "browser.web_vital.inp.processing_duration": float,
         "browser.web_vital.inp.target": str,
         "browser.web_vital.inp.value": float,
         "browser.web_vital.lcp.element": str,
+        "browser.web_vital.lcp.element_render_delay": float,
         "browser.web_vital.lcp.id": str,
         "browser.web_vital.lcp.load_time": int,
         "browser.web_vital.lcp.render_time": int,
         "browser.web_vital.lcp.report_event": str,
+        "browser.web_vital.lcp.resource_load_delay": float,
+        "browser.web_vital.lcp.resource_load_duration": float,
         "browser.web_vital.lcp.size": int,
         "browser.web_vital.lcp.url": str,
         "browser.web_vital.lcp.value": float,
@@ -29612,6 +31147,7 @@ Attributes = TypedDict(
         "gen_ai.system_instructions": str,
         "gen_ai.tool.call.arguments": str,
         "gen_ai.tool.call.result": str,
+        "gen_ai.tool.call.result.size": int,
         "gen_ai.tool.definitions": str,
         "gen_ai.tool.description": str,
         "gen_ai.tool.input": str,
@@ -29650,6 +31186,9 @@ Attributes = TypedDict(
         "grpc.error.resource_info.resource_name": str,
         "grpc.error.resource_info.resource_type": str,
         "grpc.error.retry_info.retry_delay_ms": int,
+        "hapi.ext.type": str,
+        "hapi.plugin.name": str,
+        "hapi.type": str,
         "hardwareConcurrency": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
@@ -29665,6 +31204,7 @@ Attributes = TypedDict(
         "http.request.connection_end": float,
         "http.request.domain_lookup_end": float,
         "http.request.domain_lookup_start": float,
+        "http.request.duration": int,
         "http.request.fetch_start": float,
         "http.request.header.<key>": List[str],
         "http.request.method": str,
@@ -29784,6 +31324,31 @@ Attributes = TypedDict(
         "mcp.transport": str,
         "mdc.<key>": str,
         "messaging.batch.message_count": int,
+        "messaging.bullmq.flow.name": str,
+        "messaging.bullmq.job.attempt_finished_timestamp": int,
+        "messaging.bullmq.job.bulk.names": List[str],
+        "messaging.bullmq.job.deduplication.key": str,
+        "messaging.bullmq.job.ids": List[str],
+        "messaging.bullmq.job.key": str,
+        "messaging.bullmq.job.name": str,
+        "messaging.bullmq.job.processed_timestamp": int,
+        "messaging.bullmq.job.scheduler.id": str,
+        "messaging.bullmq.job.state": str,
+        "messaging.bullmq.job.type": str,
+        "messaging.bullmq.queue.clean.count": int,
+        "messaging.bullmq.queue.clean.limit": int,
+        "messaging.bullmq.queue.drain.delay": bool,
+        "messaging.bullmq.queue.event.max_length": int,
+        "messaging.bullmq.queue.grace": int,
+        "messaging.bullmq.queue.jobs.state": str,
+        "messaging.bullmq.queue.rate_limit": int,
+        "messaging.bullmq.worker.do_not_wait_active": bool,
+        "messaging.bullmq.worker.force_close": bool,
+        "messaging.bullmq.worker.jobs_to_extend_locks": List[str],
+        "messaging.bullmq.worker.name": str,
+        "messaging.bullmq.worker.rate_limit": int,
+        "messaging.bullmq.worker.stalled_jobs": List[str],
+        "messaging.client.id": str,
         "messaging.conversation_id": str,
         "messaging.destination": str,
         "messaging.destination.connection": str,
@@ -30005,6 +31570,7 @@ Attributes = TypedDict(
         "sentry.user.ip": str,
         "sentry.user.username": str,
         "server.address": str,
+        "server.ext.type": str,
         "server.port": int,
         "server_name": str,
         "service.name": str,

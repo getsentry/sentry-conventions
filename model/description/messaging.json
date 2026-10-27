@@ -20,8 +20,12 @@
         "queue.task.huey",
         "queue.task.rq"
       ],
-      "templates": ["{{messaging.destination.name}}"],
-      "examples": ["order-events"]
+      "templates": [
+        "{{rpc.service}}.{{rpc.method}} {{messaging.destination.name}}",
+        "{{messaging.destination.name}}",
+        "{{rpc.service}}.{{rpc.method}}"
+      ],
+      "examples": ["SQS.SendMessageBatch orders", "SNS.Publish alerts", "order-events", "SQS.ReceiveMessage"]
     }
   ]
 }
