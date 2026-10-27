@@ -1,0 +1,18 @@
+{
+  "key": "heroku.router.tls",
+  "brief": "Whether TLS was used for a request handled by the Heroku router",
+  "type": "boolean",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [true],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added heroku.router.tls attribute"
+    }
+  ]
+}

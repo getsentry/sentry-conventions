@@ -2574,6 +2574,111 @@ export const SEARCH_HAPI__TYPE = 'hapi.type';
 export const SEARCH_HARDWARECONCURRENCY = 'hardwareConcurrency';
 
 /**
+ * Search name for {@link attributes.HEROKU_DYNO}. `heroku.dyno`
+ */
+export const SEARCH_HEROKU__DYNO = 'heroku.dyno';
+
+/**
+ * Search name for {@link attributes.HEROKU_ERROR_CODE}. `heroku.error.code`
+ */
+export const SEARCH_HEROKU__ERROR__CODE = 'heroku.error.code';
+
+/**
+ * Search name for {@link attributes.HEROKU_ERROR_DESCRIPTION}. `heroku.error.description`
+ */
+export const SEARCH_HEROKU__ERROR__DESCRIPTION = 'heroku.error.description';
+
+/**
+ * Search name for {@link attributes.HEROKU_LOGPLEX_DRAIN_TOKEN}. `heroku.logplex.drain_token`
+ */
+export const SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN = 'heroku.logplex.drain_token';
+
+/**
+ * Search name for {@link attributes.HEROKU_LOGPLEX_FRAME_ID}. `heroku.logplex.frame_id`
+ */
+export const SEARCH_HEROKU__LOGPLEX__FRAME_ID = 'heroku.logplex.frame_id';
+
+/**
+ * Search name for {@link attributes.HEROKU_LOGPLEX_USER_AGENT}. `heroku.logplex.user_agent`
+ */
+export const SEARCH_HEROKU__LOGPLEX__USER_AGENT = 'heroku.logplex.user_agent';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_AT}. `heroku.router.at`
+ */
+export const SEARCH_HEROKU__ROUTER__AT = 'heroku.router.at';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_BYTES}. `heroku.router.bytes`
+ */
+export const SEARCH_HEROKU__ROUTER__BYTES = 'heroku.router.bytes';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_CONNECT}. `heroku.router.connect`
+ */
+export const SEARCH_HEROKU__ROUTER__CONNECT = 'heroku.router.connect';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_DYNO}. `heroku.router.dyno`
+ */
+export const SEARCH_HEROKU__ROUTER__DYNO = 'heroku.router.dyno';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_FWD}. `heroku.router.fwd`
+ */
+export const SEARCH_HEROKU__ROUTER__FWD = 'heroku.router.fwd';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_HOST}. `heroku.router.host`
+ */
+export const SEARCH_HEROKU__ROUTER__HOST = 'heroku.router.host';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_METHOD}. `heroku.router.method`
+ */
+export const SEARCH_HEROKU__ROUTER__METHOD = 'heroku.router.method';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_PATH}. `heroku.router.path`
+ */
+export const SEARCH_HEROKU__ROUTER__PATH = 'heroku.router.path';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_PROTOCOL}. `heroku.router.protocol`
+ */
+export const SEARCH_HEROKU__ROUTER__PROTOCOL = 'heroku.router.protocol';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_REQUEST_ID}. `heroku.router.request_id`
+ */
+export const SEARCH_HEROKU__ROUTER__REQUEST_ID = 'heroku.router.request_id';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_SERVICE}. `heroku.router.service`
+ */
+export const SEARCH_HEROKU__ROUTER__SERVICE = 'heroku.router.service';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_STATUS}. `heroku.router.status`
+ */
+export const SEARCH_HEROKU__ROUTER__STATUS = 'heroku.router.status';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_TLS}. `heroku.router.tls`
+ */
+export const SEARCH_HEROKU__ROUTER__TLS = 'heroku.router.tls';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_TLS_VERSION}. `heroku.router.tls_version`
+ */
+export const SEARCH_HEROKU__ROUTER__TLS_VERSION = 'heroku.router.tls_version';
+
+/**
+ * Search name for {@link attributes.HEROKU_SOURCE}. `heroku.source`
+ */
+export const SEARCH_HEROKU__SOURCE = 'heroku.source';
+
+/**
  * Search name for {@link attributes.HTTP_CLIENT_IP}. `http.client_ip`
  *
  * @deprecated Use {@link SEARCH_CLIENT__ADDRESS} (`client.address`) instead
@@ -5937,6 +6042,27 @@ export type AttributeSearchName =
   | typeof SEARCH_HAPI__PLUGIN__NAME
   | typeof SEARCH_HAPI__TYPE
   | typeof SEARCH_HARDWARECONCURRENCY
+  | typeof SEARCH_HEROKU__DYNO
+  | typeof SEARCH_HEROKU__ERROR__CODE
+  | typeof SEARCH_HEROKU__ERROR__DESCRIPTION
+  | typeof SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN
+  | typeof SEARCH_HEROKU__LOGPLEX__FRAME_ID
+  | typeof SEARCH_HEROKU__LOGPLEX__USER_AGENT
+  | typeof SEARCH_HEROKU__ROUTER__AT
+  | typeof SEARCH_HEROKU__ROUTER__BYTES
+  | typeof SEARCH_HEROKU__ROUTER__CONNECT
+  | typeof SEARCH_HEROKU__ROUTER__DYNO
+  | typeof SEARCH_HEROKU__ROUTER__FWD
+  | typeof SEARCH_HEROKU__ROUTER__HOST
+  | typeof SEARCH_HEROKU__ROUTER__METHOD
+  | typeof SEARCH_HEROKU__ROUTER__PATH
+  | typeof SEARCH_HEROKU__ROUTER__PROTOCOL
+  | typeof SEARCH_HEROKU__ROUTER__REQUEST_ID
+  | typeof SEARCH_HEROKU__ROUTER__SERVICE
+  | typeof SEARCH_HEROKU__ROUTER__STATUS
+  | typeof SEARCH_HEROKU__ROUTER__TLS
+  | typeof SEARCH_HEROKU__ROUTER__TLS_VERSION
+  | typeof SEARCH_HEROKU__SOURCE
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
   | typeof SEARCH_HTTP__FLAVOR
@@ -9472,6 +9598,133 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The number of logical CPU cores available.',
     deprecationChain: ['device.processor_count', 'hardwareConcurrency'],
+  },
+  'heroku.dyno': {
+    canonicalName: 'heroku.dyno',
+    type: 'string',
+    brief: 'Name of the Heroku dyno or platform component that emitted the log message',
+    deprecationChain: ['heroku.dyno'],
+  },
+  'heroku.error.code': {
+    canonicalName: 'heroku.error.code',
+    type: 'string',
+    brief: 'Heroku error code reported by the platform, see https://devcenter.heroku.com/articles/error-codes',
+    deprecationChain: ['heroku.error.code'],
+  },
+  'heroku.error.description': {
+    canonicalName: 'heroku.error.description',
+    type: 'string',
+    brief: 'Description of the Heroku error code',
+    deprecationChain: ['heroku.error.description'],
+  },
+  'heroku.logplex.drain_token': {
+    canonicalName: 'heroku.logplex.drain_token',
+    type: 'string',
+    brief: 'Token of the Heroku log drain that sent the log, sent as the `Logplex-Drain-Token` header',
+    deprecationChain: ['heroku.logplex.drain_token'],
+  },
+  'heroku.logplex.frame_id': {
+    canonicalName: 'heroku.logplex.frame_id',
+    type: 'string',
+    brief: 'Unique identifier of the Heroku Logplex drain request, sent as the `Logplex-Frame-Id` header',
+    deprecationChain: ['heroku.logplex.frame_id'],
+  },
+  'heroku.logplex.user_agent': {
+    canonicalName: 'heroku.logplex.user_agent',
+    type: 'string',
+    brief: 'Version of Heroku Logplex that sent the log, sent as the `User-Agent` header',
+    deprecationChain: ['heroku.logplex.user_agent'],
+  },
+  'heroku.router.at': {
+    canonicalName: 'heroku.router.at',
+    type: 'string',
+    brief: 'Log level reported by the Heroku router',
+    deprecationChain: ['heroku.router.at'],
+  },
+  'heroku.router.bytes': {
+    canonicalName: 'heroku.router.bytes',
+    type: 'integer',
+    brief: 'Number of bytes the Heroku router transferred from the web process to the client',
+    deprecationChain: ['heroku.router.bytes'],
+  },
+  'heroku.router.connect': {
+    canonicalName: 'heroku.router.connect',
+    type: 'integer',
+    brief: 'Time in milliseconds the Heroku router spent establishing a connection to the web process',
+    deprecationChain: ['heroku.router.connect'],
+  },
+  'heroku.router.dyno': {
+    canonicalName: 'heroku.router.dyno',
+    type: 'string',
+    brief: 'Name of the dyno that serviced a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.dyno'],
+  },
+  'heroku.router.fwd': {
+    canonicalName: 'heroku.router.fwd',
+    type: 'string',
+    brief: '`X-Forwarded-For` header value of a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.fwd'],
+  },
+  'heroku.router.host': {
+    canonicalName: 'heroku.router.host',
+    type: 'string',
+    brief: 'HTTP request `Host` header of a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.host'],
+  },
+  'heroku.router.method': {
+    canonicalName: 'heroku.router.method',
+    type: 'string',
+    brief: 'HTTP request method of a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.method'],
+  },
+  'heroku.router.path': {
+    canonicalName: 'heroku.router.path',
+    type: 'string',
+    brief: 'HTTP request path and query string of a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.path'],
+  },
+  'heroku.router.protocol': {
+    canonicalName: 'heroku.router.protocol',
+    type: 'string',
+    brief: 'Request protocol, including the HTTP version, of a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.protocol'],
+  },
+  'heroku.router.request_id': {
+    canonicalName: 'heroku.router.request_id',
+    type: 'string',
+    brief: 'Heroku request ID of a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.request_id'],
+  },
+  'heroku.router.service': {
+    canonicalName: 'heroku.router.service',
+    type: 'integer',
+    brief: 'Time in milliseconds the Heroku router spent proxying data between the web process and the client',
+    deprecationChain: ['heroku.router.service'],
+  },
+  'heroku.router.status': {
+    canonicalName: 'heroku.router.status',
+    type: 'integer',
+    brief: 'HTTP response status code of a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.status'],
+  },
+  'heroku.router.tls': {
+    canonicalName: 'heroku.router.tls',
+    type: 'boolean',
+    brief: 'Whether TLS was used for a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.tls'],
+  },
+  'heroku.router.tls_version': {
+    canonicalName: 'heroku.router.tls_version',
+    type: 'string',
+    brief: 'TLS version used for a request handled by the Heroku router',
+    deprecationChain: ['heroku.router.tls_version'],
+  },
+  'heroku.source': {
+    canonicalName: 'heroku.source',
+    type: 'string',
+    brief:
+      'Source of a Heroku log message, `app` for output of the application and `heroku` for messages of the Heroku platform',
+    deprecationChain: ['heroku.source'],
   },
   'http.client_ip': {
     canonicalName: 'client.address',

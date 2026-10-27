@@ -1,0 +1,18 @@
+{
+  "key": "heroku.router.request_id",
+  "brief": "Heroku request ID of a request handled by the Heroku router",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["6903a168-b79b-ec27-03c8-b8f64d8d8792"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added heroku.router.request_id attribute"
+    }
+  ]
+}

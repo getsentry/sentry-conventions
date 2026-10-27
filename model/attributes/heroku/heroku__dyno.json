@@ -1,0 +1,18 @@
+{
+  "key": "heroku.dyno",
+  "brief": "Name of the Heroku dyno or platform component that emitted the log message",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["web.1", "worker.2", "router"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added heroku.dyno attribute"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "key": "heroku.error.description",
+  "brief": "Description of the Heroku error code",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["Request timeout", "Memory quota exceeded"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added heroku.error.description attribute"
+    }
+  ]
+}

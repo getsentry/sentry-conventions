@@ -1,0 +1,18 @@
+{
+  "key": "heroku.router.dyno",
+  "brief": "Name of the dyno that serviced a request handled by the Heroku router",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["web.1"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added heroku.router.dyno attribute"
+    }
+  ]
+}
