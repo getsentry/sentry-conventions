@@ -11,7 +11,8 @@
     {
       "name": "db.redis",
       "deprecation": {
-        "replacement": "db.query"
+        "replacement": "db.query",
+        "note": "Provider-specific Redis ops are replaced by framework-agnostic ones."
       }
     },
     {
