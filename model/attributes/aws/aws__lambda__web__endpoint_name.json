@@ -10,7 +10,8 @@
   "examples": ["prod", "canary"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.30.0",
+      "prs": [715],
       "description": "Added aws.lambda.web.endpoint_name attribute"
     }
   ]

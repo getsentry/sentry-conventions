@@ -15048,7 +15048,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["native-http", "on-demand", "provisioned-concurrency", "snap-start"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.30.0",
+                prs=[715],
                 description="Added aws.lambda.initialization_type attribute",
             ),
         ],
@@ -15163,7 +15164,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["prod", "canary"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.30.0",
+                prs=[715],
                 description="Added aws.lambda.web.endpoint_name attribute",
             ),
         ],
@@ -18761,7 +18763,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[134217728, 1073741824],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.max_memory attribute"
+                version="0.30.0",
+                prs=[715],
+                description="Added faas.max_memory attribute",
             ),
         ],
         additional_context=[
