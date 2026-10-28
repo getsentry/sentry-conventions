@@ -1,15 +1,23 @@
 {
   "key": "db.collection.name",
   "brief": "The name of a collection (table, container) within the database.",
+  "additional_context": [
+    "For a call on more than one collection: the unique names, sorted and wrapped in commas (`,customers,orders,`), so each name matches `,<name>,`."
+  ],
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "users",
+  "examples": ["users", ",customers,orders,"],
   "alias": ["db.mongodb.collection"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.29.0",
+      "prs": [711],
+      "description": "Add comma-wrapped format for calls on more than one collection"
+    },
     {
       "version": "0.19.0",
       "prs": [483],

@@ -16,8 +16,19 @@
         "db.redis",
         "redis"
       ],
-      "templates": ["{{db.query.text}}"],
-      "examples": ["SELECT * FROM users WHERE id = ?"]
+      "templates": [
+        "{{db.query.text}}",
+        "{{rpc.service}}.{{rpc.method}} {{aws.dynamodb.table_names}}.{{aws.dynamodb.index_name}}",
+        "{{rpc.service}}.{{rpc.method}} {{aws.dynamodb.table_names}}",
+        "{{rpc.service}}.{{rpc.method}}"
+      ],
+      "examples": [
+        "SELECT * FROM users WHERE id = ?",
+        "DynamoDB.Query orders.by-status",
+        "DynamoDB.GetItem orders",
+        "DynamoDB.BatchGetItem customers, orders",
+        "DynamoDB.ListTables"
+      ]
     }
   ]
 }

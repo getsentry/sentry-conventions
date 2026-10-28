@@ -1,0 +1,24 @@
+{
+  "key": "server.ext.type",
+  "brief": "The request lifecycle extension point where the Hapi extension function runs.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["onRequest", "onPreResponse"],
+  "alias": ["hapi.ext.type"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "hapi.ext.type",
+    "reason": "Name from the OpenTelemetry Hapi instrumentation. The `server` namespace describes the network endpoint of the server, so the attribute moves to the `hapi` namespace."
+  },
+  "changelog": [
+    {
+      "version": "0.28.0",
+      "prs": [741],
+      "description": "Added server.ext.type attribute, deprecated in favor of hapi.ext.type"
+    }
+  ]
+}

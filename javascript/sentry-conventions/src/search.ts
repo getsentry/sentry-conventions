@@ -772,6 +772,11 @@ export const SEARCH_AWS__LAMBDA__FUNCTION_NAME = 'aws.lambda.function_name';
 export const SEARCH_AWS__LAMBDA__FUNCTION_VERSION = 'aws.lambda.function_version';
 
 /**
+ * Search name for {@link attributes.AWS_LAMBDA_INITIALIZATION_TYPE}. `aws.lambda.initialization_type`
+ */
+export const SEARCH_AWS__LAMBDA__INITIALIZATION_TYPE = 'aws.lambda.initialization_type';
+
+/**
  * Search name for {@link attributes.AWS_LAMBDA_INVOKED_ARN}. `aws.lambda.invoked_arn`
  */
 export const SEARCH_AWS__LAMBDA__INVOKED_ARN = 'aws.lambda.invoked_arn';
@@ -787,6 +792,21 @@ export const SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN = 'aws.lambda.invoked_func
  * Search name for {@link attributes.AWS_LAMBDA_REMAINING_TIME_IN_MILLIS}. `aws.lambda.remaining_time_in_millis`
  */
 export const SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS = 'aws.lambda.remaining_time_in_millis';
+
+/**
+ * Search name for {@link attributes.AWS_LAMBDA_RESOURCE_MAPPING_ID}. `aws.lambda.resource_mapping.id`
+ */
+export const SEARCH_AWS__LAMBDA__RESOURCE_MAPPING__ID = 'aws.lambda.resource_mapping.id';
+
+/**
+ * Search name for {@link attributes.AWS_LAMBDA_TARGET_FUNCTION_NAME}. `aws.lambda.target_function.name`
+ */
+export const SEARCH_AWS__LAMBDA__TARGET_FUNCTION__NAME = 'aws.lambda.target_function.name';
+
+/**
+ * Search name for {@link attributes.AWS_LAMBDA_WEB_ENDPOINT_NAME}. `aws.lambda.web.endpoint_name`
+ */
+export const SEARCH_AWS__LAMBDA__WEB__ENDPOINT_NAME = 'aws.lambda.web.endpoint_name';
 
 /**
  * Search name for {@link attributes.AWS_LOG_GROUP_NAMES}. `aws.log.group.names`
@@ -867,6 +887,11 @@ export const SEARCH_AWS__S3__UPLOAD_ID = 'aws.s3.upload_id';
 export const SEARCH_AWS__SECRETSMANAGER__SECRET__ARN = 'aws.secretsmanager.secret.arn';
 
 /**
+ * Search name for {@link attributes.AWS_SECRETSMANAGER_SECRET_NAME}. `aws.secretsmanager.secret.name`
+ */
+export const SEARCH_AWS__SECRETSMANAGER__SECRET__NAME = 'aws.secretsmanager.secret.name';
+
+/**
  * Search name for {@link attributes.AWS_SNS_TOPIC_ARN}. `aws.sns.topic.arn`
  */
 export const SEARCH_AWS__SNS__TOPIC__ARN = 'aws.sns.topic.arn';
@@ -882,6 +907,11 @@ export const SEARCH_AWS__SQS__QUEUE__URL = 'aws.sqs.queue.url';
 export const SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN = 'aws.step_functions.activity.arn';
 
 /**
+ * Search name for {@link attributes.AWS_STEP_FUNCTIONS_ACTIVITY_NAME}. `aws.step_functions.activity.name`
+ */
+export const SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__NAME = 'aws.step_functions.activity.name';
+
+/**
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_EXECUTION_ARN}. `aws.step_functions.execution.arn`
  */
 export const SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN = 'aws.step_functions.execution.arn';
@@ -890,6 +920,11 @@ export const SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN = 'aws.step_functions.ex
  * Search name for {@link attributes.AWS_STEP_FUNCTIONS_STATE_MACHINE_ARN}. `aws.step_functions.state_machine.arn`
  */
 export const SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN = 'aws.step_functions.state_machine.arn';
+
+/**
+ * Search name for {@link attributes.AWS_STEP_FUNCTIONS_STATE_MACHINE_NAME}. `aws.step_functions.state_machine.name`
+ */
+export const SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__NAME = 'aws.step_functions.state_machine.name';
 
 /**
  * Search name for {@link attributes.AWS_REGION}. `aws_region`
@@ -1007,9 +1042,24 @@ export const SEARCH_BROWSER__WEB_VITAL__FCP__VALUE = 'browser.web_vital.fcp.valu
 export const SEARCH_BROWSER__WEB_VITAL__FP__VALUE = 'browser.web_vital.fp.value';
 
 /**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_INPUT_DELAY}. `browser.web_vital.inp.input_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__INPUT_DELAY = 'browser.web_vital.inp.input_delay';
+
+/**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_INTERACTION_TYPE}. `browser.web_vital.inp.interaction_type`
  */
 export const SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE = 'browser.web_vital.inp.interaction_type';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_PRESENTATION_DELAY}. `browser.web_vital.inp.presentation_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__PRESENTATION_DELAY = 'browser.web_vital.inp.presentation_delay';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_PROCESSING_DURATION}. `browser.web_vital.inp.processing_duration`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__INP__PROCESSING_DURATION = 'browser.web_vital.inp.processing_duration';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_INP_TARGET}. `browser.web_vital.inp.target`
@@ -1025,6 +1075,11 @@ export const SEARCH_BROWSER__WEB_VITAL__INP__VALUE = 'browser.web_vital.inp.valu
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ELEMENT}. `browser.web_vital.lcp.element`
  */
 export const SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT = 'browser.web_vital.lcp.element';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ELEMENT_RENDER_DELAY}. `browser.web_vital.lcp.element_render_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT_RENDER_DELAY = 'browser.web_vital.lcp.element_render_delay';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_ID}. `browser.web_vital.lcp.id`
@@ -1047,6 +1102,16 @@ export const SEARCH_BROWSER__WEB_VITAL__LCP__RENDER_TIME = 'browser.web_vital.lc
  * @deprecated
  */
 export const SEARCH_BROWSER__WEB_VITAL__LCP__REPORT_EVENT = 'browser.web_vital.lcp.report_event';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DELAY}. `browser.web_vital.lcp.resource_load_delay`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DELAY = 'browser.web_vital.lcp.resource_load_delay';
+
+/**
+ * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_RESOURCE_LOAD_DURATION}. `browser.web_vital.lcp.resource_load_duration`
+ */
+export const SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DURATION = 'browser.web_vital.lcp.resource_load_duration';
 
 /**
  * Search name for {@link attributes.BROWSER_WEB_VITAL_LCP_SIZE}. `browser.web_vital.lcp.size`
@@ -1811,6 +1876,11 @@ export const SEARCH_FAAS__INVOKED_PROVIDER = 'faas.invoked_provider';
 export const SEARCH_FAAS__INVOKED_REGION = 'faas.invoked_region';
 
 /**
+ * Search name for {@link attributes.FAAS_MAX_MEMORY}. `faas.max_memory`
+ */
+export const SEARCH_FAAS__MAX_MEMORY = 'faas.max_memory';
+
+/**
  * Search name for {@link attributes.FAAS_NAME}. `faas.name`
  */
 export const SEARCH_FAAS__NAME = 'faas.name';
@@ -2268,6 +2338,11 @@ export const SEARCH_GEN_AI__TOOL__CALL__ARGUMENTS = 'gen_ai.tool.call.arguments'
 export const SEARCH_GEN_AI__TOOL__CALL__RESULT = 'gen_ai.tool.call.result';
 
 /**
+ * Search name for {@link attributes.GEN_AI_TOOL_CALL_RESULT_SIZE}. `gen_ai.tool.call.result.size`
+ */
+export const SEARCH_GEN_AI__TOOL__CALL__RESULT__SIZE = 'gen_ai.tool.call.result.size';
+
+/**
  * Search name for {@link attributes.GEN_AI_TOOL_DEFINITIONS}. `gen_ai.tool.definitions`
  */
 export const SEARCH_GEN_AI__TOOL__DEFINITIONS = 'gen_ai.tool.definitions';
@@ -2480,6 +2555,21 @@ export const SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_TYPE = 'grpc.error.reso
  * Search name for {@link attributes.GRPC_ERROR_RETRY_INFO_RETRY_DELAY_MS}. `grpc.error.retry_info.retry_delay_ms`
  */
 export const SEARCH_GRPC__ERROR__RETRY_INFO__RETRY_DELAY_MS = 'grpc.error.retry_info.retry_delay_ms';
+
+/**
+ * Search name for {@link attributes.HAPI_EXT_TYPE}. `hapi.ext.type`
+ */
+export const SEARCH_HAPI__EXT__TYPE = 'hapi.ext.type';
+
+/**
+ * Search name for {@link attributes.HAPI_PLUGIN_NAME}. `hapi.plugin.name`
+ */
+export const SEARCH_HAPI__PLUGIN__NAME = 'hapi.plugin.name';
+
+/**
+ * Search name for {@link attributes.HAPI_TYPE}. `hapi.type`
+ */
+export const SEARCH_HAPI__TYPE = 'hapi.type';
 
 /**
  * Search name for {@link attributes.HARDWARECONCURRENCY}. `hardwareConcurrency`
@@ -3265,6 +3355,132 @@ export const SEARCH_MDC__KEY = 'mdc.<key>';
  * Search name for {@link attributes.MESSAGING_BATCH_MESSAGE_COUNT}. `messaging.batch.message_count`
  */
 export const SEARCH_MESSAGING__BATCH__MESSAGE_COUNT = 'messaging.batch.message_count';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_FLOW_NAME}. `messaging.bullmq.flow.name`
+ */
+export const SEARCH_MESSAGING__BULLMQ__FLOW__NAME = 'messaging.bullmq.flow.name';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_ATTEMPT_FINISHED_TIMESTAMP}. `messaging.bullmq.job.attempt_finished_timestamp`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__ATTEMPT_FINISHED_TIMESTAMP =
+  'messaging.bullmq.job.attempt_finished_timestamp';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_BULK_NAMES}. `messaging.bullmq.job.bulk.names`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__BULK__NAMES = 'messaging.bullmq.job.bulk.names';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_DEDUPLICATION_KEY}. `messaging.bullmq.job.deduplication.key`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__DEDUPLICATION__KEY = 'messaging.bullmq.job.deduplication.key';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_IDS}. `messaging.bullmq.job.ids`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__IDS = 'messaging.bullmq.job.ids';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_KEY}. `messaging.bullmq.job.key`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__KEY = 'messaging.bullmq.job.key';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_NAME}. `messaging.bullmq.job.name`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__NAME = 'messaging.bullmq.job.name';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_PROCESSED_TIMESTAMP}. `messaging.bullmq.job.processed_timestamp`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED_TIMESTAMP = 'messaging.bullmq.job.processed_timestamp';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_SCHEDULER_ID}. `messaging.bullmq.job.scheduler.id`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__SCHEDULER__ID = 'messaging.bullmq.job.scheduler.id';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_STATE}. `messaging.bullmq.job.state`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__STATE = 'messaging.bullmq.job.state';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_JOB_TYPE}. `messaging.bullmq.job.type`
+ */
+export const SEARCH_MESSAGING__BULLMQ__JOB__TYPE = 'messaging.bullmq.job.type';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_CLEAN_COUNT}. `messaging.bullmq.queue.clean.count`
+ */
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__COUNT = 'messaging.bullmq.queue.clean.count';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_CLEAN_LIMIT}. `messaging.bullmq.queue.clean.limit`
+ */
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__LIMIT = 'messaging.bullmq.queue.clean.limit';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_DRAIN_DELAY}. `messaging.bullmq.queue.drain.delay`
+ */
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__DRAIN__DELAY = 'messaging.bullmq.queue.drain.delay';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_EVENT_MAX_LENGTH}. `messaging.bullmq.queue.event.max_length`
+ */
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__EVENT__MAX_LENGTH = 'messaging.bullmq.queue.event.max_length';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_GRACE}. `messaging.bullmq.queue.grace`
+ */
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__GRACE = 'messaging.bullmq.queue.grace';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_JOBS_STATE}. `messaging.bullmq.queue.jobs.state`
+ */
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__JOBS__STATE = 'messaging.bullmq.queue.jobs.state';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_QUEUE_RATE_LIMIT}. `messaging.bullmq.queue.rate_limit`
+ */
+export const SEARCH_MESSAGING__BULLMQ__QUEUE__RATE_LIMIT = 'messaging.bullmq.queue.rate_limit';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_DO_NOT_WAIT_ACTIVE}. `messaging.bullmq.worker.do_not_wait_active`
+ */
+export const SEARCH_MESSAGING__BULLMQ__WORKER__DO_NOT_WAIT_ACTIVE = 'messaging.bullmq.worker.do_not_wait_active';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_FORCE_CLOSE}. `messaging.bullmq.worker.force_close`
+ */
+export const SEARCH_MESSAGING__BULLMQ__WORKER__FORCE_CLOSE = 'messaging.bullmq.worker.force_close';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_JOBS_TO_EXTEND_LOCKS}. `messaging.bullmq.worker.jobs_to_extend_locks`
+ */
+export const SEARCH_MESSAGING__BULLMQ__WORKER__JOBS_TO_EXTEND_LOCKS = 'messaging.bullmq.worker.jobs_to_extend_locks';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_NAME}. `messaging.bullmq.worker.name`
+ */
+export const SEARCH_MESSAGING__BULLMQ__WORKER__NAME = 'messaging.bullmq.worker.name';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_RATE_LIMIT}. `messaging.bullmq.worker.rate_limit`
+ */
+export const SEARCH_MESSAGING__BULLMQ__WORKER__RATE_LIMIT = 'messaging.bullmq.worker.rate_limit';
+
+/**
+ * Search name for {@link attributes.MESSAGING_BULLMQ_WORKER_STALLED_JOBS}. `messaging.bullmq.worker.stalled_jobs`
+ */
+export const SEARCH_MESSAGING__BULLMQ__WORKER__STALLED_JOBS = 'messaging.bullmq.worker.stalled_jobs';
+
+/**
+ * Search name for {@link attributes.MESSAGING_CLIENT_ID}. `messaging.client.id`
+ */
+export const SEARCH_MESSAGING__CLIENT__ID = 'messaging.client.id';
 
 /**
  * Search name for {@link attributes.MESSAGING_CONVERSATION_ID}. `messaging.conversation_id`
@@ -4565,6 +4781,13 @@ export const SEARCH_SENTRY__USER__USERNAME = 'sentry.user.username';
 export const SEARCH_SERVER__ADDRESS = 'server.address';
 
 /**
+ * Search name for {@link attributes.SERVER_EXT_TYPE}. `server.ext.type`
+ *
+ * @deprecated Use {@link SEARCH_HAPI__EXT__TYPE} (`hapi.ext.type`) instead
+ */
+export const SEARCH_SERVER__EXT__TYPE = 'server.ext.type';
+
+/**
  * Search name for {@link attributes.SERVER_PORT}. `server.port`
  */
 export const SEARCH_SERVER__PORT = 'server.port';
@@ -5385,9 +5608,13 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__LAMBDA__EXECUTION_DURATION_IN_MILLIS
   | typeof SEARCH_AWS__LAMBDA__FUNCTION_NAME
   | typeof SEARCH_AWS__LAMBDA__FUNCTION_VERSION
+  | typeof SEARCH_AWS__LAMBDA__INITIALIZATION_TYPE
   | typeof SEARCH_AWS__LAMBDA__INVOKED_ARN
   | typeof SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN
   | typeof SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS
+  | typeof SEARCH_AWS__LAMBDA__RESOURCE_MAPPING__ID
+  | typeof SEARCH_AWS__LAMBDA__TARGET_FUNCTION__NAME
+  | typeof SEARCH_AWS__LAMBDA__WEB__ENDPOINT_NAME
   | typeof SEARCH_AWS__LOG__GROUP__NAMES
   | typeof SEARCH_AWS__LOG__STREAM__NAMES
   | typeof SEARCH_AWS__OPERATION_NAME
@@ -5402,11 +5629,14 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__S3__PART_NUMBER
   | typeof SEARCH_AWS__S3__UPLOAD_ID
   | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__ARN
+  | typeof SEARCH_AWS__SECRETSMANAGER__SECRET__NAME
   | typeof SEARCH_AWS__SNS__TOPIC__ARN
   | typeof SEARCH_AWS__SQS__QUEUE__URL
   | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__ARN
+  | typeof SEARCH_AWS__STEP_FUNCTIONS__ACTIVITY__NAME
   | typeof SEARCH_AWS__STEP_FUNCTIONS__EXECUTION__ARN
   | typeof SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__ARN
+  | typeof SEARCH_AWS__STEP_FUNCTIONS__STATE_MACHINE__NAME
   | typeof SEARCH_AWS_REGION
   | typeof SEARCH_BLOCKED_MAIN_THREAD
   | typeof SEARCH_BROWSER__BFCACHE__FRAME
@@ -5429,14 +5659,20 @@ export type AttributeSearchName =
   | typeof SEARCH_BROWSER__WEB_VITAL__CLS__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FCP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__FP__VALUE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__INPUT_DELAY
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__INTERACTION_TYPE
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__PRESENTATION_DELAY
+  | typeof SEARCH_BROWSER__WEB_VITAL__INP__PROCESSING_DURATION
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__TARGET
   | typeof SEARCH_BROWSER__WEB_VITAL__INP__VALUE
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ELEMENT_RENDER_DELAY
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__ID
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__LOAD_TIME
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RENDER_TIME
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__REPORT_EVENT
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DELAY
+  | typeof SEARCH_BROWSER__WEB_VITAL__LCP__RESOURCE_LOAD_DURATION
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__SIZE
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__URL
   | typeof SEARCH_BROWSER__WEB_VITAL__LCP__VALUE
@@ -5580,6 +5816,7 @@ export type AttributeSearchName =
   | typeof SEARCH_FAAS__INVOKED_NAME
   | typeof SEARCH_FAAS__INVOKED_PROVIDER
   | typeof SEARCH_FAAS__INVOKED_REGION
+  | typeof SEARCH_FAAS__MAX_MEMORY
   | typeof SEARCH_FAAS__NAME
   | typeof SEARCH_FAAS__TIME
   | typeof SEARCH_FAAS__TRIGGER
@@ -5663,6 +5900,7 @@ export type AttributeSearchName =
   | typeof SEARCH_GEN_AI__SYSTEM_INSTRUCTIONS
   | typeof SEARCH_GEN_AI__TOOL__CALL__ARGUMENTS
   | typeof SEARCH_GEN_AI__TOOL__CALL__RESULT
+  | typeof SEARCH_GEN_AI__TOOL__CALL__RESULT__SIZE
   | typeof SEARCH_GEN_AI__TOOL__DEFINITIONS
   | typeof SEARCH_GEN_AI__TOOL__DESCRIPTION
   | typeof SEARCH_GEN_AI__TOOL__INPUT
@@ -5701,6 +5939,9 @@ export type AttributeSearchName =
   | typeof SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_NAME
   | typeof SEARCH_GRPC__ERROR__RESOURCE_INFO__RESOURCE_TYPE
   | typeof SEARCH_GRPC__ERROR__RETRY_INFO__RETRY_DELAY_MS
+  | typeof SEARCH_HAPI__EXT__TYPE
+  | typeof SEARCH_HAPI__PLUGIN__NAME
+  | typeof SEARCH_HAPI__TYPE
   | typeof SEARCH_HARDWARECONCURRENCY
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
@@ -5838,6 +6079,31 @@ export type AttributeSearchName =
   | typeof SEARCH_MCP__TRANSPORT
   | typeof SEARCH_MDC__KEY
   | typeof SEARCH_MESSAGING__BATCH__MESSAGE_COUNT
+  | typeof SEARCH_MESSAGING__BULLMQ__FLOW__NAME
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__ATTEMPT_FINISHED_TIMESTAMP
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__BULK__NAMES
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__DEDUPLICATION__KEY
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__IDS
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__KEY
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__NAME
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__PROCESSED_TIMESTAMP
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__SCHEDULER__ID
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__STATE
+  | typeof SEARCH_MESSAGING__BULLMQ__JOB__TYPE
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__COUNT
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__CLEAN__LIMIT
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__DRAIN__DELAY
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__EVENT__MAX_LENGTH
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__GRACE
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__JOBS__STATE
+  | typeof SEARCH_MESSAGING__BULLMQ__QUEUE__RATE_LIMIT
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__DO_NOT_WAIT_ACTIVE
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__FORCE_CLOSE
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__JOBS_TO_EXTEND_LOCKS
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__NAME
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__RATE_LIMIT
+  | typeof SEARCH_MESSAGING__BULLMQ__WORKER__STALLED_JOBS
+  | typeof SEARCH_MESSAGING__CLIENT__ID
   | typeof SEARCH_MESSAGING__CONVERSATION_ID
   | typeof SEARCH_MESSAGING__DESTINATION
   | typeof SEARCH_MESSAGING__DESTINATION__CONNECTION
@@ -6062,6 +6328,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__USER__IP
   | typeof SEARCH_SENTRY__USER__USERNAME
   | typeof SEARCH_SERVER__ADDRESS
+  | typeof SEARCH_SERVER__EXT__TYPE
   | typeof SEARCH_SERVER__PORT
   | typeof SEARCH_SERVER_NAME
   | typeof SEARCH_SERVER_SAMPLE_RATE
@@ -7056,6 +7323,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The version of the Lambda function',
     deprecationChain: ['faas.version', 'aws.lambda.function_version'],
   },
+  'aws.lambda.initialization_type': {
+    canonicalName: 'aws.lambda.initialization_type',
+    type: 'string',
+    brief: 'How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.',
+    deprecationChain: ['aws.lambda.initialization_type'],
+  },
   'aws.lambda.invoked_arn': {
     canonicalName: 'aws.lambda.invoked_arn',
     type: 'string',
@@ -7073,6 +7346,26 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The remaining time in milliseconds before the Lambda function times out',
     deprecationChain: ['aws.lambda.remaining_time_in_millis'],
+  },
+  'aws.lambda.resource_mapping.id': {
+    canonicalName: 'aws.lambda.resource_mapping.id',
+    type: 'string',
+    brief:
+      "The UUID of the [AWS Lambda EventSource Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html). An event source is mapped to a lambda function. Its contents are read by Lambda and used to trigger a function. This isn't available in the lambda execution context or the lambda runtime environment. This is going to be populated by the AWS SDK for each language when that UUID is present. Some of these operations are Create/Delete/Get/List/Update EventSourceMapping.",
+    deprecationChain: ['aws.lambda.resource_mapping.id'],
+  },
+  'aws.lambda.target_function.name': {
+    canonicalName: 'aws.lambda.target_function.name',
+    type: 'string',
+    brief: 'The name of the AWS Lambda function that an AWS SDK call acts on.',
+    deprecationChain: ['aws.lambda.target_function.name'],
+  },
+  'aws.lambda.web.endpoint_name': {
+    canonicalName: 'aws.lambda.web.endpoint_name',
+    type: 'string',
+    brief:
+      'The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.',
+    deprecationChain: ['aws.lambda.web.endpoint_name'],
   },
   'aws.log.group.names': {
     canonicalName: 'aws.log.group.names',
@@ -7131,7 +7424,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'aws.s3.delete': {
     canonicalName: 'aws.s3.delete',
     type: 'string',
-    brief: 'The delete request container that specifies the objects to be deleted.',
+    brief: 'The JSON-serialized value of Delete request field, which specifies the objects to be deleted.',
     deprecationChain: ['aws.s3.delete'],
   },
   'aws.s3.key': {
@@ -7159,6 +7452,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The ARN of the Secret stored in Secrets Manager.',
     deprecationChain: ['aws.secretsmanager.secret.arn'],
   },
+  'aws.secretsmanager.secret.name': {
+    canonicalName: 'aws.secretsmanager.secret.name',
+    type: 'string',
+    brief: 'The name of the secret stored in AWS Secrets Manager.',
+    deprecationChain: ['aws.secretsmanager.secret.name'],
+  },
   'aws.sns.topic.arn': {
     canonicalName: 'aws.sns.topic.arn',
     type: 'string',
@@ -7179,6 +7478,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The ARN of the AWS Step Functions Activity.',
     deprecationChain: ['aws.step_functions.activity.arn'],
   },
+  'aws.step_functions.activity.name': {
+    canonicalName: 'aws.step_functions.activity.name',
+    type: 'string',
+    brief: 'The name of the AWS Step Functions activity.',
+    deprecationChain: ['aws.step_functions.activity.name'],
+  },
   'aws.step_functions.execution.arn': {
     canonicalName: 'aws.step_functions.execution.arn',
     type: 'string',
@@ -7190,6 +7495,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The ARN of the AWS Step Functions State Machine.',
     deprecationChain: ['aws.step_functions.state_machine.arn'],
+  },
+  'aws.step_functions.state_machine.name': {
+    canonicalName: 'aws.step_functions.state_machine.name',
+    type: 'string',
+    brief: 'The name of the AWS Step Functions state machine.',
+    deprecationChain: ['aws.step_functions.state_machine.name'],
   },
   aws_region: {
     canonicalName: 'cloud.region',
@@ -7329,11 +7640,31 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The time in milliseconds it takes for the browser to render the first pixel on the screen',
     deprecationChain: ['browser.web_vital.fp.value', 'fp'],
   },
+  'browser.web_vital.inp.input_delay': {
+    canonicalName: 'browser.web_vital.inp.input_delay',
+    type: 'double',
+    brief:
+      'The time between the user interacting with the page and the browser starting to run the event handlers, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.input_delay'],
+  },
   'browser.web_vital.inp.interaction_type': {
     canonicalName: 'browser.web_vital.inp.interaction_type',
     type: 'string',
     brief: 'The kind of user interaction INP was reported on',
     deprecationChain: ['browser.web_vital.inp.interaction_type'],
+  },
+  'browser.web_vital.inp.presentation_delay': {
+    canonicalName: 'browser.web_vital.inp.presentation_delay',
+    type: 'double',
+    brief:
+      'The time between the event handlers finishing and the browser presenting the next frame, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.presentation_delay'],
+  },
+  'browser.web_vital.inp.processing_duration': {
+    canonicalName: 'browser.web_vital.inp.processing_duration',
+    type: 'double',
+    brief: 'The time it took the event handlers to run, for the interaction INP was reported on, in milliseconds',
+    deprecationChain: ['browser.web_vital.inp.processing_duration'],
   },
   'browser.web_vital.inp.target': {
     canonicalName: 'browser.web_vital.inp.target',
@@ -7353,6 +7684,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The HTML element selector or component name for which LCP was reported',
     deprecationChain: ['browser.web_vital.lcp.element', 'lcp.element'],
+  },
+  'browser.web_vital.lcp.element_render_delay': {
+    canonicalName: 'browser.web_vital.lcp.element_render_delay',
+    type: 'double',
+    brief: 'The time between the LCP resource finishing loading and the LCP element being rendered, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.element_render_delay'],
   },
   'browser.web_vital.lcp.id': {
     canonicalName: 'browser.web_vital.lcp.id',
@@ -7378,6 +7715,19 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The event that caused the SDK to report LCP (pagehide or navigation)',
     deprecated: true,
     deprecationChain: ['browser.web_vital.lcp.report_event'],
+  },
+  'browser.web_vital.lcp.resource_load_delay': {
+    canonicalName: 'browser.web_vital.lcp.resource_load_delay',
+    type: 'double',
+    brief:
+      'The time between the first byte of the document arriving and the browser starting to load the LCP resource, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.resource_load_delay'],
+  },
+  'browser.web_vital.lcp.resource_load_duration': {
+    canonicalName: 'browser.web_vital.lcp.resource_load_duration',
+    type: 'double',
+    brief: 'The time it took to load the LCP resource, in milliseconds',
+    deprecationChain: ['browser.web_vital.lcp.resource_load_duration'],
   },
   'browser.web_vital.lcp.size': {
     canonicalName: 'browser.web_vital.lcp.size',
@@ -7449,7 +7799,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'cache.ttl': {
     canonicalName: 'cache.ttl',
     type: 'integer',
-    brief: 'The ttl (maximum lifetime) of the cache in seconds',
+    brief: 'The TTL (maximum lifetime) of the cache entry in seconds',
     deprecationChain: ['cache.ttl'],
   },
   'cache.write': {
@@ -8269,6 +8619,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The cloud region of the invoked function.',
     deprecationChain: ['faas.invoked_region'],
   },
+  'faas.max_memory': {
+    canonicalName: 'faas.max_memory',
+    type: 'integer',
+    brief: 'The amount of memory available to the serverless function, in bytes.',
+    deprecationChain: ['faas.max_memory'],
+  },
   'faas.name': {
     canonicalName: 'faas.name',
     type: 'string',
@@ -8494,7 +8850,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.input.messages',
     type: 'string',
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", state: ..., questions: {...}}` with the evaluated state and the questions keyed by name, as the caller passed them.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
     deprecationChain: [
       'gen_ai.input.messages',
       'ai.input_messages',
@@ -8557,7 +8913,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.output.messages',
     type: 'string',
     brief:
-      'The model\'s response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. For `gen_ai.decide` operations, the array holds one object `{type: "evaluation", answers: {...}}` with the answers keyed by question name, as the provider returned them.',
+      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
     deprecationChain: [
       'gen_ai.output.messages',
       'ai.response.text',
@@ -8820,6 +9176,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'gen_ai.tool.output',
       'mcp.tool.result.content',
     ],
+  },
+  'gen_ai.tool.call.result.size': {
+    canonicalName: 'gen_ai.tool.call.result.size',
+    type: 'byte',
+    brief: 'The UTF-8 byte length of the serialized tool call result, measured before truncation.',
+    deprecationChain: ['gen_ai.tool.call.result.size'],
   },
   'gen_ai.tool.definitions': {
     canonicalName: 'gen_ai.tool.definitions',
@@ -9098,6 +9460,24 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'How long the client should wait before retrying the gRPC call, in milliseconds, from the google.rpc.RetryInfo error detail.',
     deprecationChain: ['grpc.error.retry_info.retry_delay_ms'],
+  },
+  'hapi.ext.type': {
+    canonicalName: 'hapi.ext.type',
+    type: 'string',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
+    deprecationChain: ['hapi.ext.type', 'server.ext.type'],
+  },
+  'hapi.plugin.name': {
+    canonicalName: 'hapi.plugin.name',
+    type: 'string',
+    brief: 'The name of the Hapi plugin that registered the route.',
+    deprecationChain: ['hapi.plugin.name'],
+  },
+  'hapi.type': {
+    canonicalName: 'hapi.type',
+    type: 'string',
+    brief: 'The type of the Hapi layer that the span describes: `router`, `plugin`, or `server.ext`.',
+    deprecationChain: ['hapi.type'],
   },
   hardwareConcurrency: {
     canonicalName: 'device.processor_count',
@@ -10011,6 +10391,157 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'The number of messages sent, received, or processed in the scope of the batching operation.',
     deprecationChain: ['messaging.batch.message_count'],
+  },
+  'messaging.bullmq.flow.name': {
+    canonicalName: 'messaging.bullmq.flow.name',
+    type: 'string',
+    brief: 'The name of the root job of the BullMQ flow that FlowProducer.add() adds.',
+    deprecationChain: ['messaging.bullmq.flow.name'],
+  },
+  'messaging.bullmq.job.attempt_finished_timestamp': {
+    canonicalName: 'messaging.bullmq.job.attempt_finished_timestamp',
+    type: 'integer',
+    brief: 'The time in milliseconds since the Unix epoch when the current attempt of the BullMQ job finished.',
+    deprecationChain: ['messaging.bullmq.job.attempt_finished_timestamp'],
+  },
+  'messaging.bullmq.job.bulk.names': {
+    canonicalName: 'messaging.bullmq.job.bulk.names',
+    type: 'string[]',
+    brief: 'The names of the BullMQ jobs or flows that one bulk operation adds, for example Queue.addBulk().',
+    deprecationChain: ['messaging.bullmq.job.bulk.names'],
+  },
+  'messaging.bullmq.job.deduplication.key': {
+    canonicalName: 'messaging.bullmq.job.deduplication.key',
+    type: 'string',
+    brief: 'The deduplication ID that Queue.removeDeduplicationKey() removes.',
+    deprecationChain: ['messaging.bullmq.job.deduplication.key'],
+  },
+  'messaging.bullmq.job.ids': {
+    canonicalName: 'messaging.bullmq.job.ids',
+    type: 'string[]',
+    brief: 'The IDs of the BullMQ jobs that Queue.clean() removed.',
+    deprecationChain: ['messaging.bullmq.job.ids'],
+  },
+  'messaging.bullmq.job.key': {
+    canonicalName: 'messaging.bullmq.job.key',
+    type: 'string',
+    brief:
+      'The key that a BullMQ remove operation for a debounce or repeatable key gets, for example Queue.removeDebounceKey().',
+    deprecationChain: ['messaging.bullmq.job.key'],
+  },
+  'messaging.bullmq.job.name': {
+    canonicalName: 'messaging.bullmq.job.name',
+    type: 'string',
+    brief: 'The name of the BullMQ job, which the user passes to Queue.add() to identify the kind of work.',
+    deprecationChain: ['messaging.bullmq.job.name'],
+  },
+  'messaging.bullmq.job.processed_timestamp': {
+    canonicalName: 'messaging.bullmq.job.processed_timestamp',
+    type: 'integer',
+    brief: 'The time in milliseconds since the Unix epoch when the Worker started to process the BullMQ job.',
+    deprecationChain: ['messaging.bullmq.job.processed_timestamp'],
+  },
+  'messaging.bullmq.job.scheduler.id': {
+    canonicalName: 'messaging.bullmq.job.scheduler.id',
+    type: 'string',
+    brief: 'The ID of the BullMQ job scheduler that adds the job.',
+    deprecationChain: ['messaging.bullmq.job.scheduler.id'],
+  },
+  'messaging.bullmq.job.state': {
+    canonicalName: 'messaging.bullmq.job.state',
+    type: 'string',
+    brief: 'The state of the BullMQ job that a job metric counts.',
+    deprecationChain: ['messaging.bullmq.job.state'],
+  },
+  'messaging.bullmq.job.type': {
+    canonicalName: 'messaging.bullmq.job.type',
+    type: 'string',
+    brief: 'The job state from which Queue.clean() removes BullMQ jobs.',
+    deprecationChain: ['messaging.bullmq.job.type'],
+  },
+  'messaging.bullmq.queue.clean.count': {
+    canonicalName: 'messaging.bullmq.queue.clean.count',
+    type: 'integer',
+    brief: 'The number of BullMQ jobs that Queue.clean() removed.',
+    deprecationChain: ['messaging.bullmq.queue.clean.count'],
+  },
+  'messaging.bullmq.queue.clean.limit': {
+    canonicalName: 'messaging.bullmq.queue.clean.limit',
+    type: 'integer',
+    brief: 'The maximum number of BullMQ jobs that Queue.clean() removes.',
+    deprecationChain: ['messaging.bullmq.queue.clean.limit'],
+  },
+  'messaging.bullmq.queue.drain.delay': {
+    canonicalName: 'messaging.bullmq.queue.drain.delay',
+    type: 'boolean',
+    brief: 'Whether Queue.drain() also removes the delayed BullMQ jobs.',
+    deprecationChain: ['messaging.bullmq.queue.drain.delay'],
+  },
+  'messaging.bullmq.queue.event.max_length': {
+    canonicalName: 'messaging.bullmq.queue.event.max_length',
+    type: 'integer',
+    brief: 'The maximum number of events that Queue.trimEvents() keeps in the BullMQ event stream.',
+    deprecationChain: ['messaging.bullmq.queue.event.max_length'],
+  },
+  'messaging.bullmq.queue.grace': {
+    canonicalName: 'messaging.bullmq.queue.grace',
+    type: 'integer',
+    brief: 'The grace period in milliseconds that Queue.clean() uses. Only BullMQ jobs that are older are removed.',
+    deprecationChain: ['messaging.bullmq.queue.grace'],
+  },
+  'messaging.bullmq.queue.jobs.state': {
+    canonicalName: 'messaging.bullmq.queue.jobs.state',
+    type: 'string',
+    brief: 'The BullMQ job state that the queue job count metric counts.',
+    deprecationChain: ['messaging.bullmq.queue.jobs.state'],
+  },
+  'messaging.bullmq.queue.rate_limit': {
+    canonicalName: 'messaging.bullmq.queue.rate_limit',
+    type: 'integer',
+    brief: 'The time in milliseconds for which Queue.rateLimit() rate-limits the BullMQ queue.',
+    deprecationChain: ['messaging.bullmq.queue.rate_limit'],
+  },
+  'messaging.bullmq.worker.do_not_wait_active': {
+    canonicalName: 'messaging.bullmq.worker.do_not_wait_active',
+    type: 'boolean',
+    brief: 'Whether Worker.pause() returns without waiting for the active BullMQ jobs to finish.',
+    deprecationChain: ['messaging.bullmq.worker.do_not_wait_active'],
+  },
+  'messaging.bullmq.worker.force_close': {
+    canonicalName: 'messaging.bullmq.worker.force_close',
+    type: 'boolean',
+    brief: 'Whether Worker.close() closes the Worker without waiting for the active BullMQ jobs to finish.',
+    deprecationChain: ['messaging.bullmq.worker.force_close'],
+  },
+  'messaging.bullmq.worker.jobs_to_extend_locks': {
+    canonicalName: 'messaging.bullmq.worker.jobs_to_extend_locks',
+    type: 'string[]',
+    brief: 'The IDs of the BullMQ jobs whose locks the Worker extends.',
+    deprecationChain: ['messaging.bullmq.worker.jobs_to_extend_locks'],
+  },
+  'messaging.bullmq.worker.name': {
+    canonicalName: 'messaging.bullmq.worker.name',
+    type: 'string',
+    brief: 'The name that the user gives to the BullMQ Worker in its options.',
+    deprecationChain: ['messaging.bullmq.worker.name'],
+  },
+  'messaging.bullmq.worker.rate_limit': {
+    canonicalName: 'messaging.bullmq.worker.rate_limit',
+    type: 'integer',
+    brief: 'The time in milliseconds for which Worker.rateLimit() rate-limits the BullMQ Worker.',
+    deprecationChain: ['messaging.bullmq.worker.rate_limit'],
+  },
+  'messaging.bullmq.worker.stalled_jobs': {
+    canonicalName: 'messaging.bullmq.worker.stalled_jobs',
+    type: 'string[]',
+    brief: 'The IDs of the stalled BullMQ jobs that the Worker moved back to the wait state.',
+    deprecationChain: ['messaging.bullmq.worker.stalled_jobs'],
+  },
+  'messaging.client.id': {
+    canonicalName: 'messaging.client.id',
+    type: 'string',
+    brief: 'A unique identifier for the client that consumes or produces a message.',
+    deprecationChain: ['messaging.client.id'],
   },
   'messaging.conversation_id': {
     canonicalName: 'messaging.message.conversation_id',
@@ -11326,6 +11857,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
       'http.host',
       'net.peer.name',
     ],
+  },
+  'server.ext.type': {
+    canonicalName: 'hapi.ext.type',
+    type: 'string',
+    brief: 'The request lifecycle extension point where the Hapi extension function runs.',
+    deprecationChain: ['hapi.ext.type', 'server.ext.type'],
   },
   'server.port': {
     canonicalName: 'server.port',
