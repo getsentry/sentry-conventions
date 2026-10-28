@@ -10,7 +10,8 @@
   "examples": ["native-http", "on-demand", "provisioned-concurrency", "snap-start"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.30.0",
+      "prs": [715],
       "description": "Added aws.lambda.initialization_type attribute"
     }
   ]
