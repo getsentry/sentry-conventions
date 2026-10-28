@@ -1,0 +1,26 @@
+{
+  "key": "vercel.ai.settings.context.<key>",
+  "brief": "A runtime context property of a Vercel AI SDK call that the app included in telemetry through `telemetry.includeRuntimeContext`, with <key> being the top-level context property name.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "Runtime context is user-defined and can contain user data"
+  },
+  "additional_context": [
+    "Set on `gen_ai` spans for `invoke_agent`, `generate_content`, `execute_tool`, `embeddings`, `rerank` and `decide` operations. Spans for model calls and tool calls inside an operation copy the attributes of that operation.",
+    "SDKs MUST only record the properties that the app included through `telemetry.includeRuntimeContext`. `ai` versions before 7.0.114 publish the full runtime context on the `ai:telemetry` diagnostics channel. SDKs MUST NOT record runtime context from channel events that do not have the `aiVersion` field, which `ai` added in 7.0.154.",
+    "The Vercel AI SDK's own OpenTelemetry integration (`@ai-sdk/otel`) emits the same data as `ai.settings.context.<key>`.",
+    "Runtime context values can have any type. SDKs MUST convert them to strings, and SHOULD serialize objects and arrays as JSON.",
+    "This attribute is open-ended on purpose. The Vercel AI SDK does not define the runtime context keys."
+  ],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["vercel.ai.settings.context.tenantId='acme'"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added vercel.ai.settings.context.<key> attribute"
+    }
+  ]
+}

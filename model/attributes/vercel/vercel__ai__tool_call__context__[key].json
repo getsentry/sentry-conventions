@@ -1,0 +1,26 @@
+{
+  "key": "vercel.ai.tool_call.context.<key>",
+  "brief": "A tool context property of a Vercel AI SDK tool call that the app included in telemetry through `telemetry.includeToolsContext`, with <key> being the top-level context property name.",
+  "has_dynamic_suffix": true,
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "auto",
+    "reason": "Tool context is user-defined and can contain user data"
+  },
+  "additional_context": [
+    "Set on `gen_ai` spans for `execute_tool` operations.",
+    "SDKs MUST only record the properties that the app included for the tool through `telemetry.includeToolsContext`. `ai` versions before 7.0.114 publish the full tool context on the `ai:telemetry` diagnostics channel. SDKs MUST NOT record tool context from channel events that do not have the `aiVersion` field, which `ai` added in 7.0.154.",
+    "The Vercel AI SDK's own OpenTelemetry integration (`@ai-sdk/otel`) does not record tool context.",
+    "Tool context values can have any type. SDKs MUST convert them to strings, and SHOULD serialize objects and arrays as JSON.",
+    "This attribute is open-ended on purpose. The Vercel AI SDK does not define the tool context keys."
+  ],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["vercel.ai.tool_call.context.units='metric'"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added vercel.ai.tool_call.context.<key> attribute"
+    }
+  ]
+}
