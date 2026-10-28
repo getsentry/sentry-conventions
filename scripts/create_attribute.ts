@@ -2,10 +2,13 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
-import { confirm, intro, isCancel, log, outro, select, text } from '@clack/prompts';
+import { confirm, intro, isCancel, log, note, outro, select, text } from '@clack/prompts';
 import Ajv from 'ajv';
 import { parseAttributeExamples } from './attribute_examples';
-import type { AttributeValue } from './types';
+import { NAMESPACE_README, formatNamespaceReadme, formatNamespaceScope, readNamespaceReadme } from './namespaces';
+import type { AttributeValue, NamespaceJson } from './types';
+
+const ATTRIBUTES_DIR = path.join('model', 'attributes');
 
 const getNextPrNumber = (): number | undefined => {
   try {
@@ -36,6 +39,7 @@ Options:
   --examples          Example values as a non-empty JSON array (optional, preferred)
   --example, -e       A single example value (optional, legacy)
   --alias, -a         Comma-separated list of attributes that alias to this attribute (optional)
+  --namespace_brief   What the namespace describes (required if the key starts a new namespace)
 
 Examples:
   # Interactive mode
@@ -71,6 +75,7 @@ const createAttribute = async () => {
         examples: { type: 'string' },
         example: { type: 'string', short: 'e' },
         alias: { type: 'string', short: 'a' },
+        namespace_brief: { type: 'string' },
       },
       allowPositionals: true,
     });
@@ -101,9 +106,16 @@ const createAttribute = async () => {
     let examples: string | undefined;
     let example: string | undefined;
     let alias: string | undefined;
+    let namespaceBrief: string | undefined;
 
     if (isInteractive) {
       key = await askForAttributeName();
+      const namespace = getNamespace(key);
+      if (namespace && isNewNamespace(namespace)) {
+        namespaceBrief = await askForNamespaceBrief(namespace);
+      } else if (namespace) {
+        showNamespaceScope(namespace);
+      }
       description = await askForAttributeDescription();
       type = await askForAttributeType();
       applyScrubbingKey = await askForApplyScrubbing();
@@ -121,12 +133,25 @@ const createAttribute = async () => {
       examples = values.examples;
       example = values.example;
       alias = values.alias;
+      namespaceBrief = values.namespace_brief;
     }
 
     // Validate required fields
     if (!key || !description || !type || !applyScrubbingKey || !isInOtel || !visibility) {
       console.error('Error: Missing required fields. Use --help for usage information.');
       process.exit(1);
+    }
+
+    const namespace = getNamespace(key);
+    const startsNewNamespace = namespace !== undefined && isNewNamespace(namespace);
+
+    if (startsNewNamespace && !namespaceBrief) {
+      console.error(`Error: "${namespace}" is a new namespace. Describe it with --namespace_brief.`);
+      process.exit(1);
+    }
+
+    if (!isInteractive && namespace && !startsNewNamespace) {
+      showNamespaceScope(namespace);
     }
 
     if (visibility !== 'public' && visibility !== 'internal') {
@@ -194,10 +219,10 @@ const createAttribute = async () => {
 
     if (parts.length === 1) {
       // Handle simple keys like 'replay_id'
-      filePath = path.join('model', 'attributes', `${fileKey}.json`);
+      filePath = path.join(ATTRIBUTES_DIR, `${fileKey}.json`);
     } else {
       // Handle dotted keys like 'http.route'
-      const dirPath = path.join('model', 'attributes', parts[0] ?? '');
+      const dirPath = path.join(ATTRIBUTES_DIR, parts[0] ?? '');
       if (!fs.existsSync(dirPath)) {
         fs.mkdirSync(dirPath, { recursive: true });
       }
@@ -208,6 +233,14 @@ const createAttribute = async () => {
 
     fs.writeFileSync(filePath, `${JSON.stringify(attribute, null, 2)}\n`);
     log.success(`Successfully created attribute file at: ${filePath}`);
+
+    if (startsNewNamespace && namespace && namespaceBrief) {
+      const readmePath = path.join(ATTRIBUTES_DIR, namespace, NAMESPACE_README);
+      fs.writeFileSync(readmePath, formatNamespaceReadme({ namespace, brief: namespaceBrief }));
+      log.success(
+        `Created ${readmePath} for the new namespace. Add what belongs in it and what doesn't (see CONTRIBUTING.md).`,
+      );
+    }
 
     // Ask if user wants to generate docs
     const generateDocs = await askForGenerateDocs();
@@ -239,6 +272,40 @@ async function askForAttributeName() {
       validate: (value) => {
         if (!value) {
           return 'Attribute key is required';
+        }
+        return undefined;
+      },
+    }),
+  );
+}
+
+function getNamespace(key: string): string | undefined {
+  return key.includes('.') ? key.split('.')[0] : undefined;
+}
+
+function isNewNamespace(namespace: string): boolean {
+  return !fs.existsSync(path.join(ATTRIBUTES_DIR, namespace));
+}
+
+/** Shows what belongs in the namespace and what doesn't, so the author can check that the attribute fits. */
+function showNamespaceScope(namespace: string) {
+  const readme = readNamespaceReadme(ATTRIBUTES_DIR, namespace);
+  if (readme) {
+    note(formatNamespaceScope(readme.frontmatter as NamespaceJson), `The "${namespace}" namespace`);
+  }
+}
+
+async function askForNamespaceBrief(namespace: string) {
+  log.warn(
+    `"${namespace}" is a new namespace. Check that the attribute doesn't fit an existing namespace before you add one.`,
+  );
+  return abortIfCancelled(
+    text({
+      message: `Describe what the "${namespace}" namespace is for`,
+      placeholder: 'Describes HTTP requests and responses, on the client and on the server.',
+      validate: (value) => {
+        if (!value) {
+          return 'A description of the new namespace is required';
         }
         return undefined;
       },

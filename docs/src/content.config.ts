@@ -87,6 +87,33 @@ const attributes = defineCollection({
   schema: attributeSchema,
 });
 
+// Schema matching the frontmatter of namespace READMEs (see CONTRIBUTING.md)
+const namespaceSchema = z.object({
+  namespace: z.string(),
+  brief: z.string(),
+  includes: z.array(z.string()).min(1).optional(),
+  excludes: z
+    .array(
+      z.object({
+        description: z.string(),
+        see: z.string(),
+      }),
+    )
+    .min(1)
+    .optional(),
+});
+
+// Define the namespaces collection - loads the README.md of each namespace folder in model/attributes,
+// with the folder name as the id
+const namespaces = defineCollection({
+  loader: glob({
+    pattern: '*/README.md',
+    base: '../model/attributes',
+    generateId: ({ entry }) => entry.split('/')[0] ?? entry,
+  }),
+  schema: namespaceSchema,
+});
+
 // Define the names collection - loads all JSON files from model/name
 const names = defineCollection({
   loader: glob({ pattern: '*.json', base: '../model/name' }),
@@ -170,10 +197,11 @@ const metrics = defineCollection({
   schema: metricSchema,
 });
 
-export const collections = { attributes, names, descriptions, measurements, ops, metrics };
+export const collections = { attributes, namespaces, names, descriptions, measurements, ops, metrics };
 
 // Export types for use in pages
 export type Attribute = z.infer<typeof attributeSchema>;
+export type Namespace = z.infer<typeof namespaceSchema>;
 export type SpanName = z.infer<typeof nameSchema>;
 export type SpanOperation = z.infer<typeof spanOperationSchema>;
 export type SpanDescription = z.infer<typeof descriptionSchema>;

@@ -30,6 +30,14 @@ export interface AttributeJson {
   changelog?: { version: string; prs?: number[]; description?: string }[];
 }
 
+/** The YAML frontmatter of a namespace README (model/attributes/<namespace>/README.md). */
+export interface NamespaceJson {
+  namespace: string;
+  brief: string;
+  includes?: string[];
+  excludes?: { description: string; see: string }[];
+}
+
 export interface NameJson {
   brief: string;
   operations: {
