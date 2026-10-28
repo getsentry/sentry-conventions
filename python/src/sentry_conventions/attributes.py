@@ -6307,30 +6307,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"
     """
 
-    # Path: model/attributes/heroku/heroku__router__at.json
-    HEROKU_ROUTER_AT: Literal["heroku.router.at"] = "heroku.router.at"
-    """Log level reported by the Heroku router
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "info"
-    Example: "error"
-    """
-
-    # Path: model/attributes/heroku/heroku__router__bytes.json
-    HEROKU_ROUTER_BYTES: Literal["heroku.router.bytes"] = "heroku.router.bytes"
-    """Number of bytes the Heroku router transferred from the web process to the client
-
-    Type: int
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: 0
-    Example: 1548
-    """
-
     # Path: model/attributes/heroku/heroku__router__connect.json
     HEROKU_ROUTER_CONNECT: Literal["heroku.router.connect"] = "heroku.router.connect"
     """Time in milliseconds the Heroku router spent establishing a connection to the web process
@@ -6354,69 +6330,11 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "web.1"
     """
 
-    # Path: model/attributes/heroku/heroku__router__fwd.json
-    HEROKU_ROUTER_FWD: Literal["heroku.router.fwd"] = "heroku.router.fwd"
-    """`X-Forwarded-For` header value of a request handled by the Heroku router
-
-    Type: str
-    Apply Scrubbing: auto
-    Defined in OTEL: No
-    Visibility: public
-    Example: "138.68.186.89"
-    """
-
-    # Path: model/attributes/heroku/heroku__router__host.json
-    HEROKU_ROUTER_HOST: Literal["heroku.router.host"] = "heroku.router.host"
-    """HTTP request `Host` header of a request handled by the Heroku router
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "my-app.herokuapp.com"
-    """
-
-    # Path: model/attributes/heroku/heroku__router__method.json
-    HEROKU_ROUTER_METHOD: Literal["heroku.router.method"] = "heroku.router.method"
-    """HTTP request method of a request handled by the Heroku router
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "GET"
-    Example: "POST"
-    """
-
-    # Path: model/attributes/heroku/heroku__router__path.json
-    HEROKU_ROUTER_PATH: Literal["heroku.router.path"] = "heroku.router.path"
-    """HTTP request path and query string of a request handled by the Heroku router
-
-    Type: str
-    Apply Scrubbing: auto
-    Defined in OTEL: No
-    Visibility: public
-    Example: "/"
-    Example: "/forecast?lat=41.88"
-    """
-
-    # Path: model/attributes/heroku/heroku__router__protocol.json
-    HEROKU_ROUTER_PROTOCOL: Literal["heroku.router.protocol"] = "heroku.router.protocol"
-    """Request protocol, including the HTTP version, of a request handled by the Heroku router
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "http1.1"
-    Example: "http2.0"
-    """
-
     # Path: model/attributes/heroku/heroku__router__request_id.json
     HEROKU_ROUTER_REQUEST_ID: Literal["heroku.router.request_id"] = (
         "heroku.router.request_id"
     )
-    """Heroku request ID of a request handled by the Heroku router
+    """Heroku request ID of a request handled by the Heroku router, also sent to the app as the `X-Request-ID` header
 
     Type: str
     Apply Scrubbing: manual
@@ -6435,43 +6353,6 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Example: 12
     Example: 30001
-    """
-
-    # Path: model/attributes/heroku/heroku__router__status.json
-    HEROKU_ROUTER_STATUS: Literal["heroku.router.status"] = "heroku.router.status"
-    """HTTP response status code of a request handled by the Heroku router
-
-    Type: int
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: 200
-    Example: 503
-    """
-
-    # Path: model/attributes/heroku/heroku__router__tls.json
-    HEROKU_ROUTER_TLS: Literal["heroku.router.tls"] = "heroku.router.tls"
-    """Whether TLS was used for a request handled by the Heroku router
-
-    Type: bool
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: true
-    """
-
-    # Path: model/attributes/heroku/heroku__router__tls_version.json
-    HEROKU_ROUTER_TLS_VERSION: Literal["heroku.router.tls_version"] = (
-        "heroku.router.tls_version"
-    )
-    """TLS version used for a request handled by the Heroku router
-
-    Type: str
-    Apply Scrubbing: manual
-    Defined in OTEL: No
-    Visibility: public
-    Example: "tls1.3"
-    Example: "unknown"
     """
 
     # Path: model/attributes/heroku/heroku__source.json
@@ -11623,6 +11504,29 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: app.vitals.ttid.value
     DEPRECATED: Use app.vitals.ttid.value instead - Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
+    """
+
+    # Path: model/attributes/tls/tls__protocol__name.json
+    TLS_PROTOCOL_NAME: Literal["tls.protocol.name"] = "tls.protocol.name"
+    """Normalized lowercase protocol name parsed from original string of the negotiated SSL/TLS protocol version
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "tls"
+    """
+
+    # Path: model/attributes/tls/tls__protocol__version.json
+    TLS_PROTOCOL_VERSION: Literal["tls.protocol.version"] = "tls.protocol.version"
+    """Numeric part of the version parsed from the original string of the negotiated SSL/TLS protocol version
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "1.2"
+    Example: "1.3"
     """
 
     # Path: model/attributes/transaction.json
@@ -21679,40 +21583,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "heroku.router.at": AttributeMetadata(
-        brief="Log level reported by the Heroku router",
-        type=AttributeType.STRING,
-        keys=("heroku.router.at",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="info",
-        examples=["info", "error"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.at attribute",
-            ),
-        ],
-    ),
-    "heroku.router.bytes": AttributeMetadata(
-        brief="Number of bytes the Heroku router transferred from the web process to the client",
-        type=AttributeType.INTEGER,
-        keys=("heroku.router.bytes",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example=0,
-        examples=[0, 1548],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.bytes attribute",
-            ),
-        ],
-    ),
     "heroku.router.connect": AttributeMetadata(
         brief="Time in milliseconds the Heroku router spent establishing a connection to the web process",
         type=AttributeType.INTEGER,
@@ -21747,93 +21617,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
-    "heroku.router.fwd": AttributeMetadata(
-        brief="`X-Forwarded-For` header value of a request handled by the Heroku router",
-        type=AttributeType.STRING,
-        keys=("heroku.router.fwd",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="138.68.186.89",
-        examples=["138.68.186.89"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.fwd attribute",
-            ),
-        ],
-    ),
-    "heroku.router.host": AttributeMetadata(
-        brief="HTTP request `Host` header of a request handled by the Heroku router",
-        type=AttributeType.STRING,
-        keys=("heroku.router.host",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="my-app.herokuapp.com",
-        examples=["my-app.herokuapp.com"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.host attribute",
-            ),
-        ],
-    ),
-    "heroku.router.method": AttributeMetadata(
-        brief="HTTP request method of a request handled by the Heroku router",
-        type=AttributeType.STRING,
-        keys=("heroku.router.method",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="GET",
-        examples=["GET", "POST"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.method attribute",
-            ),
-        ],
-    ),
-    "heroku.router.path": AttributeMetadata(
-        brief="HTTP request path and query string of a request handled by the Heroku router",
-        type=AttributeType.STRING,
-        keys=("heroku.router.path",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="/",
-        examples=["/", "/forecast?lat=41.88"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.path attribute",
-            ),
-        ],
-    ),
-    "heroku.router.protocol": AttributeMetadata(
-        brief="Request protocol, including the HTTP version, of a request handled by the Heroku router",
-        type=AttributeType.STRING,
-        keys=("heroku.router.protocol",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="http1.1",
-        examples=["http1.1", "http2.0"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.protocol attribute",
-            ),
-        ],
-    ),
     "heroku.router.request_id": AttributeMetadata(
-        brief="Heroku request ID of a request handled by the Heroku router",
+        brief="Heroku request ID of a request handled by the Heroku router, also sent to the app as the `X-Request-ID` header",
         type=AttributeType.STRING,
         keys=("heroku.router.request_id",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -21863,57 +21648,6 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 version="next",
                 prs=[752],
                 description="Added heroku.router.service attribute",
-            ),
-        ],
-    ),
-    "heroku.router.status": AttributeMetadata(
-        brief="HTTP response status code of a request handled by the Heroku router",
-        type=AttributeType.INTEGER,
-        keys=("heroku.router.status",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example=200,
-        examples=[200, 503],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.status attribute",
-            ),
-        ],
-    ),
-    "heroku.router.tls": AttributeMetadata(
-        brief="Whether TLS was used for a request handled by the Heroku router",
-        type=AttributeType.BOOLEAN,
-        keys=("heroku.router.tls",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example=True,
-        examples=[True],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.tls attribute",
-            ),
-        ],
-    ),
-    "heroku.router.tls_version": AttributeMetadata(
-        brief="TLS version used for a request handled by the Heroku router",
-        type=AttributeType.STRING,
-        keys=("heroku.router.tls_version",),
-        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
-        is_in_otel=False,
-        visibility=Visibility.PUBLIC,
-        example="tls1.3",
-        examples=["tls1.3", "unknown"],
-        changelog=[
-            ChangelogEntry(
-                version="next",
-                prs=[752],
-                description="Added heroku.router.tls_version attribute",
             ),
         ],
     ),
@@ -29821,6 +29555,40 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "tls.protocol.name": AttributeMetadata(
+        brief="Normalized lowercase protocol name parsed from original string of the negotiated SSL/TLS protocol version",
+        type=AttributeType.STRING,
+        keys=("tls.protocol.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="tls",
+        examples=["tls"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[752],
+                description="Added tls.protocol.name attribute",
+            ),
+        ],
+    ),
+    "tls.protocol.version": AttributeMetadata(
+        brief="Numeric part of the version parsed from the original string of the negotiated SSL/TLS protocol version",
+        type=AttributeType.STRING,
+        keys=("tls.protocol.version",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="1.2",
+        examples=["1.2", "1.3"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[752],
+                description="Added tls.protocol.version attribute",
+            ),
+        ],
+    ),
     "transaction": AttributeMetadata(
         brief="The sentry transaction (segment name).",
         type=AttributeType.STRING,
@@ -31840,20 +31608,10 @@ Attributes = TypedDict(
         "heroku.error.code": str,
         "heroku.error.description": str,
         "heroku.logplex.drain_token": str,
-        "heroku.router.at": str,
-        "heroku.router.bytes": int,
         "heroku.router.connect": int,
         "heroku.router.dyno": str,
-        "heroku.router.fwd": str,
-        "heroku.router.host": str,
-        "heroku.router.method": str,
-        "heroku.router.path": str,
-        "heroku.router.protocol": str,
         "heroku.router.request_id": str,
         "heroku.router.service": int,
-        "heroku.router.status": int,
-        "heroku.router.tls": bool,
-        "heroku.router.tls_version": str,
         "heroku.source": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
@@ -32256,6 +32014,8 @@ Attributes = TypedDict(
         "timber.tag": str,
         "time_to_full_display": float,
         "time_to_initial_display": float,
+        "tls.protocol.name": str,
+        "tls.protocol.version": str,
         "transaction": str,
         "trpc.procedure_path": str,
         "trpc.procedure_type": str,

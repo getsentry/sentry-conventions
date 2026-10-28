@@ -1,6 +1,6 @@
 {
   "key": "heroku.router.request_id",
-  "brief": "Heroku request ID of a request handled by the Heroku router",
+  "brief": "Heroku request ID of a request handled by the Heroku router, also sent to the app as the `X-Request-ID` header",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
