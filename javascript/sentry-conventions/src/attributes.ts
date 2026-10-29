@@ -38690,7 +38690,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', description: 'Added vercel.ai.settings.context.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `invoke_agent`, `generate_content`, `execute_tool`, `embeddings`, `rerank` and `decide` operations. Spans for model calls and tool calls inside an operation copy the attributes of that operation.',
-      'SDKs MUST only record the properties that the app included through `telemetry.includeRuntimeContext`. `ai` versions before 7.0.114 publish the full runtime context on the `ai:telemetry` diagnostics channel. SDKs MUST NOT record runtime context from channel events that do not have the `aiVersion` field, which `ai` added in 7.0.154.',
+      'SDKs MUST only record the properties that the app included through `telemetry.includeRuntimeContext`. Some Vercel AI SDK versions expose the full runtime context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the runtime context, it MUST NOT record it.',
       "The Vercel AI SDK's own OpenTelemetry integration (`@ai-sdk/otel`) emits the same data as `ai.settings.context.<key>`.",
       'Runtime context values can have any type. SDKs MUST convert them to strings, and SHOULD serialize objects and arrays as JSON.',
       'This attribute is open-ended on purpose. The Vercel AI SDK does not define the runtime context keys.',
@@ -38735,7 +38735,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [{ version: 'next', description: 'Added vercel.ai.tool_call.context.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `execute_tool` operations.',
-      'SDKs MUST only record the properties that the app included for the tool through `telemetry.includeToolsContext`. `ai` versions before 7.0.114 publish the full tool context on the `ai:telemetry` diagnostics channel. SDKs MUST NOT record tool context from channel events that do not have the `aiVersion` field, which `ai` added in 7.0.154.',
+      'SDKs MUST only record the properties that the app included for the tool through `telemetry.includeToolsContext`. Some Vercel AI SDK versions expose the full tool context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the tool context, it MUST NOT record it.',
       "The Vercel AI SDK's own OpenTelemetry integration (`@ai-sdk/otel`) does not record tool context.",
       'Tool context values can have any type. SDKs MUST convert them to strings, and SHOULD serialize objects and arrays as JSON.',
       'This attribute is open-ended on purpose. The Vercel AI SDK does not define the tool context keys.',
