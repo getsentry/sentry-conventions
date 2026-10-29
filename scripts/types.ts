@@ -63,6 +63,16 @@ export interface OpFieldJson {
   };
 }
 
+export interface MetricJson {
+  key: string;
+  brief: string;
+  instrument: 'gauge' | 'counter' | 'distribution';
+  unit: string;
+  is_in_otel: boolean;
+  requirement_level: 'required' | 'recommended' | 'opt_in';
+  attributes?: string[];
+}
+
 export interface OpJson {
   name: string;
   description?: string;
