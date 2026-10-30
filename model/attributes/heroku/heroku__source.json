@@ -1,0 +1,18 @@
+{
+  "key": "heroku.source",
+  "brief": "Source of a Heroku log message, `app` for output of the application and `heroku` for messages of the Heroku platform",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["app", "heroku"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added heroku.source attribute"
+    }
+  ]
+}

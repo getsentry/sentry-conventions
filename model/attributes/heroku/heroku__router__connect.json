@@ -1,0 +1,18 @@
+{
+  "key": "heroku.router.connect",
+  "brief": "Time in milliseconds the Heroku router spent establishing a connection to the web process",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [0, 6],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added heroku.router.connect attribute"
+    }
+  ]
+}

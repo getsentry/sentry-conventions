@@ -1,0 +1,18 @@
+{
+  "key": "tls.protocol.name",
+  "brief": "Normalized lowercase protocol name parsed from original string of the negotiated SSL/TLS protocol version",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["tls"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added tls.protocol.name attribute"
+    }
+  ]
+}

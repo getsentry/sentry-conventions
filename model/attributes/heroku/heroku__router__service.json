@@ -1,0 +1,18 @@
+{
+  "key": "heroku.router.service",
+  "brief": "Time in milliseconds the Heroku router spent proxying data between the web process and the client",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [12, 30001],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [752],
+      "description": "Added heroku.router.service attribute"
+    }
+  ]
+}
