@@ -403,6 +403,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_GEO_COUNTRY_CODE",
         "SENTRY_USER_GEO_REGION",
         "SENTRY_USER_GEO_SUBDIVISION",
+        "SENTRY_USER_GEO_SUBREGION",
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
@@ -4488,6 +4489,58 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "0/5 * * * ? *"
     """
 
+    # Path: model/attributes/faas/faas__document__collection.json
+    FAAS_DOCUMENT_COLLECTION: Literal["faas.document.collection"] = (
+        "faas.document.collection"
+    )
+    """The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myBucketName"
+    Example: "myDbName"
+    """
+
+    # Path: model/attributes/faas/faas__document__name.json
+    FAAS_DOCUMENT_NAME: Literal["faas.document.name"] = "faas.document.name"
+    """The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myFile.txt"
+    Example: "myTableName"
+    """
+
+    # Path: model/attributes/faas/faas__document__operation.json
+    FAAS_DOCUMENT_OPERATION: Literal["faas.document.operation"] = (
+        "faas.document.operation"
+    )
+    """Describes the type of the operation that was performed on the data.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "insert"
+    Example: "edit"
+    Example: "delete"
+    """
+
+    # Path: model/attributes/faas/faas__document__time.json
+    FAAS_DOCUMENT_TIME: Literal["faas.document.time"] = "faas.document.time"
+    """A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "2020-01-23T13:47:06Z"
+    """
+
     # Path: model/attributes/faas/faas__duration_in_ms.json
     FAAS_DURATION_IN_MS: Literal["faas.duration_in_ms"] = "faas.duration_in_ms"
     """The duration a function took to run, in milliseconds.
@@ -4545,6 +4598,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
+    """
+
+    # Path: model/attributes/faas/faas__instance.json
+    FAAS_INSTANCE: Literal["faas.instance"] = "faas.instance"
+    """The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"
     """
 
     # Path: model/attributes/faas/faas__invocation_id.json
@@ -9258,6 +9322,25 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "resource not found"
     """
 
+    # Path: model/attributes/page/page__server_rendering__type.json
+    PAGE_SERVER_RENDERING_TYPE: Literal["page.server_rendering.type"] = (
+        "page.server_rendering.type"
+    )
+    """Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `static` - The server rendered the whole page to reuse it for other requests, for example a page from the build, a Next.js ISR page, or a Nuxt `swr` route.
+    - `partially_static` - The server reuses a static part of the page, and renders the other parts for this request in the same response (Next.js Partial Prerendering).
+    - `dynamic` - The server rendered the whole page only for this request. Set only when the SDK knows that the server reused no part of the page. If the SDK cannot tell `dynamic` from `partially_static`, it leaves the attribute unset.
+    Example: "static"
+    Example: "partially_static"
+    Example: "dynamic"
+    """
+
     # Path: model/attributes/params/params__[key].json
     PARAMS_KEY: Literal["params.<key>"] = "params.<key>"
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
@@ -11079,6 +11162,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     DEPRECATED: Use user.geo.subdivision instead
     """
 
+    # Path: model/attributes/sentry/sentry__user__geo__subregion.json
+    SENTRY_USER_GEO_SUBREGION: Literal["sentry.user.geo.subregion"] = (
+        "sentry.user.geo.subregion"
+    )
+    """UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `5` - South America
+    - `11` - Western Africa
+    - `13` - Central America
+    - `14` - Eastern Africa
+    - `15` - Northern Africa
+    - `17` - Middle Africa
+    - `18` - Southern Africa
+    - `21` - Northern America
+    - `29` - Caribbean
+    - `30` - Eastern Asia
+    - `34` - Southern Asia
+    - `35` - South-Eastern Asia
+    - `39` - Southern Europe
+    - `53` - Australia and New Zealand
+    - `54` - Melanesia
+    - `57` - Micronesia
+    - `61` - Polynesia
+    - `143` - Central Asia
+    - `145` - Western Asia
+    - `151` - Eastern Europe
+    - `154` - Northern Europe
+    - `155` - Western Europe
+    Aliases: user.geo.subregion
+    DEPRECATED: Use user.geo.subregion instead
+    Example: "155"
+    Example: "21"
+    """
+
     # Path: model/attributes/sentry/sentry__user__id.json
     SENTRY_USER_ID: Literal["sentry.user.id"] = "sentry.user.id"
     """Unique identifier of the user.
@@ -12003,6 +12125,42 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: sentry.user.geo.subdivision
     Example: "Ontario"
+    """
+
+    # Path: model/attributes/user/user__geo__subregion.json
+    USER_GEO_SUBREGION: Literal["user.geo.subregion"] = "user.geo.subregion"
+    """UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `5` - South America
+    - `11` - Western Africa
+    - `13` - Central America
+    - `14` - Eastern Africa
+    - `15` - Northern Africa
+    - `17` - Middle Africa
+    - `18` - Southern Africa
+    - `21` - Northern America
+    - `29` - Caribbean
+    - `30` - Eastern Asia
+    - `34` - Southern Asia
+    - `35` - South-Eastern Asia
+    - `39` - Southern Europe
+    - `53` - Australia and New Zealand
+    - `54` - Melanesia
+    - `57` - Micronesia
+    - `61` - Polynesia
+    - `143` - Central Asia
+    - `145` - Western Asia
+    - `151` - Eastern Europe
+    - `154` - Northern Europe
+    - `155` - Western Europe
+    Aliases: sentry.user.geo.subregion
+    Example: "155"
+    Example: "21"
     """
 
     # Path: model/attributes/user/user__hash.json
@@ -18623,6 +18781,72 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "faas.document.collection": AttributeMetadata(
+        brief="The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.",
+        type=AttributeType.STRING,
+        keys=("faas.document.collection",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myBucketName",
+        examples=["myBucketName", "myDbName"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.collection attribute"
+            ),
+        ],
+    ),
+    "faas.document.name": AttributeMetadata(
+        brief="The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.",
+        type=AttributeType.STRING,
+        keys=("faas.document.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myFile.txt",
+        examples=["myFile.txt", "myTableName"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.name attribute"
+            ),
+        ],
+    ),
+    "faas.document.operation": AttributeMetadata(
+        brief="Describes the type of the operation that was performed on the data.",
+        type=AttributeType.STRING,
+        keys=("faas.document.operation",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="insert",
+        examples=["insert", "edit", "delete"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.operation attribute"
+            ),
+        ],
+        additional_context=[
+            "Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.",
+            "`delete`: When an object is deleted.",
+            "`edit`: When an object is modified.",
+            "`insert`: When a new object is created.",
+        ],
+    ),
+    "faas.document.time": AttributeMetadata(
+        brief="A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.",
+        type=AttributeType.STRING,
+        keys=("faas.document.time",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="2020-01-23T13:47:06Z",
+        examples=["2020-01-23T13:47:06Z"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.time attribute"
+            ),
+        ],
+    ),
     "faas.duration_in_ms": AttributeMetadata(
         brief="The duration a function took to run, in milliseconds.",
         type=AttributeType.INTEGER,
@@ -18709,6 +18933,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.11.0", prs=[403]),
         ],
+    ),
+    "faas.instance": AttributeMetadata(
+        brief="The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.",
+        type=AttributeType.STRING,
+        keys=("faas.instance",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de",
+        examples=["2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"],
+        changelog=[
+            ChangelogEntry(version="next", description="Added faas.instance attribute"),
+        ],
+        additional_context=["For AWS Lambda, use the (full) log stream name."],
     ),
     "faas.invocation_id": AttributeMetadata(
         brief="The invocation ID of the current function invocation.",
@@ -26183,6 +26421,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "page.server_rendering.type": AttributeMetadata(
+        brief="Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.",
+        type=AttributeType.STRING,
+        keys=("page.server_rendering.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="static",
+        examples=["static", "partially_static", "dynamic"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[740],
+                description="Added page.server_rendering.type attribute",
+            ),
+        ],
+        additional_context=[
+            "Set only by an SDK that controls the server render, and only when the SDK knows the value.",
+            "More values can be added later.",
+            "Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.",
+            "With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.",
+            "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
+        ],
+    ),
     "params.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
@@ -28734,6 +28996,31 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="user.geo.subdivision"),
     ),
+    "sentry.user.geo.subregion": AttributeMetadata(
+        brief="UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+        type=AttributeType.STRING,
+        keys=(
+            "user.geo.subregion",
+            "sentry.user.geo.subregion",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="155",
+        examples=["155", "21"],
+        deprecation=DeprecationInfo(
+            replacement="user.geo.subregion", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["user.geo.subregion"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[753],
+                description="Added sentry.user.geo.subregion attribute",
+            ),
+        ],
+        search_alias=SearchAlias(name="user.geo.subregion"),
+    ),
     "sentry.user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
@@ -30294,6 +30581,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "user.geo.subregion": AttributeMetadata(
+        brief="UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+        type=AttributeType.STRING,
+        keys=(
+            "user.geo.subregion",
+            "sentry.user.geo.subregion",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="155",
+        examples=["155", "21"],
+        aliases=["sentry.user.geo.subregion"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[753],
+                description="Added user.geo.subregion attribute",
+            ),
+        ],
+    ),
     "user.hash": AttributeMetadata(
         brief="Unique user hash to correlate information for a user in anonymized form.",
         type=AttributeType.STRING,
@@ -31236,11 +31544,16 @@ Attributes = TypedDict(
         "exception.type": str,
         "faas.coldstart": bool,
         "faas.cron": str,
+        "faas.document.collection": str,
+        "faas.document.name": str,
+        "faas.document.operation": str,
+        "faas.document.time": str,
         "faas.duration_in_ms": int,
         "faas.entry_point": str,
         "faas.execution": str,
         "faas.id": str,
         "faas.identity": str,
+        "faas.instance": str,
         "faas.invocation_id": str,
         "faas.invoked_name": str,
         "faas.invoked_provider": str,
@@ -31607,6 +31920,7 @@ Attributes = TypedDict(
         "otel.scope.version": str,
         "otel.status_code": str,
         "otel.status_description": str,
+        "page.server_rendering.type": str,
         "params.<key>": str,
         "performance.activationStart": float,
         "performance.timeOrigin": float,
@@ -31747,6 +32061,7 @@ Attributes = TypedDict(
         "sentry.user.geo.country_code": str,
         "sentry.user.geo.region": str,
         "sentry.user.geo.subdivision": str,
+        "sentry.user.geo.subregion": str,
         "sentry.user.id": str,
         "sentry.user.ip": str,
         "sentry.user.username": str,
@@ -31821,6 +32136,7 @@ Attributes = TypedDict(
         "user.geo.country_code": str,
         "user.geo.region": str,
         "user.geo.subdivision": str,
+        "user.geo.subregion": str,
         "user.hash": str,
         "user.id": str,
         "user.ip_address": str,
