@@ -8456,7 +8456,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
  *
  * Aliases: {@link AI_RESPONSE_TOOLCALLS} `ai.response.toolCalls`, {@link AI_RESPONSE_TEXT} `ai.response.text`
  *
- * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}], \"finish_reason\": \"stop\"}]"
+ * @example "[{\"role\": \"assistant\", \"parts\": [{\"type\": \"text\", \"content\": \"The weather in Paris is currently rainy with a temperature of 57°F.\"}]}]"
  * @example "[{\"answers\": {\"authIssue\": {\"type\": \"noul\", \"noul\": 0.98}, \"department\": {\"type\": \"choice\", \"choice\": \"billing\", \"confidence\": 0.28, \"probabilities\": {\"billing\": 0.64, \"technical\": 0.36}}}}]"
  * @example "[{\"answers\": {\"invoice_number\": {\"type\": \"text\", \"p_null\": 3.8e-10, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 1, \"value\": \"INV-2291\"}, \"due_date\": {\"type\": \"date\", \"p_null\": 1.9e-08, \"guess\": \"2026-10-02\", \"confidence\": 0.9999, \"value\": \"2026-10-02\"}, \"total\": {\"type\": \"number\", \"p_null\": 2.3e-08, \"guess\": 1080, \"confidence\": 0.9999, \"value\": 1080}, \"contacts\": {\"type\": \"list\", \"value\": [\"Dana Ruiz\", \"Priya Shah\"], \"spans\": [[120, 129], [131, 141]], \"confidence\": 0.9999}, \"po_number\": {\"type\": \"text\", \"p_null\": 1, \"span\": [8, 16], \"guess\": \"INV-2291\", \"confidence\": 0.9995, \"value\": null}, \"days_to_pay\": {\"type\": \"estimate\", \"value\": 30, \"mean\": 29.535, \"median\": 30, \"p10\": 21, \"p90\": 38, \"p_below\": 5.9e-06, \"p_above\": 1.2e-05}}, \"truncated\": false}]"
  */
@@ -29307,9 +29307,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     isInOtel: true,
     visibility: 'public',
     example:
-      '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+      '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}]}]',
     examples: [
-      '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}], "finish_reason": "stop"}]',
+      '[{"role": "assistant", "parts": [{"type": "text", "content": "The weather in Paris is currently rainy with a temperature of 57°F."}]}]',
       '[{"answers": {"authIssue": {"type": "noul", "noul": 0.98}, "department": {"type": "choice", "choice": "billing", "confidence": 0.28, "probabilities": {"billing": 0.64, "technical": 0.36}}}}]',
       '[{"answers": {"invoice_number": {"type": "text", "p_null": 3.8e-10, "span": [8, 16], "guess": "INV-2291", "confidence": 1, "value": "INV-2291"}, "due_date": {"type": "date", "p_null": 1.9e-08, "guess": "2026-10-02", "confidence": 0.9999, "value": "2026-10-02"}, "total": {"type": "number", "p_null": 2.3e-08, "guess": 1080, "confidence": 0.9999, "value": 1080}, "contacts": {"type": "list", "value": ["Dana Ruiz", "Priya Shah"], "spans": [[120, 129], [131, 141]], "confidence": 0.9999}, "po_number": {"type": "text", "p_null": 1, "span": [8, 16], "guess": "INV-2291", "confidence": 0.9995, "value": null}, "days_to_pay": {"type": "estimate", "value": 30, "mean": 29.535, "median": 30, "p10": 21, "p90": 38, "p_below": 5.9e-06, "p_above": 1.2e-05}}, "truncated": false}]',
     ],
