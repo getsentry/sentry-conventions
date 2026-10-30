@@ -17486,7 +17486,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["db.operation", "cloudflare.d1.query_type", "redis.command"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added the naming rule for batch operations"
+                version="next",
+                prs=[761],
+                description="Added the naming rule for batch operations",
             ),
             ChangelogEntry(
                 version="0.19.0",

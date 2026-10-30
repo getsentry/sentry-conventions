@@ -27412,7 +27412,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT',
     aliases: ['db.operation', 'cloudflare.d1.query_type', 'redis.command'],
     changelog: [
-      { version: 'next', description: 'Added the naming rule for batch operations' },
+      { version: 'next', prs: [761], description: 'Added the naming rule for batch operations' },
       { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },

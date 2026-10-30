@@ -15,7 +15,7 @@
   "changelog": [
     {
       "version": "next",
-      "prs": [],
+      "prs": [761],
       "description": "Added the naming rule for batch operations"
     },
     {
