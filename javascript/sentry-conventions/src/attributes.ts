@@ -25373,7 +25373,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'native-http',
     examples: ['native-http', 'on-demand', 'provisioned-concurrency', 'snap-start'],
-    changelog: [{ version: 'next', description: 'Added aws.lambda.initialization_type attribute' }],
+    changelog: [{ version: '0.30.0', prs: [715], description: 'Added aws.lambda.initialization_type attribute' }],
   },
   'aws.lambda.invoked_arn': {
     brief: 'The full ARN of the Lambda function that was invoked',
@@ -25467,7 +25467,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'prod',
     examples: ['prod', 'canary'],
-    changelog: [{ version: 'next', description: 'Added aws.lambda.web.endpoint_name attribute' }],
+    changelog: [{ version: '0.30.0', prs: [715], description: 'Added aws.lambda.web.endpoint_name attribute' }],
   },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
@@ -28506,7 +28506,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 134217728,
     examples: [134217728, 1073741824],
-    changelog: [{ version: 'next', description: 'Added faas.max_memory attribute' }],
+    changelog: [{ version: '0.30.0', prs: [715], description: 'Added faas.max_memory attribute' }],
     additionalContext: [
       'On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes.',
     ],
