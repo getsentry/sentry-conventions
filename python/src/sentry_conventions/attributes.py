@@ -4488,6 +4488,58 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "0/5 * * * ? *"
     """
 
+    # Path: model/attributes/faas/faas__document__collection.json
+    FAAS_DOCUMENT_COLLECTION: Literal["faas.document.collection"] = (
+        "faas.document.collection"
+    )
+    """The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myBucketName"
+    Example: "myDbName"
+    """
+
+    # Path: model/attributes/faas/faas__document__name.json
+    FAAS_DOCUMENT_NAME: Literal["faas.document.name"] = "faas.document.name"
+    """The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myFile.txt"
+    Example: "myTableName"
+    """
+
+    # Path: model/attributes/faas/faas__document__operation.json
+    FAAS_DOCUMENT_OPERATION: Literal["faas.document.operation"] = (
+        "faas.document.operation"
+    )
+    """Describes the type of the operation that was performed on the data.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "insert"
+    Example: "edit"
+    Example: "delete"
+    """
+
+    # Path: model/attributes/faas/faas__document__time.json
+    FAAS_DOCUMENT_TIME: Literal["faas.document.time"] = "faas.document.time"
+    """A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "2020-01-23T13:47:06Z"
+    """
+
     # Path: model/attributes/faas/faas__duration_in_ms.json
     FAAS_DURATION_IN_MS: Literal["faas.duration_in_ms"] = "faas.duration_in_ms"
     """The duration a function took to run, in milliseconds.
@@ -18614,6 +18666,72 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "faas.document.collection": AttributeMetadata(
+        brief="The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.",
+        type=AttributeType.STRING,
+        keys=("faas.document.collection",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myBucketName",
+        examples=["myBucketName", "myDbName"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.collection attribute"
+            ),
+        ],
+    ),
+    "faas.document.name": AttributeMetadata(
+        brief="The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.",
+        type=AttributeType.STRING,
+        keys=("faas.document.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myFile.txt",
+        examples=["myFile.txt", "myTableName"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.name attribute"
+            ),
+        ],
+    ),
+    "faas.document.operation": AttributeMetadata(
+        brief="Describes the type of the operation that was performed on the data.",
+        type=AttributeType.STRING,
+        keys=("faas.document.operation",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="insert",
+        examples=["insert", "edit", "delete"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.operation attribute"
+            ),
+        ],
+        additional_context=[
+            "Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.",
+            "`delete`: When an object is deleted.",
+            "`edit`: When an object is modified.",
+            "`insert`: When a new object is created.",
+        ],
+    ),
+    "faas.document.time": AttributeMetadata(
+        brief="A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.",
+        type=AttributeType.STRING,
+        keys=("faas.document.time",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="2020-01-23T13:47:06Z",
+        examples=["2020-01-23T13:47:06Z"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.time attribute"
+            ),
+        ],
+    ),
     "faas.duration_in_ms": AttributeMetadata(
         brief="The duration a function took to run, in milliseconds.",
         type=AttributeType.INTEGER,
@@ -31197,6 +31315,10 @@ Attributes = TypedDict(
         "exception.type": str,
         "faas.coldstart": bool,
         "faas.cron": str,
+        "faas.document.collection": str,
+        "faas.document.name": str,
+        "faas.document.operation": str,
+        "faas.document.time": str,
         "faas.duration_in_ms": int,
         "faas.entry_point": str,
         "faas.execution": str,

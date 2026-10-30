@@ -7163,6 +7163,94 @@ export const FAAS_CRON = 'faas.cron';
  */
 export type FAAS_CRON_TYPE = string;
 
+// Path: model/attributes/faas/faas__document__collection.json
+
+/**
+ * The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name. `faas.document.collection`
+ *
+ * Attribute Value Type: `string` {@link FAAS_DOCUMENT_COLLECTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "myBucketName"
+ * @example "myDbName"
+ */
+export const FAAS_DOCUMENT_COLLECTION = 'faas.document.collection';
+
+/**
+ * Type for {@link FAAS_DOCUMENT_COLLECTION} faas.document.collection
+ */
+export type FAAS_DOCUMENT_COLLECTION_TYPE = string;
+
+// Path: model/attributes/faas/faas__document__name.json
+
+/**
+ * The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name. `faas.document.name`
+ *
+ * Attribute Value Type: `string` {@link FAAS_DOCUMENT_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "myFile.txt"
+ * @example "myTableName"
+ */
+export const FAAS_DOCUMENT_NAME = 'faas.document.name';
+
+/**
+ * Type for {@link FAAS_DOCUMENT_NAME} faas.document.name
+ */
+export type FAAS_DOCUMENT_NAME_TYPE = string;
+
+// Path: model/attributes/faas/faas__document__operation.json
+
+/**
+ * Describes the type of the operation that was performed on the data. `faas.document.operation`
+ *
+ * Attribute Value Type: `string` {@link FAAS_DOCUMENT_OPERATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "insert"
+ * @example "edit"
+ * @example "delete"
+ */
+export const FAAS_DOCUMENT_OPERATION = 'faas.document.operation';
+
+/**
+ * Type for {@link FAAS_DOCUMENT_OPERATION} faas.document.operation
+ */
+export type FAAS_DOCUMENT_OPERATION_TYPE = string;
+
+// Path: model/attributes/faas/faas__document__time.json
+
+/**
+ * A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC. `faas.document.time`
+ *
+ * Attribute Value Type: `string` {@link FAAS_DOCUMENT_TIME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "2020-01-23T13:47:06Z"
+ */
+export const FAAS_DOCUMENT_TIME = 'faas.document.time';
+
+/**
+ * Type for {@link FAAS_DOCUMENT_TIME} faas.document.time
+ */
+export type FAAS_DOCUMENT_TIME_TYPE = string;
+
 // Path: model/attributes/faas/faas__duration_in_ms.json
 
 /**
@@ -21756,6 +21844,10 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'exception.type': 'string',
   'faas.coldstart': 'boolean',
   'faas.cron': 'string',
+  'faas.document.collection': 'string',
+  'faas.document.name': 'string',
+  'faas.document.operation': 'string',
+  'faas.document.time': 'string',
   'faas.duration_in_ms': 'integer',
   'faas.entry_point': 'string',
   'faas.execution': 'string',
@@ -22710,6 +22802,10 @@ export type AttributeName =
   | typeof EXCEPTION_TYPE
   | typeof FAAS_COLDSTART
   | typeof FAAS_CRON
+  | typeof FAAS_DOCUMENT_COLLECTION
+  | typeof FAAS_DOCUMENT_NAME
+  | typeof FAAS_DOCUMENT_OPERATION
+  | typeof FAAS_DOCUMENT_TIME
   | typeof FAAS_DURATION_IN_MS
   | typeof FAAS_ENTRY_POINT
   | typeof FAAS_EXECUTION
@@ -28384,6 +28480,66 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '0/5 * * * ? *',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'faas.document.collection': {
+    brief:
+      'The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.',
+    type: 'string',
+    keys: ['faas.document.collection'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'myBucketName',
+    examples: ['myBucketName', 'myDbName'],
+    changelog: [{ version: 'next', description: 'Added faas.document.collection attribute' }],
+  },
+  'faas.document.name': {
+    brief:
+      'The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.',
+    type: 'string',
+    keys: ['faas.document.name'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'myFile.txt',
+    examples: ['myFile.txt', 'myTableName'],
+    changelog: [{ version: 'next', description: 'Added faas.document.name attribute' }],
+  },
+  'faas.document.operation': {
+    brief: 'Describes the type of the operation that was performed on the data.',
+    type: 'string',
+    keys: ['faas.document.operation'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'insert',
+    examples: ['insert', 'edit', 'delete'],
+    changelog: [{ version: 'next', description: 'Added faas.document.operation attribute' }],
+    additionalContext: [
+      'Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.',
+      '`delete`: When an object is deleted.',
+      '`edit`: When an object is modified.',
+      '`insert`: When a new object is created.',
+    ],
+  },
+  'faas.document.time': {
+    brief: 'A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.',
+    type: 'string',
+    keys: ['faas.document.time'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '2020-01-23T13:47:06Z',
+    examples: ['2020-01-23T13:47:06Z'],
+    changelog: [{ version: 'next', description: 'Added faas.document.time attribute' }],
   },
   'faas.duration_in_ms': {
     brief: 'The duration a function took to run, in milliseconds.',
@@ -39457,6 +39613,10 @@ export type Attributes = {
   [EXCEPTION_TYPE]?: EXCEPTION_TYPE_TYPE;
   [FAAS_COLDSTART]?: FAAS_COLDSTART_TYPE;
   [FAAS_CRON]?: FAAS_CRON_TYPE;
+  [FAAS_DOCUMENT_COLLECTION]?: FAAS_DOCUMENT_COLLECTION_TYPE;
+  [FAAS_DOCUMENT_NAME]?: FAAS_DOCUMENT_NAME_TYPE;
+  [FAAS_DOCUMENT_OPERATION]?: FAAS_DOCUMENT_OPERATION_TYPE;
+  [FAAS_DOCUMENT_TIME]?: FAAS_DOCUMENT_TIME_TYPE;
   [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
   [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
   [FAAS_EXECUTION]?: FAAS_EXECUTION_TYPE;
