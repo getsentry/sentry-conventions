@@ -7,6 +7,7 @@ interface WindowWithPagefind {
     init: () => Promise<void>;
   };
   attributeIndex?: AttributeIndex[];
+  metricIndex?: MetricIndex[];
 }
 
 interface PagefindResult {
@@ -46,6 +47,13 @@ interface AttributeIndex {
   };
 }
 
+interface MetricIndex {
+  key: string;
+  brief: string;
+  instrument: string;
+  url: string;
+}
+
 /** Where in an attribute the query matched, so the result row can explain itself. */
 type MatchSource = 'key' | 'search_alias' | 'deprecated_alias';
 
@@ -56,6 +64,7 @@ interface AttributeMatch extends AttributeIndex {
 let isOpen = $state(false);
 let query = $state('');
 let attributeResults = $state<AttributeMatch[]>([]);
+let metricResults = $state<MetricIndex[]>([]);
 let pageResults = $state<SearchResult[]>([]);
 let selectedIndex = $state(0);
 let isLoading = $state(false);
@@ -65,8 +74,8 @@ let inputEl: HTMLInputElement | undefined = $state();
 let resultsEl: HTMLDivElement | undefined = $state();
 let usingKeyboard = $state(false);
 
-const totalResults = $derived(attributeResults.length + pageResults.length);
-const hasResults = $derived(attributeResults.length > 0 || pageResults.length > 0);
+const totalResults = $derived(attributeResults.length + metricResults.length + pageResults.length);
+const hasResults = $derived(totalResults > 0);
 const noResults = $derived(query && !isLoading && !hasResults);
 
 async function loadAttributeIndex() {
@@ -82,6 +91,22 @@ async function loadAttributeIndex() {
   } catch (e) {
     console.error('Failed to load attribute index:', e);
     windowWithPagefind.attributeIndex = [];
+  }
+}
+
+async function loadMetricIndex() {
+  const windowWithPagefind = window as WindowWithPagefind;
+  if (windowWithPagefind.metricIndex) {
+    return;
+  }
+
+  try {
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    const response = await fetch(`${baseUrl}api/metrics.json`);
+    windowWithPagefind.metricIndex = await response.json();
+  } catch (e) {
+    console.error('Failed to load metric index:', e);
+    windowWithPagefind.metricIndex = [];
   }
 }
 
@@ -133,9 +158,11 @@ $effect(() => {
 $effect(() => {
   if (isOpen) {
     loadAttributeIndex();
+    loadMetricIndex();
     loadPagefind();
     query = '';
     attributeResults = [];
+    metricResults = [];
     pageResults = [];
     selectedIndex = 0;
     setTimeout(() => inputEl?.focus(), 0);
@@ -154,6 +181,7 @@ $effect(() => {
 
     if (!trimmedQuery) {
       attributeResults = [];
+      metricResults = [];
       pageResults = [];
       return;
     }
@@ -184,6 +212,16 @@ $effect(() => {
         .slice(0, 10);
 
       attributeResults = matches;
+    }
+
+    // Search metrics (instant, client-side), keys starting with the query first
+    if (windowWithPagefind.metricIndex) {
+      metricResults = windowWithPagefind.metricIndex
+        .map((metric) => ({ metric, index: metric.key.toLowerCase().indexOf(trimmedQuery) }))
+        .filter(({ index }) => index !== -1)
+        .sort((a, b) => a.index - b.index || a.metric.key.localeCompare(b.metric.key))
+        .slice(0, 10)
+        .map(({ metric }) => metric);
     }
 
     // Search pages with Pagefind (async)
@@ -242,8 +280,12 @@ function navigateToSelected() {
     const attr = attributeResults[selectedIndex];
     isOpen = false;
     window.location.href = attr.url;
+  } else if (selectedIndex < attributeResults.length + metricResults.length) {
+    const metric = metricResults[selectedIndex - attributeResults.length];
+    isOpen = false;
+    window.location.href = metric.url;
   } else {
-    const pageIndex = selectedIndex - attributeResults.length;
+    const pageIndex = selectedIndex - attributeResults.length - metricResults.length;
     const result = pageResults[pageIndex];
     if (result) {
       isOpen = false;
@@ -255,6 +297,11 @@ function navigateToSelected() {
 function navigateToAttribute(attr: AttributeIndex) {
   isOpen = false;
   window.location.href = attr.url;
+}
+
+function navigateToMetric(metric: MetricIndex) {
+  isOpen = false;
+  window.location.href = metric.url;
 }
 
 function navigateToResult(result: SearchResult) {
@@ -350,7 +397,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
           bind:this={inputEl}
           type="text"
           class="flex-1 bg-transparent border-none outline-none text-lg text-text-primary font-sans placeholder:text-text-muted"
-          placeholder="Search attributes (e.g., sentry.op, http.)"
+          placeholder="Search attributes and metrics (e.g., sentry.op, http.)"
           bind:value={query}
           onkeydown={handleKeyDown}
         />
@@ -423,6 +470,37 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
           </div>
         {/if}
         
+        <!-- Metric results -->
+        {#if !isLoading && metricResults.length > 0}
+          <div class="border-b border-border last:border-b-0">
+            <div class="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-text-muted bg-bg-elevated border-b border-border">
+              Metrics
+            </div>
+            {#each metricResults as metric, index}
+              {@const actualIndex = attributeResults.length + index}
+              {@const highlighted = highlightMatch(metric.key, query)}
+              <button
+                class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {actualIndex === selectedIndex ? 'bg-accent-soft border-l-accent selected shadow-[inset_0_0_0_1px_var(--color-accent-soft)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
+                onclick={() => navigateToMetric(metric)}
+                onmouseenter={() => handleMouseEnter(actualIndex)}
+                onmousemove={handleMouseMove}
+              >
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                  <code class="font-mono text-sm font-medium bg-transparent p-0 border-none text-accent">
+                    {#if highlighted}
+                      {highlighted.before}<mark class="bg-accent-soft text-accent px-0.5 rounded-sm font-semibold">{highlighted.match}</mark>{highlighted.after}
+                    {:else}
+                      {metric.key}
+                    {/if}
+                  </code>
+                  <span class="text-xs px-2 py-0.5 rounded-sm font-sans bg-bg-elevated text-text-muted">{metric.instrument}</span>
+                </div>
+                <span class="text-xs text-text-muted leading-relaxed line-clamp-2">{metric.brief}</span>
+              </button>
+            {/each}
+          </div>
+        {/if}
+
         <!-- Page results from Pagefind -->
         {#if !isLoading && pageResults.length > 0}
           <div class="border-b border-border last:border-b-0">
@@ -430,7 +508,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
               Pages
             </div>
             {#each pageResults as result, index}
-              {@const actualIndex = attributeResults.length + index}
+              {@const actualIndex = attributeResults.length + metricResults.length + index}
               <button
                 class="flex flex-col gap-1 w-full px-4 py-3 bg-transparent border-none border-b border-border last:border-b-0 text-left cursor-pointer transition-all duration-fast border-l-2 {actualIndex === selectedIndex ? 'bg-accent-soft border-l-accent selected shadow-[inset_0_0_0_1px_var(--color-accent-soft)]' : 'border-l-transparent hover:bg-bg-hover hover:border-l-border-light'}"
                 onclick={() => navigateToResult(result)}
@@ -452,7 +530,7 @@ function highlightMatch(key: string, searchQuery: string): { before: string; mat
         
         {#if !query}
           <div class="py-8 px-4 text-center">
-            <p class="text-text-muted text-sm mb-4">Search for attributes by name or browse documentation.</p>
+            <p class="text-text-muted text-sm mb-4">Search for attributes and metrics by name or browse documentation.</p>
             <div class="flex items-center justify-center gap-2 text-sm text-text-muted mb-4">
               <span>Try: </span>
               <code class="px-2 py-1 bg-bg-elevated border border-border rounded-sm font-mono text-xs text-accent cursor-pointer hover:bg-accent-soft hover:border-accent">sentry.</code>

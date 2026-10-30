@@ -1,0 +1,18 @@
+{
+  "key": "aws.lambda.initialization_type",
+  "brief": "How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["native-http", "on-demand", "provisioned-concurrency", "snap-start"],
+  "changelog": [
+    {
+      "version": "0.30.0",
+      "prs": [715],
+      "description": "Added aws.lambda.initialization_type attribute"
+    }
+  ]
+}

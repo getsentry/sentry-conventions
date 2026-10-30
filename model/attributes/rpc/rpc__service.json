@@ -7,14 +7,19 @@
   },
   "additional_context": [
     "Deprecated in OpenTelemetry for generic RPC spans. The value should be included in `rpc.method`, which is expected to be the fully-qualified name.",
-    "Still set on AWS SDK spans, where it holds the AWS service (e.g. `S3`) and `rpc.method` is set to the operation (e.g. `GetObject`)."
+    "Still set on AWS SDK spans, where it holds the AWS service ID with all whitespace removed (e.g. `S3`, `APIGateway` for `API Gateway`) and `rpc.method` is set to the operation (e.g. `GetObject`)."
   ],
   "is_in_otel": true,
-  "example": "myService.BestService",
+  "examples": ["myService.BestService", "S3", "APIGateway"],
   "visibility": "public",
   "changelog": [
     {
-      "version": "next",
+      "version": "0.29.0",
+      "prs": [707],
+      "description": "Added AWS SDK examples"
+    },
+    {
+      "version": "0.28.0",
       "prs": [714],
       "description": "Added additional context about the OpenTelemetry deprecation"
     },

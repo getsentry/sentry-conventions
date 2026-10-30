@@ -10,7 +10,8 @@
   "examples": ["someFile.yml"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
+      "prs": [713],
       "description": "Changed apply_scrubbing from manual to auto"
     },
     {

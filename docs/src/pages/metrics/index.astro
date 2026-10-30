@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MetricCard from '../../components/MetricCard.astro';
+import { getCollection } from 'astro:content';
+
+const allMetrics = await getCollection('metrics');
+
+// Metrics are grouped by the first segment of their key, matching the model/metrics directories.
+const namespaceMap = new Map<string, typeof allMetrics>();
+for (const m of allMetrics) {
+  const namespace = m.data.key.split('.')[0]!;
+  if (!namespaceMap.has(namespace)) {
+    namespaceMap.set(namespace, []);
+  }
+  namespaceMap.get(namespace)?.push(m);
+}
+
+for (const metrics of namespaceMap.values()) {
+  metrics.sort((a, b) => a.data.key.localeCompare(b.data.key));
+}
+
+const sortedNamespaces = Array.from(namespaceMap.keys()).sort();
+---
+
+<BaseLayout title="Metrics" description="Sentry metric names reference">
+  <div class="mb-8">
+    <h1>Metrics</h1>
+    <p class="text-lg text-text-secondary max-w-3xl">
+      Metric names emitted by Sentry SDKs, with their type, unit and the attributes that describe their values.
+    </p>
+  </div>
+
+  {sortedNamespaces.length === 0 ? (
+    <p class="text-text-muted">No metrics are defined yet.</p>
+  ) : (
+    <div class="flex flex-col gap-12">
+      {sortedNamespaces.map((namespace) => {
+        const metrics = namespaceMap.get(namespace)!;
+        return (
+          <section class="scroll-mt-20" id={namespace}>
+            <div class="flex items-baseline gap-4 mb-6 pb-3 border-b border-border">
+              <h2 class="m-0 text-2xl">{namespace}</h2>
+              <span class="text-sm text-text-muted">{metrics.length} metrics</span>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+              {metrics.map((m) => (
+                <MetricCard metric={m.data} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  )}
+</BaseLayout>

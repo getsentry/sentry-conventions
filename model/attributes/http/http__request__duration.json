@@ -11,7 +11,7 @@
   "additional_context": ["This attribute is set by Relay."],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.28.0",
       "prs": [697],
       "description": "Added http.request.duration attribute"
     }

@@ -1,6 +1,9 @@
 {
   "key": "aws.dynamodb.table_names",
   "brief": "The keys in the `RequestItems` object field.",
+  "additional_context": [
+    "List each table name once, sorted alphabetically, so the same call gets the same value and span description (`DynamoDB.BatchGetItem Cat, Users`), whatever the order of the tables in the request."
+  ],
   "type": "string[]",
   "apply_scrubbing": {
     "key": "manual"
@@ -9,6 +12,11 @@
   "example": ["Users", "Cats"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "0.29.0",
+      "prs": [717],
+      "description": "Added additional context on sorting the names"
+    },
     {
       "version": "0.16.0",
       "prs": [479],
