@@ -1,0 +1,21 @@
+{
+  "key": "faas.max_memory",
+  "brief": "The amount of memory available to the serverless function, in bytes.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": [134217728, 1073741824],
+  "additional_context": [
+    "On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes."
+  ],
+  "changelog": [
+    {
+      "version": "0.30.0",
+      "prs": [715],
+      "description": "Added faas.max_memory attribute"
+    }
+  ]
+}

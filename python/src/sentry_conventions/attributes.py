@@ -2031,6 +2031,22 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "$LATEST"
     """
 
+    # Path: model/attributes/aws/aws__lambda__initialization_type.json
+    AWS_LAMBDA_INITIALIZATION_TYPE: Literal["aws.lambda.initialization_type"] = (
+        "aws.lambda.initialization_type"
+    )
+    """How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "native-http"
+    Example: "on-demand"
+    Example: "provisioned-concurrency"
+    Example: "snap-start"
+    """
+
     # Path: model/attributes/aws/aws__lambda__invoked_arn.json
     AWS_LAMBDA_INVOKED_ARN: Literal["aws.lambda.invoked_arn"] = "aws.lambda.invoked_arn"
     """The full ARN of the Lambda function that was invoked
@@ -2095,6 +2111,20 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "billing"
+    """
+
+    # Path: model/attributes/aws/aws__lambda__web__endpoint_name.json
+    AWS_LAMBDA_WEB_ENDPOINT_NAME: Literal["aws.lambda.web.endpoint_name"] = (
+        "aws.lambda.web.endpoint_name"
+    )
+    """The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "prod"
+    Example: "canary"
     """
 
     # Path: model/attributes/aws/aws__log__group__names.json
@@ -4458,6 +4488,58 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "0/5 * * * ? *"
     """
 
+    # Path: model/attributes/faas/faas__document__collection.json
+    FAAS_DOCUMENT_COLLECTION: Literal["faas.document.collection"] = (
+        "faas.document.collection"
+    )
+    """The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myBucketName"
+    Example: "myDbName"
+    """
+
+    # Path: model/attributes/faas/faas__document__name.json
+    FAAS_DOCUMENT_NAME: Literal["faas.document.name"] = "faas.document.name"
+    """The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "myFile.txt"
+    Example: "myTableName"
+    """
+
+    # Path: model/attributes/faas/faas__document__operation.json
+    FAAS_DOCUMENT_OPERATION: Literal["faas.document.operation"] = (
+        "faas.document.operation"
+    )
+    """Describes the type of the operation that was performed on the data.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "insert"
+    Example: "edit"
+    Example: "delete"
+    """
+
+    # Path: model/attributes/faas/faas__document__time.json
+    FAAS_DOCUMENT_TIME: Literal["faas.document.time"] = "faas.document.time"
+    """A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "2020-01-23T13:47:06Z"
+    """
+
     # Path: model/attributes/faas/faas__duration_in_ms.json
     FAAS_DURATION_IN_MS: Literal["faas.duration_in_ms"] = "faas.duration_in_ms"
     """The duration a function took to run, in milliseconds.
@@ -4571,6 +4653,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "eu-central-1"
+    """
+
+    # Path: model/attributes/faas/faas__max_memory.json
+    FAAS_MAX_MEMORY: Literal["faas.max_memory"] = "faas.max_memory"
+    """The amount of memory available to the serverless function, in bytes.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: 134217728
+    Example: 1073741824
     """
 
     # Path: model/attributes/faas/faas__name.json
@@ -9225,6 +9319,25 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Example: "resource not found"
+    """
+
+    # Path: model/attributes/page/page__server_rendering__type.json
+    PAGE_SERVER_RENDERING_TYPE: Literal["page.server_rendering.type"] = (
+        "page.server_rendering.type"
+    )
+    """Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `static` - The server rendered the whole page to reuse it for other requests, for example a page from the build, a Next.js ISR page, or a Nuxt `swr` route.
+    - `partially_static` - The server reuses a static part of the page, and renders the other parts for this request in the same response (Next.js Partial Prerendering).
+    - `dynamic` - The server rendered the whole page only for this request. Set only when the SDK knows that the server reused no part of the page. If the SDK cannot tell `dynamic` from `partially_static`, it leaves the attribute unset.
+    Example: "static"
+    Example: "partially_static"
+    Example: "dynamic"
     """
 
     # Path: model/attributes/params/params__[key].json
@@ -15006,6 +15119,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "aws.lambda.initialization_type": AttributeMetadata(
+        brief="How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.initialization_type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="native-http",
+        examples=["native-http", "on-demand", "provisioned-concurrency", "snap-start"],
+        changelog=[
+            ChangelogEntry(
+                version="0.30.0",
+                prs=[715],
+                description="Added aws.lambda.initialization_type attribute",
+            ),
+        ],
+    ),
     "aws.lambda.invoked_arn": AttributeMetadata(
         brief="The full ARN of the Lambda function that was invoked",
         type=AttributeType.STRING,
@@ -15103,6 +15233,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         additional_context=[
             "Set on Lambda API calls that take a `FunctionName`, such as `GetFunction` or `UpdateFunctionCode`, without a version or alias qualifier (`billing`, not `billing:prod`). Different from `faas.name` which is the function the code runs in."
+        ],
+    ),
+    "aws.lambda.web.endpoint_name": AttributeMetadata(
+        brief="The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.",
+        type=AttributeType.STRING,
+        keys=("aws.lambda.web.endpoint_name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="prod",
+        examples=["prod", "canary"],
+        changelog=[
+            ChangelogEntry(
+                version="0.30.0",
+                prs=[715],
+                description="Added aws.lambda.web.endpoint_name attribute",
+            ),
         ],
     ),
     "aws.log.group.names": AttributeMetadata(
@@ -18530,6 +18677,72 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "faas.document.collection": AttributeMetadata(
+        brief="The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.",
+        type=AttributeType.STRING,
+        keys=("faas.document.collection",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myBucketName",
+        examples=["myBucketName", "myDbName"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.collection attribute"
+            ),
+        ],
+    ),
+    "faas.document.name": AttributeMetadata(
+        brief="The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.",
+        type=AttributeType.STRING,
+        keys=("faas.document.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="myFile.txt",
+        examples=["myFile.txt", "myTableName"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.name attribute"
+            ),
+        ],
+    ),
+    "faas.document.operation": AttributeMetadata(
+        brief="Describes the type of the operation that was performed on the data.",
+        type=AttributeType.STRING,
+        keys=("faas.document.operation",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="insert",
+        examples=["insert", "edit", "delete"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.operation attribute"
+            ),
+        ],
+        additional_context=[
+            "Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.",
+            "`delete`: When an object is deleted.",
+            "`edit`: When an object is modified.",
+            "`insert`: When a new object is created.",
+        ],
+    ),
+    "faas.document.time": AttributeMetadata(
+        brief="A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.",
+        type=AttributeType.STRING,
+        keys=("faas.document.time",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="2020-01-23T13:47:06Z",
+        examples=["2020-01-23T13:47:06Z"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added faas.document.time attribute"
+            ),
+        ],
+    ),
     "faas.duration_in_ms": AttributeMetadata(
         brief="The duration a function took to run, in milliseconds.",
         type=AttributeType.INTEGER,
@@ -18699,6 +18912,26 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[481],
                 description="Added faas.invoked_region attribute",
             ),
+        ],
+    ),
+    "faas.max_memory": AttributeMetadata(
+        brief="The amount of memory available to the serverless function, in bytes.",
+        type=AttributeType.INTEGER,
+        keys=("faas.max_memory",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example=134217728,
+        examples=[134217728, 1073741824],
+        changelog=[
+            ChangelogEntry(
+                version="0.30.0",
+                prs=[715],
+                description="Added faas.max_memory attribute",
+            ),
+        ],
+        additional_context=[
+            "On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes."
         ],
     ),
     "faas.name": AttributeMetadata(
@@ -26084,6 +26317,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "page.server_rendering.type": AttributeMetadata(
+        brief="Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.",
+        type=AttributeType.STRING,
+        keys=("page.server_rendering.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="static",
+        examples=["static", "partially_static", "dynamic"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[740],
+                description="Added page.server_rendering.type attribute",
+            ),
+        ],
+        additional_context=[
+            "Set only by an SDK that controls the server render, and only when the SDK knows the value.",
+            "More values can be added later.",
+            "Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.",
+            "With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.",
+            "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
+        ],
+    ),
     "params.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
@@ -30885,11 +31142,13 @@ Attributes = TypedDict(
         "aws.lambda.execution_duration_in_millis": float,
         "aws.lambda.function_name": str,
         "aws.lambda.function_version": str,
+        "aws.lambda.initialization_type": str,
         "aws.lambda.invoked_arn": str,
         "aws.lambda.invoked_function_arn": str,
         "aws.lambda.remaining_time_in_millis": float,
         "aws.lambda.resource_mapping.id": str,
         "aws.lambda.target_function.name": str,
+        "aws.lambda.web.endpoint_name": str,
         "aws.log.group.names": List[str],
         "aws.log.stream.names": List[str],
         "aws.operation_name": str,
@@ -31081,6 +31340,10 @@ Attributes = TypedDict(
         "exception.type": str,
         "faas.coldstart": bool,
         "faas.cron": str,
+        "faas.document.collection": str,
+        "faas.document.name": str,
+        "faas.document.operation": str,
+        "faas.document.time": str,
         "faas.duration_in_ms": int,
         "faas.entry_point": str,
         "faas.execution": str,
@@ -31091,6 +31354,7 @@ Attributes = TypedDict(
         "faas.invoked_name": str,
         "faas.invoked_provider": str,
         "faas.invoked_region": str,
+        "faas.max_memory": int,
         "faas.name": str,
         "faas.time": str,
         "faas.trigger": str,
@@ -31452,6 +31716,7 @@ Attributes = TypedDict(
         "otel.scope.version": str,
         "otel.status_code": str,
         "otel.status_description": str,
+        "page.server_rendering.type": str,
         "params.<key>": str,
         "performance.activationStart": float,
         "performance.timeOrigin": float,

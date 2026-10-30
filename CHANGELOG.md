@@ -1,3 +1,26 @@
+## 0.30.0
+
+### New Features ✨
+
+- (attributes) Add Lambda Web Function attributes by @msonnb and @codex in [#715](https://github.com/getsentry/sentry-conventions/pull/715)
+
+### Internal Changes 🔧
+
+#### Deps
+
+- Bump fast-uri from 3.1.7 to 3.1.9 by @Lms24 with @dependabot in [#751](https://github.com/getsentry/sentry-conventions/pull/751)
+- Bump undici from 8.10.2 to 8.12.3 by @dependabot in [#749](https://github.com/getsentry/sentry-conventions/pull/749)
+- Bump astro from 7.2.8 to 7.3.3 by @Lms24 with @dependabot in [#745](https://github.com/getsentry/sentry-conventions/pull/745)
+- Bump dompurify from 3.4.16 to 3.4.17 by @Lms24 with @dependabot in [#743](https://github.com/getsentry/sentry-conventions/pull/743)
+
+#### Other
+
+- (deps-dev) Bump black from 26.3.1 to 26.10.1 in /python by @dependabot in [#744](https://github.com/getsentry/sentry-conventions/pull/744)
+- Add `view.authenticate`, deprecated in favor of `view` by @alexander-alderman-webb in [#702](https://github.com/getsentry/sentry-conventions/pull/702)
+- Add deprecated middleware ops set by the Python SDK by @alexander-alderman-webb and @Lms24 in [#694](https://github.com/getsentry/sentry-conventions/pull/694)
+- Add `db.redis`, deprecated in favor of `db.query` by @alexander-alderman-webb in [#704](https://github.com/getsentry/sentry-conventions/pull/704)
+- Add deprecated `ai.chat_completions.create.cohere` and `ai.embeddings.create.cohere` by @alexander-alderman-webb in [#695](https://github.com/getsentry/sentry-conventions/pull/695)
+
 ## 0.29.0
 
 ### New Features ✨
