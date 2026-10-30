@@ -2041,6 +2041,11 @@ export const SEARCH_GCP_REGION = 'gcp_region';
 export const SEARCH_GEN_AI__AGENT__NAME = 'gen_ai.agent.name';
 
 /**
+ * Search name for {@link attributes.GEN_AI_AGENT_VERSION}. `gen_ai.agent.version`
+ */
+export const SEARCH_GEN_AI__AGENT__VERSION = 'gen_ai.agent.version';
+
+/**
  * Search name for {@link attributes.GEN_AI_CONTEXT_UTILIZATION}. `gen_ai.context.utilization`
  */
 export const SEARCH_GEN_AI__CONTEXT__UTILIZATION = 'gen_ai.context.utilization';
@@ -5840,6 +5845,7 @@ export type AttributeSearchName =
   | typeof SEARCH_GCP__PROJECT__ID
   | typeof SEARCH_GCP_REGION
   | typeof SEARCH_GEN_AI__AGENT__NAME
+  | typeof SEARCH_GEN_AI__AGENT__VERSION
   | typeof SEARCH_GEN_AI__CONTEXT__UTILIZATION
   | typeof SEARCH_GEN_AI__CONTEXT__WINDOW_SIZE
   | typeof SEARCH_GEN_AI__CONVERSATION__ID
@@ -8765,6 +8771,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of the agent being used.',
     deprecationChain: ['gen_ai.agent.name'],
+  },
+  'gen_ai.agent.version': {
+    canonicalName: 'gen_ai.agent.version',
+    type: 'string',
+    brief: 'The version of the GenAI agent.',
+    deprecationChain: ['gen_ai.agent.version'],
   },
   'gen_ai.context.utilization': {
     canonicalName: 'gen_ai.context.utilization',

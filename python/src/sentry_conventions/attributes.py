@@ -4950,6 +4950,18 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "ResearchAssistant"
     """
 
+    # Path: model/attributes/gen_ai/gen_ai__agent__version.json
+    GEN_AI_AGENT_VERSION: Literal["gen_ai.agent.version"] = "gen_ai.agent.version"
+    """The version of the GenAI agent.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "1.0.0"
+    Example: "2025-05-01"
+    """
+
     # Path: model/attributes/gen_ai/gen_ai__context__utilization.json
     GEN_AI_CONTEXT_UTILIZATION: Literal["gen_ai.context.utilization"] = (
         "gen_ai.context.utilization"
@@ -19326,6 +19338,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[62, 127]),
         ],
     ),
+    "gen_ai.agent.version": AttributeMetadata(
+        brief="The version of the GenAI agent.",
+        type=AttributeType.STRING,
+        keys=("gen_ai.agent.version",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="1.0.0",
+        examples=["1.0.0", "2025-05-01"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[722],
+                description="Added gen_ai.agent.version attribute",
+            ),
+        ],
+    ),
     "gen_ai.context.utilization": AttributeMetadata(
         brief="The fraction of the model context window utilized by this generation.",
         type=AttributeType.DOUBLE,
@@ -31192,6 +31221,7 @@ Attributes = TypedDict(
         "gcp.project.id": str,
         "gcp_region": str,
         "gen_ai.agent.name": str,
+        "gen_ai.agent.version": str,
         "gen_ai.context.utilization": float,
         "gen_ai.context.window_size": int,
         "gen_ai.conversation.id": str,
