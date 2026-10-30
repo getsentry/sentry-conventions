@@ -17486,12 +17486,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["db.operation", "cloudflare.d1.query_type", "redis.command"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[761],
+                description="Added the naming rule for batch operations",
+            ),
+            ChangelogEntry(
                 version="0.19.0",
                 prs=[531],
                 description="Added redis.command as an alias",
             ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "For a batch of operations, use `BATCH <operation>` when every operation in the batch has the same operation name (`BATCH INSERT`). Otherwise use `BATCH`, or a database-specific term if one fits better. This follows the OpenTelemetry database span conventions."
         ],
     ),
     "db.params": AttributeMetadata(
