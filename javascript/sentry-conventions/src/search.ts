@@ -1396,6 +1396,21 @@ export const SEARCH_CONNECTION__RTT = 'connection.rtt';
 export const SEARCH_CONNECTIONTYPE = 'connectionType';
 
 /**
+ * Search name for {@link attributes.CPYTHON_GC_COLLECTED_OBJECTS}. `cpython.gc.collected_objects`
+ */
+export const SEARCH_CPYTHON__GC__COLLECTED_OBJECTS = 'cpython.gc.collected_objects';
+
+/**
+ * Search name for {@link attributes.CPYTHON_GC_GENERATION}. `cpython.gc.generation`
+ */
+export const SEARCH_CPYTHON__GC__GENERATION = 'cpython.gc.generation';
+
+/**
+ * Search name for {@link attributes.CPYTHON_GC_UNCOLLECTABLE_OBJECTS}. `cpython.gc.uncollectable_objects`
+ */
+export const SEARCH_CPYTHON__GC__UNCOLLECTABLE_OBJECTS = 'cpython.gc.uncollectable_objects';
+
+/**
  * Search name for {@link attributes.CULTURE_CALENDAR}. `culture.calendar`
  */
 export const SEARCH_CULTURE__CALENDAR = 'culture.calendar';
@@ -5721,6 +5736,9 @@ export type AttributeSearchName =
   | typeof SEARCH_CODE__NAMESPACE
   | typeof SEARCH_CONNECTION__RTT
   | typeof SEARCH_CONNECTIONTYPE
+  | typeof SEARCH_CPYTHON__GC__COLLECTED_OBJECTS
+  | typeof SEARCH_CPYTHON__GC__GENERATION
+  | typeof SEARCH_CPYTHON__GC__UNCOLLECTABLE_OBJECTS
   | typeof SEARCH_CULTURE__CALENDAR
   | typeof SEARCH_CULTURE__DISPLAY_NAME
   | typeof SEARCH_CULTURE__IS_24_HOUR_FORMAT
@@ -8047,6 +8065,26 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Specifies the type of the current connection (e.g. wifi, ethernet, cellular , etc).',
     deprecationChain: ['network.connection.type', 'connectionType', 'device.connection_type'],
+  },
+  'cpython.gc.collected_objects': {
+    canonicalName: 'cpython.gc.collected_objects',
+    type: 'integer',
+    brief: 'The number of unreachable objects collected during a run of the CPython garbage collector.',
+    deprecationChain: ['cpython.gc.collected_objects'],
+  },
+  'cpython.gc.generation': {
+    canonicalName: 'cpython.gc.generation',
+    type: 'integer',
+    brief:
+      'The generation of objects that a run of the CPython garbage collector collected. A collection of a generation also collects all younger generations, so 2 is a full collection.',
+    deprecationChain: ['cpython.gc.generation'],
+  },
+  'cpython.gc.uncollectable_objects': {
+    canonicalName: 'cpython.gc.uncollectable_objects',
+    type: 'integer',
+    brief:
+      "The number of unreachable objects that couldn't be collected during a run of the CPython garbage collector. These objects are moved to gc.garbage.",
+    deprecationChain: ['cpython.gc.uncollectable_objects'],
   },
   'culture.calendar': {
     canonicalName: 'culture.calendar',

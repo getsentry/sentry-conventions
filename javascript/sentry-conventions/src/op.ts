@@ -639,6 +639,16 @@ export const OBJECT_MULTIPART_UPLOAD_COMPLETE = 'object.multipart_upload.complet
  */
 export const ROUTER = 'router';
 
+// Path: model/op/runtime.json
+// Name: runtime
+
+// Description: Operations of the language runtime itself, as opposed to the application code running on it.
+
+/**
+ * A run of the runtime's garbage collector.
+ */
+export const GC = 'gc';
+
 // Path: model/op/web_server.json
 // Name: web_server
 
