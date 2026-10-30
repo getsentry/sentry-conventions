@@ -7163,6 +7163,94 @@ export const FAAS_CRON = 'faas.cron';
  */
 export type FAAS_CRON_TYPE = string;
 
+// Path: model/attributes/faas/faas__document__collection.json
+
+/**
+ * The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name. `faas.document.collection`
+ *
+ * Attribute Value Type: `string` {@link FAAS_DOCUMENT_COLLECTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "myBucketName"
+ * @example "myDbName"
+ */
+export const FAAS_DOCUMENT_COLLECTION = 'faas.document.collection';
+
+/**
+ * Type for {@link FAAS_DOCUMENT_COLLECTION} faas.document.collection
+ */
+export type FAAS_DOCUMENT_COLLECTION_TYPE = string;
+
+// Path: model/attributes/faas/faas__document__name.json
+
+/**
+ * The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name. `faas.document.name`
+ *
+ * Attribute Value Type: `string` {@link FAAS_DOCUMENT_NAME_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "myFile.txt"
+ * @example "myTableName"
+ */
+export const FAAS_DOCUMENT_NAME = 'faas.document.name';
+
+/**
+ * Type for {@link FAAS_DOCUMENT_NAME} faas.document.name
+ */
+export type FAAS_DOCUMENT_NAME_TYPE = string;
+
+// Path: model/attributes/faas/faas__document__operation.json
+
+/**
+ * Describes the type of the operation that was performed on the data. `faas.document.operation`
+ *
+ * Attribute Value Type: `string` {@link FAAS_DOCUMENT_OPERATION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "insert"
+ * @example "edit"
+ * @example "delete"
+ */
+export const FAAS_DOCUMENT_OPERATION = 'faas.document.operation';
+
+/**
+ * Type for {@link FAAS_DOCUMENT_OPERATION} faas.document.operation
+ */
+export type FAAS_DOCUMENT_OPERATION_TYPE = string;
+
+// Path: model/attributes/faas/faas__document__time.json
+
+/**
+ * A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC. `faas.document.time`
+ *
+ * Attribute Value Type: `string` {@link FAAS_DOCUMENT_TIME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "2020-01-23T13:47:06Z"
+ */
+export const FAAS_DOCUMENT_TIME = 'faas.document.time';
+
+/**
+ * Type for {@link FAAS_DOCUMENT_TIME} faas.document.time
+ */
+export type FAAS_DOCUMENT_TIME_TYPE = string;
+
 // Path: model/attributes/faas/faas__duration_in_ms.json
 
 /**
@@ -7273,6 +7361,27 @@ export const FAAS_IDENTITY = 'faas.identity';
  * Type for {@link FAAS_IDENTITY} faas.identity
  */
 export type FAAS_IDENTITY_TYPE = string;
+
+// Path: model/attributes/faas/faas__instance.json
+
+/**
+ * The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version. `faas.instance`
+ *
+ * Attribute Value Type: `string` {@link FAAS_INSTANCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"
+ */
+export const FAAS_INSTANCE = 'faas.instance';
+
+/**
+ * Type for {@link FAAS_INSTANCE} faas.instance
+ */
+export type FAAS_INSTANCE_TYPE = string;
 
 // Path: model/attributes/faas/faas__invocation_id.json
 
@@ -15488,6 +15597,34 @@ export const OTEL_STATUS_DESCRIPTION = 'otel.status_description';
  */
 export type OTEL_STATUS_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/page/page__server_rendering__type.json
+
+/**
+ * Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both. `page.server_rendering.type`
+ *
+ * Attribute Value Type: `string` {@link PAGE_SERVER_RENDERING_TYPE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `static` - The server rendered the whole page to reuse it for other requests, for example a page from the build, a Next.js ISR page, or a Nuxt `swr` route.
+ * - `partially_static` - The server reuses a static part of the page, and renders the other parts for this request in the same response (Next.js Partial Prerendering).
+ * - `dynamic` - The server rendered the whole page only for this request. Set only when the SDK knows that the server reused no part of the page. If the SDK cannot tell `dynamic` from `partially_static`, it leaves the attribute unset.
+ *
+ * @example "static"
+ * @example "partially_static"
+ * @example "dynamic"
+ */
+export const PAGE_SERVER_RENDERING_TYPE = 'page.server_rendering.type';
+
+/**
+ * Type for {@link PAGE_SERVER_RENDERING_TYPE} page.server_rendering.type
+ */
+export type PAGE_SERVER_RENDERING_TYPE_TYPE = string;
+
 // Path: model/attributes/params/params__[key].json
 
 /**
@@ -21825,11 +21962,16 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'exception.type': 'string',
   'faas.coldstart': 'boolean',
   'faas.cron': 'string',
+  'faas.document.collection': 'string',
+  'faas.document.name': 'string',
+  'faas.document.operation': 'string',
+  'faas.document.time': 'string',
   'faas.duration_in_ms': 'integer',
   'faas.entry_point': 'string',
   'faas.execution': 'string',
   'faas.id': 'string',
   'faas.identity': 'string',
+  'faas.instance': 'string',
   'faas.invocation_id': 'string',
   'faas.invoked_name': 'string',
   'faas.invoked_provider': 'string',
@@ -22196,6 +22338,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'otel.scope.version': 'string',
   'otel.status_code': 'string',
   'otel.status_description': 'string',
+  'page.server_rendering.type': 'string',
   'params.<key>': 'string',
   'performance.activationStart': 'double',
   'performance.timeOrigin': 'double',
@@ -22780,11 +22923,16 @@ export type AttributeName =
   | typeof EXCEPTION_TYPE
   | typeof FAAS_COLDSTART
   | typeof FAAS_CRON
+  | typeof FAAS_DOCUMENT_COLLECTION
+  | typeof FAAS_DOCUMENT_NAME
+  | typeof FAAS_DOCUMENT_OPERATION
+  | typeof FAAS_DOCUMENT_TIME
   | typeof FAAS_DURATION_IN_MS
   | typeof FAAS_ENTRY_POINT
   | typeof FAAS_EXECUTION
   | typeof FAAS_ID
   | typeof FAAS_IDENTITY
+  | typeof FAAS_INSTANCE
   | typeof FAAS_INVOCATION_ID
   | typeof FAAS_INVOKED_NAME
   | typeof FAAS_INVOKED_PROVIDER
@@ -23151,6 +23299,7 @@ export type AttributeName =
   | typeof OTEL_SCOPE_VERSION
   | typeof OTEL_STATUS_CODE
   | typeof OTEL_STATUS_DESCRIPTION
+  | typeof PAGE_SERVER_RENDERING_TYPE
   | typeof PARAMS_KEY
   | typeof PERFORMANCE_ACTIVATIONSTART
   | typeof PERFORMANCE_TIMEORIGIN
@@ -25474,7 +25623,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'native-http',
     examples: ['native-http', 'on-demand', 'provisioned-concurrency', 'snap-start'],
-    changelog: [{ version: 'next', description: 'Added aws.lambda.initialization_type attribute' }],
+    changelog: [{ version: '0.30.0', prs: [715], description: 'Added aws.lambda.initialization_type attribute' }],
   },
   'aws.lambda.invoked_arn': {
     brief: 'The full ARN of the Lambda function that was invoked',
@@ -25568,7 +25717,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'prod',
     examples: ['prod', 'canary'],
-    changelog: [{ version: 'next', description: 'Added aws.lambda.web.endpoint_name attribute' }],
+    changelog: [{ version: '0.30.0', prs: [715], description: 'Added aws.lambda.web.endpoint_name attribute' }],
   },
   'aws.log.group.names': {
     brief: 'The name(s) of the AWS log group(s) an application is writing to.',
@@ -28456,6 +28605,66 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '0/5 * * * ? *',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'faas.document.collection': {
+    brief:
+      'The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.',
+    type: 'string',
+    keys: ['faas.document.collection'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'myBucketName',
+    examples: ['myBucketName', 'myDbName'],
+    changelog: [{ version: 'next', description: 'Added faas.document.collection attribute' }],
+  },
+  'faas.document.name': {
+    brief:
+      'The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.',
+    type: 'string',
+    keys: ['faas.document.name'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'myFile.txt',
+    examples: ['myFile.txt', 'myTableName'],
+    changelog: [{ version: 'next', description: 'Added faas.document.name attribute' }],
+  },
+  'faas.document.operation': {
+    brief: 'Describes the type of the operation that was performed on the data.',
+    type: 'string',
+    keys: ['faas.document.operation'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'insert',
+    examples: ['insert', 'edit', 'delete'],
+    changelog: [{ version: 'next', description: 'Added faas.document.operation attribute' }],
+    additionalContext: [
+      'Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.',
+      '`delete`: When an object is deleted.',
+      '`edit`: When an object is modified.',
+      '`insert`: When a new object is created.',
+    ],
+  },
+  'faas.document.time': {
+    brief: 'A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.',
+    type: 'string',
+    keys: ['faas.document.time'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '2020-01-23T13:47:06Z',
+    examples: ['2020-01-23T13:47:06Z'],
+    changelog: [{ version: 'next', description: 'Added faas.document.time attribute' }],
+  },
   'faas.duration_in_ms': {
     brief: 'The duration a function took to run, in milliseconds.',
     type: 'integer',
@@ -28544,6 +28753,21 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)',
     changelog: [{ version: '0.11.0', prs: [403] }],
   },
+  'faas.instance': {
+    brief:
+      'The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.',
+    type: 'string',
+    keys: ['faas.instance'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de',
+    examples: ['2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de'],
+    changelog: [{ version: 'next', description: 'Added faas.instance attribute' }],
+    additionalContext: ['For AWS Lambda, use the (full) log stream name.'],
+  },
   'faas.invocation_id': {
     brief: 'The invocation ID of the current function invocation.',
     type: 'string',
@@ -28607,7 +28831,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 134217728,
     examples: [134217728, 1073741824],
-    changelog: [{ version: 'next', description: 'Added faas.max_memory attribute' }],
+    changelog: [{ version: '0.30.0', prs: [715], description: 'Added faas.max_memory attribute' }],
     additionalContext: [
       'On AWS Lambda, multiply AWS_LAMBDA_FUNCTION_MEMORY_SIZE by 1,048,576 to convert the configured memory from MiB to bytes.',
     ],
@@ -35037,6 +35261,27 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'resource not found',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'page.server_rendering.type': {
+    brief:
+      'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
+    type: 'string',
+    keys: ['page.server_rendering.type'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'static',
+    examples: ['static', 'partially_static', 'dynamic'],
+    changelog: [{ version: 'next', prs: [740], description: 'Added page.server_rendering.type attribute' }],
+    additionalContext: [
+      'Set only by an SDK that controls the server render, and only when the SDK knows the value.',
+      'More values can be added later.',
+      'Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.',
+      'With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.',
+      "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
+    ],
+  },
   'params.<key>': {
     brief:
       'Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.',
@@ -39544,11 +39789,16 @@ export type Attributes = {
   [EXCEPTION_TYPE]?: EXCEPTION_TYPE_TYPE;
   [FAAS_COLDSTART]?: FAAS_COLDSTART_TYPE;
   [FAAS_CRON]?: FAAS_CRON_TYPE;
+  [FAAS_DOCUMENT_COLLECTION]?: FAAS_DOCUMENT_COLLECTION_TYPE;
+  [FAAS_DOCUMENT_NAME]?: FAAS_DOCUMENT_NAME_TYPE;
+  [FAAS_DOCUMENT_OPERATION]?: FAAS_DOCUMENT_OPERATION_TYPE;
+  [FAAS_DOCUMENT_TIME]?: FAAS_DOCUMENT_TIME_TYPE;
   [FAAS_DURATION_IN_MS]?: FAAS_DURATION_IN_MS_TYPE;
   [FAAS_ENTRY_POINT]?: FAAS_ENTRY_POINT_TYPE;
   [FAAS_EXECUTION]?: FAAS_EXECUTION_TYPE;
   [FAAS_ID]?: FAAS_ID_TYPE;
   [FAAS_IDENTITY]?: FAAS_IDENTITY_TYPE;
+  [FAAS_INSTANCE]?: FAAS_INSTANCE_TYPE;
   [FAAS_INVOCATION_ID]?: FAAS_INVOCATION_ID_TYPE;
   [FAAS_INVOKED_NAME]?: FAAS_INVOKED_NAME_TYPE;
   [FAAS_INVOKED_PROVIDER]?: FAAS_INVOKED_PROVIDER_TYPE;
@@ -39915,6 +40165,7 @@ export type Attributes = {
   [OTEL_SCOPE_VERSION]?: OTEL_SCOPE_VERSION_TYPE;
   [OTEL_STATUS_CODE]?: OTEL_STATUS_CODE_TYPE;
   [OTEL_STATUS_DESCRIPTION]?: OTEL_STATUS_DESCRIPTION_TYPE;
+  [PAGE_SERVER_RENDERING_TYPE]?: PAGE_SERVER_RENDERING_TYPE_TYPE;
   [PARAMS_KEY]?: PARAMS_KEY_TYPE;
   [PERFORMANCE_ACTIVATIONSTART]?: PERFORMANCE_ACTIVATIONSTART_TYPE;
   [PERFORMANCE_TIMEORIGIN]?: PERFORMANCE_TIMEORIGIN_TYPE;
