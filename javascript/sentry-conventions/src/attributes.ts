@@ -27412,9 +27412,13 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'SELECT',
     aliases: ['db.operation', 'cloudflare.d1.query_type', 'redis.command'],
     changelog: [
+      { version: 'next', description: 'Added the naming rule for batch operations' },
       { version: '0.19.0', prs: [531], description: 'Added redis.command as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
+    ],
+    additionalContext: [
+      'For a batch of operations, use `BATCH <operation>` when every operation in the batch has the same operation name (`BATCH INSERT`). Otherwise use `BATCH`, or a database-specific term if one fits better. This follows the OpenTelemetry database span conventions.',
     ],
   },
   'db.params': {
