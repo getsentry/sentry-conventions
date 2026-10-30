@@ -20760,6 +20760,34 @@ export const USER_ROLES = 'user.roles';
  */
 export type USER_ROLES_TYPE = Array<string>;
 
+// Path: model/attributes/vercel/vercel__ai__settings__context__[key].json
+
+/**
+ * A runtime context property of a Vercel AI SDK call that the app included in telemetry through `telemetry.includeRuntimeContext`, with <key> being the top-level context property name. `vercel.ai.settings.context.<key>`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_AI_SETTINGS_CONTEXT_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto - Runtime context is user-defined and can contain user data
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "vercel.ai.settings.context.tenantId='acme'"
+ */
+export const VERCEL_AI_SETTINGS_CONTEXT_KEY = 'vercel.ai.settings.context.<key>';
+
+/**
+ * Base key for {@link VERCEL_AI_SETTINGS_CONTEXT_KEY}. Use with a dynamic suffix, e.g. `${VERCEL_AI_SETTINGS_CONTEXT_KEY_BASE}.${key}`.
+ */
+export const VERCEL_AI_SETTINGS_CONTEXT_KEY_BASE = 'vercel.ai.settings.context';
+
+/**
+ * Type for {@link VERCEL_AI_SETTINGS_CONTEXT_KEY} vercel.ai.settings.context.<key>
+ */
+export type VERCEL_AI_SETTINGS_CONTEXT_KEY_TYPE = string;
+
 // Path: model/attributes/vercel/vercel__ai__telemetry__metadata__[key].json
 
 /**
@@ -20787,6 +20815,34 @@ export const VERCEL_AI_TELEMETRY_METADATA_KEY_BASE = 'vercel.ai.telemetry.metada
  * Type for {@link VERCEL_AI_TELEMETRY_METADATA_KEY} vercel.ai.telemetry.metadata.<key>
  */
 export type VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE = string;
+
+// Path: model/attributes/vercel/vercel__ai__tool_call__context__[key].json
+
+/**
+ * A tool context property of a Vercel AI SDK tool call that the app included in telemetry through `telemetry.includeToolsContext`, with <key> being the top-level context property name. `vercel.ai.tool_call.context.<key>`
+ *
+ * Attribute Value Type: `string` {@link VERCEL_AI_TOOL_CALL_CONTEXT_KEY_TYPE}
+ *
+ * Apply Scrubbing: auto - Tool context is user-defined and can contain user data
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Has Dynamic Suffix: true
+ *
+ * @example "vercel.ai.tool_call.context.units='metric'"
+ */
+export const VERCEL_AI_TOOL_CALL_CONTEXT_KEY = 'vercel.ai.tool_call.context.<key>';
+
+/**
+ * Base key for {@link VERCEL_AI_TOOL_CALL_CONTEXT_KEY}. Use with a dynamic suffix, e.g. `${VERCEL_AI_TOOL_CALL_CONTEXT_KEY_BASE}.${key}`.
+ */
+export const VERCEL_AI_TOOL_CALL_CONTEXT_KEY_BASE = 'vercel.ai.tool_call.context';
+
+/**
+ * Type for {@link VERCEL_AI_TOOL_CALL_CONTEXT_KEY} vercel.ai.tool_call.context.<key>
+ */
+export type VERCEL_AI_TOOL_CALL_CONTEXT_KEY_TYPE = string;
 
 // Path: model/attributes/vercel/vercel__branch.json
 
@@ -22561,7 +22617,9 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'user.ip_address': 'string',
   'user.name': 'string',
   'user.roles': 'string[]',
+  'vercel.ai.settings.context.<key>': 'string',
   'vercel.ai.telemetry.metadata.<key>': 'string',
+  'vercel.ai.tool_call.context.<key>': 'string',
   'vercel.branch': 'string',
   'vercel.build_id': 'string',
   'vercel.deployment_id': 'string',
@@ -23522,7 +23580,9 @@ export type AttributeName =
   | typeof USER_IP_ADDRESS
   | typeof USER_NAME
   | typeof USER_ROLES
+  | typeof VERCEL_AI_SETTINGS_CONTEXT_KEY
   | typeof VERCEL_AI_TELEMETRY_METADATA_KEY
+  | typeof VERCEL_AI_TOOL_CALL_CONTEXT_KEY
   | typeof VERCEL_BRANCH
   | typeof VERCEL_BUILD_ID
   | typeof VERCEL_DEPLOYMENT_ID
@@ -38996,6 +39056,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: ['admin', 'editor'],
     changelog: [{ version: '0.0.0' }],
   },
+  'vercel.ai.settings.context.<key>': {
+    brief:
+      'A runtime context property of a Vercel AI SDK call that the app included in telemetry through `telemetry.includeRuntimeContext`, with <key> being the top-level context property name.',
+    type: 'string',
+    keys: ['vercel.ai.settings.context.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Runtime context is user-defined and can contain user data',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "vercel.ai.settings.context.tenantId='acme'",
+    examples: ["vercel.ai.settings.context.tenantId='acme'"],
+    changelog: [{ version: 'next', description: 'Added vercel.ai.settings.context.<key> attribute' }],
+    additionalContext: [
+      'Set on `gen_ai` spans for `invoke_agent`, `generate_content`, `execute_tool`, `embeddings`, `rerank` and `decide` operations. Spans for model calls and tool calls inside an operation copy the attributes of that operation.',
+      'SDKs MUST only record the properties that the app included through `telemetry.includeRuntimeContext`. Some Vercel AI SDK versions expose the full runtime context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the runtime context, it MUST NOT record it.',
+      "The Vercel AI SDK's own OpenTelemetry integration (`@ai-sdk/otel`) emits the same data as `ai.settings.context.<key>`.",
+      'Runtime context values can have any type. SDKs MUST convert them to strings, and SHOULD serialize objects and arrays as JSON.',
+      'This attribute is open-ended on purpose. The Vercel AI SDK does not define the runtime context keys.',
+    ],
+  },
   'vercel.ai.telemetry.metadata.<key>': {
     brief:
       'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
@@ -39016,6 +39099,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       "The Vercel AI SDK's own OpenTelemetry spans emit the same data as `ai.telemetry.metadata.<key>`.",
       'The Vercel AI SDK also allows numbers, booleans and arrays as metadata values. SDKs MUST convert these values to strings.',
       'This attribute is open-ended on purpose. The Vercel AI SDK does not define the metadata keys. If Vercel defines a stricter spec for this metadata, consider moving it into `gen_ai.*` attributes.',
+    ],
+  },
+  'vercel.ai.tool_call.context.<key>': {
+    brief:
+      'A tool context property of a Vercel AI SDK tool call that the app included in telemetry through `telemetry.includeToolsContext`, with <key> being the top-level context property name.',
+    type: 'string',
+    keys: ['vercel.ai.tool_call.context.<key>'],
+    applyScrubbing: {
+      key: 'auto',
+      reason: 'Tool context is user-defined and can contain user data',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    hasDynamicSuffix: true,
+    example: "vercel.ai.tool_call.context.units='metric'",
+    examples: ["vercel.ai.tool_call.context.units='metric'"],
+    changelog: [{ version: 'next', description: 'Added vercel.ai.tool_call.context.<key> attribute' }],
+    additionalContext: [
+      'Set on `gen_ai` spans for `execute_tool` operations.',
+      'SDKs MUST only record the properties that the app included for the tool through `telemetry.includeToolsContext`. Some Vercel AI SDK versions expose the full tool context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the tool context, it MUST NOT record it.',
+      "The Vercel AI SDK's own OpenTelemetry integration (`@ai-sdk/otel`) does not record tool context.",
+      'Tool context values can have any type. SDKs MUST convert them to strings, and SHOULD serialize objects and arrays as JSON.',
+      'This attribute is open-ended on purpose. The Vercel AI SDK does not define the tool context keys.',
     ],
   },
   'vercel.branch': {
@@ -40388,7 +40494,9 @@ export type Attributes = {
   [USER_IP_ADDRESS]?: USER_IP_ADDRESS_TYPE;
   [USER_NAME]?: USER_NAME_TYPE;
   [USER_ROLES]?: USER_ROLES_TYPE;
+  [VERCEL_AI_SETTINGS_CONTEXT_KEY]?: VERCEL_AI_SETTINGS_CONTEXT_KEY_TYPE;
   [VERCEL_AI_TELEMETRY_METADATA_KEY]?: VERCEL_AI_TELEMETRY_METADATA_KEY_TYPE;
+  [VERCEL_AI_TOOL_CALL_CONTEXT_KEY]?: VERCEL_AI_TOOL_CALL_CONTEXT_KEY_TYPE;
   [VERCEL_BRANCH]?: VERCEL_BRANCH_TYPE;
   [VERCEL_BUILD_ID]?: VERCEL_BUILD_ID_TYPE;
   [VERCEL_DEPLOYMENT_ID]?: VERCEL_DEPLOYMENT_ID_TYPE;

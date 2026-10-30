@@ -5329,9 +5329,19 @@ export const SEARCH_USER__USERNAME = 'user.username';
 export const SEARCH_USER_AGENT__ORIGINAL = 'user_agent.original';
 
 /**
+ * Search name for {@link attributes.VERCEL_AI_SETTINGS_CONTEXT_KEY}. `vercel.ai.settings.context.<key>`
+ */
+export const SEARCH_VERCEL__AI__SETTINGS__CONTEXT__KEY = 'vercel.ai.settings.context.<key>';
+
+/**
  * Search name for {@link attributes.VERCEL_AI_TELEMETRY_METADATA_KEY}. `vercel.ai.telemetry.metadata.<key>`
  */
 export const SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
+ * Search name for {@link attributes.VERCEL_AI_TOOL_CALL_CONTEXT_KEY}. `vercel.ai.tool_call.context.<key>`
+ */
+export const SEARCH_VERCEL__AI__TOOL_CALL__CONTEXT__KEY = 'vercel.ai.tool_call.context.<key>';
 
 /**
  * Search name for {@link attributes.VERCEL_BRANCH}. `vercel.branch`
@@ -6456,7 +6466,9 @@ export type AttributeSearchName =
   | typeof SEARCH_USER__ROLES
   | typeof SEARCH_USER__USERNAME
   | typeof SEARCH_USER_AGENT__ORIGINAL
+  | typeof SEARCH_VERCEL__AI__SETTINGS__CONTEXT__KEY
   | typeof SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY
+  | typeof SEARCH_VERCEL__AI__TOOL_CALL__CONTEXT__KEY
   | typeof SEARCH_VERCEL__BRANCH
   | typeof SEARCH_VERCEL__BUILD_ID
   | typeof SEARCH_VERCEL__DEPLOYMENT_ID
@@ -12559,12 +12571,26 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     deprecationChain: ['user_agent.original', 'http.user_agent'],
   },
+  'vercel.ai.settings.context.<key>': {
+    canonicalName: 'vercel.ai.settings.context.<key>',
+    type: 'string',
+    brief:
+      'A runtime context property of a Vercel AI SDK call that the app included in telemetry through `telemetry.includeRuntimeContext`, with <key> being the top-level context property name.',
+    deprecationChain: ['vercel.ai.settings.context.<key>'],
+  },
   'vercel.ai.telemetry.metadata.<key>': {
     canonicalName: 'vercel.ai.telemetry.metadata.<key>',
     type: 'string',
     brief:
       'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
     deprecationChain: ['vercel.ai.telemetry.metadata.<key>'],
+  },
+  'vercel.ai.tool_call.context.<key>': {
+    canonicalName: 'vercel.ai.tool_call.context.<key>',
+    type: 'string',
+    brief:
+      'A tool context property of a Vercel AI SDK tool call that the app included in telemetry through `telemetry.includeToolsContext`, with <key> being the top-level context property name.',
+    deprecationChain: ['vercel.ai.tool_call.context.<key>'],
   },
   'vercel.branch': {
     canonicalName: 'vercel.branch',
