@@ -4599,6 +4599,17 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "name@project.iam.gserviceaccount.com (GCP), arn:aws:iam::123456789012:role/role-name (AWS), 00000000-0000-0000-0000-000000000000 (Azure)"
     """
 
+    # Path: model/attributes/faas/faas__instance.json
+    FAAS_INSTANCE: Literal["faas.instance"] = "faas.instance"
+    """The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"
+    """
+
     # Path: model/attributes/faas/faas__invocation_id.json
     FAAS_INVOCATION_ID: Literal["faas.invocation_id"] = "faas.invocation_id"
     """The invocation ID of the current function invocation.
@@ -18819,6 +18830,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.11.0", prs=[403]),
         ],
     ),
+    "faas.instance": AttributeMetadata(
+        brief="The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.",
+        type=AttributeType.STRING,
+        keys=("faas.instance",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de",
+        examples=["2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"],
+        changelog=[
+            ChangelogEntry(version="next", description="Added faas.instance attribute"),
+        ],
+        additional_context=["For AWS Lambda, use the (full) log stream name."],
+    ),
     "faas.invocation_id": AttributeMetadata(
         brief="The invocation ID of the current function invocation.",
         type=AttributeType.STRING,
@@ -31324,6 +31349,7 @@ Attributes = TypedDict(
         "faas.execution": str,
         "faas.id": str,
         "faas.identity": str,
+        "faas.instance": str,
         "faas.invocation_id": str,
         "faas.invoked_name": str,
         "faas.invoked_provider": str,
