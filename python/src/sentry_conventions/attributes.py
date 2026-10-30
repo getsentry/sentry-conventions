@@ -403,6 +403,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_USER_GEO_COUNTRY_CODE",
         "SENTRY_USER_GEO_REGION",
         "SENTRY_USER_GEO_SUBDIVISION",
+        "SENTRY_USER_GEO_SUBREGION",
         "SENTRY_USER_ID",
         "SENTRY_USER_IP",
         "SENTRY_USER_USERNAME",
@@ -11161,6 +11162,45 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     DEPRECATED: Use user.geo.subdivision instead
     """
 
+    # Path: model/attributes/sentry/sentry__user__geo__subregion.json
+    SENTRY_USER_GEO_SUBREGION: Literal["sentry.user.geo.subregion"] = (
+        "sentry.user.geo.subregion"
+    )
+    """UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `5` - South America
+    - `11` - Western Africa
+    - `13` - Central America
+    - `14` - Eastern Africa
+    - `15` - Northern Africa
+    - `17` - Middle Africa
+    - `18` - Southern Africa
+    - `21` - Northern America
+    - `29` - Caribbean
+    - `30` - Eastern Asia
+    - `34` - Southern Asia
+    - `35` - South-Eastern Asia
+    - `39` - Southern Europe
+    - `53` - Australia and New Zealand
+    - `54` - Melanesia
+    - `57` - Micronesia
+    - `61` - Polynesia
+    - `143` - Central Asia
+    - `145` - Western Asia
+    - `151` - Eastern Europe
+    - `154` - Northern Europe
+    - `155` - Western Europe
+    Aliases: user.geo.subregion
+    DEPRECATED: Use user.geo.subregion instead
+    Example: "155"
+    Example: "21"
+    """
+
     # Path: model/attributes/sentry/sentry__user__id.json
     SENTRY_USER_ID: Literal["sentry.user.id"] = "sentry.user.id"
     """Unique identifier of the user.
@@ -12085,6 +12125,42 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: sentry.user.geo.subdivision
     Example: "Ontario"
+    """
+
+    # Path: model/attributes/user/user__geo__subregion.json
+    USER_GEO_SUBREGION: Literal["user.geo.subregion"] = "user.geo.subregion"
+    """UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `5` - South America
+    - `11` - Western Africa
+    - `13` - Central America
+    - `14` - Eastern Africa
+    - `15` - Northern Africa
+    - `17` - Middle Africa
+    - `18` - Southern Africa
+    - `21` - Northern America
+    - `29` - Caribbean
+    - `30` - Eastern Asia
+    - `34` - Southern Asia
+    - `35` - South-Eastern Asia
+    - `39` - Southern Europe
+    - `53` - Australia and New Zealand
+    - `54` - Melanesia
+    - `57` - Micronesia
+    - `61` - Polynesia
+    - `143` - Central Asia
+    - `145` - Western Asia
+    - `151` - Eastern Europe
+    - `154` - Northern Europe
+    - `155` - Western Europe
+    Aliases: sentry.user.geo.subregion
+    Example: "155"
+    Example: "21"
     """
 
     # Path: model/attributes/user/user__hash.json
@@ -28892,6 +28968,31 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="user.geo.subdivision"),
     ),
+    "sentry.user.geo.subregion": AttributeMetadata(
+        brief="UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+        type=AttributeType.STRING,
+        keys=(
+            "user.geo.subregion",
+            "sentry.user.geo.subregion",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="155",
+        examples=["155", "21"],
+        deprecation=DeprecationInfo(
+            replacement="user.geo.subregion", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["user.geo.subregion"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[753],
+                description="Added sentry.user.geo.subregion attribute",
+            ),
+        ],
+        search_alias=SearchAlias(name="user.geo.subregion"),
+    ),
     "sentry.user.id": AttributeMetadata(
         brief="Unique identifier of the user.",
         type=AttributeType.STRING,
@@ -30452,6 +30553,27 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "user.geo.subregion": AttributeMetadata(
+        brief="UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+        type=AttributeType.STRING,
+        keys=(
+            "user.geo.subregion",
+            "sentry.user.geo.subregion",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="155",
+        examples=["155", "21"],
+        aliases=["sentry.user.geo.subregion"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[753],
+                description="Added user.geo.subregion attribute",
+            ),
+        ],
+    ),
     "user.hash": AttributeMetadata(
         brief="Unique user hash to correlate information for a user in anonymized form.",
         type=AttributeType.STRING,
@@ -31857,6 +31979,7 @@ Attributes = TypedDict(
         "sentry.user.geo.country_code": str,
         "sentry.user.geo.region": str,
         "sentry.user.geo.subdivision": str,
+        "sentry.user.geo.subregion": str,
         "sentry.user.id": str,
         "sentry.user.ip": str,
         "sentry.user.username": str,
@@ -31931,6 +32054,7 @@ Attributes = TypedDict(
         "user.geo.country_code": str,
         "user.geo.region": str,
         "user.geo.subdivision": str,
+        "user.geo.subregion": str,
         "user.hash": str,
         "user.id": str,
         "user.ip_address": str,

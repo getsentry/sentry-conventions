@@ -5284,6 +5284,11 @@ export const SEARCH_USER__GEO__REGION = 'user.geo.region';
 export const SEARCH_USER__GEO__SUBDIVISION = 'user.geo.subdivision';
 
 /**
+ * Search name for {@link attributes.USER_GEO_SUBREGION}. `user.geo.subregion`
+ */
+export const SEARCH_USER__GEO__SUBREGION = 'user.geo.subregion';
+
+/**
  * Search name for {@link attributes.USER_HASH}. `user.hash`
  */
 export const SEARCH_USER__HASH = 'user.hash';
@@ -6442,6 +6447,7 @@ export type AttributeSearchName =
   | typeof SEARCH_USER__GEO__COUNTRY_CODE
   | typeof SEARCH_USER__GEO__REGION
   | typeof SEARCH_USER__GEO__SUBDIVISION
+  | typeof SEARCH_USER__GEO__SUBREGION
   | typeof SEARCH_USER__HASH
   | typeof SEARCH_USER__ID
   | typeof SEARCH_USER__IP
@@ -12497,6 +12503,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Human readable subdivision name.',
     deprecationChain: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
+  },
+  'user.geo.subregion': {
+    canonicalName: 'user.geo.subregion',
+    type: 'string',
+    brief:
+      "UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+    deprecationChain: ['user.geo.subregion', 'sentry.user.geo.subregion'],
   },
   'user.hash': {
     canonicalName: 'user.hash',
