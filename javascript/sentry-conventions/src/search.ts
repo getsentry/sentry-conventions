@@ -772,6 +772,11 @@ export const SEARCH_AWS__LAMBDA__FUNCTION_NAME = 'aws.lambda.function_name';
 export const SEARCH_AWS__LAMBDA__FUNCTION_VERSION = 'aws.lambda.function_version';
 
 /**
+ * Search name for {@link attributes.AWS_LAMBDA_INITIALIZATION_TYPE}. `aws.lambda.initialization_type`
+ */
+export const SEARCH_AWS__LAMBDA__INITIALIZATION_TYPE = 'aws.lambda.initialization_type';
+
+/**
  * Search name for {@link attributes.AWS_LAMBDA_INVOKED_ARN}. `aws.lambda.invoked_arn`
  */
 export const SEARCH_AWS__LAMBDA__INVOKED_ARN = 'aws.lambda.invoked_arn';
@@ -797,6 +802,11 @@ export const SEARCH_AWS__LAMBDA__RESOURCE_MAPPING__ID = 'aws.lambda.resource_map
  * Search name for {@link attributes.AWS_LAMBDA_TARGET_FUNCTION_NAME}. `aws.lambda.target_function.name`
  */
 export const SEARCH_AWS__LAMBDA__TARGET_FUNCTION__NAME = 'aws.lambda.target_function.name';
+
+/**
+ * Search name for {@link attributes.AWS_LAMBDA_WEB_ENDPOINT_NAME}. `aws.lambda.web.endpoint_name`
+ */
+export const SEARCH_AWS__LAMBDA__WEB__ENDPOINT_NAME = 'aws.lambda.web.endpoint_name';
 
 /**
  * Search name for {@link attributes.AWS_LOG_GROUP_NAMES}. `aws.log.group.names`
@@ -1884,6 +1894,11 @@ export const SEARCH_FAAS__INVOKED_PROVIDER = 'faas.invoked_provider';
  * Search name for {@link attributes.FAAS_INVOKED_REGION}. `faas.invoked_region`
  */
 export const SEARCH_FAAS__INVOKED_REGION = 'faas.invoked_region';
+
+/**
+ * Search name for {@link attributes.FAAS_MAX_MEMORY}. `faas.max_memory`
+ */
+export const SEARCH_FAAS__MAX_MEMORY = 'faas.max_memory';
 
 /**
  * Search name for {@link attributes.FAAS_NAME}. `faas.name`
@@ -3955,6 +3970,11 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING_TYPE}. `page.server_rendering.type`
+ */
+export const SEARCH_PAGE__SERVER_RENDERING__TYPE = 'page.server_rendering.type';
+
+/**
  * Search name for {@link attributes.PARAMS_KEY}. `params.<key>`
  */
 export const SEARCH_PARAMS__KEY = 'params.<key>';
@@ -5608,11 +5628,13 @@ export type AttributeSearchName =
   | typeof SEARCH_AWS__LAMBDA__EXECUTION_DURATION_IN_MILLIS
   | typeof SEARCH_AWS__LAMBDA__FUNCTION_NAME
   | typeof SEARCH_AWS__LAMBDA__FUNCTION_VERSION
+  | typeof SEARCH_AWS__LAMBDA__INITIALIZATION_TYPE
   | typeof SEARCH_AWS__LAMBDA__INVOKED_ARN
   | typeof SEARCH_AWS__LAMBDA__INVOKED_FUNCTION_ARN
   | typeof SEARCH_AWS__LAMBDA__REMAINING_TIME_IN_MILLIS
   | typeof SEARCH_AWS__LAMBDA__RESOURCE_MAPPING__ID
   | typeof SEARCH_AWS__LAMBDA__TARGET_FUNCTION__NAME
+  | typeof SEARCH_AWS__LAMBDA__WEB__ENDPOINT_NAME
   | typeof SEARCH_AWS__LOG__GROUP__NAMES
   | typeof SEARCH_AWS__LOG__STREAM__NAMES
   | typeof SEARCH_AWS__OPERATION_NAME
@@ -5818,6 +5840,7 @@ export type AttributeSearchName =
   | typeof SEARCH_FAAS__INVOKED_NAME
   | typeof SEARCH_FAAS__INVOKED_PROVIDER
   | typeof SEARCH_FAAS__INVOKED_REGION
+  | typeof SEARCH_FAAS__MAX_MEMORY
   | typeof SEARCH_FAAS__NAME
   | typeof SEARCH_FAAS__TIME
   | typeof SEARCH_FAAS__TRIGGER
@@ -6186,6 +6209,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
+  | typeof SEARCH_PAGE__SERVER_RENDERING__TYPE
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
   | typeof SEARCH_PERFORMANCE__TIMEORIGIN
@@ -7323,6 +7347,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The version of the Lambda function',
     deprecationChain: ['faas.version', 'aws.lambda.function_version'],
   },
+  'aws.lambda.initialization_type': {
+    canonicalName: 'aws.lambda.initialization_type',
+    type: 'string',
+    brief: 'How AWS Lambda initialized the execution environment, as reported by AWS_LAMBDA_INITIALIZATION_TYPE.',
+    deprecationChain: ['aws.lambda.initialization_type'],
+  },
   'aws.lambda.invoked_arn': {
     canonicalName: 'aws.lambda.invoked_arn',
     type: 'string',
@@ -7353,6 +7383,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The name of the AWS Lambda function that an AWS SDK call acts on.',
     deprecationChain: ['aws.lambda.target_function.name'],
+  },
+  'aws.lambda.web.endpoint_name': {
+    canonicalName: 'aws.lambda.web.endpoint_name',
+    type: 'string',
+    brief:
+      'The name of the AWS Lambda Web Function endpoint that received the request, as reported by the lambda-web-endpoint-name request header.',
+    deprecationChain: ['aws.lambda.web.endpoint_name'],
   },
   'aws.log.group.names': {
     canonicalName: 'aws.log.group.names',
@@ -8631,6 +8668,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The cloud region of the invoked function.',
     deprecationChain: ['faas.invoked_region'],
+  },
+  'faas.max_memory': {
+    canonicalName: 'faas.max_memory',
+    type: 'integer',
+    brief: 'The amount of memory available to the serverless function, in bytes.',
+    deprecationChain: ['faas.max_memory'],
   },
   'faas.name': {
     canonicalName: 'faas.name',
@@ -11077,6 +11120,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
+  },
+  'page.server_rendering.type': {
+    canonicalName: 'page.server_rendering.type',
+    type: 'string',
+    brief:
+      'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
+    deprecationChain: ['page.server_rendering.type'],
   },
   'params.<key>': {
     canonicalName: 'params.<key>',
