@@ -9258,6 +9258,25 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "resource not found"
     """
 
+    # Path: model/attributes/page/page__server_rendering__type.json
+    PAGE_SERVER_RENDERING_TYPE: Literal["page.server_rendering.type"] = (
+        "page.server_rendering.type"
+    )
+    """Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `static` - The server rendered the whole page to reuse it for other requests, for example a page from the build, a Next.js ISR page, or a Nuxt `swr` route.
+    - `partially_static` - The server reuses a static part of the page, and renders the other parts for this request in the same response (Next.js Partial Prerendering).
+    - `dynamic` - The server rendered the whole page only for this request. Set only when the SDK knows that the server reused no part of the page. If the SDK cannot tell `dynamic` from `partially_static`, it leaves the attribute unset.
+    Example: "static"
+    Example: "partially_static"
+    Example: "dynamic"
+    """
+
     # Path: model/attributes/params/params__[key].json
     PARAMS_KEY: Literal["params.<key>"] = "params.<key>"
     """Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.
@@ -26155,6 +26174,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "page.server_rendering.type": AttributeMetadata(
+        brief="Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.",
+        type=AttributeType.STRING,
+        keys=("page.server_rendering.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="static",
+        examples=["static", "partially_static", "dynamic"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[740],
+                description="Added page.server_rendering.type attribute",
+            ),
+        ],
+        additional_context=[
+            "Set only by an SDK that controls the server render, and only when the SDK knows the value.",
+            "More values can be added later.",
+            "Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.",
+            "With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.",
+            "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
+        ],
+    ),
     "params.<key>": AttributeMetadata(
         brief="Decoded parameters extracted from a URL path. Usually added by client-side routing frameworks like vue-router.",
         type=AttributeType.STRING,
@@ -31525,6 +31568,7 @@ Attributes = TypedDict(
         "otel.scope.version": str,
         "otel.status_code": str,
         "otel.status_description": str,
+        "page.server_rendering.type": str,
         "params.<key>": str,
         "performance.activationStart": float,
         "performance.timeOrigin": float,
