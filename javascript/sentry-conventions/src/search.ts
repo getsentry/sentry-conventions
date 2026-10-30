@@ -1627,6 +1627,11 @@ export const SEARCH_DEVICE__FREE_MEMORY = 'device.free_memory';
 export const SEARCH_DEVICE__FREE_STORAGE = 'device.free_storage';
 
 /**
+ * Search name for {@link attributes.DEVICE_HINGE_STATUS}. `device.hinge_status`
+ */
+export const SEARCH_DEVICE__HINGE_STATUS = 'device.hinge_status';
+
+/**
  * Search name for {@link attributes.DEVICE_ID}. `device.id`
  */
 export const SEARCH_DEVICE__ID = 'device.id';
@@ -5764,6 +5769,7 @@ export type AttributeSearchName =
   | typeof SEARCH_DEVICE__FAMILY
   | typeof SEARCH_DEVICE__FREE_MEMORY
   | typeof SEARCH_DEVICE__FREE_STORAGE
+  | typeof SEARCH_DEVICE__HINGE_STATUS
   | typeof SEARCH_DEVICE__ID
   | typeof SEARCH_DEVICE__LOCALE
   | typeof SEARCH_DEVICE__LOW_MEMORY
@@ -8314,6 +8320,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'integer',
     brief: 'Free device storage in bytes.',
     deprecationChain: ['device.free_storage'],
+  },
+  'device.hinge_status': {
+    canonicalName: 'device.hinge_status',
+    type: 'string',
+    brief: 'The hinge status of a foldable device, such as iPhone Duo: closed, partially_open, or fully_open.',
+    deprecationChain: ['device.hinge_status'],
   },
   'device.id': {
     canonicalName: 'device.id',

@@ -4041,6 +4041,23 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 107374182400
     """
 
+    # Path: model/attributes/device/device__hinge_status.json
+    DEVICE_HINGE_STATUS: Literal["device.hinge_status"] = "device.hinge_status"
+    """The hinge status of a foldable device, such as iPhone Duo: closed, partially_open, or fully_open.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Well-defined Values:
+    - `closed`
+    - `partially_open`
+    - `fully_open`
+    Example: "closed"
+    Example: "partially_open"
+    Example: "fully_open"
+    """
+
     # Path: model/attributes/device/device__id.json
     DEVICE_ID: Literal["device.id"] = "device.id"
     """Unique device identifier.
@@ -17956,6 +17973,23 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "device.hinge_status": AttributeMetadata(
+        brief="The hinge status of a foldable device, such as iPhone Duo: closed, partially_open, or fully_open.",
+        type=AttributeType.STRING,
+        keys=("device.hinge_status",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="closed",
+        examples=["closed", "partially_open", "fully_open"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[746],
+                description="Added device.hinge_status attribute",
+            ),
+        ],
+    ),
     "device.id": AttributeMetadata(
         brief="Unique device identifier.",
         type=AttributeType.STRING,
@@ -31116,6 +31150,7 @@ Attributes = TypedDict(
         "device.family": str,
         "device.free_memory": int,
         "device.free_storage": int,
+        "device.hinge_status": str,
         "device.id": str,
         "device.locale": str,
         "device.low_memory": bool,

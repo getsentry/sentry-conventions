@@ -6361,6 +6361,34 @@ export const DEVICE_FREE_STORAGE = 'device.free_storage';
  */
 export type DEVICE_FREE_STORAGE_TYPE = number;
 
+// Path: model/attributes/device/device__hinge_status.json
+
+/**
+ * The hinge status of a foldable device, such as iPhone Duo: closed, partially_open, or fully_open. `device.hinge_status`
+ *
+ * Attribute Value Type: `string` {@link DEVICE_HINGE_STATUS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Well-defined Values:
+ * - `closed`
+ * - `partially_open`
+ * - `fully_open`
+ *
+ * @example "closed"
+ * @example "partially_open"
+ * @example "fully_open"
+ */
+export const DEVICE_HINGE_STATUS = 'device.hinge_status';
+
+/**
+ * Type for {@link DEVICE_HINGE_STATUS} device.hinge_status
+ */
+export type DEVICE_HINGE_STATUS_TYPE = string;
+
 // Path: model/attributes/device/device__id.json
 
 /**
@@ -21691,6 +21719,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'device.family': 'string',
   'device.free_memory': 'integer',
   'device.free_storage': 'integer',
+  'device.hinge_status': 'string',
   'device.id': 'string',
   'device.locale': 'string',
   'device.low_memory': 'boolean',
@@ -22644,6 +22673,7 @@ export type AttributeName =
   | typeof DEVICE_FAMILY
   | typeof DEVICE_FREE_MEMORY
   | typeof DEVICE_FREE_STORAGE
+  | typeof DEVICE_HINGE_STATUS
   | typeof DEVICE_ID
   | typeof DEVICE_LOCALE
   | typeof DEVICE_LOW_MEMORY
@@ -27832,6 +27862,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 107374182400,
     changelog: [{ version: '0.5.0', prs: [303], description: 'Added device.free_storage attribute' }],
+  },
+  'device.hinge_status': {
+    brief: 'The hinge status of a foldable device, such as iPhone Duo: closed, partially_open, or fully_open.',
+    type: 'string',
+    keys: ['device.hinge_status'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'closed',
+    examples: ['closed', 'partially_open', 'fully_open'],
+    changelog: [{ version: 'next', prs: [746], description: 'Added device.hinge_status attribute' }],
   },
   'device.id': {
     brief: 'Unique device identifier.',
@@ -39369,6 +39412,7 @@ export type Attributes = {
   [DEVICE_FAMILY]?: DEVICE_FAMILY_TYPE;
   [DEVICE_FREE_MEMORY]?: DEVICE_FREE_MEMORY_TYPE;
   [DEVICE_FREE_STORAGE]?: DEVICE_FREE_STORAGE_TYPE;
+  [DEVICE_HINGE_STATUS]?: DEVICE_HINGE_STATUS_TYPE;
   [DEVICE_ID]?: DEVICE_ID_TYPE;
   [DEVICE_LOCALE]?: DEVICE_LOCALE_TYPE;
   [DEVICE_LOW_MEMORY]?: DEVICE_LOW_MEMORY_TYPE;
