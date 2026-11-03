@@ -1,0 +1,17 @@
+{
+  "key": "faas.document.time",
+  "brief": "A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["2020-01-23T13:47:06Z"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added faas.document.time attribute"
+    }
+  ]
+}

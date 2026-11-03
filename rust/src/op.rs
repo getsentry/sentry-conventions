@@ -219,6 +219,7 @@ pub const AI_EMBEDDINGS_CREATE_COHERE: &str = "ai.embeddings.create.cohere";
 pub const GEN_AI_EXECUTE_TOOL: &str = "gen_ai.execute_tool";
 
 /// Handoff of control between different AI agents or components
+#[deprecated(note = "Handoff information already lives in tool execution spans.")]
 pub const GEN_AI_HANDOFF: &str = "gen_ai.handoff";
 
 /// Invocation of an AI agent to perform a task

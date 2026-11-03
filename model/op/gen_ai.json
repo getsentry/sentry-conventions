@@ -26,7 +26,10 @@
     },
     {
       "name": "gen_ai.handoff",
-      "description": "Handoff of control between different AI agents or components"
+      "description": "Handoff of control between different AI agents or components",
+      "deprecation": {
+        "note": "Handoff information already lives in tool execution spans."
+      }
     },
     {
       "name": "gen_ai.invoke_agent",

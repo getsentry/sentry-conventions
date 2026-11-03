@@ -1,0 +1,116 @@
+{
+  "key": "sentry.user.geo.subregion",
+  "brief": "UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["155", "21"],
+  "enum_values": [
+    {
+      "value": "5",
+      "brief": "South America"
+    },
+    {
+      "value": "11",
+      "brief": "Western Africa"
+    },
+    {
+      "value": "13",
+      "brief": "Central America"
+    },
+    {
+      "value": "14",
+      "brief": "Eastern Africa"
+    },
+    {
+      "value": "15",
+      "brief": "Northern Africa"
+    },
+    {
+      "value": "17",
+      "brief": "Middle Africa"
+    },
+    {
+      "value": "18",
+      "brief": "Southern Africa"
+    },
+    {
+      "value": "21",
+      "brief": "Northern America"
+    },
+    {
+      "value": "29",
+      "brief": "Caribbean"
+    },
+    {
+      "value": "30",
+      "brief": "Eastern Asia"
+    },
+    {
+      "value": "34",
+      "brief": "Southern Asia"
+    },
+    {
+      "value": "35",
+      "brief": "South-Eastern Asia"
+    },
+    {
+      "value": "39",
+      "brief": "Southern Europe"
+    },
+    {
+      "value": "53",
+      "brief": "Australia and New Zealand"
+    },
+    {
+      "value": "54",
+      "brief": "Melanesia"
+    },
+    {
+      "value": "57",
+      "brief": "Micronesia"
+    },
+    {
+      "value": "61",
+      "brief": "Polynesia"
+    },
+    {
+      "value": "143",
+      "brief": "Central Asia"
+    },
+    {
+      "value": "145",
+      "brief": "Western Asia"
+    },
+    {
+      "value": "151",
+      "brief": "Eastern Europe"
+    },
+    {
+      "value": "154",
+      "brief": "Northern Europe"
+    },
+    {
+      "value": "155",
+      "brief": "Western Europe"
+    }
+  ],
+  "alias": ["user.geo.subregion"],
+  "deprecation": {
+    "replacement": "user.geo.subregion",
+    "_status": "backfill"
+  },
+  "search_alias": {
+    "name": "user.geo.subregion"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [753],
+      "description": "Added sentry.user.geo.subregion attribute"
+    }
+  ]
+}

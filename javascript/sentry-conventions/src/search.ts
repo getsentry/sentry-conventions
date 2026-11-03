@@ -1827,6 +1827,26 @@ export const SEARCH_FAAS__COLDSTART = 'faas.coldstart';
 export const SEARCH_FAAS__CRON = 'faas.cron';
 
 /**
+ * Search name for {@link attributes.FAAS_DOCUMENT_COLLECTION}. `faas.document.collection`
+ */
+export const SEARCH_FAAS__DOCUMENT__COLLECTION = 'faas.document.collection';
+
+/**
+ * Search name for {@link attributes.FAAS_DOCUMENT_NAME}. `faas.document.name`
+ */
+export const SEARCH_FAAS__DOCUMENT__NAME = 'faas.document.name';
+
+/**
+ * Search name for {@link attributes.FAAS_DOCUMENT_OPERATION}. `faas.document.operation`
+ */
+export const SEARCH_FAAS__DOCUMENT__OPERATION = 'faas.document.operation';
+
+/**
+ * Search name for {@link attributes.FAAS_DOCUMENT_TIME}. `faas.document.time`
+ */
+export const SEARCH_FAAS__DOCUMENT__TIME = 'faas.document.time';
+
+/**
  * Search name for {@link attributes.FAAS_DURATION_IN_MS}. `faas.duration_in_ms`
  */
 export const SEARCH_FAAS__DURATION_IN_MS = 'faas.duration_in_ms';
@@ -1854,6 +1874,11 @@ export const SEARCH_FAAS__ID = 'faas.id';
  * Search name for {@link attributes.FAAS_IDENTITY}. `faas.identity`
  */
 export const SEARCH_FAAS__IDENTITY = 'faas.identity';
+
+/**
+ * Search name for {@link attributes.FAAS_INSTANCE}. `faas.instance`
+ */
+export const SEARCH_FAAS__INSTANCE = 'faas.instance';
 
 /**
  * Search name for {@link attributes.FAAS_INVOCATION_ID}. `faas.invocation_id`
@@ -3950,6 +3975,11 @@ export const SEARCH_OTEL__STATUS_CODE = 'otel.status_code';
 export const SEARCH_OTEL__STATUS_DESCRIPTION = 'otel.status_description';
 
 /**
+ * Search name for {@link attributes.PAGE_SERVER_RENDERING_TYPE}. `page.server_rendering.type`
+ */
+export const SEARCH_PAGE__SERVER_RENDERING__TYPE = 'page.server_rendering.type';
+
+/**
  * Search name for {@link attributes.PARAMS_KEY}. `params.<key>`
  */
 export const SEARCH_PARAMS__KEY = 'params.<key>';
@@ -5254,6 +5284,11 @@ export const SEARCH_USER__GEO__REGION = 'user.geo.region';
 export const SEARCH_USER__GEO__SUBDIVISION = 'user.geo.subdivision';
 
 /**
+ * Search name for {@link attributes.USER_GEO_SUBREGION}. `user.geo.subregion`
+ */
+export const SEARCH_USER__GEO__SUBREGION = 'user.geo.subregion';
+
+/**
  * Search name for {@link attributes.USER_HASH}. `user.hash`
  */
 export const SEARCH_USER__HASH = 'user.hash';
@@ -5294,9 +5329,19 @@ export const SEARCH_USER__USERNAME = 'user.username';
 export const SEARCH_USER_AGENT__ORIGINAL = 'user_agent.original';
 
 /**
+ * Search name for {@link attributes.VERCEL_AI_SETTINGS_CONTEXT_KEY}. `vercel.ai.settings.context.<key>`
+ */
+export const SEARCH_VERCEL__AI__SETTINGS__CONTEXT__KEY = 'vercel.ai.settings.context.<key>';
+
+/**
  * Search name for {@link attributes.VERCEL_AI_TELEMETRY_METADATA_KEY}. `vercel.ai.telemetry.metadata.<key>`
  */
 export const SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY = 'vercel.ai.telemetry.metadata.<key>';
+
+/**
+ * Search name for {@link attributes.VERCEL_AI_TOOL_CALL_CONTEXT_KEY}. `vercel.ai.tool_call.context.<key>`
+ */
+export const SEARCH_VERCEL__AI__TOOL_CALL__CONTEXT__KEY = 'vercel.ai.tool_call.context.<key>';
 
 /**
  * Search name for {@link attributes.VERCEL_BRANCH}. `vercel.branch`
@@ -5802,11 +5847,16 @@ export type AttributeSearchName =
   | typeof SEARCH_EXCEPTION__TYPE
   | typeof SEARCH_FAAS__COLDSTART
   | typeof SEARCH_FAAS__CRON
+  | typeof SEARCH_FAAS__DOCUMENT__COLLECTION
+  | typeof SEARCH_FAAS__DOCUMENT__NAME
+  | typeof SEARCH_FAAS__DOCUMENT__OPERATION
+  | typeof SEARCH_FAAS__DOCUMENT__TIME
   | typeof SEARCH_FAAS__DURATION_IN_MS
   | typeof SEARCH_FAAS__ENTRY_POINT
   | typeof SEARCH_FAAS__EXECUTION
   | typeof SEARCH_FAAS__ID
   | typeof SEARCH_FAAS__IDENTITY
+  | typeof SEARCH_FAAS__INSTANCE
   | typeof SEARCH_FAAS__INVOCATION_ID
   | typeof SEARCH_FAAS__INVOKED_NAME
   | typeof SEARCH_FAAS__INVOKED_PROVIDER
@@ -6180,6 +6230,7 @@ export type AttributeSearchName =
   | typeof SEARCH_OTEL__SCOPE__VERSION
   | typeof SEARCH_OTEL__STATUS_CODE
   | typeof SEARCH_OTEL__STATUS_DESCRIPTION
+  | typeof SEARCH_PAGE__SERVER_RENDERING__TYPE
   | typeof SEARCH_PARAMS__KEY
   | typeof SEARCH_PERFORMANCE__ACTIVATIONSTART
   | typeof SEARCH_PERFORMANCE__TIMEORIGIN
@@ -6406,6 +6457,7 @@ export type AttributeSearchName =
   | typeof SEARCH_USER__GEO__COUNTRY_CODE
   | typeof SEARCH_USER__GEO__REGION
   | typeof SEARCH_USER__GEO__SUBDIVISION
+  | typeof SEARCH_USER__GEO__SUBREGION
   | typeof SEARCH_USER__HASH
   | typeof SEARCH_USER__ID
   | typeof SEARCH_USER__IP
@@ -6414,7 +6466,9 @@ export type AttributeSearchName =
   | typeof SEARCH_USER__ROLES
   | typeof SEARCH_USER__USERNAME
   | typeof SEARCH_USER_AGENT__ORIGINAL
+  | typeof SEARCH_VERCEL__AI__SETTINGS__CONTEXT__KEY
   | typeof SEARCH_VERCEL__AI__TELEMETRY__METADATA__KEY
+  | typeof SEARCH_VERCEL__AI__TOOL_CALL__CONTEXT__KEY
   | typeof SEARCH_VERCEL__BRANCH
   | typeof SEARCH_VERCEL__BUILD_ID
   | typeof SEARCH_VERCEL__DEPLOYMENT_ID
@@ -8558,6 +8612,32 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'A string containing the schedule period as Cron Expression.',
     deprecationChain: ['faas.cron'],
   },
+  'faas.document.collection': {
+    canonicalName: 'faas.document.collection',
+    type: 'string',
+    brief:
+      'The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.',
+    deprecationChain: ['faas.document.collection'],
+  },
+  'faas.document.name': {
+    canonicalName: 'faas.document.name',
+    type: 'string',
+    brief:
+      'The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name.',
+    deprecationChain: ['faas.document.name'],
+  },
+  'faas.document.operation': {
+    canonicalName: 'faas.document.operation',
+    type: 'string',
+    brief: 'Describes the type of the operation that was performed on the data.',
+    deprecationChain: ['faas.document.operation'],
+  },
+  'faas.document.time': {
+    canonicalName: 'faas.document.time',
+    type: 'string',
+    brief: 'A string containing the time when the data was accessed in the ISO 8601 format expressed in UTC.',
+    deprecationChain: ['faas.document.time'],
+  },
   'faas.duration_in_ms': {
     canonicalName: 'faas.duration_in_ms',
     type: 'integer',
@@ -8588,6 +8668,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'The Service Account (GCP), IAM Execution Role (AWS), or Managed Identity (Azure) used by the serverless function when interacting with other cloud services',
     deprecationChain: ['faas.identity'],
+  },
+  'faas.instance': {
+    canonicalName: 'faas.instance',
+    type: 'string',
+    brief:
+      'The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version.',
+    deprecationChain: ['faas.instance'],
   },
   'faas.invocation_id': {
     canonicalName: 'faas.invocation_id',
@@ -11065,6 +11152,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Description of the Status if it has a value, otherwise not set.',
     deprecationChain: ['otel.status_description'],
   },
+  'page.server_rendering.type': {
+    canonicalName: 'page.server_rendering.type',
+    type: 'string',
+    brief:
+      'Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.',
+    deprecationChain: ['page.server_rendering.type'],
+  },
   'params.<key>': {
     canonicalName: 'params.<key>',
     type: 'string',
@@ -12422,6 +12516,13 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Human readable subdivision name.',
     deprecationChain: ['user.geo.subdivision', 'sentry.user.geo.subdivision'],
   },
+  'user.geo.subregion': {
+    canonicalName: 'user.geo.subregion',
+    type: 'string',
+    brief:
+      "UN M49 subregion code of the user's location, derived from user.geo.country_code. Sub-Saharan Africa and Latin America and the Caribbean are split into their M49 intermediate regions.",
+    deprecationChain: ['user.geo.subregion', 'sentry.user.geo.subregion'],
+  },
   'user.hash': {
     canonicalName: 'user.hash',
     type: 'string',
@@ -12470,12 +12571,26 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'Value of the HTTP User-Agent header sent by the client.',
     deprecationChain: ['user_agent.original', 'http.user_agent'],
   },
+  'vercel.ai.settings.context.<key>': {
+    canonicalName: 'vercel.ai.settings.context.<key>',
+    type: 'string',
+    brief:
+      'A runtime context property of a Vercel AI SDK call that the app included in telemetry through `telemetry.includeRuntimeContext`, with <key> being the top-level context property name.',
+    deprecationChain: ['vercel.ai.settings.context.<key>'],
+  },
   'vercel.ai.telemetry.metadata.<key>': {
     canonicalName: 'vercel.ai.telemetry.metadata.<key>',
     type: 'string',
     brief:
       'Metadata passed to a Vercel AI SDK call through `experimental_telemetry.metadata`, with <key> being the metadata key name.',
     deprecationChain: ['vercel.ai.telemetry.metadata.<key>'],
+  },
+  'vercel.ai.tool_call.context.<key>': {
+    canonicalName: 'vercel.ai.tool_call.context.<key>',
+    type: 'string',
+    brief:
+      'A tool context property of a Vercel AI SDK tool call that the app included in telemetry through `telemetry.includeToolsContext`, with <key> being the top-level context property name.',
+    deprecationChain: ['vercel.ai.tool_call.context.<key>'],
   },
   'vercel.branch': {
     canonicalName: 'vercel.branch',

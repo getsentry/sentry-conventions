@@ -336,6 +336,8 @@ export const GEN_AI_EXECUTE_TOOL = 'gen_ai.execute_tool';
 
 /**
  * Handoff of control between different AI agents or components
+ *
+ * @deprecated Handoff information already lives in tool execution spans.
  */
 export const GEN_AI_HANDOFF = 'gen_ai.handoff';
 
