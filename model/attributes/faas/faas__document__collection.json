@@ -1,0 +1,17 @@
+{
+  "key": "faas.document.collection",
+  "brief": "The name of the source on which the triggering operation was performed. For example, in Cloud Storage or S3 corresponds to the bucket name, and in Cosmos DB to the database name.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["myBucketName", "myDbName"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added faas.document.collection attribute"
+    }
+  ]
+}

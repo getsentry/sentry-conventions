@@ -1,0 +1,23 @@
+{
+  "key": "faas.document.operation",
+  "brief": "Describes the type of the operation that was performed on the data.",
+  "additional_context": [
+    "Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.",
+    "`delete`: When an object is deleted.",
+    "`edit`: When an object is modified.",
+    "`insert`: When a new object is created."
+  ],
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["insert", "edit", "delete"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added faas.document.operation attribute"
+    }
+  ]
+}
