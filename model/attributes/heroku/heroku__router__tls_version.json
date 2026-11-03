@@ -1,0 +1,17 @@
+{
+  "key": "heroku.router.tls_version",
+  "brief": "TLS protocol version used for the request handled by the Heroku router",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["tls1.3"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.router.tls_version attribute"
+    }
+  ]
+}

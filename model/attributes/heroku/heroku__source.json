@@ -1,0 +1,17 @@
+{
+  "key": "heroku.source",
+  "brief": "Source of the Heroku log from the syslog APP-NAME header: app for application logs or heroku for platform logs",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["app", "heroku"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.source attribute"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "key": "heroku.dyno",
+  "brief": "Dyno or platform component that emitted the Heroku log, from the syslog PROCID header",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["web.1", "router"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.dyno attribute"
+    }
+  ]
+}

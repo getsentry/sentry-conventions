@@ -1,0 +1,17 @@
+{
+  "key": "heroku.router.at",
+  "brief": "Log level reported in the Heroku router log's at field",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["info", "warning", "error"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.router.at attribute"
+    }
+  ]
+}

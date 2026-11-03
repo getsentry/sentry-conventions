@@ -1,0 +1,17 @@
+{
+  "key": "heroku.router.host",
+  "brief": "Hostname of the request handled by the Heroku router",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["my-app.example.com"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.router.host attribute"
+    }
+  ]
+}

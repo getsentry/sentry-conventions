@@ -1,0 +1,17 @@
+{
+  "key": "heroku.error.description",
+  "brief": "Description of the Heroku error reported by a router or platform log",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["Request timeout", "Memory quota exceeded"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.error.description attribute"
+    }
+  ]
+}

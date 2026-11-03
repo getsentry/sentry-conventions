@@ -1,0 +1,17 @@
+{
+  "key": "heroku.router.protocol",
+  "brief": "HTTP protocol used for the request handled by the Heroku router",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["http1.1", "http2.0"],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.router.protocol attribute"
+    }
+  ]
+}

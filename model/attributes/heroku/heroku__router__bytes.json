@@ -1,0 +1,17 @@
+{
+  "key": "heroku.router.bytes",
+  "brief": "Number of response bytes sent to the client, as reported by the Heroku router",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [0, 1024],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.router.bytes attribute"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "key": "heroku.router.service",
+  "brief": "Time in milliseconds the dyno spent servicing the request, as reported by the Heroku router",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [0, 30001],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.router.service attribute"
+    }
+  ]
+}

@@ -6318,6 +6318,238 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "14"
     """
 
+    # Path: model/attributes/heroku/heroku__dyno.json
+    HEROKU_DYNO: Literal["heroku.dyno"] = "heroku.dyno"
+    """Dyno or platform component that emitted the Heroku log, from the syslog PROCID header
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "web.1"
+    Example: "router"
+    """
+
+    # Path: model/attributes/heroku/heroku__error__code.json
+    HEROKU_ERROR_CODE: Literal["heroku.error.code"] = "heroku.error.code"
+    """Heroku error code reported by a router or platform log
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "H12"
+    Example: "R14"
+    Example: "L10"
+    """
+
+    # Path: model/attributes/heroku/heroku__error__description.json
+    HEROKU_ERROR_DESCRIPTION: Literal["heroku.error.description"] = (
+        "heroku.error.description"
+    )
+    """Description of the Heroku error reported by a router or platform log
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "Request timeout"
+    Example: "Memory quota exceeded"
+    """
+
+    # Path: model/attributes/heroku/heroku__logplex__drain_token.json
+    HEROKU_LOGPLEX_DRAIN_TOKEN: Literal["heroku.logplex.drain_token"] = (
+        "heroku.logplex.drain_token"
+    )
+    """Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__at.json
+    HEROKU_ROUTER_AT: Literal["heroku.router.at"] = "heroku.router.at"
+    """Log level reported in the Heroku router log's at field
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "info"
+    Example: "warning"
+    Example: "error"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__bytes.json
+    HEROKU_ROUTER_BYTES: Literal["heroku.router.bytes"] = "heroku.router.bytes"
+    """Number of response bytes sent to the client, as reported by the Heroku router
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 1024
+    """
+
+    # Path: model/attributes/heroku/heroku__router__connect.json
+    HEROKU_ROUTER_CONNECT: Literal["heroku.router.connect"] = "heroku.router.connect"
+    """Time in milliseconds the Heroku router spent establishing a connection to the dyno
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 6
+    """
+
+    # Path: model/attributes/heroku/heroku__router__dyno.json
+    HEROKU_ROUTER_DYNO: Literal["heroku.router.dyno"] = "heroku.router.dyno"
+    """Dyno that handled the request, as reported by the Heroku router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "web.1"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__fwd.json
+    HEROKU_ROUTER_FWD: Literal["heroku.router.fwd"] = "heroku.router.fwd"
+    """Forwarded client IP address or addresses reported in the Heroku router log's fwd field
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "138.68.186.89"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__host.json
+    HEROKU_ROUTER_HOST: Literal["heroku.router.host"] = "heroku.router.host"
+    """Hostname of the request handled by the Heroku router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "my-app.example.com"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__method.json
+    HEROKU_ROUTER_METHOD: Literal["heroku.router.method"] = "heroku.router.method"
+    """HTTP method of the request handled by the Heroku router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "GET"
+    Example: "POST"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__path.json
+    HEROKU_ROUTER_PATH: Literal["heroku.router.path"] = "heroku.router.path"
+    """Request path with query parameters reported by the Heroku router
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Example: "/"
+    Example: "/search?q=example"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__protocol.json
+    HEROKU_ROUTER_PROTOCOL: Literal["heroku.router.protocol"] = "heroku.router.protocol"
+    """HTTP protocol used for the request handled by the Heroku router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "http1.1"
+    Example: "http2.0"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__request_id.json
+    HEROKU_ROUTER_REQUEST_ID: Literal["heroku.router.request_id"] = (
+        "heroku.router.request_id"
+    )
+    """Request identifier reported by the Heroku router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "6903a168-b79b-ec27-03c8-b8f64d8d8792"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__service.json
+    HEROKU_ROUTER_SERVICE: Literal["heroku.router.service"] = "heroku.router.service"
+    """Time in milliseconds the dyno spent servicing the request, as reported by the Heroku router
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 30001
+    """
+
+    # Path: model/attributes/heroku/heroku__router__status.json
+    HEROKU_ROUTER_STATUS: Literal["heroku.router.status"] = "heroku.router.status"
+    """HTTP response status code reported by the Heroku router
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 200
+    Example: 503
+    """
+
+    # Path: model/attributes/heroku/heroku__router__tls.json
+    HEROKU_ROUTER_TLS: Literal["heroku.router.tls"] = "heroku.router.tls"
+    """Whether the request handled by the Heroku router used TLS
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: true
+    Example: false
+    """
+
+    # Path: model/attributes/heroku/heroku__router__tls_version.json
+    HEROKU_ROUTER_TLS_VERSION: Literal["heroku.router.tls_version"] = (
+        "heroku.router.tls_version"
+    )
+    """TLS protocol version used for the request handled by the Heroku router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "tls1.3"
+    """
+
+    # Path: model/attributes/heroku/heroku__source.json
+    HEROKU_SOURCE: Literal["heroku.source"] = "heroku.source"
+    """Source of the Heroku log from the syslog APP-NAME header: app for application logs or heroku for platform logs
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "app"
+    Example: "heroku"
+    """
+
     # Path: model/attributes/http/http__client_ip.json
     HTTP_CLIENT_IP: Literal["http.client_ip"] = "http.client_ip"
     """Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.
@@ -21651,6 +21883,287 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ),
         ],
     ),
+    "heroku.dyno": AttributeMetadata(
+        brief="Dyno or platform component that emitted the Heroku log, from the syslog PROCID header",
+        type=AttributeType.STRING,
+        keys=("heroku.dyno",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="web.1",
+        examples=["web.1", "router"],
+        changelog=[
+            ChangelogEntry(version="next", description="Added heroku.dyno attribute"),
+        ],
+    ),
+    "heroku.error.code": AttributeMetadata(
+        brief="Heroku error code reported by a router or platform log",
+        type=AttributeType.STRING,
+        keys=("heroku.error.code",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="H12",
+        examples=["H12", "R14", "L10"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.error.code attribute"
+            ),
+        ],
+    ),
+    "heroku.error.description": AttributeMetadata(
+        brief="Description of the Heroku error reported by a router or platform log",
+        type=AttributeType.STRING,
+        keys=("heroku.error.description",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Request timeout",
+        examples=["Request timeout", "Memory quota exceeded"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.error.description attribute"
+            ),
+        ],
+    ),
+    "heroku.logplex.drain_token": AttributeMetadata(
+        brief="Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header",
+        type=AttributeType.STRING,
+        keys=("heroku.logplex.drain_token",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="d.73ea7440-270a-435a-a0ea-adf50b4e5f5a",
+        examples=["d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.logplex.drain_token attribute"
+            ),
+        ],
+    ),
+    "heroku.router.at": AttributeMetadata(
+        brief="Log level reported in the Heroku router log's at field",
+        type=AttributeType.STRING,
+        keys=("heroku.router.at",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="info",
+        examples=["info", "warning", "error"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.at attribute"
+            ),
+        ],
+    ),
+    "heroku.router.bytes": AttributeMetadata(
+        brief="Number of response bytes sent to the client, as reported by the Heroku router",
+        type=AttributeType.INTEGER,
+        keys=("heroku.router.bytes",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 1024],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.bytes attribute"
+            ),
+        ],
+    ),
+    "heroku.router.connect": AttributeMetadata(
+        brief="Time in milliseconds the Heroku router spent establishing a connection to the dyno",
+        type=AttributeType.INTEGER,
+        keys=("heroku.router.connect",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 6],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.connect attribute"
+            ),
+        ],
+    ),
+    "heroku.router.dyno": AttributeMetadata(
+        brief="Dyno that handled the request, as reported by the Heroku router",
+        type=AttributeType.STRING,
+        keys=("heroku.router.dyno",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="web.1",
+        examples=["web.1"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.dyno attribute"
+            ),
+        ],
+    ),
+    "heroku.router.fwd": AttributeMetadata(
+        brief="Forwarded client IP address or addresses reported in the Heroku router log's fwd field",
+        type=AttributeType.STRING,
+        keys=("heroku.router.fwd",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="138.68.186.89",
+        examples=["138.68.186.89"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.fwd attribute"
+            ),
+        ],
+    ),
+    "heroku.router.host": AttributeMetadata(
+        brief="Hostname of the request handled by the Heroku router",
+        type=AttributeType.STRING,
+        keys=("heroku.router.host",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="my-app.example.com",
+        examples=["my-app.example.com"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.host attribute"
+            ),
+        ],
+    ),
+    "heroku.router.method": AttributeMetadata(
+        brief="HTTP method of the request handled by the Heroku router",
+        type=AttributeType.STRING,
+        keys=("heroku.router.method",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="GET",
+        examples=["GET", "POST"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.method attribute"
+            ),
+        ],
+    ),
+    "heroku.router.path": AttributeMetadata(
+        brief="Request path with query parameters reported by the Heroku router",
+        type=AttributeType.STRING,
+        keys=("heroku.router.path",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="/",
+        examples=["/", "/search?q=example"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.path attribute"
+            ),
+        ],
+    ),
+    "heroku.router.protocol": AttributeMetadata(
+        brief="HTTP protocol used for the request handled by the Heroku router",
+        type=AttributeType.STRING,
+        keys=("heroku.router.protocol",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="http1.1",
+        examples=["http1.1", "http2.0"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.protocol attribute"
+            ),
+        ],
+    ),
+    "heroku.router.request_id": AttributeMetadata(
+        brief="Request identifier reported by the Heroku router",
+        type=AttributeType.STRING,
+        keys=("heroku.router.request_id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="6903a168-b79b-ec27-03c8-b8f64d8d8792",
+        examples=["6903a168-b79b-ec27-03c8-b8f64d8d8792"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.request_id attribute"
+            ),
+        ],
+    ),
+    "heroku.router.service": AttributeMetadata(
+        brief="Time in milliseconds the dyno spent servicing the request, as reported by the Heroku router",
+        type=AttributeType.INTEGER,
+        keys=("heroku.router.service",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 30001],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.service attribute"
+            ),
+        ],
+    ),
+    "heroku.router.status": AttributeMetadata(
+        brief="HTTP response status code reported by the Heroku router",
+        type=AttributeType.INTEGER,
+        keys=("heroku.router.status",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=200,
+        examples=[200, 503],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.status attribute"
+            ),
+        ],
+    ),
+    "heroku.router.tls": AttributeMetadata(
+        brief="Whether the request handled by the Heroku router used TLS",
+        type=AttributeType.BOOLEAN,
+        keys=("heroku.router.tls",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        examples=[True, False],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.tls attribute"
+            ),
+        ],
+    ),
+    "heroku.router.tls_version": AttributeMetadata(
+        brief="TLS protocol version used for the request handled by the Heroku router",
+        type=AttributeType.STRING,
+        keys=("heroku.router.tls_version",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="tls1.3",
+        examples=["tls1.3"],
+        changelog=[
+            ChangelogEntry(
+                version="next", description="Added heroku.router.tls_version attribute"
+            ),
+        ],
+    ),
+    "heroku.source": AttributeMetadata(
+        brief="Source of the Heroku log from the syslog APP-NAME header: app for application logs or heroku for platform logs",
+        type=AttributeType.STRING,
+        keys=("heroku.source",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="app",
+        examples=["app", "heroku"],
+        changelog=[
+            ChangelogEntry(version="next", description="Added heroku.source attribute"),
+        ],
+    ),
     "http.client_ip": AttributeMetadata(
         brief="Client address - domain name if available without reverse DNS lookup; otherwise, IP address or Unix domain socket name.",
         type=AttributeType.STRING,
@@ -31684,6 +32197,25 @@ Attributes = TypedDict(
         "hapi.plugin.name": str,
         "hapi.type": str,
         "hardwareConcurrency": str,
+        "heroku.dyno": str,
+        "heroku.error.code": str,
+        "heroku.error.description": str,
+        "heroku.logplex.drain_token": str,
+        "heroku.router.at": str,
+        "heroku.router.bytes": int,
+        "heroku.router.connect": int,
+        "heroku.router.dyno": str,
+        "heroku.router.fwd": str,
+        "heroku.router.host": str,
+        "heroku.router.method": str,
+        "heroku.router.path": str,
+        "heroku.router.protocol": str,
+        "heroku.router.request_id": str,
+        "heroku.router.service": int,
+        "heroku.router.status": int,
+        "heroku.router.tls": bool,
+        "heroku.router.tls_version": str,
+        "heroku.source": str,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
         "http.flavor": str,

@@ -10331,6 +10331,420 @@ export const HARDWARECONCURRENCY = 'hardwareConcurrency';
  */
 export type HARDWARECONCURRENCY_TYPE = string;
 
+// Path: model/attributes/heroku/heroku__dyno.json
+
+/**
+ * Dyno or platform component that emitted the Heroku log, from the syslog PROCID header `heroku.dyno`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_DYNO_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "web.1"
+ * @example "router"
+ */
+export const HEROKU_DYNO = 'heroku.dyno';
+
+/**
+ * Type for {@link HEROKU_DYNO} heroku.dyno
+ */
+export type HEROKU_DYNO_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__error__code.json
+
+/**
+ * Heroku error code reported by a router or platform log `heroku.error.code`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ERROR_CODE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "H12"
+ * @example "R14"
+ * @example "L10"
+ */
+export const HEROKU_ERROR_CODE = 'heroku.error.code';
+
+/**
+ * Type for {@link HEROKU_ERROR_CODE} heroku.error.code
+ */
+export type HEROKU_ERROR_CODE_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__error__description.json
+
+/**
+ * Description of the Heroku error reported by a router or platform log `heroku.error.description`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ERROR_DESCRIPTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Request timeout"
+ * @example "Memory quota exceeded"
+ */
+export const HEROKU_ERROR_DESCRIPTION = 'heroku.error.description';
+
+/**
+ * Type for {@link HEROKU_ERROR_DESCRIPTION} heroku.error.description
+ */
+export type HEROKU_ERROR_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__logplex__drain_token.json
+
+/**
+ * Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header `heroku.logplex.drain_token`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"
+ */
+export const HEROKU_LOGPLEX_DRAIN_TOKEN = 'heroku.logplex.drain_token';
+
+/**
+ * Type for {@link HEROKU_LOGPLEX_DRAIN_TOKEN} heroku.logplex.drain_token
+ */
+export type HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__at.json
+
+/**
+ * Log level reported in the Heroku router log's at field `heroku.router.at`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_AT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "info"
+ * @example "warning"
+ * @example "error"
+ */
+export const HEROKU_ROUTER_AT = 'heroku.router.at';
+
+/**
+ * Type for {@link HEROKU_ROUTER_AT} heroku.router.at
+ */
+export type HEROKU_ROUTER_AT_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__bytes.json
+
+/**
+ * Number of response bytes sent to the client, as reported by the Heroku router `heroku.router.bytes`
+ *
+ * Attribute Value Type: `number` {@link HEROKU_ROUTER_BYTES_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 1024
+ */
+export const HEROKU_ROUTER_BYTES = 'heroku.router.bytes';
+
+/**
+ * Type for {@link HEROKU_ROUTER_BYTES} heroku.router.bytes
+ */
+export type HEROKU_ROUTER_BYTES_TYPE = number;
+
+// Path: model/attributes/heroku/heroku__router__connect.json
+
+/**
+ * Time in milliseconds the Heroku router spent establishing a connection to the dyno `heroku.router.connect`
+ *
+ * Attribute Value Type: `number` {@link HEROKU_ROUTER_CONNECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 6
+ */
+export const HEROKU_ROUTER_CONNECT = 'heroku.router.connect';
+
+/**
+ * Type for {@link HEROKU_ROUTER_CONNECT} heroku.router.connect
+ */
+export type HEROKU_ROUTER_CONNECT_TYPE = number;
+
+// Path: model/attributes/heroku/heroku__router__dyno.json
+
+/**
+ * Dyno that handled the request, as reported by the Heroku router `heroku.router.dyno`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_DYNO_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "web.1"
+ */
+export const HEROKU_ROUTER_DYNO = 'heroku.router.dyno';
+
+/**
+ * Type for {@link HEROKU_ROUTER_DYNO} heroku.router.dyno
+ */
+export type HEROKU_ROUTER_DYNO_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__fwd.json
+
+/**
+ * Forwarded client IP address or addresses reported in the Heroku router log's fwd field `heroku.router.fwd`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_FWD_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "138.68.186.89"
+ */
+export const HEROKU_ROUTER_FWD = 'heroku.router.fwd';
+
+/**
+ * Type for {@link HEROKU_ROUTER_FWD} heroku.router.fwd
+ */
+export type HEROKU_ROUTER_FWD_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__host.json
+
+/**
+ * Hostname of the request handled by the Heroku router `heroku.router.host`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_HOST_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "my-app.example.com"
+ */
+export const HEROKU_ROUTER_HOST = 'heroku.router.host';
+
+/**
+ * Type for {@link HEROKU_ROUTER_HOST} heroku.router.host
+ */
+export type HEROKU_ROUTER_HOST_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__method.json
+
+/**
+ * HTTP method of the request handled by the Heroku router `heroku.router.method`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_METHOD_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "GET"
+ * @example "POST"
+ */
+export const HEROKU_ROUTER_METHOD = 'heroku.router.method';
+
+/**
+ * Type for {@link HEROKU_ROUTER_METHOD} heroku.router.method
+ */
+export type HEROKU_ROUTER_METHOD_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__path.json
+
+/**
+ * Request path with query parameters reported by the Heroku router `heroku.router.path`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_PATH_TYPE}
+ *
+ * Apply Scrubbing: auto
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "/"
+ * @example "/search?q=example"
+ */
+export const HEROKU_ROUTER_PATH = 'heroku.router.path';
+
+/**
+ * Type for {@link HEROKU_ROUTER_PATH} heroku.router.path
+ */
+export type HEROKU_ROUTER_PATH_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__protocol.json
+
+/**
+ * HTTP protocol used for the request handled by the Heroku router `heroku.router.protocol`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_PROTOCOL_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "http1.1"
+ * @example "http2.0"
+ */
+export const HEROKU_ROUTER_PROTOCOL = 'heroku.router.protocol';
+
+/**
+ * Type for {@link HEROKU_ROUTER_PROTOCOL} heroku.router.protocol
+ */
+export type HEROKU_ROUTER_PROTOCOL_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__request_id.json
+
+/**
+ * Request identifier reported by the Heroku router `heroku.router.request_id`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "6903a168-b79b-ec27-03c8-b8f64d8d8792"
+ */
+export const HEROKU_ROUTER_REQUEST_ID = 'heroku.router.request_id';
+
+/**
+ * Type for {@link HEROKU_ROUTER_REQUEST_ID} heroku.router.request_id
+ */
+export type HEROKU_ROUTER_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__service.json
+
+/**
+ * Time in milliseconds the dyno spent servicing the request, as reported by the Heroku router `heroku.router.service`
+ *
+ * Attribute Value Type: `number` {@link HEROKU_ROUTER_SERVICE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 30001
+ */
+export const HEROKU_ROUTER_SERVICE = 'heroku.router.service';
+
+/**
+ * Type for {@link HEROKU_ROUTER_SERVICE} heroku.router.service
+ */
+export type HEROKU_ROUTER_SERVICE_TYPE = number;
+
+// Path: model/attributes/heroku/heroku__router__status.json
+
+/**
+ * HTTP response status code reported by the Heroku router `heroku.router.status`
+ *
+ * Attribute Value Type: `number` {@link HEROKU_ROUTER_STATUS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 200
+ * @example 503
+ */
+export const HEROKU_ROUTER_STATUS = 'heroku.router.status';
+
+/**
+ * Type for {@link HEROKU_ROUTER_STATUS} heroku.router.status
+ */
+export type HEROKU_ROUTER_STATUS_TYPE = number;
+
+// Path: model/attributes/heroku/heroku__router__tls.json
+
+/**
+ * Whether the request handled by the Heroku router used TLS `heroku.router.tls`
+ *
+ * Attribute Value Type: `boolean` {@link HEROKU_ROUTER_TLS_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example true
+ * @example false
+ */
+export const HEROKU_ROUTER_TLS = 'heroku.router.tls';
+
+/**
+ * Type for {@link HEROKU_ROUTER_TLS} heroku.router.tls
+ */
+export type HEROKU_ROUTER_TLS_TYPE = boolean;
+
+// Path: model/attributes/heroku/heroku__router__tls_version.json
+
+/**
+ * TLS protocol version used for the request handled by the Heroku router `heroku.router.tls_version`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_TLS_VERSION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "tls1.3"
+ */
+export const HEROKU_ROUTER_TLS_VERSION = 'heroku.router.tls_version';
+
+/**
+ * Type for {@link HEROKU_ROUTER_TLS_VERSION} heroku.router.tls_version
+ */
+export type HEROKU_ROUTER_TLS_VERSION_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__source.json
+
+/**
+ * Source of the Heroku log from the syslog APP-NAME header: app for application logs or heroku for platform logs `heroku.source`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_SOURCE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "app"
+ * @example "heroku"
+ */
+export const HEROKU_SOURCE = 'heroku.source';
+
+/**
+ * Type for {@link HEROKU_SOURCE} heroku.source
+ */
+export type HEROKU_SOURCE_TYPE = string;
+
 // Path: model/attributes/http/http__client_ip.json
 
 /**
@@ -22158,6 +22572,25 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'hapi.plugin.name': 'string',
   'hapi.type': 'string',
   hardwareConcurrency: 'string',
+  'heroku.dyno': 'string',
+  'heroku.error.code': 'string',
+  'heroku.error.description': 'string',
+  'heroku.logplex.drain_token': 'string',
+  'heroku.router.at': 'string',
+  'heroku.router.bytes': 'integer',
+  'heroku.router.connect': 'integer',
+  'heroku.router.dyno': 'string',
+  'heroku.router.fwd': 'string',
+  'heroku.router.host': 'string',
+  'heroku.router.method': 'string',
+  'heroku.router.path': 'string',
+  'heroku.router.protocol': 'string',
+  'heroku.router.request_id': 'string',
+  'heroku.router.service': 'integer',
+  'heroku.router.status': 'integer',
+  'heroku.router.tls': 'boolean',
+  'heroku.router.tls_version': 'string',
+  'heroku.source': 'string',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
   'http.flavor': 'string',
@@ -23121,6 +23554,25 @@ export type AttributeName =
   | typeof HAPI_PLUGIN_NAME
   | typeof HAPI_TYPE
   | typeof HARDWARECONCURRENCY
+  | typeof HEROKU_DYNO
+  | typeof HEROKU_ERROR_CODE
+  | typeof HEROKU_ERROR_DESCRIPTION
+  | typeof HEROKU_LOGPLEX_DRAIN_TOKEN
+  | typeof HEROKU_ROUTER_AT
+  | typeof HEROKU_ROUTER_BYTES
+  | typeof HEROKU_ROUTER_CONNECT
+  | typeof HEROKU_ROUTER_DYNO
+  | typeof HEROKU_ROUTER_FWD
+  | typeof HEROKU_ROUTER_HOST
+  | typeof HEROKU_ROUTER_METHOD
+  | typeof HEROKU_ROUTER_PATH
+  | typeof HEROKU_ROUTER_PROTOCOL
+  | typeof HEROKU_ROUTER_REQUEST_ID
+  | typeof HEROKU_ROUTER_SERVICE
+  | typeof HEROKU_ROUTER_STATUS
+  | typeof HEROKU_ROUTER_TLS
+  | typeof HEROKU_ROUTER_TLS_VERSION
+  | typeof HEROKU_SOURCE
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_FLAVOR
@@ -31120,6 +31572,254 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
+  },
+  'heroku.dyno': {
+    brief: 'Dyno or platform component that emitted the Heroku log, from the syslog PROCID header',
+    type: 'string',
+    keys: ['heroku.dyno'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'web.1',
+    examples: ['web.1', 'router'],
+    changelog: [{ version: 'next', description: 'Added heroku.dyno attribute' }],
+  },
+  'heroku.error.code': {
+    brief: 'Heroku error code reported by a router or platform log',
+    type: 'string',
+    keys: ['heroku.error.code'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'H12',
+    examples: ['H12', 'R14', 'L10'],
+    changelog: [{ version: 'next', description: 'Added heroku.error.code attribute' }],
+  },
+  'heroku.error.description': {
+    brief: 'Description of the Heroku error reported by a router or platform log',
+    type: 'string',
+    keys: ['heroku.error.description'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Request timeout',
+    examples: ['Request timeout', 'Memory quota exceeded'],
+    changelog: [{ version: 'next', description: 'Added heroku.error.description attribute' }],
+  },
+  'heroku.logplex.drain_token': {
+    brief: 'Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header',
+    type: 'string',
+    keys: ['heroku.logplex.drain_token'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'd.73ea7440-270a-435a-a0ea-adf50b4e5f5a',
+    examples: ['d.73ea7440-270a-435a-a0ea-adf50b4e5f5a'],
+    changelog: [{ version: 'next', description: 'Added heroku.logplex.drain_token attribute' }],
+  },
+  'heroku.router.at': {
+    brief: "Log level reported in the Heroku router log's at field",
+    type: 'string',
+    keys: ['heroku.router.at'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'info',
+    examples: ['info', 'warning', 'error'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.at attribute' }],
+  },
+  'heroku.router.bytes': {
+    brief: 'Number of response bytes sent to the client, as reported by the Heroku router',
+    type: 'integer',
+    keys: ['heroku.router.bytes'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 1024],
+    changelog: [{ version: 'next', description: 'Added heroku.router.bytes attribute' }],
+  },
+  'heroku.router.connect': {
+    brief: 'Time in milliseconds the Heroku router spent establishing a connection to the dyno',
+    type: 'integer',
+    keys: ['heroku.router.connect'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 6],
+    changelog: [{ version: 'next', description: 'Added heroku.router.connect attribute' }],
+  },
+  'heroku.router.dyno': {
+    brief: 'Dyno that handled the request, as reported by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.dyno'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'web.1',
+    examples: ['web.1'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.dyno attribute' }],
+  },
+  'heroku.router.fwd': {
+    brief: "Forwarded client IP address or addresses reported in the Heroku router log's fwd field",
+    type: 'string',
+    keys: ['heroku.router.fwd'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '138.68.186.89',
+    examples: ['138.68.186.89'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.fwd attribute' }],
+  },
+  'heroku.router.host': {
+    brief: 'Hostname of the request handled by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.host'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'my-app.example.com',
+    examples: ['my-app.example.com'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.host attribute' }],
+  },
+  'heroku.router.method': {
+    brief: 'HTTP method of the request handled by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.method'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'GET',
+    examples: ['GET', 'POST'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.method attribute' }],
+  },
+  'heroku.router.path': {
+    brief: 'Request path with query parameters reported by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.path'],
+    applyScrubbing: {
+      key: 'auto',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '/',
+    examples: ['/', '/search?q=example'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.path attribute' }],
+  },
+  'heroku.router.protocol': {
+    brief: 'HTTP protocol used for the request handled by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.protocol'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'http1.1',
+    examples: ['http1.1', 'http2.0'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.protocol attribute' }],
+  },
+  'heroku.router.request_id': {
+    brief: 'Request identifier reported by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.request_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '6903a168-b79b-ec27-03c8-b8f64d8d8792',
+    examples: ['6903a168-b79b-ec27-03c8-b8f64d8d8792'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.request_id attribute' }],
+  },
+  'heroku.router.service': {
+    brief: 'Time in milliseconds the dyno spent servicing the request, as reported by the Heroku router',
+    type: 'integer',
+    keys: ['heroku.router.service'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 30001],
+    changelog: [{ version: 'next', description: 'Added heroku.router.service attribute' }],
+  },
+  'heroku.router.status': {
+    brief: 'HTTP response status code reported by the Heroku router',
+    type: 'integer',
+    keys: ['heroku.router.status'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 200,
+    examples: [200, 503],
+    changelog: [{ version: 'next', description: 'Added heroku.router.status attribute' }],
+  },
+  'heroku.router.tls': {
+    brief: 'Whether the request handled by the Heroku router used TLS',
+    type: 'boolean',
+    keys: ['heroku.router.tls'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    examples: [true, false],
+    changelog: [{ version: 'next', description: 'Added heroku.router.tls attribute' }],
+  },
+  'heroku.router.tls_version': {
+    brief: 'TLS protocol version used for the request handled by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.tls_version'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'tls1.3',
+    examples: ['tls1.3'],
+    changelog: [{ version: 'next', description: 'Added heroku.router.tls_version attribute' }],
+  },
+  'heroku.source': {
+    brief:
+      'Source of the Heroku log from the syslog APP-NAME header: app for application logs or heroku for platform logs',
+    type: 'string',
+    keys: ['heroku.source'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'app',
+    examples: ['app', 'heroku'],
+    changelog: [{ version: 'next', description: 'Added heroku.source attribute' }],
   },
   'http.client_ip': {
     brief:
@@ -40035,6 +40735,25 @@ export type Attributes = {
   [HAPI_PLUGIN_NAME]?: HAPI_PLUGIN_NAME_TYPE;
   [HAPI_TYPE]?: HAPI_TYPE_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
+  [HEROKU_DYNO]?: HEROKU_DYNO_TYPE;
+  [HEROKU_ERROR_CODE]?: HEROKU_ERROR_CODE_TYPE;
+  [HEROKU_ERROR_DESCRIPTION]?: HEROKU_ERROR_DESCRIPTION_TYPE;
+  [HEROKU_LOGPLEX_DRAIN_TOKEN]?: HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE;
+  [HEROKU_ROUTER_AT]?: HEROKU_ROUTER_AT_TYPE;
+  [HEROKU_ROUTER_BYTES]?: HEROKU_ROUTER_BYTES_TYPE;
+  [HEROKU_ROUTER_CONNECT]?: HEROKU_ROUTER_CONNECT_TYPE;
+  [HEROKU_ROUTER_DYNO]?: HEROKU_ROUTER_DYNO_TYPE;
+  [HEROKU_ROUTER_FWD]?: HEROKU_ROUTER_FWD_TYPE;
+  [HEROKU_ROUTER_HOST]?: HEROKU_ROUTER_HOST_TYPE;
+  [HEROKU_ROUTER_METHOD]?: HEROKU_ROUTER_METHOD_TYPE;
+  [HEROKU_ROUTER_PATH]?: HEROKU_ROUTER_PATH_TYPE;
+  [HEROKU_ROUTER_PROTOCOL]?: HEROKU_ROUTER_PROTOCOL_TYPE;
+  [HEROKU_ROUTER_REQUEST_ID]?: HEROKU_ROUTER_REQUEST_ID_TYPE;
+  [HEROKU_ROUTER_SERVICE]?: HEROKU_ROUTER_SERVICE_TYPE;
+  [HEROKU_ROUTER_STATUS]?: HEROKU_ROUTER_STATUS_TYPE;
+  [HEROKU_ROUTER_TLS]?: HEROKU_ROUTER_TLS_TYPE;
+  [HEROKU_ROUTER_TLS_VERSION]?: HEROKU_ROUTER_TLS_VERSION_TYPE;
+  [HEROKU_SOURCE]?: HEROKU_SOURCE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;

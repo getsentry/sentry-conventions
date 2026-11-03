@@ -1,0 +1,17 @@
+{
+  "key": "heroku.router.status",
+  "brief": "HTTP response status code reported by the Heroku router",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [200, 503],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.router.status attribute"
+    }
+  ]
+}
