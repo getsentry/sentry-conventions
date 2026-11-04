@@ -1641,14 +1641,14 @@ function generateSchemaTypes(
     };
 
     const tmpFile = path.join(tsOutputDir, `_${baseName}.tmp.json`);
-    fs.writeFileSync(tmpFile, JSON.stringify(openapi, null, 2));
+    fs.writeFileSync(tmpFile, JSON.stringify(openapi));
 
     const tsFile = path.join(tsOutputDir, `_${baseName}.ts`);
     execSync(`npx openapi-typescript ${tmpFile} --output ${tsFile}`, { stdio: 'pipe' });
 
-    const pyFile = path.join(pythonOutputDir, `${baseName}.py`);
+    const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
     execSync(
-      `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --output ${pyFile}`,
+      `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${pythonFile}`,
       { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
     );
 
