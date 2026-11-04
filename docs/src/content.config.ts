@@ -50,6 +50,7 @@ const attributeSchema = z
         deprecated_aliases: z.array(z.string()).optional(),
       })
       .optional(),
+    schema: z.record(z.string(), z.unknown()).optional(),
     additional_context: z.array(z.string()).optional(),
     changelog: z
       .array(
