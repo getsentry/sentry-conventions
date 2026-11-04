@@ -193,7 +193,7 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
       : path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'search.ts'));
   const pythonOutputFilePath =
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
-  const tsSchemaOutputDir = path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', '_schemas');
+  const jsSchemaOutputDir = path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', '_schemas');
   const pythonSchemaOutputDir = path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', '_schemas');
 
   // Get all JSON files recursively
@@ -203,14 +203,14 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
     attributeJson: JSON.parse(fs.readFileSync(path.join(attributesDir, file), 'utf-8')) as AttributeJson,
   }));
 
-  fs.mkdirSync(tsSchemaOutputDir, { recursive: true });
+  fs.mkdirSync(jsSchemaOutputDir, { recursive: true });
   fs.mkdirSync(pythonSchemaOutputDir, { recursive: true });
-  const schemaInfo = generateSchemaTypes(parsedAttributes, tsSchemaOutputDir, pythonSchemaOutputDir, repositoryRoot);
+  const schemaInfo = generateSchemaTypes(parsedAttributes, jsSchemaOutputDir, pythonSchemaOutputDir, repositoryRoot);
 
-  // Generate and write JavaScript code (includes schema re-exports)
+  // Generate and write JavaScript code
   writeToJs(parsedAttributes, jsOutputFilePath, jsSearchOutputFilePath, schemaInfo);
 
-  // Generate and write Python code (includes schema imports)
+  // Generate and write Python code
   writeToPython(parsedAttributes, pythonOutputFilePath, schemaInfo);
 }
 
@@ -1621,7 +1621,7 @@ function generateMetadata(
 
 function generateSchemaTypes(
   parsedAttributes: ParsedAttribute[],
-  tsOutputDir: string,
+  jsOutputDir: string,
   pythonOutputDir: string,
   repositoryRoot: string,
 ): SchemaTypeInfo[] {
@@ -1640,20 +1640,22 @@ function generateSchemaTypes(
       components: { schemas: attributeJson.schema },
     };
 
-    const tmpFile = path.join(tsOutputDir, `_${baseName}.tmp.json`);
+    const tmpFile = path.join(jsOutputDir, `_${baseName}.tmp.json`);
     fs.writeFileSync(tmpFile, JSON.stringify(openapi));
+    try {
+      const jsFile = path.join(jsOutputDir, `_${baseName}.ts`);
+      execSync(`npx openapi-typescript ${tmpFile} --output ${jsFile}`, { stdio: 'pipe' });
 
-    const tsFile = path.join(tsOutputDir, `_${baseName}.ts`);
-    execSync(`npx openapi-typescript ${tmpFile} --output ${tsFile}`, { stdio: 'pipe' });
+      const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
+      execSync(
+        `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${pythonFile}`,
+        { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
+      );
 
-    const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
-    execSync(
-      `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${pythonFile}`,
-      { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
-    );
-
-    fs.unlinkSync(tmpFile);
-    results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
+      results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
+    } finally {
+      fs.unlinkSync(tmpFile);
+    }
   }
 
   return results;
