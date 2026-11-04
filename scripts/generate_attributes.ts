@@ -1629,7 +1629,7 @@ function generateSchemaTypes(
     try {
       fs.writeFileSync(tmpFile, JSON.stringify(openapi, null, 2));
       execSync(
-        `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --output ${outputFile}`,
+        `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${outputFile}`,
         { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
       );
       results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
