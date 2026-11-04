@@ -1631,7 +1631,6 @@ function generateSchemaTypes(
     if (!attributeJson.schema) continue;
 
     const baseName = attributeJson.key.replaceAll('.', '_');
-    const schemaNames = Object.keys(attributeJson.schema);
 
     const openapi = {
       openapi: '3.1.0',
@@ -1651,8 +1650,7 @@ function generateSchemaTypes(
         `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${pythonFile}`,
         { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
       );
-
-      results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
+      results.push({ baseName, schemaNames: Object.keys(attributeJson.schema), attributeKey: attributeJson.key });
     } finally {
       fs.unlinkSync(tmpFile);
     }
