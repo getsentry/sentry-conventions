@@ -193,7 +193,7 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
       : path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'search.ts'));
   const pythonOutputFilePath =
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
-  const pythonSchemaOutputDir = path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', '_schemas');
+  const pythonSchemaOutputDir = path.join(path.dirname(pythonOutputFilePath), '_schemas');
 
   // Get all JSON files recursively
   const attributeFiles = await getAllJsonFiles(attributesDir);
@@ -1623,13 +1623,14 @@ function generateSchemaTypes(
     };
 
     const tmpFile = path.join(pythonOutputDir, `_${baseName}.tmp.json`);
-    const outputFile = path.join(pythonOutputDir, `${baseName}.py`);
+    fs.writeFileSync(tmpFile, JSON.stringify(openapi));
     try {
-      fs.writeFileSync(tmpFile, JSON.stringify(openapi, null, 2));
+      const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
       execSync(
-        `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${outputFile}`,
+        `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${pythonFile}`,
         { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
       );
+
       results.push({ baseName, schemaNames: Object.keys(attributeJson.schema), attributeKey: attributeJson.key });
     } finally {
       fs.unlinkSync(tmpFile);
