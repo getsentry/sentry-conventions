@@ -2,10 +2,9 @@
   "openapi": "3.2.1",
   "info": {
     "title": "GenAI Tool Definitions",
-    "description": "Schema for the gen_ai.tool.definitions attribute, describing the list of tool definitions available to a GenAI agent or model.",
+    "description": "Schema for the gen_ai.tool.definitions attribute, describing the list of tool definitions available to a GenAI model.",
     "version": "0.1.0"
   },
-  "paths": {},
   "components": {
     "schemas": {
       "ToolDefinitions": {
