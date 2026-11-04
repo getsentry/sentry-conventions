@@ -13,15 +13,13 @@
     "ToolDefinitions": {
       "description": "Represents the list of tool definitions available to the GenAI model.",
       "items": { "$ref": "#/components/schemas/ToolDefinition" },
-      "type": "array",
-      "x-is-in-otel": true
+      "type": "array"
     },
     "ToolDefinition": {
       "anyOf": [
         { "$ref": "#/components/schemas/FunctionToolDefinition" },
         { "$ref": "#/components/schemas/ServerSideToolDefinition" }
-      ],
-      "x-is-in-otel": true
+      ]
     },
     "FunctionToolDefinition": {
       "additionalProperties": true,
@@ -30,55 +28,47 @@
         "type": {
           "const": "function",
           "description": "The type of the tool.",
-          "type": "string",
-          "x-is-in-otel": true
+          "type": "string"
         },
         "name": {
           "description": "The name of the tool.",
-          "type": "string",
-          "x-is-in-otel": true
+          "type": "string"
         },
         "description": {
           "anyOf": [{ "type": "string" }, { "type": "null" }],
           "default": null,
-          "description": "The description of the tool.",
-          "x-is-in-otel": true
+          "description": "The description of the tool."
         },
         "parameters": {
           "default": null,
-          "description": "JSON Schema document describing the parameters accepted by the tool.",
-          "x-is-in-otel": true
+          "description": "JSON Schema document describing the parameters accepted by the tool."
         }
       },
       "required": ["type", "name"],
-      "type": "object",
-      "x-is-in-otel": true
+      "type": "object"
     },
     "ServerSideToolDefinition": {
       "additionalProperties": true,
       "description": "Represents a tool definition for a capability that the model provider manages on the server.",
+      "x-otel-deviation": "OTel defines a GenericToolDefinition with a required name. In practice, tools are local functions or server-side capabilities, and the latter may only have a type.",
       "properties": {
         "type": {
           "not": { "enum": ["function"] },
           "description": "The type of the tool.",
-          "type": "string",
-          "x-is-in-otel": false
+          "type": "string"
         },
         "name": {
           "description": "The name of the tool.",
-          "type": "string",
-          "x-is-in-otel": false
+          "type": "string"
         },
         "description": {
           "anyOf": [{ "type": "string" }, { "type": "null" }],
           "default": null,
-          "description": "The description of the tool.",
-          "x-is-in-otel": false
+          "description": "The description of the tool."
         }
       },
       "required": ["type"],
-      "type": "object",
-      "x-is-in-otel": false
+      "type": "object"
     }
   },
   "changelog": [
