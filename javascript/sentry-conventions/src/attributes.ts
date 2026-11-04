@@ -1,11 +1,5 @@
 // This is an auto-generated file. Do not edit!
 
-import type { components as _gen_ai_tool_definitions_schemas } from './_schemas/_gen_ai_tool_definitions';
-export type ToolDefinitions = _gen_ai_tool_definitions_schemas['schemas']['ToolDefinitions'];
-export type ToolDefinition = _gen_ai_tool_definitions_schemas['schemas']['ToolDefinition'];
-export type FunctionToolDefinition = _gen_ai_tool_definitions_schemas['schemas']['FunctionToolDefinition'];
-export type ServerSideToolDefinition = _gen_ai_tool_definitions_schemas['schemas']['ServerSideToolDefinition'];
-
 // Path: model/attributes/address.json
 
 /**
