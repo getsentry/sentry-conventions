@@ -202,10 +202,6 @@
         "type": "string"
       }
     },
-    "schema": {
-      "description": "An optional OpenAPI schema defining the structure of this attribute's value",
-      "type": "object"
-    },
     "changelog": {
       "description": "A list of changelog entries tracking how this attribute has changed across versions",
       "type": "array",
