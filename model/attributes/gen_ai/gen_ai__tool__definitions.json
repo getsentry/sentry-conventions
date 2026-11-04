@@ -9,6 +9,75 @@
   "example": "[{\"type\": \"function\", \"name\": \"get_current_weather\", \"description\": \"Get the current weather in a given location\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The city and state, e.g. San Francisco, CA\"}, \"unit\": {\"type\": \"string\", \"enum\": [\"celsius\", \"fahrenheit\"]}}, \"required\": [\"location\", \"unit\"]}}]",
   "alias": ["gen_ai.request.available_tools"],
   "visibility": "public",
+  "schema": {
+    "ToolDefinitions": {
+      "description": "Represents the list of tool definitions available to the GenAI model.",
+      "items": { "$ref": "#/ToolDefinition" },
+      "type": "array",
+      "x-is-in-otel": true
+    },
+    "ToolDefinition": {
+      "anyOf": [{ "$ref": "#/FunctionToolDefinition" }, { "$ref": "#/ServerSideToolDefinition" }],
+      "x-is-in-otel": true
+    },
+    "FunctionToolDefinition": {
+      "additionalProperties": true,
+      "description": "Represents a tool definition in the form of a function that is executed on the client.",
+      "properties": {
+        "type": {
+          "const": "function",
+          "description": "The type of the tool.",
+          "type": "string",
+          "x-is-in-otel": true
+        },
+        "name": {
+          "description": "The name of the tool.",
+          "type": "string",
+          "x-is-in-otel": true
+        },
+        "description": {
+          "anyOf": [{ "type": "string" }, { "type": "null" }],
+          "default": null,
+          "description": "The description of the tool.",
+          "x-is-in-otel": true
+        },
+        "parameters": {
+          "default": null,
+          "description": "JSON Schema document describing the parameters accepted by the tool.",
+          "x-is-in-otel": true
+        }
+      },
+      "required": ["type", "name"],
+      "type": "object",
+      "x-is-in-otel": true
+    },
+    "ServerSideToolDefinition": {
+      "additionalProperties": true,
+      "description": "Represents a tool definition for a capability that the model provider executes on the server.",
+      "properties": {
+        "type": {
+          "not": { "enum": ["function"] },
+          "description": "The type of the tool.",
+          "type": "string",
+          "x-is-in-otel": true
+        },
+        "name": {
+          "description": "The name of the tool.",
+          "type": "string",
+          "x-is-in-otel": true
+        },
+        "description": {
+          "anyOf": [{ "type": "string" }, { "type": "null" }],
+          "default": null,
+          "description": "The description of the tool.",
+          "x-is-in-otel": true
+        }
+      },
+      "required": ["type"],
+      "type": "object",
+      "x-is-in-otel": true
+    }
+  },
   "changelog": [
     {
       "version": "0.22.0",
