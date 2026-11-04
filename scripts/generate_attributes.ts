@@ -3,6 +3,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { getAttributeExamples } from './attribute_examples';
 import type { AttributeJson, AttributeValue } from './types';
+import { attributeKeyToFileName } from './utils';
 
 interface GenerateAttributesOptions {
   attributesDir: string;
@@ -1628,33 +1629,34 @@ function generateSchemaTypes(
   const results: SchemaTypeInfo[] = [];
 
   for (const { attributeJson } of parsedAttributes) {
-    if (!attributeJson.schema) continue;
+    const openapiFile = path.join(
+      repositoryRoot,
+      'schemas',
+      attributeKeyToFileName(attributeJson.key).replace('.json', '.openapi.json'),
+    );
+    if (!fs.existsSync(openapiFile)) continue;
+
+    const openapi = JSON.parse(fs.readFileSync(openapiFile, 'utf-8')) as {
+      components?: { schemas?: Record<string, unknown> };
+    };
+    const schemas = openapi?.components?.schemas;
+    if (!schemas) continue;
 
     const baseName = attributeJson.key.replaceAll('.', '_');
+    const schemaNames = Object.keys(schemas);
 
-    const openapi = {
-      openapi: '3.1.0',
-      info: { title: baseName, version: '0.0.0' },
-      paths: {},
-      components: { schemas: attributeJson.schema },
-    };
+    const jsFile = path.join(jsOutputDir, `_${baseName}.ts`);
+    execSync(`npx openapi-typescript ${openapiFile} --output ${jsFile} --default-non-nullable false`, {
+      stdio: 'pipe',
+    });
 
-    const tmpFile = path.join(pythonOutputDir, `_${baseName}.tmp.json`);
-    fs.writeFileSync(tmpFile, JSON.stringify(openapi));
-    try {
-      const jsFile = path.join(jsOutputDir, `_${baseName}.ts`);
-      execSync(`npx openapi-typescript ${tmpFile} --output ${jsFile} --default-non-nullable false`, { stdio: 'pipe' });
+    const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
+    execSync(
+      `uv run --group schema-codegen datamodel-codegen --input ${openapiFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${pythonFile}`,
+      { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
+    );
 
-      const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
-      execSync(
-        `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${pythonFile}`,
-        { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
-      );
-
-      results.push({ baseName, schemaNames: Object.keys(attributeJson.schema), attributeKey: attributeJson.key });
-    } finally {
-      fs.unlinkSync(tmpFile);
-    }
+    results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
   }
 
   return results;
