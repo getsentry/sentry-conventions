@@ -53,29 +53,29 @@
     },
     "ServerSideToolDefinition": {
       "additionalProperties": true,
-      "description": "Represents a tool definition for a capability that the model provider executes on the server.",
+      "description": "Represents a tool definition for a capability that the model provider manages on the server.",
       "properties": {
         "type": {
           "not": { "enum": ["function"] },
           "description": "The type of the tool.",
           "type": "string",
-          "x-is-in-otel": true
+          "x-is-in-otel": false
         },
         "name": {
           "description": "The name of the tool.",
           "type": "string",
-          "x-is-in-otel": true
+          "x-is-in-otel": false
         },
         "description": {
           "anyOf": [{ "type": "string" }, { "type": "null" }],
           "default": null,
           "description": "The description of the tool.",
-          "x-is-in-otel": true
+          "x-is-in-otel": false
         }
       },
       "required": ["type"],
       "type": "object",
-      "x-is-in-otel": true
+      "x-is-in-otel": false
     }
   },
   "changelog": [
