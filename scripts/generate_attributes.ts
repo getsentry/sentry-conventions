@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { getAttributeExamples } from './attribute_examples';
@@ -8,7 +9,13 @@ interface GenerateAttributesOptions {
   jsOutputFilePath: string;
   jsSearchOutputFilePath: string;
   pythonOutputFilePath: string;
+  pythonSchemaOutputDir: string;
 }
+
+type ParsedAttribute = {
+  file: string;
+  attributeJson: AttributeJson & { schema?: Record<string, unknown> };
+};
 
 type AttributeDefinition = {
   key: string;
@@ -181,15 +188,26 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
       : path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'search.ts'));
   const pythonOutputFilePath =
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
+  const pythonSchemaOutputDir =
+    options?.pythonSchemaOutputDir ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', '_schemas');
 
-  // Get all JSON files recursively
+  // Parse all attribute files once
   const attributeFiles = await getAllJsonFiles(attributesDir);
+  const parsedAttributes = attributeFiles.map((file) => ({
+    file,
+    attributeJson: JSON.parse(fs.readFileSync(path.join(attributesDir, file), 'utf-8')) as AttributeJson & {
+      schema?: Record<string, unknown>;
+    },
+  }));
+
+  // Generate Python schema types (must run before writeToPython so .py files exist for import)
+  const schemaInfo = generateSchemaTypes(parsedAttributes, pythonSchemaOutputDir, repositoryRoot);
 
   // Generate and write JavaScript code
-  writeToJs(attributesDir, attributeFiles, jsOutputFilePath, jsSearchOutputFilePath);
+  writeToJs(parsedAttributes, jsOutputFilePath, jsSearchOutputFilePath);
 
-  // Generate and write Python code
-  writeToPython(attributesDir, attributeFiles, pythonOutputFilePath);
+  // Generate and write Python code (includes schema imports and cross-links)
+  writeToPython(parsedAttributes, pythonOutputFilePath, schemaInfo);
 }
 
 async function getAllJsonFiles(dir: string): Promise<string[]> {
@@ -214,12 +232,7 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
   return allFiles;
 }
 
-function writeToJs(
-  attributesDir: string,
-  attributeFiles: string[],
-  outputFilePath: string,
-  searchOutputFilePath: string,
-) {
+function writeToJs(parsedAttributes: ParsedAttribute[], outputFilePath: string, searchOutputFilePath: string) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
   // Reset memoization for fresh calculation
@@ -236,9 +249,7 @@ function writeToJs(
     isDeprecated: boolean;
   }> = [];
 
-  for (const file of attributeFiles) {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+  for (const { file, attributeJson } of parsedAttributes) {
     const isDeprecated = !!attributeJson.deprecation;
 
     allAttributesPartial.push({
@@ -532,7 +543,7 @@ function getTsType(type: AttributeJson['type']): string {
   }
 }
 
-function writeToPython(attributesDir: string, attributeFiles: string[], outputFilePath: string) {
+function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: string, schemaInfo: SchemaTypeInfo[] = []) {
   let content = `"""`;
   content +=
     "A collection of attribute names with helpers to retrieve an attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
@@ -542,6 +553,13 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
   content += 'from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union\n\n';
+
+  for (const { baseName, schemaNames } of schemaInfo) {
+    content += `from ._schemas.${baseName} import ${schemaNames.join(', ')}  # noqa: E402\n`;
+  }
+  if (schemaInfo.length > 0) {
+    content += '\n';
+  }
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
 
@@ -678,14 +696,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   let metadataDict = '';
   const attributeNames: string[] = [];
   const deprecatedAttributes: { name: string; replacement?: string }[] = [];
-  const allAttributes: AttributeDefinition[] = attributeFiles.map((file) => {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    return {
-      key: attributeJson.key,
-      attributeJson,
-    };
-  });
+  const allAttributes: AttributeDefinition[] = parsedAttributes.map(({ attributeJson }) => ({
+    key: attributeJson.key,
+    attributeJson,
+  }));
   assertUniqueSearchAliases(allAttributes);
   const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
 
@@ -726,10 +740,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    """Contains all attribute names as class attributes with their documentation."""\n\n';
 
   // Generate class attributes instead of top-level constants
-  for (const file of attributeFiles) {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-
+  for (const { file, attributeJson } of parsedAttributes) {
     const { key, brief, type, apply_scrubbing, is_in_otel, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const examples = getAttributeExamples(attributeJson);
     const visibility = getVisibility(attributeJson);
@@ -920,10 +931,21 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    "ATTRIBUTE_METADATA",\n';
   content += '    "Attributes",\n';
   content += '    "ATTRIBUTE_NAMES",\n';
+  for (const { schemaNames } of schemaInfo) {
+    for (const name of schemaNames) {
+      content += `    "${name}",\n`;
+    }
+  }
   content += ']\n\n';
 
   // Write the generated content to the file
   fs.writeFileSync(outputFilePath, content);
+
+  try {
+    execSync(
+      `uv run --directory ${path.join(path.dirname(outputFilePath), '..', '..')} black --quiet ${outputFilePath}`,
+    );
+  } catch {}
 
   console.log(`Generated Python attributes file at: ${outputFilePath}`);
 }
@@ -1583,4 +1605,55 @@ function generateMetadata(
   searchMetadata += '};\n\n';
 
   return { attributeMetadata: metadataDict, searchMetadata };
+}
+
+// --- Schema type generation from inline attribute schemas ---
+
+interface SchemaTypeInfo {
+  baseName: string;
+  schemaNames: string[];
+  attributeKey: string;
+}
+
+function generateSchemaTypes(
+  parsedAttributes: ParsedAttribute[],
+  pythonOutputDir: string,
+  repositoryRoot: string,
+): SchemaTypeInfo[] {
+  const results: SchemaTypeInfo[] = [];
+  fs.mkdirSync(pythonOutputDir, { recursive: true });
+
+  const pythonDir = path.join(repositoryRoot, 'python');
+
+  for (const { attributeJson } of parsedAttributes) {
+    if (!attributeJson.schema || !attributeJson.key) continue;
+
+    const baseName = attributeJson.key.replaceAll('.', '_');
+    const schemaNames = Object.keys(attributeJson.schema);
+
+    // Rewrite shorthand $refs (#/Name → #/components/schemas/Name) and wrap in OpenAPI envelope
+    const schemas = attributeJson.schema;
+    const openapi = {
+      openapi: '3.1.0',
+      info: { title: baseName, version: '0.0.0' },
+      paths: {},
+      components: { schemas },
+    };
+
+    const tmpFile = path.join(pythonOutputDir, `_${baseName}.tmp.json`);
+    const outputFile = path.join(pythonOutputDir, `${baseName}.py`);
+    try {
+      fs.writeFileSync(tmpFile, JSON.stringify(openapi, null, 2));
+      execSync(
+        `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --output ${outputFile}`,
+        { cwd: pythonDir, stdio: 'pipe' },
+      );
+      console.log(`Generated schema types at: ${outputFile}`);
+      results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
+    } finally {
+      if (fs.existsSync(tmpFile)) fs.unlinkSync(tmpFile);
+    }
+  }
+
+  return results;
 }

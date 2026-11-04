@@ -12,12 +12,15 @@
   "schema": {
     "ToolDefinitions": {
       "description": "Represents the list of tool definitions available to the GenAI model.",
-      "items": { "$ref": "#/ToolDefinition" },
+      "items": { "$ref": "#/components/schemas/ToolDefinition" },
       "type": "array",
       "x-is-in-otel": true
     },
     "ToolDefinition": {
-      "anyOf": [{ "$ref": "#/FunctionToolDefinition" }, { "$ref": "#/ServerSideToolDefinition" }],
+      "anyOf": [
+        { "$ref": "#/components/schemas/FunctionToolDefinition" },
+        { "$ref": "#/components/schemas/ServerSideToolDefinition" }
+      ],
       "x-is-in-otel": true
     },
     "FunctionToolDefinition": {
