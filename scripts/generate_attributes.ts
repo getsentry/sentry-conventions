@@ -1643,7 +1643,7 @@ function generateSchemaTypes(
     fs.writeFileSync(tmpFile, JSON.stringify(openapi));
     try {
       const jsFile = path.join(jsOutputDir, `_${baseName}.ts`);
-      execSync(`npx openapi-typescript ${tmpFile} --output ${jsFile}`, { stdio: 'pipe' });
+      execSync(`npx openapi-typescript ${tmpFile} --output ${jsFile} --default-non-nullable false`, { stdio: 'pipe' });
 
       const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
       execSync(

@@ -23,12 +23,12 @@ export interface components {
        * @description The description of the tool.
        * @default null
        */
-      description: string | null;
+      description?: string | null;
       /**
        * @description JSON Schema document describing the parameters accepted by the tool.
        * @default null
        */
-      parameters: unknown;
+      parameters?: unknown;
     } & {
       [key: string]: unknown;
     };
@@ -42,7 +42,7 @@ export interface components {
        * @description The description of the tool.
        * @default null
        */
-      description: string | null;
+      description?: string | null;
     } & {
       [key: string]: unknown;
     };
