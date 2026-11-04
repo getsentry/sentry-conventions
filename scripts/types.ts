@@ -26,6 +26,7 @@ export interface AttributeJson {
     type?: 'byte' | 'currency' | 'millisecond' | 'percentage' | 'second';
     deprecated_aliases?: string[];
   };
+  schema?: Record<string, unknown>;
   additional_context?: string[];
   changelog?: { version: string; prs?: number[]; description?: string }[];
 }

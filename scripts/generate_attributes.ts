@@ -9,18 +9,23 @@ interface GenerateAttributesOptions {
   jsOutputFilePath: string;
   jsSearchOutputFilePath: string;
   pythonOutputFilePath: string;
-  pythonSchemaOutputDir: string;
 }
 
 type ParsedAttribute = {
   file: string;
-  attributeJson: AttributeJson & { schema?: Record<string, unknown> };
+  attributeJson: AttributeJson;
 };
 
 type AttributeDefinition = {
   key: string;
   attributeJson: AttributeJson;
 };
+
+interface SchemaTypeInfo {
+  baseName: string;
+  schemaNames: string[];
+  attributeKey: string;
+}
 
 /**
  * Deprecation statuses where the ingestion pipeline rewrites the value onto the replacement
@@ -188,25 +193,22 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
       : path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'search.ts'));
   const pythonOutputFilePath =
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
-  const pythonSchemaOutputDir =
-    options?.pythonSchemaOutputDir ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', '_schemas');
+  const pythonSchemaOutputDir = path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', '_schemas');
 
-  // Parse all attribute files once
+  // Get all JSON files recursively
   const attributeFiles = await getAllJsonFiles(attributesDir);
   const parsedAttributes = attributeFiles.map((file) => ({
     file,
-    attributeJson: JSON.parse(fs.readFileSync(path.join(attributesDir, file), 'utf-8')) as AttributeJson & {
-      schema?: Record<string, unknown>;
-    },
+    attributeJson: JSON.parse(fs.readFileSync(path.join(attributesDir, file), 'utf-8')) as AttributeJson,
   }));
 
-  // Generate Python schema types (must run before writeToPython so .py files exist for import)
+  fs.mkdirSync(pythonSchemaOutputDir, { recursive: true });
   const schemaInfo = generateSchemaTypes(parsedAttributes, pythonSchemaOutputDir, repositoryRoot);
 
   // Generate and write JavaScript code
   writeToJs(parsedAttributes, jsOutputFilePath, jsSearchOutputFilePath);
 
-  // Generate and write Python code (includes schema imports and cross-links)
+  // Generate and write Python code
   writeToPython(parsedAttributes, pythonOutputFilePath, schemaInfo);
 }
 
@@ -941,12 +943,6 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   // Write the generated content to the file
   fs.writeFileSync(outputFilePath, content);
 
-  try {
-    execSync(
-      `uv run --directory ${path.join(path.dirname(outputFilePath), '..', '..')} black --quiet ${outputFilePath}`,
-    );
-  } catch {}
-
   console.log(`Generated Python attributes file at: ${outputFilePath}`);
 }
 
@@ -1607,31 +1603,19 @@ function generateMetadata(
   return { attributeMetadata: metadataDict, searchMetadata };
 }
 
-// --- Schema type generation from inline attribute schemas ---
-
-interface SchemaTypeInfo {
-  baseName: string;
-  schemaNames: string[];
-  attributeKey: string;
-}
-
 function generateSchemaTypes(
   parsedAttributes: ParsedAttribute[],
   pythonOutputDir: string,
   repositoryRoot: string,
 ): SchemaTypeInfo[] {
   const results: SchemaTypeInfo[] = [];
-  fs.mkdirSync(pythonOutputDir, { recursive: true });
-
-  const pythonDir = path.join(repositoryRoot, 'python');
 
   for (const { attributeJson } of parsedAttributes) {
-    if (!attributeJson.schema || !attributeJson.key) continue;
+    if (!attributeJson.schema) continue;
 
     const baseName = attributeJson.key.replaceAll('.', '_');
     const schemaNames = Object.keys(attributeJson.schema);
 
-    // Rewrite shorthand $refs (#/Name → #/components/schemas/Name) and wrap in OpenAPI envelope
     const schemas = attributeJson.schema;
     const openapi = {
       openapi: '3.1.0',
@@ -1646,12 +1630,11 @@ function generateSchemaTypes(
       fs.writeFileSync(tmpFile, JSON.stringify(openapi, null, 2));
       execSync(
         `uv run --group schema-codegen datamodel-codegen --input ${tmpFile} --input-file-type openapi --output-model-type typing.TypedDict --output ${outputFile}`,
-        { cwd: pythonDir, stdio: 'pipe' },
+        { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
       );
-      console.log(`Generated schema types at: ${outputFile}`);
       results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
     } finally {
-      if (fs.existsSync(tmpFile)) fs.unlinkSync(tmpFile);
+      fs.unlinkSync(tmpFile);
     }
   }
 
