@@ -11,7 +11,8 @@
   "examples": ["2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [748],
       "description": "Added faas.instance attribute"
     }
   ]
