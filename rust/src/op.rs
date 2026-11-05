@@ -232,6 +232,7 @@ pub const GEN_AI_EMBEDDINGS: &str = "gen_ai.embeddings";
 pub const GEN_AI_GENERATE_CONTENT: &str = "gen_ai.generate_content";
 
 /// Reranking of documents or results by a generative AI model
+#[deprecated(note = "Product does not support rerank spans. \"rerank\" is not a recognized gen_ai.operation.name in OTel.")]
 pub const GEN_AI_RERANK: &str = "gen_ai.rerank";
 
 /// Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model
