@@ -11,7 +11,8 @@
   "additional_context": ["A router or platform error description does not imply that an exception was thrown"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [772],
       "description": "Added heroku.error.description attribute"
     }
   ]

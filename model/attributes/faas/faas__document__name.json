@@ -10,7 +10,8 @@
   "examples": ["myFile.txt", "myTableName"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [747],
       "description": "Added faas.document.name attribute"
     }
   ]

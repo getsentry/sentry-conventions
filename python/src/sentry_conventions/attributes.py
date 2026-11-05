@@ -18908,7 +18908,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["myBucketName", "myDbName"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.document.collection attribute"
+                version="0.31.0",
+                prs=[747],
+                description="Added faas.document.collection attribute",
             ),
         ],
     ),
@@ -18923,7 +18925,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["myFile.txt", "myTableName"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.document.name attribute"
+                version="0.31.0",
+                prs=[747],
+                description="Added faas.document.name attribute",
             ),
         ],
     ),
@@ -18938,7 +18942,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["insert", "edit", "delete"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.document.operation attribute"
+                version="0.31.0",
+                prs=[747],
+                description="Added faas.document.operation attribute",
             ),
         ],
         additional_context=[
@@ -18959,7 +18965,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["2020-01-23T13:47:06Z"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.document.time attribute"
+                version="0.31.0",
+                prs=[747],
+                description="Added faas.document.time attribute",
             ),
         ],
     ),
@@ -19060,7 +19068,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de",
         examples=["2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"],
         changelog=[
-            ChangelogEntry(version="next", description="Added faas.instance attribute"),
+            ChangelogEntry(
+                version="0.31.0", prs=[748], description="Added faas.instance attribute"
+            ),
         ],
         additional_context=["For AWS Lambda, use the (full) log stream name."],
     ),
@@ -21778,7 +21788,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["web.1", "web-12a34bcd56-7efgh"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added heroku.dyno.name attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.dyno.name attribute",
             ),
         ],
         additional_context=[
@@ -21796,7 +21808,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["H12", "R14", "L10"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added heroku.error.code attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.error.code attribute",
             ),
         ],
         additional_context=[
@@ -21814,7 +21828,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["Request timeout", "Memory quota exceeded"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added heroku.error.description attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.error.description attribute",
             ),
         ],
         additional_context=[
@@ -21832,7 +21848,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added heroku.logplex.drain_token attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.logplex.drain_token attribute",
             ),
         ],
     ),
@@ -21847,7 +21865,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[0, 0.5, 6],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added heroku.router.connect attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.router.connect attribute",
             ),
         ],
     ),
@@ -21862,7 +21882,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["6903a168-b79b-ec27-03c8-b8f64d8d8792"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added heroku.router.request_id attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.router.request_id attribute",
             ),
         ],
         additional_context=[
@@ -21880,7 +21902,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[0, 12.5, 30001],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added heroku.router.service attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.router.service attribute",
             ),
         ],
         additional_context=[
@@ -26668,7 +26692,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["static", "partially_static", "dynamic"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
                 prs=[740],
                 description="Added page.server_rendering.type attribute",
             ),
@@ -29250,7 +29274,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["user.geo.subregion"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
                 prs=[753],
                 description="Added sentry.user.geo.subregion attribute",
             ),
@@ -29836,7 +29860,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["tls", "ssl"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added tls.protocol.name attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added tls.protocol.name attribute",
             ),
         ],
         additional_context=[
@@ -29854,7 +29880,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["1.2", "1.3", "3"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added tls.protocol.version attribute"
+                version="0.31.0",
+                prs=[772],
+                description="Added tls.protocol.version attribute",
             ),
         ],
         additional_context=[
@@ -30868,7 +30896,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.user.geo.subregion"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
                 prs=[753],
                 description="Added user.geo.subregion attribute",
             ),
@@ -30980,7 +31008,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["vercel.ai.settings.context.tenantId='acme'"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
+                prs=[756],
                 description="Added vercel.ai.settings.context.<key> attribute",
             ),
         ],
@@ -31034,7 +31063,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["vercel.ai.tool_call.context.units='metric'"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
+                prs=[756],
                 description="Added vercel.ai.tool_call.context.<key> attribute",
             ),
         ],
