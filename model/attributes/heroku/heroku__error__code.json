@@ -1,0 +1,20 @@
+{
+  "key": "heroku.error.code",
+  "brief": "Heroku error code reported by a router or platform log",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["H12", "R14", "L10"],
+  "additional_context": [
+    "Preserves the provider-specific code from the router code field or a platform error message."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.error.code attribute"
+    }
+  ]
+}

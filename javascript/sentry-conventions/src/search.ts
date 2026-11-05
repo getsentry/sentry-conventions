@@ -2599,6 +2599,41 @@ export const SEARCH_HAPI__TYPE = 'hapi.type';
 export const SEARCH_HARDWARECONCURRENCY = 'hardwareConcurrency';
 
 /**
+ * Search name for {@link attributes.HEROKU_DYNO_NAME}. `heroku.dyno.name`
+ */
+export const SEARCH_HEROKU__DYNO__NAME = 'heroku.dyno.name';
+
+/**
+ * Search name for {@link attributes.HEROKU_ERROR_CODE}. `heroku.error.code`
+ */
+export const SEARCH_HEROKU__ERROR__CODE = 'heroku.error.code';
+
+/**
+ * Search name for {@link attributes.HEROKU_ERROR_DESCRIPTION}. `heroku.error.description`
+ */
+export const SEARCH_HEROKU__ERROR__DESCRIPTION = 'heroku.error.description';
+
+/**
+ * Search name for {@link attributes.HEROKU_LOGPLEX_DRAIN_TOKEN}. `heroku.logplex.drain_token`
+ */
+export const SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN = 'heroku.logplex.drain_token';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_CONNECT}. `heroku.router.connect`
+ */
+export const SEARCH_HEROKU__ROUTER__CONNECT = 'heroku.router.connect';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_REQUEST_ID}. `heroku.router.request_id`
+ */
+export const SEARCH_HEROKU__ROUTER__REQUEST_ID = 'heroku.router.request_id';
+
+/**
+ * Search name for {@link attributes.HEROKU_ROUTER_SERVICE}. `heroku.router.service`
+ */
+export const SEARCH_HEROKU__ROUTER__SERVICE = 'heroku.router.service';
+
+/**
  * Search name for {@link attributes.HTTP_CLIENT_IP}. `http.client_ip`
  *
  * @deprecated Use {@link SEARCH_CLIENT__ADDRESS} (`client.address`) instead
@@ -4988,6 +5023,16 @@ export const SEARCH_TIME_TO_FULL_DISPLAY = 'time_to_full_display';
 export const SEARCH_TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
 
 /**
+ * Search name for {@link attributes.TLS_PROTOCOL_NAME}. `tls.protocol.name`
+ */
+export const SEARCH_TLS__PROTOCOL__NAME = 'tls.protocol.name';
+
+/**
+ * Search name for {@link attributes.TLS_PROTOCOL_VERSION}. `tls.protocol.version`
+ */
+export const SEARCH_TLS__PROTOCOL__VERSION = 'tls.protocol.version';
+
+/**
  * Search name for {@link attributes.SENTRY_TRACE_STATUS}. `trace.status`
  */
 export const SEARCH_TRACE__STATUS = 'trace.status';
@@ -5987,6 +6032,13 @@ export type AttributeSearchName =
   | typeof SEARCH_HAPI__PLUGIN__NAME
   | typeof SEARCH_HAPI__TYPE
   | typeof SEARCH_HARDWARECONCURRENCY
+  | typeof SEARCH_HEROKU__DYNO__NAME
+  | typeof SEARCH_HEROKU__ERROR__CODE
+  | typeof SEARCH_HEROKU__ERROR__DESCRIPTION
+  | typeof SEARCH_HEROKU__LOGPLEX__DRAIN_TOKEN
+  | typeof SEARCH_HEROKU__ROUTER__CONNECT
+  | typeof SEARCH_HEROKU__ROUTER__REQUEST_ID
+  | typeof SEARCH_HEROKU__ROUTER__SERVICE
   | typeof SEARCH_HTTP__CLIENT_IP
   | typeof SEARCH_HTTP__DECODED_RESPONSE_CONTENT_LENGTH
   | typeof SEARCH_HTTP__FLAVOR
@@ -6405,6 +6457,8 @@ export type AttributeSearchName =
   | typeof SEARCH_TIMBER__TAG
   | typeof SEARCH_TIME_TO_FULL_DISPLAY
   | typeof SEARCH_TIME_TO_INITIAL_DISPLAY
+  | typeof SEARCH_TLS__PROTOCOL__NAME
+  | typeof SEARCH_TLS__PROTOCOL__VERSION
   | typeof SEARCH_TRACE__STATUS
   | typeof SEARCH_TRACE_LIFECYCLE
   | typeof SEARCH_TRANSACTION
@@ -9560,6 +9614,49 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief: 'The number of logical CPU cores available.',
     deprecationChain: ['device.processor_count', 'hardwareConcurrency'],
   },
+  'heroku.dyno.name': {
+    canonicalName: 'heroku.dyno.name',
+    type: 'string',
+    brief: 'Name of the Heroku dyno serving the request or emitting telemetry',
+    deprecationChain: ['heroku.dyno.name'],
+  },
+  'heroku.error.code': {
+    canonicalName: 'heroku.error.code',
+    type: 'string',
+    brief: 'Heroku error code reported by a router or platform log',
+    deprecationChain: ['heroku.error.code'],
+  },
+  'heroku.error.description': {
+    canonicalName: 'heroku.error.description',
+    type: 'string',
+    brief: 'Description of the Heroku error reported by a router or platform log',
+    deprecationChain: ['heroku.error.description'],
+  },
+  'heroku.logplex.drain_token': {
+    canonicalName: 'heroku.logplex.drain_token',
+    type: 'string',
+    brief: 'Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header',
+    deprecationChain: ['heroku.logplex.drain_token'],
+  },
+  'heroku.router.connect': {
+    canonicalName: 'heroku.router.connect',
+    type: 'double',
+    brief: 'Time in milliseconds the Heroku router spent establishing a connection to the dyno',
+    deprecationChain: ['heroku.router.connect'],
+  },
+  'heroku.router.request_id': {
+    canonicalName: 'heroku.router.request_id',
+    type: 'string',
+    brief: 'Request identifier reported by the Heroku router',
+    deprecationChain: ['heroku.router.request_id'],
+  },
+  'heroku.router.service': {
+    canonicalName: 'heroku.router.service',
+    type: 'double',
+    brief:
+      'Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router',
+    deprecationChain: ['heroku.router.service'],
+  },
   'http.client_ip': {
     canonicalName: 'client.address',
     type: 'string',
@@ -12155,6 +12252,18 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'double',
     brief: 'The duration of time to initial display in milliseconds',
     deprecationChain: ['app.vitals.ttid.value', 'time_to_initial_display'],
+  },
+  'tls.protocol.name': {
+    canonicalName: 'tls.protocol.name',
+    type: 'string',
+    brief: 'Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version',
+    deprecationChain: ['tls.protocol.name'],
+  },
+  'tls.protocol.version': {
+    canonicalName: 'tls.protocol.version',
+    type: 'string',
+    brief: 'Numeric part of the version parsed from the negotiated SSL/TLS protocol version',
+    deprecationChain: ['tls.protocol.version'],
   },
   'trace.status': {
     canonicalName: 'sentry.trace.status',

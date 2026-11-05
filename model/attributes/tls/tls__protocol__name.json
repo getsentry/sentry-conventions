@@ -1,0 +1,20 @@
+{
+  "key": "tls.protocol.name",
+  "brief": "Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["tls", "ssl"],
+  "additional_context": [
+    "Extract the protocol name from the negotiated SSL/TLS version string and normalize it to lowercase, without the version. For example, TLSv1.3 becomes tls and SSLv3 becomes ssl."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added tls.protocol.name attribute"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "key": "heroku.dyno.name",
+  "brief": "Name of the Heroku dyno serving the request or emitting telemetry",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": ["web.1", "web-12a34bcd56-7efgh"],
+  "additional_context": [
+    "A dyno name is distinct from the dyno ID or service.instance.id. Do not manufacture those identifiers from this value."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added heroku.dyno.name attribute"
+    }
+  ]
+}
