@@ -11,7 +11,8 @@
   "additional_context": ["This measures the proxying phase, not necessarily the complete HTTP request duration."],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [772],
       "description": "Added heroku.router.service attribute"
     }
   ]

@@ -19,7 +19,8 @@
   "examples": ["vercel.ai.tool_call.context.units='metric'"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [756],
       "description": "Added vercel.ai.tool_call.context.<key> attribute"
     }
   ]

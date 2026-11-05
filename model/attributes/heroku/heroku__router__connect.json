@@ -10,7 +10,8 @@
   "examples": [0, 0.5, 6],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [772],
       "description": "Added heroku.router.connect attribute"
     }
   ]
