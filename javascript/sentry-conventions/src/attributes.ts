@@ -28895,7 +28895,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myBucketName',
     examples: ['myBucketName', 'myDbName'],
-    changelog: [{ version: 'next', description: 'Added faas.document.collection attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.collection attribute' }],
   },
   'faas.document.name': {
     brief:
@@ -28909,7 +28909,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myFile.txt',
     examples: ['myFile.txt', 'myTableName'],
-    changelog: [{ version: 'next', description: 'Added faas.document.name attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.name attribute' }],
   },
   'faas.document.operation': {
     brief: 'Describes the type of the operation that was performed on the data.',
@@ -28922,7 +28922,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'insert',
     examples: ['insert', 'edit', 'delete'],
-    changelog: [{ version: 'next', description: 'Added faas.document.operation attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.operation attribute' }],
     additionalContext: [
       'Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.',
       '`delete`: When an object is deleted.',
@@ -28941,7 +28941,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2020-01-23T13:47:06Z',
     examples: ['2020-01-23T13:47:06Z'],
-    changelog: [{ version: 'next', description: 'Added faas.document.time attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.time attribute' }],
   },
   'faas.duration_in_ms': {
     brief: 'The duration a function took to run, in milliseconds.',
@@ -29043,7 +29043,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de',
     examples: ['2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de'],
-    changelog: [{ version: 'next', description: 'Added faas.instance attribute' }],
+    changelog: [{ version: '0.31.0', prs: [748], description: 'Added faas.instance attribute' }],
     additionalContext: ['For AWS Lambda, use the (full) log stream name.'],
   },
   'faas.invocation_id': {
@@ -31350,7 +31350,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'web.1',
     examples: ['web.1', 'web-12a34bcd56-7efgh'],
-    changelog: [{ version: 'next', description: 'Added heroku.dyno.name attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.dyno.name attribute' }],
     additionalContext: [
       'A dyno name is distinct from the dyno ID or service.instance.id. Do not manufacture those identifiers from this value.',
     ],
@@ -31366,7 +31366,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'H12',
     examples: ['H12', 'R14', 'L10'],
-    changelog: [{ version: 'next', description: 'Added heroku.error.code attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.error.code attribute' }],
     additionalContext: ['Preserves the provider-specific code from the router code field or a platform error message.'],
   },
   'heroku.error.description': {
@@ -31380,7 +31380,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Request timeout',
     examples: ['Request timeout', 'Memory quota exceeded'],
-    changelog: [{ version: 'next', description: 'Added heroku.error.description attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.error.description attribute' }],
     additionalContext: ['A router or platform error description does not imply that an exception was thrown'],
   },
   'heroku.logplex.drain_token': {
@@ -31394,7 +31394,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'd.73ea7440-270a-435a-a0ea-adf50b4e5f5a',
     examples: ['d.73ea7440-270a-435a-a0ea-adf50b4e5f5a'],
-    changelog: [{ version: 'next', description: 'Added heroku.logplex.drain_token attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.logplex.drain_token attribute' }],
   },
   'heroku.router.connect': {
     brief: 'Time in milliseconds the Heroku router spent establishing a connection to the dyno',
@@ -31407,7 +31407,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0,
     examples: [0, 0.5, 6],
-    changelog: [{ version: 'next', description: 'Added heroku.router.connect attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.connect attribute' }],
   },
   'heroku.router.request_id': {
     brief: 'Request identifier reported by the Heroku router',
@@ -31420,7 +31420,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '6903a168-b79b-ec27-03c8-b8f64d8d8792',
     examples: ['6903a168-b79b-ec27-03c8-b8f64d8d8792'],
-    changelog: [{ version: 'next', description: 'Added heroku.router.request_id attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.request_id attribute' }],
     additionalContext: [
       'Heroku generates or accepts this identifier and forwards it to the application in the X-Request-ID header.',
     ],
@@ -31437,7 +31437,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0,
     examples: [0, 12.5, 30001],
-    changelog: [{ version: 'next', description: 'Added heroku.router.service attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.service attribute' }],
     additionalContext: ['This measures the proxying phase, not necessarily the complete HTTP request duration.'],
   },
   'http.client_ip': {
@@ -35652,7 +35652,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'static',
     examples: ['static', 'partially_static', 'dynamic'],
-    changelog: [{ version: 'next', prs: [740], description: 'Added page.server_rendering.type attribute' }],
+    changelog: [{ version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' }],
     additionalContext: [
       'Set only by an SDK that controls the server render, and only when the SDK knows the value.',
       'More values can be added later.',
@@ -37923,7 +37923,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['user.geo.subregion'],
-    changelog: [{ version: 'next', prs: [753], description: 'Added sentry.user.geo.subregion attribute' }],
+    changelog: [{ version: '0.31.0', prs: [753], description: 'Added sentry.user.geo.subregion attribute' }],
     searchAlias: {
       name: 'user.geo.subregion',
     },
@@ -38408,7 +38408,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'tls',
     examples: ['tls', 'ssl'],
-    changelog: [{ version: 'next', description: 'Added tls.protocol.name attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added tls.protocol.name attribute' }],
     additionalContext: [
       'Extract the protocol name from the negotiated SSL/TLS version string and normalize it to lowercase, without the version. For example, TLSv1.3 becomes tls and SSLv3 becomes ssl.',
     ],
@@ -38424,7 +38424,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '1.2',
     examples: ['1.2', '1.3', '3'],
-    changelog: [{ version: 'next', description: 'Added tls.protocol.version attribute' }],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added tls.protocol.version attribute' }],
     additionalContext: [
       'Extract only the numeric version from the negotiated SSL/TLS version string. For example, TLSv1.3 becomes 1.3 and SSLv3 becomes 3. Do not include the protocol name or the v prefix.',
     ],
@@ -39342,7 +39342,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '155',
     examples: ['155', '21'],
     aliases: ['sentry.user.geo.subregion'],
-    changelog: [{ version: 'next', prs: [753], description: 'Added user.geo.subregion attribute' }],
+    changelog: [{ version: '0.31.0', prs: [753], description: 'Added user.geo.subregion attribute' }],
   },
   'user.hash': {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
@@ -39421,7 +39421,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "vercel.ai.settings.context.tenantId='acme'",
     examples: ["vercel.ai.settings.context.tenantId='acme'"],
-    changelog: [{ version: 'next', description: 'Added vercel.ai.settings.context.<key> attribute' }],
+    changelog: [{ version: '0.31.0', prs: [756], description: 'Added vercel.ai.settings.context.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `invoke_agent`, `generate_content`, `execute_tool`, `embeddings`, `rerank` and `decide` operations. Spans for model calls and tool calls inside an operation copy the attributes of that operation.',
       'SDKs MUST only record the properties that the app included through `telemetry.includeRuntimeContext`. Some Vercel AI SDK versions expose the full runtime context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the runtime context, it MUST NOT record it.',
@@ -39466,7 +39466,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "vercel.ai.tool_call.context.units='metric'",
     examples: ["vercel.ai.tool_call.context.units='metric'"],
-    changelog: [{ version: 'next', description: 'Added vercel.ai.tool_call.context.<key> attribute' }],
+    changelog: [{ version: '0.31.0', prs: [756], description: 'Added vercel.ai.tool_call.context.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `execute_tool` operations.',
       'SDKs MUST only record the properties that the app included for the tool through `telemetry.includeToolsContext`. Some Vercel AI SDK versions expose the full tool context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the tool context, it MUST NOT record it.',
