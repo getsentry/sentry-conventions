@@ -1,3 +1,29 @@
+## 0.31.0
+
+### New Features ✨
+
+#### Attributes
+
+- Add Vercel AI runtime and tool context attributes by @isaacs and @claude in [#756](https://github.com/getsentry/sentry-conventions/pull/756)
+- Register user.geo.subregion and deprecated sentry.user.geo.subregion by @edwardgou-sentry in [#753](https://github.com/getsentry/sentry-conventions/pull/753)
+- Add `faas.instance` attribute by @pabloDeputter in [#748](https://github.com/getsentry/sentry-conventions/pull/748)
+- Add `faas.document.*` attributes by @pabloDeputter in [#747](https://github.com/getsentry/sentry-conventions/pull/747)
+- Add page.server_rendering.type attribute by @s1gr1d in [#740](https://github.com/getsentry/sentry-conventions/pull/740)
+
+#### Other
+
+- (heroku) Add Heroku log drain attributes by @Dav1dde in [#772](https://github.com/getsentry/sentry-conventions/pull/772)
+- (metrics) Generate metric name constants under a `metrics` subpath by @logaretm in [#757](https://github.com/getsentry/sentry-conventions/pull/757)
+
+### Bug Fixes 🐛
+
+- (attributes) Use `response` for `tool_call_response` in `gen_ai.input.messages` example by @alexander-alderman-webb in [#758](https://github.com/getsentry/sentry-conventions/pull/758)
+
+### Internal Changes 🔧
+
+- Remove `finish_reason` from `gen_ai.output.message` example by @alexander-alderman-webb in [#759](https://github.com/getsentry/sentry-conventions/pull/759)
+- Deprecate `gen_ai.handoff` op by @alexander-alderman-webb in [#754](https://github.com/getsentry/sentry-conventions/pull/754)
+
 ## 0.30.0
 
 ### New Features ✨
