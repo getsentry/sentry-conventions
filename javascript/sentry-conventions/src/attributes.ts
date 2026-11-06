@@ -9269,7 +9269,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__system_instructions.json
 
 /**
- * The system instructions passed to the model. `gen_ai.system_instructions`
+ * The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`. `gen_ai.system_instructions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_INSTRUCTIONS_TYPE}
  *
@@ -9280,7 +9280,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
  *
  * Aliases: {@link AI_PREAMBLE} `ai.preamble`
  *
- * @example "You are a helpful assistant"
+ * @example "[{\"type\": \"text\", \"content\": \"You are a helpful assistant.\"}, {\"type\": \"text\", \"content\": \"Be concise and clear.\"}]"
  */
 export const GEN_AI_SYSTEM_INSTRUCTIONS = 'gen_ai.system_instructions';
 
@@ -30444,7 +30444,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.system_instructions': {
-    brief: 'The system instructions passed to the model.',
+    brief:
+      'The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
@@ -30452,7 +30453,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'You are a helpful assistant',
+    example:
+      '[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
     aliases: ['ai.preamble'],
     changelog: [
       { version: '0.5.0', prs: [264] },

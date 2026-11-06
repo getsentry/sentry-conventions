@@ -5704,14 +5704,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
         "gen_ai.system_instructions"
     )
-    """The system instructions passed to the model.
+    """The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.preamble
-    Example: "You are a helpful assistant"
+    Example: "[{\"type\": \"text\", \"content\": \"You are a helpful assistant.\"}, {\"type\": \"text\", \"content\": \"Be concise and clear.\"}]"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
@@ -20727,7 +20727,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
-        brief="The system instructions passed to the model.",
+        brief='The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.system_instructions",
@@ -20737,7 +20737,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="You are a helpful assistant",
+        example='[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
         aliases=["ai.preamble"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
