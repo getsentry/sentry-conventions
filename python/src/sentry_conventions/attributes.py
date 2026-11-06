@@ -7,6 +7,13 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union
 
+from ._schemas.gen_ai_tool_definitions import (  # noqa: E402
+    FunctionToolDefinition,
+    ServerSideToolDefinition,
+    ToolDefinition,
+    ToolDefinitions,
+)
+
 AttributeValue = Union[
     str, int, float, bool, List[str], List[int], List[float], List[bool]
 ]
@@ -32502,4 +32509,8 @@ __all__ = [
     "ATTRIBUTE_METADATA",
     "Attributes",
     "ATTRIBUTE_NAMES",
+    "ToolDefinitions",
+    "ToolDefinition",
+    "FunctionToolDefinition",
+    "ServerSideToolDefinition",
 ]
