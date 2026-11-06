@@ -38092,6 +38092,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'omegastar',
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    additionalContext: [
+      'See the [OpenTelemetry specification](https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-name).',
+    ],
   },
   'service.version': {
     brief: 'The version string of the service API or implementation. The format is not defined by these conventions.',
@@ -38105,6 +38108,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '5.0.0',
     aliases: ['sentry.release'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    additionalContext: [
+      'See the [OpenTelemetry specification](https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-version).',
+    ],
   },
   'session.id': {
     brief: 'A unique id identifying the active session at the time of setting this attribute',

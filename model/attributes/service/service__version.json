@@ -9,6 +9,9 @@
   "example": "5.0.0",
   "alias": ["sentry.release"],
   "visibility": "public",
+  "additional_context": [
+    "See the [OpenTelemetry specification](https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-version)."
+  ],
   "changelog": [
     {
       "version": "0.1.0",
