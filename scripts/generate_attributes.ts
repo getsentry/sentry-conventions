@@ -1656,7 +1656,7 @@ async function generateSchemaTypes(
 
     const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
     execSync(
-      `uv run --group schema-codegen datamodel-codegen --input ${openapiFile} --input-file-type openapi --output-model-type typing.TypedDict --disable-timestamp --output ${pythonFile}`,
+      `uv run --group schema-codegen datamodel-codegen --input ${openapiFile} --input-file-type openapi --output-model-type typing.TypedDict --no-use-closed-typed-dict --disable-timestamp --output ${pythonFile}`,
       { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
     );
 

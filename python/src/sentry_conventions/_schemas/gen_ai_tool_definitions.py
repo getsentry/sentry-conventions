@@ -3,19 +3,19 @@
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias
+from typing import Any, Literal, TypeAlias, TypedDict
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired
 
 
-class FunctionToolDefinition(TypedDict, closed=True):
+class FunctionToolDefinition(TypedDict):
     type: Literal["function"]
     name: str
     description: NotRequired[str | None]
     parameters: NotRequired[dict[str, Any] | None]
 
 
-class ServerSideToolDefinition(TypedDict, closed=True):
+class ServerSideToolDefinition(TypedDict):
     type: str
     name: NotRequired[str]
     description: NotRequired[str | None]
