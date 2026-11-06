@@ -41,6 +41,7 @@
             "description": "JSON Schema document describing the parameters accepted by the tool."
           }
         },
+        "additionalProperties": false,
         "required": ["type", "name"],
         "type": "object"
       },
@@ -66,6 +67,7 @@
             "description": "The description of the tool."
           }
         },
+        "additionalProperties": false,
         "required": ["type"],
         "type": "object"
       }
