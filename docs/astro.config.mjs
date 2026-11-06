@@ -29,8 +29,10 @@ export default defineConfig({
       'import.meta.env.VERCEL_ENV': JSON.stringify(process.env.VERCEL_ENV ?? ''),
     },
   },
-  // Vercel previews serve from the root; production stays on GitHub Pages.
-  site: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://getsentry.github.io',
-  base: process.env.VERCEL === '1' ? '/' : '/sentry-conventions/',
+  // Production is served from GitHub Pages at conventions.sentry.dev; Vercel previews use their own URL.
+  // GitHub Pages redirects the old getsentry.github.io/sentry-conventions/* URLs to the custom domain,
+  // so the base must stay at the root for those links to keep resolving.
+  site: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://conventions.sentry.dev',
+  base: '/',
   output: 'static',
 });
