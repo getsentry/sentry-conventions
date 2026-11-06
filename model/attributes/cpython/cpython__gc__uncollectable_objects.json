@@ -1,0 +1,21 @@
+{
+  "key": "cpython.gc.uncollectable_objects",
+  "brief": "The number of unreachable objects that couldn't be collected during a run of the CPython garbage collector. These objects are moved to gc.garbage.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [0],
+  "additional_context": [
+    "This is the count for a single garbage collection run. It's not the same as the OpenTelemetry `cpython.gc.uncollectable_objects` metric, which is a counter of the total since interpreter start."
+  ],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [718],
+      "description": "Added cpython.gc.uncollectable_objects attribute"
+    }
+  ]
+}
