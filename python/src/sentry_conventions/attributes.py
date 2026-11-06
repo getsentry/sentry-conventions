@@ -3803,7 +3803,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
+    DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.
     Example: ["1","foo"]
     """
 
@@ -7965,7 +7965,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: No replacement at this time - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
+    DEPRECATED: No replacement at this time - A count can be calculated from the value of the gen_ai.tool.call.result attribute.
     Example: 1
     """
 
@@ -8805,7 +8805,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/navigation/navigation__origin.json
     NAVIGATION_ORIGIN: Literal["navigation.origin"] = "navigation.origin"
-    """The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.
+    """The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.
 
     Type: str
     Apply Scrubbing: auto
@@ -17921,7 +17921,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["1", "foo"],
         deprecation=DeprecationInfo(
             replacement="db.query.parameter.<key>",
-            reason="Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.",
+            reason="Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.",
         ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -24310,7 +24310,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1,
         deprecation=DeprecationInfo(
-            reason="A count can be calculcated from the value of the gen_ai.tool.call.result attribute."
+            reason="A count can be calculated from the value of the gen_ai.tool.call.result attribute."
         ),
         changelog=[
             ChangelogEntry(
@@ -25666,7 +25666,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "navigation.origin": AttributeMetadata(
-        brief="The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.",
+        brief="The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.",
         type=AttributeType.STRING,
         keys=(
             "router.navigation.origin",

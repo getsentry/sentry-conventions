@@ -12,7 +12,7 @@ pub const NAVIGATION: &str = "navigation";
 /// A client-side automatic redirect navigation (e.g. from framework router redirects) triggerign a browser history change.
 pub const NAVIGATION_REDIRECT: &str = "navigation.redirect";
 
-/// Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified.
+/// Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be identified.
 pub const RESOURCE: &str = "resource";
 
 pub const RESOURCE_SCRIPT: &str = "resource.script";
