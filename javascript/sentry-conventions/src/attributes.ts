@@ -5896,7 +5896,7 @@ export type DB_RESPONSE_STATUS_CODE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
+ * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.
  * @example ["1","foo"]
  */
 export const DB_SQL_BINDINGS = 'db.sql.bindings';
@@ -13042,7 +13042,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated  - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
+ * @deprecated  - A count can be calculated from the value of the gen_ai.tool.call.result attribute.
  * @example 1
  */
 export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
@@ -14623,7 +14623,7 @@ export type MIDDLEWARE_NAME_TYPE = string;
 // Path: model/attributes/navigation/navigation__origin.json
 
 /**
- * The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
+ * The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
  *
  * Attribute Value Type: `string` {@link NAVIGATION_ORIGIN_TYPE}
  *
@@ -28051,7 +28051,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.query.parameter.<key>',
       reason:
-        'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.',
+        'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.',
     },
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
@@ -33393,7 +33393,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1,
     deprecation: {
-      reason: 'A count can be calculcated from the value of the gen_ai.tool.call.result attribute.',
+      reason: 'A count can be calculated from the value of the gen_ai.tool.call.result attribute.',
     },
     changelog: [
       {
@@ -34811,7 +34811,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'navigation.origin': {
     brief:
-      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+      'The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.',
     type: 'string',
     keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
