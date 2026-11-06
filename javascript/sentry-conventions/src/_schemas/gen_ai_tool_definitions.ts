@@ -42,7 +42,7 @@ export interface FunctionToolDefinition {
    */
   parameters?: {
     [k: string]: unknown;
-  };
+  } | null;
   [k: string]: unknown;
 }
 /**
