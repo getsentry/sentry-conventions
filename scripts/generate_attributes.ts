@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { compile } from 'json-schema-to-typescript';
 import { getAttributeExamples } from './attribute_examples';
 import type { AttributeJson, AttributeValue } from './types';
 import { attributeKeyToFileName } from './utils';
@@ -206,7 +207,12 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
 
   fs.mkdirSync(jsSchemaOutputDir, { recursive: true });
   fs.mkdirSync(pythonSchemaOutputDir, { recursive: true });
-  const schemaInfo = generateSchemaTypes(parsedAttributes, jsSchemaOutputDir, pythonSchemaOutputDir, repositoryRoot);
+  const schemaInfo = await generateSchemaTypes(
+    parsedAttributes,
+    jsSchemaOutputDir,
+    pythonSchemaOutputDir,
+    repositoryRoot,
+  );
 
   // Generate and write JavaScript code
   writeToJs(parsedAttributes, jsOutputFilePath, jsSearchOutputFilePath, schemaInfo);
@@ -246,12 +252,7 @@ function writeToJs(
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
   for (const { baseName, schemaNames } of schemaInfo) {
-    const importAlias = `_${baseName}_schemas`;
-    attributesContent += `import type { components as ${importAlias} } from './_schemas/_${baseName}';\n`;
-    for (const name of schemaNames) {
-      attributesContent += `export type ${name} = ${importAlias}['schemas']['${name}'];\n`;
-    }
-    attributesContent += '\n';
+    attributesContent += `export type { ${schemaNames.join(', ')} } from './_schemas/${baseName}';\n\n`;
   }
 
   // Reset memoization for fresh calculation
@@ -1620,12 +1621,12 @@ function generateMetadata(
   return { attributeMetadata: metadataDict, searchMetadata };
 }
 
-function generateSchemaTypes(
+async function generateSchemaTypes(
   parsedAttributes: ParsedAttribute[],
   jsOutputDir: string,
   pythonOutputDir: string,
   repositoryRoot: string,
-): SchemaTypeInfo[] {
+): Promise<SchemaTypeInfo[]> {
   const results: SchemaTypeInfo[] = [];
 
   for (const { attributeJson } of parsedAttributes) {
@@ -1645,10 +1646,13 @@ function generateSchemaTypes(
     const baseName = attributeJson.key.replaceAll('.', '_');
     const schemaNames = Object.keys(schemas);
 
-    const jsFile = path.join(jsOutputDir, `_${baseName}.ts`);
-    execSync(`npx openapi-typescript ${openapiFile} --output ${jsFile} --default-non-nullable false`, {
-      stdio: 'pipe',
+    const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
+    const tsSource = await compile(jsonSchema, '', {
+      unreachableDefinitions: true,
+      unknownAny: true,
     });
+    const jsFile = path.join(jsOutputDir, `${baseName}.ts`);
+    fs.writeFileSync(jsFile, tsSource);
 
     const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
     execSync(
