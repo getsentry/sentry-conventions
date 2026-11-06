@@ -8,7 +8,7 @@
   "is_in_otel": false,
   "example": 1,
   "deprecation": {
-    "reason": "A count can be calculcated from the value of the gen_ai.tool.call.result attribute.",
+    "reason": "A count can be calculated from the value of the gen_ai.tool.call.result attribute.",
     "_status": null
   },
   "visibility": "public",

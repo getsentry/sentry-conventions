@@ -10,7 +10,8 @@
   "examples": ["d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
+      "prs": [772],
       "description": "Added heroku.logplex.drain_token attribute"
     }
   ]
