@@ -19,8 +19,10 @@
         ]
       },
       "FunctionToolDefinition": {
-        "additionalProperties": true,
         "description": "Represents a tool definition in the form of a function that is executed on the client.",
+        "x-otel-deviation": [
+          "OTel allows arbitrary additional properties, while this definition does not."
+        ],
         "properties": {
           "type": {
             "const": "function",
@@ -37,7 +39,7 @@
             "description": "The description of the tool."
           },
           "parameters": {
-            "default": null,
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
             "description": "JSON Schema document describing the parameters accepted by the tool."
           }
         },
@@ -45,9 +47,11 @@
         "type": "object"
       },
       "ServerSideToolDefinition": {
-        "additionalProperties": true,
         "description": "Represents a tool definition for a capability that the model provider manages on the server.",
-        "x-otel-deviation": "OTel defines a GenericToolDefinition with a required name. In practice, tools are local functions or server-side capabilities, and the latter may only have a type.",
+        "x-otel-deviation": [
+          "OTel allows arbitrary additional properties, while this definition does not.",
+          "OTel defines a GenericToolDefinition with a required name. In practice, tools are local functions or server-side capabilities, and the latter may only have a type."
+        ],
         "properties": {
           "type": {
             "not": { "enum": ["function"] },
