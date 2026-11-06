@@ -12,7 +12,7 @@ class FunctionToolDefinition(TypedDict):
     type: Literal["function"]
     name: str
     description: NotRequired[str | None]
-    parameters: NotRequired[Any]
+    parameters: NotRequired[dict[str, Any] | None]
 
 
 class ServerSideToolDefinition(TypedDict):

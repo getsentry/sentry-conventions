@@ -20,9 +20,7 @@
       },
       "FunctionToolDefinition": {
         "description": "Represents a tool definition in the form of a function that is executed on the client.",
-        "x-otel-deviation": [
-          "OTel allows arbitrary additional properties, while this definition does not."
-        ],
+        "x-otel-deviation": ["OTel allows arbitrary additional properties, while this definition does not."],
         "properties": {
           "type": {
             "const": "function",
