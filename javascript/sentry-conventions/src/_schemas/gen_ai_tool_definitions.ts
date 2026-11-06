@@ -43,7 +43,6 @@ export interface FunctionToolDefinition {
   parameters?: {
     [k: string]: unknown;
   } | null;
-  [k: string]: unknown;
 }
 /**
  * Represents a tool definition for a capability that the model provider manages on the server.
@@ -64,5 +63,4 @@ export interface ServerSideToolDefinition {
    * The description of the tool.
    */
   description?: string | null;
-  [k: string]: unknown;
 }
