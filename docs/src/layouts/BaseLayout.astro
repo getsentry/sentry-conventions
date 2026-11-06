@@ -18,6 +18,20 @@ const currentPath = Astro.url.pathname;
 // and the actual host in dev; `pathname` already includes the base path.
 const canonicalUrl = new URL(currentPath, Astro.url).href;
 const ogImageUrl = new URL(`${import.meta.env.BASE_URL}og-image.png`, Astro.url).href;
+
+const base = import.meta.env.BASE_URL;
+const isHome = currentPath === base || currentPath === base + '/';
+const navItems = [
+  { label: 'Home', href: base, active: isHome },
+  { label: 'Attributes', href: `${base}attributes/`, active: currentPath.includes('/attributes') },
+  { label: 'Span Names', href: `${base}names/`, active: currentPath.includes('/names') },
+  { label: 'Span Descriptions', href: `${base}descriptions/`, active: currentPath.includes('/descriptions') },
+  { label: 'Span Operations', href: `${base}ops/`, active: currentPath.includes('/ops') },
+  { label: 'Metrics', href: `${base}metrics/`, active: currentPath.includes('/metrics') },
+];
+const githubUrl = 'https://github.com/getsentry/sentry-conventions';
+const navLinkActive = 'text-accent bg-accent-soft';
+const navLinkInactive = 'text-text-secondary hover:text-text-primary hover:bg-bg-hover';
 ---
 
 <!doctype html>
@@ -60,79 +74,17 @@ const ogImageUrl = new URL(`${import.meta.env.BASE_URL}og-image.png`, Astro.url)
             <span class="hidden md:inline">Sentry Conventions</span>
           </a>
           
-          <nav class="flex items-center gap-2">
-            <a
-              href={`${import.meta.env.BASE_URL}`}
-              class:list={[
-                "nav-link",
-                currentPath === import.meta.env.BASE_URL || currentPath === import.meta.env.BASE_URL + '/'
-                  ? "text-accent bg-accent-soft"
-                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
-              ]}
-            >
-              Home
-            </a>
-            <a
-              href={`${import.meta.env.BASE_URL}attributes/`}
-              class:list={[
-                "nav-link",
-                currentPath.includes('/attributes')
-                  ? "text-accent bg-accent-soft"
-                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
-              ]}
-            >
-              Attributes
-            </a>
-            <a
-              href={`${import.meta.env.BASE_URL}names/`}
-              class:list={[
-                "nav-link",
-                currentPath.includes('/names')
-                  ? "text-accent bg-accent-soft"
-                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
-              ]}
-            >
-              Span Names
-            </a>
-            <a
-              href={`${import.meta.env.BASE_URL}descriptions/`}
-              class:list={[
-                "nav-link",
-                currentPath.includes('/descriptions')
-                  ? "text-accent bg-accent-soft"
-                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
-              ]}
-            >
-              Span Descriptions
-            </a>
-            <a
-              href={`${import.meta.env.BASE_URL}ops/`}
-              class:list={[
-                "nav-link",
-                currentPath.includes('/ops')
-                  ? "text-accent bg-accent-soft"
-                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
-              ]}
-            >
-              Span Operations
-            </a>
-            <a
-              href={`${import.meta.env.BASE_URL}metrics/`}
-              class:list={[
-                "nav-link",
-                currentPath.includes('/metrics')
-                  ? "text-accent bg-accent-soft"
-                  : "text-text-secondary hover:text-text-primary hover:bg-bg-hover"
-              ]}
-            >
-              Metrics
-            </a>
-            <a
-              href="https://github.com/getsentry/sentry-conventions"
-              class="nav-link text-text-secondary hover:text-text-primary hover:bg-bg-hover"
-              target="_blank"
-              rel="noopener"
-            >
+          <nav class="hidden xl:flex items-center gap-2" aria-label="Main">
+            {navItems.map((item) => (
+              <a
+                href={item.href}
+                class:list={['nav-link', item.active ? navLinkActive : navLinkInactive]}
+                aria-current={item.active ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            ))}
+            <a href={githubUrl} class:list={['nav-link', navLinkInactive]} target="_blank" rel="noopener">
               GitHub
               <ExternalLinkIcon />
             </a>
@@ -151,6 +103,41 @@ const ogImageUrl = new URL(`${import.meta.env.BASE_URL}og-image.png`, Astro.url)
               </span>
             </button>
             <ThemeToggle client:load />
+            <div class="relative xl:hidden" id="nav-menu">
+              <button
+                type="button"
+                id="nav-menu-trigger"
+                class="flex items-center justify-center w-9 h-9 bg-bg-elevated border border-border rounded-md text-text-secondary cursor-pointer transition-all duration-fast hover:border-border-light hover:text-text-primary"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="nav-menu-panel"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="4" y1="6" x2="20" y2="6" />
+                  <line x1="4" y1="12" x2="20" y2="12" />
+                  <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
+              </button>
+              <nav
+                id="nav-menu-panel"
+                class="hidden absolute right-0 top-full mt-2 w-56 flex-col gap-1 p-2 bg-bg-elevated border border-border rounded-md shadow-lg"
+                aria-label="Main"
+              >
+                {navItems.map((item) => (
+                  <a
+                    href={item.href}
+                    class:list={['nav-link', item.active ? navLinkActive : navLinkInactive]}
+                    aria-current={item.active ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+                <a href={githubUrl} class:list={['nav-link', navLinkInactive]} target="_blank" rel="noopener">
+                  GitHub
+                  <ExternalLinkIcon />
+                </a>
+              </nav>
+            </div>
           </div>
         </div>
       </header>
@@ -177,5 +164,37 @@ const ogImageUrl = new URL(`${import.meta.env.BASE_URL}og-image.png`, Astro.url)
     
     <!-- Search modal - Svelte island -->
     <SearchModal client:load />
+
+    <script>
+      const menu = document.getElementById('nav-menu');
+      const trigger = document.getElementById('nav-menu-trigger');
+      const panel = document.getElementById('nav-menu-panel');
+
+      if (menu && trigger && panel) {
+        const setOpen = (open: boolean) => {
+          panel.classList.toggle('hidden', !open);
+          panel.classList.toggle('flex', open);
+          trigger.setAttribute('aria-expanded', String(open));
+          trigger.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        };
+
+        trigger.addEventListener('click', () => {
+          setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+        });
+
+        document.addEventListener('click', (event) => {
+          if (!menu.contains(event.target as Node)) {
+            setOpen(false);
+          }
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+            setOpen(false);
+            trigger.focus();
+          }
+        });
+      }
+    </script>
   </body>
 </html>
