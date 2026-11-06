@@ -8,6 +8,9 @@
   "is_in_otel": true,
   "example": "omegastar",
   "visibility": "public",
+  "additional_context": [
+    "See the [OpenTelemetry specification](https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-name)."
+  ],
   "changelog": [
     {
       "version": "0.1.0",

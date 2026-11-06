@@ -29487,6 +29487,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
+        additional_context=[
+            "See the [OpenTelemetry specification](https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-name)."
+        ],
     ),
     "service.version": AttributeMetadata(
         brief="The version string of the service API or implementation. The format is not defined by these conventions.",
@@ -29504,6 +29507,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+        additional_context=[
+            "See the [OpenTelemetry specification](https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-version)."
         ],
     ),
     "session.id": AttributeMetadata(
