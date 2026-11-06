@@ -1,0 +1,18 @@
+{
+  "key": "gen_ai.agent.version",
+  "brief": "The version of the GenAI agent.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": true,
+  "visibility": "public",
+  "examples": ["1.0.0", "2025-05-01"],
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [722],
+      "description": "Added gen_ai.agent.version attribute"
+    }
+  ]
+}
