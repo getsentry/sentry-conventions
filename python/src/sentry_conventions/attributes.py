@@ -6025,7 +6025,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_USAGE_TOTAL_TOKENS: Literal["gen_ai.usage.total_tokens"] = (
         "gen_ai.usage.total_tokens"
     )
-    """The total number of tokens used to process the prompt. (input tokens plus output todkens)
+    """The total number of tokens used to process the prompt. (input tokens plus output tokens)
 
     Type: int
     Apply Scrubbing: manual
@@ -21354,7 +21354,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
-        brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
+        brief="The total number of tokens used to process the prompt. (input tokens plus output tokens)",
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.total_tokens",
