@@ -5857,7 +5857,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.usage.input_tokens.cache_write, gen_ai.usage.cache_creation_input_tokens
-    Example: 100
+    Example: 20
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__cache_creation_input_tokens.json
@@ -5930,7 +5930,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.prompt_tokens.used, gen_ai.usage.prompt_tokens
-    Example: 10
+    Example: 100
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cache_write.json
@@ -5974,7 +5974,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.completion_tokens.used, gen_ai.usage.completion_tokens
-    Example: 10
+    Example: 130
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
@@ -6018,7 +6018,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.usage.output_tokens.reasoning
-    Example: 75
+    Example: 30
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
@@ -6032,7 +6032,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Aliases: ai.total_tokens.used, ai.usage.tokens
-    Example: 20
+    Example: 230
     """
 
     # Path: model/attributes/graphql/graphql__document.json
@@ -20980,7 +20980,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=100,
+        example=20,
         aliases=[
             "gen_ai.usage.input_tokens.cache_write",
             "gen_ai.usage.cache_creation_input_tokens",
@@ -21133,7 +21133,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=10,
+        example=100,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
             ChangelogEntry(
@@ -21247,7 +21247,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=10,
+        example=130,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
             ChangelogEntry(
@@ -21339,7 +21339,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=75,
+        example=30,
         aliases=["gen_ai.usage.output_tokens.reasoning"],
         changelog=[
             ChangelogEntry(
@@ -21364,7 +21364,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example=20,
+        example=230,
         aliases=["ai.total_tokens.used", "ai.usage.tokens"],
         changelog=[
             ChangelogEntry(

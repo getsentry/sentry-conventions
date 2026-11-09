@@ -10,7 +10,7 @@
     "key": "manual"
   },
   "is_in_otel": false,
-  "example": 20,
+  "example": 230,
   "alias": ["ai.total_tokens.used", "ai.usage.tokens"],
   "visibility": "public",
   "changelog": [
