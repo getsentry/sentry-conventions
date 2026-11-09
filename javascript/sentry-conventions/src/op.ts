@@ -19,7 +19,7 @@ export const NAVIGATION = 'navigation';
 export const NAVIGATION_REDIRECT = 'navigation.redirect';
 
 /**
- * Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified.
+ * Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be identified.
  */
 export const RESOURCE = 'resource';
 
