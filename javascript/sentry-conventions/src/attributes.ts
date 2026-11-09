@@ -9382,7 +9382,7 @@ export type GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
 
 /**
- * The list of source system tool definitions available to the GenAI agent or model. `gen_ai.tool.definitions`
+ * The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects. `gen_ai.tool.definitions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_DEFINITIONS_TYPE}
  *
@@ -30547,7 +30547,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'gen_ai.tool.definitions': {
-    brief: 'The list of source system tool definitions available to the GenAI agent or model.',
+    brief:
+      'The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.',
     type: 'string',
     keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
