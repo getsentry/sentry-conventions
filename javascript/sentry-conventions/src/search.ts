@@ -9142,7 +9142,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.request.reasoning.level': {
     canonicalName: 'gen_ai.request.reasoning.level',
     type: 'string',
-    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
+    brief: 'The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.',
     deprecationChain: ['gen_ai.request.reasoning.level'],
   },
   'gen_ai.request.schema': {

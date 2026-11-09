@@ -8839,7 +8839,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
 
 /**
- * The reasoning or thinking effort level requested for a GenAI model. `gen_ai.request.reasoning.level`
+ * The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider. `gen_ai.request.reasoning.level`
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_LEVEL_TYPE}
  *
@@ -30136,7 +30136,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.request.reasoning.level': {
-    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
+    brief: 'The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.',
     type: 'string',
     keys: ['gen_ai.request.reasoning.level'],
     applyScrubbing: {
