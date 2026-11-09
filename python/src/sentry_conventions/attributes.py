@@ -5760,7 +5760,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_TOOL_DEFINITIONS: Literal["gen_ai.tool.definitions"] = (
         "gen_ai.tool.definitions"
     )
-    """The list of source system tool definitions available to the GenAI agent or model.
+    """The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.
 
     Type: str
     Apply Scrubbing: manual
@@ -20822,7 +20822,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="gen_ai.tool.call.result.size", type="byte"),
     ),
     "gen_ai.tool.definitions": AttributeMetadata(
-        brief="The list of source system tool definitions available to the GenAI agent or model.",
+        brief="The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.tool.definitions",
