@@ -9826,7 +9826,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
 /**
- * The total number of tokens used to process the prompt. (input tokens plus output todkens) `gen_ai.usage.total_tokens`
+ * The total number of tokens used to process the prompt. (input tokens plus output tokens) `gen_ai.usage.total_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_TOKENS_TYPE}
  *
@@ -30995,7 +30995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.usage.total_tokens': {
-    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output tokens)',
     type: 'integer',
     keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
