@@ -5444,7 +5444,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_REQUEST_REASONING_LEVEL: Literal["gen_ai.request.reasoning.level"] = (
         "gen_ai.request.reasoning.level"
     )
-    """The reasoning or thinking effort level requested for a GenAI model.
+    """The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.
 
     Type: str
     Apply Scrubbing: manual
@@ -6025,7 +6025,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_USAGE_TOTAL_TOKENS: Literal["gen_ai.usage.total_tokens"] = (
         "gen_ai.usage.total_tokens"
     )
-    """The total number of tokens used to process the prompt. (input tokens plus output todkens)
+    """The total number of tokens used to process the prompt. (input tokens plus output tokens)
 
     Type: int
     Apply Scrubbing: manual
@@ -20361,7 +20361,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.request.reasoning.level": AttributeMetadata(
-        brief="The reasoning or thinking effort level requested for a GenAI model.",
+        brief="The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.",
         type=AttributeType.STRING,
         keys=("gen_ai.request.reasoning.level",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -21354,7 +21354,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
-        brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
+        brief="The total number of tokens used to process the prompt. (input tokens plus output tokens)",
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.total_tokens",
