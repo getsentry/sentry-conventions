@@ -8839,7 +8839,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
 
 /**
- * The reasoning or thinking effort level requested for a GenAI model. `gen_ai.request.reasoning.level`
+ * The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider. `gen_ai.request.reasoning.level`
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_LEVEL_TYPE}
  *
@@ -9554,7 +9554,7 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  *
  * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
- * @example 100
+ * @example 20
  */
 export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
 
@@ -9672,7 +9672,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
  *
  * Aliases: {@link AI_PROMPT_TOKENS_USED} `ai.prompt_tokens.used`, {@link GEN_AI_USAGE_PROMPT_TOKENS} `gen_ai.usage.prompt_tokens`
  *
- * @example 10
+ * @example 100
  */
 export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
 
@@ -9743,7 +9743,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE = number;
  *
  * Aliases: {@link AI_COMPLETION_TOKENS_USED} `ai.completion_tokens.used`, {@link GEN_AI_USAGE_COMPLETION_TOKENS} `gen_ai.usage.completion_tokens`
  *
- * @example 10
+ * @example 130
  */
 export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
 
@@ -9814,7 +9814,7 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  *
  * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} `gen_ai.usage.output_tokens.reasoning`
  *
- * @example 75
+ * @example 30
  */
 export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = 'gen_ai.usage.reasoning.output_tokens';
 
@@ -9826,7 +9826,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
 /**
- * The total number of tokens used to process the prompt. (input tokens plus output todkens) `gen_ai.usage.total_tokens`
+ * The total number of tokens used to process the prompt. (input tokens plus output tokens) `gen_ai.usage.total_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_TOKENS_TYPE}
  *
@@ -9837,7 +9837,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
  *
  * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
- * @example 20
+ * @example 230
  */
 export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
 
@@ -30136,7 +30136,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.request.reasoning.level': {
-    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
+    brief: 'The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.',
     type: 'string',
     keys: ['gen_ai.request.reasoning.level'],
     applyScrubbing: {
@@ -30703,7 +30703,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 100,
+    example: 20,
     aliases: ['gen_ai.usage.input_tokens.cache_write', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
       { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
@@ -30819,7 +30819,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
+    example: 100,
     aliases: ['ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     changelog: [
       {
@@ -30907,7 +30907,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
+    example: 130,
     aliases: ['ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     changelog: [
       {
@@ -30986,7 +30986,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 75,
+    example: 30,
     aliases: ['gen_ai.usage.output_tokens.reasoning'],
     changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
     additionalContext: [
@@ -30995,7 +30995,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.usage.total_tokens': {
-    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output tokens)',
     type: 'integer',
     keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
@@ -31003,7 +31003,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 20,
+    example: 230,
     aliases: ['ai.total_tokens.used', 'ai.usage.tokens'],
     changelog: [
       { version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens as an alias' },
