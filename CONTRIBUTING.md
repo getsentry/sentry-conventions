@@ -60,6 +60,32 @@ After you've created an attribute, the script will ask if you'd like to generate
 
 If you need help, run `yarn run create:attribute --help` to see the available options.
 
+### Namespaces
+
+Each top-level namespace in `model/attributes/<namespace>/` has a `README.md` that describes what belongs in the namespace and what doesn't. Read it before you add an attribute to the namespace. The `create:attribute` script shows it after you enter the key.
+
+The README starts with YAML frontmatter, followed by optional Markdown for anything the lists can't express:
+
+```markdown
+---
+namespace: http
+brief: Describes HTTP requests and responses, on the client and on the server.
+includes:
+  - Request and response data (method, status, headers, body, size)
+excludes:
+  - description: The URL that was requested, and its parts
+    see: url
+---
+
+Optional notes, such as exceptions to the rules above.
+```
+
+- `brief`: what the namespace describes, in one or two sentences.
+- `includes` (optional): the kinds of attributes that belong in the namespace.
+- `excludes` (optional): the kinds of attributes that look like they belong in the namespace but don't. `see` names the existing namespace they belong in instead.
+
+If your attribute starts a new namespace, the `create:attribute` script asks for a `brief` (pass `--namespace_brief` in non-interactive mode) and creates the README. Add `includes` and `excludes` before you open the PR. Reviewers judge a new namespace by its README.
+
 ### Dynamic attribute keys
 
 Use `<key>` for a dynamic segment in an attribute key. Set `has_dynamic_suffix: true` only when the key ends with `.<key>`, such as `mcp.request.argument.<key>`. This also generates a JavaScript `_BASE` constant for appending the suffix.
@@ -136,6 +162,7 @@ For detailed instructions on releasing new versions and updating downstream repo
 Here's a list of policies that any newly added attributes MUST follow. Most of these are automatically enforced by the test suite.
 
 - The attribute MUST be namespaced. Example: `nextjs.function_id`, not `function_id`.
+- A new top-level namespace MUST come with a `README.md` that describes it (see [Namespaces](#namespaces)). Namespaces in `test/undocumented-namespaces.ts` predate this rule. Remove a namespace from that list when you add its README.
 - Use dots as separators for namespaces and logical grouoing, not underscores (`http.request.method`, not `http_request_method`)
 - Use `snake_case` for multi-word names (`browser.web_vital.ttfb.request_time`, not `browser.webVital.ttfb.request-time`)
   - Exception: For names where the separating delimiter is already established in the ecosystem, do not convert them to snake_case. For example, http headers like `user-agent` SHOULD keep the separating `-` to retain integrity of the value. Other examples are parameter names (URL, Routing, DB query parameters, etc).
