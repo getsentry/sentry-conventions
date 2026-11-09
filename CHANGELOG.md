@@ -1,3 +1,31 @@
+## 0.32.0
+
+### New Features ✨
+
+- (docs) Serve docs from conventions.sentry.dev by @cleptric in [#775](https://github.com/getsentry/sentry-conventions/pull/775)
+
+### Bug Fixes 🐛
+
+#### Attributes
+
+- Describe parts message shape for `gen_ai.input.messages` by @cleptric and @claude in [#782](https://github.com/getsentry/sentry-conventions/pull/782)
+- Document JSON parts shape for `gen_ai.system_instructions` by @andreiborza and @claude in [#779](https://github.com/getsentry/sentry-conventions/pull/779)
+
+#### Other
+
+- (docs) Collapse header nav into a menu on narrow screens by @evanpurkhiser with @sentry-junior in [#780](https://github.com/getsentry/sentry-conventions/pull/780)
+- Fix typos in attribute, op, and measurement descriptions by @cleptric in [#776](https://github.com/getsentry/sentry-conventions/pull/776)
+
+### Documentation 📚
+
+- (attributes) Reserve enrichment namespace by @vgrozdanic and @cleptric in [#773](https://github.com/getsentry/sentry-conventions/pull/773)
+
+### Internal Changes 🔧
+
+- Remove Claude settings by @cleptric and @claude in [#778](https://github.com/getsentry/sentry-conventions/pull/778)
+- Deprecate `gen_ai.rerank` op by @alexander-alderman-webb in [#765](https://github.com/getsentry/sentry-conventions/pull/765)
+- Add andreiborza as CODEOWNER by @alexander-alderman-webb in [#774](https://github.com/getsentry/sentry-conventions/pull/774)
+
 ## 0.31.0
 
 ### New Features ✨
