@@ -9470,7 +9470,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.usage.total_tokens': {
     canonicalName: 'gen_ai.usage.total_tokens',
     type: 'integer',
-    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output tokens)',
     deprecationChain: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
   },
   'graphql.document': {
