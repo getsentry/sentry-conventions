@@ -1,0 +1,18 @@
+{
+  "key": "heroku.router.connect",
+  "brief": "Time in milliseconds the Heroku router spent establishing a connection to the dyno",
+  "type": "double",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [0, 0.5, 6],
+  "changelog": [
+    {
+      "version": "0.31.0",
+      "prs": [772],
+      "description": "Added heroku.router.connect attribute"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 {
   "key": "gen_ai.system_instructions",
-  "brief": "The system instructions passed to the model.",
+  "brief": "The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: \"text\", content: \"...\"}`.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "You are a helpful assistant",
+  "example": "[{\"type\": \"text\", \"content\": \"You are a helpful assistant.\"}, {\"type\": \"text\", \"content\": \"Be concise and clear.\"}]",
   "alias": ["ai.preamble"],
   "visibility": "public",
   "changelog": [
