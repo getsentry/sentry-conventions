@@ -1,7 +1,9 @@
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { getAttributeExamples } from './attribute_examples';
 import type { AttributeJson, AttributeValue } from './types';
+import { attributeKeyToFileName } from './utils';
 
 interface GenerateAttributesOptions {
   attributesDir: string;
@@ -10,10 +12,21 @@ interface GenerateAttributesOptions {
   pythonOutputFilePath: string;
 }
 
+type ParsedAttribute = {
+  file: string;
+  attributeJson: AttributeJson;
+};
+
 type AttributeDefinition = {
   key: string;
   attributeJson: AttributeJson;
 };
+
+interface SchemaTypeInfo {
+  baseName: string;
+  schemaNames: string[];
+  attributeKey: string;
+}
 
 /**
  * Deprecation statuses where the ingestion pipeline rewrites the value onto the replacement
@@ -181,15 +194,23 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
       : path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'search.ts'));
   const pythonOutputFilePath =
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
+  const pythonSchemaOutputDir = path.join(path.dirname(pythonOutputFilePath), '_schemas');
 
   // Get all JSON files recursively
   const attributeFiles = await getAllJsonFiles(attributesDir);
+  const parsedAttributes = attributeFiles.map((file) => ({
+    file,
+    attributeJson: JSON.parse(fs.readFileSync(path.join(attributesDir, file), 'utf-8')) as AttributeJson,
+  }));
+
+  fs.mkdirSync(pythonSchemaOutputDir, { recursive: true });
+  const schemaInfo = generateSchemaTypes(parsedAttributes, pythonSchemaOutputDir, repositoryRoot);
 
   // Generate and write JavaScript code
-  writeToJs(attributesDir, attributeFiles, jsOutputFilePath, jsSearchOutputFilePath);
+  writeToJs(parsedAttributes, jsOutputFilePath, jsSearchOutputFilePath);
 
   // Generate and write Python code
-  writeToPython(attributesDir, attributeFiles, pythonOutputFilePath);
+  writeToPython(parsedAttributes, pythonOutputFilePath, schemaInfo);
 }
 
 async function getAllJsonFiles(dir: string): Promise<string[]> {
@@ -214,12 +235,7 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
   return allFiles;
 }
 
-function writeToJs(
-  attributesDir: string,
-  attributeFiles: string[],
-  outputFilePath: string,
-  searchOutputFilePath: string,
-) {
+function writeToJs(parsedAttributes: ParsedAttribute[], outputFilePath: string, searchOutputFilePath: string) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
   // Reset memoization for fresh calculation
@@ -236,9 +252,7 @@ function writeToJs(
     isDeprecated: boolean;
   }> = [];
 
-  for (const file of attributeFiles) {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
+  for (const { file, attributeJson } of parsedAttributes) {
     const isDeprecated = !!attributeJson.deprecation;
 
     allAttributesPartial.push({
@@ -532,7 +546,7 @@ function getTsType(type: AttributeJson['type']): string {
   }
 }
 
-function writeToPython(attributesDir: string, attributeFiles: string[], outputFilePath: string) {
+function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: string, schemaInfo: SchemaTypeInfo[] = []) {
   let content = `"""`;
   content +=
     "A collection of attribute names with helpers to retrieve an attribute's metadata, as defined in the Sentry Semantic Conventions registry.";
@@ -542,6 +556,13 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += 'from dataclasses import dataclass\n';
   content += 'from enum import Enum\n';
   content += 'from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union\n\n';
+
+  for (const { baseName, schemaNames } of schemaInfo) {
+    content += `from ._schemas.${baseName} import ${schemaNames.join(', ')}  # noqa: E402\n`;
+  }
+  if (schemaInfo.length > 0) {
+    content += '\n';
+  }
 
   content += 'AttributeValue = Union[str, int, float, bool, List[str], List[int], List[float], List[bool]]\n\n';
 
@@ -678,14 +699,10 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   let metadataDict = '';
   const attributeNames: string[] = [];
   const deprecatedAttributes: { name: string; replacement?: string }[] = [];
-  const allAttributes: AttributeDefinition[] = attributeFiles.map((file) => {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-    return {
-      key: attributeJson.key,
-      attributeJson,
-    };
-  });
+  const allAttributes: AttributeDefinition[] = parsedAttributes.map(({ attributeJson }) => ({
+    key: attributeJson.key,
+    attributeJson,
+  }));
   assertUniqueSearchAliases(allAttributes);
   const attributeKeyChains = deriveAttributeKeyChains(allAttributes);
 
@@ -726,10 +743,7 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    """Contains all attribute names as class attributes with their documentation."""\n\n';
 
   // Generate class attributes instead of top-level constants
-  for (const file of attributeFiles) {
-    const attributePath = path.join(attributesDir, file);
-    const attributeJson = JSON.parse(fs.readFileSync(attributePath, 'utf-8')) as AttributeJson;
-
+  for (const { file, attributeJson } of parsedAttributes) {
     const { key, brief, type, apply_scrubbing, is_in_otel, has_dynamic_suffix, deprecation, alias } = attributeJson;
     const examples = getAttributeExamples(attributeJson);
     const visibility = getVisibility(attributeJson);
@@ -920,6 +934,11 @@ function writeToPython(attributesDir: string, attributeFiles: string[], outputFi
   content += '    "ATTRIBUTE_METADATA",\n';
   content += '    "Attributes",\n';
   content += '    "ATTRIBUTE_NAMES",\n';
+  for (const { schemaNames } of schemaInfo) {
+    for (const name of schemaNames) {
+      content += `    "${name}",\n`;
+    }
+  }
   content += ']\n\n';
 
   // Write the generated content to the file
@@ -1583,4 +1602,40 @@ function generateMetadata(
   searchMetadata += '};\n\n';
 
   return { attributeMetadata: metadataDict, searchMetadata };
+}
+
+function generateSchemaTypes(
+  parsedAttributes: ParsedAttribute[],
+  pythonOutputDir: string,
+  repositoryRoot: string,
+): SchemaTypeInfo[] {
+  const results: SchemaTypeInfo[] = [];
+
+  for (const { attributeJson } of parsedAttributes) {
+    const openapiFile = path.join(
+      repositoryRoot,
+      'schemas',
+      attributeKeyToFileName(attributeJson.key).replace('.json', '.openapi.json'),
+    );
+    if (!fs.existsSync(openapiFile)) continue;
+
+    const openapi = JSON.parse(fs.readFileSync(openapiFile, 'utf-8')) as {
+      components?: { schemas?: Record<string, unknown> };
+    };
+    const schemas = openapi?.components?.schemas;
+    if (!schemas) continue;
+
+    const baseName = attributeJson.key.replaceAll('.', '_');
+    const schemaNames = Object.keys(schemas);
+
+    const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
+    execSync(
+      `uv run --group schema-codegen datamodel-codegen --input ${openapiFile} --input-file-type openapi --output-model-type typing.TypedDict --no-use-closed-typed-dict --disable-timestamp --output ${pythonFile}`,
+      { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
+    );
+
+    results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
+  }
+
+  return results;
 }

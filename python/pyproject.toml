@@ -24,3 +24,6 @@ dev = [
     "pyflakes>=3.2.0",
     "pytest>=9.0.3; python_version>='3.10'",
 ]
+schema-codegen = [
+    "datamodel-code-generator>=0.89.0; python_version>='3.11'",
+]
