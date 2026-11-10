@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { compile } from 'json-schema-to-typescript';
 import { getAttributeExamples } from './attribute_examples';
 import type { AttributeJson, AttributeValue } from './types';
 import { attributeKeyToFileName } from './utils';
@@ -194,6 +195,7 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
       : path.join(repositoryRoot, 'javascript', 'sentry-conventions', 'src', 'search.ts'));
   const pythonOutputFilePath =
     options?.pythonOutputFilePath ?? path.join(repositoryRoot, 'python', 'src', 'sentry_conventions', 'attributes.py');
+  const jsSchemaOutputDir = path.join(path.dirname(jsOutputFilePath), '_schemas');
   const pythonSchemaOutputDir = path.join(path.dirname(pythonOutputFilePath), '_schemas');
 
   // Get all JSON files recursively
@@ -203,11 +205,17 @@ export async function generateAttributes(options?: Partial<GenerateAttributesOpt
     attributeJson: JSON.parse(fs.readFileSync(path.join(attributesDir, file), 'utf-8')) as AttributeJson,
   }));
 
+  fs.mkdirSync(jsSchemaOutputDir, { recursive: true });
   fs.mkdirSync(pythonSchemaOutputDir, { recursive: true });
-  const schemaInfo = generateSchemaTypes(parsedAttributes, pythonSchemaOutputDir, repositoryRoot);
+  const schemaInfo = await generateSchemaTypes(
+    parsedAttributes,
+    jsSchemaOutputDir,
+    pythonSchemaOutputDir,
+    repositoryRoot,
+  );
 
   // Generate and write JavaScript code
-  writeToJs(parsedAttributes, jsOutputFilePath, jsSearchOutputFilePath);
+  writeToJs(parsedAttributes, jsOutputFilePath, jsSearchOutputFilePath, schemaInfo);
 
   // Generate and write Python code
   writeToPython(parsedAttributes, pythonOutputFilePath, schemaInfo);
@@ -235,8 +243,17 @@ async function getAllJsonFiles(dir: string): Promise<string[]> {
   return allFiles;
 }
 
-function writeToJs(parsedAttributes: ParsedAttribute[], outputFilePath: string, searchOutputFilePath: string) {
+function writeToJs(
+  parsedAttributes: ParsedAttribute[],
+  outputFilePath: string,
+  searchOutputFilePath: string,
+  schemaInfo: SchemaTypeInfo[] = [],
+) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
+
+  for (const { baseName, schemaNames } of schemaInfo) {
+    attributesContent += `export type { ${schemaNames.join(', ')} } from './_schemas/${baseName}';\n\n`;
+  }
 
   // Reset memoization for fresh calculation
   constantNameMemo.clear();
@@ -1604,11 +1621,12 @@ function generateMetadata(
   return { attributeMetadata: metadataDict, searchMetadata };
 }
 
-function generateSchemaTypes(
+async function generateSchemaTypes(
   parsedAttributes: ParsedAttribute[],
+  jsOutputDir: string,
   pythonOutputDir: string,
   repositoryRoot: string,
-): SchemaTypeInfo[] {
+): Promise<SchemaTypeInfo[]> {
   const results: SchemaTypeInfo[] = [];
 
   for (const { attributeJson } of parsedAttributes) {
@@ -1627,6 +1645,14 @@ function generateSchemaTypes(
 
     const baseName = attributeJson.key.replaceAll('.', '_');
     const schemaNames = Object.keys(schemas);
+
+    const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
+    const tsSource = await compile(jsonSchema, '', {
+      unreachableDefinitions: true,
+      unknownAny: true,
+    });
+    const jsFile = path.join(jsOutputDir, `${baseName}.ts`);
+    fs.writeFileSync(jsFile, tsSource);
 
     const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
     execSync(

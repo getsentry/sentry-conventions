@@ -1,5 +1,12 @@
 // This is an auto-generated file. Do not edit!
 
+export type {
+  ToolDefinitions,
+  ToolDefinition,
+  FunctionToolDefinition,
+  ServerSideToolDefinition,
+} from './_schemas/gen_ai_tool_definitions';
+
 // Path: model/attributes/address.json
 
 /**
