@@ -1,3 +1,23 @@
+## 0.33.0
+
+### Bug Fixes 🐛
+
+#### Attributes
+
+- Make `gen_ai.usage.*` token examples consistent by @cleptric and @claude in [#788](https://github.com/getsentry/sentry-conventions/pull/788)
+- Note provider-specific values for `gen_ai.request.reasoning.level` by @cleptric and @claude in [#786](https://github.com/getsentry/sentry-conventions/pull/786)
+- Fix typo in `gen_ai.usage.total_tokens` brief by @cleptric and @claude in [#787](https://github.com/getsentry/sentry-conventions/pull/787)
+- Say `gen_ai.tool.definitions` must be stringified by @cleptric and @claude in [#785](https://github.com/getsentry/sentry-conventions/pull/785)
+- Document reasoning parts for `gen_ai.*.messages` by @cleptric and @claude in [#784](https://github.com/getsentry/sentry-conventions/pull/784)
+
+### Documentation 📚
+
+- Fix intro wording in README and docs landing page by @cleptric and @claude in [#777](https://github.com/getsentry/sentry-conventions/pull/777)
+
+### Internal Changes 🔧
+
+- Bump GitHub Actions to Node 24 versions by @cleptric and @claude in [#783](https://github.com/getsentry/sentry-conventions/pull/783)
+
 ## 0.32.0
 
 ### New Features ✨
