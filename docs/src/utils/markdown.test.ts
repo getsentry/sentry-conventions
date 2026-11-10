@@ -10,7 +10,7 @@ describe('renderInlineMarkdown', () => {
     const html = renderInlineMarkdown(attribute.brief);
     expect(html).toContain('<code>role</code>');
     expect(html).toContain('<code>&quot;user&quot;</code>');
-    expect(html).toContain('<code>{type: &quot;text&quot;, text:&quot;...&quot;}</code>');
+    expect(html).toContain('<code>{type: &quot;text&quot;, content: &quot;...&quot;}</code>');
     expect(html).not.toContain('`');
     expect(html).not.toContain('<p>');
   });

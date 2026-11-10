@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.output.messages",
-  "brief": "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
+  "brief": "The model's response messages. It has to be a stringified version of an array of message objects in the format `{role: \"assistant\", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: \"text\", content: \"...\"}`. Other part types include `\"reasoning\"` and `\"tool_call\"`. Put the model's thinking in a `{type: \"reasoning\", content: \"...\"}` part, not a `\"text\"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"

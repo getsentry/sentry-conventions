@@ -148,6 +148,11 @@ Here's a list of policies that any newly added attributes MUST follow. Most of t
   - If the value cannot be copied directly to the replacement attribute, use `_status: "transform"` and reference an attribute transformation with `deprecation.transformation`.
 - Prefer keeping names stable. Renames require deprecation cycles across all SDKs that adopted the attribute!
 
+#### Reserved namespaces
+
+- `sentry.enrichment.*` is reserved for attributes produced by Sentry classifiers. The namespace does not
+  define a common suffix or value type; each classifier definition supplies both.
+
 #### Fixing a misnamed attribute
 
 If an attribute was merged with the wrong name (for example, a typo or a name that doesn't match what Relay or SDKs actually emit), do not rename or delete the existing definition. Instead:

@@ -31,7 +31,7 @@
   ],
   "changelog": [
     {
-      "version": "next",
+      "version": "0.31.0",
       "prs": [740],
       "description": "Added page.server_rendering.type attribute"
     }

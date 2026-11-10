@@ -924,7 +924,7 @@ wheels = [
 
 [[package]]
 name = "sentry-conventions"
-version = "0.30.0"
+version = "0.33.0"
 source = { virtual = "." }
 
 [package.dev-dependencies]
