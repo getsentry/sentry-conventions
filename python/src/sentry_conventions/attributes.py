@@ -3810,7 +3810,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
+    DEPRECATED: Use db.query.parameter.<key> instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.
     Example: ["1","foo"]
     """
 
@@ -5163,7 +5163,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__input__messages.json
     GEN_AI_INPUT_MESSAGES: Literal["gen_ai.input.messages"] = "gen_ai.input.messages"
-    """The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.
+    """The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.
 
     Type: str
     Apply Scrubbing: manual
@@ -5288,7 +5288,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/gen_ai/gen_ai__output__messages.json
     GEN_AI_OUTPUT_MESSAGES: Literal["gen_ai.output.messages"] = "gen_ai.output.messages"
-    """The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.
+    """The model's response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.
 
     Type: str
     Apply Scrubbing: manual
@@ -5451,7 +5451,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_REQUEST_REASONING_LEVEL: Literal["gen_ai.request.reasoning.level"] = (
         "gen_ai.request.reasoning.level"
     )
-    """The reasoning or thinking effort level requested for a GenAI model.
+    """The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.
 
     Type: str
     Apply Scrubbing: manual
@@ -5711,14 +5711,14 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
         "gen_ai.system_instructions"
     )
-    """The system instructions passed to the model.
+    """The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.
 
     Type: str
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.preamble
-    Example: "You are a helpful assistant"
+    Example: "[{\"type\": \"text\", \"content\": \"You are a helpful assistant.\"}, {\"type\": \"text\", \"content\": \"Be concise and clear.\"}]"
     """
 
     # Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
@@ -5767,7 +5767,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_TOOL_DEFINITIONS: Literal["gen_ai.tool.definitions"] = (
         "gen_ai.tool.definitions"
     )
-    """The list of source system tool definitions available to the GenAI agent or model.
+    """The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.
 
     Type: str
     Apply Scrubbing: manual
@@ -5864,7 +5864,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.usage.input_tokens.cache_write, gen_ai.usage.cache_creation_input_tokens
-    Example: 100
+    Example: 20
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__cache_creation_input_tokens.json
@@ -5937,7 +5937,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.prompt_tokens.used, gen_ai.usage.prompt_tokens
-    Example: 10
+    Example: 100
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__input_tokens__cache_write.json
@@ -5981,7 +5981,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: ai.completion_tokens.used, gen_ai.usage.completion_tokens
-    Example: 10
+    Example: 130
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__output_tokens__reasoning.json
@@ -6025,21 +6025,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: Yes
     Visibility: public
     Aliases: gen_ai.usage.output_tokens.reasoning
-    Example: 75
+    Example: 30
     """
 
     # Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
     GEN_AI_USAGE_TOTAL_TOKENS: Literal["gen_ai.usage.total_tokens"] = (
         "gen_ai.usage.total_tokens"
     )
-    """The total number of tokens used to process the prompt. (input tokens plus output todkens)
+    """The total number of tokens used to process the prompt. (input tokens plus output tokens)
 
     Type: int
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
     Aliases: ai.total_tokens.used, ai.usage.tokens
-    Example: 20
+    Example: 230
     """
 
     # Path: model/attributes/graphql/graphql__document.json
@@ -6323,6 +6323,97 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: device.processor_count
     DEPRECATED: Use device.processor_count instead - Old namespace-less attribute, to be replaced with device.processor_count for span-first future
     Example: "14"
+    """
+
+    # Path: model/attributes/heroku/heroku__dyno__name.json
+    HEROKU_DYNO_NAME: Literal["heroku.dyno.name"] = "heroku.dyno.name"
+    """Name of the Heroku dyno serving the request or emitting telemetry
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "web.1"
+    Example: "web-12a34bcd56-7efgh"
+    """
+
+    # Path: model/attributes/heroku/heroku__error__code.json
+    HEROKU_ERROR_CODE: Literal["heroku.error.code"] = "heroku.error.code"
+    """Heroku error code reported by a router or platform log
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "H12"
+    Example: "R14"
+    Example: "L10"
+    """
+
+    # Path: model/attributes/heroku/heroku__error__description.json
+    HEROKU_ERROR_DESCRIPTION: Literal["heroku.error.description"] = (
+        "heroku.error.description"
+    )
+    """Description of the Heroku error reported by a router or platform log
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "Request timeout"
+    Example: "Memory quota exceeded"
+    """
+
+    # Path: model/attributes/heroku/heroku__logplex__drain_token.json
+    HEROKU_LOGPLEX_DRAIN_TOKEN: Literal["heroku.logplex.drain_token"] = (
+        "heroku.logplex.drain_token"
+    )
+    """Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__connect.json
+    HEROKU_ROUTER_CONNECT: Literal["heroku.router.connect"] = "heroku.router.connect"
+    """Time in milliseconds the Heroku router spent establishing a connection to the dyno
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 0.5
+    Example: 6
+    """
+
+    # Path: model/attributes/heroku/heroku__router__request_id.json
+    HEROKU_ROUTER_REQUEST_ID: Literal["heroku.router.request_id"] = (
+        "heroku.router.request_id"
+    )
+    """Request identifier reported by the Heroku router
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: "6903a168-b79b-ec27-03c8-b8f64d8d8792"
+    """
+
+    # Path: model/attributes/heroku/heroku__router__service.json
+    HEROKU_ROUTER_SERVICE: Literal["heroku.router.service"] = "heroku.router.service"
+    """Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 12.5
+    Example: 30001
     """
 
     # Path: model/attributes/http/http__client_ip.json
@@ -7881,7 +7972,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    DEPRECATED: No replacement at this time - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
+    DEPRECATED: No replacement at this time - A count can be calculated from the value of the gen_ai.tool.call.result attribute.
     Example: 1
     """
 
@@ -8721,7 +8812,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
 
     # Path: model/attributes/navigation/navigation__origin.json
     NAVIGATION_ORIGIN: Literal["navigation.origin"] = "navigation.origin"
-    """The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.
+    """The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.
 
     Type: str
     Apply Scrubbing: auto
@@ -11520,6 +11611,31 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Aliases: app.vitals.ttid.value
     DEPRECATED: Use app.vitals.ttid.value instead - Replaced by app.vitals.ttid.value to align with the app.vitals.* namespace for mobile performance attributes
     Example: 1234.56
+    """
+
+    # Path: model/attributes/tls/tls__protocol__name.json
+    TLS_PROTOCOL_NAME: Literal["tls.protocol.name"] = "tls.protocol.name"
+    """Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "tls"
+    Example: "ssl"
+    """
+
+    # Path: model/attributes/tls/tls__protocol__version.json
+    TLS_PROTOCOL_VERSION: Literal["tls.protocol.version"] = "tls.protocol.version"
+    """Numeric part of the version parsed from the negotiated SSL/TLS protocol version
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: Yes
+    Visibility: public
+    Example: "1.2"
+    Example: "1.3"
+    Example: "3"
     """
 
     # Path: model/attributes/transaction.json
@@ -17812,7 +17928,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example=["1", "foo"],
         deprecation=DeprecationInfo(
             replacement="db.query.parameter.<key>",
-            reason="Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.",
+            reason="Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.",
         ),
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[61]),
@@ -18799,7 +18915,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["myBucketName", "myDbName"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.document.collection attribute"
+                version="0.31.0",
+                prs=[747],
+                description="Added faas.document.collection attribute",
             ),
         ],
     ),
@@ -18814,7 +18932,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["myFile.txt", "myTableName"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.document.name attribute"
+                version="0.31.0",
+                prs=[747],
+                description="Added faas.document.name attribute",
             ),
         ],
     ),
@@ -18829,7 +18949,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["insert", "edit", "delete"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.document.operation attribute"
+                version="0.31.0",
+                prs=[747],
+                description="Added faas.document.operation attribute",
             ),
         ],
         additional_context=[
@@ -18850,7 +18972,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["2020-01-23T13:47:06Z"],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added faas.document.time attribute"
+                version="0.31.0",
+                prs=[747],
+                description="Added faas.document.time attribute",
             ),
         ],
     ),
@@ -18951,7 +19075,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de",
         examples=["2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de"],
         changelog=[
-            ChangelogEntry(version="next", description="Added faas.instance attribute"),
+            ChangelogEntry(
+                version="0.31.0", prs=[748], description="Added faas.instance attribute"
+            ),
         ],
         additional_context=["For AWS Lambda, use the (full) log stream name."],
     ),
@@ -19799,7 +19925,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.input.messages": AttributeMetadata(
-        brief='The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
+        brief='The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.input.messages",
@@ -19968,7 +20094,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.output.messages": AttributeMetadata(
-        brief="The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
+        brief='The model\'s response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.output.messages",
@@ -20242,7 +20368,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.request.reasoning.level": AttributeMetadata(
-        brief="The reasoning or thinking effort level requested for a GenAI model.",
+        brief="The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.",
         type=AttributeType.STRING,
         keys=("gen_ai.request.reasoning.level",),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
@@ -20618,7 +20744,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
-        brief="The system instructions passed to the model.",
+        brief='The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.system_instructions",
@@ -20628,7 +20754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example="You are a helpful assistant",
+        example='[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
         aliases=["ai.preamble"],
         changelog=[
             ChangelogEntry(version="0.5.0", prs=[264]),
@@ -20703,7 +20829,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         search_alias=SearchAlias(name="gen_ai.tool.call.result.size", type="byte"),
     ),
     "gen_ai.tool.definitions": AttributeMetadata(
-        brief="The list of source system tool definitions available to the GenAI agent or model.",
+        brief="The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.tool.definitions",
@@ -20861,7 +20987,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=100,
+        example=20,
         aliases=[
             "gen_ai.usage.input_tokens.cache_write",
             "gen_ai.usage.cache_creation_input_tokens",
@@ -21014,7 +21140,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=10,
+        example=100,
         aliases=["ai.prompt_tokens.used", "gen_ai.usage.prompt_tokens"],
         changelog=[
             ChangelogEntry(
@@ -21128,7 +21254,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=10,
+        example=130,
         aliases=["ai.completion_tokens.used", "gen_ai.usage.completion_tokens"],
         changelog=[
             ChangelogEntry(
@@ -21220,7 +21346,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
-        example=75,
+        example=30,
         aliases=["gen_ai.usage.output_tokens.reasoning"],
         changelog=[
             ChangelogEntry(
@@ -21235,7 +21361,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.usage.total_tokens": AttributeMetadata(
-        brief="The total number of tokens used to process the prompt. (input tokens plus output todkens)",
+        brief="The total number of tokens used to process the prompt. (input tokens plus output tokens)",
         type=AttributeType.INTEGER,
         keys=(
             "gen_ai.usage.total_tokens",
@@ -21245,7 +21371,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
-        example=20,
+        example=230,
         aliases=["ai.total_tokens.used", "ai.usage.tokens"],
         changelog=[
             ChangelogEntry(
@@ -21656,6 +21782,140 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[281, 300],
                 description="Added and deprecated attribute to document JS SDK's current behaviour",
             ),
+        ],
+    ),
+    "heroku.dyno.name": AttributeMetadata(
+        brief="Name of the Heroku dyno serving the request or emitting telemetry",
+        type=AttributeType.STRING,
+        keys=("heroku.dyno.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="web.1",
+        examples=["web.1", "web-12a34bcd56-7efgh"],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.dyno.name attribute",
+            ),
+        ],
+        additional_context=[
+            "A dyno name is distinct from the dyno ID or service.instance.id. Do not manufacture those identifiers from this value."
+        ],
+    ),
+    "heroku.error.code": AttributeMetadata(
+        brief="Heroku error code reported by a router or platform log",
+        type=AttributeType.STRING,
+        keys=("heroku.error.code",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="H12",
+        examples=["H12", "R14", "L10"],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.error.code attribute",
+            ),
+        ],
+        additional_context=[
+            "Preserves the provider-specific code from the router code field or a platform error message."
+        ],
+    ),
+    "heroku.error.description": AttributeMetadata(
+        brief="Description of the Heroku error reported by a router or platform log",
+        type=AttributeType.STRING,
+        keys=("heroku.error.description",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Request timeout",
+        examples=["Request timeout", "Memory quota exceeded"],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.error.description attribute",
+            ),
+        ],
+        additional_context=[
+            "A router or platform error description does not imply that an exception was thrown"
+        ],
+    ),
+    "heroku.logplex.drain_token": AttributeMetadata(
+        brief="Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header",
+        type=AttributeType.STRING,
+        keys=("heroku.logplex.drain_token",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="d.73ea7440-270a-435a-a0ea-adf50b4e5f5a",
+        examples=["d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.logplex.drain_token attribute",
+            ),
+        ],
+    ),
+    "heroku.router.connect": AttributeMetadata(
+        brief="Time in milliseconds the Heroku router spent establishing a connection to the dyno",
+        type=AttributeType.DOUBLE,
+        keys=("heroku.router.connect",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 0.5, 6],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.router.connect attribute",
+            ),
+        ],
+    ),
+    "heroku.router.request_id": AttributeMetadata(
+        brief="Request identifier reported by the Heroku router",
+        type=AttributeType.STRING,
+        keys=("heroku.router.request_id",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="6903a168-b79b-ec27-03c8-b8f64d8d8792",
+        examples=["6903a168-b79b-ec27-03c8-b8f64d8d8792"],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.router.request_id attribute",
+            ),
+        ],
+        additional_context=[
+            "Heroku generates or accepts this identifier and forwards it to the application in the X-Request-ID header."
+        ],
+    ),
+    "heroku.router.service": AttributeMetadata(
+        brief="Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router",
+        type=AttributeType.DOUBLE,
+        keys=("heroku.router.service",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 12.5, 30001],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added heroku.router.service attribute",
+            ),
+        ],
+        additional_context=[
+            "This measures the proxying phase, not necessarily the complete HTTP request duration."
         ],
     ),
     "http.client_ip": AttributeMetadata(
@@ -24057,7 +24317,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         visibility=Visibility.PUBLIC,
         example=1,
         deprecation=DeprecationInfo(
-            reason="A count can be calculcated from the value of the gen_ai.tool.call.result attribute."
+            reason="A count can be calculated from the value of the gen_ai.tool.call.result attribute."
         ),
         changelog=[
             ChangelogEntry(
@@ -25413,7 +25673,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "navigation.origin": AttributeMetadata(
-        brief="The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.",
+        brief="The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.",
         type=AttributeType.STRING,
         keys=(
             "router.navigation.origin",
@@ -26439,7 +26699,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["static", "partially_static", "dynamic"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
                 prs=[740],
                 description="Added page.server_rendering.type attribute",
             ),
@@ -29021,7 +29281,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["user.geo.subregion"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
                 prs=[753],
                 description="Added sentry.user.geo.subregion attribute",
             ),
@@ -29594,6 +29854,46 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
                 prs=[313],
                 description="Added and deprecated in favor of app.vitals.ttid.value",
             ),
+        ],
+    ),
+    "tls.protocol.name": AttributeMetadata(
+        brief="Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version",
+        type=AttributeType.STRING,
+        keys=("tls.protocol.name",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="tls",
+        examples=["tls", "ssl"],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added tls.protocol.name attribute",
+            ),
+        ],
+        additional_context=[
+            "Extract the protocol name from the negotiated SSL/TLS version string and normalize it to lowercase, without the version. For example, TLSv1.3 becomes tls and SSLv3 becomes ssl."
+        ],
+    ),
+    "tls.protocol.version": AttributeMetadata(
+        brief="Numeric part of the version parsed from the negotiated SSL/TLS protocol version",
+        type=AttributeType.STRING,
+        keys=("tls.protocol.version",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=True,
+        visibility=Visibility.PUBLIC,
+        example="1.2",
+        examples=["1.2", "1.3", "3"],
+        changelog=[
+            ChangelogEntry(
+                version="0.31.0",
+                prs=[772],
+                description="Added tls.protocol.version attribute",
+            ),
+        ],
+        additional_context=[
+            "Extract only the numeric version from the negotiated SSL/TLS version string. For example, TLSv1.3 becomes 1.3 and SSLv3 becomes 3. Do not include the protocol name or the v prefix."
         ],
     ),
     "transaction": AttributeMetadata(
@@ -30603,7 +30903,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["sentry.user.geo.subregion"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
                 prs=[753],
                 description="Added user.geo.subregion attribute",
             ),
@@ -30715,7 +31015,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["vercel.ai.settings.context.tenantId='acme'"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
+                prs=[756],
                 description="Added vercel.ai.settings.context.<key> attribute",
             ),
         ],
@@ -30769,7 +31070,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["vercel.ai.tool_call.context.units='metric'"],
         changelog=[
             ChangelogEntry(
-                version="next",
+                version="0.31.0",
+                prs=[756],
                 description="Added vercel.ai.tool_call.context.<key> attribute",
             ),
         ],
@@ -31691,6 +31993,13 @@ Attributes = TypedDict(
         "hapi.plugin.name": str,
         "hapi.type": str,
         "hardwareConcurrency": str,
+        "heroku.dyno.name": str,
+        "heroku.error.code": str,
+        "heroku.error.description": str,
+        "heroku.logplex.drain_token": str,
+        "heroku.router.connect": float,
+        "heroku.router.request_id": str,
+        "heroku.router.service": float,
         "http.client_ip": str,
         "http.decoded_response_content_length": int,
         "http.flavor": str,
@@ -32094,6 +32403,8 @@ Attributes = TypedDict(
         "timber.tag": str,
         "time_to_full_display": float,
         "time_to_initial_display": float,
+        "tls.protocol.name": str,
+        "tls.protocol.version": str,
         "transaction": str,
         "trpc.procedure_path": str,
         "trpc.procedure_type": str,

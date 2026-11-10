@@ -5903,7 +5903,7 @@ export type DB_RESPONSE_STATUS_CODE_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.
+ * @deprecated Use {@link DB_QUERY_PARAMETER_KEY} (db.query.parameter.<key>) instead - Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.
  * @example ["1","foo"]
  */
 export const DB_SQL_BINDINGS = 'db.sql.bindings';
@@ -8359,7 +8359,7 @@ export type GEN_AI_FUNCTION_ID_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__input__messages.json
 
 /**
- * The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
+ * The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.input.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_INPUT_MESSAGES_TYPE}
  *
@@ -8561,7 +8561,7 @@ export type GEN_AI_OPERATION_TYPE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__output__messages.json
 
 /**
- * The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
+ * The model's response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model's thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context. `gen_ai.output.messages`
  *
  * Attribute Value Type: `string` {@link GEN_AI_OUTPUT_MESSAGES_TYPE}
  *
@@ -8846,7 +8846,7 @@ export type GEN_AI_REQUEST_PRESENCE_PENALTY_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__request__reasoning__level.json
 
 /**
- * The reasoning or thinking effort level requested for a GenAI model. `gen_ai.request.reasoning.level`
+ * The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider. `gen_ai.request.reasoning.level`
  *
  * Attribute Value Type: `string` {@link GEN_AI_REQUEST_REASONING_LEVEL_TYPE}
  *
@@ -9276,7 +9276,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__system_instructions.json
 
 /**
- * The system instructions passed to the model. `gen_ai.system_instructions`
+ * The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`. `gen_ai.system_instructions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_INSTRUCTIONS_TYPE}
  *
@@ -9287,7 +9287,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
  *
  * Aliases: {@link AI_PREAMBLE} `ai.preamble`
  *
- * @example "You are a helpful assistant"
+ * @example "[{\"type\": \"text\", \"content\": \"You are a helpful assistant.\"}, {\"type\": \"text\", \"content\": \"Be concise and clear.\"}]"
  */
 export const GEN_AI_SYSTEM_INSTRUCTIONS = 'gen_ai.system_instructions';
 
@@ -9389,7 +9389,7 @@ export type GEN_AI_TOOL_CALL_RESULT_SIZE_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__tool__definitions.json
 
 /**
- * The list of source system tool definitions available to the GenAI agent or model. `gen_ai.tool.definitions`
+ * The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects. `gen_ai.tool.definitions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_DEFINITIONS_TYPE}
  *
@@ -9561,7 +9561,7 @@ export type GEN_AI_TOOL_TYPE_TYPE = string;
  *
  * Aliases: {@link GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE} `gen_ai.usage.input_tokens.cache_write`, {@link _GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS} `gen_ai.usage.cache_creation_input_tokens`
  *
- * @example 100
+ * @example 20
  */
 export const GEN_AI_USAGE_CACHE_CREATION_INPUT_TOKENS = 'gen_ai.usage.cache_creation.input_tokens';
 
@@ -9679,7 +9679,7 @@ export type GEN_AI_USAGE_COMPLETION_TOKENS_TYPE = number;
  *
  * Aliases: {@link AI_PROMPT_TOKENS_USED} `ai.prompt_tokens.used`, {@link GEN_AI_USAGE_PROMPT_TOKENS} `gen_ai.usage.prompt_tokens`
  *
- * @example 10
+ * @example 100
  */
 export const GEN_AI_USAGE_INPUT_TOKENS = 'gen_ai.usage.input_tokens';
 
@@ -9750,7 +9750,7 @@ export type GEN_AI_USAGE_INPUT_TOKENS_CACHE_WRITE_TYPE = number;
  *
  * Aliases: {@link AI_COMPLETION_TOKENS_USED} `ai.completion_tokens.used`, {@link GEN_AI_USAGE_COMPLETION_TOKENS} `gen_ai.usage.completion_tokens`
  *
- * @example 10
+ * @example 130
  */
 export const GEN_AI_USAGE_OUTPUT_TOKENS = 'gen_ai.usage.output_tokens';
 
@@ -9821,7 +9821,7 @@ export type GEN_AI_USAGE_PROMPT_TOKENS_TYPE = number;
  *
  * Aliases: {@link GEN_AI_USAGE_OUTPUT_TOKENS_REASONING} `gen_ai.usage.output_tokens.reasoning`
  *
- * @example 75
+ * @example 30
  */
 export const GEN_AI_USAGE_REASONING_OUTPUT_TOKENS = 'gen_ai.usage.reasoning.output_tokens';
 
@@ -9833,7 +9833,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
 // Path: model/attributes/gen_ai/gen_ai__usage__total_tokens.json
 
 /**
- * The total number of tokens used to process the prompt. (input tokens plus output todkens) `gen_ai.usage.total_tokens`
+ * The total number of tokens used to process the prompt. (input tokens plus output tokens) `gen_ai.usage.total_tokens`
  *
  * Attribute Value Type: `number` {@link GEN_AI_USAGE_TOTAL_TOKENS_TYPE}
  *
@@ -9844,7 +9844,7 @@ export type GEN_AI_USAGE_REASONING_OUTPUT_TOKENS_TYPE = number;
  *
  * Aliases: {@link AI_TOTAL_TOKENS_USED} `ai.total_tokens.used`, {@link AI_USAGE_TOKENS} `ai.usage.tokens`
  *
- * @example 20
+ * @example 230
  */
 export const GEN_AI_USAGE_TOTAL_TOKENS = 'gen_ai.usage.total_tokens';
 
@@ -10337,6 +10337,161 @@ export const HARDWARECONCURRENCY = 'hardwareConcurrency';
  * Type for {@link HARDWARECONCURRENCY} hardwareConcurrency
  */
 export type HARDWARECONCURRENCY_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__dyno__name.json
+
+/**
+ * Name of the Heroku dyno serving the request or emitting telemetry `heroku.dyno.name`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_DYNO_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "web.1"
+ * @example "web-12a34bcd56-7efgh"
+ */
+export const HEROKU_DYNO_NAME = 'heroku.dyno.name';
+
+/**
+ * Type for {@link HEROKU_DYNO_NAME} heroku.dyno.name
+ */
+export type HEROKU_DYNO_NAME_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__error__code.json
+
+/**
+ * Heroku error code reported by a router or platform log `heroku.error.code`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ERROR_CODE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "H12"
+ * @example "R14"
+ * @example "L10"
+ */
+export const HEROKU_ERROR_CODE = 'heroku.error.code';
+
+/**
+ * Type for {@link HEROKU_ERROR_CODE} heroku.error.code
+ */
+export type HEROKU_ERROR_CODE_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__error__description.json
+
+/**
+ * Description of the Heroku error reported by a router or platform log `heroku.error.description`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ERROR_DESCRIPTION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "Request timeout"
+ * @example "Memory quota exceeded"
+ */
+export const HEROKU_ERROR_DESCRIPTION = 'heroku.error.description';
+
+/**
+ * Type for {@link HEROKU_ERROR_DESCRIPTION} heroku.error.description
+ */
+export type HEROKU_ERROR_DESCRIPTION_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__logplex__drain_token.json
+
+/**
+ * Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header `heroku.logplex.drain_token`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "d.73ea7440-270a-435a-a0ea-adf50b4e5f5a"
+ */
+export const HEROKU_LOGPLEX_DRAIN_TOKEN = 'heroku.logplex.drain_token';
+
+/**
+ * Type for {@link HEROKU_LOGPLEX_DRAIN_TOKEN} heroku.logplex.drain_token
+ */
+export type HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__connect.json
+
+/**
+ * Time in milliseconds the Heroku router spent establishing a connection to the dyno `heroku.router.connect`
+ *
+ * Attribute Value Type: `number` {@link HEROKU_ROUTER_CONNECT_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 0.5
+ * @example 6
+ */
+export const HEROKU_ROUTER_CONNECT = 'heroku.router.connect';
+
+/**
+ * Type for {@link HEROKU_ROUTER_CONNECT} heroku.router.connect
+ */
+export type HEROKU_ROUTER_CONNECT_TYPE = number;
+
+// Path: model/attributes/heroku/heroku__router__request_id.json
+
+/**
+ * Request identifier reported by the Heroku router `heroku.router.request_id`
+ *
+ * Attribute Value Type: `string` {@link HEROKU_ROUTER_REQUEST_ID_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "6903a168-b79b-ec27-03c8-b8f64d8d8792"
+ */
+export const HEROKU_ROUTER_REQUEST_ID = 'heroku.router.request_id';
+
+/**
+ * Type for {@link HEROKU_ROUTER_REQUEST_ID} heroku.router.request_id
+ */
+export type HEROKU_ROUTER_REQUEST_ID_TYPE = string;
+
+// Path: model/attributes/heroku/heroku__router__service.json
+
+/**
+ * Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router `heroku.router.service`
+ *
+ * Attribute Value Type: `number` {@link HEROKU_ROUTER_SERVICE_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example 0
+ * @example 12.5
+ * @example 30001
+ */
+export const HEROKU_ROUTER_SERVICE = 'heroku.router.service';
+
+/**
+ * Type for {@link HEROKU_ROUTER_SERVICE} heroku.router.service
+ */
+export type HEROKU_ROUTER_SERVICE_TYPE = number;
 
 // Path: model/attributes/http/http__client_ip.json
 
@@ -12894,7 +13049,7 @@ export type MCP_TOOL_RESULT_CONTENT_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * @deprecated  - A count can be calculcated from the value of the gen_ai.tool.call.result attribute.
+ * @deprecated  - A count can be calculated from the value of the gen_ai.tool.call.result attribute.
  * @example 1
  */
 export const MCP_TOOL_RESULT_CONTENT_COUNT = 'mcp.tool.result.content_count';
@@ -14475,7 +14630,7 @@ export type MIDDLEWARE_NAME_TYPE = string;
 // Path: model/attributes/navigation/navigation__origin.json
 
 /**
- * The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
+ * The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise. `navigation.origin`
  *
  * Attribute Value Type: `string` {@link NAVIGATION_ORIGIN_TYPE}
  *
@@ -19464,6 +19619,51 @@ export const TIME_TO_INITIAL_DISPLAY = 'time_to_initial_display';
  */
 export type TIME_TO_INITIAL_DISPLAY_TYPE = number;
 
+// Path: model/attributes/tls/tls__protocol__name.json
+
+/**
+ * Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version `tls.protocol.name`
+ *
+ * Attribute Value Type: `string` {@link TLS_PROTOCOL_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "tls"
+ * @example "ssl"
+ */
+export const TLS_PROTOCOL_NAME = 'tls.protocol.name';
+
+/**
+ * Type for {@link TLS_PROTOCOL_NAME} tls.protocol.name
+ */
+export type TLS_PROTOCOL_NAME_TYPE = string;
+
+// Path: model/attributes/tls/tls__protocol__version.json
+
+/**
+ * Numeric part of the version parsed from the negotiated SSL/TLS protocol version `tls.protocol.version`
+ *
+ * Attribute Value Type: `string` {@link TLS_PROTOCOL_VERSION_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: Yes
+ * Visibility: public
+ *
+ * @example "1.2"
+ * @example "1.3"
+ * @example "3"
+ */
+export const TLS_PROTOCOL_VERSION = 'tls.protocol.version';
+
+/**
+ * Type for {@link TLS_PROTOCOL_VERSION} tls.protocol.version
+ */
+export type TLS_PROTOCOL_VERSION_TYPE = string;
+
 // Path: model/attributes/transaction.json
 
 /**
@@ -22165,6 +22365,13 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'hapi.plugin.name': 'string',
   'hapi.type': 'string',
   hardwareConcurrency: 'string',
+  'heroku.dyno.name': 'string',
+  'heroku.error.code': 'string',
+  'heroku.error.description': 'string',
+  'heroku.logplex.drain_token': 'string',
+  'heroku.router.connect': 'double',
+  'heroku.router.request_id': 'string',
+  'heroku.router.service': 'double',
   'http.client_ip': 'string',
   'http.decoded_response_content_length': 'integer',
   'http.flavor': 'string',
@@ -22568,6 +22775,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'timber.tag': 'string',
   time_to_full_display: 'double',
   time_to_initial_display: 'double',
+  'tls.protocol.name': 'string',
+  'tls.protocol.version': 'string',
   transaction: 'string',
   'trpc.procedure_path': 'string',
   'trpc.procedure_type': 'string',
@@ -23128,6 +23337,13 @@ export type AttributeName =
   | typeof HAPI_PLUGIN_NAME
   | typeof HAPI_TYPE
   | typeof HARDWARECONCURRENCY
+  | typeof HEROKU_DYNO_NAME
+  | typeof HEROKU_ERROR_CODE
+  | typeof HEROKU_ERROR_DESCRIPTION
+  | typeof HEROKU_LOGPLEX_DRAIN_TOKEN
+  | typeof HEROKU_ROUTER_CONNECT
+  | typeof HEROKU_ROUTER_REQUEST_ID
+  | typeof HEROKU_ROUTER_SERVICE
   | typeof HTTP_CLIENT_IP
   | typeof HTTP_DECODED_RESPONSE_CONTENT_LENGTH
   | typeof HTTP_FLAVOR
@@ -23531,6 +23747,8 @@ export type AttributeName =
   | typeof TIMBER_TAG
   | typeof TIME_TO_FULL_DISPLAY
   | typeof TIME_TO_INITIAL_DISPLAY
+  | typeof TLS_PROTOCOL_NAME
+  | typeof TLS_PROTOCOL_VERSION
   | typeof TRANSACTION
   | typeof TRPC_PROCEDURE_PATH
   | typeof TRPC_PROCEDURE_TYPE
@@ -27840,7 +28058,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     deprecation: {
       replacement: 'db.query.parameter.<key>',
       reason:
-        'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entires with db.query.parameter.<key>.',
+        'Instead of adding every binding in the db.sql.bindings attribute, add them as individual entries with db.query.parameter.<key>.',
     },
     changelog: [{ version: '0.1.0', prs: [61] }, { version: '0.0.0' }],
   },
@@ -28684,7 +28902,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myBucketName',
     examples: ['myBucketName', 'myDbName'],
-    changelog: [{ version: 'next', description: 'Added faas.document.collection attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.collection attribute' }],
   },
   'faas.document.name': {
     brief:
@@ -28698,7 +28916,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'myFile.txt',
     examples: ['myFile.txt', 'myTableName'],
-    changelog: [{ version: 'next', description: 'Added faas.document.name attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.name attribute' }],
   },
   'faas.document.operation': {
     brief: 'Describes the type of the operation that was performed on the data.',
@@ -28711,7 +28929,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'insert',
     examples: ['insert', 'edit', 'delete'],
-    changelog: [{ version: 'next', description: 'Added faas.document.operation attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.operation attribute' }],
     additionalContext: [
       'Has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.',
       '`delete`: When an object is deleted.',
@@ -28730,7 +28948,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2020-01-23T13:47:06Z',
     examples: ['2020-01-23T13:47:06Z'],
-    changelog: [{ version: 'next', description: 'Added faas.document.time attribute' }],
+    changelog: [{ version: '0.31.0', prs: [747], description: 'Added faas.document.time attribute' }],
   },
   'faas.duration_in_ms': {
     brief: 'The duration a function took to run, in milliseconds.',
@@ -28832,7 +29050,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: '2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de',
     examples: ['2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de'],
-    changelog: [{ version: 'next', description: 'Added faas.instance attribute' }],
+    changelog: [{ version: '0.31.0', prs: [748], description: 'Added faas.instance attribute' }],
     additionalContext: ['For AWS Lambda, use the (full) log stream name.'],
   },
   'faas.invocation_id': {
@@ -29536,7 +29754,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.input.messages': {
     brief:
-      'The messages passed to the model. It has to be a stringified version of an array of objects. The `role` attribute of each object must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. For messages of the role `"tool"`, the `content` can be a string or an arbitrary object with information about the tool call. For other messages the `content` can be either a string or a list of objects in the format `{type: "text", text:"..."}`. The first example shows this shape. Some operations use a different shape. See the additional context.',
+      'The messages passed to the model. It has to be a stringified version of an array of objects in the format `{role: "...", parts: [...]}`. The `role` must be `"user"`, `"assistant"`, `"tool"`, or `"system"`. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"`, `"tool_call"`, and `"tool_call_response"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The legacy format `{role, content}` is also accepted. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
     keys: [
       'gen_ai.input.messages',
@@ -29690,7 +29908,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'gen_ai.output.messages': {
     brief:
-      "The model's response messages. It has to be a stringified version of an array of message objects, which can include text responses and tool calls. The first example shows this shape. Some operations use a different shape. See the additional context.",
+      'The model\'s response messages. It has to be a stringified version of an array of message objects in the format `{role: "assistant", parts: [...]}`, which can include text responses and tool calls. Each part is an object with a `type`, such as `{type: "text", content: "..."}`. Other part types include `"reasoning"` and `"tool_call"`. Put the model\'s thinking in a `{type: "reasoning", content: "..."}` part, not a `"text"` part. Sentry shows reasoning separately from user-visible messages. The first example shows this shape. Some operations use a different shape. See the additional context.',
     type: 'string',
     keys: ['gen_ai.output.messages', 'ai.response.text', 'ai.response.toolCalls', 'ai.responses', 'ai.tool_calls'],
     applyScrubbing: {
@@ -29925,7 +30143,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.request.reasoning.level': {
-    brief: 'The reasoning or thinking effort level requested for a GenAI model.',
+    brief: 'The reasoning or thinking effort level requested for a GenAI model. Supported values vary by provider.',
     type: 'string',
     keys: ['gen_ai.request.reasoning.level'],
     applyScrubbing: {
@@ -30233,7 +30451,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.system_instructions': {
-    brief: 'The system instructions passed to the model.',
+    brief:
+      'The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
@@ -30241,7 +30460,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 'You are a helpful assistant',
+    example:
+      '[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
     aliases: ['ai.preamble'],
     changelog: [
       { version: '0.5.0', prs: [264] },
@@ -30334,7 +30554,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
   },
   'gen_ai.tool.definitions': {
-    brief: 'The list of source system tool definitions available to the GenAI agent or model.',
+    brief:
+      'The list of source system tool definitions available to the GenAI agent or model. It has to be a stringified version of an array of objects.',
     type: 'string',
     keys: ['gen_ai.tool.definitions', 'ai.prompt.tools', 'ai.tools', 'gen_ai.request.available_tools'],
     applyScrubbing: {
@@ -30489,7 +30710,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 100,
+    example: 20,
     aliases: ['gen_ai.usage.input_tokens.cache_write', 'gen_ai.usage.cache_creation_input_tokens'],
     changelog: [
       { version: '0.24.0', prs: [582], description: 'Added gen_ai.usage.cache_creation_input_tokens as an alias' },
@@ -30605,7 +30826,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
+    example: 100,
     aliases: ['ai.prompt_tokens.used', 'gen_ai.usage.prompt_tokens'],
     changelog: [
       {
@@ -30693,7 +30914,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 10,
+    example: 130,
     aliases: ['ai.completion_tokens.used', 'gen_ai.usage.completion_tokens'],
     changelog: [
       {
@@ -30772,7 +30993,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: true,
     visibility: 'public',
-    example: 75,
+    example: 30,
     aliases: ['gen_ai.usage.output_tokens.reasoning'],
     changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.usage.reasoning.output_tokens attribute' }],
     additionalContext: [
@@ -30781,7 +31002,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.usage.total_tokens': {
-    brief: 'The total number of tokens used to process the prompt. (input tokens plus output todkens)',
+    brief: 'The total number of tokens used to process the prompt. (input tokens plus output tokens)',
     type: 'integer',
     keys: ['gen_ai.usage.total_tokens', 'ai.total_tokens.used', 'ai.usage.tokens'],
     applyScrubbing: {
@@ -30789,7 +31010,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     },
     isInOtel: false,
     visibility: 'public',
-    example: 20,
+    example: 230,
     aliases: ['ai.total_tokens.used', 'ai.usage.tokens'],
     changelog: [
       { version: '0.21.0', prs: [583], description: 'Added ai.usage.tokens as an alias' },
@@ -31127,6 +31348,107 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         description: "Added and deprecated attribute to document JS SDK's current behaviour",
       },
     ],
+  },
+  'heroku.dyno.name': {
+    brief: 'Name of the Heroku dyno serving the request or emitting telemetry',
+    type: 'string',
+    keys: ['heroku.dyno.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'web.1',
+    examples: ['web.1', 'web-12a34bcd56-7efgh'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.dyno.name attribute' }],
+    additionalContext: [
+      'A dyno name is distinct from the dyno ID or service.instance.id. Do not manufacture those identifiers from this value.',
+    ],
+  },
+  'heroku.error.code': {
+    brief: 'Heroku error code reported by a router or platform log',
+    type: 'string',
+    keys: ['heroku.error.code'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'H12',
+    examples: ['H12', 'R14', 'L10'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.error.code attribute' }],
+    additionalContext: ['Preserves the provider-specific code from the router code field or a platform error message.'],
+  },
+  'heroku.error.description': {
+    brief: 'Description of the Heroku error reported by a router or platform log',
+    type: 'string',
+    keys: ['heroku.error.description'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Request timeout',
+    examples: ['Request timeout', 'Memory quota exceeded'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.error.description attribute' }],
+    additionalContext: ['A router or platform error description does not imply that an exception was thrown'],
+  },
+  'heroku.logplex.drain_token': {
+    brief: 'Identifier of the Heroku log drain that delivered the log, from the Logplex-Drain-Token header',
+    type: 'string',
+    keys: ['heroku.logplex.drain_token'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'd.73ea7440-270a-435a-a0ea-adf50b4e5f5a',
+    examples: ['d.73ea7440-270a-435a-a0ea-adf50b4e5f5a'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.logplex.drain_token attribute' }],
+  },
+  'heroku.router.connect': {
+    brief: 'Time in milliseconds the Heroku router spent establishing a connection to the dyno',
+    type: 'double',
+    keys: ['heroku.router.connect'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 0.5, 6],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.connect attribute' }],
+  },
+  'heroku.router.request_id': {
+    brief: 'Request identifier reported by the Heroku router',
+    type: 'string',
+    keys: ['heroku.router.request_id'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: '6903a168-b79b-ec27-03c8-b8f64d8d8792',
+    examples: ['6903a168-b79b-ec27-03c8-b8f64d8d8792'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.request_id attribute' }],
+    additionalContext: [
+      'Heroku generates or accepts this identifier and forwards it to the application in the X-Request-ID header.',
+    ],
+  },
+  'heroku.router.service': {
+    brief:
+      'Time in milliseconds spent proxying data between the backend dyno and the client, as reported by the Heroku router',
+    type: 'double',
+    keys: ['heroku.router.service'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 0,
+    examples: [0, 12.5, 30001],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added heroku.router.service attribute' }],
+    additionalContext: ['This measures the proxying phase, not necessarily the complete HTTP request duration.'],
   },
   'http.client_ip': {
     brief:
@@ -33081,7 +33403,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 1,
     deprecation: {
-      reason: 'A count can be calculcated from the value of the gen_ai.tool.call.result attribute.',
+      reason: 'A count can be calculated from the value of the gen_ai.tool.call.result attribute.',
     },
     changelog: [
       {
@@ -34499,7 +34821,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   },
   'navigation.origin': {
     brief:
-      'The origin of the navigation (usually client side router navigations). Should preferrably parameterized template (like url.template) or a URL path otherwise.',
+      'The origin of the navigation (usually client side router navigations). Should preferably be a parameterized template (like url.template) or a URL path otherwise.',
     type: 'string',
     keys: ['router.navigation.origin', 'navigation.origin', 'sentry.sveltekit.navigation.from'],
     applyScrubbing: {
@@ -35340,7 +35662,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'static',
     examples: ['static', 'partially_static', 'dynamic'],
-    changelog: [{ version: 'next', prs: [740], description: 'Added page.server_rendering.type attribute' }],
+    changelog: [{ version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' }],
     additionalContext: [
       'Set only by an SDK that controls the server render, and only when the SDK knows the value.',
       'More values can be added later.',
@@ -37611,7 +37933,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       status: 'backfill',
     },
     aliases: ['user.geo.subregion'],
-    changelog: [{ version: 'next', prs: [753], description: 'Added sentry.user.geo.subregion attribute' }],
+    changelog: [{ version: '0.31.0', prs: [753], description: 'Added sentry.user.geo.subregion attribute' }],
     searchAlias: {
       name: 'user.geo.subregion',
     },
@@ -38083,6 +38405,38 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['app.vitals.ttid.value'],
     changelog: [
       { version: '0.5.0', prs: [313], description: 'Added and deprecated in favor of app.vitals.ttid.value' },
+    ],
+  },
+  'tls.protocol.name': {
+    brief: 'Normalized lowercase protocol name parsed from the negotiated SSL/TLS protocol version',
+    type: 'string',
+    keys: ['tls.protocol.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: 'tls',
+    examples: ['tls', 'ssl'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added tls.protocol.name attribute' }],
+    additionalContext: [
+      'Extract the protocol name from the negotiated SSL/TLS version string and normalize it to lowercase, without the version. For example, TLSv1.3 becomes tls and SSLv3 becomes ssl.',
+    ],
+  },
+  'tls.protocol.version': {
+    brief: 'Numeric part of the version parsed from the negotiated SSL/TLS protocol version',
+    type: 'string',
+    keys: ['tls.protocol.version'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: true,
+    visibility: 'public',
+    example: '1.2',
+    examples: ['1.2', '1.3', '3'],
+    changelog: [{ version: '0.31.0', prs: [772], description: 'Added tls.protocol.version attribute' }],
+    additionalContext: [
+      'Extract only the numeric version from the negotiated SSL/TLS version string. For example, TLSv1.3 becomes 1.3 and SSLv3 becomes 3. Do not include the protocol name or the v prefix.',
     ],
   },
   transaction: {
@@ -38998,7 +39352,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '155',
     examples: ['155', '21'],
     aliases: ['sentry.user.geo.subregion'],
-    changelog: [{ version: 'next', prs: [753], description: 'Added user.geo.subregion attribute' }],
+    changelog: [{ version: '0.31.0', prs: [753], description: 'Added user.geo.subregion attribute' }],
   },
   'user.hash': {
     brief: 'Unique user hash to correlate information for a user in anonymized form.',
@@ -39077,7 +39431,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "vercel.ai.settings.context.tenantId='acme'",
     examples: ["vercel.ai.settings.context.tenantId='acme'"],
-    changelog: [{ version: 'next', description: 'Added vercel.ai.settings.context.<key> attribute' }],
+    changelog: [{ version: '0.31.0', prs: [756], description: 'Added vercel.ai.settings.context.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `invoke_agent`, `generate_content`, `execute_tool`, `embeddings`, `rerank` and `decide` operations. Spans for model calls and tool calls inside an operation copy the attributes of that operation.',
       'SDKs MUST only record the properties that the app included through `telemetry.includeRuntimeContext`. Some Vercel AI SDK versions expose the full runtime context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the runtime context, it MUST NOT record it.',
@@ -39122,7 +39476,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     hasDynamicSuffix: true,
     example: "vercel.ai.tool_call.context.units='metric'",
     examples: ["vercel.ai.tool_call.context.units='metric'"],
-    changelog: [{ version: 'next', description: 'Added vercel.ai.tool_call.context.<key> attribute' }],
+    changelog: [{ version: '0.31.0', prs: [756], description: 'Added vercel.ai.tool_call.context.<key> attribute' }],
     additionalContext: [
       'Set on `gen_ai` spans for `execute_tool` operations.',
       'SDKs MUST only record the properties that the app included for the tool through `telemetry.includeToolsContext`. Some Vercel AI SDK versions expose the full tool context to instrumentation. If an SDK cannot confirm that the Vercel AI SDK filtered the tool context, it MUST NOT record it.',
@@ -40042,6 +40396,13 @@ export type Attributes = {
   [HAPI_PLUGIN_NAME]?: HAPI_PLUGIN_NAME_TYPE;
   [HAPI_TYPE]?: HAPI_TYPE_TYPE;
   [HARDWARECONCURRENCY]?: HARDWARECONCURRENCY_TYPE;
+  [HEROKU_DYNO_NAME]?: HEROKU_DYNO_NAME_TYPE;
+  [HEROKU_ERROR_CODE]?: HEROKU_ERROR_CODE_TYPE;
+  [HEROKU_ERROR_DESCRIPTION]?: HEROKU_ERROR_DESCRIPTION_TYPE;
+  [HEROKU_LOGPLEX_DRAIN_TOKEN]?: HEROKU_LOGPLEX_DRAIN_TOKEN_TYPE;
+  [HEROKU_ROUTER_CONNECT]?: HEROKU_ROUTER_CONNECT_TYPE;
+  [HEROKU_ROUTER_REQUEST_ID]?: HEROKU_ROUTER_REQUEST_ID_TYPE;
+  [HEROKU_ROUTER_SERVICE]?: HEROKU_ROUTER_SERVICE_TYPE;
   [HTTP_CLIENT_IP]?: HTTP_CLIENT_IP_TYPE;
   [HTTP_DECODED_RESPONSE_CONTENT_LENGTH]?: HTTP_DECODED_RESPONSE_CONTENT_LENGTH_TYPE;
   [HTTP_FLAVOR]?: HTTP_FLAVOR_TYPE;
@@ -40445,6 +40806,8 @@ export type Attributes = {
   [TIMBER_TAG]?: TIMBER_TAG_TYPE;
   [TIME_TO_FULL_DISPLAY]?: TIME_TO_FULL_DISPLAY_TYPE;
   [TIME_TO_INITIAL_DISPLAY]?: TIME_TO_INITIAL_DISPLAY_TYPE;
+  [TLS_PROTOCOL_NAME]?: TLS_PROTOCOL_NAME_TYPE;
+  [TLS_PROTOCOL_VERSION]?: TLS_PROTOCOL_VERSION_TYPE;
   [TRANSACTION]?: TRANSACTION_TYPE;
   [TRPC_PROCEDURE_PATH]?: TRPC_PROCEDURE_PATH_TYPE;
   [TRPC_PROCEDURE_TYPE]?: TRPC_PROCEDURE_TYPE_TYPE;
