@@ -4071,6 +4071,16 @@ export const SEARCH_PROCESS__PID = 'process.pid';
 export const SEARCH_PROCESS__RUNTIME__DESCRIPTION = 'process.runtime.description';
 
 /**
+ * Search name for {@link attributes.PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE}. `process.runtime.elixir.memory.type`
+ */
+export const SEARCH_PROCESS__RUNTIME__ELIXIR__MEMORY__TYPE = 'process.runtime.elixir.memory.type';
+
+/**
+ * Search name for {@link attributes.PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE}. `process.runtime.elixir.run_queue.type`
+ */
+export const SEARCH_PROCESS__RUNTIME__ELIXIR__RUN_QUEUE__TYPE = 'process.runtime.elixir.run_queue.type';
+
+/**
  * Search name for {@link attributes.PROCESS_RUNTIME_ENGINE_NAME}. `process.runtime.engine.name`
  */
 export const SEARCH_PROCESS__RUNTIME__ENGINE__NAME = 'process.runtime.engine.name';
@@ -6293,6 +6303,8 @@ export type AttributeSearchName =
   | typeof SEARCH_PROCESS__EXECUTABLE__NAME
   | typeof SEARCH_PROCESS__PID
   | typeof SEARCH_PROCESS__RUNTIME__DESCRIPTION
+  | typeof SEARCH_PROCESS__RUNTIME__ELIXIR__MEMORY__TYPE
+  | typeof SEARCH_PROCESS__RUNTIME__ELIXIR__RUN_QUEUE__TYPE
   | typeof SEARCH_PROCESS__RUNTIME__ENGINE__NAME
   | typeof SEARCH_PROCESS__RUNTIME__ENGINE__VERSION
   | typeof SEARCH_PROCESS__RUNTIME__NAME
@@ -11319,6 +11331,20 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     brief:
       'An additional description about the runtime of the process, for example a specific vendor customization of the runtime environment. Equivalent to `raw_description` in the Sentry runtime context.',
     deprecationChain: ['process.runtime.description', 'runtime.raw_description'],
+  },
+  'process.runtime.elixir.memory.type': {
+    canonicalName: 'process.runtime.elixir.memory.type',
+    type: 'string',
+    brief:
+      'The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.',
+    deprecationChain: ['process.runtime.elixir.memory.type'],
+  },
+  'process.runtime.elixir.run_queue.type': {
+    canonicalName: 'process.runtime.elixir.run_queue.type',
+    type: 'string',
+    brief:
+      'The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.',
+    deprecationChain: ['process.runtime.elixir.run_queue.type'],
   },
   'process.runtime.engine.name': {
     canonicalName: 'process.runtime.engine.name',

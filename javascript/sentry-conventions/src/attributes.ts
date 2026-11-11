@@ -15998,6 +15998,51 @@ export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
  */
 export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/process/process__runtime__elixir__memory__type.json
+
+/**
+ * The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total. `process.runtime.elixir.memory.type`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "processes"
+ * @example "binary"
+ * @example "other"
+ */
+export const PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE = 'process.runtime.elixir.memory.type';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE} process.runtime.elixir.memory.type
+ */
+export type PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE = string;
+
+// Path: model/attributes/process/process__runtime__elixir__run_queue__type.json
+
+/**
+ * The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue. `process.runtime.elixir.run_queue.type`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "cpu"
+ * @example "io"
+ */
+export const PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE = 'process.runtime.elixir.run_queue.type';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE} process.runtime.elixir.run_queue.type
+ */
+export type PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE = string;
+
 // Path: model/attributes/process/process__runtime__engine__name.json
 
 /**
@@ -22618,6 +22663,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'process.executable.name': 'string',
   'process.pid': 'integer',
   'process.runtime.description': 'string',
+  'process.runtime.elixir.memory.type': 'string',
+  'process.runtime.elixir.run_queue.type': 'string',
   'process.runtime.engine.name': 'string',
   'process.runtime.engine.version': 'string',
   'process.runtime.name': 'string',
@@ -23590,6 +23637,8 @@ export type AttributeName =
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
   | typeof PROCESS_RUNTIME_DESCRIPTION
+  | typeof PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE
+  | typeof PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE
   | typeof PROCESS_RUNTIME_ENGINE_NAME
   | typeof PROCESS_RUNTIME_ENGINE_VERSION
   | typeof PROCESS_RUNTIME_NAME
@@ -35814,6 +35863,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     aliases: ['runtime.raw_description'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
   },
+  'process.runtime.elixir.memory.type': {
+    brief:
+      'The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.',
+    type: 'string',
+    keys: ['process.runtime.elixir.memory.type'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'processes',
+    examples: ['processes', 'binary', 'other'],
+    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.memory.type attribute' }],
+  },
+  'process.runtime.elixir.run_queue.type': {
+    brief:
+      'The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.',
+    type: 'string',
+    keys: ['process.runtime.elixir.run_queue.type'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cpu',
+    examples: ['cpu', 'io'],
+    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.run_queue.type attribute' }],
+  },
   'process.runtime.engine.name': {
     brief: 'The name of the runtime engine.',
     type: 'string',
@@ -40654,6 +40731,8 @@ export type Attributes = {
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
+  [PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE]?: PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE;
+  [PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE]?: PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE;
   [PROCESS_RUNTIME_ENGINE_NAME]?: PROCESS_RUNTIME_ENGINE_NAME_TYPE;
   [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
