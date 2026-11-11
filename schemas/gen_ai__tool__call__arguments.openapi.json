@@ -8,9 +8,12 @@
   "components": {
     "schemas": {
       "ToolCallArguments": {
+        "description": "Represents arguments passed to a tool call.",
+        "x-otel-deviation": [
+          "Allow string in addition to object, since some providers return tool call arguments as a string that may not be valid JSON."
+        ],
         "additionalProperties": true,
-        "description": "Represents object-like arguments passed to a tool call.",
-        "type": "object"
+        "type": ["object", "string"]
       }
     }
   }

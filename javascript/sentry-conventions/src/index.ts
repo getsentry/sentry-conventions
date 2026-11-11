@@ -11,6 +11,7 @@ export type {
   ToolDefinitions,
   FunctionToolDefinition,
   ServerSideToolDefinition,
+  ToolCallArguments,
 } from './attributes';
 
 export { ATTRIBUTE_METADATA, ATTRIBUTE_TYPE } from './attributes';

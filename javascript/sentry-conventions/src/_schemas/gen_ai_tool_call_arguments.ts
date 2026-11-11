@@ -6,11 +6,13 @@
  */
 
 /**
- * Represents object-like arguments passed to a tool call.
+ * Represents arguments passed to a tool call.
  *
  * This interface was referenced by `undefined`'s JSON-Schema
  * via the `definition` "ToolCallArguments".
  */
-export interface ToolCallArguments {
-  [k: string]: unknown;
-}
+export type ToolCallArguments =
+  | {
+      [k: string]: unknown;
+    }
+  | string;

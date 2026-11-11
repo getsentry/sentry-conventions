@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import TypedDict
+from typing import Any, TypeAlias
 
-
-class ToolCallArguments(TypedDict):
-    pass
+ToolCallArguments: TypeAlias = dict[str, Any] | str
