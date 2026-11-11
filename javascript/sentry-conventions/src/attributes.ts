@@ -1,5 +1,7 @@
 // This is an auto-generated file. Do not edit!
 
+export type { ToolCallResult } from './_schemas/gen_ai_tool_call_result';
+
 export type {
   ToolDefinitions,
   ToolDefinition,
@@ -9344,7 +9346,7 @@ export type GEN_AI_TOOL_CALL_ARGUMENTS_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__call__result.json
 
 /**
- * The result of the tool call. It has to be a stringified version of the result of the tool. `gen_ai.tool.call.result`
+ * The result of the tool call. `gen_ai.tool.call.result`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_CALL_RESULT_TYPE}
  *
@@ -30504,7 +30506,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.tool.call.result': {
-    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
+    brief: 'The result of the tool call.',
     type: 'string',
     keys: [
       'gen_ai.tool.call.result',
@@ -30528,6 +30530,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'anthropic.tool_result.content',
     ],
     changelog: [
+      {
+        version: 'next',
+        prs: [794],
+        description:
+          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],
