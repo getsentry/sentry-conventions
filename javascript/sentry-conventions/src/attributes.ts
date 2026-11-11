@@ -17843,9 +17843,9 @@ export type SENTRY_KIND_TYPE = string;
  *
  * Well-defined Values:
  * - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
- * - `cache_origin` - The linked span wrote the cached value that this span reads.
+ * - `cache_origin` - The linked span produced the cached value that this span uses. For example, a `cache.get` span links the `cache.put` span that wrote the cache entry. A pageload span links the span that rendered the reused part of the page (see `page.server_rendering.type`).
  * - `message_origin` - The linked span published the queue message that this span processes.
- * - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
+ * - `server_request` - The linked span handled the request for the document of this pageload span. Set only when the trace context of that request arrived too late, so the pageload span could not continue the trace. For a part of the page that the server reused from an earlier request, use `cache_origin`.
  *
  * @example "previous_trace"
  * @example "cache_origin"
@@ -35662,12 +35662,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'static',
     examples: ['static', 'partially_static', 'dynamic'],
-    changelog: [{ version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' }],
+    changelog: [
+      { version: 'next', prs: [789], description: 'Added the cache_origin link to the reused part' },
+      { version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' },
+    ],
     additionalContext: [
       'Set only by an SDK that controls the server render, and only when the SDK knows the value.',
       'More values can be added later.',
       'Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.',
-      'With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.',
+      'With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace. The pageload span can link to them with a `cache_origin` link.',
       "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
     ],
   },
@@ -37082,6 +37085,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'previous_trace',
     examples: ['previous_trace', 'cache_origin', 'message_origin', 'server_request'],
     changelog: [
+      { version: 'next', prs: [789], description: 'Added pageload examples to cache_origin and server_request' },
       {
         version: '0.28.0',
         prs: [724, 738, 739],
@@ -37094,6 +37098,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
       'Add each new link type to `enum_values`, with a brief that says what the linked span is.',
+      'A span can have links of different types. For example, a pageload span can have a `cache_origin` link and a `server_request` link.',
     ],
     searchAlias: {
       name: 'link.type',

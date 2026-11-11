@@ -10600,9 +10600,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Well-defined Values:
     - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
-    - `cache_origin` - The linked span wrote the cached value that this span reads.
+    - `cache_origin` - The linked span produced the cached value that this span uses. For example, a `cache.get` span links the `cache.put` span that wrote the cache entry. A pageload span links the span that rendered the reused part of the page (see `page.server_rendering.type`).
     - `message_origin` - The linked span published the queue message that this span processes.
-    - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
+    - `server_request` - The linked span handled the request for the document of this pageload span. Set only when the trace context of that request arrived too late, so the pageload span could not continue the trace. For a part of the page that the server reused from an earlier request, use `cache_origin`.
     Example: "previous_trace"
     Example: "cache_origin"
     Example: "message_origin"
@@ -26699,6 +26699,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["static", "partially_static", "dynamic"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[789],
+                description="Added the cache_origin link to the reused part",
+            ),
+            ChangelogEntry(
                 version="0.31.0",
                 prs=[740],
                 description="Added page.server_rendering.type attribute",
@@ -26708,7 +26713,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Set only by an SDK that controls the server render, and only when the SDK knows the value.",
             "More values can be added later.",
             "Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.",
-            "With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.",
+            "With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace. The pageload span can link to them with a `cache_origin` link.",
             "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
         ],
     ),
@@ -28358,6 +28363,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["previous_trace", "cache_origin", "message_origin", "server_request"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[789],
+                description="Added pageload examples to cache_origin and server_request",
+            ),
+            ChangelogEntry(
                 version="0.28.0",
                 prs=[724, 738, 739],
                 description="Removed next_trace from the examples and enum_values, because no SDK sets it",
@@ -28375,6 +28385,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This attribute is exclusively set on span links.",
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
             "Add each new link type to `enum_values`, with a brief that says what the linked span is.",
+            "A span can have links of different types. For example, a pageload span can have a `cache_origin` link and a `server_request` link.",
         ],
         search_alias=SearchAlias(name="link.type"),
     ),
