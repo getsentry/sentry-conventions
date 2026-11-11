@@ -5704,7 +5704,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
         "gen_ai.system_instructions"
     )
-    """The system instructions passed to the model.
+    """The system message or instructions provided to the GenAI model separately from the chat history.
 
     Type: str
     Apply Scrubbing: manual
@@ -20611,7 +20611,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
-        brief="The system instructions passed to the model.",
+        brief="The system message or instructions provided to the GenAI model separately from the chat history.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.system_instructions",
@@ -20624,8 +20624,15 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="You are a helpful assistant",
         aliases=["ai.preamble"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Clarify that messages in the chat history only belong in gen_ai.input.messages",
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
+        additional_context=[
+            "Instructions that are part of the chat history SHOULD be recorded in gen_ai.input.messages attribute instead."
         ],
     ),
     "gen_ai.tool.call.arguments": AttributeMetadata(
