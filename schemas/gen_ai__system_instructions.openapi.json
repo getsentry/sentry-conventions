@@ -17,7 +17,10 @@
       },
       "TextPart": {
         "description": "Represents text content sent to or received from the model.",
-        "x-otel-deviation": ["OTel allows arbitrary additional properties, while this definition does not."],
+        "x-otel-deviation": [
+          "OTel allows arbitrary additional properties, while this definition does not.",
+          "The content field is optional because users may pass a text part without content."
+        ],
         "properties": {
           "type": {
             "const": "text",
@@ -30,7 +33,7 @@
           }
         },
         "additionalProperties": false,
-        "required": ["type", "content"],
+        "required": ["type"],
         "type": "object"
       }
     }

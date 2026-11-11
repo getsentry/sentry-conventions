@@ -5,10 +5,12 @@ from __future__ import annotations
 
 from typing import Literal, TypeAlias, TypedDict
 
+from typing_extensions import NotRequired
+
 
 class TextPart(TypedDict):
     type: Literal["text"]
-    content: str
+    content: NotRequired[str]
 
 
 SystemInstructions: TypeAlias = list[TextPart]

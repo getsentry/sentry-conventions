@@ -27,5 +27,5 @@ export interface TextPart {
   /**
    * Text content sent to or received from the model.
    */
-  content: string;
+  content?: string;
 }
