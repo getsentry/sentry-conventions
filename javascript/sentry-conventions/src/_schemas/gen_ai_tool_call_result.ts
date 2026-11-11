@@ -11,6 +11,12 @@
  * This interface was referenced by `undefined`'s JSON-Schema
  * via the `definition` "ToolCallResult".
  */
-export interface ToolCallResult {
-  [k: string]: unknown;
-}
+export type ToolCallResult =
+  | {
+      [k: string]: unknown;
+    }
+  | unknown[]
+  | string
+  | number
+  | boolean
+  | null;

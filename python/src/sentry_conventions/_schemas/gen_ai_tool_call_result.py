@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import TypedDict
+from typing import Any, TypeAlias
 
-
-class ToolCallResult(TypedDict):
-    pass
+ToolCallResult: TypeAlias = dict[str, Any] | list[Any] | str | float | bool | None
