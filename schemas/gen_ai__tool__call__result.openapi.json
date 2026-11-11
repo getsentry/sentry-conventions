@@ -8,12 +8,11 @@
   "components": {
     "schemas": {
       "ToolCallResult": {
-        "description": "Represents object-like results returned by a tool call.",
+        "description": "Represents results returned by a tool call.",
         "x-otel-deviation": [
           "Allow all JSON types, since a local tool function can return any value, including primitives and null."
         ],
-        "additionalProperties": true,
-        "type": ["object", "array", "string", "number", "boolean", "null"]
+        "tsType": "unknown"
       }
     }
   }

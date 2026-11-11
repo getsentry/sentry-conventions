@@ -5,4 +5,4 @@ from __future__ import annotations
 
 from typing import Any, TypeAlias
 
-ToolCallResult: TypeAlias = dict[str, Any] | list[Any] | str | float | bool | None
+ToolCallResult: TypeAlias = Any

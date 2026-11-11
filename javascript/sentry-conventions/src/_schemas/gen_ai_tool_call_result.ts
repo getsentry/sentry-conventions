@@ -6,17 +6,9 @@
  */
 
 /**
- * Represents object-like results returned by a tool call.
+ * Represents results returned by a tool call.
  *
  * This interface was referenced by `undefined`'s JSON-Schema
  * via the `definition` "ToolCallResult".
  */
-export type ToolCallResult =
-  | {
-      [k: string]: unknown;
-    }
-  | unknown[]
-  | string
-  | number
-  | boolean
-  | null;
+export type ToolCallResult = unknown;
