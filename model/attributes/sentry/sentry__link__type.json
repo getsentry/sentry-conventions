@@ -8,7 +8,8 @@
   "additional_context": [
     "This attribute is exclusively set on span links.",
     "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
-    "Add each new link type to `enum_values`, with a brief that says what the linked span is."
+    "Add each new link type to `enum_values`, with a brief that says what the linked span is.",
+    "A span can have links of different types. For example, a pageload span can have a `cache_origin` link and a `server_request` link."
   ],
   "search_alias": {
     "name": "link.type"
@@ -23,7 +24,7 @@
     },
     {
       "value": "cache_origin",
-      "brief": "The linked span wrote the cached value that this span reads."
+      "brief": "The linked span produced the cached value that this span uses. For example, a `cache.get` span links the `cache.put` span that wrote the cache entry. A pageload span links the span that rendered the reused part of the page (see `page.server_rendering.type`)."
     },
     {
       "value": "message_origin",
@@ -31,10 +32,15 @@
     },
     {
       "value": "server_request",
-      "brief": "The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace."
+      "brief": "The linked span handled the request for the document of this pageload span. Set only when the trace context of that request arrived too late, so the pageload span could not continue the trace. For a part of the page that the server reused from an earlier request, use `cache_origin`."
     }
   ],
   "changelog": [
+    {
+      "version": "next",
+      "prs": [789],
+      "description": "Added pageload examples to cache_origin and server_request"
+    },
     {
       "version": "0.28.0",
       "prs": [724, 738, 739],

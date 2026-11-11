@@ -1,0 +1,76 @@
+{
+  "openapi": "3.2.1",
+  "info": {
+    "title": "GenAI Tool Definitions",
+    "description": "Schema for the gen_ai.tool.definitions attribute, describing the list of tool definitions available to a GenAI model.",
+    "version": "0.1.0"
+  },
+  "components": {
+    "schemas": {
+      "ToolDefinitions": {
+        "description": "Represents the list of tool definitions available to the GenAI model.",
+        "items": { "$ref": "#/components/schemas/ToolDefinition" },
+        "type": "array"
+      },
+      "ToolDefinition": {
+        "anyOf": [
+          { "$ref": "#/components/schemas/FunctionToolDefinition" },
+          { "$ref": "#/components/schemas/ServerSideToolDefinition" }
+        ]
+      },
+      "FunctionToolDefinition": {
+        "description": "Represents a tool definition in the form of a function that is executed on the client.",
+        "x-otel-deviation": ["OTel allows arbitrary additional properties, while this definition does not."],
+        "properties": {
+          "type": {
+            "const": "function",
+            "description": "The type of the tool.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the tool.",
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "default": null,
+            "description": "The description of the tool."
+          },
+          "parameters": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "description": "JSON Schema document describing the parameters accepted by the tool."
+          }
+        },
+        "additionalProperties": false,
+        "required": ["type", "name"],
+        "type": "object"
+      },
+      "ServerSideToolDefinition": {
+        "description": "Represents a tool definition for a capability that the model provider manages on the server.",
+        "x-otel-deviation": [
+          "OTel allows arbitrary additional properties, while this definition does not.",
+          "OTel defines a GenericToolDefinition with a required name. In practice, tools are local functions or server-side capabilities, and the latter may only have a type."
+        ],
+        "properties": {
+          "type": {
+            "not": { "enum": ["function"] },
+            "description": "The type of the tool.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the tool.",
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "default": null,
+            "description": "The description of the tool."
+          }
+        },
+        "additionalProperties": false,
+        "required": ["type"],
+        "type": "object"
+      }
+    }
+  }
+}

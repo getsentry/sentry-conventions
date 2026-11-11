@@ -19,7 +19,7 @@ export const NAVIGATION = 'navigation';
 export const NAVIGATION_REDIRECT = 'navigation.redirect';
 
 /**
- * Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified.
+ * Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be identified.
  */
 export const RESOURCE = 'resource';
 
@@ -358,6 +358,8 @@ export const GEN_AI_GENERATE_CONTENT = 'gen_ai.generate_content';
 
 /**
  * Reranking of documents or results by a generative AI model
+ *
+ * @deprecated Product does not support rerank spans. "rerank" is not a recognized gen_ai.operation.name in OTel.
  */
 export const GEN_AI_RERANK = 'gen_ai.rerank';
 

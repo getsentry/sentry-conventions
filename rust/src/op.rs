@@ -12,7 +12,7 @@ pub const NAVIGATION: &str = "navigation";
 /// A client-side automatic redirect navigation (e.g. from framework router redirects) triggerign a browser history change.
 pub const NAVIGATION_REDIRECT: &str = "navigation.redirect";
 
-/// Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be indentified.
+/// Resource as per [Performance Resource Timing](https://w3c.github.io/resource-timing/#sec-performanceresourcetiming). Defaults to resource.other if resource cannot be identified.
 pub const RESOURCE: &str = "resource";
 
 pub const RESOURCE_SCRIPT: &str = "resource.script";
@@ -232,6 +232,7 @@ pub const GEN_AI_EMBEDDINGS: &str = "gen_ai.embeddings";
 pub const GEN_AI_GENERATE_CONTENT: &str = "gen_ai.generate_content";
 
 /// Reranking of documents or results by a generative AI model
+#[deprecated(note = "Product does not support rerank spans. \"rerank\" is not a recognized gen_ai.operation.name in OTel.")]
 pub const GEN_AI_RERANK: &str = "gen_ai.rerank";
 
 /// Decision on a set of typed questions (e.g., boolean, choice, or score) about a shared state by a generative AI model

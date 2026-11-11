@@ -1,21 +1,22 @@
 {
   "key": "gen_ai.system_instructions",
-  "brief": "The system message or instructions provided to the GenAI model separately from the chat history.",
+  "brief": "The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: \"text\", content: \"...\"}`.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
   },
   "is_in_otel": true,
-  "example": "You are a helpful assistant",
+  "example": "[{\"type\": \"text\", \"content\": \"You are a helpful assistant.\"}, {\"type\": \"text\", \"content\": \"Be concise and clear.\"}]",
   "alias": ["ai.preamble"],
   "visibility": "public",
   "additional_context": [
-    "Instructions that are part of the chat history SHOULD be recorded in gen_ai.input.messages attribute instead."
+    "Instructions that are part of the chat history are recorded in the gen_ai.input.messages attribute instead."
   ],
   "changelog": [
     {
       "version": "next",
-      "description": "Clarify that messages in the chat history only belong in gen_ai.input.messages"
+      "description": "Clarify that messages in the chat history only belong in gen_ai.input.messages",
+      "prs": [790]
     },
     {
       "version": "0.5.0",
