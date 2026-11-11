@@ -1,5 +1,7 @@
 // This is an auto-generated file. Do not edit!
 
+export type { ToolCallArguments } from './_schemas/gen_ai_tool_call_arguments';
+
 export type {
   ToolDefinitions,
   ToolDefinition,
@@ -9321,7 +9323,7 @@ export type GEN_AI_SYSTEM_MESSAGE_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__tool__call__arguments.json
 
 /**
- * The arguments of the tool call. It has to be a stringified version of the arguments to the tool. `gen_ai.tool.call.arguments`
+ * The arguments of the tool call. `gen_ai.tool.call.arguments`
  *
  * Attribute Value Type: `string` {@link GEN_AI_TOOL_CALL_ARGUMENTS_TYPE}
  *
@@ -30488,7 +30490,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.tool.call.arguments': {
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     type: 'string',
     keys: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
     applyScrubbing: {
@@ -30499,6 +30501,12 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: '{"location": "Paris"}',
     aliases: ['gen_ai.tool.input', 'ai.toolCall.args'],
     changelog: [
+      {
+        version: 'next',
+        prs: [793],
+        description:
+          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+      },
       { version: '0.5.0', prs: [265] },
       { version: '0.4.0', prs: [221] },
     ],

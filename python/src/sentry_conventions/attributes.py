@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union
 
+from ._schemas.gen_ai_tool_call_arguments import ToolCallArguments  # noqa: E402
 from ._schemas.gen_ai_tool_definitions import (  # noqa: E402
     FunctionToolDefinition,
     ServerSideToolDefinition,
@@ -5725,7 +5726,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_TOOL_CALL_ARGUMENTS: Literal["gen_ai.tool.call.arguments"] = (
         "gen_ai.tool.call.arguments"
     )
-    """The arguments of the tool call. It has to be a stringified version of the arguments to the tool.
+    """The arguments of the tool call.
 
     Type: str
     Apply Scrubbing: manual
@@ -20762,7 +20763,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.tool.call.arguments": AttributeMetadata(
-        brief="The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
+        brief="The arguments of the tool call.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.tool.call.arguments",
@@ -20775,6 +20776,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='{"location": "Paris"}',
         aliases=["gen_ai.tool.input", "ai.toolCall.args"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[793],
+                description="Remove informal format description from the brief to prevent duplication with the structured schema.",
+            ),
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -32520,6 +32526,7 @@ __all__ = [
     "ATTRIBUTE_METADATA",
     "Attributes",
     "ATTRIBUTE_NAMES",
+    "ToolCallArguments",
     "ToolDefinitions",
     "ToolDefinition",
     "FunctionToolDefinition",
