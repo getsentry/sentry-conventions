@@ -1,0 +1,38 @@
+{
+  "openapi": "3.2.1",
+  "info": {
+    "title": "GenAI System Instructions",
+    "description": "Schema for the gen_ai.system_instructions attribute, describing the system instructions provided to a GenAI model.",
+    "version": "0.1.0"
+  },
+  "components": {
+    "schemas": {
+      "SystemInstructions": {
+        "description": "Represents the system instructions provided to the model.",
+        "x-otel-deviation": [
+          "Only text instructions are allowed, because this schema omits OTel's GenericSystemInstructionPart fallback."
+        ],
+        "items": { "$ref": "#/components/schemas/TextPart" },
+        "type": "array"
+      },
+      "TextPart": {
+        "description": "Represents text content sent to or received from the model.",
+        "x-otel-deviation": ["OTel allows arbitrary additional properties, while this definition does not."],
+        "properties": {
+          "type": {
+            "const": "text",
+            "description": "The type of the content captured in this part.",
+            "type": "string"
+          },
+          "content": {
+            "description": "Text content sent to or received from the model.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["type", "content"],
+        "type": "object"
+      }
+    }
+  }
+}

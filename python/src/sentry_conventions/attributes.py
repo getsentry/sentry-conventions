@@ -7,6 +7,10 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union
 
+from ._schemas.gen_ai_system_instructions import (  # noqa: E402
+    SystemInstructions,
+    TextPart,
+)
 from ._schemas.gen_ai_tool_definitions import (  # noqa: E402
     FunctionToolDefinition,
     ServerSideToolDefinition,
@@ -5711,7 +5715,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
         "gen_ai.system_instructions"
     )
-    """The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.
+    """The system instructions passed to the model.
 
     Type: str
     Apply Scrubbing: manual
@@ -20744,7 +20748,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
-        brief='The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
+        brief="The system instructions passed to the model.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.system_instructions",
@@ -20757,6 +20761,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
         aliases=["ai.preamble"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[791],
+                description="Remove informal format description from the brief to prevent duplication with the structured schema.",
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -32509,6 +32518,8 @@ __all__ = [
     "ATTRIBUTE_METADATA",
     "Attributes",
     "ATTRIBUTE_NAMES",
+    "SystemInstructions",
+    "TextPart",
     "ToolDefinitions",
     "ToolDefinition",
     "FunctionToolDefinition",
