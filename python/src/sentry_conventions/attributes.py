@@ -395,6 +395,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_FRAMES_FROZEN",
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
+        "SENTRY_MESSAGING_DESTINATION_NAME",
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
@@ -8477,7 +8478,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: messaging.destination.name
+    Aliases: messaging.destination.name, sentry.messaging.destination.name
     DEPRECATED: Use messaging.destination.name instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
     Example: "BestTopic"
     """
@@ -8505,7 +8506,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: messaging.destination
+    Aliases: messaging.destination, sentry.messaging.destination.name
     Example: "BestTopic"
     """
 
@@ -10673,6 +10674,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "Hello, {name}!"
+    """
+
+    # Path: model/attributes/sentry/sentry__messaging__destination__name.json
+    SENTRY_MESSAGING_DESTINATION_NAME: Literal["sentry.messaging.destination.name"] = (
+        "sentry.messaging.destination.name"
+    )
+    """The message destination name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.destination.name, messaging.destination
+    DEPRECATED: Use messaging.destination.name instead
+    Example: "BestTopic"
     """
 
     # Path: model/attributes/sentry/sentry__metric__source.json
@@ -25163,6 +25179,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "messaging.destination.name",
             "messaging.destination",
+            "sentry.messaging.destination.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -25173,8 +25190,12 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["messaging.destination.name"],
+        aliases=["messaging.destination.name", "sentry.messaging.destination.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added sentry.messaging.destination.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[482],
@@ -25201,13 +25222,18 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "messaging.destination.name",
             "messaging.destination",
+            "sentry.messaging.destination.name",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="BestTopic",
-        aliases=["messaging.destination"],
+        aliases=["messaging.destination", "sentry.messaging.destination.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added sentry.messaging.destination.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.16.0",
                 prs=[482],
@@ -28484,6 +28510,29 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Hello, {name}!",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
+    ),
+    "sentry.messaging.destination.name": AttributeMetadata(
+        brief="The message destination name.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.destination.name",
+            "messaging.destination",
+            "sentry.messaging.destination.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="BestTopic",
+        deprecation=DeprecationInfo(
+            replacement="messaging.destination.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["messaging.destination.name", "messaging.destination"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name",
+            ),
         ],
     ),
     "sentry.metric.source": AttributeMetadata(
@@ -32403,6 +32452,7 @@ Attributes = TypedDict(
         "sentry.main_thread": bool,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
+        "sentry.messaging.destination.name": str,
         "sentry.metric.source": str,
         "sentry.mobile": bool,
         "sentry.module.<key>": str,

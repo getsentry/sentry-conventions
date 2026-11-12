@@ -7,9 +7,13 @@
   },
   "is_in_otel": true,
   "example": "BestTopic",
-  "alias": ["messaging.destination"],
+  "alias": ["messaging.destination", "sentry.messaging.destination.name"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "description": "Added sentry.messaging.destination.name as an alias"
+    },
     {
       "version": "0.16.0",
       "prs": [482],

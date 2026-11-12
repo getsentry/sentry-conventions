@@ -4572,6 +4572,13 @@ export const SEARCH_SENTRY__MESSAGE__PARAMETER__KEY = 'sentry.message.parameter.
 export const SEARCH_SENTRY__MESSAGE__TEMPLATE = 'sentry.message.template';
 
 /**
+ * Search name for {@link attributes.SENTRY_MESSAGING_DESTINATION_NAME}. `sentry.messaging.destination.name`
+ *
+ * @deprecated Use {@link SEARCH_MESSAGING__DESTINATION__NAME} (`messaging.destination.name`) instead
+ */
+export const SEARCH_SENTRY__MESSAGING__DESTINATION__NAME = 'sentry.messaging.destination.name';
+
+/**
  * Search name for {@link attributes.SENTRY_METRIC_SOURCE}. `sentry.metric.source`
  */
 export const SEARCH_SENTRY__METRIC__SOURCE = 'sentry.metric.source';
@@ -6392,6 +6399,7 @@ export type AttributeSearchName =
   | typeof SEARCH_SENTRY__MAIN_THREAD
   | typeof SEARCH_SENTRY__MESSAGE__PARAMETER__KEY
   | typeof SEARCH_SENTRY__MESSAGE__TEMPLATE
+  | typeof SEARCH_SENTRY__MESSAGING__DESTINATION__NAME
   | typeof SEARCH_SENTRY__METRIC__SOURCE
   | typeof SEARCH_SENTRY__MOBILE
   | typeof SEARCH_SENTRY__MODULE__KEY
@@ -10740,7 +10748,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.destination.name',
     type: 'string',
     brief: 'The message destination name.',
-    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
   },
   'messaging.destination.connection': {
     canonicalName: 'messaging.destination.connection',
@@ -10752,7 +10760,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'messaging.destination.name',
     type: 'string',
     brief: 'The message destination name.',
-    deprecationChain: ['messaging.destination.name', 'messaging.destination'],
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
   },
   'messaging.destination.partition.id': {
     canonicalName: 'messaging.destination.partition.id',
@@ -11883,6 +11891,12 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     type: 'string',
     brief: 'The parameterized template string.',
     deprecationChain: ['sentry.message.template'],
+  },
+  'sentry.messaging.destination.name': {
+    canonicalName: 'messaging.destination.name',
+    type: 'string',
+    brief: 'The message destination name.',
+    deprecationChain: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
   },
   'sentry.metric.source': {
     canonicalName: 'sentry.metric.source',
