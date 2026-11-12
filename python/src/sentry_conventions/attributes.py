@@ -5630,7 +5630,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK: Literal[
         "gen_ai.response.time_to_first_chunk"
     ] = "gen_ai.response.time_to_first_chunk"
-    """Time in seconds when the first response content chunk arrived in streaming responses.
+    """Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.
 
     Type: float
     Apply Scrubbing: manual
@@ -20656,7 +20656,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.response.time_to_first_chunk": AttributeMetadata(
-        brief="Time in seconds when the first response content chunk arrived in streaming responses.",
+        brief="Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.",
         type=AttributeType.DOUBLE,
         keys=(
             "gen_ai.response.time_to_first_chunk",
@@ -20669,10 +20669,20 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         aliases=["gen_ai.response.time_to_first_token"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[795],
+                description="Aligned the brief with OTel and added additional context.",
+            ),
+            ChangelogEntry(
                 version="0.11.0",
                 prs=[418],
                 description="Added gen_ai.response.time_to_first_chunk attribute",
             ),
+        ],
+        additional_context=[
+            "A chunk is a decoded provider stream event carrying new, non-empty output: text, refusals, reasoning (including opaque payloads), audio, images, or tool-call names or arguments. Empty start events or events carrying only usage, roles, IDs, signatures, keep-alives, progress/status updates, or end markers are not chunks. Chunk boundaries follow provider events, not TCP reads, HTTP frames, or extra SDK callbacks.",
+            "Measure the time from the start of the logical inference operation, before authentication and the first attempt, to when the first chunk is fully received by the client, before application processing.",
+            "Set this attribute when the first chunk is received and do not set it if no chunk is received.",
         ],
     ),
     "gen_ai.response.time_to_first_token": AttributeMetadata(
