@@ -11,6 +11,7 @@ from ._schemas.gen_ai_system_instructions import (  # noqa: E402
     SystemInstructions,
     TextPart,
 )
+from ._schemas.gen_ai_tool_call_result import ToolCallResult  # noqa: E402
 from ._schemas.gen_ai_tool_definitions import (  # noqa: E402
     FunctionToolDefinition,
     ServerSideToolDefinition,
@@ -5743,7 +5744,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_TOOL_CALL_RESULT: Literal["gen_ai.tool.call.result"] = (
         "gen_ai.tool.call.result"
     )
-    """The result of the tool call. It has to be a stringified version of the result of the tool.
+    """The result of the tool call.
 
     Type: str
     Apply Scrubbing: manual
@@ -20821,7 +20822,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.tool.call.result": AttributeMetadata(
-        brief="The result of the tool call. It has to be a stringified version of the result of the tool.",
+        brief="The result of the tool call.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.tool.call.result",
@@ -20843,6 +20844,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "anthropic.tool_result.content",
         ],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[794],
+                description="Remove informal format description from the brief to prevent duplication with the structured schema.",
+            ),
             ChangelogEntry(version="0.5.0", prs=[265]),
             ChangelogEntry(version="0.4.0", prs=[221]),
         ],
@@ -32597,6 +32603,7 @@ __all__ = [
     "ATTRIBUTE_NAMES",
     "SystemInstructions",
     "TextPart",
+    "ToolCallResult",
     "ToolDefinitions",
     "ToolDefinition",
     "FunctionToolDefinition",

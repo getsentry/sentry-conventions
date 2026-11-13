@@ -9308,7 +9308,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.tool.call.result': {
     canonicalName: 'gen_ai.tool.call.result',
     type: 'string',
-    brief: 'The result of the tool call. It has to be a stringified version of the result of the tool.',
+    brief: 'The result of the tool call.',
     deprecationChain: [
       'gen_ai.tool.call.result',
       'ai.toolCall.result',

@@ -7,6 +7,7 @@ export type {
   ApplyScrubbingInfo,
   DeprecationInfo,
   AttributeMetadata,
+  ToolCallResult,
   ToolDefinition,
   ToolDefinitions,
   FunctionToolDefinition,
