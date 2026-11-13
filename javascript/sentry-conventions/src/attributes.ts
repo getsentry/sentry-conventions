@@ -1,5 +1,7 @@
 // This is an auto-generated file. Do not edit!
 
+export type { SystemInstructions, TextPart } from './_schemas/gen_ai_system_instructions';
+
 export type {
   ToolDefinitions,
   ToolDefinition,
@@ -9276,7 +9278,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__system_instructions.json
 
 /**
- * The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`. `gen_ai.system_instructions`
+ * The system message or instructions provided to the GenAI model separately from the chat history. `gen_ai.system_instructions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_INSTRUCTIONS_TYPE}
  *
@@ -30500,8 +30502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.system_instructions': {
-    brief:
-      'The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
+    brief: 'The system message or instructions provided to the GenAI model separately from the chat history.',
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
@@ -30515,8 +30516,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
-        prs: [790],
-        description: 'Clarify that messages in the chat history only belong in gen_ai.input.messages',
+        prs: [790, 791],
+        description:
+          'Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.',
       },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },

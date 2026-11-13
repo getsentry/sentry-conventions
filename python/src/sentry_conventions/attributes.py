@@ -7,6 +7,10 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union
 
+from ._schemas.gen_ai_system_instructions import (  # noqa: E402
+    SystemInstructions,
+    TextPart,
+)
 from ._schemas.gen_ai_tool_definitions import (  # noqa: E402
     FunctionToolDefinition,
     ServerSideToolDefinition,
@@ -5711,7 +5715,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
         "gen_ai.system_instructions"
     )
-    """The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.
+    """The system message or instructions provided to the GenAI model separately from the chat history.
 
     Type: str
     Apply Scrubbing: manual
@@ -20773,7 +20777,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
-        brief='The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
+        brief="The system message or instructions provided to the GenAI model separately from the chat history.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.system_instructions",
@@ -20788,8 +20792,8 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[790],
-                description="Clarify that messages in the chat history only belong in gen_ai.input.messages",
+                prs=[790, 791],
+                description="Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.",
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
@@ -32591,6 +32595,8 @@ __all__ = [
     "ATTRIBUTE_METADATA",
     "Attributes",
     "ATTRIBUTE_NAMES",
+    "SystemInstructions",
+    "TextPart",
     "ToolDefinitions",
     "ToolDefinition",
     "FunctionToolDefinition",

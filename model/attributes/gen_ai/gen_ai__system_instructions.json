@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.system_instructions",
-  "brief": "The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: \"text\", content: \"...\"}`.",
+  "brief": "The system message or instructions provided to the GenAI model separately from the chat history.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
@@ -15,8 +15,8 @@
   "changelog": [
     {
       "version": "next",
-      "description": "Clarify that messages in the chat history only belong in gen_ai.input.messages",
-      "prs": [790]
+      "description": "Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.",
+      "prs": [790, 791]
     },
     {
       "version": "0.5.0",
