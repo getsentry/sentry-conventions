@@ -12,7 +12,7 @@
     "lint:types": "astro sync && tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/svelte": "9.0.1",
+    "@astrojs/svelte": "9.1.2",
     "@sentry/astro": "^11.0.0-alpha.0",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "7.3.3",
