@@ -175,11 +175,13 @@ pub const UI_LIVEWIRE: &str = "ui.livewire";
 // Name: database
 
 // Description: Database related spans are expected to follow OpenTelemetry's Database semantic conventions when possible.
+/// A database operation, such as a query or command sent to a database
 pub const DB: &str = "db";
 
+#[deprecated(note = "Use `DB` (db) instead - Use the generic `db` op for all database operations. Describe the operation with the `db.*` span attributes instead.")]
 pub const DB_QUERY: &str = "db.query";
 
-#[deprecated(note = "Use `DB_QUERY` (db.query) instead - Provider-specific Redis ops are replaced by framework-agnostic ones.")]
+#[deprecated(note = "Use `DB` (db) instead - Provider-specific Redis ops are replaced by framework-agnostic ones.")]
 pub const DB_REDIS: &str = "db.redis";
 
 pub const CACHE: &str = "cache";
