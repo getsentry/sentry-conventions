@@ -14060,7 +14060,7 @@ export type MESSAGING_CONVERSATION_ID_TYPE = string;
  * Attribute defined in OTEL: No
  * Visibility: public
  *
- * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`
+ * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`, {@link SENTRY_MESSAGING_DESTINATION_NAME} `sentry.messaging.destination.name`
  *
  * @deprecated Use {@link MESSAGING_DESTINATION_NAME} (messaging.destination.name) instead - This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.
  * @example "BestTopic"
@@ -14127,7 +14127,7 @@ export type MESSAGING_DESTINATION_KIND_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
- * Aliases: {@link MESSAGING_DESTINATION} `messaging.destination`
+ * Aliases: {@link MESSAGING_DESTINATION} `messaging.destination`, {@link SENTRY_MESSAGING_DESTINATION_NAME} `sentry.messaging.destination.name`
  *
  * @example "BestTopic"
  */
@@ -17970,6 +17970,30 @@ export const SENTRY_MESSAGE_TEMPLATE = 'sentry.message.template';
  * Type for {@link SENTRY_MESSAGE_TEMPLATE} sentry.message.template
  */
 export type SENTRY_MESSAGE_TEMPLATE_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__messaging__destination__name.json
+
+/**
+ * The message destination name. `sentry.messaging.destination.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_MESSAGING_DESTINATION_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link MESSAGING_DESTINATION_NAME} `messaging.destination.name`, {@link MESSAGING_DESTINATION} `messaging.destination`
+ *
+ * @deprecated Use {@link MESSAGING_DESTINATION_NAME} (messaging.destination.name) instead
+ * @example "BestTopic"
+ */
+export const SENTRY_MESSAGING_DESTINATION_NAME = 'sentry.messaging.destination.name';
+
+/**
+ * Type for {@link SENTRY_MESSAGING_DESTINATION_NAME} sentry.messaging.destination.name
+ */
+export type SENTRY_MESSAGING_DESTINATION_NAME_TYPE = string;
 
 // Path: model/attributes/sentry/sentry__metric__source.json
 
@@ -22752,6 +22776,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.main_thread': 'boolean',
   'sentry.message.parameter.<key>': 'string',
   'sentry.message.template': 'string',
+  'sentry.messaging.destination.name': 'string',
   'sentry.metric.source': 'string',
   'sentry.mobile': 'boolean',
   'sentry.module.<key>': 'string',
@@ -23726,6 +23751,7 @@ export type AttributeName =
   | typeof SENTRY_MAIN_THREAD
   | typeof SENTRY_MESSAGE_PARAMETER_KEY
   | typeof SENTRY_MESSAGE_TEMPLATE
+  | typeof SENTRY_MESSAGING_DESTINATION_NAME
   | typeof SENTRY_METRIC_SOURCE
   | typeof SENTRY_MOBILE
   | typeof SENTRY_MODULE_KEY
@@ -34446,7 +34472,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination': {
     brief: 'The message destination name.',
     type: 'string',
-    keys: ['messaging.destination.name', 'messaging.destination'],
+    keys: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
     applyScrubbing: {
       key: 'manual',
     },
@@ -34459,8 +34485,9 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
         'This attribute is being deprecated in favor of messaging.destination.name, which is the OTel-aligned replacement.',
       status: 'backfill',
     },
-    aliases: ['messaging.destination.name'],
+    aliases: ['messaging.destination.name', 'sentry.messaging.destination.name'],
     changelog: [
+      { version: 'next', description: 'Added sentry.messaging.destination.name as an alias' },
       {
         version: '0.16.0',
         prs: [482],
@@ -34506,15 +34533,16 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'messaging.destination.name': {
     brief: 'The message destination name.',
     type: 'string',
-    keys: ['messaging.destination.name', 'messaging.destination'],
+    keys: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'BestTopic',
-    aliases: ['messaging.destination'],
+    aliases: ['messaging.destination', 'sentry.messaging.destination.name'],
     changelog: [
+      { version: 'next', description: 'Added sentry.messaging.destination.name as an alias' },
       { version: '0.16.0', prs: [482], description: 'Added messaging.destination as an alias' },
       { version: '0.1.0', prs: [127] },
       { version: '0.0.0' },
@@ -37235,6 +37263,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'Hello, {name}!',
     changelog: [{ version: '0.1.0', prs: [116] }],
+  },
+  'sentry.messaging.destination.name': {
+    brief: 'The message destination name.',
+    type: 'string',
+    keys: ['messaging.destination.name', 'messaging.destination', 'sentry.messaging.destination.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'BestTopic',
+    deprecation: {
+      replacement: 'messaging.destination.name',
+      status: 'backfill',
+    },
+    aliases: ['messaging.destination.name', 'messaging.destination'],
+    changelog: [
+      {
+        version: 'next',
+        description:
+          'Added sentry.messaging.destination.name attribute, deprecated in favor of messaging.destination.name',
+      },
+    ],
   },
   'sentry.metric.source': {
     brief:
@@ -40834,6 +40885,7 @@ export type Attributes = {
   [SENTRY_MAIN_THREAD]?: SENTRY_MAIN_THREAD_TYPE;
   [SENTRY_MESSAGE_PARAMETER_KEY]?: SENTRY_MESSAGE_PARAMETER_KEY_TYPE;
   [SENTRY_MESSAGE_TEMPLATE]?: SENTRY_MESSAGE_TEMPLATE_TYPE;
+  [SENTRY_MESSAGING_DESTINATION_NAME]?: SENTRY_MESSAGING_DESTINATION_NAME_TYPE;
   [SENTRY_METRIC_SOURCE]?: SENTRY_METRIC_SOURCE_TYPE;
   [SENTRY_MOBILE]?: SENTRY_MOBILE_TYPE;
   [SENTRY_MODULE_KEY]?: SENTRY_MODULE_KEY_TYPE;
