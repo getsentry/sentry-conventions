@@ -5711,7 +5711,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
         "gen_ai.system_instructions"
     )
-    """The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.
+    """The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.
 
     Type: str
     Apply Scrubbing: manual
@@ -20773,7 +20773,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
-        brief='The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
+        brief='The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
         type=AttributeType.STRING,
         keys=(
             "gen_ai.system_instructions",
@@ -20786,8 +20786,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
         aliases=["ai.preamble"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[790],
+                description="Clarify that messages in the chat history only belong in gen_ai.input.messages",
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
+        additional_context=[
+            "Instructions that are part of the chat history are recorded in the gen_ai.input.messages attribute instead."
         ],
     ),
     "gen_ai.tool.call.arguments": AttributeMetadata(

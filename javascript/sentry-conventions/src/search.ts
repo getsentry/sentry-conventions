@@ -9297,7 +9297,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
     canonicalName: 'gen_ai.system_instructions',
     type: 'string',
     brief:
-      'The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
+      'The system message or instructions provided to the GenAI model separately from the chat history. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
     deprecationChain: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
   },
   'gen_ai.tool.call.arguments': {
