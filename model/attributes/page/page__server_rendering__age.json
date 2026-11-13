@@ -1,0 +1,28 @@
+{
+  "key": "page.server_rendering.age",
+  "brief": "Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.",
+  "type": "integer",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "additional_context": [
+    "Set only by an SDK that controls the server render, when the page reuses a server render and the SDK knows when that render started. With `page.server_rendering.type: partially_static`, the value is for the static part.",
+    "If the span has a `cache_origin` link, the linked span is that render. The SDK can also set the value without a link, for example for a page from the build.",
+    "Approximate, because the render time comes from the server clock and the span start from the browser clock. Rounded down to whole seconds and clamped to 0, as `cache.item_age`. A value near 0 does not prove that the server rendered the page for this request.",
+    "The age of the render, not of its data. The render can read older cached data.",
+    "Not the HTTP `Age` response header. HTTP caches reset that header when they validate the response."
+  ],
+  "is_in_otel": false,
+  "visibility": "public",
+  "examples": [0, 2520, 259200],
+  "search_alias": {
+    "name": "page.server_rendering.age",
+    "type": "second"
+  },
+  "changelog": [
+    {
+      "version": "next",
+      "description": "Added page.server_rendering.age attribute"
+    }
+  ]
+}
