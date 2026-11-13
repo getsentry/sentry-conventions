@@ -5715,7 +5715,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
         "gen_ai.system_instructions"
     )
-    """The system instructions passed to the model.
+    """The system message or instructions provided to the GenAI model separately from the chat history.
 
     Type: str
     Apply Scrubbing: manual
@@ -9558,6 +9558,35 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
     """
 
+    # Path: model/attributes/process/process__runtime__elixir__memory__type.json
+    PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE: Literal[
+        "process.runtime.elixir.memory.type"
+    ] = "process.runtime.elixir.memory.type"
+    """The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "processes"
+    Example: "binary"
+    Example: "other"
+    """
+
+    # Path: model/attributes/process/process__runtime__elixir__run_queue__type.json
+    PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE: Literal[
+        "process.runtime.elixir.run_queue.type"
+    ] = "process.runtime.elixir.run_queue.type"
+    """The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "cpu"
+    Example: "io"
+    """
+
     # Path: model/attributes/process/process__runtime__engine__name.json
     PROCESS_RUNTIME_ENGINE_NAME: Literal["process.runtime.engine.name"] = (
         "process.runtime.engine.name"
@@ -10604,9 +10633,9 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Well-defined Values:
     - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
-    - `cache_origin` - The linked span wrote the cached value that this span reads.
+    - `cache_origin` - The linked span produced the cached value that this span uses. For example, a `cache.get` span links the `cache.put` span that wrote the cache entry. A pageload span links the span that rendered the reused part of the page (see `page.server_rendering.type`).
     - `message_origin` - The linked span published the queue message that this span processes.
-    - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
+    - `server_request` - The linked span handled the request for the document of this pageload span. Set only when the trace context of that request arrived too late, so the pageload span could not continue the trace. For a part of the page that the server reused from an earlier request, use `cache_origin`.
     Example: "previous_trace"
     Example: "cache_origin"
     Example: "message_origin"
@@ -20748,7 +20777,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
-        brief="The system instructions passed to the model.",
+        brief="The system message or instructions provided to the GenAI model separately from the chat history.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.system_instructions",
@@ -20763,11 +20792,14 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(
                 version="next",
-                prs=[791],
-                description="Remove informal format description from the brief to prevent duplication with the structured schema.",
+                prs=[790, 791],
+                description="Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.",
             ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
+        additional_context=[
+            "Instructions that are part of the chat history are recorded in the gen_ai.input.messages attribute instead."
         ],
     ),
     "gen_ai.tool.call.arguments": AttributeMetadata(
@@ -26708,6 +26740,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["static", "partially_static", "dynamic"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[789],
+                description="Added the cache_origin link to the reused part",
+            ),
+            ChangelogEntry(
                 version="0.31.0",
                 prs=[740],
                 description="Added page.server_rendering.type attribute",
@@ -26717,7 +26754,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "Set only by an SDK that controls the server render, and only when the SDK knows the value.",
             "More values can be added later.",
             "Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.",
-            "With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.",
+            "With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace. The pageload span can link to them with a `cache_origin` link.",
             "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
         ],
     ),
@@ -26898,6 +26935,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
+        ],
+    ),
+    "process.runtime.elixir.memory.type": AttributeMetadata(
+        brief="The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.",
+        type=AttributeType.STRING,
+        keys=("process.runtime.elixir.memory.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="processes",
+        examples=["processes", "binary", "other"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added process.runtime.elixir.memory.type attribute",
+            ),
+        ],
+    ),
+    "process.runtime.elixir.run_queue.type": AttributeMetadata(
+        brief="The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.",
+        type=AttributeType.STRING,
+        keys=("process.runtime.elixir.run_queue.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="cpu",
+        examples=["cpu", "io"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added process.runtime.elixir.run_queue.type attribute",
+            ),
         ],
     ),
     "process.runtime.engine.name": AttributeMetadata(
@@ -28367,6 +28436,11 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=["previous_trace", "cache_origin", "message_origin", "server_request"],
         changelog=[
             ChangelogEntry(
+                version="next",
+                prs=[789],
+                description="Added pageload examples to cache_origin and server_request",
+            ),
+            ChangelogEntry(
                 version="0.28.0",
                 prs=[724, 738, 739],
                 description="Removed next_trace from the examples and enum_values, because no SDK sets it",
@@ -28384,6 +28458,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             "This attribute is exclusively set on span links.",
             "Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.",
             "Add each new link type to `enum_values`, with a brief that says what the linked span is.",
+            "A span can have links of different types. For example, a pageload span can have a `cache_origin` link and a `server_request` link.",
         ],
         search_alias=SearchAlias(name="link.type"),
     ),
@@ -32255,6 +32330,8 @@ Attributes = TypedDict(
         "process.executable.name": str,
         "process.pid": int,
         "process.runtime.description": str,
+        "process.runtime.elixir.memory.type": str,
+        "process.runtime.elixir.run_queue.type": str,
         "process.runtime.engine.name": str,
         "process.runtime.engine.version": str,
         "process.runtime.name": str,

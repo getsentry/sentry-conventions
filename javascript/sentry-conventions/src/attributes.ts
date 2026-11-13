@@ -9278,7 +9278,7 @@ export type GEN_AI_SYSTEM_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__system_instructions.json
 
 /**
- * The system instructions passed to the model. `gen_ai.system_instructions`
+ * The system message or instructions provided to the GenAI model separately from the chat history. `gen_ai.system_instructions`
  *
  * Attribute Value Type: `string` {@link GEN_AI_SYSTEM_INSTRUCTIONS_TYPE}
  *
@@ -16000,6 +16000,51 @@ export const PROCESS_RUNTIME_DESCRIPTION = 'process.runtime.description';
  */
 export type PROCESS_RUNTIME_DESCRIPTION_TYPE = string;
 
+// Path: model/attributes/process/process__runtime__elixir__memory__type.json
+
+/**
+ * The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total. `process.runtime.elixir.memory.type`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "processes"
+ * @example "binary"
+ * @example "other"
+ */
+export const PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE = 'process.runtime.elixir.memory.type';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE} process.runtime.elixir.memory.type
+ */
+export type PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE = string;
+
+// Path: model/attributes/process/process__runtime__elixir__run_queue__type.json
+
+/**
+ * The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue. `process.runtime.elixir.run_queue.type`
+ *
+ * Attribute Value Type: `string` {@link PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE}
+ *
+ * Apply Scrubbing: never
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * @example "cpu"
+ * @example "io"
+ */
+export const PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE = 'process.runtime.elixir.run_queue.type';
+
+/**
+ * Type for {@link PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE} process.runtime.elixir.run_queue.type
+ */
+export type PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE = string;
+
 // Path: model/attributes/process/process__runtime__engine__name.json
 
 /**
@@ -17845,9 +17890,9 @@ export type SENTRY_KIND_TYPE = string;
  *
  * Well-defined Values:
  * - `previous_trace` - The linked span is the root span of the trace before this trace, for example the pageload span before a navigation span.
- * - `cache_origin` - The linked span wrote the cached value that this span reads.
+ * - `cache_origin` - The linked span produced the cached value that this span uses. For example, a `cache.get` span links the `cache.put` span that wrote the cache entry. A pageload span links the span that rendered the reused part of the page (see `page.server_rendering.type`).
  * - `message_origin` - The linked span published the queue message that this span processes.
- * - `server_request` - The linked span handled the server request that rendered the document of this pageload span. Set when the trace context arrived too late for the pageload span to continue that trace.
+ * - `server_request` - The linked span handled the request for the document of this pageload span. Set only when the trace context of that request arrived too late, so the pageload span could not continue the trace. For a part of the page that the server reused from an earlier request, use `cache_origin`.
  *
  * @example "previous_trace"
  * @example "cache_origin"
@@ -22620,6 +22665,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'process.executable.name': 'string',
   'process.pid': 'integer',
   'process.runtime.description': 'string',
+  'process.runtime.elixir.memory.type': 'string',
+  'process.runtime.elixir.run_queue.type': 'string',
   'process.runtime.engine.name': 'string',
   'process.runtime.engine.version': 'string',
   'process.runtime.name': 'string',
@@ -23592,6 +23639,8 @@ export type AttributeName =
   | typeof PROCESS_EXECUTABLE_NAME
   | typeof PROCESS_PID
   | typeof PROCESS_RUNTIME_DESCRIPTION
+  | typeof PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE
+  | typeof PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE
   | typeof PROCESS_RUNTIME_ENGINE_NAME
   | typeof PROCESS_RUNTIME_ENGINE_VERSION
   | typeof PROCESS_RUNTIME_NAME
@@ -30453,7 +30502,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.system_instructions': {
-    brief: 'The system instructions passed to the model.',
+    brief: 'The system message or instructions provided to the GenAI model separately from the chat history.',
     type: 'string',
     keys: ['gen_ai.system_instructions', 'ai.preamble', 'gen_ai.system.message'],
     applyScrubbing: {
@@ -30467,12 +30516,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     changelog: [
       {
         version: 'next',
-        prs: [791],
+        prs: [790, 791],
         description:
-          'Remove informal format description from the brief to prevent duplication with the structured schema.',
+          'Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.',
       },
       { version: '0.5.0', prs: [264] },
       { version: '0.4.0', prs: [221] },
+    ],
+    additionalContext: [
+      'Instructions that are part of the chat history are recorded in the gen_ai.input.messages attribute instead.',
     ],
   },
   'gen_ai.system.message': {
@@ -35669,12 +35721,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 'static',
     examples: ['static', 'partially_static', 'dynamic'],
-    changelog: [{ version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' }],
+    changelog: [
+      { version: 'next', prs: [789], description: 'Added the cache_origin link to the reused part' },
+      { version: '0.31.0', prs: [740], description: 'Added page.server_rendering.type attribute' },
+    ],
     additionalContext: [
       'Set only by an SDK that controls the server render, and only when the SDK knows the value.',
       'More values can be added later.',
       'Not set when the browser renders the content of the page (client-side rendering), or when the SDK does not know the value.',
-      'With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace.',
+      'With `static` and `partially_static`, the server spans that rendered the reused part are not in the trace of the pageload span. If Sentry recorded them, they are in a different trace. The pageload span can link to them with a `cache_origin` link.',
       "Describes how the server rendered the page, not how the page was delivered. A CDN or the browser cache can reuse a response with any value. For the browser's own [prerendering](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering), see `browser.navigation.type`.",
     ],
   },
@@ -35817,6 +35872,34 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'Eclipse OpenJ9 VM openj9-0.21.0',
     aliases: ['runtime.raw_description'],
     changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+  },
+  'process.runtime.elixir.memory.type': {
+    brief:
+      'The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.',
+    type: 'string',
+    keys: ['process.runtime.elixir.memory.type'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'processes',
+    examples: ['processes', 'binary', 'other'],
+    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.memory.type attribute' }],
+  },
+  'process.runtime.elixir.run_queue.type': {
+    brief:
+      'The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.',
+    type: 'string',
+    keys: ['process.runtime.elixir.run_queue.type'],
+    applyScrubbing: {
+      key: 'never',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'cpu',
+    examples: ['cpu', 'io'],
+    changelog: [{ version: 'next', description: 'Added process.runtime.elixir.run_queue.type attribute' }],
   },
   'process.runtime.engine.name': {
     brief: 'The name of the runtime engine.',
@@ -37089,6 +37172,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     example: 'previous_trace',
     examples: ['previous_trace', 'cache_origin', 'message_origin', 'server_request'],
     changelog: [
+      { version: 'next', prs: [789], description: 'Added pageload examples to cache_origin and server_request' },
       {
         version: '0.28.0',
         prs: [724, 738, 739],
@@ -37101,6 +37185,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       'This attribute is exclusively set on span links.',
       'Sentry instrumentation setting span links, sets it to describe the relationship between the span and the linked span.',
       'Add each new link type to `enum_values`, with a brief that says what the linked span is.',
+      'A span can have links of different types. For example, a pageload span can have a `cache_origin` link and a `server_request` link.',
     ],
     searchAlias: {
       name: 'link.type',
@@ -40656,6 +40741,8 @@ export type Attributes = {
   [PROCESS_EXECUTABLE_NAME]?: PROCESS_EXECUTABLE_NAME_TYPE;
   [PROCESS_PID]?: PROCESS_PID_TYPE;
   [PROCESS_RUNTIME_DESCRIPTION]?: PROCESS_RUNTIME_DESCRIPTION_TYPE;
+  [PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE]?: PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE_TYPE;
+  [PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE]?: PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE_TYPE;
   [PROCESS_RUNTIME_ENGINE_NAME]?: PROCESS_RUNTIME_ENGINE_NAME_TYPE;
   [PROCESS_RUNTIME_ENGINE_VERSION]?: PROCESS_RUNTIME_ENGINE_VERSION_TYPE;
   [PROCESS_RUNTIME_NAME]?: PROCESS_RUNTIME_NAME_TYPE;
