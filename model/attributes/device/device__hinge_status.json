@@ -1,0 +1,29 @@
+{
+  "key": "device.hinge_status",
+  "brief": "The hinge status of a foldable device, such as iPhone Duo: closed, partially_open, or fully_open.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "examples": ["closed", "partially_open", "fully_open"],
+  "enum_values": [
+    {
+      "value": "closed"
+    },
+    {
+      "value": "partially_open"
+    },
+    {
+      "value": "fully_open"
+    }
+  ],
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [746],
+      "description": "Added device.hinge_status attribute"
+    }
+  ]
+}
