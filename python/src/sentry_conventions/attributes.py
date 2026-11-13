@@ -26761,7 +26761,9 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         examples=[0, 2520, 259200],
         changelog=[
             ChangelogEntry(
-                version="next", description="Added page.server_rendering.age attribute"
+                version="next",
+                prs=[799],
+                description="Added page.server_rendering.age attribute",
             ),
         ],
         additional_context=[

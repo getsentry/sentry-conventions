@@ -35754,7 +35754,7 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0,
     examples: [0, 2520, 259200],
-    changelog: [{ version: 'next', description: 'Added page.server_rendering.age attribute' }],
+    changelog: [{ version: 'next', prs: [799], description: 'Added page.server_rendering.age attribute' }],
     additionalContext: [
       'Set only by an SDK that controls the server render, when the page reuses a server render and the SDK knows when that render started. With `page.server_rendering.type: partially_static`, the value is for the static part.',
       'If the span has a `cache_origin` link, the linked span is that render. The SDK can also set the value without a link, for example for a page from the build.',
