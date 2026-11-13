@@ -7,11 +7,14 @@ export type {
   ApplyScrubbingInfo,
   DeprecationInfo,
   AttributeMetadata,
+  ToolCallArguments,
+  ToolCallResult,
   ToolDefinition,
   ToolDefinitions,
   FunctionToolDefinition,
   ServerSideToolDefinition,
-  ToolCallArguments,
+  SystemInstructions,
+  TextPart,
 } from './attributes';
 
 export { ATTRIBUTE_METADATA, ATTRIBUTE_TYPE } from './attributes';
