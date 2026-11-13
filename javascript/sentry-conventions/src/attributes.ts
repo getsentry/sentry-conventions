@@ -9166,7 +9166,7 @@ export type GEN_AI_RESPONSE_TEXT_TYPE = string;
 // Path: model/attributes/gen_ai/gen_ai__response__time_to_first_chunk.json
 
 /**
- * Time in seconds when the first response content chunk arrived in streaming responses. `gen_ai.response.time_to_first_chunk`
+ * Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds. `gen_ai.response.time_to_first_chunk`
  *
  * Attribute Value Type: `number` {@link GEN_AI_RESPONSE_TIME_TO_FIRST_CHUNK_TYPE}
  *
@@ -30416,7 +30416,8 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     ],
   },
   'gen_ai.response.time_to_first_chunk': {
-    brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
+    brief:
+      'Time from the start of a logical inference operation to the first chunk in its streaming response, in seconds.',
     type: 'double',
     keys: ['gen_ai.response.time_to_first_chunk', 'gen_ai.response.time_to_first_token'],
     applyScrubbing: {
@@ -30426,7 +30427,15 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     visibility: 'public',
     example: 0.6853435,
     aliases: ['gen_ai.response.time_to_first_token'],
-    changelog: [{ version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' }],
+    changelog: [
+      { version: 'next', prs: [795], description: 'Aligned the brief with OTel and added additional context.' },
+      { version: '0.11.0', prs: [418], description: 'Added gen_ai.response.time_to_first_chunk attribute' },
+    ],
+    additionalContext: [
+      'A chunk is a decoded provider stream event carrying new, non-empty output: text, refusals, reasoning (including opaque payloads), audio, images, or tool-call names or arguments. Empty start events or events carrying only usage, roles, IDs, signatures, keep-alives, progress/status updates, or end markers are not chunks. Chunk boundaries follow provider events, not TCP reads, HTTP frames, or extra SDK callbacks.',
+      'Measure the time from the start of the logical inference operation, before authentication and the first attempt, to when the first chunk is fully received by the client, before application processing.',
+      'Set this attribute when the first chunk is received and do not set it if no chunk is received.',
+    ],
   },
   'gen_ai.response.time_to_first_token': {
     brief: 'Time in seconds when the first response content chunk arrived in streaming responses.',
