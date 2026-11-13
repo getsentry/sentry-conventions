@@ -1,0 +1,10 @@
+{
+  "name": "runtime",
+  "description": "Operations of the language runtime itself, as opposed to the application code running on it.",
+  "fields": [
+    {
+      "name": "gc",
+      "description": "A run of the runtime's garbage collector."
+    }
+  ]
+}
