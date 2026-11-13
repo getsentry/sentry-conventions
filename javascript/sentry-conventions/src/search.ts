@@ -9302,7 +9302,7 @@ export const ATTRIBUTE_SEARCH_METADATA: Record<string, AttributeSearchMetadata> 
   'gen_ai.tool.call.arguments': {
     canonicalName: 'gen_ai.tool.call.arguments',
     type: 'string',
-    brief: 'The arguments of the tool call. It has to be a stringified version of the arguments to the tool.',
+    brief: 'The arguments of the tool call.',
     deprecationChain: ['gen_ai.tool.call.arguments', 'ai.toolCall.args', 'gen_ai.tool.input'],
   },
   'gen_ai.tool.call.result': {

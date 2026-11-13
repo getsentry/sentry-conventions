@@ -1,6 +1,6 @@
 {
   "key": "gen_ai.tool.call.arguments",
-  "brief": "The arguments of the tool call. It has to be a stringified version of the arguments to the tool.",
+  "brief": "The arguments of the tool call.",
   "type": "string",
   "apply_scrubbing": {
     "key": "manual"
@@ -10,6 +10,11 @@
   "alias": ["gen_ai.tool.input", "ai.toolCall.args"],
   "visibility": "public",
   "changelog": [
+    {
+      "version": "next",
+      "prs": [793],
+      "description": "Remove informal format description from the brief to prevent duplication with the structured schema."
+    },
     {
       "version": "0.5.0",
       "prs": [265]
