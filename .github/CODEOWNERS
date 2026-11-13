@@ -7,5 +7,5 @@ javascript/sentry-conventions/
 python/src/sentry_conventions/
 
 # Gen AI / AI attributes
-/model/attributes/gen_ai/ @getsentry/telemetry-experience @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg
-/model/attributes/ai/ @getsentry/telemetry-experience @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg
+/model/attributes/gen_ai/ @getsentry/agent-tracing @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg
+/model/attributes/ai/ @getsentry/agent-tracing @Lms24 @alexander-alderman-webb @andreiborza @cleptric @getsentry/ingest @mjq @nsdeschenes @giortzisg

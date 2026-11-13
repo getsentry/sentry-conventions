@@ -7,6 +7,10 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union
 
+from ._schemas.gen_ai_system_instructions import (  # noqa: E402
+    SystemInstructions,
+    TextPart,
+)
 from ._schemas.gen_ai_tool_call_result import ToolCallResult  # noqa: E402
 from ._schemas.gen_ai_tool_definitions import (  # noqa: E402
     FunctionToolDefinition,
@@ -5712,7 +5716,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     GEN_AI_SYSTEM_INSTRUCTIONS: Literal["gen_ai.system_instructions"] = (
         "gen_ai.system_instructions"
     )
-    """The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.
+    """The system message or instructions provided to the GenAI model separately from the chat history.
 
     Type: str
     Apply Scrubbing: manual
@@ -9553,6 +9557,35 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Visibility: public
     Aliases: runtime.raw_description
     Example: "Eclipse OpenJ9 VM openj9-0.21.0"
+    """
+
+    # Path: model/attributes/process/process__runtime__elixir__memory__type.json
+    PROCESS_RUNTIME_ELIXIR_MEMORY_TYPE: Literal[
+        "process.runtime.elixir.memory.type"
+    ] = "process.runtime.elixir.memory.type"
+    """The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "processes"
+    Example: "binary"
+    Example: "other"
+    """
+
+    # Path: model/attributes/process/process__runtime__elixir__run_queue__type.json
+    PROCESS_RUNTIME_ELIXIR_RUN_QUEUE_TYPE: Literal[
+        "process.runtime.elixir.run_queue.type"
+    ] = "process.runtime.elixir.run_queue.type"
+    """The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.
+
+    Type: str
+    Apply Scrubbing: never
+    Defined in OTEL: No
+    Visibility: public
+    Example: "cpu"
+    Example: "io"
     """
 
     # Path: model/attributes/process/process__runtime__engine__name.json
@@ -20745,7 +20778,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
     ),
     "gen_ai.system_instructions": AttributeMetadata(
-        brief='The system instructions passed to the model. It has to be a stringified version of an array of objects in the format `{type: "text", content: "..."}`.',
+        brief="The system message or instructions provided to the GenAI model separately from the chat history.",
         type=AttributeType.STRING,
         keys=(
             "gen_ai.system_instructions",
@@ -20758,8 +20791,16 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example='[{"type": "text", "content": "You are a helpful assistant."}, {"type": "text", "content": "Be concise and clear."}]',
         aliases=["ai.preamble"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[790, 791],
+                description="Clarify that messages in the chat history only belong in gen_ai.input.messages. Remove informal format description from the brief to prevent duplication with the structured schema.",
+            ),
             ChangelogEntry(version="0.5.0", prs=[264]),
             ChangelogEntry(version="0.4.0", prs=[221]),
+        ],
+        additional_context=[
+            "Instructions that are part of the chat history are recorded in the gen_ai.input.messages attribute instead."
         ],
     ),
     "gen_ai.tool.call.arguments": AttributeMetadata(
@@ -26902,6 +26943,38 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "process.runtime.elixir.memory.type": AttributeMetadata(
+        brief="The kind of BEAM memory a measurement covers: processes, atom, binary, code, ets, or other for the rest of the VM total.",
+        type=AttributeType.STRING,
+        keys=("process.runtime.elixir.memory.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="processes",
+        examples=["processes", "binary", "other"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added process.runtime.elixir.memory.type attribute",
+            ),
+        ],
+    ),
+    "process.runtime.elixir.run_queue.type": AttributeMetadata(
+        brief="The kind of BEAM run queue a measurement covers: cpu for the normal and dirty CPU scheduler run queues, io for the dirty IO run queue.",
+        type=AttributeType.STRING,
+        keys=("process.runtime.elixir.run_queue.type",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.NEVER),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="cpu",
+        examples=["cpu", "io"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                description="Added process.runtime.elixir.run_queue.type attribute",
+            ),
+        ],
+    ),
     "process.runtime.engine.name": AttributeMetadata(
         brief="The name of the runtime engine.",
         type=AttributeType.STRING,
@@ -32263,6 +32336,8 @@ Attributes = TypedDict(
         "process.executable.name": str,
         "process.pid": int,
         "process.runtime.description": str,
+        "process.runtime.elixir.memory.type": str,
+        "process.runtime.elixir.run_queue.type": str,
         "process.runtime.engine.name": str,
         "process.runtime.engine.version": str,
         "process.runtime.name": str,
@@ -32526,6 +32601,8 @@ __all__ = [
     "ATTRIBUTE_METADATA",
     "Attributes",
     "ATTRIBUTE_NAMES",
+    "SystemInstructions",
+    "TextPart",
     "ToolCallResult",
     "ToolDefinitions",
     "ToolDefinition",
