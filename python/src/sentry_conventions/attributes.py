@@ -9425,6 +9425,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: "resource not found"
     """
 
+    # Path: model/attributes/page/page__server_rendering__age.json
+    PAGE_SERVER_RENDERING_AGE: Literal["page.server_rendering.age"] = (
+        "page.server_rendering.age"
+    )
+    """Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Example: 0
+    Example: 2520
+    Example: 259200
+    """
+
     # Path: model/attributes/page/page__server_rendering__type.json
     PAGE_SERVER_RENDERING_TYPE: Literal["page.server_rendering.type"] = (
         "page.server_rendering.type"
@@ -26735,6 +26750,31 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.0.0"),
         ],
     ),
+    "page.server_rendering.age": AttributeMetadata(
+        brief="Set on a pageload span. The time in seconds from the start of the server render of the reused part of the page to the start of the span.",
+        type=AttributeType.INTEGER,
+        keys=("page.server_rendering.age",),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=0,
+        examples=[0, 2520, 259200],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[799],
+                description="Added page.server_rendering.age attribute",
+            ),
+        ],
+        additional_context=[
+            "Set only by an SDK that controls the server render, when the page reuses a server render and the SDK knows when that render started. With `page.server_rendering.type: partially_static`, the value is for the static part.",
+            "If the span has a `cache_origin` link, the linked span is that render. The SDK can also set the value without a link, for example for a page from the build.",
+            "Approximate, because the render time comes from the server clock and the span start from the browser clock. Rounded down to whole seconds and clamped to 0, as `cache.item_age`. A value near 0 does not prove that the server rendered the page for this request.",
+            "The age of the render, not of its data. The render can read older cached data.",
+            "Not the HTTP `Age` response header. HTTP caches reset that header when they validate the response.",
+        ],
+        search_alias=SearchAlias(name="page.server_rendering.age", type="second"),
+    ),
     "page.server_rendering.type": AttributeMetadata(
         brief="Set on a pageload span. Describes how the server rendered the content of the page: to reuse it for other requests, only for this request, or a mix of both.",
         type=AttributeType.STRING,
@@ -32326,6 +32366,7 @@ Attributes = TypedDict(
         "otel.scope.version": str,
         "otel.status_code": str,
         "otel.status_description": str,
+        "page.server_rendering.age": int,
         "page.server_rendering.type": str,
         "params.<key>": str,
         "performance.activationStart": float,
