@@ -397,6 +397,22 @@ class _AttributeNamesMeta(type):
         "RUNTIME_VERSION",
         "SENTRY_BROWSER_NAME",
         "SENTRY_BROWSER_VERSION",
+        "SENTRY_DEVICE_BATTERY_LEVEL",
+        "SENTRY_DEVICE_BRAND",
+        "SENTRY_DEVICE_CHARGING",
+        "SENTRY_DEVICE_CLASS",
+        "SENTRY_DEVICE_FAMILY",
+        "SENTRY_DEVICE_LOCALE",
+        "SENTRY_DEVICE_MODEL",
+        "SENTRY_DEVICE_MODEL_ID",
+        "SENTRY_DEVICE_NAME",
+        "SENTRY_DEVICE_ONLINE",
+        "SENTRY_DEVICE_ORIENTATION",
+        "SENTRY_DEVICE_SCREEN_DENSITY",
+        "SENTRY_DEVICE_SCREEN_DPI",
+        "SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS",
+        "SENTRY_DEVICE_SCREEN_WIDTH_PIXELS",
+        "SENTRY_DEVICE_SIMULATOR",
         "SENTRY_FRAMES_FROZEN",
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
@@ -3900,6 +3916,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.battery_level
     Example: 100
     """
 
@@ -3935,6 +3952,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.brand
     Example: "Apple"
     """
 
@@ -3946,6 +3964,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.charging
     Example: false
     """
 
@@ -3968,6 +3987,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.class
     Example: "medium"
     """
 
@@ -4029,6 +4049,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.family
     Example: "iPhone"
     """
 
@@ -4073,6 +4094,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.locale
     Example: "en-US"
     """
 
@@ -4142,6 +4164,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.model
     Example: "iPhone 15 Pro Max"
     """
 
@@ -4153,6 +4176,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.model_id
     Example: "N861AP"
     """
 
@@ -4164,6 +4188,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: auto
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.name
     Example: "localhost"
     """
 
@@ -4175,6 +4200,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.online
     Example: true
     """
 
@@ -4186,6 +4212,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.orientation
     Example: "portrait"
     """
 
@@ -4222,6 +4249,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_density
     Example: 2.625
     """
 
@@ -4233,6 +4261,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_dpi
     Example: 420
     """
 
@@ -4246,6 +4275,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_height_pixels
     Example: 2400
     """
 
@@ -4259,6 +4289,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.screen_width_pixels
     Example: 1080
     """
 
@@ -4270,6 +4301,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
+    Aliases: sentry.device.simulator
     Example: false
     """
 
@@ -10315,6 +10347,228 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "index view query"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__battery_level.json
+    SENTRY_DEVICE_BATTERY_LEVEL: Literal["sentry.device.battery_level"] = (
+        "sentry.device.battery_level"
+    )
+    """The battery level of the device as a percentage (0-100).
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.battery_level
+    DEPRECATED: Use device.battery_level instead
+    Example: 100
+    """
+
+    # Path: model/attributes/sentry/sentry__device__brand.json
+    SENTRY_DEVICE_BRAND: Literal["sentry.device.brand"] = "sentry.device.brand"
+    """The brand of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.brand
+    DEPRECATED: Use device.brand instead
+    Example: "Apple"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__charging.json
+    SENTRY_DEVICE_CHARGING: Literal["sentry.device.charging"] = "sentry.device.charging"
+    """Whether the device was charging or not.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.charging
+    DEPRECATED: Use device.charging instead
+    Example: false
+    """
+
+    # Path: model/attributes/sentry/sentry__device__class.json
+    SENTRY_DEVICE_CLASS: Literal["sentry.device.class"] = "sentry.device.class"
+    """The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.class
+    DEPRECATED: Use device.class instead
+    Example: "medium"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__family.json
+    SENTRY_DEVICE_FAMILY: Literal["sentry.device.family"] = "sentry.device.family"
+    """The family of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.family
+    DEPRECATED: Use device.family instead
+    Example: "iPhone"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__locale.json
+    SENTRY_DEVICE_LOCALE: Literal["sentry.device.locale"] = "sentry.device.locale"
+    """The locale of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.locale
+    DEPRECATED: Use device.locale instead
+    Example: "en-US"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__model.json
+    SENTRY_DEVICE_MODEL: Literal["sentry.device.model"] = "sentry.device.model"
+    """The model of the device.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.model
+    DEPRECATED: Use device.model instead
+    Example: "iPhone 15 Pro Max"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__model_id.json
+    SENTRY_DEVICE_MODEL_ID: Literal["sentry.device.model_id"] = "sentry.device.model_id"
+    """An internal hardware revision to identify the device exactly.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.model_id
+    DEPRECATED: Use device.model_id instead
+    Example: "N861AP"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__name.json
+    SENTRY_DEVICE_NAME: Literal["sentry.device.name"] = "sentry.device.name"
+    """The user-assigned name of the mobile device.
+
+    Type: str
+    Apply Scrubbing: auto
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.name
+    DEPRECATED: Use device.name instead
+    Example: "localhost"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__online.json
+    SENTRY_DEVICE_ONLINE: Literal["sentry.device.online"] = "sentry.device.online"
+    """Whether the device was online or not.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.online
+    DEPRECATED: Use device.online instead
+    Example: true
+    """
+
+    # Path: model/attributes/sentry/sentry__device__orientation.json
+    SENTRY_DEVICE_ORIENTATION: Literal["sentry.device.orientation"] = (
+        "sentry.device.orientation"
+    )
+    """The orientation of the device, either "portrait" or "landscape".
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.orientation
+    DEPRECATED: Use device.orientation instead
+    Example: "portrait"
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_density.json
+    SENTRY_DEVICE_SCREEN_DENSITY: Literal["sentry.device.screen_density"] = (
+        "sentry.device.screen_density"
+    )
+    """The screen density of the device.
+
+    Type: float
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_density
+    DEPRECATED: Use device.screen_density instead
+    Example: 2.625
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_dpi.json
+    SENTRY_DEVICE_SCREEN_DPI: Literal["sentry.device.screen_dpi"] = (
+        "sentry.device.screen_dpi"
+    )
+    """The screen density in dots-per-inch (DPI) of the device.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_dpi
+    DEPRECATED: Use device.screen_dpi instead
+    Example: 420
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_height_pixels.json
+    SENTRY_DEVICE_SCREEN_HEIGHT_PIXELS: Literal[
+        "sentry.device.screen_height_pixels"
+    ] = "sentry.device.screen_height_pixels"
+    """The height of the device screen in pixels.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_height_pixels
+    DEPRECATED: Use device.screen_height_pixels instead
+    Example: 2400
+    """
+
+    # Path: model/attributes/sentry/sentry__device__screen_width_pixels.json
+    SENTRY_DEVICE_SCREEN_WIDTH_PIXELS: Literal["sentry.device.screen_width_pixels"] = (
+        "sentry.device.screen_width_pixels"
+    )
+    """The width of the device screen in pixels.
+
+    Type: int
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.screen_width_pixels
+    DEPRECATED: Use device.screen_width_pixels instead
+    Example: 1080
+    """
+
+    # Path: model/attributes/sentry/sentry__device__simulator.json
+    SENTRY_DEVICE_SIMULATOR: Literal["sentry.device.simulator"] = (
+        "sentry.device.simulator"
+    )
+    """Whether the device is a simulator or an actual device.
+
+    Type: bool
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: device.simulator
+    DEPRECATED: Use device.simulator instead
+    Example: false
     """
 
     # Path: model/attributes/sentry/sentry__dist.json
@@ -18080,12 +18334,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.battery_level": AttributeMetadata(
         brief="The battery level of the device as a percentage (0-100).",
         type=AttributeType.DOUBLE,
-        keys=("device.battery_level",),
+        keys=(
+            "device.battery_level",
+            "sentry.device.battery_level",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=100,
+        aliases=["sentry.device.battery_level"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.battery_level as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18128,24 +18391,42 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.brand": AttributeMetadata(
         brief="The brand of the device.",
         type=AttributeType.STRING,
-        keys=("device.brand",),
+        keys=(
+            "device.brand",
+            "sentry.device.brand",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="Apple",
+        aliases=["sentry.device.brand"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.brand as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
     "device.charging": AttributeMetadata(
         brief="Whether the device was charging or not.",
         type=AttributeType.BOOLEAN,
-        keys=("device.charging",),
+        keys=(
+            "device.charging",
+            "sentry.device.charging",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
+        aliases=["sentry.device.charging"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.charging as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18170,12 +18451,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.class": AttributeMetadata(
         brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
         type=AttributeType.STRING,
-        keys=("device.class",),
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="medium",
+        aliases=["sentry.device.class"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.class as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[300], description="Added device.class attribute"
             ),
@@ -18258,12 +18548,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.family": AttributeMetadata(
         brief="The family of the device.",
         type=AttributeType.STRING,
-        keys=("device.family",),
+        keys=(
+            "device.family",
+            "sentry.device.family",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="iPhone",
+        aliases=["sentry.device.family"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.family as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
@@ -18316,12 +18615,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.locale": AttributeMetadata(
         brief="The locale of the device.",
         type=AttributeType.STRING,
-        keys=("device.locale",),
+        keys=(
+            "device.locale",
+            "sentry.device.locale",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="en-US",
+        aliases=["sentry.device.locale"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.locale as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.locale attribute"
             ),
@@ -18414,24 +18722,42 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.model": AttributeMetadata(
         brief="The model of the device.",
         type=AttributeType.STRING,
-        keys=("device.model",),
+        keys=(
+            "device.model",
+            "sentry.device.model",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="iPhone 15 Pro Max",
+        aliases=["sentry.device.model"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.model as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[116, 127]),
         ],
     ),
     "device.model_id": AttributeMetadata(
         brief="An internal hardware revision to identify the device exactly.",
         type=AttributeType.STRING,
-        keys=("device.model_id",),
+        keys=(
+            "device.model_id",
+            "sentry.device.model_id",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="N861AP",
+        aliases=["sentry.device.model_id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.model_id as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[300],
@@ -18442,12 +18768,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.name": AttributeMetadata(
         brief="The user-assigned name of the mobile device.",
         type=AttributeType.STRING,
-        keys=("device.name",),
+        keys=(
+            "device.name",
+            "sentry.device.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="localhost",
+        aliases=["sentry.device.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.name as an alias",
+            ),
             ChangelogEntry(
                 version="0.24.0",
                 prs=[647],
@@ -18464,12 +18799,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.online": AttributeMetadata(
         brief="Whether the device was online or not.",
         type=AttributeType.BOOLEAN,
-        keys=("device.online",),
+        keys=(
+            "device.online",
+            "sentry.device.online",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=True,
+        aliases=["sentry.device.online"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.online as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0", prs=[303], description="Added device.online attribute"
             ),
@@ -18478,12 +18822,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.orientation": AttributeMetadata(
         brief='The orientation of the device, either "portrait" or "landscape".',
         type=AttributeType.STRING,
-        keys=("device.orientation",),
+        keys=(
+            "device.orientation",
+            "sentry.device.orientation",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example="portrait",
+        aliases=["sentry.device.orientation"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.orientation as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18530,12 +18883,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_density": AttributeMetadata(
         brief="The screen density of the device.",
         type=AttributeType.DOUBLE,
-        keys=("device.screen_density",),
+        keys=(
+            "device.screen_density",
+            "sentry.device.screen_density",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2.625,
+        aliases=["sentry.device.screen_density"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_density as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18546,12 +18908,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_dpi": AttributeMetadata(
         brief="The screen density in dots-per-inch (DPI) of the device.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_dpi",),
+        keys=(
+            "device.screen_dpi",
+            "sentry.device.screen_dpi",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=420,
+        aliases=["sentry.device.screen_dpi"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_dpi as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18562,12 +18933,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_height_pixels": AttributeMetadata(
         brief="The height of the device screen in pixels.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_height_pixels",),
+        keys=(
+            "device.screen_height_pixels",
+            "sentry.device.screen_height_pixels",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=2400,
+        aliases=["sentry.device.screen_height_pixels"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_height_pixels as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18578,12 +18958,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.screen_width_pixels": AttributeMetadata(
         brief="The width of the device screen in pixels.",
         type=AttributeType.INTEGER,
-        keys=("device.screen_width_pixels",),
+        keys=(
+            "device.screen_width_pixels",
+            "sentry.device.screen_width_pixels",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=1080,
+        aliases=["sentry.device.screen_width_pixels"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_width_pixels as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[303],
@@ -18594,12 +18983,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "device.simulator": AttributeMetadata(
         brief="Whether the device is a simulator or an actual device.",
         type=AttributeType.BOOLEAN,
-        keys=("device.simulator",),
+        keys=(
+            "device.simulator",
+            "sentry.device.simulator",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
         visibility=Visibility.PUBLIC,
         example=False,
+        aliases=["sentry.device.simulator"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.simulator as an alias",
+            ),
             ChangelogEntry(
                 version="0.5.0",
                 prs=[300],
@@ -28024,6 +28422,374 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             ChangelogEntry(version="0.1.0", prs=[135]),
         ],
     ),
+    "sentry.device.battery_level": AttributeMetadata(
+        brief="The battery level of the device as a percentage (0-100).",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "device.battery_level",
+            "sentry.device.battery_level",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=100,
+        deprecation=DeprecationInfo(
+            replacement="device.battery_level", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.battery_level"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.battery_level attribute, deprecated in favor of device.battery_level",
+            ),
+        ],
+    ),
+    "sentry.device.brand": AttributeMetadata(
+        brief="The brand of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.brand",
+            "sentry.device.brand",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="Apple",
+        deprecation=DeprecationInfo(
+            replacement="device.brand", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.brand"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.brand attribute, deprecated in favor of device.brand",
+            ),
+        ],
+    ),
+    "sentry.device.charging": AttributeMetadata(
+        brief="Whether the device was charging or not.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.charging",
+            "sentry.device.charging",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        deprecation=DeprecationInfo(
+            replacement="device.charging", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.charging"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.charging attribute, deprecated in favor of device.charging",
+            ),
+        ],
+    ),
+    "sentry.device.class": AttributeMetadata(
+        brief="The classification of the device. For example, `low`, `medium`, or `high`. Typically inferred by Relay - SDKs generally do not need to set this directly.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.class",
+            "sentry.device.class",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="medium",
+        deprecation=DeprecationInfo(
+            replacement="device.class", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.class"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.class attribute, deprecated in favor of device.class",
+            ),
+        ],
+    ),
+    "sentry.device.family": AttributeMetadata(
+        brief="The family of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.family",
+            "sentry.device.family",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="iPhone",
+        deprecation=DeprecationInfo(
+            replacement="device.family", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.family"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.family attribute, deprecated in favor of device.family",
+            ),
+        ],
+    ),
+    "sentry.device.locale": AttributeMetadata(
+        brief="The locale of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.locale",
+            "sentry.device.locale",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="en-US",
+        deprecation=DeprecationInfo(
+            replacement="device.locale", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.locale"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.locale attribute, deprecated in favor of device.locale",
+            ),
+        ],
+    ),
+    "sentry.device.model": AttributeMetadata(
+        brief="The model of the device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.model",
+            "sentry.device.model",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="iPhone 15 Pro Max",
+        deprecation=DeprecationInfo(
+            replacement="device.model", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.model"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.model attribute, deprecated in favor of device.model",
+            ),
+        ],
+    ),
+    "sentry.device.model_id": AttributeMetadata(
+        brief="An internal hardware revision to identify the device exactly.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.model_id",
+            "sentry.device.model_id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="N861AP",
+        deprecation=DeprecationInfo(
+            replacement="device.model_id", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.model_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.model_id attribute, deprecated in favor of device.model_id",
+            ),
+        ],
+    ),
+    "sentry.device.name": AttributeMetadata(
+        brief="The user-assigned name of the mobile device.",
+        type=AttributeType.STRING,
+        keys=(
+            "device.name",
+            "sentry.device.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.AUTO),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="localhost",
+        deprecation=DeprecationInfo(
+            replacement="device.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.name attribute, deprecated in favor of device.name",
+            ),
+        ],
+    ),
+    "sentry.device.online": AttributeMetadata(
+        brief="Whether the device was online or not.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.online",
+            "sentry.device.online",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=True,
+        deprecation=DeprecationInfo(
+            replacement="device.online", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.online"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.online attribute, deprecated in favor of device.online",
+            ),
+        ],
+    ),
+    "sentry.device.orientation": AttributeMetadata(
+        brief='The orientation of the device, either "portrait" or "landscape".',
+        type=AttributeType.STRING,
+        keys=(
+            "device.orientation",
+            "sentry.device.orientation",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="portrait",
+        deprecation=DeprecationInfo(
+            replacement="device.orientation", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.orientation"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.orientation attribute, deprecated in favor of device.orientation",
+            ),
+        ],
+    ),
+    "sentry.device.screen_density": AttributeMetadata(
+        brief="The screen density of the device.",
+        type=AttributeType.DOUBLE,
+        keys=(
+            "device.screen_density",
+            "sentry.device.screen_density",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2.625,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_density", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_density"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_density attribute, deprecated in favor of device.screen_density",
+            ),
+        ],
+    ),
+    "sentry.device.screen_dpi": AttributeMetadata(
+        brief="The screen density in dots-per-inch (DPI) of the device.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_dpi",
+            "sentry.device.screen_dpi",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=420,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_dpi", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_dpi"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_dpi attribute, deprecated in favor of device.screen_dpi",
+            ),
+        ],
+    ),
+    "sentry.device.screen_height_pixels": AttributeMetadata(
+        brief="The height of the device screen in pixels.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_height_pixels",
+            "sentry.device.screen_height_pixels",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=2400,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_height_pixels", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_height_pixels"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_height_pixels attribute, deprecated in favor of device.screen_height_pixels",
+            ),
+        ],
+    ),
+    "sentry.device.screen_width_pixels": AttributeMetadata(
+        brief="The width of the device screen in pixels.",
+        type=AttributeType.INTEGER,
+        keys=(
+            "device.screen_width_pixels",
+            "sentry.device.screen_width_pixels",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=1080,
+        deprecation=DeprecationInfo(
+            replacement="device.screen_width_pixels", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.screen_width_pixels"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.screen_width_pixels attribute, deprecated in favor of device.screen_width_pixels",
+            ),
+        ],
+    ),
+    "sentry.device.simulator": AttributeMetadata(
+        brief="Whether the device is a simulator or an actual device.",
+        type=AttributeType.BOOLEAN,
+        keys=(
+            "device.simulator",
+            "sentry.device.simulator",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example=False,
+        deprecation=DeprecationInfo(
+            replacement="device.simulator", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["device.simulator"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[804],
+                description="Added sentry.device.simulator attribute, deprecated in favor of device.simulator",
+            ),
+        ],
+    ),
     "sentry.dist": AttributeMetadata(
         brief="The sentry dist.",
         type=AttributeType.STRING,
@@ -32391,6 +33157,22 @@ Attributes = TypedDict(
         "sentry.category": str,
         "sentry.client_sample_rate": float,
         "sentry.description": str,
+        "sentry.device.battery_level": float,
+        "sentry.device.brand": str,
+        "sentry.device.charging": bool,
+        "sentry.device.class": str,
+        "sentry.device.family": str,
+        "sentry.device.locale": str,
+        "sentry.device.model": str,
+        "sentry.device.model_id": str,
+        "sentry.device.name": str,
+        "sentry.device.online": bool,
+        "sentry.device.orientation": str,
+        "sentry.device.screen_density": float,
+        "sentry.device.screen_dpi": int,
+        "sentry.device.screen_height_pixels": int,
+        "sentry.device.screen_width_pixels": int,
+        "sentry.device.simulator": bool,
         "sentry.dist": str,
         "sentry.domain": str,
         "sentry.dsc.environment": str,

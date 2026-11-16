@@ -1,0 +1,23 @@
+{
+  "key": "sentry.device.model_id",
+  "brief": "An internal hardware revision to identify the device exactly.",
+  "type": "string",
+  "apply_scrubbing": {
+    "key": "manual"
+  },
+  "is_in_otel": false,
+  "example": "N861AP",
+  "alias": ["device.model_id"],
+  "deprecation": {
+    "_status": "backfill",
+    "replacement": "device.model_id"
+  },
+  "visibility": "public",
+  "changelog": [
+    {
+      "version": "next",
+      "prs": [804],
+      "description": "Added sentry.device.model_id attribute, deprecated in favor of device.model_id"
+    }
+  ]
+}
