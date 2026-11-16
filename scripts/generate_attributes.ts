@@ -1,4 +1,4 @@
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { compile } from 'json-schema-to-typescript';
@@ -24,9 +24,9 @@ type AttributeDefinition = {
 };
 
 interface SchemaTypeInfo {
-  baseName: string;
+  modulePath: string;
   schemaNames: string[];
-  attributeKey: string;
+  attributeKey?: string;
 }
 
 /**
@@ -251,8 +251,8 @@ function writeToJs(
 ) {
   let attributesContent = '// This is an auto-generated file. Do not edit!\n\n';
 
-  for (const { baseName, schemaNames } of schemaInfo) {
-    attributesContent += `export type { ${schemaNames.join(', ')} } from './_schemas/${baseName}';\n\n`;
+  for (const { modulePath, schemaNames } of schemaInfo) {
+    attributesContent += `export type { ${schemaNames.join(', ')} } from './_schemas/${modulePath}';\n\n`;
   }
 
   // Reset memoization for fresh calculation
@@ -574,8 +574,8 @@ function writeToPython(parsedAttributes: ParsedAttribute[], outputFilePath: stri
   content += 'from enum import Enum\n';
   content += 'from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union\n\n';
 
-  for (const { baseName, schemaNames } of schemaInfo) {
-    content += `from ._schemas.${baseName} import ${schemaNames.join(', ')}  # noqa: E402\n`;
+  for (const { modulePath, schemaNames } of schemaInfo) {
+    content += `from ._schemas.${modulePath.replaceAll('/', '.')} import ${schemaNames.join(', ')}  # noqa: E402\n`;
   }
   if (schemaInfo.length > 0) {
     content += '\n';
@@ -1629,6 +1629,48 @@ async function generateSchemaTypes(
 ): Promise<SchemaTypeInfo[]> {
   const results: SchemaTypeInfo[] = [];
 
+  const sharedSchemasDir = path.join(repositoryRoot, 'schemas', 'shared');
+  for (const file of fs.readdirSync(sharedSchemasDir).sort()) {
+    const openapiFile = path.join(sharedSchemasDir, file);
+    const modulePath = `shared/${file.replace('.openapi.json', '')}`;
+    const schemas = (
+      JSON.parse(fs.readFileSync(openapiFile, 'utf-8')) as { components?: { schemas?: Record<string, unknown> } }
+    ).components?.schemas;
+    if (!schemas) continue;
+
+    const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
+    const tsSource = await compile(jsonSchema, '', {
+      bannerComment: '',
+      cwd: sharedSchemasDir,
+      unreachableDefinitions: true,
+      unknownAny: true,
+    });
+    fs.writeFileSync(path.join(jsOutputDir, `${modulePath}.ts`), tsSource);
+
+    execFileSync(
+      'uv',
+      [
+        'run',
+        '--group',
+        'schema-codegen',
+        'datamodel-codegen',
+        '--input-file-type',
+        'openapi',
+        '--output-model-type',
+        'typing.TypedDict',
+        '--no-use-closed-typed-dict',
+        '--disable-timestamp',
+        '--input',
+        openapiFile,
+        '--output',
+        path.join(pythonOutputDir, `${modulePath}.py`),
+      ],
+      { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
+    );
+
+    results.push({ modulePath, schemaNames: Object.keys(schemas) });
+  }
+
   for (const { attributeJson } of parsedAttributes) {
     const openapiFile = path.join(
       repositoryRoot,
@@ -1636,32 +1678,69 @@ async function generateSchemaTypes(
       attributeKeyToFileName(attributeJson.key).replace('.json', '.openapi.json'),
     );
     if (!fs.existsSync(openapiFile)) continue;
-
-    const openapi = JSON.parse(fs.readFileSync(openapiFile, 'utf-8')) as {
-      components?: { schemas?: Record<string, unknown> };
-    };
-    const schemas = openapi?.components?.schemas;
+    const modulePath = attributeJson.key.replaceAll('.', '_');
+    const openapiSource = fs.readFileSync(openapiFile, 'utf-8');
+    const schemas = (JSON.parse(openapiSource) as { components?: { schemas?: Record<string, unknown> } }).components
+      ?.schemas;
     if (!schemas) continue;
-
-    const baseName = attributeJson.key.replaceAll('.', '_');
-    const schemaNames = Object.keys(schemas);
+    const sharedRefs = collectSharedRefs(openapiSource);
 
     const jsonSchema = { definitions: schemas, components: { schemas } } as Parameters<typeof compile>[0];
     const tsSource = await compile(jsonSchema, '', {
+      bannerComment: '',
+      cwd: path.join(repositoryRoot, 'schemas'),
+      declareExternallyReferenced: false,
       unreachableDefinitions: true,
       unknownAny: true,
     });
-    const jsFile = path.join(jsOutputDir, `${baseName}.ts`);
-    fs.writeFileSync(jsFile, tsSource);
+    const tsImports = [...sharedRefs]
+      .map(
+        ([sharedModule, names]) => `import type { ${[...names].sort().join(', ')} } from './shared/${sharedModule}';\n`,
+      )
+      .join('');
+    fs.writeFileSync(path.join(jsOutputDir, `${modulePath}.ts`), tsImports + tsSource);
 
-    const pythonFile = path.join(pythonOutputDir, `${baseName}.py`);
-    execSync(
-      `uv run --group schema-codegen datamodel-codegen --input ${openapiFile} --input-file-type openapi --output-model-type typing.TypedDict --no-use-closed-typed-dict --disable-timestamp --output ${pythonFile}`,
+    const refMappings = [...sharedRefs.keys()].map(
+      (sharedModule) => `shared/${sharedModule}.openapi.json=.shared.${sharedModule}`,
+    );
+    execFileSync(
+      'uv',
+      [
+        'run',
+        '--group',
+        'schema-codegen',
+        'datamodel-codegen',
+        '--input-file-type',
+        'openapi',
+        '--output-model-type',
+        'typing.TypedDict',
+        '--no-use-closed-typed-dict',
+        '--disable-timestamp',
+        '--input',
+        openapiFile,
+        '--output',
+        path.join(pythonOutputDir, `${modulePath}.py`),
+        ...(refMappings.length > 0 ? ['--external-ref-mapping', ...refMappings] : []),
+      ],
       { cwd: path.join(repositoryRoot, 'python'), stdio: 'pipe' },
     );
 
-    results.push({ baseName, schemaNames, attributeKey: attributeJson.key });
+    results.push({ modulePath, schemaNames: Object.keys(schemas), attributeKey: attributeJson.key });
   }
 
   return results;
+}
+
+function collectSharedRefs(openapiSource: string) {
+  const refs = new Map<string, Set<string>>();
+  for (const [, refFile, name] of openapiSource.matchAll(/"\$ref":\s*"([^"#]+)#\/components\/schemas\/([^"]+)"/g)) {
+    const sharedModule = path.basename(refFile!, '.openapi.json');
+    let names = refs.get(sharedModule);
+    if (!names) {
+      names = new Set();
+      refs.set(sharedModule, names);
+    }
+    names.add(name!);
+  }
+  return refs;
 }

@@ -7,10 +7,21 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Literal, Optional, Tuple, TypedDict, Union
 
-from ._schemas.gen_ai_system_instructions import (  # noqa: E402
-    SystemInstructions,
-    TextPart,
+from ._schemas.gen_ai_output_messages import (  # noqa: E402
+    BlobPart,
+    ChatMessage,
+    CompactionPart,
+    FilePart,
+    GenericPart,
+    Modality,
+    OutputMessages,
+    ReasoningPart,
+    Role,
+    ToolCallRequestPart,
+    ToolCallResponsePart,
+    UriPart,
 )
+from ._schemas.gen_ai_system_instructions import SystemInstructions  # noqa: E402
 from ._schemas.gen_ai_tool_call_result import ToolCallResult  # noqa: E402
 from ._schemas.gen_ai_tool_definitions import (  # noqa: E402
     FunctionToolDefinition,
@@ -18,6 +29,7 @@ from ._schemas.gen_ai_tool_definitions import (  # noqa: E402
     ToolDefinition,
     ToolDefinitions,
 )
+from ._schemas.shared.gen_ai_parts import TextPart  # noqa: E402
 
 AttributeValue = Union[
     str, int, float, bool, List[str], List[int], List[float], List[bool]
@@ -32642,8 +32654,20 @@ __all__ = [
     "ATTRIBUTE_METADATA",
     "Attributes",
     "ATTRIBUTE_NAMES",
-    "SystemInstructions",
     "TextPart",
+    "OutputMessages",
+    "BlobPart",
+    "ChatMessage",
+    "CompactionPart",
+    "FilePart",
+    "GenericPart",
+    "Modality",
+    "ReasoningPart",
+    "Role",
+    "ToolCallRequestPart",
+    "ToolCallResponsePart",
+    "UriPart",
+    "SystemInstructions",
     "ToolCallResult",
     "ToolDefinitions",
     "ToolDefinition",
