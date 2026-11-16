@@ -400,6 +400,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_FRAMES_FROZEN",
         "SENTRY_FRAMES_SLOW",
         "SENTRY_FRAMES_TOTAL",
+        "SENTRY_MESSAGING_MESSAGE_ID",
         "SENTRY_REPORT_EVENT",
         "_SENTRY_SEGMENT_ID",
         "SENTRY_SOURCE",
@@ -8626,7 +8627,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
-    Aliases: messaging.message_id
+    Aliases: messaging.message_id, sentry.messaging.message.id
     Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
 
@@ -8664,7 +8665,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: No
     Visibility: public
-    Aliases: messaging.message.id
+    Aliases: messaging.message.id, sentry.messaging.message.id
     DEPRECATED: Use messaging.message.id instead - This attribute is being deprecated in favor of messaging.message.id.
     Example: "452a7c7c7c7048c2f887f0e7"
     """
@@ -10678,6 +10679,21 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Defined in OTEL: No
     Visibility: public
     Example: "Hello, {name}!"
+    """
+
+    # Path: model/attributes/sentry/sentry__messaging__message__id.json
+    SENTRY_MESSAGING_MESSAGE_ID: Literal["sentry.messaging.message.id"] = (
+        "sentry.messaging.message.id"
+    )
+    """A value used by the messaging system as an identifier for the message, represented as a string.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: messaging.message.id, messaging.message_id
+    DEPRECATED: Use messaging.message.id instead
+    Example: "f47ac10b58cc4372a5670e02b2c3d479"
     """
 
     # Path: model/attributes/sentry/sentry__metric__source.json
@@ -25376,13 +25392,19 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "messaging.message.id",
             "messaging.message_id",
+            "sentry.messaging.message.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="f47ac10b58cc4372a5670e02b2c3d479",
-        aliases=["messaging.message_id"],
+        aliases=["messaging.message_id", "sentry.messaging.message.id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[809],
+                description="Added sentry.messaging.message.id as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -25427,6 +25449,7 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         keys=(
             "messaging.message.id",
             "messaging.message_id",
+            "sentry.messaging.message.id",
         ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=False,
@@ -25438,8 +25461,13 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
             reason="This attribute is being deprecated in favor of messaging.message.id.",
             status=DeprecationStatus.BACKFILL,
         ),
-        aliases=["messaging.message.id"],
+        aliases=["messaging.message.id", "sentry.messaging.message.id"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[809],
+                description="Added sentry.messaging.message.id as an alias",
+            ),
             ChangelogEntry(
                 version="0.21.0",
                 prs=[581],
@@ -28502,6 +28530,30 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         example="Hello, {name}!",
         changelog=[
             ChangelogEntry(version="0.1.0", prs=[116]),
+        ],
+    ),
+    "sentry.messaging.message.id": AttributeMetadata(
+        brief="A value used by the messaging system as an identifier for the message, represented as a string.",
+        type=AttributeType.STRING,
+        keys=(
+            "messaging.message.id",
+            "messaging.message_id",
+            "sentry.messaging.message.id",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="f47ac10b58cc4372a5670e02b2c3d479",
+        deprecation=DeprecationInfo(
+            replacement="messaging.message.id", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["messaging.message.id", "messaging.message_id"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[809],
+                description="Added sentry.messaging.message.id attribute, deprecated in favor of messaging.message.id",
+            ),
         ],
     ),
     "sentry.metric.source": AttributeMetadata(
@@ -32421,6 +32473,7 @@ Attributes = TypedDict(
         "sentry.main_thread": bool,
         "sentry.message.parameter.<key>": str,
         "sentry.message.template": str,
+        "sentry.messaging.message.id": str,
         "sentry.metric.source": str,
         "sentry.mobile": bool,
         "sentry.module.<key>": str,
