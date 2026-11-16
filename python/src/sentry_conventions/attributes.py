@@ -408,6 +408,7 @@ class _AttributeNamesMeta(type):
         "SENTRY_SVELTEKIT_NAVIGATION_TO",
         "SENTRY_SVELTEKIT_NAVIGATION_TYPE",
         "SENTRY_THREAD_ID",
+        "SENTRY_THREAD_NAME",
         "SENTRY_TRACE_PARENT_SPAN_ID",
         "SENTRY_TRANSACTION",
         "SENTRY_USER_EMAIL",
@@ -11168,6 +11169,19 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Example: 56
     """
 
+    # Path: model/attributes/sentry/sentry__thread__name.json
+    SENTRY_THREAD_NAME: Literal["sentry.thread.name"] = "sentry.thread.name"
+    """Current thread name.
+
+    Type: str
+    Apply Scrubbing: manual
+    Defined in OTEL: No
+    Visibility: public
+    Aliases: thread.name
+    DEPRECATED: Use thread.name instead
+    Example: "main"
+    """
+
     # Path: model/attributes/sentry/sentry__timestamp__sequence.json
     SENTRY_TIMESTAMP_SEQUENCE: Literal["sentry.timestamp.sequence"] = (
         "sentry.timestamp.sequence"
@@ -11605,6 +11619,7 @@ class ATTRIBUTE_NAMES(metaclass=_AttributeNamesMeta):
     Apply Scrubbing: manual
     Defined in OTEL: Yes
     Visibility: public
+    Aliases: sentry.thread.name
     Example: "main"
     """
 
@@ -29165,6 +29180,29 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
         ],
         search_alias=SearchAlias(name="thread.id"),
     ),
+    "sentry.thread.name": AttributeMetadata(
+        brief="Current thread name.",
+        type=AttributeType.STRING,
+        keys=(
+            "thread.name",
+            "sentry.thread.name",
+        ),
+        apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
+        is_in_otel=False,
+        visibility=Visibility.PUBLIC,
+        example="main",
+        deprecation=DeprecationInfo(
+            replacement="thread.name", status=DeprecationStatus.BACKFILL
+        ),
+        aliases=["thread.name"],
+        changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[808],
+                description="Added sentry.thread.name attribute, deprecated in favor of thread.name",
+            ),
+        ],
+    ),
     "sentry.timestamp.sequence": AttributeMetadata(
         brief="A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.",
         type=AttributeType.INTEGER,
@@ -29874,12 +29912,21 @@ ATTRIBUTE_METADATA: Dict[str, AttributeMetadata] = {
     "thread.name": AttributeMetadata(
         brief="Current thread name.",
         type=AttributeType.STRING,
-        keys=("thread.name",),
+        keys=(
+            "thread.name",
+            "sentry.thread.name",
+        ),
         apply_scrubbing=ApplyScrubbingInfo(key=ApplyScrubbing.MANUAL),
         is_in_otel=True,
         visibility=Visibility.PUBLIC,
         example="main",
+        aliases=["sentry.thread.name"],
         changelog=[
+            ChangelogEntry(
+                version="next",
+                prs=[808],
+                description="Added sentry.thread.name as an alias",
+            ),
             ChangelogEntry(version="0.1.0", prs=[127]),
             ChangelogEntry(version="0.0.0"),
         ],
@@ -32459,6 +32506,7 @@ Attributes = TypedDict(
         "sentry.sveltekit.navigation.to": str,
         "sentry.sveltekit.navigation.type": str,
         "sentry.thread.id": int,
+        "sentry.thread.name": str,
         "sentry.timestamp.sequence": int,
         "sentry.trace.parent_span_id": str,
         "sentry.trace.status": str,

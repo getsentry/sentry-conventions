@@ -18827,6 +18827,30 @@ export const SENTRY_THREAD_ID = 'sentry.thread.id';
  */
 export type SENTRY_THREAD_ID_TYPE = number;
 
+// Path: model/attributes/sentry/sentry__thread__name.json
+
+/**
+ * Current thread name. `sentry.thread.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_THREAD_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link THREAD_NAME} `thread.name`
+ *
+ * @deprecated Use {@link THREAD_NAME} (thread.name) instead
+ * @example "main"
+ */
+export const SENTRY_THREAD_NAME = 'sentry.thread.name';
+
+/**
+ * Type for {@link SENTRY_THREAD_NAME} sentry.thread.name
+ */
+export type SENTRY_THREAD_NAME_TYPE = string;
+
 // Path: model/attributes/sentry/sentry__timestamp__sequence.json
 
 /**
@@ -19589,6 +19613,8 @@ export type THREAD_ID_TYPE = number;
  *
  * Attribute defined in OTEL: Yes
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_THREAD_NAME} `sentry.thread.name`
  *
  * @example "main"
  */
@@ -22790,6 +22816,7 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.sveltekit.navigation.to': 'string',
   'sentry.sveltekit.navigation.type': 'string',
   'sentry.thread.id': 'integer',
+  'sentry.thread.name': 'string',
   'sentry.timestamp.sequence': 'integer',
   'sentry.trace_lifecycle': 'string',
   'sentry.trace.parent_span_id': 'string',
@@ -23764,6 +23791,7 @@ export type AttributeName =
   | typeof SENTRY_SVELTEKIT_NAVIGATION_TO
   | typeof SENTRY_SVELTEKIT_NAVIGATION_TYPE
   | typeof SENTRY_THREAD_ID
+  | typeof SENTRY_THREAD_NAME
   | typeof SENTRY_TIMESTAMP_SEQUENCE
   | typeof SENTRY_TRACE_LIFECYCLE
   | typeof SENTRY_TRACE_PARENT_SPAN_ID
@@ -37839,6 +37867,29 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
       name: 'thread.id',
     },
   },
+  'sentry.thread.name': {
+    brief: 'Current thread name.',
+    type: 'string',
+    keys: ['thread.name', 'sentry.thread.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'main',
+    deprecation: {
+      replacement: 'thread.name',
+      status: 'backfill',
+    },
+    aliases: ['thread.name'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [808],
+        description: 'Added sentry.thread.name attribute, deprecated in favor of thread.name',
+      },
+    ],
+  },
   'sentry.timestamp.sequence': {
     brief:
       'A sequencing counter for deterministic ordering of logs or metrics when timestamps share the same integer millisecond. Starts at 0 on SDK initialization, increments by 1 for each captured item, and resets to 0 when the integer millisecond of the current item differs from the previous one.',
@@ -38444,14 +38495,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'thread.name': {
     brief: 'Current thread name.',
     type: 'string',
-    keys: ['thread.name'],
+    keys: ['thread.name', 'sentry.thread.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'main',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.thread.name'],
+    changelog: [
+      { version: 'next', prs: [808], description: 'Added sentry.thread.name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'timber.tag': {
     brief: 'The log tag provided by the timber logging framework.',
@@ -40872,6 +40928,7 @@ export type Attributes = {
   [SENTRY_SVELTEKIT_NAVIGATION_TO]?: SENTRY_SVELTEKIT_NAVIGATION_TO_TYPE;
   [SENTRY_SVELTEKIT_NAVIGATION_TYPE]?: SENTRY_SVELTEKIT_NAVIGATION_TYPE_TYPE;
   [SENTRY_THREAD_ID]?: SENTRY_THREAD_ID_TYPE;
+  [SENTRY_THREAD_NAME]?: SENTRY_THREAD_NAME_TYPE;
   [SENTRY_TIMESTAMP_SEQUENCE]?: SENTRY_TIMESTAMP_SEQUENCE_TYPE;
   [SENTRY_TRACE_LIFECYCLE]?: SENTRY_TRACE_LIFECYCLE_TYPE;
   [SENTRY_TRACE_PARENT_SPAN_ID]?: SENTRY_TRACE_PARENT_SPAN_ID_TYPE;
