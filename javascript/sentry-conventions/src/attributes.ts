@@ -15541,6 +15541,8 @@ export type OS_KERNEL_VERSION_TYPE = string;
  * Attribute defined in OTEL: Yes
  * Visibility: public
  *
+ * Aliases: {@link SENTRY_OS_NAME} `sentry.os.name`
+ *
  * @example "Ubuntu"
  */
 export const OS_NAME = 'os.name';
@@ -15582,6 +15584,8 @@ export type OS_RAW_DESCRIPTION_TYPE = string;
  *
  * Attribute defined in OTEL: No
  * Visibility: public
+ *
+ * Aliases: {@link SENTRY_OS_ROOTED} `sentry.os.rooted`
  *
  * @example true
  */
@@ -18206,6 +18210,54 @@ export const SENTRY_ORIGIN = 'sentry.origin';
  * Type for {@link SENTRY_ORIGIN} sentry.origin
  */
 export type SENTRY_ORIGIN_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__os__name.json
+
+/**
+ * Human readable operating system name. `sentry.os.name`
+ *
+ * Attribute Value Type: `string` {@link SENTRY_OS_NAME_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link OS_NAME} `os.name`
+ *
+ * @deprecated Use {@link OS_NAME} (os.name) instead
+ * @example "Ubuntu"
+ */
+export const SENTRY_OS_NAME = 'sentry.os.name';
+
+/**
+ * Type for {@link SENTRY_OS_NAME} sentry.os.name
+ */
+export type SENTRY_OS_NAME_TYPE = string;
+
+// Path: model/attributes/sentry/sentry__os__rooted.json
+
+/**
+ * Whether the operating system has been jailbroken or rooted. `sentry.os.rooted`
+ *
+ * Attribute Value Type: `boolean` {@link SENTRY_OS_ROOTED_TYPE}
+ *
+ * Apply Scrubbing: manual
+ *
+ * Attribute defined in OTEL: No
+ * Visibility: public
+ *
+ * Aliases: {@link OS_ROOTED} `os.rooted`
+ *
+ * @deprecated Use {@link OS_ROOTED} (os.rooted) instead
+ * @example true
+ */
+export const SENTRY_OS_ROOTED = 'sentry.os.rooted';
+
+/**
+ * Type for {@link SENTRY_OS_ROOTED} sentry.os.rooted
+ */
+export type SENTRY_OS_ROOTED_TYPE = boolean;
 
 // Path: model/attributes/sentry/sentry__pageload__span_id.json
 
@@ -22763,6 +22815,8 @@ export const ATTRIBUTE_TYPE: Record<string, AttributeType> = {
   'sentry.observed_timestamp_nanos': 'string',
   'sentry.op': 'string',
   'sentry.origin': 'string',
+  'sentry.os.name': 'string',
+  'sentry.os.rooted': 'boolean',
   'sentry.pageload.span_id': 'string',
   'sentry.platform': 'string',
   'sentry.profiler_id': 'string',
@@ -23737,6 +23791,8 @@ export type AttributeName =
   | typeof SENTRY_OBSERVED_TIMESTAMP_NANOS
   | typeof SENTRY_OP
   | typeof SENTRY_ORIGIN
+  | typeof SENTRY_OS_NAME
+  | typeof SENTRY_OS_ROOTED
   | typeof SENTRY_PAGELOAD_SPAN_ID
   | typeof SENTRY_PLATFORM
   | typeof SENTRY_PROFILER_ID
@@ -35580,14 +35636,19 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.name': {
     brief: 'Human readable operating system name.',
     type: 'string',
-    keys: ['os.name'],
+    keys: ['os.name', 'sentry.os.name'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: true,
     visibility: 'public',
     example: 'Ubuntu',
-    changelog: [{ version: '0.1.0', prs: [127] }, { version: '0.0.0' }],
+    aliases: ['sentry.os.name'],
+    changelog: [
+      { version: 'next', prs: [805], description: 'Added sentry.os.name as an alias' },
+      { version: '0.1.0', prs: [127] },
+      { version: '0.0.0' },
+    ],
   },
   'os.raw_description': {
     brief:
@@ -35605,14 +35666,18 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
   'os.rooted': {
     brief: 'Whether the operating system has been jailbroken or rooted.',
     type: 'boolean',
-    keys: ['os.rooted'],
+    keys: ['os.rooted', 'sentry.os.rooted'],
     applyScrubbing: {
       key: 'manual',
     },
     isInOtel: false,
     visibility: 'public',
     example: true,
-    changelog: [{ version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' }],
+    aliases: ['sentry.os.rooted'],
+    changelog: [
+      { version: 'next', prs: [805], description: 'Added sentry.os.rooted as an alias' },
+      { version: '0.5.0', prs: [301], description: 'Added os.rooted attribute' },
+    ],
   },
   'os.theme': {
     brief: 'Whether the OS runs in dark mode or light mode.',
@@ -37380,6 +37445,48 @@ export const ATTRIBUTE_METADATA: Record<AttributeName, AttributeMetadata> = {
     searchAlias: {
       name: 'origin',
     },
+  },
+  'sentry.os.name': {
+    brief: 'Human readable operating system name.',
+    type: 'string',
+    keys: ['os.name', 'sentry.os.name'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: 'Ubuntu',
+    deprecation: {
+      replacement: 'os.name',
+      status: 'backfill',
+    },
+    aliases: ['os.name'],
+    changelog: [
+      { version: 'next', prs: [805], description: 'Added sentry.os.name attribute, deprecated in favor of os.name' },
+    ],
+  },
+  'sentry.os.rooted': {
+    brief: 'Whether the operating system has been jailbroken or rooted.',
+    type: 'boolean',
+    keys: ['os.rooted', 'sentry.os.rooted'],
+    applyScrubbing: {
+      key: 'manual',
+    },
+    isInOtel: false,
+    visibility: 'public',
+    example: true,
+    deprecation: {
+      replacement: 'os.rooted',
+      status: 'backfill',
+    },
+    aliases: ['os.rooted'],
+    changelog: [
+      {
+        version: 'next',
+        prs: [805],
+        description: 'Added sentry.os.rooted attribute, deprecated in favor of os.rooted',
+      },
+    ],
   },
   'sentry.pageload.span_id': {
     brief: 'The id of the pageload span, set by web vital spans and metrics',
@@ -40845,6 +40952,8 @@ export type Attributes = {
   [SENTRY_OBSERVED_TIMESTAMP_NANOS]?: SENTRY_OBSERVED_TIMESTAMP_NANOS_TYPE;
   [SENTRY_OP]?: SENTRY_OP_TYPE;
   [SENTRY_ORIGIN]?: SENTRY_ORIGIN_TYPE;
+  [SENTRY_OS_NAME]?: SENTRY_OS_NAME_TYPE;
+  [SENTRY_OS_ROOTED]?: SENTRY_OS_ROOTED_TYPE;
   [SENTRY_PAGELOAD_SPAN_ID]?: SENTRY_PAGELOAD_SPAN_ID_TYPE;
   [SENTRY_PLATFORM]?: SENTRY_PLATFORM_TYPE;
   [SENTRY_PROFILER_ID]?: SENTRY_PROFILER_ID_TYPE;
